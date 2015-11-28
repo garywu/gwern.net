@@ -20,8 +20,10 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 
 Everything is heritable:
 
+- ["Genome-wide patterns of selection in 230 ancient Eurasians"](http://www.gwern.net/docs/2015-mathieson.pdf), Mathieson et al 2015 ([media](http://www.nytimes.com/2015/11/24/science/agriculture-linked-to-dna-changes-in-ancient-europe.html "Agriculture Linked to DNA Changes in Ancient Europe"))
 - [pervasive cross-correlations of polygenic scores for various traits](http://drjamesthompson.blogspot.com/2015/11/genetic-story-jumps-ahead.html): particularly [Krapohl et al 2015](http://www.researchgate.net/publication/281241266_Phenome-wide_analysis_of_genome-wide_polygenic_scores "Phenome-wide analysis of genome-wide polygenic scores")
-- ["Signaling and Productivity in the Private Financial Returns to Schooling"](http://paulbingley.com/papers/signals-manuscript.pdf), Bingley et al 2015
+- ["Genome-wide analysis of over 106,000 individuals identifies 9 neuroticism-associated loci"](http://www.biorxiv.org/content/biorxiv/early/2015/11/20/032417.full.pdf), Smith et al 2015
+- ["Signaling and Productivity in the Private Financial Returns to Schooling"](http://paulbingley.com/papers/signals-manuscript.pdf), Bingley et al 2015 (highly unusual design)
 
 Politics/religion:
 
@@ -32,10 +34,12 @@ Statistics/AI/meta-science:
 Psychology/biology:
 
 - [Rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
+- ["Species-characteristic Responses to Catnip by Undomesticated Felids"](http://www.gwern.net/docs/catnip/1976-hill.pdf) , Hill et al 1976
 
 Technology:
 
 - ["Carnegie Mellon Denies FBI Paid for Tor-Breaking Research"](http://www.wired.com/2015/11/carnegie-mellon-denies-fbi-paid-for-tor-breaking-research/) (If the FBI is harvesting any de-anonymizing data security researchers collect using subpoenas, this seems like a serious attack on academic freedom and research integrity.)
+- ["DagCoin: a cryptocurrency without blocks"](https://bitslog.wordpress.com/2015/09/11/dagcoin/); in an entirely different direction, [Bitcoin-NG](http://hackingdistributed.com/2015/10/14/bitcoin-ng/) splits blocks from mining (Bitcoin is just the first, not necessarily the universally ideal. We're in a Cambrian explosion of financial cryptography and should be open to new approaches.﻿)
 - ["Air Force cadet sentenced to 3 years after buying modafinil, molly, & LSD on Silk Road 2"](https://www.reddit.com/r/afinil/comments/3sgb9o/air_force_cadet_sentenced_to_3_years_after_buying/)
 
 Economics:
