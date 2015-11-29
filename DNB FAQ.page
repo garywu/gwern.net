@@ -1409,6 +1409,12 @@ Control post-test: n=20 10.44 (4.35)
 effect size ≈ `(9.32 - 10.44) / ((3.47+4.35)/2)` ≈ -0.286
 -->
 
+### Baniqued et al 2015
+
+["Working Memory, Reasoning, and Task Switching Training: Transfer Effects, Limitations, and Great Expectations?"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0142169), Baniqued et al 2015:
+
+> Although some studies have shown that cognitive training can produce improvements to untrained cognitive domains (far transfer), many others fail to show these effects, especially when it comes to improving fluid intelligence. The current study was designed to overcome several limitations of previous training studies by incorporating training expectancy assessments, an active control group, and “Mind Frontiers,” a video game-based mobile program comprised of six adaptive, cognitively demanding training tasks that have been found to lead to increased scores in fluid intelligence (Gf) tests. We hypothesize that such integrated training may lead to broad improvements in cognitive abilities by targeting aspects of working memory, executive function, reasoning, and problem solving. Ninety participants completed 20 hour-and-a-half long training sessions over four to five weeks, 45 of whom played Mind Frontiers and 45 of whom completed visual search and change detection tasks (active control). After training, the Mind Frontiers group improved in working memory n-back tests, a composite measure of perceptual speed, and a composite measure of reaction time in reasoning tests. No training-related improvements were found in reasoning accuracy or other working memory tests, nor in composite measures of episodic memory, selective attention, divided attention, and multi-tasking. Perceived self-improvement in the tested abilities did not differ between groups. A general expectancy difference in problem-solving was observed between groups, but this perceived benefit did not correlate with training-related improvement. In summary, although these findings provide modest evidence regarding the efficacy of an integrated cognitive training program, more research is needed to determine the utility of Mind Frontiers as a cognitive training tool.
+
 ## Meta-analysis
 
 > I construct a meta-analysis of the >19 studies which measure IQ after an n-back intervention, confirming that there is a [gain](DNB meta-analysis#analysis) of small-to-medium effect size. I also investigate several n-back claims, criticisms, and indicators of bias, finding:
