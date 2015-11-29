@@ -56,6 +56,20 @@ Financial data-mining offers some fun examples; there's the [Super Bowl/stock-ma
 <!-- http://www.11points.com/News-Politics/11_Strangest_Methods_to_Predict_Presidential_Elections -->
 <!-- http://nerdsonwallstreet.typepad.com/my_weblog/files/dataminejune_2000.pdf -->
 <!-- Diet and genetic confounds: "Greenlandic Inuit show genetic signatures of diet and climate adaptation", Fumagalli et al 2015 /docs/2015-fumagalli.pdf https://en.wikipedia.org/wiki/Human_genetic_variation -->
+<!-- http://www.nytimes.com/2015/11/03/science/book-review-ending-medical-reversal-laments-flip-flopping.html Book Review: ‘Ending Medical Reversal’ Laments Flip-Flopping
+
+An old saw has long held that 50 percent of everything a student learns in medical school is wrong. Actual calculations suggest that number is not too far off base — Dr. Prasad and Dr. Cifu extrapolate from past reversals to conclude that about 40 percent of what we consider state-of-the-art health care is likely to turn out to be unhelpful or actually harmful.
+
+Recent official flip-flops include habits of treating everything from lead poisoning to blood clots, from kidney stones to heart attacks. One reversal concerned an extremely common orthopedic procedure, the surgical repair of the meniscus in the knee, which turns out to be no more effective than physical therapy alone. The interested reader can plow through almost 150 disproved treatments in the book’s appendix.
+
+What could make more sense, after all, than finding some cancers early, fixing a piece of torn cartilage, closing a hole in the heart, and propping open blood vessels that have become perilously narrow? And yet not one of these helpful interventions has been shown to make a difference in the health or survival of patients who obediently line up to have them done.
+
+http://graphics8.nytimes.com/packages/pdf/science/Ending_Med_Rev_Chap_1.pdf
+
+- flecainide (deadly)
+- beta-blocker for high blood  pressure (ineffective)
+- Vertebroplasty (ineffective)
+-->
 
 I've read about [those problems at length](http://www.gwern.net/DNB%20FAQ#flaws-in-mainstream-science-and-psychology), and despite knowing about all that, there still seems to be a problem: I don't think those issues explain away all the correlations which turn out to be confounds - correlation *too often* ≠ causation.
 
