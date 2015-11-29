@@ -62,6 +62,7 @@ Similarly, if there were >60 buyer arrests (I double because there seem to be mo
 - DebbieDelites (Evolution): doxed customer, posting his address to Evolution https://www.reddit.com/r/DarkNetMarkets/comments/2xkvlw/ama_ama_with_debbiesdelites_is_open/
 - Richard Pollard "Police also found express post envelopes used to distribute drugs and printouts from online trading site Silk Road showing names and addresses for drug orders, according to court documents." (may've been in-flight orders, similar to XanaxKing)
 - Shiny Flakes: ~50 customer locations searched (likewise)
+- Jerseycow: "Hundreds of drugs transactions were said to be displayed on a nearby computer when officers entered. Customer names, email and delivery addresses, types of drugs, quantities, purchases and sales believed to be in excess of £204,000 were retrieved, prosecutors alleged." http://www.belfastlive.co.uk/news/belfast-news/belfast-man-who-allegedly-kingpin-10388091
 -->
 
 # Table
@@ -522,6 +523,8 @@ B.V.                  M   47                       seller                       
                           23                       buyer                                       New Zealand Dunedin        cocaine, MDMA, LSD, prescription      TRUE  2015-11-16 2015-11-18
                           23                       buyer                                       New Zealand Dunedin        cocaine, MDMA, LSD, prescription      TRUE  2015-11-16 2015-11-18
 Daniel A. Atkinson   M    30 MIA                   seller    Silk Road 1                       Australia   Adelaide       MDMA                                  TRUE             2015-09-05       Tentatively identified as "Meanwhile in Australia"/MIA
+Richard Sinclair     M    32 JerseyCow             seller    Agora                             Ireland     Belfast        MDMA, marijuana, diazepam, LSD        TRUE  2015-08-26 2015-09-08
+Kyle Hall            M    25  thehater90/No1Benzos seller    Agora                             Ireland     Belfast        MDMA, marijuana, diazepam, LSD        TRUE  2015-08-26 2015-09-08
 
 # Confirmed
 ## Agora
@@ -555,6 +558,14 @@ Given the Vice connection and the rash of German/Dutch arrests 2014-2015, it see
 ### India
 
 On 6 August 2015, 3 Indian men (J Manikantan, Debyendu Roy, Jag Saipravesh) [were arrested after a police informant bought from them](http://timesofindia.indiatimes.com/city/bengaluru/Peddlers-procure-narcotics-from-darknet/articleshow/48368502.cms "Peddlers procuring narcotics from dark world of internet") drugs ("Ecstasy, LSD, charas and ganja") which they had purchased on Agora and were selling to "students of reputed engineering colleges in the city".
+
+### Ireland
+
+On 26 August 2015, two Irish men, Richard Sinclair & Kyle Hall, were raided, turning up MDMA/marijuana/diazepam/LSD and customer records of >£204,000 in sales, and other items.
+Sinclair turned out to be the former SR2/TMG/Agora seller "JerseyCow", who had officially retired some time previously but had apparently resumed direct-dealing of MDMA with a few old customers in England with stealthed jigsaw puzzles; Hall was in a quasi-partnership with Sinclair as the seller "No1Benzos".
+(Media: [1](http://www.belfasttelegraph.co.uk/news/northern-ireland/dark-web-drug-network-run-from-coleraine-mans-bedroom-31503735.html "Dark web drug network 'run from Coleraine man's bedroom'"),
+[2](http://www.bbc.com/news/uk-northern-ireland-foyle-west-34151553 "Two in court over dark web drugs case involving bitcoin"),
+[3](http://www.belfastlive.co.uk/news/belfast-news/belfast-man-who-allegedly-kingpin-10388091 "Belfast man who was allegedly the 'kingpin' in huge drugs operation over dark web is refused bail: Kyle Hall to remain in custody amid claims of being at the centre of a sophisticated crime gang who used bitcoin currency").)
 
 ### Netherlands
 
@@ -771,6 +782,7 @@ The Victorian authorities report [confiscating "several million dollars" (฿24,
 
 In September 2015, [Daniel Andrew Atkinson was sentenced to 8.5 years for MDMA sales on SR1](http://www.adelaidenow.com.au/news/south-australia/gambling-addict-daniel-andrew-atkinson-jailed-for-selling-drugs-on-the-dark-web/story-fni6uo1m-1227509794163 "Gambling addict Daniel Andrew Atkinson jailed for selling drugs on the dark web"), with no details on arrest date or cause.
 [A commenter](https://www.deepdotweb.com/2015/09/05/darknet-vendor-sentenced-to-8-years-sold-drugs-in-order-to-pay-back-a-debt/#comment-600930) claims this was the seller "Meanwhile In Australia"/MIA and he did cash-in-mail transactions, which are notoriously dangerous.
+(The ["Meanwhile in Australia..." SR1F thread](http://www.webcacher.org/silkroad1-forums-anonymous/2013-10-15/Market/Rumor%20mill/2012.10.21_0556am%20==%20Meanwhile%20in%20Australia...%20==%20thread_56466%20==%20by%20MeanwhileinAustralia.html) confirms he shipped internationally as well.)
 
 ### Austria
 
