@@ -103,7 +103,7 @@ So if one wishes to reason from anecdotes like them, one might conclude that psy
     ~~~{.R}
     prop.test(3, 264, p=0.05)
 
-    	1-sample proportions test with continuity correction
+        1-sample proportions test with continuity correction
 
     data:  3 out of 264, null probability 0.05
     X-squared = 7.5032, df = 1, p-value = 0.006159
@@ -1024,6 +1024,8 @@ More importantly, what about mood/productivity (`MP`)? An ordinary linear model 
     - [Reddit](http://www.reddit.com/r/Nootropics/comments/1onbz3/lsd_microdosing_a_randomized_blind_selfexperiment/)
     - [Shroomery](http://www.shroomery.org/forums/showflat.php/Number/18993960)
 - ["Are mystical experiences metaphysical evidence?"](https://meaningness.wordpress.com/2011/09/12/are-mystical-experiences-metaphysical-evidence/)/["Epistemology and enlightenment"](https://meaningness.wordpress.com/2012/09/13/epistemology-and-enlightenment/) -(David Chapman)
+- [/r/microdosing](https://www.reddit.com/r/microdosing)
+- ["How LSD Microdosing Became the Hot New Business Trip"](http://www.rollingstone.com/culture/features/how-lsd-microdosing-became-the-hot-new-business-trip-20151120)
 
 # Appendices
 ## Trip report
@@ -1116,6 +1118,11 @@ https://www.reddit.com/r/DarkNetMarkets/comments/31rcci/psaarticle_we_have_to_st
 https://www.reddit.com/r/DNMAvengers/comments/31ust8/confirming_what_we_already_know_the_lsd_scene_is/
 https://www.reddit.com/r/DNMAvengers/comments/32nj4u/3_tests_tessellated_50_instrument_50_instrument_74/
 https://www.reddit.com/r/DarkNetMarkets/comments/32npnx/a_call_for_lab_reports_update/
+https://www.reddit.com/r/IFfmbHfnpaZjKFvyi1okT/comments/33llod/energy_control_a_closer_look/ / https://www.reddit.com/r/DNMAvengers/comments/36bp4x/variance_in_energy_control_testing/
+https://www.reddit.com/r/DarkNetMarkets/comments/35ks57/energy_control_test_peacefuls_imported_5_tabs/
+https://www.reddit.com/r/DarkNetMarkets/comments/377s25/markovich_energy_control_result_160ug_lsd_tested/
+https://www.reddit.com/r/DarkNetMarkets/comments/376pov/top_gear_uk_energy_control_result_115ug_lsd/ / https://www.reddit.com/r/DNMAvengers/comments/376ouw/top_gear_uk_energy_control_result_115ug_lsd/
+https://www.reddit.com/r/DarkNetMarkets/comments/39lyr7/test_result_lsd_hos_150ug/
 
 TODO: https://www.reddit.com/r/silkRoad+reloaded+sheepmarketplace+budster+silkroadreloaded+themarketplace+darknetmarkets+RoadSilk+PandoraMP+blueskymarket+AgoraMarket+wrmarketplace+vault43+torescrow+IFfmbHfnpaZjKFvyi1okT+utopiamp+BlackBank+c9marketplace+the_armory+AgMarketplace+EvolutionMarket+HansaMarketplace+AndromedaMarket+darkpub+aussiedarknet+DRKMarket+DarkNetMarketsNZ+panacea+TomMarketplace+AbraxasMarket+Area51Market+NucleusMarket/search?q=lab+test&restrict_sr=on
 search SR1, SR2, majestic garden, agora, evolution forums for other labtests
