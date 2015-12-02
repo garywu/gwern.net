@@ -12,7 +12,7 @@ Related:
 - http://nathanael.hevenet.com/the-best-time-to-post-on-hacker-news-a-comprehensive-answer/
 - http://minimaxir.com/2014/02/hacking-hacker-news/
 - http://minimaxir.com/2014/10/hn-comments-about-comments/
-- http://karpathy.ca/myblog/2013/11/27/quantifying-hacker-news-with-50-days-of-data/
+- http://karpathy.ca/myblog/2013/11/27/quantifying-hacker-news-with-50-days-of-data/ https://cs.stanford.edu/people/karpathy/hn_analysis.html
 - http://metamarkets.com/2011/hacking-hacker-news-headlines/
 - http://danluu.com/randomize-hn/
 - http://www.bayesianwitch.com/blog/2013/why_hn_shouldnt_use_randomized_algorithms.html
@@ -20,6 +20,12 @@ Related:
 - http://gkosev.blogspot.com/2012/08/fixing-hacker-news-mathematical-approach.html
 - http://blog.rjmetrics.com/2012/10/17/surprising-hacker-news-data-analysis/
 - http://blog.rjmetrics.com/2012/10/24/how-to-get-on-the-front-page-of-hacker-news/
+- http://blog.datadive.net/which-topics-get-the-upvote-on-hacker-news/
+- https://news.ycombinator.com/item?id=8790134
+- https://porter.io/blog/hackernews-cheaters-catch-me-if-you-can/ https://news.ycombinator.com/item?id=9332889
+- http://www.righto.com/2013/11/how-hacker-news-ranking-really-works.html
+- https://news.ycombinator.com/item?id=9336759 https://news.ycombinator.com/item?id=9333611
+- http://www.almostinfinite.com/other/hacker-news-new-page-scroll-of-death.html?
 
 Page view counts:
 
@@ -37,6 +43,7 @@ Page view counts:
 - 100 views, +4 https://en.avion.io/blog/?_escaped_fragment_=/post/the-story-of-our-hackernews-submission#!/post/the-story-of-our-hackernews-submission
 - 5k pageviews, 3.6k, +42 uniques http://blog.remoteworknewsletter.com/2014/10/15/how-to-valdiate-an-idea-on-hacker-news/
 - 41.3k http://ptotrading.blogspot.com/2014/11/a-message-to-all-non-daytraders-and.html
+- 15,223 sessions https://blog.wearewizards.io/the-hacker-news-effect-examined
 
 # Submissions
 
@@ -48,6 +55,7 @@ per nathanael's post, I tried to consistently post around 10AM EST (I don't get 
 
 https://news.ycombinator.com/submitted?id=gwern
 extract stats from http://hn.algolia.com/#!/story/sort_by_date/prefix/0/author%3Agwern ? API: https://hn.algolia.com/api
+https://github.com/HackerNews/API
 
 Sep 2013, started with: '"Equoid" (Charles Stross meets My Little Pony)' (http://www.tor.com/stories/2013/09/equoid) https://news.ycombinator.com/item?id=6445266 5 points by gwern 6 months ago; 0 comments
 
