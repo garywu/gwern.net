@@ -7,7 +7,7 @@ status: in progress
 belief: highly likely
 ...
 
-> I compile a table and discussion of all known arrests and prosecutions related to Tor-Bitcoin black-markets such as Silk Road 1, along with discussion of how they came to be arrested.
+> I compile a table and discussion of all known arrests and prosecutions related to English-language Tor-Bitcoin black-markets such as Silk Road 1, along with discussion of how they came to be arrested.
 
 Online black-market users have been arrested in a number of countries, for many different reasons, and dating back to not long after the opening of Silk Road 1 in January 2011.
 Because of the novelty of such markets and the relatively durable communities, a surprising number of arrests eventually become known.
@@ -63,6 +63,9 @@ Similarly, if there were >60 buyer arrests (I double because there seem to be mo
 - Richard Pollard "Police also found express post envelopes used to distribute drugs and printouts from online trading site Silk Road showing names and addresses for drug orders, according to court documents." (may've been in-flight orders, similar to XanaxKing)
 - Shiny Flakes: ~50 customer locations searched (likewise)
 - Jerseycow: "Hundreds of drugs transactions were said to be displayed on a nearby computer when officers entered. Customer names, email and delivery addresses, types of drugs, quantities, purchases and sales believed to be in excess of £204,000 were retrieved, prosecutors alleged." http://www.belfastlive.co.uk/news/belfast-news/belfast-man-who-allegedly-kingpin-10388091
+-->
+<!-- Silkkitie/Valhalla arrests https://www.deepdotweb.com/2015/11/29/the-idealistic-motives-behind-valhalla/
+> According to the Finnish Customs, darknet drug shipments from abroad have increased by dozens of percents a year, over a few years period. That’s why the surveillance has been increased. There have been results, too. In October Customs told that it had caught a Finnish reseller ordering from darknet. A young mann living in Helsinki metropolitan area got caught after purchasing 900 LSD blotters from the UK that were meant for resale. During the last summer the man had already sold on Valhalla, back then Silkkitie, in small batches about 1700 LSD blotters and 600 ecstasy pills. Customs have also managed to uncover drug dealers in few other networks. A week ago Helsinki police department announced catching another darknet drug vendor, who the police is currently suspecting from a felony drug crime.
 -->
 
 # Table
@@ -612,7 +615,7 @@ His package was intercepted by Customs (possibly due to inadequate stealth), the
 
 On 2015-01-30, 48yo Alabaman Michael Albert Focia ([complaint](/docs/sr/agora-focia-almd-01702438594.pdf); [media](http://motherboard.vice.com/read/tip-if-youre-selling-guns-on-the-dark-web-dont-get-your-prints-on-them "Tip: If You're Selling Guns on the Dark Web, Don't Get your Prints on Them"); [press release](http://www.justice.gov/usao-mdal/pr/montgomery-man-convicted-illegal-gun-sales-darknet-sites "Montgomery Man Convicted for Illegal Gun Sales on Darknet Sites")) was arrested for sales of firearms on BlackMarket Reloaded (as "iWorks") and Agora (as "RTBArms"); an undercover purchase by the ATF in August 2013 yielded a handgun which they traced back to the original owner, who remembered the license plates & phone number and other details of the man who he'd sold the handgun to, as well as a UPS clerk, and by November 2013 had yielded Focia's name/address/etc.
 A subsequent undercover purchase from Focia on Agora yielded fingerprints on the packaging which matched fingerprints already known for Focia.
-A pro se defense failed and he was convicted of most charges 19 June 2015.
+A pro se defense failed and he was convicted of most charges 19 June 2015, and was [sentenced to 4.25 years](http://www.justice.gov/usao-mdal/pr/montgomery-man-sentenced-selling-firearms-dark-web "Montgomery Man Sentenced for Selling Firearms on the Dark Web") in November 2015.
 (Interestingly, Focia may have almost escaped: BMR shut down shortly after the first agent de-anonymized Focia, which stymied several other BMR investigations, and the second agent seems to not realized that the Agora seller he was investigating was the same as the earlier BMR seller until the fingerprints came back as a known match. Changing pseudonyms may interfere with investigations, but is no panacea.)
 
 Case unsealed as to Michael Albert Focia pursuant to U. S. Marshal notice of arrest (jct, ) [2:15-mj-00021-SRW] (Entered: 01/30/2015)
