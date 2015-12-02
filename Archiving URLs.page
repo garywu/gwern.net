@@ -105,7 +105,7 @@ Finally, rather than start it manually, I use a cron job to start it at boot, fo
 @reboot sleep 4m && screen -d -m -S "archiver" sh -c 'while true; do archiver ~/.urls.txt gwern2@gwern.net \
         "cd ~/www && nice -n 20 ionice -c3 torify wget --unlink --limit-rate=20k --page-requisites --timestamping \
         -e robots=off --reject .iso,.exe,.gz,.xz,.rar,.7z,.tar,.bin,.zip,.jar,.flv,.mp4,.avi,.webm \
-        --user-agent='Firefox/4.9'" 200; done'
+        --user-agent='Firefox/4.9'" 500; done'
 ~~~
 
 ## Local caching
@@ -159,6 +159,38 @@ Alternately, you might use `curl` or a specialized archive downloader like the I
 The space consumed by such a backup is not that bad; only 30-50 gigabytes for a year of browsing, and less depending on how hard you prune the downloads. (More, of course, if you use `linkchecker` to archive entire sites and not just the pages you visit.) Storing this is quite viable in the long term; while page sizes have [increased 7x](http://www.websiteoptimization.com/speed/tweak/average-web-page/) between 2003 and 2011 and pages average around 400kb^[An older [2010 Google article](https://web.archive.org/web/20100628055041/http://code.google.com/speed/articles/web-metrics.html "Web metrics: Size and number of resources") put the average at 320kb, but that was an average over the entire Web, including all the old content.], [Kryder's law](!Wikipedia) has also been operating and has increased disk capacity by ~128x - in 2011, \$80 will buy you at least [2 terabytes](http://forre.st/storage#hdd), that works out to 4 cents a gigabyte or 80 cents for the low estimate for downloads; that is much better than the $25 annual fee that somewhere like [Pinboard](http://pinboard.in/upgrade/) charges. Of course, you need to back this up yourself. We're relatively fortunate here - most Internet documents are 'born digital' and easy to migrate to new formats or inspect in the future. We can download them and worry about how to view them only when we need a particular document, and Web browser backwards-compatibility already stretches back to files written in the early 1990s. (Of course, we're probably screwed if we discover the content we wanted was presented only in Adobe Flash or as an inaccessible 'cloud' service.) In contrast, if we were trying to preserve programs or software libraries instead, we would face a much more formidable task in keeping a working ladder of binary-compatible virtual machines or interpreters^[Already one runs old games like the classic [LucasArts adventure games](!Wikipedia) in emulators of the DOS operating system like [DOSBox](!Wikipedia); but those emulators will not always be maintained. Who will emulate the emulators? Presumably in 2050, one will instead emulate some ancient but compatible OS - Windows 7 or Debian 6.0, perhaps - and inside *that* run DOSBox (to run the DOS which can run the game).]. The situation with [digital movie preservation](http://www.davidbordwell.net/blog/2012/02/13/pandoras-digital-box-pix-and-pixels/ "Pandora's digital box: Pix and pixels") hardly bears thinking on.
 
 There are ways to cut down on the size; if you tar it all up and run [7-Zip](!Wikipedia) with maximum compression options, you could probably compact it to 1/5th the size. I found that the uncompressed files could be reduced by around 10% by using [fdupes](!Wikipedia) ([homepage](http://netdial.caribe.net/~adrian2/fdupes.html)) to look for duplicate files and turning the duplicates into a space-saving [hard link](!Wikipedia) to the original with a command like `fdupes --recurse --hardlink ~/www/`. (Apparently there are a *lot* of bit-identical JavaScript (eg. [JQuery](!Wikipedia)) and images out there.)
+
+### Cryptographic timestamping local archives
+
+Local archives like this are useful for personal purposes, but sometimes you need to be able to prove that the copy you downloaded was not modified and you need to *timestamp* it.
+
+The most robust way of timestamping is [cryptographic timestamping](!Wikipedia "Trusted timestamping"), where the downloaded file is hashed using a [cryptographic hash function](!Wikipedia) like [SHA-256](!Wikipedia), and then the hash is published.
+If published to somewhere like Twitter or one's blog, though, now one has *two* problems of timestamping, so it is better to use the [Bitcoin](!Wikipedia) blockchain, where one can easily timestamp by methods like sending 1 satoshi to the address corresponding to the document's hash; this can become expensive due to transaction fees, and bloats the blockchain, so it is better to use a service like [OriginStamp](http://www.originstamp.org/) which batches together a large number of hashes and makes a single transaction each day - which is so cheap that the service is free (though it takes donations).
+Thanks to OriginStamp's API, we can [get a free API key](http://www.originstamp.org/developer) and then write a shell script using `curl`/`wget`/`sha256sum` to download a URL and cryptographically timestamp the downloaded file, which I will name `wget-archive`:
+
+~~~{.Bash}
+#!/bin/bash
+set -e
+cd ~/www/
+API_KEY="663261db5a8e6e9ca517756e45549dee"
+USER_AGENT="Firefox 6.5"
+FILE=$(nice -n 20 ionice -c3 wget --continue --unlink --page-requisites --timestamping -e robots=off \
+                                  --reject .exe,.rar,.7z,.bin,.jar,.flv,.mp4,.avi,.webm,.ico \
+                                  --user-agent="$USER_AGENT" "$@" 2>&1 \
+       | egrep 'Saving to: ‘.*’' | sed -e 's/Saving to: ‘//' | tr -d '’' | head -1 )
+FILE_HASH=$(sha256sum "$FILE" | cut -d ' ' -f 1)
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Token token=$API_KEY" \
+     -d "{\"hash_sha256\":\"$FILE_HASH\"}" 'http://www.originstamp.org/api/stamps'
+~~~
+
+Then we delete the equivalent `wget` functionality in the cron job, which simplifies it considerably:
+
+~~~{.Bash}
+@reboot sleep 4m && screen -d -m -S "archiver" sh -c 'while true; do archiver ~/.urls.txt gwern2@gwern.net \
+        "wget-archive" 200; done'
+~~~
+
+Now every URL we download is automatically cryptographically timestamped with ~1-day resolution for free.
 
 ### URL sources
 #### Browser history
