@@ -2,7 +2,7 @@
 title: November news
 created: 31 Oct 2015
 tags: newsletter
-status: in progress
+status: finished
 belief: log
 ...
 
@@ -11,9 +11,7 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 
 # Writings
 
-- _Wired_ article?
-- [2015 modafinil community survey results?](http://www.gwern.net/Modafinil%20survey)
-- [RNN author/style experiment?](http://www.gwern.net/Statistical%20notes#rnn-metadata-for-mimicking-individual-author-style)
+- Nothing completed (due to work on a secret project)
 
 # Media
 ## Links
@@ -24,31 +22,54 @@ Everything is heritable:
 - [pervasive cross-correlations of polygenic scores for various traits](http://drjamesthompson.blogspot.com/2015/11/genetic-story-jumps-ahead.html): particularly [Krapohl et al 2015](http://www.researchgate.net/publication/281241266_Phenome-wide_analysis_of_genome-wide_polygenic_scores "Phenome-wide analysis of genome-wide polygenic scores")
 - ["Genome-wide analysis of over 106,000 individuals identifies 9 neuroticism-associated loci"](http://www.biorxiv.org/content/biorxiv/early/2015/11/20/032417.full.pdf), Smith et al 2015
 - ["Signaling and Productivity in the Private Financial Returns to Schooling"](http://paulbingley.com/papers/signals-manuscript.pdf), Bingley et al 2015 (highly unusual design)
+- ["Childhood Autism and Assortative Mating"](http://economics.uchicago.edu/workshops/Golden%20Hays%20Childhood%20Autism.pdf), Golden 2012
 
 Politics/religion:
 
 - ["The American Robber Barons Who Stole Medieval Europe"](http://www.atlasobscura.com/articles/in-the-early-1900s-dozens-of-centuriesold-european-buildings-came-to-america-where-is-medieval-america-now)
+- ["Book Review: _Empire of the Summer Moon_"](http://squid314.livejournal.com/340809.html)
+- ["Little to Show for Cash Flood by Big Donors"](http://www.nytimes.com/2012/11/08/us/politics/little-to-show-for-cash-flood-by-big-donors.html?pagewanted=all)
+- ["Why Our Kind Can't Cooperate"](http://lesswrong.com/lw/3h/why_our_kind_cant_cooperate/)
+- [on mood affiliation](http://hardtruthsfromsoftcats.tumblr.com/post/35189323461)
+- [Proper procedures for stoning an adulterer](https://nationalpostnews.files.wordpress.com/2010/11/na0124_stoningweb.pdf)
 
 Statistics/AI/meta-science:
 
+- [converting all-cause mortality reductions to life-expectancy increases](http://joshmitteldorf.scienceblog.com/2012/11/10/mortality-and-life-expectancy/ "Mortality and Life Expectancy")
+- ["How to visualize data with cartoonish faces ala Chernoff"](http://flowingdata.com/2010/08/31/how-to-visualize-data-with-cartoonish-faces/) (on [Chernoff faces](https://en.wikipedia.org/wiki/Chernoff_face))
+
 Psychology/biology:
 
+- [The girl who feels no pain](http://www.nytimes.com/2012/11/18/magazine/ashlyn-blocker-feels-no-pain.html?pagewanted=all "The Hazards of Growing Up Painlessly")
+- ["Insecticide Resistance and Malaria Control"](http://blog.givewell.org/2012/11/09/insecticide-resistance-and-malaria-control/)
+- ["Cochrane findings that will help you"](http://highqualityevidence.blogspot.com/2012/10/cochrane-findings-that-will-help-you.html)
 - [Rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
 - ["Species-characteristic Responses to Catnip by Undomesticated Felids"](http://www.gwern.net/docs/catnip/1976-hill.pdf) , Hill et al 1976
+- ["Meditation and Its Regulatory Role on Sleep"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3328970/), Nagendra et al 2012
 
 Technology:
 
 - ["Carnegie Mellon Denies FBI Paid for Tor-Breaking Research"](http://www.wired.com/2015/11/carnegie-mellon-denies-fbi-paid-for-tor-breaking-research/) (If the FBI is harvesting any de-anonymizing data security researchers collect using subpoenas, this seems like a serious attack on academic freedom and research integrity.)
-- ["DagCoin: a cryptocurrency without blocks"](https://bitslog.wordpress.com/2015/09/11/dagcoin/); in an entirely different direction, [Bitcoin-NG](http://hackingdistributed.com/2015/10/14/bitcoin-ng/) splits blocks from mining (Bitcoin is just the first, not necessarily the universally ideal. We're in a Cambrian explosion of financial cryptography and should be open to new approaches.﻿)
+- ["DagCoin: a cryptocurrency without blocks"](https://bitslog.wordpress.com/2015/09/11/dagcoin/); in an entirely different direction, [Bitcoin-NG](http://hackingdistributed.com/2015/10/14/bitcoin-ng/) splits blocks from mining (Bitcoin is just the first, not necessarily the universally ideal. We're in a Cambrian explosion of financial cryptography and should be open to new approaches.)
 - ["Air Force cadet sentenced to 3 years after buying modafinil, molly, & LSD on Silk Road 2"](https://www.reddit.com/r/afinil/comments/3sgb9o/air_force_cadet_sentenced_to_3_years_after_buying/)
+- ['man sort': '--random-sort' misleading](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=641166) (use `shuf` if you need random sorts on the CLI)
 
 Economics:
 
+- ["As Coasts Rebuild and U.S. Pays, Repeatedly, the Critics Ask Why"](http://www.nytimes.com/2012/11/19/science/earth/as-coasts-rebuild-and-us-pays-again-critics-stop-to-ask-why.html?hp&pagewanted=all)/["Should the Northeast Bury its Power Lines to Prevent Outages?"](http://www.popularmechanics.com/science/energy/a8273/should-the-northeast-bury-its-power-lines-to-prevent-outages-14295683/ "Should the Northeast Bury its Power Lines to Prevent Outages? Underground power cables are largely protected from storms like Hurricane Sandy. So why not bury them all and skip the blackouts?")/["Having your cake and eating it too: The maturity structure of US debt"](http://johnhcochrane.blogspot.com/2012/11/debt-maturity.html)
+- ["Ricardo's Difficult Idea"](http://web.mit.edu/krugman/www/ricardo.htm)/["The Real Winners and Losers of Globalization: Globalization has radically changed global income dynamics. So who has won and who has lost?"](http://www.theglobalist.com/the-real-winners-and-losers-of-globalization/)
+- ["Cosmic Commodities: How much is a new planet worth?"](http://boingboing.net/2011/02/03/cosmic-commodities-h.html)
+- ["The Goethe Auction"](http://cheaptalk.org/2012/11/04/the-goethe-auction/)
+
 Philosophy:
 
-Fiction:
+- ["When Do Extraordinary Claims Give Extraordinary Evidence?"](http://mason.gmu.edu/~rhanson/extraord.pdf), Hanson 2007
+- [Philosophy of humor](http://plato.stanford.edu/entries/humor/)
+- ["Fog-like sensations"](http://www.stevepetersen.net/wittgenstein-fog.html)
+- [_A Softer World_, #891](http://www.asofterworld.com/index.php?id=891)
+- [Esotericism as a form of communication](http://thecodelesscode.com/case/66 "Case 66: Porpoise")
 
-<!-- Back to 20 Nov 2012 -->
+<!-- Back to 1 Nov 2012 -->
 
 ## Books
 
@@ -65,11 +86,9 @@ Nonfiction:
 
 ## Film/TV
 
-Live-action:
-
 Anime:
 
-- _Hanamonogatari_ / _Tsukimonogatari_
+- _Hanamonogatari_/_Tsukimonogatari_ (disappointments, coming after _Second Season_. Neither had a particularly compelling story - _Hana_ was interesting but could not support that many episodes and _Tsuki_'s ending with Tadatsuru was bafflingly idiotic and incompetent an anticlimax with apparently the whole thing being mostly wasted time on developing yet another one of the worst & overused archetypes in anime)
 
 ## Music
 
