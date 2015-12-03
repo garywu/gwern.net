@@ -116,7 +116,7 @@ On a roughly monthly basis, I run a shell script named, imaginatively enough, `l
 
 ~~~{.bash}
 #!/bin/sh
-set -e
+set -euo pipefail
 
 cp `find ~/.mozilla/ -name "places.sqlite"` ~/
 sqlite3 places.sqlite "SELECT url FROM moz_places, moz_historyvisits \
@@ -143,7 +143,7 @@ The code is not the prettiest, but it's fairly straightforward:
 
     ~~~{.bash}
     #!/bin/sh
-    set -e
+    set -euo pipefail
     cat /dev/stdin | sed -e "s/#.*//" | sed -e "s/&sid=.*$//" | sed -e "s/\/$//" | grep -v -e 4chan -e reddit ...
     ~~~
 
@@ -180,7 +180,7 @@ There are a number of ways to populate the source text file. For example, I have
 
 ~~~{.bash}
 #!/bin/sh
-set -e
+set -euo pipefail
 
 cp --force `find ~/.mozilla/firefox/ -name "places.sqlite"|sort|head -1` ~/
 sqlite3 -batch places.sqlite "SELECT url FROM moz_places, moz_historyvisits \
@@ -271,7 +271,7 @@ This blacklisting can be as simple as a command like `filter-urls | grep -v en.b
 # For performance, it does not sort or remove duplicates from output; both can be done by
 # piping `filter-urls` to `sort --unique`.
 
-set -e
+set -euo pipefail
 
 cat /dev/stdin \
     | sed -e "s/#.*//" -e 's/>$//' -e "s/&sid=.*$//" -e "s/\/$//" -e 's/$/\n/' -e 's/\?sort=.*$//' \
@@ -582,7 +582,7 @@ The sort-key trick is most useful when we can infer a lot of spatial locality ju
 > Current timestamping mechanisms tend to be cumbersome, manual, cost too much to use routinely, or all 3.
 > Using an efficient cryptographic timestamping service, we can write programs to automatically & easily timestamp arbitrary files & strings, timestamp every commit to a Git repository, and webpages downloaded for archival purposes.
 
-The most robust way of timestamping is [cryptographic timestamping](!Wikipedia "Trusted timestamping"), where the downloaded file is hashed using a [cryptographic hash function](!Wikipedia) like [SHA-256](!Wikipedia), and then the hash is published.
+The most robust way of timestamping is [cryptographic timestamping](!Wikipedia "Trusted timestamping"), where a document (such as a downloaded webpage) is hashed using a [cryptographic hash function](!Wikipedia) like [SHA-256](!Wikipedia), and then the hash is published; the hash proves that that exact version of the document existed on/before the date the hash was published on.
 If published to somewhere like Twitter or one's blog, though, now one has *two* problems of timestamping, so it is better to use the [Bitcoin](!Wikipedia) blockchain, where one can easily timestamp by methods like sending 1 satoshi to the address corresponding to the document's hash.
 (Appropriately, Bitcoin itself is an intellectual descendant of earlier Usenet timestamping services.)
 
@@ -592,7 +592,7 @@ Using services like [Proof of Existence](https://www.proofofexistence.com) solve
 We can do better by using a service like [OriginStamp](http://www.originstamp.org/) ([Gipp et al 2015](http://arxiv.org/pdf/1502.04015.pdf "Decentralized Trusted Timestamping using the Crypto Currency Bitcoin")): [OriginStamp is a web service](http://www.originstamp.org/faq) which receives hashes from users, and then each day, it batches together all hashes submitted that day, hashes them, and makes a Bitcoin transaction to that master hash.^[OriginStamp apparently does not use `OP_RETURN` like Proof of Existence does, which should be more efficient; but it is controversial and limited to 80 bytes, was reduced even further to [40 bytes](https://github.com/bitcoin/bitcoin/pull/3737 "script: reduce OP_RETURN standard relay bytes to 40 #3737; Gavin Andresen merged 1 commit into bitcoin:master from jgarzik:op-return-size on Feb 26, 2014"), and then [increased again to 80 bytes](https://github.com/bitcoin/bitcoin/pull/5286 "Change the default maximum OP_RETURN size to 80 bytes #5286; laanwj merged 2 commits into bitcoin:master from Flavien:master on Feb 3 2015") which I'm not sure is enough storage space for a secure hash.]
 This gives one day-level granularity of timestamping (which might sound bad but usually day-level precision is fine and in any case, the precision of Bitcoin timestamping is limited by the time delay between each block and mining)
 To verify any particular hash, one looks up that hash in the OriginStamp archives, finds the day/batch it is part of, hashes the whole batch, and checks that there was a Bitcoin transaction that day.
-Because OriginStamp only needs to make a single transaction each day, no matter how many hashes are submitted, it has near-zero effect on the Bitcoin blockchain and costs little to run  - if one Bitcoin transaction costs 5 cents, then a year of daily transaction fees is <\$20 (though OriginStamp accepts donations and I have done so).
+Because OriginStamp only needs to make a single transaction each day, no matter how many hashes are submitted, it has near-zero effect on the Bitcoin blockchain and costs little to run  - if one Bitcoin transaction costs 5 cents, then a year of daily transaction fees is <\$20 (though OriginStamp accepts donations and I have given ฿0.1).
 
 ### Timestamping files or strings
 
@@ -600,7 +600,7 @@ We can [get a free API key](http://www.originstamp.org/developer) and then, than
 
 ~~~{.Bash}
 #!/bin/bash
-set -e
+set -euo pipefail
 
 API_KEY="73be2f5ae81ffa076480ac4d48fa9b2d"
 
@@ -652,10 +652,13 @@ echo "timestamp $(git rev-parse HEAD)" >> .git/hooks/post-commit
 chmod +x .git/hooks/post-commit
 ~~~
 
-Now each commit we make, the SHA-1 hash of the last commit will be timestamped and we can take the repo later and prove that all of the content existed before a certain day; this might be source code, but also anything one might want to track changes to - interviews, web page archives, copies of emails, financial documents, etc.
+Now each commit we make, the [SHA-1](!Wikipedia) hash of the last commit will be timestamped and we can take the repo later and prove that all of the content existed before a certain day; this might be source code, but also anything one might want to track changes to - interviews, web page archives, copies of emails, financial documents, etc.
 
-This approach generalizes to other version control systems built on cryptographic hashes as IDs, where timestamping the ID-hashes is enough to assure the entire tree of content.
+This approach generalizes to most version control systems built on cryptographic hashes as IDs, where timestamping the ID-hashes is enough to assure the entire tree of content.
 (I'm not sure about other VCSes; perhaps the post-commit hooks could timestamp entire revisions/patches?)
+
+There are concerns that SHA-1 is increasingly weak and it will be possible, within the foreseeable future, for collisions to be generated at feasible costs, in which case timestamps of SHA-1 hashes will not prove as much as they used to.
+It might be possible to use a tool like [`git-evtag`](https://github.com/cgwalters/git-evtag) for hashing the entire repository history including the changes themselves (rather than just the IDs), and timestamp this master hash instead of the latest-revision hash.
 
 ### Timestamping downloaded web pages
 
@@ -668,7 +671,7 @@ A script `wget-archive` which does this and works well with my archiver daemon:
 
 ~~~{.Bash}
 #!/bin/bash
-set -e
+set -euo pipefail
 
 cd ~/www/
 
