@@ -214,7 +214,7 @@ Sometimes a particular website is of long-term interest to one even if one has n
 
 ~~~{.bash}
 linkchecker --check-extern -odot --complete -v --ignore-url=^mailto --no-warnings http://www.longbets.org
-    | fgrep http
+    | fgrep http # [
     | fgrep -v -e "label=" -e "->" -e '" [' -e '" ]' -e "/ "
     | sed -e "s/href=\"//" -e "s/\",//" -e "s/ //"
     | filter-urls
@@ -569,7 +569,8 @@ The sort-key trick is most useful when we can infer a lot of spatial locality ju
     ~~~
 
     (Embarrassingly, `binsort` seems to underperform on this dataset: the files are 380M uncompressed, 3.536M sort-keyed, and 3.450M sorted.)
-3. if we know there are many duplicates but they are far apart by a lexicographic sort and we don't have any good way to sort filenames and a lot of RAM, we can try out a compression tool which specifically looks for long-range redundancies throughout the entire bitstream, such as [`lrzip`](!Wikipedia "rzip") ([homepage](http://ck.kolivas.org/apps/lrzip/)/[Arch wiki](https://wiki.archlinux.org/index.php/Lrzip). `lrzip` is packaged in Debian and should be at least as good as `xz` since it too uses LZMA; but it is an obscure tool which is not a default install on Linux distributions like `xz` is, and this makes distributing archives to other people difficult.
+3. if we know there are many duplicates but they are far apart by a lexicographic sort and we don't have any good way to sort filenames and a lot of RAM, we can try out a compression tool which specifically looks for long-range redundancies throughout the entire bitstream, such as [`lrzip`](!Wikipedia "rzip") ([homepage](http://ck.kolivas.org/apps/lrzip/)/[Arch wiki](https://wiki.archlinux.org/index.php/Lrzip)).
+   `lrzip` is packaged in Debian and should be at least as good as `xz` since it too uses LZMA; but it is an obscure tool which is not a default install on Linux distributions like `xz` is, and this makes distributing archives to other people difficult.
 
 ### External links
 
@@ -683,3 +684,90 @@ FILE=$(nice -n 20 ionice -c3 wget --continue --unlink --page-requisites --timest
 
 timestamp "$FILE"
 ~~~
+
+### Local timestamping
+
+As convenient as OriginStamp is, and as nice as it is to have only one Bitcoin transaction made per day covering all OriginStamp users, one may not want to rely on it for any number of reasons: sporadic Internet connectivity, uncertainty that OriginStamp's data will remain accessible in the far future, uncertainty OriginStamp correctly implements the timestamping algorithm, needing to timestamp so much that it would seriously burden OriginStamp's bandwidth/storage resources & interfere with other users, not wanting to leak volume & timing of timestamps, etc.
+
+This can be done with yet more scripting, a local Bitcoin client with sufficient funds (~\$20 should cover a year of usage), and something to convert hashes to Bitcoin addresses (`bitcoind` & `bitcoin-tool` respectively for the latter two).
+
+A simple architecture here would be to change `timestamper` to create hashes of inputs as before, but instead of sending them off to OriginStamp, they are stored in a local file.
+This file accumulates hashes from every use of `timestamper` that day.
+At the end of the time period, another script runs: it
+
+1. archives the master file to a date-stamped file (replacing it with an empty file to receive future hashes)
+2. hashes the archived file to yield the master hash of that batch of hashes
+3. converts the master hash to a Bitcoin address
+4. finally, calls a local Bitcoin client like [Electrum](https://electrum.org/) or Bitcoin Core's `bitcoind` to make 1 transaction to the address
+
+So let's say that hashes are being stored in `~/docs/timestamps/`; the simpler `timestamper` script reads just:
+
+~~~{.Bash}
+#!/bin/bash
+set -euo pipefail
+MASTER_DIR=~/docs/timestamps/
+for TARGET in "$@"; do
+    if [ -f "$TARGET" ]; then
+     HASH=$(sha256sum "$TARGET" | cut --delimiter=' ' --field=1)
+    else
+      HASH=$(echo "$TARGET" | sha256sum | cut --delimiter=' ' --field=1)
+    fi
+    echo "$HASH" >> $MASTER_DIR/today.txt
+done
+~~~
+
+The hardest part is converting a SHA-256 hash to a valid Bitcoin address, which involves a number of steps, so in this example I'll use the lightweight [`bitcoin-tool`](https://github.com/matja/bitcoin-tool) for that part.
+To give an example of `bitcoin-tool` use, we can verify an OriginStamp timestamp to make sure we're doing things the same way.
+Take [this test timestamp](http://www.originstamp.org/s/7306a744a285474742f4f9ae8ddae8214fb7625348d578fb3077fb0bae92b8f1):
+
+~~~{.Bash}
+$ echo "I have a secret." | sha256sum
+7306a744a285474742f4f9ae8ddae8214fb7625348d578fb3077fb0bae92b8f1
+~~~
+
+OriginStamp's page includes the full batch of hashes (the "Transaction Seed"), which we can verify includes `7306a..f1`; so far so good.
+We can then pipe the full list into `sha256sum` using `xclip` which gives us the master hash:
+
+~~~{.Bash}
+$ xclip -o | sha256sum
+7ad6b91226939f075d79da12e5971ae6c886a48b8d7284915b74c7340ac6f61e  -
+~~~
+
+`7ad6..1e` is the hash that the OriginStamp page claims to use as the "Secret", which also checks out.
+This hash needs to be converted to a Bitcoin address, so we call `bitcoin-tool` with the relevant options:
+
+~~~{.Bash}
+$ bitcoin-tool --network bitcoin --input-type private-key --input-format hex --output-type address --output-format base58check \
+    --public-key-compression compressed --input "7ad6b91226939f075d79da12e5971ae6c886a48b8d7284915b74c7340ac6f61e"
+1DMQELo9krQDvHHK5nPjbKLQFnnLtUdMFm
+~~~
+
+`1DMQ..Fm` is also the same Bitcoin address that OriginStamp claims to send to on that page, so all that remains is to check that some bitcoin was sent to `1DMQ..Fm` today, and [looking on Blockchain.info](https://blockchain.info/tx/4e4364800426f6d601afeb1d1f34f1b93c6e599e7cb6e496416958a3364630bf), we see that some bitcoins *were* sent.
+So we have successfully independently verified that that list of hashes was timestamped on the day it was claimed to have been timestamped, and that OriginStamp is both working correctly & our use of `bitcoin-tool` to convert a SHA-256 hash to a Bitcoin address is likewise working.
+With that, we can proceed.
+
+To stamp a batch, we can write a script we'll call `timestamper-flush`:
+
+~~~{.Bash}
+#!/bin/bash
+set -euo pipefail
+
+MASTER_DIR=~/docs/timestamps/
+DATE=$(date +'%s')
+mv $MASTER_DIR/today.txt $MASTER_DIR/"$DATE".txt && touch $MASTER_DIR/today.txt
+MASTER_HASH=$(sha256sum "$MASTER_DIR/$DATE.txt" | cut --delimiter=' ' --field=1)
+
+BITCOIN_ADDRESS=$(bitcoin-tool --network bitcoin --input-type private-key --input-format hex \
+                               --output-type address --output-format base58check --public-key-compression compressed \
+                               --input "$MASTER_HASH")
+
+# assuming no password to unlock
+## bitcoind walletpassphrase $PASSWORD 1
+bitcoind sendtoaddress "$BITCOIN_ADDRESS" 0.00000001 "Timestamp for $DATE" || \
+  bitcoind getbalance # no funds?
+~~~
+
+`timestamper-flush` can be put into a crontab as simply `@daily timestamper-flush` (or `@hourly`/`@weekly`/`@monthly` etc), and can be called at any time if necessary.
+(I have not tested these scripts, for lack of disk space to run a full node, but I believe them to be correct; and if not, the idea is clear and one can implement it as one prefers.)
+
+Now one has an efficient, local, secure timestamping service.
