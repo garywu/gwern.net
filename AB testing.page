@@ -3372,7 +3372,7 @@ EQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4Ug9C9zwz3gVLMDA/A6
 P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC')
 ~~~
 
-So it's a standard prefix like `data:image/png;base64,` followed by an indefinitely long string of ASCII gibberish, which is a textual base-64 encoding of the underlying binary encoding.
+So it's a standard prefix like `data:image/png;base64,` followed by an indefinitely long string of ASCII gibberish, which is a textual [base-64](!Wikipedia) encoding of the underlying binary data.
 The RNN sometimes starts a data URI and generates the prefix but then gets stuck continually producing hundreds or thousands of characters of ASCII gibberish without ever closing the data URI with a quote & parentheses and getting back to writing regular CSS.
 
 What's going on there?
@@ -3380,7 +3380,7 @@ Since PNG/JPG are compressed image formats, the binary encoding will be near-ran
 The RNN can easily generate another character once it has started the base-64, but how does it know when to *stop*? ("I know how to spell [banana](http://www.catb.org/jargon/html/B/banana-problem.html), I just don't know when to stop! BA NA NA NA...")
 Possibly it has run into the limits of its 'memory' and once it has started emitting base-64 and has reached a plausible length of at least a few score characters (few images can be encoded in less), it's now too far away from the original CSS, and all it can see is base-64; so of course the maximal probability is an additional base-64 character...
 
-This might be fixable by either giving the RNN more neurons in the hope that with more memory it can break out of the base-64 trap, training more (perhaps data URIs are too rare for it to have adequately learned it with the few epochs thus far), or backpropagating error further in time/the sequence by increasing the size of the RNN in terms of unrolling (increasing `-seq_length` from 50).
+This might be fixable by either giving the RNN more neurons in the hope that with more memory it can break out of the base-64 trap, training more (perhaps data URIs are too rare for it to have adequately learned it with the few epochs thus far), backpropagating error further in time/the sequence by increasing the size of the RNN in terms of unrolling (increasing `-seq_length` from 50), or [improving the sampling strategy with beam search rather than greedy character-by-character generation](https://github.com/karpathy/char-rnn/issues/138).
 Or of course one could delete data URIs and other undesirable features from the corpus, in which case those problems will never come up; still, I would prefer the RNN to handle issues on its own and have as little domain knowledge engineered in as possible.
 I wonder if the data URI issue might be what killed the large RNN at the end?
 (My other hypothesis is that the `sort-key` trick accidentally led to a multi-megabyte set of repetitions of the same common CSS file, which caused the large RNN to overfit, and then once the training reached a new section of normal CSS, the large RNN began making extremely confident predictions of more repetition, which were wrong and would lead to very large losses, possibly triggering the exploding-error killer.)
