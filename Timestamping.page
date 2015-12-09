@@ -83,7 +83,7 @@ We could [write out the full `curl` call as part of a self-contained script](htt
 So setting it up and enabling it is now as simple as:
 
 ~~~{.Bash}
-echo "timestamp $(git rev-parse HEAD)" >> .git/hooks/post-commit
+echo 'timestamp $(git rev-parse HEAD)' >> .git/hooks/post-commit
 chmod +x .git/hooks/post-commit
 ~~~
 
