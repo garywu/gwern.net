@@ -133,13 +133,14 @@ Notes on efficacy:
 - Stormy: catnip: 0?
 - Sara Tiger: catnip: 1
 
-Cat             Sex Fixed Color Kind                Catnip  Valerian Honeysuckle Silvervine
--------------   --- ----- -----  ----                ------ -------- ----------- ----------
-Oolong          M   1     black Domestic longhair   0       1        0           1
-Percy           M   1     brown Tabby               0       0        1           1
-Kiki            M   1     grey  Tabby               1
+Cat             Sex Fixed Color Kind                 Catnip Valerian Honeysuckle Silvervine Olive wood Olive oil
+-------------   --- ----- -----  ----                ------ -------- ----------- ---------- ---------- ---------
+Oolong          M   1     black Domestic long        0      1        0           1          0          0
+Percy           M   1     brown Tabby                0      0        1           1          0          0
+Kiki            M   1     grey  Tabby                1
 Stormy          M   1     grey  Russian Blue
-Sara            F   1     brown Tabby               1
+Sara            F   1     brown Tabby                1
+Whitey          F   1     white Domestic short       1
 
 Once I get the valerian/silvervine/honeysuckle, begin testing it on cats:
 
