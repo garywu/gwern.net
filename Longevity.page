@@ -1,0 +1,254 @@
+---
+title: Life Extension Cost-Benefits
+description: Attempts at considering the profitability of life-extension interventions for healthy adults
+tags: statistics, decision theory
+created: 1 June 2015
+status: in progress
+belief: likely
+...
+
+We all want to live longer, but I find most discussions of available interventions unsatisfying because they tend to ignore any consideration of whether the intervention is too expensive (as the joke goes about veganism, you may live longer but will you want to?), and be simultaneously too gullible (nutrition research; looking at any health parameter which improves) and too narrow-minded (I don't care if an intervention has _p_>0.05 if that still means a 90% probability of benefit).
+
+What I would like to see is a practical guide, taking a decision theory perspective, which follows a procedure something like the following, in taking interventions which:
+
+1. reduce [all-cause mortality](!Wikipedia),
+
+    ACM is the end-point of choice for life-extension because it is both closest to what we care about (additional life) and it is the hardest of all end-points - it is difficult to cheat, miscount, or not notice, and by being simple, consistent, and unambiguous, avoids many failure modes such as subgroup hacking or dropping outliers or tweaking covariates (either a larger fraction of the controls are dead or not). It also can typically be extracted from most studies, even if they otherwise fail to report much of the data.
+
+    From a benefit point of view, average reduction in all-cause mortality is excellent for  ignoring any zero-sum tradeoffs: it's no good if reported benefits are only because the doctors writing up a trial kept slicing deaths by different categorizations of causes until they finally found a _p_<0.05 or if the gains only appear by excluding some deaths as 'irrelevant' or if the gains in one cause of death comes at the expense of another cause (is it really helpful to avoid death by heart attack if the intervention just means you die of cancer instead?).
+    For example, one primate study of caloric restriction found benefits only if it [excluded a bunch of deaths in the CR group](http://junkfoodscience.blogspot.com/2009/07/calorie-restrictive-eating-for-longer.html) and defined them as not age-related, ignoring "monkeys who died while taking blood samples under anesthesia, from injuries or from infections, such as gastritis and endometriosis." (Even in the [followup paper](http://www.nature.com/ncomms/2014/140401/ncomms4557/full/ncomms4557.html "'Caloric restriction reduces age-related and all-cause mortality in rhesus monkeys', Colman et al 2015") several years later, the all-cause mortality reduction is much smaller than the "age-related" subcategory.) From a life-extension perspective, it is irrelevant if an intervention reduces some kinds of diseases while making one much more prone to dying from routine causes such as injuries or minor operations under anesthesia (especially since, in modern societies, one is guaranteed to be operated on at *some* point) - it either reduces all-cause mortality or it doesn't.
+2. as estimated in randomized trials,
+
+    [Correlation is not causation](/Causality) and correlates only rarely turn out to be usefully causal. With aging, the situation is especially severe since aging is the exponential increase in mortality with time as all bodily systems gradually begin to fail; one cannot simply take a correlation of some chemical with aging or mortality and expect an intervention on it to have more than a minute chance of making a difference, since almost *every* chemical or substance or biomarker will change with age (eg papers on magnesium levels often note that surprisingly, blood levels of magnesium *don't* change significantly with age). Worse, over more than a century of concerted effort and tinkering with a bewildering variety of thousands of interventions from injecting embryos to consuming testicles (or crushing one's own) to yogurt to yoga, it can safely be said that (almost?) all tried interventions have failed, and the prior odds are strongly against any new one.
+3. on healthy adult human populations
+
+    Studies of interventions in the sick are also unhelpful, as (hopefully!) the benefits observed may come from their particular disorder being treated. Animal studies are also unhelpful as [results cross-species are highly unreliable](/DNB%20FAQ#fn95) and model organisms may age in entirely different manner from humans, who are unusually long-lived as it is. One challenge for this criteria is studies done in elderly populations: because death rates are so high, they offer higher power to detect reductions in mortality; but because that death rate is pushed so high due to the aging process, they will tend to have many chronic conditions and diseases as well. Do we ignore studies recruiting from, for example, 70-90yos who all inherently have health problems? I would say it's probably better to err on the side of inclusion here as long as subjects were not selected for any particular health problem.
+4. for which there are enough trials to do a random-effects/multilevel model, so one can extract a posterior predictive interval of the benefit,
+
+    It's important to include heterogeneity from population to population as part of the uncertainty. One of the subtleties often missed in dealing with modeling is that a 95% CI around a parameter is not a CI around the outcome or result.
+5. letting one compare mortality reduction against intervention cost,
+
+    For making decisions, the costs of the intervention must be taken into account. A taxing exercise regimen may be proven to increase longevity, but is that of any value of the regimen takes away much more of your life than it gives back? It may be that no matter whether our certainty is 99% or 99.99% that it works, we would never choose to embark on that regimen. On the other hand, for a cheap enough intervention, we may be willing to accept substantially lower probability: baby aspirin, for example, costs \$7 & <10 seconds each morning / <60 minutes a year and we might be willing to use it if our final probability of any benefit is a mere 50%.
+6. then yielding an expected value of the intervention (and if <\$0, perhaps further analysis about whether it has a reasonable chance of ever becoming profitable and what the Value of Information might be of further trials)
+
+If an intervention passes all these criteria, we can be highly confident that we will gain life, rather than lose it.
+
+Of course, these criteria are stringent: we can, for example, exclude almost everything which might appear in an issue of _Life Extension Magazine_ for being too small, conducted in animals, conducted in sick patients, not being a randomized experiment at all, or reporting benefits only on an extremely specific biological endpoint like some cholesterol-related metric you've never heard of.
+Medical journals don't offer rich pickings either, as they understandably tend to focus on experiments done in sick people rather than healthy people (apparently there's more funding for the former - who knew?).
+And when a randomized experiment *is* done in healthy adult humans, the experiment may either be too small or have run for too short a time, since annual mortality rates for many participant groups are 1% or less; for any sort of effect to show up, you want (very expensive, very rare) studies which enroll at least a thousand subjects for a decade or more.
+It would not be surprising if we must intone the ritual ending to all Cochrane Reviews, "there is insufficient evidence for a recommendation".
+
+Fortunately, I do know of a few plausible candidate interventions.
+For example, baby aspirin has been tested in what must be dozens of trials at this point (generally turning in RRs  like 0.90 or 0.95 in the meta-analyses), is almost too cheap to bother including the cost, and has minimal side-effects (rarely, internal bleeding); it would not be surprising if a cost-benefit indicated the best decision is taking baby aspirin.
+
+# Interventions
+
+Database:
+
+- http://geroprotectors.org/?page=8&q[s]=organism_name+asc
+
+Possible interventions:
+
+- Aspirin:
+  http://lesswrong.com/r/discussion/lw/b1g/daily_lowdose_aspirin_round_2/9lld
+  Rothrwell et al 2012 "Short-term effects of daily aspirin on cancer incidence, mortality, and non-vascular death: analysis of the time course of risks and benefits in 51 randomised controlled trials" http://www.istudymedicine.com/wp-content/uploads/aspirin.pdf
+  Second: "Effect of daily aspirin on long-term risk of death due to cancer: analysis of individual patient data from randomised trials" http://www.beppegrillo.it/immagini/Aspirin%20and%20death%20from%20cancer%20\(Lancet%202010\).pdf
+  "Estimates of benefits and harms of prophylactic use of aspirin in the general population", Cuzick et al 2014 http://annonc.oxfordjournals.org/content/26/1/47.full
+  check is included: Ridker PM, Cook NR, Lee I-M, et al. "A randomized trial of low-dose aspirin in the primary prevention of cardiovascular disease in women". _N Engl J Med_ 2005;352:1293-304.
+  "By optimistic accounts, taking a daily aspirin or ibuprofen lowers mortality by 13%.  But even this major drop translates to only 2 years. From another perspective, 2 years is a windfall. Aspirin costs practically nothing and imposes minimal risk and less inconvenience." (how to convert RRs to days gained?)
+- [metformin](!Wikipedia):
+
+    - ["Can people with type 2 diabetes live longer than those without? A comparison of mortality in people initiated with metformin or sulphonylurea monotherapy and matched, non-diabetic controls"](http://www.researchgate.net/profile/Guntram_Schernthaner/publication/266679685_Can_people_with_type_2_diabetes_live_longer_than_those_without_A_comparison_of_mortality_in_people_initiated_with_metformin_or_sulphonylurea_monotherapy_and_matched_nondiabetic_controls/links/53eb336a0cf28f342f451c33.pdf), Bannister et al 2014
+    - new trials:
+
+        1. Targeting Aging with Metformin (TAME) ([media](http://www.ibtimes.com.au/us-fda-gives-ok-human-trial-metformin-anti-ageing-drug-prolong-life-until-120-years-1488127 "US FDA gives OK for human trial of metformin as anti-ageing drug to prolong life until 120 years")) http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 :
+
+        > Plans call for the trial to enrol 3,000 people aged 70–80 years at roughly 15 centres around the United States. The trial will take 5–7 years and cost US$50 million, Barzilai estimates, although it does not yet have funding.
+        2. Metformin in Longevity Study (MILES) pre-registration: https://clinicaltrials.gov/ct2/show/NCT02432287 short-term, aimed at gene expression changes
+- vitamin d
+- antioxidants
+- exercise (aerobic or resistance, primarily)
+- D-Glucosamine 22828954 http://www.ncbi.nlm.nih.gov/pubmed/?term=22828954
+- Magnesium 24259558 http://www.ncbi.nlm.nih.gov/pubmed/?term=24259558
+- Lithium Chloride 21301855 http://www.ncbi.nlm.nih.gov/pubmed/?term=21301855
+- controlling blood pressure to <=120mm Hg http://www.nejm.org/doi/full/10.1056/NEJMoa1511939 http://www.nejm.org/doi/suppl/10.1056/NEJMoa1511939/suppl_file/nejmoa1511939_appendix.pdf
+
+    while SPRINT can't be generalized to healthy middle-aged people, having inclusion criteria for past cardiovascular problems or being high risk, they did have as one of their inclusion criteria be >75. and the total mortality HR for the <75yos was 0.77, and for >75... 0.68. not statistically significant, but certainly not evidence that the reduction of blood pressure has a lesser or different effect in the healthy >75yos than the unhealthy <75yos
+- diet:
+
+    - Mediterranean has at least one study http://www.nejm.org/action/showImage?doi=10.1056%2FNEJMoa1200303&iid=f01
+
+Examples of interventions which can't be used:
+
+- caloric restriction: promising, but current randomized studies are too short to show any effect on mortality (eg in "A 2-Year Randomized Controlled Trial of Human Caloric Restriction: Feasibility and Effects on Predictors of Health Span and Longevity" (the CALERIE study), Ravussin et al 2015 http://biomedgerontology.oxfordjournals.org/content/70/9/1097.full , no one at all died, so there is no all-cause mortality estimate at all)
+- castration (eg http://lesswrong.com/lw/lm4/effects_of_castration_on_the_life_expectancy_of/ ): too serious a reduction in quality of life, social ostracism, must be done before puberty for any benefits, may not be legal, not verified in any randomized trials (a concern because not all historical eunuch seem to show life expectancy gains; Egyptian eunuchs reportedly had severe losses), and at least one of the proposed mechanisms may have lost efficacy in the modern setting (greater resistance to infectious diseases)
+
+# Definitions
+## Value of Life
+
+The valuation of one year of life I am using here [is $50k](!Wikipedia "Value of life#Life Value in the US"), due to its commonness and conservativeness (some valuations would be much higher, and so tend to favor the use of interventions).
+
+## Converting risk reduction to average life expectancy gain
+
+However, interpreting an RR/OR/STR isn't as simple as 'probability of death is reduced in each time period by 15%, we have average life expectancies of ~80, therefore, metformin will make me live an extra 0.15*80=12 years'. (The intuition here is that death rates increase so much with time that a one-off reduction in each period doesn't make a huge long-term difference. You can see that metformin moves the curve up a little bit but does not flatten it in Figure 2.)
+
+Accelerated time to failure models are fully parametric, so they're <i>supposed</i> to be easy to extract average life expectancy increases/decreases from, which is what we need for decision-making. (We won't get a expected increase of 12 years, even though that would be fantastic, but we do need a number to work with - 1 month? 12 months? 12 years? - to start applying value of life numbers and compare against the financial cost and side-effects of metformin.) But Bannister et al 2014 doesn't provide the full formula
+
+~~~{.R}
+library(survival)
+temp <- survexp.us[,"male","2004"]
+tempage <- c(0.5/365.25, 4/365.25, 17.5/365.25, 196.6/365.25, 1:109+0.5)
+tempsurv <- 365.25*temp[5:113] # yearly cumulative hazard
+tempsurv <- c(temp[1], 6*temp[2], 21*temp[3], 337.25*temp[4], tempsurv)
+tempsurv <- cumsum(tempsurv)
+tempage <- c(1/365.25, 7/365.25, 28/365.25, 1:110)
+plot(tempage, exp(-tempsurv), xlab="age", ylab="Survival, Male") # plot
+
+
+## Use a Gompertz function for age-mortality and numerically integrate to get average life expectancies,
+## with or without specified reductions/increases in risk, starting at particular ages.
+##
+## The exact formula values come from a fit of the modern Dutch population, given in
+## "Mortality hazard rates and life expectancy", Cramer & Kaas 2013
+## https://www.uva.nl/binaries/content/assets/subsites/amsterdam-school-of-economics-research-institute/uva-econometrics/dp-2013/1303.pdf
+
+S <- function(t, RR=1) { exp(-((RR*0.000016443)/log(1.1124) * (1.1124^t - 1))) }
+lifeExpectancy <- function(RR, age) { integrate(function(t){S(t, RR)}, age, Inf)$value }
+lifeExpectancyGain <- function(RR, startingAge=0) { lifeExpectancy(RR, startingAge) -  lifeExpectancy(1, startingAge) }
+~~~
+
+If we plot a lot of samples of RR vs gain to get some intuition, it looks like a logarithmic curve, and a linear model turns out to fit  extremely well (r^2^= 0.9999), certainly good enough for our purposes, so if we needed better performance we could replace two integrals by 4 arithmetic operations:
+
+~~~{.R}
+df <- data.frame(RR=seq(0.005,5,by=0.001), Gain=sapply(seq(0.005,5,by=0.001), lifeExpectancyGain))
+plot(df)
+# https://i.imgur.com/1hO9CCT.png
+summary(lm(Gain ~ log(RR), data=df))
+# Residuals:
+#         Min          1Q      Median          3Q         Max
+# -0.00769961 -0.00613587 -0.00175109  0.00454504  0.59551496
+#
+# Coefficients:
+#                  Estimate    Std. Error      t value   Pr(>|t|)
+# (Intercept)  0.0074509800  0.0002044545     36.44322 < 2.22e-16
+# log(RR)     -9.3736900099  0.0001769579 -52971.31434 < 2.22e-16
+#
+# Residual standard error: 0.01222721 on 4994 degrees of freedom
+# Multiple R-squared:  0.9999982,   Adjusted R-squared:  0.9999982
+# F-statistic: 2.80596e+09 on 1 and 4994 DF,  p-value: < 2.2204e-16
+lifeExpectancyGainLogApproximation <- function(RR) { 0.0074509800 + -9.3736900099*log(RR) }
+lifeExpectancyGain(0.85)
+# [1] 1.523915331
+lifeExpectancyGainLogApproximation(0.85)
+# [1] 1.530853046
+~~~
+
+Anyway, with a conversion of risk to years of gained life, we can see how bang we get:
+
+~~~{.R}
+lifeExpectancyGain(0.90)
+# [1] 0.9879195324
+lifeExpectancyGain(0.85)
+# 1.523913984
+lifeExpectancyGain(0.85) - lifeExpectancyGain(0.85, startingAge=30)
+# [1] 0.004389441897
+(0.004389441897/  1.523913984 )*100
+# [1] 0.288037379
+lifeExpectancyGain(0.85) - lifeExpectancyGain(0.85, startingAge=60)
+# [1] 0.1227387596
+~~~
+
+The backloading of mortality means that a constant reduction in mortality risk like an RR of 0.85 would not deliver the naive expectation of 12 years but far less: ~1.5 years.
+On the plus side, this also means that if we wait to use an intervention until what might seem like 'late' in life (like age 30), we have not suffered an opportunity cost (of ~40%) like one might think, but much less (~0.3%).
+The gains are minimal early on, and the opportunity cost only begins to really mount starting in one's 50s or 60s, which has the important implication that such interventions will benefit younger people much less (at least when it comes to interventions which offer only a constant reduction in risk and do not affect the acceleration of mortality caused by the aging process itself) and so the risks are more likely to make interventions profitable.
+
+# Metformin
+
+https://en.wikipedia.org/wiki/Metformin#Adverse_effects
+https://scholar.google.com/scholar?q=metformin%20qalys
+
+Let's take a look. Since the TAME and MILES clinical trials aren't done, we can't use them, so we'll look at ["Can people with type 2 diabetes live longer than those without? A comparison of mortality in people initiated with metformin or sulphonylurea monotherapy and matched, non-diabetic controls", Bannister et al 2014](http://www.researchgate.net/profile/Guntram_Schernthaner/publication/266679685_Can_people_with_type_2_diabetes_live_longer_than_those_without_A_comparison_of_mortality_in_people_initiated_with_metformin_or_sulphonylurea_monotherapy_and_matched_nondiabetic_controls/links/53eb336a0cf28f342f451c33.pdf):
+
+> We identified 78 241 subjects treated with metformin, 12 222 treated with sulphonylurea, and 90 463 matched subjects without diabetes. This resulted in a total, censored follow-up period of 503 384 years. There were 7498 deaths in total, representing unadjusted mortality rates of 14.4 and 15.2, and 50.9 and 28.7 deaths per 1000 person-years for metformin monotherapy and their matched controls, and sulphonylurea monotherapy and their matched controls, respectively. With reference to observed survival in diabetic patients initiated with metformin monotherapy [survival time ratio (STR) = 1.0], adjusted median survival time was 15% lower (STR = 0.85, 95% CI 0.81–0.90) in matched individuals without diabetes and 38% lower (0.62, 0.58–0.66) in diabetic patients treated with sulphonylurea monotherapy.
+
+STR isn't the usual OR/RR, but it's similar to hazard ratios:
+
+> The log-logistic model resulted in the best fit in terms of AIC, and the adequacy of this distribution was further assessed by plotting appropriately transformed non-parametric estimates against time. The log-logistic survival model provides beta coefficients that equal the difference in log survival time between groups or for continuous predictors. Exponentiation of the beta coefficient gives the ratio between median survival times, known as the survival time ratio (STR), or acceleration factor. STRs less than 1 represent a decrease in survival time; values greater than 1 represent prolonged survival.
+
+More specific numbers:
+
+> In total, there were 7498 deaths, corresponding to an unadjusted event rate of 18.1 deaths per 1000 person-years. Unadjusted event rates were highest in the sulphonylurea group and lowest in the metformin group (50.9 vs. 14.4 per 1000 person-years, respectively; p < 0.001; Table 2). Unadjusted event rates were higher in sulphonylurea-treated patients than in their matched, non-diabetic controls (50.9 vs. 28.7 per 1000 person-years, respectively; p < 0.001) but, surprisingly, were lower in those treated with metformin than in their matched controls (14.4 vs. 15.2 per 1000 person-years, respectively; p = 0.054). Unadjusted event rates were lowest in people aged <60 years at index date and highest for people aged >70 years for both diabetic and control subjects.
+
+So I think if we wanted to convert to something else, STR has already done the denominator for us and we just divide 14.2/15.2 to get the raw RR of 0.93, which is not as good as the quoted STR of 0.85 (0.81–0.90), indicating that the covariates do differ a bit systematically? Looking at table 1, the metformin group seems to have been previously treated for many more disorders, explaining why the models think metformin is so good (because the metformin users *should* be dying off faster yet have a similar death rate as the healthy controls)
+Table 2 gives overall figures for all-cause mortality: n=78241, 2663 deaths in metformin (2663/78241=0.03403586355); n=78241, 2669 deaths in their controls (2669/78241=0.03411254969) (0.03403586355/0.03411254969=0.9977519669). Pooling in the sulphonylurea controls as well: n=748 deaths plus the 2669 other controls, total controls n=90463, total deaths 3417 (3417/90463=0.03777234892) (0.03403586355/0.03777234892=0.9010788188). So that verifies the RR of 0.93 since the difference between 0.90 and 0.93 is probably due to the differences in total followup years.
+
+
+
+~~~{.R}
+lifeExpectancyGain(0.90) * 50000
+# [1] 49396.02263
+lifeExpectancyGain(0.85) * 50000
+# [1] 76195.76654
+~~~
+
+Or \$50k-\$76k.
+
+Metformin is said to be very cheap. How cheap is cheap?
+
+Bannister et al 2014 doesn't give dosages or look for a dose-response curve but since it's drawing on clinical records, the diabetics must be using conventional dosages.
+[Drugs.com](http://www.drugs.com/dosage/metformin.html) gives a maintenance dose of 2000mg/daily; the [Mayo Clinic](http://www.mayoclinic.org/drugs-supplements/metformin-oral-route/proper-use/drg-20067074) says not usually more than 2000-2500mg/daily; the anti-aging quacks tend to suggest ~1000mg/daily for non-diabetics; the MILES protocol calls for 1700mg/daily.
+I'll use 2000mg/daily here, which is 4 500mg doses.
+
+[GoodRx](http://www.goodrx.com/metformin) says that a number of large American chains, including Walmart & Target & Sam's Club, will sell 60x500mg for \$4.
+It's unclear if this includes sales tax, so I will add on an additional 5% for that.
+This is 15 days' worth at 2000mg/daily, so a month's supply is \$8.4, and an annual supply is \$102.
+If we start at age 30, then without any discounting, we can expect to pay for metformin for a number of years (increased, of course, by our metformin usage):
+
+~~~{.R}
+1.05 * 4 * (365.25/((60*500)/2000)) * lifeExpectancy(0.85, 30)
+# [1] 4963.515634
+1.05 * 4 * (365.25/((60*500)/2000)) * lifeExpectancy(0.90, 30)
+# [1] 4908.849088
+~~~
+
+<\$5k is an order of magnitude smaller than the more conservative RR estimate, giving a gain of \$44k-\$71k for 0.90/0.85 respectively.
+
+The direct monetary cost of metformin is so minimal that it's almost certainly outweighed by the inconvenience of purchasing & regularly using it, and by any side-effects one might experience.
+
+Metformin has [a shelf-life of 5 years](http://www.medicines.org.uk/emc/medicine/23244/SPC) so at least in theory one could buy large batches and then the shopping time is trivial, leaving the time necessary to consume it, although that can't be more than half a minute a dose or so (it does not take a long time to open a bottle, grab a pill, and close it) which even at a minimum wage of \$8/hr will not more than double the total cost (`((0.5 * 4)/60) * 8 * 365.25 = 97.4` vs \$102 for the purchase cost).
+
+[Side-effects](https://en.wikipedia.org/wiki/Metformin#Adverse_effects) are a more serious concern: while considered safe and a net gain from the point of view of all-cause mortality, that just means the side-effects are *relatively* rare or unfatal but metformin might still be unpleasant enough, or produce long-lasting reductions in quality of life which negate much of the gain.
+(It would not be much of an improvement to halve one's risk if, in exchange, one becomes a quadriplegic.)
+
+[Drugs.com](http://www.drugs.com/sfx/metformin-side-effects.html) provides some percentage breakdowns after noting that many problems can be avoided by gradual increases in dosage or go away spontaneously
+
+> - Metabolic:
+>
+>     - Common (1% to 10%): Hypoglycemia
+>     - Very rare (less than 0.01%): Lactic acidosis[Ref]
+> - Gastrointestinal:
+>
+>     - Very common (10% or more): Diarrhea (53.2%), nausea/vomiting (25.5%), flatulence (12.1%)
+>     - Common (1% to 10%): Indigestion, abdominal discomfort, abnormal stools, dyspepsia, loss of appetite[Ref]
+> - Hematologic: Very rare (less than 0.01%): Subnormal vitamin B12 levels[Ref]
+> - Other: Common (1% to 10%): Asthenia, chills, flu syndrome, accidental injury[Ref]
+> - Hepatic: Very rare (less than 0.01%): Liver function test abnormalities, hepatitis[Ref]
+> - Cardiovascular: Common (1% to 10%): Chest discomfort, flushing, palpitation[Ref]
+> - Dermatologic
+>
+>     - Common (1% to 10%): Rash, nail disorder, increased sweating
+>     - Very rare (less than 0.01%): Erythema, pruritus, urticaria[Ref]
+> - Endocrine: Frequency not reported: Reduction in thyrotropin (TSH) levels[Ref]
+> - Immunologic: Very common (10% or more): Infection (20.5%)[Ref]
+> - Musculoskeletal: Common (1% to 10%): Myalgia[Ref]
+> - Nervous system: Common (1% to 10%): Lightheadedness, taste disturbances[Ref]
+> - Psychiatric: Common (1% to 10%): Headache[Ref]
+> - Respiratory: Common (1% to 10%): Rhinitis[Ref]
+
+Most of these seem to be relatively minor or temporary; if they persist, a prophylactic user could simply discontinue metformin.
+(The [FDA prescribing information](http://www.fda.gov/ohrms/dockets/dailys/02/May02/053102/800471e6.pdf "Metformin Hydrochloride Tablets") notes in one trial, 6% of the metformin subjects had to stop because of the diarrhea. Net attrition/dropout rates in metformin studies vary so much that they're not helpful and not all of it will have to do with metformin reducing the daily quality of life through side-effects, but overall they look like 10-40% would be a reasonable guess)
+Discontinuation would be too bad since then one doesn't gain the benefits, but one won't have lost too much besides perhaps a few weeks of diarrhea and a month or two of metformin pills, so it's not too bad.
+
+The main side-effect mentioned as potentially fatal is [lactic acidosis](!Wikipedia) - for example, of the [12 New Zealand cases 1977-1998, 8 were fatal](http://www.medsafe.govt.nz/profs/PUarticles/5.htm "Metformin and Fatal Lactic Acidosis") & the FDA prescribing information estimates 50%, which does not sound fun.
+On the other hand, lactic acidosis seems to be an acute disorder whose primary effect would be killing you, so it should already be taken care of by working with a reduction in all-cause mortality (that is, even if you are more likely to die by lactic acidosis, the metformin must be sparing you even more gruesome deaths and on average it's still helpful).
+And the lactic acidosis rates (2-9 per 100,000 person-years, so at 50 years of usage as prophylactic, a risk of `((9/100000)*50) * (8/12)=0.003`) may simply reflect the pre-existing morbidity of diabetics and not causation, and so not a concern at all.
