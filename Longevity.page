@@ -19,7 +19,7 @@ What I would like to see is a practical guide, taking a decision theory perspect
     For example, one primate study of caloric restriction found benefits only if it [excluded a bunch of deaths in the CR group](http://junkfoodscience.blogspot.com/2009/07/calorie-restrictive-eating-for-longer.html) and defined them as not age-related, ignoring "monkeys who died while taking blood samples under anesthesia, from injuries or from infections, such as gastritis and endometriosis." (Even in the [followup paper](http://www.nature.com/ncomms/2014/140401/ncomms4557/full/ncomms4557.html "'Caloric restriction reduces age-related and all-cause mortality in rhesus monkeys', Colman et al 2015") several years later, the all-cause mortality reduction is much smaller than the "age-related" subcategory.) From a life-extension perspective, it is irrelevant if an intervention reduces some kinds of diseases while making one much more prone to dying from routine causes such as injuries or minor operations under anesthesia (especially since, in modern societies, one is guaranteed to be operated on at *some* point) - it either reduces all-cause mortality or it doesn't.
 2. as estimated in randomized trials,
 
-    [Correlation is not causation](/Causality) and correlates only rarely turn out to be usefully causal. With aging, the situation is especially severe since aging is the exponential increase in mortality with time as all bodily systems gradually begin to fail; one cannot simply take a correlation of some chemical with aging or mortality and expect an intervention on it to have more than a minute chance of making a difference, since almost *every* chemical or substance or biomarker will change with age (eg papers on magnesium levels often note that surprisingly, blood levels of magnesium *don't* change significantly with age). Worse, over more than a century of concerted effort and tinkering with a bewildering variety of thousands of interventions from injecting embryos to consuming testicles (or crushing one's own) to yogurt to yoga, it can safely be said that (almost?) all tried interventions have failed, and the prior odds are strongly against any new one.
+    [Correlation is not causation](/Causality) and correlates only rarely turn out to be usefully causal. With aging, the situation is especially severe since aging is the exponential increase in mortality with time as all bodily systems gradually begin to fail; one cannot simply take a correlation of some chemical with aging or mortality and expect an intervention on it to have more than a minute chance of making a difference, since almost *every* chemical or substance or biomarker will change with age (eg papers on magnesium levels often note that surprisingly, blood levels of magnesium *don't* change substantially with age). Worse, over more than a century of concerted effort and tinkering with a bewildering variety of thousands of interventions from injecting embryos to consuming testicles (or crushing one's own) to yogurt to yoga, it can safely be said that (almost?) all tried interventions have failed, and the prior odds are strongly against any new one.
 3. on healthy adult human populations
 
     Studies of interventions in the sick are also unhelpful, as (hopefully!) the benefits observed may come from their particular disorder being treated. Animal studies are also unhelpful as [results cross-species are highly unreliable](/DNB%20FAQ#fn95) and model organisms may age in entirely different manner from humans, who are unusually long-lived as it is. One challenge for this criteria is studies done in elderly populations: because death rates are so high, they offer higher power to detect reductions in mortality; but because that death rate is pushed so high due to the aging process, they will tend to have many chronic conditions and diseases as well. Do we ignore studies recruiting from, for example, 70-90yos who all inherently have health problems? I would say it's probably better to err on the side of inclusion here as long as subjects were not selected for any particular health problem.
@@ -41,6 +41,8 @@ It would not be surprising if we must intone the ritual ending to all Cochrane R
 Fortunately, I do know of a few plausible candidate interventions.
 For example, baby aspirin has been tested in what must be dozens of trials at this point (generally turning in RRs  like 0.90 or 0.95 in the meta-analyses), is almost too cheap to bother including the cost, and has minimal side-effects (rarely, internal bleeding); it would not be surprising if a cost-benefit indicated the best decision is taking baby aspirin.
 
+Unfortunately, no one has done this sort of thing before, so for my own use, while not an expert on any of the interventions or on health economics in general, I thought I might try to sketch out some such analyses.
+
 # Interventions
 
 Database:
@@ -55,7 +57,6 @@ Possible interventions:
   Second: "Effect of daily aspirin on long-term risk of death due to cancer: analysis of individual patient data from randomised trials" http://www.beppegrillo.it/immagini/Aspirin%20and%20death%20from%20cancer%20\(Lancet%202010\).pdf
   "Estimates of benefits and harms of prophylactic use of aspirin in the general population", Cuzick et al 2014 http://annonc.oxfordjournals.org/content/26/1/47.full
   check is included: Ridker PM, Cook NR, Lee I-M, et al. "A randomized trial of low-dose aspirin in the primary prevention of cardiovascular disease in women". _N Engl J Med_ 2005;352:1293-304.
-  "By optimistic accounts, taking a daily aspirin or ibuprofen lowers mortality by 13%.  But even this major drop translates to only 2 years. From another perspective, 2 years is a windfall. Aspirin costs practically nothing and imposes minimal risk and less inconvenience." (how to convert RRs to days gained?)
 - [metformin](!Wikipedia):
 
     - ["Can people with type 2 diabetes live longer than those without? A comparison of mortality in people initiated with metformin or sulphonylurea monotherapy and matched, non-diabetic controls"](http://www.researchgate.net/profile/Guntram_Schernthaner/publication/266679685_Can_people_with_type_2_diabetes_live_longer_than_those_without_A_comparison_of_mortality_in_people_initiated_with_metformin_or_sulphonylurea_monotherapy_and_matched_nondiabetic_controls/links/53eb336a0cf28f342f451c33.pdf), Bannister et al 2014
@@ -66,7 +67,7 @@ Possible interventions:
         > Plans call for the trial to enrol 3,000 people aged 70–80 years at roughly 15 centres around the United States. The trial will take 5–7 years and cost US$50 million, Barzilai estimates, although it does not yet have funding.
         2. Metformin in Longevity Study (MILES) pre-registration: https://clinicaltrials.gov/ct2/show/NCT02432287 short-term, aimed at gene expression changes
 - vitamin d
-- antioxidants
+- antioxidants? except I think most increase ACM...
 - exercise (aerobic or resistance, primarily)
 - D-Glucosamine 22828954 http://www.ncbi.nlm.nih.gov/pubmed/?term=22828954
 - Magnesium 24259558 http://www.ncbi.nlm.nih.gov/pubmed/?term=24259558
@@ -182,8 +183,6 @@ More specific numbers:
 So I think if we wanted to convert to something else, STR has already done the denominator for us and we just divide 14.2/15.2 to get the raw RR of 0.93, which is not as good as the quoted STR of 0.85 (0.81–0.90), indicating that the covariates do differ a bit systematically? Looking at table 1, the metformin group seems to have been previously treated for many more disorders, explaining why the models think metformin is so good (because the metformin users *should* be dying off faster yet have a similar death rate as the healthy controls)
 Table 2 gives overall figures for all-cause mortality: n=78241, 2663 deaths in metformin (2663/78241=0.03403586355); n=78241, 2669 deaths in their controls (2669/78241=0.03411254969) (0.03403586355/0.03411254969=0.9977519669). Pooling in the sulphonylurea controls as well: n=748 deaths plus the 2669 other controls, total controls n=90463, total deaths 3417 (3417/90463=0.03777234892) (0.03403586355/0.03777234892=0.9010788188). So that verifies the RR of 0.93 since the difference between 0.90 and 0.93 is probably due to the differences in total followup years.
 
-
-
 ~~~{.R}
 lifeExpectancyGain(0.90) * 50000
 # [1] 49396.02263
@@ -252,3 +251,13 @@ Discontinuation would be too bad since then one doesn't gain the benefits, but o
 The main side-effect mentioned as potentially fatal is [lactic acidosis](!Wikipedia) - for example, of the [12 New Zealand cases 1977-1998, 8 were fatal](http://www.medsafe.govt.nz/profs/PUarticles/5.htm "Metformin and Fatal Lactic Acidosis") & the FDA prescribing information estimates 50%, which does not sound fun.
 On the other hand, lactic acidosis seems to be an acute disorder whose primary effect would be killing you, so it should already be taken care of by working with a reduction in all-cause mortality (that is, even if you are more likely to die by lactic acidosis, the metformin must be sparing you even more gruesome deaths and on average it's still helpful).
 And the lactic acidosis rates (2-9 per 100,000 person-years, so at 50 years of usage as prophylactic, a risk of `((9/100000)*50) * (8/12)=0.003`) may simply reflect the pre-existing morbidity of diabetics and not causation, and so not a concern at all.
+
+> Mixed results have been observed, however, in meta-analyses of randomized controlled trials (RCTs) of metformin versus active comparators or placebo. A meta-analysis of trials, including UKPDS, investigating cardiovascular risk in metformin found significant cardiovascular benefit in metformin versus placebo/no therapy (odds ratio = 0.79, p = 0.031) but not in active comparator trials (1.03, p = 0.89) [39]. Another meta-analysis found no evidence to support its hypothesis that metformin lowers cancer risk by one third, nor did eligible trials show a significant effect on all-cause mortality [40].
+
+39. Lamanna et al 2011, ["Effect of metformin on cardiovascular events and mortality: a meta-analysis of randomized clinical trials"](/docs/2011-lamanna.pdf)
+
+apparent increase in mortality but too underpowered to detect ACM of the plausible effect sizes, but did find a trend towards larger reductions in longer trials
+
+40. Stevens et al 2012, ["Cancer outcomes and all-cause mortality in adults allocated to metformin: systematic review and collaborative meta-analysis of randomised clinical trials"](http://www.researchgate.net/profile/Ambady_Ramachandran/publication/232280792_Erratum_to_Cancer_outcomes_and_all-cause_mortality_in_adults_allocated_to_metformin_systematic_review_and_collaborative_meta-analysis_of_randomised_clinical_trials/links/0046351edfcba31994000000.pdf)
+
+ACM was split by comparison to placebo and comparison to another diabetic drug; both were reductions but neither statistically-significant: 0.97 & 0.94.
