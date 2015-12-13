@@ -81,21 +81,36 @@ Examples of interventions which can't be used:
 
 The valuation of one year of life I am using here [is $50,000](!Wikipedia "Value of life#Life Value in the US"), due to its commonness and conservativeness (some valuations would be much higher, and so tend to favor the use of interventions).
 
-## Converting risk reduction to average life expectancy gain
+## Population survival curve
 
-However, interpreting an RR/OR/STR isn't as simple as 'probability of death is reduced in each time period by 15%, we have average life expectancies of ~80, therefore, X will make me live an extra $0.15 \cdot 80=12$ years'.
-(The intuition here is that death rates increase so much with time that a one-off reduction in each period doesn't make a huge long-term difference. You can see that any constant intervention moves the curve up a little bit but does not flatten it.)
-
-To convert RRs to years gained, I take a standard [Gompertz curve](!Wikipedia) model of age-related mortality, using a fit of the modern Dutch population given in [Cramer & Kaas 2013](https://www.uva.nl/binaries/content/assets/subsites/amsterdam-school-of-economics-research-institute/uva-econometrics/dp-2013/1303.pdf "Mortality hazard rates and life expectancy").
+To work with life expectancies and changes in it, I take a standard [Gompertz curve](!Wikipedia) model of age-related mortality, using a fit of the modern Dutch population given in [Cramer & Kaas 2013](https://www.uva.nl/binaries/content/assets/subsites/amsterdam-school-of-economics-research-institute/uva-econometrics/dp-2013/1303.pdf "Mortality hazard rates and life expectancy").
 
 ~~~{.R}
 S <- function(t, RR=1) { exp(-((RR*0.000016443)/log(1.1124) * (1.1124^t - 1))) }
 plot(sapply(0:120, S), xlab="Age", ylab="Fraction surviving")
+
+H <- function(t, RR) { min(1, (0 + (RR*0.000016443)*1.1124^t)) } # past age 104, hazard>1 which is wrong, so put ceiling
+rgompertz <- function(n, RR=1) {
+    ageHazards <- sapply(0:120, function(t) { H(t, RR) })
+    # for each possible age, randomly sample a life event according to that age's hazard;
+    # then the subject dies at the age at which their first FALSE is found. So `TRUE,TRUE,TRUE,FALSE,TRUE,FALSE` ~> died 4yo
+    deathAges <- replicate(n, Position(`!`, sapply(ageHazards, function(h){sample(c(TRUE,FALSE), 1, prob=c(1-h, h))})))
+    return(deathAges) }
+## example uses:
+mean(rgompertz(1000))
+# [1] 77.086
+mean(rgompertz(1000, RR=0.50))
+# [1] 84.389
 ~~~
 
 ![Population survival curve](/images/longevity/survivalcurve.png)
 
-The Gompertz curve hazard can be multiplied by the RR to give a particular trajectory with that change in risk, and the mean can be obtained by integrating over a lifetime.
+### Converting risk reduction to average life expectancy gain
+
+However, interpreting an RR/OR/STR isn't as simple as 'probability of death is reduced in each time period by 15%, we have average life expectancies of ~80, therefore, X will make me live an extra $0.15 \cdot 80=12$ years'.
+(The intuition here is that death rates increase so much with time that a one-off reduction in each period doesn't make a huge long-term difference. You can see that any constant intervention moves the curve up a little bit but does not flatten it.)
+
+The Gompertz curve hazard can be multiplied by the RR to give a particular trajectory with that change in risk, and the mean can be obtained by integrating over a lifetime (more efficient than estimating by simulation using our `rgompertz`).
 Doing two such integrations, one with a baseline RR of 1 and one with the new RR, then gives the two different life expectancies, and subtraction indicates the net gain/loss:
 
 ~~~{.R}
@@ -153,6 +168,31 @@ The back-loading of mortality means that a constant reduction in mortality risk 
 On the plus side, this also means that if we wait to use an intervention until what might seem like 'late' in life (like age 30), we have not suffered an opportunity cost (of ~40%) like one might think, but much less (~0.28%).
 The gains are minimal early on, and the opportunity cost only begins to really mount starting in one's 50s or 60s, which has the important implication that such interventions will benefit younger people much less (at least when it comes to interventions which offer only a constant reduction in risk and do not affect the acceleration of mortality caused by the aging process itself) and so the risks are more likely to make interventions profitable.
 
+### Power analysis
+
+How many subjects does it take to detect a specified RR? This is useful for planning clinical trials but also in interpreting them.
+We can do simulation power analyses by using `rgompertz` to generate a number of subjects' death dates for different RRs (eg 0.85 vs 1.0), counting how many deaths in each group fall within a specified followup period of years, and running some sort of analysis based on that data.
+
+~~~{.R}
+gompertzSimulation <- function(RR, n1, n2, startingAge, followupYears) {
+    experimental <- Filter(function(deathDate){deathDate>=startingAge}, rgompertz(n1, RR))
+    control      <- Filter(function(deathDate){deathDate>=startingAge}, rgompertz(n2, 1))
+
+    experimentalDeaths <- Filter(function(deathDate){deathDate<=(startingAge+followupYears)}, experimental)
+         controlDeaths <- Filter(function(deathDate){deathDate<=(startingAge+followupYears)}, control)
+
+    df <- data.frame(RR=RR,Start=startingAge, Followup=followupYears,
+                     N1=length(experimental), N2=length(control),
+                     N1.deaths=length(experimentalDeaths), N2.deaths=length(controlDeaths))
+    return(cbind(df, data.frame(RR.observed=(df$N1.deaths/df$N1) /(df$N2.deaths/df$N2)))) }
+
+gompertzPower <- function(RR, n1, n2, startingAge, followupYears, iters=100) {
+    library(parallel)
+    library(plyr)
+    ldply(mclapply(1:iters, function(i) { gompertzSimulation(RR, n1, n2, startingAge, followupYears); }))
+ }
+~~~
+
 # Metformin
 
 [Metformin](!Wikipedia) is a standard drug prescribed to diabetics since the 1950s, known for helping control blood sugar while being cheap and safe; it has been used by scores of millions of people.
@@ -164,7 +204,7 @@ This, however, entirely hinges on one's evaluation of the credibility of the cor
 
 ### Causality
 
-Metformin not been much tested in healthy adult populations, although a good deal of media attention has been given to a trials being launched in 2016: "Targeting Aging with Metformin" (TAME; [_Nature_ article](http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 "Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition")^["Plans call for the trial to enrol 3,000 people aged 70–80 years at roughly 15 centres around the United States. The trial will take 5–7 years and cost US\$50 million, Barzilai estimates, although it does not yet have funding." There is also the Metformin in Longevity Study/MILES, but the [pre-registration](https://clinicaltrials.gov/ct2/show/NCT02432287) indicates it will be aimed at gene expression changes and too short-term for mortality differences.]).
+Metformin not been much tested in healthy adult populations, although a good deal of media attention has been given to a trials being launched in 2016: "Targeting Aging with Metformin" (TAME; [interview](http://healthspancampaign.org/2015/04/28/dr-nir-barzilai-on-the-tame-study/), [_Nature_ article](http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 "Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition")^["Plans call for the trial to enrol 3,000 people aged 70–80 years at roughly 15 centres around the United States. The trial will take 5–7 years and cost US\$50 million, Barzilai estimates, although it does not yet have funding." There is also the Metformin in Longevity Study/MILES, but the [pre-registration](https://clinicaltrials.gov/ct2/show/NCT02432287) indicates it will be aimed at gene expression changes and too short-term for mortality differences.]).
 There are some meta-analyses of past clinical trials of diabetic patients, which include estimates for ACM.
 Interpretation is difficult due to generally small numbers of deaths, differences in what metformin was being compared to, and the generally diseased subjects, but the picture looks mixed:
 
@@ -199,8 +239,8 @@ STR isn't quite an RR but it's similar:
 > ...In total, there were 7498 deaths, corresponding to an unadjusted event rate of 18.1 deaths per 1000 person-years. Unadjusted event rates were highest in the sulphonylurea group and lowest in the metformin group (50.9 vs. 14.4 per 1000 person-years, respectively; _p_ < 0.001; Table 2). Unadjusted event rates were higher in sulphonylurea-treated patients than in their matched, non-diabetic controls (50.9 vs. 28.7 per 1000 person-years, respectively; _p_ < 0.001) but, surprisingly, were lower in those treated with metformin than in their matched controls (14.4 vs. 15.2 per 1000 person-years, respectively; _p_ = 0.054). Unadjusted event rates were lowest in people aged <60 years at index date and highest for people aged >70 years for both diabetic and control subjects.
 
 So I think if we wanted to convert to something else, STR has already done the denominator for us and we just divide $\frac{14.2}{15.2}$ to get the raw RR of 0.93, which is not as good as the quoted STR of 0.85 (0.81–0.90), indicating that the covariates do differ a bit systematically? Looking at table 1, the metformin group seems to have been previously treated for many more disorders, explaining why the models think metformin is so good (because the metformin users *should* be dying off faster yet have a similar death rate as the healthy controls)
-Table 2 gives overall figures for all-cause mortality: _n_=78241, 2663 deaths in metformin ($\frac{2663}{78241}=0.03403586355$); _n_=78241, 2669 deaths in their controls ($\frac{2669}{78241}=0.03411254969$) ($\frac{0.03403586355}{0.03411254969}=0.9977519669$).
-Pooling in the sulphonylurea controls as well: _n_=748 deaths plus the 2669 other controls, total controls _n_=90463, total deaths 3417 ($\frac{3417}{90463}=0.03777234892$) ($\frac{0.03403586355}{0.03777234892}=0.9010788188$). So that verifies the RR of 0.93 since the difference between 0.90 and 0.93 is probably due to the differences in total followup years.
+Table 2 gives overall figures for all-cause mortality: _n_=78241, 2663 deaths in metformin ($\frac{2663}{78241}=0.03403586355$); _n_=78241, 2669 deaths in their controls ($\frac{2669}{78241}$=0.03411254969) ($\frac{0.03403586355}{0.03411254969}$=0.9977519669).
+Pooling in the sulphonylurea controls as well: _n_=748 deaths plus the 2669 other controls, total controls _n_=90463, total deaths 3417 ($\frac{3417}{90463}$=0.03777234892) ($\frac{0.03403586355}{0.03777234892}$=0.9010788188). So that verifies the RR of 0.93 since the difference between 0.90 and 0.93 is probably due to the differences in total followup years.
 
 An RR of 0.85/0.90 gets us around a year, which converting to dollars:
 
@@ -281,7 +321,7 @@ You might think we would have to incorporate a penalty of 10-40% to the expected
 
 The main side-effect mentioned as potentially fatal is [lactic acidosis](!Wikipedia) - for example, of the [12 New Zealand cases 1977-1998, 8 were fatal](http://www.medsafe.govt.nz/profs/PUarticles/5.htm "Metformin and Fatal Lactic Acidosis") & the FDA prescribing information estimates 50%, which does not sound fun.
 On the other hand, lactic acidosis seems to be an acute disorder whose primary effect would be killing you, so it should already be taken care of by working with a reduction in all-cause mortality (that is, even if you are more likely to die by lactic acidosis, the metformin must be sparing you even more gruesome deaths and on average it's still helpful).
-And the lactic acidosis rates (2-9 per 100,000 person-years, so at 50 years of usage as prophylactic, a risk of $(\frac{9}{100000} \cdot 50) \cdot \frac{8}{12}=0.003$) may simply reflect the pre-existing morbidity of diabetics and not caused by metformin, and so not a concern at all.
+And the lactic acidosis rates (2-9 per 100,000 person-years, so at 50 years of usage as prophylactic, a risk of $\frac{9}{100000} \cdot 50 \cdot \frac{8}{12}$=0.003) may simply reflect the pre-existing morbidity of diabetics and not caused by metformin, and so not a concern at all.
 
 So for side-effects, I think we can sum it up as a month or two of diarrhea, which is unpleasant but not that big a deal. I wouldn't pay more than \$50/day or so to get rid of some diarrhea, which over two months is \$3000, but that's somewhat unlikely.
 
@@ -375,3 +415,48 @@ data.frame(RR=rrs,
 
 The boundary is around 0.96.
 So if one doesn't believe the true causal ACM RR is <=0.96, then it doesn't look like metformin is ever worthwhile.
+
+## TAME power analysis
+
+Using the previously defined `gompertzPower` function, we can ask a question like:
+assuming a clinical trial is investigating a claimed RR of 0.85, plans to enrol 3000 people aged 70yo, so presumably 1500 in each arm, and will followup for 5 years (a trial which bears a certain resemblance to plans for TAME); how often would the observed RR<1.0?
+
+~~~{.R}
+df0.85 <- gompertzPower(0.85, 1000, 1000, 50, 10, 100)
+table(df0.85$RR.observed<1.0)
+# FALSE  TRUE
+#   14    86
+~~~
+
+86% power is excellent, but few interventions will yield that much, so let's consider something more plausible like the baby aspirin or some metformin estimates, an RR of 0.94:
+
+~~~{.R}
+df0.94 <- gompertzPower(0.94, 1500, 1500, 70, 5, 1000)
+table(df0.94$RR.observed<1.0)
+# FALSE  TRUE
+#  236   764
+~~~
+
+76% power is likewise still acceptable. But just because a clinical trials *plans* to enrol _n_=3000 doesn't mean they will succeed, as there is always attrition, and attrition can be severe depending on how unpleasant the side-effects are; for metformin, for example, the attrition could easily be 30%:
+
+~~~{.R}
+df0.94attrit <- gompertzPower(0.94, 1500*0.70, 1500*0.70, 70, 5, 1000)
+table(df0.94attrit$RR.observed<1.0)
+# FALSE  TRUE
+#   304   696
+~~~
+
+Knocking us back to 69%. So under more realistic assumptions about attrition and effect sizes, there's a good chance that there would not be a correct signed result.
+Finally, we could consider the probability that we would get both a RR in the desired direction and the difference would be large enough to be statistically-significant at _p_<0.05 when treated as a two-proportion problem:
+
+~~~{.R}
+df <- df0.94attrit
+pvalues <- sapply(1:nrow(df),
+            function(i) { prop.test(c(df[i,]$N1.deaths, df[i,]$N2.deaths), c(df[i,]$N1, df[i,]$N2), alternative="less")$p.value })
+table(pvalues<=0.05)
+#
+# FALSE  TRUE
+#  890   110
+~~~
+
+So it is highly unlikely we could expect the realistic trial deliver a statistically-significant reduction in mortality.
