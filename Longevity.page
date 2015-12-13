@@ -157,10 +157,12 @@ The gains are minimal early on, and the opportunity cost only begins to really m
 
 # Metformin
 
-https://en.wikipedia.org/wiki/Metformin#Adverse_effects
-https://scholar.google.com/scholar?q=metformin%20qalys
+[Metformin](!Wikipedia) is a standard drug prescribed to diabetics since the 1950s, known for helping control blood sugar while being cheap and safe; it has been used by scores of millions of people.
+Alongside the blood sugar benefits, there appear to be other benefits relating to cancer and cardiovascular health, and possibly even all-cause mortality.
+There is enough public interest that I heard of it, and as it passes the sniff test, I decided to look into it further.
 
-
+Overall, metformin is promising and under my set of assumptions, profitable for people aged >=54yo to use.
+This, however, hinges on one's evaluation of the credibility of the correlational evidence and ability to tolerate the surprisingly common & unpleasant side-effects like diarrhea.
 
 ### Causality
 
@@ -187,7 +189,7 @@ So I will apply my proposed correlation!=causality correction of 33% to deflate 
 
 ## Benefit
 
-We know metformin won't make one live to 120, and probably also offers only a constant reduction in risk without decreasing the acceleration of risk, if for no other reason than hundreds of millions of people have taken metformin over the past century yet no gerontologist has ever noticed a massive overrepresentation of diabetics among centenarians.
+We know metformin won't increase lifespans by 40% like some mice or make one live to 120, and probably also offers only a constant reduction in risk without decreasing the acceleration of risk, if for no other reason than hundreds of millions of people have taken metformin over the past century yet no gerontologist has ever noticed a massive overrepresentation of diabetics among centenarians.
 The actual effect size estimates from the abstract of Bannister et al 2014 (emphasis added):
 
 > We identified 78 241 subjects treated with metformin, 12 222 treated with sulphonylurea, and 90 463 matched subjects without diabetes. This resulted in a total, censored follow-up period of 503 384 years. There were 7498 deaths in total, representing unadjusted mortality rates of 14.4 and 15.2, and 50.9 and 28.7 deaths per 1000 person-years for metformin monotherapy and their matched controls, and sulphonylurea monotherapy and their matched controls, respectively. With reference to observed survival in diabetic patients initiated with metformin monotherapy [survival time ratio (STR) = 1.0], adjusted median survival time was 15% lower (STR = *0.85*, 95% CI 0.81–0.90) in matched individuals without diabetes and 38% lower (0.62, 0.58–0.66) in diabetic patients treated with sulphonylurea monotherapy.
@@ -195,10 +197,8 @@ The actual effect size estimates from the abstract of Bannister et al 2014 (emph
 STR isn't quite an RR but it's similar:
 
 > The log-logistic model resulted in the best fit in terms of AIC, and the adequacy of this distribution was further assessed by plotting appropriately transformed non-parametric estimates against time. The log-logistic survival model provides beta coefficients that equal the difference in log survival time between groups or for continuous predictors. Exponentiation of the beta coefficient gives the ratio between median survival times, known as the survival time ratio (STR), or acceleration factor. STRs less than 1 represent a decrease in survival time; values greater than 1 represent prolonged survival.
-
-More specificly:
-
-> In total, there were 7498 deaths, corresponding to an unadjusted event rate of 18.1 deaths per 1000 person-years. Unadjusted event rates were highest in the sulphonylurea group and lowest in the metformin group (50.9 vs. 14.4 per 1000 person-years, respectively; _p_ < 0.001; Table 2). Unadjusted event rates were higher in sulphonylurea-treated patients than in their matched, non-diabetic controls (50.9 vs. 28.7 per 1000 person-years, respectively; _p_ < 0.001) but, surprisingly, were lower in those treated with metformin than in their matched controls (14.4 vs. 15.2 per 1000 person-years, respectively; _p_ = 0.054). Unadjusted event rates were lowest in people aged <60 years at index date and highest for people aged >70 years for both diabetic and control subjects.
+>
+> ...In total, there were 7498 deaths, corresponding to an unadjusted event rate of 18.1 deaths per 1000 person-years. Unadjusted event rates were highest in the sulphonylurea group and lowest in the metformin group (50.9 vs. 14.4 per 1000 person-years, respectively; _p_ < 0.001; Table 2). Unadjusted event rates were higher in sulphonylurea-treated patients than in their matched, non-diabetic controls (50.9 vs. 28.7 per 1000 person-years, respectively; _p_ < 0.001) but, surprisingly, were lower in those treated with metformin than in their matched controls (14.4 vs. 15.2 per 1000 person-years, respectively; _p_ = 0.054). Unadjusted event rates were lowest in people aged <60 years at index date and highest for people aged >70 years for both diabetic and control subjects.
 
 So I think if we wanted to convert to something else, STR has already done the denominator for us and we just divide $\frac{14.2}{15.2}$ to get the raw RR of 0.93, which is not as good as the quoted STR of 0.85 (0.81–0.90), indicating that the covariates do differ a bit systematically? Looking at table 1, the metformin group seems to have been previously treated for many more disorders, explaining why the models think metformin is so good (because the metformin users *should* be dying off faster yet have a similar death rate as the healthy controls)
 Table 2 gives overall figures for all-cause mortality: _n_=78241, 2663 deaths in metformin ($\frac{2663}{78241}=0.03403586355$); _n_=78241, 2669 deaths in their controls ($\frac{2669}{78241}=0.03411254969$) ($\frac{0.03403586355}{0.03411254969}=0.9977519669$).
@@ -331,6 +331,14 @@ ages <- sapply(1:120, profitByAge); ages
 # [115] -3000.0000000 -3000.0000000 -3000.0000000 -3000.0000000 -3000.0000000 -3000.0000000
 which.max(ages)
 # [1] 54
+ages[which.max(ages)]
+# [1] 18156.51258
+
+## multiply maximal benefit by the total number of
+## Americans >=55yo according to http://www.indexmundi.com/united_states/age_structure.html :
+ages[which.max(ages)] * (19309019+20720284+20304644+25874360)
+# [1] 1565242210819
+## $1.57t
 ~~~
 
 Apparently there *is* an optimal age - and it's not 30yo but 54yo (metformin is profitable enough that starting too early, rather than never, is still a good idea).
