@@ -51,13 +51,13 @@ Database:
 
 Possible interventions:
 
-- Aspirin:
+- Baby aspirin:
   http://lesswrong.com/r/discussion/lw/b1g/daily_lowdose_aspirin_round_2/9lld
   Rothrwell et al 2012 "Short-term effects of daily aspirin on cancer incidence, mortality, and non-vascular death: analysis of the time course of risks and benefits in 51 randomised controlled trials" http://www.istudymedicine.com/wp-content/uploads/aspirin.pdf
   Second: "Effect of daily aspirin on long-term risk of death due to cancer: analysis of individual patient data from randomised trials" http://www.beppegrillo.it/immagini/Aspirin%20and%20death%20from%20cancer%20\(Lancet%202010\).pdf
   "Estimates of benefits and harms of prophylactic use of aspirin in the general population", Cuzick et al 2014 http://annonc.oxfordjournals.org/content/26/1/47.full
   check is included: Ridker PM, Cook NR, Lee I-M, et al. "A randomized trial of low-dose aspirin in the primary prevention of cardiovascular disease in women". _N Engl J Med_ 2005;352:1293-304.
-- [metformin](!Wikipedia):
+- metformin
 - vitamin d
 - antioxidants? except I think most increase ACM...
 - exercise (aerobic or resistance, primarily)
@@ -79,43 +79,41 @@ Examples of interventions which can't be used:
 # Definitions
 ## Value of Life
 
-The valuation of one year of life I am using here [is $50k](!Wikipedia "Value of life#Life Value in the US"), due to its commonness and conservativeness (some valuations would be much higher, and so tend to favor the use of interventions).
+The valuation of one year of life I am using here [is $50,000](!Wikipedia "Value of life#Life Value in the US"), due to its commonness and conservativeness (some valuations would be much higher, and so tend to favor the use of interventions).
 
 ## Converting risk reduction to average life expectancy gain
 
-However, interpreting an RR/OR/STR isn't as simple as 'probability of death is reduced in each time period by 15%, we have average life expectancies of ~80, therefore, metformin will make me live an extra 0.15*80=12 years'. (The intuition here is that death rates increase so much with time that a one-off reduction in each period doesn't make a huge long-term difference. You can see that metformin moves the curve up a little bit but does not flatten it in Figure 2.)
+However, interpreting an RR/OR/STR isn't as simple as 'probability of death is reduced in each time period by 15%, we have average life expectancies of ~80, therefore, X will make me live an extra $0.15 \cdot 80=12$ years'.
+(The intuition here is that death rates increase so much with time that a one-off reduction in each period doesn't make a huge long-term difference. You can see that any constant intervention moves the curve up a little bit but does not flatten it.)
 
-Accelerated time to failure models are fully parametric, so they're <i>supposed</i> to be easy to extract average life expectancy increases/decreases from, which is what we need for decision-making. (We won't get a expected increase of 12 years, even though that would be fantastic, but we do need a number to work with - 1 month? 12 months? 12 years? - to start applying value of life numbers and compare against the financial cost and side-effects of metformin.) But Bannister et al 2014 doesn't provide the full formula
+To convert RRs to years gained, I take a standard [Gompertz curve](!Wikipedia) model of age-related mortality, using a fit of the modern Dutch population given in [Cramer & Kaas 2013](https://www.uva.nl/binaries/content/assets/subsites/amsterdam-school-of-economics-research-institute/uva-econometrics/dp-2013/1303.pdf "Mortality hazard rates and life expectancy").
 
 ~~~{.R}
-library(survival)
-temp <- survexp.us[,"male","2004"]
-tempage <- c(0.5/365.25, 4/365.25, 17.5/365.25, 196.6/365.25, 1:109+0.5)
-tempsurv <- 365.25*temp[5:113] # yearly cumulative hazard
-tempsurv <- c(temp[1], 6*temp[2], 21*temp[3], 337.25*temp[4], tempsurv)
-tempsurv <- cumsum(tempsurv)
-tempage <- c(1/365.25, 7/365.25, 28/365.25, 1:110)
-plot(tempage, exp(-tempsurv), xlab="age", ylab="Survival, Male") # plot
-
-
-## Use a Gompertz function for age-mortality and numerically integrate to get average life expectancies,
-## with or without specified reductions/increases in risk, starting at particular ages.
-##
-## The exact formula values come from a fit of the modern Dutch population, given in
-## "Mortality hazard rates and life expectancy", Cramer & Kaas 2013
-## https://www.uva.nl/binaries/content/assets/subsites/amsterdam-school-of-economics-research-institute/uva-econometrics/dp-2013/1303.pdf
-
 S <- function(t, RR=1) { exp(-((RR*0.000016443)/log(1.1124) * (1.1124^t - 1))) }
-lifeExpectancy <- function(RR, age1, age2) { integrate(function(t){S(t, RR)}, age1, age2)$value }
-lifeExpectancyGain <- function(RR, startingAge=0, endingAge=Inf) { lifeExpectancy(RR, startingAge, endingAge) -  lifeExpectancy(1, startingAge, endingAge) }
+plot(sapply(0:120, S), xlab="Age", ylab="Fraction surviving")
 ~~~
 
-If we plot a lot of samples of RR vs gain to get some intuition, it looks like a logarithmic curve, and a linear model turns out to fit  extremely well (r^2^= 0.9999), certainly good enough for our purposes, so if we needed better performance we could replace two integrals by 4 arithmetic operations:
+![Population survival curve](/images/longevity/survivalcurve.png)
+
+The Gompertz curve hazard can be multiplied by the RR to give a particular trajectory with that change in risk, and the mean can be obtained by integrating over a lifetime.
+Doing two such integrations, one with a baseline RR of 1 and one with the new RR, then gives the two different life expectancies, and subtraction indicates the net gain/loss:
 
 ~~~{.R}
-df <- data.frame(RR=seq(0.005,5,by=0.001), Gain=sapply(seq(0.005,5,by=0.001), lifeExpectancyGain))
-plot(df)
-# https://i.imgur.com/1hO9CCT.png
+lifeExpectancy <- function(RR, age1, age2) { integrate(function(t){S(t, RR)}, age1, age2)$value }
+lifeExpectancyGain <- function(RR, startingAge=0, endingAge=Inf)
+                        { lifeExpectancy(RR, startingAge, endingAge) -
+                           lifeExpectancy(1, startingAge, endingAge) }
+
+# visualize:
+gainsVsRR <- data.frame(RR=seq(0.5,2,by=0.001), Gain=sapply(seq(0.5,2,by=0.001), lifeExpectancyGain))
+plot(gainsVsRR, ylab="Gain (in years)")
+~~~
+
+![A graph of how many additional years a given change in RR causes.](/images/longevity/rr-vs-lifeexpectancygains.png)
+
+If we plot a lot of samples of RR vs gain to get some intuition, it looks like a logarithmic curve, and indeed a linear model turns out to fit  extremely well (r^2^= 0.9999), certainly good enough for our purposes, so if we needed better performance we could replace two integrals by 4 arithmetic operations:
+
+~~~{.R}
 summary(lm(Gain ~ log(RR), data=df))
 # Residuals:
 #         Min          1Q      Median          3Q         Max
@@ -136,7 +134,7 @@ lifeExpectancyGainLogApproximation(0.85)
 # [1] 1.530853046
 ~~~
 
-Anyway, with a conversion of risk to years of gained life, we can see how bang we get:
+Anyway, with this conversion of risk to years of gained life, we can see how much bang we get:
 
 ~~~{.R}
 lifeExpectancyGain(0.90)
@@ -151,8 +149,8 @@ lifeExpectancyGain(0.85) - lifeExpectancyGain(0.85, startingAge=60)
 # [1] 0.1227387596
 ~~~
 
-The backloading of mortality means that a constant reduction in mortality risk like an RR of 0.85 would not deliver the naive expectation of 12 years but far less: ~1.5 years.
-On the plus side, this also means that if we wait to use an intervention until what might seem like 'late' in life (like age 30), we have not suffered an opportunity cost (of ~40%) like one might think, but much less (~0.3%).
+The back-loading of mortality means that a constant reduction in mortality risk like an RR of 0.85 would not deliver the naive expectation of 12 years but far less: ~1.5 years.
+On the plus side, this also means that if we wait to use an intervention until what might seem like 'late' in life (like age 30), we have not suffered an opportunity cost (of ~40%) like one might think, but much less (~0.28%).
 The gains are minimal early on, and the opportunity cost only begins to really mount starting in one's 50s or 60s, which has the important implication that such interventions will benefit younger people much less (at least when it comes to interventions which offer only a constant reduction in risk and do not affect the acceleration of mortality caused by the aging process itself) and so the risks are more likely to make interventions profitable.
 
 # Metformin
@@ -162,16 +160,15 @@ Alongside the blood sugar benefits, there appear to be other benefits relating t
 There is enough public interest that I heard of it, and as it passes the sniff test, I decided to look into it further.
 
 Overall, metformin is promising and under my set of assumptions, profitable for people aged >=54yo to use.
-This, however, hinges on one's evaluation of the credibility of the correlational evidence and ability to tolerate the surprisingly common & unpleasant side-effects like diarrhea.
+This, however, entirely hinges on one's evaluation of the credibility of the correlational evidence and ability to tolerate the surprisingly common & unpleasant side-effects like diarrhea.
 
 ### Causality
 
-Metformin not been much tested in healthy adult populations, although a good deal of media attention has been given to a trials being launched in 2016: "Targeting Aging with Metformin" (TAME); [_Nature_ article](http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 "Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition")^["Plans call for the trial to enrol 3,000 people aged 70–80 years at roughly 15 centres around the United States. The trial will take 5–7 years and cost US\$50 million, Barzilai estimates, although it does not yet have funding."].
-(There is also the Metformin in Longevity Study/MILES, but the [pre-registration](https://clinicaltrials.gov/ct2/show/NCT02432287) indicates it will be aimed at gene expression changes and too short-term for mortality differences.)
-TAME is not done yet, but there are some meta-analyses of past clinical trials of diabetic patients, which include estimates for ACM.
+Metformin not been much tested in healthy adult populations, although a good deal of media attention has been given to a trials being launched in 2016: "Targeting Aging with Metformin" (TAME; [_Nature_ article](http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 "Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition")^["Plans call for the trial to enrol 3,000 people aged 70–80 years at roughly 15 centres around the United States. The trial will take 5–7 years and cost US\$50 million, Barzilai estimates, although it does not yet have funding." There is also the Metformin in Longevity Study/MILES, but the [pre-registration](https://clinicaltrials.gov/ct2/show/NCT02432287) indicates it will be aimed at gene expression changes and too short-term for mortality differences.]).
+There are some meta-analyses of past clinical trials of diabetic patients, which include estimates for ACM.
 Interpretation is difficult due to generally small numbers of deaths, differences in what metformin was being compared to, and the generally diseased subjects, but the picture looks mixed:
 
-1. Saenz et al 2005, ["Metformin monotherapy for type 2 diabetes mellitus"](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD002966.pub3/epdf/standard); withdrawn by the Cochrane Collaboration
+1. Saenz et al 2005, ["Metformin monotherapy for type 2 diabetes mellitus"](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD002966.pub3/epdf/standard); withdrawn by the Cochrane Collaboration (apparently due to obsolescence)
 2. Selvin et al 2008, ["Cardiovascular outcomes in trials of oral diabetes medications: a systematic review"](https://archinte.jamanetwork.com/article.aspx?articleid=414585)
 
     Metformin vs anything, RR=0.81.
@@ -183,7 +180,8 @@ Interpretation is difficult due to generally small numbers of deaths, difference
     ACM was split by comparison to placebo and comparison to another diabetic drug: 0.97 & 0.94.
 
 Some of the biochemical & [animal experimental background](/docs/2011-bulterijs.pdf "'Metformin As a Geroprotector', Bulterijs 2011 [review]") suggesting benefits may be generalizability to health people, with [proposals](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3906334/ "'Metformin: Do we finally have an anti-aging drug?', Anisimov 2013") that metformin is mimicking [caloric restriction](!Wikipedia) by subtly reducing efficiency of mitochondria, making the body think it is in a food-scarce state.
-TAME seems to be prompted in part by Bannister et al 2014, ["Can people with type 2 diabetes live longer than those without? A comparison of mortality in people initiated with metformin or sulphonylurea monotherapy and matched, non-diabetic controls"](http://www.researchgate.net/profile/Guntram_Schernthaner/publication/266679685_Can_people_with_type_2_diabetes_live_longer_than_those_without_A_comparison_of_mortality_in_people_initiated_with_metformin_or_sulphonylurea_monotherapy_and_matched_nondiabetic_controls/links/53eb336a0cf28f342f451c33.pdf), a very large but nevertheless correlative result
+TAME seems to be prompted in part by Bannister et al 2014, ["Can people with type 2 diabetes live longer than those without? A comparison of mortality in people initiated with metformin or sulphonylurea monotherapy and matched, non-diabetic controls"](http://www.researchgate.net/profile/Guntram_Schernthaner/publication/266679685_Can_people_with_type_2_diabetes_live_longer_than_those_without_A_comparison_of_mortality_in_people_initiated_with_metformin_or_sulphonylurea_monotherapy_and_matched_nondiabetic_controls/links/53eb336a0cf28f342f451c33.pdf), a very large but nevertheless correlative result.
+There also appears to not be much consistency in the correlation results, with competing meta-analyses on various permutations of comparisons.
 
 So I will apply my proposed correlation!=causality correction of 33% to deflate the expected value.
 
@@ -223,7 +221,7 @@ Metformin is said to be very cheap. How cheap is cheap?
 
 Bannister et al 2014 doesn't give dosages or look for a dose-response curve but since it's drawing on clinical records, the diabetics must be using conventional dosages.
 [Drugs.com](http://www.drugs.com/dosage/metformin.html) gives a maintenance dose of 2000mg/daily; the [Mayo Clinic](http://www.mayoclinic.org/drugs-supplements/metformin-oral-route/proper-use/drg-20067074) says not usually more than 2000-2500mg/daily; the anti-aging quacks tend to suggest ~1000mg/daily for non-diabetics; the MILES protocol calls for 1700mg/daily.
-I'll use 2000mg/daily here, which is 4 500mg doses.
+I'll use 2000mg/daily here, which is 4x500mg doses.
 
 [GoodRx](http://www.goodrx.com/metformin) says that a number of large American chains, including Walmart & Target & Sam's Club, will sell 60x500mg for \$4.
 It's unclear if this includes sales tax, so I will tack on an additional 5% for that.
@@ -248,7 +246,7 @@ metforminTotalCost
 ### Side-effects
 
 The direct monetary cost of metformin is so minimal that it's almost certainly outweighed by the inconvenience of purchasing & regularly using it, and by any side-effects one might experience.
-[Side-effects](https://en.wikipedia.org/wiki/Metformin#Adverse_effects) are a more serious concern: while considered safe and a net gain from the point of view of all-cause mortality, that just means the side-effects are *relatively* rare or unfatal but metformin might still be unpleasant enough, or produce long-lasting reductions in quality of life which negate much of the gain.
+[Side-effects](https://en.wikipedia.org/wiki/Metformin#Adverse_effects) are a more serious concern: while considered safe and a net gain from the point of view of all-cause mortality, that just means the side-effects are *relatively* rare or nonfatal but metformin might still be unpleasant enough, or produce long-lasting reductions in quality of life which negate much of the gain.
 (It would not be much of an improvement to halve one's risk if, in exchange, one becomes a quadriplegic.)
 
 [Drugs.com](http://www.drugs.com/sfx/metformin-side-effects.html) provides some percentage breakdowns after noting that many problems can be avoided by gradual increases in dosage or go away spontaneously
@@ -283,9 +281,9 @@ You might think we would have to incorporate a penalty of 10-40% to the expected
 
 The main side-effect mentioned as potentially fatal is [lactic acidosis](!Wikipedia) - for example, of the [12 New Zealand cases 1977-1998, 8 were fatal](http://www.medsafe.govt.nz/profs/PUarticles/5.htm "Metformin and Fatal Lactic Acidosis") & the FDA prescribing information estimates 50%, which does not sound fun.
 On the other hand, lactic acidosis seems to be an acute disorder whose primary effect would be killing you, so it should already be taken care of by working with a reduction in all-cause mortality (that is, even if you are more likely to die by lactic acidosis, the metformin must be sparing you even more gruesome deaths and on average it's still helpful).
-And the lactic acidosis rates (2-9 per 100,000 person-years, so at 50 years of usage as prophylactic, a risk of `((9/100000)*50) * (8/12)=0.003`) may simply reflect the pre-existing morbidity of diabetics and not caused by metformin, and so not a concern at all.
+And the lactic acidosis rates (2-9 per 100,000 person-years, so at 50 years of usage as prophylactic, a risk of $(\frac{9}{100000} \cdot 50) \cdot \frac{8}{12}=0.003$) may simply reflect the pre-existing morbidity of diabetics and not caused by metformin, and so not a concern at all.
 
-So for side-effects, I think we can sum it up as a month or two of diarrhea, which is unpleasant but not that big a deal. I wouldn't pay more than \$50/day or so to get rid of some diarrhea, which over two months is \$3000, but there's somewhat unlikely.
+So for side-effects, I think we can sum it up as a month or two of diarrhea, which is unpleasant but not that big a deal. I wouldn't pay more than \$50/day or so to get rid of some diarrhea, which over two months is \$3000, but that's somewhat unlikely.
 
 ## Cost-benefit
 
@@ -329,18 +327,51 @@ ages <- sapply(1:120, profitByAge); ages
 # [103] -2993.2017073 -2997.2754330 -2999.0128681 -2999.6801934 -2999.9084669 -2999.9771633
 # [109] -2999.9951064 -2999.9991140 -2999.9998669 -2999.9999837 -2999.9999984 -2999.9999999
 # [115] -3000.0000000 -3000.0000000 -3000.0000000 -3000.0000000 -3000.0000000 -3000.0000000
+max(ages)
+# [1] 18156.51258
 which.max(ages)
 # [1] 54
-ages[which.max(ages)]
-# [1] 18156.51258
-
-## multiply maximal benefit by the total number of
-## Americans >=55yo according to http://www.indexmundi.com/united_states/age_structure.html :
-ages[which.max(ages)] * (19309019+20720284+20304644+25874360)
-# [1] 1565242210819
-## $1.57t
 ~~~
 
 Apparently there *is* an optimal age - and it's not 30yo but 54yo (metformin is profitable enough that starting too early, rather than never, is still a good idea).
 So quite aside from waiting for better information like the MILES results, our hypothetical 30yo still should wait a long before starting to use metformin.
 Also unsurprising is that ~90yo, mortality rates become so high that the metformin reduction yields such a small absolute gain of time that it can no longer offset the fixed absolute cost of metformin.
+
+While \$18k may not sound like that much on an individual level, it's substantial (<\$1.57t over all people currently 55+) on a societal scale:
+
+~~~{.R}
+## multiply maximal benefit by the total number of
+## Americans >=55yo according to http://www.indexmundi.com/united_states/age_structure.html :
+ages[which.max(ages)] * (19309019+20720284+20304644+25874360)
+# [1] 1565242210819
+~~~
+
+## Sensitivity
+
+We can also use the formula to ask how small (close to 1) the RR must be before, given the specified purchase & side-effect costs, there is no longer any age at which metformin is profitable:
+
+~~~{.R}
+rrs <- seq(0.85,1,by=0.01)
+data.frame(RR=rrs,
+ Maximum.Profit=sapply(rrs, function(r){max(sapply(1:120, function(t){profitByAge(t,RR=r)}))}))
+#      RR Maximum.Profit
+# 1  0.85  18156.5125832
+# 2  0.86  16422.1300163
+# 3  0.87  14713.0249508
+# 4  0.88  13030.2052907
+# 5  0.89  11376.8400627
+# 6  0.90   9752.0931938
+# 7  0.91   8157.1916315
+# 8  0.92   6594.2945983
+# 9  0.93   5066.5092019
+# 10 0.94   3580.0620700
+# 11 0.95   2139.1961286
+# 12 0.96    757.6172731
+# 13 0.97   -545.3810174
+# 14 0.98  -1723.4227445
+# 15 0.99  -2664.6437746
+# 16 1.00  -3000.0000000
+~~~
+
+The boundary is around 0.96.
+So if one doesn't believe the true causal ACM RR is <=0.96, then it doesn't look like metformin is ever worthwhile.
