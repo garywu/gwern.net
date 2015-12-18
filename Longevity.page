@@ -58,7 +58,8 @@ Possible interventions:
   "Estimates of benefits and harms of prophylactic use of aspirin in the general population", Cuzick et al 2014 http://annonc.oxfordjournals.org/content/26/1/47.full
   check is included: Ridker PM, Cook NR, Lee I-M, et al. "A randomized trial of low-dose aspirin in the primary prevention of cardiovascular disease in women". _N Engl J Med_ 2005;352:1293-304.
 - metformin
-- vitamin d
+- vitamin D
+- Bisphosphonate https://www.fightaging.org/archives/2011/02/bisphosphonates-and-an-unusual-longevity.php https://www.fightaging.org/archives/2015/12/more-investigation-of-bisphosphonates-and-reduced-mortality.php
 - antioxidants? except I think most increase ACM...
 - exercise (aerobic or resistance, primarily)
 - D-Glucosamine 22828954 http://www.ncbi.nlm.nih.gov/pubmed/?term=22828954
@@ -89,7 +90,13 @@ To work with life expectancies and changes in it, I take a standard [Gompertz cu
 S <- function(t, RR=1) { exp(-((RR*0.000016443)/log(1.1124) * (1.1124^t - 1))) }
 plot(sapply(0:120, S), xlab="Age", ylab="Fraction surviving")
 
-H <- function(t, RR) { min(1, (0 + (RR*0.000016443)*1.1124^t)) } # past age 104, hazard>1 which is wrong, so put ceiling
+# the `min` is because past age 104, hazard>1 which is wrong, so need a ceiling
+H <- function(t, RR) { min(1, (0 + (RR*0.000016443)*1.1124^t)) }
+~~~
+
+It is also useful to draw random samples from a Gompertz-distribution of age-at-deaths, which can be used for generative model-related things like power simulations:
+
+~~~{.R}
 rgompertz <- function(n, RR=1) {
     ageHazards <- sapply(0:120, function(t) { H(t, RR) })
     # for each possible age, randomly sample a life event according to that age's hazard;
@@ -98,23 +105,23 @@ rgompertz <- function(n, RR=1) {
     return(deathAges) }
 ## example uses:
 mean(rgompertz(1000))
-# [1] 77.086
+# [1] 77.705
 mean(rgompertz(1000, RR=0.50))
-# [1] 84.389
+# [1] 84.219
 ~~~
 
 ![Population survival curve](/images/longevity/survivalcurve.png)
 
 ### Converting risk reduction to average life expectancy gain
 
-However, interpreting an RR/OR/STR isn't as simple as 'probability of death is reduced in each time period by 15%, we have average life expectancies of ~80, therefore, X will make me live an extra $0.15 \cdot 80=12$ years'.
+However, interpreting an RR/OR/STR isn't as simple as "probability of death is reduced in each time period by 15%, we have average life expectancies of ~80, therefore, X will make me live an extra $0.15 \cdot 80=12$ years".
 (The intuition here is that death rates increase so much with time that a one-off reduction in each period doesn't make a huge long-term difference. You can see that any constant intervention moves the curve up a little bit but does not flatten it.)
 
 The Gompertz curve hazard can be multiplied by the RR to give a particular trajectory with that change in risk, and the mean can be obtained by integrating over a lifetime (more efficient than estimating by simulation using our `rgompertz`).
 Doing two such integrations, one with a baseline RR of 1 and one with the new RR, then gives the two different life expectancies, and subtraction indicates the net gain/loss:
 
 ~~~{.R}
-lifeExpectancy <- function(RR, age1, age2) { integrate(function(t){S(t, RR)}, age1, age2)$value }
+lifeExpectancy <- function(RR, age1, age2) { integrate(function(t){S(t, RR) / S(age1, RR)}, age1, age2)$value }
 lifeExpectancyGain <- function(RR, startingAge=0, endingAge=Inf)
                         { lifeExpectancy(RR, startingAge, endingAge) -
                            lifeExpectancy(1, startingAge, endingAge) }
@@ -129,24 +136,23 @@ plot(gainsVsRR, ylab="Gain (in years)")
 If we plot a lot of samples of RR vs gain to get some intuition, it looks like a logarithmic curve, and indeed a linear model turns out to fit  extremely well (r^2^= 0.9999), certainly good enough for our purposes, so if we needed better performance we could replace two integrals by 4 arithmetic operations:
 
 ~~~{.R}
-summary(lm(Gain ~ log(RR), data=df))
-# Residuals:
+summary(lm(Gain ~ log(RR), data=gainsVsRR))
 #         Min          1Q      Median          3Q         Max
-# -0.00769961 -0.00613587 -0.00175109  0.00454504  0.59551496
+# -0.00110357 -0.00095014 -0.00049523  0.00025105  0.39525452
 #
 # Coefficients:
 #                  Estimate    Std. Error      t value   Pr(>|t|)
-# (Intercept)  0.0074509800  0.0002044545     36.44322 < 2.22e-16
-# log(RR)     -9.3736900099  0.0001769579 -52971.31434 < 2.22e-16
+# (Intercept)  0.0009609580  0.0002853556      3.36758 0.00077752
+# log(RR)     -9.3742723770  0.0006917444 -13551.64204 < 2.22e-16
 #
-# Residual standard error: 0.01222721 on 4994 degrees of freedom
-# Multiple R-squared:  0.9999982,   Adjusted R-squared:  0.9999982
-# F-statistic: 2.80596e+09 on 1 and 4994 DF,  p-value: < 2.2204e-16
-lifeExpectancyGainLogApproximation <- function(RR) { 0.0074509800 + -9.3736900099*log(RR) }
+# Residual standard error: 0.01024382 on 1499 degrees of freedom
+# Multiple R-squared:  0.9999918,   Adjusted R-squared:  0.9999918
+# F-statistic: 1.83647e+08 on 1 and 1499 DF,  p-value: < 2.2204e-16
+lifeExpectancyGainLogApproximation <- function(RR) { 0.0009609580 + -9.3742723770*log(RR) }
 lifeExpectancyGain(0.85)
 # [1] 1.523915331
 lifeExpectancyGainLogApproximation(0.85)
-# [1] 1.530853046
+# [1] 1.52445767
 ~~~
 
 Anyway, with this conversion of risk to years of gained life, we can see how much bang we get:
@@ -157,15 +163,15 @@ lifeExpectancyGain(0.90)
 lifeExpectancyGain(0.85)
 # 1.523913984
 lifeExpectancyGain(0.85) - lifeExpectancyGain(0.85, startingAge=30)
-# [1] 0.004389441897
-(0.004389441897/  1.523913984 )*100
-# [1] 0.288037379
+# [1] 0.02529745239
+(0.02529745239 /  1.523913984 ) * 100
+# [1] 1.660031515
 lifeExpectancyGain(0.85) - lifeExpectancyGain(0.85, startingAge=60)
-# [1] 0.1227387596
+# [1] 0.2763949673
 ~~~
 
-The back-loading of mortality means that a constant reduction in mortality risk like an RR of 0.85 would not deliver the naive expectation of 12 years but far less: ~1.5 years.
-On the plus side, this also means that if we wait to use an intervention until what might seem like 'late' in life (like age 30), we have not suffered an opportunity cost (of ~40%) like one might think, but much less (~0.28%).
+The back-loading of mortality means that a constant reduction in mortality risk like an RR of 0.85 would not deliver the naive expectation of 12 years but far less: ~1.6 years.
+On the plus side, this also means that if we wait to use an intervention until what might seem like 'late' in life (like age 30), we have not suffered an opportunity cost (of ~40%) like one might think, but much less (~1.7%).
 The gains are minimal early on, and the opportunity cost only begins to really mount starting in one's 50s or 60s, which has the important implication that such interventions will benefit younger people much less (at least when it comes to interventions which offer only a constant reduction in risk and do not affect the acceleration of mortality caused by the aging process itself) and so the risks are more likely to make interventions profitable.
 
 ### Power analysis
@@ -199,7 +205,7 @@ gompertzPower <- function(RR, n1, n2, startingAge, followupYears, iters=100) {
 Alongside the blood sugar benefits, there appear to be other benefits relating to cancer and cardiovascular health, and possibly even all-cause mortality.
 There is enough public interest that I heard of it, and as it passes the sniff test, I decided to look into it further.
 
-Overall, metformin is promising and under my set of assumptions, profitable for people aged >=54yo to use.
+Overall, metformin is promising and under my set of assumptions, profitable for people aged >=45yo to use.
 This, however, entirely hinges on one's evaluation of the credibility of the correlational evidence and ability to tolerate the surprisingly common & unpleasant side-effects like diarrhea.
 
 ### Causality
@@ -219,7 +225,7 @@ Interpretation is difficult due to generally small numbers of deaths, difference
 
     ACM was split by comparison to placebo and comparison to another diabetic drug: 0.97 & 0.94.
 
-Some of the biochemical & [animal experimental background](/docs/2011-bulterijs.pdf "'Metformin As a Geroprotector', Bulterijs 2011 [review]") suggesting benefits may be generalizability to health people, with [proposals](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3906334/ "'Metformin: Do we finally have an anti-aging drug?', Anisimov 2013") that metformin is mimicking [caloric restriction](!Wikipedia) by subtly reducing efficiency of mitochondria, making the body think it is in a food-scarce state.
+Some of the biochemical & [animal experimental background](/docs/2011-bulterijs.pdf "'Metformin As a Geroprotector', Bulterijs 2011 [review]") suggesting benefits may be generalizability to healthy people, [with](http://impactaging.com/papers/v4/n5/full/100455.html "'Metformin in obesity, cancer and aging: addressing controversies', Berstein 2012") [proposals](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3906334/ "'Metformin: Do we finally have an anti-aging drug?', Anisimov 2013") that metformin is mimicking [caloric restriction](!Wikipedia) by subtly reducing efficiency of mitochondria, making the body think it is in a food-scarce state.
 TAME seems to be prompted in part by Bannister et al 2014, ["Can people with type 2 diabetes live longer than those without? A comparison of mortality in people initiated with metformin or sulphonylurea monotherapy and matched, non-diabetic controls"](http://www.researchgate.net/profile/Guntram_Schernthaner/publication/266679685_Can_people_with_type_2_diabetes_live_longer_than_those_without_A_comparison_of_mortality_in_people_initiated_with_metformin_or_sulphonylurea_monotherapy_and_matched_nondiabetic_controls/links/53eb336a0cf28f342f451c33.pdf), a very large but nevertheless correlative result.
 There also appears to not be much consistency in the correlation results, with competing meta-analyses on various permutations of comparisons.
 
@@ -278,7 +284,7 @@ timeCost <- (0.5/60) * 8 * 365.25
 metforminAnnualCost <- moneyCost + timeCost
 metforminTotalCost <- metforminAnnualCost * lifeExpectancy(0.85, 30, Inf)
 metforminTotalCost
-# [1] 6145.305071
+# [1] 6164.222177
 ~~~
 
 <\$6k is around an order of magnitude smaller than the more conservative RR estimate, giving a gain of \$69k for 0.85.
@@ -333,7 +339,7 @@ Bringing it all together for a 30yo considering metformin:
 benefit <- lifeExpectancyGain(0.85, startingAge=30) * yearValue * (1/3)
 cost <- metforminTotalCost + 3000
 benefit - cost
-# [1] 16180.12641
+# [1] 15812.74246
 ~~~
 
 So metformin use is probably profitable for our 30yo.
@@ -347,43 +353,43 @@ Rewriting to generalize it, we can compute the profit for if we started at all a
 profitByAge <- function(t, RR=0.85) {  (lifeExpectancyGain(RR, startingAge=t) * yearValue * (1/3)) -
                                         (metforminAnnualCost*lifeExpectancy(RR,t,Inf) + 3000) }
 ages <- sapply(1:120, profitByAge); ages
-#   [1] 12584.4329581 12710.9840105 12837.4817820 12963.9185719 13090.2910880 13216.5898205
-#   [7] 13342.8080366 13468.9356167 13594.9621187 13720.8767393 13846.6671461 13972.3192110
-#  [13] 14097.8172295 14223.1439273 14347.9499484 14473.2045107 14597.8932293 14722.3198521
-#  [19] 14846.4549808 14970.3277623 15093.7163248 15216.7657678 15339.3693159 15461.4770135
-#  [25] 15583.0333280 15703.9804900 15824.2380211 15943.7415485 16062.4023901 16180.1264102
-#  [31] 16296.8085260 16412.3351974 16526.5726442 16639.3813921 16750.6011436 16860.0669021
-#  [37] 16967.5491775 17072.8622684 17175.7589320 17275.9700399 17373.1964937 17467.1124094
-#  [43] 17557.3557091 17643.5246524 17725.1754454 17801.8165720 17872.9069893 17937.8488758
-#  [49] 17995.9834322 18046.5857761 18088.8584885 18121.9255130 18144.8271550 18156.5125832
-#  [55] 18155.8340605 18141.5405352 18112.2718156 18066.5535732 18002.7927495 17919.2743367
-#  [61] 17814.1600954 17685.4895887 17531.1840879 17349.0542846 17136.8128705 16892.0930200
-#  [67] 16612.4739450 16295.5149610 15938.7994506 15539.9893659 15096.8963622 14607.5607927
-#  [73] 14070.3511926 13484.0774963 12848.1193208 12162.5678865 11428.3784013 10647.5275609
-#  [79]  9823.1684283  8959.7721236  8063.2426680  7140.9882855  6201.9302071  5256.4277269
-#  [85]  4316.1022514  3393.5383099  2501.8612519  1654.1859326   862.9604789   139.2420360
-#  [91]  -508.0369872 -1072.7249897 -1551.9663205 -1946.4444708 -2260.3293941 -2500.8727725
-#  [97] -2677.6856674 -2801.7830705 -2884.5338600 -2936.6615011 -2967.4992327 -2984.5139920
-# [103] -2993.2017073 -2997.2754330 -2999.0128681 -2999.6801934 -2999.9084669 -2999.9771633
-# [109] -2999.9951064 -2999.9991140 -2999.9998669 -2999.9999837 -2999.9999984 -2999.9999999
-# [115] -3000.0000000 -3000.0000000 -3000.0000000 -3000.0000000 -3000.0000000 -3000.0000000
+#   [1] 12581.36678184 12704.60247164 12827.51331458 12950.06734382 13072.23497395 13193.97822375
+#   [7] 13315.25955302 13436.03553162 13556.25972902 13675.88249331 13794.84959193 13913.10174786
+#  [13] 14030.57465454 14147.19877297 14262.56843491 14377.59313608 14491.19343288 14603.60417087
+#  [19] 14714.72213847 14824.49779567 14932.62516230 15039.16033901 15143.90179637 15246.69929498
+#  [25] 15347.39132485 15445.80840422 15541.75256433 15635.03632321 15725.44232215 15812.74246206
+#  [31] 15896.69274016 15977.03622060 16053.49182110 16125.76969995 16193.55704406 16256.53548802
+#  [37] 16314.32235685 16366.58143711 16412.91897286 16452.92599097 16486.17295649 16512.21623495
+#  [43] 16530.59232830 16540.81861554 16542.39575833 16534.80739374 16517.52441118 16490.00437695
+#  [49] 16451.69477821 16402.03608769 16340.46418394 16266.41385753 16179.32414828 16078.64173013
+#  [55] 15963.82659990 15834.35747000 15689.73792729 15529.50334258 15353.22772268 15160.53106518
+#  [61] 14951.08725079 14724.63218759 14480.97195447 14219.99094268 13941.65997415 13646.04417437
+#  [67] 13333.31034505 13003.73373668 12657.70393148 12295.72850887 11918.44019624 11526.59453544
+#  [73] 11121.07254740 10702.87925221 10273.14006106  9833.09512729  9384.09165549  8927.57401957
+#  [79]  8465.07171100  7998.18524842  7528.57023589  7057.91974619  6587.94582834  6120.35841826
+#  [85]  5656.84891652  5199.06318619  4748.58831275  4306.93008014  3875.49621238  3455.58095505
+#  [91]  3048.34081949  2654.83557034  2275.91635712  1912.32384346  1564.63525304  1233.27268149
+#  [97]   918.50921796   620.47329414   339.15724767    74.42696583  -173.96624441  -406.37341118
+# [103]  -623.23364355  -825.06251102 -1012.43660004 -1185.98112738 -1346.35743240 -1494.25164331
+# [109] -1630.36275346 -1755.39535284 -1870.04919810 -1975.01316139 -2070.95896128 -2158.53660863
+# [115] -2238.37032302 -2311.05585076 -2377.15851698 -2437.21167794 -2491.71755097 -2541.14436644
 max(ages)
-# [1] 18156.51258
+# [1] 16542.39576
 which.max(ages)
-# [1] 54
+# [1] 45
 ~~~
 
-Apparently there *is* an optimal age - and it's not 30yo but 54yo (metformin is profitable enough that starting too early, rather than never, is still a good idea).
-So quite aside from waiting for better information like the MILES results, our hypothetical 30yo still should wait a long before starting to use metformin.
+Apparently there *is* an optimal age - and it's not 30yo but 45yo (metformin is profitable enough that starting too early, rather than never, is still a good idea).
+So quite aside from waiting for better information like the MILES results, our hypothetical 30yo still should wait a long time before starting to use metformin.
 Also unsurprising is that ~90yo, mortality rates become so high that the metformin reduction yields such a small absolute gain of time that it can no longer offset the fixed absolute cost of metformin.
 
-While \$18k may not sound like that much on an individual level, it's substantial (<\$1.57t over all people currently 55+) on a societal scale:
+While \$18k may not sound like that much on an individual level, it's substantial (<\$1.42t over all people currently 55+) on a societal scale:
 
 ~~~{.R}
 ## multiply maximal benefit by the total number of
 ## Americans >=55yo according to http://www.indexmundi.com/united_states/age_structure.html :
 ages[which.max(ages)] * (19309019+20720284+20304644+25874360)
-# [1] 1565242210819
+# [1] 1426091932050
 ~~~
 
 ## Sensitivity
@@ -395,25 +401,25 @@ rrs <- seq(0.85,1,by=0.01)
 data.frame(RR=rrs,
  Maximum.Profit=sapply(rrs, function(r){max(sapply(1:120, function(t){profitByAge(t,RR=r)}))}))
 #      RR Maximum.Profit
-# 1  0.85  18156.5125832
-# 2  0.86  16422.1300163
-# 3  0.87  14713.0249508
-# 4  0.88  13030.2052907
-# 5  0.89  11376.8400627
-# 6  0.90   9752.0931938
-# 7  0.91   8157.1916315
-# 8  0.92   6594.2945983
-# 9  0.93   5066.5092019
-# 10 0.94   3580.0620700
-# 11 0.95   2139.1961286
-# 12 0.96    757.6172731
-# 13 0.97   -545.3810174
-# 14 0.98  -1723.4227445
-# 15 0.99  -2664.6437746
-# 16 1.00  -3000.0000000
+# 1  0.85  16542.3957583
+# 2  0.86  14832.4764343
+# 3  0.87  13151.9204186
+# 4  0.88  11501.5626452
+# 5  0.89   9883.2197752
+# 6  0.90   8295.4160347
+# 7  0.91   6744.2697401
+# 8  0.92   5230.8482349
+# 9  0.93   3762.0437695
+# 10 0.94   2344.8834221
+# 11 0.95    989.5406473
+# 12 0.96   -283.0060740
+# 13 0.97  -1437.7229939
+# 14 0.98  -2399.0603044
+# 15 0.99  -2970.9252342
+# 16 1.00  -3021.2570816
 ~~~
 
-The boundary is around 0.96.
+The boundary is around 0.95.
 So if one doesn't believe the true causal ACM RR is <=0.96, then it doesn't look like metformin is ever worthwhile.
 
 ## TAME power analysis
@@ -425,10 +431,10 @@ assuming a clinical trial is investigating a claimed RR of 0.85, plans to enrol 
 df0.85 <- gompertzPower(0.85, 1000, 1000, 50, 10, 100)
 table(df0.85$RR.observed<1.0)
 # FALSE  TRUE
-#   14    86
+#   22    78
 ~~~
 
-86% power is excellent, but few interventions will yield that much, so let's consider something more plausible like the baby aspirin or some metformin estimates, an RR of 0.94:
+Let's consider something more plausible like the baby aspirin or some metformin estimates, an RR of 0.94:
 
 ~~~{.R}
 df0.94 <- gompertzPower(0.94, 1500, 1500, 70, 5, 1000)
@@ -443,10 +449,10 @@ table(df0.94$RR.observed<1.0)
 df0.94attrit <- gompertzPower(0.94, 1500*0.70, 1500*0.70, 70, 5, 1000)
 table(df0.94attrit$RR.observed<1.0)
 # FALSE  TRUE
-#   304   696
+#   254   746
 ~~~
 
-Knocking us back to 69%. So under more realistic assumptions about attrition and effect sizes, there's a good chance that there would not be a correct signed result.
+Knocking us back to 74%. So under more realistic assumptions about attrition and effect sizes, there's a good chance that there would not be a correct signed result.
 Finally, we could consider the probability that we would get both a RR in the desired direction and the difference would be large enough to be statistically-significant at _p_<0.05 when treated as a two-proportion problem:
 
 ~~~{.R}
@@ -459,4 +465,5 @@ table(pvalues<=0.05)
 #  890   110
 ~~~
 
-So it is highly unlikely we could expect the realistic trial deliver a statistically-significant reduction in mortality.
+So it is highly unlikely (~10%) we could expect the realistic trial deliver a statistically-significant reduction in mortality.
+We don't necessarily care about statistical-significance, since this is a decision-analysis approach; the question is whether the gained data shifts the posterior probability enough to change the optimal decision. But it's good to have an idea of power in that sense to make it easier to interpret the research article & media reports (eg the trial might be a 'failure' from the point of view of statistical-significance, even as it increases our estimates of the profitability of metformin usage).
