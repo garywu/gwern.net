@@ -3145,7 +3145,6 @@ The [Torch AMI](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Laun
 The two GPU instances seem to have the same number and kind of GPUs (1 Nvidia[^GPU-cost]) and differ mostly in RAM & CPUs, neither of which are the bottleneck here, so I picked the smaller/cheaper "g2.2xlarge" type.
 ("Cheaper" here is relative; "g2.2xlarge" still costs [\$0.65/hr](https://aws.amazon.com/ec2/pricing/) and when I looked at spot that day, ~\$0.21.)
 
-
 [^GPU-cost]: The EC2 price chart describes it as "High-performance NVIDIA GPUs, each with 1,536 CUDA cores and 4GB of video memory". These apparently are NVIDIA Quadro K5000 cards, which cost somewhere around $1500. (Price & performance-wise, it seems there are these days a lot of [better options now](https://timdettmers.wordpress.com/2014/08/14/which-gpu-for-deep-learning/ "Which GPU(s) to Get for Deep Learning: My Experience and Advice for Using GPUs in Deep Learning"); for example, my GeForce GTX 960M seems to train at similar speed at the EC2 instances do.) At \$0.65/hr, that's ~2300 hours or 96 days; at spot, 297 days. Even adding in local electricity cost and the cost of building a desktop PC around the GPUs, it's clear that breakeven is under a year and that for more than the occasional dabbling, one's own hardware is key. If nothing else, you won't feel anxious about the clock ticking on your Amazon bill!
 
 Once started, you can SSH using your registered public key like any other EC2 instance. The default username for this image is "ubuntu", so:
@@ -3950,33 +3949,29 @@ It would also be good if unused parts of the CSS could be ignored, the formattin
 (Originally, I was looking for a tool which would download all the CSS on a page and emit it in a single stream/file rather than write my own tagsoup parser, but when I saw `uncss`, I realized that the minimizing/optimizing was better than what I had intended and would be useful - why make the RNN learn CSS which isn't used by the paired HTML?)
 Installing:
 
-    # Debian/Ubuntu workaround:
-    sudo ln -s /usr/bin/nodejs /usr/bin/node
-    # possibly helpful:
-    sudo apt-get install phantomjs
+~~~{.Bash}
+# Debian/Ubuntu workaround:
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+# possibly helpful to pull in dependencies:
+sudo apt-get install phantomjs
 
-    npm install -g path-is-absolute
-    npm install -g uncss --prefix ~/bin/
-    npm install -g brace-expansion --prefix ~/bin/
-    npm install -g uncss --prefix ~/bin/
+npm install -g path-is-absolute
+npm install -g uncss --prefix ~/bin/
+npm install -g brace-expansion --prefix ~/bin/
+npm install -g uncss --prefix ~/bin/
+~~~
 
 Then having generated the URL list previously, it is simple to download each HTML/CSS pair:
 
 ~~~{.Bash}
 downloadCSS () {
-      echo "$@"
       ID=`echo "$@" | md5sum | cut -f1 -d' '`
-      echo $ID
+      echo "$@":"$ID"
       if [[ ! -s $ID.css ]]; then
-       wget --quiet "$@" -O $ID.html &
-       nice uncss --timeout 2000 "$@" | tail --lines=+3 >> $ID.css &
-       UNCSS_PID=$!
-       echo $UNCSS_PID
-       (sleep 4m ; kill -9 $UNCSS_PID) &
-       killall --quiet --older-than 20m phantomjs &
-       killall --quiet --older-than 20m uncss &
-       wait $UNCSS_PID
-       fi
+       timeout 120s wget --quiet "$@" -O $ID.html &
+       # `tail +3` gets rid of some uncss boilerplate
+       timeout 120s nice uncss --timeout 2000 "$@" | tail --lines=+3 >> $ID.css
+      fi
 }
 export -f downloadCSS
 cat urls.txt | parallel downloadCSS
@@ -4002,13 +3997,7 @@ downloadScreenshot() {
     echo "$@"
     ID=`echo "$@" | md5sum | cut -f1 -d' '`
     if [[ ! -a $ID.png ]]; then
-       (nice phantomjs screenshot.js "$@" $ID.png && nice optipng -o9 -fix $ID.png)&
-       SCREENSHOT_PID=$!
-       echo $SCREENSHOT_PID
-       (sleep 4m ; kill -9 $SCREENSHOT_PID) &
-       (killall --quiet --older-than 20m phantomjs) &
-       (killall --quiet --older-than 20m optipng) &
-       wait $SCREENSHOT_PID
+       timeout 120s nice phantomjs screenshot.js "$@" $ID.png && nice optipng -o9 -fix $ID.png
     fi
 }
 export -f downloadScreenshot
