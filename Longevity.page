@@ -94,6 +94,8 @@ plot(sapply(0:120, S), xlab="Age", ylab="Fraction surviving")
 H <- function(t, RR) { min(1, (0 + (RR*0.000016443)*1.1124^t)) }
 ~~~
 
+![Population survival curve](/images/longevity/survivalcurve.png)
+
 It is also useful to draw random samples from a Gompertz-distribution of age-at-deaths, which can be used for generative model-related things like power simulations:
 
 ~~~{.R}
@@ -109,8 +111,6 @@ mean(rgompertz(1000))
 mean(rgompertz(1000, RR=0.50))
 # [1] 84.219
 ~~~
-
-![Population survival curve](/images/longevity/survivalcurve.png)
 
 ### Converting risk reduction to average life expectancy gain
 
@@ -321,9 +321,10 @@ The direct monetary cost of metformin is so minimal that it's almost certainly o
 > - Respiratory: Common (1% to 10%): Rhinitis[Ref]
 
 Most of these seem to be relatively minor or temporary; if they persist, a prophylactic user could simply discontinue metformin.
-(The [FDA prescribing information](http://www.fda.gov/ohrms/dockets/dailys/02/May02/053102/800471e6.pdf "Metformin Hydrochloride Tablets") notes in one trial, 6% of the metformin subjects had to stop because of the diarrhea. Net attrition/dropout rates in metformin studies vary so much that they're not helpful and not all of it will have to do with metformin reducing the daily quality of life through side-effects, but overall they look like 10-40% would be a reasonable guess)
-Discontinuation would be too bad since then one doesn't gain the benefits, but one won't have lost too much besides perhaps a few weeks of diarrhea and a month or two of metformin pills, so it's not too bad.
-You might think we would have to incorporate a penalty of 10-40% to the expected value - if there's a 10-40% chance the metformin is useless, shouldn't we multiply the mortality benefit by 0.1-0.4? - but that's only if we have no way of knowing the metformin is useless and we are considering the scenario in which we take it for the rest of our life while it's useless. In this case, because we know immediately if we can handle metformin or not, we only need to consider the cost of a month or two of diarrhea.
+(The [FDA prescribing information](http://www.fda.gov/ohrms/dockets/dailys/02/May02/053102/800471e6.pdf "Metformin Hydrochloride Tablets") notes in one trial, 6% of the metformin subjects had to stop because the diarrhea was so bad. Net attrition/dropout rates in metformin studies vary so much that they're not helpful and not all of it will have to do with metformin reducing the daily quality of life through side-effects, but overall they look like 10-40% would be a reasonable guess.)
+Discontinuation would be too bad since then one doesn't gain the benefits, but one won't have lost too much besides perhaps a few weeks of severe diarrhea and a month or two of wasted metformin pills, so it's not *too* bad.
+You might think we would have to incorporate a penalty of 10-40% to the expected value - if there's a 10-40% chance the metformin is useless, shouldn't we multiply the mortality benefit by 0.1-0.4? - but that's only if we have no way of knowing the metformin is useless and we are considering the scenario in which we take it for the rest of our life even while it's useless. In this case, because we know quickly if we can handle metformin or not, we only need to consider the upfront cost of the month of diarrhea.
+(So more formally: the expected value is lower, but the Value of Information is higher because once one starts metformin and the GI problems either turn out to not be so bad or to go away, the expected value then increases substantially now that one knows one can take metformin without problem.)
 
 The main side-effect mentioned as potentially fatal is [lactic acidosis](!Wikipedia) - for example, of the [12 New Zealand cases 1977-1998, 8 were fatal](http://www.medsafe.govt.nz/profs/PUarticles/5.htm "Metformin and Fatal Lactic Acidosis") & the FDA prescribing information estimates 50%, which does not sound fun.
 On the other hand, lactic acidosis seems to be an acute disorder whose primary effect would be killing you, so it should already be taken care of by working with a reduction in all-cause mortality (that is, even if you are more likely to die by lactic acidosis, the metformin must be sparing you even more gruesome deaths and on average it's still helpful).
@@ -465,5 +466,6 @@ table(pvalues<=0.05)
 #  890   110
 ~~~
 
-So it is highly unlikely (~10%) we could expect the realistic trial deliver a statistically-significant reduction in mortality.
-We don't necessarily care about statistical-significance, since this is a decision-analysis approach; the question is whether the gained data shifts the posterior probability enough to change the optimal decision. But it's good to have an idea of power in that sense to make it easier to interpret the research article & media reports (eg the trial might be a 'failure' from the point of view of statistical-significance, even as it increases our estimates of the profitability of metformin usage).
+So it is highly unlikely (~10%) we could expect the realistic trial to deliver a statistically-significant reduction in mortality.
+We don't necessarily care about statistical-significance, since this is a decision-analysis approach: our question is whether the gained data shifts the posterior probability enough to change the optimal decision.
+But it's good to have an idea of power in that sense to make it easier to interpret the research article & media reports (eg the trial might be a 'failure' from the point of view of statistical-significance, even as it increases the profitability of using metformin).
