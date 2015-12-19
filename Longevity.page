@@ -72,10 +72,24 @@ Possible interventions:
 
     - Mediterranean has at least one study http://www.nejm.org/action/showImage?doi=10.1056%2FNEJMoa1200303&iid=f01
 
-Examples of interventions which can't be used:
+## Exclusions
 
-- caloric restriction: promising, but current randomized studies are too short to show any effect on mortality (eg in "A 2-Year Randomized Controlled Trial of Human Caloric Restriction: Feasibility and Effects on Predictors of Health Span and Longevity" (the CALERIE study), Ravussin et al 2015 http://biomedgerontology.oxfordjournals.org/content/70/9/1097.full , no one at all died, so there is no all-cause mortality estimate at all)
-- castration (eg http://lesswrong.com/lw/lm4/effects_of_castration_on_the_life_expectancy_of/ ): too serious a reduction in quality of life, social ostracism, must be done before puberty for any benefits, may not be legal, not verified in any randomized trials (a concern because not all historical eunuch seem to show life expectancy gains; Egyptian eunuchs reportedly had severe losses), and at least one of the proposed mechanisms may have lost efficacy in the modern setting (greater resistance to infectious diseases)
+Examples of interventions which are interesting to me or often come up, but which can't be evaluated or wouldn't ever be profitable, and reasons for exclusion:
+
+- [caloric restriction](!Wikipedia):
+
+    promising, but current randomized studies are too short to show any effect on mortality (eg in ["A 2-Year Randomized Controlled Trial of Human Caloric Restriction: Feasibility and Effects on Predictors of Health Span and Longevity" (the CALERIE study), Ravussin et al 2015](http://biomedgerontology.oxfordjournals.org/content/70/9/1097.full), no one died, so there is no all-cause mortality estimate)
+- [castration](!Wikipedia "Castration#Medical consequences"):
+
+    [often reported](http://lesswrong.com/lw/lm4/effects_of_castration_on_the_life_expectancy_of/) to increase longevity. But we can reject it as practical for a number of reasons: too serious a reduction in quality of life (going well beyond the loss of sex), social ostracism, probably must be done before puberty for any benefits (when informed consent is impossible), may not be legal, not verified in any randomized trials (a concern because not all historical eunuch seem to show life expectancy gains; [Egyptian eunuchs reportedly](http://lesswrong.com/lw/lm4/effects_of_castration_on_the_life_expectancy_of/cogu) had severe losses), and at least one of the proposed mechanisms may have lost efficacy in the modern setting (greater resistance to infectious diseases)
+- [rapamycin](!Wikipedia):
+
+    famous for life-extension results in animal experiments (especially mice), but the animal experiment environments may be unrealistic (raised under controlled, sometimes [SPF](!Wikipedia "Specific-pathogen-free") conditions) and rapamycin's primary use in humans is as an immunosuppressant and has been linked with bad outcomes. Rapamycin may never undergo clinical trials in healthy adult humans because the risks are too great.
+- [alcohol/ethanol](!Wikipedia "Long-term effects of alcohol consumption"):
+
+    "a glass a day" has long been noted to correlate with longer life anywhere one looks, but the confounds for moderate responsible drinking are too noticeable to put much faith in it and the debate continues to rage. [It's troubling](http://davidroodman.com/blog/2015/05/01/are-the-benefits-of-moderate-drinking-a-myth/ "Are the benefits of moderate drinking a myth?") that the economics literature seems to find health benefits to taxing alcohol, and that the more powerful [Mendelian randomization](!Wikipedia) design (while far from infallible) show harm rather than benefit. But the real issue is that despite seeming like the easiest experiment ever to run (hand out free booze), there apparently are no randomized trials.
+
+    (I might do alcohol anyway to get an idea of what the profitability would be like and how skeptical one must be to erase benefits.)
 
 # Definitions
 ## Value of Life
@@ -102,8 +116,10 @@ It is also useful to draw random samples from a Gompertz-distribution of age-at-
 rgompertz <- function(n, RR=1) {
     ageHazards <- sapply(0:120, function(t) { H(t, RR) })
     # for each possible age, randomly sample a life event according to that age's hazard;
-    # then the subject dies at the age at which their first FALSE is found. So `TRUE,TRUE,TRUE,FALSE,TRUE,FALSE` ~> died 4yo
-    deathAges <- replicate(n, Position(`!`, sapply(ageHazards, function(h){sample(c(TRUE,FALSE), 1, prob=c(1-h, h))})))
+    # then the subject dies at the age at which their first FALSE is found.
+    # So `TRUE,TRUE,TRUE,FALSE,TRUE,FALSE` ~> died 4yo.
+    deathAges <- replicate(n,
+                  Position(`!`, sapply(ageHazards, function(h){sample(c(TRUE,FALSE), 1, prob=c(1-h, h))})))
     return(deathAges) }
 ## example uses:
 mean(rgompertz(1000))
@@ -210,7 +226,7 @@ This, however, entirely hinges on one's evaluation of the credibility of the cor
 
 ### Causality
 
-Metformin not been much tested in healthy adult populations, although a good deal of media attention has been given to a trials being launched in 2016: "Targeting Aging with Metformin" (TAME; [interview](http://healthspancampaign.org/2015/04/28/dr-nir-barzilai-on-the-tame-study/), [_Nature_ article](http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 "Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition")^["Plans call for the trial to enrol 3,000 people aged 70–80 years at roughly 15 centres around the United States. The trial will take 5–7 years and cost US\$50 million, Barzilai estimates, although it does not yet have funding." There is also the Metformin in Longevity Study/MILES, but the [pre-registration](https://clinicaltrials.gov/ct2/show/NCT02432287) indicates it will be aimed at gene expression changes and too short-term for mortality differences.]).
+Metformin not been much tested in healthy adult populations, although a good deal of media attention has been given to a trials being launched in 2016: "Targeting Aging with Metformin" (TAME; [profile of proponent Barzilai](http://news.sciencemag.org/biology/2015/09/feature-man-who-wants-beat-back-aging "The man who wants to beat back aging: Nir Barzilai hopes to persuade FDA to bless the proposed anti-aging trial, which is unconventional in its goals and design."), [interview](http://healthspancampaign.org/2015/04/28/dr-nir-barzilai-on-the-tame-study/), [_Nature_ article](http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 "Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition")^["Plans call for the trial to enrol 3,000 people aged 70–80 years at roughly 15 centres around the United States. The trial will take 5–7 years and cost US\$50 million, Barzilai estimates, although it does not yet have funding." There is also the Metformin in Longevity Study/MILES, but the [pre-registration](https://clinicaltrials.gov/ct2/show/NCT02432287) indicates it will be aimed at gene expression changes and too short-term for mortality differences.]).
 There are some meta-analyses of past clinical trials of diabetic patients, which include estimates for ACM.
 Interpretation is difficult due to generally small numbers of deaths, differences in what metformin was being compared to, and the generally diseased subjects, but the picture looks mixed:
 
@@ -320,7 +336,7 @@ The direct monetary cost of metformin is so minimal that it's almost certainly o
 > - Psychiatric: Common (1% to 10%): Headache[Ref]
 > - Respiratory: Common (1% to 10%): Rhinitis[Ref]
 
-Most of these seem to be relatively minor or temporary; if they persist, a prophylactic user could simply discontinue metformin.
+Most of these seem to be relatively minor or temporary, and the GI problems can be reduced by splitting up doses & taking with food; if they persist, a prophylactic user could simply discontinue metformin.
 (The [FDA prescribing information](http://www.fda.gov/ohrms/dockets/dailys/02/May02/053102/800471e6.pdf "Metformin Hydrochloride Tablets") notes in one trial, 6% of the metformin subjects had to stop because the diarrhea was so bad. Net attrition/dropout rates in metformin studies vary so much that they're not helpful and not all of it will have to do with metformin reducing the daily quality of life through side-effects, but overall they look like 10-40% would be a reasonable guess.)
 Discontinuation would be too bad since then one doesn't gain the benefits, but one won't have lost too much besides perhaps a few weeks of severe diarrhea and a month or two of wasted metformin pills, so it's not *too* bad.
 You might think we would have to incorporate a penalty of 10-40% to the expected value - if there's a 10-40% chance the metformin is useless, shouldn't we multiply the mortality benefit by 0.1-0.4? - but that's only if we have no way of knowing the metformin is useless and we are considering the scenario in which we take it for the rest of our life even while it's useless. In this case, because we know quickly if we can handle metformin or not, we only need to consider the upfront cost of the month of diarrhea.
@@ -467,5 +483,10 @@ table(pvalues<=0.05)
 ~~~
 
 So it is highly unlikely (~10%) we could expect the realistic trial to deliver a statistically-significant reduction in mortality.
+(This lack of power for statistical-significance on ACM may be why the TAME investigators talk primarily about looking for reductions in cancer/heart attacks/strokes: as more common events than death, reductions will show up more clearly there, as they do in past metformin trials.)
 We don't necessarily care about statistical-significance, since this is a decision-analysis approach: our question is whether the gained data shifts the posterior probability enough to change the optimal decision.
 But it's good to have an idea of power in that sense to make it easier to interpret the research article & media reports (eg the trial might be a 'failure' from the point of view of statistical-significance, even as it increases the profitability of using metformin).
+
+# External links
+
+- [_A History of Life-Extensionism In The Twentieth Century_](http://www.longevityhistory.com/book/indexb.html), Stambler 2014
