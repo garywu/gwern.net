@@ -236,7 +236,10 @@ mailInterval <- data.frame(
                     "2015-11-13 12:00PM", "2015-11-14 12:05PM", "2015-11-16 12:30PM", "2015-11-17 12:11PM",
                     "2015-11-18 12:00PM", "2015-11-19 11:55AM", "2015-11-20 1:00PM",  "2015-11-21 12:03PM",
                     "2015-11-23 12:00PM", "2015-11-24 12:00PM", "2015-11-25 11:40AM", "2015-11-27 12:05PM",
-                    "2015-11-28 12:00PM", "2015-11-30 11:40AM", "2015-12-01 12:20PM"),
+                    "2015-11-28 12:00PM", "2015-11-30 11:40AM", "2015-12-01 12:20PM", "2015-12-02 12:00PM",
+                    "2015-12-03 11:50AM", "2015-12-04 12:05PM", "2015-12-05 11:50AM", "2015-12-07 11:52AM",
+                    "2015-12-08 12:01PM". "2015-12-12 12:30PM", "2015-12-14 11:45AM", "2015-12-15 11:53AM",
+                    "2015-12-16 12:00PM", "2015-12-17 12:05PM", "2015-12-18 11:50AM", "2015-12-19 11:07AM"),
                    "EDT"),
  Delivered=c(FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE,
              FALSE, TRUE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE,
@@ -245,7 +248,8 @@ mailInterval <- data.frame(
              FALSE, FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,
              FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE,
              FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,
-             TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE))
+             TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE,
+             TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE))
 mailInterval$Time <- fromClock(mailInterval$Date)
 mail <- with(mailInterval, data.frame(Time1 = ifelse(Delivered, 0, Time),
                            Time2 = ifelse(Delivered,  Time, 1440)))
@@ -440,7 +444,8 @@ mailExact <- data.frame(Date=as.POSIXct(c("2010-04-29 11:33AM", "2010-05-12 11:3
                                           "2015-08-17 11:40AM", "2015-08-18 11:19AM", "2015-08-27 10:43AM",
                                           "2015-09-04 10:56AM", "2015-09-18 11:15AM", "2015-09-26 10:42AM",
                                           "2015-09-28 11:48AM", "2015-10-23 11:10AM", "2015-11-10 11:04AM",
-                                          "2015-11-27 12:03PM", "2015-11-30 12:12PM"),
+                                          "2015-11-27 12:03PM", "2015-11-30 12:12PM", "2015-12-04 11:35AM",
+                                          "2015-12-10 11:21AM", "2015-12-11 1:36PM", "2015-12-16 11:04AM"),
                         "EDT"))
 mailExact$TimeDelivered <- fromClock(mailExact$Date)
 mean(mailExact$TimeDelivered)
@@ -1219,65 +1224,56 @@ Lessons learned:
 # Appendix
 ## Thompson sampling
 
-Given a Bayesian model and a reinforcement-learning setting like checking the mailbox, it seems natural to use Thompson sampling to guide checks and do online learning.
+Given a Bayesian model and a reinforcement-learning setting like checking the mailbox, it seems natural to use [Thompson sampling](!Wikipedia) to guide checks and do [online](!Wikipedia "Online machine learning") [reinforcement learning](!Wikipedia) ("online" here meaning learning 1 data point at a time).
 I didn't want to reorganize my mornings around such an algorithm, but in reading up on Thompson sampling, I found no source code for any uses outside the stereotypical 3-4 arm binomial bandit, and certainly nothing I could use.
-So while I'm not certain it's correct, I've attempted to construct a Thompson sampler in this interval-censored mail-checking problem by treating it as a 200-arm bandit where the probability of being the optimal arm is computed as the number of posterior loss samples which are equal to the minimum possible loss (each sample being a loss/action pair), and then one samples exactly one loss from that filtered distribution, and executes the paired action.
 
-That is:
-
-1. Compute the posterior distribution of observations (`y.new`)
-2. take the loss function _l_, and for each action _a_ in 1:1440 (or for efficiency here, just 600:800), for each observation _o_ in `y.new`, compute _l(a,o)_, yielding a posterior loss distribution for each action
-3. take the mean of each posterior loss distribution, and then find the minimum of expected losses
-4. for each action, filter the posterior losses and drop anything bigger than the minimum expected loss; if after filtering, action _a_ has 10 samples/observations/simulates left while action _a+1_ has 15, then _a+1_ is that much more likely to minimize loss
-5. sample uniformly from the filtered posterior losses, and take the action which created that particular sample
+Thompson sampling turns out to be as simple as advertised.
+Each time a Ts agent acts, it updates its model based on current data and then simply draws one possible set of parameters at random from its posterior distributions of those parameters; then it finds the optimal action under that particular set of parameters; and executes it.
 
 An implementation of Thompson sampling for this problem, and a test harness to run it on a simulated version of mail-checking to see how it performs in terms of actions, losses, and regret:
 
 ~~~{.R}
+library(R2jags)
+model1 <- function() { for (i in 1:n){
+           y[i] ~ dinterval(t[i], dt[i,])
+           t[i] ~ dnorm(mu,tau)
+           }
+           mu ~ dnorm(650, pow(30, -2))
+           sd ~ dunif(10, 60)
+           tau <- pow(1/sd, 2)
+           y.new ~ dnorm(mu, tau)
+           }
+
+lossPosterior <- function(t, walk_cost, predictions, lastResortT) {
+    sapply(predictions,
+                function(delivered) { if (delivered<t) { return(walk_cost   + (t - delivered)); } else
+                                                       { return(2*walk_cost + (lastResortT - t) ); }})
+    }
 posterior_losses <- function(times, actions) {
-   lossPosterior <- function(t, walk_cost, predictions, lastResortT) {
-       sapply(predictions,
-                   function(delivered) { if (delivered<t) { return(walk_cost   + (t - delivered)); } else
-                                                          { return(2*walk_cost + (lastResortT - t) ); }})
-       }
-   pl <- sapply(actions, function (tm) { list(losses = lossPosterior(tm, 60, times, 780));})
-   names(pl) <- actions
-   return(pl)
-}
-optimize_posterior <- function(losses)  {
-   expectedLosses <- unlist(lapply(losses, mean))
-   optimumLoss <- min(expectedLosses)
-   optimumAction <- which.min(expectedLosses)
-   posteriorOfOptimal <- lapply(losses, function(a) { Filter(function (l) { l<=optimumLoss; }, a); })
-   return(list(expectedLosses, optimumLoss, as.integer(names(optimumAction)), posteriorOfOptimal))
+   df <- data.frame(Actions=actions,
+           Loss=sapply(actions, function (tm) { mean(lossPosterior(tm, 60, times, 780));}))
+   return(df)
 }
 
 thompsonSample <- function(dt, model) {
-   library(R2jags)
+   # model the available data:
    data <- list("dt"=dt, "n"=nrow(dt), "y"=rep(1, nrow(dt)))
    inits <- function() { list(mu=rnorm(1),sd=30,t=as.vector(apply(dt,1,mean))) }
-   params <- c("y.new")
+   params <- c("mu", "sd")
    j1 <- jags(data, inits, params, model, n.iter=1000, progress.bar="none")
 
    # 0:1440 is overkill, so let's only look at the plausible region of times to actively check:
    actions <- c(600:800)
-   posteriorTimes <- j1$BUGSoutput$sims.list[["y.new"]]
+   # sample one hypothetical world's set of mean/SD parameter values:
+   posteriorMean <- j1$BUGSoutput$sims.list[["mu"]][1]
+   posteriorSD <- j1$BUGSoutput$sims.list[["sd"]][1]
+   # sample a bunch of data from that hypothetical world:
+   posteriorTimes <- rnorm(1000, mean=posteriorMean, sd=posteriorSD)
+   # so we can then estimate losses:
    posteriorLosses <- posterior_losses(posteriorTimes, actions)
-
-   optimums <- optimize_posterior(posteriorLosses)
-   posteriorOfOptimal <- optimums[[4]]
-
-   # now to rewrite and then sample one weighted action:
-   library(utils)
-   df <- stack(posteriorOfOptimal)
-   df$ind <- as.integer(as.character(df$ind))
-   # what's the probability the current optimum is optimal? might be nice to know, to get an idea
-   # of how much has been learned and how fast it's converging:
-   print(paste0("Probability of current estimated-optimal action being optimal: ",
-                nrow(df[df$ind==optimums[[3]],]) / nrow(df)))
-   # the Thompson sample itself!
-   actionToTake <- sample(df$ind, size=1)
-   return(actionToTake) }
+   # and with expected losses for each action defined, find the optimal action in that world:
+   optimalAction <-  posteriorLosses[which.min(posteriorLosses$Loss),]$Actions[1]
+   return(optimalAction) }
 
 simulate_mab <- function(n) {
  walk_cost = 60; lastResortT = 780
@@ -1285,19 +1281,20 @@ simulate_mab <- function(n) {
  # pick a concrete mean/SD for this run, based on the full MCMC estimates as of 2015-09-20:
  mail_mean <- rnorm(1, mean=658.9, sd=4.69)
  mail_sd <- rnorm(1, mean=27.3, sd=8.33)
- # to calculate regret, we need an optimal loss, which we can actual losses to:
+ # to calculate regret, we need an optimal loss, which we can compare realized losses to:
  posteriorTimes <- rnorm(5000, mean=mail_mean, sd=mail_sd)
  actions <- c(600:800)
  posteriorLosses <- posterior_losses(posteriorTimes, actions)
- optimums <- optimize_posterior(posteriorLosses)
- optimalLoss <- optimums[[2]]
- optimalAction <- optimums [[3]]
+ optimalLoss <-  min(posteriorLosses$Loss)[1]
+ optimalAction <-  posteriorLosses[which.min(posteriorLosses$Loss),]$Actions[1]
  print(paste0("Parameters for this simulation; Mean: ", mail_mean,
-              "; SD: ", mail_sd, "; minimum average loss: ",
-              optimalLoss, "; optimal action: ", optimalAction))
+              "; SD: ", mail_sd,
+              "; minimum average loss: ", optimalLoss,
+              "; optimal action: t=", optimalAction))
 
  # seed data:
- mail3 <- data.frame(Time1=660, Time2=1440, Delivered=NA, Action=660, Loss=NA,  Regret=NA, Total.regret=NA)
+ mail3 <- data.frame(Time1=660, Time2=1440, Delivered=NA, Action.optimal=optimalAction, Action=660,
+                     Loss=0,  Regret=0, Total.regret=0)
 
  for (i in 1:n) {
    # today's delivery:
@@ -1309,127 +1306,24 @@ simulate_mab <- function(n) {
    loss <- if (delivered<t) { walk_cost  + (t - delivered); } else
               { 2*walk_cost + (lastResortT - t); }
    mail3 <- if(delivered<t) {
-               rbind(mail3, data.frame(Time1=0, Time2=t,    Delivered=delivered, Action=t,
-                                       Loss=loss, Regret=loss-optimalLoss,
+               rbind(mail3, data.frame(Time1=0, Time2=t, Delivered=delivered,
+                                       Action.optimal=optimalAction, Action=t,
+                                       Loss=loss, Regret=(loss-optimalLoss),
                                        Total.regret=sum(c(loss,mail3$Regret),na.rm=TRUE))) } else
-             { rbind(mail3, data.frame(Time1=t, Time2=1440, Delivered=delivered, Action=t, Loss=loss,
-                                       Regret=loss-optimalLoss,
+             { rbind(mail3, data.frame(Time1=t, Time2=1440, Delivered=delivered,
+                                       Action.optimal=optimalAction, Action=t,
+                                       Loss=loss, Regret=(loss-optimalLoss),
                                        Total.regret=sum(c(loss,mail3$Regret),na.rm=TRUE))) }
  }
  return(mail3)
 }
-run <- simulate_mab(100); run
-## [1] "Parameters for this simulation; Mean: 652.284509072865; SD: 33.1807599290166;
-##      minimum average loss: 118.560610994536; optimal action: 692"
-## last estimate:
-## [1] "Probability of current estimated-optimal action being optimal: 0.01055932721"
-## ...
-##     Time1 Time2   Delivered Action         Loss          Regret Total.regret
-## 1     660  1440          NA    660           NA              NA           NA
-## 2       0   715 627.8084020    715 147.19159803  28.63098703195  147.1915980
-## 3       0   732 620.5552582    732 171.44474183  52.88413083952  200.0757289
-## 4       0   677 675.9171439    677  61.08285612 -57.47775486957  142.5979740
-## 5       0   725 633.4140947    725 151.58590531  33.02529431491  175.6232683
-## 6       0   760 648.3155173    760 171.68448269  53.12387170030  228.7471400
-## 7       0   685 611.2824123    685 133.71758772  15.15697672581  243.9041167
-## 8     667  1440 716.5567134    667 233.00000000 114.43938900546  358.3435057
-## 9       0   718 589.8287347    718 188.17126527  69.61065427500  427.9541600
-## 10    670  1440 697.3583662    670 230.00000000 111.43938900546  539.3935490
-## 11      0   677 674.6866959    677  62.31330405 -56.24730694442  483.1462421
-## 12      0   691 637.7795855    691 113.22041449  -5.34019650785  477.8060456
-## 13      0   746 646.8473411    746 159.15265891  40.59204791098  518.3980935
-## 14      0   772 631.6795209    772 200.32047908  81.75986808891  600.1579616
-## 15    620  1440 667.7679051    620 280.00000000 161.43938900546  761.5973506
-## 16      0   765 661.7253761    765 163.27462390  44.71401290154  806.3113635
-## 17      0   659 609.5240464    659 109.47595358  -9.08465741264  797.2267061
-## 18    606  1440 685.7777542    606 294.00000000 175.43938900546  972.6660951
-## 19    611  1440 635.2589317    611 289.00000000 170.43938900546 1143.1054841
-## 20      0   698 636.7853367    698 121.21466329   2.65405229485 1145.7595364
-## 21      0   647 603.9625318    647 103.03746822 -15.52314277290 1130.2363936
-## 22      0   750 606.7172689    750 203.28273106  84.72212006155 1214.9585137
-## 23      0   702 664.6092881    702  97.39071189 -21.16989910379 1193.7886146
-## 24    645  1440 677.5866617    645 255.00000000 136.43938900546 1330.2280036
-## 25      0   675 622.7556231    675 112.24437692  -6.31623407236 1323.9117695
-## 26    630  1440 640.8950003    630 270.00000000 151.43938900546 1475.3511585
-## 27      0   759 668.5994752    759 150.40052478  31.83991378552 1507.1910723
-## 28      0   711 644.1780825    711 126.82191754   8.26130654703 1515.4523788
-## 29    674  1440 699.6155426    674 226.00000000 107.43938900546 1622.8917678
-## 30      0   706 608.0919274    706 157.90807260  39.34746160105 1662.2392294
-## 31      0   703 658.8938782    703 104.10612185 -14.45448914733 1647.7847403
-## 32    665  1440 705.7443431    665 235.00000000 116.43938900546 1764.2241293
-## 33      0   674 642.3336905    674  91.66630949 -26.89430150333 1737.3298278
-## 34      0   710 633.5048344    710 136.49516563  17.93455463380 1755.2643824
-## 35      0   658 648.8459318    658  69.15406824 -49.40654275525 1705.8578397
-## 36      0   721 655.1939143    721 125.80608568   7.24547468563 1713.1033144
-## 37      0   694 675.5563436    694  78.44365637 -40.11695462652 1672.9863597
-## 38      0   732 639.9091890    732 152.09081102  33.53020002879 1706.5165598
-## 39      0   715 688.1279312    715  86.87206882 -31.68854217612 1674.8280176
-## 40      0   646 585.8585108    646 120.14148923   1.58087823876 1676.4088958
-## 41    642  1440 695.3785223    642 258.00000000 139.43938900546 1815.8482848
-## 42      0   709 634.1009321    709 134.89906785  16.33845685992 1832.1867417
-## 43      0   713 577.8404132    713 195.15958677  76.59897577341 1908.7857175
-## 44      0   696 616.2782608    696 139.72173919  21.16112819377 1929.9468457
-## 45      0   690 639.5414911    690 110.45850890  -8.10210209318 1921.8447436
-## 46      0   642 625.3276557    642  76.67234428 -41.88826671073 1879.9564768
-## 47      0   688 602.9815250    688 145.01847500  26.45786400318 1906.4143408
-## 48      0   677 636.4162781    677 100.58372189 -17.97688909999 1888.4374517
-## 49      0   680 585.8080006    680 154.19199938  35.63138839021 1924.0688401
-## 50    621  1440 656.0041495    621 279.00000000 160.43938900546 2084.5082291
-## 51      0   646 641.8895007    646  64.11049927 -54.45011172800 2030.0581174
-## 52      0   651 640.1109106    651  70.88908941 -47.67152158648 1982.3865958
-## 53    654  1440 693.3740789    654 246.00000000 127.43938900546 2109.8259848
-## 54      0   702 595.2336565    702 166.76634352  48.20573252195 2158.0317174
-## 55      0   713 670.4853416    713 102.51465840 -16.04595259532 2141.9857648
-## 56      0   713 663.1696646    713 109.83033537  -8.73027562201 2133.2554891
-## 57      0   742 663.0346158    742 138.96538418  20.40477318844 2153.6602623
-## 58      0   682 607.7165689    682 134.28343107  15.72282007608 2169.3830824
-## 59    673  1440 677.2851570    673 227.00000000 108.43938900546 2277.8224714
-## 60    659  1440 684.3798249    659 241.00000000 122.43938900546 2400.2618604
-## 61      0   685 633.1187680    685 111.88123195  -6.67937904380 2393.5824814
-## 62      0   701 680.1054935    701  80.89450648 -37.66610451415 2355.9163769
-## 63      0   696 621.6042366    696 134.39576343  15.83515243649 2371.7515293
-## 64    662  1440 693.8072818    662 238.00000000 119.43938900546 2491.1909183
-## 65      0   673 655.3728580    673  77.62714198 -40.93346901803 2450.2574493
-## 66      0   690 658.0426097    690  91.95739029 -26.60322070655 2423.6542286
-## 67      0   667 613.3341881    667 113.66581190  -4.89479909305 2418.7594295
-## 68    656  1440 700.4197853    656 244.00000000 125.43938900546 2544.1988185
-## 69      0   684 601.0853037    684 142.91469634  24.35408534530 2568.5529038
-## 70      0   664 611.9715482    664 112.02845184  -6.53215915861 2562.0207447
-## 71    668  1440 680.3354581    668 232.00000000 113.43938900546 2675.4601337
-## 72      0   693 610.2313284    693 142.76867161  24.20806061466 2699.6681943
-## 73      0   708 630.3118016    708 137.68819842  19.12758742097 2718.7957817
-## 74      0   719 660.4021943    719 118.59780574   0.03719474235 2718.8329765
-## 75      0   676 636.5799015    676  99.42009852 -19.14051247024 2699.6924640
-## 76      0   698 625.2036774    698 132.79632258  14.23571158160 2713.9281756
-## 77      0   668 606.4258465    668 121.57415354   3.01354254290 2716.9417181
-## 78    623  1440 656.3955047    623 277.00000000 158.43938900546 2875.3811071
-## 79    646  1440 672.2594580    646 254.00000000 135.43938900546 3010.8204961
-## 80    692  1440 696.5494961    692 208.00000000  89.43938900546 3100.2598851
-## 81    692  1440 693.0719431    692 208.00000000  89.43938900546 3189.6992741
-## 82      0   649 613.0656011    649  95.93439895 -22.62621204696 3167.0730621
-## 83      0   746 650.2982686    746 155.70173136  37.14112036061 3204.2141824
-## 84      0   635 630.3302528    635  64.66974716 -53.89086383500 3150.3233186
-## 85      0   691 636.3183255    691 114.68167449  -3.87893650150 3146.4443821
-## 86      0   685 633.6342636    685 111.36573637  -7.19487462734 3139.2495075
-## 87    661  1440 690.9044588    661 239.00000000 120.43938900546 3259.6888965
-## 88      0   712 655.4131008    712 116.58689919  -1.97371180597 3257.7151847
-## 89      0   641 621.4642923    641  79.53570766 -39.02490333784 3218.6902813
-## 90    672  1440 680.1790357    672 228.00000000 109.43938900546 3328.1296704
-## 91    680  1440 697.6656642    680 220.00000000 101.43938900546 3429.5690594
-## 92      0   720 654.4254360    720 125.57456400   7.01395300054 3436.5830124
-## 93      0   656 634.5331573    656  81.46684273 -37.09376826699 3399.4892441
-## 94    617  1440 630.1733576    617 283.00000000 164.43938900546 3563.9286331
-## 95    615  1440 666.6395197    615 285.00000000 166.43938900546 3730.3680221
-## 96      0   689 640.0697013    689 108.93029870  -9.63031229923 3720.7377098
-## 97      0   714 696.3436876    714  77.65631238 -40.90429861141 3679.8334112
-## 98    622  1440 658.8444344    622 278.00000000 159.43938900546 3839.2728002
-## 99      0   679 667.4792287    679  71.52077135 -47.03983964934 3792.2329605
-## 100   645  1440 684.8291151    645 255.00000000 136.43938900546 3928.6723496
-## 101   651  1440 690.3757918    651 249.00000000 130.43938900546 4059.1117386
+run <- simulate_mab(500)
+
+library(ggplot2)
+qplot(1:nrow(run), run$Action, xlab="Nth mail check", ylab="Check time", color=run$Loss, size=I(5), main="Thompson sampling") +
+  stat_smooth() + geom_hline(colour="green", aes(yintercept=run$Action.optimal[1]))
 ~~~
 
-In this example, TS does not seem to perform too spectacularly, wandering sometimes quite far from the optimal action 692 despite having 100 data samples to work with.
-But the probability of the current optimal choice being optimal is still a remarkably low 1%, indicating that there hasn't been nearly as much learning as one might hope.
+![1 simulation run's actions over 500 time-steps, optimal action overlaid in green](/images/maildelivery-thompsonsampling.png)
 
-I speculate that interval-censoring, or the asymmetry of the loss function, make this a hard problem to reach good performance on compared to the usual scenarios one sees Thompson sampling employed on: the interval-censoring drains data of most of its information, while the asymmetry encourages conservativeness and trying to avoid checking mail early; in contrast, my main analysis exploits exact mail delivery times to get more accuracy, and the loss from each mailbox check is ignored, so to speak, since nothing is being delivered most days I gathered data, while this TS model is implicitly in a package-checking situation.
-It may be that no reinforcement-learning agent can perform well in this setting with only _n_=100 of weak data, and the somewhat informative priors specified.
+In this particular simulation, the Thompson sampling agent starts off choosing check-times too late in the day and gradually tightens its selection of actions until by ~_t_=100, it is generally checking near-optimally but with continued sampling from other check-times which starts to compensate for a little undershooting error.
