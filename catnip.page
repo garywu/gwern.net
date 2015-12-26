@@ -145,25 +145,27 @@ This works well, aside from the silvervine powder where inevitably some of the p
 
 ## Efficacy
 
-Cat             Sex Fixed Color  Kind                Catnip Valerian Honeysuckle Silvervine Olive wood Olive oil
--------------   --- ----- -----  ----                ------ -------- ----------- ---------- ---------- ---------
-Oolong          M   1     black  Domestic long       0      1        0           1          0          0
-Percy           M   1     brown  Tabby               0      0        1           1          0          0
-Kiki            M   1     grey   Tabby               1
-Stormy          M   1     grey   Russian Blue
-Sara            F   1     brown  Tabby               1
-Whitey          F   1     white  Domestic short      1
+Cat             Sex Age  Fixed Color  Kind                Catnip Valerian Honeysuckle Silvervine Olive wood Olive oil
+-------------   --- ---- ----- -----  ----                ------ -------- ----------- ---------- ---------- ---------
+Oolong          M   1.5  1     black  Domestic long       0      1        0           1          0          0
+Percy           M   3    1     brown  Tabby               0      0        1           1          0          0
+Kiki            M   2    1     grey   Tabby               1
+Stormy          M   10   1     grey   Russian Blue
+Sara            F   10   1     brown  Tabby               1
+Whitey          F   5    1     white  Domestic short      1
+Sassy           F   12   1     orange Domestic short      0      0        0           1          0          0
 
-Description of effects in responders:
+Description of effects:
 
 - Catnip: too well known to need much description. Cats become 'hyper', uninhibited, playful, interested in the catnip toy
-- Valerian: on Oolong, produces an interesting mix of passiveness and possessiveness - after onset, he mostly lays on the floor passively, occasionally pulling himself across it towards the toy, but generally making little effort to hunt; if the toy comes within reach, though, then he seizes it energetically and abruptly begins clasping it to his face, chewing it, curling up around it and kicking at the toy with his hind legs. Eventually he can be coaxed into playing chase normally, with his usual level of competence and interest.
-- Honeysuckle: on Percy, had a general stimulant effect; despite being fat, lazy, and usually entirely uninterested in chase, he will make an effort to play after sniffing a honeysuckle-impregnated toy. This stimulating effect does not produce the un-inhibition of catnip, and seems fairly mild.
+- Valerian: on Oolong, produces an interesting mix of passiveness and possessiveness - after onset, he mostly lays on the floor passively, occasionally pulling himself across it towards the toy, but generally making little effort to hunt; if the toy comes within reach, though, then he seizes it energetically and abruptly begins clasping it to his face, chewing it, curling up around it and kicking at the toy with his hind legs. Eventually he can be coaxed into playing chase normally, with his usual level of competence and interest. Actively repelled Sassy.
+- Honeysuckle: on Percy, had a general stimulant effect; despite being fat, lazy, and usually entirely uninterested in chase, he will make an effort to play after sniffing a honeysuckle-impregnated toy. This stimulating effect does not produce the un-inhibition of catnip, and seems fairly mild. Actively repelled Sassy.
 - Silvervine:
 
     1. on Oolong, a general stimulating effect with considerable interest in playing chase or watching the toy, but curiously, he makes many fewer attempts at attacking or chasing and when he does, he is distinctly slower (and thus, less effective) than usual. His coordination is fine - he's not clumsy or falling over - but he's just not as effective (in a way hard to pin down specifically).
     2. On Percy, likewise a general stimulating effect but far more effective than the honeysuckle in inducing chase play, with him even trying out jumps when coaxed appropriately; he may be less effective, like Oolong, but he plays chase so little that it's impossible for me to make any comparisons with his 'normal' chase behavior.
-- Olive oil/wood: brief interest in smell, then ignored entirely.
+    3. Sassy: similar. More time on back while playing chase than usual.
+- Olive oil/wood: all cats showed brief interest in smell, then ignored entirely.
 
 # Survey
 
