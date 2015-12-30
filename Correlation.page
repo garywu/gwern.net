@@ -1,0 +1,979 @@
+---
+title: How Often Does Correlation=Causality?
+description: Compilation of studies comparing observational results with randomized experimental results on the same intervention.
+tags: statistics
+created: 24 Jun 2014
+status: in progress
+...
+
+
+"Evaluating non-randomised intervention studies", Deeks et al 2003 http://www.journalslibrary.nihr.ac.uk/__data/assets/pdf_file/0007/64933/FullReport-hta7270.pdf
+
+> In the systematic reviews, eight studies compared results of randomised and non-randomised studies across multiple interventions using metaepidemiological techniques. A total of 194 tools were identified that could be or had been used to assess non-randomised studies. Sixty tools covered at least five of six pre-specified internal validity domains. Fourteen tools covered three of four core items of particular importance for non-randomised studies. Six tools were thought suitable for use in systematic reviews. Of 511 systematic reviews that included nonrandomised studies, only 169 (33%) assessed study quality. Sixty-nine reviews investigated the impact of quality on study results in a quantitative manner. The new empirical studies estimated the bias associated with non-random allocation and found that the bias could lead to consistent over- or underestimations of treatment effects, also the bias increased variation in results for both historical and concurrent controls, owing to haphazard differences in case-mix between groups. The biases were large enough to lead studies falsely to conclude significant findings of benefit or harm.
+> ...Conclusions: Results of non-randomised studies sometimes, but not always, differ from results of randomised studies of the same intervention. Nonrandomised studies may still give seriously misleading results when treated and control groups appear similar in key prognostic factors. Standard methods of case-mix adjustment do not guarantee removal of bias. Residual confounding may be high even when good prognostic data are available, and in some situations adjusted results may appear more biased than unadjusted results.
+
+Methods
+1. Three reviews were conducted to consider:
+● empirical evidence of bias associated with non-randomised studies
+● the content of quality assessment tools for non-randomised studies
+● the use of quality assessment in systematic reviews of non-randomised studies.
+These reviews were conducted systematically, identifying relevant literature through comprehensive searches across electronic databases, hand-searches and contact with experts.
+2. New empirical investigations were conducted generating non-randomised studies from two large, multi-centre RCTs by selectively resampling trial participants according to allocated treatment, centre and period. These were used to examine:
+● systematic bias introduced by the use of historical and non-randomised concurrent controls
+● whether results of non-randomised studies are more variable than results of RCTs
+● the ability of case-mix adjustment methods to correct for selection bias introduced by nonrandom allocation.
+The resampling design overcame particular problems of meta-confounding and variability of direction and magnitude of bias that hinder the interpretation of previous reviews.
+
+The first systematic review looks at existing evidence of bias in non-randomised studies, critically evaluating previous methodological studies that have attempted to estimate and characterise differences in results between RCTs and non-randomised studies.
+Two further systematic reviews focus on the issue of quality assessment of non-randomised studies. The first identifies and evaluates tools that can be used to assess the quality of non-randomised studies. The second looks at ways that study quality has been assessed and addressed in systematic reviews of healthcare interventions that have included non-randomised studies.
+The two empirical investigations focus on the issue of selection bias in non-randomised studies. The first investigates the size and behaviour of selection bias in evaluations of two specific clinical interventions and the second assesses the degree to which case-mix adjustment corrects for selection bias.
+
+Evidence about the importance of design features of RCTs has accumulated rapidly during recent years. 19-21 This evidence has mainly been obtained by a method of investigation that has been termed meta-epidemiology, a powerful but simple technique of investigating variations in the results of RCTs of the same intervention according to features of their study design. 22 The process involves first identifying substantial numbers of systematic reviews each containing RCTs both with and without the design feature of interest. Within each review, results are compared between the trials meeting and not meeting each design criterion. These comparisons are then aggregated across the reviews in a grand overall meta-analysis to obtain an estimate of the systematic bias removed by the design feature. For RCTs, the relative importance of proper randomisation, concealment of allocation and blinding have all been estimated using this technique. 20,21 The results have been shown to be consistent across clinical fields, 23 providing some evidence that meta-epidemiology may be a reliable investigative technique. The method has also been applied to investigate sources of bias in studies of diagnostic accuracy, where participant selection, independent testing and use of consistent reference standards have been identified as being the most important design features. 24
+
+Eight reviews were identified which fulfilled the inclusion criteria; seven considered medical interventions and one psychological interventions. Brief descriptions of the methods and findings of each review are given below, with summary details given in Table 2. There is substantial overlap in the interventions (and hence studies) that were included in the reviews of medical interventions (Table 3).
+
+Sacks, Chalmers and Smith 27:
+Sacks and colleagues compared the results of RCTs with historically controlled trials (HCTs). The studies were identified in Chalmers' personal collection of RCTs, HCTs and uncontrolled studies maintained since 1955 by searches of Index Medicus, Current Contents and references of reviews and papers in areas of particular medical interest (full list not stated). Six interventions were included for which at least two RCTs and two HCTs were identified [cirrhosis with oesophageal varices, coronary artery surgery, anticoagulants for acute myocardial infarction, 5-fluorouracil adjuvant therapy for colon cancer, bacille Calmette-Guérin vaccine (BCG) adjuvant immunotherapy and diethylstilbestrol for habitual abortion (Table 3)]. Trial results were classified as positive if there was either a statistically significant benefit or if the authors concluded benefit in the absence of statistical analysis, otherwise as negative. For each of the six interventions, a higher percentage of HCTs compared with RCTs concluded benefit: across all six interventions 20% of RCTs showed benefit compared with 79% of the HCTs.
+
+- Sacks H, Chalmers TC, Smith H Jr. "Randomized versus historical controls for clinical trials". Am J Med 1982;72:233-40. https://pdf.yt/d/N-9vBM-MnyhkulaC / https://www.dropbox.com/s/cjq0aqkxnrv1ba6/1982-sacks.pdf?dl=0 http://www.gwern.net/docs/statistics/1982-sacks.pdf
+
+
+Kunz and Oxman 28 and Kunz, Vist and Oxman 29:
+Kunz and Oxman searched the literature for reviews that made empirical comparisons between the results of randomised and non-randomised studies. They included the results of the six comparisons in Sacks and colleagues' study above, and results from a further five published comparisons [antiarrhthymic therapy for atrial fibrillation, allogenic leucocyte immunotherapy for recurrent miscarriage, contrast media for salpingography, hormonal therapy for cryptorchidism, and transcutaneous electrical nerve stimulation (TENS) for postoperative pain (Table 3)].
+In some of the comparisons, RCTs were compared with truly observational studies and, in others they were compared with quasi-experimental trials. A separate publication of anticoagulants for acute myocardial infarction already included in Sacks and colleagues' review was also reviewed, 30 as was a comparison of differences in control group event rates between randomised and non-randomised studies for treatments for six cancers (which does not fit within our inclusion criteria). 31 The review was updated in 2002 including a further 11 comparisons, and published as a Cochrane methodology review. 29
+The results of each empirical evaluation were described, but no overall quantitative synthesis was carried out. The results showed differences between RCTs and non-randomised studies in 15 of the 23 comparisons, but with inconsistency in the direction and magnitude of the difference. It was noted that non-randomised studies overestimated more often than they underestimated treatment effects.
+...In 15 of 23 comparisons effects were larger in non-randomised studies, 4 studies had comparable results, whilst 4 reported smaller effects
+
+- Kunz R, Oxman AD. "The unpredictability paradox: review of empirical comparisons of randomised and non-randomised clinical trials" http://www.ncbi.nlm.nih.gov/pmc/articles/PMC28700/ . _BMJ_ 1998;317:1185-90.
+- Kunz R, Vist G, Oxman AD. "Randomisation to protect against selection bias in healthcare trials (Cochrane Methodology Review)" http://www.thecochranelibrary.com/userfiles/ccoch/file/INternational%20Clinical%20Trials%20Day/MR000012.pdf . In _The Cochrane Library, Issue 4_. Oxford: Update Software; 2002.
+
+Britton, McKee, Black, McPherson, Sanderson and Bain 25:
+Britton and colleagues searched for primary publications that made comparisons between single randomised and non-randomised studies (14 comparisons) and secondary publications (reviews) making similar comparisons (four comparisons). Both observational and quasiexperimental studies were included in the nonrandomised category. They included all four of the secondary comparisons included in the review by Kunz and colleagues 28 (Table 3). The single study comparisons included studies where a comparison was made between participants who were allocated to experimental treatment as part of a trial and a group who declined to participate, and studies of centres where simultaneous randomised and patient-preference studies had been undertaken of the same intervention. The studies were assessed to ensure that the randomised and nonrandomised studies were comparable on several dimensions (Table 4).
+There were statistically significant differences between randomised and non-randomised studies for 11 of the 18 comparisons. The direction of these differences was inconsistent and the magnitude extremely variable. For some interventions the differences were very large. For example, in a review of treatments for acute non-lymphatic leukaemia, the risk ratio in RCTs was 24 compared with 3.7 in non-randomised studies (comparison 23 in Table 3).
+The impact of statistical adjustment for baseline imbalances in prognostic factors was investigated in two primary studies, and in four additional comparisons (coronary angioplasty versus bypass grafting, calcium antagonists for cardiovascular disease, malaria vaccines and stroke unit care: comparisons 25-28 in Table 3). In two of the six comparisons there was evidence that adjustment for prognostic factors led to improved concordance of results between randomised and non-randomised studies.
+
+- Britton A, McKee M, Black N, McPherson K, Sanderson C, Bain C. "Choosing between randomised and non-randomised studies: a systematic review" http://www.journalslibrary.nihr.ac.uk/__data/assets/pdf_file/0009/64827/FullReport-hta2130.pdf . Health Technol Assess 1998;2(13) (summary: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1126943/?report=classic )
+
+MacLehose, Reeves, Harvey, Sheldon, Russell and Black 26
+MacLehose and colleagues restricted their review to studies where results of randomised and nonrandomised comparisons were reported together in a single paper, arguing that such comparisons are more likely to be of 'like-with-like' than those made between studies reported in separate papers. They included primary studies and also reviews that pooled results from several individual studies. Of the 14 comparisons included in their report, three were based on reviews (comparisons 3, 7 and 25 in Table 3) and the rest were results from comparisons within single studies. The nonrandomised designs included comprehensive cohort studies, other observational studies and quasi-experimental designs.
+The 'fairness' or 'quality' of each of the comparisons made was assessed for comparability of patients, interventions and outcomes and additional study methodology (see Table 4). Although the authors did not categorise comparisons as showing equivalence or discrepancy, the differences in results were found to be significantly greater in comparisons ranked as being low quality.
+...In 14 of 35 comparisons the discrepancy in RR was <10%, in 5 comparisons it was >50%. Discrepancies were smaller in "fairer" comparisons.
+
+- MacLehose RR, Reeves BC, Harvey IM, Sheldon TA, Russell IT, Black AMS. "A systematic review of comparisons of effect sizes derived from randomised and non-randomised studies" http://www.journalslibrary.nihr.ac.uk/__data/assets/pdf_file/0010/64828/FullReport-hta4340.pdf . _Health Technol Assess_ 2000;4(34).
+
+Benson and Hartz 32
+Benson and Hartz evaluated 19 treatment comparisons (eight in common with Britton and colleagues 25 ) for which they located at least one randomised and one observational study (defined as being a study where the treatment was not allocated for the purpose of research) in a search of MEDLINE and the databases in the Cochrane Library (Table 4). They only considered treatments administered by physicians. Across the 19 comparisons they found 53 observational and 83 randomised studies, the results of which were metaanalysed separately for each treatment comparison. Comparisons were made between the pooled estimates, noting whether the point estimate from the combined observational studies was within the confidence interval of the RCTs. They found only two instances where the observational and randomised studies did not meet this criterion.
+
+Concato, Shah and Horwitz 33
+Concato and colleagues searched for meta-analyses of RCTs and of observational studies (restricted to case-control and concurrent cohort studies) published in five leading general medical journals. They found only five comparisons where both types of study had been meta-analysed [BCG vaccination for tuberculosis (TB), mammographic screening for breast cancer mortality, cholesterol levels and death from trauma, treatment of hypertension and stroke, treatment of hypertension and coronary heart disease (CHD) (Table 3)] combining a total of 55 randomised and 44 observational studies. They tabulated the results of meta-analyses of the randomised and the observational studies and considered the similarity of the point estimates and the range of findings from the individual studies. In all five instances they noted the pooled results of randomised and non-randomised studies to be similar. Where individual study results were available, the range of the RCT results was greater than the range of the observational results.
+
+Ioannidis, Haidich, Pappa, Pantazis, Kokori, Tektonidou, Contopoulous-Ioannidis and Lau 34
+Ioannidis and colleagues searched for reviews that considered results of RCTs and non-randomised studies. In addition to searching MEDLINE they included systematic reviews published in the Cochrane Library, locating in total 45 comparisons. Comparisons of RCTs with both quasi-randomised and observational studies were included. All meta-analytical results were expressed as odds ratios, and differences between randomised and non-randomised results expressed as a ratio of odds ratios and their statistical significance calculated. Findings across the 45 topic areas were pooled incorporating results from 240 RCTs and 168 non-randomised studies. Larger treatment effects were noted more often in non-randomised studies. In 15 cases (33%) there was at least a twofold variation in odds ratios, whereas in 16% there were statistically significant differences between the results of randomised and non-randomised studies. The authors also tested the heterogeneity of the results of the randomised and non-randomised studies for each topic. Significant heterogeneity was noted for 23% of the reviews of RCTs and for 41% of the reviews of non-randomised studies.
+
+Lipsey and Wilson 35 and Wilson and Lipsey 36
+Lipsey and Wilson searched for all meta-analyses of psychological interventions, broadly defined as treatments whose intention was to induce psychological change (whether emotional, attitudinal, cognitive or behavioural). Evaluations of individual components of interventions and broad interventional policies or organisational arrangements were excluded. Searches of psychology and sociology databases supported by manual searches identified a total of 302 metaanalyses, 76 of which contained both randomised and non-randomised comparative studies. Results were analysed in two ways. First, the average effect sizes of randomised and non-randomised studies were computed across the 74 reviews, and average effects were noted to be very slightly smaller for non-randomised than randomised studies. Second (and more usefully) the difference in effect sizes between randomised and non-randomised studies within each of the reviews was computed and plotted. This revealed both large over- and underestimates with non-randomised studies, differences in effect sizes ranging from -0.60 to +0.77 standard deviations.
+
+Three commonly cited studies were excluded from our review. 37-39 Although these studies made comparisons between the results of randomised and non-randomised studies across many interventions, they did not match RCTs and nonrandomised studies according to the intervention. Although they provide some information about the average findings of selected randomised and nonrandomised studies, they did not consider whether there are differences in results of RCTs and nonrandomised studies of the same intervention.
+
+Findings of the eight reviews
+The eight reviews have drawn conflicting conclusions. Five of the eight reviews concluded that there are differences between the results of randomised and non-randomised studies in many but not all clinical areas, but without there being a consistent pattern indicating systematic bias. 25,26,28,34,35 One of the eight reviews found an overestimation of effects in all areas studied. 27 The final two concluded that the results of randomised and non-randomised studies were 'remarkably similar'. 32,33
+Of the two reviews that considered the relative variability of randomised and non-randomised results, one concluded that RCTs were more consistent 34 and the other that they were less consistent. 33
+
+- "Choosing between randomised and non-randomised studies: a systematic review", Britton et al 1998 http://www.journalslibrary.nihr.ac.uk/__data/assets/pdf_file/0009/64827/FullReport-hta2130.pdf (summary: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1126943/?report=classic )
+
+This review explored those issues related to the process of randomisation that may affect the validity of conclusions drawn from the results of RCTs and non-randomised studies.
+...Previous comparisons of RCTs and non-randomised studies: Eighteen papers that directly compared the results of RCTs and prospective non-randomised studies were found and analysed. No obvious patterns emerged; neither the RCTs nor the non-randomised studies consistently gave larger or smaller estimates of the treatment effect. The type of intervention did not appear to be influential, though more comparisons need to be conducted before definite conclusions can be drawn.
+
+7 of the 18 papers found no [statistically-]significant differences between treatment effects from the two types of study. 5 of these 7 had adjusted results in the non-randomised studies for baseline prognostic differences. The remaining 11 papers reported [statistically-significant] differences which are summarised in Table 3.
+
+7 studies obtained differences in the same direction but of significantly different magnitude. In 3, effect sizes were greater in the RCTs.
+
+...However, the evidence reviewed here is extremely limited. It suggests that adjustment for baseline differences in arms of non-randomised studies will not necessarily result in similar effect sizes to those obtained from RCTs.
+
+2. Chalmers TC, Matta RJ, Smith H, Jr, Kunzler A-M. Evidence favouring the use of anticoagulants in the hospital phase of acute myocardial infarction. N Engl J Med. 1977;297:1091-1096. [PubMed]
+
+
+"Developing improved observational methods for evaluating therapeutic effectiveness", Horwitz et al 1990 http://www.sciencedirect.com/science/article/pii/000293439090182D/pdf
+
+> ...The specific topic investigated was the prophylactic effectiveness of β-blocker therapy after an acute myocardial infarction. To accomplish the research objective, three sets of data were compared. First, we developed a restricted cohort based on the eligibility criteria of the randomized clinical trial; second, we assembled an expanded cohort using the same design principles except for not restricting patient eligibility; and third, we used the data from the Beta Blocker Heart Attack Trial (BHAT), whose results served as the gold standard for comparison. In this research, the treatment difference in death rates for the restricted cohort and the BHAT trial was nearly identical. In contrast, the expanded cohort had a larger treatment difference than was observed in the BHAT trial. We also noted the important and largely neglected role that eligibility criteria may play in ensuring the validity of treatment comparisons and study outcomes....
+
+
+Lonn EM, Yusuf S. Is there a role for antioxidant vitamins in the prevention of cardiovascular disease? An update on epidemiological and clinical trials data. Can J Cardiol 1997;13:957-965
+Patterson RE, White E, Kristal AR, Neuhouser ML, Potter JD. Vitamin supplement and cancer risk: the epidemiological evidence. Cancer Causes Control 1997;8:786-802
+
+"How study design affects outcomes in comparisons of therapy. I: Medical", Colditz et al 1989 http://www.ime.usp.br/~abe/lista/pdfpWvyXNv25a.pdf
+
+"How study design affects outcomes in comparisons of therapy. II: Surgical", Miller et al 1989 http://www.ime.usp.br/~abe/lista/pdfSDs9TvkeEz.pdf
+
+> We analysed the results of 221 comparisons of an innovation with a standard treatment in surgery published in 6 leading surgery journals in 1983 to relate features of study design to the magnitude of gain. For each comparison we measured the gain attributed to the innovation over the standard therapy by the Mann-Whitney statistic and the difference in proportion of treatment successes. For primary treatments (aimed at curing or ameliorating a patient's principal disease), an average gain of 0.56 was produced by 20 randomized controlled trials. This was less than the 0.62 average for four non-randomized controlled trials, 0.63 for 19 externally controlled trials, and 0.57 for 73 record reviews (0.50 represents a toss-up between innovation and standard). For secondary therapies (used to prevent or treat complications of therapy), the average gain was 0.53 for 61 randomized controlled trials, 0.58 for eleven non-randomized controlled trials, 0.54 for eight externally controlled trials, and 0.55 for 18 record reviews.
+
+
+"Comparison of evidence on harms of medical interventions in randomized and nonrandomized studies", Papanikolaou et al 2006 http://heads.gr/downloads/32.%20Comparison%20of%20evidence%20on%20harms%20of%20medical%20interventions%20in%20randomized%20and%20nonrandomized%20studies.pdf
+
+Background: Information on major harms of medical interventions comes primarily from epidemiologic studies performed after licensing and marketing. Comparison with data
+from large-scale randomized trials is occasionally feasible.
+We compared evidence from randomized trials with that
+from epidemiologic studies to determine whether they give
+different estimates of risk for important harms of medical
+interventions.
+Methods: We targeted well-defined, specific harms of various medical interventions for which data were already available from large-scale randomized trials (> 4000 subjects).
+Nonrandomized studies involving at least 4000 subjects addressing these same harms were retrieved through a search
+of MEDLINE. We compared the relative risks and absolute
+risk differences for specific harms in the randomized and
+nonrandomized studies.
+Results: Eligible nonrandomized studies were found for 15
+harms for which data were available from randomized trials
+addressing the same harms. Comparisons of relative risks
+between the study types were feasible for 13 of the 15 topics,
+and of absolute risk differences for 8 topics. The estimated
+increase in relative risk differed more than 2-fold between
+the randomized and nonrandomized studies for 7 (54%) of
+the 13 topics; the estimated increase in absolute risk differed
+more than 2-fold for 5 (62%) of the 8 topics. There was no
+clear predilection for randomized or nonrandomized studies
+to estimate greater relative risks, but usually (75% [6/8]) the
+randomized trials estimated larger absolute excess risks of
+harm than the nonrandomized studies did.
+Interpretation: Nonrandomized studies are often conservative in estimating absolute risks of harms. It would be useful
+to compare and scrutinize the evidence on harms obtained
+from both randomized and nonrandomized studies.
+
+
+Comparisons of effect sizes derived from randomised and non-randomised studies
+BC Reeves, RR MacLehose, IM Harvey, TA Sheldon... - Health Services Research ..., 1998
+
+"Spurious precision? Meta-analysis of observational studies", Egger et al 1998 http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2665367/pdf/9462324.pdf
+
+Meta-analysis of observational studies is as
+common as meta-analysis of controlled trials
+Confounding and selection bias often distort the
+findings from observational studies
+There is a danger that meta-analyses of
+observational data produce very precise but
+equally spurious results
+The statistical combination of data should
+therefore not be a prominent component of
+reviews of observational studies
+More is gained by carefully examining possible
+sources of heterogeneity between the results from
+observational studies
+Reviews of any type of research and data should
+use a systematic approach, which is documented
+in a materials and methods section
+
+The randomised controlled trial is the principal
+research design in the evaluation of medical interventions. However, aetiological hypotheses-for example,
+those relating common exposures to the occurrence of
+disease-cannot generally be tested in randomised
+experiments. Does breathing other people's tobacco
+smoke cause lung cancer, drinking coffee cause
+coronary heart disease, and eating a diet rich in
+saturated fat cause breast cancer? Studies of such
+"menaces of daily life" 6 use observational designs or
+examine the presumed biological mechanisms in the
+laboratory. In these situations the risks involved are
+generally small, but once a large proportion of the
+population is exposed, the potential public health
+implications of these associations-if they are causalcan be striking.
+
+If years later
+established interventions are incriminated with
+adverse effects, there will be ethical, political, and legal
+obstacles to the conduct of a new trial. Recent
+examples for such situations include the controversy
+surrounding a possible association between intramuscular administration of vitamin K to newborns and
+the risk of childhood cancer 8 and whether oral contraceptives increase women's risk of breast cancer. 9
+
+Patients exposed to the factor under investigation may differ in several other aspects that are relevant to the risk of developing the disease in question. Consider, for example, smoking as a risk factor for suicide. Virtually all cohort studies have shown a positive association, with a dose-response relation being evident between the amount smoked and the probability of committing suicide. 14-19 Figure 1 illustrates this for four prospective studies of middle aged men, including the massive cohort of patients screened for the multiple risk factors intervention trial. Based on over 390 000 men and almost five million years of follow up, a meta-analysis of these cohorts produces highly precise and significant estimates of the increase in suicide risk that is associated with smoking different daily amounts of cigarettes: relative rate for 1-14 cigarettes 1.43 (95% confidence interval 1.06 to 1.93), for 15-24 cigarettes 1.88 (1.53 to 2.32), >25 cigarettes 2.18 (1.82 to 2.61). On the basis of established criteria, 20 many would consider the association to be causal-if only it were more plausible. Indeed, it is improbable that smoking is causally related to suicide. 14 Rather, it is the social and mental states predisposing to suicide that are also associated with the habit of smoking.
+
+Beta carotene has antioxidant
+properties and could thus plausibly be expected to
+prevent carcinogenesis and atherogenesis by reducing
+oxidative damage to DNA and lipoproteins. 27 Contrary
+to many other associations found in observational
+studies, this hypothesis could be, and was, tested in
+experimental studies. The findings of four large trials
+have recently been published. 28-31 The results were disappointing and even-for the two trials conducted in
+men at high risk (smokers and workers exposed to
+asbestos) 28 29 -disturbing.
+...With a fixed effects model, the meta-analysis
+of the cohort studies shows a significantly lower risk of
+cardiovascular death (relative risk reduction 31% (95%
+confidence interval 41% to 20%, P < 0.0001)) (fig 2).
+The results from the randomised trials, however, show
+a moderate adverse effect of â carotene supplementation (relative increase in the risk of cardiovascular
+death 12% (4% to 22%, P = 0.005)). Similarly
+discrepant results between epidemiological studies and
+trials were observed for the incidence of and mortality
+from cancer.
+...Fig 2 Meta-analysis of association between Beta carotene intake and
+cardiovascular mortality: results from observational studies show
+considerable benefit, whereas the findings from randomised
+controlled trials show an increase in the risk of death. Meta-analysis
+is by fixed effects model
+
+However, even if adjustments for
+confounding factors have been made in the analysis,
+residual confounding remains a potentially serious
+problem in observational research. Residual confounding arises when a confounding factor cannot be
+measured with sufficient precision-which often occurs
+in epidemiological studies. 22 23
+
+Implausibility of results, as in the case of smoking and
+suicide, rarely protects us from reaching misleading
+claims. It is generally easy to produce plausible
+explanations for the findings from observational
+research. In a cohort study of sex workers, for example,
+one group of researchers that investigated cofactors in
+transmission of HIV among heterosexual men and
+women found a strong association between oral
+contraceptives and HIV infection, which was independent of other factors. 25 The authors hypothesised
+that, among other mechanisms, the risk of transmission could be increased with oral contraceptives due to
+"effects on the genital mucosa, such as increasing the
+area of ectopy and the potential for mucosal disruption
+during intercourse." In a cross sectional study another
+group produced diametrically opposed findings,
+indicating that oral contraceptives protect against the
+virus. 26 This was considered to be equally plausible,
+"since progesterone-containing oral contraceptives
+thicken cervical mucus, which might be expected to
+hamper the entry of HIV into the uterine cavity." It is
+likely that confounding and bias had a role in producing these contradictory findings. This example should
+be kept in mind when assessing other seemingly plausible epidemiological associations.
+
+Several such situations are depicted in figure 3.
+Consider diet and breast cancer. The hypothesis from
+ecological analyses 33 that higher intake of saturated fat
+could increase the risk of breast cancer generated
+much observational research, often with contradictory
+results. A comprehensive meta-analysis 34 showed an
+association for case-control but not for cohort studies
+(odds ratio 1.36 for case-control studies versus relative
+rate 0.95 for cohort studies comparing highest with
+lowest category of saturated fat intake, P = 0.0002 for
+difference in our calculation) (fig 2). This discrepancy
+was also shown in two separate large collaborative
+pooled analyses of cohort and case-control studies. 35 36
+The most likely explanation for this situation is that
+biases in the recall of dietary items and in the selection
+of study participants have produced a spurious association in the case-control comparisons. 36
+That differential recall of past exposures may introduce bias is also evident from a meta-analysis of
+case-control studies of intermittent sunlight exposure
+and melanoma (fig 3). 37 When studies were combined
+in which some degree of blinding to the study hypothesis was achieved, only a small and non-significant
+effect (odds ratio 1.17 (95% confidence interval 0.98 to
+1.39)) was evident. Conversely, in studies without blinding, the effect was considerably greater and significant
+(1.84 (1.52 to 2.25)). The difference between these two
+estimates is unlikely to be a product of chance
+(P = 0.0004 in our calculation).
+The importance of the methods used for assessing
+exposure is further illustrated by a meta-analysis of
+cross sectional data of dietary calcium intake and blood
+pressure from 23 different studies. 38 As shown in figure
+3, the regression slope describing the change in systolic blood pressure (in mm Hg) per 100 mg of calcium
+intake is strongly influenced by the approach used for
+assessing the amount of calcium consumed. The
+association is small and only marginally significant
+with diet histories (slope − 0.01 ( − 0.003 to − 0.016))
+but large and highly significant when food frequency
+questionnaires were used ( − 0.15 ( − 0.11 to − 0.19)).
+With studies using 24 hour recall an intermediate
+result emerges ( − 0.06 ( − 0.09 to − 0.03)). Diet histories
+assess patterns of usual intake over long periods of
+time and require an extensive interview with a
+nutritionist, whereas 24 hour recall and food frequency
+questionnaires are simpler methods that reflect current
+consumption. 39 It is conceivable that different precision
+in the assessment of current calcium intake may
+explain the differences in the strength of the
+associations found, a statistical phenomenon known as
+regression dilution bias. 40
+An important criterion supporting causality of
+associations is a dose-response relation. In occupational epidemiology the quest to show such an association can lead to very different groups of employees
+being compared. In a meta-analysis that examined the
+link between exposure to formaldehyde and cancer,
+funeral directors and embalmers (high exposure) were
+compared with anatomists and pathologists (intermediate to high exposure) and with industrial workers
+(low to high exposure, depending on job assignment). 41
+As shown in figure 3, there is a striking deficit of deaths
+from lung cancer among anatomists and pathologists
+(standardised mortality ratio 33 (95% confidence interval 22 to 47)), which is most likely to be due to a lower
+prevalence of smoking among this group. In this situation few would argue that formaldehyde protects
+against lung cancer. In other instances, however, such
+selection bias may be less obvious.
+
+"Contradicted and Initially Stronger Effects in Highly Cited Clinical Research" http://www.overview.givewell.net/files/methods/Ioannidis%202005-Contradicted%20and%20Initially%20Stronger%20Effects%20in%20Highly%20Cited%20Clinical%20Research.pdf , Ioannidis 2005
+
+5 of 6 highly-cited nonrandomized studies had been contradicted or had found stronger effects vs 9 of 39 randomized controlled trials (P=.008)...Matched control studies did not have a significantly different share of refuted results than highly cited studies, but they included more studies with "negative" results.
+
+Similarly, there is some evidence on disagreements between epidemiological studies and randomized trials. 3-5
+
+For highly cited nonrandomized studies, subsequently published pertinent randomized trials and metaanalyses thereof were eligible regardless of sample size; nonrandomized evidence was also considered, if randomized trials were not available.
+
+5 of 6 highly cited nonrandomized studies had been contradicted or had initially stronger effects while this was seen in only 9 of 39 highly cited randomized trials (P=.008). T ABLE 3 shows that trials with contradicted or initially stronger effects had significantly smaller sample sizes and tended to be older than those with replicated or unchallenged findings. There were no significant differences on the type of disease. The proportion of contradicted or initially stronger effects did not differ significantly across journals (P = .60).
+
+Small studies using surrogate markers may also sometimes lead to erroneous clinical inferences. 158 There were only 2 studies with typical surrogate markers among the highly cited studies examined herein, but both were subsequently contradicted in their clinical extrapolations about the efficacy of nitric oxide 22 and hormone therapy. 42
+
+Box 2. Contradicted and Initially Stronger Effects in Control Studies Contradicted Findings
+In a prospective cohort, 91 vitamin A was inversely related to breast cancer (relative risk in the highest quintile, 0.84; 95% confidence interval [CI], 0.71-0.98) and vitamin A supplementation was associated with a reduced risk (P=.03) in women at the lowest quintile group; in a randomized trial 128 exploring further the retinoid-breast cancer hypothesis, fenretinide treatment of women with breast cancer for 5 years had no effect on the incidence of second breast malignancies.
+A trial (n = 51) showed that cladribine significantly improved the clinical scores of patients with chronic progressive multiple sclerosis. 119 In a larger trial of 159 patients, no significant treatment effects were found for cladribine in terms of changes in clinical scores. 129
+Initially Stronger Effects
+A trial (n = 28) of aerosolized ribavirin in infants receiving mechanical ventilation for severe respiratory syncytial virus infection 82 showed significant decreases in mechanical ventilation (4.9 vs 9.9 days) and hospital stay (13.3 vs 15.0 days). A metaanalysis of 3 trials (n = 104) showed a decrease of only 1.8 days in the duration of mechanical ventilation and a nonsignificant decrease of 1.9 days in duration of hospitalization. 130
+A trial (n = 406) of intermittent diazepam administered during fever to prevent recurrence of febrile seizures 90 showed a significant 44% relative risk reduction in seizures. The effect was smaller in other trials and the overall risk reduction was no longer formally significant 131 ; moreover, the safety profile of diazepam was deemed unfavorable to recommend routine preventive use.
+A case-control and cohort study evaluation 92 showed that the increased risk of sudden infant death syndrome among infants who sleep prone is increased by use of natural-fiber mattresses, swaddling, and heating in bedrooms. Several observational studies have been done since, and they have provided inconsistent results on these interventions, in particular, they disagree on the possible role of overheating. 132
+A trial of 54 children 95 showed that the steroid budenoside significantly reduced the croup score by 2 points at 4 hours, and significantly decreased readmissions by 86%. A meta-analysis (n=3736) 133 showed a significant improvement in the Westley score at 6 hours (1.2 points), and 12 hours (1.9 points), but not at 24 hours. Fewer return visits and/or (re)admissions occurred in patients treated with glucocorticoids, but the relative risk reduction was only 50% (95% CI, 24%-64%).
+A trial (n = 55) showed that misprostol was as effective as dinoprostone for termination of second-trimester pregnancy and was associated with fewer adverse effects than dinoprostone. 96 A subsequent trial 134 showed equal efficacy, but a higher rate of adverse effects with misoprostol (74%) than with dinoprostone (47%).
+A trial (n=50) comparing botulinum toxin vs glyceryl trinitrate for chronic anal fissure concluded that both are effective alternatives to surgery but botulinum toxin is the more effective nonsurgical treatment (1 failure vs 9 failures with nitroglycerin). 109 In a meta-analysis 135 of 31 trials, botulinum toxin compared with placebo showed no significant efficacy (relative risk of failure, 0.75; 95% CI, 0.32-1.77), and was also no better than glyceryl trinitrate (relative risk of failure, 0.48; 95% CI, 0.211.10); surgery was more effective than medical therapy in curing fissure (relative risk of failure, 0.12; 95% CI, 0.07-0.22).
+A trial of acetylcysteine (n = 83) showed that it was highly effective in preventing contrast nephropathy (90% relative risk reduction). 110 There have been many more trials and many meta-analyses on this topic. The latest meta-analysis 136 shows a nonsignificant 27% relative risk reduction with acetylcysteine.
+A trial of 129 stunted Jamaican children found that both nutritional supplementation and psychosocial stimulation improved the mental development of stunted children; children who got both interventions had additive benefits and achieved scores close to those of nonstunted children. 117 With long-term follow-up, however, it was found that the benefits were small and the 2 interventions no longer had additive effects. 137
+
+It is possible that high-profile journals may tend to publish occasionally very striking findings and that this may lead to some difficulty in replicating some of these findings. 163 Poynard et al ["Truth Survival in Clinical Research: An Evidence-Based Requiem?" http://www.planetadoctor.com/documentos/MBE-herramienta/13.pdf ] evaluated the conclusions of hepatology-related articles published between 1945 and 1999 and found that, overall, 60% of these conclusions were considered to be true in 2000 and that there was no difference between randomized and nonrandomized studies or high- vs low-quality studies. Allowing for somewhat different definitions, the higher rates of refutation and the generally worse performance of nonrandomized studies in the present analysis may stem from the fact that I focused on a selected sample of the most noticed and influential clinical research. For such highly cited studies, the turnaround of "truth" may be faster; in particular non-randomized studies may be more likely to be probed and challenged than non-randomized studies published in the general literature.
+
+--
+Young and Karr 1 found 12 articles in prominent journals in which 52 claims coming from
+observational studies were tested in randomized clinical trials. Many of the RCTs were quite
+large, and most were run in factorial designs, e.g., vitamin D and calcium individually and
+together, along with a placebo group. Remarkably, none of the claims replicated in the direction
+claimed in the observational studies; in five instances there was actually statistical significance in
+the opposite direction.
+
+For example in the early 1990s,
+Vitamin E was reported to protect against heart attacks. Large, well-conducted
+randomized clinical trials did not replicate this claim. The claim that Type A Personality
+leads to heart attacks failed to replicate in two separate studies, yet the myth still lives.
+
+Young SS, Karr A. Deming, data and observational studies: A process out of control and needing fixing. Significance 2011;September:122-126. http://www.gwern.net/docs/dnb/2011-young.pdf
+
+As long ago as 1988 1,2 it was noted that
+there were contradicted results for case-control
+studies in 56 different topic areas, of which
+cancer and things that cause it or cure it were
+by far the most frequent. An average of 2.4
+studies supported each association - and an
+average of 2.3 studies did not support it. For
+example, three studies supported an association
+between the anti-depressant drug reserpine and
+breast cancer, and eight did not. It was asserted 2
+that "much of the disagreement may occur
+because a set of rigorous scientific principles
+has not yet been accepted to guide the design
+or interpretation of case-control research".
+
+1.   Mayes, L. C., Horwitz, R. I. and
+Feinstein, A. R. (1988) A collection of 56 topics
+with contradictory results in case-control research.
+International Journal of Epidemiology, 17, 680-685.
+2.   Feinstein, A. R. (1988) Scientific standards
+in epidemiologic studies of the menace of daily life.
+Science, 242, 1257-1263.
+
+We ourselves carried out an informal but
+comprehensive accounting of 12 randomised
+clinical trials that tested observational claims
+- see Table 1. The 12 clinical trials tested 52
+observational claims. They all confirmed no
+claims in the direction of the observational
+claims. We repeat that figure: 0 out of 52. To put
+it another way, 100% of the observational claims
+failed to replicate. In fact, five claims (9.6%) are
+statistically significant in the clinical trials in the
+opposite direction to the observational claim. To
+us, a false discovery rate of over 80% is potent
+evidence that the observational study process
+is not in control. The problem, which has been
+recognised at least since 1988, is systemic.
+
+The "females eating
+cereal leads to more boy babies" claim translated
+the cartoon example into real life. The claim
+appeared in the Proceedings of the Royal Society,
+Series B. It makes essentially no biological sense,
+as for humans the Y chromosome controls gender
+and comes from the male parent. The data set
+consisted of the gender of children of 740 mothers
+along with the results of a food questionnaire,
+not of breakfast cereal alone but of 133 different
+food items - compared to only 20 colours of jelly
+beans. Breakfast cereal during the second time
+period at issue was one of the few foods of the
+133 to give a positive. We reanalysed the data 6 ,
+with 262 t-tests, and concluded that the result
+was easily explained as pure chance.
+
+6.   Young, S. S., Bang, H. and Oktay, K.
+(2009) Cereal-induced gender selection? Most likely
+a multiple testing false positive. Proceedings of the
+Royal Society, Series B, 654, 1211-1212.
+
+The US Center for Disease Control assayed
+the urine of around 1000 people for 275
+chemicals, one of which was bisphenol A
+(BPA). One resulting claim was that BPA is
+associated with cardiovascular diagnoses,
+diabetes, and abnormal liver enzyme
+concentrations. BPA is a chemical much
+in the news and under attack from people
+fearful of chemicals. The people who had
+their urine assayed for chemicals also gave
+a self-reported health status for 32 medical
+outcomes. For each person, ten demographic
+variables (such as ethnicity, education, and
+income) were also collected. There are 275 ×
+32 = 8800 potential endpoints for analysis.
+Using simple linear regression for covariate
+adjustment, there are approximately 1000
+potential models, including or not including
+each demographic variable. Altogether the
+search space is about 9 million models and
+endpoints 11 . The authors remain convinced
+that their claim is valid.
+
+11.  Young, S. S. and Yu, M. (2009) To the
+Editor. Journal of the American Medical Association,
+301, 720-721 .
+
+"Evaluating the Econometric Evaluations of Training Programs with Experimental Data", LaLonde 1986 http://isites.harvard.edu/fs/docs/icb.topic1141086.files/Lalonde%201986%20-%20Evaluating%20the%20Economietric%20Evaluations%20of%20Training%20Programs%20with%20Experimental%20Data.pdf
+
+This paper compares the effect on trainee earnings of an employment program
+that was run as a field experiment where participants were randomly assigned to
+treatment and control groups with the estimates that would have been produced by
+an econometrician. This comparison shows that many of the econometric procedures do not replicate the experimentally determined results, and it suggests that
+researchers should be aware of the potential for specification errors in other
+nonexperimental evaluations.
+
+The National Supported Work Demonstration (NSW) was a temporary employment program designed to help disadvantaged workers lacking basic job skills
+move into the labor market by giving them
+work experience and counseling in a sheltered
+environment. Unlike other federally sponsored employment and training programs,
+the NSW program assigned qualified applicants to training positions randomly. Those
+assigned to the treatment group received all
+the benefits of the NSW program, while those
+assigned to the control group were left to
+fend for themselves.3
+During the mid-1970s, the Manpower
+Demonstration
+Research Corporation
+(MDRC) operated the NSW program in ten
+sites across the United States. The MDRC
+admitted into the program AFDC women,
+ex-drug addicts, ex-criminal offenders, and
+high school dropouts of both sexes.4 For
+those assigned to the treatment group, the
+program guaranteed ajob for 9 to 18 months,
+depending on the target group and site. The
+treatment group was divided into crews of
+three to five participants who worked together and met frequently with an NSW
+counselor to discuss grievances and performance. The NSW program paid the treatment group members for their work. The
+wage schedule offered the trainees lower wage
+rates than they would have received on a
+regular job, but allowed their earnings to
+increase for satisfactory performance and attendance. The trainees could stay on their
+supported work jobs until their terms in the
+program expired and they were forced to
+find regular employment.
+..., male and female participants frequently performed different sorts
+of work. The female participants usually
+worked in service occupations, whereas the
+male participants tended to work in construction occupations. Consequently, the
+program costs varied across the sites and
+target groups. The program cost $9,100 per
+AFDC participant and approximately $6,800
+for the other target groups' trainees.
+
+The first two columns of Tables 2 and 3
+present the annual earnings of the treatment
+and control group members.9 The earnings
+of the experimental groups were the same in
+the pre-training year 1975, diverged during
+the employment program, and converged to
+some extent after the program ended. The
+post-training year was 1979 for the AFDC
+females and 1978 for the males.10
+Columns 2 and 3 in the first row of Tables
+4 and 5 show that both the unadjusted and
+regression-adjusted pre-training earnings of
+the two sets of treatment and control group
+members are essentially identical. Therefore,
+because of the NSW program's experimental
+design, the difference between the post-training earnings of the experimental groups is an
+unbiased estimator of the training effect, and
+the other estimators described in columns
+5-10(11) are unbiased estimators as well.
+The estimates in column 4 indicate that the
+earnings of the AFDC females were $851
+higher than they would have been without
+the NSW program, while the earnings of the
+male participants were $886 higher.11 Moreover, the other columns show that the econometric procedure does not affect these estimates.
+
+The researchers who evaluated these federally sponsored programs devised both experimental and nonexperimental procedures
+to estimate the training effect, because they
+recognized that the difference between the
+trainees' pre- and post-training earnings was
+a poor estimate of the training effect. In a
+dynamic economy, the trainees' earnings may
+grow even without an effective program. The
+goal of these program evaluations is to
+estimate the earnings of the trainees had
+they not participated in the program. Researchers using experimental data take the
+earnings of the control group members to be
+an estimate of the trainees' earnings without
+the program. Without experimental data, researchers estimate the earnings of the trainees
+by using the regression-adjusted earnings of
+a comparison group drawn from the population. This adjustment takes into account that
+the observable characteristics of the trainees
+and the comparison group members differ,
+and their unobservable characteristics may
+differ as well.
+
+The first step in a nonexperimental
+evaluation is to select a comparison group
+whose earnings can be compared to the earnings of the trainees. Tables 2 and 3 present
+the mean annual earnings of female and
+male comparison groups drawn from the
+Panel Study of Income Dynamics (PSID)
+and Westat's Matched Current Population
+Survey - Social Security Administration File
+(CPS-SSA). These groups are characteristic
+of two types of comparison groups frequently used in the program evaluation literature. The PSID-1 and the CPS-SSA-1
+groups are large, stratified random samples
+from populations of household heads and
+households, respectively.14 The other, smaller, comparison groups are composed of individuals whose characteristics are consistent
+with some of the eligibility criteria used to
+admit applicants into the NSW program.
+For example, the PSID-3 and CPS-SSA-4
+comparison groups in Table 2 include
+females from the PSID and the CPS-SSA
+who received AFDC payments in 1975, and
+were not employed in the spring of 1976.
+Tables 2 and 3 show that the NSW trainees
+and controls have earnings histories that are
+more similar to those of the smaller comparison groups
+
+Unlike the experimental estimates, the
+nonexperimental estimates are sensitive both
+to the composition of the comparison group
+and to the econometric procedure. For example, many of the estimates in column 9 of
+Table 4 replicate the experimental results,
+while other estimates are more than $1,000
+larger than the experimental results. More
+specifically, the results for the female participants (Table 4) tend to be positive and
+larger than the experimental estimate, while
+for the male participants (Table 5), the
+estimates tend to be negative and smaller
+than the experimental impact.20 Additionally, the nonexperimental procedures replicate the experimental results more closely
+when the nonexperimental data include pretraining earnings rather than cross-sectional
+data alone or when evaluating female rather
+than male participants.
+
+Before taking some of these estimates too seriously, many econometricians at a minimum
+would require that their estimators be based
+on econometric models that are consistent
+with the pre-training earnings data. Thus, if
+the regression-adjusted difference between
+the post-training earnings of the two groups
+is going to be a consistent estimator of the
+training effect, the regression-adjusted pretraining earnings of the two groups should
+be the same.
+Based on this specification test, econometricians might reject the nonexperimental estimates in columns 4-7 of Table 4 in
+favor of the ones in columns 8-11. Few
+econometricians would report the training
+effect of $870 in column 5, even though this
+estimate differs from the experimental result
+by only $19. If the cross-sectional estimator
+properly controlled for differences between
+the trainees and comparison group members,
+we would not expect the difference between
+the regression adjusted pre-training earnings
+of the two groups to be $1,550, as reported
+in column 3. Likewise, econometricians might
+refrain from reporting the difference in
+differences estimates in columns 6 and 7,
+even though all these estimates are within
+two standard errors of $3,000. As noted
+earlier, this estimator is not consistent with
+the decline in the trainees' pre-training earnings.
+
+The two-step estimates are usually closer
+than the one-step estimates to the experimental results for the male trainees as well.
+One estimate, which used the CPS-SSA-1
+sample as a comparison group, is within
+$600 of the experimental result, while the
+one-step estimate falls short by $1,695. The
+estimates of the participation coefficients are
+negative, although unlike these estimates for
+the females, they are always significantly
+different from zero. This finding is consistent
+with the example cited earlier in which individuals with high participation unobservables and low earnings unobservables were
+more likely to be in training. As predicted,
+the unrestricted estimates are larger than the
+one-step estimates. However, as with the results for the females, this procedure may
+leave econometricians with a considerable
+range ($1,546) of imprecise estimates
+
+--
+
+We investigated Student-t distributions as robust priors for the 's and 's as suggested by Gelman
+et al. 8 and Fu ́quene et al. 10 Gelman et al. recommend a weakly informative default prior of a Cauchy
+distribution (or t 1 distribution) which has heavier tails than a normal distribution and thus assigns
+greater probability to larger values of the log RR compared to a normal prior. Although the authors
+report that the Cauchy prior centered at 0 with scale of 0.75 performs the best in their study, they
+suggest a Cauchy with center 0 and scale 2.5 as a default prior for logistic regression models and other
+general linear models (i.e. log binomial or Poisson). This default weakly informative prior gives an
+implausibly large 95% interval (Table 1) for the RR that is unrealistic when compared to reported
+RRs in published RCTs. In fact, Gelman 27 has recently stated that a scale of 2.5 is too weak.
+Here, we assess a Cauchy with scale of 0.75, a Cauchy with scale of 0.35 (to compare to the
+normal prior we have used in previous RCT analyses), and a t 7 with scale of 0.75 to serve as an
+intermediate choice between the normal and Cauchy priors. We compare these priors to the default
+Cauchy prior with scale of 2.5. For the intercept terms,  0 or  0 , we use the same distribution as for
+ 1 or  1 (Cauchy or t 7 ) with a scale of 10 as suggested by Gelman et al. 8
+
+---
+
+"The Endogeneity Problem in Developmental Studies", Duncan et al 2004 https://www.dropbox.com/s/iww2kmp3cf67vos/2004-duncan.pdf http://moscow.sci-hub.bz/b6ab184de3bae9fd0fc16ad0558de92c/10.1080%4015427609.2004.9683330.pdf  http://home.uchicago.edu/ludwigj/papers/Duncan_EndogeneityProblem.pdf
+
+For example, despite theoretical arguments to the contrary, most empirical studies of the effects of
+divorce on children have assumed that divorce is randomly assigned to children. They do this by failing
+to control for the fact that divorce is the product of the parents' temperaments, resources, and other
+stressors that face parents, most of which will influence children's outcomes in their own right. As a result, studies comparing developmental outcomes of children with and without past parental divorces after controlling for a handful of family background characteristics are likely to confound the effects of
+divorce with the effects of unmeasured parent and child variables. Indeed, studies that control for children's behavior problems prior to a possible divorce find much smaller apparent effects of the divorce
+itself (Cherlin, Chase-Lansdale, & McRae, 1998).
+
+- Cherlin, A., Chase-Lansdale, L. P., & McRae, C. (1998). "Effects of parental divorce on mental health throughout the life course". _American Sociological Review_, 63, 239-249 https://jhir.library.jhu.edu/bitstream/handle/1774.2/911/Cherlin_1997.pdf%3Fsequence%3D1
+
+These experiments can provide researchers with some sense for the bias that results from nonexperimental estimates as well as providing direct evidence for the causal effects of some developmental influence of interest. For example, Wilde and Hollister (2002) compare nonexperimental and experimental results for the widely cited Tennessee Student-Teacher Achievement Ratio (STAR) class-size experiment. The STAR experiment provides an unbiased estimate of the impact of class size on student achievement by comparing the average achievement levels of students assigned to small (experimental) and regular (control) classrooms. However, Wilde and Hollister also estimated a series of more conventional nonexperimental regressions that related naturally occurring class size variation within the set of regular classrooms to student achievement, controlling for an extensive set of student demographic characteristics and socioeconomic status.
+Table 1 compares the experimental and nonexperimental estimates of class size impacts by school. The table shows substantial variability across schools in the effects of smaller classes on student standardized test scores. In some cases (e.g., Schools B, D, and I), the two sets of estimates are quite close, but in some (e.g., Schools C, E, G, and H) they are quite different. A comparison of the nonexperimental and experimental results as a whole reveals that the average bias (i.e., the absolute difference between the experimental and nonexperimental impact estimates) is on the order of 10 percentile points-about the same as the average experimental estimate for the effects of smaller classes!
+TABLE 1
+Comparison of Experimental and Nonexperimental Estimates
+for Effects of Class Size on Student Test Scores
+School
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+K
+o
+D
+N
+Nonexperimental Regression Experimental Estimate
+9.6
+15.3*
+1.9
+35.2*
+20.4*
+0.2
+-8.6
+-5.6
+16.5*
+24.3*
+27.8* -5.2
+13.0*
+24.1*
+33.1*
+-10.5
+1.3
+10.6*
+9.6*
+14.7*
+16.2*
+19.3*
+
+- Wilde, E. T., & Hollister, R. (2002). "How close is close enough? Testing nonexperimental estimates of impact against experimental estimates of impact with education test scores as outcomes". _Institute for Research on Poverty_ Discussion Paper No. 1242-02, Madison, WI http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.217.2276&rep=rep1&type=pdf
+
+A second example of the bias that may result with nonexperimental estimates comes from the U.S. Department of Housing and Urban Development's Moving to Opportunity (MTO) housing-voucher experiment, which randomly assigned housing-project residents in high-poverty neighborhoods of five of the nation's largest cities to either a group that was offered a housing voucher to relocate to a lower poverty area or to a control group that received no mobility assistance under the program (Ludwig, Duncan, & Hirschfield, 2001). Because of well-implemented random assignment, each of the groups on average should be equivalent (subject to sampling variability) with respect to all observable and unobservable preprogram characteristics.
+Table 2 presents the results of using the randomized design of MTO to generate unbiased estimates of the effects of moving from high- to low-poverty census tracts on teen crime. The experimental estimates are the difference between average outcomes of all families offered vouchers and those assigned to the control group, divided by the difference across the two groups in the proportion of families who moved to a low-poverty area. (Note the implication that these kinds of experimental data can be used to produce unbiased estimates of the effects of neighborhood characteristics on developmental outcomes, even if the takeup rate is less than 100% in the treatment group and greater than 0% among the control group.) 4 The nonexperimental estimates simply compare families who moved to low-poverty neighborhoods with those who did not, ignoring information about each family's random assignment and relying on the set of prerandom assignment measures of MTO family characteristics to adjust for differences between families who chose to move and those who do not. 5
+As seen in Table 2, even after statistically adjusting for a rich set of background characteristics the nonexperimental measure-the-unmeasured approach leads to starkly different inferences about the effects of residential mobility compared with the unbiased experimental estimates. For example, the experimental estimates suggest that moving from a high- to a low- poverty census tract significantly reduces the number of violent crimes. In contrast, the nonexperimental estimates find that such moves have essentially no effect on violent arrests. In the case of "other" crimes, the nonexperimental estimates suggest that such moves reduce crime, but the experimentally based estimates do not.
+
+- Ludwig, J. (1999). "Experimental and non-experimental estimates of neighborhood effects on low-income families". Unpublished document, Georgetown University.
+- Ludwig, J., Duncan, G., & Hirschfield, P. (2001). "Urban poverty and juvenile crime: Evidence from a randomized housing-mobility experiment". _Quarterly Journal of Economics_, 116, 655-680. http://www.nber.org/mtopublic/baltimore/mto_balt_delinquency.pdf
+
+A final example comes from the National Evaluation of Welfare-to-Work Strategies, randomized experiment designed to evaluate welfare-to-work programs in seven sites across the United States. One of the treatment streams encouraged welfare-recipient mothers to participate in education activities. In addition to measuring outcomes such as clients'welfare receipt, employment, and earnings, the evaluation study also tested young children's school readiness using the Bracken Basic Concepts Scale School Readiness Subscale. Using a method for generating experimental estimates similar to that used in the MTO analyses, Magnuson and McGroder (2002) examined the effects of the experimentally induced increases in maternal schooling on children's school readiness. Again, the results suggest that nonexperimental estimates did not closely reproduce experimentally based estimates.
+
+- Magnuson, K. A., & McGroder, S. (2002). "The effect of increasing welfare mothers' education on their young children's academic problems and school readiness". Joint Center for Poverty Research, Working Paper No. 280, Northwestern University. http://www.jonescollegeprep.org/ourpages/auto/2013/1/17/61972839/Effect%20of%20Increasing%20Welfare%20Mothers%20Education%20on%20their%20Young%20Childrens%20Problems%20and%20School%20Readiness.pdf
+
+A much larger literature within economics, statistics, and program evaluation has focused on the ability of nonexperimental regression-adjustment methods to replicate experimental estimates for the effects of job training or welfare-to-work programs. Although the "contexts" represented by these programs may be less interesting to developmentalists, the results of this literature nevertheless bear directly on the question considered in this article: Can regression methods with often quite detailed background covariates reproduce experimental impact estimates for such programs? As one recent review concluded, "Occasionally, but not in a way that can be easily predicted" (Glazerman, Levy, & Myers, 2002, p. 46; see also Bloom, Michalopoulos, Hill, & Lei, 2002).
+
+- Glazerman, S., Levy, D., & Myers, D. (2002). _Nonexperimental replications of social experiments: A systematic review_. Washington, DC: Mathematica Policy Research http://www.mathematica-mpr.com/publications/pdfs/nonexperimentalreps.pdf
+- Bloom, H. S., Michalopoulos, C., Hill, C., & Lei, Y. (2002) _Can non-experimental comparison group methods match the findings from a random assignment evaluation of mandatory welfare-to-work programs?_ New York: Manpower Demonstration Research Corporation. http://files.eric.ed.gov/fulltext/ED471814.pdf
+
+
+"How Close Is Close Enough? Testing Nonexperimental Estimates of Impact against Experimental Estimates of Impact with Education Test Scores as Outcomes", Wilde & Hollister 2002 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.217.2276&rep=rep1&type=pdf
+
+In this study we test the performance of some nonexperimental estimators of impacts applied to
+an educational intervention—reduction in class size—where achievement test scores were the outcome.
+We compare the nonexperimental estimates of the impacts to “true impact” estimates provided by a
+random-assignment design used to assess the effects of that intervention. Our primary focus in this study
+is on a nonexperimental estimator based on a complex procedure called propensity score matching.
+Previous studies which tested nonexperimental estimators against experimental ones all had
+employment or welfare use as the outcome variable. We tried to determine whether the conclusions from
+those studies about the performance of nonexperimental estimators carried over into the education
+domain.
+Project Star is the source of data for the experimental estimates and the source for drawing
+nonexperimental comparison groups used to make nonexperimental estimates. Project Star was an
+experiment in Tennessee involving 79 schools in which students in kindergarten through third grade were
+randomly assigned to small classes (the treatment group) or to regular-size classes (the control group).
+The outcome variables from the data set were the math and reading achievement test scores.
+We carried out the propensity-score-matching estimating procedure separately for each of 11
+schools’ kindergartens and used it to derive nonexperimental estimates of the impact of smaller class
+size. We also developed proper standard errors for the propensity-score-matched estimators by using
+bootstrapping procedures. We found that in most cases, the propensity-score estimate of the impact
+differed substantially from the “true impact” estimated by the experiment. We then attempted to assess
+how close the nonexperimental estimates were to the experimental ones. We suggested several different
+ways of attempting to assess “closeness.” Most of them led to the conclusion, in our view, that the
+nonexperimental estimates were not very “close” and therefore were not reliable guides as to what the
+“true impact” was.
+We put greatest emphasis on looking at the question of “how close is close enough?” in terms of
+a decision-maker trying to use the evaluation to determine whether to invest in wider application of the
+intervention being assessed—in this case, reduction in class size. We illustrate this in terms of a rough
+cost-benefit framework for small class size as applied to Project Star. We find that in 30 to 45 percent of
+the 11 cases, the propensity-score-matching nonexperimental estimators would have led to the “wrong”
+decision.
+
+Two major considerations motivated us to undertake this study. First, four important studies
+(Fraker and Maynard, 1987; LaLonde, 1986; Friedlander and Robins, 1995; and Dehejia and Wahba,
+1999) have assessed the effectiveness of nonexperimental methods of impact assessment in a compelling
+fashion, but these studies have focused solely on social interventions related to work and their impact on
+the outcome variables of earnings, employment rates, and welfare utilization.
+
+- Fraker and Maynard, 1987
+- Friedlander and Robins, 1995
+- Dehejia and Wahba, 1999
+
+Because we are interested in testing nonexperimental methods on educational outcomes, we use
+Tennessee’s Project Star as the source of the “true random-assignment” data. We describe Project Star in
+detail below. We use the treatment group data from a given school for the treatments and then construct
+comparison groups in various nonexperimental ways with data taken out of the control groups in other
+schools.
+
+From 1985 to 1989, researchers collected observational data including sex, age, race, and free-lunch
+status from over 11,000 students (Word, 1990). The schools chosen for the experiment were broadly
+distributed throughout Tennessee. Originally, the project included eight schools from nonmetropolitan
+cities and large towns (for example, Manchester and Maryville), 38 schools from rural areas, and 17
+inner-city and 16 suburban schools drawn from four metropolitan areas: Knoxville, Nashville, Memphis,
+and Chattanooga. Beginning in 1985–86, the kindergarten teachers and students within Project Star
+classes were randomly assigned within schools to either “small” (13–17 pupils), “regular” (22–25), or
+“regular-with-aide” classes. New students who entered a Project Star school in 1986, 1987, 1988, or 1989
+were randomly assigned to classes. Because each school had “the same kinds of students, curriculum,
+principal, policy, schedule, expenditures, etc, for each class” and the randomization occurred within
+school, theoretically, the estimated within-school effect of small classes should have been unbiased.
+During the course of the project, however, there were several deviations from the original experimental
+design—for example, after kindergarten the students in the regular and regular-with-aide classes were
+randomly reassigned between regular and regular-with-aide classes, and a significant number of students
+switched class types between grades. However, Krueger found that, after adjusting for these and other
+problems, the main Project Star results were unaffected; in all four school types students in small classes
+scored significantly higher on standardized tests than students in regular-size classes.
+In this study, following Krueger’s example, test score is used as the measure of student
+achievement and is the outcome variable. For all comparisons, test score is calculated as a percentile rank
+of the combined raw Stanford Achievement reading and math scores within the entire sample distribution
+for that grade.
+The Project Star data set provides measures of a number of student, teacher, and school
+characteristics. The following are the variables available to use as measures prior to random assignment:
+student sex, student race, student free-lunch status, teacher race, teacher education, teacher career ladder,
+teacher experience, school type, and school system ID. In addition, the following variables measured
+contemporaneously can be considered exogenous: student age, assignment to small class size.
+
+One very important and stringent measure of closeness is whether there are many cases in which
+the nonexperimental impact estimates are opposite in sign from the experimental impact estimates and
+both sets of impact estimates are statistically significantly different from 0, e.g., the experimental
+estimates said that the mean test scores of those in smaller classes were significantly negative while the
+nonexperimental estimates indicated they were significantly positive. There is only one case in these 11
+which comes close to this situation. For school 27, the experimental impact estimate is ! 10.5 and
+significant at the 6 percent level, just above the usual significance cutoff of 5 percent. The
+nonexperimental impact estimate is 35.2 and significant at better than the 1 percent level. In other cases
+(school 7 and school 33), the impact estimates are of opposite sign, but one or the other of them fails the
+test for being significantly different from 0.
+If we weaken the stringency of the criterion a bit, we can consider cases in which the
+experimental impact estimates were significantly different from 0 but the nonexperimental estimates
+were not (school 16 and school 33), or vice versa (schools 7, 16, and 28).
+Another, perhaps better, way of assessing the differences in the impact estimates is to look at
+column 8, which presents a test for whether the impact estimate from the nonexperimental procedure is
+significantly different from the impact estimate from the experimental procedure. For eight of the 11
+schools, the two impact estimates were statistically significantly different from each other.
+
+When we first began considering this issue, we thought that a criterion might be based on the
+percentage difference in the point estimates of the impact. For example, for school 9 the nonexperimental
+estimate of the impact is 135 percent larger than the experimental impact. But for school 22 the
+nonexperimental impact estimate is 9 percent larger. Indeed, all but two of the nonexperimental estimates
+are more than 50 percent different from the experimental impact estimates.
+Whereas in this case the percentage difference in impact estimates seems to indicate quite
+conclusively that the nonexperimental estimates are not generally close to the experimental ones, in some
+cases such a percentage difference criterion might be misleading. The criterion which seems to us the
+most definitive is whether distance between the nonexperimental and the experimental impact estimates
+would have been sufficient to cause an observer to make a different decision from one based on the true
+experimental results. For example, suppose that the experimental impact estimate had been .02 and the
+nonexperimental impact estimate had been .04, a 100 percent difference in impact estimate. But further
+suppose that the decision about whether to take an action, e.g., invest in the type of activity which the
+treatment intervention represents, would have been a yes if the difference between the treatments and
+comparisons had been .05 or greater and a no if the impact estimate had been less than .05. Then even
+though the nonexperimental estimate was 100 percent larger than the experimental estimate, one would
+still have decided not to invest in this type of intervention whether one had the true experimental estimate
+or the nonexperimental estimate.
+...In a couple of his articles
+presenting aspects of his research using Project Star data, Krueger (1999, 2000) has developed some
+rough benefit-cost calculations related to reduction in class size. In Appendix B we sketch in a few
+elements of his calculations which provide the background for the summary measures derived from his
+calculations that we use to illustrate our “close enough.” The benefits Krueger focuses on are increases in
+future earnings that could be associated with test score gains. He carefully develops estimates—based on
+other literature—of what increase in future earnings might be associated with a gain in test scores in the
+early years of elementary school. With appropriate discounting to present values, and other adjustments,
+he uses these values as estimates of benefits and then compares them to the estimated cost of reducing
+class size from 22 to 15, taken from the experience in Project Star and appropriately adjusted.
+For our purposes, what is most interesting is the way he uses these benefit-cost calculations to
+answer a slightly different question: How big an effect on test scores due to reduction of class size from
+22 to 15 would have been necessary to just justify the expenditures it took to reduce the class size by that
+much? He states the answer in terms of “effect size,” that is the impact divided by the estimated standard
+deviation of the impact. This is a measure that is increasingly used to compare across outcomes that are
+measured in somewhat different metrics. His answer is that an effect size of 0.2 of a standard deviation of
+tests scores would have been just large enough to generate estimated future earnings gains sufficient to
+justify the costs. 4 Krueger indicates that the estimated effect for kindergarten was a 5.37 percentile
+increase in achievement test scores due to smaller class size and that this was equivalent to 0.2 of a
+standard deviation in test scores. Therefore we use 5.4 percentile points as the critical value for a
+decision of whether the reduction in class size from 22 to 15 would have been cost-effective.
+In Table 2 we use the results from Table 1 to apply the cost-effectiveness criterion to determine
+the extent to which the nonexperimental estimates might have led to the wrong decision. To create the
+entries in this table, we look at the Table 1 entry for a given school. If the impact estimate is greater than
+5.4 percentile points and statistically significantly different from 0, we enter a Yes, indicating the impact
+estimate would have led to a conclusion that reducing class size from 22 to 15 was cost-effective. If the
+impact estimate is less than 5.4 or statistically not significantly different from 0, we enter a No to indicate
+a conclusion that the class-size reduction was not cost-effective. Column 1 is the school ID, column 2
+gives the conclusion on the basis of the experimental impact estimate, column 3 gives the conclusion on
+the basis of the nonexperimental impact estimate, and column 4 contains an x if the nonexperimental
+estimate would have led to a “wrong” cost-effectiveness conclusion, i.e., a different conclusion from the
+experimental impact conclusion about cost-effectiveness.
+It is easy to see in Table 2 that the nonexperimental estimate would have led to the wrong
+conclusion in four of the 11 cases. For a fifth case, school 16, we entered a Maybe in Column 4 because,
+as shown in Table 1, for that school the nonexperimental estimate was significantly different from 0 at
+only the 9 percent level, whereas the usual significance criterion is 5 percent. Even though the
+nonexperimental point estimate of impact was greater than 5.4 percentile points, strict use of the 5
+percent significance criterion would have led to the conclusion that the reduction in class size was not
+cost-effective. On the other hand, analysts sometimes use a 10 percent significance criterion, so it could
+be argued that they might have used that level to conclude the program was cost-effective—thus the
+Maybe entry for this school.
+
+In all seven selected cases, the experimental and nonexperimental estimates differ considerably
+from each other. One of the nonexperimental estimates is of the wrong sign, while in the other estimates,
+the signs are the same but all the estimates differ by at least 1.8 percentage points, ranging up to as much
+as 12 percentage points (rural-city). Statistical inferences about the significance of these program effects
+also vary (five of the seven pairs had differing inferences—i.e., only one estimate of the program effect
+in a pair is statistically significant at the 10 percent level). All of the differences between the
+experimental and nonexperimental estimates (the test of difference between the outcomes for the
+experimental control group and the nonexperimental comparison group) in this subset were statistically
+significant.
+Table 5 shows the results for the complete set of the first 49 pairs of estimates. Each column
+shows a different type of comparison (either school type or district type). The top row in each column
+provides the number of pairs of experimental and nonexperimental estimates in the column. The second
+row shows the mean estimate of program effect from the (unbiased) experimental estimates. The third
+row has the mean absolute differences between these estimates, providing some indication of the size of
+our nonexperimental bias. The fourth row provides the percentage of pairs in which the experimental and
+nonexperimental estimates led to different inferences about the significance of the program effect. The
+fifth row indicates the percentage of pairs in which the difference between the two estimated values was
+significant (again the test of difference between control and comparison group).
+Looking at the summarized results for comparisons across school type, these results suggest that
+constructing nonexperimental groups based on similar demographic school types leads to
+nonexperimental estimates that do not perform very well when compared with the experimental estimates
+for the same group. In 50 percent of the pairs, experimental and nonexperimental estimates had different
+statistical inferences, with a mean absolute difference in effect estimate of 4.65. Over 75 percent of these
+differences were statistically significant. About half of the estimated pairs in comparisons across school
+type differ by more than 5 percentage points.
+
+"Assignment Methods in Experimentation: When Do Nonrandomized Experiments Approximate Answers From Randomized Experiments?", Heinsman & Shadish 1996 http://www.gwern.net/docs/statistics/1996-heinsman.pdf
+
+This meta-analysis compares effect size estimates from 51 randomized experi-
+ments to those from 47 nonrandomized experiments. These experiments were
+drawn from published and unpublished studies of Scholastic Aptitude Test
+coaching, ability grouping of students within classrooms, presurgical education
+of patients to improve postsurgical outcome, and drug abuse prevention with
+juveniles. The raw results suggest that the two kinds of experiments yield
+very different answers. But when studies are equated for crucial features
+(which is not always possible), nonrandomized experiments can yield a reason-
+ably accurate effect size in comparison with randomized designs. Crucial
+design features include the activity level of the intervention given the control
+group, pretest effect size, selection and attrition levels, and the accuracy of
+the effect-size estimation method. Implications of these results for the conduct
+of meta-analysis and for the design of good nonrandomized experiments
+are discussed.
+
+When certain assump-
+tions are met (e.g., no treatment correlated attri-
+tion) and it is properly executed (e.g., assignment
+is not overridden), random assignment allows un-
+biased estimates of treatment effects and justifies
+the theory that leads to tests of significance. We
+compare this experiment to a closely related quasi-
+experimental design—the nonequivalent control
+group design—that is similar to the randomized
+experiment except that units are not assigned to
+conditions at random (Cook & Campbell, 1979).
+Statistical theory is mostly silent about the statisti-
+cal characteristics (bias, consistency, and effi-
+ciency) of this design.
+However, meta-analysts have empirically com-
+pared the two designs. In meta-analysis, study out-
+comes are summarized with an effect size statistic
+(Glass, 1976). In the present case, the standardized
+mean difference statistic is relevant:
+d = (mean_treatment - mean_control) / SD_all
+where A/ T is the mean of the experimental group,
+M c is the mean of the comparison group, and
+SD P is the pooled standard deviation. This statistic
+allows the meta-analyst to combine study out-
+comes that are in disparate metrics into a single
+metric for aggregation. Comparisons of effect sizes
+from randomized and nonrandomized experi-
+ments have yielded inconsistent results (e.g.,
+Becker, 1990; Colditz, Miller, & Mosteller, 1988;
+Hazelrigg, Cooper, & Borduin, 1987; Shapiro &
+Shapiro, 1983; Smith, Glass & Miller, 1980). A
+recent summary of such work (Lipsey & Wilson,
+1993) aggregated the results of 74 meta-analyses
+that reported separate standardized mean differ-
+ence statistics for randomized and nonrandomized
+studies. Overall, the randomized studies yielded
+an average standardized mean difference statistic
+of d = 0.46 (SD = 0.28), trivially higher than the
+nonrandomized studies d = 0.41 (SD = 0.36); that
+is, the difference was near zero on the average
+over these 74 meta-analyses. Lipsey and Wilson
+(1993) concluded that "there is no strong pattern
+or bias in the direction of the difference made by
+lower quality methods. In a given treatment area,
+poor design or low methodological quality may
+result in a treatment estimate quite discrepant
+from what a better quality design would yield, but
+it is almost as likely to be an underestimate as an
+overestimate" (p. 1193). However, we believe that
+considerable ambiguity still remains about this
+methodological issue.
+
+
+- Becker, B. J. (1990). "Coaching for the Scholastic Aptitude Test: Further synthesis and appraisal". Review of Educational Research, 60, 373-417.
+- Colditz, G. A., Miller, J. N., & Mosteller, F. (1988). "The effect of study design on gain in evaluation of new treatments in medicine and surgery". Drug Information Journal, 22, 343-352.
+- Hazelrigg, M. D., Cooper, H. M., & Borduin, C. M. (1987). Evaluating the effectiveness of family therapies: An integrative review and analysis. Psychological Bulletin, 101, 428-442.
+- Lipsey, M. W., & Wilson, D. B. (1993). "The efficacy of psychological, educational, and behavioral treatment: Confirmation from meta-analysis". American Psychologist, 48, 1181-1209.
+- Shapiro, D. A., & Shapiro, D. (1983). "Comparative therapy outcome research: Methodological implications of meta-analysis". Journal of Consulting and Clinical Psychology, 51, 42-53.
+- Smith, M. L., Glass, G. V., & Miller, T. I. (1980). _The benefits of psychotherapy_. Baltimore: Johns Hopkins University Press.
+
+The present study drew from four past meta-
+analyses that contained both random and nonran-
+domized experiments on juvenile drug use preven-
+tion programs (Tobler, 1986), psychosocial inter-
+ventions for postsurgery outcomes (Devine, 1992),
+coaching for Scholastic Aptitude Test perfor-
+mance (Becker, 1990), and ability grouping of pu-
+pils in secondary school classes (Slavin, 1990).
+These four areas were selected deliberately to re-
+flect different kinds of interventions and substan-
+tive topics.
+...All four meta-
+analyses also included many unpublished manu-
+scripts, allowing us to examine publication bias
+effects. In this regard, a practical reason for choos-
+ing these four was that previous contacts with three
+of the four authors of these meta-analyses sug-
+gested that they would be willing to provide us
+with these unpublished documents.
