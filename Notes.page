@@ -739,7 +739,7 @@ As Maru Dubshinki, I made an enemy of Daniel Brandt; and more recently, there wa
 
 So, I had always expected a break in my pseudonymity to come from the online direction. I hadn't expected it to come from the other direction. Then one day in 2008 or 2009, it did...
 
-I was idling in #wikipedia, discussing Wikipedia matters, as one does on the weekend, when [Andrew Garrett](!Wikipedia "User:Werdna") and [Jennifer Boriss](!Wikipedia "User:FlyingToaster") ([homepage](http://www.jennyboriss.com/)) happened to also be hanging out with my older sister at Carnegie-Mellon; they fell to discussing Wikipedia and she mentioned that her younger brother did an awful lot of Wikipedia editing (as I [do](Links#wikis)), and Boriss inquired as to who I was when I was not at home. It was some strange nickname she couldn't remember. But she *did* remember that I frequently edited Japanese literature articles and the nick started with 'g' or something. (I'm particularly proud of [Fujiwara no Teika](!Wikipedia), incidentally.)
+I was idling in #wikipedia, discussing Wikipedia matters, as one does on the weekend, when Werdna & FlyingToaster happened to also be hanging out with my sister at CMU; they fell to discussing Wikipedia and she mentioned that her younger brother did an awful lot of Wikipedia editing (as I [do](Wikipedia resume)), and Boriss inquired as to who I was when I was not at home. It was some strange nickname she couldn't remember. But she *did* remember that I frequently edited Japanese literature articles and the nick started with 'g' or something. (I'm particularly proud of [Fujiwara no Teika](!Wikipedia), incidentally.)
 
 Well, she says, I don't know many Japanese literature editors; but I do chat with this guy named Gwern on IRC who does a lot of that sort of thing. That's it!, my sister says (as she casually destroys my pseudonymity), the odd nickname was 'Gwern'! They both have a good laugh about what a small world it is, and then they go on IRC and knock me for a loop by 'guessing' personal details until they finally reveals that my 'hot sister' is there providing information. And of course since my sister now works in San Francisco, and Garrett is a PHP developer contracted to the Wikimedia Foundation & Boriss a developer for the Mozilla Foundation (both headquartered in or near SF), she or he occasionally visits & stays with my sister and I have to hear about it online from them. Oy vey.
 
@@ -1666,9 +1666,8 @@ I have no one to blame but myself there. (Given how late I went hunting and many
 Overall, an interesting experience. The next cicada emergence I am near, I'll try the chocolate chip cicada cookie recipes.
 
 # Epigrams
-## Technology epigrams
-
-On programming:
+## Technology
+### Programming
 
 - The soul of modern man is so fallen & mutilated that he can feel despair only when trapped in dependency hell.
 - One programmer's dependency solution is another's version conflict.
@@ -1700,8 +1699,9 @@ On programming:
 - "Uproot your functions from their ground and the dangling roots will be seen. More functions!"
 - Single-paradigm languages are admirable for pushing until it breaks - or doesn't!; cf Einstein & Brownian motion; Columbus & 'spherical Earth'
 - "I think there is a world market for maybe five computers - Google, Amazon, Facebook, Microsoft, and Baidu."
+- The summer garbages - / the sole remnant of many / bright engineers' dreams
 
-Programming languages:
+#### Languages
 
 - C, C#, Go, R, Rust: are these unsearchable names testimony to some feet of clay, or testaments to monstrous egos?
 - "Haskellers knows the type of everything & the value of nothing." Unless they've turned on extensions, then neither
@@ -1711,22 +1711,12 @@ Programming languages:
 - "Just as winds preserve seas from stagnation, so also corruption in languages is the result of prolonged calm."
 - "That code is ill-written of which one must repent; as long as the PHP bears no evil fruit, the fool thinks it sweet as honey."
 
-Statistics:
-
-- Paleo? Atkins? Low-carb? Mediterranean? Maybe it is time to step back and ask: what should be the epistemology of food?
-- Power vs error vs sample size: painful tradeoff of statistics. Sins of omission, commission, & risk aversion - painful tradeoff of life?
-- Surprising linear models work at all, when they are the worst functional language ever: only operator \*, _n_ variables, _n_ steps, & output=sum.
-- "Often, I must calculate otherwise than I think. That is called diplomacy."
-- When critiquing a paper, go for the jugular: any part with the words "presumably", "obviously", "past research", or "studies show".
-- Every normal man must be tempted now & then to sharpen knives, hoist a black flag, and run amok, shouting "No causation without randomization!"
-- The use of confidence intervals rather than _p_-values is a clear improvement; it makes our difficulties vanish like smoke in a fog.
-- Every time I think maybe the FDA and big blind clinical trials are unnecessary, I just go read Longecity threads until the feeling passes.
-
-Black-markets & Bitcoin:
+### Black-markets & Bitcoin:
 
 - "Ulbricht, Ulbricht, Ulbricht! A million coins were not enough for Ulbricht!"
 - We criticize Ulbricht for not knowing when to quit & enjoy life; but what are we ourselves refusing to quit?
 - DPR was a genius until he was a fool & a knave; Satoshi was a genius until...?
+- Everything looks permanent until its secret is known. For all too many things, the beginning of fear is the beginning of knowledge.
 - "A beginning is the time for taking the most delicate care; this every student of the OP SECurity knows."
 - Modest proposal: let's abandon the term "OPSEC". Instead, let us refer to the mistakes of Ulbricht, Benthall, MDpro, etc as "OOPSEC".
 - Is crypto-libertarianism self-undermining? Can we handle the sausage factory of the black-markets?
@@ -1743,15 +1733,16 @@ Black-markets & Bitcoin:
 - One weird philo trick for analysis! Imagine worlds where X failed: "Sure Bitcoin died: a deflationary currency requiring ever more waste?"
 - Let us hope Karpeles will not be the Alcibiades of Bitcoin.
 
-Meta:
+## Statistics
 
-- An aphorism is an algorithm, of we know not what input, we know not what output.
-- "It is easier to write an incorrect epigram than understand a correct one."
-- The epigram is a compressed, golfed, idea, with all the virtues - and sins - of golfed code.
-- If we measure the entropy of epigrams by how many people understand them, who is the gzip of epigrams? The xz? (...the ZPAQ...?)
-- Remember! Most strings are incompressible, most reals uncomputable, most theorems unprovable, most programs undecidable.
-- Should languages support the writer's convenience or the reader's understanding? Frame it as a status debate, and all becomes clear.
-- Fear not known but unknown propaganda; I have the utmost respect for _Pravda_s - how else will you know what to not believe?
+- Paleo? Atkins? Low-carb? Mediterranean? Maybe it is time to step back and ask: what should be the epistemology of food?
+- Power vs error vs sample size: painful tradeoff of statistics. Sins of omission, commission, & risk aversion - painful tradeoff of life?
+- Surprising linear models work at all, when they are the worst functional language ever: only operator \*, _n_ variables, _n_ steps, & output=sum.
+- "Often, I must calculate otherwise than I think. That is called diplomacy."
+- When critiquing a paper, go for the jugular: any part with the words "presumably", "obviously", "past research", or "studies show".
+- Every normal man must be tempted now & then to sharpen knives, hoist a black flag, and run amok, shouting "No causation without randomization!"
+- The use of confidence intervals rather than _p_-values is a clear improvement; it makes our difficulties vanish like smoke in a fog.
+- Every time I think maybe the FDA and big blind clinical trials are unnecessary, I just go read Longecity threads until the feeling passes.
 
 ## Misc
 
@@ -1761,7 +1752,6 @@ General:
 - Good results follow good intentions even as the rain follows the plow.
 - "Ricardo's theorem is the pons asinorum of economics": it always seems to be employed by asses with oddly high salaries.
 - "Neo, what if I told you... *everything you knew was correct*?" (That would be the biggest disappointment ever.)
-- Everything looks permanent until its secret is known. For all too many things, the beginning of fear is the beginning of knowledge.
 - At times, tolerance can be the most radical of positions to take; just watch when a weak group gains power.
 - "Reading a flame war: and all you people must once have been little children, who smiled of a summer day."
 - War seeks to mold physical conditions as one wishes; art seeks to mold minds as one wishes. Both are based on deception.
@@ -1770,6 +1760,16 @@ General:
 - If pigs were smart enough to worry: "the humans neither love nor hate you, but you are made of tasty bacon they can use for something else."
 - I have made progress in my meditations: yesterday I told myself one truth, and only nine lies.
 - There's always someone who can make a perpetual motion machine complicated enough that you, personally, can't figure it out.
+
+## Meta
+
+- An aphorism is an algorithm, of we know not what input, we know not what output.
+- "It is easier to write an incorrect epigram than understand a correct one."
+- The epigram is a compressed, golfed, idea, with all the virtues - and sins - of golfed code.
+- If we measure the entropy of epigrams by how many people understand them, who is the gzip of epigrams? The xz? (...the ZPAQ...?)
+- Remember! Most strings are incompressible, most reals uncomputable, most theorems unprovable, most programs undecidable.
+- Should languages support the writer's convenience or the reader's understanding? Frame it as a status debate, and all becomes clear.
+- Fear not known but unknown propaganda; I have the utmost respect for _Pravda_s - how else will you know what to not believe?
 
 # _Cherchez Le Chien_
 
@@ -2044,7 +2044,7 @@ I had to move the lamp since the naked bulbs in corner of my eye were giving me 
 It's nice to have things brighter and it does indeed feel like it reduces sleep pressure in the evening; downsides: shows the walls dirtier, shadows much sharper, feels like it may be much harder to fall asleep even with melatonin if I leave the lights on past 11 PM.
 A small benefit is that I still have some incandescent light bulbs installed; with 2 CFLs bumped out of the lamp, I can take them and replace 2 incandescents, which should save some electricity.
 
-During the darkest winter days, just 2 of them now feels inadequate, so I ordered another pair on 18 Amazon 2014.
+During the darkest winter days, just 2 of them now feels inadequate, so I ordered another pair on Amazon on 18 2014.
 
 One handy way to quantify the effect is via my laptop webcam.
 Since 2012 or so, I have run a script which periodically takes a snapshot through the laptop webcam and saves the photo.
