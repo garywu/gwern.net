@@ -190,6 +190,62 @@ The back-loading of mortality means that a constant reduction in mortality risk 
 On the plus side, this also means that if we wait to use an intervention until what might seem like 'late' in life (like age 30), we have not suffered an opportunity cost (of ~40%) like one might think, but much less (~1.7%).
 The gains are minimal early on, and the opportunity cost only begins to really mount starting in one's 50s or 60s, which has the important implication that such interventions will benefit younger people much less (at least when it comes to interventions which offer only a constant reduction in risk and do not affect the acceleration of mortality caused by the aging process itself) and so the risks are more likely to make interventions profitable.
 
+#### Maximum possible profit
+
+More generally, it would be interesting to get an idea of what is the most profit possible for any particular reduction in ACM, by granting the most favorable possible assumptions: certainty that the RR is exact, that the intervention is side-effect-less and free both to start and continue, and it can begin at birth if need be.
+For the plausible range of RRs, 0.5-1.0:
+
+~~~{.R}
+profitByAge <- function(t, RR=0.85, yearValue=50000, annualCost, startCost, probabilityPenalty=(1/3)) {  (lifeExpectancyGain(RR, startingAge=t) * yearValue * probabilityPenalty) -
+                                        (annualCost*lifeExpectancy(RR,t,Inf) + startCost) }
+
+rrs <- seq(0.5,1,by=0.025)
+startAge <- 0
+data.frame(RR=rrs,
+           Years=sapply(rrs, function(r) { lifeExpectancyGain(r, startAge) }),
+           Maximum.Profit=sapply(rrs, function(r){profitByAge(startAge, RR=r, annualCost=0, startCost=0, probabilityPenalty=1)}))
+#       RR        Years Maximum.Profit
+# 1  0.500 6.5010477923   325052.38962
+# 2  0.525 6.0433308206   302166.54103
+# 3  0.550 5.6069241021   280346.20511
+# 4  0.575 5.1899323362   259496.61681
+# 5  0.600 4.7907023355   239535.11678
+# 6  0.625 4.4077834664   220389.17332
+# 7  0.650 4.0398958538   201994.79269
+# 8  0.675 3.6859046025   184295.23012
+# 9  0.700 3.3447986050   167239.93025
+# 10 0.725 3.0156733541   150783.66770
+# 11 0.750 2.6977164037   134885.82019
+# 12 0.775 2.3901950076   119509.75038
+# 13 0.800 2.0924464396   104622.32198
+# 14 0.825 1.8038691126    90193.45563
+# 15 0.850 1.5239153307    76195.76654
+# 16 0.875 1.2520850389    62604.25194
+# 17 0.900 0.9879204526    49396.02263
+# 18 0.925 0.7310014242    36550.07121
+# 19 0.950 0.4809414268    24047.07134
+# 20 0.975 0.2373840605    11869.20302
+# 21 1.000 0.0000000000        0.00000
+~~~
+
+This provides upper bounds, and can help gauge plausibility of interventions for various variables - for example, if we were a 90-yo man considering embarking on caloric restriction, we might note that the upper bounds look like
+
+~~~{.R}
+# ...
+# 13 0.800 2.0924464396   104622.32198
+# 14 0.825 1.8038691126    90193.45563
+# 15 0.850 1.5239153307    76195.76654
+# 16 0.875 1.2520850389    62604.25194
+# 17 0.900 0.9879204526    49396.02263
+# 18 0.925 0.7310014242    36550.07121
+# 19 0.950 0.4809414268    24047.07134
+# 20 0.975 0.2373840605    11869.20302
+# 21 1.000 0.0000000000        0.00000
+~~~
+
+Then we have to take into account the uncertainty that caloric restriction works at all in the extremely elderly (a halving is probably optimistic), the high probability its reduction in mortality will be relatively modest and in the 0.9s, the large financial & time costs of safely doing such a stringent diet (easily thousands of dollars in time and higher-quality food ingredients), the need to learn new recipes and count calories, the possible side-effects like increasing [frailty](!Wikipedia "Frailty syndrome") & [muscle loss](!Wikipedia "Sarcopenia")...
+Given that the upper bound for plausible effect sizes is merely 1 year/\$50k, it strikes me as extremely unlikely that such a man could justify CR.
+
 ### Power analysis
 
 How many subjects does it take to detect a specified RR? This is useful for planning clinical trials but also in interpreting them.
@@ -367,9 +423,7 @@ What about other ages? In fact, is there an optimal age at which to start, or sh
 Rewriting to generalize it, we can compute the profit for if we started at all ages:
 
 ~~~{.R}
-profitByAge <- function(t, RR=0.85) {  (lifeExpectancyGain(RR, startingAge=t) * yearValue * (1/3)) -
-                                        (metforminAnnualCost*lifeExpectancy(RR,t,Inf) + 3000) }
-ages <- sapply(1:120, profitByAge); ages
+ages <- sapply(1:120, function(startingAge) { profitByAge(startingAge, RR=0.85, metforminAnnualCost, 3000, (1/3))}); ages
 #   [1] 12581.36678184 12704.60247164 12827.51331458 12950.06734382 13072.23497395 13193.97822375
 #   [7] 13315.25955302 13436.03553162 13556.25972902 13675.88249331 13794.84959193 13913.10174786
 #  [13] 14030.57465454 14147.19877297 14262.56843491 14377.59313608 14491.19343288 14603.60417087
@@ -487,6 +541,11 @@ So it is highly unlikely (~10%) we could expect the realistic trial to deliver a
 We don't necessarily care about statistical-significance, since this is a decision-analysis approach: our question is whether the gained data shifts the posterior probability enough to change the optimal decision.
 But it's good to have an idea of power in that sense to make it easier to interpret the research article & media reports (eg the trial might be a 'failure' from the point of view of statistical-significance, even as it increases the profitability of using metformin).
 
+# See also
+
+- [Micromort](!Wikipedia)
+
 # External links
 
 - [_A History of Life-Extensionism In The Twentieth Century_](http://www.longevityhistory.com/book/indexb.html), Stambler 2014
+- ["Which Risks of Dying Are Worth Taking?"](http://www.spencergreenberg.com/2013/10/which-risks-of-dying-are-worth-taking/)
