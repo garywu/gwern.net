@@ -81,15 +81,15 @@ We can ask a third party to keep a cache for us. There are several [archive site
 
 There are other options but they are not available like Google^[Google Cache is generally recommended only as a last ditch resort because pages expire quickly from it. Personally, I'm convinced that Google would never just delete colossal amounts of Internet data - this is Google, after all, the epitome of storing unthinkable amounts of data - and that Google Cache merely ceases to make public its copies. And to request a Google spider visit, one has to solve a CAPTCHA - so that's not a scalable solution.] or various commercial/government archives^[Which would not be publicly accessible or submittable; I know they exist, but because they hide themselves, I know only from random comments online eg. ["years ago a friend of mine who I'd lost contact with caught up with me and told me he found a cached copy of a website I'd taken down in his employer's equivalent to the Wayback Machine. His employer was a branch of the federal government."](https://news.ycombinator.com/item?id=2880427).]
 
-<!-- TODO: develop and cover Pinboard, Archive.is, and Peeep.us support -->
+<!-- TODO: develop and cover Pinboard and Peeep.us support -->
 
 (An example would be [`bits.blogs.nytimes.com/2010/12/07/palm-is-far-from-game-over-says-former-chief/`](http://bits.blogs.nytimes.com/2010/12/07/palm-is-far-from-game-over-says-former-chief/ "Palm Is Far From 'Game Over', Says Former Chief") being archived at [`webcitation.org/5ur7ifr12`](http://webcitation.org/5ur7ifr12).)
 
-My first program in this vein of thought was a bot which fired off WebCite and Internet Archive/Alexa requests: [Wikipedia Archiving Bot](haskell/Wikipedia Archive Bot), quickly followed up by a [RSS version](haskell/Wikipedia RSS Archive Bot). (Or you could install the [Alexa Toolbar](!Wikipedia) to get automatic submission to the Internet Archive, if you have ceased to care about privacy.)
+My first program in this vein of thought was a bot which fired off WebCite, Internet Archive/Alexa, & Archive.is requests: [Wikipedia Archiving Bot](haskell/Wikipedia Archive Bot), quickly followed up by a [RSS version](haskell/Wikipedia RSS Archive Bot). (Or you could install the [Alexa Toolbar](!Wikipedia) to get automatic submission to the Internet Archive, if you have ceased to care about privacy.)
 
 The core code was quickly adapted into a [gitit](!Hackage) wiki plugin which hooked into the save-page functionality and tried to archive every link in the newly-modified page, [Interwiki.hs](https://github.com/jgm/gitit/blob/master/plugins/Interwiki.hs)
 
-Finally, I wrote [archiver](!Hackage), a daemon which watches[^watch]/reads a text file. (Source is available via `git clone https://github.com/gwern/archiver-bot.git`.)
+Finally, I wrote [archiver](!Hackage), a daemon which watches[^watch]/reads a text file. Source is available via `git clone https://github.com/gwern/archiver-bot.git`. (A similar tool is [Archiveror](https://github.com/rahiel/archiveror).)
 
 [^watch]: [Version 0.1](http://hackage.haskell.org/package/archiver-0.1) of my `archiver` daemon didn't simply read the file until it was empty and exit, but actually watched it for modifications with [inotify](!Wikipedia). I removed this functionality when I realized that the required WebCite choking (just one URL every ~25 seconds) meant that `archiver` would *never* finish any reasonable workload.
 
@@ -240,7 +240,7 @@ When `linkchecker` does not work, one alternative is to do a `wget --mirror` and
 
     If it's been turned into a full local file-based version with `--convert-links --page-requisites`, one can easily convert the dump into something like a standalone PDF suitable for public distribution. (A PDF is easier to store and link than the original directory of bits and pieces or other HTML formats like a ZIP archive of said directory.)
 
-    I use [`wkhtmltopdf`](http://code.google.com/p/wkhtmltopdf/) which does a good job; an example of a dead webpage with no Internet mirrors is `http://www.aeiveos.com/~bradbury/MatrioshkaBrains/MatrioshkaBrainsPaper.html` which can be found at [1999-bradbury-matrioshkabrains.pdf](/docs/1999-bradbury-matrioshkabrains.pdf), or Sternberg et al's 2001 review ["The Predictive Value of IQ"](/docs/dnb/2001-sternberg.pdf).
+    I use [`wkhtmltopdf`](http://wkhtmltopdf.org/) which does a good job; an example of a dead webpage with no Internet mirrors is `http://www.aeiveos.com/~bradbury/MatrioshkaBrains/MatrioshkaBrainsPaper.html` which can be found at [1999-bradbury-matrioshkabrains.pdf](/docs/1999-bradbury-matrioshkabrains.pdf), or Sternberg et al's 2001 review ["The Predictive Value of IQ"](/docs/dnb/2001-sternberg.pdf).
 
 # External links
 
@@ -250,6 +250,8 @@ When `linkchecker` does not work, one alternative is to do a `wget --mirror` and
     - ["Bookmark Archives That Don't"](http://blog.pinboard.in/2010/11/bookmark_archives_that_don_t/)
 - ["Testing 3 million hyperlinks, lessons learned"](http://samsaffron.com/archive/2012/06/07/testing-3-million-hyperlinks-lessons-learned#comment-31366), Stack Exchange
 - ["Backup All The Things"](/docs/linkrot/2011-muflax-backup.pdf), muflax
+- [IPFS](!Wikipedia)
+- [Wordpress plugin: Broken Link Checker](https://wordpress.org/plugins/broken-link-checker/)
 - [Hacker News discussion](https://news.ycombinator.com/item?id=6504331)
 
 # Appendices
