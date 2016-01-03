@@ -551,19 +551,42 @@ But it's good to have an idea of power in that sense to make it easier to interp
 - ["Which Risks of Dying Are Worth Taking?"](http://www.spencergreenberg.com/2013/10/which-risks-of-dying-are-worth-taking/)
 
 # Vitamin D
+## Background
 
+Vitamin D-3 and vitamin D-2 have been researched intensively ever since their discovery for possible benefits for a range of problems, starting with rickets and expanding from there to everything under the sun.
+Interest in vitamin D is sparked by many correlational results showing low levels of vitamin D in modern Western populations (unsurprising, given how little time people spend in the sun compared to historically) and how low levels correlate and predict with all sorts of bad things - particularly all-cause mortality.
+Quasi-experimental studies tend to turn in similar results as well, bolstering our confidence some more; for example, the 3 [Mendelian randomization](!Wikipedia) studies I found show clear negatives to genetically lower vitamin D levels:
 
-http://www.bmj.com/content/348/bmj.g1903.full
-> In randomised controlled trials, relative risks for all cause mortality were 0.89 (0.80 to 0.99) for vitamin D3 supplementation and 1.04 (0.97 to 1.11) for vitamin D2 supplementation.
+1. Levin et al 2012, ["Genetic variants and associations of 25-hydroxyvitamin D concentrations with major clinical outcomes"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3645444/)
 
+    > Examination of 141 single-nucleotide polymorphisms in a discovery cohort of 1514 white participants...Composite outcome of incident hip facture, myocardial infarction, cancer, and mortality over long-term follow-up....Among Cardiovascular Health Study participants, low 25-hydroxyvitamin D concentration was associated with hazard ratios for risk of the composite outcome of 1.40 (95% CI, 1.12–1.74) for those who had 1 minor allele at rs7968585 and 1.82 (95% CI, 1.31–2.54) for those with 2 minor alleles at rs7968585. In contrast, there was no evidence of an association (estimated hazard ratio, 0.93 [95% CI, 0.70–1.24]) among participants who had 0 minor alleles at this single-nucleotide polymorphism.
 
-"vitamin D"[All Fields] AND (("random allocation"[MeSH Terms] OR ("random"[All Fields] AND "allocation"[All Fields]) OR "random allocation"[All Fields] OR "randomized"[All Fields]) AND ("mortality"[Subheading] OR "mortality"[All Fields] OR "mortality"[MeSH Terms])) AND (Meta-Analysis[ptyp] AND "humans"[MeSH Terms])
+    Table 2 gives associations with all-cause mortality: 1.3 (1.0–1.6); 0.8 (0.7–1.0); 1.2 (0.9–1.5); 0.8 (0.6–1.1); 0.8 (0.6–1.0).
+2. Trummer et al 2013, ["Vitamin D and mortality: a Mendelian randomization study"](http://www.clinchem.org/content/59/5/793.long)
 
-39 results, 2 January 2015
+    > a prospective cohort study of 3,316 male and female participants [total]...RESULTS: In a linear regression model adjusting for month of blood sampling, age, and sex, vitamin D concentrations were predicted by GC genotype (P < 0.001), CYP2R1 genotype (P = 0.068), and DHCR7 genotype (P < 0.001), with a coefficient of determination (r2) of 0.175. During a median follow-up time of 9.9 years, 955 persons (30.0%) died, including 619 deaths from cardiovascular causes. In a multivariate Cox regression adjusted for classical risk factors, GC, CYP2R1, and DHCR7 genotypes were not associated with all-cause mortality
 
-Directly relevant:
+    [Table 3](http://www.clinchem.org/content/59/5/793/T3.expansion.html): 0.95 (0.86–1.06), 1.00 (0.91–1.10); 0.94 (0.84–1.05);
+3. ["Genetically low vitamin D concentrations and increased mortality: Mendelian randomisation analysis in three large cohorts"](http://www.bmj.com/content/349/bmj.g6330.long), Afzal et al 2014:
 
-- ["Vitamin D supplementation and total mortality: a meta-analysis of randomized controlled trials"](https://archinte.jamanetwork.com/article.aspx?articleid=413032), Autier et al 2007
+   > 95,766 white participants of Danish descent from three cohorts...The multivariable adjusted hazard ratios for a 20 nmol/L lower plasma 25-hydroxyvitamin D concentration were 1.19 (95% confidence interval 1.14 to 1.25) for all cause mortality...For DHCR7 and CYP2R1, we constructed an aggregate allele score of 0-4 as the sum of the number of 25-hydroxyvitamin D lowering alleles across the two genotypes in each gene....The hazard ratio per one DHCR7/CYP2R1 allele score increase was 1.02 (1.00 to 1.03; P=0.03) for all cause mortality
+
+The downside is that the literature is so large and heterogeneous that it's hard to deal with and for many of the uses investigated, there is conflicting evidence.
+We are fortunate, however: the large research area of bone fractures/[falls](!Wikipedia "Falls in older adults")/osteoporosis in the elderly (collectively, leading causes of death & disability) means many (relatively) large RCTs in (relatively) healthy people are available with meaningful death rates reported.
+For particularly comprehensive reviews, see [Newberry et al 2014](https://www.ncbi.nlm.nih.gov/books/NBK253540/ "Vitamin D and Calcium: A Systematic Review of Health Outcomes (Update)") and [Theodoratou et al 2014](http://www.bmj.com/content/348/bmj.g2035.full "Vitamin D and multiple health outcomes: umbrella review of systematic reviews and meta-analyses of observational studies and randomised trials").
+
+In addition, vitamin D-3 also has considerable plausibility for being profitable: it can be taken in extremely large doses (>10-100x normal daily doses) without much sign of toxicity (leading to a fair number of trials which ensure compliance by just injecting mega-doses of vitamin D every month or year), [hypervitaminosis D](!Wikipedia) is rare and not usually fatal, side-effects are rare and minimal, it is already taken by many millions of healthy and sick people without noticeable problems, and vitamin D costs ~\$15/year.
+
+## Causality
+
+I searched Pubmed and Google Scholar on 2 January 2015 with the searches:
+
+- "vitamin D"[All Fields] AND (("random allocation"[MeSH Terms] OR ("random"[All Fields] AND "allocation"[All Fields]) OR "random allocation"[All Fields] OR "randomized"[All Fields]) AND ("mortality"[Subheading] OR "mortality"[All Fields] OR "mortality"[MeSH Terms])) AND (Meta-Analysis[ptyp] AND "humans"[MeSH Terms])
+- ['"vitamin d" all-cause mortality meta-analysis' since 2012](https://scholar.google.com/scholar?q=%22vitamin+d%22+all-cause+mortality+meta-analysis&btnG=&hl=en&as_sdt=0%2C21&as_ylo=2012)
+
+After reviewing hits and reading all the relevant looking papers, the most useful were:
+
+- ["Vitamin D supplementation and total mortality: a meta-analysis of randomized controlled trials"](https://archinte.jamanetwork.com/article.aspx?articleid=413032), Autier et al 2007:
 
     > We identified 18 independent randomized controlled trials, including 57 311 participants. A total of 4777 deaths from any cause occurred during a trial size–adjusted mean of 5.7 years. Daily doses of vitamin D supplements varied from 300 to 2000 IU. The trial size–adjusted mean daily vitamin D dose was 528 IU. In 9 trials, there was a 1.4- to 5.2-fold difference in serum 25-hydroxyvitamin D between the intervention and control groups. The summary relative risk for mortality from any cause was 0.93 (95% confidence interval, 0.87-0.99).
 - Rejnmark et al 2012, ["Vitamin D with calcium reduces mortality: patient level pooled analysis of 70,528 patients from eight major vitamin D trials"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3410276/)
@@ -572,23 +595,34 @@ Directly relevant:
 - ["Vitamin D and cardiovascular outcomes: a systematic review and meta-analysis."](http://press.endocrine.org/doi/full/10.1210/jc.2011-0398), Elamin et al 2011:
 
     > Vitamin D was associated with nonsignificant effects on the patient-important outcomes of death [RR, 0.96; 95% confidence interval (CI), 0.93, 1.00; P = 0.08]
-- ["Meta-analysis of long-term vitamin D supplementation on overall mortality"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3857784/), Zheng et al 2013
+- ["Meta-analysis of long-term vitamin D supplementation on overall mortality"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3857784/), Zheng et al 2013:
 
     > Vitamin D therapy significantly decreased all-cause mortality with a duration of follow-up longer than 3 years with a RR (95% CI) of 0.94 (0.90–0.98). No benefit was seen in a shorter follow-up periods with a RR (95% CI) of 1.04 (0.97–1.12)
 
     Zheng does not report the pooled RR of all studies. Pooled experimental arm death rate: (1175+3693)/(8809+33752)=0.1143770118, control death rate (1118+3880)/(9193+33712)=0.1164899196, RR=0.981 p=0.33 (`prop.test(c((1175+3693), (1118+3880)), c((8809+33752), (9193+33712)))`)
-- ["Vitamin D supplementation for prevention of cancer in adults"](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD007469.pub2/pdf), Bjelakovic et al 2014 (update of Bjelakovic et al 2011)
+- ["Vitamin D Supplementation and Cancer: Review of Randomized Controlled Trials"](https://www.researchgate.net/profile/Sara_Gandini/publication/232698373_Vitamin_D_Supplementation_and_Cancer_Review_of_Randomized_Controlled_Trials/links/00b495149acb68c54b000000.pdf), Lazzeroni et al 2013:
+
+    Focused on cancer, not all-cause mortality, but does note some methodological issues that apply to most vitamin D RCTs: subjects often do not take the provided supplements, and may be taking vitamin D on their own; the vitamin D doses used can vary widely; baseline levels of vitamin D in blood also can vary widely, which leads to both greater noise and, given the common U or J-shaped dose-response curves, might hide benefits or cause harm; vitamin D itself might interact with other drugs or supplements (eg Lazzeroni et al note an apparent interaction with estrogen supplementation in the Women's Health Initiative Trial).
+- ["Vitamin D supplementation for prevention of cancer in adults"](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD007469.pub2/pdf), Bjelakovic et al 2014 (update of Bjelakovic et al 2011):
 
    > Vitamin D decreased all-cause mortality (1854/24,846 (7.5%) versus 2007/25,020 (8.0%); RR 0.93 (95% CI 0.88 to 0.98); P = 0.009; I² = 0%; 15 trials; 49,866 participants; moderate quality evidence), but TSA indicates that this finding could be due to random errors.
-- ["The effect of vitamin D supplementation on skeletal, vascular, or cancer outcomes: a trial sequential meta-analysis"](https://www.dropbox.com/s/nmmr3u4kai1ukl4/2014-bolland.pdf), Bolland et al 2014
+- ["The effect of vitamin D supplementation on skeletal, vascular, or cancer outcomes: a trial sequential meta-analysis"](/docs/vitamind/2014-bolland.pdf), Bolland et al 2014:
 
-    RR 0.96 (0.93–1.00); _p_=0.04
-- ["Vitamin D and risk of cause specific death: systematic review and meta-analysis of observational cohort and randomised intervention studies"](http://www.bmj.com/content/348/bmj.g1903.full), Chowdhury et al 2014
+    RR 0.96 (0.93–1.00)
+- ["Vitamin D and risk of cause specific death: systematic review and meta-analysis of observational cohort and randomised intervention studies"](http://www.bmj.com/content/348/bmj.g1903.full), Chowdhury et al 2014:
 
     > In randomised controlled trials, relative risks for all cause mortality were 0.89 (0.80 to 0.99) for vitamin D3 supplementation and 1.04 (0.97 to 1.11) for vitamin D2 supplementation.
-- ["Vitamin D and Calcium: A Systematic Review of Health Outcomes (Update)"](https://www.ncbi.nlm.nih.gov/books/NBK253540/), Newberry et al 2014 (update of Chung et al 2009)
+- ["Vitamin D and Calcium: A Systematic Review of Health Outcomes (Update)"](https://www.ncbi.nlm.nih.gov/books/NBK253540/), Newberry et al 2014 (update of Chung et al 2009):
 
-> For the re-analysis conducted in the original report, they excluded 5 of 18 trials in the Autier 2007 meta-analysis: One trial was on patients with congestive heart failure,206 one was published only in abstract form,207 in one trial the controls also received supplementation with vitamin D, albeit with a smaller dose,208 and two trials used vitamin D injections.209,210 One additional eligible RCT (Lyons 2007)185 was identified and included in our meta-analysis....Three RCTs from the previous systematic review [based on Autier et al 2007?] and an additional C rated RCT were included in our reanalysis. Three used daily doses that ranged between 400 and 880 IU, and one used 100,000 IU every 3 months. Our meta-analysis of the 4 RCTs (13,833 participants) shows absence of significant effects of vitamin D supplementation on all-cause mortality (RR = 0.97, 95% CI: 0.92, 1.02; random effects model). There is little evidence for between-study heterogeneity in these analyses.
-- ["A Meta-Analysis of High Dose, Intermittent Vitamin D Supplementation among Older Adults"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4300188/), Zheng et al 2015
+    > For the re-analysis conducted in the original report, they excluded 5 of 18 trials in the Autier 2007 meta-analysis: One trial was on patients with congestive heart failure,206 one was published only in abstract form,207 in one trial the controls also received supplementation with vitamin D, albeit with a smaller dose,208 and two trials used vitamin D injections.209,210 One additional eligible RCT (Lyons 2007)185 was identified and included in our meta-analysis....Three RCTs from the previous systematic review [based on Autier et al 2007?] and an additional C rated RCT were included in our reanalysis. Three used daily doses that ranged between 400 and 880 IU, and one used 100,000 IU every 3 months. Our meta-analysis of the 4 RCTs (13,833 participants) shows absence of significant effects of vitamin D supplementation on all-cause mortality (RR = 0.97, 95% CI: 0.92, 1.02; random effects model). There is little evidence for between-study heterogeneity in these analyses.
+- ["Vitamin D and multiple health outcomes: umbrella review of systematic reviews and meta-analyses of observational studies and randomised trials"](http://www.bmj.com/content/348/bmj.g2035.full), Theodoratou et al 2014:
+
+    Vitamin D-3: 9 studies, 0.91 (0.82-1.02). Vitamin D-2: 8 studies, 1.04  (0.97-1.11). As well, an interesting comparison of randomized & correlational studies on the same outcomes:
+
+    > 10 (7%) outcomes were examined by both meta-analyses of observational studies and meta-analyses of randomised controlled trials: cardiovascular disease, hypertension, birth weight, birth length, head circumference at birth, small for gestational age birth, mortality in patients with chronic kidney disease, all cause mortality, fractures, and hip fractures (table 5⇓). The direction of the association/effect and level of statistical significance was concordant only for birth weight, but this outcome could not be tested for hints of bias in the meta-analysis of observational studies (owing to lack of the individual data). The direction of the association/effect but not the level of statistical significance was concordant in 6 outcomes (cardiovascular disease, hypertension, birth length, head circumference small for gestational age births, and all cause mortality), but only 2 of them (cardiovascular disease and hypertension) could be tested and were found to be free from hint of bias and of low heterogeneity in the meta-analyses of observational studies. For mortality in chronic kidney disease patients, fractures in older populations, and hip fractures [3], both the direction and the level of significance of the association/effect were not concordant.
+- ["Vitamin D status and ill health: a systematic review"](/docs/vitamind/2014-autier.pdf) ([appendix](/docs/vitamind/2014-autier-appendix.pdf)), Autier et al 2014:
+
+    > Results of meta-analyses and pooled analyses consistently showed that supplementation could significantly reduce the risk of all-cause mortality, with relative risks ranging from 0·93 to 0·96 (table 4)...
+- ["A Meta-Analysis of High Dose, Intermittent Vitamin D Supplementation among Older Adults"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4300188/), Zheng et al 2015:
 
     > High dose, intermittent vitamin D therapy did not decrease all-cause mortality among older adults. The risk ratio (95% CI) was 1.04 (0.91–1.17).
