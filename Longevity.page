@@ -549,3 +549,46 @@ But it's good to have an idea of power in that sense to make it easier to interp
 
 - [_A History of Life-Extensionism In The Twentieth Century_](http://www.longevityhistory.com/book/indexb.html), Stambler 2014
 - ["Which Risks of Dying Are Worth Taking?"](http://www.spencergreenberg.com/2013/10/which-risks-of-dying-are-worth-taking/)
+
+# Vitamin D
+
+
+http://www.bmj.com/content/348/bmj.g1903.full
+> In randomised controlled trials, relative risks for all cause mortality were 0.89 (0.80 to 0.99) for vitamin D3 supplementation and 1.04 (0.97 to 1.11) for vitamin D2 supplementation.
+
+
+"vitamin D"[All Fields] AND (("random allocation"[MeSH Terms] OR ("random"[All Fields] AND "allocation"[All Fields]) OR "random allocation"[All Fields] OR "randomized"[All Fields]) AND ("mortality"[Subheading] OR "mortality"[All Fields] OR "mortality"[MeSH Terms])) AND (Meta-Analysis[ptyp] AND "humans"[MeSH Terms])
+
+39 results, 2 January 2015
+
+Directly relevant:
+
+- ["Vitamin D supplementation and total mortality: a meta-analysis of randomized controlled trials"](https://archinte.jamanetwork.com/article.aspx?articleid=413032), Autier et al 2007
+
+    > We identified 18 independent randomized controlled trials, including 57 311 participants. A total of 4777 deaths from any cause occurred during a trial size–adjusted mean of 5.7 years. Daily doses of vitamin D supplements varied from 300 to 2000 IU. The trial size–adjusted mean daily vitamin D dose was 528 IU. In 9 trials, there was a 1.4- to 5.2-fold difference in serum 25-hydroxyvitamin D between the intervention and control groups. The summary relative risk for mortality from any cause was 0.93 (95% confidence interval, 0.87-0.99).
+- Rejnmark et al 2012, ["Vitamin D with calcium reduces mortality: patient level pooled analysis of 70,528 patients from eight major vitamin D trials"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3410276/)
+
+    > The IPD analysis yielded data on 70,528 randomized participants (86.8% females) with a median age of 70 (interquartile range, 62–77) yr. Vitamin D with or without calcium reduced mortality by 7% [hazard ratio, 0.93; 95% confidence interval (CI), 0.88–0.99]. However, vitamin D alone did not affect mortality, but risk of death was reduced if vitamin D was given with calcium (hazard ratio, 0.91; 95% CI, 0.84–0.98). The number needed to treat with vitamin D plus calcium for 3 yr to prevent one death was 151. Trial level meta-analysis (24 trials with 88,097 participants) showed similar results, i.e. mortality was reduced with vitamin D plus calcium (odds ratio, 0.94; 95% CI, 0.88–0.99), but not with vitamin D alone (odds ratio, 0.98; 95% CI, 0.91–1.06).
+- ["Vitamin D and cardiovascular outcomes: a systematic review and meta-analysis."](http://press.endocrine.org/doi/full/10.1210/jc.2011-0398), Elamin et al 2011:
+
+    > Vitamin D was associated with nonsignificant effects on the patient-important outcomes of death [RR, 0.96; 95% confidence interval (CI), 0.93, 1.00; P = 0.08]
+- ["Meta-analysis of long-term vitamin D supplementation on overall mortality"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3857784/), Zheng et al 2013
+
+    > Vitamin D therapy significantly decreased all-cause mortality with a duration of follow-up longer than 3 years with a RR (95% CI) of 0.94 (0.90–0.98). No benefit was seen in a shorter follow-up periods with a RR (95% CI) of 1.04 (0.97–1.12)
+
+    Zheng does not report the pooled RR of all studies. Pooled experimental arm death rate: (1175+3693)/(8809+33752)=0.1143770118, control death rate (1118+3880)/(9193+33712)=0.1164899196, RR=0.981 p=0.33 (`prop.test(c((1175+3693), (1118+3880)), c((8809+33752), (9193+33712)))`)
+- ["Vitamin D supplementation for prevention of cancer in adults"](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD007469.pub2/pdf), Bjelakovic et al 2014 (update of Bjelakovic et al 2011)
+
+   > Vitamin D decreased all-cause mortality (1854/24,846 (7.5%) versus 2007/25,020 (8.0%); RR 0.93 (95% CI 0.88 to 0.98); P = 0.009; I² = 0%; 15 trials; 49,866 participants; moderate quality evidence), but TSA indicates that this finding could be due to random errors.
+- ["The effect of vitamin D supplementation on skeletal, vascular, or cancer outcomes: a trial sequential meta-analysis"](https://www.dropbox.com/s/nmmr3u4kai1ukl4/2014-bolland.pdf), Bolland et al 2014
+
+    RR 0.96 (0.93–1.00); _p_=0.04
+- ["Vitamin D and risk of cause specific death: systematic review and meta-analysis of observational cohort and randomised intervention studies"](http://www.bmj.com/content/348/bmj.g1903.full), Chowdhury et al 2014
+
+    > In randomised controlled trials, relative risks for all cause mortality were 0.89 (0.80 to 0.99) for vitamin D3 supplementation and 1.04 (0.97 to 1.11) for vitamin D2 supplementation.
+- ["Vitamin D and Calcium: A Systematic Review of Health Outcomes (Update)"](https://www.ncbi.nlm.nih.gov/books/NBK253540/), Newberry et al 2014 (update of Chung et al 2009)
+
+> For the re-analysis conducted in the original report, they excluded 5 of 18 trials in the Autier 2007 meta-analysis: One trial was on patients with congestive heart failure,206 one was published only in abstract form,207 in one trial the controls also received supplementation with vitamin D, albeit with a smaller dose,208 and two trials used vitamin D injections.209,210 One additional eligible RCT (Lyons 2007)185 was identified and included in our meta-analysis....Three RCTs from the previous systematic review [based on Autier et al 2007?] and an additional C rated RCT were included in our reanalysis. Three used daily doses that ranged between 400 and 880 IU, and one used 100,000 IU every 3 months. Our meta-analysis of the 4 RCTs (13,833 participants) shows absence of significant effects of vitamin D supplementation on all-cause mortality (RR = 0.97, 95% CI: 0.92, 1.02; random effects model). There is little evidence for between-study heterogeneity in these analyses.
+- ["A Meta-Analysis of High Dose, Intermittent Vitamin D Supplementation among Older Adults"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4300188/), Zheng et al 2015
+
+    > High dose, intermittent vitamin D therapy did not decrease all-cause mortality among older adults. The risk ratio (95% CI) was 1.04 (0.91–1.17).
