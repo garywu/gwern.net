@@ -255,14 +255,14 @@ Given that the upper bound for plausible effect sizes is merely 1 year/\$50k, it
 We could also go the other direction and ask what is the worst RR that justifies a particular dollar cost using `uniroot` to find the zero of `profitsByAge`:
 
 ~~~{.R}
-profitToRR <- function (startingAge=30, annualCost, startCost=0, probabilityPenalty=1) {
+costToRR <- function (startingAge=30, annualCost, startCost=0, probabilityPenalty=1) {
   uniroot(f=function(r) {
           profitByAge(startingAge, RR=r, annualCost=annualCost, startCost=startCost,
                       probabilityPenalty=probabilityPenalty) },
           lower=.Machine$double.eps, upper=1)$root }
-profitToRR(annualCost=1000)
+costToRR(annualCost=1000)
 # [1] 0.9008035856
-profitToRR(annualCost=10)
+costToRR(annualCost=10)
 # [1] 0.9989756733
 
 ~~~
@@ -662,7 +662,7 @@ optimalAge <- which.max(ages), optimalAge
 What RR would wipe out the gains from vitamin D, and how likely is an RR that pessimistic?
 
 ~~~{.R}
-zeroRR <- profitToRR(startingAge=optimalAge, annualCost=vitaminDAnnualCost); zeroRR
+zeroRR <- costToRR(startingAge=optimalAge, annualCost=vitaminDAnnualCost); zeroRR
 # [1] 0.9981691406
 sum(rrPP<zeroRR) / length(rrPP)
 # [1] 0.8356
@@ -752,13 +752,9 @@ unitCost <- 4 * 1.05
 annualPurchases <- 365.25 / unitDoses
 moneyCost <- unitCost * annualPurchases
 timeCost <- (0.5/60) * 8 * 365.25
-metforminAnnualCost <- moneyCost + timeCost
-metforminTotalCost <- metforminAnnualCost * lifeExpectancy(0.85, 30, Inf)
-metforminTotalCost
-# [1] 6164.222177
+metforminAnnualCost <- moneyCost + timeCost; metforminAnnualCost
+# [1] 126.62
 ~~~
-
-<\$6k is around an order of magnitude smaller than the more conservative RR estimate, giving a gain of \$69k for 0.85.
 
 ### Side-effects
 
@@ -803,14 +799,22 @@ And the lactic acidosis rates (2-9 per 100,000 person-years, so at 50 years of u
 
 So for side-effects, I think we can sum it up as a month or two of diarrhea, which is unpleasant but not that big a deal. I wouldn't pay more than \$50/day or so to get rid of some diarrhea, which over two months is \$3000, but that's somewhat unlikely.
 
+~~~{.R}
+metforminStartCost <- 3000
+metforminTotalCost <- metforminStartCost + metforminAnnualCost * lifeExpectancy(0.85, 30, Inf)
+metforminTotalCost
+# [1] 9164.222177
+~~~
+
+<\$9.2k is a little under an order of magnitude smaller than the more conservative RR estimate, giving a gain of \$69k for RR=0.85.
+
 ## Cost-benefit
 
 Bringing it all together for a 30yo considering metformin:
 
 ~~~{.R}
 benefit <- lifeExpectancyGain(0.85, startingAge=30) * yearValue * (1/3)
-cost <- metforminTotalCost + 3000
-benefit - cost
+benefit - metforminTotalCost
 # [1] 15812.74246
 ~~~
 
@@ -822,8 +826,10 @@ What about other ages? In fact, is there an optimal age at which to start, or sh
 Rewriting to generalize it, we can compute the profit for if we started at all ages:
 
 ~~~{.R}
-ages <- sapply(1:120, function(startingAge) { profitByAge(startingAge, RR=0.85,
-                                                          metforminAnnualCost, 3000, (1/3))})
+ages <- sapply(1:120, function(startingAge) { profitByAge(t=startingAge, RR=0.85, yearValue=yearValue,
+                                                          annualCost=metforminAnnualCost,
+                                                          startCost=metforminStartCost,
+                                                          probabilityPenalty=(1/3))})
 ages
 #   [1] 12581.36678184 12704.60247164 12827.51331458 12950.06734382 13072.23497395 13193.97822375
 #   [7] 13315.25955302 13436.03553162 13556.25972902 13675.88249331 13794.84959193 13913.10174786
@@ -847,7 +853,7 @@ ages
 # [115] -2238.37032302 -2311.05585076 -2377.15851698 -2437.21167794 -2491.71755097 -2541.14436644
 max(ages)
 # [1] 16542.39576
-which.max(ages)
+optimalAge <- which.max(ages); optimalAge
 # [1] 45
 ~~~
 
@@ -869,30 +875,12 @@ ages[which.max(ages)] * (19309019+20720284+20304644+25874360)
 We can also use the formula to ask how small (close to 1) the RR must be before, given the specified purchase & side-effect costs, there is no longer any age at which metformin is profitable:
 
 ~~~{.R}
-rrs <- seq(0.85,1,by=0.01)
-data.frame(RR=rrs,
- Maximum.Profit=sapply(rrs, function(r){max(sapply(1:120, function(t){profitByAge(t,RR=r)}))}))
-#      RR Maximum.Profit
-# 1  0.85  16542.3957583
-# 2  0.86  14832.4764343
-# 3  0.87  13151.9204186
-# 4  0.88  11501.5626452
-# 5  0.89   9883.2197752
-# 6  0.90   8295.4160347
-# 7  0.91   6744.2697401
-# 8  0.92   5230.8482349
-# 9  0.93   3762.0437695
-# 10 0.94   2344.8834221
-# 11 0.95    989.5406473
-# 12 0.96   -283.0060740
-# 13 0.97  -1437.7229939
-# 14 0.98  -2399.0603044
-# 15 0.99  -2970.9252342
-# 16 1.00  -3021.2570816
+costToRR(startingAge=optimalAge, annualCost=metforminAnnualCost, startCost=metforminStartCost,
+         probabilityPenalty=(1/3))
+# [1] 0.9520242072
 ~~~
 
-The boundary is around 0.95.
-So if one doesn't believe the true causal ACM RR is <=0.96, then it doesn't look like metformin is ever worthwhile.
+So if one doesn't believe the true causal ACM RR is <=0.95, then metformin use may not be advisable.
 
 ## TAME power analysis
 
@@ -930,7 +918,8 @@ Finally, we could consider the probability that we would get both a RR in the de
 ~~~{.R}
 df <- df0.94attrit
 pvalues <- sapply(1:nrow(df),
-            function(i) { prop.test(c(df[i,]$N1.deaths, df[i,]$N2.deaths), c(df[i,]$N1, df[i,]$N2), alternative="less")$p.value })
+            function(i) { prop.test(c(df[i,]$N1.deaths, df[i,]$N2.deaths), c(df[i,]$N1, df[i,]$N2),
+                                    alternative="less")$p.value })
 table(pvalues<=0.05)
 #
 # FALSE  TRUE
