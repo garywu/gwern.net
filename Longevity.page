@@ -102,7 +102,7 @@ To work with life expectancies and changes in it, I take a standard [Gompertz cu
 
 ~~~{.R}
 S <- function(t, RR=1) { exp(-((RR*0.000016443)/log(1.1124) * (1.1124^t - 1))) }
-plot(sapply(0:120, S), xlab="Age", ylab="Fraction surviving")
+# plot(sapply(0:120, S), xlab="Age", ylab="Fraction surviving")
 
 # the `min` is because past age 104, hazard>1 which is wrong, so need a ceiling
 H <- function(t, RR) { min(1, (0 + (RR*0.000016443)*1.1124^t)) }
@@ -788,7 +788,7 @@ exp(-0.0719); exp(-0.0354); exp(0.0011)
 # [1] 1.001100605
 ~~~
 
-(Oddly, the per-study deaths/_n_s in the Bolland forest plot/table don't add up to the claimed totals, but are short by a few dozen each; since the RR calculate by `metafor` works out to be about the same, I assume it has something to do with how Bolland decided to handle including multiple subgroups from studies and is not important.)
+(Oddly, the per-study deaths/_n_s in the Bolland forest plot/table don't add up to the claimed totals, but are short by a few dozen each; since the RR calculated by `metafor` works out to be about the same, I assume it has something to do with how Bolland decided to handle including multiple subgroups from studies and is not important.)
 
 Turning from frequentist to Bayesian methods, we could take the fixed-effect at face-value and use a Bayesian proportion test, for example, Bayesian First Aid
 
@@ -838,9 +838,66 @@ exp(c(-0.080152143106, -0.036152849917, 0.008768546338))
 # [1] 0.9229759113 0.9644928596 1.0088071027
 
 ## posterior predictive distribution of RR values including heterogeneity
-rrPP <- brem$rposterior(10000, predict=TRUE)[,2]
+rrPP <- exp(brem$rposterior(10000, predict=TRUE)[,2])
 
 ## probability that vitamin D will reduce all-cause mortality in unobserved populations:
-sum(rrPP<0) / length(rrPP)
+sum(rrPP<1) / length(rrPP)
 # [1] 0.8489
+~~~
+
+## Benefit
+
+Expected life expectancy increase:
+
+~~~{.R}
+yearValue <- 50000
+RR <- mean(rrPP)
+years <- mean(sapply(rrPP, lifeExpectancyGain))
+# [1] 0.336735595
+years * yearValue
+# 16836.77975
+~~~
+
+Worth \$16.8k.
+
+## Cost
+### Financial
+
+The meta-analyses do not have anything remotely near a consensus about dosage (nor do the correlational studies, despite much ink spilled), so it cannot matter much.
+I have in the past purchased 360x5000IU vitamin D3 pills for [\$10.99](http://amazon.com/gp/product/B0050MYHBQ/ "Doctor's Best Vitamin D3 5000iu Soft-gels, 360"), for an annual cost of \$11.14.
+Taking a single pill takes perhaps a sixth of a minute, which again we value at \$8/hr.
+So if we began taking at age 30:
+
+~~~{.R}
+moneyCost <- (10.99 / 360) * 365
+timeCost <- ((1/10)/60) * 365.25 * 8
+vitaminDAnnualCost <- moneyCost + timeCost
+vitaminDTotalCost <- vitaminDAnnualCost * lifeExpectancy(RR, 30, Inf)
+vitaminDTotalCost
+# [1] 760.6887142
+~~~
+
+### Side-effects
+
+Due to rarity, effectively zero.
+
+## Cost-benefit
+
+Bringing it all together for a 30yo considering vitamin D:
+
+~~~{.R}
+benefit <- lifeExpectancyGain(RR, startingAge=30) * yearValue
+cost <- vitaminDTotalCost
+benefit - cost
+# [1] 15303.74835
+~~~
+
+### Optimal age
+
+30 years turns out to be similar to the optimal age to start:
+
+~~~{.R}
+ages <- sapply(1:120, function(startingAge) { profitByAge(startingAge, RR=RR, vitaminDAnnualCost, 0, probabilityPenalty=1)})
+which.max(ages)
+# [1] 24
 ~~~
