@@ -698,3 +698,108 @@ The 41:
 1. WHI trials 2006-07 47-49, ["Calcium plus vitamin D supplementation and the risk of fractures"](http://www.researchgate.net/profile/Tamsen_Bassford2/publication/7294708_Calcium_plus_vitamin_D_supplementation_and_the_risk_of_fractures/links/0fcfd50b4f1cb2dc63000000.pdf) & ["Calcium plus vitamin D supplementation and the risk of colorectal cancer"](http://www.fp.ucalgary.ca/FMResidentSecure/Articles/Ca%20vit%20d%20and%20ca%20colon%20nejm%20feb%202006.pdf) & ["Calcium/vitamin D supplementation and cardiovascular events"](http://circ.ahajournals.org/content/115/7/846.full)
 1. Bolton-Smith et al 2007, ["Two-year randomized controlled trial of vitamin K1 (phylloquinone) and vitamin D3 plus calcium on the bone health of older women"](http://onlinelibrary.wiley.com/doi/10.1359/jbmr.070116/full)
 1. Salovaara et al 2010, ["Effect of vitamin D(3) and calcium on fracture risk in 65- to 71-year-old women: a population-based 3-year randomized, controlled trial - the OSTPRE-FPS"](http://onlinelibrary.wiley.com/doi/10.1002/jbmr.48/full)
+
+The meta-analysis itself is simple to reproduce given Bolland's forest plot & table, Figure 5:
+
+~~~{.R}
+vitaminD <- read.csv(stdin(),header=TRUE, colClasses=c("factor","integer","integer","integer","integer","integer","logical"))
+Study, Year,E.deaths, E.n, C.deaths, C.n,Calcium
+Inkovaara, 1983, 41, 181, 26, 146, FALSE
+Corless, 1985, 8, 41, 8, 41, FALSE
+Ooms, 1995, 11, 177, 21, 171, FALSE
+Lips A, 1996, 223, 1291, 251, 1287, FALSE
+Komulainen, 1998, 2, 232, 2, 232, FALSE
+Meyer, 2002, 169, 569, 163, 575, FALSE
+Bischoff, 2003, 1, 62, 4, 60, FALSE
+Cooper, 2003, 0, 93, 1, 94, FALSE
+Latham, 2003, 11, 121, 3, 122, FALSE
+Trivedi, 2003, 224, 1345, 247, 1341, FALSE
+Avenell, 2004, 4, 70, 3, 64, FALSE
+Harwood, 2004, 24, 113, 5, 37, FALSE
+Aloia, 2005, 1, 104, 2, 104, FALSE
+Flicker, 2005, 76, 313, 85, 312, FALSE
+Grant, 2005, 438, 2649, 460, 2643, FALSE
+Broe, 2007, 5, 99, 2, 25, FALSE
+Burleigh, 2007, 16, 101, 13, 104, FALSE
+Lappe, 2007, 4, 446, 18, 734, FALSE
+Lyons, 2007, 947, 1725, 953, 1715, FALSE
+Smith, 2007, 355, 4727, 354, 4713, FALSE
+Björkman, 2008, 27, 150, 9, 68, FALSE
+Chel, 2008, 25, 166, 33, 172, FALSE
+Prince, 2008, 0, 151, 1, 151, FALSE
+Zhu, 2008, 0, 39, 2, 81, FALSE
+Lips B, 2010, 1, 114, 0, 112, FALSE
+Sanders, 2010, 40, 1131, 47, 1125, FALSE
+Glendenning, 2012, 2, 353, 0, 333, FALSE
+Inkovaara, 1983, 2, 353, 0, 333, TRUE
+Chapuy A, 1992, 258, 1634, 274, 1636, TRUE
+Dawson-Hughes, 1997, 2, 187, 2, 202, TRUE
+Baeksgaard, 1998, 0, 80, 1, 80, TRUE
+Krieg, 1999, 21, 124, 26, 124, TRUE
+Chapuy B, 2002, 70, 389, 43, 194, TRUE
+Harwood, 2004, 17, 75, 5, 37, TRUE
+Meier, 2004, 0, 30, 1, 25, TRUE
+Brazier, 2005, 3, 95, 1, 97, TRUE
+Grant, 2005, 221, 1306, 217, 1332, TRUE
+Porthouse, 2005, 57, 1321, 68, 1993, TRUE
+WHI trials, 2006, 744, 18176, 807, 18106, TRUE
+Bolton-Smith, 2007, 0, 62, 1, 61, TRUE
+Zhu, 2008, 0, 39, 2, 41, TRUE
+Salovaara, 2010, 15, 1718, 13, 1714, TRUE
+
+
+library(metafor)
+rem <- rma(measure="RR", ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths), data=vitaminD, method="REML"); rem
+# Random-Effects Model (k = 42; tau^2 estimator: REML)
+#
+# tau^2 (estimated amount of total heterogeneity): 0 (SE = 0.0015)
+# tau (square root of estimated tau^2 value):      0
+# I^2 (total heterogeneity / total variability):   0.00%
+# H^2 (total variability / sampling variability):  1.00
+#
+# Test for Heterogeneity:
+# Q(df = 41) = 36.5200, p-val = 0.6699
+#
+# Model Results:
+#
+# estimate       se     zval     pval    ci.lb    ci.ub
+#  -0.0354   0.0186  -1.8990   0.0576  -0.0719   0.0011
+## since I^2=0, this is equivalent to a fixed-effect meta-analysis:
+fem <- rma(measure="RR", ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths), data=vitaminD, method="FE"); fem
+#
+# Fixed-Effects Model (k = 42)
+#
+# Test for Heterogeneity:
+# Q(df = 41) = 36.5200, p-val = 0.6699
+#
+# Model Results:
+#
+# estimate       se     zval     pval    ci.lb    ci.ub
+#  -0.0354   0.0186  -1.8990   0.0576  -0.0719   0.0011
+## 'metafor' works in log RR, so convert back to RRs:
+exp(-0.0719); exp(-0.0354); exp(0.0011)
+# [1] 0.9306239536
+# [1] 0.9652192513
+# [1] 1.001100605
+~~~
+
+(Oddly, the per-study deaths/_n_s in the Bolland forest plot/table don't add up to the claimed totals, but are short by a few dozen each; since the RR calculate by `metafor` works out to be about the same, I assume it has something to do with how Bolland decided to handle including multiple subgroups from studies and is not important.)
+
+Turning from frequentist to Bayesian methods, we could take the fixed-effect at face-value and use a Bayesian proportion test, for example, Bayesian First Aid
+
+~~~{.R}
+library(BayesianFirstAid)
+bayes.prop.test(c(sum(vitaminD$E.deaths), sum(vitaminD$C.deaths)), c(sum(vitaminD$E.n), sum(vitaminD$C.n)))
+#   Bayesian First Aid propotion test
+#
+# data: c(sum(vitaminD$E.deaths), sum(vitaminD$C.deaths)) out of c(sum(vitaminD$E.n), sum(vitaminD$C.n))
+# number of successes:   4065,  4174
+# number of trials:     42152, 42537
+# Estimated relative frequency of success [95% credible interval]:
+#   Group 1: 0.096 [0.094, 0.099]
+#   Group 2: 0.098 [0.095, 0.10]
+# Estimated group difference (Group 1 - Group 2):
+#   0 [-0.0056, 0.0024]
+# The relative frequency of success is larger for Group 1 by a probability
+# of 0.203 and larger for Group 2 by a probability of 0.797 .
+~~~
