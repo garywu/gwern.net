@@ -271,6 +271,11 @@ gompertzPower <- function(RR, n1, n2, startingAge, followupYears, iters=100) {
  }
 ~~~
 
+## Prior on RRs
+
+Useful interventions are rare and our analyses should incorporate a skeptical informative prior reflecting our knowledge that it is highly unlikely that any particular intervention will genuinely increase life expectancy; in particular, RRs <0.5 (or >2.0) are rare.
+Since there are no previous compilations of randomized effects for interventions on all-cause mortality in healthy people to use for priors, I fall back on general-purpose but still informative skeptical priors found to work well across many problems by [Gelman et al 2008](http://projecteuclid.org/download/pdfview_1/euclid.aoas/1231424214 "A weakly informative default prior distribution for logistic and other regression models") & [Pedroza et al 2015](/doc/statistics/2015-pedroza.pdf "Performance of informative priors skeptical of large treatment effects in clinical trials: A simulation study"): the Cauchy(0, 2.5^2^) and Normal(0, 0.35^2^) priors.
+
 # Metformin
 
 [Metformin](!Wikipedia) is a standard drug prescribed to diabetics since the 1950s, known for helping control blood sugar while being cheap and safe; it has been used by scores of millions of people.
@@ -699,7 +704,7 @@ The 41:
 1. Bolton-Smith et al 2007, ["Two-year randomized controlled trial of vitamin K1 (phylloquinone) and vitamin D3 plus calcium on the bone health of older women"](http://onlinelibrary.wiley.com/doi/10.1359/jbmr.070116/full)
 1. Salovaara et al 2010, ["Effect of vitamin D(3) and calcium on fracture risk in 65- to 71-year-old women: a population-based 3-year randomized, controlled trial - the OSTPRE-FPS"](http://onlinelibrary.wiley.com/doi/10.1002/jbmr.48/full)
 
-The meta-analysis itself is simple to reproduce given Bolland's forest plot & table, Figure 5:
+The meta-analysis itself is simple to reproduce given Bolland's forest plot & table, Figure 5.
 
 ~~~{.R}
 vitaminD <- read.csv(stdin(),header=TRUE, colClasses=c("factor","integer","integer","integer","integer","integer","logical"))
@@ -776,7 +781,7 @@ fem <- rma(measure="RR", ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.
 #
 # estimate       se     zval     pval    ci.lb    ci.ub
 #  -0.0354   0.0186  -1.8990   0.0576  -0.0719   0.0011
-## 'metafor' works in log RR, so convert back to RRs:
+## 'metafor' works in log RR, so convert the log RR estimates back to RRs:
 exp(-0.0719); exp(-0.0354); exp(0.0011)
 # [1] 0.9306239536
 # [1] 0.9652192513
@@ -802,4 +807,40 @@ bayes.prop.test(c(sum(vitaminD$E.deaths), sum(vitaminD$C.deaths)), c(sum(vitamin
 #   0 [-0.0056, 0.0024]
 # The relative frequency of success is larger for Group 1 by a probability
 # of 0.203 and larger for Group 2 by a probability of 0.797 .
+~~~
+
+Using BFA has the downside that an I^2^=0 doesn't guarantee that there is no heterogeneity (it'd be surprising if there wasn't) and gives an overly narrow predictive distribution, and BFA doesn't easily include our informative priors.
+We can switch to [bayesmeta](https://cran.r-project.org/web/packages/bayesmeta/index.html) which is built on metafor:
+
+~~~{.R}
+library("bayesmeta")
+brem <- bayesmeta(escalc(measure="RR", ai=E.deaths, bi=(E.n-E.deaths),
+                                       ci=C.deaths, di=(C.n-C.deaths), data=vitaminD),
+                  mu.prior.mean=0, mu.prior.sd=0.35^2)
+brem
+# ...ML and MAP estimates:
+#                          tau             mu
+# ML joint     3.878278037e-06 -0.03540646003
+# ML marginal  0.000000000e+00             NA
+# MAP joint    3.931136439e-07 -0.03460123602
+# MAP marginal 0.000000000e+00 -0.03590402065
+#
+# marginal posterior summary:
+#                     tau              mu
+# mode      0.00000000000 -0.035904020655
+# median    0.02518404476 -0.036069671647
+# mean      0.03104981837 -0.036152849917
+# sd        0.02543031565  0.022522077099
+# 95% lower 0.00000000000 -0.080152143106
+# 95% upper 0.08001681423  0.008768546338
+## converting from log RRs to RR:
+exp(c(-0.080152143106, -0.036152849917, 0.008768546338))
+# [1] 0.9229759113 0.9644928596 1.0088071027
+
+## posterior predictive distribution of RR values including heterogeneity
+rrPP <- brem$rposterior(10000, predict=TRUE)[,2]
+
+## probability that vitamin D will reduce all-cause mortality in unobserved populations:
+sum(rrPP<0) / length(rrPP)
+# [1] 0.8489
 ~~~
