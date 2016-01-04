@@ -793,7 +793,7 @@ My [monthly mailing list](http://eepurl.com/Kc155) continued, having reached 456
 
 ### January 2015 - July 2015
 
-> '"The horror of that moment," the King went on, "I shall never *never* forget!" "You will, though," the Queen said, "if you don't make a memorandum of it."'
+> "The horror of that moment," the King went on, "I shall never *never* forget!" "You will, though", the Queen said, "if you don't make a memorandum of it."
 
 Activity graph for this period (3 January 2015 - 2 July 2015):
 
@@ -834,7 +834,7 @@ As before, I did minimal active promotion of my content.
 2. `news.ycombinator.com`: 11,538
 3. `lesswrong.com`: 3,264
 4. Twitter (`t.co`): 2,700
-5. [`slatestarcodex.com`](http://slatestarcodex.com/): 2,357
+5. [Slate Star Codex](http://slatestarcodex.com/): 2,357
 6. Longecity: 1,871
 7. `brainworkshop.sourceforge.net`: 1,403
 8. Deep Dot Web: 1,226
@@ -842,6 +842,59 @@ As before, I did minimal active promotion of my content.
 10. Facebook: 1,148
 
 My monthly mailing list has reached 606 subscribers.
+
+### July 2015 - January 2016
+
+> We will never run out of things to program as long as there is a single program around.
+
+Activity graph for this period (3 July 2015 - 3 January 2016):
+
+![Plot of patch creations (y-axis) versus date (x-axis): July 2015 to January 2016](/images/traffic/2016-january-git-history.png)
+
+#### Traffic
+
+[Analytics traffic](/docs/traffic/20150703-20160103-gwern.net-analytics.pdf) records 472,244 page-views by 400,305 unique visitors over the 185 days, or 2552 page-views per day for a daily increase of +461 compared to the previous six months. (Lifetime total: 4,742,795 page-views by 2,191,138 unique visitors.)
+
+![Plot of page-views (y-axis) versus date (x-axis), late 2015](/images/traffic/20150703-20160103-traffic-history.png)
+
+Page rankings:
+
+1. Modafinil: 67,152
+2. home/main page: 50708
+3. [DNM archives 2011-2015](/Black-market archives): 44,164
+4. [Surprisingly Turing-complete systems](/Turing-complete): 23,879
+5. LSD microdosing: 22,078
+6. [`char-rnn` for mimicking CSS](//AB testing):  20,581
+7. Black-market arrests: 18,524
+8. Nootropics: 15,709
+9. Terrorism is not about Terror: 15,223
+10. Spaced repetition: 14,903
+11. DNB FAQ: 13,954
+12. Silk Road: 11,606
+
+The new entry here, "DNM archives", is the culmination of my DNM work: mirrors/scrapes of dozens of markets, along with all sorts of archives and datasets related to the DNMs, covering years of market activity (1.2tb in total, to give an idea of scope).
+The other 2 surprises were a tutorial on how to set up `char-rnn` on an Amazon EC2 instance and train it to generate remarkably valid CSS (suggesting that it may be possible to train a reinforcement-learning deep neural network to design the visual appearance of websites and optimize the appearance based on visitor experiments), and an old little compilation I made of things exhibiting Turing-completeness which I found bizarre or surprising or disturbing (which naturally led to a lot of nitpicking and debate over definitions).
+
+[My Patreon profile](https://www.patreon.com/gwern), set up after I was forced out of Gratipay, has been a smashing success, with generally ~$300/month in donations.
+
+#### Promotion
+
+As before, I did minimal active promotion of my content.
+
+1. `news.ycombinator.com`: 51,256
+2. `reddit.com`: 25,479
+3. Twitter (`t.co`): 7,748
+4. Slate Star Codex: 3,166
+5. Facebook: 3,044
+6. `lesswrong.com`: 3,035
+7. Disqus: 2,042
+8. Bullet Proof Exec: 1,931
+9. Longecity: 1,887
+10. _Wired_: 1,854
+
+(I have no idea why Facebook traffic increased so much, since the referrers are useless.)
+
+My monthly mailing list has reached 857 subscribers.
 
 ## Colophon
 ### Hosting
@@ -861,9 +914,9 @@ The revision history is kept in git, and synced [to Github](https://github.com/g
 
 #### Size
 
-As of 3 July 2015, the source of `gwern.net` is composed of >220 text files with >2,306,482 words or 17MB<!-- du -ch *.page */*.page */*/*.page -->; this includes my writings & documents I have transcribed into Markdown, but excludes images, PDFs, archives, infrastructure, and the revision history. <!-- find . -type f -name "*.page" -exec cat "{}" \; | wc -w -->
-With those included and everything compiled to the static^[I like the static site approach to things; it yields [better performance](http://inessential.com/2011/03/16/a_plea_for_baked_weblogs) and leads to fewer [hassles & runtime issues](http://www.aaronsw.com/weblog/000404).] HTML, the site is >1.35GB<!-- s3cmd du s3://www.gwern.net/ -->.
-The source repository contains >9,173 patches<!-- git rev-list HEAD - - count --> (this is an under-count as the creation of the repository in 26 September 2008 included already-written material).
+As of 3 January 2016, the source of `gwern.net` is composed of >235 text files with >2,430,589 words or 18MB<!-- du -ch *.page */*.page */*/*.page -->; this includes my writings & documents I have transcribed into Markdown, but excludes images, PDFs, archives, infrastructure, and the revision history. <!-- find . -type f -name "*.page" -exec cat "{}" \; | wc -w -->
+With those included and everything compiled to the static^[I like the static site approach to things; it tends to be harder to use and more restrictive, but in exchange it yields [better performance](http://inessential.com/2011/03/16/a_plea_for_baked_weblogs) & leads to fewer [hassles or runtime issues](http://www.aaronsw.com/weblog/000404).] HTML, the site is >1.56GB<!-- s3cmd du s3://www.gwern.net/ -->.
+The source repository contains >9,539 patches<!-- git rev-list HEAD - - count --> (this is an under-count as the creation of the repository in 26 September 2008 included already-written material).
 
 ##### Benford's law
 
