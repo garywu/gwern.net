@@ -11,7 +11,7 @@ We all want to live longer, but I find most discussions of available interventio
 
 What I would like to see is a practical guide, taking a decision theory perspective, which follows a procedure something like the following, in taking interventions which:
 
-1. reduce [all-cause mortality](!Wikipedia),
+1. reduce "all-cause mortality",
 
     ACM is the end-point of choice for life-extension because it is both closest to what we care about (additional life) and it is the hardest of all end-points - it is difficult to cheat, miscount, or not notice, and by being simple, consistent, and unambiguous, avoids many failure modes such as subgroup hacking or dropping outliers or tweaking covariates (either a larger fraction of the controls are dead or not). It also can typically be extracted from most studies, even if they otherwise fail to report much of the data.
 
@@ -630,6 +630,24 @@ vitaminDTotalCost <- vitaminDAnnualCost * lifeExpectancy(RR, 30, Inf)
 vitaminDTotalCost
 # [1] 760.6887142
 ~~~
+
+#### Dosage
+
+To go into some more detail about the dosing issue, ne of the more recent meta-analyses to discuss dose in connection with all-cause mortality, [Autier 2014](http://www.gwern.net/docs/vitamind/2014-autier.pdf), says
+
+> ...Results of meta-analyses and pooled analyses consistently showed that supplementation could significantly reduce the risk of all-cause mortality, with relative risks ranging from 0.93 to 0.96 (table 4). Most trials included elderly women and a sizeable proportion of individuals were living in institutions. Decreases in risks of death were not associated with trial duration and baseline 25(OH)D concentration.^13^ Mortality reductions in trials that used doses of 10-20 μg [400-800IU] per day of vitamin D seemed greater than were reductions noted with higher doses.^13,14^
+>
+> - 13\. Bjelakovic G, Gluud LL, Nikolova D, et al. "Vitamin D supplementation for prevention of mortality in adults". Cochrane Database Syst Rev 2011; 7: CD007470. [[2014](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD007469.pub2/pdf) update]
+> - 14\. Rejnmark L, Avenell A, Masud T, et al. ["Vitamin D with calcium reduces mortality: patient level pooled analysis of 70,528 patients from eight major vitamin D trials"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3410276/). J Clin Endocrinol Metab 2012; 97: 2670-81.
+
+(1μg=40IU, so 10μg=400IU, 20μg=800IU, and 1250μg=5000IU.)
+
+I'm not sure I agree. The mechanistic theory and correlations do not predict that 400IU is ideal, it doesn't seem enough to get blood serum levels of 25(OH)D particularly higher, and I don't read Rejnmark the same way: the [Figure 3 forest plot](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3410276/figure/F3/), to me, shows that after correcting for Smith's use of D2 rather than D3 (D2 usually performs worse), that there are too few studies using higher doses to make any kind of claim ([Table 1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3410276/table/T1/); almost all the daily studies use <=20μg), and the studies which we do have tend to point to higher being better within this restricted range of dosages.
+
+That said, I cannot prove that 5k IU is equally or more effective, so if anyone is feeling risk-averse or dubious on that score, they should stick with 800IU doses.
+
+A year of daily 800IU doses costs almost the same as higher IU dosages since the vitamin D itself is only a small part of the cost of manufacturing.
+Alternately, if one is unconcerned about the different between daily and more intermittent doses (reasoning that due to the fat-solubility it should not make any difference), one could take a 5k IU dose on a weekly basis, thereby cutting the annual dose cost from ~\$11 to ~\$2.
 
 ### Side-effects
 
