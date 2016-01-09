@@ -1,5 +1,5 @@
 ---
-title: When Does The Mail Come?
+title: When Should I Check The Mail?
 description: Bayesian decision-theoretic analysis of local mail delivery times
 tags: statistics, decision theory
 created: 21 June 2015
@@ -12,7 +12,7 @@ belief: likely
 > I compare those estimates from the interval-censored data with estimates from a (smaller) set of exact delivery-times provided by USPS tracking & personal observation, using a multilevel model to deal with heterogeneity apparently due to a change in USPS routes/postmen.
 > Finally, I define a loss function on mail checks, enabling a choice of optimal time to check the mailbox and estimates of the value-of-information of another datapoint, defining when to stop data collection.
 
-Consider a question of burning importance: what time does the mailman come, bearing gifts and when should we check the mail?
+Consider a question of burning importance: what time does the mailman come, bearing gifts and when should I check my mail, considering that my mailbox is ~200m away?
 
 # Background
 
@@ -47,11 +47,19 @@ Times are written as minutes since midnight, so they can be handled as positive 
     > 2. `time2`: ending time of the interval for interval censored or counting process data only. Intervals are assumed to be open on the left and closed on the right, `(start, end]`. For counting process data, event indicates whether an event occurred at the end of the interval.
     > 3. `event`: The status indicator, normally 0=alive, 1=dead....For interval censored data, the status indicator is 0=right censored, 1=event at time, 2=left censored, 3=interval censored.
     >
-    > Interval censored data can be represented in two ways. For the first use `type = "interval"` and the codes shown above. In that usage the value of the `time2` argument is ignored unless `event=3`. The second approach is to think of each observation as a time interval with $({-\infty}, t)$ for left censored, $(t, \infty)$ for right censored, $(t,t)$ for exact and $(t_1, t_2)$ for an interval. This is the approach used for `type = "interval2"`. Infinite values can be represented either by actual infinity (`Inf`) or `NA`. The second form has proven to be the more useful one.
+    > Interval censored data can be represented in two ways. For the first use `type = "interval"` and the codes shown above. In that usage the value of the `time2` argument is ignored unless `event=3`. The second approach is to think of each observation as a time interval with _(-∞, t)_ for left censored, _(t, ∞)_ for right censored, _(t,t)_ for exact and _(t~1~, t~2~)_ for an interval. This is the approach used for `type = "interval2"`. Infinite values can be represented either by actual infinity (`Inf`) or `NA`. The second form has proven to be the more useful one.
     >
-    > ...a subject's data for the pair of columns in the dataset `(time1, time2)` is $(t_e, t_e)$ if the event time $t_e$ is known exactly; $(t_l, \text{NA})$ if right censored (where $t_l$ is the censoring time); and $(t_l, t_u)$ if interval censored (where $t_l$ is the lower and $t_u$ is the upper bound of the interval).
+    > ...a subject's data for the pair of columns in the dataset `(time1, time2)` is _(t~e~, t~e~)_ if the event time _t~e~_ is known exactly; _(t~l~, NA)_ if right censored (where _t~l~_ is the censoring time); and _(t~l~, t~u~)_ if interval censored (where _t~l~_ is the lower and _t~u~_ is the upper bound of the interval).
 
 ~~~{.R}
+# Routines to make it easier to work in minutes-since-midnight:
+library(lubridate)
+fromClock <- function(ts){ (hour(ts)*60) + minute(ts) + (second(ts)/60)}
+toClock <- function(t) {
+   h <- floor(t/60)
+   m <- floor(t - h*60)
+   sprintf("%0.2d:%0.2d", h, m) }
+
 set.seed(2015-06-21)
 # simulate a scenario in which the mailman tends to come around 11AM (660) and I tend to check around then,
 # & generate interval data for each time, bounded by end-of-day/midnight below & above, collecting ~1 month:
@@ -63,17 +71,17 @@ simulateMailbox <- function(n, time) {
     return(data.frame(Time1=simulates[1,], Time2=simulates[2,])) }
 mailSim <- simulateMailbox(30, 650); mailSim
 ##        Time1 Time2
-## 1    569  1440
-## 2      0   664
-## 3    592  1440
-## 4    581  1440
-## 5    596  1440
-## 6      0   703
-## 7      0   705
-## 8    667  1440
+## 1    620  1440
+## 2      0   651
+## 3      0   627
+## 4    624  1440
+## 5    629  1440
+## 6    664  1440
+## 7    665  1440
+## 8    652  1440
 ## ...
 library(ggplot2)
-png(file="~/wiki/images/maildelivery-simulated.png", width = 800, height = 500)
+png(file="~/wiki/images/maildelivery/simulated.png", width = 800, height = 500)
 ggplot(mailSim) + geom_segment(aes(x=Time1, xend=Time2, y=1:nrow(mailSim), yend=1:nrow(mailSim))) +
     geom_vline(xintercept=650, color="blue") + ylab("Day") + xlab("Time")
 invisible(dev.off())
@@ -90,21 +98,28 @@ library(survival)
 surv <- Surv(mailSim$Time1, mailSim$Time2, type="interval2")
 s <- survfit(surv ~ 1, data=mailSim); summary(s)
 ##  time   n.risk   n.event survival   std.err lower 95% CI upper 95% CI
-## 633.0 30.00000  7.503147 0.749895 0.0790680     0.609889     0.922041
-## 651.0 22.49685 12.188431 0.343614 0.0867071     0.209546     0.563458
-## 663.5 10.30842  0.611086 0.323245 0.0853927     0.192604     0.542496
-## 685.0  9.69734  9.697336 0.000000       NaN           NA           NA
+##  625.5 30.0000 3.33599e+00 0.888800 0.0573976     0.783131     1.000000
+##  641.0 26.6640 4.15541e+00 0.750287 0.0790267     0.610339     0.922323
+##  647.0 22.5086 6.14506e+00 0.545451 0.0909091     0.393449     0.756178
+##  651.5 16.3635 3.84506e-11 0.545451 0.0909091     0.393449     0.756178
+##  664.5 16.3635 5.82315e-03 0.545257 0.0909124     0.393258     0.756005
+##  675.0 16.3577 1.63577e+01 0.000000       NaN           NA           NA
 plot(s)
+
+png(file="~/wiki/images/maildelivery/simulated-survivalcurve.png", width = 800, height = 500)
+plot(s)
+invisible(dev.off())
 sr <- survreg(surv ~ 1, dist="gaussian", data=mailSim); summary(sr)
 ##                 Value Std. Error        z           p
-## (Intercept) 656.21819   7.324758 89.58906 0.00000e+00
-## Log(scale)    2.93664   0.444159  6.61169 3.79957e-11
+##                 Value Std. Error        z           p
+## (Intercept) 663.08028   9.742171 68.06289 0.00000e+00
+## Log(scale)    3.41895   0.438366  7.79931 6.22465e-15
 ##
-## Scale= 18.8524
+## Scale= 30.5374
 ##
 ## Gaussian distribution
-## Loglik(model)= -7.1   Loglik(intercept only)= -7.1
-## Number of Newton-Raphson Iterations: 10
+## Loglik(model)= -15.8   Loglik(intercept only)= -15.8
+## Number of Newton-Raphson Iterations: 11
 ## n= 30
 ~~~
 
@@ -138,59 +153,63 @@ inits <- function() { list(mu=rnorm(1),sd=30,t=as.vector(apply(mailSim,1,mean)))
 params <- c("mu", "sd", "y.new")
 j1 <- jags(data,inits, params, model1); j1
 ##          mu.vect sd.vect    2.5%     25%     50%     75%   97.5%  Rhat n.eff
-## mu       657.855   9.362 640.022 651.823 657.567 663.866 676.540 1.003  1100
-## sd        28.226  10.859  12.033  20.051  26.412  34.750  54.141 1.068    35
-## y.new    656.872  32.354 592.156 638.315 656.290 675.344 721.606 1.005  3000
+## mu       665.055   9.841 647.724 658.092 664.334 670.983 686.264 1.008   280
+## sd        40.153  11.592  18.626  30.643  40.813  49.707  59.048 1.047    51
+## y.new    664.103  42.908 577.518 637.561 663.011 689.912 749.936 1.002  1300
 ## deviance   0.000   0.000   0.000   0.000   0.000   0.000   0.000 1.000     1
 ~~~
 
-Both approaches' point-value mean time of 656/657 (10:54AM) come close to the true simulation value of 650 (11AM) and the prediction interval of 592-721 also sounds right, validating the models.
+Both approaches' point-value mean time of 663-665 (11:03-11:05AM) come close to the true simulation value of 650 (11AM) and the prediction interval of 577-749 also sounds right, validating the models.
 The estimated standard deviation isn't as accurate with a wide credible interval, reflecting that it's a harder parameter to estimate and the estimate is still vague with only _n_=30.
-
-~~~{.R}
-mailSim <- simulateMailbox(180, 650); mailSim
-
-# http://cran.r-project.org/web/packages/animation/index.html
-library(animation)
-saveGIF(
-    for(n in 1:nrow(mailSim)){
-        data <- list("dt"=mailSim[1:n,], "n"=nrow(mailSim[1:n,]), "y"=rep(1, nrow(mailSim[1:n,])))
-        inits <- function() { list(mu=rnorm(1),sd=30,t=as.vector(apply(mailSim[1:n,],1,mean))) }
-        params <- c("mu","sd", "y.new")
-        j1 <- jags(data, inits, params, model1, progress.bar="none")
-
-        lowerMean <- j1$BUGSoutput$summary[c(2),][3]
-        medianMean  <- j1$BUGSoutput$mean$mu
-        upperMean <- j1$BUGSoutput$summary[c(2),][7]
-
-        lowerPredictive <- j1$BUGSoutput$summary[c(4),][3]
-        upperPredictive <- j1$BUGSoutput$summary[c(4),][7]
-
-        confintTrue <- round(qnorm(c(0.025, 0.975), mean=650, sd=30))
-        lowerPredictiveTrue <- confintTrue[1]
-        upperPredictiveTrue <- confintTrue[2]
-
-        # need an environment call for `ggplot` inside a function: http://stackoverflow.com/a/29595312/329866
-        p <- ggplot(mailSim[1:n,]) +
-              coord_cartesian(xlim = c(7*60, 13*60)) +
-              ylab("Day") + xlab("Time") +
-              geom_segment(aes(x=mailSim[1:n,]$Time1, xend=mailSim[1:n,]$Time2, y=1:n, yend=1:n)) +
-              geom_vline(xintercept=medianMean, color="blue") +
-              geom_vline(xintercept=lowerMean, color="green") +
-              geom_vline(xintercept=upperMean, color="green") +
-              geom_vline(xintercept=lowerPredictive, color="red") +
-              geom_vline(xintercept=upperPredictive, color="red") +
-              geom_vline(xintercept=lowerPredictiveTrue, color="red4") +
-              geom_vline(xintercept=upperPredictiveTrue, color="red4")
-        print(p)
-        },
-    interval = 0.7, ani.width = 800, ani.height=800,
-    movie.name = "/home/gwern/wiki/images/mail-simulated-inferencesamplebysample.gif")
-~~~
 
 With a simulation and JAGS set up, we could also see how the posterior estimates of the mean, 95% CI of the mean, and predictive interval change as an additional datapoint is added:
 
-![Simulated data: posterior estimates evolving sample by sample](/images/maildelivery/simulated-inferencesamplebysample.gif)
+~~~{.R}
+animatePosteriors <- function (df, filename, upperTrue, lowerTrue) {
+  # http://cran.r-project.org/web/packages/animation/index.html
+  library(animation)
+  saveGIF(
+      for(n in 1:nrow(df)){
+          data <- list("dt"=df[1:n,], "n"=nrow(df[1:n,]), "y"=rep(1, nrow(df[1:n,])))
+          inits <- function() { list(mu=rnorm(1),sd=30,t=as.vector(apply(df[1:n,],1,mean))) }
+          params <- c("mu","sd", "y.new")
+          j1 <- jags(data, inits, params, model1, progress.bar="none")
+
+          lowerMean <- j1$BUGSoutput$summary[c(2),][3]
+          medianMean  <- j1$BUGSoutput$mean$mu
+          upperMean <- j1$BUGSoutput$summary[c(2),][7]
+
+          lowerPredictive <- j1$BUGSoutput$summary[c(4),][3]
+          upperPredictive <- j1$BUGSoutput$summary[c(4),][7]
+
+          # need an environment call for `ggplot` inside a function for local variables like
+          # 'n' to be visible: http://stackoverflow.com/a/29595312/329866
+          timeLimits <- seq(from=9*60, to=12.8*60, by=15)
+          p <- ggplot(df[1:n,], environment = environment()) +
+                coord_cartesian(xlim = timeLimits) +
+                scale_x_continuous(breaks=timeLimits, labels=sapply(timeLimits, toClock)) +
+                ylab("Day") + xlab("Time") +
+                geom_segment(aes(x=df[1:n,]$Time1, xend=df[1:n,]$Time2, y=1:n, yend=1:n)) +
+                geom_vline(xintercept=medianMean, color="blue") +
+                geom_vline(xintercept=lowerMean, color="green") +
+                geom_vline(xintercept=upperMean, color="green") +
+                geom_vline(xintercept=lowerPredictive, color="red") +
+                geom_vline(xintercept=upperPredictive, color="red") +
+                geom_vline(xintercept=lowerTrue, color="red4") +
+                geom_vline(xintercept=upperTrue, color="red4")
+          print(p)
+          },
+      interval = 0.7, ani.width = 800, ani.height=800,
+      movie.name = filename) }
+
+simData <- simulateMailbox(200, 650)
+confintTrue <- round(qnorm(c(0.025, 0.975), mean=650, sd=30))
+lowerPredictiveTrue <- confintTrue[1]
+upperPredictiveTrue <- confintTrue[2]
+animatePosteriors(simData, "/home/gwern/wiki/images/maildelivery/simulated-inferencesamplebysample.gif", lowerPredictiveTrue, upperPredictiveTrue)
+~~~
+
+![Simulated data: posterior estimates of mail delivery times, evolving sample by sample for 200 datapoints; estimated mean time in blue, 95% CI around the mean time in green, and 95% predictive intervals as to when the delivery is made](/images/maildelivery/simulated-inferencesamplebysample.gif)
 
 Probably the most striking aspect of watching these summaries updated datum by datum, to me, is how the estimate of the mean homes in almost immediately on close to the true value (this isn't due solely to the informative prior either, as with a completely uninformative `dunif(0,1440)` will zoom in within 4 or 5 datapoints as well, after some violent thrashing around).
 What happens is that the intervals initially look uninformative if the first two or three all turn out to be delivered/non-delivered and so the mean delivery time could still be anywhere from ~11:AM-midnight or vice-versa, but then as soon as even one needle falls the other way, then the mean suddenly snaps into tight focus and gets better from there.
@@ -203,13 +222,6 @@ I searched for material on interval-censored data but didn't find anything direc
 The flip-flops suggest that to estimate the mean, one should sample only at the current estimated mean, which maximizes the probability that there will be a net 50-50 split of delivery/non-delivery; but where should one sample for the SD as well?
 
 ~~~{.R}
-library(lubridate)
-fromClock <- function(ts){ (hour(ts)*60) + minute(ts) + (second(ts)/60)}
-toClock <- function(t) {
-   h <- floor(t/60)
-   m <- floor(t - h*60)
-   sprintf("%0.2d:%0.2d", h, m) }
-
 mailInterval <- data.frame(
  Date=as.POSIXct(c( "2015-06-20 11:00AM", "2015-06-21 11:06AM", "2015-06-23 11:03AM",
                     "2015-06-24 11:05AM", "2015-06-25 11:00AM", "2015-06-26 10:56AM",
@@ -264,29 +276,10 @@ j1 <- jags(data, inits, params, model1, n.iter=100000); j1
 ## y.new    658.098  27.960 601.899 640.912 657.942 675.067 712.985 1.001  3000
 ## deviance   0.000   0.000   0.000   0.000   0.000   0.000   0.000 1.000     1
 
-lowerMean <- j1$BUGSoutput$summary[c(2),][3]
-medianMean  <- j1$BUGSoutput$mean$mu
-upperMean <- j1$BUGSoutput$summary[c(2),][7]
-
-lowerPredictive <- j1$BUGSoutput$summary[c(4),][3]
-upperPredictive <- j1$BUGSoutput$summary[c(4),][7]
-
-library(ggplot2)
-png(file="~/wiki/images/maildelivery-real.png", width = 1000, height = 700)
-timeLimits <- seq(from=9.75*60, to=12.25*60, by=10)
-ggplot(mail) + geom_segment(aes(x=Time1, xend=Time2, y=1:nrow(mail), yend=1:nrow(mail))) +
-    ylab("Day") + xlab("Time") +
-    scale_x_continuous(breaks=timeLimits, labels=sapply(timeLimits, toClock)) +
-    coord_cartesian(xlim = timeLimits) +
-    geom_vline(xintercept=medianMean, color="blue") +
-    geom_vline(xintercept=lowerMean, color="darkgreen") +
-    geom_vline(xintercept=upperMean, color="darkgreen") +
-    geom_vline(xintercept=lowerPredictive, color="red") +
-    geom_vline(xintercept=upperPredictive, color="red")
-invisible(dev.off())
+animatePosteriors(mail, "/home/gwern/wiki/images/maildelivery/real-inferencesamplebysample.gif", 0, 0)
 ~~~
 
-![Overlapping-intervals data, with the estimated mean time in blue, 95% CI around the mean time in green, and 95% predictive intervals as to when the delivery is made](/images/maildelivery/real.png)
+![Real data: posterior estimates of mail delivery times](/images/maildelivery/real-inferencesamplebysample.gif)
 
 <!-- Final data when I stopped tracking:
 mailInterval <- data.frame(
@@ -348,7 +341,7 @@ mailExact <- data.frame(Date=as.POSIXct(c("2010-04-29 11:33AM", "2010-05-12 11:3
                                           "2015-09-28 11:48AM", "2015-10-23 11:10AM", "2015-11-10 11:04AM",
                                           "2015-11-27 12:03PM", "2015-11-30 12:12PM", "2015-12-04 11:35AM",
                                           "2015-12-10 11:21AM", "2015-12-11 1:36PM", "2015-12-16 11:04AM",
-                                          "2015-12-21 12:49PM"),
+                                          "2015-12-21 12:49PM", "2016-01-09 12:18PM"),
                         "EDT"))
 -->
 
@@ -504,7 +497,7 @@ mean(mailExact$TimeDelivered)
 sd(mailExact$TimeDelivered)
 ## [1] 26.24152673
 
-png(file="~/wiki/images/maildelivery-exact.png", width = 800, height = 500)
+png(file="~/wiki/images/maildelivery/exact.png", width = 800, height = 500)
 timeLimits <- seq(from=10*60, to=12.25*60, by=10)
 qplot(Date, TimeDelivered, data=mailExact) +
  scale_y_continuous(breaks=timeLimits, labels=sapply(timeLimits, toClock))
@@ -676,11 +669,11 @@ The lesson here is to try to minimize the length of intervals if one wants to ma
 In setting up an analysis, one must [make a variety of choices](http://www.stat.columbia.edu/~gelman/research/unpublished/p_hacking.pdf "'The garden of forking paths: Why multiple comparisons can be a problem, even when there is no `fishing expedition` or `p-hacking` and the research hypothesis was posited ahead of time', Gelman & Loken 2013") in what models to use, which influences the result; this neglect of "model uncertainty" can lead to overconfident inferences or miss critical details.
 In Bayesian analyses, typically the prior comes in for the most scrutiny as to how it determines the result; but the prior part of the model often has much less influence than the structural or functional form of the analysis, where it is assumed that the outcome is drawn from a normal distribution or another such common choice, although it's not.
 This choice itself is often arbitrary and can determine the result almost regardless of what the data says.
-For example, the normal distribution has thin tails and so the probability of something being far out on a tail will be extremely small and combined with other considerations like measurement error, can result in a model refusing to ever accept that a value really is 'extreme' without equally extreme amounts of data - a refusal that would not happen if any of a number of other perfectly possible distributions had been chosen instead like lognormal distributions or Cauchy distributions - despite the fact that the choice of normal distribution itself is usually due more to convenience than any extremely strong evidence that the normal distribution is the true distribution ("every model is false, but some are useful", as the saying goes), which means the best response is simply to note that [one man's modus ponens is another man's modus tollens](Prediction%20markets#modus-tollens-vs-modus-ponens) - the probability that [one's math or model is wrong is far higher](The Existential Risk of Mathematical Error) sets an upper bound on how much we can get out of them, and a bound which often bars many of the inferences one might try to extract from them.
+For example, the normal distribution has thin tails and so the probability of something being far out on a tail will be extremely small and combined with other considerations like measurement error, can result in a model refusing to ever accept that a value really is 'extreme' without equally extreme amounts of data - a refusal that would not happen if any of a number of other perfectly possible distributions had been chosen instead like log-normal distribution or [Cauchy distribution](!Wikipedia) - despite the fact that the choice of normal distribution itself is usually due more to convenience than any extremely strong evidence that the normal distribution is the true distribution ("every model is false, but some are useful"), which means the best response is simply to note that [one man's modus ponens is another man's modus tollens](Prediction%20markets#modus-tollens-vs-modus-ponens) - the probability that [one's math or model is wrong is far higher](The Existential Risk of Mathematical Error) sets an upper bound on how much we can get out of them, and a bound which often bars many of the inferences one might try to extract from them.
 
 For example:
 
-1. the normal distribution is commonly used for its analytic tractability and asymptotic properties, but it has some aspects that are, in a sense, *too* powerful and restrictive: specifically, that its tails are thin. Thin tails can cause serious underestimations of rare phenomenon (and not just in cases involving power laws) and can lead to unwarrantedly powerful conclusions. Two examples:
+1. the normal distribution is commonly used for its analytic tractability and asymptotic properties, but it has some aspects that are, in a sense, *too* powerful and restrictive: specifically, that its tails are thin. Thin tails can cause serious underestimations of rare phenomenon (and not just in cases involving power laws) and can lead to absurdly powerful conclusions. Two examples:
 
     - in [one analysis of charities](http://lesswrong.com/lw/745/why_we_cant_take_expected_value_estimates/ "Why We Can't Take Expected Value Estimates Literally (Even When They're Unbiased)"), the writer uses normal distributions and thus winds up arguing that with error in our assessments of charities' values, our estimate must be shrunken far towards the mean (which is entirely true); but [this is circular](http://lesswrong.com/lw/gzq/bayesian_adjustment_does_not_defeat_existential/), since by assuming normal distributions he has also assumed away the existence of large differences in value between charities.
         If one were to grant the apparently innocuous assumption of normally distributed effectiveness of interventions, one would be forced to ignore that there *are* large differences - consider [knitting sweaters for penguins](http://www.giantflightlessbirds.com/2011/10/the-great-penguin-sweater-fiasco/ "The Great Penguin Sweater Fiasco") vs [stopping children from being infected by parasites](!Wikipedia "Schistosomiasis Control Initiative") or [killed by malaria](!Wikipedia "Against Malaria Foundation"); are they really within a few standard deviations of each other? Should we really ignore interventions like vaccines which claim to save lives at a cost of no more than tens of thousands of dollars, on the grounds that most charities require hundreds of thousands or millions of dollars to achieve goals like that? If we look at [Global Burden of Disease](!Wikipedia) and see extreme skews in what causes loss of QALYs, with some classifications being hundreds or thousands of times more damaging than others (like indoor fires), is it more likely that the data is wrong than right solely because the normal distribution says that the largest problems are many standard deviations out? It's clear that whatever the right distribution for modeling charity or health outcomes is, it is probably not literally & exactly a normal distribution and it should allow for large differences; and having abandoned the normal, we then lose the apparently magical ability to make confident predictions about how many charities are how effective.
@@ -746,7 +739,7 @@ simsPPC <- replicate(10000, {
     return(sum(newData$Time1 == 0))
     }
 )
-png(file="~/wiki/images/maildelivery-ppc.png", width = 800, height = 500)
+png(file="~/wiki/images/maildelivery/ppc.png", width = 800, height = 500)
 qplot(simsPPC) + geom_vline(xintercept=sum(mail$Time1 == 0), color="blue")
 invisible(dev.off())
 ~~~
@@ -764,7 +757,7 @@ So I could ask the model's posterior predictive distribution of delivery-times (
 The base-rate of delivery vs non-delivery will be 50-50, so a good model should achieve a better mean zero-one loss than 0.5.
 
 For distributions, we'll compare the normal used all along, the _t_-distribution (for its fatter tails), and a little more exotically, the log-normal & exponential distributions as well.
-Of these, the first two are the most likely, and I think it's highly unlikely that the lognormal or exponential could fit better (because they will tend to predict extremely late deliveries, much later than I believe is at all realistic, while the _t_'s spread is more reasonable in accommodating some non-normality but not too much). I include those two just to see what will happen and test out the robustness of any approach used.
+Of these, the first two are the most likely, and I think it's highly unlikely that the log-normal or exponential could fit better (because they will tend to predict extremely late deliveries, much later than I believe is at all realistic, while the _t_'s spread is more reasonable in accommodating some non-normality but not too much). I include those two just to see what will happen and test out the robustness of any approach used.
 The 4 models in JAGS:
 
 ~~~{.R}
@@ -854,7 +847,7 @@ By this measure, the normal & _t_ models perform almost identically, while we ca
 ### Bayesian Model Selection
 
 
-We are comparing 4 parametric models here: the normal, Student's _t_, lognormal, and exponential models.
+We are comparing 4 parametric models here: the normal, Student's _t_, log-normal, and exponential models. (Time permitting, a Cauchy would have been good too.)
 
 The BIC/DIC/WAIC deviance criteria are unavailable; nested sampling cannot handle multiple distributions; this leaves reversible jump MCMC/product-space method and ABC.
 
@@ -978,7 +971,7 @@ lossFunction <- function(t, walk_cost, predictions, lastResortT) {
     }
 losses <- sapply(c(0:1440), function (tm) { lossFunction(tm, 60, posteriorTimes, 780);})
 
-png(file="~/wiki/images/maildelivery-losses.png", width = 800, height = 700)
+png(file="~/wiki/images/maildelivery/losses.png", width = 800, height = 700)
 timeLimits <- seq(from=10*60, to=13*60, by=5)
 qplot(0:1440, losses) + scale_x_continuous(breaks=timeLimits, labels=sapply(timeLimits, toClock)) +
   xlab("Action") + coord_cartesian(xlim = timeLimits, ylim=1:300)
@@ -1122,15 +1115,26 @@ Perfect information is not available at any cost, however.[^Pi]
 All I can do is go out to the mail box _n_ times, and as we saw in the simulation, diminishing returns always happens and at some point the predictive intervals stop changing noticeably.
 So EVPI represents an upper bound on how much any lesser amount of information could be worth, but doesn't tell us how much we are willing to pay for imperfect information.
 
-[^Pi]: Instead of doing estimates, why not buy or make something like a magnetic switch or motion-activated camera on the mailbox? By regularly recording exactly when the mail arrives, thi
-s makes estimation much easier, and if wireless-enabled, may obviate the problem entirely.
+[^Pi]: Instead of doing estimates, why not buy or make something like a magnetic switch or motion-activated camera on the mailbox? By regularly recording exactly when the mail arrives, this makes estimation much easier, and if wireless-enabled, may obviate the problem entirely. This is challenging, though: the mailbox is so far away that there are no power sockets near it so it will need to be battery-powered and to last for months (otherwise the hassle of charging it eliminates the convenience), and wireless connections may not be possible that many meters away without excessive power consumption.
 
-    I looked into this, and while there is an established niche of "people counter"/"door counter"/"traffic counter" electronic devices, they are intended for business use and priced out of my range. Further, the mailbox is so far away that there are no power sockets near it so it will need to be battery-powered and to last for months (otherwise the hassle of charging it eliminates the convenience) and wireless may not be possible that many meters away without excessive power consumption.
+    I looked into this, and found a few options:
 
-    I then looked into using a [Raspberry Pi](!Wikipedia) or [Arduino](!Wikipedia), but both presented serious problems. A Raspberry Pi Zero may cost \$5 for the motherboard itself and be relatively easy to program & set up, but it draws ~160 milliamps and so your standard 1000-5000milliamp-hour battery will be drained within a day; solar panels can be hooked up to recharge the battery, but that adds much complexity and between the battery, solar panel, panel->battery adapter, and other wires, would cost >\$80 for the parts.
+    - the established niche of "people counter"/"door counter"/"traffic counter" electronic devices, often implemented using a infrared beam which is tripped by objects moving in between an emitter and sensor. They are intended for business use, priced out of my range, and typically not long-range wireless or battery-powered or store date-stamps (rather than counts).
+    - mail checking systems, of which there are two main gadgets intended for usecases like mine (rural houses with extremely long driveways):
 
-    Arduinos use much less, like 50 milliamps, and can be reduced to <1 milliamps, in which case power is no longer an issue, but Arduinos are much more challenging to use than Raspberry Pis - I have no experience in embedded electronics or wiring up such devices or programming in C, and so no confidence I could build it correctly.
+        1. spring-powered 'flags' which are latched into the door and pop up when it is opened (presumably by the mailman) and are visible from a long distance; the home-owner then resets the spring when they pick up the mail. One downside is that many involve drilling holes into the mailbox to keep the flag secure long-term against the weather. Example: ["Mail Time! Yellow Mailbox Alert Flag for Long Driveways", \$16](http://www.amazon.com/Mail-Yellow-Mailbox-Alert-Driveways/dp/B0002MSR2E/).
 
+            This doesn't work because it still requires me to manually log data, although I would not have to walk all the way to check, it is true. Nor does this resolve the mail problem in general because one does not always have permission to tamper with the mailbox like that and it requires cooperation from everyone who uses the mailbox (it's no good if you're the only one who resets the flag and it's usually up).
+
+        2. wireless mailbox alert systems: a radio combined with a switch mounted inside the mailbox, which on contact being broken, radios an alert. Example: ["Dakota Alert 1000 [feet] Series", \$50](http://www.thehomesecuritysuperstore.com/home-security-solutions-alarm-systems-mail-chime-alarms-wireless-mailbox-alert-1000-series-mba-1000-p=4483).
+
+            Most of these systems don't claim a range past ~30m, while I need at least 700 feet (and probably much more, because manufacturers are optimistic and my walls are concrete). The example Dakota Alert claims to have the necessary range, but doesn't include any estimates about battery life, is expensive enough I'm not sure it's worth it, and would still require manual recording of times.
+        3. build one's own data logger; [logging](http://blog.initialstate.com/pi-for-kids-door-sensor/) [door](http://www.instructables.com/id/Magnetic-Door-Sensor-and-Arduino/) or [window](http://www.instructables.com/id/Low-power-doorwindow-sensor/) or [garage door](http://www.richlynch.com/2013/07/27/pi_garage_alert_1/) openings or [bathroom occupancy](https://robots.thoughtbot.com/arduino-bathroom-occupancy-detector) is a common starter project with [Raspberry Pi](!Wikipedia) or [Arduino](!Wikipedia), so it should be possible. Both presented serious problems as I looked into the details and thought about whether I could do it.
+
+            - While a Raspberry Pi Zero costs \$5 for the motherboard itself and is relatively easy to program & set up, it draws ~160 milliamps; this is not a problem for most RP uses, where power outlets are available, but is disastrous for remote sensors - a standard cheap 1000-5000milliamp-hour battery would be drained within a day. [Solar panels can be hooked up to an RP](http://www.instructables.com/id/Solar-Powered-Raspberry-Pi/) to recharge the battery, but that adds much complexity and between the battery, solar panel, panel->battery adapter, and other wires, would cost >\$80 for the parts. A [PiJuice Solar](https://www.kickstarter.com/projects/pijuice/pijuice-a-portable-project-platform-for-every-rasp) would cost [~\$80](https://www.pi-supply.com/product/pijuice-solar/?v=7516fd43adaa) but doesn't ship until March 2016 (if ever). So a RP would work if I wanted to go as far as setting up a solar-powered RP, spending easily \$100+.
+            - Arduinos use much less power - around 20 milliamps - and can be reduced to <1 milliamps, in which case, combined with a compatible battery like the [\$15 Lithium Ion Polymer Battery - 3.7v 2500mAh](https://www.adafruit.com/products/328),  power is no longer an issue and the logger could run a week ($\frac{\frac{2500\text{mAh}}{20\text{ma/h}}}{24}=7$) or months at <1 milliamps. But Arduinos are much more challenging to use than Raspberry Pis - I have no experience in embedded electronics or wiring up such devices or programming in C, and so no confidence I could build it correctly.
+              The [\$22 Adafruit Data logger (Adalogger)](https://www.adafruit.com/products/2796) ([documentation](https://learn.adafruit.com/adafruit-feather-32u4-adalogger)), based on the Arduino Uno, combines most of the hardware necessary. That still leaves connecting the reed magnetic switch (eg ["Seco-Larm SM-226L Garage Door Contacts for Closed Circuits", \$11](http://www.smarthome.com/seco-larm-sm-226l-garage-door-contacts-for-closed-circuits.html), or [\$3.95, magnetic switch](https://www.adafruit.com/products/375)), programming the Adalogger, and optimizing power consumption to make recharges not a hassle. This makes it much closer to feasible and I thought seriously about it, but ultimately, I don't think I care enough at the moment about logging mail data to struggle through the learning curve of embedded & electrical engineering knowledge for this particular project.
+        4. Wilder ideas include running a coaxial cable out to the mailbox, putting a photodiode at one end, and keeping the logger inside near a power outlet to resolve the wireless & power issues. (But coax cable does cost money, leaving it exposed is not a good idea considering the riding lawn mower, and digging up hundreds of meters of ground to bury the coax cable does not sound like fun.)
 
 ### EVSI
 
@@ -1293,7 +1297,7 @@ And at around n=48, diminishing returns has set in so hard that the decision act
 When you include the cost of gathering data, the analysis says you should collect up to _n_=13 and then stop (after that, the loss does not decrease but begins to increase because each datapoint inflates costs by +60, and we want to minimize loss); at _n_=13, one decides to check at 687/11:27AM, which is  close to the 693 which was estimated with 4x more data (!).
 
 So this is interesting: by using informative priors and then taking a decision-theoretic approach, in this case I can make high-quality decisions on surprisingly little data; I could have halted data gathering much earlier.
-(Additional data does have benefits in letting me verify the diminishing returns in this case by noting how the optimal decision hardly changes, and can be used for more accurate model averaging, but ultimately I have to agree with the EVSI: I didn't need to collect all the data I did.)
+(Additional data does have benefits in letting me verify the diminishing returns by seeing how the optimal decision hardly changes, can be used for more accurate model averaging, and could be used to model time-varying trends like the large increases in late deliveries during the holidays. But ultimately I have to agree with the EVSI: I didn't need to collect all the data I did.)
 
 # Conclusions
 
@@ -1304,8 +1308,11 @@ Lessons learned:
 4. the combination of `ggplot2` and [`animation`](http://cran.r-project.org/web/packages/animation/index.html) bade fair to make animations as easy as devising a ggplot2 image, but due to some ugly interactions between them (`ggplot2` interacts with the R toplevel scope/environment in a way which breaks when it's called inside a function, and `animation` has some subtle bug relating to deciding how long to delay frames in an animation which I couldn't figure out), I lost hours to getting it to work at all.
 1. my original prior estimate of when the mailman comes was accurate, but I seem to have substantially underestimated the standard deviation and there turned out to be considerably model uncertainty about thin tails (normal) vs fatter tails (_t_); despite that, providing informative priors meant that the predictions from the JAGS model were sensible from the start (mostly from the small values for the SD, as the mean time was easily estimated from the intervals) and it made good use of the data.
 5. the variability of mail delivery times is high enough that the prediction intervals are inherently wide; after relatively few datapoints, whether interval or exact, diminishing returns has set in.
-6. Subjective Bayesianism & decision theory go together like peanut butter & chocolate. It's all just samples and posterior distributions; want to calculate expected information gains to optimize your sampling, or compare to subjective loss to decide in a principled fashion when to stop? No problem. (Instead of ad hoc rules of thumbs like going for 80% power or controlling alpha at 0.05 or trial sequential analysis stopping at an arbitrary effect size confidence interval...) Long computations are a small price to pay for approximate answers to the right questions rather than exact answers to the wrong questions.
+6. Subjective Bayesianism & decision theory go together like peanut butter & chocolate.
 
+    It's all just samples and posterior distributions; want to calculate expected information gains to optimize your sampling, or compare to subjective loss to decide in a principled fashion when to stop? No problem. (Instead of ad hoc rules of thumbs like going for 80% power or controlling alpha at 0.05 or trial sequential analysis stopping at an arbitrary effect size confidence interval...) Long computations are a small price to pay for approximate answers to the right questions rather than exact answers to the wrong questions.
+
+    The major downside is that Bayesian decision theory is honored mostly in the breach: I found much more discussion than application of it online, and few worked-out examples in R that I could try to compare with my own implementations of the ideas.
 
 # Appendix
 ## Thompson sampling
