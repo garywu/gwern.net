@@ -56,12 +56,7 @@ Database for candidates:
 
 Possible interventions:
 
-- Baby aspirin:
-  http://lesswrong.com/r/discussion/lw/b1g/daily_lowdose_aspirin_round_2/9lld
-  Rothrwell et al 2012 "Short-term effects of daily aspirin on cancer incidence, mortality, and non-vascular death: analysis of the time course of risks and benefits in 51 randomised controlled trials" http://www.istudymedicine.com/wp-content/uploads/aspirin.pdf
-  Second: "Effect of daily aspirin on long-term risk of death due to cancer: analysis of individual patient data from randomised trials" http://www.beppegrillo.it/immagini/Aspirin%20and%20death%20from%20cancer%20\(Lancet%202010\).pdf
-  "Estimates of benefits and harms of prophylactic use of aspirin in the general population", Cuzick et al 2014 http://annonc.oxfordjournals.org/content/26/1/47.full
-  check is included: Ridker PM, Cook NR, Lee I-M, et al. "A randomized trial of low-dose aspirin in the primary prevention of cardiovascular disease in women". _N Engl J Med_ 2005;352:1293-304.
+- Aspirin
 - [Bisphosphonate](!Wikipedia): https://www.fightaging.org/archives/2011/02/bisphosphonates-and-an-unusual-longevity.php https://www.fightaging.org/archives/2015/12/more-investigation-of-bisphosphonates-and-reduced-mortality.php
 - antioxidants? except I think most increase ACM...
 - exercise (aerobic or resistance, primarily)
@@ -374,6 +369,11 @@ After reviewing hits and reading all the relevant looking papers and following c
 8. Bjelakovic et al 2014 (update of Bjelakovic et al 2011), ["Vitamin D supplementation for prevention of cancer in adults"](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD007469.pub2/pdf):
 
     > Vitamin D decreased all-cause mortality (1854/24,846 (7.5%) versus 2007/25,020 (8.0%); RR 0.93 (95% CI 0.88 to 0.98); _p_ = 0.009; I² = 0%; [_k_]=15 trials; 49,866 participants; moderate quality evidence), but TSA indicates that this finding could be due to random errors.
+8. Bjelakovic et al 2014, ["Vitamin D supplementation for prevention of mortality in adults"](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD007470.pub3/pdf)
+
+    > Accordingly, 56 randomised trials with 95,286 participants provided usable data on mortality...Vitamin D decreased mortality in all 56 trials analysed together (5,920/47,472 (12.5%) vs 6,077/47,814 (12.7%); RR 0.97 (95% confidence interval (CI) 0.94 to 0.99); P = 0.02; I2 = 0%). More than 8% of participants dropped out. 'Worst-best case' and 'best-worst case' scenario analyses demonstrated that vitamin D could be associated with a dramatic increase or decrease in mortality. When different forms of vitamin D were assessed in separate analyses, only vitamin D3 decreased mortality (4,153/37,817 (11.0%) vs 4,340/38,110 (11.4%); RR 0.94 (95% CI 0.91 to 0.98); P = 0.002; I2 = 0%; 75,927 participants; 38 trials). Vitamin D2, alfacalcidol and calcitriol did not significantly affect mortality. A subgroup analysis of trials at high risk of bias suggested that vitamin D2 may even increase mortality, but this finding could be due to random errors. Trial sequential analysis supported our finding regarding vitamin D3, with the cumulative Z-score breaking the trial sequential monitoring boundary for benefit, corresponding to 150 people treated over five years to prevent one additional death. We did not observe any statistically significant differences in the effect of vitamin D on mortality in subgroup analyses of trials at low risk of bias compared with trials at high risk of bias; of trials using placebo compared with trials using no intervention in the control group; of trials with no risk of industry bias compared with trials with risk of industry bias; of trials assessing primary prevention compared with trials assessing secondary prevention; of trials including participants with vitamin D level below 20 ng/mL at entry compared with trials including participants with vitamin D levels equal to or greater than 20 ng/mL at entry; of trials including ambulatory participants compared with trials including institutionalised participants; of trials using concomitant calcium supplementation compared with trials without calcium; of trials using a dose below 800 IU per day compared with trials using doses above 800 IU per day; and of trials including only women compared with trials including both sexes or only men.
+
+    Note that despite the almost identical author, date, & year, this differs from the other Bjelakovic et al 2014 Cochrane review in focusing on *mortality* rather than cancer prevention.
 9. Bolland et al 2014, ["The effect of vitamin D supplementation on skeletal, vascular, or cancer outcomes: a trial sequential meta-analysis"](/docs/vitamind/2014-bolland.pdf):
 
     _k_=41, RR 0.96 (0.93-1.00)
@@ -957,3 +957,33 @@ But it's good to have an idea of power in that sense to make it easier to interp
 
 - [_A History of Life-Extensionism In The Twentieth Century_](http://www.longevityhistory.com/book/indexb.html), Stambler 2014
 - ["Which Risks of Dying Are Worth Taking?"](http://www.spencergreenberg.com/2013/10/which-risks-of-dying-are-worth-taking/)
+
+# Aspirin
+
+- Baby aspirin:
+
+I searched Pubmed and Google Scholar on 8 January 2015 with the searches:
+
+- '"aspirin"[All Fields] AND (("random allocation"[MeSH Terms] OR ("random"[All Fields] AND "allocation"[All Fields]) OR "random allocation"[All Fields] OR "randomized"[All Fields]) AND ("mortality"[Subheading] OR "mortality"[All Fields] OR "mortality"[MeSH Terms])) AND (Meta-Analysis[ptyp] AND "humans"[MeSH Terms])'
+- ['aspirin all-cause mortality meta-analysis' since 2000](https://scholar.google.com/scholar?q=aspirin+all-cause+mortality+meta-analysis&btnG=&hl=en&as_sdt=0%2C21&as_ylo=2000)
+
+  http://lesswrong.com/r/discussion/lw/b1g/daily_lowdose_aspirin_round_2/9lld
+  Rothwell et al 2012 "Short-term effects of daily aspirin on cancer incidence, mortality, and non-vascular death: analysis of the time course of risks and benefits in 51 randomised controlled trials" http://www.istudymedicine.com/wp-content/uploads/aspirin.pdf
+  Second: "Effect of daily aspirin on long-term risk of death due to cancer: analysis of individual patient data from randomised trials" http://www.beppegrillo.it/immagini/Aspirin%20and%20death%20from%20cancer%20\(Lancet%202010\).pdf
+  check is included: Ridker PM, Cook NR, Lee I-M, et al. "A randomized trial of low-dose aspirin in the primary prevention of cardiovascular disease in women". _N Engl J Med_ 2005;352:1293-304.
+
+- ["Aspirin for prophylactic use in the primary prevention of cardiovascular disease and cancer: a systematic review and overview of reviews"](https://www.ncbi.nlm.nih.gov/pubmedhealth/PMH0083409/), Sutcliffe et al 2013
+
+    > 6% reduction in relative risk (RR) for all-cause mortality [RR 0.94, 95% confidence interval (CI) 0.88 to 1.00]
+    >
+    > ...Reported increased RRs of adverse events from aspirin use were 37% for GI bleeding (RR 1.37, 95% CI 1.15 to 1.62), between 54% (RR 1.54, 95% CI 1.30 to 1.82) and 62% (RR 1.62, 95% CI 1.31 to 2.00) for major bleeds, and between 32% (RR 1.32, 95% CI 1.00 to 1.74) and 38% (RR 1.38, 95% CI 1.01 to 1.82) for haemorrhagic stroke. Pooled estimates of increased RR for bleeding remained stable across trials conducted over several decades. Estimates of absolute rates of harm from aspirin use, per 100,000 patient-years of follow-up, were 99-178 for non-trivial bleeds, 46-49 for major bleeds, 68-117 for GI bleeds and 8-10 for haemorrhagic stroke.
+
+positive cost-benefit:
+
+- Pignone et al 2013, ["Effect of including cancer mortality on the cost-effectiveness of aspirin for primary prevention in men"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3797356/). J Gen Intern Med 2013;28:1483-1491.
+  "Estimates of benefits and harms of prophylactic use of aspirin in the general population", Cuzick et al 2014 http://annonc.oxfordjournals.org/content/26/1/47.full
+- Cuzick et al 2015, ["Estimates of benefits and harms of prophylactic use of aspirin in the general population"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4269341/)
+
+age-dependent bleeding?
+
+- Patrono et al 2005, Low-dose aspirin for the prevention of atherothrombosis. N Engl J Med 2005;353:2373-2383.
