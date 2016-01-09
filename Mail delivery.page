@@ -81,7 +81,7 @@ invisible(dev.off())
 
 Inferring the mean time of delivery might sound difficult with such extremely crude data of intervals 700 minutes wide or worse, but plotting the little simulated dataset and marking the true mean time of 650, we see it's not *that* bad - the mean time is probably whatever line passes through the most intervals:
 
-![The simulated overlapping-intervals data, with the true mean time drawn in blue](/images/maildelivery-simulated.png)
+![The simulated overlapping-intervals data, with the true mean time drawn in blue](/images/maildelivery/simulated.png)
 
 And also with our simulated dataset, we can see if the standard R survival library and a interval-censored model written in JAGS can recover the 650:
 
@@ -95,7 +95,6 @@ s <- survfit(surv ~ 1, data=mailSim); summary(s)
 ## 663.5 10.30842  0.611086 0.323245 0.0853927     0.192604     0.542496
 ## 685.0  9.69734  9.697336 0.000000       NaN           NA           NA
 plot(s)
-## https://i.imgur.com/nzOHQT0.png
 sr <- survreg(surv ~ 1, dist="gaussian", data=mailSim); summary(sr)
 ##                 Value Std. Error        z           p
 ## (Intercept) 656.21819   7.324758 89.58906 0.00000e+00
@@ -108,6 +107,8 @@ sr <- survreg(surv ~ 1, dist="gaussian", data=mailSim); summary(sr)
 ## Number of Newton-Raphson Iterations: 10
 ## n= 30
 ~~~
+
+![Survival curve (death=delivery)](/images/maildelivery/simulated-survivalcurve.png)
 
 ### MCMC
 
@@ -189,7 +190,7 @@ saveGIF(
 
 With a simulation and JAGS set up, we could also see how the posterior estimates of the mean, 95% CI of the mean, and predictive interval change as an additional datapoint is added:
 
-![Simulated data: posterior estimates evolving sample by sample](/images/mail-simulated-inferencesamplebysample.gif)
+![Simulated data: posterior estimates evolving sample by sample](/images/maildelivery/simulated-inferencesamplebysample.gif)
 
 Probably the most striking aspect of watching these summaries updated datum by datum, to me, is how the estimate of the mean homes in almost immediately on close to the true value (this isn't due solely to the informative prior either, as with a completely uninformative `dunif(0,1440)` will zoom in within 4 or 5 datapoints as well, after some violent thrashing around).
 What happens is that the intervals initially look uninformative if the first two or three all turn out to be delivered/non-delivered and so the mean delivery time could still be anywhere from ~11:AM-midnight or vice-versa, but then as soon as even one needle falls the other way, then the mean suddenly snaps into tight focus and gets better from there.
@@ -229,27 +230,14 @@ mailInterval <- data.frame(
                     "2015-09-07 10:58AM", "2015-09-08 10:25AM", "2015-09-09 10:29AM", "2015-09-10 10:48AM",
                     "2015-09-16 11:22AM", "2015-09-17 11:06AM", "2015-09-18 11:22AM", "2015-09-19 11:12AM",
                     "2015-09-21 11:52AM", "2015-09-23 12:02PM", "2015-09-24 10:00AM", "2015-09-25 12:08PM",
-                    "2015-09-26 10:59AM", "2015-09-28 10:57AM", "2015-09-29 10:52AM", "2015-10-26 11:35AM",
-                    "2015-10-28 12:03PM", "2015-10-29 12:00PM", "2015-10-30 12:00PM", "2015-10-31 12:05PM",
-                    "2015-11-02 12:00PM", "2015-11-03 12:05PM", "2015-11-04 12:20PM", "2015-11-05 12:03PM",
-                    "2015-11-06 12:07PM", "2015-11-09 12:00PM", "2015-11-10 12:00PM", "2015-11-12 12:05PM",
-                    "2015-11-13 12:00PM", "2015-11-14 12:05PM", "2015-11-16 12:30PM", "2015-11-17 12:11PM",
-                    "2015-11-18 12:00PM", "2015-11-19 11:55AM", "2015-11-20 1:00PM",  "2015-11-21 12:03PM",
-                    "2015-11-23 12:00PM", "2015-11-24 12:00PM", "2015-11-25 11:40AM", "2015-11-27 12:05PM",
-                    "2015-11-28 12:00PM", "2015-11-30 11:40AM", "2015-12-01 12:20PM", "2015-12-02 12:00PM",
-                    "2015-12-03 11:50AM", "2015-12-04 12:05PM", "2015-12-05 11:50AM", "2015-12-07 11:52AM",
-                    "2015-12-08 12:01PM". "2015-12-12 12:30PM", "2015-12-14 11:45AM", "2015-12-15 11:53AM",
-                    "2015-12-16 12:00PM", "2015-12-17 12:05PM", "2015-12-18 11:50AM", "2015-12-19 11:07AM"),
+                    "2015-09-26 10:59AM", "2015-09-28 10:57AM", "2015-09-29 10:52AM" ),
                    "EDT"),
  Delivered=c(FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE,
              FALSE, TRUE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE,
              FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE,
              FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE,
              FALSE, FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,
-             FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE,
-             FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,
-             TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE,
-             TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE))
+             FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE))
 mailInterval$Time <- fromClock(mailInterval$Date)
 mail <- with(mailInterval, data.frame(Time1 = ifelse(Delivered, 0, Time),
                            Time2 = ifelse(Delivered,  Time, 1440)))
@@ -298,7 +286,72 @@ ggplot(mail) + geom_segment(aes(x=Time1, xend=Time2, y=1:nrow(mail), yend=1:nrow
 invisible(dev.off())
 ~~~
 
-![Overlapping-intervals data, with the estimated mean time in blue, 95% CI around the mean time in green, and 95% predictive intervals as to when the delivery is made](/images/maildelivery-real.png)
+![Overlapping-intervals data, with the estimated mean time in blue, 95% CI around the mean time in green, and 95% predictive intervals as to when the delivery is made](/images/maildelivery/real.png)
+
+<!-- Final data when I stopped tracking:
+mailInterval <- data.frame(
+ Date=as.POSIXct(c( "2015-06-20 11:00AM", "2015-06-21 11:06AM", "2015-06-23 11:03AM",
+                    "2015-06-24 11:05AM", "2015-06-25 11:00AM", "2015-06-26 10:56AM",
+                    "2015-06-27 10:45AM", "2015-06-29 10:31AM", "2015-06-30 10:39AM", "2015-07-01 10:27AM",
+                    "2015-07-02 10:47AM", "2015-07-03 10:27AM", "2015-07-04 10:54AM", "2015-07-05 10:55AM",
+                    "2015-07-06 11:21AM", "2015-07-07 10:01AM", "2015-07-08 10:20AM", "2015-07-09 10:50AM",
+                    "2015-07-10 11:10AM", "2015-07-11 11:12AM", "2015-07-13 11:05AM", "2015-07-14 11:14AM",
+                    "2015-07-15 11:40AM", "2015-07-16 11:24AM", "2015-07-17 11:03AM", "2015-07-18 10:46AM",
+                    "2015-07-20 11:05AM", "2015-07-21 10:56AM", "2015-07-22 11:00AM", "2015-07-23 11:17AM",
+                    "2015-07-24 11:15AM", "2015-07-27 11:11AM", "2015-07-28 10:44AM", "2015-07-29 11:18AM",
+                    "2015-07-30 11:08AM", "2015-07-31 10:44AM", "2015-08-01 11:25AM", "2015-08-03 10:45AM",
+                    "2015-08-04 10:45AM", "2015-08-05 10:44AM", "2015-08-06 10:33AM", "2015-08-07 10:55AM",
+                    "2015-08-10 11:09AM", "2015-08-11 11:16AM", "2015-08-12 11:14AM", "2015-08-13 11:10AM",
+                    "2015-08-14 11:02AM", "2015-08-15 11:04AM", "2015-08-18 11:15AM", "2015-08-20 11:20AM",
+                    "2015-08-22 11:46AM", "2015-08-23 11:04AM", "2015-08-24 10:56AM", "2015-08-25 10:26AM",
+                    "2015-08-26 11:57AM", "2015-08-27 10:15AM", "2015-08-31 12:35PM", "2015-09-01 11:44AM",
+                    "2015-09-02 10:54AM", "2015-09-03 10:29AM", "2015-09-04 10:08AM", "2015-09-05 10:45AM",
+                    "2015-09-07 10:58AM", "2015-09-08 10:25AM", "2015-09-09 10:29AM", "2015-09-10 10:48AM",
+                    "2015-09-16 11:22AM", "2015-09-17 11:06AM", "2015-09-18 11:22AM", "2015-09-19 11:12AM",
+                    "2015-09-21 11:52AM", "2015-09-23 12:02PM", "2015-09-24 10:00AM", "2015-09-25 12:08PM",
+                    "2015-09-26 10:59AM", "2015-09-28 10:57AM", "2015-09-29 10:52AM", "2015-10-26 11:35AM",
+                    "2015-10-28 12:03PM", "2015-10-29 12:00PM", "2015-10-30 12:00PM", "2015-10-31 12:05PM",
+                    "2015-11-02 12:00PM", "2015-11-03 12:05PM", "2015-11-04 12:20PM", "2015-11-05 12:03PM",
+                    "2015-11-06 12:07PM", "2015-11-09 12:00PM", "2015-11-10 12:00PM", "2015-11-12 12:05PM",
+                    "2015-11-13 12:00PM", "2015-11-14 12:05PM", "2015-11-16 12:30PM", "2015-11-17 12:11PM",
+                    "2015-11-18 12:00PM", "2015-11-19 11:55AM", "2015-11-20 1:00PM",  "2015-11-21 12:03PM",
+                    "2015-11-23 12:00PM", "2015-11-24 12:00PM", "2015-11-25 11:40AM", "2015-11-27 12:05PM",
+                    "2015-11-28 12:00PM", "2015-11-30 11:40AM", "2015-12-01 12:20PM", "2015-12-02 12:00PM",
+                    "2015-12-03 11:50AM", "2015-12-04 12:05PM", "2015-12-05 11:50AM", "2015-12-07 11:52AM",
+                    "2015-12-08 12:01PM", "2015-12-12 12:30PM", "2015-12-14 11:45AM", "2015-12-15 11:53AM",
+                    "2015-12-16 12:00PM", "2015-12-17 12:05PM", "2015-12-18 11:50AM", "2015-12-19 11:07AM",
+                    "2015-12-21 12:01PM", "2015-12-22 12:00PM", "2015-12-24 11:15AM", "2015-12-29 12:03PM",
+                    "2015-12-30 12:05PM", "2015-12-31 11:58AM", "2016-01-01 11:45AM", "2016-01-02 4:20PM",
+                    "2016-01-07 12:11PM"),
+                   "EDT"),
+ Delivered=c(FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE,
+             FALSE, TRUE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE,
+             FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE,
+             FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE,
+             FALSE, FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,
+             FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE,
+             FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,
+             TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE,
+             TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE,
+             FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE))
+
+
+mailExact <- data.frame(Date=as.POSIXct(c("2010-04-29 11:33AM", "2010-05-12 11:31AM", "2014-08-20 12:14PM",
+                                          "2014-09-29 11:15AM", "2014-12-15 12:02PM", "2015-03-09 11:19AM",
+                                          "2015-06-10 10:34AM", "2015-06-20 11:02AM", "2015-06-23 10:58AM",
+                                          "2015-06-24 10:53AM", "2015-06-25 10:55AM", "2015-06-30 10:36AM",
+                                          "2015-07-02 10:45AM", "2015-07-06 11:19AM", "2015-07-10 10:54AM",
+                                          "2015-07-11 11:09AM", "2015-07-15 10:29AM", "2015-07-16 11:02AM",
+                                          "2015-07-17 10:46AM", "2015-07-27 11:12AM", "2015-08-15 10:56AM",
+                                          "2015-08-17 11:40AM", "2015-08-18 11:19AM", "2015-08-27 10:43AM",
+                                          "2015-09-04 10:56AM", "2015-09-18 11:15AM", "2015-09-26 10:42AM",
+                                          "2015-09-28 11:48AM", "2015-10-23 11:10AM", "2015-11-10 11:04AM",
+                                          "2015-11-27 12:03PM", "2015-11-30 12:12PM", "2015-12-04 11:35AM",
+                                          "2015-12-10 11:21AM", "2015-12-11 1:36PM", "2015-12-16 11:04AM",
+                                          "2015-12-21 12:49PM"),
+                        "EDT"))
+-->
+
 
 ### ABC
 
@@ -443,9 +496,7 @@ mailExact <- data.frame(Date=as.POSIXct(c("2010-04-29 11:33AM", "2010-05-12 11:3
                                           "2015-07-17 10:46AM", "2015-07-27 11:12AM", "2015-08-15 10:56AM",
                                           "2015-08-17 11:40AM", "2015-08-18 11:19AM", "2015-08-27 10:43AM",
                                           "2015-09-04 10:56AM", "2015-09-18 11:15AM", "2015-09-26 10:42AM",
-                                          "2015-09-28 11:48AM", "2015-10-23 11:10AM", "2015-11-10 11:04AM",
-                                          "2015-11-27 12:03PM", "2015-11-30 12:12PM", "2015-12-04 11:35AM",
-                                          "2015-12-10 11:21AM", "2015-12-11 1:36PM", "2015-12-16 11:04AM"),
+                                          "2015-09-28 11:48AM"),
                         "EDT"))
 mailExact$TimeDelivered <- fromClock(mailExact$Date)
 mean(mailExact$TimeDelivered)
@@ -460,7 +511,7 @@ qplot(Date, TimeDelivered, data=mailExact) +
 invisible(dev.off())
 ~~~
 
-![Known exact delivery times to me of USPS packages, 2010-2015](/images/maildelivery-exact.png)
+![Known exact delivery times to me of USPS packages, 2010-2015](/images/maildelivery/exact.png)
 
 Plotted over time, there's a troubling amount of heterogeneity: despite the sparsity of data (apparently I did not bother to set up USPS tracking alerts 2011-2014, to my loss) it's hard not to see two separate clusters there.
 
@@ -700,7 +751,7 @@ qplot(simsPPC) + geom_vline(xintercept=sum(mail$Time1 == 0), color="blue")
 invisible(dev.off())
 ~~~
 
-![Similarity of posterior predictive distribution's flip-flops with the original data's flip-flops](/images/maildelivery-ppc.png)
+![Similarity of posterior predictive distribution's flip-flops with the original data's flip-flops](/images/maildelivery/ppc.png)
 
 The true data has a summary near the middle of the distribution of the summaries of the posterior predictions, suggesting that the normal distribution's fit to the problem is OK (at least, when considered in isolation).
 
@@ -939,7 +990,7 @@ toClock(which.min(losses))
 ## 11:41AM
 ~~~
 
-![Expected losses in terms of waiting time for checking the mail at particular times](/images/maildelivery-losses.png)
+![Expected losses in terms of waiting time for checking the mail at particular times](/images/maildelivery/losses.png)
 
 And that gives the final answer: I should check for packages around 11:40AM.
 
@@ -978,41 +1029,66 @@ While probability sampling is conceptually simple, intuitive, has no hyperparame
 
 Ignoring indefinite online learning, it is possible to optimize data sampling by estimating what parameter value is predicted to yield the most information, in the sense of entropy of distributions, giving Expected Information Gains (or "expected gain in Shannon information", or "expected Kullback–Leibler discrepancy").
 The normal distribution has a short entropy definition ($0.5 \cdot \ln (2 \cdot \pi \cdot e \cdot \sigma^2)$) based on its standard deviation (since the mean is just a fixed offset, while its standard deviation that defines how variable/unpredictable samples can be and hence how many bits it takes to encode them), but we don't know the exact normal distribution - only posterior distributions including uncertainty.
+The distribution of the posterior predictive distribution for a normal distribution is, I am told, a [t-distribution](!Wikipedia "Student's t-distribution") (source _to A First Course in Bayesian Statistical Methods_ by Peter Hoff), which has the more complex entropy (using digamma & beta) based on its degrees-of-freedom term, _v_, and its scale term, _s_, which goes: $\frac{\nu+1}{2}\left[ \psi \left(\frac{1+\nu}{2} \right) - \psi \left(\frac{\nu}{2} \right) \right] + \log{\left[\sqrt{\nu}B \left(\frac{\nu}{2},\frac{1}{2} \right)\right]} + \log(s)$.
 
-We can instead approximate it using the posterior samples.
-This follows the familiar pattern of calculating the current entropy (mean log of the posterior distribution), then looping over all possible actions/data-to-collect, drawing one sample from the posterior for that and comparing to the action to get a datapoint and then update the model and calculate a new entropy, and return the difference between old entropy and new entropy (repeated a number of times so one can take the mean and get a good approximation for each action).
-Whichever action would lower the entropy the most (have the biggest gain) is then the optimal action to take and make an observation using.
+We can [approximate the entropy](!Wikipedia "Entropy estimation") of a posterior predictive distribution using the posterior samples with a few approaches:
+
+1. estimate the probability density function (giving probability at each point) and then the entropy of each sample is given by the classic $-log(p)$ formula converting probability to bits necessary to encode it/entropy
+
+    For example, our posterior predictive samples $\theta_1, ... \theta_k$ could be converted into a probability density function for a particular time 600-800 or $t_600, ... t_800$ as $\frac{1}{k} \sum{i=1}{k} f(t_n|\theta_i)$, the fraction of samples representing that time. (We'd probably round the samples, implicitly binning them into 200 or so bins.) Then each sample can be converted into the density at its point, the densities logged and negated, then averaged, to get the entropy of the whole posterior predictive sample and hence the distribution itself.
+2. treat the posterior predictive samples as a _t_-distribution, estimate their _v_ & _s_, and convert it to an entropy.
+
+    This is less general, but easier to implement.
+
+Once we can convert a set of posterior predictive samples into an entropy number, this follows the usual simulation/maximization: calculate the current entropy, then looping over all possible actions/data-to-collect, drawing one sample from the posterior for that and comparing to the action to get a datapoint and then update the model and calculate a new entropy, and return the difference between old entropy and new entropy (repeated a number of times so one can take the mean and get a good approximation for each action).
+Whichever action would lower the entropy the most (have the biggest gain) is then the optimal action to take and make an observation doing that.
 An implementation:
 
 ~~~{.R}
+library(MASS)
+tEntropy <- function(v, s) { ((v+1)/2) * (digamma((v+1)/2) - digamma(v/2)) +
+                             log(sqrt(v) * beta(v/2, 1/2)) +
+                             log(s) }
+entropyST <- function(pps) { fit <- fitdistr(pps, "t");
+                             tEntropy(fit$estimate[['df']], fit$estimate[['s']]); }
 entropyD <- function(dt) {
    # average together the _t_ & normal 50:50, per the Bayesian model averaging results:
    jN <- runModel(dt, modelN, iter=500)
    jT <- runModel(dt, modelT, iter=500)
    posteriorTimesN <- c(jN, jT)
 
-   entropy <- mean(-log(posteriorTimesN))
-   return(list(posteriorTimesN, entropy))
+   entropy <- entropyST(posteriorTimesN)
+   return(entropy)
    }
+
 actions <- c(600:728)
-oldEntropy <- mean(-log(posteriorTimes))
-ei <- data.frame(Action=NULL, Entropy=NULL)
-for (a in actions) {
-    for (m in 1:50) {
-       deliveryTime <- sample(posteriorTimes, size=1)
-       if (deliveryTime<a) { newData <- rbind(mail, data.frame(Time1=0, Time2=a)); } else
-                           { newData <- rbind(mail, data.frame(Time1=a, Time2=1440)); }
-       newEntropy <- entropyD(newData)
-       gain <- oldEntropy - newEntropy[[2]]
-       ei <- rbind(ei, data.frame(Action=a, Entropy=gain))
-       }
-}
-eimean <- aggregate(Entropy ~ Action, mean, data=ei)
-eimean[which.max(eimean$Entropy),]
+oldEntropy <- entropyST(posteriorTimes)
+
+library(parallel)
+library(plyr)
+
+entropyAction <- function(a, iter=10) {
+ df <- data.frame()
+ for (i in 1:iter) {
+    deliveryTime <- sample(posteriorTimes, size=1)
+    if (deliveryTime<a) { newData <- rbind(mail, data.frame(Time1=0, Time2=a)); } else
+                        { newData <- rbind(mail, data.frame(Time1=a, Time2=1440)); }
+    newEntropy <- entropyD(newData)
+    gain <- oldEntropy - newEntropy
+    print(data.frame(Action=a, EntropyDecrease=gain))
+    df <- rbind(df, data.frame(Action=a, EntropyDecrease=gain))
+ }
+ return(df)
+ }
+ei <- ldply(mclapply(actions, function(a) { entropyAction(a) }))
+
+eimean <- aggregate(EntropyDecrease ~ Action, mean, data=ei)
+eimean[which.max(eimean$EntropyDecrease),]
 ##      Action        Entropy
 ## 53    652 0.01161258411
-toClock(eimean[which.max(eimean$Entropy),]$Action)
+toClock(eimean[which.max(eimean$EntropyDecrease),]$Action)
 ## [1] "10:52"
+plot(eimean)
 ~~~
 
 Interested in how the maximal expected information time changed, I began checking at the optimal times in late September, checking at:
@@ -1042,9 +1118,19 @@ mean(sapply(round(posteriorTimes), function(time) { netPresentValue((losses[time
 # [1] 5087.290247
 ~~~
 
-Perfect information is not available at any cost, however.^[I could always resort to additional technology like motion-activated cameras or radio bugs on the mailbox which send alerts when it's been opened if I *really* wanted, but for the purpose of this exercise, let's ignore those possibilities.]
+Perfect information is not available at any cost, however.[^Pi]
 All I can do is go out to the mail box _n_ times, and as we saw in the simulation, diminishing returns always happens and at some point the predictive intervals stop changing noticeably.
 So EVPI represents an upper bound on how much any lesser amount of information could be worth, but doesn't tell us how much we are willing to pay for imperfect information.
+
+[^Pi]: Instead of doing estimates, why not buy or make something like a magnetic switch or motion-activated camera on the mailbox? By regularly recording exactly when the mail arrives, thi
+s makes estimation much easier, and if wireless-enabled, may obviate the problem entirely.
+
+    I looked into this, and while there is an established niche of "people counter"/"door counter"/"traffic counter" electronic devices, they are intended for business use and priced out of my range. Further, the mailbox is so far away that there are no power sockets near it so it will need to be battery-powered and to last for months (otherwise the hassle of charging it eliminates the convenience) and wireless may not be possible that many meters away without excessive power consumption.
+
+    I then looked into using a [Raspberry Pi](!Wikipedia) or [Arduino](!Wikipedia), but both presented serious problems. A Raspberry Pi Zero may cost \$5 for the motherboard itself and be relatively easy to program & set up, but it draws ~160 milliamps and so your standard 1000-5000milliamp-hour battery will be drained within a day; solar panels can be hooked up to recharge the battery, but that adds much complexity and between the battery, solar panel, panel->battery adapter, and other wires, would cost >\$80 for the parts.
+
+    Arduinos use much less, like 50 milliamps, and can be reduced to <1 milliamps, in which case power is no longer an issue, but Arduinos are much more challenging to use than Raspberry Pis - I have no experience in embedded electronics or wiring up such devices or programming in C, and so no confidence I could build it correctly.
+
 
 ### EVSI
 
@@ -1064,7 +1150,7 @@ for (n in seq(from=0, to=(nrow(data)+10))) {
  evsis <- replicate(10, {
   # if n is more than we collected, bootstrap hypothetical new data; otherwise,
   # just take that prefix and pretend we are doing a sequential trial where we
-  have only collected the first n observations thus far
+  # have only collected the first n observations thus far
   if (n > nrow(data)) { newData <- rbind(data,
                                          data[sample(1:nrow(data), n - nrow(data) , replace=TRUE),]) } else {
                         newData <- data[1:n,] }
@@ -1096,108 +1182,108 @@ for (n in seq(from=0, to=(nrow(data)+10))) {
                                    sampleValueProfit=mean(unlist(evsis[5,]))))
  }
 sampleValues
-#     N newOptimum newOptimumLoss    sampleValue sampleValueProfit
-# 1   0    712.600    126.6888958    0.00000000      0.0000000000
-# 2   1    712.575    126.7579219  -11.93854006     48.0614599416
-# 3   2    719.980    122.3724436 -121.31501738     -1.3150173784
-# 4   3    708.150    126.9706051  -32.03379518    147.9662048193
-# 5   4    701.790    127.9095775 -143.35714066     96.6428593445
-# 6   5    696.695    128.8701531 -299.02233338      0.9776666227
-# 7   6    692.440    129.8191319 -466.05452337   -106.0545233747
-# 8   7    688.695    132.0807898 -633.09206632   -213.0920663197
-# 9   8    690.765    129.5727029 -542.78513810    -62.7851380951
-# 10  9    687.660    132.0364916 -681.32564291   -141.3256429125
-# 11 10    689.210    130.2163274 -597.48233962      2.5176603795
-# 12 11    686.395    130.5338326 -758.15486682    -98.1548668161
-# 13 12    687.455    128.6273025 -695.28046012     24.7195398753
-# 14 13    691.525    129.2092477 -496.05481084    283.9451891562
-# 15 14    695.410    129.2232888 -347.92312703    492.0768729651
-# 16 15    693.405    128.1591433 -433.22087565    466.7791243520
-# 17 16    693.650    127.0530983 -436.23463412    523.7653658752
-# 18 17    693.735    125.5236645 -444.81276457    575.1872354295
-# 19 18    695.725    125.3049938 -355.24354368    724.7564563236
-# 20 19    693.155    123.7840402 -465.57031668    674.4296833227
-# 21 20    691.340    122.2890257 -573.81903972    626.1809602784
-# 22 21    695.460    124.4854690 -373.66455168    886.3354483178
-# 23 22    693.835    123.3286284 -453.72808090    866.2719190994
-# 24 23    692.890    122.1550798 -511.31873755    868.6812624468
-# 25 24    691.585    120.6627142 -594.94760901    845.0523909901
-# 26 25    689.930    119.8993341 -688.68789781    811.3121021938
-# 27 26    690.845    118.8742591 -644.53601191    915.4639880893
-# 28 27    693.915    120.5363205 -480.27587034   1139.7241296593
-# 29 28    695.455    120.5722357 -410.57354380   1269.4264562033
-# 30 29    693.720    119.8216438 -491.01196669   1248.9880333079
-# 31 30    692.560    118.5479051 -566.54877290   1233.4512271013
-# 32 31    691.265    117.4006005 -642.81873824   1217.1812617638
-# 33 32    694.800    120.2531077 -443.02993834   1476.9700616613
-# 34 33    694.500    122.6974736 -444.15880135   1535.8411986539
-# 35 34    693.200    121.6848098 -506.60101893   1533.3989810750
-# 36 35    695.640    123.1766613 -377.44505442   1722.5549455769
-# 37 36    695.055    125.0534433 -389.10082564   1770.8991743593
-# 38 37    694.210    124.1294044 -439.58662308   1780.4133769227
-# 39 38    694.610    123.0556714 -424.08194842   1855.9180515813
-# 40 39    694.310    124.7484991 -436.35444597   1903.6455540347
-# 41 40    694.505    123.4282826 -429.85235414   1970.1476458589
-# 42 41    694.280    122.2800503 -437.52664626   2022.4733537369
-# 43 42    695.660    121.9807264 -395.84245846   2124.1575415363
-# 44 43    697.795    123.4574969 -298.08161577   2281.9183842337
-# 45 44    696.745    122.5201770 -345.76139793   2294.2386020661
-# 46 45    695.845    121.6540080 -389.60085022   2310.3991497771
-# 47 46    695.090    120.9569570 -436.42100092   2323.5789990833
-# 48 47    693.990    120.5449101 -483.41266155   2336.5873384516
-# 49 48    694.305    120.7051254 -487.09162861   2392.9083713904
-# 50 49    693.840    120.1719436 -499.45106193   2440.5489380720
-# 51 50    693.940    119.9749612 -504.81034896   2495.1896510352
-# 52 51    693.960    119.9420246 -500.28329793   2559.7167020736
-# 53 52    693.595    119.7075089 -512.73745021   2607.2625497905
-# 54 53    693.875    119.4981456 -515.01771496   2664.9822850449
-# 55 54    693.505    119.1947709 -524.05689719   2715.9431028079
-# 56 55    693.900    119.5021316 -517.24622527   2782.7537747290
-# 57 56    693.715    119.1529502 -536.63625754   2823.3637424644
-# 58 57    693.530    118.7091686 -531.78528869   2888.2147113139
-## 59 58      703.2    110.3450586 -237.308410317    3242.691589683
-## 60 59      702.8    110.1431462 -260.940058947    3279.059941053
-## 61 60      701.8    109.8245030 -292.138648235    3307.861351765
-## 62 61      702.0    109.6607867 -313.445660084    3346.554339916
-## 63 62      701.7    109.9572132 -324.525787515    3395.474212485
-## 64 63      701.0    109.5939801 -353.833817911    3426.166182089
-## 65 64      700.9    109.7948883 -353.210103148    3486.789896852
-## 66 65      701.3    109.5571512 -343.780758960    3556.219241040
-## 67 66      701.2    109.5838684 -310.806893360    3649.193106640
-## 68 67      701.5    109.4677088 -316.910308982    3703.089691018
-## 69 68      700.9    109.3539013 -326.340338587    3753.659661413
-## 70 69      702.1    109.2574961 -317.820011152    3822.179988848
-## 71 70      701.2    108.8563787 -351.667974044    3848.332025956
-## 72 71      701.2    108.9809869 -339.661339561    3920.338660439
-## 73 72      701.5    108.9430690 -313.603261282    4006.396738718
-## 74 73      701.6    108.6864327 -324.919641986    4055.080358014
-## 75 74      701.4    108.7176209 -308.707536711    4131.292463289
-## 76 75      703.1    108.4620179 -304.882851775    4195.117148225
-## 77 76      701.7    108.4129922 -303.134783733    4256.865216267
-## 78 77      702.2    108.2194238 -304.295347052    4315.704652948
-## 79 78      701.4    107.7256569 -334.733360207    4345.266639793
-## 80 79      700.4    108.1555870 -340.454520356    4399.545479644
-## 81 80      701.8    108.1089954 -315.865705672    4484.134294328
-## 82 81      701.7    107.8976325 -332.239957494    4527.760042506
-## 83 82      701.3    108.1263477 -318.440927654    4601.559072346
-## 84 83      701.7    107.9807588 -341.667394085    4638.332605915
-## 85 84      701.6    107.9223031 -332.374354544    4707.625645456
-## 86 85      702.3    107.7032516 -329.594428046    4770.405571954
-## 87 86      701.2    107.7025934 -323.337539932    4836.662460068
-## 88 87      702.6    107.7341694 -315.319855307    4904.680144693
-## 89 88      702.7    107.5978394 -318.888777193    4961.111222807
-## 90 89      701.7    107.6826961 -329.601897440    5010.398102560
-## 91 90      701.2    107.2913853 -352.893246270    5047.106753730
-## 92 91      702.6    107.9162503 -298.859548680    5161.140451320
-## 93 92      701.4    107.3265408 -345.735043576    5174.264956424
-## 94 93      702.9    107.7535692 -307.027575009    5272.972424991
-## 95 94      700.7    106.9934449 -380.611482059    5259.388517941
-## 96 95      702.2    108.2833572 -318.195906366    5381.804093634
+##     N newOptimum newOptimumLoss    sampleValue sampleValueProfit
+## 1   0    712.600    126.6888958    0.00000000      0.0000000000
+## 2   1    712.575    126.7579219  -11.93854006     48.0614599416
+## 3   2    719.980    122.3724436 -121.31501738     -1.3150173784
+## 4   3    708.150    126.9706051  -32.03379518    147.9662048193
+## 5   4    701.790    127.9095775 -143.35714066     96.6428593445
+## 6   5    696.695    128.8701531 -299.02233338      0.9776666227
+## 7   6    692.440    129.8191319 -466.05452337   -106.0545233747
+## 8   7    688.695    132.0807898 -633.09206632   -213.0920663197
+## 9   8    690.765    129.5727029 -542.78513810    -62.7851380951
+## 10  9    687.660    132.0364916 -681.32564291   -141.3256429125
+## 11 10    689.210    130.2163274 -597.48233962      2.5176603795
+## 12 11    686.395    130.5338326 -758.15486682    -98.1548668161
+## 13 12    687.455    128.6273025 -695.28046012     24.7195398753
+## 14 13    691.525    129.2092477 -496.05481084    283.9451891562
+## 15 14    695.410    129.2232888 -347.92312703    492.0768729651
+## 16 15    693.405    128.1591433 -433.22087565    466.7791243520
+## 17 16    693.650    127.0530983 -436.23463412    523.7653658752
+## 18 17    693.735    125.5236645 -444.81276457    575.1872354295
+## 19 18    695.725    125.3049938 -355.24354368    724.7564563236
+## 20 19    693.155    123.7840402 -465.57031668    674.4296833227
+## 21 20    691.340    122.2890257 -573.81903972    626.1809602784
+## 22 21    695.460    124.4854690 -373.66455168    886.3354483178
+## 23 22    693.835    123.3286284 -453.72808090    866.2719190994
+## 24 23    692.890    122.1550798 -511.31873755    868.6812624468
+## 25 24    691.585    120.6627142 -594.94760901    845.0523909901
+## 26 25    689.930    119.8993341 -688.68789781    811.3121021938
+## 27 26    690.845    118.8742591 -644.53601191    915.4639880893
+## 28 27    693.915    120.5363205 -480.27587034   1139.7241296593
+## 29 28    695.455    120.5722357 -410.57354380   1269.4264562033
+## 30 29    693.720    119.8216438 -491.01196669   1248.9880333079
+## 31 30    692.560    118.5479051 -566.54877290   1233.4512271013
+## 32 31    691.265    117.4006005 -642.81873824   1217.1812617638
+## 33 32    694.800    120.2531077 -443.02993834   1476.9700616613
+## 34 33    694.500    122.6974736 -444.15880135   1535.8411986539
+## 35 34    693.200    121.6848098 -506.60101893   1533.3989810750
+## 36 35    695.640    123.1766613 -377.44505442   1722.5549455769
+## 37 36    695.055    125.0534433 -389.10082564   1770.8991743593
+## 38 37    694.210    124.1294044 -439.58662308   1780.4133769227
+## 39 38    694.610    123.0556714 -424.08194842   1855.9180515813
+## 40 39    694.310    124.7484991 -436.35444597   1903.6455540347
+## 41 40    694.505    123.4282826 -429.85235414   1970.1476458589
+## 42 41    694.280    122.2800503 -437.52664626   2022.4733537369
+## 43 42    695.660    121.9807264 -395.84245846   2124.1575415363
+## 44 43    697.795    123.4574969 -298.08161577   2281.9183842337
+## 45 44    696.745    122.5201770 -345.76139793   2294.2386020661
+## 46 45    695.845    121.6540080 -389.60085022   2310.3991497771
+## 47 46    695.090    120.9569570 -436.42100092   2323.5789990833
+## 48 47    693.990    120.5449101 -483.41266155   2336.5873384516
+## 49 48    694.305    120.7051254 -487.09162861   2392.9083713904
+## 50 49    693.840    120.1719436 -499.45106193   2440.5489380720
+## 51 50    693.940    119.9749612 -504.81034896   2495.1896510352
+## 52 51    693.960    119.9420246 -500.28329793   2559.7167020736
+## 53 52    693.595    119.7075089 -512.73745021   2607.2625497905
+## 54 53    693.875    119.4981456 -515.01771496   2664.9822850449
+## 55 54    693.505    119.1947709 -524.05689719   2715.9431028079
+## 56 55    693.900    119.5021316 -517.24622527   2782.7537747290
+## 57 56    693.715    119.1529502 -536.63625754   2823.3637424644
+## 58 57    693.530    118.7091686 -531.78528869   2888.2147113139
+## 59 58      703.2    110.3450586 -237.308410317  3242.691589683
+## 60 59      702.8    110.1431462 -260.940058947  3279.059941053
+## 61 60      701.8    109.8245030 -292.138648235  3307.861351765
+## 62 61      702.0    109.6607867 -313.445660084  3346.554339916
+## 63 62      701.7    109.9572132 -324.525787515  3395.474212485
+## 64 63      701.0    109.5939801 -353.833817911  3426.166182089
+## 65 64      700.9    109.7948883 -353.210103148  3486.789896852
+## 66 65      701.3    109.5571512 -343.780758960  3556.219241040
+## 67 66      701.2    109.5838684 -310.806893360  3649.193106640
+## 68 67      701.5    109.4677088 -316.910308982  3703.089691018
+## 69 68      700.9    109.3539013 -326.340338587  3753.659661413
+## 70 69      702.1    109.2574961 -317.820011152  3822.179988848
+## 71 70      701.2    108.8563787 -351.667974044  3848.332025956
+## 72 71      701.2    108.9809869 -339.661339561  3920.338660439
+## 73 72      701.5    108.9430690 -313.603261282  4006.396738718
+## 74 73      701.6    108.6864327 -324.919641986  4055.080358014
+## 75 74      701.4    108.7176209 -308.707536711  4131.292463289
+## 76 75      703.1    108.4620179 -304.882851775  4195.117148225
+## 77 76      701.7    108.4129922 -303.134783733  4256.865216267
+## 78 77      702.2    108.2194238 -304.295347052  4315.704652948
+## 79 78      701.4    107.7256569 -334.733360207  4345.266639793
+## 80 79      700.4    108.1555870 -340.454520356  4399.545479644
+## 81 80      701.8    108.1089954 -315.865705672  4484.134294328
+## 82 81      701.7    107.8976325 -332.239957494  4527.760042506
+## 83 82      701.3    108.1263477 -318.440927654  4601.559072346
+## 84 83      701.7    107.9807588 -341.667394085  4638.332605915
+## 85 84      701.6    107.9223031 -332.374354544  4707.625645456
+## 86 85      702.3    107.7032516 -329.594428046  4770.405571954
+## 87 86      701.2    107.7025934 -323.337539932  4836.662460068
+## 88 87      702.6    107.7341694 -315.319855307  4904.680144693
+## 89 88      702.7    107.5978394 -318.888777193  4961.111222807
+## 90 89      701.7    107.6826961 -329.601897440  5010.398102560
+## 91 90      701.2    107.2913853 -352.893246270  5047.106753730
+## 92 91      702.6    107.9162503 -298.859548680  5161.140451320
+## 93 92      701.4    107.3265408 -345.735043576  5174.264956424
+## 94 93      702.9    107.7535692 -307.027575009  5272.972424991
+## 95 94      700.7    106.9934449 -380.611482059  5259.388517941
+## 96 95      702.2    108.2833572 -318.195906366  5381.804093634
 
 qplot(sampleValues$N, round(sampleValues$newOptimum))
-
-# https://i.imgur.com/PrkMCsr.png
 ~~~
+
+![Evolution of optimal time to check the mail based on posterior updated after each observation.](/images/maildelivery/optimum-by-sample.png)
 
 This would suggest that diminishing returns were reached early on (possibly the informative priors had done more work than I appreciated).
 
@@ -1320,10 +1406,11 @@ simulate_mab <- function(n) {
 run <- simulate_mab(500)
 
 library(ggplot2)
-qplot(1:nrow(run), run$Action, xlab="Nth mail check", ylab="Check time", color=run$Loss, size=I(5), main="Thompson sampling") +
+qplot(1:nrow(run), run$Action, xlab="Nth mail check", ylab="Check time",
+      color=run$Loss, size=I(5), main="Thompson sampling") +
   stat_smooth() + geom_hline(colour="green", aes(yintercept=run$Action.optimal[1]))
 ~~~
 
-![1 simulation run's actions over 500 time-steps, optimal action overlaid in green](/images/maildelivery-thompsonsampling.png)
+![1 simulation run's actions over 500 time-steps, optimal action overlaid in green](/images/maildelivery/thompsonsampling.png)
 
 In this particular simulation, the Thompson sampling agent starts off choosing check-times too late in the day and gradually tightens its selection of actions until by ~_t_=100, it is generally checking near-optimally but with continued sampling from other check-times which starts to compensate for a little undershooting error.
