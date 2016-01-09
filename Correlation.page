@@ -6,6 +6,36 @@ created: 24 Jun 2014
 status: in progress
 ...
 
+# Modeling
+
+
+--
+
+We investigated Student-t distributions as robust priors for the 's and 's as suggested by Gelman
+et al. 8 and Fu ́quene et al. 10 Gelman et al. recommend a weakly informative default prior of a Cauchy
+distribution (or t 1 distribution) which has heavier tails than a normal distribution and thus assigns
+greater probability to larger values of the log RR compared to a normal prior. Although the authors
+report that the Cauchy prior centered at 0 with scale of 0.75 performs the best in their study, they
+suggest a Cauchy with center 0 and scale 2.5 as a default prior for logistic regression models and other
+general linear models (i.e. log binomial or Poisson). This default weakly informative prior gives an
+implausibly large 95% interval (Table 1) for the RR that is unrealistic when compared to reported
+RRs in published RCTs. In fact, Gelman 27 has recently stated that a scale of 2.5 is too weak.
+Here, we assess a Cauchy with scale of 0.75, a Cauchy with scale of 0.35 (to compare to the
+normal prior we have used in previous RCT analyses), and a t 7 with scale of 0.75 to serve as an
+intermediate choice between the normal and Cauchy priors. We compare these priors to the default
+Cauchy prior with scale of 2.5. For the intercept terms,  0 or  0 , we use the same distribution as for
+ 1 or  1 (Cauchy or t 7 ) with a scale of 10 as suggested by Gelman et al. 8
+
+
+# Medical
+
+["Vitamin D and multiple health outcomes: umbrella review of systematic reviews and meta-analyses of observational studies and randomised trials"](http://www.bmj.com/content/348/bmj.g2035.full), Theodoratou et al 2014:
+
+> Comparison of findings from observational studies and clinical trials
+>
+> One hundred and twenty three (90%) outcomes were examined only by syntheses of observational evidence (n=84) or only by meta-analyses of randomised evidence (n=39), so we could not compare observational and randomised evidence.
+>
+> Ten (7%) outcomes were examined by both meta-analyses of observational studies and meta-analyses of randomised controlled trials: cardiovascular disease, hypertension, birth weight, birth length, head circumference at birth, small for gestational age birth, mortality in patients with chronic kidney disease, all cause mortality, fractures, and hip fractures (table 5⇓). The direction of the association/effect and level of statistical significance was concordant only for birth weight, but this outcome could not be tested for hints of bias in the meta-analysis of observational studies (owing to lack of the individual data). The direction of the association/effect but not the level of statistical significance was concordant in six outcomes (cardiovascular disease, hypertension, birth length, head circumference small for gestational age births, and all cause mortality), but only two of them (cardiovascular disease and hypertension) could be tested and were found to be free from hint of bias and of low heterogeneity in the meta-analyses of observational studies. For mortality in chronic kidney disease patients, fractures in older populations, and hip fractures, both the direction and the level of significance of the association/effect were not concordant.
 
 "Evaluating non-randomised intervention studies", Deeks et al 2003 http://www.journalslibrary.nihr.ac.uk/__data/assets/pdf_file/0007/64933/FullReport-hta7270.pdf
 
@@ -432,6 +462,8 @@ that their claim is valid.
 Editor. Journal of the American Medical Association,
 301, 720-721 .
 
+# Economics
+
 "Evaluating the Econometric Evaluations of Training Programs with Experimental Data", LaLonde 1986 http://isites.harvard.edu/fs/docs/icb.topic1141086.files/Lalonde%201986%20-%20Evaluating%20the%20Economietric%20Evaluations%20of%20Training%20Programs%20with%20Experimental%20Data.pdf
 
 This paper compares the effect on trainee earnings of an employment program
@@ -610,23 +642,6 @@ one-step estimates. However, as with the results for the females, this procedure
 leave econometricians with a considerable
 range ($1,546) of imprecise estimates
 
---
-
-We investigated Student-t distributions as robust priors for the 's and 's as suggested by Gelman
-et al. 8 and Fu ́quene et al. 10 Gelman et al. recommend a weakly informative default prior of a Cauchy
-distribution (or t 1 distribution) which has heavier tails than a normal distribution and thus assigns
-greater probability to larger values of the log RR compared to a normal prior. Although the authors
-report that the Cauchy prior centered at 0 with scale of 0.75 performs the best in their study, they
-suggest a Cauchy with center 0 and scale 2.5 as a default prior for logistic regression models and other
-general linear models (i.e. log binomial or Poisson). This default weakly informative prior gives an
-implausibly large 95% interval (Table 1) for the RR that is unrealistic when compared to reported
-RRs in published RCTs. In fact, Gelman 27 has recently stated that a scale of 2.5 is too weak.
-Here, we assess a Cauchy with scale of 0.75, a Cauchy with scale of 0.35 (to compare to the
-normal prior we have used in previous RCT analyses), and a t 7 with scale of 0.75 to serve as an
-intermediate choice between the normal and Cauchy priors. We compare these priors to the default
-Cauchy prior with scale of 2.5. For the intercept terms,  0 or  0 , we use the same distribution as for
- 1 or  1 (Cauchy or t 7 ) with a scale of 10 as suggested by Gelman et al. 8
-
 ---
 
 "The Endogeneity Problem in Developmental Studies", Duncan et al 2004 https://www.dropbox.com/s/iww2kmp3cf67vos/2004-duncan.pdf http://moscow.sci-hub.bz/b6ab184de3bae9fd0fc16ad0558de92c/10.1080%4015427609.2004.9683330.pdf  http://home.uchicago.edu/ludwigj/papers/Duncan_EndogeneityProblem.pdf
@@ -701,6 +716,7 @@ A much larger literature within economics, statistics, and program evaluation ha
 - Glazerman, S., Levy, D., & Myers, D. (2002). _Nonexperimental replications of social experiments: A systematic review_. Washington, DC: Mathematica Policy Research http://www.mathematica-mpr.com/publications/pdfs/nonexperimentalreps.pdf
 - Bloom, H. S., Michalopoulos, C., Hill, C., & Lei, Y. (2002) _Can non-experimental comparison group methods match the findings from a random assignment evaluation of mandatory welfare-to-work programs?_ New York: Manpower Demonstration Research Corporation. http://files.eric.ed.gov/fulltext/ED471814.pdf
 
+# Sociology
 
 "How Close Is Close Enough? Testing Nonexperimental Estimates of Impact against Experimental Estimates of Impact with Education Test Scores as Outcomes", Wilde & Hollister 2002 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.217.2276&rep=rep1&type=pdf
 
@@ -880,6 +896,8 @@ for the same group. In 50 percent of the pairs, experimental and nonexperimental
 statistical inferences, with a mean absolute difference in effect estimate of 4.65. Over 75 percent of these
 differences were statistically significant. About half of the estimated pairs in comparisons across school
 type differ by more than 5 percentage points.
+
+# Psychology
 
 "Assignment Methods in Experimentation: When Do Nonrandomized Experiments Approximate Answers From Randomized Experiments?", Heinsman & Shadish 1996  https://www.dropbox.com/s/2sg98fujplgv1du/1996-heinsman.pdf http://www.gwern.net/docs/statistics/1996-heinsman.pdf
 
