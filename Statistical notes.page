@@ -2499,8 +2499,12 @@ After it hit a limit at 0.79 and started turning in losses of 0.8+ for hours, tr
 
 # The Power of Twins: Revisiting Student's Scottish Milk Experiment Example
 
-Randomized experiments enable causal inference by assuring that the experimental group is identical, on average, in all ways to the control group.
-If a coin is flipped, then each group will have the same fraction of women, the same fraction of atheists, the same fraction of people with a particular SNP on COMT, the same fraction of people with latent cancers, etc - on average.
+> Randomized experiments require more subjects the more variable each datapoint is to overcome the noise which obscures any effects of the intervention. Reducing noise enables better inferences with the same data, or less data to be collected, which can be done by balancing observed characteristics between control and experimental datapoints. A particularly dramatic example of this approach is running experiments on identical twins rather than regular people, because twins vary far less from each other than random people do. In 1931, the statistician Student noted problems with an extremely large (_n_=20,000) Scottish experiment in feeding children milk (to see if they grew more in height or weight), and claimed that the experiment could have been done far more cost-effectively with an extraordinary reduction of >95% fewer children if it had been conducted using twins. He, however, did not provide any calculations or data demonstrating this. I revisit the issue and run a power calculation on height indicating that Student's claims were correct and that the experiment would have required ~97% fewer children if run with twins.
+
+## Simple randomization vs blocking
+
+[Randomized experiments](!Wikipedia) enable causal inference by assuring that the experimental group is identical, on average, in all ways to the control group and the subsequent differences are caused by the intervention.
+If a coin is flipped, then each group will have the same fraction of women, the same fraction of atheists, the same fraction of people with a particular [SNP](!Wikipedia "Single-nucleotide polymorphism") on [COMT](!Wikipedia), the same fraction of people with latent cancers, etc - on average.
 But since there are thousands upon thousands of ways in which subjects can differ which might affect the results (just consider how [almost all human traits are genetically heritable](/docs/2015-polderman.pdf "'Meta-analysis of the heritability of human traits based on fifty years of twin studies', Polderman et al 2015")), and there may only be a few dozen subjects, randomization cannot guarantee exact or even approximate similarity of groups on every single trait and with same samples can generate grossly imbalanced samples (perhaps you have 2 groups of 10, and one group turns out to have 9 women and the other just 1).
 This doesn't bias the results or defeat the point of randomization, but it can add a lot of noise, reducing our [efficiency](!Wikipedia "Efficiency (statistics)"), thereby making our existing studies less meaningful, requiring more expensive studies to estimate effects to a useful level of precision, and blocking profitable decisions.
 
@@ -2512,6 +2516,8 @@ Indeed, since a person is matched with themselves on just about everything and a
 But people do change over time and there might be lingering effects, so perhaps it would be even better if you can test it on the same person simultaneously: for example, test an acne cream A on one side of the face and acne cream B on the other half of each subject's face, flipping a coin to decide whether A/B or B/A.
 
 This is the concept of [blocking](!Wikipedia "Blocking (statistics)"), one of whose advocates was [Student](!Wikipedia "William Sealy Gosset"), the great early statistician.
+
+## Efficiency of blocking for the Lanarkshire Milk Experiment
 
 The history of blocking and its advantages compared to simple randomized experiments are discussed at length in ["Balanced versus Randomized Field Experiments in Economics: Why W. S. Gosset aka 'Student' Matters", Ziliak 2014](http://blogs.roosevelt.edu/sziliak/files/2013/07/Balanced-vs-Randomized-Field-Experiments-in-Economics-_-Ziliak-Review-of-Behavioral-Economics-2013.pdf).
 Ziliak writes (pg22) about an interesting example where Student calculates that a well-blocked sample of 100 could be better than 20,000 with simple randomization:
@@ -2535,7 +2541,7 @@ These three issues are reflected in anomalies in the data, reducing our confiden
 
 Having performed the post-mortem on the Lanarkshire Milk Experiment, Student then proposes improvements to the design, culminating in the most radical (pg405):
 
-> (2) If it be agreed that milk is an advantageous addition to children's diet - and I doubt whether any one will combat that view - and that the difference between raw and pasteurised milk is the matter to be investigated, it would be possible to obtain much greater certainty at an expenditure of perhaps 1-2% of the money [This is a serious consideration: the Lanarkshire experiment cost about £7500. [Which is ~£374,800 in 2016 pounds sterling or ~\$541,100.]] and less than 5% of the trouble.
+> \(2\) If it be agreed that milk is an advantageous addition to children's diet - and I doubt whether any one will combat that view - and that the difference between raw and pasteurised milk is the matter to be investigated, it would be possible to obtain much greater certainty at an expenditure of perhaps 1-2% of the money [This is a serious consideration: the Lanarkshire experiment cost about £7500. [Which is ~£374,800 in 2016 pounds sterling or ~\$541,100.]] and less than 5% of the trouble.
 >
 > For among 20,000 children there will be numerous pairs of twins; exactly how many it is not easy to say owing to the differential death rate, but, since there is about one pair of twins in 90 births, one might hope to get at least 160 pairs in 20,000 children. But as a matter of fact the 20,000 children were not all the Lanarkshire schools population, and I feel pretty certain that some 200-300 pairs of twins would be available for the purpose of the experiment. Of 200 pairs some 50 would be "identicals" and of course of the same sex, while half the remainder would be non-identical twins of the same sex.
 >
@@ -2547,6 +2553,8 @@ Having performed the post-mortem on the Lanarkshire Milk Experiment, Student the
 
 This is a reasonable suggestion, but I was disappointed to see that Student was, it seems, effectively guessing, as he gives no calculation or reference to another work with a similar calculation.
 (If Ziliak was going to cite it as an example, it would've been better if he had verified that Student's speculation was right at least to within an order of magnitude rather than simply quoting him as an authority.)
+
+## Power estimate of twins vs general population
 
 The calculation doesn't seem hard.
 For this example, using height, it'd go something like:
@@ -2567,7 +2575,7 @@ The followup paper ["The Lanarkshire Milk Experiment", Elderton 1933](/doc/stati
 
 Elderton's Table 1 reports on the Lanarkshire children's grouped data by "6 years 9 months", "7 years 9 months", and then "8 years 9 months" & higher; the first two presumably map best onto our 5-7yo group, and have values of _n_=382 with standard deviation 1.483(2.58), and _n_=337 with standard deviation 1.648(2.82); [pooling the standard deviations](!Wikipedia "Pooled variance"), we get a standard deviation of 1.56 for the general population. <!-- (1.483*(382-1) + 1.648*(337-1))/ (382+337-2) -->
 
-Elderton's summary of Stocks's twin research is confusingly worded (partly because Stocks worked in centimeters and Elderton inches), but she appears to be saying that the standard deviation of differences in Stocks's twins is 0.25 inches, which compared with 1.483 is much smaller and around one-fifth; Table II (pg11) in Stocks 1930 records variability of identical twins vs fraternal vs their non-twin siblings in "mean corrected Deviates", mentioning that the root-mean-squared difference in the table is the standard deviation, so the \sigma_0 of height for identical twins is 0.9497 while the general population is 6.01cm (pg13), and $\frac{0.9497}{6.01}$ comes out to one-fifth, confirming where Elderton got her specific estimate of ~0.25 inches as the standard deviation for identical twins.
+Elderton's summary of Stocks's twin research is confusingly worded (partly because Stocks worked in centimeters and Elderton inches), but she appears to be saying that the standard deviation of differences in Stocks's twins is 0.25 inches, which compared with 1.483 is much smaller and around one-fifth; Table II (pg11) in Stocks 1930 records variability of identical twins vs fraternal vs their non-twin siblings in "mean corrected Deviates", mentioning that the root-mean-squared difference in the table is the standard deviation, so the σ~0~ of height for identical twins is 0.9497 while the general population is 6.01cm (pg13), and $\frac{0.9497}{6.01}$ comes out to one-fifth, confirming where Elderton got her specific estimate of ~0.25 inches as the standard deviation for identical twins.
 
 So the claimed effect is +0.083 inches, which represents _d_=0.05 (for the general population) and _d_=0.332 (twin differences).
 We then ask how much data is required to conduct a well-powered experiment to detect the existence of such an effect:
