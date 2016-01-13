@@ -2511,7 +2511,7 @@ This doesn't bias the results or defeat the point of randomization, but it can a
 When put this way, one might wonder how to improve the [design of simple randomized experiments](!Wikipedia "Design of experiments"): if you have a group with too many women and too few men, why not change your coin flip to instead pairs of women and men?
 Instead of flipping a fair coin for each patient to pick whether that patient goes into the control or experimental group, why not instead take a pair of women and flip a coin to decide whether the one on the left goes into the experimental group, and then the woman on the right goes into the other group? And likewise for the men.
 In fact, why not try to extend this 'matching up' to as many things as you can measure?
-If we use identical twins, we match them on not just nationality, gender, location, parents, age, food consumption or whatnot, we even match them on genetics too, which is part of why identical twins are so eerily identical even when raised apart. (Note that this point isn't the same as the variance component estimating going on in [twin study](!Wikipedia) or other family designs; we care that they are very similar and thus comparisons are less noisy, not the question of *how much* of that eerie similarity is due to genetics or other sources.)
+If we use identical twins (like in [Gustav III of Sweden's coffee experiment](!Wikipedia)), we match them on not just nationality, gender, location, parents, age, food consumption or whatnot, we even match them on genetics too, which is part of why identical twins are so eerily identical even when raised apart. (Note that this point isn't the same as the variance component estimating going on in [twin study](!Wikipedia) or other family designs; we care that they are very similar and thus comparisons are less noisy, not the question of *how much* of that eerie similarity is due to genetics or other sources.)
 Indeed, since a person is matched with themselves on just about everything and are even better than identical twins, why not test the treatment [on the same person over multiple time periods](!Wikipedia "Repeated measures design")?
 But people do change over time and there might be lingering effects, so perhaps it would be even better if you can test it on the same person simultaneously: for example, test an acne cream A on one side of the face and acne cream B on the other half of each subject's face, flipping a coin to decide whether A/B or B/A.
 
@@ -2565,6 +2565,8 @@ For this example, using height, it'd go something like:
 4. plug those two into an effect size calculator asking for, say, 80% power
 5. compare how big _n~1~_ you need of twin pairs and how many _n~2~_ of general population, and report the fraction $\frac{2\cdot n_1}{n_2}$ and how close it is to 5%.
 
+### Milk's effect on male height
+
 To start, on pg403, a table reports "Gain in height in inches by Feeders over Controls", for which the largest effect in boys is the 5-7yo boys group at +0.083(.011) inches.
 So we are targeting an average increase of a tenth of an inch.
 
@@ -2614,3 +2616,21 @@ So with 143 twin-pairs or _n_=286, we can match the power of a sample drawn from
 Student's guess of "1-2%" proves to be on the money, and the experiment is also feasible as 143 twin-pairs is well below the number of twin-pairs that Student estimated to be available (>160, and more likely "200-300"; 300 twin-pairs would yield a power of ~98%, exceeding the Lanarkshire's 20000's <96% power).
 
 We can safely say that Student's Scottish milk experiment example does indeed demonstrate the power of twins.
+
+### All traits
+
+We can go further and estimate the power of twins in general for experimentation.
+While height is somewhat unusually heritable, we can say with confidence that almost all traits studied are highly heritable based on the previously mentioned mega-meta-analysis ["Meta-analysis of the heritability of human traits based on fifty years of twin studies", Polderman et al 2015](/docs/2015-polderman.pdf) which compiles data on 17,804 traits estimated from ~14.5m pairs.
+The upshot is that averaging over all those traits, 48.8% of variance is due to heritability and 17.4% shared-environmental; implying that compared to a sample drawn from the general population (who share neither genetics nor the shared-environment upbringing), identical twins will have 33.8% (`1-(0.488+0.174)`) of the variability.
+For easier comparison with the running example, we can redo the height calculation but assuming we are looking at a generic trait with a higher variability
+
+~~~{.R}
+twinAll <- 0.083/(0.338*1.560322176)
+generalAll <- 0.083/1.560322176
+generalAll <- power.t.test(d=generalD, power=0.8)
+twinAll <- power.t.test(d=twinAll, power=0.8)
+twinAll$n / generalAll$n
+# [1] 0.1143975625
+~~~
+
+In general, an experiment run using twins will require a sample 11% the size of the same experiment run using the general population.
