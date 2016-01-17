@@ -430,7 +430,7 @@ Teri Schell           F   59  CaliforniaCanibas    seller    Silk Road 2        
                                                                                                Germany                                                                2014-11-05 2014-11-07    Unknown arrest inferred from Eurojust press release. While not all Operation Onymous arrests were market-related (at least two were simple con artists), they *probably* are, so I include the remainder to be conservative.
                                                                                                Germany                                                                2014-11-05 2014-11-07    Unknown arrest inferred from Eurojust press release.
                                                                                                Germany                                                                2014-11-05 2014-11-07    Unknown arrest inferred from Eurojust press release.
-Ryan Gustafson        M   27  Willy.Clock          seller    Agora                             Uganda      Kampala        counterfeit currency                  TRUE  2014-12-11 2014-12-20    At least 2 other people were busted as part of the investigation, but they all seem to be unconnected to Agora/Evolution and so I don't include them.
+Ryan Gustafson        M   27  Willy.Clock          seller    Agora                             Uganda      Kampala        counterfeit currency                  TRUE  2014-12-11 2014-12-20    At least 3 other people were busted as part of the investigation ("Mr. Mouse", "Sinner", and "Mlin"), but they all seem to be unconnected to Agora/Evolution and so I don't include them.
                       M                            buyer                                       Cyprus                     marijuana                             TRUE  2014-12-15 2014-12-20    Group buy
                       M                            buyer                                       Cyprus                     marijuana                             TRUE  2014-12-15 2014-12-20
                       M                            buyer                                       Cyprus                     marijuana                             TRUE  2014-12-15 2014-12-20
@@ -589,8 +589,8 @@ Then later, on 9 March 2015, the other man (likely HollandOnline's supplier) and
 ### Uganda
 
 On 11 December 2014, the American [Ryan Andrew Gustafson was arrested in Uganda](http://www.nytimes.com/aponline/2014/12/18/us/ap-us-counterfeiting-uganda.html "Feds: Uganda-Based Man Counterfeited $2M in Cash") for counterfeiting money ([press release](http://www.justice.gov/opa/pr/criminal-charges-filed-against-us-citizen-connection-multi-million-dollar-international-cyber); [complaint](/docs/sr/2014-12-17-agora-willyclock-complaint.pdf); [docket](/docs/sr/2014-12-22-pacer-willyclock.maff); [Agora forums](http://lacbzxobeprssrfx.onion/index.php/topic,15752.msg3148560.html#msg3148560)); he was the seller "Willy.Clock" who had sold on Evolution until banned and then Agora & his own site.
-He had been uncovered after an American user of his counterfeit currency was detected, the packages sent by Willy.Clock profiled, his fingerprints found, the reshipper located in Uganda, and then an undercover deal set up.
-(Willy.Clock worked closely with "Mr Mouse" and "Ink", who may be compromised.)
+He had been uncovered after an American user of his counterfeit currency was detected, the packages sent by Willy.Clock profiled, his fingerprints found, the reshipper located in Uganda, and then an undercover deal set up; he was [deported from Uganda to the USA on 3 December 2015](https://www.fbi.gov/pittsburgh/press-releases/2015/u.s.-citizen-deported-from-uganda-to-face-counterfeiting-charges-in-western-pennsylvania "U.S. Citizen Deported from Uganda to Face Counterfeiting Charges in Western Pennsylvania") to face trial in the USA as well.
+In addition to Gustafson, Zackary L. Ruiz ("Mr. Mouse"), Jeremy J. Miller ("Sinner") and Michael Q. Lin ("Mlin"/"Mr. Casino") were also arrested in the USA.
 
 <!-- possible future case: 2 UK teens OD on MDMA bought off 'dark web'; will they go after the seller?
 ### UK
@@ -628,6 +628,14 @@ The Australian press release implies that there may have been up to 9 other arre
 
 On 14 May 2015, SUNY Oswego college student Dylan C. Soeffing was [raided and arrested](http://www.syracuse.com/crime/index.ssf/2015/05/cops_seize_809_pills_170k_in_cash_in_raid_suny_oswego_student_charged.html "Cops seize 809 pills, $170K in cash in raid; SUNY Oswego student charged") for reselling marijuana & Xanax locally he had [bought off Agora from "MoodyMayhem" & "Benzoman"](http://www.syracuse.com/crime/index.ssf/2015/05/accused_student_drug_dealer_tells_oswego_cops_hes_leaving_biz_to_focus_on_finals.html "Accused student drug dealer tells Oswego cops he left biz to focus on finals").
 His domestic packages don't seem to have been intercepted, suggesting it was either a local informant or reports triggered by his Bitcoin sales on Coinbase & Bitstamp.
+
+As part of the Willy.Clock investigation leading up to his arrest in Uganda, at least [3 Americans were indicted on 1 April 2015](https://www.fbi.gov/pittsburgh/press-releases/2015/four-charged-in-international-uganda-based-cyber-counterfeiting-scheme "Four Charged in International Uganda-Based Cyber Counterfeiting Scheme"):
+Zackary L. Ruiz ("Mr. Mouse") of Nevada, Jeremy J. Miller ("Sinner") of Washington, and Michael Q. Lin ("Mlin"/"Mr. Casino") of Pennsylvania.
+They seem to have worked with Willy.Clock or been part of his non-DNM private forums and so are not DNM arrests.
+
+<!-- Zackary L. Ruiz M 18 seller Mr. Mouse USA Nevada counterfeit currency TRUE 2015-04-01 2015-12-07
+Jeremy J. Miller M 30 seller  Sinner USA Washington counterfeit currency TRUE 2015-04-01 2015-12-07
+Michael Q. Lin M 20 buyer Mlin/Mr. Casino USA Pennsylvania counterfeit currency TRUE 2015-04-01 2015-12-07 -->
 
 ## Black Market Reloaded
 ### Germany/Netherlands
