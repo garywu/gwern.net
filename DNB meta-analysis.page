@@ -90,6 +90,7 @@ The candidate studies:
     excluded because both groups received n-back training, the experimental difference being additional interference, with near-identical improvements to all measured tasks.
 - Waris et al 2015
 - Baniqued et al 2015
+- Kuper & Karbach 2015
 
 Variables:
 
@@ -266,26 +267,28 @@ year study         Publication n.e   mean.e    sd.e   n.c   mean.c  sd.c   activ
 2013 Hancock       Hancock     20    9.32      3.47   20    10.44   4.35   TRUE     810        1    30    1       50    USA
 2015 Waris         Waris       15    16.4      2.8    16    15.9    3.0    TRUE     675        3    30    0       76    Finland
 2015 Baniqued      Baniqued    42    10.125    3.0275 45    10.25   3.2824 TRUE     240        1    10    0       700   USA
+2015 Kuper.1       Kuper       18    23.6      6.1    9     20.7    7.3    FALSE    150        1    20    1       45    Germany
+2015 Kuper.2       Kuper       18    24.9      5.5    9     20.7    7.3    FALSE    150        1    20    0       45    Germany
 
 # Analysis
 
 The result of the meta-analysis:
 
 ~~~{.R}
-Random-Effects Model (k = 67; tau^2 estimator: REML)
+Random-Effects Model (k = 69; tau^2 estimator: REML)
 
-tau^2 (estimated amount of total heterogeneity): 0.1268 (SE = 0.0477)
-tau (square root of estimated tau^2 value):      0.3561
-I^2 (total heterogeneity / total variability):   47.42%
-H^2 (total variability / sampling variability):  1.90
+tau^2 (estimated amount of total heterogeneity): 0.1191 (SE = 0.0456)
+tau (square root of estimated tau^2 value):      0.3451
+I^2 (total heterogeneity / total variability):   45.72%
+H^2 (total variability / sampling variability):  1.84
 
 Test for Heterogeneity:
-Q(df = 66) = 137.6361, p-val < .0001
+Q(df = 68) = 138.2986, p-val < .0001
 
 Model Results:
 
 estimate       se     zval     pval    ci.lb    ci.ub
-  0.3641   0.0649   5.6080   <.0001   0.2368   0.4913
+  0.3680   0.0631   5.8338   <.0001   0.2444   0.4917
 ~~~
 
 To depict the random-effects model in a more graphic form, we use the "[forest plot](!Wikipedia)":
@@ -333,24 +336,24 @@ The review Morrison & Chein 2011[^Chein-no-contact] noted that no-contact contro
 So I wondered if this held true for the subset of n-back & IQ studies. (Age is an interesting moderator in Melby-Lervåg & Hulme 2013, but in the following DNB & IQ studies there is only 1 study involving children - all the others are adults or young adults.) Each study has been coded appropriately, and we can ask whether it matters:
 
 ~~~{.R}
-Mixed-Effects Model (k = 67; tau^2 estimator: REML)
+Mixed-Effects Model (k = 69; tau^2 estimator: REML)
 
-tau^2 (estimated amount of residual heterogeneity):     0.0877 (SE = 0.0406)
-tau (square root of estimated tau^2 value):             0.2962
-I^2 (residual heterogeneity / unaccounted variability): 38.31%
-H^2 (unaccounted variability / sampling variability):   1.62
+tau^2 (estimated amount of residual heterogeneity):     0.0798 (SE = 0.0386)
+tau (square root of estimated tau^2 value):             0.2825
+I^2 (residual heterogeneity / unaccounted variability): 35.98%
+H^2 (unaccounted variability / sampling variability):   1.56
 
 Test for Residual Heterogeneity:
-QE(df = 65) = 121.3261, p-val < .0001
+QE(df = 67) = 121.4974, p-val < .0001
 
 Test of Moderators (coefficient(s) 1,2):
-QM(df = 2) = 45.3267, p-val < .0001
+QM(df = 2) = 49.0746, p-val < .0001
 
 Model Results:
 
                      estimate      se    zval    pval    ci.lb   ci.ub
-factor(active)FALSE    0.5235  0.0803  6.5204  <.0001   0.3661  0.6808
-factor(active)TRUE     0.1508  0.0899  1.6766  0.0936  -0.0255  0.3270
+factor(active)FALSE    0.5235  0.0770  6.7953  <.0001   0.3725  0.6745
+factor(active)TRUE     0.1501  0.0882  1.7025  0.0887  -0.0227  0.3229
 ~~~
 
 The active/control variable confirms the criticism: lack of active control groups *is* responsible for a large chunk of the overall effect, with the confidence intervals not overlapping.
@@ -360,32 +363,34 @@ We can see the difference by splitting a forest plot on passive vs active:
 
 ![The visibly different groups of passive then active studies, plotted on the same axis](/images/dnb/forest-activevspassive.png)
 
-This is very damaging to the case that dual n-back increases IQ. Not only do the better studies find a drastically smaller effect, they are not sufficiently powered to find such a small effect at all, even aggregated in a meta-analysis, with a power of ~12%, which is dismal indeed when compared to the usual benchmark of 80%, and leads to worries that even that is too high an estimate and that the active control studies are aberrant somehow in being subject to a winner's curse or subject to other biases. (Because many studies used convenient passive control groups and the passive effect size is 3x larger, they in aggregate are very well-powered at 85%; however, we already know they are skewed upwards, so we don't care if we can detect a biased effect or not.) In particular, [Boot et al 2013](/docs/dnb/2013-boot.pdf "The Pervasive Problem With Placebos in Psychology: Why Active Control Groups Are Not Sufficient to Rule Out Placebo Effects") argues that active control groups do not suffice to identify the true causal effect because the subjects in the active control group can still have different expectations than the experimental group, and the group' differing awareness & expectations can cause differing performance on tests; they suggest recording expectancies (somewhat similar to Redick et al 2013), checking for a dose-response relationship (see the following section for whether dose-response exists for dual n-back/IQ), and using different experimental designs which actively manipulate subject expectations to identify how much effects are inflated by remaining placebo/expectancy effects.
+This is very damaging to the case that dual n-back increases IQ. Not only do the better studies find a drastically smaller effect, they are not sufficiently powered to find such a small effect at all, even aggregated in a meta-analysis, with a power of ~11%, which is dismal indeed when compared to the usual benchmark of 80%, and leads to worries that even that is too high an estimate and that the active control studies are aberrant somehow in being subject to a winner's curse or subject to other biases. (Because many studies used convenient passive control groups and the passive effect size is 3x larger, they in aggregate are well-powered at 82%; however, we already know they are skewed upwards, so we don't care if we can detect a biased effect or not.) In particular, [Boot et al 2013](/docs/dnb/2013-boot.pdf "The Pervasive Problem With Placebos in Psychology: Why Active Control Groups Are Not Sufficient to Rule Out Placebo Effects") argues that active control groups do not suffice to identify the true causal effect because the subjects in the active control group can still have different expectations than the experimental group, and the group' differing awareness & expectations can cause differing performance on tests; they suggest recording expectancies (somewhat similar to Redick et al 2013), checking for a dose-response relationship (see the following section for whether dose-response exists for dual n-back/IQ), and using different experimental designs which actively manipulate subject expectations to identify how much effects are inflated by remaining placebo/expectancy effects.
 
-The active estimate of _d_=0.15 does allow us to estimate how many subjects a simple^[A more complicated analysis, including baseline performance and other covariates, would do better.] two-group experiment with an active control group would require in order for it to be well-powered (80%) to detect an effect: a total _n_ of >1400 subjects (691 in each group).
+The active estimate of _d_=0.15 does allow us to estimate how many subjects a simple^[A more complicated analysis, including baseline performance and other covariates, would do better.] two-group experiment with an active control group would require in order for it to be well-powered (80%) to detect an effect: a total _n_ of >1400 subjects (697 in each group).
 
 ### Training time
 
 Jaeggi et al 2008 observed a dose-response to training, where those who trained the longest apparently improved the most. Ever since, this has been cited as a factor in what studies will observe gains or as an explanation why some studies did not see improvements - perhaps they just didn't do enough training. `metafor` is able to look at the number of minutes subjects in each study trained for to see if there's any obvious linear relationship:
 
 ~~~{.R}
-tau^2 (estimated amount of residual heterogeneity):     0.1320 (SE = 0.0490)
-tau (square root of estimated tau^2 value):             0.3633
-I^2 (residual heterogeneity / unaccounted variability): 48.37%
-H^2 (unaccounted variability / sampling variability):   1.94
+Mixed-Effects Model (k = 69; tau^2 estimator: REML)
+
+tau^2 (estimated amount of residual heterogeneity):     0.1235 (SE = 0.0468)
+tau (square root of estimated tau^2 value):             0.3515
+I^2 (residual heterogeneity / unaccounted variability): 46.59%
+H^2 (unaccounted variability / sampling variability):   1.87
 R^2 (amount of heterogeneity accounted for):            0.00%
 
 Test for Residual Heterogeneity:
-QE(df = 65) = 137.4399, p-val < .0001
+QE(df = 67) = 137.9811, p-val < .0001
 
 Test of Moderators (coefficient(s) 2):
-QM(df = 1) = 0.2060, p-val = 0.6499
+QM(df = 1) = 0.2895, p-val = 0.5905
 
 Model Results:
 
          estimate      se     zval    pval    ci.lb   ci.ub
-intrcpt    0.4173  0.1330   3.1377  0.0017   0.1566  0.6780
-mods      -0.0001  0.0003  -0.4539  0.6499  -0.0006  0.0004
+intrcpt    0.4277  0.1269   3.3703  0.0008   0.1790  0.6765
+mods      -0.0001  0.0003  -0.5381  0.5905  -0.0006  0.0004
 ~~~
 
 The estimate of the relationship is that there is none at all: the estimated coefficient has a large _p_-value, and further, that coefficient is negative. This may seem initially implausible but if we graph the time spent training per study with the final (unweighted) effect size, we see why:
@@ -398,8 +403,8 @@ Similarly, Moody 2009 identified the 10 minute test-time or "speeding" of the RA
 
 ~~~{.R}
          estimate      se     zval    pval    ci.lb   ci.ub
-intrcpt    0.5018  0.1536   3.2670  0.0011   0.2008  0.8029
-mods      -0.0064  0.0065  -0.9855  0.3244  -0.0192  0.0064
+intrcpt    0.5042  0.1507   3.3462  0.0008   0.2089  0.7996
+mods      -0.0064  0.0064  -0.9912  0.3216  -0.0190  0.0062
 ~~~
 
 A tiny slope which is also non-statistically-significant; graphing the (unweighted) studies suggests as much:
@@ -411,23 +416,25 @@ A tiny slope which is also non-statistically-significant; graphing the (unweight
 One question of interest both for issues of validity and for effective training is whether the existing studies show larger effects for a particular kind of n-back training: dual (visual & audio; labeled 0) or single (visual; labeled 1) or single (audio; labeled 2)? If visual single n-back turns in the largest effects, that is troubling since it's also the one most resembling a matrix IQ test. Checking against the 3 kinds of n-back training:
 
 ~~~{.R}
-tau^2 (estimated amount of residual heterogeneity):     0.1277 (SE = 0.0486)
-tau (square root of estimated tau^2 value):             0.3574
-I^2 (residual heterogeneity / unaccounted variability): 47.49%
-H^2 (unaccounted variability / sampling variability):   1.90
+Mixed-Effects Model (k = 69; tau^2 estimator: REML)
+
+tau^2 (estimated amount of residual heterogeneity):     0.1197 (SE = 0.0465)
+tau (square root of estimated tau^2 value):             0.3460
+I^2 (residual heterogeneity / unaccounted variability): 45.75%
+H^2 (unaccounted variability / sampling variability):   1.84
 
 Test for Residual Heterogeneity:
-QE(df = 64) = 133.8637, p-val < .0001
+QE(df = 66) = 134.5827, p-val < .0001
 
 Test of Moderators (coefficient(s) 1,2,3):
-QM(df = 3) = 33.2626, p-val < .0001
+QM(df = 3) = 35.8967, p-val < .0001
 
 Model Results:
 
                  estimate      se    zval    pval    ci.lb   ci.ub
-factor(N.back)0    0.4201  0.0792  5.3036  <.0001   0.2649  0.5754
-factor(N.back)1    0.2220  0.1220  1.8199  0.0688  -0.0171  0.4612
-factor(N.back)2    0.4282  0.3172  1.3499  0.1770  -0.1935  1.0499
+factor(N.back)0    0.4241  0.0772  5.4905  <.0001   0.2727  0.5755
+factor(N.back)1    0.2312  0.1171  1.9739  0.0484   0.0016  0.4608
+factor(N.back)2    0.4260  0.3128  1.3620  0.1732  -0.1870  1.0391
 ~~~
 
 There are not enough studies using the other kinds of n-back to say anything conclusive other than there seem to be differences, but it's interesting that single visual n-back has weaker results so far.
@@ -444,21 +451,21 @@ More specifically, if we check payment as a binary variable, we get a decrease w
 
 ~~~{.R}
 Test of Moderators (coefficient(s) 2):
-QM(df = 1) = 4.6334, p-val = 0.0314
+QM(df = 1) = 4.1440, p-val = 0.0418
 
 Model Results:
 
                       estimate      se     zval    pval    ci.lb    ci.ub
-intrcpt                 0.4730  0.0813   5.8208  <.0001   0.3138   0.6323
-as.logical(paid)TRUE   -0.2741  0.1273  -2.1525  0.0314  -0.5237  -0.0245
+intrcpt                 0.4725  0.0805   5.8669  <.0001   0.3147   0.6304
+as.logical(paid)TRUE   -0.2517  0.1237  -2.0357  0.0418  -0.4941  -0.0094
 ~~~
 
 If we instead regress against the total payment size (logically, larger payments would discourage participants more), the effect of each additional dollar is very small and 0 is far from excluded as the coefficient:
 
 ~~~{.R}
          estimate      se     zval    pval    ci.lb   ci.ub
-intrcpt    0.3948  0.0700   5.6437  <.0001   0.2577  0.5319
-paid      -0.0005  0.0004  -1.1574  0.2471  -0.0012  0.0003
+intrcpt    0.3989  0.0680   5.8682  <.0001   0.2656  0.5321
+paid      -0.0005  0.0004  -1.1915  0.2335  -0.0012  0.0003
 ~~~
 
 Why would treating payment as a binary category yield a major result when there is only a small slope within the paid studies? It would be odd if n-back could achieve the holy grail of increasing intelligence, but the effect vanishes immediately whether you pay subjects anything, whether \$1 or \$1000.
@@ -466,13 +473,11 @@ Why would treating payment as a binary category yield a major result when there 
 As I've mentioned before, the difference in effect size between active and passive control groups is quite striking, and I noticed that eg. the Redick et al 2012 experiment paid subjects a lot of money to put up with all its tests and ensure subject retention & Thompson et al 2013 paid a lot to put up with the fMRI machine and long training sessions, and likewise with Oelhafen et al 2013 and Baniqued et al 2015; so what happens if we look for an interaction?
 
 ~~~{.R}
-Model Results:
-
                                  estimate      se     zval    pval    ci.lb    ci.ub
-intrcpt                            0.6258  0.0996   6.2854  <.0001   0.4307   0.8209
-activeTRUE                        -0.3767  0.1545  -2.4381  0.0148  -0.6796  -0.0739
-as.logical(paid)TRUE              -0.2723  0.1611  -1.6904  0.0910  -0.5881   0.0434
-activeTRUE:as.logical(paid)TRUE    0.0534  0.2382   0.2243  0.8225  -0.4134   0.5203
+intrcpt                            0.6249  0.0981   6.3723  <.0001   0.4327   0.8172
+activeTRUE                        -0.3758  0.1520  -2.4719  0.0134  -0.6738  -0.0778
+as.logical(paid)TRUE              -0.2499  0.1527  -1.6358  0.1019  -0.5492   0.0495
+activeTRUE:as.logical(paid)TRUE    0.0304  0.2301   0.1322  0.8948  -0.4206   0.4814
 ~~~
 
 Active control groups cuts the observed effect of n-back by more than half, as before, and payment increases the effect size, but then in studies which use active control groups *and* also pays subjects, the effect size increases slightly again with payment size, which seems a little curious if we buy the story about extrinsic motivation crowding out intrinsic and defeating any gains.
@@ -548,7 +553,7 @@ N-back has been presented in some popular & academic medias in an entirely uncri
 ### Funnel plot
 
 ~~~{.R}
-test for funnel plot asymmetry: z = 2.9789, p = 0.0029
+test for funnel plot asymmetry: z = 3.0239, p = 0.0025
 ~~~
 
 The asymmetry has reached statistical-significance, so let's visualize it:
@@ -564,7 +569,7 @@ This looks reasonably good, although we see that studies are crowding the edges 
 The trim-and-fill estimate:
 
 ~~~{.R}
-Estimated number of missing studies on the left side: 0 (SE = 4.6244)
+Estimated number of missing studies on the left side: 0 (SE = 4.7210)
 ~~~
 
 Graphing it:
@@ -633,6 +638,7 @@ Going through them, I must note:
 - Schmiedek et al 2014: ["Younger Adults Show Long-Term Effects of Cognitive Training on Broad Cognitive Abilities Over 2 Years"](/docs/dnb/2014-schmiedek.pdf)/["Hundred Days of Cognitive Training Enhance Broad Cognitive Abilities in Adulthood: Findings from the COGITO Study"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2914582/ "Schmiedek et al 2010") had subjects practice on 12 different tasks, one of which was single (spatial) n-back, but it was not adaptive ("difficulty levels for the EM and WM tasks were individualized using different presentation times (PT) based on pre-test performance"); due to the lack of adaptiveness and the 11 other tasks participants trained, I am omitting their data.
 - Horvat 2014: I thank Sergei & Google Translate for helping with extracting relevant details from the body of the thesis, which is written in Slovenian. The training time was 20-25 minutes in 10 sessions or 225 minutes total. The SPM test scores can be found on pg57, Table 4; the non-speeding of the SPM is discussed on pg44; the estimate of \$0 in compensation is based on the absence of references to the local currency (euros), the citation on pg32-33 of Jaeggi's theories on payment blocking transfer due to intrinsic vs extrinsic motivation, and the general rarity of paying young subjects like the 13-15yos used by Horvat.
 - Baniqued et al 2015: note that total compensation is twice as high as one would estimate from the training time times hourly pay; see supplementary. They administered several measures of Gf, and as usual I have extracted only the one closest to being a matrix test and probably most g-loaded, which is the matrix test they administered. That particular test is based on the RAPM, so it is coded as RAPM. The full training involved 6 tasks, one of which was DNB; the training time is coded as just the time spent on DNB (ie the total training time divided by 6). Means & SDs of post-test matrix scores were extracted from the raw data provided by the authors.
+- Kuper & Karbach 2015: control group split
 
 <!-- Clouter:
 1. The post-training Mean and SD for the raw CFIT scores are: Control group mean = 28.83, SD = 2.68. Training group mean = 30.84, SD = 4.11.
