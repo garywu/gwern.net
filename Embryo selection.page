@@ -155,6 +155,27 @@ mean(embryoSelection(n=10, variance=davies2015))
 
 ## Cost of polygenic scores
 
+PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genetic diagnosis#United States"), so there are no criminal or legal costs; even if there were, clinics in other countries will continue to offer it, and the cost of using a Chinese fertility clinic may not be particularly noticeable.[^China-trip]
+
+[^China-trip]: We could consider a hypothetical trip to China to make use of fertility clinics there. How much additional would one pay?
+
+    Costs:
+
+    - US passport costs ~\$110
+    - a Chinese visa costs [\$140](http://www.china-embassy.org/eng/visas/fees/t1236036.htm)
+    - a Shanghai to San Francisco roundtrip flight prices out currently in the range \$500-\$1000 (lower than I expected, perhaps due to the 2015 oil glut)
+    - IVF is a long and involved process, so one should budget for at least 3 months residence: [Lonely Planet](https://www.lonelyplanet.com/china/money-costs) thinks that on a shoestring budget one can manage >\$30/day, so `3*31*30=$2790`.
+    - IVF is also unpleasant enough that it would be wrong to consider those 3 months a vacation and one has to consider the impact of being away from one's job for such an extended period of time (as remote working is not an option for most people & the Great Firewall would impede that as well); so since 2013 US per capita income was \$53.8, those 3 months would cost on average somewhere <\$13.4k
+    - Summing up: `110+140+2790+13400=$16.4k`.
+
+    On the plus side:
+
+    - Chinese IVF fertility clinics are presumably cheaper as well as more willing to do PGD. A [2011 NPR article](http://www.npr.org/2011/07/01/137530286/in-china-an-ivf-clinic-grapples-with-huge-demand) quotes a Chinese fertility clinic as offering 1 cycle at \$4.5k, which is around half of what a US clinic might charge; so the total penalty of going to China will depend on how many cycles are necessary. If 1 cycle, then it's \$10k vs \$16k+\$4.5k, a loss of -\$10.5k; for 2, -\$5k; for 3, +\$0.5k; and for 4, +\$6k, and so on.
+
+        IVF cycle success rates being <41% and following a negative binomial, we can say that 2 or more cycles will be required, more often than not, and often 3 or 4, to get 1 live birth (after which it stops); one issue is that if a woman leaves as soon as pregnancy is confirmed with a fetal heartbeat, there may still be a miscarriage and they would have to decide whether to fly back to China and start another cycle, while if they stay for the full pregnancy, that triples food/hotel costs.
+
+    So overall, I think we can say that on average, doing IVF in China is not as financially costly as it seems up front and could even be profitable. Which leaves the more psychological issues of trust and planning and willingness to go overseas, which are hard to evaluate in the absence of any present incentive to do Chinese genetic-engineering birth tourism, but [medical tourism](!Wikipedia) and [birth tourism](!Wikipedia) are both already phenomena.
+
 cost of SNPing?
 
 http://www.cidr.jhmi.edu/services/pricing.pdf NIH CIDR says full cost: $150-$210 for 1 use of a UK Biobank 821K [SNP] Axiom Array [capabilities](http://www.ukbiobank.ac.uk/wp-content/uploads/2014/04/UK-Biobank-Axiom-Array-Content-Summary-2014.pdf) as of 10 December 2015
