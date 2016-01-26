@@ -14,7 +14,7 @@ belief: likely
 The choice of embryo is relatively random, with the best looking one implanted; various tests can be run on embryos, including genome sequencing, by extracting a few cells from the embryo.
 [Preimplantation genetic profiling / preimplantation genetic diagnosis / preimplantation genetic screening](!Wikipedia "Preimplantation genetic diagnosis") (PGD) is when genetic information is taken and used to choose which embryo to implant.
 Currently, embryos are screened for gross abnormalities like the wrong number of chromosomes which would either be fatal to the embryo's development or cause birth defects like Down's (so there is no point in implanting it rather than a healthier embryo).
-But with ever cheaper SNP arrays, large amounts of subtler genetic information becomes available, and one could check for abnormalities and also start making predictions about adult phenotypes, and one could choose embryos with higher probability of desired traits such as height or intelligence - thus, in effect, creating ["designer babies"](!Wikipedia "Designer baby#Preimplantation genetic diagnosis") with known technology no more exotic than IVF and 23andMe.
+But with ever cheaper SNP arrays, large amounts of subtler genetic information becomes available, and one could check for abnormalities and also start making predictions about adult phenotypes, and one could choose embryos with higher/lower probability of traits with many known genetic hits such as height or intelligence or alcoholism or schizophrenia - thus, in effect, creating ["designer babies"](!Wikipedia "Designer baby#Preimplantation genetic diagnosis") with proven technology no more exotic than IVF and 23andMe.
 
 In ["Embryo Selection for Cognitive Enhancement: Curiosity or Game‐changer?"](https://intelligence.org/files/EmbryoSelection.pdf), Shulman & Bostrom 2014 consider the potential of embryo selection for greater intelligence in a little detail, ultimately concluding that in the most applicable current scenario of minimal uptake (restricted largely to those forced into IVF use) and gains of a few IQ points, embryo selection is more of "curiosity" than "game-changer" as it will be "Socially negligible over one generation. Effects of social controversy more important than direct impacts."
 
@@ -31,9 +31,19 @@ Shulman & Bostrom 2014 note that
 > Studies in labor economics typically find that one IQ point corresponds to an increase in wages on the order of 1 per cent, other things equal, though higher estimates are obtained when effects of IQ on educational attainment are included (Zax and Rees, 2002; Neal and Johnson, 1996; Cawley et al., 1997; Behrman et al., 2004; Bowles et al., 2002; Grosse et al., 2002).^2^ The individual increase in earnings from a genetic intervention can be assessed in the same fashion as prenatal care and similar environmental interventions. One study of efforts to avert low birth weight estimated the value of a 1 per cent increase in earnings for a newborn in the US to be between \$2,783 and \$13,744, depending on discount rate and future wage growth (Brooks-Gunn et al., 2009)
 
 Estimating the value of an additional IQ point is difficult as there are many perspectives one could take: zero-sum, including only personal earnings or wealth and neglecting all the wealthy produced for society (eg through research), often based on correlating income with intelligence scores or education; positive-sum, attempting to include the positive externalities, perhaps through cross or longitudinal global comparisons, as intelligence predicts later wealth and the wealth of a country is closely linked to the average intelligence of its population which captures many (but not all) of the positive externalities; measures which include the greater longevity & happiness of more intelligent people, etc.
+Further, intelligence has intrinsic value of its own, and the genetic hits appear to be pleiotropic and improve other desirable traits; the intelligence/longevity correlation has been found to be due to common genetics, and
+[Krapohl et al 2015](http://www.hungrymindlab.com/wp-content/uploads/2015/10/Krapohl-et-al-2015.pdf "Phenome-wide analysis of genome-wide polygenic scores") examines the correlation of polygenic scores with 50 diverse traits, finding that the college/IQ polygenic scores correlate with 10+ of them in generally desirable directions[^Krapohl-phenome], indicating both causation for those correlations & benefits beyond income.
 There are also pitfalls, like the fallacy of controlling for an intermediate variable, exemplified by studies which attempt to correlate intelligence with income after "controlling for" education, despite knowing that educational attainment is caused *by* intelligence and so their estimates are actually something irrelevant like 'the gain from greater intelligence for reasons other than through its effect on education'.
 Estimates have come from a variety of sources, such as iodine and lead studies.
 Given the difficulty of coming up with any estimate for 'the' value of an IQ point, I will just reuse the \$2783-13744 range.
+
+[^Krapohl-phenome]: More specifically, combining the College/Adult IQ/Child IQ polygenic scores and including the non-statistically-significant ones, I get out of Figure 1 :
+
+    1. better: _g_ / Raven's Progressive Matrices / Mill Hill Vocabulary / GCSE English / GCSE maths / GCSE science / PISA Attitudes to School / PISA homework Behaviour / PISA maths self-efficacy / PISA maths interest / PISA time spent on maths / Academic self-concept / Agreeableness / Conscientiousness / Extraversion / Neuroticism / Openness / Curiosity Flow / Chaos at Home / Attachment total / SDQ Total ([Strengths and Difficulties Questionnaire](!Wikipedia); behavioral problems) / SDQ Conduct / SDQ Hyperactivity / SDQ Prosocial / Peer Victimization / Conners: Inattention / Conners: Impulsivity / Autism Quotient: Attention Switching / Autism Quotient: Imagination / Autism Quotient: Attention to Detail / Callous Unemotional Traits / ARBQ Anxiety / SANS (negative symptoms) / Grandiosity / Cognitive Disorganization / BMI / Height
+    2. neutral: PISA Homework total / Menarche / Puberty
+    3. Worse: PISA Homework Feedback [?] / PISA time spent on maths [?] / GRIT / Curiosity Flow / Parental Control / Autism Quotient: Attention Switching / Grandiosity / Paranoid / Sleep total / Insomnia
+
+    (In a few cases it's not clear how to interpret. Is less time on math a good or bad thing since the PISA & GCSE math scores are still higher?)
 
 ## Polygenic scores for IQ
 ### SNP
@@ -55,41 +65,48 @@ That is, adult intelligence is heritable at ~0.8; a SNP chip records the few hun
 
 GCTA tells us how much the SNPs would explain if we knew all their effects exactly, but in practice, there are so many SNPs (likely into the thousands) affecting intelligence, only a few are known to a high level of confidence, and the rest will take much larger samples to pin down, so the table represents an upper limit to SNP-based approaches - to approach the 0.51, we will need large sample sizes, and to exceed it and approach the 0.8, we will need whole genomes and models which can go beyond additive estimates to model interactions (like genes which only increase intelligence in the presence of particular other variants).
 
-Davies et al 2011 is a little outdated and small, based on _n_=3511 with correspondingly large imprecision in the GCTA estimates. More recent papers:
+Davies et al 2011's 0.5 is a little outdated and small, based on _n_=3511 with correspondingly large imprecision in the GCTA estimates. More recent papers:
 
 1. ["Most Reported Genetic Associations with General Intelligence Are Probably False Positives"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3498585/), Chabris et al 2012
 
     0.47
-1. ["Genetic contributions to stability and change in intelligence from childhood to old age"](http://www.researchgate.net/profile/David_Dave_Liewald/publication/221760226_Genetic_contributions_to_stability_and_change_in_intelligence_from_childhood_to_old_age/links/02e7e52ca9a723a8fa000000.pdf), Deary et al 2012
+2. ["Genetic contributions to stability and change in intelligence from childhood to old age"](http://www.researchgate.net/profile/David_Dave_Liewald/publication/221760226_Genetic_contributions_to_stability_and_change_in_intelligence_from_childhood_to_old_age/links/02e7e52ca9a723a8fa000000.pdf), Deary et al 2012
 
     0.48
-1. ["Common DNA Markers Can Account for More Than Half of the Genetic Influence on Cognitive Abilities"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3652710/), Plomin et al 2013
+3. ["Common DNA Markers Can Account for More Than Half of the Genetic Influence on Cognitive Abilities"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3652710/), Plomin et al 2013
 
     0.35
-1. ["Molecular genetic contributions to socioeconomic status and intelligence"](http://ac.els-cdn.com/S0160289614000178/1-s2.0-S0160289614000178-main.pdf), Marioni et al 2014
+3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013:
+
+    0.22, 0.40, 0.46
+4. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/2013-rietveld.pdf), Rietveld et al 2013
+
+    0.224
+5. ["Molecular genetic contributions to socioeconomic status and intelligence"](http://ac.els-cdn.com/S0160289614000178/1-s2.0-S0160289614000178-main.pdf), Marioni et al 2014
 
     0.29
-1. ["Results of a “GWAS Plus:” General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014
+6. ["Results of a “GWAS Plus:” General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014
 
     0.35
-1. ["Genetic influence on family socioeconomic status and children's intelligence"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907681/), Trzaskowski et al 2014
+7. ["Genetic influence on family socioeconomic status and children's intelligence"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907681/), Trzaskowski et al 2014
 
     0.32
-1. ["DNA evidence for strong genetic stability and increasing heritability of intelligence from age 7 to 12"](http://www.researchgate.net/profile/Maciej_Trzaskowski/publication/235379639_DNA_evidence_for_strong_genetic_stability_and_increasing_heritability_of_intelligence_from_age_7_to_12/links/004635162d9aa8ba50000000.pdf), Trzaskowski et al 2014
+8. ["DNA evidence for strong genetic stability and increasing heritability of intelligence from age 7 to 12"](http://www.researchgate.net/profile/Maciej_Trzaskowski/publication/235379639_DNA_evidence_for_strong_genetic_stability_and_increasing_heritability_of_intelligence_from_age_7_to_12/links/004635162d9aa8ba50000000.pdf), Trzaskowski et al 2014
 
     0.45
-1. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (N=53 949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015
+9. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (N=53 949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015
 
     0.29
-1. ["A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html), Spain et al 2015
+10. ["A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html), Spain et al 2015
 
     0.174 (but on the liability scale for extremely high intelligence, so unclear relevance)
 
+The earlier estimates tend to be smaller samples and higher, and I put more trust in the later ones which are estimating closer to 1/3, which reduces the potential of embryo selection.
+Since half of additives will be shared within family, then we get `0.33*0.5 = 0.165` within-family variance, which gives `sqrt(0.165) = 0.4062019202` SD or 6.1 IQ points
+(Occasionally within-family differences are cited in a format like "siblings have an average difference of 12 IQ points", which comes from an SD of ~0.7/0.8, since `0.8*15=12`, but you could also check what SD yields an average difference of 12 via simulation: eg `mean(abs(rnorm(n=10000000, mean=0, sd=0.71) - rnorm(n=10000000, mean=0, sd=0.71))) * 15 ~> 12.01807542`.)
+We don't care about means since we're only looking at gains, so the mean of the within-family normal distribution can be set to 0.
 
-Averaging the two, ~0.33 of phenotypic variance is additive SNPs which are captured in the polygenic score.
-around half of additive will be shared within family, so `0.33*0.5 = 0.165` within-family variance due to additive differences
-`sqrt(0.165) = 0.4062019202` SD or 6.1 IQ points (the full phenotypic average difference of 12 comes from an SD of ~0.7/0.8, since `0.8*15=12`, but you could also check via simulation: `mean(abs(rnorm(n=10000000, mean=0, sd=0.71) - rnorm(n=10000000, mean=0, sd=0.71))) * 15 ~> [1] 12.01807542`)
-6.1 is lower than Shulman & Bostrom's 7.5, perhaps because the later GCTAs estimates are somewhat smaller.
+With that, we can write a simulation like Bostrom & Shulman where we generate _n_ samples from N(0, 6.1), take the max, and return the difference of the max and mean:
 
 ~~~{.R}
 ## select 1 out of N siblings
@@ -98,8 +115,33 @@ embryoSelectionGain <- function(n, variance) { scores <- embryoIQScores(n, sqrt(
 simEmbryoSelection <- function(n=2, variance=0.33, iters=100000) { replicate(iters, embryoSelection(n, variance)); }
 mean(simEmbryoSelection(10))
 # [1] 9.368836794
-## so 1 out of 10 gives a maximal average gain of ~9 IQ points
 ~~~
+
+So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than 11.5 because of the lower GCTA estimates.
+
+A SNP-based polygenic score works much the same way: it explains a certain fraction or percentage of the variance, halved due to siblings, and can be plugged in once we know how much less than 0.33 it is.
+An example of using SNP polygenic scores to identify genetic influences and verify they work within-family and are not confounded would be Domingue et al 2015's ["Polygenic Influence on Educational Attainment"](http://ero.sagepub.com/content/1/3/2332858415599972?full).
+Past polygenic scores for intelligence:
+
+1. ["Genome-wide association studies establish that human intelligence is highly heritable and polygenic"](http://www.nature.com/mp/journal/v16/n10/full/mp201185a.html), Davies et al 2011:
+
+    0.5776% of fluid intelligence in the NCNG replication sample, if I've understood their analysis correctly.
+2. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/2013-rietveld.pdf), Rietveld et al 2013:
+
+    This landmark study providing the first GWAS hits on intelligence also estimated multiple polygenic scores: the full polygenic scores predicted 2.5% of variance in cognitive function in a Swedish replication sample, and also performed well in within-family settings (0.31% & 0.19% of variance in attending college & years of education, respectively, in [Table S25](http://science.sciencemag.org/content/sci/suppl/2013/05/29/science.1235488.DC1/Rietveld.SM.revision.2.pdf)).
+3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013:
+
+    0.5%, 1.2%, 3.5%.
+6. ["Results of a “GWAS Plus:” General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014
+
+    0.55% (maximum in subsamples: 0.7%)
+3. ["Common genetic variants associated with cognitive performance identified using the proxy-phenotype method"](http://www.pnas.org/content/early/2014/09/05/1404623111.full.pdf), Rietveld et al 2015
+
+    Predicts "0.2% to 0.4%" of variance in cognitive performance using a small polygenic score of 69 SNPs.
+4. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (N=53 949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015:
+
+    1.2%
+5. Upcoming in 2016 is another SSGAC paper with ~8x hits but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score, although the top 18 hits explained 0.4% (but that's less than the Davies or Rietveld polygenic scores and not useful)
 
 Davies also reports the polygenic score, accounting for 1.2% or 0.012 of all variance. (This is much higher than Rietveld et al 2013's 0.3%.) Same procedure to estimate value of embryo selection: halve to account for siblings' shared genetics then simulate:
 `0.012 * 0.5 = 0.006`; `sqrt(0.006) = 0.07745966692` SD or 1.162 IQ points
@@ -109,26 +151,6 @@ davies2015 <- 0.012
 mean(embryoSelection(n=10, variance=davies2015))
 # [1] 1.03715501
 ~~~
-
-(Upcoming in 2016 is another SSGAC paper with ~8x hits but the abstracts don't give the polygenic score's variance http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html ; a talk did specify that the top 18 hits explained 0.4% but that's still less than the Davies polygenic score http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html )
-
-1. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/2013-rietveld.pdf), Rietveld et al 2013
-replication of Rietveld: http://www.pnas.org/content/early/2014/09/05/1404623111.full.pdf ~0.3% of variance
-http://emilkirkegaard.dk/en/wp-content/uploads/PifferIntelligence2015.pdf
-2. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (N=53 949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015: 0.29
-
-    > Using polygenic prediction analysis, ~1.2% of the variance in general cognitive function was predicted in the Generation Scotland cohort (N=5487; P=1.5 × 10−17)....Only SNPs that passed these QC criteria in >50% of individuals were included in the meta-analysis (2 478 500 SNPs).
-
-http://emilkirkegaard.dk/en/?p=5415
-
-> This was also found in this sample: “The mean sibling difference in polygenic scores in the EA sample was 0.8.” (they did not calculate this for the AA sample, stating that it was too small). In other words, the difference between siblings is nearing the size of the mean difference in the whole population. The same result is known to be true for siblings and IQ scores. The mean difference is about 11 IQ compared to a full sample mean difference of 17 IQ (17). This gives a ratio of 11/17 = .65. Since the educational attainment data is standardized, we know that the mean difference in scores is 1.13 (Fuerst posted the formula here, but I’m not sure about the source). This gives a ratio of 1.13/.8 = .71. These ratios are pretty close as they should be.
-
-[based on 1. Domingue BW, Belsky DW, Conley D, Harris KM, Boardman JD. ["Polygenic Influence on Educational Attainment"](http://ero.sagepub.com/content/1/3/2332858415599972?full). AERA Open. 2015 Jul 1;1(3):2332858415599972.]
-       [so 1-0.65 = 0.35, validating the 44%?]
-
-if broad genetics is 0.8 of heritability, and narrow SNPs are 0.4 of that, and siblings share half on average, then sqrt(0.8 * 0.4 * 0.5) = 0.4
-
-Davies et al 2011's GCTA estimate is outdated; more recent:
 
 
 ## Cost of polygenic scores
