@@ -32,18 +32,23 @@ Shulman & Bostrom 2014 note that
 
 Estimating the value of an additional IQ point is difficult as there are many perspectives one could take: zero-sum, including only personal earnings or wealth and neglecting all the wealthy produced for society (eg through research), often based on correlating income with intelligence scores or education; positive-sum, attempting to include the positive externalities, perhaps through cross or longitudinal global comparisons, as intelligence predicts later wealth and the wealth of a country is closely linked to the average intelligence of its population which captures many (but not all) of the positive externalities; measures which include the greater longevity & happiness of more intelligent people, etc.
 Further, intelligence has intrinsic value of its own, and the genetic hits appear to be pleiotropic and improve other desirable traits; the intelligence/longevity correlation has been found to be due to common genetics, and
-[Krapohl et al 2015](http://www.hungrymindlab.com/wp-content/uploads/2015/10/Krapohl-et-al-2015.pdf "Phenome-wide analysis of genome-wide polygenic scores") examines the correlation of polygenic scores with 50 diverse traits, finding that the college/IQ polygenic scores correlate with 10+ of them in generally desirable directions[^Krapohl-phenome], indicating both causation for those correlations & benefits beyond income.
+[Krapohl et al 2015](http://www.hungrymindlab.com/wp-content/uploads/2015/10/Krapohl-et-al-2015.pdf "Phenome-wide analysis of genome-wide polygenic scores") examines the correlation of polygenic scores with 50 diverse traits, finding that the college/IQ polygenic scores correlate with 10+ of them in generally desirable directions[^Krapohl-phenome], similar to [Hagenaars et al 2016](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html "Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (N=112 151) and 24 GWAS consortia")[^Hagenaars-phenome], indicating both causation for those correlations & benefits beyond income.
 There are also pitfalls, like the fallacy of controlling for an intermediate variable, exemplified by studies which attempt to correlate intelligence with income after "controlling for" education, despite knowing that educational attainment is caused *by* intelligence and so their estimates are actually something irrelevant like 'the gain from greater intelligence for reasons other than through its effect on education'.
 Estimates have come from a variety of sources, such as iodine and lead studies.
 Given the difficulty of coming up with any estimate for 'the' value of an IQ point, I will just reuse the \$2783-13744 range.
 
 [^Krapohl-phenome]: More specifically, combining the College/Adult IQ/Child IQ polygenic scores and including the non-statistically-significant ones, I get out of Figure 1 :
 
-    1. better: _g_ / Raven's Progressive Matrices / Mill Hill Vocabulary / GCSE English / GCSE maths / GCSE science / PISA Attitudes to School / PISA homework Behaviour / PISA maths self-efficacy / PISA maths interest / PISA time spent on maths / Academic self-concept / Agreeableness / Conscientiousness / Extraversion / Neuroticism / Openness / Curiosity Flow / Chaos at Home / Attachment total / SDQ Total ([Strengths and Difficulties Questionnaire](!Wikipedia); behavioral problems) / SDQ Conduct / SDQ Hyperactivity / SDQ Prosocial / Peer Victimization / Conners: Inattention / Conners: Impulsivity / Autism Quotient: Attention Switching / Autism Quotient: Imagination / Autism Quotient: Attention to Detail / Callous Unemotional Traits / ARBQ Anxiety / SANS (negative symptoms) / Grandiosity / Cognitive Disorganization / BMI / Height
-    2. neutral: PISA Homework total / Menarche / Puberty
+    1. Better: _g_ / Raven's Progressive Matrices / Mill Hill Vocabulary / GCSE English / GCSE maths / GCSE science / PISA Attitudes to School / PISA homework Behaviour / PISA maths self-efficacy / PISA maths interest / PISA time spent on maths / Academic self-concept / Agreeableness / Conscientiousness / Extraversion / Neuroticism / Openness / Curiosity Flow / Chaos at Home / Attachment total / SDQ Total ([Strengths and Difficulties Questionnaire](!Wikipedia); behavioral problems) / SDQ Conduct / SDQ Hyperactivity / SDQ Prosocial / Peer Victimization / Conners: Inattention / Conners: Impulsivity / Autism Quotient: Attention Switching / Autism Quotient: Imagination / Autism Quotient: Attention to Detail / Callous Unemotional Traits / ARBQ Anxiety / SANS (negative symptoms) / Grandiosity / Cognitive Disorganization / BMI / Height
+    2. Neutral: PISA Homework total / Menarche / Puberty
     3. Worse: PISA Homework Feedback [?] / PISA time spent on maths [?] / GRIT / Curiosity Flow / Parental Control / Autism Quotient: Attention Switching / Grandiosity / Paranoid / Sleep total / Insomnia
 
     (In a few cases it's not clear how to interpret. Is less time on math a good or bad thing since the PISA & GCSE math scores are still higher?)
+[^Hagenaars-phenome]: Hagenaars focused more on medical & psychiatric issues; breaking it down similarly across the 4 measures of cognitive functioning:
+
+    1. better: Stroke: Cardioembolic / ADHD / Major depressive disorder / Blood pressure: diastolic / Blood pressure: systolic
+    2. Mixed: Coronary artery disease / Stroke: ischaemic / Stroke: large vessel disease / Type 2 diabetes / Alzheimer's disease / Autism / Bipolar disorder / Schizophrenia / Hippocampal volume / Intracranial volume / Infant head circumference / BMI / Height / Longevity / FEV1
+    3. Worse: none
 
 ## Polygenic scores for IQ
 ### SNP
@@ -132,7 +137,7 @@ Past polygenic scores for intelligence:
 3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013:
 
     0.5%, 1.2%, 3.5%.
-6. ["Results of a “GWAS Plus:” General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014
+6. ["Results of a “GWAS Plus:” General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014:
 
     0.55% (maximum in subsamples: 0.7%)
 3. ["Common genetic variants associated with cognitive performance identified using the proxy-phenotype method"](http://www.pnas.org/content/early/2014/09/05/1404623111.full.pdf), Rietveld et al 2015
@@ -141,6 +146,9 @@ Past polygenic scores for intelligence:
 4. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (N=53 949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015:
 
     1.2%
+5. ["Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (N=112 151) and 24 GWAS consortia"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html), Hagenaars et al 2016 ([supplementary data](http://www.nature.com/mp/journal/vaop/ncurrent/extref/mp2015225x1.doc)):
+
+    Supplementary Table 4d reports predictive validity of the educational attainment polygenic score for childhood-cognitive-ability/college-degree/years-of-education in its other samples, yielding R^2^=0.0042/0.0214/0.0223 or 0.42%/2.14%/2.23% respectively. Particularly intriguing given its investigation of pleiotropy is Supplementary Table 5, which uses polygenic scores constructed for all the diseases in its data (eg type 2 diabetes, ADHD, schizophrenia, coronary artery disease), where all the disease scores & covariates are entered into the model and then the cognitive polygenic scores are able to predict even higher, as high as R^2^=0.063/0.046/0.064.
 5. Upcoming in 2016 is another SSGAC paper with ~8x hits but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score, although the top 18 hits explained 0.4% (but that's less than the Davies or Rietveld polygenic scores and not useful)
 
 Davies also reports the polygenic score, accounting for 1.2% or 0.012 of all variance. (This is much higher than Rietveld et al 2013's 0.3%.) Same procedure to estimate value of embryo selection: halve to account for siblings' shared genetics then simulate:
