@@ -66,9 +66,23 @@ Possible interventions:
 - controlling blood pressure to <=120mm Hg http://www.nejm.org/doi/full/10.1056/NEJMoa1511939 http://www.nejm.org/doi/suppl/10.1056/NEJMoa1511939/suppl_file/nejmoa1511939_appendix.pdf
 
     while SPRINT can't be generalized to healthy middle-aged people, having inclusion criteria for past cardiovascular problems or being high risk, they did have as one of their inclusion criteria be >75. and the total mortality HR for the <75yos was 0.77, and for >75... 0.68. not statistically significant, but certainly not evidence that the reduction of blood pressure has a lesser or different effect in the healthy >75yos than the unhealthy <75yos
+- exercise
+- weight loss
 - diet:
 
     - Mediterranean has at least one study http://www.nejm.org/action/showImage?doi=10.1056%2FNEJMoa1200303&iid=f01
+
+<!--
+- on the benefits of exercise:
+
+    - ["Modifiable Risk Factors as Predictors of All-Cause Mortality: The Roles of Genetics and Childhood Environment"](http://aje.oxfordjournals.org/content/156/11/985.full), Kujala et al 2002
+    - ["Physical activity in adulthood: genes and mortality"](http://www.nature.com/articles/srep18259), Karvinen et al 2015
+    - ["Physical Activity, Fitness, Glucose Homeostasis, and Brain Morphology in Twins"](http://www.gwern.net/docs/2015-rottensteiner.pdf), Rottensteiner et al 2015 ([commentary](https://plus.google.com/103530621949492999968/posts/jUFyJirpKpJ))
+weight loss: "Intentional Weight Loss and All-Cause Mortality: A Meta-Analysis of Randomized Clinical Trials" http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121993
+http://www.nytimes.com/2015/08/30/opinion/diet-advice-that-ignores-hunger.html
+["Population genetic differentiation of height and body mass index across Europe"](http://www.gwern.net/docs/2015-robinson.pdf)
+https://jaymans.wordpress.com/obesity-facts/
+-->
 
 ## Exclusions
 
@@ -88,6 +102,24 @@ Examples of interventions which are interesting to me or often come up, but whic
     "a glass a day" has long been noted to correlate with longer life anywhere one looks, but the confounds for moderate responsible drinking are too noticeable to put much faith in it and the debate continues to rage. [It's troubling](http://davidroodman.com/blog/2015/05/01/are-the-benefits-of-moderate-drinking-a-myth/ "Are the benefits of moderate drinking a myth?") that the economics literature seems to find health benefits to taxing alcohol, and that the more powerful [Mendelian randomization](!Wikipedia) design (while far from infallible) show harm rather than benefit. But the real issue is that despite seeming like the easiest experiment ever to run (hand out free booze), there apparently are no randomized trials.
 
     (I might do alcohol anyway to get an idea of what the profitability would be like and how skeptical one must be to erase benefits.)
+
+<!-- ADH1B\*1
+https://en.wikipedia.org/wiki/ADH1B
+http://www.genecards.org/cgi-bin/carddisp.pl?gene=ADH1B
+> The ADH1B*2 allele frequency in orientals is approximately 75%, whereas it is less than 5% in most Caucasian populations.
+
+http://www.snpedia.com/index.php/Rs1229984
+variants: C or T ; I am CC (or in SNPedia orientation, GG) == slow ethanol metabolism / more tolerance
+
+["Effects of Initiating Moderate Alcohol Intake on Cardiometabolic Risk in Adults With Type 2 Diabetes: A 2-Year Randomized, Controlled Trial"](http://www.equator-network.org/wp-content/uploads/2015/11/14-Gepner-Annals-2015-22.pdf), Gepner et al 2015 ([pre-registration](https://clinicaltrials.gov/ct2/show/NCT00784433 "The CArdiovasCulAr Diabetes & Ethanol (CASCADE) Trial"))
+
+> Intervention: Patients were randomly assigned to 150 mL of mineral water, white wine, or red wine with dinner for 2 years. Wines and mineral water were provided. All groups followed a Mediterranean diet without caloric restriction.
+> Measurements: Primary outcomes were lipid and glycemic control profiles. Genetic measurements were done, and patients were followed for blood pressure, liver biomarkers, medication use, symptoms, and quality of life.
+> Results: Of the 224 patients who were randomly assigned, 94% had follow-up data at 1 year and 87% at 2 years. In addition to the changes in the water group (Mediterranean diet only), red wine significantly increased high-density lipoprotein cholesterol (HDL-C) level by 0.05 mmol/L (2.0 mg/dL) (95% CI, 0.04 to 0.06 mmol/L [1.6 to 2.2 mg/dL]; P<0.001) and apolipoprotein(a)~1~ level by 0.03 g/L (CI, 0.01 to 0.06 g/L; P=0.05) and decreased the total cholesterol-HDL-C ratio by 0.27 (CI, 0.52 to 0.01; P=0.039). Only slow ethanol metabolizers (alcohol dehydrogenase alleles [ ADH1B\*1] carriers) significantly benefited from the effect of both wines on glycemic control (fasting plasma glucose, homeostatic model assessment of insulin resistance, and hemoglobin A1c) compared with fast ethanol metabolizers (persons homozygous for ADH1B*2). Across the 3 groups, no material differences were identified in blood pressure, adiposity, liver function, drug therapy, symptoms, or quality of life, except that sleep quality improved in both wine groups compared with the water group (P=0.040). Overall, compared with the changes in the water group, red wine further reduced the number of components of the metabolic syndrome by 0.34 (CI, 0.68 to 0.001; P= 0.049)
+>
+> ...Of the 203 participants with available DNA samples, 35.6% were homozygous for the wild-type C allele ADH1B*1 (CC: "slow ethanol metabolism"), 21.3% were homozygous for ADH1B*2 (Arg48His; rs1229984; TT: "fast ethanol metabolism"), and 43.1% were heterozygous (CT), which was consistent with the Hardy-Weinberg equilibrium. We analyzed 2-year genetic data from 173 participants who had DNA samples and had completed the trial. As expected in the water group, changes in biomarkers did not differ across genetic ADH1B variants. When the red and white wine groups were combined (Figure 3), however, the improvements in glycemic control were mostly achieved among carriers of ADH1B*1. These carriers had favorable significant changes compared with carriers of ADH1B*2 homozygotes; FPG level was 0.21 mmol/L (3.8 mg/dL) versus 0.82 mmol/L (14.8 mg/dL; _p_=0.043), HOMA-IR score was 1.4 versus 0.3 (_p_=0.012), and HbA1c level was 0.1% versus 0.6% (_p_=0.024). The test for interaction between genotype and wine or water had a P value of less than 0.05
+
+-->
 
 # Definitions
 ## Value of Life
@@ -125,6 +157,7 @@ mean(rgompertz(1000))
 mean(rgompertz(1000, RR=0.50))
 # [1] 84.219
 ~~~
+
 
 ### Converting risk reduction to average life expectancy gain
 
@@ -286,6 +319,49 @@ gompertzPower <- function(RR, n1, n2, startingAge, followupYears, iters=100) {
     ldply(mclapply(1:iters, function(i) { gompertzSimulation(RR, n1, n2, startingAge, followupYears); }))
  }
 ~~~
+
+Given a function to estimate power for a particular set of trial characteristics, we can also search for the sample size which would make a trial (or fixed-effect meta-analysis) of particular RR effects well-powered as a heuristic for what sort of sample sizes we should expect (remembering that being well-powered is neither necessary nor optimal for decision-making):
+
+~~~{.R}
+gompertzPowerSearch <- function (RR, startingAge=50, followupYears=10, targetPower=0.8, startingN=4000, iters=100, increment=200)  {
+  n <- startingN
+  nPower <- 0
+  while (nPower < targetPower)  {
+    n <- n+increment
+    sims <- gompertzPower(RR, n, n, startingAge, followupYears, iters)
+    pvalues <- sapply(1:nrow(sims),
+              function(i) { prop.test(c(sims[i,]$N1.deaths, sims[i,]$N2.deaths), c(sims[i,]$N1, sims[i,]$N2),
+                                      alternative="less")$p.value })
+    nPower <- sum(pvalues<=0.05) / length(pvalues)
+    }
+  return(n)
+}
+startingN <- 4500
+for (RR in seq(0.80, 0.95, by=0.01)) {
+  n <- gompertzPowerSearch(RR, startingN=startingN)
+  startingN <- n
+  print(paste0("RR ", RR, "; necessary sample: ", n))
+  }
+~~~
+
+RR    Well-powered: 1 arm  Total _n_
+----  -------------------  ------------
+0.80  4700                 9400
+0.81  6100                 12200
+0.82  6300                 12600
+0.83  6900                 13800
+0.84  7100                 14200
+0.85  8900                 17800
+0.86  9300                 18600
+0.87  11100                22200
+0.88  12500                25000
+0.89  15700                31400
+0.90  18700                37400
+0.91  21500                43000
+0.92  28500                57000
+0.93  34100                68200
+0.94  46500                93000
+0.95  68700                137400
 
 ## Prior on RRs
 
@@ -888,6 +964,8 @@ ages[which.max(ages)] * (19309019+20720284+20304644+25874360)
 # [1] 1426091932050
 ~~~
 
+The estimate is so small because we use a small estimate of the value of 1 QALY; [Murphy & Topel 2005](http://www.med.mcgill.ca/epidemiology/courses/EPIB654/Summer2010/QALY/The_Economic_Value_of_Health.pdf "The Value of Health and Longevity"), using a much more sophisticated calculation and more realistic QALY estimates, note that "A 10 percent reduction in all-cause mortality [RR=0.90] would have a present discounted social value of \$18.5 trillion."
+
 ## Sensitivity
 
 We can also use the formula to ask how small (close to 1) the RR must be before, given the specified purchase & side-effect costs, there is no longer any age at which metformin is profitable:
@@ -939,7 +1017,6 @@ pvalues <- sapply(1:nrow(df),
             function(i) { prop.test(c(df[i,]$N1.deaths, df[i,]$N2.deaths), c(df[i,]$N1, df[i,]$N2),
                                     alternative="less")$p.value })
 table(pvalues<=0.05)
-#
 # FALSE  TRUE
 #  890   110
 ~~~
@@ -949,6 +1026,8 @@ So it is highly unlikely (~10%) we could expect the realistic trial to deliver a
 We don't necessarily care about statistical-significance, since this is a decision-analysis approach: our question is whether the gained data shifts the posterior probability enough to change the optimal decision.
 But it's good to have an idea of power in that sense to make it easier to interpret the research article & media reports (eg the trial might be a 'failure' from the point of view of statistical-significance, even as it increases the profitability of using metformin).
 
+If we really wanted 80% power for _p_<0.05, how big a sample do we need? In this case, it turns out to be ~7500 per arm (after any attrition) or ~15k total.
+
 # See also
 
 - [Micromort](!Wikipedia)
@@ -957,7 +1036,9 @@ But it's good to have an idea of power in that sense to make it easier to interp
 
 - [_A History of Life-Extensionism In The Twentieth Century_](http://www.longevityhistory.com/book/indexb.html), Stambler 2014
 - ["Which Risks of Dying Are Worth Taking?"](http://www.spencergreenberg.com/2013/10/which-risks-of-dying-are-worth-taking/)
+- ["Who By Very Slow Decay"](http://slatestarcodex.com/2013/07/17/who-by-very-slow-decay/)
 
+<!--
 # Aspirin
 
 - Baby aspirin:
@@ -987,3 +1068,4 @@ positive cost-benefit:
 age-dependent bleeding?
 
 - Patrono et al 2005, Low-dose aspirin for the prevention of atherothrombosis. N Engl J Med 2005;353:2373-2383.
+-->
