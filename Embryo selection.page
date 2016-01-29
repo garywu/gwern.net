@@ -84,7 +84,7 @@ Davies et al 2011's 0.5 is a little outdated and small, based on _n_=3511 with c
 3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013:
 
     0.22, 0.40, 0.46
-4. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/2013-rietveld.pdf), Rietveld et al 2013
+4. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/iq/2013-rietveld.pdf), Rietveld et al 2013
 
     0.224
 5. ["Molecular genetic contributions to socioeconomic status and intelligence"](http://ac.els-cdn.com/S0160289614000178/1-s2.0-S0160289614000178-main.pdf), Marioni et al 2014
@@ -131,7 +131,7 @@ Past polygenic scores for intelligence:
 1. ["Genome-wide association studies establish that human intelligence is highly heritable and polygenic"](http://www.nature.com/mp/journal/v16/n10/full/mp201185a.html), Davies et al 2011:
 
     0.5776% of fluid intelligence in the NCNG replication sample, if I've understood their analysis correctly.
-2. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/2013-rietveld.pdf), Rietveld et al 2013:
+2. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/iq/2013-rietveld.pdf), Rietveld et al 2013:
 
     This landmark study providing the first GWAS hits on intelligence also estimated multiple polygenic scores: the full polygenic scores predicted 2.5% of variance in cognitive function in a Swedish replication sample, and also performed well in within-family settings (0.31% & 0.19% of variance in attending college & years of education, respectively, in [Table S25](http://science.sciencemag.org/content/sci/suppl/2013/05/29/science.1235488.DC1/Rietveld.SM.revision.2.pdf)).
 3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013:
@@ -387,3 +387,14 @@ simulateUSA <- function(liveBirth) { return(simulateIVFs(9, 4.6, davies2015, 0.3
 sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb)*2000);})
 [1] 177.22112774 150.18588486  97.46433363  22.18675403  75.97817656 -82.15293737
 ~~~
+
+<--
+# CRISPR
+https://www.addgene.org/crispr/reference/
+http://www.genome.gov/sequencingcosts/
+https://crispr.bme.gatech.edu/
+cost of the top variants?
+want to edit all variants such that:
+sequencing-based edit: posterior mean * value of IQ point > cost of 1 edit
+for blind edits: probability of the bad variant * posterior mean * value of IQ point > cost of 1 edit
+-->
