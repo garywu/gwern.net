@@ -140,34 +140,15 @@ Patterson RE, White E, Kristal AR, Neuhouser ML, Potter JD. Vitamin supplement a
 
 "Comparison of evidence on harms of medical interventions in randomized and nonrandomized studies", Papanikolaou et al 2006 http://heads.gr/downloads/32.%20Comparison%20of%20evidence%20on%20harms%20of%20medical%20interventions%20in%20randomized%20and%20nonrandomized%20studies.pdf
 
-Background: Information on major harms of medical interventions comes primarily from epidemiologic studies performed after licensing and marketing. Comparison with data
-from large-scale randomized trials is occasionally feasible.
-We compared evidence from randomized trials with that
-from epidemiologic studies to determine whether they give
-different estimates of risk for important harms of medical
-interventions.
-Methods: We targeted well-defined, specific harms of various medical interventions for which data were already available from large-scale randomized trials (> 4000 subjects).
-Nonrandomized studies involving at least 4000 subjects addressing these same harms were retrieved through a search
-of MEDLINE. We compared the relative risks and absolute
-risk differences for specific harms in the randomized and
-nonrandomized studies.
-Results: Eligible nonrandomized studies were found for 15
-harms for which data were available from randomized trials
-addressing the same harms. Comparisons of relative risks
-between the study types were feasible for 13 of the 15 topics,
-and of absolute risk differences for 8 topics. The estimated
-increase in relative risk differed more than 2-fold between
-the randomized and nonrandomized studies for 7 (54%) of
-the 13 topics; the estimated increase in absolute risk differed
-more than 2-fold for 5 (62%) of the 8 topics. There was no
-clear predilection for randomized or nonrandomized studies
-to estimate greater relative risks, but usually (75% [6/8]) the
-randomized trials estimated larger absolute excess risks of
-harm than the nonrandomized studies did.
-Interpretation: Nonrandomized studies are often conservative in estimating absolute risks of harms. It would be useful
-to compare and scrutinize the evidence on harms obtained
-from both randomized and nonrandomized studies.
-
+> Background: Information on major harms of medical interventions comes primarily from epidemiologic studies performed after licensing and marketing. Comparison with data from large-scale randomized trials is occasionally feasible. We compared evidence from randomized trials with that from epidemiologic studies to determine whether they give different estimates of risk for important harms of medical interventions.
+>
+> Methods: We targeted well-defined, specific harms of various medical interventions for which data were already available from large-scale randomized trials (> 4000 subjects). Nonrandomized studies involving at least 4000 subjects addressing these same harms were retrieved through a search of MEDLINE. We compared the relative risks and absolute risk differences for specific harms in the randomized and nonrandomized studies.
+>
+> Results: Eligible nonrandomized studies were found for 15 harms for which data were available from randomized trials addressing the same harms. Comparisons of relative risks between the study types were feasible for 13 of the 15 topics, and of absolute risk differences for 8 topics. The estimated increase in relative risk differed more than 2-fold between the randomized and nonrandomized studies for 7 (54%) of the 13 topics; the estimated increase in absolute risk differed more than 2-fold for 5 (62%) of the 8 topics. There was no clear predilection for randomized or nonrandomized studies to estimate greater relative risks, but usually (75% [6/8]) the randomized trials estimated larger absolute excess risks of harm than the nonrandomized studies did.
+>
+> Interpretation: Nonrandomized studies are often conservative in estimating absolute risks of harms. It would be useful to compare and scrutinize the evidence on harms obtained from both randomized and nonrandomized studies.
+>
+> ...In total, data from nonrandomized studies could be juxtaposed against data from randomized trials for 15 of the 66 harms (Table 1). All of the studied harms were serious and clinically relevant. The interventions included drugs, vitamins, vaccines and surgical procedures. A large variety of prospective and retrospective approaches were used in the nonrandomized studies, including both controlled and uncontrolled designs (Table 1)...For 5 (38%) of the 13 topics for which estimated increases in relative risk could be compared, the increase was greater in the nonrandomized studies than in the respective randomized trials; for the other 8 topics (62%), the increase was greater in the randomized trials. The estimated increase in relative risk differed more than 2-fold between the randomized and nonrandomized studies for 7 (54%) of the 13 topics (symptomatic intracranial bleed with oral anticoagulant therapy [topic 5], major extracranial bleed with anticoagulant v. antiplatelet therapy [topic 6], symptomatic intracranial bleed with ASA [topic 8], vascular or visceral injury with laparoscopic v. open surgical repair of inguinal hernia [topic 10], major bleed with platelet glycoprotein IIb/IIIa blocker therapy for percutaneous coronary intervention [topic 14], multiple gestation with folate supplementation [topic 13], and acute myocardial infarction with rofecoxib v. naproxen therapy [topic 15]). Differences in relative risk beyond chance between the randomized and nonrandomized studies occurred for 2 of the 13 topics: the relative risks for symptomatic intracranial bleed with oral anticoagulant therapy (topic 5) and for vascular or visceral injury with laparoscopic versus open surgical repair of inguinal hernia (topic 10) were significantly greater in the nonrandomized studies than in the randomized trials. Between-study heterogeneity was more common in the syntheses of data from the nonrandomized studies than in the syntheses of data from the randomized trials. There was significant between-study heterogeneity (p < 0.10 on the Q statistic) among the randomized trials for 2 data syntheses (topics 3 and 14) and among the nonrandomized studies for 5 data syntheses (topics 4, 7, 8, 13 and 15). The adjusted and unadjusted estimates of relative risk in the nonrandomized studies were similar (see online Appendix 4, available at www.cmaj.ca/cgi/content/full/cmaj.050873/DC1)...The randomized trials usually estimated larger absolute risks of harms than the nonrandomized studies did; for 1 topic, the difference was almost 40-fold.
 
 Comparisons of effect sizes derived from randomised and non-randomised studies
 BC Reeves, RR MacLehose, IM Harvey, TA Sheldon... - Health Services Research ..., 1998
@@ -372,7 +353,7 @@ Vitamin E was reported to protect against heart attacks. Large, well-conducted
 randomized clinical trials did not replicate this claim. The claim that Type A Personality
 leads to heart attacks failed to replicate in two separate studies, yet the myth still lives.
 
-Young SS, Karr A. Deming, data and observational studies: A process out of control and needing fixing. Significance 2011;September:122-126. http://www.gwern.net/docs/dnb/2011-young.pdf
+Young SS, Karr A. Deming, data and observational studies: A process out of control and needing fixing. Significance 2011;September:122-126. http://www.gwern.net/docs/sstatistics/2011-young.pdf
 
 As long ago as 1988 1,2 it was noted that
 there were contradicted results for case-control
@@ -758,7 +739,7 @@ the outcome variables of earnings, employment rates, and welfare utilization.
 
 - Fraker and Maynard, 1987
 - Friedlander and Robins, 1995
-- Dehejia and Wahba, 1999
+- Dehejia and Wahba, 1999 "Causal effects in non-experimental studies: re-evaluating the evaluation of training programs" http://isites.harvard.edu/fs/docs/icb.topic1311568.files/dehejia_wahba%201999.pdf
 
 Because we are interested in testing nonexperimental methods on educational outcomes, we use
 Tennessee’s Project Star as the source of the “true random-assignment” data. We describe Project Star in
