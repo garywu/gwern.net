@@ -21,8 +21,9 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 Everything is heritable:
 
 - ["Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (_n_=112151) and 24 GWAS consortia"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html ), Hagenaars et al 2016
+- ["Top 10 Replicated Findings From Behavioral Genetics"](http://www.gwern.net/docs/genetics/2016-plomin.pdf), Plomin et al 2016
 - ["The Muscular Dystrophy Patient and Olympic Medalist with the Same Genetic Disorder"](https://www.propublica.org/article/muscular-dystrophy-patient-olympic-medalist-same-genetic-mutation)
-- ["Genetically low vitamin D concentrations and increased mortality: mendelian randomisation analysis in three large cohorts"](http://www.bmj.com/content/349/bmj.g6330.long), Afzal et al 2014
+- ["Genetically low vitamin D concentrations and increased mortality: Mendelian randomisation analysis in three large cohorts"](http://www.bmj.com/content/349/bmj.g6330.long), Afzal et al 2014
 
 Politics/religion:
 
@@ -41,6 +42,7 @@ Statistics/AI/meta-science:
 
 - ["Mastering the game of Go with deep neural networks and tree search"](https://storage.googleapis.com/deepmind-data/assets/papers/deepmind-mastering-go.pdf), Silver et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/5X8nWvUXhf9))
 - ["The Top A.I. Breakthroughs of 2015"](http://futureoflife.org/2015/12/29/the-top-a-i-breakthroughs-of-2015/) (omits residual learning)
+- ["Gradient-based Hyperparameter Optimization through Reversible Learning"](http://arxiv.org/abs/1502.03492), Maclaurin et al 2015
 - ["Recognizing and Localizing Endangered Right Whales with Extremely Deep Neural Networks"](https://felixlaumon.github.io/2015/01/08/kaggle-right-whale.html)
 - [new /r/DecisionTheory subreddit](https://www.reddit.com/r/DecisionTheory/)
 - ["Why do we Sometimes get Nonsense-Correlations between Time-Series? A Study in Sampling and the Nature of Time-Series"](http://www.math.mcgill.ca/dstephens/OldCourses/204-2008/Handouts/Yule1926.pdf), Yule 1926 ("the ratio of Catholic vs Protestant marriages correlates _r_=.95 with the English death rate")
