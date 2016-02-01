@@ -2,7 +2,7 @@
 title: January news
 created: 1 Jan 2016
 tags: newsletter
-status: in progress
+status: finished
 belief: log
 ...
 
@@ -11,9 +11,8 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 
 # Writings
 
-- Embryo
-- power of twins
-- vitamin D cost-benefit
+- [vitamin D for longevity](http://www.gwern.net/Longevity#vitamin-d)
+- ["The Power of Twins: Revisiting Student's Scottish Milk Experiment Example"](http://www.gwern.net/Statistical%20notes#the-power-of-twins-revisiting-students-scottish-milk-experiment-example)
 
 # Media
 ## Links
@@ -34,29 +33,19 @@ Politics/religion:
 - ["Systems, Not Sith: How Inter-service Rivalries Doomed the Galactic Empire"](https://www.overthinkingit.com/2012/09/17/star-wars-empire-inter-service-rivalries/?page=all)
 - ["Boss Rail: The disaster that exposed the underside of the boom"](http://www.newyorker.com/magazine/2012/10/22/boss-rail)
 - ["Why China should celebrate Columbus Day"](http://www.themoneyillusion.com/?p=16938)
-- ["Cuban missile crisis: The other, secret one"](http://www.bbc.com/news/magazine-19930260)
-- ["The Market for Sanctimony, or why we need  Yet Another Space Alien Cult  (YASAC)"](http://home.earthlink.net/~peter.a.taylor/midrash.htm)
-- ["So Far Unfruitful, Fusion Project Faces a Frugal Congress"](http://www.nytimes.com/2012/09/30/science/fusion-project-faces-a-frugal-congress.html)
-- [Thomas Jefferson and planning the University of Virginia](http://www.johndcook.com/blog/2011/03/03/thomas-jefferson-meetings/)
 
 Statistics/AI/meta-science:
 
-- ["Mastering the game of Go with deep neural networks and tree search"](https://storage.googleapis.com/deepmind-data/assets/papers/deepmind-mastering-go.pdf), Silver et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/5X8nWvUXhf9))
+- ["Mastering the game of Go with deep neural networks and tree search"](https://www.researchgate.net/profile/Timothy_Lillicrap/publication/292074166_Mastering_the_game_of_Go_with_deep_neural_networks_and_tree_search/links/56a90f7d08ae7f592f0d5d0c.pdf), Silver et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/5X8nWvUXhf9))
 - ["The Top A.I. Breakthroughs of 2015"](http://futureoflife.org/2015/12/29/the-top-a-i-breakthroughs-of-2015/) (omits residual learning)
 - ["Gradient-based Hyperparameter Optimization through Reversible Learning"](http://arxiv.org/abs/1502.03492), Maclaurin et al 2015
 - ["Recognizing and Localizing Endangered Right Whales with Extremely Deep Neural Networks"](https://felixlaumon.github.io/2015/01/08/kaggle-right-whale.html)
 - [new /r/DecisionTheory subreddit](https://www.reddit.com/r/DecisionTheory/)
 - ["Why do we Sometimes get Nonsense-Correlations between Time-Series? A Study in Sampling and the Nature of Time-Series"](http://www.math.mcgill.ca/dstephens/OldCourses/204-2008/Handouts/Yule1926.pdf), Yule 1926 ("the ratio of Catholic vs Protestant marriages correlates _r_=.95 with the English death rate")
 - ["Comparison of evidence on harms of medical interventions in randomized and nonrandomized studies"](http://heads.gr/downloads/32.%20Comparison%20of%20evidence%20on%20harms%20of%20medical%20interventions%20in%20randomized%20and%20nonrandomized%20studies.pdf), Papanikolaou et al 2006 (How often does correlation=causation? [excerpts](https://plus.google.com/103530621949492999968/posts/LWKUSdsxtjM))
-- ["Deming, data and observational studies: A process out of control and needing fixing"](http://www.gwern.net/statistics/2011-young.pdf)
-- ["Online Controlled Experiments: Introduction, Learnings, and Humbling Statistics"](http://www.exp-platform.com/Documents/2012-09%20ACMRecSysNR.pdf)
-- ["My published negative result..."](http://www.scilogs.com/the_gene_gym/my-published-negative-result/)
-- [Gambler's ruin](https://en.wikipedia.org/wiki/Gambler%27s_ruin)
-- ["Bayesian estimation supersedes the _t_ test"](http://www.indiana.edu/~kruschke/BEST/BEST.pdf), Kruschke 2012
-- ["Electoral Precedent"](https://xkcd.com/1122/)
-- ["A Bayesian view of Amazon Resellers"](http://www.johndcook.com/blog/2011/09/27/bayesian-amazon/)
 
 Psychology/biology:
+
 - ["A Look Back at 2015 in Longevity Science"](https://www.fightaging.org/archives/2015/12/a-look-back-at-2015-in-longevity-science.php)
 - ["Bayesian Belief Polarization"](http://papers.nips.cc/paper/3725-bayesian-belief-polarization.pdf), Jern et al 2009
 - ["Stupider Than You Realize"](http://www.overcomingbias.com/2009/07/stupider-than-you-realize.html)
@@ -64,12 +53,6 @@ Psychology/biology:
 - [Frog battery](https://en.wikipedia.org/wiki/Frog_battery)
 - ["Using Neurotechnologies to Develop Virtues - A Buddhist Approach to Cognitive Enhancement"](http://ieet.org/index.php/IEET/more/hughes20121016)
 - ["Be Happier"](http://lesswrong.com/lw/bq0/be_happier/)
-- ["My son's flashcard routine"](http://bentilly.blogspot.com/2012/10/my-sons-flashcard-routine.html)
-- ["A Mole of Moles"](http://what-if.xkcd.com/4/)
-- ["We Add Near, Average Far"](http://www.overcomingbias.com/2012/10/we-add-near-average-far.html)
-- ["Nothing in Biology Makes Sense Except in the Light of Evolution"](http://www.pbs.org/wgbh/evolution/library/10/2/text_pop/l_102_01.html)
-- ["Parenting and Happiness"](http://lesswrong.com/r/discussion/lw/erj/parenting_and_happiness/)
-- [Is sleep to save energy?](http://www.overcomingbias.com/2012/10/sleep-is-to-save-energy.html)
 
 Technology:
 
@@ -77,10 +60,6 @@ Technology:
 - ["The Moral Character of Cryptographic Work"](http://web.cs.ucdavis.edu/~rogaway/papers/moral-fn.pdf), Rogaway 2015
 - ["These Tricks Make Virtual Reality Feel Real: Realistic digital spaces need delusions as much as they need detail"](http://nautil.us/issue/32/space/these-tricks-make-virtual-reality-feel-real)
 - ["Dead reckoning and the exploration explosion"](http://unenumerated.blogspot.com/2012/10/dead-reckoning-and-exploration-explosion.html)
-- ["How Did Software Get So Reliable Without Proof?"](http://www.gwern.net/docs/1996-hoare.pdf), Hoare 1996 ([comments](http://blog.regehr.org/archives/820))
-- [Merkle's Puzzles](https://en.wikipedia.org/wiki/Merkle%27s_Puzzles)
-- [On Ray Kurzweil](http://blogs.discovermagazine.com/gnxp/2012/10/singularity-summit-2012-the-lion-doesnt-sleep-tonight/)
-- [_Pokemon_: determining the personality settings](http://bulbapedia.bulbagarden.net/wiki/Personality_value)
 
 Economics:
 
@@ -88,10 +67,6 @@ Economics:
 - [When will corporations defect](http://dl.dropbox.com/u/85192141/2012-schneier-liarsandoutliers-ch13.pdf) (Schneier's _Liars and Outliers_)
 - ["Interview: John A. List"](https://www.richmondfed.org/~/media/richmondfedorg/publications/research/region_focus/2012/q2-3/pdf/interview.pdf)
 - [Jonathan Wild](https://en.wikipedia.org/wiki/Jonathan_Wild)
-- ["The Economics of Video Games"](https://www.washingtonpost.com/blogs/ezra-klein/wp/2012/09/28/the-economics-of-video-games/)/["Arbitrage and equilibrium in the _Team Fortress 2_ economy"](https://web.archive.org/web/20121020031732/http://blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/)
-- ["A Day In The Future"](http://www.raptitude.com/2011/01/a-day-in-the-future/)
-- [Bowie bonds](https://en.wikipedia.org/wiki/Celebrity_bond)
-- ["The fall and rise of development economics"](http://web.mit.edu/krugman/www/dishpan.html)
 
 Philosophy:
 
@@ -100,7 +75,7 @@ Philosophy:
 
 Fiction:
 
-- ["The Star Gauge"](http://www.futilitycloset.com/2012/10/02/the-star-gauge/) of [Su Hui](https://en.wikipedia.org/wiki/Su_Hui_%28poet%29#Palindrome_Poem)
+- ["The Star Gauge"](http://www.futilitycloset.com/2012/10/02/the-star-gauge/) of [Su Hui](https://en.wikipedia.org/wiki/Su_Hui_%28poet%29#Palindrome_Poem:_Xuanji_Tu)
 
 <!-- Back to 30 Sep 2012 -->
 
@@ -108,17 +83,11 @@ Fiction:
 
 Fiction:
 
-- _The Dark Forest_
+- [_The Dark Forest_](https://en.wikipedia.org/wiki/The_Dark_Forest), Liu Cixin
 
 Nonfiction:
 
-- Lucretius's _On the Nature of Things_
-
-## Film/TV
-
-Live-action:
-
-Animated:
+- [Lucretius's _On the Nature of Things_](https://en.wikipedia.org/wiki/De_rerum_natura)
 
 ## Music
 
@@ -133,5 +102,3 @@ Doujin:
 
 - ["灼耀の内声 -Inclusion Inner Light-"](https://www.youtube.com/watch?v=k0VJrjLN-W4) (Morrigan feat. Lily; _Citla re:verse -其歌は真言顕す欠片と為りて-_ {C88}) [orchestral/choral]
 - ["天照大御神-AMATERAS SYSTEM-"](https://www.youtube.com/watch?v=5rd9H3ufpGU) (Morrigan feat. Lily; _Citla re:verse -其歌は真言顕す欠片と為りて-_ {C88}) [orchestral/choral]
-
-Vocaloid:

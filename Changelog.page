@@ -6,19 +6,25 @@ status: in progress
 belief: log
 ...
 
-Following my writing can be a little difficult: while I provide [an RSS feed of the edit history](http://www.gwern.net/atom.xml), it is too fine-grained to know what is an interesting update and what is housekeeping.
+Following my writing can be a little difficult: while I provide [an RSS feed of the edit history](/atom.xml), it is too fine-grained to know what is an interesting update and what is housekeeping.
 So periodically I write up interesting changes in a human-readable format and [send it out to the mailing list](http://eepurl.com/Kc155).
+
+# 2016
+## January
+
+- [vitamin D for longevity](/Longevity#vitamin-d)
+- ["The Power of Twins: Revisiting Student's Scottish Milk Experiment Example"](/Statistical%20notes#the-power-of-twins-revisiting-students-scottish-milk-experiment-example)
 
 # 2015
 ## December
 
-- [metformin for life-extension: cost-benefit analysis](http://www.gwern.net/Longevity#metformin)
-- [shell scripts for easy cryptographic timestamping](http://www.gwern.net/Timestamping)
+- [metformin for life-extension: cost-benefit analysis](/Longevity#metformin)
+- [shell scripts for easy cryptographic timestamping](/Timestamping)
 
 ## October
 
-- [When Does The Mail Come? A subjective Bayesian decision-theoretic analysis of local mail delivery times](http://gwern.net/Mail%20delivery)
-- [Dysgenics power analysis: how much genetic data would it take to falsify such claims?](http://www.gwern.net/Statistical%20notes#dysgenics-power-analysis)
+- [When Does The Mail Come? A subjective Bayesian decision-theoretic analysis of local mail delivery times](/Mail%20delivery)
+- [Dysgenics power analysis: how much genetic data would it take to falsify such claims?](/Statistical%20notes#dysgenics-power-analysis)
 
 ## September
 
@@ -51,9 +57,9 @@ So periodically I write up interesting changes in a human-readable format and [s
 
 ## March
 
-- [LLLT self-experiment finished](http://www.gwern.net/Nootropics#experiment-1): no effect (so earlier correlative results were grossly overestimated; I'm starting to expect this from anything non-randomized...)
+- [LLLT self-experiment finished](/Nootropics#experiment-1): no effect (so earlier correlative results were grossly overestimated; I'm starting to expect this from anything non-randomized...)
 - an [ICE subpoena on my Reddit account](https://www.reddit.com/r/DarkNetMarkets/comments/30tudk/psa_5_reddit_accounts_subpoenaed_by_ice/) caused me a good deal of trouble
-- playing with inferring Bayesian networks for my [Zeo](http://www.gwern.net/Statistical%20notes#zeo-sleep-data) & [body weight](http://www.gwern.net/Statistical%20notes#daily-weight-data-graph) data (powerful generalization of SEMs, but requires a lot of data before networks stabilize)
+- playing with inferring Bayesian networks for my [Zeo](/Statistical%20notes#zeo-sleep-data) & [body weight](/Statistical%20notes#daily-weight-data-graph) data (powerful generalization of SEMs, but requires a lot of data before networks stabilize)
 
 ## February
 
@@ -90,26 +96,26 @@ Personal:
 
 QS:
 
-- [Noopept experiment](http://gwern.net/Nootropics#noopept-followup-experiment) (no benefits)
-- [Treadmill spaced repetition experiment](http://www.gwern.net/Treadmill#treadmill-effect-on-spaced-repetition-performance-randomized-experiment): expanded analysis to cover treadmill's impact on successive reviews with SEM (no additional damage to recall beyond that implied by the original damage)
+- [Noopept experiment](/Nootropics#noopept-followup-experiment) (no benefits)
+- [Treadmill spaced repetition experiment](/Treadmill#treadmill-effect-on-spaced-repetition-performance-randomized-experiment): expanded analysis to cover treadmill's impact on successive reviews with SEM (no additional damage to recall beyond that implied by the original damage)
 
 Stats:
 
-- anthology on how ["everything is correlated"](http://www.gwern.net/Causality#everything-correlates-with-everything)
-- probability/gerontology problem: can one visit 566 centenarians before any die? [No.](http://www.gwern.net/Statistical%20notes#the-traveling-gerontologist-problem)
+- anthology on how ["everything is correlated"](/Causality#everything-correlates-with-everything)
+- probability/gerontology problem: can one visit 566 centenarians before any die? [No.](/Statistical%20notes#the-traveling-gerontologist-problem)
 
 Technology:
 
 - ["Effective Use of arbtt"](http://arbtt.nomeata.de/doc/users_guide/effective-use.html):
 
     My window tracker/time-logger of choice is [arbtt](http://arbtt.nomeata.de/) which records X window info for later classification and analysis; but one of the challenges is you don't know how to set up arbtt or improve your environment or write classifications rules. So I wrote a tutorial.
-- [Time-lock crypto](http://www.gwern.net/Self-decrypting%20files): wrote a Bash implementation of serial hashing time-lock crypto, link to all known implementations of hash time-lock crypto
+- [Time-lock crypto](/Self-decrypting%20files): wrote a Bash implementation of serial hashing time-lock crypto, link to all known implementations of hash time-lock crypto
 
 ## August
 
-- Nootropics: [initial results on LLLT](http://gwern.net/Nootropics#lllt), correlates with large increases; began followup randomized experiment
-- purchased a [North Paw compass belt](http://www.gwern.net/Notes#north-paw)
-- some thoughts [on _Robinson Crusoe_](http://www.gwern.net/Notes#robinson-crusoe)
+- Nootropics: [initial results on LLLT](/Nootropics#lllt), correlates with large increases; began followup randomized experiment
+- purchased a [North Paw compass belt](/Notes#north-paw)
+- some thoughts [on _Robinson Crusoe_](/Notes#robinson-crusoe)
 
 ## July
 
