@@ -66,7 +66,7 @@ Shulman & Bostrom's upper bound works as follows:
 > 1 in 100     18.8
 > 1 in 1000    24.3
 
-That is, adult intelligence is heritable at ~0.8; a SNP chip records the few hundred thousand most common genetic variants in the population and treating each gene as having a simple additive increase-or-decrease effect on intelligence, Davies et al 2011's GCTA (Genome-wide complex trait analysis) estimates that those SNPs are responsible for 0.51 of variance; since siblings descend from the same two parents, they will share half the variants and differ on the rest, so the SNPs can only predict up to 0.25 between siblings and siblings are analogous to multiple embryos being considered for implantation in IVF; simulate _n_ embryos by drawing from a normal distribution with a SD of 0.7 or 10.5 IQ points and selecting the highest, and with various _n_, you get something like the table.
+That is, adult intelligence is heritable at ~0.8; a SNP chip records the few hundred thousand most common genetic variants in the population and treating each gene as having a simple additive increase-or-decrease effect on intelligence, Davies et al 2011's GCTA (Genome-wide complex trait analysis) estimates that those SNPs are responsible for 0.51 of variance; since siblings descend from the same two parents, they will share half the variants (just like dizygotic twins) and differ on the rest, so the SNPs can only predict up to 0.25 between siblings and siblings are analogous to multiple embryos being considered for implantation in IVF; simulate _n_ embryos by drawing from a normal distribution with a SD of 0.7 or 10.5 IQ points and selecting the highest, and with various _n_, you get something like the table.
 
 GCTA tells us how much the SNPs would explain if we knew all their effects exactly, but in practice, there are so many SNPs (likely into the thousands) affecting intelligence, only a few are known to a high level of confidence, and the rest will take much larger samples to pin down, so the table represents an upper limit to SNP-based approaches - to approach the 0.51, we will need large sample sizes, and to exceed it and approach the 0.8, we will need whole genomes and models which can go beyond additive estimates to model interactions (like genes which only increase intelligence in the presence of particular other variants).
 
@@ -393,8 +393,23 @@ sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb)
 https://www.addgene.org/crispr/reference/
 http://www.genome.gov/sequencingcosts/
 https://crispr.bme.gatech.edu/
+low, near zero mutation rates: "High-fidelity CRISPR–Cas9 nucleases with no detectable genome-wide off-target effects" Kleinstiver et al 2016, /docs/genetics/2016-kleinstiver.pdf ; "Rationally engineered Cas9 nucleases with improved specificity", Slaymaker et al 2016 /docs/genetics/2016-slaymaker.pdf
 cost of the top variants?
 want to edit all variants such that:
 sequencing-based edit: posterior mean * value of IQ point > cost of 1 edit
 for blind edits: probability of the bad variant * posterior mean * value of IQ point > cost of 1 edit
+
+previous: Liang et al 2015 "CRISPR/Cas9-mediated gene editing in human tripronuclear zygotes" http://download.springer.com/static/pdf/629/art%253A10.1007%252Fs13238-015-0153-5.pdf http://www.nature.com/news/chinese-scientists-genetically-modify-human-embryos-1.17378
+
+legal in USA (no legislation), legal in China (only 'unenforceable guidelines') as of 2014, according to "International regulatory landscape and integration of corrective genome editing into in vitro fertilization", Araki & Ishii 2014 http://rbej.biomedcentral.com/articles/10.1186/1477-7827-12-108
+as of 2015 too according to http://www.nature.com/news/where-in-the-world-could-the-first-crispr-baby-be-born-1.18542
+illegal in the UK but they have given permission to modify human embryos for research http://www.popsci.com/scientists-get-government-approval-to-edit-human-embryos?
+
+problem: what's the probability of non-causal tagging due to LD? probably low since they work cross-racially don't they? on the other hand: http://emilkirkegaard.dk/en/?p=5415
+"If the GWAS SNPs owe their predictive power to being actual causal variants, then LD is irrelevant and they should predict the relevant outcome in any racial group. If however they owe wholly or partly their predictive power to just being statistically related to causal variants, they should be relatively worse predictors in racial groups that are most distantly related. One can investigate this by comparing the predictive power of GWAS betas derived from one population on another population. Since there are by now 1000s of GWAS, meta-analyses have in fact made such comparisons, mostly for disease traits. Two reviews found substantial cross-validity for the Eurasian population (Europeans and East Asians), and less for Africans (usually African Americans) (23,24). The first review only relied on SNPs with p<α and found weaker results. This is expected because using only these is a threshold effect, as discussed earlier.
+
+The second review (from 2013; 299 included GWAS) found much stronger results, probably because it included more SNPs and because they also adjusted for statistical power. Doing so, they found that: ~100% of SNPs replicate in other European samples when accounting for statistical power, ~80% in East Asian samples but only ~10% in the African American sample (not adjusted for statistical power, which was ~60% on average). There were fairly few GWAS for AAs however, so some caution is needed in interpreting the number. Still, this throws some doubt on the usefulness of GWAS results from Europeans or Asians used on African samples (or reversely)."
+
+23. Ntzani EE, Liberopoulos G, Manolio TA, Ioannidis JPA. "Consistency of genome-wide associations across major ancestral groups" /docs/genetics/2012-ntzani.pdf . Hum Genet. 2011 Dec 20;131(7):1057–71.
+24. Marigorta UM, Navarro A. High Trans-ethnic Replicability of GWAS Results Implies Common Causal Variants. PLoS Genet [Internet]. 2013 Jun [cited 2015 Aug 31];9(6). http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3681663/
 -->
