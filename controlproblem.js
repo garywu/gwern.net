@@ -62,7 +62,6 @@ function dump_env(environment) {
     }
     tbl.append(tr);
   }
-  log("State:");
   log(tbl);
 }
 
@@ -151,7 +150,7 @@ function Run() {
     learning_steps_per_iteration: 10,
     experience_size: 20000,
     alpha: 0.01,
-    epsilon: 0.90,
+    epsilon: 1.0,
     gamma: 0.99 // minimal discounting
   };
   var agent = new RL.DQNAgent(env, spec);
@@ -168,18 +167,15 @@ function Run() {
         steps_since_reset = 0;
       }
 
-      reset_log();
-      log("<hr>");
-      log("i = "+i);
-
       var action = agent.act(state.list.push(state.already_rewarded));
       moveBot(state, action);
       reward = checkReward(state);
       total_reward += reward.reward
 
       // visualize the result:
+      reset_log();
       dump_env(state);
-      log("Total reward: " + total_reward + "; Action: " + action + "; rewarded: " + (state.already_rewarded?"yes":"no")+ "; " + steps_since_reset+" steps since reset");
+      log("i = " + i + "; total reward: " + total_reward + "; epsilon: " + spec.epsilon + "; Action: " + action + "; rewarded: " + (state.already_rewarded?"yes":"no")+ "; " + steps_since_reset+" steps since reset" );
 
       // shrink epsilon/exploration rate every order of magnitude moves:
       if (Number.isInteger(Math.log(i) / Math.log(10)) ) { spec.epsilon = spec.epsilon / 2; }
