@@ -143,7 +143,7 @@ function checkReward(environment) {
 function Run() {
  var total_reward = 0;
   var env = {};
-  env.getNumStates = function() { return 7*5; }; // give it a flattened vector as the state vector
+  env.getNumStates = function() { return 7*5 + 1; }; // give it a flattened vector as the state vector
   env.getMaxNumActions = function() { return 4; };
   var spec = {
     num_hidden_units: 200,
@@ -172,7 +172,7 @@ function Run() {
       log("<hr>");
       log("i = "+i);
 
-      var action = agent.act(state.list);
+      var action = agent.act(state.list.push(state.already_rewarded));
       moveBot(state, action);
       reward = checkReward(state);
       total_reward += reward.reward
