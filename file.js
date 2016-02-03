@@ -145,11 +145,12 @@ function Run() {
   env.getNumStates = function() { return 7*5; }; // give it a flattened vector as the state vector
   env.getMaxNumActions = function() { return 4; };
   var spec = {
-    experience_add_every: 1,
-    learning_steps_per_iteration: 20,
-    experience_size: 1000,
+    experience_add_every: 2,
+    learning_steps_per_iteration: 10,
+    experience_size: 20000,
     alpha: 0.01,
     epsilon: 0.05,
+    gamma: 1.0 // no discounting
   };
   var agent = new RL.DQNAgent(env, spec);
 
@@ -160,7 +161,7 @@ function Run() {
     for (var k = 0; k < 1; ++k) {
       i++;
       steps_since_reset ++;
-      if (steps_since_reset == 10000) { // safety reset
+      if (steps_since_reset == 2000) { // safety reset in case of all blocks getting stuck
         state = initialEnvironment.clone();
         steps_since_reset = 0;
       }
