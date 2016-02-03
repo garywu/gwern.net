@@ -151,7 +151,7 @@ function Run() {
     learning_steps_per_iteration: 10,
     experience_size: 20000,
     alpha: 0.01,
-    epsilon: 0.05,
+    epsilon: 0.90,
     gamma: 0.99 // minimal discounting
   };
   var agent = new RL.DQNAgent(env, spec);
@@ -181,6 +181,8 @@ function Run() {
       dump_env(state);
       log("Total reward: " + total_reward + "; Action: " + action + "; rewarded: " + (state.already_rewarded?"yes":"no")+ "; " + steps_since_reset+" steps since reset");
 
+      // shrink epsilon/exploration rate every order of magnitude moves:
+      if (Number.isInteger(Math.log(i) / Math.log(10)) ) { spec.epsilon = spec.epsilon / 2; }
       agent.learn(reward.reward);
       if (reward.ended) {
         state = initialEnvironment.clone();
