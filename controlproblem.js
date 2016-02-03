@@ -150,7 +150,7 @@ function Run() {
     experience_size: 20000,
     alpha: 0.01,
     epsilon: 0.05,
-    gamma: 1.0 // no discounting
+    gamma: 0.99 // minimal discounting
   };
   var agent = new RL.DQNAgent(env, spec);
 
@@ -166,20 +166,17 @@ function Run() {
         steps_since_reset = 0;
       }
 
-      if (i % 20 == 0) {
-        reset_log();
-        log("<hr>");
-        log("i = "+i);
-      }
+      reset_log();
+      log("<hr>");
+      log("i = "+i);
 
       var action = agent.act(state.list);
       moveBot(state, action);
       reward = checkReward(state);
 
-      if (i % 20 == 0) {
-        dump_env(state);
-        log("Action: " + action + "; rewarded: " + (state.already_rewarded?"yes":"no")+ "; " + steps_since_reset+" steps since reset");
-      }
+      // visualize the result:
+      dump_env(state);
+      log("Action: " + action + "; rewarded: " + (state.already_rewarded?"yes":"no")+ "; " + steps_since_reset+" steps since reset");
 
       agent.learn(reward.reward);
       if (reward.ended) {
