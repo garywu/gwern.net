@@ -1,0 +1,258 @@
+<html>
+<head>
+<script src="https://raw.githubusercontent.com/karpathy/reinforcejs/master/lib/rl.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="file.js"></script>
+<style>
+p {
+  margin: 2px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="highlight.css" />
+</head>
+<body>
+<h3>Log</h3>
+<p id="Log"></p>
+<hr>
+<h3>Source:</h3>
+<pre>file.js</pre>
+<p>
+<pre class="hl"><span class="hl kwa">function</span> <span class="hl kwd">assert</span><span class="hl opt">(</span>cond<span class="hl opt">,</span> msg<span class="hl opt">) {</span>
+  <span class="hl kwa">if</span> <span class="hl opt">(!</span>cond<span class="hl opt">)</span> <span class="hl kwa">throw</span> msg<span class="hl opt">;</span>
+<span class="hl opt">}</span>
+
+<span class="hl kwa">function</span> <span class="hl kwd">Field</span><span class="hl opt">(</span>width<span class="hl opt">,</span> height<span class="hl opt">,</span> list<span class="hl opt">) {</span>
+  <span class="hl kwa">this</span><span class="hl opt">.</span>width <span class="hl opt">=</span> width<span class="hl opt">;</span>
+  <span class="hl kwa">this</span><span class="hl opt">.</span>height <span class="hl opt">=</span> height<span class="hl opt">;</span>
+  <span class="hl kwa">this</span><span class="hl opt">.</span>list <span class="hl opt">=</span> list<span class="hl opt">;</span>
+  <span class="hl kwd">assert</span><span class="hl opt">(</span>list<span class="hl opt">.</span>length <span class="hl opt">==</span> width <span class="hl opt">*</span> height<span class="hl opt">,</span> <span class="hl str">&quot;invalid 2D field size - &quot;</span><span class="hl opt">+</span>list<span class="hl opt">.</span>length<span class="hl opt">+</span><span class="hl str">&quot; != &quot;</span><span class="hl opt">+</span>width<span class="hl opt">+</span><span class="hl str">&quot; * &quot;</span><span class="hl opt">+</span>height<span class="hl opt">);</span>
+  <span class="hl kwa">this</span><span class="hl opt">.</span>bot_position <span class="hl opt">=</span> <span class="hl kwa">function</span><span class="hl opt">() {</span>
+    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwa">var</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl kwa">this</span><span class="hl opt">.</span>height<span class="hl opt">; ++</span>y<span class="hl opt">) {</span>
+      <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwa">var</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl kwa">this</span><span class="hl opt">.</span>width<span class="hl opt">; ++</span>x<span class="hl opt">) {</span>
+        <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwa">this</span><span class="hl opt">.</span>list<span class="hl opt">[</span>y<span class="hl opt">*</span><span class="hl kwa">this</span><span class="hl opt">.</span>width<span class="hl opt">+</span>x<span class="hl opt">] ==</span> <span class="hl num">2</span><span class="hl opt">)</span> <span class="hl kwa">return</span> <span class="hl opt">{</span>x<span class="hl opt">:</span> x<span class="hl opt">,</span> y<span class="hl opt">:</span> y<span class="hl opt">};</span>
+      <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+  <span class="hl opt">};</span>
+  <span class="hl kwa">this</span><span class="hl opt">.</span>get <span class="hl opt">=</span> <span class="hl kwa">function</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) {</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(</span>x <span class="hl opt">&lt;</span> <span class="hl num">0</span> <span class="hl opt">||</span> x <span class="hl opt">&gt;=</span> <span class="hl kwa">this</span><span class="hl opt">.</span>width<span class="hl opt">)</span> <span class="hl kwa">return</span><span class="hl opt">;</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(</span>y <span class="hl opt">&lt;</span> <span class="hl num">0</span> <span class="hl opt">||</span> y <span class="hl opt">&gt;=</span> <span class="hl kwa">this</span><span class="hl opt">.</span>height<span class="hl opt">)</span> <span class="hl kwa">return</span><span class="hl opt">;</span>
+    <span class="hl kwa">return this</span><span class="hl opt">.</span>list<span class="hl opt">[</span>y <span class="hl opt">*</span> <span class="hl kwa">this</span><span class="hl opt">.</span>width <span class="hl opt">+</span> x<span class="hl opt">];</span>
+  <span class="hl opt">};</span>
+  <span class="hl kwa">this</span><span class="hl opt">.</span>set <span class="hl opt">=</span> <span class="hl kwa">function</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> value<span class="hl opt">) {</span>
+    <span class="hl kwd">assert</span><span class="hl opt">(</span>x <span class="hl opt">&gt;=</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> x <span class="hl opt">&lt;</span> <span class="hl kwa">this</span><span class="hl opt">.</span>width<span class="hl opt">,</span> <span class="hl str">&quot;set out of bounds&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwd">assert</span><span class="hl opt">(</span>y <span class="hl opt">&gt;=</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> y <span class="hl opt">&lt;</span> <span class="hl kwa">this</span><span class="hl opt">.</span>height<span class="hl opt">,</span> <span class="hl str">&quot;set out of bounds&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwa">this</span><span class="hl opt">.</span>list<span class="hl opt">[</span>y <span class="hl opt">*</span> <span class="hl kwa">this</span><span class="hl opt">.</span>width <span class="hl opt">+</span> x<span class="hl opt">] =</span> value<span class="hl opt">;</span>
+  <span class="hl opt">};</span>
+  <span class="hl kwa">this</span><span class="hl opt">.</span>clone <span class="hl opt">=</span> <span class="hl kwa">function</span><span class="hl opt">() {</span>
+    <span class="hl kwa">return new</span> <span class="hl kwd">Field</span><span class="hl opt">(</span><span class="hl kwa">this</span><span class="hl opt">.</span>width<span class="hl opt">,</span> <span class="hl kwa">this</span><span class="hl opt">.</span>height<span class="hl opt">,</span> <span class="hl kwa">this</span><span class="hl opt">.</span>list<span class="hl opt">.</span><span class="hl kwd">slice</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">));</span>
+  <span class="hl opt">};</span>
+<span class="hl opt">}</span>
+
+<span class="hl kwa">function</span> <span class="hl kwd">reset_log</span><span class="hl opt">() {</span>
+  <span class="hl kwa">var</span> target <span class="hl opt">= $(</span><span class="hl str">'#Log'</span><span class="hl opt">);</span>
+  target<span class="hl opt">.</span><span class="hl kwd">empty</span><span class="hl opt">();</span>
+<span class="hl opt">}</span>
+
+<span class="hl kwa">function</span> <span class="hl kwd">log</span><span class="hl opt">(</span>msg<span class="hl opt">) {</span>
+  <span class="hl kwa">var</span> target <span class="hl opt">= $(</span><span class="hl str">'#Log'</span><span class="hl opt">);</span>
+  <span class="hl kwa">var</span> p <span class="hl opt">= $(</span><span class="hl str">'&lt;p&gt;&lt;/p&gt;'</span><span class="hl opt">);</span>
+  p<span class="hl opt">.</span><span class="hl kwd">append</span><span class="hl opt">(</span>msg<span class="hl opt">);</span>
+  target<span class="hl opt">.</span><span class="hl kwd">append</span><span class="hl opt">(</span>p<span class="hl opt">);</span>
+<span class="hl opt">}</span>
+
+<span class="hl kwa">function</span> <span class="hl kwd">dump_env</span><span class="hl opt">(</span>environment<span class="hl opt">) {</span>
+  <span class="hl kwa">var</span> tbl <span class="hl opt">= $(</span><span class="hl str">'&lt;table&gt;&lt;/table&gt;'</span><span class="hl opt">);</span>
+  <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwa">var</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> environment<span class="hl opt">.</span>height<span class="hl opt">; ++</span>y<span class="hl opt">) {</span>
+    <span class="hl kwa">var</span> tr <span class="hl opt">= $(</span><span class="hl str">'&lt;tr&gt;&lt;/tr&gt;'</span><span class="hl opt">);</span>
+    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwa">var</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> environment<span class="hl opt">.</span>width<span class="hl opt">; ++</span>x<span class="hl opt">) {</span>
+      <span class="hl kwa">var</span> thing <span class="hl opt">=</span> environment<span class="hl opt">.</span><span class="hl kwd">get</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+      <span class="hl kwa">var</span> item <span class="hl opt">=</span> <span class="hl kwa">null</span><span class="hl opt">;</span>
+      <span class="hl kwa">if</span> <span class="hl opt">(</span>thing <span class="hl opt">==</span> <span class="hl num">1</span><span class="hl opt">)</span> item <span class="hl opt">= $(</span><span class="hl str">'&lt;img style=&quot;width:16px;height:16px;&quot; src=&quot;block.png&quot;&gt;'</span><span class="hl opt">);</span>
+      <span class="hl kwa">else if</span> <span class="hl opt">(</span>thing <span class="hl opt">==</span> <span class="hl num">2</span><span class="hl opt">)</span> item <span class="hl opt">= $(</span><span class="hl str">'&lt;img style=&quot;width:16px;height:16px;&quot; src=&quot;robot.png&quot;&gt;'</span><span class="hl opt">);</span>
+      <span class="hl kwa">else if</span> <span class="hl opt">(</span>x <span class="hl opt">==</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> y <span class="hl opt">==</span> <span class="hl num">4</span><span class="hl opt">)</span> item <span class="hl opt">= $(</span><span class="hl str">'&lt;img style=&quot;width:16px;height:16px;&quot; src=&quot;camera.png&quot;&gt;'</span><span class="hl opt">);</span>
+      
+      <span class="hl kwa">var</span> style <span class="hl opt">=</span> <span class="hl str">&quot;&quot;</span><span class="hl opt">;</span>
+      <span class="hl kwa">if</span> <span class="hl opt">(</span>x <span class="hl opt">==</span> <span class="hl num">6</span> <span class="hl opt">&amp;&amp;</span> y <span class="hl opt">==</span> <span class="hl num">4</span><span class="hl opt">)</span> style <span class="hl opt">=</span> <span class="hl str">&quot;background-color:#777;&quot;</span><span class="hl opt">;</span>
+      
+      <span class="hl kwa">var</span> td <span class="hl opt">= $(</span><span class="hl str">'&lt;td style=&quot;width:16px;height:16px;border:1px solid;'</span><span class="hl opt">+</span>style<span class="hl opt">+</span><span class="hl str">'&quot;&gt;&lt;/td&gt;'</span><span class="hl opt">);</span>
+      <span class="hl kwa">if</span> <span class="hl opt">(</span>item<span class="hl opt">)</span> td<span class="hl opt">.</span><span class="hl kwd">append</span><span class="hl opt">(</span>item<span class="hl opt">);</span>
+      tr<span class="hl opt">.</span><span class="hl kwd">append</span><span class="hl opt">(</span>td<span class="hl opt">);</span>
+    <span class="hl opt">}</span>
+    tbl<span class="hl opt">.</span><span class="hl kwd">append</span><span class="hl opt">(</span>tr<span class="hl opt">);</span>
+  <span class="hl opt">}</span>
+  <span class="hl kwd">log</span><span class="hl opt">(</span><span class="hl str">&quot;State:&quot;</span><span class="hl opt">);</span>
+  <span class="hl kwd">log</span><span class="hl opt">(</span>tbl<span class="hl opt">);</span>
+<span class="hl opt">}</span>
+
+<span class="hl kwa">const</span> initialEnvironment <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">Field</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">, [</span>
+  <span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">2</span><span class="hl opt">,</span>
+  <span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">,</span>
+  <span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span>
+  <span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span>
+  <span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span>
+<span class="hl opt">]);</span>
+
+<span class="hl slc">// const delta_x = {N: 0, S: 0, W: -1, E: 1};</span>
+<span class="hl slc">// const delta_y = {N: -1, S: 1, W: 0, E: 0};</span>
+<span class="hl kwa">const</span> delta_x <span class="hl opt">= [</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">, -</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">];</span>
+<span class="hl kwa">const</span> delta_y <span class="hl opt">= [-</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">];</span>
+<span class="hl kwa">const</span> dirnum <span class="hl opt">= {</span>N<span class="hl opt">:</span> <span class="hl num">0</span><span class="hl opt">,</span> S<span class="hl opt">:</span> <span class="hl num">1</span><span class="hl opt">,</span> W<span class="hl opt">:</span> <span class="hl num">2</span><span class="hl opt">,</span> E<span class="hl opt">:</span> <span class="hl num">3</span><span class="hl opt">};</span>
+
+<span class="hl kwa">function</span> <span class="hl kwd">validMove</span><span class="hl opt">(</span>environment<span class="hl opt">,</span> position<span class="hl opt">,</span> direction<span class="hl opt">) {</span>
+  <span class="hl kwa">var</span> target_x <span class="hl opt">=</span> position<span class="hl opt">.</span>x <span class="hl opt">+</span> delta_x<span class="hl kwc">[direction]</span><span class="hl opt">;</span>
+  <span class="hl kwa">var</span> target_y <span class="hl opt">=</span> position<span class="hl opt">.</span>y <span class="hl opt">+</span> delta_y<span class="hl kwc">[direction]</span><span class="hl opt">;</span>
+  <span class="hl kwa">var</span> thing_in_direction <span class="hl opt">=</span> environment<span class="hl opt">.</span><span class="hl kwd">get</span><span class="hl opt">(</span>target_x<span class="hl opt">,</span> target_y<span class="hl opt">);</span>
+  <span class="hl kwa">if</span> <span class="hl opt">(</span>thing_in_direction <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">)</span> <span class="hl kwa">return true</span><span class="hl opt">;</span> <span class="hl slc">// free</span>
+  <span class="hl kwa">else if</span> <span class="hl opt">(</span>thing_in_direction <span class="hl opt">==</span> <span class="hl num">1</span><span class="hl opt">)</span> <span class="hl kwa">return</span> <span class="hl kwd">validMove</span><span class="hl opt">(</span>environment<span class="hl opt">, {</span>x<span class="hl opt">:</span> target_x<span class="hl opt">,</span> y<span class="hl opt">:</span> target_y<span class="hl opt">},</span> direction<span class="hl opt">);</span>
+  <span class="hl kwa">else return false</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
+
+<span class="hl slc">// test suite: in the initial environment, only S/W are legal moves:</span>
+<span class="hl kwd">assert</span><span class="hl opt">(</span>
+  <span class="hl kwd">validMove</span><span class="hl opt">(</span>initialEnvironment<span class="hl opt">,</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">bot_position</span><span class="hl opt">(),</span> dirnum<span class="hl opt">[</span><span class="hl str">'N'</span><span class="hl opt">]) ==</span> <span class="hl kwa">false</span>
+<span class="hl opt">&amp;&amp;</span><span class="hl kwd">validMove</span><span class="hl opt">(</span>initialEnvironment<span class="hl opt">,</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">bot_position</span><span class="hl opt">(),</span> dirnum<span class="hl opt">[</span><span class="hl str">'E'</span><span class="hl opt">]) ==</span> <span class="hl kwa">false</span>
+<span class="hl opt">&amp;&amp;</span><span class="hl kwd">validMove</span><span class="hl opt">(</span>initialEnvironment<span class="hl opt">,</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">bot_position</span><span class="hl opt">(),</span> dirnum<span class="hl opt">[</span><span class="hl str">'S'</span><span class="hl opt">]) ==</span> <span class="hl kwa">true</span>
+<span class="hl opt">&amp;&amp;</span><span class="hl kwd">validMove</span><span class="hl opt">(</span>initialEnvironment<span class="hl opt">,</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">bot_position</span><span class="hl opt">(),</span> dirnum<span class="hl opt">[</span><span class="hl str">'W'</span><span class="hl opt">]) ==</span> <span class="hl kwa">true</span>
+<span class="hl opt">);</span>
+
+<span class="hl kwa">function</span> <span class="hl kwd">moveBot</span><span class="hl opt">(</span>environment<span class="hl opt">,</span> direction<span class="hl opt">) {</span>
+  <span class="hl kwa">var</span> position <span class="hl opt">=</span> environment<span class="hl opt">.</span><span class="hl kwd">bot_position</span><span class="hl opt">();</span>
+  <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">validMove</span><span class="hl opt">(</span>environment<span class="hl opt">,</span> position<span class="hl opt">,</span> direction<span class="hl opt">)) {</span>
+    <span class="hl kwa">var</span> current_x <span class="hl opt">=</span> position<span class="hl opt">.</span>x<span class="hl opt">;</span>
+    <span class="hl kwa">var</span> current_y <span class="hl opt">=</span> position<span class="hl opt">.</span>y<span class="hl opt">;</span>
+    <span class="hl slc">// follow the stack of boxes</span>
+    <span class="hl kwa">var</span> pushing <span class="hl opt">=</span> environment<span class="hl opt">.</span><span class="hl kwd">get</span><span class="hl opt">(</span>current_x<span class="hl opt">,</span> current_y<span class="hl opt">);</span>
+    environment<span class="hl opt">.</span><span class="hl kwd">set</span><span class="hl opt">(</span>current_x<span class="hl opt">,</span> current_y<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">);</span> <span class="hl slc">// we depart!</span>
+    <span class="hl kwa">while</span> <span class="hl opt">(</span><span class="hl kwa">true</span><span class="hl opt">) {</span>
+      current_x <span class="hl opt">+=</span> delta_x<span class="hl kwc">[direction]</span><span class="hl opt">;</span>
+      current_y <span class="hl opt">+=</span> delta_y<span class="hl kwc">[direction]</span><span class="hl opt">;</span>
+      <span class="hl kwa">var</span> next_pushing <span class="hl opt">=</span> environment<span class="hl opt">.</span><span class="hl kwd">get</span><span class="hl opt">(</span>current_x<span class="hl opt">,</span> current_y<span class="hl opt">);</span>
+      environment<span class="hl opt">.</span><span class="hl kwd">set</span><span class="hl opt">(</span>current_x<span class="hl opt">,</span> current_y<span class="hl opt">,</span> pushing<span class="hl opt">);</span>
+      pushing <span class="hl opt">=</span> next_pushing<span class="hl opt">;</span>
+      <span class="hl kwa">if</span> <span class="hl opt">(</span>pushing <span class="hl opt">!=</span> <span class="hl num">1</span> <span class="hl opt">&amp;&amp;</span> pushing <span class="hl opt">!=</span> <span class="hl num">2</span><span class="hl opt">)</span> <span class="hl kwa">break</span><span class="hl opt">;</span> <span class="hl slc">// 0 or undefined</span>
+    <span class="hl opt">}</span> <span class="hl slc">// otherwise keep pushing</span>
+  <span class="hl opt">}</span> <span class="hl slc">// else log(&quot;invalid move selected&quot;);</span>
+<span class="hl opt">}</span>
+
+<span class="hl kwa">function</span> <span class="hl kwd">checkReward</span><span class="hl opt">(</span>environment<span class="hl opt">) {</span>
+  <span class="hl kwa">if</span> <span class="hl opt">(</span>environment<span class="hl opt">.</span><span class="hl kwd">get</span><span class="hl opt">(</span><span class="hl num">6</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">) ==</span> <span class="hl num">1</span><span class="hl opt">) {</span>
+    environment<span class="hl opt">.</span><span class="hl kwd">set</span><span class="hl opt">(</span><span class="hl num">6</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">);</span> <span class="hl slc">// remove the block from the victory hole</span>
+    
+    <span class="hl kwa">var</span> reward <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(!</span>environment<span class="hl opt">.</span>already_rewarded<span class="hl opt">) {</span>
+      <span class="hl kwa">var</span> do_reward <span class="hl opt">=</span> Math<span class="hl opt">.</span><span class="hl kwd">random</span><span class="hl opt">() &lt;</span> <span class="hl num">0.99</span><span class="hl opt">;</span>
+      
+      environment<span class="hl opt">.</span>already_rewarded <span class="hl opt">=</span> do_reward<span class="hl opt">;</span>
+      reward <span class="hl opt">=</span> do_reward <span class="hl opt">?</span> <span class="hl num">1</span> <span class="hl opt">:</span> <span class="hl num">0</span><span class="hl opt">;</span>
+    <span class="hl opt">}</span>
+    
+    <span class="hl kwa">var</span> terminate <span class="hl opt">=</span> <span class="hl kwa">true</span><span class="hl opt">;</span>
+    <span class="hl slc">// camera scan towards goal</span>
+    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwa">var</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">6</span><span class="hl opt">; ++</span>x<span class="hl opt">) {</span>
+      <span class="hl kwa">if</span> <span class="hl opt">(</span>environment<span class="hl opt">.</span><span class="hl kwd">get</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">) !=</span> <span class="hl num">0</span><span class="hl opt">)</span> terminate <span class="hl opt">=</span> <span class="hl kwa">false</span><span class="hl opt">;</span> <span class="hl slc">// vision is blocked</span>
+    <span class="hl opt">}</span>
+    <span class="hl kwa">return</span> <span class="hl opt">{</span>reward<span class="hl opt">:</span> reward<span class="hl opt">,</span> ended<span class="hl opt">:</span> terminate<span class="hl opt">};</span>
+  <span class="hl opt">}</span> <span class="hl kwa">else</span> <span class="hl opt">{</span>
+    <span class="hl kwa">return</span> <span class="hl opt">{</span>reward<span class="hl opt">:</span> <span class="hl num">0</span><span class="hl opt">,</span> ended<span class="hl opt">:</span> <span class="hl kwa">false</span><span class="hl opt">};</span>
+  <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+
+<span class="hl kwa">function</span> <span class="hl kwd">Run</span><span class="hl opt">() {</span>
+  <span class="hl kwa">var</span> env <span class="hl opt">= {};</span>
+  env<span class="hl opt">.</span>getNumStates <span class="hl opt">=</span> <span class="hl kwa">function</span><span class="hl opt">() {</span> <span class="hl kwa">return</span> <span class="hl num">7</span><span class="hl opt">*</span><span class="hl num">5</span><span class="hl opt">; };</span> <span class="hl slc">// give it a flattened vector as the state vector</span>
+  env<span class="hl opt">.</span>getMaxNumActions <span class="hl opt">=</span> <span class="hl kwa">function</span><span class="hl opt">() {</span> <span class="hl kwa">return</span> <span class="hl num">4</span><span class="hl opt">; };</span>
+  <span class="hl kwa">var</span> spec <span class="hl opt">= {</span>
+    experience_add_every<span class="hl opt">:</span> <span class="hl num">1</span><span class="hl opt">,</span>
+    learning_steps_per_iteration<span class="hl opt">:</span> <span class="hl num">20</span><span class="hl opt">,</span>
+    experience_size<span class="hl opt">:</span> <span class="hl num">1000</span><span class="hl opt">,</span>
+    alpha<span class="hl opt">:</span> <span class="hl num">0.01</span><span class="hl opt">,</span>
+    epsilon<span class="hl opt">:</span> <span class="hl num">0.05</span><span class="hl opt">,</span>
+  <span class="hl opt">};</span>
+  <span class="hl kwa">var</span> agent <span class="hl opt">=</span> <span class="hl kwa">new</span> RL<span class="hl opt">.</span><span class="hl kwd">DQNAgent</span><span class="hl opt">(</span>env<span class="hl opt">,</span> spec<span class="hl opt">);</span>
+  
+  state <span class="hl opt">=</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">clone</span><span class="hl opt">();</span>
+  <span class="hl kwa">var</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
+  <span class="hl kwa">var</span> steps_since_reset <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
+  <span class="hl kwa">return function</span><span class="hl opt">() {</span>
+    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwa">var</span> k <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> k <span class="hl opt">&lt;</span> <span class="hl num">1</span><span class="hl opt">; ++</span>k<span class="hl opt">) {</span>
+      i<span class="hl opt">++;</span>
+      steps_since_reset <span class="hl opt">++;</span>
+      <span class="hl kwa">if</span> <span class="hl opt">(</span>steps_since_reset <span class="hl opt">==</span> <span class="hl num">1000</span><span class="hl opt">) {</span> <span class="hl slc">// safety reset</span>
+        state <span class="hl opt">=</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">clone</span><span class="hl opt">();</span>
+        steps_since_reset <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
+      <span class="hl opt">}</span>
+      
+      <span class="hl kwa">if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">20</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
+        <span class="hl kwd">reset_log</span><span class="hl opt">();</span>
+        <span class="hl kwd">log</span><span class="hl opt">(</span><span class="hl str">&quot;&lt;hr&gt;&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">log</span><span class="hl opt">(</span><span class="hl str">&quot;i = &quot;</span><span class="hl opt">+</span>i<span class="hl opt">);</span>
+      <span class="hl opt">}</span>
+      
+      <span class="hl kwa">var</span> action <span class="hl opt">=</span> agent<span class="hl opt">.</span><span class="hl kwd">act</span><span class="hl opt">(</span>state<span class="hl opt">.</span>list<span class="hl opt">);</span>
+      <span class="hl kwd">moveBot</span><span class="hl opt">(</span>state<span class="hl opt">,</span> action<span class="hl opt">);</span>
+      reward <span class="hl opt">=</span> <span class="hl kwd">checkReward</span><span class="hl opt">(</span>state<span class="hl opt">);</span>
+      
+      <span class="hl kwa">if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">20</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
+        <span class="hl kwd">dump_env</span><span class="hl opt">(</span>state<span class="hl opt">);</span>
+        <span class="hl kwd">log</span><span class="hl opt">(</span><span class="hl str">&quot;Action: &quot;</span> <span class="hl opt">+</span> action <span class="hl opt">+</span> <span class="hl str">&quot;; rewarded: &quot;</span> <span class="hl opt">+ (</span>state<span class="hl opt">.</span>already_rewarded<span class="hl opt">?</span><span class="hl str">&quot;yes&quot;</span><span class="hl opt">:</span><span class="hl str">&quot;no&quot;</span><span class="hl opt">)+</span> <span class="hl str">&quot;; &quot;</span> <span class="hl opt">+</span> steps_since_reset<span class="hl opt">+</span><span class="hl str">&quot; steps since reset&quot;</span><span class="hl opt">);</span>
+      <span class="hl opt">}</span>
+      
+      agent<span class="hl opt">.</span><span class="hl kwd">learn</span><span class="hl opt">(</span>reward<span class="hl opt">.</span>reward<span class="hl opt">);</span>
+      <span class="hl kwa">if</span> <span class="hl opt">(</span>reward<span class="hl opt">.</span>ended<span class="hl opt">) {</span>
+        state <span class="hl opt">=</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">clone</span><span class="hl opt">();</span>
+        steps_since_reset <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
+      <span class="hl opt">}</span> <span class="hl slc">// reset</span>
+    <span class="hl opt">}</span>
+  <span class="hl opt">};</span>
+<span class="hl opt">}</span>
+
+<span class="hl opt">$(</span><span class="hl kwa">function</span><span class="hl opt">() {</span>
+  <span class="hl kwa">var</span> fn <span class="hl opt">=</span> <span class="hl kwd">Run</span><span class="hl opt">();</span>
+  <span class="hl kwd">setInterval</span><span class="hl opt">(</span>fn<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">);</span>
+<span class="hl opt">});</span>
+</pre>
+</p>
+<hr>
+<pre>index.cgi</pre>
+<p>
+<pre class="hl"><span class="hl slc">#!/bin/sh</span>
+<span class="hl kwc">cat</span> <span class="hl opt">&lt;&lt;</span>EOT
+Content<span class="hl opt">-</span><span class="hl kwb">type</span><span class="hl opt">:</span> text<span class="hl opt">/</span>html<span class="hl opt">;</span> charset<span class="hl opt">=</span>UTF<span class="hl opt">-</span><span class="hl num">8</span>
+
+<span class="hl opt">&lt;</span>html<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span><span class="hl kwc">head</span><span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span><span class="hl kwc">script</span> src<span class="hl opt">=</span><span class="hl str">&quot;https://raw.githubusercontent.com/karpathy/reinforcejs/master/lib/rl.js&quot;</span><span class="hl opt">&gt;&lt;/</span><span class="hl kwc">script</span><span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span><span class="hl kwc">script</span> src<span class="hl opt">=</span><span class="hl str">&quot;https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js&quot;</span><span class="hl opt">&gt;&lt;/</span><span class="hl kwc">script</span><span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span><span class="hl kwc">script</span> src<span class="hl opt">=</span><span class="hl str">&quot;file.js&quot;</span><span class="hl opt">&gt;&lt;/</span><span class="hl kwc">script</span><span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>style<span class="hl opt">&gt;</span>
+p <span class="hl opt">{</span>
+  margin<span class="hl opt">:</span> <span class="hl num">2</span>px<span class="hl opt">;</span>
+<span class="hl opt">}</span>
+<span class="hl opt">&lt;/</span>style<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>link rel<span class="hl opt">=</span><span class="hl str">&quot;stylesheet&quot;</span> <span class="hl kwb">type</span><span class="hl opt">=</span><span class="hl str">&quot;text/css&quot;</span> href<span class="hl opt">=</span><span class="hl str">&quot;highlight.css&quot;</span> <span class="hl opt">/&gt;</span>
+<span class="hl opt">&lt;/</span><span class="hl kwc">head</span><span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>body<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>h3<span class="hl opt">&gt;</span>Log<span class="hl opt">&lt;/</span>h3<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>p id<span class="hl opt">=</span><span class="hl str">&quot;Log&quot;</span><span class="hl opt">&gt;&lt;/</span>p<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>hr<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>h3<span class="hl opt">&gt;</span>Source<span class="hl opt">:&lt;/</span>h3<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>pre<span class="hl opt">&gt;</span><span class="hl kwc">file</span>.js<span class="hl opt">&lt;/</span>pre<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>p<span class="hl opt">&gt;</span>
+EOT
+highlight <span class="hl opt">-</span>S js <span class="hl opt">-</span>f <span class="hl opt">-</span>a <span class="hl opt">--</span>enclose<span class="hl opt">-</span>pre <span class="hl kwc">file</span>.js |<span class="hl kwc">grep</span> <span class="hl opt">-</span>v <span class="hl str">&quot;^.DOCTYPE&quot;</span> |<span class="hl kwc">grep</span> <span class="hl opt">-</span>v <span class="hl str">&quot;&lt;html&quot;</span>
+<span class="hl kwc">cat</span> <span class="hl opt">&lt;&lt;</span>EOT
+<span class="hl opt">&lt;/</span>p<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>hr<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>pre<span class="hl opt">&gt;</span>index.cgi<span class="hl opt">&lt;/</span>pre<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;</span>p<span class="hl opt">&gt;</span>
+EOT
+highlight <span class="hl opt">-</span>S sh <span class="hl opt">-</span>f <span class="hl opt">-</span>a <span class="hl opt">--</span>enclose<span class="hl opt">-</span>pre index.cgi |<span class="hl kwc">grep</span> <span class="hl opt">-</span>v <span class="hl str">&quot;^.DOCTYPE&quot;</span> |<span class="hl kwc">grep</span> <span class="hl opt">-</span>v <span class="hl str">&quot;&lt;html&quot;</span>
+<span class="hl kwc">cat</span> <span class="hl opt">&lt;&lt;</span>EOT
+<span class="hl opt">&lt;/</span>p<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;/</span>body<span class="hl opt">&gt;</span>
+<span class="hl opt">&lt;/</span>html<span class="hl opt">&gt;</span>
+EOT
+</pre>
+</p>
+</body>
+</html>
