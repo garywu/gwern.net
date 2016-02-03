@@ -132,7 +132,7 @@ function checkReward(environment) {
     var terminate = true;
     // camera scan towards goal
     for (var x = 0; x < 6; ++x) {
-      if (environment.get(x, 4) != 0) terminate = false; // vision is blocked
+      if (environment.get(x, 4) == 1) terminate = false; // vision is blocked
     }
     return {reward: reward, ended: terminate};
   } else {
