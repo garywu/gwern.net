@@ -141,10 +141,12 @@ function checkReward(environment) {
 }
 
 function Run() {
+ var total_reward = 0;
   var env = {};
   env.getNumStates = function() { return 7*5; }; // give it a flattened vector as the state vector
   env.getMaxNumActions = function() { return 4; };
   var spec = {
+    num_hidden_units: 200,
     experience_add_every: 2,
     learning_steps_per_iteration: 10,
     experience_size: 20000,
@@ -161,7 +163,7 @@ function Run() {
     for (var k = 0; k < 1; ++k) {
       i++;
       steps_since_reset ++;
-      if (steps_since_reset == 2000) { // safety reset in case of all blocks getting stuck
+      if (steps_since_reset == 1000) { // safety reset in case of all blocks getting stuck
         state = initialEnvironment.clone();
         steps_since_reset = 0;
       }
@@ -173,10 +175,11 @@ function Run() {
       var action = agent.act(state.list);
       moveBot(state, action);
       reward = checkReward(state);
+      total_reward += reward.reward
 
       // visualize the result:
       dump_env(state);
-      log("Action: " + action + "; rewarded: " + (state.already_rewarded?"yes":"no")+ "; " + steps_since_reset+" steps since reset");
+      log("Total reward: " + total_reward + "; Action: " + action + "; rewarded: " + (state.already_rewarded?"yes":"no")+ "; " + steps_since_reset+" steps since reset");
 
       agent.learn(reward.reward);
       if (reward.ended) {
