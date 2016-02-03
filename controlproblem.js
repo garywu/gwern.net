@@ -56,7 +56,7 @@ function dump_env(environment) {
       var style = "";
       if (x == 6 && y == 4) style = "background-color:#777;";
 
-      var td = $('<td style="width:16px;height:16px;border:1px solid;'+style+'"></td>');
+      var td = $('<td style="width:16px;height:21px;border:1px solid;'+style+'"></td>');
       if (item) td.append(item);
       tr.append(td);
     }
