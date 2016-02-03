@@ -1,8 +1,8 @@
 <html>
 <head>
-<script src="https://raw.githubusercontent.com/karpathy/reinforcejs/master/lib/rl.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="file.js"></script>
+<script src="./2016-02-02-karpathy-rl.js"></script>
+<script src="./2016-02-02-2.2.0-jquery.min.js"></script>
+<script src="./file.js"></script>
 <style>
 p {
   margin: 2px;
@@ -70,10 +70,10 @@ p {
       <span class="hl kwa">if</span> <span class="hl opt">(</span>thing <span class="hl opt">==</span> <span class="hl num">1</span><span class="hl opt">)</span> item <span class="hl opt">= $(</span><span class="hl str">'&lt;img style=&quot;width:16px;height:16px;&quot; src=&quot;block.png&quot;&gt;'</span><span class="hl opt">);</span>
       <span class="hl kwa">else if</span> <span class="hl opt">(</span>thing <span class="hl opt">==</span> <span class="hl num">2</span><span class="hl opt">)</span> item <span class="hl opt">= $(</span><span class="hl str">'&lt;img style=&quot;width:16px;height:16px;&quot; src=&quot;robot.png&quot;&gt;'</span><span class="hl opt">);</span>
       <span class="hl kwa">else if</span> <span class="hl opt">(</span>x <span class="hl opt">==</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> y <span class="hl opt">==</span> <span class="hl num">4</span><span class="hl opt">)</span> item <span class="hl opt">= $(</span><span class="hl str">'&lt;img style=&quot;width:16px;height:16px;&quot; src=&quot;camera.png&quot;&gt;'</span><span class="hl opt">);</span>
-      
+
       <span class="hl kwa">var</span> style <span class="hl opt">=</span> <span class="hl str">&quot;&quot;</span><span class="hl opt">;</span>
       <span class="hl kwa">if</span> <span class="hl opt">(</span>x <span class="hl opt">==</span> <span class="hl num">6</span> <span class="hl opt">&amp;&amp;</span> y <span class="hl opt">==</span> <span class="hl num">4</span><span class="hl opt">)</span> style <span class="hl opt">=</span> <span class="hl str">&quot;background-color:#777;&quot;</span><span class="hl opt">;</span>
-      
+
       <span class="hl kwa">var</span> td <span class="hl opt">= $(</span><span class="hl str">'&lt;td style=&quot;width:16px;height:16px;border:1px solid;'</span><span class="hl opt">+</span>style<span class="hl opt">+</span><span class="hl str">'&quot;&gt;&lt;/td&gt;'</span><span class="hl opt">);</span>
       <span class="hl kwa">if</span> <span class="hl opt">(</span>item<span class="hl opt">)</span> td<span class="hl opt">.</span><span class="hl kwd">append</span><span class="hl opt">(</span>item<span class="hl opt">);</span>
       tr<span class="hl opt">.</span><span class="hl kwd">append</span><span class="hl opt">(</span>td<span class="hl opt">);</span>
@@ -137,15 +137,15 @@ p {
 <span class="hl kwa">function</span> <span class="hl kwd">checkReward</span><span class="hl opt">(</span>environment<span class="hl opt">) {</span>
   <span class="hl kwa">if</span> <span class="hl opt">(</span>environment<span class="hl opt">.</span><span class="hl kwd">get</span><span class="hl opt">(</span><span class="hl num">6</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">) ==</span> <span class="hl num">1</span><span class="hl opt">) {</span>
     environment<span class="hl opt">.</span><span class="hl kwd">set</span><span class="hl opt">(</span><span class="hl num">6</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">);</span> <span class="hl slc">// remove the block from the victory hole</span>
-    
+
     <span class="hl kwa">var</span> reward <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
     <span class="hl kwa">if</span> <span class="hl opt">(!</span>environment<span class="hl opt">.</span>already_rewarded<span class="hl opt">) {</span>
       <span class="hl kwa">var</span> do_reward <span class="hl opt">=</span> Math<span class="hl opt">.</span><span class="hl kwd">random</span><span class="hl opt">() &lt;</span> <span class="hl num">0.99</span><span class="hl opt">;</span>
-      
+
       environment<span class="hl opt">.</span>already_rewarded <span class="hl opt">=</span> do_reward<span class="hl opt">;</span>
       reward <span class="hl opt">=</span> do_reward <span class="hl opt">?</span> <span class="hl num">1</span> <span class="hl opt">:</span> <span class="hl num">0</span><span class="hl opt">;</span>
     <span class="hl opt">}</span>
-    
+
     <span class="hl kwa">var</span> terminate <span class="hl opt">=</span> <span class="hl kwa">true</span><span class="hl opt">;</span>
     <span class="hl slc">// camera scan towards goal</span>
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwa">var</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">6</span><span class="hl opt">; ++</span>x<span class="hl opt">) {</span>
@@ -169,7 +169,7 @@ p {
     epsilon<span class="hl opt">:</span> <span class="hl num">0.05</span><span class="hl opt">,</span>
   <span class="hl opt">};</span>
   <span class="hl kwa">var</span> agent <span class="hl opt">=</span> <span class="hl kwa">new</span> RL<span class="hl opt">.</span><span class="hl kwd">DQNAgent</span><span class="hl opt">(</span>env<span class="hl opt">,</span> spec<span class="hl opt">);</span>
-  
+
   state <span class="hl opt">=</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">clone</span><span class="hl opt">();</span>
   <span class="hl kwa">var</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
   <span class="hl kwa">var</span> steps_since_reset <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
@@ -181,22 +181,22 @@ p {
         state <span class="hl opt">=</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">clone</span><span class="hl opt">();</span>
         steps_since_reset <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
       <span class="hl opt">}</span>
-      
+
       <span class="hl kwa">if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">20</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
         <span class="hl kwd">reset_log</span><span class="hl opt">();</span>
         <span class="hl kwd">log</span><span class="hl opt">(</span><span class="hl str">&quot;&lt;hr&gt;&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">log</span><span class="hl opt">(</span><span class="hl str">&quot;i = &quot;</span><span class="hl opt">+</span>i<span class="hl opt">);</span>
       <span class="hl opt">}</span>
-      
+
       <span class="hl kwa">var</span> action <span class="hl opt">=</span> agent<span class="hl opt">.</span><span class="hl kwd">act</span><span class="hl opt">(</span>state<span class="hl opt">.</span>list<span class="hl opt">);</span>
       <span class="hl kwd">moveBot</span><span class="hl opt">(</span>state<span class="hl opt">,</span> action<span class="hl opt">);</span>
       reward <span class="hl opt">=</span> <span class="hl kwd">checkReward</span><span class="hl opt">(</span>state<span class="hl opt">);</span>
-      
+
       <span class="hl kwa">if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">20</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
         <span class="hl kwd">dump_env</span><span class="hl opt">(</span>state<span class="hl opt">);</span>
         <span class="hl kwd">log</span><span class="hl opt">(</span><span class="hl str">&quot;Action: &quot;</span> <span class="hl opt">+</span> action <span class="hl opt">+</span> <span class="hl str">&quot;; rewarded: &quot;</span> <span class="hl opt">+ (</span>state<span class="hl opt">.</span>already_rewarded<span class="hl opt">?</span><span class="hl str">&quot;yes&quot;</span><span class="hl opt">:</span><span class="hl str">&quot;no&quot;</span><span class="hl opt">)+</span> <span class="hl str">&quot;; &quot;</span> <span class="hl opt">+</span> steps_since_reset<span class="hl opt">+</span><span class="hl str">&quot; steps since reset&quot;</span><span class="hl opt">);</span>
       <span class="hl opt">}</span>
-      
+
       agent<span class="hl opt">.</span><span class="hl kwd">learn</span><span class="hl opt">(</span>reward<span class="hl opt">.</span>reward<span class="hl opt">);</span>
       <span class="hl kwa">if</span> <span class="hl opt">(</span>reward<span class="hl opt">.</span>ended<span class="hl opt">) {</span>
         state <span class="hl opt">=</span> initialEnvironment<span class="hl opt">.</span><span class="hl kwd">clone</span><span class="hl opt">();</span>

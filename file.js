@@ -160,7 +160,7 @@ function Run() {
     for (var k = 0; k < 1; ++k) {
       i++;
       steps_since_reset ++;
-      if (steps_since_reset == 1000) { // safety reset
+      if (steps_since_reset == 10000) { // safety reset
         state = initialEnvironment.clone();
         steps_since_reset = 0;
       }
