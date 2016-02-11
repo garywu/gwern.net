@@ -321,7 +321,7 @@ Rudolf Jansen?        M   47  RuudNL               seller    Utopia             
                       M                            operator  Utopia                            Netherlands                                                      TRUE  2014-02-12 2014-02-12    At least 1 or 2 of the Utopia arrests must've been the site operators but I am unable to figure out which from the vague media coverage.
 Jeroen Teeninga       M                            operator  Utopia                            Netherlands                                                      TRUE  2014-02-12 2014-02-12
 Steven Ruijter        M       CosaNostra           staff     Utopia                            Netherlands                                                      TRUE  2014-02-12 2014-02-12
-Bjorn Rosinger        M       LeContog             staff     Utopia                            Germany                                                          TRUE  2014-02-12 2014-02-12
+B. C. R.              M       LeContog             staff     Utopia                            Germany                                                          TRUE  2014-02-12 2014-02-12    <!-- https://www.deepdotweb.com/wp-content/uploads/2015/06/surv.png https://www.deepdotweb.com/2015/06/04/meet-steven-ruijter-utopia-market-developer-aka-cosanostra/ -->
 Jonathan Norling      M   22                       buyer     BMR         Malcolm               USA         New York       cyanide, abrin                        FALSE 2014-02-14 2014-02-21
                       M                            buyer     Silk Road 1                       Australia   Tasmania       25i, BDMPEA                           TRUE  2014-03-23 2014-04-01    Dating based on sentencing; almost no available details to give an idea of when actually arrested.
 James Malcolm         M   29                       seller    BMR                               USA         California     cyanide, abrin, gun                   FALSE 2014-05-04 2014-06-06     Carmichael
@@ -550,6 +550,9 @@ Franz K.             M    26                       buyer                        
                      M    20                                                                   Germany     Forcheim       marijuana, MDMA, LSD, amphetamine                      2016-01-30
                      M    24                                                                   Germany     Bamberg        marijuana, MDMA, LSD, amphetamine                      2016-01-30
                      M    22                                                                   Germany     Herzogenaurach marijuana, MDMA, LSD, amphetamine                      2016-01-30
+Boden Gregory Bridge M    19                       seller    Agora                             USA         Washington     MDMA, Xanax, marijuana, psilocybin    TRUE  2015-12-04 2015-12-22
+Tristan S. Brennand  M    20                       seller    Agora                             USA         Washington     MDMA, Xanax, marijuana, psilocybin    TRUE  2015-12-04 2015-12-22
+Steven Kennedy       M    35                       buyer     Agora                             UK          Perth          marijuana                             TRUE  2014-09-05 2016-02-09
 
 # Confirmed
 ## Agora
@@ -614,8 +617,11 @@ On 11 December 2014, the American [Ryan Andrew Gustafson was arrested in Uganda]
 He had been uncovered after an American user of his counterfeit currency was detected, the packages sent by Willy.Clock profiled, his fingerprints found, the reshipper located in Uganda, and then an undercover deal set up; he was [deported from Uganda to the USA on 3 December 2015](https://www.fbi.gov/pittsburgh/press-releases/2015/u.s.-citizen-deported-from-uganda-to-face-counterfeiting-charges-in-western-pennsylvania "U.S. Citizen Deported from Uganda to Face Counterfeiting Charges in Western Pennsylvania") to face trial in the USA as well.
 In addition to Gustafson, Zackary L. Ruiz ("Mr. Mouse"), Jeremy J. Miller ("Sinner") and Michael Q. Lin ("Mlin"/"Mr. Casino") were also arrested in the USA.
 
-<!-- possible future case: 2 UK teens OD on MDMA bought off 'dark web'; will they go after the seller?
 ### UK
+
+[35yo Perth man Steven Kennedy](https://www.deepdotweb.com/2016/02/09/horticultural-student-in-perth-caught-ordering-cannabis-from-canada/ "Perth man ordered cannabis from Canada") was arrested around 5 September 2014 when an order of marijuana from Canada was intercepted by Customs; after an apparent knock-and-talk, he admitted everything and pled guilty.
+
+<!-- possible future case: 2 UK teens OD on MDMA bought off 'dark web'; will they go after the seller?
 'Stone Island'/StoneIsland, linked to OD deaths http://www.bbc.com/news/uk-wales-30317747 http://www.dailymail.co.uk/news/article-3059414/Coroner-writes-Home-Secretary-online-drug-dealers-hide-dark-web-student-brothers-died-taking-massive-overdose-ecstasy.html https://www.reddit.com/r/DarkNetMarkets/comments/346n4d/psaarticle_agorda_brothers_died_side_by_side_from/
 -->
 
@@ -658,6 +664,8 @@ They seem to have worked with Willy.Clock or been part of his non-DNM private fo
 <!-- Zackary L. Ruiz M 18 seller Mr. Mouse USA Nevada counterfeit currency TRUE 2015-04-01 2015-12-07
 Jeremy J. Miller M 30 seller  Sinner USA Washington counterfeit currency TRUE 2015-04-01 2015-12-07
 Michael Q. Lin M 20 buyer Mlin/Mr. Casino USA Pennsylvania counterfeit currency TRUE 2015-04-01 2015-12-07 -->
+
+19/20yo Washington men Boden Gregory Bridge & Tristan Simpson Brennand were [arrested in December 2015](http://komonews.com/news/local/indictment-washington-teen-drug-dealers-thrived-on-darknet "Indictment: Washington teen drug dealers thrived on 'darknet'") (PACER: `2:15-cr-00384`; [docket](https://www.unitedstatescourts.org/federal/wawd/224355/)); an informant reported about Brennand selling on Agora & Evolution after importing from Germany & India, leading to intercepts of some of the DNM sales and eventually the arrests.
 
 ## Black Market Reloaded
 ### Germany/Netherlands
