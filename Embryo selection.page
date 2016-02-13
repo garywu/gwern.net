@@ -82,12 +82,12 @@ I was able to find in total the following GCTA estimates:
 3. ["Common DNA Markers Can Account for More Than Half of the Genetic Influence on Cognitive Abilities"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3652710/), Plomin et al 2013
 
     Table 1: ".35 [.12, .58]" (95% CI; so presumably a standard error of `(0.35-0.12)/1.96 ~>0.117`), 12-year-old twins
-3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013
+3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013 ([supplementary information](http://www.tweelingenregister.org/fileadmin/user_upload/publicaties/verslaggeving/NTR-publicaties_2014/Benyamin_MP_2014_sup.pdf))
 
-    pg4: TEDS (mean age 12yo): 0.22(0.10), UMN (14yo): 0.40(0.21), ALSPAC (9yo): 0.46(0.06)
-4. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/iq/2013-rietveld.pdf), Rietveld et al 2013
+    pg4: TEDS (mean age 12yo, twins): 0.22(0.10), UMN (14yo, mostly twins^[The supplementary information for the UMN/University of Minnesota Study says (pg15) that the UMN sample is 3 combined samples, 2 twin samples, and that "IQs were available for 3376 offspring, 2909 of whom were twins".]): 0.40(0.21), ALSPAC (9yo): 0.46(0.06)
+4. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/iq/2013-rietveld.pdf), Rietveld et al 2013 ([supplementary information](/docs/iq/2013-rietveld-supplementary-revision2.pdf "http://www.science.sciencemag.org/highwire/filestream/594571/field_highwire_adjunct_files/1/Rietveld.SM.revision.2.pdf"))
 
-    pg2: 0.224(0.042); mean age ~57 (using [supplementary information's Table S4 on pg92](http://www.science.sciencemag.org/highwire/filestream/594571/field_highwire_adjunct_files/1/Rietveld.SM.revision.2.pdf) & equal-weighting all reported mean ages)
+    pg2: 0.224(0.042); mean age ~57 (using the supplementary information's Table S4 on pg92 & equal-weighting all reported mean ages; majority of subjects are non-twin)
     <!-- mean(c(76.33,76.52,76.41,28.69,28.69,65.95,64.93,65.51,69.18,73.66,71.63,78.74,78.74,79.05,79.05,68.80,68.80,66.67,66.67,62.47,58.39,59.39,53.88,52.92,53.43,56.52,59.04,57.42,53.51,52.54,53.10,58.48,57.82,58.20,60.60,48.24,55.94,51.59,51.98,51.77,57.86,54.90,46.28,55.06,54.77,54.88,54.07,56.99,55.48,55.08,55.63,55.33,73.63,73.90,73.77,61.53,61.40,61.47,70.70,69.01,69.95,53.03,53.54,53.28,53.65,54.23,53.93,79.10,79.11,79.10,69.61,69.59,69.60,48.35,48.86,48.57,31.80,31.80,31.80,31.80,46.22,47.59,46.69,31.00,31.00,31.00,52.11,53.84,53.02,50.16,53.25,51.39,44.82,45.12,44.95,69.97,68.05,69.18,64.54,65.36,64.97,56.21,55.99,56.11,80.99,81.38,81.10,76.28,74.59,75.70,38.59,38.89,38.70,51.96,53.91,52.81,52.22,54.34,53.27,63.41,64.28,63.82,51.03,51.03,37.73,37.70,37.72,53.08,55.49,54.22,58.72,59.97,59.87,52.37,49.25,50.83,51.98,49.26,50.66,65.69,66.55,66.13,68.33,68.99,68.61,42.85,44.91,43.80,75.78,76.59,76.10,42.27,43.06,42.54,54.48,56.42,55.37,58.67,59.72,59.26,57.58,56.95,57.16,53.33,53.10,53.19)) -->
 5. ["Molecular genetic contributions to socioeconomic status and intelligence"](http://www.sciencedirect.com/science/article/pii/S0160289614000178), Marioni et al 2014
 
@@ -97,7 +97,7 @@ I was able to find in total the following GCTA estimates:
     0.35( 0.11), 11.78 & 17.48yos (average: 14.63)
 7. ["DNA evidence for strong genetic stability and increasing heritability of intelligence from age 7 to 12"](http://www.researchgate.net/profile/Maciej_Trzaskowski/publication/235379639_DNA_evidence_for_strong_genetic_stability_and_increasing_heritability_of_intelligence_from_age_7_to_12/links/004635162d9aa8ba50000000.pdf), Trzaskowski et al 2014a
 
-    pg4: age 7: 0.26(0.17); age 12: 0.45(0.14)
+    pg4: age 7: 0.26(0.17); age 12: 0.45(0.14); used unrelated twins for the GCTA
 8. ["Genetic influence on family socioeconomic status and children's intelligence"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907681/), Trzaskowski et al 2014b
 
     Table 2: 0.32(0.14); appears to be a followup to Trzaskowski et al 2014a & report on same dataset
@@ -114,24 +114,24 @@ Excluding Chabris et al 2012 (no precision reported) and Spain et al 2015 and th
 
 ~~~{.R}
 gcta <- read.csv(stdin(), header=TRUE)
-Study, HSNP, SE, Age.mean
-Deary et al 2012, 0.48, 0.18, 11
-Deary et al 2012, 0.28, 0.18, 71.3
-Plomin et al 2013, 0.35, 0.117, 12
-Benyamin et al 2013, 0.22, 0.10, 12
-Benyamin et al 2013, 0.40, 0.21, 14
-Benyamin et al 2013, 0.46, 0.06, 9
-Rietveld et al 2013, 0.224, 0.042, 57.47
-Marioni et al 2014, 0.29, 0.05, 57
-Kirkpatrick et al 2014, 0.35, 0.11, 14.63
-Trzaskowski et al 2014, 0.26, 0.17, 7
-Trzaskowski et al 2014, 0.45, 0.14, 12
-Davies et al 2015, 0.29, 0.05, 57.2
-Davies et al 2015, 0.28, 0.07, 70
-
+Study, HSNP, SE, Age.mean, Twin
+Deary et al 2012, 0.48, 0.18, 11, FALSE
+Deary et al 2012, 0.28, 0.18, 71.3, FALSE
+Plomin et al 2013, 0.35, 0.117, 12, TRUE
+Benyamin et al 2013, 0.22, 0.10, 12, TRUE
+Benyamin et al 2013, 0.40, 0.21, 14, TRUE
+Benyamin et al 2013, 0.46, 0.06, 9, FALSE
+Rietveld et al 2013, 0.224, 0.042, 57.47, FALSE
+Marioni et al 2014, 0.29, 0.05, 57, FALSE
+Kirkpatrick et al 2014, 0.35, 0.11, 14.63, FALSE
+Trzaskowski et al 2014, 0.26, 0.17, 7, TRUE
+Trzaskowski et al 2014, 0.45, 0.14, 12, TRUE
+Davies et al 2015, 0.29, 0.05, 57.2, FALSE
+Davies et al 2015, 0.28, 0.07, 70, FALSE
 
 gcta <- gcta[order(gcta$Age.mean),]
 
+library(metafor)
 rem <- rma(yi=HSNP, sei=SE, data=gcta); rem
 # ...estimate       se     zval     pval    ci.lb    ci.ub
 #  0.3113   0.0283  11.0192   <.0001   0.2560   0.3667
@@ -155,11 +155,19 @@ remAge <- rma(yi=HSNP, sei=SE, mods = Age.mean, data=gcta); remAge
 #          estimate      se     zval    pval    ci.lb    ci.ub
 # intrcpt    0.4109  0.0469   8.7548  <.0001   0.3189   0.5028
 # mods      -0.0024  0.0009  -2.6139  0.0090  -0.0043  -0.0006
+remAgeT <- rma(yi=HSNP, sei=SE, mods = ~ Age.mean + Twin, data=gcta); remAgeT
+# ...      estimate      se     zval    pval    ci.lb    ci.ub
+# intrcpt      0.4662  0.0602   7.7371  <.0001   0.3481   0.5842
+# Age.mean    -0.0034  0.0011  -2.9855  0.0028  -0.0056  -0.0012
+# Twin TRUE   -0.1124  0.0768  -1.4633  0.1434  -0.2629   0.0381
+
 forest(rma(yi=HSNP, sei=SE, data=gcta), slab=gcta$Study)
 ## so estimated heritability at 30yo:
 0.4109 + 30*-0.0024
 # [1] 0.3389
 ~~~
+
+(Oddly, the estimates decrease with age rather than increase. I thought this might be driven by the samples using twins, which have been accused in the past of delivering higher heritability estimates due to higher SES of parents and correspondingly less environmental influence, but when added as a predictor, twin samples are non-statistically-significantly lower.)
 
 ![Forest plot for meta-analysis of GCTA estimates of total additive SNP's effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
 
