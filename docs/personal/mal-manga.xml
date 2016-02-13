@@ -37,6 +37,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -57,6 +58,7 @@
 					<my_status>Plan to Read</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -77,6 +79,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -97,6 +100,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -117,6 +121,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -137,6 +142,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -157,6 +163,7 @@
 					<my_status>Plan to Read</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -177,6 +184,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -197,6 +205,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Low</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -217,6 +226,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -237,6 +247,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -257,6 +268,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -277,6 +289,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -297,6 +310,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -317,6 +331,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -337,6 +352,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -357,6 +373,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -377,6 +394,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Medium</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -397,6 +415,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -417,6 +436,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Medium</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -437,6 +457,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>1</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Medium</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -457,6 +478,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -477,6 +499,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -497,6 +520,7 @@
 					<my_status>Plan to Read</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -517,6 +541,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Medium</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -537,6 +562,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -557,6 +583,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -577,6 +604,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -597,6 +625,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -617,13 +646,14 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Low</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
 			
 				<manga>
 					<manga_mangadb_id>8446</manga_mangadb_id>
-					<manga_title><![CDATA[Ikigami: The Ultimate Limit]]></manga_title>
+					<manga_title><![CDATA[Ikigami]]></manga_title>
 					<manga_volumes>10</manga_volumes>
 					<manga_chapters>60</manga_chapters>
 					<my_id>7932166</my_id>
@@ -637,6 +667,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -657,6 +688,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[Impressions: good art, solid adaptation of anime which respects the spirit of it, but oddly short and missing some of the better stories. Perhaps it was not popular enough to fully cover all that the anime did? Unfortunately, overall there's not really an]]></my_tags>
 					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -665,7 +697,7 @@
 					<manga_mangadb_id>17</manga_mangadb_id>
 					<manga_title><![CDATA[Kareshi Kanojo no Jijou]]></manga_title>
 					<manga_volumes>21</manga_volumes>
-					<manga_chapters>103</manga_chapters>
+					<manga_chapters>108</manga_chapters>
 					<my_id>6812838</my_id>
 					<my_read_volumes>21</my_read_volumes>
 					<my_read_chapters>102</my_read_chapters>
@@ -677,6 +709,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>1</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Very High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -697,6 +730,7 @@
 					<my_status>Plan to Read</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -717,6 +751,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -737,6 +772,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -757,6 +793,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -777,6 +814,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -797,6 +835,7 @@
 					<my_status>Plan to Read</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -817,6 +856,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -837,6 +877,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Very Low</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -857,6 +898,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -877,6 +919,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -897,6 +940,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Medium</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -917,6 +961,7 @@
 					<my_status>Plan to Read</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -937,6 +982,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Low</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -957,6 +1003,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -977,6 +1024,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -997,6 +1045,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1004,8 +1053,8 @@
 				<manga>
 					<manga_mangadb_id>3082</manga_mangadb_id>
 					<manga_title><![CDATA[Nichijou]]></manga_title>
-					<manga_volumes>0</manga_volumes>
-					<manga_chapters>0</manga_chapters>
+					<manga_volumes>10</manga_volumes>
+					<manga_chapters>210</manga_chapters>
 					<my_id>7742151</my_id>
 					<my_read_volumes>2</my_read_volumes>
 					<my_read_chapters>0</my_read_chapters>
@@ -1017,6 +1066,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1037,6 +1087,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1057,6 +1108,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1077,6 +1129,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1097,6 +1150,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1105,7 +1159,7 @@
 					<manga_mangadb_id>18056</manga_mangadb_id>
 					<manga_title><![CDATA[Paradox Blue]]></manga_title>
 					<manga_volumes>5</manga_volumes>
-					<manga_chapters>0</manga_chapters>
+					<manga_chapters>27</manga_chapters>
 					<my_id>6846780</my_id>
 					<my_read_volumes>0</my_read_volumes>
 					<my_read_chapters>0</my_read_chapters>
@@ -1117,6 +1171,7 @@
 					<my_status>Plan to Read</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1137,6 +1192,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1157,6 +1213,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1177,6 +1234,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1197,6 +1255,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1217,6 +1276,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1224,8 +1284,8 @@
 				<manga>
 					<manga_mangadb_id>873</manga_mangadb_id>
 					<manga_title><![CDATA[Sekirei]]></manga_title>
-					<manga_volumes>0</manga_volumes>
-					<manga_chapters>0</manga_chapters>
+					<manga_volumes>18</manga_volumes>
+					<manga_chapters>202</manga_chapters>
 					<my_id>6817965</my_id>
 					<my_read_volumes>0</my_read_volumes>
 					<my_read_chapters>40</my_read_chapters>
@@ -1237,6 +1297,7 @@
 					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1257,6 +1318,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Very High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1277,6 +1339,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>Medium</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1297,6 +1360,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1317,6 +1381,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1337,6 +1402,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>2</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1357,6 +1423,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1377,6 +1444,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1397,6 +1465,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1417,6 +1486,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1437,6 +1507,7 @@
 					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1445,7 +1516,7 @@
 					<manga_mangadb_id>436</manga_mangadb_id>
 					<manga_title><![CDATA[Uzumaki]]></manga_title>
 					<manga_volumes>3</manga_volumes>
-					<manga_chapters>20</manga_chapters>
+					<manga_chapters>19</manga_chapters>
 					<my_id>6838115</my_id>
 					<my_read_volumes>0</my_read_volumes>
 					<my_read_chapters>0</my_read_chapters>
@@ -1457,6 +1528,7 @@
 					<my_status>On-Hold</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
@@ -1477,13 +1549,14 @@
 					<my_status>On-Hold</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
 			
 				<manga>
 					<manga_mangadb_id>104</manga_mangadb_id>
-					<manga_title><![CDATA[Yotsubato!]]></manga_title>
+					<manga_title><![CDATA[Yotsuba to!]]></manga_title>
 					<manga_volumes>0</manga_volumes>
 					<manga_chapters>0</manga_chapters>
 					<my_id>6813293</my_id>
@@ -1497,6 +1570,7 @@
 					<my_status>Reading</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>

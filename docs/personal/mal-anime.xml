@@ -11,12 +11,12 @@
 				<user_id>419845</user_id>
 				<user_name>gwern</user_name>
 				<user_export_type>1</user_export_type>
-				<user_total_anime>470</user_total_anime>
-				<user_total_watching>0</user_total_watching>
-				<user_total_completed>363</user_total_completed>
+				<user_total_anime>477</user_total_anime>
+				<user_total_watching>1</user_total_watching>
+				<user_total_completed>368</user_total_completed>
 				<user_total_onhold>5</user_total_onhold>
-				<user_total_dropped>41</user_total_dropped>
-				<user_total_plantowatch>61</user_total_plantowatch>
+				<user_total_dropped>50</user_total_dropped>
+				<user_total_plantowatch>53</user_total_plantowatch>
 			</myinfo>
 		
 		
@@ -118,7 +118,7 @@
 			
 				<anime>
 					<series_animedb_id>306</series_animedb_id>
-					<series_title><![CDATA[Abenobashi Mahou Shoutengai]]></series_title>
+					<series_title><![CDATA[Abenobashi Mahou☆Shoutengai]]></series_title>
 					<series_type>TV</series_type>
 					<series_episodes>13</series_episodes>
 					<my_id>27400175</my_id>
@@ -301,7 +301,7 @@ Going into more detail: a little disappointed in the Ayatsuji arc which neglecte
 					<my_score>0</my_score>
 					<my_dvd></my_dvd>
 					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
@@ -582,7 +582,7 @@ The OP/ED are visually clever and interesting, and a number of scenes capture th
 			
 				<anime>
 					<series_animedb_id>962</series_animedb_id>
-					<series_title><![CDATA[Aria the Natural]]></series_title>
+					<series_title><![CDATA[Aria The Natural]]></series_title>
 					<series_type>TV</series_type>
 					<series_episodes>26</series_episodes>
 					<my_id>27400370</my_id>
@@ -606,7 +606,7 @@ The OP/ED are visually clever and interesting, and a number of scenes capture th
 			
 				<anime>
 					<series_animedb_id>3297</series_animedb_id>
-					<series_title><![CDATA[Aria the Origination]]></series_title>
+					<series_title><![CDATA[Aria The Origination]]></series_title>
 					<series_type>TV</series_type>
 					<series_episodes>13</series_episodes>
 					<my_id>27400355</my_id>
@@ -1805,6 +1805,66 @@ In comparison to reality, stories about Dark Flame Masters or Tyrant's Eyes come
 				</anime>
 			
 				<anime>
+					<series_animedb_id>31147</series_animedb_id>
+					<series_title><![CDATA[Concrete Revolutio: Choujin Gensou]]></series_title>
+					<series_type>TV</series_type>
+					<series_episodes>13</series_episodes>
+					<my_id>0</my_id>
+					<my_watched_episodes>0</my_watched_episodes>
+					<my_start_date>0000-00-00</my_start_date>
+					<my_finish_date>0000-00-00</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>0</my_score>
+					<my_dvd></my_dvd>
+					<my_storage></my_storage>
+					<my_status>Plan to Watch</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value></my_rewatch_value>
+					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching>0</my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
+					<series_animedb_id>10029</series_animedb_id>
+					<series_title><![CDATA[Coquelicot-zaka kara]]></series_title>
+					<series_type>Movie</series_type>
+					<series_episodes>1</series_episodes>
+					<my_id>0</my_id>
+					<my_watched_episodes>1</my_watched_episodes>
+					<my_start_date>2013-09-26</my_start_date>
+					<my_finish_date>2013-09-28</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>7</my_score>
+					<my_dvd></my_dvd>
+					<my_storage>Hard Drive</my_storage>
+					<my_status>Completed</my_status>
+					<my_comments><![CDATA[The keyword for _From Up on Poppy Hill_ is "nostalgic". Like _Only Yesterday_, it's another Ghibli visit to a bygone Japan: in this case, post-WWII Japan where the boom has erased most of the damage, but there's still plenty of pre-war buildings around and occasional bits of fallout.<br />
+<br />
+So, to start with the positives: PH has excellent painterly landscapes/backgrounds. The hillside and side-roads offer scope for Ghibli's work to shine. We can extend this to the crowd scenes showing all the citizens in their costumery set against the simultaneously modernizing &amp; still traditional towns. In particular, I loved all the sequences &amp; scenes set in the Latin Quarter, stuffed with all sorts of props &amp; people in the background, making the clubhouse a character in its own right - in the dense detail, it is reminiscent of _Paprika_, _Honneamise_, _Tekkonkinkreet_, &amp; _Ghost in the Shell 2_. (Since I remember my own high school &amp; college club days very fondly, these triggered my own nostalgia &amp; recognition in a way that the general setting couldn't possibly.)<br />
+<br />
+The soundtrack has some well-chosen period pieces, but this is not a Ghibli production whose music will be long remembered like _The Borrowers Arrietty_, _Castle in the Sky_, _Whisper of the Heart_ etc. It's not bad, just nothing in it is *that* good.<br />
+<br />
+The real bad news for _From Up on Poppy Hill_ is that the plot is *bad*. The movie is a failure because the story it tells is a disjointed mess, at least as bad as _The Borrowers Arrietty_ and similar to _Earthsea_. I can't agree with the fanboys gurgling with praise about how it depicts 'family' and 'love'.<br />
+<br />
+The save-the-Latin-Quarter subplot is put on the backburner and long after we've forgotten about it, trivially resolved just by cleaning it, asking the boss nicely to come &amp; see it, and he approves (one wonders just how realistic such a sequence is); it completely lacks any drama or tension, and takes up far less of the movie than one might expect. Instead, we are given a meandering subplot about the protagonist's budding love (fine; _Whisper of the Heart_ was fantastic, no reason the same story won't work twice) which is wildly derailed by a sudden revelation of siblinghood which comes from out of nowhere (and no, some portentous glances at a photograph do not meaningfully incorporate the twist into the story or motivate it), followed by the characters being disturbingly willing to engage in incest, followed by yet another bizarre revelation (apparently in the '40s and '50s, the Japanese swapped babies like baseball cards; it's all presented so casually I can't help but feel it's a little disrespectful to the actual orphans &amp; children involved). It all adds up to a jumble of scenes which goes nowhere, feels random, and lack any sort of unifying theme. I had the same feeling as when watching _The Borrowers Arrietty_: like I was suffering from some literary version of Capgras delusion where the *real* _Poppy Hill_ plot had been replaced by an inferior crude substitute and this impostor had only a garbled memory of the original plot.<br />
+<br />
+What went wrong? It's hard to tell, but also hard to not notice that Goro was involved here too. One of the key roles of the director is working on the plot and making sure everything comes together. The artists certainly did their job with the backgrounds and animation, but what about the rest? That was Goro's job. This makes 2 failures for Goro, and I have to wonder if Hayao is really going to let his son do a third movie just because Goro is his son: wouldn't anyone else have been fired or at least eased out of consideration for directing by now? I wonder if this is the future of Ghibli, especially now that Hayao has announced his retirement from feature-filmmaking in favor of smaller works for the Ghibli Museum etc.<br />
+<br />
+Oh well. At least I can still look forward to watching his _The Wind Rises_.]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value>Very Low</my_rewatch_value>
+					<my_downloaded_eps>1</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching></my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
 					<series_animedb_id>514</series_animedb_id>
 					<series_title><![CDATA[Cossette no Shouzou]]></series_title>
 					<series_type>OVA</series_type>
@@ -2419,7 +2479,7 @@ But many characters were drab, the plot was dominated by a slow trip to Japan, t
 					<my_score>0</my_score>
 					<my_dvd></my_dvd>
 					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
@@ -2648,7 +2708,7 @@ But many characters were drab, the plot was dominated by a slow trip to Japan, t
 			
 				<anime>
 					<series_animedb_id>6922</series_animedb_id>
-					<series_title><![CDATA[Fate/stay night: Unlimited Blade Works]]></series_title>
+					<series_title><![CDATA[Fate/stay night Movie: Unlimited Blade Works]]></series_title>
 					<series_type>Movie</series_type>
 					<series_episodes>1</series_episodes>
 					<my_id>27400981</my_id>
@@ -2666,6 +2726,54 @@ But many characters were drab, the plot was dominated by a slow trip to Japan, t
 					<my_downloaded_eps>0</my_downloaded_eps>
 					<my_tags><![CDATA[]]></my_tags>
 					<my_rewatching>0</my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
+					<series_animedb_id>22297</series_animedb_id>
+					<series_title><![CDATA[Fate/stay night: Unlimited Blade Works]]></series_title>
+					<series_type>TV</series_type>
+					<series_episodes>12</series_episodes>
+					<my_id>0</my_id>
+					<my_watched_episodes>12</my_watched_episodes>
+					<my_start_date>2015-12-04</my_start_date>
+					<my_finish_date>2015-12-11</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>8</my_score>
+					<my_dvd></my_dvd>
+					<my_storage>Hard Drive</my_storage>
+					<my_status>Completed</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value>Low</my_rewatch_value>
+					<my_downloaded_eps>12</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching></my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
+					<series_animedb_id>28701</series_animedb_id>
+					<series_title><![CDATA[Fate/stay night: Unlimited Blade Works 2nd Season]]></series_title>
+					<series_type>TV</series_type>
+					<series_episodes>13</series_episodes>
+					<my_id>0</my_id>
+					<my_watched_episodes>9</my_watched_episodes>
+					<my_start_date>2015-12-11</my_start_date>
+					<my_finish_date>0000-00-00</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>8</my_score>
+					<my_dvd></my_dvd>
+					<my_storage>Hard Drive</my_storage>
+					<my_status>Watching</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value>High</my_rewatch_value>
+					<my_downloaded_eps>13</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching></my_rewatching>
 					<my_rewatching_ep>0</my_rewatching_ep>
 					<update_on_import>0</update_on_import>
 				</anime>
@@ -2803,7 +2911,7 @@ But many characters were drab, the plot was dominated by a slow trip to Japan, t
 					<my_score>0</my_score>
 					<my_dvd></my_dvd>
 					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
@@ -3801,7 +3909,7 @@ For those who like the new cast, this is fine. Out with the old, in with the new
 			
 				<anime>
 					<series_animedb_id>106</series_animedb_id>
-					<series_title><![CDATA[Hana Yori Dango]]></series_title>
+					<series_title><![CDATA[Hana yori Dango]]></series_title>
 					<series_type>TV</series_type>
 					<series_episodes>51</series_episodes>
 					<my_id>27421834</my_id>
@@ -3965,7 +4073,7 @@ The plot is bizarre. So a bunch of vampires led by a mechanical-clockwork man fl
 			
 				<anime>
 					<series_animedb_id>379</series_animedb_id>
-					<series_title><![CDATA[Heppoko Jikken Animation Excel Saga]]></series_title>
+					<series_title><![CDATA[Heppoko Jikken Animation Excel♥Saga]]></series_title>
 					<series_type>TV</series_type>
 					<series_episodes>26</series_episodes>
 					<my_id>27400180</my_id>
@@ -4048,7 +4156,7 @@ The plot is bizarre. So a bunch of vampires led by a mechanical-clockwork man fl
 					<my_score>0</my_score>
 					<my_dvd></my_dvd>
 					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
@@ -4199,6 +4307,30 @@ The plot is bizarre. So a bunch of vampires led by a mechanical-clockwork man fl
 					<my_downloaded_eps>13</my_downloaded_eps>
 					<my_tags><![CDATA[]]></my_tags>
 					<my_rewatching></my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
+					<series_animedb_id>2390</series_animedb_id>
+					<series_title><![CDATA[Hoshi no Kirby: Right Back At Ya!]]></series_title>
+					<series_type>TV</series_type>
+					<series_episodes>100</series_episodes>
+					<my_id>27487545</my_id>
+					<my_watched_episodes>70</my_watched_episodes>
+					<my_start_date>0000-00-00</my_start_date>
+					<my_finish_date>0000-00-00</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>4</my_score>
+					<my_dvd></my_dvd>
+					<my_storage></my_storage>
+					<my_status>Dropped</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value></my_rewatch_value>
+					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching>0</my_rewatching>
 					<my_rewatching_ep>0</my_rewatching_ep>
 					<update_on_import>0</update_on_import>
 				</anime>
@@ -4745,6 +4877,30 @@ But overall... this was, for me, a lot like _Nichijou_: a few good parts trapped
 					<my_downloaded_eps>0</my_downloaded_eps>
 					<my_tags><![CDATA[]]></my_tags>
 					<my_rewatching></my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
+					<series_animedb_id>16664</series_animedb_id>
+					<series_title><![CDATA[Kaguya-hime no Monogatari]]></series_title>
+					<series_type>Movie</series_type>
+					<series_episodes>1</series_episodes>
+					<my_id>0</my_id>
+					<my_watched_episodes>0</my_watched_episodes>
+					<my_start_date>0000-00-00</my_start_date>
+					<my_finish_date>0000-00-00</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>0</my_score>
+					<my_dvd></my_dvd>
+					<my_storage></my_storage>
+					<my_status>Plan to Watch</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value></my_rewatch_value>
+					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching>0</my_rewatching>
 					<my_rewatching_ep>0</my_rewatching_ep>
 					<update_on_import>0</update_on_import>
 				</anime>
@@ -5482,34 +5638,10 @@ In the end, _Katanagatari_ is pure style, style which almost becomes real substa
 				</anime>
 			
 				<anime>
-					<series_animedb_id>2390</series_animedb_id>
-					<series_title><![CDATA[Kirby: Right Back At Ya!]]></series_title>
-					<series_type>TV</series_type>
-					<series_episodes>100</series_episodes>
-					<my_id>27487545</my_id>
-					<my_watched_episodes>70</my_watched_episodes>
-					<my_start_date>0000-00-00</my_start_date>
-					<my_finish_date>0000-00-00</my_finish_date>
-					<my_rated></my_rated>
-					<my_score>4</my_score>
-					<my_dvd></my_dvd>
-					<my_storage></my_storage>
-					<my_status>Dropped</my_status>
-					<my_comments><![CDATA[]]></my_comments>
-					<my_times_watched>0</my_times_watched>
-					<my_rewatch_value></my_rewatch_value>
-					<my_downloaded_eps>0</my_downloaded_eps>
-					<my_tags><![CDATA[]]></my_tags>
-					<my_rewatching>0</my_rewatching>
-					<my_rewatching_ep>0</my_rewatching_ep>
-					<update_on_import>0</update_on_import>
-				</anime>
-			
-				<anime>
 					<series_animedb_id>9260</series_animedb_id>
-					<series_title><![CDATA[Kizumonogatari]]></series_title>
+					<series_title><![CDATA[Kizumonogatari Part 1: Tekketsu-hen]]></series_title>
 					<series_type>Movie</series_type>
-					<series_episodes>0</series_episodes>
+					<series_episodes>1</series_episodes>
 					<my_id>0</my_id>
 					<my_watched_episodes>0</my_watched_episodes>
 					<my_start_date>0000-00-00</my_start_date>
@@ -5578,44 +5710,8 @@ In the end, _Katanagatari_ is pure style, style which almost becomes real substa
 				</anime>
 			
 				<anime>
-					<series_animedb_id>10029</series_animedb_id>
-					<series_title><![CDATA[Kokurikozaka kara]]></series_title>
-					<series_type>Movie</series_type>
-					<series_episodes>1</series_episodes>
-					<my_id>0</my_id>
-					<my_watched_episodes>1</my_watched_episodes>
-					<my_start_date>2013-09-26</my_start_date>
-					<my_finish_date>2013-09-28</my_finish_date>
-					<my_rated></my_rated>
-					<my_score>7</my_score>
-					<my_dvd></my_dvd>
-					<my_storage>Hard Drive</my_storage>
-					<my_status>Completed</my_status>
-					<my_comments><![CDATA[The keyword for _From Up on Poppy Hill_ is "nostalgic". Like _Only Yesterday_, it's another Ghibli visit to a bygone Japan: in this case, post-WWII Japan where the boom has erased most of the damage, but there's still plenty of pre-war buildings around and occasional bits of fallout.<br />
-<br />
-So, to start with the positives: PH has excellent painterly landscapes/backgrounds. The hillside and side-roads offer scope for Ghibli's work to shine. We can extend this to the crowd scenes showing all the citizens in their costumery set against the simultaneously modernizing &amp; still traditional towns. In particular, I loved all the sequences &amp; scenes set in the Latin Quarter, stuffed with all sorts of props &amp; people in the background, making the clubhouse a character in its own right - in the dense detail, it is reminiscent of _Paprika_, _Honneamise_, _Tekkonkinkreet_, &amp; _Ghost in the Shell 2_. (Since I remember my own high school &amp; college club days very fondly, these triggered my own nostalgia &amp; recognition in a way that the general setting couldn't possibly.)<br />
-<br />
-The soundtrack has some well-chosen period pieces, but this is not a Ghibli production whose music will be long remembered like _The Borrowers Arrietty_, _Castle in the Sky_, _Whisper of the Heart_ etc. It's not bad, just nothing in it is *that* good.<br />
-<br />
-The real bad news for _From Up on Poppy Hill_ is that the plot is *bad*. The movie is a failure because the story it tells is a disjointed mess, at least as bad as _The Borrowers Arrietty_ and similar to _Earthsea_. I can't agree with the fanboys gurgling with praise about how it depicts 'family' and 'love'.<br />
-<br />
-The save-the-Latin-Quarter subplot is put on the backburner and long after we've forgotten about it, trivially resolved just by cleaning it, asking the boss nicely to come &amp; see it, and he approves (one wonders just how realistic such a sequence is); it completely lacks any drama or tension, and takes up far less of the movie than one might expect. Instead, we are given a meandering subplot about the protagonist's budding love (fine; _Whisper of the Heart_ was fantastic, no reason the same story won't work twice) which is wildly derailed by a sudden revelation of siblinghood which comes from out of nowhere (and no, some portentous glances at a photograph do not meaningfully incorporate the twist into the story or motivate it), followed by the characters being disturbingly willing to engage in incest, followed by yet another bizarre revelation (apparently in the '40s and '50s, the Japanese swapped babies like baseball cards; it's all presented so casually I can't help but feel it's a little disrespectful to the actual orphans &amp; children involved). It all adds up to a jumble of scenes which goes nowhere, feels random, and lack any sort of unifying theme. I had the same feeling as when watching _The Borrowers Arrietty_: like I was suffering from some literary version of Capgras delusion where the *real* _Poppy Hill_ plot had been replaced by an inferior crude substitute and this impostor had only a garbled memory of the original plot.<br />
-<br />
-What went wrong? It's hard to tell, but also hard to not notice that Goro was involved here too. One of the key roles of the director is working on the plot and making sure everything comes together. The artists certainly did their job with the backgrounds and animation, but what about the rest? That was Goro's job. This makes 2 failures for Goro, and I have to wonder if Hayao is really going to let his son do a third movie just because Goro is his son: wouldn't anyone else have been fired or at least eased out of consideration for directing by now? I wonder if this is the future of Ghibli, especially now that Hayao has announced his retirement from feature-filmmaking in favor of smaller works for the Ghibli Museum etc.<br />
-<br />
-Oh well. At least I can still look forward to watching his _The Wind Rises_.]]></my_comments>
-					<my_times_watched>0</my_times_watched>
-					<my_rewatch_value>Very Low</my_rewatch_value>
-					<my_downloaded_eps>1</my_downloaded_eps>
-					<my_tags><![CDATA[]]></my_tags>
-					<my_rewatching></my_rewatching>
-					<my_rewatching_ep>0</my_rewatching_ep>
-					<update_on_import>0</update_on_import>
-				</anime>
-			
-				<anime>
 					<series_animedb_id>412</series_animedb_id>
-					<series_title><![CDATA[Kore ga Watashi no Goshujin-sama]]></series_title>
+					<series_title><![CDATA[Kore ga Watashi no Goshujinsama]]></series_title>
 					<series_type>TV</series_type>
 					<series_episodes>12</series_episodes>
 					<my_id>27400223</my_id>
@@ -5848,7 +5944,7 @@ As usual with Shinkai, most of the praise is for the animation and visual design
 					<my_score>0</my_score>
 					<my_dvd></my_dvd>
 					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
@@ -5992,7 +6088,7 @@ As usual with Shinkai, most of the praise is for the animation and visual design
 					<my_score>0</my_score>
 					<my_dvd></my_dvd>
 					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
@@ -6173,7 +6269,7 @@ As usual with Shinkai, most of the praise is for the animation and visual design
 			
 				<anime>
 					<series_animedb_id>3572</series_animedb_id>
-					<series_title><![CDATA[Macross Frontier]]></series_title>
+					<series_title><![CDATA[Macross F]]></series_title>
 					<series_type>TV</series_type>
 					<series_episodes>25</series_episodes>
 					<my_id>27400677</my_id>
@@ -6972,7 +7068,7 @@ Overall, a very good series which has aged surprisingly well, and so I can well 
 					<my_score>0</my_score>
 					<my_dvd></my_dvd>
 					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
@@ -7020,7 +7116,7 @@ Overall, a very good series which has aged surprisingly well, and so I can well 
 					<my_score>0</my_score>
 					<my_dvd></my_dvd>
 					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
@@ -7157,20 +7253,24 @@ Overall, a very good series which has aged surprisingly well, and so I can well 
 					<series_type>Movie</series_type>
 					<series_episodes>1</series_episodes>
 					<my_id>0</my_id>
-					<my_watched_episodes>0</my_watched_episodes>
-					<my_start_date>0000-00-00</my_start_date>
-					<my_finish_date>0000-00-00</my_finish_date>
+					<my_watched_episodes>1</my_watched_episodes>
+					<my_start_date>2015-10-01</my_start_date>
+					<my_finish_date>2015-10-01</my_finish_date>
 					<my_rated></my_rated>
-					<my_score>0</my_score>
+					<my_score>7</my_score>
 					<my_dvd></my_dvd>
-					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
-					<my_comments><![CDATA[]]></my_comments>
+					<my_storage>Hard Drive</my_storage>
+					<my_status>Completed</my_status>
+					<my_comments><![CDATA[An attempt at an all-ages family film dealing with childhood traumas (in this case, the loss of a parent) with fantasy/supernatural entities as acoping mechanism; very Ghibliesque, particularly similar to _My Neighbor Totoro_ in using the device of a move to the remote countryside (an island) to live in an old-fashioned building and encountering folkoric creatures. Sounds promising, yet I was disappointed.<br />
+<br />
+The basic trouble with _Momo_ is that it executes well on *none* of these aspects. Momo herself is an ultra-bland character who cannot stand any comparison with Ghibli heroines like Sen or Shizuku. The island setting is woefully underused throughout the movie (except for the pig-chasing scene). The architecture and backgrounds are accurate but again, bland. The music is unmemorable and cannot be commented on. The trio of supernatural characters are more irritating than they are ever interesting or endearing and I wished that almost all of their scenes didn't exist as the humor is nonexistent. The animation is adequate but again bland, except for whoever worked on the pig-chasing scene and the pulsating spirits at the shrine (who stand out as the most visually interesting aspect of the movie, and give the later bridge scene its interest). And the plot...<br />
+<br />
+The plot has a truly outrageous reliance on cliches - from the guilt of Momo telling her father to leave right before his accidental death to her mother conveniently developing Anime Coughing Sickness (yes, really! they really had the chutzpah to use that cliche!) to endlessly predictable scenes (serious question: in the mirror-breaking scene, is there anyone who from the first cut didn't know that that mirror was going to break?) to scenes so illogical that the movie can't even depict the events (why on earth would a doctor agree to cross the bridge at the end in the middle of a typhoon...? don't ask _Momo_, it just cuts straight from getting across to the happily-ever-after). It compounds these scenes with a lack of imagination (no use of the &quot;Night Parade of One Hundred Demons&quot; is just criminal) and in the ending where it commits the greatest of sins for this kind of movie by forcing a heavy-handed conclusion and collapsing the border of reality/imagination. It has the bad taste of, like pornography, insisting on showing you everything. I could have maybe tolerated all the rest of it and considered it mediocre but still watchable far down the list after the Ghibli movies, _Wolf Children_, etc, but that choice of ending is a final kick in the nuts and insult to everyone who watches it.]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
-					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_downloaded_eps>1</my_downloaded_eps>
 					<my_tags><![CDATA[]]></my_tags>
-					<my_rewatching>0</my_rewatching>
+					<my_rewatching></my_rewatching>
 					<my_rewatching_ep>0</my_rewatching_ep>
 					<update_on_import>0</update_on_import>
 				</anime>
@@ -7181,20 +7281,20 @@ Overall, a very good series which has aged surprisingly well, and so I can well 
 					<series_type>TV</series_type>
 					<series_episodes>26</series_episodes>
 					<my_id>0</my_id>
-					<my_watched_episodes>0</my_watched_episodes>
-					<my_start_date>0000-00-00</my_start_date>
-					<my_finish_date>0000-00-00</my_finish_date>
+					<my_watched_episodes>26</my_watched_episodes>
+					<my_start_date>2015-10-30</my_start_date>
+					<my_finish_date>2015-10-22</my_finish_date>
 					<my_rated></my_rated>
-					<my_score>0</my_score>
+					<my_score>8</my_score>
 					<my_dvd></my_dvd>
-					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_storage>Hard Drive</my_storage>
+					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
-					<my_rewatch_value></my_rewatch_value>
-					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_rewatch_value>High</my_rewatch_value>
+					<my_downloaded_eps>26</my_downloaded_eps>
 					<my_tags><![CDATA[]]></my_tags>
-					<my_rewatching>0</my_rewatching>
+					<my_rewatching></my_rewatching>
 					<my_rewatching_ep>0</my_rewatching_ep>
 					<update_on_import>0</update_on_import>
 				</anime>
@@ -7990,6 +8090,30 @@ By the time I finished all 26 episodes, my reaction was: what were they thinking
 				</anime>
 			
 				<anime>
+					<series_animedb_id>30276</series_animedb_id>
+					<series_title><![CDATA[One Punch Man]]></series_title>
+					<series_type>TV</series_type>
+					<series_episodes>12</series_episodes>
+					<my_id>0</my_id>
+					<my_watched_episodes>0</my_watched_episodes>
+					<my_start_date>0000-00-00</my_start_date>
+					<my_finish_date>0000-00-00</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>0</my_score>
+					<my_dvd></my_dvd>
+					<my_storage></my_storage>
+					<my_status>Plan to Watch</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value></my_rewatch_value>
+					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching></my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
 					<series_animedb_id>195</series_animedb_id>
 					<series_title><![CDATA[Onegai☆Teacher]]></series_title>
 					<series_type>TV</series_type>
@@ -8458,6 +8582,30 @@ Overall, fun and cute, but not as incisive an analysis of otakudom as, say, _Gen
 				</anime>
 			
 				<anime>
+					<series_animedb_id>30240</series_animedb_id>
+					<series_title><![CDATA[Prison School]]></series_title>
+					<series_type>TV</series_type>
+					<series_episodes>12</series_episodes>
+					<my_id>0</my_id>
+					<my_watched_episodes>0</my_watched_episodes>
+					<my_start_date>0000-00-00</my_start_date>
+					<my_finish_date>0000-00-00</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>0</my_score>
+					<my_dvd></my_dvd>
+					<my_storage></my_storage>
+					<my_status>Plan to Watch</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value></my_rewatch_value>
+					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching>0</my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
 					<series_animedb_id>1027</series_animedb_id>
 					<series_title><![CDATA[Psychic Force]]></series_title>
 					<series_type>OVA</series_type>
@@ -8631,20 +8779,20 @@ Overall, fun and cute, but not as incisive an analysis of otakudom as, say, _Gen
 					<series_type>Movie</series_type>
 					<series_episodes>1</series_episodes>
 					<my_id>0</my_id>
-					<my_watched_episodes>0</my_watched_episodes>
-					<my_start_date>0000-00-00</my_start_date>
-					<my_finish_date>0000-00-00</my_finish_date>
+					<my_watched_episodes>1</my_watched_episodes>
+					<my_start_date>2015-07-28</my_start_date>
+					<my_finish_date>2015-07-28</my_finish_date>
 					<my_rated></my_rated>
-					<my_score>0</my_score>
+					<my_score>8</my_score>
 					<my_dvd></my_dvd>
-					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_storage>Hard Drive</my_storage>
+					<my_status>Completed</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
-					<my_rewatch_value></my_rewatch_value>
-					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_rewatch_value>High</my_rewatch_value>
+					<my_downloaded_eps>1</my_downloaded_eps>
 					<my_tags><![CDATA[]]></my_tags>
-					<my_rewatching>0</my_rewatching>
+					<my_rewatching></my_rewatching>
 					<my_rewatching_ep>0</my_rewatching_ep>
 					<update_on_import>0</update_on_import>
 				</anime>
@@ -9619,18 +9767,20 @@ The story strives to be hard SF, with good explanations for everything (even off
 					<series_type>TV</series_type>
 					<series_episodes>24</series_episodes>
 					<my_id>0</my_id>
-					<my_watched_episodes>0</my_watched_episodes>
-					<my_start_date>0000-00-00</my_start_date>
-					<my_finish_date>0000-00-00</my_finish_date>
+					<my_watched_episodes>24</my_watched_episodes>
+					<my_start_date>2015-09-15</my_start_date>
+					<my_finish_date>2015-09-27</my_finish_date>
 					<my_rated></my_rated>
-					<my_score>0</my_score>
+					<my_score>8</my_score>
 					<my_dvd></my_dvd>
-					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
-					<my_comments><![CDATA[]]></my_comments>
+					<my_storage>Hard Drive</my_storage>
+					<my_status>Completed</my_status>
+					<my_comments><![CDATA[anime about the making of anime, following in the occasional footsteps of other anime such as _Otaku no Video_ and [_Animation Runner Kuromi_](https://en.wikipedia.org/wiki/Animation_Runner_Kuromi) and to a lesser extent shows about doujinshi like _Genshiken_ or _Comic Party_; a 2-cours anime, each cours focuses on, naturally enough, the making of a 1-cours show by the show's anime studio (mostly a stand-in for Studio Gainax, I thought, given how the in-show anime _Jiggly Heaven_ is said to have fallen to late storyboards by the director, like _Evangelion_, and the poor animation provoked a firestorm of Internet criticism, which happened with _Tengen Toppen Gurren Lagann_; but others argue it's more akin to the producing studio itself, P. A. Works, due to the problems with their previous anime, _Girls und Panzer_, which if true would make the second half much more trenchant and the whole anime that much more meta).<br />
+<br />
+    _Shirobako_ is not a documentary so much as a brightly-colored love-letter to an idealized image of the anime world, sanding off the rough edges like the starvation wages of animators or the outsourcing of much work to other countries (China and South Korea do not exist in the world of _Shirobako_), in which everyone is attractive &amp; well-dressed, no one lives down to their stereotypes, plucky wannabes can succeed if they work hard, and the assholes work outside the studio or are just traumatized by past experiences, but still focusing on all the steps that go into producing a single anime episode and the large cast that tames the chaos. (Ironically, I say that it's an idealized image, but the anime industry still comes off as sometimes quite vicious nevertheless...) Shonen-style (or given that anime are made by teams, perhaps that should be sports-manga style?), our protagonists will follow their dreams and tackle the obstacles as they pop up. Like in _Animation Runner Kuromi_, the lead protagonist becomes the Production Desk, in charge of coordinating all the disparate stages and having their fingers in everyone's pies. The plot twists are a bit telegraphed (was anyone surprised when the author caused problems a second time?) or have occasional holes (how exactly was Hiraoka cured of being a embittered slacker, anyway? and I always assumed that the old guy Sugie *was* working on their current show, so that he was the solution to their animal-animation crisis came as a total surprise to me and not in a good way), and the anime references &amp; allusions are surprisingly sparse - I particularly enjoyed the _Initial D_ homage in episode 1, the very appropriate use of the themes of _Space Runaway Ideon_ in episode 5 to reconcile two feuding studio members, and the homage to the final scene of _Cowboy Bebop_ in episode 23. Apparently every other character is a _roman a clef_, but I must admit I only caught Hideaki Anno's unusually serious appearance and Itano (of the Itano Circus), and certainly none of the voice actors or their agencies. (The parodies of light novel-based series are self-explanatory.) And naturally in an anime about producing anime, the backgrounding and design is excellently realistic (&quot;In making the handle of an axe by cutting wood with an axe, the model is indeed near at hand.&quot;) Overall, a great watch for anyone interested in the making of anime.]]></my_comments>
 					<my_times_watched>0</my_times_watched>
-					<my_rewatch_value></my_rewatch_value>
-					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_rewatch_value>High</my_rewatch_value>
+					<my_downloaded_eps>24</my_downloaded_eps>
 					<my_tags><![CDATA[]]></my_tags>
 					<my_rewatching></my_rewatching>
 					<my_rewatching_ep>0</my_rewatching_ep>
@@ -9832,30 +9982,6 @@ Thinking harder about _Soredemo_ afterwards: in retrospect, the biggest flaw was
 				</anime>
 			
 				<anime>
-					<series_animedb_id>1048</series_animedb_id>
-					<series_title><![CDATA[SoulTaker]]></series_title>
-					<series_type>TV</series_type>
-					<series_episodes>13</series_episodes>
-					<my_id>0</my_id>
-					<my_watched_episodes>5</my_watched_episodes>
-					<my_start_date>2014-08-04</my_start_date>
-					<my_finish_date>2014-08-15</my_finish_date>
-					<my_rated></my_rated>
-					<my_score>6</my_score>
-					<my_dvd></my_dvd>
-					<my_storage>Hard Drive</my_storage>
-					<my_status>Dropped</my_status>
-					<my_comments><![CDATA[Prompted by a pretty positive review in http://animeyearbyyear.wordpress.com/2014/07/24/2001-2/ , I decided to check out a very early Akiyuki Shinbo work I hadn't heard of before. One could tell from the first few seconds that it was definitely a Shinbo work, as his visual tricks and cuts are unmistakable, and the characters even are eerily like _Bakemonogatari_ (main character = main character, Shiro=Meme Oshino, Maya=Senjougahara, Hospital defector Komugi Nakahara = Mayoi Hachikuji), possibly due to character designer Akio Watanabe. Indeed, it made me wonder how much Shinbo could've grown as a director since 2001 if it was so instantly recognizable. But anyway, I wound up being disappointed. The visual effects are jerky, action disjointed and impossible to follow, layouts of settings nonexistent, and clearly half the stylistic stuff is there to cover up the cheap budget, with every scene set at night, in fog, or other murkiness to save on animation &amp; background labor; a number seem loosely borrowed from _Neon Genesis Evangelion_ (not the only borrowings: there's also the shallow Christian allusions/iconography; the techno-buildings; the underground city in ep5; soul lyrics in ep4; a character named 'Yui' who looks like Ritsuko Akagi; the protagonist's father transforms into Unit-01 etc). The characters are deeply unmemorable and flat, to the point where calling these characters cardboard would be an insult to everyone who's ever painted a sign on cardboard. The plot hardly makes a lick of sense or even tries (if one were feeling very charitable, one might call it 'surreal' or 'dreamlike'), and the powers, far from being imaginative or curious, are dull: oh hey, a bunch of people shoot lasers, and another shoots sound waves, how pedestrian and formulaic... (I feel this dullness particularly acutely since I just finished the novel/series _Worm_, whose overwhelming virtue is that almost every superpower is interesting and used in diverse ways.) In short, there's nothing here but for the Shinbo scholar, or completionist who has already watched the -gataris, _Le Portrait de Petit Cossette_, _Tsukuyomi: Moon Phase_, _Nanoha_, _Sayonara Zetsubou Sensei_, _Arakawa Under the Bridge_, etc.(Fansub Group:Temuchin)]]></my_comments>
-					<my_times_watched>0</my_times_watched>
-					<my_rewatch_value>High</my_rewatch_value>
-					<my_downloaded_eps>13</my_downloaded_eps>
-					<my_tags><![CDATA[]]></my_tags>
-					<my_rewatching></my_rewatching>
-					<my_rewatching_ep>0</my_rewatching_ep>
-					<update_on_import>0</update_on_import>
-				</anime>
-			
-				<anime>
 					<series_animedb_id>20057</series_animedb_id>
 					<series_title><![CDATA[Space☆Dandy]]></series_title>
 					<series_type>TV</series_type>
@@ -10037,7 +10163,7 @@ Then we finish with a roller-coaster of an ending. Really awesome epiphany/parti
 			
 				<anime>
 					<series_animedb_id>979</series_animedb_id>
-					<series_title><![CDATA[Street Fighter Zero: The Animation]]></series_title>
+					<series_title><![CDATA[Street Fighter Zero The Animation]]></series_title>
 					<series_type>Movie</series_type>
 					<series_episodes>1</series_episodes>
 					<my_id>27487835</my_id>
@@ -10289,7 +10415,7 @@ So, definitely unusual, definitely avant garde and experimental, but not much of
 			
 				<anime>
 					<series_animedb_id>539</series_animedb_id>
-					<series_title><![CDATA[Tenchi Muyou! Ryo-Ohki]]></series_title>
+					<series_title><![CDATA[Tenchi Muyou! Ryououki]]></series_title>
 					<series_type>OVA</series_type>
 					<series_episodes>6</series_episodes>
 					<my_id>27400000</my_id>
@@ -10523,6 +10649,30 @@ So, definitely unusual, definitely avant garde and experimental, but not much of
 					<my_downloaded_eps>0</my_downloaded_eps>
 					<my_tags><![CDATA[]]></my_tags>
 					<my_rewatching>0</my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
+					<series_animedb_id>1048</series_animedb_id>
+					<series_title><![CDATA[The SoulTaker: Tamashii-gari]]></series_title>
+					<series_type>TV</series_type>
+					<series_episodes>13</series_episodes>
+					<my_id>0</my_id>
+					<my_watched_episodes>5</my_watched_episodes>
+					<my_start_date>2014-08-04</my_start_date>
+					<my_finish_date>2014-08-15</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>6</my_score>
+					<my_dvd></my_dvd>
+					<my_storage>Hard Drive</my_storage>
+					<my_status>Dropped</my_status>
+					<my_comments><![CDATA[Prompted by a pretty positive review in http://animeyearbyyear.wordpress.com/2014/07/24/2001-2/ , I decided to check out a very early Akiyuki Shinbo work I hadn't heard of before. One could tell from the first few seconds that it was definitely a Shinbo work, as his visual tricks and cuts are unmistakable, and the characters even are eerily like _Bakemonogatari_ (main character = main character, Shiro=Meme Oshino, Maya=Senjougahara, Hospital defector Komugi Nakahara = Mayoi Hachikuji), possibly due to character designer Akio Watanabe. Indeed, it made me wonder how much Shinbo could've grown as a director since 2001 if it was so instantly recognizable. But anyway, I wound up being disappointed. The visual effects are jerky, action disjointed and impossible to follow, layouts of settings nonexistent, and clearly half the stylistic stuff is there to cover up the cheap budget, with every scene set at night, in fog, or other murkiness to save on animation &amp; background labor; a number seem loosely borrowed from _Neon Genesis Evangelion_ (not the only borrowings: there's also the shallow Christian allusions/iconography; the techno-buildings; the underground city in ep5; soul lyrics in ep4; a character named 'Yui' who looks like Ritsuko Akagi; the protagonist's father transforms into Unit-01 etc). The characters are deeply unmemorable and flat, to the point where calling these characters cardboard would be an insult to everyone who's ever painted a sign on cardboard. The plot hardly makes a lick of sense or even tries (if one were feeling very charitable, one might call it 'surreal' or 'dreamlike'), and the powers, far from being imaginative or curious, are dull: oh hey, a bunch of people shoot lasers, and another shoots sound waves, how pedestrian and formulaic... (I feel this dullness particularly acutely since I just finished the novel/series _Worm_, whose overwhelming virtue is that almost every superpower is interesting and used in diverse ways.) In short, there's nothing here but for the Shinbo scholar, or completionist who has already watched the -gataris, _Le Portrait de Petit Cossette_, _Tsukuyomi: Moon Phase_, _Nanoha_, _Sayonara Zetsubou Sensei_, _Arakawa Under the Bridge_, etc.(Fansub Group:Temuchin)]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value>High</my_rewatch_value>
+					<my_downloaded_eps>13</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching></my_rewatching>
 					<my_rewatching_ep>0</my_rewatching_ep>
 					<update_on_import>0</update_on_import>
 				</anime>
@@ -11038,7 +11188,7 @@ So, leaving it at 7. Somewhat funny, somewhat dramatic, but nothing particularly
 				<anime>
 					<series_animedb_id>743</series_animedb_id>
 					<series_title><![CDATA[Umi ga Kikoeru]]></series_title>
-					<series_type>Movie</series_type>
+					<series_type>Special</series_type>
 					<series_episodes>1</series_episodes>
 					<my_id>27422957</my_id>
 					<my_watched_episodes>1</my_watched_episodes>
@@ -11382,7 +11532,7 @@ Kimochi warui.(Fansub Group:FTW)]]></my_comments>
 					<my_score>0</my_score>
 					<my_dvd></my_dvd>
 					<my_storage></my_storage>
-					<my_status>Plan to Watch</my_status>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_watched>0</my_times_watched>
 					<my_rewatch_value></my_rewatch_value>
@@ -11547,6 +11697,30 @@ My _Yokohama_ download had quality issues (maybe I would've have liked it more i
 					<series_type>OVA</series_type>
 					<series_episodes>2</series_episodes>
 					<my_id>27401549</my_id>
+					<my_watched_episodes>0</my_watched_episodes>
+					<my_start_date>0000-00-00</my_start_date>
+					<my_finish_date>0000-00-00</my_finish_date>
+					<my_rated></my_rated>
+					<my_score>0</my_score>
+					<my_dvd></my_dvd>
+					<my_storage></my_storage>
+					<my_status>Plan to Watch</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_watched>0</my_times_watched>
+					<my_rewatch_value></my_rewatch_value>
+					<my_downloaded_eps>0</my_downloaded_eps>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_rewatching>0</my_rewatching>
+					<my_rewatching_ep>0</my_rewatching_ep>
+					<update_on_import>0</update_on_import>
+				</anime>
+			
+				<anime>
+					<series_animedb_id>26165</series_animedb_id>
+					<series_title><![CDATA[Yuri Kuma Arashi]]></series_title>
+					<series_type>TV</series_type>
+					<series_episodes>12</series_episodes>
+					<my_id>0</my_id>
 					<my_watched_episodes>0</my_watched_episodes>
 					<my_start_date>0000-00-00</my_start_date>
 					<my_finish_date>0000-00-00</my_finish_date>
