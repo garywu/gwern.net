@@ -16,7 +16,7 @@ The choice of embryo is relatively random, with the best looking one implanted; 
 Currently, embryos are screened for gross abnormalities like the wrong number of chromosomes which would either be fatal to the embryo's development or cause birth defects like Down's (so there is no point in implanting it rather than a healthier embryo).
 But with ever cheaper SNP arrays, large amounts of subtler genetic information becomes available, and one could check for abnormalities and also start making predictions about adult phenotypes, and one could choose embryos with higher/lower probability of traits with many known genetic hits such as height or intelligence or alcoholism or schizophrenia - thus, in effect, creating ["designer babies"](!Wikipedia "Designer baby#Preimplantation genetic diagnosis") with proven technology no more exotic than IVF and 23andMe.
 
-In ["Embryo Selection for Cognitive Enhancement: Curiosity or Game‐changer?"](https://intelligence.org/files/EmbryoSelection.pdf), Shulman & Bostrom 2014 consider the potential of embryo selection for greater intelligence in a little detail, ultimately concluding that in the most applicable current scenario of minimal uptake (restricted largely to those forced into IVF use) and gains of a few IQ points, embryo selection is more of "curiosity" than "game-changer" as it will be "Socially negligible over one generation. Effects of social controversy more important than direct impacts."
+In ["Embryo Selection for Cognitive Enhancement: Curiosity or Game-changer?"](https://intelligence.org/files/EmbryoSelection.pdf), Shulman & Bostrom 2014 consider the potential of embryo selection for greater intelligence in a little detail, ultimately concluding that in the most applicable current scenario of minimal uptake (restricted largely to those forced into IVF use) and gains of a few IQ points, embryo selection is more of "curiosity" than "game-changer" as it will be "Socially negligible over one generation. Effects of social controversy more important than direct impacts."
 
 Some things are left out of their analysis which I'm interested in:
 
@@ -70,43 +70,99 @@ That is, adult intelligence is heritable at ~0.8; a SNP chip records the few hun
 
 GCTA tells us how much the SNPs would explain if we knew all their effects exactly, but in practice, there are so many SNPs (likely into the thousands) affecting intelligence, only a few are known to a high level of confidence, and the rest will take much larger samples to pin down, so the table represents an upper limit to SNP-based approaches - to approach the 0.51, we will need large sample sizes, and to exceed it and approach the 0.8, we will need whole genomes and models which can go beyond additive estimates to model interactions (like genes which only increase intelligence in the presence of particular other variants).
 
-Davies et al 2011's 0.5 is a little outdated and small, based on _n_=3511 with correspondingly large imprecision in the GCTA estimates. More recent papers:
+Davies et al 2011's 0.5 is a little outdated and small, based on _n_=3511 with correspondingly large imprecision in the GCTA estimates.
+I was able to find in total the following GCTA estimates:
 
 1. ["Most Reported Genetic Associations with General Intelligence Are Probably False Positives"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3498585/), Chabris et al 2012
 
-    0.47
+    0.47; no measure of precision reported in paper or supplementary information but the relevant sample seems to be _n_=2,441 and so the standard error will be high.
 2. ["Genetic contributions to stability and change in intelligence from childhood to old age"](http://www.researchgate.net/profile/David_Dave_Liewald/publication/221760226_Genetic_contributions_to_stability_and_change_in_intelligence_from_childhood_to_old_age/links/02e7e52ca9a723a8fa000000.pdf), Deary et al 2012
 
-    0.48
+    > The bivariate analysis resulted in estimates of the proportion of phenotypic variation explained by all SNPs for cognition, as follows: 0.48 (standard error 0.18) at age 11; and 0.28 (standard error 0.18) at age 65, 70 or 79
 3. ["Common DNA Markers Can Account for More Than Half of the Genetic Influence on Cognitive Abilities"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3652710/), Plomin et al 2013
 
-    0.35
-3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013:
+    Table 1: ".35 [.12, .58]" (95% CI; so presumably a standard error of `(0.35-0.12)/1.96 ~>0.117`), 12-year-old twins
+3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013
 
-    0.22, 0.40, 0.46
+    pg4: TEDS (mean age 12yo): 0.22(0.10), UMN (14yo): 0.40(0.21), ALSPAC (9yo): 0.46(0.06)
 4. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/iq/2013-rietveld.pdf), Rietveld et al 2013
 
-    0.224
-5. ["Molecular genetic contributions to socioeconomic status and intelligence"](http://ac.els-cdn.com/S0160289614000178/1-s2.0-S0160289614000178-main.pdf), Marioni et al 2014
+    pg2: 0.224(0.042); mean age ~57 (using [supplementary information's Table S4 on pg92](http://www.science.sciencemag.org/highwire/filestream/594571/field_highwire_adjunct_files/1/Rietveld.SM.revision.2.pdf) & equal-weighting all reported mean ages)
+    <!-- mean(c(76.33,76.52,76.41,28.69,28.69,65.95,64.93,65.51,69.18,73.66,71.63,78.74,78.74,79.05,79.05,68.80,68.80,66.67,66.67,62.47,58.39,59.39,53.88,52.92,53.43,56.52,59.04,57.42,53.51,52.54,53.10,58.48,57.82,58.20,60.60,48.24,55.94,51.59,51.98,51.77,57.86,54.90,46.28,55.06,54.77,54.88,54.07,56.99,55.48,55.08,55.63,55.33,73.63,73.90,73.77,61.53,61.40,61.47,70.70,69.01,69.95,53.03,53.54,53.28,53.65,54.23,53.93,79.10,79.11,79.10,69.61,69.59,69.60,48.35,48.86,48.57,31.80,31.80,31.80,31.80,46.22,47.59,46.69,31.00,31.00,31.00,52.11,53.84,53.02,50.16,53.25,51.39,44.82,45.12,44.95,69.97,68.05,69.18,64.54,65.36,64.97,56.21,55.99,56.11,80.99,81.38,81.10,76.28,74.59,75.70,38.59,38.89,38.70,51.96,53.91,52.81,52.22,54.34,53.27,63.41,64.28,63.82,51.03,51.03,37.73,37.70,37.72,53.08,55.49,54.22,58.72,59.97,59.87,52.37,49.25,50.83,51.98,49.26,50.66,65.69,66.55,66.13,68.33,68.99,68.61,42.85,44.91,43.80,75.78,76.59,76.10,42.27,43.06,42.54,54.48,56.42,55.37,58.67,59.72,59.26,57.58,56.95,57.16,53.33,53.10,53.19)) -->
+5. ["Molecular genetic contributions to socioeconomic status and intelligence"](http://www.sciencedirect.com/science/article/pii/S0160289614000178), Marioni et al 2014
 
-    0.29
-6. ["Results of a “GWAS Plus:” General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014
+    Table 3: 0.29(0.05), median age 57
+6. ["Results of a 'GWAS Plus': General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014
 
-    0.35
-7. ["Genetic influence on family socioeconomic status and children's intelligence"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907681/), Trzaskowski et al 2014
+    0.35( 0.11), 11.78 & 17.48yos (average: 14.63)
+7. ["DNA evidence for strong genetic stability and increasing heritability of intelligence from age 7 to 12"](http://www.researchgate.net/profile/Maciej_Trzaskowski/publication/235379639_DNA_evidence_for_strong_genetic_stability_and_increasing_heritability_of_intelligence_from_age_7_to_12/links/004635162d9aa8ba50000000.pdf), Trzaskowski et al 2014a
 
-    0.32
-8. ["DNA evidence for strong genetic stability and increasing heritability of intelligence from age 7 to 12"](http://www.researchgate.net/profile/Maciej_Trzaskowski/publication/235379639_DNA_evidence_for_strong_genetic_stability_and_increasing_heritability_of_intelligence_from_age_7_to_12/links/004635162d9aa8ba50000000.pdf), Trzaskowski et al 2014
+    pg4: age 7: 0.26(0.17); age 12: 0.45(0.14)
+8. ["Genetic influence on family socioeconomic status and children's intelligence"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907681/), Trzaskowski et al 2014b
 
-    0.45
+    Table 2: 0.32(0.14); appears to be a followup to Trzaskowski et al 2014a & report on same dataset
 9. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (N=53 949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015
 
-    0.29
+    ARIC (57.2yo): 0.29(0.05), HRS (70yo): 0.28(0.07); ages from [Supplementary Information 2](http://www.nature.com/mp/journal/v20/n2/extref/mp2014188x2.pdf)
 10. ["A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html), Spain et al 2015
 
-    0.174 (but on the liability scale for extremely high intelligence, so unclear relevance)
+    0.174(0.017); but on the liability scale for extremely high intelligence, so of unclear relevance
 
-The earlier estimates tend to be smaller samples and higher, and I put more trust in the later ones which are estimating closer to 1/3, which reduces the potential of embryo selection.
+The earlier estimates tend to be smaller samples and higher, and as heritability increases with age, it's not surprising that the GCTA estimates of SNP contribution also increases with age.
+[Jian Yang](http://gcta.freeforums.net/thread/213/analysis-greml-results-multiple-cohorts) says that GCTA estimates can be meta-analytically combined straightforwardly in the usual way.
+Excluding Chabris et al 2012 (no precision reported) and Spain et al 2015 and the duplicate Trzaskowski and doing a random-effects meta-analysis with mean age as a covariate:
+
+~~~{.R}
+gcta <- read.csv(stdin(), header=TRUE)
+Study, HSNP, SE, Age.mean
+Deary et al 2012, 0.48, 0.18, 11
+Deary et al 2012, 0.28, 0.18, 71.3
+Plomin et al 2013, 0.35, 0.117, 12
+Benyamin et al 2013, 0.22, 0.10, 12
+Benyamin et al 2013, 0.40, 0.21, 14
+Benyamin et al 2013, 0.46, 0.06, 9
+Rietveld et al 2013, 0.224, 0.042, 57.47
+Marioni et al 2014, 0.29, 0.05, 57
+Kirkpatrick et al 2014, 0.35, 0.11, 14.63
+Trzaskowski et al 2014, 0.26, 0.17, 7
+Trzaskowski et al 2014, 0.45, 0.14, 12
+Davies et al 2015, 0.29, 0.05, 57.2
+Davies et al 2015, 0.28, 0.07, 70
+
+
+gcta <- gcta[order(gcta$Age.mean),]
+
+rem <- rma(yi=HSNP, sei=SE, data=gcta); rem
+# ...estimate       se     zval     pval    ci.lb    ci.ub
+#  0.3113   0.0283  11.0192   <.0001   0.2560   0.3667
+remAge <- rma(yi=HSNP, sei=SE, mods = Age.mean, data=gcta); remAge
+# Mixed-Effects Model (k = 13; tau^2 estimator: REML)
+#
+# tau^2 (estimated amount of residual heterogeneity):     0 (SE = 0.0019)
+# tau (square root of estimated tau^2 value):             0
+# I^2 (residual heterogeneity / unaccounted variability): 0.00%
+# H^2 (unaccounted variability / sampling variability):   1.00
+# R^2 (amount of heterogeneity accounted for):            100.00%
+#
+# Test for Residual Heterogeneity:
+# QE(df = 11) = 7.1833, p-val = 0.7841
+#
+# Test of Moderators (coefficient(s) 2):
+# QM(df = 1) = 6.8327, p-val = 0.0090
+#
+# Model Results:
+#
+#          estimate      se     zval    pval    ci.lb    ci.ub
+# intrcpt    0.4109  0.0469   8.7548  <.0001   0.3189   0.5028
+# mods      -0.0024  0.0009  -2.6139  0.0090  -0.0043  -0.0006
+forest(rma(yi=HSNP, sei=SE, data=gcta), slab=gcta$Study)
+## so estimated heritability at 30yo:
+0.4109 + 30*-0.0024
+# [1] 0.3389
+~~~
+
+![Forest plot for meta-analysis of GCTA estimates of total additive SNP's effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
+
 Since half of additives will be shared within family, then we get `0.33*0.5 = 0.165` within-family variance, which gives `sqrt(0.165) = 0.4062019202` SD or 6.1 IQ points
 (Occasionally within-family differences are cited in a format like "siblings have an average difference of 12 IQ points", which comes from an SD of ~0.7/0.8, since `0.8*15=12`, but you could also check what SD yields an average difference of 12 via simulation: eg `mean(abs(rnorm(n=10000000, mean=0, sd=0.71) - rnorm(n=10000000, mean=0, sd=0.71))) * 15 ~> 12.01807542`.)
 We don't care about means since we're only looking at gains, so the mean of the within-family normal distribution can be set to 0.
@@ -137,7 +193,7 @@ Past polygenic scores for intelligence:
 3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013:
 
     0.5%, 1.2%, 3.5%.
-6. ["Results of a “GWAS Plus:” General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014:
+6. ["Results of a "GWAS Plus:" General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014:
 
     0.55% (maximum in subsamples: 0.7%)
 3. ["Common genetic variants associated with cognitive performance identified using the proxy-phenotype method"](http://www.pnas.org/content/early/2014/09/05/1404623111.full.pdf), Rietveld et al 2015
@@ -230,7 +286,7 @@ QTL selection http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3382275/
 >
 > ...The median number of normal/ balanced embryos per couple was 1.76 (range from 0 to 8).
 >
-> ...Among the 129 couples in the NGS cycles group, 33 couples had no euploid embryos suitable for transfer; 75 couples underwent embryo transfer and the remaining 21 couples are currently still waiting for transfer. In the SNP array cycles group, 177 couples underwent embryo transfer, 66 couples had no suitable embryos for transfer, and 23 couples are currently still waiting. Of the 666 normal/balanced blastocysts, 421 blastocysts were warmed after vitrification, 406 survived (96.4% of survival rate) and were transferred in 283 cycles. The numbers of blastocysts transferred per cycle were 1.425 (114/80) and 1.438 (292/203) for NGS and SNP array, respectively. The proportion of transferred embryos that successfully implanted was evaluated by ultrasound 6–7 weeks after embryo transfer, indicating that 60 and 139 embryos resulted in a fetal sac, giving implantation rates of 52.6% (60/114) and 47.6% (139/292) for NGS and SNP array, respectively. Prenatal diagnosis with karyotyping of amniocentesis fluid samples did not find any fetus with chromosomal abnormalities. A total of 164 pregnancies were detected, with 129 singletons and 35 twins. The clinical pregnancy rate per transfer cycle was 61.3% (49/80) and 56.7% (115/203) for NGS and SNP array, respectively (Table 3). A total of 24 miscarriages were detected, giving rates of 14.3% (7/49) and 14.8% (17/115) in NGS and SNP array cycles, respectively
+> ...Among the 129 couples in the NGS cycles group, 33 couples had no euploid embryos suitable for transfer; 75 couples underwent embryo transfer and the remaining 21 couples are currently still waiting for transfer. In the SNP array cycles group, 177 couples underwent embryo transfer, 66 couples had no suitable embryos for transfer, and 23 couples are currently still waiting. Of the 666 normal/balanced blastocysts, 421 blastocysts were warmed after vitrification, 406 survived (96.4% of survival rate) and were transferred in 283 cycles. The numbers of blastocysts transferred per cycle were 1.425 (114/80) and 1.438 (292/203) for NGS and SNP array, respectively. The proportion of transferred embryos that successfully implanted was evaluated by ultrasound 6-7 weeks after embryo transfer, indicating that 60 and 139 embryos resulted in a fetal sac, giving implantation rates of 52.6% (60/114) and 47.6% (139/292) for NGS and SNP array, respectively. Prenatal diagnosis with karyotyping of amniocentesis fluid samples did not find any fetus with chromosomal abnormalities. A total of 164 pregnancies were detected, with 129 singletons and 35 twins. The clinical pregnancy rate per transfer cycle was 61.3% (49/80) and 56.7% (115/203) for NGS and SNP array, respectively (Table 3). A total of 24 miscarriages were detected, giving rates of 14.3% (7/49) and 14.8% (17/115) in NGS and SNP array cycles, respectively
 >
 > ...The ongoing pregnancy rates were 52.5% (42/80) and 48.3% (98/203) in NGS and SNP array cycles, respectively. Out of these pregnancies, 24 babies were delivered in 20 NGS cycles; so far, all the babies are healthy and chromosomally normal according to karyotype analysis. In the SNP array cycles group the outcome of all pregnancies went to full term and 75 healthy babies were delivered (Table 3).
 >
@@ -240,17 +296,17 @@ QTL selection http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3382275/
 
 "Cost-effectiveness analysis of preimplantation genetic screening and in vitro fertilization versus expectant management in patients with unexplained recurrent pregnancy loss", Murugappan et al May 2015 https://www.dropbox.com/s/ptmckh4aoyns3ij/2015-murugappan.pdf
 
-> Probabilities for clinical outcomes with IVF and PGS in RPL patients were obtained from a 2012 study by Hodes-Wertz et al. (10). This is the single largest study to date of outcomes using 24-chromosome screening by array comparative genomic hybridization in a well-defined RPL population...The Hodes-Wertz study reported on outcomes of 287 cycles of IVF with 24-chromosome PGS with a total of 2,282 embryos followed by fresh day-5 embryo transfer in RPL patients. Of the PGS cycles, 67% were biopsied on day 3, and 33% were biopsied on day 5. The average maternal age was 36.7 years (range: 21–45 years), and the mean number of prior miscarriages was 3.3 (range: 2–7). From 287 PGS cycles, 181 cycles had at least one euploid embryo and proceeded to fresh embryo transfer. There were 52 cycles with no euploid embryos for transfer, four cycles where an embryo transfer had not taken place at the time of analysis, and 51 cycles that were lost to follow-up observation. All patients with a euploid embryo proceeded to embryo transfer, with an average of 1.65 Æ 0.65 (range: 1–4) embryos per transfer. Excluding the cycles lost to follow-up evaluation and the cycles without a transfer at the time of analysis, the clinical pregnancy rate per attempt was 44% (n 1⁄4 102). One attempt at conception was defined as an IVF cycle and oocyte retrieval Æ embryo transfer. The live-birth rate per attempt was 40% (n1⁄4 94), and the miscarriage rate per pregnancy was 7% (n 1⁄4 7). Of these seven miscarriages, 57% (n 1⁄4 4) occurred after detection of fetal cardiac activity (10). Information on the percent- age of cycles with surplus embryos was not provided in the Hodes-Wertz study, so we drew from their database of 240 RPL patients with 118 attempts at IVF and PGS (12). The clinical pregnancy, live-birth, and clinical miscarriage rates did not statistically significantly differ between the outcomes published in the Hodes-Wertz study (P1⁄4 .89, P1⁄4 .66, P1⁄4 .61, respectively). We reported that 62% of IVF cycles had at least one surplus embryo (12).
+> Probabilities for clinical outcomes with IVF and PGS in RPL patients were obtained from a 2012 study by Hodes-Wertz et al. (10). This is the single largest study to date of outcomes using 24-chromosome screening by array comparative genomic hybridization in a well-defined RPL population...The Hodes-Wertz study reported on outcomes of 287 cycles of IVF with 24-chromosome PGS with a total of 2,282 embryos followed by fresh day-5 embryo transfer in RPL patients. Of the PGS cycles, 67% were biopsied on day 3, and 33% were biopsied on day 5. The average maternal age was 36.7 years (range: 21-45 years), and the mean number of prior miscarriages was 3.3 (range: 2-7). From 287 PGS cycles, 181 cycles had at least one euploid embryo and proceeded to fresh embryo transfer. There were 52 cycles with no euploid embryos for transfer, four cycles where an embryo transfer had not taken place at the time of analysis, and 51 cycles that were lost to follow-up observation. All patients with a euploid embryo proceeded to embryo transfer, with an average of 1.65 Æ 0.65 (range: 1-4) embryos per transfer. Excluding the cycles lost to follow-up evaluation and the cycles without a transfer at the time of analysis, the clinical pregnancy rate per attempt was 44% (n 1⁄4 102). One attempt at conception was defined as an IVF cycle and oocyte retrieval Æ embryo transfer. The live-birth rate per attempt was 40% (n1⁄4 94), and the miscarriage rate per pregnancy was 7% (n 1⁄4 7). Of these seven miscarriages, 57% (n 1⁄4 4) occurred after detection of fetal cardiac activity (10). Information on the percent- age of cycles with surplus embryos was not provided in the Hodes-Wertz study, so we drew from their database of 240 RPL patients with 118 attempts at IVF and PGS (12). The clinical pregnancy, live-birth, and clinical miscarriage rates did not statistically significantly differ between the outcomes published in the Hodes-Wertz study (P1⁄4 .89, P1⁄4 .66, P1⁄4 .61, respectively). We reported that 62% of IVF cycles had at least one surplus embryo (12).
 >
-> ...The average cost of preconception counseling and baseline RPL workup, including parental karyotyping, maternal antiphospholipid antibody testing, and uterine cavity evaluation, was $4,377 (range: $4,000–$5,000) (16). Because this was incurred by both groups before their entry into the decision tree, it was not included as a cost input in the study. The average cost of IVF was $18,227 (range: $6,920–$27,685) (16) and includes cycle medications, oocyte retrieval, and one embryo transfer. The average cost of PGS was $4,268 (range $3,155–$12,626) (17), and the average cost of a frozen embryo transfer was $6,395 (range: $3,155–$12,626) (13, 16). The average cost of managing a clinical miscarriage with dilation and curettage (D&C) was $1,304 (range: $517–$2,058) (18). Costs incurred in the IVF–PGS strategy include the cost of IVF, PGS, fresh embryo transfer, frozen embryo transfer, and D&C. Costs incurred in the expectant management strategy include only the cost of D&C.
+> ...The average cost of preconception counseling and baseline RPL workup, including parental karyotyping, maternal antiphospholipid antibody testing, and uterine cavity evaluation, was $4,377 (range: $4,000-$5,000) (16). Because this was incurred by both groups before their entry into the decision tree, it was not included as a cost input in the study. The average cost of IVF was $18,227 (range: $6,920-$27,685) (16) and includes cycle medications, oocyte retrieval, and one embryo transfer. The average cost of PGS was $4,268 (range $3,155-$12,626) (17), and the average cost of a frozen embryo transfer was $6,395 (range: $3,155-$12,626) (13, 16). The average cost of managing a clinical miscarriage with dilation and curettage (D&C) was $1,304 (range: $517-$2,058) (18). Costs incurred in the IVF-PGS strategy include the cost of IVF, PGS, fresh embryo transfer, frozen embryo transfer, and D&C. Costs incurred in the expectant management strategy include only the cost of D&C.
 >
 > 17: National Infertility Association. "The costs of infertility treatment: the Resolve Study". Available at: http://www.resolve.org/family-building-options/insurance_coverage/the-costs-of-infertility-treatment.html Accessed on May 26, 2014: "Average additional cost of PGD procedure: $3,550; Median Cost: $3,200 (Note: Medications for IVF are $3,000 $5,000 per fresh cycle on average.)"
 
 "Technical Update: Preimplantation Genetic Diagnosis and Screening", Dahdouh et al 2015  http://sogc.org/wp-content/uploads/2015/05/gui323TU1505E.pdf
 
-> The number of diseases currently diagnosed via PGD-PCR is approximately 200 and includes some forms of inherited cancers such as retinoblastoma and the breast cancer susceptibility gene (BRCA2). 52 PGD has also been used in new applications such as HLA matching. 53,54 The ESHRE PGD consortium data analysis of the past 10 years’ experience demonstrated a clinical pregnancy rate of 22% per oocyte retrieval and 29% per embryo transfer. 55 Table 4 shows a sample of the different monogenetic diseases for which PGD was carried out between January and December 2009, according to the ESHRE data. 22 In these reports a total of 6160 cycles of IVF cycles with PGD or PGS, including PGS-SS, are presented. Of these, 2580 (41.8%) were carried out for PGD purposes, in which 1597 cycles were performed for single-gene disorders, including HLA typing. An additional 3551 (57.6%) cycles were carried out for PGS purposes and 29 (0.5%) for PGS-SS. 22 Although the ESHRE data represent only a partial record of the PGD cases conducted worldwide, it is indicative of general trends in the field of PGD.
+> The number of diseases currently diagnosed via PGD-PCR is approximately 200 and includes some forms of inherited cancers such as retinoblastoma and the breast cancer susceptibility gene (BRCA2). 52 PGD has also been used in new applications such as HLA matching. 53,54 The ESHRE PGD consortium data analysis of the past 10 years' experience demonstrated a clinical pregnancy rate of 22% per oocyte retrieval and 29% per embryo transfer. 55 Table 4 shows a sample of the different monogenetic diseases for which PGD was carried out between January and December 2009, according to the ESHRE data. 22 In these reports a total of 6160 cycles of IVF cycles with PGD or PGS, including PGS-SS, are presented. Of these, 2580 (41.8%) were carried out for PGD purposes, in which 1597 cycles were performed for single-gene disorders, including HLA typing. An additional 3551 (57.6%) cycles were carried out for PGS purposes and 29 (0.5%) for PGS-SS. 22 Although the ESHRE data represent only a partial record of the PGD cases conducted worldwide, it is indicative of general trends in the field of PGD.
 >
-> ...At least 40% to 60% of human embryos are abnormal, and that number increases to 80% in women 40 years or older. These abnormalities result in low implantation rates in embryos transferred during IVF procedures, from 30% in women < 35 years to 6% in women ≥ 40 years. 33 In a recent retrospective review of trophectoderm biopsies, aneuploidy risk was evident with increasing female age. A slightly increased prevalence was noted at younger ages, with > 40% aneuploidy in women ≤ 23 years. The risk of having no chromosomally normal blastocyst for transfer (the no-euploid embryo rate) was lowest (2–6%) in women aged 26 to 37, then rose to 33% at age 42 and reached 53% at age 44. 11
+> ...At least 40% to 60% of human embryos are abnormal, and that number increases to 80% in women 40 years or older. These abnormalities result in low implantation rates in embryos transferred during IVF procedures, from 30% in women < 35 years to 6% in women ≥ 40 years. 33 In a recent retrospective review of trophectoderm biopsies, aneuploidy risk was evident with increasing female age. A slightly increased prevalence was noted at younger ages, with > 40% aneuploidy in women ≤ 23 years. The risk of having no chromosomally normal blastocyst for transfer (the no-euploid embryo rate) was lowest (2-6%) in women aged 26 to 37, then rose to 33% at age 42 and reached 53% at age 44. 11
 
 ~~~{.R}
 R> sapply(0:20, function(n) { (2000 * mean(simEmbryoSelection(n=n, variance=davies2015))) - (n * 150) })
@@ -287,7 +343,7 @@ Net success rates: https://en.wikipedia.org/wiki/In_vitro_fertilisation#Success_
 using non-donor eggs. (Though donor eggs are better quality and more likely to yield a birth and hence better for selection purposes)
 
 ["Association between the number of eggs and live birth in IVF treatment: an analysis of 400 135 treatment cycles"](http://humrep.oxfordjournals.org/content/26/7/1768.full), Sunkara et al 2011
-> The median number of eggs retrieved was 9 [inter-quartile range (IQR) 6–13; Fig. 2a] and the median number of embryos created was 5 (IQR 3–8; Fig. 2b). The overall LBR in the entire cohort was 21.3% [95% confidence interval (CI): 21.2–21.4%], with a gradual rise over the four time periods in this study (14.9% in 1991–1995, 19.8% in 1996–2000, 23.2% in 2001–2005 and 25.6% in 2006–2008).
+> The median number of eggs retrieved was 9 [inter-quartile range (IQR) 6-13; Fig. 2a] and the median number of embryos created was 5 (IQR 3-8; Fig. 2b). The overall LBR in the entire cohort was 21.3% [95% confidence interval (CI): 21.2-21.4%], with a gradual rise over the four time periods in this study (14.9% in 1991-1995, 19.8% in 1996-2000, 23.2% in 2001-2005 and 25.6% in 2006-2008).
 
 Egg retrieval appears normally distributed:
 http://humrep.oxfordjournals.org/content/26/7/1768/F2.large.jpg
@@ -347,18 +403,18 @@ The most recent one is the ["2013 Assisted Reproductive Technology National Summ
 >
 > ...Of the 190,773 ART cycles performed in 2013 at these reporting clinics, 163,209 cycles (86%) were started with the intent to transfer at least one embryo. These 163,209 cycles resulted in 54,323 live births (deliveries of one or more living infants) and 67,996 infants.
 >
-> Fresh eggs        <35yo   35–37   38–40 41–42  43–44  >44
+> Fresh eggs        <35yo   35-37   38-40 41-42  43-44  >44
 > ------------      ------  ------  ----- ------ -----  -------
 > cycles:           40,083  19,853  18,06 19,588 4,823  1,379
 > P(birth|cycle)    23.8    19.6    13.7  7.8    3.9    1.2
 > P(birth|transfer) 28.2    24.4    18.4  11.4   6.0    2.1
 >
-> Frozen eggs       <35     35–37   38–40  41–42  43–44  >44
+> Frozen eggs       <35     35-37   38-40  41-42  43-44  >44
 > --------------    ------  ------  -----  -----  -----  ----
 > cycles:           21,627  11,140  8,354  3,344  1,503  811
 > P(birth|transfer) 28.6    27.2    24.4   21.2   15.8   8.7
 >
-> ...The largest group of women using ART services were women younger than age 35, representing approximately 38% of all ART cycles performed in 2013. About 20% of ART cycles were performed among women aged 35–37, 19% among women aged 38–40, 11% among women aged 41–42, 7% among women aged 43–44, and 5% among women older than age 44. Figure 4 shows that, in 2013, the type of ART cycles varied by the woman’s age. The vast majority (97%) of women younger than age 35 used their own eggs (nondonor), and about 4% used donor eggs. In contrast, 38% of women aged 43–44 and 73% of women older than age 44 used donor eggs.
+> ...The largest group of women using ART services were women younger than age 35, representing approximately 38% of all ART cycles performed in 2013. About 20% of ART cycles were performed among women aged 35-37, 19% among women aged 38-40, 11% among women aged 41-42, 7% among women aged 43-44, and 5% among women older than age 44. Figure 4 shows that, in 2013, the type of ART cycles varied by the woman's age. The vast majority (97%) of women younger than age 35 used their own eggs (nondonor), and about 4% used donor eggs. In contrast, 38% of women aged 43-44 and 73% of women older than age 44 used donor eggs.
 >
 > ...Outcomes of ART Cycles Using Fresh Nondonor Eggs or Embryos, by Stage, 2013:
 >
@@ -394,7 +450,7 @@ https://www.addgene.org/crispr/reference/
 http://www.genome.gov/sequencingcosts/
 https://crispr.bme.gatech.edu/
 http://crispr.mit.edu/
-low, near zero mutation rates: "High-fidelity CRISPR–Cas9 nucleases with no detectable genome-wide off-target effects" Kleinstiver et al 2016, /docs/genetics/2016-kleinstiver.pdf ; "Rationally engineered Cas9 nucleases with improved specificity", Slaymaker et al 2016 /docs/genetics/2016-slaymaker.pdf
+low, near zero mutation rates: "High-fidelity CRISPR-Cas9 nucleases with no detectable genome-wide off-target effects" Kleinstiver et al 2016, /docs/genetics/2016-kleinstiver.pdf ; "Rationally engineered Cas9 nucleases with improved specificity", Slaymaker et al 2016 /docs/genetics/2016-slaymaker.pdf
 cost of the top variants?
 want to edit all variants such that:
 sequencing-based edit: posterior mean * value of IQ point > cost of 1 edit
@@ -411,16 +467,16 @@ problem: what's the probability of non-causal tagging due to LD? probably low si
 
 The second review (from 2013; 299 included GWAS) found much stronger results, probably because it included more SNPs and because they also adjusted for statistical power. Doing so, they found that: ~100% of SNPs replicate in other European samples when accounting for statistical power, ~80% in East Asian samples but only ~10% in the African American sample (not adjusted for statistical power, which was ~60% on average). There were fairly few GWAS for AAs however, so some caution is needed in interpreting the number. Still, this throws some doubt on the usefulness of GWAS results from Europeans or Asians used on African samples (or reversely)."
 
-23. Ntzani EE, Liberopoulos G, Manolio TA, Ioannidis JPA. "Consistency of genome-wide associations across major ancestral groups" /docs/genetics/2012-ntzani.pdf . Hum Genet. 2011 Dec 20;131(7):1057–71.
+23. Ntzani EE, Liberopoulos G, Manolio TA, Ioannidis JPA. "Consistency of genome-wide associations across major ancestral groups" /docs/genetics/2012-ntzani.pdf . Hum Genet. 2011 Dec 20;131(7):1057-71.
 24. Marigorta UM, Navarro A. "High Trans-ethnic Replicability of GWAS Results Implies Common Causal Variants". PLoS Genet [Internet]. 2013 Jun [cited 2015 Aug 31];9(6). http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3681663/
 "Identifying Causal Variants at Loci with Multiple Signals of Association", Hormozdiari et al 2014 http://genetics.org/content/198/2/497.full
 "Generalization and Dilution of Association Results from European GWAS in Populations of Non-European Ancestry: The PAGE Study", Carlson et al 2013 http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001661
 "Interpretation of Association Signals and Identification of Causal Variants from Genome-wide Association Studies", Wang et al 2010 http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2869011/
-"Where is the causal variant? On the advantage of the family design over the case–control design in genetic association studies", Dandine-Roulland & Perdry 2015 http://www.nature.com/ejhg/journal/v23/n10/abs/ejhg2014284a.html
+"Where is the causal variant? On the advantage of the family design over the case-control design in genetic association studies", Dandine-Roulland & Perdry 2015 http://www.nature.com/ejhg/journal/v23/n10/abs/ejhg2014284a.html
 worst-case, ~10% of SNPs are causal?
 
 Also, what about mosaicism? When the CRISPR RNA is injected into an even single-celled zygote, it may already have created some of the DNA for a split and so the edit covers only a fraction of the cells of the future full-grown organism.
-"Additionally, editing may happen after first embryonic division, due to persistence of Cas9:gRNA complexes, also causing mosaicism. We (unpublished results) and others (Yang et al. 2013a; Ma et al. 2014; Yen et al. 2014) have observed mosaic animals carrying three or more alleles. A recent study reported surprisingly high percentage of mosaic mice (up to 80%) generated by CRISPR targeting of the tyrosinase gene (Tyr) (Yen et al. 2014). We have observed a varying frequency of mosaicism, 11–35%, depending on the gene/locus (our unpublished data)... The pronuclear microinjection of gRNA and Cas9, in a manner essentially identical to what is used for generating transgenic mice, can be easily adapted by most transgenic facilities. Facilities equipped with a Piezo-electric micromanipulator can opt for cytoplasmic injections as reported (Wang et al. 2013; Yang et al. 2013a). Horii et al. (2014) performed an extensive comparison study suggesting that cytoplasmic injection of a gRNA and Cas9 mRNA mixture as the best delivery method. Although the overall editing efficiency in born pups yielded by pronuclear vs. cytoplasmic RNA injection seems to be comparable (Table 1), the latter method generated two- to fourfold more live born pups. Injection of plasmid DNA carrying Cas9 and gRNA to the pronucleus was the least efficient method in terms of survival and targeting efficiency (Mashiko et al. 2013; Horii et al. 2014). Injection into pronuclei seems to be more damaging to embryos than injection of the same volume or concentration of editing reagents to the cytoplasm. It has been shown that cytoplasmic injection of Cas9 mRNA at concentrations up to 200 ng/μl is not toxic to embryos (Wang et al. 2013) and efficient editing was achieved at concentrations as low as 1.5 ng/μl (Ran et al. 2013a). In our hands, injecting Cas9 mRNA at 50–150 ng/μl and gRNA at 50–75 ng/μl first into the pronucleus and also into the cytoplasm as the needle is being withdrawn, yields good survival of embryos and efficient editing by NHEJ in live born pups (our unpublished observations)." http://genetics.org/content/199/1/1.full
+"Additionally, editing may happen after first embryonic division, due to persistence of Cas9:gRNA complexes, also causing mosaicism. We (unpublished results) and others (Yang et al. 2013a; Ma et al. 2014; Yen et al. 2014) have observed mosaic animals carrying three or more alleles. A recent study reported surprisingly high percentage of mosaic mice (up to 80%) generated by CRISPR targeting of the tyrosinase gene (Tyr) (Yen et al. 2014). We have observed a varying frequency of mosaicism, 11-35%, depending on the gene/locus (our unpublished data)... The pronuclear microinjection of gRNA and Cas9, in a manner essentially identical to what is used for generating transgenic mice, can be easily adapted by most transgenic facilities. Facilities equipped with a Piezo-electric micromanipulator can opt for cytoplasmic injections as reported (Wang et al. 2013; Yang et al. 2013a). Horii et al. (2014) performed an extensive comparison study suggesting that cytoplasmic injection of a gRNA and Cas9 mRNA mixture as the best delivery method. Although the overall editing efficiency in born pups yielded by pronuclear vs. cytoplasmic RNA injection seems to be comparable (Table 1), the latter method generated two- to fourfold more live born pups. Injection of plasmid DNA carrying Cas9 and gRNA to the pronucleus was the least efficient method in terms of survival and targeting efficiency (Mashiko et al. 2013; Horii et al. 2014). Injection into pronuclei seems to be more damaging to embryos than injection of the same volume or concentration of editing reagents to the cytoplasm. It has been shown that cytoplasmic injection of Cas9 mRNA at concentrations up to 200 ng/μl is not toxic to embryos (Wang et al. 2013) and efficient editing was achieved at concentrations as low as 1.5 ng/μl (Ran et al. 2013a). In our hands, injecting Cas9 mRNA at 50-150 ng/μl and gRNA at 50-75 ng/μl first into the pronucleus and also into the cytoplasm as the needle is being withdrawn, yields good survival of embryos and efficient editing by NHEJ in live born pups (our unpublished observations)." http://genetics.org/content/199/1/1.full
 
 dnorm((150-100)/15) * 320000000
 [1] 493,529.2788
@@ -458,7 +514,7 @@ http://ipscore.hsci.harvard.edu/genome-editing-services
 http://www.blueheronbio.com/Services/CRISPR-Cas9.aspx
 http://www.addgene.org/crispr/
 'Jennifer Doudna, one of the co-discoverers of CRISPR, told MIT Tech Review's Antonio Regalado just how easy it was to work with the tool: "Any scientist with molecular biology skills and knowledge of how to work with [embryos] is going to be able to do this." Harvard geneticist George Church, whose lab is doing some of the premier research on CRISPR, says: "You could conceivably set up a CRISPR lab for $2000."' http://www.businessinsider.com/how-to-genetically-modify-human-embryos-2015-4
-"Democratizing genetic engineering: This one should keep you up at night. CRISPR is so accessible—you can order the components online for $60—that it is putting the power of genetic engineering into the hands of many more scientists. But the next wave of users could be at-home hobbyists. This year, developers of a do-it-yourself genetic engineering kit began offering it for $700, less than the price of some computers. The trend might lead to an explosion of innovation—or to dangerous, uncontrolled experiments by newbies. Watch out, world. " https://www.technologyreview.com/s/543941/everything-you-need-to-know-about-crispr-gene-editings-monster-year/
+"Democratizing genetic engineering: This one should keep you up at night. CRISPR is so accessible-you can order the components online for $60-that it is putting the power of genetic engineering into the hands of many more scientists. But the next wave of users could be at-home hobbyists. This year, developers of a do-it-yourself genetic engineering kit began offering it for $700, less than the price of some computers. The trend might lead to an explosion of innovation-or to dangerous, uncontrolled experiments by newbies. Watch out, world. " https://www.technologyreview.com/s/543941/everything-you-need-to-know-about-crispr-gene-editings-monster-year/
 "Individual plasmids can be ordered at $65 per plasmid, and will be shipped as bacterial stabs" https://www.addgene.org/crispr/yamamoto/multiplex-crispr-kit/
 $80k per patient https://www.reddit.com/r/Futurology/comments/3ocsbi/ama_my_name_is_liz_parrish_ceo_of_bioviva_the/cvw0jgd
 -->
