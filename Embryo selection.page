@@ -209,7 +209,7 @@ Past polygenic scores for intelligence:
     0.5%, 1.2%, 3.5%.
 6. ["Results of a "GWAS Plus:" General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014:
 
-    0.55% (maximum in subsamples: 0.7%)
+    0.55% (maximum in sub-samples: 0.7%)
 3. ["Common genetic variants associated with cognitive performance identified using the proxy-phenotype method"](http://www.pnas.org/content/early/2014/09/05/1404623111.full.pdf), Rietveld et al 2015
 
     Predicts "0.2% to 0.4%" of variance in cognitive performance using a small polygenic score of 69 SNPs.
@@ -230,7 +230,7 @@ mean(embryoSelectionGain(n=10, variance=davies2015))
 # [1] 1.03715501
 ~~~
 
-## Cost of polygenic scores
+## Cost of embryo selection
 
 PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genetic diagnosis#United States"), so there are no criminal or legal costs; even if there were, clinics in other countries will continue to offer it, and the cost of using a Chinese fertility clinic may not be particularly noticeable.[^China-trip]
 
@@ -240,7 +240,7 @@ PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genet
 
     - US passport costs ~\$110
     - a Chinese visa costs [\$140](http://www.china-embassy.org/eng/visas/fees/t1236036.htm)
-    - a Shanghai to San Francisco roundtrip flight prices out currently in the range \$500-\$1000 (lower than I expected, perhaps due to the 2015 oil glut)
+    - a Shanghai to San Francisco round-trip flight prices out currently in the range \$500-\$1000 (lower than I expected, perhaps due to the 2015 oil glut)
     - IVF is a long and involved process, so one should budget for at least 3 months residence: [Lonely Planet](https://www.lonelyplanet.com/china/money-costs) thinks that on a shoestring budget one can manage >\$30/day, so `3*31*30=$2790`.
     - IVF is also unpleasant enough that it would be wrong to consider those 3 months a vacation and one has to consider the impact of being away from one's job for such an extended period of time (as remote working is not an option for most people & the Great Firewall would impede that as well); so since 2013 US per capita income was \$53.8, those 3 months would cost on average somewhere <\$13.4k
     - Summing up: `110+140+2790+13400=$16.4k`.
@@ -253,34 +253,66 @@ PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genet
 
     So overall, I think we can say that on average, doing IVF in China is not as financially costly as it seems up front and could even be profitable. Which leaves the more psychological issues of trust and planning and willingness to go overseas, which are hard to evaluate in the absence of any present incentive to do Chinese genetic-engineering birth tourism, but [medical tourism](!Wikipedia) and [birth tourism](!Wikipedia) are both already phenomena.
 
-cost of SNPing?
 
-http://www.cidr.jhmi.edu/services/pricing.pdf NIH CIDR says full cost: $150-$210 for 1 use of a UK Biobank 821K [SNP] Axiom Array [capabilities](http://www.ukbiobank.ac.uk/wp-content/uploads/2014/04/UK-Biobank-Axiom-Array-Content-Summary-2014.pdf) as of 10 December 2015
-
-probably want to use a full SNP array;
-
-- cost: need a custom chip to select the top 100 or whatever; NIH CIDR wants $40 for 96 SNPs! So almost $0.5/SNP, versus $0.0001/SNP for the Biobank Array
-- predictive power of top 10 or 100 SNPs is much smaller than polygenic score due to massive polygenicity: rather than 1.2%, maybe 0.1%?
-
-    - in addition, the top SNPs are imprecisely estimated
-
-
+"The Fertility Institutes" say ["Average costs for the medical and genetic portions of the service provided by the Fertility Institutes approach $27,000 U.S"](http://www.fertility-docs.com/programs-and-services/pgd-screening/genetic-diagnosis-of-embryos-for-diseases-using-pgd.php)
 
 http://www.geneticalliance.org.uk/aboutpgd.htm#Question6 [2012, based on PDF creation date]
 > PGD combined with IVF will cost £6,000 - £9,000 per treatment cycle.
 
 http://www.advancedfertility.com/pgd-costs.htm http://www.advancedfertility.com/pgs-ivf-genetic-testing.htm [current pricing, so 2015?]
-> Aneuploidy testing (for chromosome normality) with PGD is $1800 to $5000
+> Aneuploidy testing (for chromosome normality) with PGD is \$1800 to \$5000
 
 http://www.rhtp.org/fertility/pgd/ [2015?]
->  One round of IVF typically costs around $9,000. PGD adds another $4,000 to $7,500 to the cost of each IVF attempt. A standard round of IVF results in a successful pregnancy only 10-35% of the time (depending on the age and health of the woman), and a woman may need to undergo subsequent attempts to achieve a viable pregnancy.
+>  One round of IVF typically costs around \$9,000. PGD adds another \$4,000 to \$7,500 to the cost of each IVF attempt. A standard round of IVF results in a successful pregnancy only 10-35% of the time (depending on the age and health of the woman), and a woman may need to undergo subsequent attempts to achieve a viable pregnancy.
 
 https://www.sdfertility.com/fertility-treatments/genetic-testing/pgd [2015?]
-> PGD typically costs between $ 4,000-$10,000 depending on the cost of creating the specific probe used to detect the presence of a single gene.
+> PGD typically costs between \$4,000-\$10,000 depending on the cost of creating the specific probe used to detect the presence of a single gene.
 
 http://www.alzforum.org/news/research-news/preimplantation-genetic-diagnosis-its-no-walk-park [July 2014]
->  In Madison, Wisconsin, genetic counselor Margo Grady at Generations Fertility Care estimated the out-of-pocket price of one IVF cycle at about $12,000, and PGD adds another $3,000.
+>  In Madison, Wisconsin, genetic counselor Margo Grady at Generations Fertility Care estimated the out-of-pocket price of one IVF cycle at about \$12,000, and PGD adds another \$3,000.
 
+
+
+### Cost of polygenic scores
+
+An upper bound is the cost of whole-gnome sequencing, which has continuously fallen. My impression is that historically, a whole-genome has cost ~6x a comprehensive SNP (500k+).
+The [NHGRI Genome Sequencing Program's DNA Sequencing Cost dataset](http://www.genome.gov/sequencingcosts/) records an [October 2015 whole-genome cost of \$1245](http://www.genome.gov/pages/der/seqcost2015_4.xlsx).
+Illumina has boasted about a \$1000 whole-genome starting around 2014 (under an unspecified cost model), and around December 2015, Veritas Genetics started taking orders for a consumer 20x whole-genome priced at \$1000.
+So if a comprehensive SNP cost >\$1000, it would be cheaper to do a whole-genome, and historically at that price, we would expect a SNP cost of ~\$170.
+
+The date & cost of getting a large selection of SNPs is not collected in any dataset I know of, so here are a few 2015-2016 price quotes.
+The [Center for Applied Genomics price list](https://caglab.org/index.php/for-researchers/pricing-and-services.html) (unspecified date but presumably 2015) lists [Affymetrix SNP 6.0](http://www.affymetrix.com/catalog/131533/AFFY/Genome-Wide+Human+SNP+Array+6.0) at \$355 & the [Human Omni Express-24](http://www.illumina.com/content/dam/illumina-marketing/documents/products/brochures/datasheet_omni_whole-genome_arrays.pdf) at \$170.
+23andMe famously offered its services for \$108.95 for >600k SNPs, but that price apparently was substantially subsidized by research & sales as they raised the price to \$200 & lowered comprehensiveness in October 2015.
+[NIH CIDR's price list](http://www.cidr.jhmi.edu/services/pricing.pdf) quotes a full cost of \$150-\$210 for 1 use of a UK Biobank 821K SNP Axiom Array ([capabilities](http://www.ukbiobank.ac.uk/wp-content/uploads/2014/04/UK-Biobank-Axiom-Array-Content-Summary-2014.pdf)) as of 10 December 2015. (The NIH CIDR price list also says \$40 for 96 SNPs, suggesting that it would be a false economy to try to get only the top few SNP hits rather than a comprehensive polygenic score.)
+[Rockefeller University's 2016 price list](http://www.rockefeller.edu/genomics/pricing) quotes a range of \$260-\$520 for one sample from an Affymetrix GeneChip.
+
+Overall, SNPing an embryo in 2016 should cost ~\$100-400 and more like \$200 and we can expect the SNP cost to fall further.
+
+#### SNP cost forecast
+
+How much will SNP costs drop in the future?
+
+We can extrapolate from the genome sequencing data, but it's tricky: eyeballing the graph, we can see that historical prices have not followed any simple pattern.
+At first, costs closely tracks a simple halving every 18 months, then there is an abrupt trend-break to super-exponential drops from mid-2007 to mid-2011 and then an equally abrupt reversion to a flat cost trajectory with occasional price *increases* and then another abrupt fall in early 2015 (accentuated when one adds in the Veritas Genetics \$1k as a datapoint).
+
+Dropping pre-2007 data and fitting an exponential shows a bad fit since 2012 (if it follows the pre-2015 curve, it has large prediction errors on 2015-2016 and vice-versa).
+It's probably better to take the last 3 datapoints (the current trend) and fit the curve to them, covering just the past 6 months since July 2015, and then applying the 6x rule of thumb we can predict SNP costs out 20 months to October 2017:
+
+~~~{.R}
+# http://www.genome.gov/pages/der/seqcost2015_4.xlsx
+genome <- c(9408739,9047003,8927342,7147571,3063820,1352982,752080,342502,232735,154714,108065,70333,46774
+            31512,31125,29092,20963,16712,10497,7743,7666,5901,5985,6618,5671,5826,5550,5096,4008,4920,4905,
+            5731,3970,4211,1363,1245,1000)
+l <- lm(log(I(tail(genome, 3))) ~ I(1:3)); l
+# Coefficients:
+# (Intercept)       I(1:3)
+#  7.3937180   -0.1548441
+exp(sapply(1:10, function(t) { 7.3937180 + -0.1548441*t } )) / 6
+# [1] 232.08749421 198.79424215 170.27695028 145.85050092 124.92805739 107.00696553  91.65667754
+# [8]  78.50840827  67.24627528  57.59970987
+~~~
+
+(Even if SNP prices stagnate due to lack of competition or fixed-costs/overhead/small-scales, whole-genomes will simply eat their lunch: at the current trend, whole-genomes will reach \$200 ~2019 and \$100 ~2020.)
 
 ## Modeling embryo selection
 ## Cost-benefit
@@ -339,7 +371,7 @@ So as a process:
 1. harvest x eggs (10-30?)
 2. fertilize and create 1-y embryos
 3. optional: PGS the embryos
-4. culture n embryos to either cleavage (2-4 days) or blastocyte (5-6 days) stage (cleavage: better quality babies, but more likely to fail)
+4. culture n embryos to either cleavage (2-4 days) or blastocyst (5-6 days) stage (cleavage: better quality babies, but more likely to fail)
 5. optional: embryo selection using quality and PGS
 6. implant 1-n embryos
 7. freeze the remaining embryos
@@ -427,9 +459,9 @@ The most recent one is the ["2013 Assisted Reproductive Technology National Summ
 > cycles:           21,627  11,140  8,354  3,344  1,503  811
 > P(birth|transfer) 28.6    27.2    24.4   21.2   15.8   8.7
 >
-> ...The largest group of women using ART services were women younger than age 35, representing approximately 38% of all ART cycles performed in 2013. About 20% of ART cycles were performed among women aged 35-37, 19% among women aged 38-40, 11% among women aged 41-42, 7% among women aged 43-44, and 5% among women older than age 44. Figure 4 shows that, in 2013, the type of ART cycles varied by the woman's age. The vast majority (97%) of women younger than age 35 used their own eggs (nondonor), and about 4% used donor eggs. In contrast, 38% of women aged 43-44 and 73% of women older than age 44 used donor eggs.
+> ...The largest group of women using ART services were women younger than age 35, representing approximately 38% of all ART cycles performed in 2013. About 20% of ART cycles were performed among women aged 35-37, 19% among women aged 38-40, 11% among women aged 41-42, 7% among women aged 43-44, and 5% among women older than age 44. Figure 4 shows that, in 2013, the type of ART cycles varied by the woman's age. The vast majority (97%) of women younger than age 35 used their own eggs (non-donor), and about 4% used donor eggs. In contrast, 38% of women aged 43-44 and 73% of women older than age 44 used donor eggs.
 >
-> ...Outcomes of ART Cycles Using Fresh Nondonor Eggs or Embryos, by Stage, 2013:
+> ...Outcomes of ART Cycles Using Fresh Non-donor Eggs or Embryos, by Stage, 2013:
 >
 > 1. 93,787 cycles started
 > 2. 84,868 retrievals
@@ -459,7 +491,7 @@ sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb)
 
 # Iterated embryo selection
 
-Aside from regular embryo selection, Shulmam & Bostrom note the possibility of "iterated embryo selection", where after the selection step, the highest-scoring embryo's cells are regressed back to stem cells, to be turned into fresh embryos which can again be sequenced & selected on, and so on for as many cycles as feasible.
+Aside from regular embryo selection, Shulman & Bostrom note the possibility of "iterated embryo selection", where after the selection step, the highest-scoring embryo's cells are regressed back to stem cells, to be turned into fresh embryos which can again be sequenced & selected on, and so on for as many cycles as feasible.
 The benefit here is that in exchange for the additional work, one can combine the effects of many generations of embryo selection to produce a live baby which is equivalent to selecting out of hundreds or thousands or millions of embryos.
 (10 cycles is much more effective than selecting on, say, 10x the number of embryos because it acts like a ratchet: each new batch of embryos is distributed around the genetic mean of the previous iteration, not the *original* embryo, and so the 1 or 2 IQ points accumulate.)
 As they summarize it:
@@ -471,12 +503,14 @@ As they summarize it:
 > 3. Cross the new sperm and ova to produce embryos;
 > 4. Repeat until large genetic changes have been accumulated.
 >
-> Iterated embryo selection has recently drawn attention from bioethics (Sparrow, 2013; see also Miller, 2012; Machine Intelligence Research Institute, 2009) in light of rapid scientific progress. Since the [Hinxton Group (2008)](http://www.hinxtongroup.org/Consensus_HG08_FINAL.pdf "Consensus Statement: Science Ethics and Policy Challenges of Pluripotent Stem Cell-Derived Gametes") predicted that human stem cell-derived gametes would be available within ten years, the techniques have been used to produce fertile offspring in mice, and gamete-like cells in humans. However, substantial scientific challenges remain in translating animal results to humans, and in avoiding epigenetic abnormalities in the stem cell lines. These challenges might delay human application ‘10 or even 50 years in the future’ ([Cyranoski, 2013](http://fatstemserbia.brinkster.net/Library/Newspapers/Egg%20Engineers.pdf "Stem cells: Egg engineers")). Limitations on research in human embryos may lead to IES achieving major applications in commercial animal breeding before human reproduction. If IES becomes feasible, it would radically change the cost and effectiveness of enhancement through selection. After the fixed investment of IES, many embryos could be produced from the final generation, so that they could be provided to parents at low cost.
+> Iterated embryo selection has recently drawn attention from bioethics (Sparrow, 2013; see also Miller, 2012; Machine Intelligence Research Institute, 2009 [and [Suter 2015](https://jlb.oxfordjournals.org/content/early/2015/12/16/jlb.lsv057.full "In vitro gametogenesis: just another way to have a baby?")]) in light of rapid scientific progress. Since the [Hinxton Group (2008)](http://www.hinxtongroup.org/Consensus_HG08_FINAL.pdf "Consensus Statement: Science Ethics and Policy Challenges of Pluripotent Stem Cell-Derived Gametes") predicted that human stem cell-derived gametes would be available within ten years, the techniques have been used to produce fertile offspring in mice, and gamete-like cells in humans. However, substantial scientific challenges remain in translating animal results to humans, and in avoiding epigenetic abnormalities in the stem cell lines. These challenges might delay human application ‘10 or even 50 years in the future’ ([Cyranoski, 2013](http://fatstemserbia.brinkster.net/Library/Newspapers/Egg%20Engineers.pdf "Stem cells: Egg engineers")). Limitations on research in human embryos may lead to IES achieving major applications in commercial animal breeding before human reproduction. If IES becomes feasible, it would radically change the cost and effectiveness of enhancement through selection. After the fixed investment of IES, many embryos could be produced from the final generation, so that they could be provided to parents at low cost.
 
 IES is interesting, but it suffers from two main problems as far as a cost-benefit evaluation goes:
 
 1. application to human cells remains largely hypothetical, and it is difficult for any outsider to understand how effective current induced pluripotency methods for pluripotent stem cell-derived gametes are: how much will the mouse research transfer to human cells? How reliable is the induction? What might be the long-term effects - or in the case of iterating it, what may be the short-term effects? Is this 5 years or 20 years away from practicality? What does the process cost at the moment, and what sort of lower limit on materials & labor costs can we expect from a mature process?
-2. IES is inherently based on embryo selection and suffers from the weaknesses of embryo selection. Presumably the additional steps of inducing pluripotency and re-fertilizing will be complicated & very expensive compared to a routine sequencing & implantation, and this makes the costs explode: if the iteration costs \$10k extra per cycle and each cycle of embryo selection is only gaining ~1.13 IQ points due to the inherent weakness of polygenic scores, then each cycle may well be a loss, and the entire process colossally expensive. (If one is already spending \$10k on IVF and the SNP sequencing for each embryo costs \$100 then to get a respectable amount like 1 standard deviation through IES requires `(15/1.13) * (100+10000) + 10000 ~> 144070.7965`, which at almost \$9k a point is far beyond the ability to pay of almost everyone except multi-millionaires or governments who may have other reasons justifying use of the process.)
+2. IES is inherently based on embryo selection and suffers from the weaknesses of embryo selection. Presumably the additional steps of inducing pluripotency and re-fertilizing will be complicated & very expensive (especially given that the proposed timelines for a single cycle run 4-6 *months*) compared to a routine sequencing & implantation, and this makes the costs explode: if the iteration costs \$10k extra per cycle and each cycle of embryo selection is only gaining ~1.13 IQ points due to the inherent weakness of polygenic scores, then each cycle may well be a loss, and the entire process colossally expensive. (If one is already spending \$10k on IVF and the SNP sequencing for each embryo costs \$100 then to get a respectable amount like 1 standard deviation through IES requires `(15/1.13) * (100+10000) + 10000 ~> 144070.7965`, which at almost \$9k a point is far beyond the ability to pay of almost everyone except multi-millionaires or governments who may have other reasons justifying use of the process.)
+
+    There are some possible advantages to IES, though: eg it may reduce the need to extract eggs, or yield many more eggs (and hence embryos to select from). Whether any of these advantages materialize will depend sensitively on the development and costs of stem-cell derived gametes.
 
 So it's difficult to see when IES will ever be practical or cost-effective.
 
@@ -522,8 +556,8 @@ dnorm((170-100)/15) * 320000000
 if you're curious how I calculated that, 'R> (10*1000 + 10 * 98 * 500) > 500000 ~> [1] FALSE R> sum(sort((rexp(10000)/1)/18, decreasing=TRUE)[1:98] * 0.5) ~> [1] 15.07656556'
 
 
-13:16:15 <@gwern> hm. there are ~50k ivf babies each year in the usa. my quick crispr sketch suggested that for a few mill you could get up to 150-170. `dnorm((150-100)/15) * 320000000 ~>
-                  [1] 493,529.2788; dnorm((170-100)/15) * 320000000 ~> [1] 2382.734679`. so depending on how many ivfers used it, you could boost the total genius population by anywhere
+13:16:15 <@gwern> hm. there are ~50k ivf babies each year in the USA. my quick CRISPR sketch suggested that for a few mill you could get up to 150-170. `dnorm((150-100)/15) * 320000000 ~>
+                  [1] 493,529.2788; dnorm((170-100)/15) * 320000000 ~> [1] 2382.734679`. so depending on how many IVFers used it, you could boost the total genius population by anywhere
                   from 1/10th to 9x
 
 but if only 10% causal rate and so only 100 effective edits from 1000, and a net gain of 15 IQ points (1SD) then increases:
@@ -533,7 +567,7 @@ R> ivf <- (dnorm((115-100)/15) * 50000); genpop <- (dnorm((170-100)/15) * 320000
 [1] 6.077584313
 an increase of 1.02x (150) and 6x (170) respectively
 
-> "To confirm these GUIDE-seq findings, we used targeted amplicon sequencing to more directly measure the frequencies of indel mutations induced by wild-type SpCas9 and SpCas9-HF1. For these experiments, we transfected human cells only with sgRNA- and Cas9encoding plasmids (without the GUIDE-seq tag). We used nextgeneration sequencing to examine the on-target sites and 36 of the 40 off-target sites that had been identified for six sgRNAs with wild-type SpCas9 in our GUIDE-seq experiments (four of the 40 sites could not be specifically amplified from genomic DNA). These deep sequencing experiments showed that: (1) wild-type SpCas9 and SpCas9-HF1 induced comparable frequencies of indels at each of the six sgRNA on-target sites, indicating that the nucleases and sgRNAs were functional in all experimental replicates (Fig. 3a, b); (2) as expected, wildtype SpCas9 showed statistically significant evidence of indel mutations at 35 of the 36 off-target sites (Fig. 3b) at frequencies that correlated well with GUIDE-seq read counts for these same sites (Fig. 3c); and (3) the frequencies of indels induced by SpCas9-HF1 at 34 of the 36 off-target sites were statistically indistinguishable from the background level of indels observed in samples from control transfections (Fig. 3b). For the two off-target sites that appeared to have statistically significant mutation frequencies with SpCas9-HF1 relative to the negative control, the mean frequencies of indels were 0.049% and 0.037%, levels at which it is difficult to determine whether these are due to sequencing or PCR error or are bona fide nuclease-induced indels. Based on these results, we conclude that SpCas9-HF1 can completely or nearly completely reduce off-target mutations that occur across a range of different frequencies with wild-type SpCas9 to levels generally undetectable by GUIDE-seq and targeted deep sequencing."
+> "To confirm these GUIDE-seq findings, we used targeted amplicon sequencing to more directly measure the frequencies of indel mutations induced by wild-type SpCas9 and SpCas9-HF1. For these experiments, we transfected human cells only with sgRNA- and Cas9encoding plasmids (without the GUIDE-seq tag). We used next-generation sequencing to examine the on-target sites and 36 of the 40 off-target sites that had been identified for six sgRNAs with wild-type SpCas9 in our GUIDE-seq experiments (four of the 40 sites could not be specifically amplified from genomic DNA). These deep sequencing experiments showed that: (1) wild-type SpCas9 and SpCas9-HF1 induced comparable frequencies of indels at each of the six sgRNA on-target sites, indicating that the nucleases and sgRNAs were functional in all experimental replicates (Fig. 3a, b); (2) as expected, wild-type SpCas9 showed statistically significant evidence of indel mutations at 35 of the 36 off-target sites (Fig. 3b) at frequencies that correlated well with GUIDE-seq read counts for these same sites (Fig. 3c); and (3) the frequencies of indels induced by SpCas9-HF1 at 34 of the 36 off-target sites were statistically indistinguishable from the background level of indels observed in samples from control transfections (Fig. 3b). For the two off-target sites that appeared to have statistically significant mutation frequencies with SpCas9-HF1 relative to the negative control, the mean frequencies of indels were 0.049% and 0.037%, levels at which it is difficult to determine whether these are due to sequencing or PCR error or are bona fide nuclease-induced indels. Based on these results, we conclude that SpCas9-HF1 can completely or nearly completely reduce off-target mutations that occur across a range of different frequencies with wild-type SpCas9 to levels generally undetectable by GUIDE-seq and targeted deep sequencing."
 
 So no detected off-target mutations down to the level of lab error rate detectability. Amazing. So you can do a CRISPR on a cell with a >75% chance of making the edit to a desired gene correctly, and a <0.05% chance of a mistaken (potentially harmless) edit/mutation on a similar gene. With an error rate that low, you could do hundreds of CRISPR edits to a set of embryos with a low net risk of error... The median number of eggs extracted from a woman during IVF in America is ~9; assume the worst case of 0.05% risk of off-target mutation and that one scraps any embryo found to have any mutation at all even if it looks harmless; then the probability of making 1000 edits without an off-target mutation could be (1-(0.05/100)) ^ 1000 = 60%, so you're left with 5.4 good embryos, which is a decent yield. Making an edit of the top 1000 betas from the Rietveld 2013 polygenic score and figuring that it's weakened by maybe 25% due to particular cells not getting particular edits and that is... a very large number.
 
