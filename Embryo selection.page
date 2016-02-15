@@ -24,7 +24,8 @@ Some things are left out of their analysis which I'm interested in:
 2. their level of selection may bear little resemblance to what can be practically obtained given the realities of IVF and high embryo attrition rates (selecting from 1 in 10 embryos may yield _x_ IQ points, but how many real embryos would we need to implement that, since if we extract 10 embryos, 3 might be abnormal, the best candidate might fail to implant, the second-best might result in a miscarriage, etc?)
 3. there is no attempt to estimate costs nor whether embryo selection right now is worth the costs, or how much better our selection ability would need to be to make it worthwhile
 
-## Value of IQ
+## Benefit
+### Value of IQ
 
 Shulman & Bostrom 2014 note that
 
@@ -50,8 +51,8 @@ Given the difficulty of coming up with any estimate for 'the' value of an IQ poi
     2. Mixed: Coronary artery disease / Stroke: ischaemic / Stroke: large vessel disease / Type 2 diabetes / Alzheimer's disease / Autism / Bipolar disorder / Schizophrenia / Hippocampal volume / Intracranial volume / Infant head circumference / BMI / Height / Longevity / FEV1
     3. Worse: none
 
-## Polygenic scores for IQ
-### SNP
+### Polygenic scores for IQ
+#### SNP
 
 Shulman & Bostrom's upper bound works as follows:
 
@@ -70,7 +71,7 @@ That is, adult intelligence is heritable at ~0.8; a SNP chip records the few hun
 
 GCTA tells us how much the SNPs would explain if we knew all their effects exactly, but in practice, there are so many SNPs (likely into the thousands) affecting intelligence, only a few are known to a high level of confidence, and the rest will take much larger samples to pin down, so the table represents an upper limit to SNP-based approaches - to approach the 0.51, we will need large sample sizes, and to exceed it and approach the 0.8, we will need whole genomes and models which can go beyond additive estimates to model interactions (like genes which only increase intelligence in the presence of particular other variants).
 
-#### GCTA meta-analysis
+##### GCTA meta-analysis
 
 Davies et al 2011's 0.5 is a little outdated and small, based on _n_=3511 with correspondingly large imprecision in the GCTA estimates.
 I was able to find in total the following GCTA estimates:
@@ -173,7 +174,7 @@ forest(rma(yi=HSNP, sei=SE, data=gcta), slab=gcta$Study)
 
 ![Forest plot for meta-analysis of GCTA estimates of total additive SNPs' effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
 
-#### GCTA-based upper bound
+##### GCTA-based upper bound
 
 Since half of additives will be shared within family, then we get `0.33*0.5 = 0.165` within-family variance, which gives `sqrt(0.165) = 0.4062019202` SD or 6.1 IQ points
 (Occasionally within-family differences are cited in a format like "siblings have an average difference of 12 IQ points", which comes from an SD of ~0.7/0.8, since `0.8*15=12`, but you could also check what SD yields an average difference of 12 via simulation: eg `mean(abs(rnorm(n=10000000, mean=0, sd=0.71) - rnorm(n=10000000, mean=0, sd=0.71))) * 15 ~> 12.01807542`.)
@@ -192,7 +193,7 @@ mean(simEmbryoSelection(n=10))
 
 So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Bostrom & Shulman's 11.5 because of my lower GCTA estimate.
 
-#### Polygenic score
+##### Polygenic score
 
 A SNP-based polygenic score works much the same way: it explains a certain fraction or percentage of the variance, halved due to siblings, and can be plugged in once we know how much less than 0.33 it is.
 An example of using SNP polygenic scores to identify genetic influences and verify they work within-family and are not confounded would be Domingue et al 2015's ["Polygenic Influence on Educational Attainment"](http://ero.sagepub.com/content/1/3/2332858415599972?full).
@@ -253,26 +254,6 @@ PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genet
 
     So overall, I think we can say that on average, doing IVF in China is not as financially costly as it seems up front and could even be profitable. Which leaves the more psychological issues of trust and planning and willingness to go overseas, which are hard to evaluate in the absence of any present incentive to do Chinese genetic-engineering birth tourism, but [medical tourism](!Wikipedia) and [birth tourism](!Wikipedia) are both already phenomena.
 
-
-"The Fertility Institutes" say ["Average costs for the medical and genetic portions of the service provided by the Fertility Institutes approach $27,000 U.S"](http://www.fertility-docs.com/programs-and-services/pgd-screening/genetic-diagnosis-of-embryos-for-diseases-using-pgd.php)
-
-http://www.geneticalliance.org.uk/aboutpgd.htm#Question6 [2012, based on PDF creation date]
-> PGD combined with IVF will cost £6,000 - £9,000 per treatment cycle.
-
-http://www.advancedfertility.com/pgd-costs.htm http://www.advancedfertility.com/pgs-ivf-genetic-testing.htm [current pricing, so 2015?]
-> Aneuploidy testing (for chromosome normality) with PGD is \$1800 to \$5000
-
-http://www.rhtp.org/fertility/pgd/ [2015?]
->  One round of IVF typically costs around \$9,000. PGD adds another \$4,000 to \$7,500 to the cost of each IVF attempt. A standard round of IVF results in a successful pregnancy only 10-35% of the time (depending on the age and health of the woman), and a woman may need to undergo subsequent attempts to achieve a viable pregnancy.
-
-https://www.sdfertility.com/fertility-treatments/genetic-testing/pgd [2015?]
-> PGD typically costs between \$4,000-\$10,000 depending on the cost of creating the specific probe used to detect the presence of a single gene.
-
-http://www.alzforum.org/news/research-news/preimplantation-genetic-diagnosis-its-no-walk-park [July 2014]
->  In Madison, Wisconsin, genetic counselor Margo Grady at Generations Fertility Care estimated the out-of-pocket price of one IVF cycle at about \$12,000, and PGD adds another \$3,000.
-
-
-
 ### Cost of polygenic scores
 
 An upper bound is the cost of whole-gnome sequencing, which has continuously fallen. My impression is that historically, a whole-genome has cost ~6x a comprehensive SNP (500k+).
@@ -314,14 +295,35 @@ exp(sapply(1:10, function(t) { 7.3937180 + -0.1548441*t } )) / 6
 
 (Even if SNP prices stagnate due to lack of competition or fixed-costs/overhead/small-scales, whole-genomes will simply eat their lunch: at the current trend, whole-genomes will reach \$200 ~2019 and \$100 ~2020.)
 
+### PGD net costs
+
+An IVF cycle involving PGD will need ~4-5 SNPs (given a median egg count of 9 and half being abnormal), so I estimate the genetic part costs ~\$800-1000.
+The net cost of PGD will include the cell harvesting part (one needs to extract cells from embryos to sequence) and interpretation (although scoring and checking the genetic data for abnormality should be automatable), so we can compare with current PGD price quotes.
+
+- "The Fertility Institutes" say ["Average costs for the medical and genetic portions of the service provided by the Fertility Institutes approach $27,000 U.S"](http://www.fertility-docs.com/programs-and-services/pgd-screening/genetic-diagnosis-of-embryos-for-diseases-using-pgd.php) (unspecified date) without breaking out the PGD part
+- [Genetic Alliance UK](http://www.geneticalliance.org.uk/aboutpgd.htm#Question6) claims (in 2012, based on PDF creation date) that "The cost of PGD is typically split into two parts: procedural costs (consultations, laboratory testing, egg collection, embryo transfer, ultrasound scans, and blood tests) and drug costs (for ovarian stimulation and embryo transfer). PGD combined with IVF will cost £6,000 [\$8.5k] - £9,000 [\$12.8k] per treatment cycle." but doesn't specify the marginal cost of the PGD rather than IVF part
+- [Alzforum](http://www.alzforum.org/news/research-news/preimplantation-genetic-diagnosis-its-no-walk-park "Preimplantation Genetic Diagnosis: It’s No Walk in the Park") (July 2014): "In Madison, Wisconsin, genetic counselor Margo Grady at Generations Fertility Care estimated the out-of-pocket price of one IVF cycle at about \$12,000, and PGD adds another \$3,000."
+- [Reproductive Health Technologies Project](http://www.rhtp.org/fertility/pgd/) (2015?): "One round of IVF typically costs around \$9,000. PGD adds another \$4,000 to \$7,500 to the cost of each IVF attempt. A standard round of IVF results in a successful pregnancy only 10-35% of the time (depending on the age and health of the woman), and a woman may need to undergo subsequent attempts to achieve a viable pregnancy."
+- [SDFC](https://www.sdfertility.com/fertility-treatments/genetic-testing/pgd) (2015?): "PGD typically costs between \$4,000-\$10,000 depending on the cost of creating the specific probe used to detect the presence of a single gene."
+- the [Advanced Fertility Center of Chicago](http://www.advancedfertility.com/pgd-costs.htm) ("current" pricing, so 2015?) says IVF costs ~$12k and of that, "Aneuploidy testing (for chromosome normality) with PGD is \$1800 to \$5000...PGD costs in the US vary from about \$4000-\$8000". AFC usefully breaks down the costs further in a table of "Average PGS IVF Costs in USA", saying that:
+
+    > - Embryo biopsy charges are about \$1000 to \$2500 (average: \$1500)
+    > - Embryo freezing costs are usually between \$500 to \$1000 (average: \$750)
+    > - Aneuploidy testing (for chromosome normality) with PGD is \$1800 to \$5000
+    > - For single gene defects (such as cystic fibrosis), there are additional costs involved.
+    > - PGS test cost average: \$3500
+
+    (The wording is unclear about whether these are costs per *embryo* or per *batch* of embryos; but the rest of the page implies that it's per batch, and per embryo would imply that the other PGS cost estimates are either far too low or are being done on only one embryo & likely would fail.)
+
+From the final AFC costs, we can see that the genetic testing makes up a large fraction of the cost.
+Since custom markers are not necessary and we are only looking at standard SNPs, the \$1.8-5k genetic cost is a huge overestimate of the \$1k the SNPs should cost now or soon.
+Their breakdown also implies that the embryo freezing/vitrification cost is counted as part of the PGS cost, but I don't think this is right since one will need to store embryos regardless of whether one is doing PGS/selection (even if an embryo is going to be implanted right away in a live transfer, the other embryos need to be stored since the first one will probably fail).
+So the critical number here is that the embryo biopsy step costs \$1500; there is probably little prospect of large price decreases here and we can take it as fixed.
+
+Hence we can model the cost of embryo selection as a fixed \$1.5k cost plus number of embryos times SNP cost.
+
 ## Modeling embryo selection
-## Cost-benefit
 
-
-within-families: 44% of total variance; average IQ difference between siblings is 12 https://books.google.com/books?id=wh20BQAAQBAJ&pg=PA281
-so sqrt(0.44) * 15
-
-QTL selection http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3382275/
 
 
 
@@ -488,6 +490,8 @@ simulateUSA <- function(liveBirth) { return(simulateIVFs(9, 4.6, davies2015, 0.3
 sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb)*2000);})
 [1] 177.22112774 150.18588486  97.46433363  22.18675403  75.97817656 -82.15293737
 ~~~
+
+## Cost-benefit
 
 # Iterated embryo selection
 
