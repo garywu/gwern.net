@@ -20,9 +20,9 @@ In ["Embryo Selection for Cognitive Enhancement: Curiosity or Game-changer?"](ht
 
 Some things are left out of their analysis which I'm interested in:
 
-1. they give the upper bound on the IQ gain that can be expected from a given level of selection, but not the gain that could be expected right now: is it a large or small fraction of that maximum?
+1. they give the upper bound on the IQ gain that can be expected from a given level of selection & then-current GCTA heritability estimates, but not the gain that could be expected right now: is it a large or small fraction of that maximum?
 2. their level of selection may bear little resemblance to what can be practically obtained given the realities of IVF and high embryo attrition rates (selecting from 1 in 10 embryos may yield _x_ IQ points, but how many real embryos would we need to implement that, since if we extract 10 embryos, 3 might be abnormal, the best candidate might fail to implant, the second-best might result in a miscarriage, etc?)
-3. there is no attempt to estimate costs nor whether embryo selection right now is worth the costs or how much better our selection ability would need to be to make it worthwhile
+3. there is no attempt to estimate costs nor whether embryo selection right now is worth the costs, or how much better our selection ability would need to be to make it worthwhile
 
 ## Value of IQ
 
@@ -69,6 +69,8 @@ Shulman & Bostrom's upper bound works as follows:
 That is, adult intelligence is heritable at ~0.8; a SNP chip records the few hundred thousand most common genetic variants in the population and treating each gene as having a simple additive increase-or-decrease effect on intelligence, Davies et al 2011's GCTA (Genome-wide complex trait analysis) estimates that those SNPs are responsible for 0.51 of variance; since siblings descend from the same two parents, they will share half the variants (just like dizygotic twins) and differ on the rest, so the SNPs can only predict up to 0.25 between siblings and siblings are analogous to multiple embryos being considered for implantation in IVF; simulate _n_ embryos by drawing from a normal distribution with a SD of 0.7 or 10.5 IQ points and selecting the highest, and with various _n_, you get something like the table.
 
 GCTA tells us how much the SNPs would explain if we knew all their effects exactly, but in practice, there are so many SNPs (likely into the thousands) affecting intelligence, only a few are known to a high level of confidence, and the rest will take much larger samples to pin down, so the table represents an upper limit to SNP-based approaches - to approach the 0.51, we will need large sample sizes, and to exceed it and approach the 0.8, we will need whole genomes and models which can go beyond additive estimates to model interactions (like genes which only increase intelligence in the presence of particular other variants).
+
+#### GCTA meta-analysis
 
 Davies et al 2011's 0.5 is a little outdated and small, based on _n_=3511 with correspondingly large imprecision in the GCTA estimates.
 I was able to find in total the following GCTA estimates:
@@ -169,7 +171,9 @@ forest(rma(yi=HSNP, sei=SE, data=gcta), slab=gcta$Study)
 
 (Oddly, the estimates decrease with age rather than increase. I thought this might be driven by the samples using twins, which have been accused in the past of delivering higher heritability estimates due to higher SES of parents and correspondingly less environmental influence, but when added as a predictor, twin samples are non-statistically-significantly lower.)
 
-![Forest plot for meta-analysis of GCTA estimates of total additive SNP's effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
+![Forest plot for meta-analysis of GCTA estimates of total additive SNPs' effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
+
+#### GCTA-based upper bound
 
 Since half of additives will be shared within family, then we get `0.33*0.5 = 0.165` within-family variance, which gives `sqrt(0.165) = 0.4062019202` SD or 6.1 IQ points
 (Occasionally within-family differences are cited in a format like "siblings have an average difference of 12 IQ points", which comes from an SD of ~0.7/0.8, since `0.8*15=12`, but you could also check what SD yields an average difference of 12 via simulation: eg `mean(abs(rnorm(n=10000000, mean=0, sd=0.71) - rnorm(n=10000000, mean=0, sd=0.71))) * 15 ~> 12.01807542`.)
@@ -180,13 +184,15 @@ With that, we can write a simulation like Bostrom & Shulman where we generate _n
 ~~~{.R}
 ## select 1 out of N siblings
 embryoIQScores <- function(n, variance) { rnorm(n, mean=0, sd=sqrt(variance*0.5)*15); }
-embryoSelectionGain <- function(n, variance) { scores <- embryoIQScores(n, sqrt(variance*0.5)*15); return(max(scores) - mean(scores)); }
-simEmbryoSelection <- function(n=2, variance=0.33, iters=100000) { replicate(iters, embryoSelection(n, variance)); }
-mean(simEmbryoSelection(10))
+embryoSelectionGain <- function(n, variance) { scores <- embryoIQScores(n, variance); return(max(scores) - mean(scores)); }
+simEmbryoSelection <- function(n=2, variance=0.33, iters=100000) { replicate(iters, embryoSelectionGain(n, variance)); }
+mean(simEmbryoSelection(n=10))
 # [1] 9.368836794
 ~~~
 
-So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than 11.5 because of the lower GCTA estimates.
+So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Bostrom & Shulman's 11.5 because of my lower GCTA estimate.
+
+#### Polygenic score
 
 A SNP-based polygenic score works much the same way: it explains a certain fraction or percentage of the variance, halved due to siblings, and can be plugged in once we know how much less than 0.33 it is.
 An example of using SNP polygenic scores to identify genetic influences and verify they work within-family and are not confounded would be Domingue et al 2015's ["Polygenic Influence on Educational Attainment"](http://ero.sagepub.com/content/1/3/2332858415599972?full).
@@ -220,10 +226,9 @@ Davies also reports the polygenic score, accounting for 1.2% or 0.012 of all var
 
 ~~~{.R}
 davies2015 <- 0.012
-mean(embryoSelection(n=10, variance=davies2015))
+mean(embryoSelectionGain(n=10, variance=davies2015))
 # [1] 1.03715501
 ~~~
-
 
 ## Cost of polygenic scores
 
@@ -451,6 +456,29 @@ simulateUSA <- function(liveBirth) { return(simulateIVFs(9, 4.6, davies2015, 0.3
 sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb)*2000);})
 [1] 177.22112774 150.18588486  97.46433363  22.18675403  75.97817656 -82.15293737
 ~~~
+
+# Iterated embryo selection
+
+Aside from regular embryo selection, Shulmam & Bostrom note the possibility of "iterated embryo selection", where after the selection step, the highest-scoring embryo's cells are regressed back to stem cells, to be turned into fresh embryos which can again be sequenced & selected on, and so on for as many cycles as feasible.
+The benefit here is that in exchange for the additional work, one can combine the effects of many generations of embryo selection to produce a live baby which is equivalent to selecting out of hundreds or thousands or millions of embryos.
+(10 cycles is much more effective than selecting on, say, 10x the number of embryos because it acts like a ratchet: each new batch of embryos is distributed around the genetic mean of the previous iteration, not the *original* embryo, and so the 1 or 2 IQ points accumulate.)
+As they summarize it:
+
+> *Stem-cell derived gametes could produce much larger effects*: The effectiveness of embryo selection would be vastly increased if multiple generations of selection could be compressed into less than a human maturation period. This could be enabled by advances in an important complementary technology: the derivation of viable sperm and eggs from human embryonic stem cells. Such stem-cell derived gametes would enable iterated embryo selection (henceforth, IES):
+>
+> 1. Genotype and select a number of embryos that are higher in desired genetic characteristics;
+> 2. Extract stem cells from those embryos and convert them to sperm and ova, maturing within 6 months or less ([Sparrow, 2013](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.674.771&rep=rep1&type=pdf "In vitro eugenics"));
+> 3. Cross the new sperm and ova to produce embryos;
+> 4. Repeat until large genetic changes have been accumulated.
+>
+> Iterated embryo selection has recently drawn attention from bioethics (Sparrow, 2013; see also Miller, 2012; Machine Intelligence Research Institute, 2009) in light of rapid scientific progress. Since the [Hinxton Group (2008)](http://www.hinxtongroup.org/Consensus_HG08_FINAL.pdf "Consensus Statement: Science Ethics and Policy Challenges of Pluripotent Stem Cell-Derived Gametes") predicted that human stem cell-derived gametes would be available within ten years, the techniques have been used to produce fertile offspring in mice, and gamete-like cells in humans. However, substantial scientific challenges remain in translating animal results to humans, and in avoiding epigenetic abnormalities in the stem cell lines. These challenges might delay human application ‘10 or even 50 years in the future’ ([Cyranoski, 2013](http://fatstemserbia.brinkster.net/Library/Newspapers/Egg%20Engineers.pdf "Stem cells: Egg engineers")). Limitations on research in human embryos may lead to IES achieving major applications in commercial animal breeding before human reproduction. If IES becomes feasible, it would radically change the cost and effectiveness of enhancement through selection. After the fixed investment of IES, many embryos could be produced from the final generation, so that they could be provided to parents at low cost.
+
+IES is interesting, but it suffers from two main problems as far as a cost-benefit evaluation goes:
+
+1. application to human cells remains largely hypothetical, and it is difficult for any outsider to understand how effective current induced pluripotency methods for pluripotent stem cell-derived gametes are: how much will the mouse research transfer to human cells? How reliable is the induction? What might be the long-term effects - or in the case of iterating it, what may be the short-term effects? Is this 5 years or 20 years away from practicality? What does the process cost at the moment, and what sort of lower limit on materials & labor costs can we expect from a mature process?
+2. IES is inherently based on embryo selection and suffers from the weaknesses of embryo selection. Presumably the additional steps of inducing pluripotency and re-fertilizing will be complicated & very expensive compared to a routine sequencing & implantation, and this makes the costs explode: if the iteration costs \$10k extra per cycle and each cycle of embryo selection is only gaining ~1.13 IQ points due to the inherent weakness of polygenic scores, then each cycle may well be a loss, and the entire process colossally expensive. (If one is already spending \$10k on IVF and the SNP sequencing for each embryo costs \$100 then to get a respectable amount like 1 standard deviation through IES requires `(15/1.13) * (100+10000) + 10000 ~> 144070.7965`, which at almost \$9k a point is far beyond the ability to pay of almost everyone except multi-millionaires or governments who may have other reasons justifying use of the process.)
+
+So it's difficult to see when IES will ever be practical or cost-effective.
 
 <--
 # CRISPR
