@@ -220,15 +220,15 @@ Past polygenic scores for intelligence:
 5. ["Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (N=112 151) and 24 GWAS consortia"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html), Hagenaars et al 2016 ([supplementary data](http://www.nature.com/mp/journal/vaop/ncurrent/extref/mp2015225x1.doc)):
 
     Supplementary Table 4d reports predictive validity of the educational attainment polygenic score for childhood-cognitive-ability/college-degree/years-of-education in its other samples, yielding R^2^=0.0042/0.0214/0.0223 or 0.42%/2.14%/2.23% respectively. Particularly intriguing given its investigation of pleiotropy is Supplementary Table 5, which uses polygenic scores constructed for all the diseases in its data (eg type 2 diabetes, ADHD, schizophrenia, coronary artery disease), where all the disease scores & covariates are entered into the model and then the cognitive polygenic scores are able to predict even higher, as high as R^2^=0.063/0.046/0.064.
-5. Upcoming in 2016 is another SSGAC paper with ~8x hits but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score, although the top 18 hits explained 0.4% (but that's less than the Davies or Rietveld polygenic scores and not useful)
+5. Upcoming in 2016 is another SSGAC paper with ~8x hits using _n_=305,000 but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score, although the top 18 hits explained 0.4% (but that's less than the Davies or Rietveld polygenic scores and not useful)
 
-Davies also reports the polygenic score, accounting for 1.2% or 0.012 of all variance. (This is much higher than Rietveld et al 2013's 0.3%.) Same procedure to estimate value of embryo selection: halve to account for siblings' shared genetics then simulate:
-`0.012 * 0.5 = 0.006`; `sqrt(0.006) = 0.07745966692` SD or 1.162 IQ points
+Rietveld et al 2013's reported polygenic score for cognitive performance was 2.5%. Same procedure to estimate value of embryo selection: halve to account for siblings' shared genetics then simulate:
+`0.025 * 0.5 = 0.0125`; `sqrt(0.0125) = 0.1118033989` SD or 1.67 IQ points
 
 ~~~{.R}
-davies2015 <- 0.012
-mean(embryoSelectionGain(n=10, variance=davies2015))
-# [1] 1.03715501
+rietveld2013 <- 0.025
+mean(embryoSelectionGain(n=10, variance=rietveld2013))
+# [1] 4.519129768
 ~~~
 
 ## Cost of embryo selection
@@ -266,6 +266,7 @@ The [Center for Applied Genomics price list](https://caglab.org/index.php/for-re
 23andMe famously offered its services for \$108.95 for >600k SNPs, but that price apparently was substantially subsidized by research & sales as they raised the price to \$200 & lowered comprehensiveness in October 2015.
 [NIH CIDR's price list](http://www.cidr.jhmi.edu/services/pricing.pdf) quotes a full cost of \$150-\$210 for 1 use of a UK Biobank 821K SNP Axiom Array ([capabilities](http://www.ukbiobank.ac.uk/wp-content/uploads/2014/04/UK-Biobank-Axiom-Array-Content-Summary-2014.pdf)) as of 10 December 2015. (The NIH CIDR price list also says \$40 for 96 SNPs, suggesting that it would be a false economy to try to get only the top few SNP hits rather than a comprehensive polygenic score.)
 [Rockefeller University's 2016 price list](http://www.rockefeller.edu/genomics/pricing) quotes a range of \$260-\$520 for one sample from an Affymetrix GeneChip.
+Tan et al 2014 note that for PGD purposes, "the estimated reagent cost of sequencing for the detection of chromosomal abnormalities is currently less than \$100."
 
 Overall, SNPing an embryo in 2016 should cost ~\$100-400 and more like \$200 and we can expect the SNP cost to fall further.
 
@@ -281,7 +282,7 @@ It's probably better to take the last 3 datapoints (the current trend) and fit t
 
 ~~~{.R}
 # http://www.genome.gov/pages/der/seqcost2015_4.xlsx
-genome <- c(9408739,9047003,8927342,7147571,3063820,1352982,752080,342502,232735,154714,108065,70333,46774
+genome <- c(9408739,9047003,8927342,7147571,3063820,1352982,752080,342502,232735,154714,108065,70333,46774,
             31512,31125,29092,20963,16712,10497,7743,7666,5901,5985,6618,5671,5826,5550,5096,4008,4920,4905,
             5731,3970,4211,1363,1245,1000)
 l <- lm(log(I(tail(genome, 3))) ~ I(1:3)); l
@@ -305,6 +306,7 @@ The net cost of PGD will include the cell harvesting part (one needs to extract 
 - [Alzforum](http://www.alzforum.org/news/research-news/preimplantation-genetic-diagnosis-its-no-walk-park "Preimplantation Genetic Diagnosis: It’s No Walk in the Park") (July 2014): "In Madison, Wisconsin, genetic counselor Margo Grady at Generations Fertility Care estimated the out-of-pocket price of one IVF cycle at about \$12,000, and PGD adds another \$3,000."
 - [Reproductive Health Technologies Project](http://www.rhtp.org/fertility/pgd/) (2015?): "One round of IVF typically costs around \$9,000. PGD adds another \$4,000 to \$7,500 to the cost of each IVF attempt. A standard round of IVF results in a successful pregnancy only 10-35% of the time (depending on the age and health of the woman), and a woman may need to undergo subsequent attempts to achieve a viable pregnancy."
 - [SDFC](https://www.sdfertility.com/fertility-treatments/genetic-testing/pgd) (2015?): "PGD typically costs between \$4,000-\$10,000 depending on the cost of creating the specific probe used to detect the presence of a single gene."
+- Murugappan et al May 2015: "The average cost of PGS was \$4,268 (range \$3,155-\$12,626)", citing another study which estimated "Average additional cost of PGD procedure: \$3,550; Median Cost: \$3,200"
 - the [Advanced Fertility Center of Chicago](http://www.advancedfertility.com/pgd-costs.htm) ("current" pricing, so 2015?) says IVF costs ~$12k and of that, "Aneuploidy testing (for chromosome normality) with PGD is \$1800 to \$5000...PGD costs in the US vary from about \$4000-\$8000". AFC usefully breaks down the costs further in a table of "Average PGS IVF Costs in USA", saying that:
 
     > - Embryo biopsy charges are about \$1000 to \$2500 (average: \$1500)
@@ -324,96 +326,28 @@ Hence we can model the cost of embryo selection as a fixed \$1.5k cost plus numb
 
 ## Modeling embryo selection
 
+[In vitro fertilization](!Wikipedia) is a multi-step probabilistic process:
 
-
-
-["Clinical outcome of preimplantation genetic diagnosis and screening using next generation sequencing"](http://www.gigasciencejournal.com/content/pdf/2047-217X-3-30.pdf), Tan et al December 2014:
-
-> A total of 395 couples participated. They were carriers of either translocation or inversion mutations, or were patients with recurrent miscarriage and/or advanced maternal age. A total of 1,512 blastocysts were biopsied on D5 after fertilization, with 1,058 blastocysts set aside for SNP array testing and 454 blastocysts for NGS testing. In the NGS cycles group, the implantation, clinical pregnancy and miscarriage rates were 52.6% (60/114), 61.3% (49/80) and 14.3% (7/49), respectively. In the SNP array cycles group, the implantation, clinical pregnancy and miscarriage rates were 47.6% (139/292), 56.7% (115/203) and 14.8% (17/115), respectively. The outcome measures of both the NGS and SNP array cycles were the same with insignificant differences. There were 150 blastocysts that underwent both NGS and SNP array analysis, of which seven blastocysts were found with inconsistent signals. All other signals obtained from NGS analysis were confirmed to be accurate by validation with qPCR. The relative copy number of mitochondrial DNA (mtDNA) for each blastocyst that underwent NGS testing was evaluated, and a significant difference was found between the copy number of mtDNA for the euploid and the chromosomally abnormal blastocysts. So far, out of 42 ongoing pregnancies, 24 babies were born in NGS cycles; all of these babies are healthy and free of any developmental problems.
->
-> ...The median number of normal/ balanced embryos per couple was 1.76 (range from 0 to 8).
->
-> ...Among the 129 couples in the NGS cycles group, 33 couples had no euploid embryos suitable for transfer; 75 couples underwent embryo transfer and the remaining 21 couples are currently still waiting for transfer. In the SNP array cycles group, 177 couples underwent embryo transfer, 66 couples had no suitable embryos for transfer, and 23 couples are currently still waiting. Of the 666 normal/balanced blastocysts, 421 blastocysts were warmed after vitrification, 406 survived (96.4% of survival rate) and were transferred in 283 cycles. The numbers of blastocysts transferred per cycle were 1.425 (114/80) and 1.438 (292/203) for NGS and SNP array, respectively. The proportion of transferred embryos that successfully implanted was evaluated by ultrasound 6-7 weeks after embryo transfer, indicating that 60 and 139 embryos resulted in a fetal sac, giving implantation rates of 52.6% (60/114) and 47.6% (139/292) for NGS and SNP array, respectively. Prenatal diagnosis with karyotyping of amniocentesis fluid samples did not find any fetus with chromosomal abnormalities. A total of 164 pregnancies were detected, with 129 singletons and 35 twins. The clinical pregnancy rate per transfer cycle was 61.3% (49/80) and 56.7% (115/203) for NGS and SNP array, respectively (Table 3). A total of 24 miscarriages were detected, giving rates of 14.3% (7/49) and 14.8% (17/115) in NGS and SNP array cycles, respectively
->
-> ...The ongoing pregnancy rates were 52.5% (42/80) and 48.3% (98/203) in NGS and SNP array cycles, respectively. Out of these pregnancies, 24 babies were delivered in 20 NGS cycles; so far, all the babies are healthy and chromosomally normal according to karyotype analysis. In the SNP array cycles group the outcome of all pregnancies went to full term and 75 healthy babies were delivered (Table 3).
->
-> ...NGS is with a bright prospect. A case report described the use of NGS for PGD recently [33]. Several comments for the application of NGS/MPS in PGD/PGS were published [34,35]. The cost and time of sequencing is already competitive with array tests, and the estimated reagent cost of sequencing for the detection of chromosomal abnormalities is currently less than $100.
-
-395 women, 1512 eggs successfully extracted & fertilized into blastocysts (~3.8 per woman); after genetic testing, 256+590=846 or 55% were abnormal & could not be used, leaving 666 good ones; all were vitrified for storage during analysis and 421 of the normal ones rethawed, leaving 406 useful survivors or ~1.4 per woman; the 406 were implanted into 252 women, yielding 24+75=99 healthy live births or 24% implanted-embryo->birth rate.
-
-"Cost-effectiveness analysis of preimplantation genetic screening and in vitro fertilization versus expectant management in patients with unexplained recurrent pregnancy loss", Murugappan et al May 2015 https://www.dropbox.com/s/ptmckh4aoyns3ij/2015-murugappan.pdf
-
-> Probabilities for clinical outcomes with IVF and PGS in RPL patients were obtained from a 2012 study by Hodes-Wertz et al. (10). This is the single largest study to date of outcomes using 24-chromosome screening by array comparative genomic hybridization in a well-defined RPL population...The Hodes-Wertz study reported on outcomes of 287 cycles of IVF with 24-chromosome PGS with a total of 2,282 embryos followed by fresh day-5 embryo transfer in RPL patients. Of the PGS cycles, 67% were biopsied on day 3, and 33% were biopsied on day 5. The average maternal age was 36.7 years (range: 21-45 years), and the mean number of prior miscarriages was 3.3 (range: 2-7). From 287 PGS cycles, 181 cycles had at least one euploid embryo and proceeded to fresh embryo transfer. There were 52 cycles with no euploid embryos for transfer, four cycles where an embryo transfer had not taken place at the time of analysis, and 51 cycles that were lost to follow-up observation. All patients with a euploid embryo proceeded to embryo transfer, with an average of 1.65 Æ 0.65 (range: 1-4) embryos per transfer. Excluding the cycles lost to follow-up evaluation and the cycles without a transfer at the time of analysis, the clinical pregnancy rate per attempt was 44% (n 1⁄4 102). One attempt at conception was defined as an IVF cycle and oocyte retrieval Æ embryo transfer. The live-birth rate per attempt was 40% (n1⁄4 94), and the miscarriage rate per pregnancy was 7% (n 1⁄4 7). Of these seven miscarriages, 57% (n 1⁄4 4) occurred after detection of fetal cardiac activity (10). Information on the percent- age of cycles with surplus embryos was not provided in the Hodes-Wertz study, so we drew from their database of 240 RPL patients with 118 attempts at IVF and PGS (12). The clinical pregnancy, live-birth, and clinical miscarriage rates did not statistically significantly differ between the outcomes published in the Hodes-Wertz study (P1⁄4 .89, P1⁄4 .66, P1⁄4 .61, respectively). We reported that 62% of IVF cycles had at least one surplus embryo (12).
->
-> ...The average cost of preconception counseling and baseline RPL workup, including parental karyotyping, maternal antiphospholipid antibody testing, and uterine cavity evaluation, was $4,377 (range: $4,000-$5,000) (16). Because this was incurred by both groups before their entry into the decision tree, it was not included as a cost input in the study. The average cost of IVF was $18,227 (range: $6,920-$27,685) (16) and includes cycle medications, oocyte retrieval, and one embryo transfer. The average cost of PGS was $4,268 (range $3,155-$12,626) (17), and the average cost of a frozen embryo transfer was $6,395 (range: $3,155-$12,626) (13, 16). The average cost of managing a clinical miscarriage with dilation and curettage (D&C) was $1,304 (range: $517-$2,058) (18). Costs incurred in the IVF-PGS strategy include the cost of IVF, PGS, fresh embryo transfer, frozen embryo transfer, and D&C. Costs incurred in the expectant management strategy include only the cost of D&C.
->
-> 17: National Infertility Association. "The costs of infertility treatment: the Resolve Study". Available at: http://www.resolve.org/family-building-options/insurance_coverage/the-costs-of-infertility-treatment.html Accessed on May 26, 2014: "Average additional cost of PGD procedure: $3,550; Median Cost: $3,200 (Note: Medications for IVF are $3,000 $5,000 per fresh cycle on average.)"
-
-"Technical Update: Preimplantation Genetic Diagnosis and Screening", Dahdouh et al 2015  http://sogc.org/wp-content/uploads/2015/05/gui323TU1505E.pdf
-
-> The number of diseases currently diagnosed via PGD-PCR is approximately 200 and includes some forms of inherited cancers such as retinoblastoma and the breast cancer susceptibility gene (BRCA2). 52 PGD has also been used in new applications such as HLA matching. 53,54 The ESHRE PGD consortium data analysis of the past 10 years' experience demonstrated a clinical pregnancy rate of 22% per oocyte retrieval and 29% per embryo transfer. 55 Table 4 shows a sample of the different monogenetic diseases for which PGD was carried out between January and December 2009, according to the ESHRE data. 22 In these reports a total of 6160 cycles of IVF cycles with PGD or PGS, including PGS-SS, are presented. Of these, 2580 (41.8%) were carried out for PGD purposes, in which 1597 cycles were performed for single-gene disorders, including HLA typing. An additional 3551 (57.6%) cycles were carried out for PGS purposes and 29 (0.5%) for PGS-SS. 22 Although the ESHRE data represent only a partial record of the PGD cases conducted worldwide, it is indicative of general trends in the field of PGD.
->
-> ...At least 40% to 60% of human embryos are abnormal, and that number increases to 80% in women 40 years or older. These abnormalities result in low implantation rates in embryos transferred during IVF procedures, from 30% in women < 35 years to 6% in women ≥ 40 years. 33 In a recent retrospective review of trophectoderm biopsies, aneuploidy risk was evident with increasing female age. A slightly increased prevalence was noted at younger ages, with > 40% aneuploidy in women ≤ 23 years. The risk of having no chromosomally normal blastocyst for transfer (the no-euploid embryo rate) was lowest (2-6%) in women aged 26 to 37, then rose to 33% at age 42 and reached 53% at age 44. 11
-
-~~~{.R}
-R> sapply(0:20, function(n) { (2000 * mean(simEmbryoSelection(n=n, variance=davies2015))) - (n * 150) })
- [1]         NaN -150.000000 1011.588773 1522.130119 1788.450647 1941.601035 2047.527054 2087.842484
- [9] 2110.656075 2093.072253 2082.948485 2034.924981 1987.289131 1931.706925 1852.948445 1778.507622
-[17] 1711.347646 1617.189037 1525.679614 1427.436909 1336.641171
-# max at ~9 embryos
-R> sapply(0:20, function(n) { (13744 * mean(simEmbryoSelection(n=n, variance=davies2015))) - (n * 150) })
- [1]          NaN  -150.000000  8717.201513 13093.386487 15840.665144 17846.072817 19349.401426
- [8] 20533.007056 21580.864374 22333.750466 23077.958913 23687.578268 24225.253543 24662.080628
-[15] 25050.645410 25509.322235 25782.763292 26133.059622 26365.135109 26608.753774 26832.511262
-# max at 20+?
-~~~
-
-So as a process:
-
-1. harvest x eggs (10-30?)
-2. fertilize and create 1-y embryos
-3. optional: PGS the embryos
-4. culture n embryos to either cleavage (2-4 days) or blastocyst (5-6 days) stage (cleavage: better quality babies, but more likely to fail)
+1. harvest _x_ eggs
+2. fertilize them and create _x_ embryos
+3. culture the embryos to either cleavage (2-4 days) or blastocyst (5-6 days) stage; of them, _y_ will still be alive & not grossly abnormal
+4. freeze the embryos
 5. optional: embryo selection using quality and PGS
-6. implant 1-n embryos
-7. freeze the remaining embryos
-8. if no live birth, go to #6 or give up
+6. unfreeze & implant 1 embryo; if no embryos left, return to #1 or give up
+7. if no live birth, go to #6
 
-Net success rates: https://en.wikipedia.org/wiki/In_vitro_fertilisation#Success_rates
-
-> Age:                <35yo   35-37   38-40   41-42   >42
-> --------------      ------- ------- ------- ------- ----
-> Live birth rate     40.7    31.3    22.2    11.8    3.9
-
-> It is common to remove between ten and thirty eggs.
-
-using non-donor eggs. (Though donor eggs are better quality and more likely to yield a birth and hence better for selection purposes)
-
-["Association between the number of eggs and live birth in IVF treatment: an analysis of 400 135 treatment cycles"](http://humrep.oxfordjournals.org/content/26/7/1768.full), Sunkara et al 2011
-> The median number of eggs retrieved was 9 [inter-quartile range (IQR) 6-13; Fig. 2a] and the median number of embryos created was 5 (IQR 3-8; Fig. 2b). The overall LBR in the entire cohort was 21.3% [95% confidence interval (CI): 21.2-21.4%], with a gradual rise over the four time periods in this study (14.9% in 1991-1995, 19.8% in 1996-2000, 23.2% in 2001-2005 and 25.6% in 2006-2008).
-
-Egg retrieval appears normally distributed:
-http://humrep.oxfordjournals.org/content/26/7/1768/F2.large.jpg
-SD not given, but an SD of ~4-5 visually fits and is compatible with a 6-13 IQR, and http://www.advancedfertility.com/bmi-ivf-eggs-research.htm reports SDs for eggs for two groups of 4.5 & 4.7 and averages of 10.5 & 9.4, closely matching the median of 9
-
-
-So using the Tan et al 2014 dataset:
-395 women, 1512 eggs successfully extracted & fertilized into blastocysts (~3.8 per woman); after genetic testing, 256+590=846 or 55% were abnormal & could not be used, leaving 666 good ones; all were vitrified for storage during analysis and 421 of the normal ones rethawed, leaving 406 useful survivors or ~1.4 per woman; the 406 were implanted into 252 women, yielding 24+75=99 healthy live births or 24% implanted-embryo->birth rate.
-
-Converted into a model:
-
-1. eggs extracted per person: normal distribution, mean=9, SD=4.6 (converted to whole numbers)
-2. SNP test all eggs extracted for normality & polygenic score
-2. P=0.5 that an egg is normal
-3. P=0.96 that it survives vitrification
-4. P=0.24 that an implanted egg yields a birth
+A simulation of this process:
 
 ~~~{.R}
 simulateIVF <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.5, vitrificationP, liveBirth) {
-  eggsExtracted <- Filter(function(e){e>=0;}, round(rnorm(n=1, mean=eggMean, sd=eggSD)))
-  scores <- embryoIQScores(n=eggsExtracted, variance=polygenicScoreVariance)
-  normal <- Filter(function(x){rbinom(1, 1, prob=normalityP)}, scores)
-  survived <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, normal)
+  eggsExtracted <- max(0, round(rnorm(n=1, mean=eggMean, sd=eggSD)))
+
+  normal        <- rbinom(1, eggsExtracted, prob=normalityP)
+
+  scores        <- embryoIQScores(n=normal, variance=polygenicScoreVariance)
+
+  survived      <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, scores)
+
   selection <- sort(survived, decreasing=TRUE)
   if (length(selection)>0) {
    for (embryo in 1:length(selection)) {
@@ -426,72 +360,225 @@ simulateIVF <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.5,
   }
 simulateIVFs <- function(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, iters=100000) {
   return(unlist(replicate(iters, simulateIVF(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth)))); }
-simulateTan <- function() { return(simulateIVFs(3, 4.6, davies2015, 0.5, 0.96, 0.24)); }
-mean(simulateTan()) * 2000
-# [1] 456.9003078
 ~~~
 
-The Murugappan et al 2015 cost-benefit analysis uses data from American fertility clinics reported in Hodes-Wertz "Idiopathic recurrent miscarriage is caused mostly by aneuploid embryos" http://www.researchgate.net/profile/Jamie_Grifo/publication/225286057_Idiopathic_recurrent_miscarriage_is_caused_mostly_by_aneuploid_embryos/links/00b4951fbe350b4300000000.pdf
+The transition probabilities can be estimated from the flows reported in papers dealing with IVF and PGD. I have used:
 
-278 cycles yielding 2282 blastocysts or ~8.2 on average; 35% normal; there is no mention of losses to cryostorage, so I borrow 0.96 from Tan et al 2015; 1.65 implanted on average in 181 transfers, yielding 40% live-births
+1. ["Clinical outcome of preimplantation genetic diagnosis and screening using next generation sequencing"](http://www.gigasciencejournal.com/content/pdf/2047-217X-3-30.pdf), Tan et al December 2014:
+
+    395 women, 1512 eggs successfully extracted & fertilized into blastocysts (~3.8 per woman); after genetic testing, 256+590=846 or 55% were abnormal & could not be used, leaving 666 good ones; all were vitrified for storage during analysis and 421 of the normal ones rethawed, leaving 406 useful survivors or ~1.4 per woman; the 406 were implanted into 252 women, yielding 24+75=99 healthy live births or 24% implanted-embryo->birth rate. Excerpts:
+
+    > A total of 395 couples participated. They were carriers of either translocation or inversion mutations, or were patients with recurrent miscarriage and/or advanced maternal age. A total of 1,512 blastocysts were biopsied on D5 after fertilization, with 1,058 blastocysts set aside for SNP array testing and 454 blastocysts for NGS testing. In the NGS cycles group, the implantation, clinical pregnancy and miscarriage rates were 52.6% (60/114), 61.3% (49/80) and 14.3% (7/49), respectively. In the SNP array cycles group, the implantation, clinical pregnancy and miscarriage rates were 47.6% (139/292), 56.7% (115/203) and 14.8% (17/115), respectively. The outcome measures of both the NGS and SNP array cycles were the same with insignificant differences. There were 150 blastocysts that underwent both NGS and SNP array analysis, of which seven blastocysts were found with inconsistent signals. All other signals obtained from NGS analysis were confirmed to be accurate by validation with qPCR. The relative copy number of mitochondrial DNA (mtDNA) for each blastocyst that underwent NGS testing was evaluated, and a significant difference was found between the copy number of mtDNA for the euploid and the chromosomally abnormal blastocysts. So far, out of 42 ongoing pregnancies, 24 babies were born in NGS cycles; all of these babies are healthy and free of any developmental problems.
+    >
+    > ...The median number of normal/ balanced embryos per couple was 1.76 (range from 0 to 8)...Among the 129 couples in the NGS cycles group, 33 couples had no euploid embryos suitable for transfer; 75 couples underwent embryo transfer and the remaining 21 couples are currently still waiting for transfer. In the SNP array cycles group, 177 couples underwent embryo transfer, 66 couples had no suitable embryos for transfer, and 23 couples are currently still waiting. Of the 666 normal/balanced blastocysts, 421 blastocysts were warmed after vitrification, 406 survived (96.4% of survival rate) and were transferred in 283 cycles. The numbers of blastocysts transferred per cycle were 1.425 (114/80) and 1.438 (292/203) for NGS and SNP array, respectively. The proportion of transferred embryos that successfully implanted was evaluated by ultrasound 6-7 weeks after embryo transfer, indicating that 60 and 139 embryos resulted in a fetal sac, giving implantation rates of 52.6% (60/114) and 47.6% (139/292) for NGS and SNP array, respectively. Prenatal diagnosis with karyotyping of amniocentesis fluid samples did not find any fetus with chromosomal abnormalities. A total of 164 pregnancies were detected, with 129 singletons and 35 twins. The clinical pregnancy rate per transfer cycle was 61.3% (49/80) and 56.7% (115/203) for NGS and SNP array, respectively (Table 3). A total of 24 miscarriages were detected, giving rates of 14.3% (7/49) and 14.8% (17/115) in NGS and SNP array cycles, respectively
+    >
+    > ...The ongoing pregnancy rates were 52.5% (42/80) and 48.3% (98/203) in NGS and SNP array cycles, respectively. Out of these pregnancies, 24 babies were delivered in 20 NGS cycles; so far, all the babies are healthy and chromosomally normal according to karyotype analysis. In the SNP array cycles group the outcome of all pregnancies went to full term and 75 healthy babies were delivered (Table 3)...NGS is with a bright prospect. A case report described the use of NGS for PGD recently [33]. Several comments for the application of NGS/MPS in PGD/PGS were published [34,35]. The cost and time of sequencing is already competitive with array tests, and the estimated reagent cost of sequencing for the detection of chromosomal abnormalities is currently less than \$100.
+2. ["Cost-effectiveness analysis of preimplantation genetic screening and in vitro fertilization versus expectant management in patients with unexplained recurrent pregnancy loss"](/docs/genetics/2015-murugappan.pdf), Murugappan et al May 2015:
+
+    > Probabilities for clinical outcomes with IVF and PGS in RPL patients were obtained from a 2012 study by Hodes-Wertz et al. (10). This is the single largest study to date of outcomes using 24-chromosome screening by array comparative genomic hybridization in a well-defined RPL population...The Hodes-Wertz study reported on outcomes of 287 cycles of IVF with 24-chromosome PGS with a total of 2,282 embryos followed by fresh day-5 embryo transfer in RPL patients. Of the PGS cycles, 67% were biopsied on day 3, and 33% were biopsied on day 5. The average maternal age was 36.7 years (range: 21-45 years), and the mean number of prior miscarriages was 3.3 (range: 2-7). From 287 PGS cycles, 181 cycles had at least one euploid embryo and proceeded to fresh embryo transfer. There were 52 cycles with no euploid embryos for transfer, four cycles where an embryo transfer had not taken place at the time of analysis, and 51 cycles that were lost to follow-up observation. All patients with a euploid embryo proceeded to embryo transfer, with an average of 1.65 Æ 0.65 (range: 1-4) embryos per transfer. Excluding the cycles lost to follow-up evaluation and the cycles without a transfer at the time of analysis, the clinical pregnancy rate per attempt was 44% (n 1⁄4 102). One attempt at conception was defined as an IVF cycle and oocyte retrieval Æ embryo transfer. The live-birth rate per attempt was 40% (n1⁄4 94), and the miscarriage rate per pregnancy was 7% (n 1⁄4 7). Of these seven miscarriages, 57% (n 1⁄4 4) occurred after detection of fetal cardiac activity (10). Information on the percent- age of cycles with surplus embryos was not provided in the Hodes-Wertz study, so we drew from their database of 240 RPL patients with 118 attempts at IVF and PGS (12). The clinical pregnancy, live-birth, and clinical miscarriage rates did not statistically significantly differ between the outcomes published in the Hodes-Wertz study (P1⁄4 .89, P1⁄4 .66, P1⁄4 .61, respectively). We reported that 62% of IVF cycles had at least one surplus embryo (12).
+    >
+    > ...The average cost of preconception counseling and baseline RPL workup, including parental karyotyping, maternal antiphospholipid antibody testing, and uterine cavity evaluation, was \$4,377 (range: \$4,000-\$5,000) (16). Because this was incurred by both groups before their entry into the decision tree, it was not included as a cost input in the study. The average cost of IVF was \$18,227 (range: \$6,920-\$27,685) (16) and includes cycle medications, oocyte retrieval, and one embryo transfer. The average cost of PGS was \$4,268 (range \$3,155-\$12,626) (17), and the average cost of a frozen embryo transfer was \$6,395 (range: \$3,155-\$12,626) (13, 16). The average cost of managing a clinical miscarriage with dilation and curettage (D&C) was \$1,304 (range: \$517-\$2,058) (18). Costs incurred in the IVF-PGS strategy include the cost of IVF, PGS, fresh embryo transfer, frozen embryo transfer, and D&C. Costs incurred in the expectant management strategy include only the cost of D&C.
+    >
+    > 17: National Infertility Association. ["The costs of infertility treatment: the Resolve Study"](http://www.resolve.org/family-building-options/insurance_coverage/the-costs-of-infertility-treatment.html) Accessed on May 26, 2014: "Average additional cost of PGD procedure: $3,550; Median Cost: $3,200 (Note: Medications for IVF are $3,000 $5,000 per fresh cycle on average.)"
+3. ["Technical Update: Preimplantation Genetic Diagnosis and Screening"](http://sogc.org/wp-content/uploads/2015/05/gui323TU1505E.pdf), Dahdouh et al 2015:
+
+    > The number of diseases currently diagnosed via PGD-PCR is approximately 200 and includes some forms of inherited cancers such as retinoblastoma and the breast cancer susceptibility gene (BRCA2). 52 PGD has also been used in new applications such as HLA matching. 53,54 The ESHRE PGD consortium data analysis of the past 10 years' experience demonstrated a clinical pregnancy rate of 22% per oocyte retrieval and 29% per embryo transfer. 55 Table 4 shows a sample of the different monogenetic diseases for which PGD was carried out between January and December 2009, according to the ESHRE data. 22 In these reports a total of 6160 cycles of IVF cycles with PGD or PGS, including PGS-SS, are presented. Of these, 2580 (41.8%) were carried out for PGD purposes, in which 1597 cycles were performed for single-gene disorders, including HLA typing. An additional 3551 (57.6%) cycles were carried out for PGS purposes and 29 (0.5%) for PGS-SS. 22 Although the ESHRE data represent only a partial record of the PGD cases conducted worldwide, it is indicative of general trends in the field of PGD.
+    >
+    > ...At least 40% to 60% of human embryos are abnormal, and that number increases to 80% in women 40 years or older. These abnormalities result in low implantation rates in embryos transferred during IVF procedures, from 30% in women < 35 years to 6% in women ≥ 40 years. 33 In a recent retrospective review of trophectoderm biopsies, aneuploidy risk was evident with increasing female age. A slightly increased prevalence was noted at younger ages, with > 40% aneuploidy in women ≤ 23 years. The risk of having no chromosomally normal blastocyst for transfer (the no-euploid embryo rate) was lowest (2-6%) in women aged 26 to 37, then rose to 33% at age 42 and reached 53% at age 44. 11
+4.  [Wikipedia reports net success rates](https://en.wikipedia.org/wiki/In_vitro_fertilisation#Success_rates):
+
+    > Age:                <35yo   35-37   38-40   41-42   >42
+    > --------------      ------- ------- ------- ------- ----
+    > Live birth rate     40.7    31.3    22.2    11.8    3.9
+
+    > It is common to remove between ten and thirty eggs.
+
+    using non-donor eggs. (Though donor eggs are better quality and more likely to yield a birth and hence better for selection purposes)
+5. ["Association between the number of eggs and live birth in IVF treatment: an analysis of 400 135 treatment cycles"](http://humrep.oxfordjournals.org/content/26/7/1768.full), Sunkara et al 2011
+
+    > The median number of eggs retrieved was 9 [inter-quartile range (IQR) 6-13; Fig. 2a] and the median number of embryos created was 5 (IQR 3-8; Fig. 2b). The overall LBR in the entire cohort was 21.3% [95% confidence interval (CI): 21.2-21.4%], with a gradual rise over the four time periods in this study (14.9% in 1991-1995, 19.8% in 1996-2000, 23.2% in 2001-2005 and 25.6% in 2006-2008).
+
+    Egg retrieval appears [normally distributed in Sunkara et al 2011's graph](http://humrep.oxfordjournals.org/content/26/7/1768/F2.large.jpg). The SD is not given anywhere in the paper, but an SD of ~4-5 visually fits the graph and is compatible with a 6-13 IQR, and [AGC](http://www.advancedfertility.com/bmi-ivf-eggs-research.htm) reports SDs for eggs for two groups of SDs 4.5 & 4.7 and averages of 10.5 & 9.4 - closely matching the median of 9.
+6. The most nationally representative sample for the USA is the data that fertility clinics are legally required to report to the CDC. The most recent one is the ["2013 Assisted Reproductive Technology National Summary Report"](http://www.cdc.gov/art/pdf/2013-report/art_2013_national_summary_report.pdf), which breaks down numbers by age and egg source:
+
+    > Total number of cycles : 190,773 (includes 2,655 cycle[s] using frozen eggs)...Donor eggs: 9718 fresh cycles, 10270 frozen [`(9718+10270)/190773 ~> 0.1047737363`]
+    >
+    > ...Of the 190,773 ART cycles performed in 2013 at these reporting clinics, 163,209 cycles (86%) were started with the intent to transfer at least one embryo. These 163,209 cycles resulted in 54,323 live births (deliveries of one or more living infants) and 67,996 infants.
+    >
+    > Fresh eggs        <35yo   35-37   38-40 41-42  43-44  >44
+    > ------------      ------  ------  ----- ------ -----  -------
+    > cycles:           40,083  19,853  18,06 19,588 4,823  1,379
+    > P(birth|cycle)    23.8    19.6    13.7  7.8    3.9    1.2
+    > P(birth|transfer) 28.2    24.4    18.4  11.4   6.0    2.1
+    >
+    > Frozen eggs       <35     35-37   38-40  41-42  43-44  >44
+    > --------------    ------  ------  -----  -----  -----  ----
+    > cycles:           21,627  11,140  8,354  3,344  1,503  811
+    > P(birth|transfer) 28.6    27.2    24.4   21.2   15.8   8.7
+    >
+    > ...The largest group of women using ART services were women younger than age 35, representing approximately 38% of all ART cycles performed in 2013. About 20% of ART cycles were performed among women aged 35-37, 19% among women aged 38-40, 11% among women aged 41-42, 7% among women aged 43-44, and 5% among women older than age 44. Figure 4 shows that, in 2013, the type of ART cycles varied by the woman's age. The vast majority (97%) of women younger than age 35 used their own eggs (non-donor), and about 4% used donor eggs. In contrast, 38% of women aged 43-44 and 73% of women older than age 44 used donor eggs.
+    >
+    > ...Outcomes of ART Cycles Using Fresh Non-donor Eggs or Embryos, by Stage, 2013:
+    >
+    > 1. 93,787 cycles started
+    > 2. 84,868 retrievals
+    > 3. 73,571 transfers
+    > 4. 33,425 pregnancies
+    > 5. 27,406 live-birth deliveries
+
+    CDC report doesn't specify how many eggs on average are retrieved or abnormality rate by age, although we can note that ~10% of retrievals didn't lead to any transfers (since there were 85k retrievals but only 74k transfers) which looks consistent with an overall mean & SD of 9(4.6) and 50% abnormality rate.
+    We could also try to back out from the figures on average number of embryos per transfer, number of transfers, and number of cycles (eg 1.8 for <35yos, and 33750, so 60750 transferred embryos, as part of the 40083 cycles, indicating each cycle must have yielded at least 1.5 embryos), but that only gives a loose lower bound since there may be many left over embryos and the abnormality rate is unknown.
+
+    So for an American model of <35yos, we could go with a set of parameters like {9, 4.6, 0.5, 0.96, 0.28}.
+
+With these sets of data, we can fill in parameter values for the simulation and estimate gains.
+
+Using the Tan et al 2014 data:
+
+1. eggs extracted per person: normal distribution, mean=3, SD=4.6 (discretized into whole numbers)
+2. using previous simulation, 'SNP test' all eggs extracted for polygenic score
+2. P=0.5 that an egg is normal
+3. P=0.96 that it survives vitrification
+4. P=0.24 that an implanted egg yields a birth
 
 ~~~{.R}
-simulateHodesWertz <- function() { return(simulateIVFs(8.2, davies2015, 0.35, 0.96, 0.40)) }
-mean(simulateHodesWertz()) * 2000
-# [1] 710.8216089
+simulateTan <- function() { return(simulateIVFs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24)); }
+iqTan <- mean(simulateTan()); iqTan
+# [1] 0.3169408043
+~~~
+
+That is, the couples in Tan et al 2014 would have seen a 0.3IQ increase.
+
+The Murugappan et al 2015 cost-benefit analysis uses data from American fertility clinics reported in [Hodes-Wertz's "Idiopathic recurrent miscarriage is caused mostly by aneuploid embryos"](http://www.researchgate.net/profile/Jamie_Grifo/publication/225286057_Idiopathic_recurrent_miscarriage_is_caused_mostly_by_aneuploid_embryos/links/00b4951fbe350b4300000000.pdf):
+278 cycles yielding 2282 blastocysts or ~8.2 on average; 35% normal; there is no mention of losses to cryostorage, so I borrow 0.96 from Tan et al 2015; 1.65 implanted on average in 181 transfers, yielding 40% live-births.
+So:
+
+~~~{.R}
+simulateHodesWertz <- function() { return(simulateIVFs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40)) }
+iqHW <- mean(simulateHodesWertz()); iqHW
+# [1] 0.5666326846
 ~~~
 
 Both Tan et al 2014 and Hodes-Wertz et al 2012 are unrepresentative, since they focused on subjects with particular difficulties or low genetic quality ("They were carriers of either translocation or inversion mutations, or were patients with recurrent miscarriage and/or advanced maternal age", and "Recurrent pregnancy loss (RPL), defined as two or more failed pregnancies" respectively).
-
-The most nationally representative sample for the USA is the data that fertility clinics are legally required to report to the CDC.
-The most recent one is the ["2013 Assisted Reproductive Technology National Summary Report"](http://www.cdc.gov/art/pdf/2013-report/art_2013_national_summary_report.pdf), which breaks down numbers by age and egg source:
-
-> Total number of cycles : 190,773 (includes 2,655 cycle[s] using frozen eggs)...Donor eggs: 9718 fresh cycles, 10270 frozen [`(9718+10270)/190773 ~> 0.1047737363`]
->
-> ...Of the 190,773 ART cycles performed in 2013 at these reporting clinics, 163,209 cycles (86%) were started with the intent to transfer at least one embryo. These 163,209 cycles resulted in 54,323 live births (deliveries of one or more living infants) and 67,996 infants.
->
-> Fresh eggs        <35yo   35-37   38-40 41-42  43-44  >44
-> ------------      ------  ------  ----- ------ -----  -------
-> cycles:           40,083  19,853  18,06 19,588 4,823  1,379
-> P(birth|cycle)    23.8    19.6    13.7  7.8    3.9    1.2
-> P(birth|transfer) 28.2    24.4    18.4  11.4   6.0    2.1
->
-> Frozen eggs       <35     35-37   38-40  41-42  43-44  >44
-> --------------    ------  ------  -----  -----  -----  ----
-> cycles:           21,627  11,140  8,354  3,344  1,503  811
-> P(birth|transfer) 28.6    27.2    24.4   21.2   15.8   8.7
->
-> ...The largest group of women using ART services were women younger than age 35, representing approximately 38% of all ART cycles performed in 2013. About 20% of ART cycles were performed among women aged 35-37, 19% among women aged 38-40, 11% among women aged 41-42, 7% among women aged 43-44, and 5% among women older than age 44. Figure 4 shows that, in 2013, the type of ART cycles varied by the woman's age. The vast majority (97%) of women younger than age 35 used their own eggs (non-donor), and about 4% used donor eggs. In contrast, 38% of women aged 43-44 and 73% of women older than age 44 used donor eggs.
->
-> ...Outcomes of ART Cycles Using Fresh Non-donor Eggs or Embryos, by Stage, 2013:
->
-> 1. 93,787 cycles started
-> 2. 84,868 retrievals
-> 3. 73,571 transfers
-> 4. 33,425 pregnancies
-> 5. 27,406 live-birth deliveries
-
-CDC report doesn't specify how many eggs on average are retrieved or abnormality rate by age, although we can note that ~10% of retrievals didn't lead to any transfers (since there were 85k retrievals but only 74k transfers) which looks consistent with an overall mean & SD of 9(4.6) and 50% abnormality rate.
-We could also try to back out from the figures on average number of embryos per transfer, number of transfers, and number of cycles (eg 1.8 for <35yos, and 33750, so 60750 transferred embryos, as part of the 40083 cycles, indicating each cycle must have yielded at least 1.5 embryos), but that only gives a loose lower bound since there may be many left over embryos and the abnormality rate is unknown.
-
-So for an American model of <35yos, we could go with a set of parameters like {9, 4.6, 0.5, 0.96, 0.28}, but this turns out to not match the CDC's P(birth|cycle) of 0.238, since if we count how many simulations yield a baby vs how many simulations we ran, it's twice as much.
-Looking at the numbers, the culprit seems to be the P(birth|transfer) estimate of 0.28: each transfer involves *multiple* embryos (1.8 on average), so 0.28 is much larger than the true per-embryo success rate.
-Fiddling with the per-embryo rate, the simulation reproduces ~0.238 when the per-embryo rate is ~10.8%
-
-1. <35yo: 23.8->10.8
-2. 35-37: 19.6~>8.6
-3. 38-40: 13.7~>5.7
-4. 41-42: 7.8~>3.2
-5. 43-44: 3.9~>1.56
-6. >44: 1.2~>0.49
+The more nationally representative USA data from the CDC reports net numbers rather than per step, but using the imputed probabilities:
 
 ~~~{.R}
-simulateUSA <- function(liveBirth) { return(simulateIVFs(9, 4.6, davies2015, 0.3, 0.90, liveBirth)); };
-sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb)*2000);})
-[1] 177.22112774 150.18588486  97.46433363  22.18675403  75.97817656 -82.15293737
+simulateUSA <- function(liveBirth) { return(simulateIVFs(9, 4.6, rietveld2013, 0.3, 0.90, liveBirth)); };
+iqUSA <- sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb));}); iqUSA
+# [1] 0.13808892057 0.12210943484 0.09868347490 0.03544036910 0.05130600081 0.02770834405
 ~~~
 
 ## Cost-benefit
+
+As written, the IVF simulator cannot deliver a cost-benefit because the costs will depend on the internal state, like how many good embryos were created or the fact that a cycle ending in no live births will still incur costs, and report the marginal gain now that we're going case by case.
+So it must be augmented:
+
+~~~{.R}
+simulateIVFCB <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.5, vitrificationP, liveBirth, fixedCost, embryoCost, iqValue) {
+  eggsExtracted <- max(0, round(rnorm(n=1, mean=eggMean, sd=eggSD)))
+
+  normal        <- rbinom(1, eggsExtracted, prob=normalityP)
+
+  totalCost     <- fixedCost + normal * embryoCost
+  scores        <- embryoIQScores(n=normal, variance=polygenicScoreVariance)
+
+
+  survived      <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, scores)
+
+  selection <- sort(survived, decreasing=FALSE)
+  live <- 0
+  gain <- 0
+
+  if (length(selection)>0) {
+   for (embryo in 1:length(selection)) {
+    if (rbinom(1, 1, prob=liveBirth) == 1) {
+      live <- selection[embryo]
+      }
+   }
+  gain <- max(0, live - mean(selection))
+  }
+  return(data.frame(IQ=gain, Cost=totalCost, Net=(iqValue*gain - totalCost)))  }
+library(plyr)
+simulateIVFCBs <- function(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, fixedCost, embryoCost, iqValue, iters=10000) {
+  ldply(replicate(simplify=FALSE, iters, simulateIVFCB(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, fixedCost, embryoCost, iqValue))) }
+~~~
+
+Now we have all our parameters set:
+
+1. IQ's value is \$2,783 - \$13,744
+2. The fixed cost of selection is \$1500
+3. per-embryo cost of selection is \$200
+4. and the relevant probabilities have been defined already
+
+~~~{.R}
+iqLow <- 2783; iqHigh <- 13744
+## Tan:
+summary(simulateIVFCBs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24, 1500, 200, iqLow))
+#        IQ                 Cost              Net
+#  Min.   :0.0000000   Min.   :1500.00   Min.   :-3700.0000
+#  1st Qu.:0.0000000   1st Qu.:1500.00   1st Qu.:-1700.0000
+#  Median :0.0000000   Median :1700.00   Median :-1500.0000
+#  Mean   :0.3690436   Mean   :1872.22   Mean   : -845.1716
+#  3rd Qu.:0.4339699   3rd Qu.:2100.00   3rd Qu.: -925.2713
+#  Max.   :6.2197953   Max.   :4100.00   Max.   :14809.6903
+summary(simulateIVFCBs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24, 1500, 200, iqHigh))
+#        IQ                 Cost             Net
+#  Min.   :0.0000000   Min.   :1500.0   Min.   :-3900.000
+#  1st Qu.:0.0000000   1st Qu.:1500.0   1st Qu.:-1700.000
+#  Median :0.0000000   Median :1700.0   Median :-1500.000
+#  Mean   :0.3624990   Mean   :1872.3   Mean   : 3109.887
+#  3rd Qu.:0.3905828   3rd Qu.:2100.0   3rd Qu.: 3280.301
+#  Max.   :5.2417298   Max.   :4100.0   Max.   :70342.335
+
+## Hodes-Wertz:
+summary(simulateIVFCBs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40, 1500, 200, iqLow))
+#        IQ                  Cost              Net
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3500.0000
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1900.0000
+#  Median :0.06392692   Median :2100.00   Median :-1500.0000
+#  Mean   :0.63574964   Mean   :2072.54   Mean   : -303.2488
+#  3rd Qu.:1.10324556   3rd Qu.:2300.00   3rd Qu.:  828.4638
+#  Max.   :5.34029202   Max.   :4100.00   Max.   :12562.0327
+summary(simulateIVFCBs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40, 1500, 200, iqHigh))
+#        IQ                  Cost              Net
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3900.000
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1900.000
+#  Median :0.05711262   Median :2100.00   Median :-1411.727
+#  Mean   :0.63435629   Mean   :2084.68   Mean   : 6633.913
+#  3rd Qu.:1.07447659   3rd Qu.:2300.00   3rd Qu.:12556.017
+#  Max.   :5.38684814   Max.   :4100.00   Max.   :71936.841
+
+## USA, youngest:
+summary(simulateIVFCBs(9, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
+#        IQ                 Cost              Net
+#  Min.   :0.0000000   Min.   :1500.00   Min.   :-3900.0000
+#  1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-2100.0000
+#  Median :0.0000000   Median :2100.00   Median :-1700.0000
+#  Mean   :0.4268902   Mean   :2044.42   Mean   : -856.3845
+#  3rd Qu.:0.6419175   3rd Qu.:2300.00   3rd Qu.: -384.7384
+#  Max.   :5.3091927   Max.   :3900.00   Max.   :12875.4832
+summary(simulateIVFCBs(9, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
+#        IQ                 Cost              Net
+#  Min.   :0.0000000   Min.   :1500.00   Min.   :-4100.000
+#  1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-1900.000
+#  Median :0.0000000   Median :1900.00   Median :-1500.000
+#  Mean   :0.4230889   Mean   :2042.28   Mean   : 3772.654
+#  3rd Qu.:0.6304198   3rd Qu.:2300.00   3rd Qu.: 6528.460
+#  Max.   :5.8037714   Max.   :4100.00   Max.   :78067.034
+~~~
+
+In general, embryo selection as of January 2016 is not profitable in any group examined using the lowest estimate of IQ's value; it is generally profitable on average with the highest estimate.
+
+In the US population estimate with the lowest IQ estimate, embryo selection only reaches break-even once the variance explained increases by a factor of 3 to 7.5%.
+How much more data is necessary? The Rietveld et al 2013 polygenic score was based on a discovery sample of _n_=101k, but due to diminishing returns, it would require more than 3x/303k.
+In the supplementary materials (pg22-23), they offer a population genetics-based approximation of how much variance a given sample size & heritability will explain:
+
+1. $M = \frac{2 \cdot N_e \cdot k \cdot l}{log(2 \cdot N_e \cdot l)}$;
+    they state that $N_e = 10000; k = 22; l = 1.6$, so $M = \frac{2 \cdot 10000 \cdot 22 \cdot 1.6}{log(2 \cdot 10000 \cdot 1.6)}$ or _M_ = 67865.
+2. $R^2 = \frac{\frac{N}{M} \cdot h^4}{\frac{N}{M} \cdot h^2 + 1}$
+    For education (the phenotype variable targeted by the main GWAS, serving as a proxy for intelligence), they estimate _h_^2^=0.2, or _h_=0.447 (h^2^ here being the heritability capturable by their SNP arrays, so equivalent to $h^2_{SNP}$), so for their sample size of 100000, they would expect to explain `((100000 / 67865) * 0.447^4) / ((100000/67865) * 0.447^2 + 1) ~> 0.045` or 4.5% of variance while they got 2-3%, suggesting over-estimation.
+
+    For intelligence, the GCTAs say that $h^2_{SNP} = 0.33$, so Rietveld et al 2013's 0.025 is equivalent to _n_=17000, while to boost it to 3x (0.075) turns out to require _n_=61000 or 3.58x, suggesting that another Rietveld et al 2013-style education GWAS would be adequate once it reached  _n_>362,000.
 
 # Iterated embryo selection
 
