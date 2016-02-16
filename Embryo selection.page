@@ -13,7 +13,7 @@ belief: likely
 > - a meta-analysis of GCTA indicates that SNPs can explain >33% of variance in human intelligence
 > - this sets an upper bound on the effectiveness of selection: a gain of 9 IQ points when selecting the top embryo out of 10
 > - the best 2015 polygenic score could achieve a gain of <4.5 IQ points when selecting out of 10
-> - the cost of embryo selection is modest, at \$1500 + $200 per embryo
+> - the cost of embryo selection is modest, at \$1500 + $200 per embryo, with the sequencing cost projected to drop rapidly
 > - a model of the IVF process, incorporating number of extracted eggs, losses to abnormalities & vitrification & failed implantation & miscarriages from real IVF patient populations, estimates gains of 0.14, 0.36, & 0.56 IQ points
 > - embryo selection is currently unprofitable (mean: -\$856) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$3,772)
 > - and can be made profitable with a better polygenic score, which would require _n_>362,000.
@@ -203,7 +203,7 @@ mean(simEmbryoSelection(n=10))
 
 So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Bostrom & Shulman's 11.5 because of my lower GCTA estimate.
 
-##### Polygenic score
+##### Polygenic scores
 
 A SNP-based polygenic score works much the same way: it explains a certain fraction or percentage of the variance, halved due to siblings, and can be plugged in once we know how much less than 0.33 it is.
 An example of using SNP polygenic scores to identify genetic influences and verify they work within-family and are not confounded would be Domingue et al 2015's ["Polygenic Influence on Educational Attainment"](http://ero.sagepub.com/content/1/3/2332858415599972?full).
@@ -231,6 +231,9 @@ Past polygenic scores for intelligence:
 
     Supplementary Table 4d reports predictive validity of the educational attainment polygenic score for childhood-cognitive-ability/college-degree/years-of-education in its other samples, yielding R^2^=0.0042/0.0214/0.0223 or 0.42%/2.14%/2.23% respectively. Particularly intriguing given its investigation of pleiotropy is Supplementary Table 5, which uses polygenic scores constructed for all the diseases in its data (eg type 2 diabetes, ADHD, schizophrenia, coronary artery disease), where all the disease scores & covariates are entered into the model and then the cognitive polygenic scores are able to predict even higher, as high as R^2^=0.063/0.046/0.064.
 5. Upcoming in 2016 is another SSGAC paper with ~8x hits using _n_=305,000 but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score, although the top 18 hits explained 0.4% (but that's less than the Davies or Rietveld polygenic scores and not useful)
+
+Since these scores overlap and are not, like GCTA estimates, repeated measurements of a variable in any sense, there is little point in meta-analyzing them other than to estimate growth over time (even using them as an ensemble wouldn't be worth the complexity, and in any case, most studies do not provide the full list of beta values making up the polygenic score); for our purpose, the largest polygenic score is the important number.
+([Emil Kirkegaard](http://emilkirkegaard.dk/en/?p=5813) notes that the polygenic scores are also inefficient: polygenic scores are not always published, not always based on individual patient data, and generally use maximum-likelihood estimation neglecting our strong priors on the number of hits & distribution of effect sizes. But these published scores are what we have as of January 2016, so we must make do.)
 
 Rietveld et al 2013's reported polygenic score for cognitive performance was 2.5%. Same procedure to estimate value of embryo selection: halve to account for siblings' shared genetics then simulate:
 `0.025 * 0.5 = 0.0125`; `sqrt(0.0125) = 0.1118033989` SD or 1.67 IQ points
@@ -260,7 +263,7 @@ PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genet
 
     - Chinese IVF fertility clinics are presumably cheaper as well as more willing to do PGD. A [2011 NPR article](http://www.npr.org/2011/07/01/137530286/in-china-an-ivf-clinic-grapples-with-huge-demand) quotes a Chinese fertility clinic as offering 1 cycle at \$4.5k, which is around half of what a US clinic might charge; so the total penalty of going to China will depend on how many cycles are necessary. If 1 cycle, then it's \$10k vs \$16k+\$4.5k, a loss of -\$10.5k; for 2, -\$5k; for 3, +\$0.5k; and for 4, +\$6k, and so on.
 
-        IVF cycle success rates being <41% and following a negative binomial, we can say that 2 or more cycles will be required, more often than not, and often 3 or 4, to get 1 live birth (after which it stops); one issue is that if a woman leaves as soon as pregnancy is confirmed with a fetal heartbeat, there may still be a miscarriage and they would have to decide whether to fly back to China and start another cycle, while if they stay for the full pregnancy, that triples food/hotel costs.
+        IVF cycle success rates being <41% and following a negative binomial, we can say that 2 or more cycles will be required, more often than not, and often 3 or 4, to get 1 live birth (after which it stops); one issue is that if a woman leaves as soon as pregnancy is confirmed with a fetal heartbeat, there may still be a miscarriage and they would have to decide whether to fly back to China and start another cycle, while if they stay for the full pregnancy, that triples food/hotel costs. Quality-wise, Chinese fertility clinics may be behind Western clinics, but we can expect them to rapidly improve: the Chinese population is aging and becoming more affluent, the one-child policy is dead, and the Chinese government has made biology & genetic engineering a national strategic priority and bankrolled R&D and institutes like the [Beijing Genomics Institute](!Wikipedia).
 
     So overall, I think we can say that on average, doing IVF in China is not as financially costly as it seems up front and could even be profitable. Which leaves the more psychological issues of trust and planning and willingness to go overseas, which are hard to evaluate in the absence of any present incentive to do Chinese genetic-engineering birth tourism, but [medical tourism](!Wikipedia) and [birth tourism](!Wikipedia) are both already phenomena.
 
@@ -478,6 +481,177 @@ iqUSA <- sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simula
 # [1] 0.13808892057 0.12210943484 0.09868347490 0.03544036910 0.05130600081 0.02770834405
 ~~~
 
+### Societal effects
+
+One category of effects considered by Shulman & Bostrom is the non-financial social & societal effects mentioned in their Table 3, where embryo selection can "perceptibly advantage a minority" or in an extreme case, "Selected dominate ranks of elite scientists, attorneys, physicians, engineers. Intellectual Renaissance?"
+This is another point which is worth going into a little more; no specific calculations are mentioned by Shulman & Bostrom, and the thin-tail-effects of normal distributions are notoriously counterintuitive, with surprisingly large effects out on the tails from small-seeming changes in means or standard deviations - for example, the legendary levels of Western Jewish overperformance despite their tiny population sizes.
+
+As a general rule of thumb, 'elite' groups like scientists, attorneys, physicians, Ivy League students etc are highly selected for intelligence - one can comfortably estimate averages >=130 IQ (+2SD) from past IQ samples & average SAT scores & the ever-increasingly stringent admissions; and elite performance continues to increase with increasing intelligence as high as can reasonably be measured, as indicated by available date like the SMPY longitudinal study, where we might define the cut off as 160 IQ based on Ann Roe's study of the most eminent available scientists (mean ~150-160).
+So to estimate an impact, one could consider a question like: given an average boost of _x_ IQ points through embryo-selection, how much would the odds of being elite (>=130) or extremely elite (>=160) increase for the selected? If a certain fraction of IVFers were selected, what fraction of all people above the cutoff would they make up?
+
+If there are 320 million people in the USA, then about 17m are +2SD and 43k are +3SD:
+
+~~~{.R}
+dnorm((130-100)/15) * 320000000
+# [1] 17277109.28
+dnorm((160-100)/15) * 320000000
+# [1] 42825.67224
+~~~
+
+Similarly, in 2013, the [CDC reports](http://www.cdc.gov/nchs/births.htm) 3,932,181 children born in the USA; and the 2013 CDC annual IVF report says that 67,996 (1.73%) were IVF.
+This implies that IVFers also make up a very small number of highly gifted children:
+
+~~~{.R}
+size <- function(mean, cutoff, populationSize, useFraction=1) { if(cutoff>mean) { dnorm((cutoff-mean)/15) * populationSize * useFraction } else
+                                                                 { (1 - dnorm((cutoff-mean)/15)) * populationSize * useFraction }}
+size(100, 160, 67996)
+# [1] 9.099920031
+~~~
+
+So assuming IVF parents average 100IQ, then we can take the embryo selection theoretical upper bound of +9.36 (+0.624SD) corresponding to the "aggressive IVF" set of scenarios in Table 3 of Shulman & Bostrom, and ask, if 100% of IVF children were selected, how many additional people over 160 would that create?
+
+~~~{.R}
+eliteGain <- function(ivfMean, ivfGain, ivfFraction, generation, cutoff, ivfPop, genMean, genPop) {
+
+              ivfers      <- size(ivfMean,                      cutoff, ivfPop, 1)
+              selected    <- size(ivfMean+(ivfGain*generation), cutoff, ivfPop, ivfFraction)
+              nonSelected <- size(ivfMean,                      cutoff, ivfPop, 1-ivfFraction)
+              gain        <- (selected+nonSelected) - ivfers
+
+              population <- size(genMean, cutoff, genPop)
+              multiplier <- gain / population
+              return(multiplier) }
+eliteGain(100, 9.36, 1, 1, 160, 67996, 100, 3932181)
+# [1] 0.1554096565
+~~~
+
+In this example, the +0.624SD boosts the absolute number by 82 people, representing 15.5% of children passing the cutoff; this would mean that IVF overrepresentation would be noticeable if anyone went looking for it, but would not be a major issue nor even as noticeable as Jewish achievement. We would indeed see "Substantial growth in educational attainment, income", but we would not see much effect beyond that.
+
+Is it realistic to assume that IVF children will be distributed around a mean of 100 sans any intervention? That seems unlikely, if only due to the substantial financial cost of using IVF; however, the existing literature is inconsistent, showing both higher & lower education or IQ scores ([Hart & Norman 2013](https://humupd.oxfordjournals.org/content/19/3/244.full "The longer-term health outcomes for children born as a result of IVF treatment. Part II - Mental health and development outcomes")), so perhaps the starting point really is 100.
+The thin-tail effects make the starting mean extremely important; Shulman & Bostrom say, "*Second* generation manyfold increase at right tail."
+Let's consider the second generation; with their post-selection mean IQ of 109.36, what second-generation is produced in the absence of outbreeding when they use IVF selection?
+
+~~~{.R}
+eliteGain(100, 9.36, 1, 2, 160, 67996, 100, 3932181)
+# [1] 1.151238772
+eliteGain(100, 9.36, 1, 5, 160, 67996, 100, 3932181)
+# [1] 34.98100356
+~~~
+
+Now the IVF children represent a majority. With the third generation, they reach 5x; at the fourth, 17x; at the fifth, 35x; and so on.
+
+In practice, of course, we currently would get much less: 0.13808892057 IQ points in the USA model, which would yield a trivial percentage increase of 0.06% or 1.6%:
+
+~~~{.R}
+eliteGain(100, 0.13808892057, 1, 1, 160, 67996, 100, 3932181)
+# [1] 0.0006478714323
+eliteGain(115, 0.13808892057, 1, 1, 160, 67996, 100, 3932181)
+# [1] 0.01601047464
+~~~
+
+Table 3 considers 12 scenarios: 3 adoption fractions of the general population (100% IVFer/~0.25% general population, 10%, >90%) vs 4 average gains (4, 12, 19, 100+).
+The descriptions add 2 additional variables: first vs second generation, and elite vs eminent, giving 48 relevant estimates total.
+
+~~~{.R}
+scenarios <- expand.grid(c(0.025, 0.1, 0.9), c(4, 12, 19, 100), c(1,2), c(130, 160))
+colnames(scenarios) <- c("Adoption.fraction", "IQ.gain", "Generation", "Eliteness")
+scenarios$Gain.fraction <- round(do.call(mapply, c(function(adoptionRate, gain, generation, selectiveness) {
+                                  eliteGain(100, gain, adoptionRate, generation, selectiveness, 3932181, 100, 3932181) }, unname(scenarios[,1:4]))),
+                           digits=2)
+~~~
+
+Adoption fraction IQ gain Generation Eliteness Gain fraction
+----------------- ------- ---------- --------- -------------
+            0.025       4          1       130          0.02
+            0.100       4          1       130          0.06
+            0.900       4          1       130          0.58
+            0.025      12          1       130          0.06
+            0.100      12          1       130          0.26
+            0.900      12          1       130          2.34
+            0.025      19          1       130          0.12
+            0.100      19          1       130          0.46
+            0.900      19          1       130          4.18
+            0.025     100          1       130          0.44
+            0.100     100          1       130          1.75
+            0.900     100          1       130         15.77
+            0.025       4          2       130          0.04
+            0.100       4          2       130          0.15
+            0.900       4          2       130          1.37
+            0.025      12          2       130          0.15
+            0.100      12          2       130          0.58
+            0.900      12          2       130          5.24
+            0.025      19          2       130          0.28
+            0.100      19          2       130          1.11
+            0.900      19          2       130         10.00
+            0.025     100          2       130          0.44
+            0.100     100          2       130          1.75
+            0.900     100          2       130         15.77
+            0.025       4          1       160          0.05
+            0.100       4          1       160          0.18
+            0.900       4          1       160          1.62
+            0.025      12          1       160          0.42
+            0.100      12          1       160          1.68
+            0.900      12          1       160         15.13
+            0.025      19          1       160          1.75
+            0.100      19          1       160          7.01
+            0.900      19          1       160         63.11
+            0.025     100          1       160        184.65
+            0.100     100          1       160        738.60
+            0.900     100          1       160       6647.40
+            0.025       4          2       160          0.16
+            0.100       4          2       160          0.63
+            0.900       4          2       160          5.69
+            0.025      12          2       160          4.16
+            0.100      12          2       160         16.63
+            0.900      12          2       160        149.70
+            0.025      19          2       160         25.40
+            0.100      19          2       160        101.58
+            0.900      19          2       160        914.25
+            0.025     100          2       160        186.78
+            0.100     100          2       160        747.12
+            0.900     100          2       160       6724.04
+
+To help capture what might be considered important or disruptive, let's filter down the scenarios to ones where the embryo-selected now make up an absolute majority of any elite group (a fraction >0.5):
+
+Adoption fraction IQ gain Generation Eliteness Gain fraction
+----------------- ------- ---------- --------- -------------
+            0.900       4          1       130          0.58
+            0.900      12          1       130          2.34
+            0.900      19          1       130          4.18
+            0.100     100          1       130          1.75
+            0.900     100          1       130         15.77
+            0.900       4          2       130          1.37
+            0.100      12          2       130          0.58
+            0.900      12          2       130          5.24
+            0.100      19          2       130          1.11
+            0.900      19          2       130         10.00
+            0.100     100          2       130          1.75
+            0.900     100          2       130         15.77
+            0.900       4          1       160          1.62
+            0.100      12          1       160          1.68
+            0.900      12          1       160         15.13
+            0.025      19          1       160          1.75
+            0.100      19          1       160          7.01
+            0.900      19          1       160         63.11
+            0.025     100          1       160        184.65
+            0.100     100          1       160        738.60
+            0.900     100          1       160       6647.40
+            0.100       4          2       160          0.63
+            0.900       4          2       160          5.69
+            0.025      12          2       160          4.16
+            0.100      12          2       160         16.63
+            0.900      12          2       160        149.70
+            0.025      19          2       160         25.40
+            0.100      19          2       160        101.58
+            0.900      19          2       160        914.25
+            0.025     100          2       160        186.78
+            0.100     100          2       160        747.12
+            0.900     100          2       160       6724.04
+
+For many of the scenarios, the impact is not blatant until a second generation builds on the first, but the cumulative effect has an impact - one of the weakest scenarios, +4 IQ/10% adoption can still be seen at the second generation because easier to spot effects on the most elite levels; in another example, a boost of 12 points is noticeable in a single generation with as little as 10% of the general population adoption.
+A boost of 19 points is visible in a fair number of scenarios, and a boost of 100 is visible at almost any adoption rate/generation/elite-level.
+(Indeed, a boost of 100 results in almost meaninglessly large numbers under many scenarios; it's difficult to imagine a society with 100x as many geniuses running around, so it's even more difficult to imagine what it would mean for there to be 6,724x as many other than many things will start changing extremely rapidly in unpredictable ways.)
+
 ## Cost-benefit
 
 As written, the IVF simulator cannot deliver a cost-benefit because the costs will depend on the internal state, like how many good embryos were created or the fact that a cycle ending in no live births will still incur costs, and report the marginal gain now that we're going case by case.
@@ -588,6 +762,27 @@ In the supplementary materials (pg22-23), they offer a population genetics-based
     For education (the phenotype variable targeted by the main GWAS, serving as a proxy for intelligence), they estimate _h_^2^=0.2, or _h_=0.447 (h^2^ here being the heritability capturable by their SNP arrays, so equivalent to $h^2_{SNP}$), so for their sample size of 100000, they would expect to explain `((100000 / 67865) * 0.447^4) / ((100000/67865) * 0.447^2 + 1) ~> 0.045` or 4.5% of variance while they got 2-3%, suggesting over-estimation.
 
     For intelligence, the GCTAs say that $h^2_{SNP} = 0.33$, so Rietveld et al 2013's 0.025 is equivalent to _n_=17000, while to boost it to 3x (0.075) turns out to require _n_=61000 or 3.58x, suggesting that another Rietveld et al 2013-style education GWAS would be adequate once it reached  _n_>362,000.
+
+We might also ask: as an upper bound, in the realistic USA IVF model, how much would a perfect SNP polygenic score be worth?
+
+~~~{.R}
+summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
+#        IQ                 Cost              Net
+#  Min.   : 0.000000   Min.   :1500.00   Min.   :-4100.000
+#  1st Qu.: 0.000000   1st Qu.:1700.00   1st Qu.:-2017.380
+#  Median : 0.000000   Median :1900.00   Median :-1500.000
+#  Mean   : 1.574881   Mean   :2042.84   Mean   : 2340.053
+#  3rd Qu.: 2.367140   3rd Qu.:2300.00   3rd Qu.: 4463.758
+#  Max.   :20.951929   Max.   :4100.00   Max.   :56609.220
+summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
+#        IQ                 Cost              Net
+#  Min.   : 0.000000   Min.   :1500.00   Min.   : -4100.00
+#  1st Qu.: 0.000000   1st Qu.:1700.00   1st Qu.: -1900.00
+#  Median : 0.000000   Median :1900.00   Median : -1500.00
+#  Mean   : 1.565948   Mean   :2046.54   Mean   : 19475.86
+#  3rd Qu.: 2.368362   3rd Qu.:2300.00   3rd Qu.: 30301.46
+#  Max.   :23.968172   Max.   :4100.00   Max.   :327518.56
+~~~
 
 # Iterated embryo selection
 
