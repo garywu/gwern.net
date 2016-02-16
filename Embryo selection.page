@@ -7,6 +7,16 @@ status: in progress
 belief: likely
 ...
 
+> With genetic predictors of a phenotypic trait, it is possible to select embryos during an in vitro fertilization process to increase or decrease that trait.
+> I consider the case of human intelligence using SNP-based genetic prediction, finding:
+>
+> - a meta-analysis of GCTA indicates that SNPs can explain >33% of variance in human intelligence
+> - this sets an upper bound on the effectiveness of selection: a gain of 9 IQ points when selecting the top embryo out of 10
+> - the best 2015 polygenic score could achieve a gain of <4.5 IQ points when selecting out of 10
+> - the cost of embryo selection is modest, at \$1500 + $200 per embryo
+> - a model of the IVF process, incorporating number of extracted eggs, losses to abnormalities & vitrification & failed implantation & miscarriages from real IVF patient populations, estimates gains of 0.14, 0.36, & 0.56 IQ points
+> - embryo selection is currently unprofitable (mean: -\$856) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$3,772)
+> - and can be made profitable with a better polygenic score, which would require _n_>362,000.
 
 # Embryo selection cost-effectiveness
 
@@ -482,7 +492,6 @@ simulateIVFCB <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.
   totalCost     <- fixedCost + normal * embryoCost
   scores        <- embryoIQScores(n=normal, variance=polygenicScoreVariance)
 
-
   survived      <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, scores)
 
   selection <- sort(survived, decreasing=FALSE)
@@ -605,7 +614,7 @@ IES is interesting, but it suffers from two main problems as far as a cost-benef
 
 So it's difficult to see when IES will ever be practical or cost-effective.
 
-<--
+<!--
 # CRISPR
 https://www.addgene.org/crispr/reference/
 http://www.genome.gov/sequencingcosts/
