@@ -752,16 +752,11 @@ summary(simulateIVFCBs(9, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqH
 
 In general, embryo selection as of January 2016 is not profitable in any group examined using the lowest estimate of IQ's value; it is generally profitable on average with the highest estimate.
 
-In the US population estimate with the lowest IQ estimate, embryo selection only reaches break-even once the variance explained increases by a factor of 3 to 7.5%.
-How much more data is necessary? The Rietveld et al 2013 polygenic score was based on a discovery sample of _n_=101k, but due to diminishing returns, it would require more than 3x/303k.
-In the supplementary materials (pg22-23), they offer a population genetics-based approximation of how much variance a given sample size & heritability will explain:
+### Value of Information
 
-1. $M = \frac{2 \cdot N_e \cdot k \cdot l}{log(2 \cdot N_e \cdot l)}$;
-    they state that $N_e = 10000; k = 22; l = 1.6$, so $M = \frac{2 \cdot 10000 \cdot 22 \cdot 1.6}{log(2 \cdot 10000 \cdot 1.6)}$ or _M_ = 67865.
-2. $R^2 = \frac{\frac{N}{M} \cdot h^4}{\frac{N}{M} \cdot h^2 + 1}$
-    For education (the phenotype variable targeted by the main GWAS, serving as a proxy for intelligence), they estimate _h_^2^=0.2, or _h_=0.447 (h^2^ here being the heritability capturable by their SNP arrays, so equivalent to $h^2_{SNP}$), so for their sample size of 100000, they would expect to explain `((100000 / 67865) * 0.447^4) / ((100000/67865) * 0.447^2 + 1) ~> 0.045` or 4.5% of variance while they got 2-3%, suggesting over-estimation.
-
-    For intelligence, the GCTAs say that $h^2_{SNP} = 0.33$, so Rietveld et al 2013's 0.025 is equivalent to _n_=17000, while to boost it to 3x (0.075) turns out to require _n_=61000 or 3.58x, suggesting that another Rietveld et al 2013-style education GWAS would be adequate once it reached  _n_>362,000.
+To get an idea of the value of further research into improving the polygenic score or other parts of the procedure, we can look at the overall population gains in the USA if it was adopted by all IVF users.
+Using the high estimate of an average gain of \$3772, and noting that there were 67,996 IVF babies in 2013, that suggests an annual gain of up to \$256.5m.
+What is the net present value of an annual gain of \$256.5m? Discounted at 5%, it'd be \$5.256b.
 
 We might also ask: as an upper bound, in the realistic USA IVF model, how much would a perfect SNP polygenic score be worth?
 
@@ -783,6 +778,21 @@ summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
 #  3rd Qu.: 2.368362   3rd Qu.:2300.00   3rd Qu.: 30301.46
 #  Max.   :23.968172   Max.   :4100.00   Max.   :327518.56
 ~~~
+
+Thus the expected value of perfect information here would be something like $\frac{67996 \cdot 19475}{log(1.05)} - \frac{67996 \cdot 3772}{log(1.05)} = 21,884,353,254$ / \$21.88b (high estimate) or $\frac{67996 \cdot 19475}{log(1.05)} - 0 = 27,141,169,179$ / \$27.14b.
+How much would it cost to gain perfect information? [Hsu 2014](http://arxiv.org/abs/1408.3421 "On the genetic architecture of intelligence and other quantitative traits") argues that a sample around 1 million would suffice with appropriate analysis; the largest usable^[23andMe has a much larger sample with education phenotyping, _n_>700k, but has declined to use it.] sample I know of, SSGAC, is around _n_=300k, leaving 700k to go; with SNPs costing ~\$200, that implies that it would cost \$0.14b for perfect SNP information.
+Hence, the expected value of information would range from <\$21.74b to  \$27.00b.
+
+In the US population estimate with the lowest IQ estimate, embryo selection only reaches break-even once the variance explained increases by a factor of 3 to 7.5%.
+How much more data is necessary? The Rietveld et al 2013 polygenic score was based on a discovery sample of _n_=101k, but due to diminishing returns, it would require more than 3x/303k.
+In the supplementary materials (pg22-23), they offer a population genetics-based approximation of how much variance a given sample size & heritability will explain:
+
+1. $M = \frac{2 \cdot N_e \cdot k \cdot l}{log(2 \cdot N_e \cdot l)}$;
+    they state that $N_e = 10000; k = 22; l = 1.6$, so $M = \frac{2 \cdot 10000 \cdot 22 \cdot 1.6}{log(2 \cdot 10000 \cdot 1.6)}$ or _M_ = 67865.
+2. $R^2 = \frac{\frac{N}{M} \cdot h^4}{\frac{N}{M} \cdot h^2 + 1}$
+    For education (the phenotype variable targeted by the main GWAS, serving as a proxy for intelligence), they estimate _h_^2^=0.2, or _h_=0.447 (h^2^ here being the heritability capturable by their SNP arrays, so equivalent to $h^2_{SNP}$), so for their sample size of 100000, they would expect to explain `((100000 / 67865) * 0.447^4) / ((100000/67865) * 0.447^2 + 1) ~> 0.045` or 4.5% of variance while they got 2-3%, suggesting over-estimation.
+
+    For intelligence, the GCTAs say that $h^2_{SNP} = 0.33$, so Rietveld et al 2013's 0.025 is equivalent to _n_=17000, while to boost it to 3x (0.075) turns out to require _n_=61000 or 3.58x, suggesting that another Rietveld et al 2013-style education GWAS would be adequate once it reached  _n_>362,000.
 
 # Iterated embryo selection
 
