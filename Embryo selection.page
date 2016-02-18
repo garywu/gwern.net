@@ -125,6 +125,16 @@ GCTA tells us how much the SNPs would explain if we knew all their effects exact
 Davies et al 2011's 0.5 is a little outdated and small, based on _n_=3511 with correspondingly large imprecision in the GCTA estimates.
 I was able to find in total the following GCTA estimates:
 
+0. ["Genome-wide association studies establish that human intelligence is highly heritable and polygenic"](http://www.nature.com/mp/journal/v16/n10/full/mp201185a.html), Davies et al 2011 ([supplementary](http://www.nature.com/mp/journal/v16/n10/extref/mp201185x1.doc))
+
+  0.51(0.11); but Supplementary Table 1 (pg1) actually reports in the combined sample, the "no cut-off _g~f~_ _h_^2" equals 0.53(0.10). The 0.51 estimate is drawn from a cryptic relatedness cutoff of <0.025. The samples are also reported aggregated into Scottish & English samples: 0.17 (0.20) & 0.99 (0.22) respectively. Sample ages:
+
+    1. Lothian Birth Cohort 1921 (Scottish): _n_=550, 79.1 years average
+    2. Lothian Birth Cohort 1936 (Scottish): _n_=1091, 69.5 years average
+    3. Aberdeen Birth Cohort 1936 (Scottish): _n_=498, 64.6 years average
+    4. Manchester and Newcastle longitudinal studies of cognitive aging cohorts (English): _n_=6063, 65 years median
+
+    GCTA is not reported for the Norwegian, and not reported for the 4 samples individually, so I code Davies et al 2011 as 2 samples with weighted-averages for ages (70.82 and 65 respectively) <!-- (550*79.1 + 1091*69.5 + 498*64.6) / (550+1091+498) -->
 1. ["Most Reported Genetic Associations with General Intelligence Are Probably False Positives"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3498585/), Chabris et al 2012
 
     0.47; no measure of precision reported in paper or supplementary information but the relevant sample seems to be _n_=2,441 and so the standard error will be high.
@@ -155,7 +165,9 @@ I was able to find in total the following GCTA estimates:
     Table 2: 0.32(0.14); appears to be a followup to Trzaskowski et al 2014a & report on same dataset
 9. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (N=53 949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015
 
-    ARIC (57.2yo): 0.29(0.05), HRS (70yo): 0.28(0.07); ages from [Supplementary Information 2](http://www.nature.com/mp/journal/v20/n2/extref/mp2014188x2.pdf)
+    ARIC (57.2yo): 0.29(0.05), HRS (70yo): 0.28(0.07); ages from [Supplementary Information 2](http://www.nature.com/mp/journal/v20/n2/extref/mp2014188x2.pdf).
+
+    The article reports doing GCTAs only on the ARIC & HRS samples, but Figure 4 shows a forest plot which includes GCTA estimates from two other groups, CAGES ("Cognitive Ageing Genetics in England and Scotland Consortium") at ~0.5 & GS ("Generation Scotland") at ~0.25. The CAGES datapoint is cited to Davies et al 2011, which did report 0.51, and the GS citation is incorrect; so presumably those two datapoints were previously reported GCTA estimates which Davies et al 2015 was meta-analyzing together with their 2 new ARIC/HS estimates, and they simply didn't mention that.
 10. ["A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html), Spain et al 2015
 
     0.174(0.017); but on the liability scale for extremely high intelligence, so of unclear relevance
@@ -167,6 +179,8 @@ Excluding Chabris et al 2012 (no precision reported) and Spain et al 2015 and th
 ~~~{.R}
 gcta <- read.csv(stdin(), header=TRUE)
 Study, HSNP, SE, Age.mean, Twin
+Davies et al 2011, 0.17, 0.2, 70.82, FALSE
+Davies et al 2011, 0.99, 0.22, 65, FALSE
 Deary et al 2012, 0.48, 0.18, 11, FALSE
 Deary et al 2012, 0.28, 0.18, 71.3, FALSE
 Plomin et al 2013, 0.35, 0.117, 12, TRUE
@@ -186,37 +200,38 @@ gcta <- gcta[order(gcta$Age.mean),]
 library(metafor)
 rem <- rma(yi=HSNP, sei=SE, data=gcta); rem
 # ...estimate       se     zval     pval    ci.lb    ci.ub
-#  0.3113   0.0283  11.0192   <.0001   0.2560   0.3667
+#  0.3220   0.0299  10.7759   <.0001   0.2634   0.3805
+
 remAge <- rma(yi=HSNP, sei=SE, mods = Age.mean, data=gcta); remAge
-# Mixed-Effects Model (k = 13; tau^2 estimator: REML)
+# Mixed-Effects Model (k = 15; tau^2 estimator: REML)
 #
-# tau^2 (estimated amount of residual heterogeneity):     0 (SE = 0.0019)
-# tau (square root of estimated tau^2 value):             0
-# I^2 (residual heterogeneity / unaccounted variability): 0.00%
-# H^2 (unaccounted variability / sampling variability):   1.00
-# R^2 (amount of heterogeneity accounted for):            100.00%
+# tau^2 (estimated amount of residual heterogeneity):     0.0005 (SE = 0.0023)
+# tau (square root of estimated tau^2 value):             0.0212
+# I^2 (residual heterogeneity / unaccounted variability): 5.77%
+# H^2 (unaccounted variability / sampling variability):   1.06
+# R^2 (amount of heterogeneity accounted for):            88.40%
 #
 # Test for Residual Heterogeneity:
-# QE(df = 11) = 7.1833, p-val = 0.7841
+# QE(df = 13) = 18.4190, p-val = 0.1422
 #
 # Test of Moderators (coefficient(s) 2):
-# QM(df = 1) = 6.8327, p-val = 0.0090
+# QM(df = 1) = 4.8219, p-val = 0.0281
 #
 # Model Results:
 #
 #          estimate      se     zval    pval    ci.lb    ci.ub
-# intrcpt    0.4109  0.0469   8.7548  <.0001   0.3189   0.5028
-# mods      -0.0024  0.0009  -2.6139  0.0090  -0.0043  -0.0006
+# intrcpt    0.4038  0.0485   8.3334  <.0001   0.3088   0.4987
+# mods      -0.0021  0.0010  -2.1959  0.0281  -0.0040  -0.0002
 remAgeT <- rma(yi=HSNP, sei=SE, mods = ~ Age.mean + Twin, data=gcta); remAgeT
 # ...      estimate      se     zval    pval    ci.lb    ci.ub
-# intrcpt      0.4662  0.0602   7.7371  <.0001   0.3481   0.5842
-# Age.mean    -0.0034  0.0011  -2.9855  0.0028  -0.0056  -0.0012
-# Twin TRUE   -0.1124  0.0768  -1.4633  0.1434  -0.2629   0.0381
+# intrcpt      0.4604  0.0601   7.6573  <.0001   0.3426   0.5783
+# Age.mean    -0.0031  0.0011  -2.7871  0.0053  -0.0053  -0.0009
+# Twin TRUE   -0.1095  0.0768  -1.4267  0.1537  -0.2600   0.0409
 
 forest(rma(yi=HSNP, sei=SE, data=gcta), slab=gcta$Study)
 ## so estimated heritability at 30yo:
-0.4109 + 30*-0.0024
-# [1] 0.3389
+0.4038 + 30*-0.0024
+# [1] 0.3318
 ~~~
 
 (Oddly, the estimates decrease with age rather than increase. I thought this might be driven by the samples using twins, which have been accused in the past of delivering higher heritability estimates due to higher SES of parents and correspondingly less environmental influence, but when added as a predictor, twin samples are non-statistically-significantly lower.)
@@ -229,7 +244,7 @@ Since half of additives will be shared within family, then we get `0.33*0.5 = 0.
 (Occasionally within-family differences are cited in a format like "siblings have an average difference of 12 IQ points", which comes from an SD of ~0.7/0.8, since `0.8*15=12`, but you could also check what SD yields an average difference of 12 via simulation: eg `mean(abs(rnorm(n=10000000, mean=0, sd=0.71) - rnorm(n=10000000, mean=0, sd=0.71))) * 15 ~> 12.01807542`.)
 We don't care about means since we're only looking at gains, so the mean of the within-family normal distribution can be set to 0.
 
-With that, we can write a simulation like Bostrom & Shulman where we generate _n_ samples from N(0, 6.1), take the max, and return the difference of the max and mean:
+With that, we can write a simulation like Shulman & Bostrom where we generate _n_ samples from N(0, 6.1), take the max, and return the difference of the max and mean:
 
 ~~~{.R}
 ## select 1 out of N siblings
@@ -240,7 +255,7 @@ mean(simEmbryoSelection(n=10))
 # [1] 9.368836794
 ~~~
 
-So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Bostrom & Shulman's 11.5 because of my lower GCTA estimate.
+So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Shulman & Bostrom's 11.5 because of my lower GCTA estimate.
 For comparison, the full genetic heritability of adult IQ (including SNPs, mutation load & de novo mutations, copy-number variation, etc) is generally estimated ~0.8, and the upper bound would be ~14.5 IQ points:
 
 ~~~{.R}
@@ -866,7 +881,16 @@ IES is interesting, but it suffers from two main problems as far as a cost-benef
 So it's difficult to see when IES will ever be practical or cost-effective.
 
 <!--
-# CRISPR
+# Embryo editing
+## CRISPR
+
+One approach not discussed in Shulman & Bostrom is embryo editing. (It may seem incomprehensible to a post-2015 reader that they could write a whole paper on approaches to boosting intelligence through something to do with embryos and *not* mention [CRISPR](!Wikipedia), but that gives an idea of how shockingly fast CRISPR went from strange to news to standard, and how low expectations for genetic engineering were pre-2015 after decades of agonizingly slow progress & high-profile failures & deaths, such that the default assumption was that direct cheap safe genetic engineering of embryos would not be feasible for decades and certainly not the foreseeable future.)
+
+The advantages of editing over selection are compelling.
+To take a single example: as calculated above, the Rietveld et al 2013 polygenic score can yield a gain no greater than 2.58 IQ points with 1-in-10 selection, and in practice, we can hardly expect more than 0.14-0.56 IQ points in practice due to fewer than 10 embryos usually being viable etc.
+The same study reported 3 SNP hits (rs9320913, rs11584700, rs4851266) each predicting +1 month of schooling
+
+
 https://www.addgene.org/crispr/reference/
 http://www.genome.gov/sequencingcosts/
 https://crispr.bme.gatech.edu/
