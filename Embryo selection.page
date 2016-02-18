@@ -22,7 +22,7 @@ belief: likely
 
 [In vitro fertilization](!Wikipedia) (IVF) is a medical procedure for infertile women in which eggs are extracted, fertilized with sperm, allowed to develop into an embryo, and the embryo injected into their womb to induce pregnancy.
 The choice of embryo is relatively random, with the best looking one implanted; various tests can be run on embryos, including genome sequencing, by extracting a few cells from the embryo.
-[Preimplantation genetic profiling / preimplantation genetic diagnosis / preimplantation genetic screening](!Wikipedia "Preimplantation genetic diagnosis") (PGD) is when genetic information is taken and used to choose which embryo to implant.
+[Preimplantation genetic profiling / preimplantation genetic diagnosis / preimplantation genetic screening](!Wikipedia "Preimplantation genetic diagnosis") (PGD; [review](/docs/genetics/2013-aa.pdf "'Preimplantation genetic diagnosis guided by single-cell genomics', Van der Aa et al 2013")) is when genetic information is taken and used to choose which embryo to implant.
 Currently, embryos are screened for gross abnormalities like the wrong number of chromosomes which would either be fatal to the embryo's development or cause birth defects like Down's (so there is no point in implanting it rather than a healthier embryo).
 But with ever cheaper SNP arrays, large amounts of subtler genetic information becomes available, and one could check for abnormalities and also start making predictions about adult phenotypes, and one could choose embryos with higher/lower probability of traits with many known genetic hits such as height or intelligence or alcoholism or schizophrenia - thus, in effect, creating ["designer babies"](!Wikipedia "Designer baby#Preimplantation genetic diagnosis") with proven technology no more exotic than IVF and 23andMe.
 
@@ -241,6 +241,12 @@ mean(simEmbryoSelection(n=10))
 ~~~
 
 So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Bostrom & Shulman's 11.5 because of my lower GCTA estimate.
+For comparison, the full genetic heritability of adult IQ (including SNPs, mutation load & de novo mutations, copy-number variation, etc) is generally estimated ~0.8, and the upper bound would be ~14.5 IQ points:
+
+~~~{.R}
+mean(simEmbryoSelection(n=10, variance=0.8))
+# [1] 14.61386652
+~~~
 
 ##### Polygenic scores
 
@@ -313,9 +319,10 @@ The [NHGRI Genome Sequencing Program's DNA Sequencing Cost dataset](http://www.g
 Illumina has boasted about a \$1000 whole-genome starting around 2014 (under an unspecified cost model), and around December 2015, Veritas Genetics started taking orders for a consumer 20x whole-genome priced at \$1000.
 So if a comprehensive SNP cost >\$1000, it would be cheaper to do a whole-genome, and historically at that price, we would expect a SNP cost of ~\$170.
 
-The date & cost of getting a large selection of SNPs is not collected in any dataset I know of, so here are a few 2015-2016 price quotes.
+The date & cost of getting a large selection of SNPs is not collected in any dataset I know of, so here are a few 2014-2016 price quotes.
+Hsu 2014 estimates an SNP costs "~\$100 USD" and "At the time of this writing SNP genotyping costs are below \$50 USD per individual", without specifying a source; given the latter is below any 23andMe price offered, it is probably an internal Beijing Genomics Institute cost estimate.
 The [Center for Applied Genomics price list](https://caglab.org/index.php/for-researchers/pricing-and-services.html) (unspecified date but presumably 2015) lists [Affymetrix SNP 6.0](http://www.affymetrix.com/catalog/131533/AFFY/Genome-Wide+Human+SNP+Array+6.0) at \$355 & the [Human Omni Express-24](http://www.illumina.com/content/dam/illumina-marketing/documents/products/brochures/datasheet_omni_whole-genome_arrays.pdf) at \$170.
-23andMe famously offered its services for \$108.95 for >600k SNPs, but that price apparently was substantially subsidized by research & sales as they raised the price to \$200 & lowered comprehensiveness in October 2015.
+23andMe famously offered its services for \$108.95 for >600k SNPs as of October 2014, but that price apparently was substantially subsidized by research & sales as they raised the price to \$200 & lowered comprehensiveness in October 2015.
 [NIH CIDR's price list](http://www.cidr.jhmi.edu/services/pricing.pdf) quotes a full cost of \$150-\$210 for 1 use of a UK Biobank 821K SNP Axiom Array ([capabilities](http://www.ukbiobank.ac.uk/wp-content/uploads/2014/04/UK-Biobank-Axiom-Array-Content-Summary-2014.pdf)) as of 10 December 2015. (The NIH CIDR price list also says \$40 for 96 SNPs, suggesting that it would be a false economy to try to get only the top few SNP hits rather than a comprehensive polygenic score.)
 [Rockefeller University's 2016 price list](http://www.rockefeller.edu/genomics/pricing) quotes a range of \$260-\$520 for one sample from an Affymetrix GeneChip.
 Tan et al 2014 note that for PGD purposes, "the estimated reagent cost of sequencing for the detection of chromosomal abnormalities is currently less than \$100."
@@ -525,7 +532,7 @@ iqUSA <- sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simula
 One category of effects considered by Shulman & Bostrom is the non-financial social & societal effects mentioned in their Table 3, where embryo selection can "perceptibly advantage a minority" or in an extreme case, "Selected dominate ranks of elite scientists, attorneys, physicians, engineers. Intellectual Renaissance?"
 This is another point which is worth going into a little more; no specific calculations are mentioned by Shulman & Bostrom, and the thin-tail-effects of normal distributions are notoriously counterintuitive, with surprisingly large effects out on the tails from small-seeming changes in means or standard deviations - for example, the legendary levels of Western Jewish overperformance despite their tiny population sizes.
 
-As a general rule of thumb, 'elite' groups like scientists, attorneys, physicians, Ivy League students etc are highly selected for intelligence - one can comfortably estimate averages >=130 IQ (+2SD) from past IQ samples & average SAT scores & the ever-increasingly stringent admissions; and elite performance continues to increase with increasing intelligence as high as can reasonably be measured, as indicated by available date like the SMPY longitudinal study, where we might define the cut off as 160 IQ based on [Ann Roe](!Wikipedia)'s study of the most eminent available scientists (mean ~150-160).
+As a general rule of thumb, 'elite' groups like scientists, attorneys, physicians, Ivy League students etc are highly selected for intelligence - one can comfortably estimate averages >=130 IQ (+2SD) from past IQ samples & average SAT scores & the ever-increasingly stringent admissions; and elite performance continues to increase with increasing intelligence as high as can reasonably be measured, as indicated by available date like the SMPY longitudinal study (many papers but see [Lubinski & Benbow 2006](https://my.vanderbilt.edu/smpy/files/2013/02/DoingPsychScience20061.pdf "Study of mathematically precocious youth after 35 years: Uncovering antecedents for the development of math-science expertise"), [Park et al 2007](http://etd.library.vanderbilt.edu/ETD-db/available/etd-12062007-195216/unrestricted/01thesisES.pdf "Contrasting intellectual patterns predict creativity in the arts and sciences tracking intellectually precocious youth over 25 years"), [Kell et al 2013](/docs/iq/2013-kell.pdf "Who rises to the top? Early indicators")), where we might define the cut off as 160 IQ based on [Anne Roe](!Wikipedia)'s study of the most eminent available scientists (mean ~150-160).
 So to estimate an impact, one could consider a question like: given an average boost of _x_ IQ points through embryo-selection, how much would the odds of being elite (>=130) or extremely elite (>=160) increase for the selected? If a certain fraction of IVFers were selected, what fraction of all people above the cutoff would they make up?
 
 If there are 320 million people in the USA, then about 17m are +2SD and 43k are +3SD:
