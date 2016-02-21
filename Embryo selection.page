@@ -15,8 +15,8 @@ belief: likely
 > - the best 2015 polygenic score could achieve a gain of <4.5 IQ points when selecting out of 10
 > - the cost of embryo selection is modest, at \$1500 + \$200 per embryo, with the sequencing cost projected to drop rapidly
 > - a model of the IVF process, incorporating number of extracted eggs, losses to abnormalities & vitrification & failed implantation & miscarriages from 3 real IVF patient populations, estimates feasible gains of 0.14, 0.36, & 0.56 IQ points
-> - embryo selection is currently unprofitable (mean: -\$856) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$3,772)
-> - under the worst-case estimate, selection can be made profitable with a better polygenic score, which would require _n_>362,000 using education phenotype data (and much less using fluid intelligence measures).
+> - embryo selection is currently unprofitable (mean: -\$673) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$4763)
+> - under the worst-case estimate, selection can be made profitable with a better polygenic score, which would require _n_>237,300 using education phenotype data (and much less using fluid intelligence measures).
 
 # Embryo selection cost-effectiveness
 
@@ -42,6 +42,7 @@ Shulman & Bostrom 2014 note that
 
 > Studies in labor economics typically find that one IQ point corresponds to an increase in wages on the order of 1 per cent, other things equal, though higher estimates are obtained when effects of IQ on educational attainment are included ([Zax and Rees, 2002](http://www.colorado.edu/economics/papers/papers01/wp01-7.pdf "IQ, academic performance, environment, and earnings"); [Neal and Johnson, 1996](http://www.albany.edu/faculty/kretheme/PAD705/PastExams/JPE_RolePreMarketBWWageDiff.pdf "The role of premarket factors in black-white wage differences"); [Cawley et al., 1997](https://www.researchgate.net/publication/228308487_Cognitive_Ability_Wages_and_Meritocracy "Cognitive Ability, Wages, and Meritocracy"); [Behrman et al., 2004](http://www.copenhagenconsensus.com/sites/default/files/CP+-+Hunger+FINISHED.pdf "Copenhagen Consensus - Challenges and Opportunities: Hunger and Malnutrition"); [Bowles et al., 2002](http://scholarworks.umass.edu/cgi/viewcontent.cgi?article=1086&context=econ_workingpaper "The determinants of individual earnings: Skills, preferences, and schooling"); [Grosse et al., 2002](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1240871/ "Economic Gains Resulting from the Reduction in Children's Exposure to Lead in the US")).^2^ The individual increase in earnings from a genetic intervention can be assessed in the same fashion as prenatal care and similar environmental interventions. One study of efforts to avert low birth weight estimated the value of a 1 per cent increase in earnings for a newborn in the US to be between \$2,783 and \$13,744, depending on discount rate and future wage growth ([Brooks-Gunn et al., 2009](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.597.7301&rep=rep1&type=pdf "Long-Run Economic Effects of Early Childhood Programs on Adult Earnings"))^[Brooks-Gunn et al 2009 doesn't report those specific figures; they are inferred from pg27, "Table A1.2 Present value for lifetime earnings of individuals with a high school degree or some college, estimated at birth", which is based on the 2006 March  Current Population Survey's sample with the average level of education. The estimated [net present value](!Wikipedia) for the worst-case (4% discounting, 0% wage growth) lifetime income is \$278,430, and the best-case (2% discount, 2% wage growth) is \$1,374,375. Using the earlier estimate that 1 point = +1% annual wages, then on average, 1 IQ point will translate to a NPV gain of \$2,783 and \$13,744 respectively.]
 
+The given low/high range is based on 2006 data; [inflation-adjusted](http://www.bls.gov/data/inflation_calculator.htm "CPI Inflation Calculator") to 2016 dollars (as appropriate due to being compared to 2015/2016 costs), that would be \$3,270 and \$16,151.
 There is much more that can be said on this topic, starting with various measurements of individuals from income to wealth to correlations with occupational prestige, looking at longitudinal & cross-sectional national wealth data, positive externalities & psychological differences (such as increasing cooperativeness, patience, free-market and moderate politics), verification of causality from longitudinal predictiveness, genetic overlap, within-family comparisons, & exogenous shocks positive (iodization & iron) or negative (lead), etc; an incomplete bibliography:
 
 - Canter 1956, ["Intelligence and the social status of occupations"](http://emilkirkegaard.dk/en/wp-content/uploads/intelligence-and-the-social-status-of-occupations-OCR.pdf)
@@ -93,7 +94,7 @@ Estimating the value of an additional IQ point is difficult as there are many pe
 Further, intelligence has intrinsic value of its own, and the genetic hits appear to be pleiotropic and improve other desirable traits; the intelligence/longevity correlation has been found to be due to common genetics, and [Krapohl et al 2015](http://www.hungrymindlab.com/wp-content/uploads/2015/10/Krapohl-et-al-2015.pdf "Phenome-wide analysis of genome-wide polygenic scores") examines the correlation of polygenic scores with 50 diverse traits, finding that the college/IQ polygenic scores correlate with 10+ of them in generally desirable directions[^Krapohl-phenome], similar to [Hagenaars et al 2016](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html "Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (N=112 151) and 24 GWAS consortia")[^Hagenaars-phenome], indicating both causation for those correlations & benefits beyond income.
 There are also pitfalls, like the fallacy of controlling for an intermediate variable, exemplified by studies which attempt to correlate intelligence with income after "controlling for" education, despite knowing that educational attainment is caused *by* intelligence and so their estimates are actually something irrelevant like 'the gain from greater intelligence for reasons other than through its effect on education'.
 Estimates have come from a variety of sources, such as iodine and lead studies.
-Given the difficulty of coming up with any estimate for 'the' value of an IQ point, I will just reuse the \$2783-13744 range.
+Given the difficulty of coming up with any estimate for 'the' value of an IQ point, I will just reuse the \$3270-16151 range.
 
 [^Krapohl-phenome]: More specifically, combining the College/Adult IQ/Child IQ polygenic scores and including the non-statistically-significant ones, I get out of Figure 1 :
 
@@ -770,63 +771,63 @@ Now we have all our parameters set:
 4. and the relevant probabilities have been defined already
 
 ~~~{.R}
-iqLow <- 2783; iqHigh <- 13744
+iqLow <- 3270; iqHigh <- 16151
 ## Tan:
 summary(simulateIVFCBs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24, 1500, 200, iqLow))
 #        IQ                 Cost              Net
 #  Min.   :0.0000000   Min.   :1500.00   Min.   :-3700.0000
 #  1st Qu.:0.0000000   1st Qu.:1500.00   1st Qu.:-1700.0000
 #  Median :0.0000000   Median :1700.00   Median :-1500.0000
-#  Mean   :0.3690436   Mean   :1872.22   Mean   : -845.1716
-#  3rd Qu.:0.4339699   3rd Qu.:2100.00   3rd Qu.: -925.2713
-#  Max.   :6.2197953   Max.   :4100.00   Max.   :14809.6903
+#  Mean   :0.3702470   Mean   :1863.46   Mean   : -652.7523
+#  3rd Qu.:0.4343842   3rd Qu.:2100.00   3rd Qu.: -766.8428
+#  Max.   :4.9546013   Max.   :4100.00   Max.   :14436.1287
 summary(simulateIVFCBs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24, 1500, 200, iqHigh))
 #        IQ                 Cost             Net
-#  Min.   :0.0000000   Min.   :1500.0   Min.   :-3900.000
+#  Min.   :0.0000000   Min.   :1500.0   Min.   :-3700.000
 #  1st Qu.:0.0000000   1st Qu.:1500.0   1st Qu.:-1700.000
 #  Median :0.0000000   Median :1700.0   Median :-1500.000
-#  Mean   :0.3624990   Mean   :1872.3   Mean   : 3109.887
-#  3rd Qu.:0.3905828   3rd Qu.:2100.0   3rd Qu.: 3280.301
-#  Max.   :5.2417298   Max.   :4100.0   Max.   :70342.335
+#  Mean   :0.3708341   Mean   :1871.4   Mean   : 4117.942
+#  3rd Qu.:0.4239222   3rd Qu.:2100.0   3rd Qu.: 4717.080
+#  Max.   :6.0962741   Max.   :4700.0   Max.   :96760.923
 
 ## Hodes-Wertz:
 summary(simulateIVFCBs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40, 1500, 200, iqLow))
 #        IQ                  Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3500.0000
-#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1900.0000
-#  Median :0.06392692   Median :2100.00   Median :-1500.0000
-#  Mean   :0.63574964   Mean   :2072.54   Mean   : -303.2488
-#  3rd Qu.:1.10324556   3rd Qu.:2300.00   3rd Qu.:  828.4638
-#  Max.   :5.34029202   Max.   :4100.00   Max.   :12562.0327
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3700.00000
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1900.00000
+#  Median :0.06311678   Median :2100.00   Median :-1500.00000
+#  Mean   :0.63901575   Mean   :2073.22   Mean   :   16.36151
+#  3rd Qu.:1.11797511   3rd Qu.:2300.00   3rd Qu.: 1414.39774
+#  Max.   :5.39328274   Max.   :4100.00   Max.   :14949.47466
 summary(simulateIVFCBs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40, 1500, 200, iqHigh))
 #        IQ                  Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3900.000
-#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1900.000
-#  Median :0.05711262   Median :2100.00   Median :-1411.727
-#  Mean   :0.63435629   Mean   :2084.68   Mean   : 6633.913
-#  3rd Qu.:1.07447659   3rd Qu.:2300.00   3rd Qu.:12556.017
-#  Max.   :5.38684814   Max.   :4100.00   Max.   :71936.841
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3500.000
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1700.000
+#  Median :0.06994945   Median :2100.00   Median :-1037.530
+#  Mean   :0.64662845   Mean   :2071.76   Mean   : 8371.936
+#  3rd Qu.:1.13999673   3rd Qu.:2300.00   3rd Qu.:16191.801
+#  Max.   :5.86196512   Max.   :4700.00   Max.   :92976.599
 
 ## USA, youngest:
 summary(simulateIVFCBs(9, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
 #        IQ                 Cost              Net
-#  Min.   :0.0000000   Min.   :1500.00   Min.   :-3900.0000
-#  1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-2100.0000
-#  Median :0.0000000   Median :2100.00   Median :-1700.0000
-#  Mean   :0.4268902   Mean   :2044.42   Mean   : -856.3845
-#  3rd Qu.:0.6419175   3rd Qu.:2300.00   3rd Qu.: -384.7384
-#  Max.   :5.3091927   Max.   :3900.00   Max.   :12875.4832
+#  Min.   :0.0000000   Min.   :1500.00   Min.   :-3900.00000
+#  1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-2100.00000
+#  Median :0.0000000   Median :1900.00   Median :-1655.66896
+#  Mean   :0.4185340   Mean   :2042.36   Mean   : -673.75368
+#  3rd Qu.:0.6373484   3rd Qu.:2300.00   3rd Qu.:  -59.97021
+#  Max.   :6.1453346   Max.   :3900.00   Max.   :18395.24401
 summary(simulateIVFCBs(9, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
 #        IQ                 Cost              Net
-#  Min.   :0.0000000   Min.   :1500.00   Min.   :-4100.000
+#  Min.   :0.0000000   Min.   :1500.00   Min.   :-3900.000
 #  1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-1900.000
 #  Median :0.0000000   Median :1900.00   Median :-1500.000
-#  Mean   :0.4230889   Mean   :2042.28   Mean   : 3772.654
-#  3rd Qu.:0.6304198   3rd Qu.:2300.00   3rd Qu.: 6528.460
-#  Max.   :5.8037714   Max.   :4100.00   Max.   :78067.034
+#  Mean   :0.4215916   Mean   :2046.02   Mean   : 4763.106
+#  3rd Qu.:0.6391939   3rd Qu.:2300.00   3rd Qu.: 8124.050
+#  Max.   :5.4870418   Max.   :3900.00   Max.   :86921.213
 ~~~
 
-In general, embryo selection as of January 2016 is not profitable in any group examined using the lowest estimate of IQ's value; it is generally profitable on average with the highest estimate.
+In general, embryo selection as of January 2016 is just barely profitable or somewhat unprofitable in each group using the lowest estimate of IQ's value; it is always profitable on average with the highest estimate.
 
 ### Value of Information
 
@@ -839,36 +840,40 @@ We might also ask: as an upper bound, in the realistic USA IVF model, how much w
 ~~~{.R}
 summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
 #        IQ                 Cost              Net
-#  Min.   : 0.000000   Min.   :1500.00   Min.   :-4100.000
-#  1st Qu.: 0.000000   1st Qu.:1700.00   1st Qu.:-2017.380
+#  Min.   : 0.000000   Min.   :1500.00   Min.   :-3900.000
+#  1st Qu.: 0.000000   1st Qu.:1700.00   1st Qu.:-1900.000
 #  Median : 0.000000   Median :1900.00   Median :-1500.000
-#  Mean   : 1.574881   Mean   :2042.84   Mean   : 2340.053
-#  3rd Qu.: 2.367140   3rd Qu.:2300.00   3rd Qu.: 4463.758
-#  Max.   :20.951929   Max.   :4100.00   Max.   :56609.220
+#  Mean   : 1.549596   Mean   :2048.58   Mean   : 3018.600
+#  3rd Qu.: 2.347495   3rd Qu.:2300.00   3rd Qu.: 5457.101
+#  Max.   :19.155641   Max.   :3900.00   Max.   :60938.945
 summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
 #        IQ                 Cost              Net
-#  Min.   : 0.000000   Min.   :1500.00   Min.   : -4100.00
+#  Min.   : 0.000000   Min.   :1500.00   Min.   : -3900.00
 #  1st Qu.: 0.000000   1st Qu.:1700.00   1st Qu.: -1900.00
-#  Median : 0.000000   Median :1900.00   Median : -1500.00
-#  Mean   : 1.565948   Mean   :2046.54   Mean   : 19475.86
-#  3rd Qu.: 2.368362   3rd Qu.:2300.00   3rd Qu.: 30301.46
-#  Max.   :23.968172   Max.   :4100.00   Max.   :327518.56
+#  Median : 0.000000   Median :2100.00   Median : -1500.00
+#  Mean   : 1.591006   Mean   :2045.98   Mean   : 23650.36
+#  3rd Qu.: 2.449667   3rd Qu.:2300.00   3rd Qu.: 37322.15
+#  Max.   :19.557012   Max.   :3900.00   Max.   :314165.29
+ivfBirths <- 67996; discount <- 0.05
+current <- 4763; perfect <- 23650
+(ivfBirths * perfect)/(log(1+discount)) - (ivfBirths * current)/(log(1+discount))
+# [1] 26,321,707,948
 ~~~
 
-Thus the expected value of perfect information here would be something like $\frac{67996 \cdot 19475}{log(1.05)} - \frac{67996 \cdot 3772}{log(1.05)} = 21,884,353,254$ / \$21.88b (high estimate) or $\frac{67996 \cdot 19475}{log(1.05)} - 0 = 27,141,169,179$ / \$27.14b.
+Thus the expected value of perfect information here would be something like \$27.6b annually
 How much would it cost to gain perfect information? [Hsu 2014](http://arxiv.org/abs/1408.3421 "On the genetic architecture of intelligence and other quantitative traits") argues that a sample around 1 million would suffice with appropriate analysis; the largest usable^[23andMe has a much larger sample with education phenotyping, _n_>700k, but has declined to use it.] sample I know of, SSGAC, is around _n_=300k, leaving 700k to go; with SNPs costing ~\$200, that implies that it would cost \$0.14b for perfect SNP information.
-Hence, the expected value of information would range from <\$21.74b to  \$27.00b.
+Hence, the expected value of information would would then be ~\$27.4b
 
-In the US population estimate with the lowest IQ estimate, embryo selection only reaches break-even once the variance explained increases by a factor of 3 to 7.5%.
+In the US population estimate with the lowest IQ estimate, embryo selection only reaches break-even once the variance explained increases by a factor of 2.1 to 5.25%.
 How much more data is necessary? The Rietveld et al 2013 polygenic score was based on a discovery sample of _n_=101k, but due to diminishing returns, it would require more than 3x/303k.
 In the supplementary materials (pg22-23), they offer a population genetics-based approximation of how much variance a given sample size & heritability will explain:
 
 1. $M = \frac{2 \cdot N_e \cdot k \cdot l}{log(2 \cdot N_e \cdot l)}$;
     they state that $N_e = 10000; k = 22; l = 1.6$, so $M = \frac{2 \cdot 10000 \cdot 22 \cdot 1.6}{log(2 \cdot 10000 \cdot 1.6)}$ or _M_ = 67865.
 2. $R^2 = \frac{\frac{N}{M} \cdot h^4}{\frac{N}{M} \cdot h^2 + 1}$
-    For education (the phenotype variable targeted by the main GWAS, serving as a proxy for intelligence), they estimate _h_^2^=0.2, or _h_=0.447 (h^2^ here being the heritability capturable by their SNP arrays, so equivalent to $h^2_{SNP}$), so for their sample size of 100000, they would expect to explain `((100000 / 67865) * 0.447^4) / ((100000/67865) * 0.447^2 + 1) ~> 0.045` or 4.5% of variance while they got 2-3%, suggesting over-estimation.
+    For education (the phenotype variable targeted by the main GWAS, serving as a proxy for intelligence), they estimate _h_^2^=0.2, or _h_=0.447 (h^2^ here being the heritability capturable by their SNP arrays, so equivalent to $h^2_{SNP}$), so for their sample size of 100000, they would expect to explain `N=100000; h=sqrt(0.2); ((N / 67865) * h^4) / ((N/67865) * h^2 + 1) ~> 0.045` or 4.5% of variance while they got 2-3%, suggesting over-estimation.
 
-    For intelligence, the GCTAs say that $h^2_{SNP} = 0.33$, so Rietveld et al 2013's 0.025 is equivalent to _n_=17000, while to boost it to 3x (0.075) turns out to require _n_=61000 or 3.58x, suggesting that another Rietveld et al 2013-style education GWAS would be adequate once it reached  _n_>362,000.
+    For intelligence, the GCTAs say that $h^2_{SNP} = 0.33$, so Rietveld et al 2013's 0.025 is equivalent to _n_=17000, while to boost it to 2.1x (0.0525) turns out to require _n_=40000 or 2.35x, suggesting that another Rietveld et al 2013-style education GWAS would be adequate once it reached  $n \geq 2.35 \cdot 101000=237350$.
 
 # Iterated embryo selection
 
