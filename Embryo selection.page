@@ -15,7 +15,7 @@ belief: likely
 > - the best 2015 polygenic score could achieve a gain of <4.5 IQ points when selecting out of 10
 > - the cost of embryo selection is modest, at \$1500 + \$200 per embryo, with the sequencing cost projected to drop rapidly
 > - a model of the IVF process, incorporating number of extracted eggs, losses to abnormalities & vitrification & failed implantation & miscarriages from 3 real IVF patient populations, estimates feasible gains of 0.14, 0.36, & 0.56 IQ points
-> - embryo selection is currently unprofitable (mean: -\$673) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$4763)
+> - embryo selection is currently unprofitable (mean: -\$673) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$4763). Under highest estimate, the NPV EVPI of a perfect SNP predictor is \$27b and the EVSI per education/SNP sample is \$71k.
 > - under the worst-case estimate, selection can be made profitable with a better polygenic score, which would require _n_>237,300 using education phenotype data (and much less using fluid intelligence measures).
 
 # Embryo selection cost-effectiveness
@@ -51,6 +51,7 @@ There is much more that can be said on this topic, starting with various measure
 - Jencks et al 1979,  [_Who gets ahead? The determinants of economic success in America_](http://www.amazon.com/Who-Gets-Ahead-Determinants-Economic/dp/0465091822)
 - Lynn 1979, ["The social ecology of intelligence in the British Isles"](/docs/iq/1979-lynn.pdf)
 - Lynn 1980, ["The social ecology of intelligence in France"](/docs/iq/1980-lynn.pdf)
+- Jensen 1980, [_Bias in Mental Testing_](http://emilkirkegaard.dk/en/wp-content/uploads/Bias-in-Mental-Testing-Arthur-R.-Jensen.pdf), [chapter 8 "Validity and Correlates of Mental tests"](/docs/iq/1980-jensen-biasmentaltesting-iqcorrelates.pdf), "Occupational Level, Performance, and Income" section (pg339)
 - Lynn 1981, ["The social ecology of intelligence in the British Isles, France, and Spain"](/docs/iq/1981-lynn.pdf)
 - Herrnstein & Murray 1994, [_Bell Curve: Intelligence and Class Structure in American Life_](https://lesacreduprintemps19.files.wordpress.com/2012/11/the-bell-curve.pdf)
 - Murray 1996, [_Income Inequality and IQ_](https://www.aei.org/wp-content/uploads/2011/10/20040302_book443.pdf)
@@ -895,20 +896,39 @@ current <- 4763; perfect <- 23650
 # [1] 26,321,707,948
 ~~~
 
-Thus the expected value of perfect information here would be something like \$27.6b annually
-How much would it cost to gain perfect information? [Hsu 2014](http://arxiv.org/abs/1408.3421 "On the genetic architecture of intelligence and other quantitative traits") argues that a sample around 1 million would suffice with appropriate analysis; the largest usable^[23andMe has a much larger sample with education phenotyping, _n_>700k, but has declined to use it.] sample I know of, SSGAC, is around _n_=300k, leaving 700k to go; with SNPs costing ~\$200, that implies that it would cost \$0.14b for perfect SNP information.
-Hence, the expected value of information would then be ~\$27.4b
-
-In the US population estimate with the lowest IQ estimate, embryo selection only reaches break-even once the variance explained increases by a factor of 2.1 to 5.25%.
-How much more data is necessary? The Rietveld et al 2013 polygenic score was based on a discovery sample of _n_=101k, but due to diminishing returns, it would require more than 3x/303k.
-In the supplementary materials (pg22-23), they offer a population genetics-based approximation of how much variance a given sample size & heritability will explain:
+Thus the net present expected value of perfect information (EVPI) here would be something like \$26.3b.
+How much would it cost to gain perfect information? [Hsu 2014](http://arxiv.org/abs/1408.3421 "On the genetic architecture of intelligence and other quantitative traits") argues that a sample around 1 million would suffice to reach the GCTA upper bound using a particular algorithm; the largest usable^[23andMe has a much larger sample with education phenotyping, _n_>700k, but has declined to use it.] sample I know of, SSGAC, is around _n_=300k, leaving 700k to go; with SNPs costing ~\$200, that implies that it would cost \$0.14b for perfect SNP information.
+Hence, the expected value of information would then be ~\$26.15b and safely profitable.
+From that, we could also estimate the expected value of sample information (EVSI): if the 700k SNPs would be worth that much, then on average^[I say on average because in the Hsu 2014 simulations, the compressed-sensing algorithm exhibits an interesting 'phase transition' behavior where the accuracy of the inferences will abruptly jump past a certain sample size, rather than smoothly increase with each datapoint like most methods.] each additional datapoint is worth \$37.6k.
+Aside from the Hsu 2014 estimate, we can use a formula from a model in the Rietveld et al 2013 supplementary materials (pg22-23), where they offer a population genetics-based approximation of how much variance a given sample size & heritability will explain:
 
 1. $M = \frac{2 \cdot N_e \cdot k \cdot l}{log(2 \cdot N_e \cdot l)}$;
     they state that $N_e = 10000; k = 22; l = 1.6$, so $M = \frac{2 \cdot 10000 \cdot 22 \cdot 1.6}{log(2 \cdot 10000 \cdot 1.6)}$ or _M_ = 67865.
 2. $R^2 = \frac{\frac{N}{M} \cdot h^4}{\frac{N}{M} \cdot h^2 + 1}$
     For education (the phenotype variable targeted by the main GWAS, serving as a proxy for intelligence), they estimate _h_^2^=0.2, or _h_=0.447 (h^2^ here being the heritability capturable by their SNP arrays, so equivalent to $h^2_{SNP}$), so for their sample size of 100000, they would expect to explain `N=100000; h=sqrt(0.2); ((N / 67865) * h^4) / ((N/67865) * h^2 + 1) ~> 0.045` or 4.5% of variance while they got 2-3%, suggesting over-estimation.
 
-    For intelligence, the GCTAs say that $h^2_{SNP} = 0.33$, so Rietveld et al 2013's 0.025 is equivalent to _n_=17000, while to boost it to 2.1x (0.0525) turns out to require _n_=40000 or 2.35x, suggesting that another Rietveld et al 2013-style education GWAS would be adequate once it reached  $n \geq 2.35 \cdot 101000=237350$.
+Using this equation we can work out changes in variance explained with changes in sample sizes, and thus the value of an additional datapoint.
+For intelligence, the GCTA estimate is $h^2_{SNP} = 0.33$; Rietveld et al 2013 realized a variance explained of 0.025, implying it's equivalent to _n_=17000 when we look for a _N_ which yields 0.025 and so we need ~6x more education-phenotype samples to reach the same efficacy in predicting intelligence.
+We can then ask how much variance is explained by a larger sample and how much that is worth over the annual IVF headcount.
+Since selection is not profitable under the low IQ estimate and 1 more datapoint will not make it profitable, the EVSI of another education datapoint must be negative and is not worth estimating, so we use the high estimate instead, asking how much a increase of, say, 100 datapoints is worth on average:
+
+~~~{.R}
+gwasSizeToVariance <- function(N, h2) { ((N / 67865) * h2^2) / ((N/67865) * h2 + 1) }
+sampleIncrease <- 1000
+original     <- gwasSizeToVariance(17000, 0.33)
+originalplus <- gwasSizeToVariance(17000+sampleIncrease, 0.33)
+originalGain     <- mean(simulateIVFCBs(9, 4.6, original, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh)$Net)
+originalplusGain <- mean(simulateIVFCBs(9, 4.6, originalplus, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh)$Net)
+originalGain; originalplusGain
+((((originalplusGain - originalGain) * ivfBirths) / log(1+discount)) / sampleIncrease) / 6
+# [1] 71716.90116
+~~~
+
+\$71k is within an order of magnitude of the Hsu 2014 extrapolation, so reasonable given all the approximations here.
+
+Going back to the lowest IQ value estimate, in the US population estimate, embryo selection only reaches break-even once the variance explained increases by a factor of 2.1 to 5.25%.
+To boost it to 2.1x (0.0525) turns out to require _n_=40000 or 2.35x, suggesting that another Rietveld et al 2013-style education GWAS would be adequate once it reached  $n \geq 2.35 \cdot 101000=237350$.
+After that sample size has been exceeded, EVSI will then be closer to \$10k.
 
 # Iterated embryo selection
 
@@ -1031,17 +1051,18 @@ Causality can be established in a few ways; for example, a hit can be reused in 
 One can also try to use prior information to boost the posterior probability of an effect: if a gene has already been linked to the nervous system by previous studies exploring mutations or gene expression data etc, or other aspects of the physical structure point towards that SNP like being closest to a gene, then that is evidence for the association being causal. Intelligence hits are enriched for nervous system connections, but this method is inherently weak.
 A better method is fine-mapping or whole-genome sequencing: when all the variants in a haplotype are sequenced, then the true causal variant will tend to perform subtly better and one can single it out of the whole SNP set. Useful, but whole-genomes are still expensive enough that they are not created nearly as much as SNPs.
 Another approach is similar to the lab animal approach: human groups differ genetically, and their haplotypes & LD patterns can differ greatly; if D looks associated with intelligence in one group, but is not associated in a genetically distant group with different haplotypes, that strongly suggests that in the first group, D was indeed just proxying for another variant.
-Some of the intelligence hits have replicated in European-American samples, as expected but not helpfully; more importantly, in African-American ([Domingue et al 2015](http://ero.sagepub.com/content/1/3/2332858415599972?full "Polygenic Influence on Educational Attainment")) and East Asian samples ([Zhu et al 2015](https://www.researchgate.net/profile/Chuansheng_Chen/publication/265855103_Educational_attainment-related_loci_identified_by_GWAS_are_associated_with_select_personality_traits_and_mathematics_and_language_abilities/links/542af5720cf27e39fa917a84.pdf "Educational attainment-related loci identified by GWAS are associated with select personality traits and mathematics and language abilities")).
+Some of the intelligence hits have replicated in European-American samples, as expected but not helpfully; more importantly, in African-American ([Domingue et al 2015](http://ero.sagepub.com/content/1/3/2332858415599972?full "Polygenic Influence on Educational Attainment")) and East Asian samples ([Zhu et al 2015](https://www.researchgate.net/profile/Chuansheng_Chen/publication/265855103_Educational_attainment-related_loci_identified_by_GWAS_are_associated_with_select_personality_traits_and_mathematics_and_language_abilities/links/542af5720cf27e39fa917a84.pdf "Educational attainment-related loci identified by GWAS are associated with select personality traits and mathematics and language abilities")), and the top SNPs have some predictive power of mean IQs across ethnic groups ([Piffer 2015](http://emilkirkegaard.dk/en/wp-content/uploads/PifferIntelligence2015.pdf "A review of intelligence GWAS hits: Their relationship to country IQ and the issue of spatial autocorrelation")).
 The example of the schizophrenia GWASes ([Candia et al 2013](http://www.sciencedirect.com/science/article/pii/S000292971300325X "Additive Genetic Variation in Schizophrenia Risk Is Shared by Populations of African and European Descent"), [Ripke et al 2014](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4112379/ "Biological Insights From 108 Schizophrenia-Associated Genetic Loci")) also offers hope in showing a SNP correlation of 0.66/0.61 between African & European schizophrenia SNPs
 
 
 Given the practice of embryo editing, the causal tagging problem can gradually solve itself: as edits are made, forcibly breaking the potential confounds, the causal nature of an SNP becomes clear. But how to allocate edits across the top SNPs to determine each's causal nature as efficiently as possible without spending too many edits investigating?
 A naive answer might be something along the lines of a power analysis: in a two-group _t_-test trying to detect a difference of ~0.03 SD for each variant (the rough size of the top few variants), with variance reduced by the known polygenic score, and desired power is the standard 80%; it follows that one would need to randomize a total sample of _n_=34842 to reject the null hypothesis of 0 effect[^t-test-editing]. Setting up a [factorial experiment](!Wikipedia) & randomizing several variants simultaneously may allow inferences on them as well, but clearly this is going to be a tough row to hoe.
 This is unduly pessimistic, since we neither need nor desire 80% power, nor are we comparing to a null hypothesis, as our goal is more modest: since only a certain number of edits will be doable for any embryo, say 30, we merely want to accumulate enough evidence about the top 30 variants to either demote it to #31 (and so we no longer spend any edits on it) or confirm it belongs in the top 30 and we should always be editing it.
-This is immediately recognizable as [reinforcement learning](!Wikipedia): the [multi-armed bandit (MAB) problem](!Wikipedia "Multi-armed bandit") (each possible edit being an independent arm which can pulled or not); or more precisely, since early childhood (5yo) IQ scores are relatively poorly correlated with adult scores ([_r_=0.55](http://infoproc.blogspot.com/2011/08/predictive-power-of-early-childhood-iq.html)) and many embryos may be edited before data on the first edits starts coming in, a multi-armed bandit with multiple plays and delayed feedback.
+This is immediately recognizable as [reinforcement learning](!Wikipedia): the [multi-armed bandit (MAB) problem](!Wikipedia "Multi-armed bandit") (each possible edit being an independent arm which can pulled or not); or more precisely, since early childhood (5yo) IQ scores are relatively poorly correlated with adult scores ([_r_=0.55](http://infoproc.blogspot.com/2011/08/predictive-power-of-early-childhood-iq.html)) and many embryos may be edited before data on the first edits starts coming in, a multi-armed bandit with multiple plays and delayed feedback. (There is no way immediately upon birth to receive meaningful feedback about the effect of an edit, although there might be ways to get feedback faster, such as using short-sleeper gene edits to enhance education.)
 [Thompson sampling](!Wikipedia) is a randomized Bayesian approach which is simple and theoretically optimal, with excellent performance in practice as well; an [extension to multiple plays](http://arxiv.org/abs/1506.00779 "'Optimal Regret Analysis of Thompson Sampling in Stochastic Multi-armed Bandit Problem with Multiple Plays', Komiyama et al 2015") is also optimal.
 Dealing with the delayed feedback is known to be difficult and multiple play Thompson sampling may not be optimal, but in simulations it [performs better with delayed feedback than other standard MABs](http://www.research.rutgers.edu/~lihong/pub/Chapelle12Empirical.pdf "'An Empirical Evaluation of Thompson Sampling', Chapelle & Li 2011").
-We can consider a simulation of the scenario in which every time-step is a day and 1 or more embryos must be edited that day; a noisy measure of IQ is then made available `9*31+5*365=2104` days later. (So for the first 2104 time-steps, a Thompson sample would be performed to yield a new set of edits, then each subsequent time-step a datapoint would mature, the posteriors updated, and another set of edits created.) The relevant question is how much regret will fall and how many causal SNPs become the top picks after how many edits & days: hopefully high performance & low regret will be achieved within a few years after the initial 5-year delay.
+We can consider a simulation of the scenario in which every time-step is a day and 1 or more embryos must be edited that day; a noisy measure of IQ is then made available `9*31+5*365=2104` days later, which is fed into a GWAS [mixture model](!Wikipedia) in which the GWAS correlation for each SNP is considered as drawn with an unknown probability from a causal distribution and from a nuisance distribution, so with additional data, the effect estimates of the SNPs are refined, the probability of being drawn from the causal distribution is refined, and the overall mixture probability is likewise refined, similar to the ["Bayes B" paradigm of genomic prediction in animal breeding](http://www.annualreviews.org/eprint/AEMMACidWrxGtS8eBFrT/full/10.1146/annurev-animal-022114-110733 "'One Hundred Years of Statistical Developments in Animal Breeding', Giancola & Rosa 2015").
+(So for the first 2104 time-steps, a Thompson sample would be performed to yield a new set of edits, then each subsequent time-step a datapoint would mature, the posteriors updated, and another set of edits created.) The relevant question is how much regret will fall and how many causal SNPs become the top picks after how many edits & days: hopefully high performance & low regret will be achieved within a few years after the initial 5-year delay.
 
 [^t-test-editing]: Power calculation using the Rietveld et al 2013 polygenic score:
 
@@ -1140,6 +1161,10 @@ http://www.addgene.org/crispr/
 2018 35% http://predictionbook.com/predictions/177114
 2019 60% http://predictionbook.com/predictions/177115
 by 2020, 70% http://predictionbook.com/predictions/177111
+
+Whither embryo editing? The problem with IVF is that it is expensive, painful, and requires patience & planning. Even with large gains from editing, can we expect more than the current 1% or so of parents to ever be willing to conceive via IVF for those gains? If not, then the benefits may take generations to mix into the general population as offspring reproduce normally with unedited people and people happen to need to use IVF for regular fertility reasons. A solution is suggested by the adult CRISPR trials: make the germline edits in advance. In females, it seems like it might be hard to reach all the eggs which could potentially result in conception, but in males, sperm turnover is constant https://en.wikipedia.org/wiki/Spermatogenesis and sperm are replenished by stem cells in https://en.wikipedia.org/wiki/Seminiferous_tubule
+already demonstrated CRISPR edits to spermatogonia and subsequent inheritance by offspring: "Targeted Germline Modifications in Rats Using CRISPR/Cas9 and Spermatogonial Stem Cells", Chapman et al 2014 http://www.sciencedirect.com/science/article/pii/S2211124715001989
+"Genome Editing in Mouse Spermatogonial Stem Cell Lines Using TALEN and Double-Nicking CRISPR/Cas9", Sato et al 2015 http://www.sciencedirect.com/science/article/pii/S221367111500154X
 -->
 
 # See also
