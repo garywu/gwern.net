@@ -15,7 +15,7 @@ belief: likely
 > - the best 2015 polygenic score could achieve a gain of <4.5 IQ points when selecting out of 10
 > - the cost of embryo selection is modest, at \$1500 + \$200 per embryo, with the sequencing cost projected to drop rapidly
 > - a model of the IVF process, incorporating number of extracted eggs, losses to abnormalities & vitrification & failed implantation & miscarriages from 3 real IVF patient populations, estimates feasible gains of 0.14, 0.36, & 0.56 IQ points
-> - embryo selection is currently unprofitable (mean: -\$673) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$4763). Under highest estimate, the NPV EVPI of a perfect SNP predictor is \$27b and the EVSI per education/SNP sample is \$71k.
+> - embryo selection is currently unprofitable (mean: -\$673) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$4763). The main constraints on selection profitability is the polygenic score; under the highest value, the NPV EVPI of a perfect SNP predictor is \$27b and the EVSI per education/SNP sample is \$71k.
 > - under the worst-case estimate, selection can be made profitable with a better polygenic score, which would require _n_>237,300 using education phenotype data (and much less using fluid intelligence measures).
 
 # Embryo selection cost-effectiveness
@@ -62,13 +62,16 @@ There is much more that can be said on this topic, starting with various measure
 - Schwartz 1994, ["Societal benefits of reducing lead exposure"](http://www.gc.cuny.edu/CUNY_GC/media/CUNY-Graduate-Center/Images/Programs/Public%20Health/Schwartz-Societal-Benefits-of-Reducing-Lead-Exposure.pdf)
 - Salkever 1995, ["Updated estimates of earnings benefits from reduced exposure of children to environmental lead"](http://rachel.org/files/document/Updated_Estimates_of_Earnings_Benefits_from_Re.pdf)
 - Neal & Johnson 1996, ["The role of pre-market factors in black-white wage differences"](http://www.albany.edu/faculty/kretheme/PAD705/PastExams/JPE_RolePreMarketBWWageDiff.pdf)
+- Schmidt & Hunter 1998, ["The Validity and Utility of Selection Methods in Personnel Psychology"](http://www.flume.com.br/pdf/Scmidt_The_validity_and_utility.pdf)
 - Lutter 2000, ["Valuing children's health: A reassessment of the benefits of lower lead levels"](http://www.nchh.org/Portals/0/Contents/Article0075.pdf)
 - Zax & Rees 2002, ["Academic Performance, Environment, and Earnings"](http://www.colorado.edu/economics/papers/papers01/wp01-7.pdf)
 - Hauser 2002, ["Meritocracy, Cognitive Ability, and the Sources of Occupational Success"](http://emilkirkegaard.dk/en/wp-content/uploads/Meritocracy-cognitive-ability-and-the-sources-of-occupational-success.pdf)
 - Murray 2002, ["IQ and income inequality in a sample of sibling pairs from advantaged family backgrounds"](http://down.cenet.org.cn/upfile/58/200667193138130.pdf)
 - Grosse et al 2002, ["Economic Gains Resulting from the Reduction in Children's Exposure to Lead in the United States"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1240871/pdf/ehp0110-000563.pdf)
+- Hendricks 2002, ["How Important Is Human Capital for Development? Evidence from immigrant earnings"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.469.7658&rep=rep1&type=pdf)
 - Gottfredson 2003, ["_g_, jobs, and life"](http://emilkirkegaard.dk/en/wp-content/uploads/g-jobs-life-gottfredson.pdf)
 - Jones & Schneider 2004, ["Intelligence, Human Capital, and Economic Growth: An Extreme-Bounds Analysis"](http://fmwww.bc.edu/repec/esLATM04/up.3316.1081964901.pdf)
+- Behrman et al 2004, ["Copenhagen Consensus - Challenges and Opportunities: Hunger and Malnutrition"](http://www.copenhagenconsensus.com/sites/default/files/CP+-+Hunger+FINISHED.pdf)
 - Wai et al 2005, ["Creativity and occupational accomplishments among intellectually precocious youths: An age 13 to age 33 longitudinal study"](http://tip.duke.edu/sites/default/files/Creativity%20and%20Occupational%20Accomplishments%20Among%20Intellectually%20Precocious%20Youths.pdf)
 - Jones 2006, ["IQ in the Ramsey Model: A Naïve Calibration"](http://repec.org/sed2006/up.30684.1139268077.pdf)
 - Mueller & Plug 2006, ["Estimating the Effect of Personality on Male and Female Earnings"](http://www.econstor.eu/bitstream/10419/86359/1/04-087.pdf)
@@ -94,6 +97,7 @@ There is much more that can be said on this topic, starting with various measure
 - Daniele & Malanima 2011, ["Are people in the South less intelligent than in the North? IQ and the North-South disparity in Italy"](https://www.researchgate.net/profile/Vittorio_Daniele/publication/234034734_Are_people_in_the_South_less_intelligent_than_in_the_North_IQ_and_the_NorthSouth_disparity_in_Italy/links/00b7d52977a5022567000000.pdf)
 - Felice & Giugliano 2011, ["Myth and reality: A response to Lynn on the determinants of Italy's north-south imbalances"](/docs/iq/2011-felice.pdf)
 - Meisenberg & Lynn 2011, ["Intelligence: A measure of human capital in nations"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.676.2907&rep=rep1&type=pdf)
+- Hunt 2011, [_Human Intelligence_](http://www.amazon.com/Human-Intelligence-Earl-Hunt/dp/0521707811)
 - Rindermann 2012, ["Intellectual classes, technological progress and economic development: The rise of cognitive capitalism"](/docs/iq/2012-rindermann.pdf)
 - Lynn & Vanhanen 2012, [_Intelligence: A Unifying Construct for the Social Sciences_](http://lesacreduprintemps19.files.wordpress.com/2012/08/intelligence-a-unifying-construct-for-the-social-sciences-richard-lynn-and-tatu-vanhanen.pdf)
 - Kalonda-Kanyama & Kodila-Tedika 2012, ["Quality of Institutions: Does Intelligence Matter?"](http://www.econrsa.org/system/files/publications/working_papers/wp308.pdf)
