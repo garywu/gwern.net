@@ -1467,6 +1467,55 @@ n-back: 3.25(2.71)
 control: 4.11(1.36)
 -->
 
+### Schwarb et al 2015
+
+["Working memory training improves visual short-term memory capacity"](http://control.gatech.edu/wp-content/uploads/2015/09/Schwarb-Nail-Schumacher-2015-Psych-Res.pdf), Schwarb et al 2015
+
+<!--
+
+Experiment 1:
+
+> Experiment 1 investigated the influence of WM training on the measures of VSTM number and VSTM resolution independently. Participants were trained on both a verbal and spatial version of an adaptive single n-back task; single n-back tasks have previously proven an effective cognitive training tool (e.g., Jaeggi et al., 2010b). Training performance was evaluated across eight 1-h sessions over approximately 2–4 weeks for a total of 5,760 training trials.
+
+Fifty-three participants (ages 18–30; 23 women) with normal to corrected-to-normal vision from the Georgia Institute of Technology completed this experiment. All participants were paid $10/h as compensation with a monetary bonus (up to $10) based on training performance.
+
+> General fluid intelligence measure: the Raven’s advanced progressive matrices (RAPM) task is a measure of Gf. On each trial, participants were presented with a test set composed of 8 figures arranged in a 3x3 matrix with the bottom right cell missing. Participants were asked to determine which of the eight possible figures best fit into that missing cell. Participants were given 10 min to complete up to 18 problems (odd trials vs. even trials counterbalanced across participants). This version of RAPM has previously been used by Jaeggi et al. (2008) and Redick et al. (2012).
+
+> Half of the participants completed eight sessions of adaptive n-back training (Fig.1)
+
+26/26?
+Passive control group?
+
+> Fluid intelligence task: for the RAPM task, the dependent variable of interest was the total score (max. 18). The ANOVA indicated that neither the main effect of Time, F (1,51) = 1.03, p = 0.315, g p 2 = 0.02, nor the Interaction, F (1,51) = 0.54, p = 0.467, g p 2 = 0.01, was significant. The main effect of Group, F (1,51) = 4.50, p = 0.039, g p 2 = 0.08, was significant with the training group scoring higher than the NCC group. Raw difference scores (BS1 - BS2) are listed in Table 1 . In this experiment, n-back training did not improve Gf.
+
+'difference score' on RAPM
+control: 0.69 (3.2)
+experimental: 0.11 (2.5)
+
+Experiment 2:
+
+> Sixty-nine naive volunteers (ages 18–32; 31 women) were recruited from the Georgia Institute of Technology community for this experiment. For their participation, participants received either pay ($10/h) or course credit (1 credit/h) in partial fulfillment of a course requirement with a monetary bonus (up to $10) based on training performance.
+
+23 each?
+
+> Participants were randomly assigned to three groups: a NCC [no-contact-control] group, a verbal training (VT) group, and a spatial training (ST) group.
+
+> Training sessions included 40–60 min of the adaptive verbal n-back and adaptive spatial n-back task, respectively (described in detail below).
+
+> The VT group completed eight sessions of the forced-adaptive verbal n-back task (Fig. 4).
+
+RAPM as before
+
+> Two participants (one from the NCC group and one from the ST group) failed to complete the all of the required sessions and were removed from the analysis. One additional participant from the NCC group was removed from the analysis because she failed to comply with instructions on three (automated operation span, automated symmetry span, and short-term recall) of the eight battery tasks and performed greater than two standard deviations below the mean during BS1 on four (flanker, CCF, RAPM, and change detection) of the remaining five battery tasks.
+
+So NCC=21, ST=22, and VT=23?
+
+'difference score' on RAPM:
+control: -0.36 (2.1)
+ST: -0.23 (2.5)
+VT: 0.91 (3.1)
+-->
+
 ## Meta-analysis
 
 > I construct a meta-analysis of the >19 studies which measure IQ after an n-back intervention, confirming that there is a [gain](DNB meta-analysis#analysis) of small-to-medium effect size. I also investigate several n-back claims, criticisms, and indicators of bias, finding:
