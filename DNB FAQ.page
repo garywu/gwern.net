@@ -1435,6 +1435,38 @@ RAPM, 20 minutes
 compensation: 8 EUR/hour
 ((80 * 2 + 5*30) / 60) * 8 = 41 euros = $45 -->
 
+### Lindeløv et al 2016
+
+["Training and transfer effects of N-back training for brain-injured and healthy subjects"](/docs/dnb/2016-lindelov.pdf), Lindeløv et al 2016:
+
+> Working memory impairments are prevalent among patients with acquired brain injury (ABI). Computerised training targeting working memory has been researched extensively using samples from healthy populations but this field remains isolated from similar research in ABI patients. We report the results of an actively controlled randomised controlled trial in which 17 patients and 18 healthy subjects completed training on an N-back task. The healthy group had superior improvements on both training tasks (SMD = 6.1 and 3.3) whereas the ABI group improved much less (SMD = 0.5 and 1.1). Neither group demonstrated transfer to untrained tasks. We conclude that computerised training facilitates improvement of specific skills rather than high-level cognition in healthy and ABI subjects alike. The acquisition of these specific skills seems to be impaired by brain injury. The most effective use of computer-based cognitive training may be to make the task resemble the targeted behaviour(s) closely in order to exploit the stimulus-specificity of learning.
+
+<!--
+> We recruited 39 ABI inpatients at Hammel Neurorehabilitation Centre and University Research Clinic
+
+Denmark
+
+> The single N-back task consisted of a series of stimuli presented at 3-second intervals. The participants were instructed to press a key when the presented stimulus was identical to the stimulus N back in the sequence. There were 25% targets per block and at most two consecutive targets. In order to prevent the formation of stimulus-specific strategies there were a total of 137 different stimuli as shown in Figure 1: three types of audio and four types of visual stimuli.
+
+Mixed n-back‽
+
+healthy:
+n-back 9, active control 9
+ABI
+n-back 8, active control 9
+
+> Participants were not reimbursed...Thus the full intervention consisted of 4.4 hours of constant training, breaks not included.
+
+260 minutes training
+RAPM, 10 minutes
+healthy:
+n-back: 10.67(2.50)
+control: 9.89(3.79)
+ABI:
+n-back: 3.25(2.71)
+control: 4.11(1.36)
+-->
+
 ## Meta-analysis
 
 > I construct a meta-analysis of the >19 studies which measure IQ after an n-back intervention, confirming that there is a [gain](DNB meta-analysis#analysis) of small-to-medium effect size. I also investigate several n-back claims, criticisms, and indicators of bias, finding:
