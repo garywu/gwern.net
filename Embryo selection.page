@@ -295,16 +295,15 @@ Since half of additives will be shared within family, then we get `0.33*0.5 = 0.
 (Occasionally within-family differences are cited in a format like "siblings have an average difference of 12 IQ points", which comes from an SD of ~0.7/0.8, since `0.8*15=12`, but you could also check what SD yields an average difference of 12 via simulation: eg `mean(abs(rnorm(n=10000000, mean=0, sd=0.71) - rnorm(n=10000000, mean=0, sd=0.71))) * 15 ~> 12.01807542`.)
 We don't care about means since we're only looking at gains, so the mean of the within-family normal distribution can be set to 0.
 
-With that, we can write a simulation like Shulman & Bostrom where we generate _n_ samples from N(0, 6.1), take the max, and return the difference of the max and mean:
-
-<!-- TODO: remove the IQ hardwiring in function names and the 15 constant, to make code work for generic additive embryo selection -->
+With that, we can write a simulation like Shulman & Bostrom where we generate _n_ samples from N(0, 6.1), take the max, and return the difference of the max and mean.
+For generality to other continuous normally-distributed complex traits, we'll work in standardized units rather than the IQ scale (SD=15), but convert back to points for easier reading:
 
 ~~~{.R}
 ## select 1 out of N siblings
-embryoIQScores <- function(n, variance) { rnorm(n, mean=0, sd=sqrt(variance*0.5)*15); }
-embryoSelectionGain <- function(n, variance) { scores <- embryoIQScores(n, variance); return(max(scores) - mean(scores)); }
+embryoScores <- function(n, variance) { rnorm(n, mean=0, sd=sqrt(variance*0.5)); }
+embryoSelectionGain <- function(n, variance) { scores <- embryoScores(n, variance); return(max(scores) - mean(scores)); }
 simEmbryoSelection <- function(n=2, variance=0.33, iters=100000) { replicate(iters, embryoSelectionGain(n, variance)); }
-mean(simEmbryoSelection(n=10))
+mean(simEmbryoSelection(n=10)) * 15
 # [1] 9.368836794
 ~~~
 
@@ -312,7 +311,7 @@ So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Shulman &
 For comparison, the full genetic heritability of adult IQ (including SNPs, mutation load & de novo mutations, copy-number variation, etc) is generally estimated ~0.8, and the upper bound would be ~14.5 IQ points:
 
 ~~~{.R}
-mean(simEmbryoSelection(n=10, variance=0.8))
+mean(simEmbryoSelection(n=10, variance=0.8)) * 15
 # [1] 14.61386652
 ~~~
 
@@ -348,13 +347,13 @@ Past polygenic scores for intelligence:
 Since these scores overlap and are not, like GCTA estimates, repeated measurements of a variable in any sense, there is little point in meta-analyzing them other than to estimate growth over time (even using them as an ensemble wouldn't be worth the complexity, and in any case, most studies do not provide the full list of beta values making up the polygenic score); for our purpose, the largest polygenic score is the important number.
 ([Emil Kirkegaard](http://emilkirkegaard.dk/en/?p=5813) notes that the polygenic scores are also inefficient: polygenic scores are not always published, not always based on individual patient data, and generally use maximum-likelihood estimation neglecting our strong priors on the number of hits & distribution of effect sizes. But these published scores are what we have as of January 2016, so we must make do.)
 
-Rietveld et al 2013's reported polygenic score for cognitive performance was 2.5%. Same procedure to estimate value of embryo selection: halve to account for siblings' shared genetics then simulate:
-`0.025 * 0.5 = 0.0125`; `sqrt(0.0125) = 0.1118033989` SD or 1.67 IQ points
+Rietveld et al 2013's reported polygenic score for cognitive performance was 2.5%.
+Thus:
 
 ~~~{.R}
 rietveld2013 <- 0.025
-mean(embryoSelectionGain(n=10, variance=rietveld2013))
-# [1] 4.519129768
+mean(simEmbryoSelection(n=10, variance=rietveld2013)) * 15
+# [1] 2.577291155
 ~~~
 
 ## Cost of embryo selection
@@ -415,7 +414,7 @@ Overall, SNPing an embryo in 2016 should cost ~\$100-400 and more like \$200 and
 
 How much will SNP costs drop in the future?
 
-We can extrapolate from the NHGRI Genome Sequencing Program's DNA Sequencing Cost dataset, but it's tricky: eyeballing [their graph](http://www.genome.gov/images/content/costpergenome2015_4.jpg "NHGRI cost per genome, 2001-2015"), we can see that historical prices have not followed any simple pattern.
+We can extrapolate from the NHGRI Genome Sequencing Program's DNA Sequencing Cost dataset, but it's tricky: eyeballing [their graph](http://www.genome.gov/images/content/costpergenome2015_4.jpg "NHGRI cost per genome, 2001-2015"), we can see that historical prices have not followed any single pattern.
 At first, costs closely tracks a simple halving every 18 months, then there is an abrupt trend-break to super-exponential drops from mid-2007 to mid-2011 and then an equally abrupt reversion to a flat cost trajectory with occasional price *increases* and then another abrupt fall in early 2015 (accentuated when one adds in the Veritas Genetics \$1k as a datapoint).
 
 Dropping pre-2007 data and fitting an exponential shows a bad fit since 2012 (if it follows the pre-2015 curve, it has large prediction errors on 2015-2016 and vice-versa).
@@ -486,7 +485,7 @@ simulateIVF <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.5,
 
   normal        <- rbinom(1, eggsExtracted, prob=normalityP)
 
-  scores        <- embryoIQScores(n=normal, variance=polygenicScoreVariance)
+  scores        <- embryoScores(n=normal, variance=polygenicScoreVariance)
 
   survived      <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, scores)
 
@@ -585,7 +584,7 @@ Using the Tan et al 2014 data:
 
 ~~~{.R}
 simulateTan <- function() { return(simulateIVFs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24)); }
-iqTan <- mean(simulateTan()); iqTan
+iqTan <- mean(simulateTan()) * 15; iqTan
 # [1] 0.3169408043
 ~~~
 
@@ -597,7 +596,7 @@ So:
 
 ~~~{.R}
 simulateHodesWertz <- function() { return(simulateIVFs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40)) }
-iqHW <- mean(simulateHodesWertz()); iqHW
+iqHW <- mean(simulateHodesWertz()) * 15; iqHW
 # [1] 0.5666326846
 ~~~
 
@@ -606,7 +605,7 @@ The more nationally representative USA data from the CDC reports net numbers rat
 
 ~~~{.R}
 simulateUSA <- function(liveBirth) { return(simulateIVFs(9, 4.6, rietveld2013, 0.3, 0.90, liveBirth)); };
-iqUSA <- sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb));}); iqUSA
+iqUSA <- sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb))*15;}); iqUSA
 # [1] 0.13808892057 0.12210943484 0.09868347490 0.03544036910 0.05130600081 0.02770834405
 ~~~
 
@@ -615,8 +614,18 @@ iqUSA <- sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simula
 One category of effects considered by Shulman & Bostrom is the non-financial social & societal effects mentioned in their Table 3, where embryo selection can "perceptibly advantage a minority" or in an extreme case, "Selected dominate ranks of elite scientists, attorneys, physicians, engineers. Intellectual Renaissance?"
 This is another point which is worth going into a little more; no specific calculations are mentioned by Shulman & Bostrom, and the thin-tail-effects of normal distributions are notoriously counterintuitive, with surprisingly large effects out on the tails from small-seeming changes in means or standard deviations - for example, the legendary levels of Western Jewish overperformance despite their tiny population sizes.
 
-As a general rule of thumb, 'elite' groups like scientists, attorneys, physicians, Ivy League students etc are highly selected for intelligence - one can comfortably estimate averages >=130 IQ (+2SD) from past IQ samples & average SAT scores & the ever-increasingly stringent admissions; and elite performance continues to increase with increasing intelligence as high as can reasonably be measured, as indicated by available date like the SMPY longitudinal study (many papers but see [Wai et al 2005](http://tip.duke.edu/sites/default/files/Creativity%20and%20Occupational%20Accomplishments%20Among%20Intellectually%20Precocious%20Youths.pdf "Creativity and occupational accomplishments among intellectually precocious youths: An age 13 to age 33 longitudinal study"), [Lubinski & Benbow 2006](https://my.vanderbilt.edu/smpy/files/2013/02/DoingPsychScience20061.pdf "Study of mathematically precocious youth after 35 years: Uncovering antecedents for the development of math-science expertise"), [Park et al 2007](http://etd.library.vanderbilt.edu/ETD-db/available/etd-12062007-195216/unrestricted/01thesisES.pdf "Contrasting intellectual patterns predict creativity in the arts and sciences tracking intellectually precocious youth over 25 years"), [Wai et al 2009](http://tip.duke.edu/sites/default/files/Spatial%20Ability%20for%20STEM%20Domains.pdf "Spatial Ability for STEM Domains: Aligning Over 50 Years of Cumulative Psychological Knowledge Solidifies Its Importance"), [Kell et al 2013](/docs/iq/2013-kell.pdf "Who rises to the top? Early indicators")), where we might define the cut off as 160 IQ based on [Anne Roe](!Wikipedia)'s study of the most eminent available scientists (mean ~150-160).
+As a general rule of thumb, 'elite' groups like scientists, attorneys, physicians, Ivy League students etc are highly selected for intelligence - one can comfortably estimate averages >=130 IQ (+2SD) from past IQ samples & average SAT scores & the ever-increasingly stringent admissions; and elite performance continues to increase with increasing intelligence as high as can reasonably be measured, as indicated by available date like the SMPY longitudinal study (many papers but see [Wai et al 2005](http://tip.duke.edu/sites/default/files/Creativity%20and%20Occupational%20Accomplishments%20Among%20Intellectually%20Precocious%20Youths.pdf "Creativity and occupational accomplishments among intellectually precocious youths: An age 13 to age 33 longitudinal study"), [Lubinski & Benbow 2006](https://my.vanderbilt.edu/smpy/files/2013/02/DoingPsychScience20061.pdf "Study of mathematically precocious youth after 35 years: Uncovering antecedents for the development of math-science expertise"), [Park et al 2007](http://etd.library.vanderbilt.edu/ETD-db/available/etd-12062007-195216/unrestricted/01thesisES.pdf "Contrasting intellectual patterns predict creativity in the arts and sciences tracking intellectually precocious youth over 25 years"), [Wai et al 2009](http://tip.duke.edu/sites/default/files/Spatial%20Ability%20for%20STEM%20Domains.pdf "Spatial Ability for STEM Domains: Aligning Over 50 Years of Cumulative Psychological Knowledge Solidifies Its Importance"), [Kell et al 2013](/docs/iq/2013-kell.pdf "Who rises to the top? Early indicators")), where we might define the cut off as 160 IQ based on [Anne Roe](!Wikipedia)'s study of the most eminent available scientists (mean ~150-160)[^Roe].
 So to estimate an impact, one could consider a question like: given an average boost of _x_ IQ points through embryo-selection, how much would the odds of being elite (>=130) or extremely elite (>=160) increase for the selected? If a certain fraction of IVFers were selected, what fraction of all people above the cutoff would they make up?
+
+[^Roe]: Some of Roe's relevant papers
+
+    - Roe 1949, ["Psychological Examinations of Eminent Biologists"](/docs/iq/1949-roe-biologists.pdf)
+    - Roe 1951, ["A Psychological Study of Eminent Biologists"](/docs/iq/1951-roe-biologists.pdf)
+    - Roe 1951, ["A Study of Imagery in Research Scientists"](/docs/iq/1951-roe-imagery.pdf)
+    - Roe 1951, ["Psychological Tests of Research Scientists"](/docs/iq/1951-roe-scientists.pdf)
+    <!-- TODO: Roe 1951, ["A psychological study of physical scientists"](/docs/iq/1951-roe-physical.pdf) requested: http://lesswrong.com/lw/ji3/lesswrong_help_desk_free_paper_downloads_and_more/d47n -->
+    - Roe 1953, ["A Psychological Study of Eminent Psychologists and Anthropologists, and a Comparison with Biological and Physical Scientists"](/docs/iq/1953-roe-psychologists.pdf)
+    <!-- TODO: Roe 1953, [_The Making of a Scientist_](/docs/iq/1953-roe-makingscientist.pdf) ordered book; then scan -->
 
 If there are 320 million people in the USA, then about 17m are +2SD and 43k are +3SD:
 
@@ -631,9 +640,9 @@ Similarly, in 2013, the [CDC reports](http://www.cdc.gov/nchs/births.htm) 3,932,
 This implies that IVFers also make up a very small number of highly gifted children:
 
 ~~~{.R}
-size <- function(mean, cutoff, populationSize, useFraction=1) { if(cutoff>mean) { dnorm((cutoff-mean)/15) * populationSize * useFraction } else
-                                                                 { (1 - dnorm((cutoff-mean)/15)) * populationSize * useFraction }}
-size(100, 160, 67996)
+size <- function(mean, cutoff, populationSize, useFraction=1) { if(cutoff>mean) { dnorm(cutoff-mean) * populationSize * useFraction } else
+                                                                 { (1 - dnorm(cutoff-mean)) * populationSize * useFraction }}
+size(0, (60/15), 67996)
 # [1] 9.099920031
 ~~~
 
@@ -650,7 +659,7 @@ eliteGain <- function(ivfMean, ivfGain, ivfFraction, generation, cutoff, ivfPop,
               population <- size(genMean, cutoff, genPop)
               multiplier <- gain / population
               return(multiplier) }
-eliteGain(100, 9.36, 1, 1, 160, 67996, 100, 3932181)
+eliteGain(0, (9.36/15), 1, 1, (60/15), 67996, 0, 3932181)
 # [1] 0.1554096565
 ~~~
 
@@ -661,9 +670,9 @@ The thin-tail effects make the starting mean extremely important; Shulman & Bost
 Let's consider the second generation; with their post-selection mean IQ of 109.36, what second-generation is produced in the absence of outbreeding when they use IVF selection?
 
 ~~~{.R}
-eliteGain(100, 9.36, 1, 2, 160, 67996, 100, 3932181)
+eliteGain(0, (9.36/15), 1, 2, (60/15), 67996, 0, 3932181)
 # [1] 1.151238772
-eliteGain(100, 9.36, 1, 5, 160, 67996, 100, 3932181)
+eliteGain(0, (9.36/15), 1, 5, (60/15), 67996, 0, 3932181)
 # [1] 34.98100356
 ~~~
 
@@ -672,9 +681,9 @@ Now the IVF children represent a majority. With the third generation, they reach
 In practice, of course, we currently would get much less: 0.13808892057 IQ points in the USA model, which would yield a trivial percentage increase of 0.06% or 1.6%:
 
 ~~~{.R}
-eliteGain(100, 0.13808892057, 1, 1, 160, 67996, 100, 3932181)
+eliteGain(0, (0.13808892057/15), 1, 1, (60/15), 67996, 0, 3932181)
 # [1] 0.0006478714323
-eliteGain(115, 0.13808892057, 1, 1, 160, 67996, 100, 3932181)
+eliteGain((15/15), (0.13808892057/15), 1, 1, (60/15), 67996, 0, 3932181)
 # [1] 0.01601047464
 ~~~
 
@@ -682,10 +691,10 @@ Table 3 considers 12 scenarios: 3 adoption fractions of the general population (
 The descriptions add 2 additional variables: first vs second generation, and elite vs eminent, giving 48 relevant estimates total.
 
 ~~~{.R}
-scenarios <- expand.grid(c(0.025, 0.1, 0.9), c(4, 12, 19, 100), c(1,2), c(130, 160))
+scenarios <- expand.grid(c(0.025, 0.1, 0.9), c(4/15, 12/15, 19/15, 100/15), c(1,2), c(30/15, 60/15))
 colnames(scenarios) <- c("Adoption.fraction", "IQ.gain", "Generation", "Eliteness")
 scenarios$Gain.fraction <- round(do.call(mapply, c(function(adoptionRate, gain, generation, selectiveness) {
-                                  eliteGain(100, gain, adoptionRate, generation, selectiveness, 3932181, 100, 3932181) }, unname(scenarios[,1:4]))),
+                                  eliteGain(0, gain, adoptionRate, generation, selectiveness, 3932181, 0, 3932181) }, unname(scenarios[,1:4]))),
                            digits=2)
 ~~~
 
@@ -787,13 +796,13 @@ As written, the IVF simulator cannot deliver a cost-benefit because the costs wi
 So it must be augmented:
 
 ~~~{.R}
-simulateIVFCB <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.5, vitrificationP, liveBirth, fixedCost, embryoCost, iqValue) {
+simulateIVFCB <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.5, vitrificationP, liveBirth, fixedCost, embryoCost, traitValue) {
   eggsExtracted <- max(0, round(rnorm(n=1, mean=eggMean, sd=eggSD)))
 
   normal        <- rbinom(1, eggsExtracted, prob=normalityP)
 
   totalCost     <- fixedCost + normal * embryoCost
-  scores        <- embryoIQScores(n=normal, variance=polygenicScoreVariance)
+  scores        <- embryoScores(n=normal, variance=polygenicScoreVariance)
 
   survived      <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, scores)
 
@@ -809,74 +818,74 @@ simulateIVFCB <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.
    }
   gain <- max(0, live - mean(selection))
   }
-  return(data.frame(IQ=gain, Cost=totalCost, Net=(iqValue*gain - totalCost)))  }
+  return(data.frame(Trait.SD=gain, Cost=totalCost, Net=(traitValue*gain - totalCost)))  }
 library(plyr)
-simulateIVFCBs <- function(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, fixedCost, embryoCost, iqValue, iters=10000) {
-  ldply(replicate(simplify=FALSE, iters, simulateIVFCB(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, fixedCost, embryoCost, iqValue))) }
+simulateIVFCBs <- function(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, fixedCost, embryoCost, traitValue, iters=10000) {
+  ldply(replicate(simplify=FALSE, iters, simulateIVFCB(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, fixedCost, embryoCost, traitValue))) }
 ~~~
 
 Now we have all our parameters set:
 
-1. IQ's value is \$2,783 - \$13,744
+1. IQ's value per point or per SD (multiply by 15)
 2. The fixed cost of selection is \$1500
 3. per-embryo cost of selection is \$200
 4. and the relevant probabilities have been defined already
 
 ~~~{.R}
-iqLow <- 3270; iqHigh <- 16151
+iqLow <- 3270*15; iqHigh <- 16151*15
 ## Tan:
 summary(simulateIVFCBs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24, 1500, 200, iqLow))
-#        IQ                 Cost              Net
-#  Min.   :0.0000000   Min.   :1500.00   Min.   :-3700.0000
-#  1st Qu.:0.0000000   1st Qu.:1500.00   1st Qu.:-1700.0000
-#  Median :0.0000000   Median :1700.00   Median :-1500.0000
-#  Mean   :0.3702470   Mean   :1863.46   Mean   : -652.7523
-#  3rd Qu.:0.4343842   3rd Qu.:2100.00   3rd Qu.: -766.8428
-#  Max.   :4.9546013   Max.   :4100.00   Max.   :14436.1287
+#     Trait.SD               Cost              Net
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3900.0000
+#  1st Qu.:0.00000000   1st Qu.:1500.00   1st Qu.:-1700.0000
+#  Median :0.00000000   Median :1700.00   Median :-1500.0000
+#  Mean   :0.02379969   Mean   :1868.04   Mean   : -700.6651
+#  3rd Qu.:0.02571865   3rd Qu.:2100.00   3rd Qu.: -854.4607
+#  Max.   :0.36255503   Max.   :4100.00   Max.   :16083.3242
 summary(simulateIVFCBs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24, 1500, 200, iqHigh))
-#        IQ                 Cost             Net
-#  Min.   :0.0000000   Min.   :1500.0   Min.   :-3700.000
-#  1st Qu.:0.0000000   1st Qu.:1500.0   1st Qu.:-1700.000
-#  Median :0.0000000   Median :1700.0   Median :-1500.000
-#  Mean   :0.3708341   Mean   :1871.4   Mean   : 4117.942
-#  3rd Qu.:0.4239222   3rd Qu.:2100.0   3rd Qu.: 4717.080
-#  Max.   :6.0962741   Max.   :4700.0   Max.   :96760.923
+#     Trait.SD               Cost              Net
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-4100.000
+#  1st Qu.:0.00000000   1st Qu.:1500.00   1st Qu.:-1700.000
+#  Median :0.00000000   Median :1700.00   Median :-1500.000
+#  Mean   :0.02419341   Mean   :1876.54   Mean   : 3984.676
+#  3rd Qu.:0.02616264   3rd Qu.:2100.00   3rd Qu.: 4197.886
+#  Max.   :0.36983743   Max.   :4100.00   Max.   :87898.665
 
 ## Hodes-Wertz:
 summary(simulateIVFCBs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40, 1500, 200, iqLow))
-#        IQ                  Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3700.00000
-#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1900.00000
-#  Median :0.06311678   Median :2100.00   Median :-1500.00000
-#  Mean   :0.63901575   Mean   :2073.22   Mean   :   16.36151
-#  3rd Qu.:1.11797511   3rd Qu.:2300.00   3rd Qu.: 1414.39774
-#  Max.   :5.39328274   Max.   :4100.00   Max.   :14949.47466
+#     Trait.SD                Cost              Net
+#  Min.   :0.000000000   Min.   :1500.00   Min.   :-3900.00000
+#  1st Qu.:0.000000000   1st Qu.:1700.00   1st Qu.:-1900.00000
+#  Median :0.007885594   Median :2100.00   Median :-1500.00000
+#  Mean   :0.043730740   Mean   :2091.24   Mean   :   53.75279
+#  3rd Qu.:0.076300343   3rd Qu.:2300.00   3rd Qu.: 1486.46919
+#  Max.   :0.404614876   Max.   :4100.00   Max.   :17146.35965
 summary(simulateIVFCBs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40, 1500, 200, iqHigh))
-#        IQ                  Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3500.000
-#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1700.000
-#  Median :0.06994945   Median :2100.00   Median :-1037.530
-#  Mean   :0.64662845   Mean   :2071.76   Mean   : 8371.936
-#  3rd Qu.:1.13999673   3rd Qu.:2300.00   3rd Qu.:16191.801
-#  Max.   :5.86196512   Max.   :4700.00   Max.   :92976.599
+#     Trait.SD                Cost              Net
+#  Min.   :0.000000000   Min.   :1500.00   Min.   :-3700.0000
+#  1st Qu.:0.000000000   1st Qu.:1700.00   1st Qu.:-1700.0000
+#  Median :0.006204365   Median :2100.00   Median : -675.3017
+#  Mean   :0.043163042   Mean   :2074.54   Mean   : 8382.3544
+#  3rd Qu.:0.074069384   3rd Qu.:2300.00   3rd Qu.:15744.6932
+#  Max.   :0.379461446   Max.   :3900.00   Max.   :90230.2272
 
 ## USA, youngest:
 summary(simulateIVFCBs(9, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
-#        IQ                 Cost              Net
-#  Min.   :0.0000000   Min.   :1500.00   Min.   :-3900.00000
-#  1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-2100.00000
-#  Median :0.0000000   Median :1900.00   Median :-1655.66896
-#  Mean   :0.4185340   Mean   :2042.36   Mean   : -673.75368
-#  3rd Qu.:0.6373484   3rd Qu.:2300.00   3rd Qu.:  -59.97021
-#  Max.   :6.1453346   Max.   :3900.00   Max.   :18395.24401
+#     Trait.SD               Cost              Net
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-4100.00000
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-2100.00000
+#  Median :0.00000000   Median :2100.00   Median :-1700.00000
+#  Mean   :0.02826084   Mean   :2049.02   Mean   : -662.82577
+#  3rd Qu.:0.04251262   3rd Qu.:2300.00   3rd Qu.:  -83.30865
+#  Max.   :0.42444969   Max.   :4100.00   Max.   :18319.25752
 summary(simulateIVFCBs(9, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
-#        IQ                 Cost              Net
-#  Min.   :0.0000000   Min.   :1500.00   Min.   :-3900.000
-#  1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-1900.000
-#  Median :0.0000000   Median :1900.00   Median :-1500.000
-#  Mean   :0.4215916   Mean   :2046.02   Mean   : 4763.106
-#  3rd Qu.:0.6391939   3rd Qu.:2300.00   3rd Qu.: 8124.050
-#  Max.   :5.4870418   Max.   :3900.00   Max.   :86921.213
+#     Trait.SD               Cost              Net
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3700.000
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1900.000
+#  Median :0.00000000   Median :1900.00   Median :-1500.000
+#  Mean   :0.02897211   Mean   :2041.58   Mean   : 4977.349
+#  3rd Qu.:0.04426675   3rd Qu.:2300.00   3rd Qu.: 8561.770
+#  Max.   :0.34742869   Max.   :4100.00   Max.   :82469.810
 ~~~
 
 In general, embryo selection as of January 2016 is just barely profitable or somewhat unprofitable in each group using the lowest estimate of IQ's value; it is always profitable on average with the highest estimate.
@@ -891,21 +900,21 @@ We might also ask: as an upper bound, in the realistic USA IVF model, how much w
 
 ~~~{.R}
 summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
-#        IQ                 Cost              Net
-#  Min.   : 0.000000   Min.   :1500.00   Min.   :-3900.000
-#  1st Qu.: 0.000000   1st Qu.:1700.00   1st Qu.:-1900.000
-#  Median : 0.000000   Median :1900.00   Median :-1500.000
-#  Mean   : 1.549596   Mean   :2048.58   Mean   : 3018.600
-#  3rd Qu.: 2.347495   3rd Qu.:2300.00   3rd Qu.: 5457.101
-#  Max.   :19.155641   Max.   :3900.00   Max.   :60938.945
+    Trait.SD              Cost              Net
+ Min.   :0.0000000   Min.   :1500.00   Min.   :-3700.000
+ 1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-2100.000
+ Median :0.0000000   Median :1900.00   Median :-1500.000
+ Mean   :0.1037614   Mean   :2042.24   Mean   : 3047.259
+ 3rd Qu.:0.1562492   3rd Qu.:2300.00   3rd Qu.: 5516.869
+ Max.   :1.4293926   Max.   :3900.00   Max.   :68411.709
 summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
-#        IQ                 Cost              Net
-#  Min.   : 0.000000   Min.   :1500.00   Min.   : -3900.00
-#  1st Qu.: 0.000000   1st Qu.:1700.00   1st Qu.: -1900.00
-#  Median : 0.000000   Median :2100.00   Median : -1500.00
-#  Mean   : 1.591006   Mean   :2045.98   Mean   : 23650.36
-#  3rd Qu.: 2.449667   3rd Qu.:2300.00   3rd Qu.: 37322.15
-#  Max.   :19.557012   Max.   :3900.00   Max.   :314165.29
+#     Trait.SD              Cost             Net
+#  Min.   :0.0000000   Min.   :1500.0   Min.   : -4100.00
+#  1st Qu.:0.0000000   1st Qu.:1700.0   1st Qu.: -1900.00
+#  Median :0.0000000   Median :1900.0   Median : -1500.00
+#  Mean   :0.1030492   Mean   :2037.6   Mean   : 22927.61
+#  3rd Qu.:0.1530295   3rd Qu.:2300.0   3rd Qu.: 34652.62
+#  Max.   :1.3798166   Max.   :4100.0   Max.   :331981.26
 ivfBirths <- 67996; discount <- 0.05
 current <- 4763; perfect <- 23650
 (ivfBirths * perfect)/(log(1+discount)) - (ivfBirths * current)/(log(1+discount))
@@ -973,20 +982,20 @@ max(gainByEggcount); which.max(gainByEggcount)
 # [1] 253
 plot(1:1000, gainByEggcount, xlab="Average number of eggs available", ylab="Profit")
 summary(simulateIVFCBs(which.max(gainByEggcount), 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
-#        IQ                Cost               Net
-#  Min.   :0.000000   Min.   : 9500.00   Min.   :-20300.000
-#  1st Qu.:1.498389   1st Qu.:15700.00   1st Qu.:  7514.573
-#  Median :2.207399   Median :16700.00   Median : 18857.403
-#  Mean   :2.239460   Mean   :16655.06   Mean   : 19514.460
-#  3rd Qu.:2.953502   3rd Qu.:17700.00   3rd Qu.: 30919.700
-#  Max.   :7.646082   Max.   :21700.00   Max.   :106791.877
+#     Trait.SD               Cost              Net
+#  Min.   :0.00000000   Min.   :10900.0   Min.   :-20100.000
+#  1st Qu.:0.09910237   1st Qu.:15700.0   1st Qu.:  7427.242
+#  Median :0.14840366   Median :16700.0   Median : 19288.436
+#  Mean   :0.14974864   Mean   :16679.4   Mean   : 19599.455
+#  3rd Qu.:0.19606833   3rd Qu.:17700.0   3rd Qu.: 30746.035
+#  Max.   :0.43358366   Max.   :23100.0   Max.   : 88342.145
 max(gainByEggcount)/which.max(gainByEggcount)
 # [1] 78.95312211
 ~~~
 
 ![Net profit vs average number of eggs](/images/iq-selection-eggcurve.png)
 
-The maxima is ~253, yielding 2.23 points & a net profit ~\$19.6k, indicating that with that many eggs, the cost of the additional SNPing exceeds the marginal IQ gain from having 1 more egg available which could turn into an embryo & be selected amongst.
+The maxima is ~253, yielding 0.149SD/~2.23 points & a net profit ~\$19.6k, indicating that with that many eggs, the cost of the additional SNPing exceeds the marginal IQ gain from having 1 more egg available which could turn into an embryo & be selected amongst.
 With \$19.9k profit vs 253 eggs, we could say that the gain from unlimited eggs compared to the normal yield of ~9 eggs is ~\$14k (\$19k vs the best current scenario of \$4763), and that the average profit from adding each egg was \$79, giving an idea of the sort of per-egg costs one would need from an egg stem cell technology (ie small).
 The total number of eggs will decrease with an increase in per-egg costs; if it costs another $200 per embryo, then the optimal number of eggs is ~125, and so on.
 
@@ -1141,7 +1150,8 @@ One can also try to use prior information to boost the posterior probability of 
 A better method is fine-mapping or whole-genome sequencing: when all the variants in a haplotype are sequenced, then the true causal variant will tend to perform subtly better and one can single it out of the whole SNP set using various statistical criteria (eg [Farh et al 2015](http://www.nature.com/nature/journal/v518/n7539/full/nature13835.html "Genetic and epigenetic fine mapping of causal autoimmune disease variants") using their algorithm on autoimmune disorder estimate 5.5% of their 4.9k SNPs are causal). Useful, but whole-genomes are still expensive enough that they are not created nearly as much as SNPs and there do not seem to be many comparisons to ground-truths or meta-analyses.
 Another approach is similar to the lab animal approach: human groups differ genetically, and their haplotypes & LD patterns can differ greatly; if D looks associated with intelligence in one group, but is not associated in a genetically distant group with different haplotypes, that strongly suggests that in the first group, D was indeed just proxying for another variant. We can also expect that variants with high frequencies will not be population-specific but be ancient & shared causal variants.
 Some of the intelligence hits have replicated in European-American samples, as expected but not helpfully; more importantly, in African-American ([Domingue et al 2015](http://ero.sagepub.com/content/1/3/2332858415599972?full "Polygenic Influence on Educational Attainment")) and East Asian samples ([Zhu et al 2015](https://www.researchgate.net/profile/Chuansheng_Chen/publication/265855103_Educational_attainment-related_loci_identified_by_GWAS_are_associated_with_select_personality_traits_and_mathematics_and_language_abilities/links/542af5720cf27e39fa917a84.pdf "Educational attainment-related loci identified by GWAS are associated with select personality traits and mathematics and language abilities")), and the top SNPs have some predictive power of mean IQs across ethnic groups ([Piffer 2015](http://emilkirkegaard.dk/en/wp-content/uploads/PifferIntelligence2015.pdf "A review of intelligence GWAS hits: Their relationship to country IQ and the issue of spatial autocorrelation")).
-More generally, some GWASes have compared across populations (eg [Waters et al 2010](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001078 "Consistent Association of Type 2 Diabetes Risk Variants Found in Europeans in Diverse Racial and Ethnic Groups"), [Zuo et al 2011](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026726 "A Novel, Functional and Replicable Risk Gene Region for Alcohol Dependence Identified by Genome-Wide Association Study"), [Chang et al 2011](http://circgenetics.ahajournals.org/content/early/2011/08/10/CIRCGENETICS.111.959577.full.pdf "Race / Ethnic Variation in the Association of Lipid-Related Genetic Variants with Blood  Lipids in the Adult U.S. Population"), [Nyholt et al 2012](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3527416/ "Genome-wide association meta-analysis identifies new endometriosis risk loci"), [Fesinmeyer et al 2013](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3482415/ "Genetic risk factors for body mass index and obesity in an ethnically diverse population: results from the Population Architecture using Genomics and Epidemiology (PAGE) Study")/[Gong et al 2013](http://www.sciencedirect.com/science/article/pii/S000292971300387X "Fine Mapping and Identification of BMI Loci in African Americans"), [Xing et al 2014](http://iovs.arvojournals.org/article.aspx?articleid=2265959 "Transethnic Replication of Association of CTG18.1 Repeat Expansion of TCF4 Gene With Fuchs' Corneal Dystrophy in Chinese Implies Common Causal Variant"), [DIAGRAM Consortium et al 2014](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3969612/ "Genome-wide trans-ancestry meta-analysis provides insight into the genetic architecture of type 2 diabetes susceptibility"), [Yin et al 2015](http://www.nature.com/ncomms/2015/150423/ncomms7916/full/ncomms7916.html "Genome-wide meta-analysis identifies multiple novel associations and ethnic heterogeneity of psoriasis susceptibility"), [Locke et al 2015](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4382211/ "Genetic studies of body mass index yield new insights for obesity biology"), [He et al 2015](/docs/genetics/2015-he.pdf "Meta-analysis of genome-wide association studies of adult height in East Asians identifies 17 novel loci")); despite interpretative difficulties such as statistical power, hits often replicate from European-descent samples to distant ethnicities, and the example of the schizophrenia GWASes ([Candia et al 2013](http://www.sciencedirect.com/science/article/pii/S000292971300325X "Additive Genetic Variation in Schizophrenia Risk Is Shared by Populations of African and European Descent"), [Ripke et al 2014](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4112379/ "Biological Insights From 108 Schizophrenia-Associated Genetic Loci")) also offers hope in showing a strong correlation of 0.66/0.61 between African & European schizophrenia SNP-based GCTAs.
+More generally, while GWASes usually are paranoid about ancestry, using as homogeneous a sample as possible and controlling away any detectable differences in ancestry, GWASes can use cross-ethnic and differing ancestries in ["admixture mapping"](http://emilkirkegaard.dk/en/wp-content/uploads/Admixture-Mapping-comes-of-age-2010-winkler.pdf "'Admixture Mapping Comes of Age', Winkler et al 2010") to home in on causal variants, but this hasn't been done for intelligence.
+We can note that some GWASes have compared how hits replicate across populations (eg [Waters et al 2010](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001078 "Consistent Association of Type 2 Diabetes Risk Variants Found in Europeans in Diverse Racial and Ethnic Groups"), [Zuo et al 2011](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026726 "A Novel, Functional and Replicable Risk Gene Region for Alcohol Dependence Identified by Genome-Wide Association Study"), [Chang et al 2011](http://circgenetics.ahajournals.org/content/early/2011/08/10/CIRCGENETICS.111.959577.full.pdf "Race / Ethnic Variation in the Association of Lipid-Related Genetic Variants with Blood  Lipids in the Adult U.S. Population"), [Nyholt et al 2012](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3527416/ "Genome-wide association meta-analysis identifies new endometriosis risk loci"), [Fesinmeyer et al 2013](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3482415/ "Genetic risk factors for body mass index and obesity in an ethnically diverse population: results from the Population Architecture using Genomics and Epidemiology (PAGE) Study")/[Gong et al 2013](http://www.sciencedirect.com/science/article/pii/S000292971300387X "Fine Mapping and Identification of BMI Loci in African Americans"), [Xing et al 2014](http://iovs.arvojournals.org/article.aspx?articleid=2265959 "Transethnic Replication of Association of CTG18.1 Repeat Expansion of TCF4 Gene With Fuchs' Corneal Dystrophy in Chinese Implies Common Causal Variant"), [DIAGRAM Consortium et al 2014](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3969612/ "Genome-wide trans-ancestry meta-analysis provides insight into the genetic architecture of type 2 diabetes susceptibility"), [Yin et al 2015](http://www.nature.com/ncomms/2015/150423/ncomms7916/full/ncomms7916.html "Genome-wide meta-analysis identifies multiple novel associations and ethnic heterogeneity of psoriasis susceptibility"), [Locke et al 2015](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4382211/ "Genetic studies of body mass index yield new insights for obesity biology"), [He et al 2015](/docs/genetics/2015-he.pdf "Meta-analysis of genome-wide association studies of adult height in East Asians identifies 17 novel loci")); despite interpretative difficulties such as statistical power, hits often replicate from European-descent samples to distant ethnicities, and the example of the schizophrenia GWASes ([Candia et al 2013](http://www.sciencedirect.com/science/article/pii/S000292971300325X "Additive Genetic Variation in Schizophrenia Risk Is Shared by Populations of African and European Descent"), [Ripke et al 2014](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4112379/ "Biological Insights From 108 Schizophrenia-Associated Genetic Loci")) also offers hope in showing a strong correlation of 0.66/0.61 between African & European schizophrenia SNP-based GCTAs.
 (It also seems to me that there is a trend with the complex highly polygenic traits having better cross-ethnic replicability than in simpler diseases.)
 
 23. Ntzani et al 2012, "Consistency of genome-wide associations across major ancestral groups" /docs/genetics/2012-ntzani.pdf
@@ -1177,7 +1187,7 @@ We can consider a simulation of the scenario in which every time-step is a day a
     # [1] 34842
     ~~~
 
-problem: what's the probability of non-causal tagging due to LD? probably low since they work cross-racially don't they? on the other hand: http://emilkirkegaard.dk/en/?p=5415
+problem: what's the probability of non-causal tagging due to LD? probably low since they work cross-ethnically don't they? on the other hand: http://emilkirkegaard.dk/en/?p=5415
 "If the GWAS SNPs owe their predictive power to being actual causal variants, then LD is irrelevant and they should predict the relevant outcome in any racial group. If however they owe wholly or partly their predictive power to just being statistically related to causal variants, they should be relatively worse predictors in racial groups that are most distantly related. One can investigate this by comparing the predictive power of GWAS betas derived from one population on another population. Since there are by now 1000s of GWAS, meta-analyses have in fact made such comparisons, mostly for disease traits. Two reviews found substantial cross-validity for the Eurasian population (Europeans and East Asians), and less for Africans (usually African Americans) (23,24). The first review only relied on SNPs with p<α and found weaker results. This is expected because using only these is a threshold effect, as discussed earlier.
 
 The second review (from 2013; 299 included GWAS) found much stronger results, probably because it included more SNPs and because they also adjusted for statistical power. Doing so, they found that: ~100% of SNPs replicate in other European samples when accounting for statistical power, ~80% in East Asian samples but only ~10% in the African American sample (not adjusted for statistical power, which was ~60% on average). There were fairly few GWAS for AAs however, so some caution is needed in interpreting the number. Still, this throws some doubt on the usefulness of GWAS results from Europeans or Asians used on African samples (or reversely)."
@@ -1187,7 +1197,8 @@ The second review (from 2013; 299 included GWAS) found much stronger results, pr
 worst-case, ~10% of SNPs are causal?
 
 
-<!--
+-----------------------
+
 https://www.addgene.org/crispr/reference/
 http://www.genome.gov/sequencingcosts/
 https://crispr.bme.gatech.edu/
@@ -1216,10 +1227,10 @@ dnorm((150-100)/15) * 320000000
 dnorm((170-100)/15) * 320000000
 [1] 2382.734679
 
-if you're curious how I calculated that, 'R> (10*1000 + 10 * 98 * 500) > 500000 ~> [1] FALSE R> sum(sort((rexp(10000)/1)/18, decreasing=TRUE)[1:98] * 0.5) ~> [1] 15.07656556'
+if you're curious how I calculated that, '(10*1000 + 10 * 98 * 500) > 500000 ~> [1] FALSE` `sum(sort((rexp(10000)/1)/18, decreasing=TRUE)[1:98] * 0.5) ~> [1] 15.07656556'
 
 
-13:16:15 <@gwern> hm. there are ~50k ivf babies each year in the USA. my quick CRISPR sketch suggested that for a few mill you could get up to 150-170. `dnorm((150-100)/15) * 320000000 ~>
+hm. there are ~50k ivf babies each year in the USA. my quick CRISPR sketch suggested that for a few mill you could get up to 150-170. `dnorm((150-100)/15) * 320000000 ~>
                   [1] 493,529.2788; dnorm((170-100)/15) * 320000000 ~> [1] 2382.734679`. so depending on how many IVFers used it, you could boost the total genius population by anywhere
                   from 1/10th to 9x
 
@@ -1230,7 +1241,7 @@ ivf <- (dnorm((115-100)/15) * 50000); genpop <- (dnorm((170-100)/15) * 320000000
 [1] 6.077584313
 an increase of 1.02x (150) and 6x (170) respectively
 
-> "To confirm these GUIDE-seq findings, we used targeted amplicon sequencing to more directly measure the frequencies of indel mutations induced by wild-type SpCas9 and SpCas9-HF1. For these experiments, we transfected human cells only with sgRNA- and Cas9encoding plasmids (without the GUIDE-seq tag). We used next-generation sequencing to examine the on-target sites and 36 of the 40 off-target sites that had been identified for six sgRNAs with wild-type SpCas9 in our GUIDE-seq experiments (four of the 40 sites could not be specifically amplified from genomic DNA). These deep sequencing experiments showed that: (1) wild-type SpCas9 and SpCas9-HF1 induced comparable frequencies of indels at each of the six sgRNA on-target sites, indicating that the nucleases and sgRNAs were functional in all experimental replicates (Fig. 3a, b); (2) as expected, wild-type SpCas9 showed statistically significant evidence of indel mutations at 35 of the 36 off-target sites (Fig. 3b) at frequencies that correlated well with GUIDE-seq read counts for these same sites (Fig. 3c); and (3) the frequencies of indels induced by SpCas9-HF1 at 34 of the 36 off-target sites were statistically indistinguishable from the background level of indels observed in samples from control transfections (Fig. 3b). For the two off-target sites that appeared to have statistically significant mutation frequencies with SpCas9-HF1 relative to the negative control, the mean frequencies of indels were 0.049% and 0.037%, levels at which it is difficult to determine whether these are due to sequencing or PCR error or are bona fide nuclease-induced indels. Based on these results, we conclude that SpCas9-HF1 can completely or nearly completely reduce off-target mutations that occur across a range of different frequencies with wild-type SpCas9 to levels generally undetectable by GUIDE-seq and targeted deep sequencing."
+"To confirm these GUIDE-seq findings, we used targeted amplicon sequencing to more directly measure the frequencies of indel mutations induced by wild-type SpCas9 and SpCas9-HF1. For these experiments, we transfected human cells only with sgRNA- and Cas9encoding plasmids (without the GUIDE-seq tag). We used next-generation sequencing to examine the on-target sites and 36 of the 40 off-target sites that had been identified for six sgRNAs with wild-type SpCas9 in our GUIDE-seq experiments (four of the 40 sites could not be specifically amplified from genomic DNA). These deep sequencing experiments showed that: (1) wild-type SpCas9 and SpCas9-HF1 induced comparable frequencies of indels at each of the six sgRNA on-target sites, indicating that the nucleases and sgRNAs were functional in all experimental replicates (Fig. 3a, b); (2) as expected, wild-type SpCas9 showed statistically significant evidence of indel mutations at 35 of the 36 off-target sites (Fig. 3b) at frequencies that correlated well with GUIDE-seq read counts for these same sites (Fig. 3c); and (3) the frequencies of indels induced by SpCas9-HF1 at 34 of the 36 off-target sites were statistically indistinguishable from the background level of indels observed in samples from control transfections (Fig. 3b). For the two off-target sites that appeared to have statistically significant mutation frequencies with SpCas9-HF1 relative to the negative control, the mean frequencies of indels were 0.049% and 0.037%, levels at which it is difficult to determine whether these are due to sequencing or PCR error or are bona fide nuclease-induced indels. Based on these results, we conclude that SpCas9-HF1 can completely or nearly completely reduce off-target mutations that occur across a range of different frequencies with wild-type SpCas9 to levels generally undetectable by GUIDE-seq and targeted deep sequencing."
 
 So no detected off-target mutations down to the level of lab error rate detectability. Amazing. So you can do a CRISPR on a cell with a >75% chance of making the edit to a desired gene correctly, and a <0.05% chance of a mistaken (potentially harmless) edit/mutation on a similar gene. With an error rate that low, you could do hundreds of CRISPR edits to a set of embryos with a low net risk of error... The median number of eggs extracted from a woman during IVF in America is ~9; assume the worst case of 0.05% risk of off-target mutation and that one scraps any embryo found to have any mutation at all even if it looks harmless; then the probability of making 1000 edits without an off-target mutation could be (1-(0.05/100)) ^ 1000 = 60%, so you're left with 5.4 good embryos, which is a decent yield. Making an edit of the top 1000 betas from the Rietveld 2013 polygenic score and figuring that it's weakened by maybe 25% due to particular cells not getting particular edits and that is... a very large number.
 
@@ -1269,7 +1280,6 @@ The supplementary tables gives a count of all observed SNVs by category, which s
 https://en.wikipedia.org/wiki/Paternal_age_effect
 "Rate of de novo mutations and the importance of father's age to disease risk" http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3548427/
 "Novel variation and de novo mutation rates in population-wide de novo assembled Danish trios" http://www.nature.com/ncomms/2015/150119/ncomms6969/full/ncomms6969.html
--->
 
 # See also
 
