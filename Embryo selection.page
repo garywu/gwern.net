@@ -167,6 +167,9 @@ Shulman & Bostrom's upper bound works as follows:
 
 That is, adult intelligence is heritable at ~0.8; a SNP chip records the few hundred thousand most common genetic variants in the population and treating each gene as having a simple additive increase-or-decrease effect on intelligence, Davies et al 2011's GCTA (Genome-wide complex trait analysis) estimates that those SNPs are responsible for 0.51 of variance; since siblings descend from the same two parents, they will share half the variants (just like dizygotic twins) and differ on the rest, so the SNPs can only predict up to 0.25 between siblings and siblings are analogous to multiple embryos being considered for implantation in IVF; simulate _n_ embryos by drawing from a normal distribution with a SD of 0.7 or 10.5 IQ points and selecting the highest, and with various _n_, you get something like the table.
 
+(The [order statistic](!Wikipedia) expectation of the maximum ($E[Z]$) of a draw of _n_ samples from a normal distribution can be given [asymptotes & upper bounds](https://math.stackexchange.com/questions/89030/expectation-of-the-maximum-of-gaussian-random-variables), the simplest [upper bound](http://math.stackexchange.com/a/89147) being $E[Z] \leq \sigma \cdot \sqrt{2 \cdot log(n)}$ which makes the diminishing returns crystal clear.
+However, it is inaccurate in small samples and simulations are more flexible.)
+
 GCTA tells us how much the SNPs would explain if we knew all their effects exactly, but in practice, there are so many SNPs (likely into the thousands) affecting intelligence, only a few are known to a high level of confidence, and the rest will take much larger samples to pin down, so the table represents an upper limit to SNP-based approaches - to approach the 0.51, we will need large sample sizes, and to exceed it and approach the 0.8, we will need whole genomes and models which can go beyond additive estimates to model interactions (like genes which only increase intelligence in the presence of particular other variants).
 
 ##### GCTA meta-analysis
@@ -358,7 +361,7 @@ mean(simEmbryoSelection(n=10, variance=rietveld2013)) * 15
 
 ## Cost of embryo selection
 
-PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genetic diagnosis#United States"), so there are no criminal or legal costs; even if there were, clinics in other countries will continue to offer it, and the cost of using a Chinese fertility clinic may not be particularly noticeable.[^China-trip]
+PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genetic diagnosis#United States"), so there are no criminal or legal costs; even if there were, clinics in other countries will continue to offer it, and the cost of using a Chinese fertility clinic may not be particularly noticeable financially[^China-trip] and their quality may eventually be higher[^China-quality].
 
 [^China-trip]: We could consider a hypothetical trip to China to make use of fertility clinics there. How much additional would one pay?
 
@@ -375,7 +378,8 @@ PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genet
 
     - Chinese IVF fertility clinics are presumably cheaper as well as more willing to do PGD. A [2011 NPR article](http://www.npr.org/2011/07/01/137530286/in-china-an-ivf-clinic-grapples-with-huge-demand) quotes a Chinese fertility clinic as offering 1 cycle at \$4.5k, which is around half of what a US clinic might charge; so the total penalty of going to China will depend on how many cycles are necessary. If 1 cycle, then it's \$10k vs \$16k+\$4.5k, a loss of -\$10.5k; for 2, -\$5k; for 3, +\$0.5k; and for 4, +\$6k, and so on.
 
-        IVF cycle success rates being <41% and following a negative binomial, we can say that 2 or more cycles will be required, more often than not, and often 3 or 4, to get 1 live birth (after which it stops); one issue is that if a woman leaves as soon as pregnancy is confirmed with a fetal heartbeat, there may still be a miscarriage and they would have to decide whether to fly back to China and start another cycle, while if they stay for the full pregnancy, that triples food/hotel costs. Quality-wise, Chinese fertility clinics may be behind Western clinics, but we can expect them to rapidly improve: the Chinese population is aging and becoming more affluent, the one-child policy is dead, and the Chinese government has made biology & genetic engineering a national strategic priority and bankrolled R&D and institutes like the [Beijing Genomics Institute](!Wikipedia). To quote [one article](http://www.scientificamerican.com/article/china-s-bold-push-into-genetically-customized-animals/ "China's Bold Push into Genetically Customized Animals: New kinds of dogs, goats and monkeys are being made quickly, although scientists voice worries about ethics and whether the methods should be used on humans") :
+        IVF cycle success rates being <41% and following a negative binomial, we can say that 2 or more cycles will be required, more often than not, and often 3 or 4, to get 1 live birth (after which it stops); one issue is that if a woman leaves as soon as pregnancy is confirmed with a fetal heartbeat, there may still be a miscarriage and they would have to decide whether to fly back to China and start another cycle, while if they stay for the full pregnancy, that triples food/hotel costs.
+[^China-quality]: Quality-wise, Chinese fertility clinics may be behind Western clinics, but we can expect them to rapidly improve: the Chinese population is aging and becoming more affluent, the one-child policy is dead, and the Chinese government has made biology & genetic engineering a national strategic priority and bankrolled R&D and institutes like the [Beijing Genomics Institute](!Wikipedia). To quote [one article](http://www.scientificamerican.com/article/china-s-bold-push-into-genetically-customized-animals/ "China's Bold Push into Genetically Customized Animals: New kinds of dogs, goats and monkeys are being made quickly, although scientists voice worries about ethics and whether the methods should be used on humans") :
 
     > Dozens, if not hundreds, of Chinese institutions in both research hubs like Beijing and far-flung provincial outposts have enthusiastically deployed CRISPR. "It's a priority area for the Chinese Academy of Sciences," says Minhua Hu, a geneticist at the Guangzhou General Pharmaceutical Research Institute and one of the beagle researchers. A colleague, Liangxue Lai of the Guangzhou Institutes of Biomedicine and Health, adds that "China's government has allocated a lot of financial support in genetically modified animals in both [the] agriculture field [and the] biomedicine field."...The level and sophistication of work in China using CRISPR is already "about the same" as in Europe and the U.S., says [George Church](!Wikipedia "George M. Church"), a professor of genetics at Harvard Medical School. An analysis by Thomson Innovation, a division of London-based Thomson Reuters, found that more than 50 Chinese research institutions have filed gene-editing patents.
 
@@ -1002,6 +1006,35 @@ The total number of eggs will decrease with an increase in per-egg costs; if it 
 So with present polygenic-scores & SNP costs, an unlimited number of eggs would only increase profit by 4x, as we are still constrained by the polygenic score.
 (If, for example, we also raised the polygenic score to 33%, then with 253 eggs, we'd get 8 points & \$99k.)
 This would be valuable, of course, but it is not a huge change.
+
+### Multiple selection
+
+A weak polygenic score can be strengthened, but it can also be combined with other polygenic scores to do selection on multiple traits, taking the maximum among the embryos' weighted sums of polygenic scores.
+This can be done almost for free, since if one did sequencing on a comprehensive SNP array chip to compute 1 polygenic score, one probably has all the information needed. Indeed, you could see selection on a single trait as a multiple selection procedure where all traits' values are implausibly set to 0 except for 1 trait.
+In reality, while some traits are of much more value than others, there are few traits with no value at all; an embryo which scores mediocrely on our primary trait may still have many other advantages which more than compensate, so why not check? (It is a general principle that more information is better than less.)
+
+A quick demonstration of the possible gain is to imagine summing several normal deviates.
+Working in batches of 10, we can generally get +1.53SD:
+
+~~~{.R}
+mean(replicate(100000, max(rnorm(10, mean = 0))))
+#[1] 1.537378753
+~~~
+
+What if we have 4 different scores (with two downweighted substantially to reflect that they are less valuable)? We get 0.23SD for free:
+
+~~~{.R}
+mean(replicate(100000, max(rnorm(10, mean = 0) +
+                           0.33*rnorm(10, mean = 0) +
+                           0.33*rnorm(10, mean = 0) +
+                           0.33*rnorm(10, mean = 0))))
+# [1] 1.769910562
+~~~
+
+The advantage of multiple polygenic scores follows from the [sum of normally distributed random variables](!Wikipedia) for 2 independent random variables _X_ & _Y_ is $\sim N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2)$; that is, the standard deviation will increase, and so our expected maximum sample will increase.
+Recalling $E[Z] \leq \sigma \cdot \sqrt{2 \cdot log(n)}$, increasing $\sigma$ will yield larger returns than increasing _n_ (due to the square root), and so multiple selection should not be neglected.
+
+
 
 # Iterated embryo selection
 
