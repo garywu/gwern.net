@@ -15,8 +15,9 @@ belief: likely
 > - the best 2015 polygenic score could achieve a gain of <4.5 IQ points when selecting out of 10
 > - the cost of embryo selection is modest, at \$1500 + \$200 per embryo, with the sequencing cost projected to drop rapidly
 > - a model of the IVF process, incorporating number of extracted eggs, losses to abnormalities & vitrification & failed implantation & miscarriages from 3 real IVF patient populations, estimates feasible gains of 0.14, 0.36, & 0.56 IQ points
-> - embryo selection is currently unprofitable (mean: -\$673) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$4763). The main constraints on selection profitability is the polygenic score; under the highest value, the NPV EVPI of a perfect SNP predictor is \$27b and the EVSI per education/SNP sample is \$71k.
-> - under the worst-case estimate, selection can be made profitable with a better polygenic score, which would require _n_>237,300 using education phenotype data (and much less using fluid intelligence measures).
+> - embryo selection is currently unprofitable (mean: -\$673) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$4763). The main constraints on selection profitability is the polygenic score; under the highest value, the NPV EVPI of a perfect SNP predictor is \$27b and the EVSI per education/SNP sample is \$71k
+> - under the worst-case estimate, selection can be made profitable with a better polygenic score, which would require _n_>237,300 using education phenotype data (and much less using fluid intelligence measures)
+> - selection can be made much more profitable by selecting on multiple phenotype traits; selection scales near-linearly with equally-valuable traits, and considering an example using 7 traits (IQ/height/BMI/diabetes/ADHD/bipolar/schizophrenia), there is a gain of 2.8x over IQ alone (\$4977 ~> \$14130)
 
 # Embryo selection cost-effectiveness
 
@@ -26,7 +27,7 @@ The choice of embryo is relatively random, with the best looking one implanted; 
 [Preimplantation genetic profiling / preimplantation genetic diagnosis / preimplantation genetic screening](!Wikipedia "Preimplantation genetic diagnosis") (PGD; [review](/docs/genetics/2013-aa.pdf "'Preimplantation genetic diagnosis guided by single-cell genomics', Van der Aa et al 2013")) is when genetic information is taken and used to choose which embryo to implant.
 Currently, embryos are screened for gross abnormalities like the wrong number of chromosomes which would either be fatal to the embryo's development or cause birth defects like [Down syndrome](!Wikipedia) (so there is no point in implanting it rather than a healthier embryo).
 
-But with ever cheaper SNP arrays, large amounts of subtler genetic information becomes available, and one could check for abnormalities and also start making predictions about adult phenotypes, and one could choose embryos with higher/lower probability of traits with many known genetic hits such as height or intelligence or alcoholism or schizophrenia - thus, in effect, creating ["designer babies"](!Wikipedia "Designer baby#Preimplantation genetic diagnosis") with proven technology no more exotic than IVF and 23andMe.
+But with ever cheaper SNP arrays, large amounts of subtler genetic information becomes available, and one could check for abnormalities and also start making predictions about adult phenotypes, and one could choose embryos with higher/lower probability of traits with many known genetic hits such as [height](!Wikipedia "Human height") or intelligence or alcoholism or schizophrenia - thus, in effect, creating ["designer babies"](!Wikipedia "Designer baby#Preimplantation genetic diagnosis") with proven technology no more exotic than IVF and 23andMe.
 For example, increases in height have [long been linked to increased career success & life satisfaction](http://www.theatlantic.com/business/archive/2015/05/the-financial-perks-of-being-tall/393518/ "The Financial Perks of Being Tall: An extra inch correlates with an estimated $800 in increased annual earnings") with estimates like +\$800 per inch per year income, which combined with polygenic scores predicting [60% of variance](http://neurogenetics.qimrberghofer.edu.au/papers/Wood2014NatGenet.pdf "'Defining the role of common variation in the genomic and biological architecture of adult human height', Wood et al 2014") and allowing increases of perhaps 4 inches. But height, or hair color, or other traits are in general zero-sum traits and far less important to life outcomes than personality or intelligence, which profoundly influence an enormous range of outcomes ranging from academic success to income to longevity to violence to happiness to altruism (and so increases in which are far from "frivolous", as some commenters have labeled them); since the personality GWASes have had difficulties (probably due to non-additivity of the relevant genes connected to the predicted frequency-dependent selection), that leaves intelligence as the most important case.
 
 In ["Embryo Selection for Cognitive Enhancement: Curiosity or Game-changer?"](/docs/iq/2014-shulman.pdf), Shulman & Bostrom 2014 consider the potential of embryo selection for greater intelligence in a little detail, ultimately concluding that in the most applicable current scenario of minimal uptake (restricted largely to those forced into IVF use) and gains of a few IQ points, embryo selection is more of "curiosity" than "game-changer" as it will be "Socially negligible over one generation. Effects of social controversy more important than direct impacts."
@@ -124,6 +125,7 @@ There is much more that can be said on this topic, starting with various measure
 - Daniele 2015, ["Two Italies? Genes, intelligence and the Italian North-South economic divide"](https://www.researchgate.net/profile/Vittorio_Daniele/publication/270594850_Two_Italies_Genes_intelligence_and_the_Italian_North-South_economic_divide/links/5512f1330cf2a23a98a1014a.pdf)
 - Carl 2015, ["IQ and socio-economic development across regions of the UK"](http://emilkirkegaard.dk/en/wp-content/uploads/IQ-AND-SOCIOECONOMIC-DEVELOPMENT-ACROSS-REGIONS-OF-THE-UK.pdf)
 - Lynn & Yadav 2015, ["Differences in cognitive ability, per capita income, infant mortality, fertility and latitude across the states of India"](http://emilkirkegaard.dk/en/wp-content/uploads/Differences-in-cognitive-ability-per-capita-income-infant-mortality-fertility-and-latitude-across-the-states-of-India.pdf)
+- Adams et al 2015, ["Are CEOs Born Leaders? Lessons from Traits of a Million Individuals"](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2436765)
 - Lynn et al 2015, ["Regional differences in intelligence, income and other socio-economic variables in Turkey"](http://www.sciencedirect.com/science/article/pii/S0160289615000446)
 - Dalliard 2016, ["IQ and Permanent Income: Sizing Up the 'IQ Paradox'"](http://humanvarieties.org/2016/01/31/iq-and-permanent-income-sizing-up-the-iq-paradox/)
 - Carl 2016, ["IQ and socio-economic development across local authorities of the UK"](/docs/iq/2016-carl.pdf)
@@ -824,7 +826,7 @@ simulateIVFCB <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.
   }
   return(data.frame(Trait.SD=gain, Cost=totalCost, Net=(traitValue*gain - totalCost)))  }
 library(plyr)
-simulateIVFCBs <- function(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, fixedCost, embryoCost, traitValue, iters=10000) {
+simulateIVFCBs <- function(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, fixedCost, embryoCost, traitValue, iters=20000) {
   ldply(replicate(simplify=FALSE, iters, simulateIVFCB(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, fixedCost, embryoCost, traitValue))) }
 ~~~
 
@@ -898,7 +900,8 @@ In general, embryo selection as of January 2016 is just barely profitable or som
 
 To get an idea of the value of further research into improving the polygenic score or other parts of the procedure, we can look at the overall population gains in the USA if it was adopted by all IVF users.
 Using the high estimate of an average gain of \$3772, and noting that there were 67,996 IVF babies in 2013, that suggests an annual gain of up to \$256.5m.
-What is the net present value of an annual gain of \$256.5m? Discounted at 5%, it'd be \$5.256b.
+What is the net present value of an annual gain of \$256.5m?
+Discounted at 5%, it'd be \$5.256b. (Why a 5% discount rate? This is the highest discount rate I've seen used in health economics; more typical are discount rates like NICE's 3.5%, which would yield a much larger NPV.)
 
 We might also ask: as an upper bound, in the realistic USA IVF model, how much would a perfect SNP polygenic score be worth?
 
@@ -959,6 +962,7 @@ Going back to the lowest IQ value estimate, in the US population estimate, embry
 To boost it to 2.1x (0.0525) turns out to require _n_=40000 or 2.35x, suggesting that another Rietveld et al 2013-style education GWAS would be adequate once it reached  $n \geq 2.35 \cdot 101000=237350$.
 After that sample size has been exceeded, EVSI will then be closer to \$10k.
 
+## Improvements
 ### Limiting step: eggs or scores?
 
 Embryo selection gains can be improved in a number of ways: harvesting more eggs, having more eggs be normal & successfully fertilized, reducing the cost of SNPing or increasing the predictive power of the polygenic scores, and better implantation success.
@@ -1024,17 +1028,95 @@ mean(replicate(100000, max(rnorm(10, mean = 0))))
 What if we have 4 different scores (with two downweighted substantially to reflect that they are less valuable)? We get 0.23SD for free:
 
 ~~~{.R}
-mean(replicate(100000, max(rnorm(10, mean = 0) +
+mean(replicate(100000, max(   1*rnorm(10, mean = 0) +
                            0.33*rnorm(10, mean = 0) +
                            0.33*rnorm(10, mean = 0) +
                            0.33*rnorm(10, mean = 0))))
 # [1] 1.769910562
 ~~~
 
-The advantage of multiple polygenic scores follows from the [sum of normally distributed random variables](!Wikipedia) for 2 independent random variables _X_ & _Y_ is $\sim N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2)$; that is, the standard deviation will increase, and so our expected maximum sample will increase.
-Recalling $E[Z] \leq \sigma \cdot \sqrt{2 \cdot log(n)}$, increasing $\sigma$ will yield larger returns than increasing _n_ (due to the square root), and so multiple selection should not be neglected.
+The advantage of multiple polygenic scores follows from the [sum of normally-distributed independent random variables](!Wikipedia "Sum of normally distributed random variables") for 2 variables _X_ & _Y_ is $\sim N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2)$; that is, the variances are added, so the standard deviation will increase, so our expected maximum sample will increase.
+Recalling $E[Z] \leq \sigma \cdot \sqrt{2 \cdot log(n)}$, increasing $\sigma$ will yield larger returns than increasing _n_ (since the gain is shrunk by the zero-sum weighting of the multiple variables, rather than a square root), and so multiple selection should not be neglected.
 
+We could rewrite `simulateIVFCB` to accept as parameters a series of polygenic score functions and simulate out each polygenic score and their sums; but we could also use the sum of random variables to create a single composite polygenic score - since the variances simply sum up ($\sigma_X^2 + \sigma_Y^2$), we can take the polygenic scores, weight them, and sum them.
 
+~~~{.R}
+combineScores <- function(polygenicScores, weights) {
+    weights <- weights / sum(weights) # normalize to sum to 1
+    # add variances, to get variance explained of total polygenic score
+    sum(weights*polygenicScores) }
+~~~
+
+Let's imagine a US example but with 3 traits now, IQ and 2 we consider to be roughly half as valuable as IQ, but which have better polygenic scores available of 60% and 5%.
+What sort of gain can we expect above our starting point of \$4977?
+
+~~~{.R}
+weights <- c(1, 0.5, 0.5)
+polygenicScores <- c(rietveld2013, 0.6, 0.05)
+summary(simulateIVFCBs(9, 4.6, combineScores(polygenicScores, weights), 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
+#     Trait.SD               Cost              Net
+#  Min.   :0.00000000   Min.   :1500.00   Min.   : -3900.00
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.: -1900.00
+#  Median :0.00000000   Median :2100.00   Median : -1500.00
+#  Mean   :0.06018805   Mean   :2047.98   Mean   : 12533.48
+#  3rd Qu.:0.08943410   3rd Qu.:2300.00   3rd Qu.: 19436.00
+#  Max.   :0.83221364   Max.   :4100.00   Max.   :199916.24
+~~~
+
+So we double our gains by considering 3 traits instead of 1.
+A more realistic example would be to use some of the existing polygenic scores for complex traits, of which [a number are available](http://biorxiv.org/content/biorxiv/early/2016/01/14/035907.full.pdf "'Contrasting the genetic architecture of 30 complex traits from summary association data', Shi et al 2016"):
+
+1. IQ
+2. height
+
+    As previously, the best polygenic score for height predicts ~60% of variance with a population standard deviation of ~4 inches; the economics estimate is \$800 of annual income per inch or a NPV of \$16k per inch or \$65k per SD, so we would weight it as a quarter as valuable as the high IQ estimate (`((800/log(1.05))*4) / iqHigh ~> 0.27`).
+3. [BMI](!Wikipedia "Body mass index")/[obesity](!Wikipedia)
+
+    Polygenic scores: [2.7%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4382211/ "'Genetic studies of body mass index yield new insights for obesity biology', Locke et al 2015")/[7.1%](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015205a.html "'Assessing the genetic overlap between BMI and cognitive function', Marioni et al 2016")/[15.3%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3973018/ "'Genome-wide meta-analysis identifies 11 new loci for anthropometric traits and provides insights into genetic architecture', Berndt et al 2013"), population SD [(for men) is 4.67](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3651246/ "'Population Trends and Variation in Body Mass Index from 1971 to 2008 in the Framingham Heart Study Offspring Cohort', Block et al 2013"). Cost is a little trickier (low BMI can be as bad as high BMI, lots of costs are not paid by individuals, etc) but one could say there's ["an average marginal cost of \$175 per year per adult for a 1 unit change in BMI for each adult in the U.S. population."](http://vinecon.ucdavis.edu/publications/cwe1201.pdf "'The Marginal External Cost of Obesity in the United States', Parks et al 2012") Then we'd get a weight of 7% (`((175/log(1.05))*4.67) / iqHigh ~> 0.069`).
+4. [type 2 diabetes](!Wikipedia)
+
+    [Morris et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3442244/ "Large-scale association analysis provides insights into the genetic architecture and pathophysiology of type 2 diabetes")'s [supplementary information](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3442244/bin/NIHMS393294-supplement-2.pdf) reports a polygenic score predicting 5.73% on liability scale.
+
+    Diabetes is not a continuous trait like IQ/height/BMI, but generally treated as a binary disease: you either have good blood sugar control and will not go blind and suffer all the other morbidity caused by diabetes, or you don't. The underlying genetics is still highly polygenic and mostly additive, though, and in some sense one's risk is normally distributed. The liability scale threshold model is the usual model for dealing with binary variables like this: one's risk is a normal variable (which is the sum of many individual genes), and when one is unlucky enough for this risk to be enough standard deviations out past a threshold, one has the disease. The enough standard deviations is set empirically; if 1% of the population will develop schizophrenia, then one has to be +2.33SD out to develop schizophrenia, and assuming a mean risk of 0, one can then calculate the effects of an increase or decrease. For example, if some change results in decreasing one's risk score 1SD such that it would takes another 3.33SD to develop schizophrenia, then one's probability of developing schizophrenia has decreased from 1% to 0.04%, a fall of 23x (`pnorm(qnorm(0.01)) / pnorm(qnorm(0.01)-1) ~> 22.73`) and so whatever one estimated the expected loss of schizophrenia at, it has decreased 23x and the change of 1SD can be valued at that.
+
+    Similarly for diabetes. We can estimate the NPV of not developing diabetes at as much as [\$124,600 (NPV)](http://care.diabetesjournals.org/content/37/9/2557.full); the lifetime risk of diabetes in the USA is [approaching ~40%](http://jama.jamanetwork.com/article.aspx?articleid=197439 "'Lifetime Risk for Diabetes Mellitus in the United States', Narayan et al 2003") and has probably exceeded it by now (implying, incidentally, that diabetes is one of the most costly diseases in the world), so the expected loss is \$49840 and developing diabetes has a threshold of 0.39SD; a decrease of 1SD gives one a third less chance of developing diabetes (`pnorm(qnorm(0.40)-1) / pnorm(qnorm(0.40)) ~> 0.26`) for a savings of \$11k (`(124600 * 0.4) - (124600 * 0.4 * 0.26) ~> 36881`); finally, \$36.8k/SD, compared with IQ, gets a weight of 15%.
+5. [ADHD](!Wikipedia)
+
+    ADHD polygenic scores range from [0.098%](http://adhdnet.com/wp/wp-content/uploads/2014/10/Hamshere-2013-High-loading-of-polygenic.pdf "'High Loading of Polygenic Risk for ADHD in Children With Comorbid Aggression', Hamshere et al 2013")/[0.4%](http://www.sciencedirect.com/science/article/pii/S0890856715000404 "'Shared Genetic Influences Between Attention-Deficit/Hyperactivity Disorder (ADHD) Traits in Children and Clinical ADHD', Stergiakouli et al 2015")/[0.5%](http://adhdnet.com/wp/wp-content/uploads/2014/06/Groen-Blokhuis-2014-ADHD-Polygenic-risk-scores.pdf  "'Attention-Deficit/Hyperactivity Disorder Polygenic Risk Scores Predict Attention Problems in a Population-Based Sample of Children', Groen-Blokhuis et al 2014")/[0.59%](http://bjp.rcpsych.org/content/203/2/107.full "'Shared polygenic contribution between childhood attention-deficit hyperactivity disorder and adult schizophrenia', Hamshere et al 2013")/[1.5%](http://www.nature.com/tp/journal/v5/n2/full/tp20155a.html "'The relative contribution of common and rare genetic variants to ADHD', Martin et al 2015").
+    Prevalence rates differ based on country & diagnosis method, but most genetics studies were run using DSM diagnoses in the West, so ~7% of children affected.
+    [Biederman & Faraone 2006](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1781280/ "The Effects of Attention-Deficit/Hyperactivity Disorder on Employment and Household Income") find large harmful correlations, estimating a -\$8900 annual loss from ADHD or ~\$182k NPV.
+    So the best score is 1.5%; the liability threshold is 1.47SD; the starting expected loss is ~\$12768; a 1SD reduction is then worth \$11.5k (`182000*pnorm(qnorm(0.07)) - 182000*pnorm(qnorm(0.07)-1) ~> 115304`) and has a weight of 4.7%.
+6. [bipolar disorder](!Wikipedia)
+
+    Scores: [1.2%](/docs/genetics/2015-power.pdf "'Polygenic risk scores for schizophrenia and bipolar disorder predict creativity', Power et al 2015")/[1.4%](https://www.researchgate.net/profile/Naomi_Wray/publication/232772602_Common_polygenic_variation_contributes_to_risk_of_schizophrenia_and_bipolar_disorder/links/00463518a3f2ac19cb000000.pdf "'Common polygenic variation contributes to risk of schizophrenia and bipolar disorder', The International Schizophrenia Consortium 2009")/[2.83%]( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3637176/ "'Large-scale genome-wide association analysis of bipolar disorder identifies a new susceptibility locus near ODZ4', Sklar et al 2011") ([supplement](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3637176/bin/halms634944-supplement_1.pdf)).
+
+    Frequency is ~3%. Ranking after schizophrenia & depression, BPD is likewise expensive, [associated with lost work, social stigma, suicide etc](/docs/2005-hirschfeld.pdf "'Bipolar Disorder—Costs and Comorbidity', Hirschfekd & Vornik 2005"). [A 1991 estimate](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4301427/ "'An economic evaluation of manic-depressive illness – 1991', Wyatt & Henter 1991") estimates a total annual loss of \$45 billion but doesn't give a lifetime per capita estimate; so to estimate that: in 1991, there were ~253 million people in the USA, life expectancy ~75 years, quoted 1991 lifetime prevalence of 1.3%; if there are a few million people every year with BPD which results in a total loss of \$45b in 1991 dollars, and each person lives ~75 years, then that suggests an average lifetime total loss of ~\$1026147, which [inflation-adjusted](http://www.bls.gov/data/inflation_calculator.htm) to 2016 dollars is \$1784953, and this has a NPV at 5% of \$87k (`(45000000000 / (253000000 * 0.013)) * 75 ~> 1026147; 1784953 * log(1.05) ~> 87088.1499`).
+    With a relatively low base-rate, the savings is not huge and it gets a weight of 0.01 (`(87088*pnorm(qnorm(0.03)) - 87088*pnorm(qnorm(0.03)-1)) / iqHigh ~> 0.01007`).
+7. [schizophrenia](!Wikipedia)
+
+    Scores: [3%](https://www.researchgate.net/profile/Naomi_Wray/publication/232772602_Common_polygenic_variation_contributes_to_risk_of_schizophrenia_and_bipolar_disorder/links/00463518a3f2ac19cb000000.pdf "'Common polygenic variation contributes to risk of schizophrenia and bipolar disorder', The International Schizophrenia Consortium 2009")/[3.4%]( /docs/genetics/2015-agerbo.pdf "'Polygenic Risk Score, Parental Socioeconomic Status, Family History of Psychiatric Disorders, and the Risk for Schizophrenia: A Danish Population-Based Study and Meta-analysis', Agerbo et al 2015")/[5.5%](/docs/genetics/2015-power.pdf "'Polygenic risk scores for schizophrenia and bipolar disorder predict creativity', Power et al 2015")/[6.35%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3646712/ "'Genome-Wide Association Study of Clinical Dimensions of Schizophrenia: Polygenic Effect on Disorganized Symptoms', Fanous et al 2013")/[18.4%](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4112379/ "'Biological Insights From 108 Schizophrenia-Associated Genetic Loci', Ripke et al 2014")
+    Frequency is ~1%. Schizophrenia is even more notoriously expensive [worldwide](http://schizophreniabulletin.oxfordjournals.org/content/30/2/279.full.pdf "'The Global Costs of Schizophrenia', Knapp et al 2004") than BPD, with 2002 USA costs estimated by [Wu et al 2005](/docs/2005-wu.pdf "The Economic Burden of Schizophrenia in the United States in 2002") at \$15464 in direct & \$22032 in indirect costs per patient, or total \$49379 in 2016 dollars for a weight of 4% (`49379 / log(1.05) ~> 1012068; (1012068*pnorm(qnorm(0.01)) - 1012068*pnorm(qnorm(0.01)-1)) ~> 9675.41; 9675/iqHigh ~> 0.039`)
+
+The low weights suggest we won't see a 6x scaling from adding 6 more traits, but we still see a substantial gain from multiple selection - up to \$14k/2.8x better than IQ alone:
+
+~~~{.R}
+polygenicScores <- c(rietveld2013, 0.6,  0.153, 0.0573, 0.015, 0.0283, 0.184)
+weights <-         c(1,            0.27, 0.07,  0.15,   0.047, 0.01,   0.04)
+summary(simulateIVFCBs(9, 4.6, combineScores(polygenicScores, weights), 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
+#     Trait.SD               Cost              Net
+#  Min.   :0.00000000   Min.   :1500.00   Min.   : -3900.00
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.: -1900.00
+#  Median :0.00000000   Median :1900.00   Median : -1500.00
+#  Mean   :0.06675311   Mean   :2041.78   Mean   : 14130.16
+#  3rd Qu.:0.10294009   3rd Qu.:2300.00   3rd Qu.: 22756.41
+#  Max.   :0.89975711   Max.   :4100.00   Max.   :214879.66
+
+14130 / 4977
+# [1] 2.839059675
+~~~
+
+Note that this gain would be larger under lower values of IQ, as then more emphasis will be put on the other traits.
+Values may also be substantially underestimated for the mental health traits because they pervasively overlap genetically (indeed, in 1 case for ADHD, the schizophrenia/bipolar polygenic scores were better predictors of ADHD status than the ADHD polygenic score was!); counterbalancing this underestimation is that the long-noted correlation between schizophrenia & creativity is turning out to also be genetic, so the gain from reduced schizophrenia/bipolar/ADHD is a tradeoff coming at some cost to creativity.
 
 # Iterated embryo selection
 
@@ -1052,7 +1134,7 @@ As they summarize it:
 >
 > Iterated embryo selection has recently drawn attention from bioethics (Sparrow, 2013; see also Miller, 2012; Machine Intelligence Research Institute, 2009 [and [Suter 2015](https://jlb.oxfordjournals.org/content/early/2015/12/16/jlb.lsv057.full "In vitro gametogenesis: just another way to have a baby?")]) in light of rapid scientific progress. Since the [Hinxton Group (2008)](http://www.hinxtongroup.org/Consensus_HG08_FINAL.pdf "Consensus Statement: Science Ethics and Policy Challenges of Pluripotent Stem Cell-Derived Gametes") predicted that human stem cell-derived gametes would be available within ten years, the techniques have been used to produce fertile offspring in mice, and gamete-like cells in humans. However, substantial scientific challenges remain in translating animal results to humans, and in avoiding epigenetic abnormalities in the stem cell lines. These challenges might delay human application '10 or even 50 years in the future' ([Cyranoski, 2013](http://fatstemserbia.brinkster.net/Library/Newspapers/Egg%20Engineers.pdf "Stem cells: Egg engineers")). Limitations on research in human embryos may lead to IES achieving major applications in commercial animal breeding before human reproduction. If IES becomes feasible, it would radically change the cost and effectiveness of enhancement through selection. After the fixed investment of IES, many embryos could be produced from the final generation, so that they could be provided to parents at low cost.
 
-IES is interesting, but it suffers from two main problems as far as a cost-benefit evaluation goes:
+IES is interesting, and progress is still being made on it (eg [Zhou et al 2016](http://www.cell.com/cell-stem-cell/fulltext/S1934-5909%2816%2900018-7 "Complete Meiosis from Embryonic Stem Cell-Derived Germ Cells In Vitro")), but it suffers from two main problems as far as a cost-benefit evaluation goes:
 
 1. application to human cells remains largely hypothetical, and it is difficult for any outsider to understand how effective current induced pluripotency methods for pluripotent stem cell-derived gametes are: how much will the mouse research transfer to human cells? How reliable is the induction? What might be the long-term effects - or in the case of iterating it, what may be the short-term effects? Is this 5 years or 20 years away from practicality? What does the process cost at the moment, and what sort of lower limit on materials & labor costs can we expect from a mature process?
 2. IES is inherently based on embryo selection and suffers from the weaknesses of embryo selection. Presumably the additional steps of inducing pluripotency and re-fertilizing will be complicated & very expensive (especially given that the proposed timelines for a single cycle run 4-6 *months*) compared to a routine sequencing & implantation, and this makes the costs explode: if the iteration costs \$10k extra per cycle and each cycle of embryo selection is only gaining ~1.13 IQ points due to the inherent weakness of polygenic scores, then each cycle may well be a loss, and the entire process colossally expensive. (If one is already spending \$10k on IVF and the SNP sequencing for each embryo costs \$100 then to get a respectable amount like 1 standard deviation through IES requires `(15/1.13) * (100+10000) + 10000 ~> 144070.7965`, which at almost \$9k a point is far beyond the ability to pay of almost everyone except multi-millionaires or governments who may have other reasons justifying use of the process.)
@@ -1317,3 +1399,7 @@ https://en.wikipedia.org/wiki/Paternal_age_effect
 # See also
 
 - [Iodization](/Iodine)
+
+# External links
+
+- ["Society Is Fixed, Biology Is Mutable"](http://slatestarcodex.com/2014/09/10/society-is-fixed-biology-is-mutable/)
