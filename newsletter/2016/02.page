@@ -2,21 +2,25 @@
 title: February news
 created: 1 Feb 2016
 tags: newsletter
-status: in progress
+status: finished
 belief: log
 ...
 
-This is the February 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [January 2016](http://www.gwern.net/newsletter/2015/12).
+This is the February 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [January 2016](http://www.gwern.net/newsletter/2016/01).
 This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
-- Embryo?
+- [Embryo selection for intelligence cost-benefit analysis](http://www.gwern.net/Embryo%20selection "A cost-benefit analysis of IVF-based embryo selection for intelligence with 2015-2016 state-of-the-art")
+- [Armstrong's control problem: Reinforce.js demo](http://www.gwern.net/docs/rl/armstrong-controlproblem/index.html)
 
 # Media
 ## Links
 
 Everything is heritable:
+
+- ["A general intelligence factor in [border colly] dogs"](http://www.sciencedirect.com/science/article/pii/S016028961630023X), Arden & Adams 2016
+- ["GWAS of 89,283 individuals identifies genetic variants associated with self-reporting of being a morning person"](http://www.nature.com/ncomms/2016/160202/ncomms10448/full/ncomms10448.html), Hu et al 2016
 
 Politics/religion:
 
@@ -27,7 +31,9 @@ Politics/religion:
 
 Statistics/AI/meta-science:
 
-- ["Deming, data and observational studies: A process out of control and needing fixing"](http://www.gwern.net/statistics/2011-young.pdf)
+- ["PlaNet - Photo Geolocation with Convolutional Neural Networks"](http://arxiv.org/pdf/1602.05314v1.pdf), Weyand et al 2016
+- ["When Quality Beats Quantity: Decision Theory, Drug Discovery, and the Reproducibility Crisis"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0147215), Scannell & Bosley 2016
+- ["Deming, data and observational studies: A process out of control and needing fixing"](http://www.gwern.net/docs/statistics/2011-young.pdf)
 - ["Online Controlled Experiments: Introduction, Learnings, and Humbling Statistics"](http://www.exp-platform.com/Documents/2012-09%20ACMRecSysNR.pdf)
 - ["My published negative result..."](http://www.scilogs.com/the_gene_gym/my-published-negative-result/)
 - [Gambler's ruin](https://en.wikipedia.org/wiki/Gambler%27s_ruin)
@@ -37,31 +43,37 @@ Statistics/AI/meta-science:
 
 Psychology/biology:
 
+-  ["Aldehyde-stabilized cryopreservation", McIntyre & Fahy 2015](http://www.sciencedirect.com/science/article/pii/S001122401500245X) wins the [Small Mammal Brain Preservation Prize](http://www.brainpreservation.org/small-mammal-announcement/) by passing [their evaluation](http://www.brainpreservation.org/asc_rabbit_fulleval/) ([commentary](http://lesswrong.com/lw/na3/the_brain_preservation_foundations_small/))
+- ["Effects of Initiating Moderate Alcohol Intake on Cardiometabolic Risk in Adults With Type 2 Diabetes: A 2-Year Randomized, Controlled Trial"](http://www.equator-network.org/wp-content/uploads/2015/11/14-Gepner-Annals-2015-22.pdf), Gepner et al 2015
 - ["Be Happier"](http://lesswrong.com/lw/bq0/be_happier/)
 - ["My son's flashcard routine"](http://bentilly.blogspot.com/2012/10/my-sons-flashcard-routine.html)
 - ["A Mole of Moles"](http://what-if.xkcd.com/4/)
 - ["We Add Near, Average Far"](http://www.overcomingbias.com/2012/10/we-add-near-average-far.html)
 - ["Nothing in Biology Makes Sense Except in the Light of Evolution"](http://www.pbs.org/wgbh/evolution/library/10/2/text_pop/l_102_01.html)
+- ["The animals that sniff out TB, cancer and landmines"](http://mosaicscience.com/story/rats-and-dogs-medical-detection-animals-smell-TB-cancer)
 - ["Parenting and Happiness"](http://lesswrong.com/r/discussion/lw/erj/parenting_and_happiness/)
 - [Is sleep to save energy?](http://www.overcomingbias.com/2012/10/sleep-is-to-save-energy.html)
 
 Technology:
 
+- ["Gravitational Waves Exist: The Inside Story of How Scientists Finally Found Them"](http://www.newyorker.com/tech/elements/gravitational-waves-exist-heres-how-scientists-finally-found-them)
 - ["How Did Software Get So Reliable Without Proof?"](http://www.gwern.net/docs/1996-hoare.pdf), Hoare 1996 ([comments](http://blog.regehr.org/archives/820))
+- ["Stargate Physics 101"](https://archiveofourown.org/works/3673335) ("Testing is sufficient to show the presence of bugs, but not the absence.")
 - [Merkle's Puzzles](https://en.wikipedia.org/wiki/Merkle%27s_Puzzles)
 - [On Ray Kurzweil](http://blogs.discovermagazine.com/gnxp/2012/10/singularity-summit-2012-the-lion-doesnt-sleep-tonight/)
 - [_Pokemon_: determining the personality settings](http://bulbapedia.bulbagarden.net/wiki/Personality_value)
+- ["Can you use a magnifying glass and moonlight to light a fire?"](https://what-if.xkcd.com/145/)
 
 Economics:
+
+- ["The life of American workers in 1915"](http://www.bls.gov/opub/mlr/2016/article/the-life-of-american-workers-in-1915.htm)
+- ["Patents and innovation in economic history"](http://www.gwern.net/docs/2016-moser.pdf), Moser 2016
+- ["Elephants and Mammoths: Can Ice Ivory Save Blood Ivory?"](https://www.aeaweb.org/aea/2016conference/program/retrieve.php?pdfid=127), Farah & Boyce 2015
 
 Philosophy:
 
 - ["Technology will destroy human nature"](http://kajsotala.fi/2012/10/technology-will-destroy-human-nature/)
 - ["Lord Russell meet Lord Russell"](http://blog.talkingphilosophy.com/?p=6160)
-
-Fiction:
-
-- ["The Star Gauge"](http://www.futilitycloset.com/2012/10/02/the-star-gauge/) of [Su Hui](https://en.wikipedia.org/wiki/Su_Hui_%28poet%29#Palindrome_Poem)
 
 <!-- Back to 30 Sep 2012 -->
 
@@ -69,9 +81,24 @@ Fiction:
 
 Fiction:
 
+- Thorsby's [_Transdimensional Brain Chip_](http://brainchip.thecomicseries.com/) (Another Thorsby webcomic has finished. You know what you're getting: clever high-concept plot which keeps slowly building with occasional comedy of errors, semi-awkward writing, and MS Paint art that never improves. If you liked _Accidental Space Spy_, you'll like this. If not, not.)
+- [_Chanson de Geste_](https://www.fanfiction.net/s/5615090/1/Chanson-de-Geste) (_Narnia_ fanfiction: realpolitik-Chthulian romance. Game mechanic reminds me of _The Player of Games_.)
+- Lem's [_Memoirs Found in a Bathtub_](https://en.wikipedia.org/wiki/Memoirs_Found_in_a_Bathtub) ([review](https://www.goodreads.com/review/show/371601851))
+
 Nonfiction:
 
+- [_Hive Mind: how your nation's IQ matters so much more than your own_](http://www.amazon.com/Hive-Mind-Your-Nation%C2%92s-Matters/dp/0804785961), [Jones](https://en.wikipedia.org/wiki/Garett_Jones) 2016 ([review](https://www.goodreads.com/review/show/1433728829))
+- [_Visions of Virtue in Tokugawa Japan_](http://www.amazon.com/Visions-Virtue-Tokugawa-Japan-Kaitokudo/dp/0824819918) (dull history of obscure & obsolete ideologies with no relevance to anything; for Japanese Neo-Confucian specialists only)
+
 ## Film/TV
+
+Live-action:
+
+- [_The Black Cat_](https://en.wikipedia.org/wiki/The_Black_Cat_%281934_film%29) 1934 (a horror film which falls straight into camp. I can forgive the poorer special effects like the 'embalmed corpses' who you can see breathing and moving slightly, or how the heroine faints at the drop of a hat but when carried remains rigid and posed instead of letting herself flop like an unconscious woman would, but the whole movie is so over the top: the house has no windows, we jump to the villain in bed reading a book literally titled "_The Rites of Lucifer_" and sleeping with his stepdaughter, it's difficult to accept Lugosi as a hero because his role as Dracula is so indelibly imprinted on him, and themes & Chekhov's guns are introduced recklessly and never followed up on - a long discussion of how the 'black cat' is immortal and the symbol of evil and may've infected the heroine is immediately dropped along with Lugosi's ailurophobia never to be mentioned again, the chess game with life & death wagered on it has no particular meaning other than to let the villain do as he planned all along, and the Satanic black mass is exactly as silly as expected. That said, Karloff and Lugosi make an extremely striking pair on-screen, and even if one is never surprised, much less *horrified*, one is never all that bored, and the recklessness of the plot at least means it's somewhat unpredictable.)
+
+Anime:
+
+- [_Kaiji_](https://en.wikipedia.org/wiki/Kaiji_%28manga%29) season 1 & 2 ([review](http://myanimelist.net/reviews.php?id=212057))
 
 ## Games
 
@@ -79,10 +106,4 @@ Nonfiction:
 
     Overall, I enjoyed it a lot. The controls are slick & reactive, with the default mapping of the up d-key to 'jump' quickly coming to feel natural; the action is almost instantly addictive, especially as you start to figure out how to work around the limit that you can usually only shoot horizontally and you are often outranged so if you approach enemies the straightforward way, you will typically die immediately. There's a lot of fun in figuring out how to best dig beneath enemies and attack them from behind, panic or shoot the suicide bombers into exploding amid a group of enemies, shoot out the ground underneath a tricky opponent, or set up chain reactions of explosions; since you do not choose which character & weapons you use, you also must learn how to work with individual characters in different situations (the Man in Black has a powerful shot, but the recoil means it can be tricky to use without knocking yourself into a pit or dropping a boulder onto your head; the Terminator's minigun is fantastic for tunneling but also has steady recoil and takes a fraction of a second to spin up; MacGyver's bomb throwing is more useful than it initially seems because you can destroy parts of the environment far from you and create impromptu suicide bombers). It borders on a physics puzzle game at times. While somewhat repetitious, there's enough variety in level design to keep one interested: many levels are straightforward run-and-gun, but when encountering a mecha, it may be best to tunnel underneath it to kill it instead of hijacking it, and in a level with constant bombardment, tunneling is a necessity. The destructible environment may sound like a recipe for cheap deaths and the possibility of making a level impossible to complete when you've destroyed too much ground to progress, but while I had to make some tricky jumps and excavations after some particularly heated firefights, I don't think I ever *totally* cut myself off from the end of the level.
 
-    All of which made it even more frustrating when I ran into parts of BF which aren't quite polished yet: either not yet balanced appropriately, or an editor needs to tell the BF devs to kill their darlings. BF is proud of its large assortment of characters, but some of them plain suck and the game punishes you every time you rescue a prisoner and a random character swap is forced onto you and you get one of the sucky characters (random character swaps can be fun when it forces you out of your comfort zone, but not in those cases); I never figured out how to use melee characters like Neo or Blade successfully, and one character with a machine-gun leg (which only fires downwards) is so utterly useless that by the end of the game I was seriously considering just jumping into a pit anytime I got them and sparing myself the frustration of such a gimped character. BF would be much better if the worst 5 or 10 characters were simply deleted. (It would also be good if special attacks transferred. Nothing like saving up for a mecha only to lose it all when you free a prisoner... Fun like a kick in the teeth.) Another intense source of frustration was the lack of even the most vital hints. In the second covert mission, the start has a huge pit which must be jumped across and can only be jumped across if you are 'sprinting' by having double-tapped-and-held the directional key; *nowhere* are you told that 'sprinting' even exists and there is no reason you would have tried this double-tap or noticed the sprinting since, as mentioned before, flatout running is a guaranteed way to die. I died 20 or 30 times before I finally gave up and googled "Broforce impossible level"; there were several different levels which were the topic of discussion, and I finally learned about sprinting and beat the level a few deaths later. Another covert mission is still worse: the level begins with an enormous explosion, which you have been trained by dozens of previous enormous explosions to wait out; when you do so, the mission is unbeatable because half the level is gone. It turns out that unknown and unknowable to you, there was an long catwalk at the top of the level, and the solution to the level is to immediately begin running, get a powerup while running, invoke the time-slowing while running, climb a several-screen-high ladder at top speed while the rest of the level is slowed, and then run across the catwalk which is already exploding to the point where you are jumping from falling crate to crate. So just to know that that catwalk exists, much less what you have to do to finish the level you have to have started the level running and time-slow immediately to climb the ladder and get to see that there was a catwalk there! There is no hint whatsoever of any of this by BF. So if anyone was able to figure this level out on their own without checking the Internet & watching YouTube, I doff my chapeau to them. All it would have taken in these two levels is a short hint: 'double-tap the d-key to sprint'; 'reach the catwalk before the explosion!' I am not asking for those levels to be made easier, just that the player has *some* idea what they're supposed to do! This lack of hints extends to the characters themselves and their special attacks; what did Neo's special do? I had no idea - it made a little glowy circle which didn't seem to do anything. What did Robocop's special do? I had no idea - it created a green grid on the screen with a targeting reticule you could move, but pressing fire/special did nothing, and moving the reticule over enemies did nothing. How did Braveheart, the Professional etc? Towards the end I looked them up on the Broforce wikia, but I should not have had to; would it have killed BF to include a one-line summary of the special like "reflects most bullets" or "select each enemy to automatically attack"? A few of the levels trade too heavily on trial-and-error: one alien's level is unbeatable unless you simply memorize each location it attacks throughout the whole level, because it is invulnerable, and moves too fast to react to. The cave levels feature way too many boulders and rocks so you will constantly die of falling rocks no matter how careful you are. Two levels are so dark that you cannot see where your character is and will die many times from jumping into a wall to avoid an attack. On the giant-helicopter level, you can die and lose even after you've won during the animation of the helicopter exploding, which happened to me 3 times because the end of the level is so full of explosives. 'Fun'. The alien levels are substantially less enjoyable because the various acid explosions extend insta-death across the screen and the fast-moving aggressive melee aliens make certain characters almost useless (good luck using either bomb-thrower when you're busy being swarmed!). Perhaps partly due to the randomized character selection and total absence of documentation, there seems to be extreme variation in difficulty: I might die 5 times clearing a level, then 30 the next level, then 1 the following level! Certainly some variation in difficulty from level to level is normal and desirable, but *that* much variation suggests that some levels need some tweaking... Hopefully the devs will fix some of these issues in the future, and in the meantime, to those who play BF, I advise being less proud than myself and to look online for hints.
-
-## Music
-
-Touhou:
-
-Doujin:
+    All of which made it even more frustrating when I ran into parts of BF which aren't quite polished yet: either not yet balanced appropriately, or an editor needs to tell the BF developers to kill their darlings. BF is proud of its large assortment of characters, but some of them plain suck and the game punishes you every time you rescue a prisoner and a random character swap is forced onto you and you get one of the sucky characters (random character swaps can be fun when it forces you out of your comfort zone, but not in those cases); I never figured out how to use melee characters like Neo or Blade successfully, and one character with a machine-gun leg (which only fires downwards) is so utterly useless that by the end of the game I was seriously considering just jumping into a pit anytime I got them and sparing myself the frustration of such a gimped character. BF would be much better if the worst 5 or 10 characters were simply deleted. (It would also be good if special attacks transferred. Nothing like saving up for a mecha only to lose it all when you free a prisoner... Fun like a kick in the teeth.) Another intense source of frustration was the lack of even the most vital hints. In the second covert mission, the start has a huge pit which must be jumped across and can only be jumped across if you are 'sprinting' by having double-tapped-and-held the directional key; *nowhere* are you told that 'sprinting' even exists and there is no reason you would have tried this double-tap or noticed the sprinting since, as mentioned before, flatout running is a guaranteed way to die. I died 20 or 30 times before I finally gave up and googled "Broforce impossible level"; there were several different levels which were the topic of discussion, and I finally learned about sprinting and beat the level a few deaths later. Another covert mission is still worse: the level begins with an enormous explosion, which you have been trained by dozens of previous enormous explosions to wait out; when you do so, the mission is unbeatable because half the level is gone. It turns out that unknown and unknowable to you, there was an long catwalk at the top of the level, and the solution to the level is to immediately begin running, get a powerup while running, invoke the time-slowing while running, climb a several-screen-high ladder at top speed while the rest of the level is slowed, and then run across the catwalk which is already exploding to the point where you are jumping from falling crate to crate. So just to know that that catwalk exists, much less what you have to do to finish the level you have to have started the level running and time-slow immediately to climb the ladder and get to see that there was a catwalk there! There is no hint whatsoever of any of this by BF. So if anyone was able to figure this level out on their own without checking the Internet & watching YouTube, I doff my chapeau to them. All it would have taken in these two levels is a short hint: 'double-tap the d-key to sprint'; 'reach the catwalk before the explosion!' I am not asking for those levels to be made easier, just that the player has *some* idea what they're supposed to do! This lack of hints extends to the characters themselves and their special attacks; what did Neo's special do? I had no idea - it made a little glowy circle which didn't seem to do anything. What did Robocop's special do? I had no idea - it created a green grid on the screen with a targeting reticule you could move, but pressing fire/special did nothing, and moving the reticule over enemies did nothing. How did Braveheart, the Professional etc? Towards the end I looked them up on the Broforce wikia, but I should not have had to; would it have killed BF to include a one-line summary of the special like "reflects most bullets" or "select each enemy to automatically attack"? A few of the levels trade too heavily on trial-and-error: one alien's level is unbeatable unless you simply memorize each location it attacks throughout the whole level, because it is invulnerable, and moves too fast to react to. The cave levels feature way too many boulders and rocks so you will constantly die of falling rocks no matter how careful you are. Two levels are so dark that you cannot see where your character is and will die many times from jumping into a wall to avoid an attack. On the giant-helicopter level, you can die and lose even after you've won during the animation of the helicopter exploding, which happened to me 3 times because the end of the level is so full of explosives. 'Fun'. The alien levels are substantially less enjoyable because the various acid explosions extend insta-death across the screen and the fast-moving aggressive melee aliens make certain characters almost useless (good luck using either bomb-thrower when you're busy being swarmed!). Perhaps partly due to the randomized character selection and total absence of documentation, there seems to be extreme variation in difficulty: I might die 5 times clearing a level, then 30 the next level, then 1 the following level! Certainly some variation in difficulty from level to level is normal and desirable, but *that* much variation suggests that some levels need some tweaking... Hopefully the developers will fix some of these issues in the future, and in the meantime, to those who play BF, I advise being less proud than myself and to look online for hints.
