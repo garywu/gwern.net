@@ -183,6 +183,8 @@ Davies et al 2015, 0.28, 0.07, 70, FALSE
 gcta <- gcta[order(gcta$Age.mean),]
 
 library(metafor)
+## Model as continuous normal variable; heritabilities are decimals/percentages 0-1,
+## but this is more convenient and doesn't make a difference since the estimate is far from 0:
 rem <- rma(yi=HSNP, sei=SE, data=gcta); rem
 # ...estimate       se     zval     pval    ci.lb    ci.ub
 #  0.3220   0.0299  10.7759   <.0001   0.2634   0.3805
@@ -1151,6 +1153,7 @@ We can say that while IES still looks years away and is not possible or cost-eff
 - Lynn & Vanhanen 2012, ["National IQs: A review of their educational, cognitive, economic, political, demographic, sociological, epidemiological, geographic and climatic correlates"](http://ttu.ee/public/m/mart-murdvee/EconPsy/2/Lynn_Vanhanen_2012_National_IQs_-_a_review.pdf)
 - Roivaninen 2012, ["Economic, educational, and IQ gains in eastern Germany 1990-2006"](http://www.iapsych.com/iqmr/fe/LinkedDocuments/roivainen2012.pdf)
 - Templer 2012, ["Biological correlates of northern-southern Italy differences in IQ"](http://www.sciencedirect.com/science/article/pii/S0160289612000554)
+- Lynn 2012, ["North-South Differences in Spain in IQ, Educational Attainment, per capita Income, Literacy, Life Expectancy and Employment"](/docs/iq/2012-lynn.pdf)
 - Adhvaryu et al 2013, ["Salt Iodization and the Enfranchisement of the American Worker"](http://www.arec.umd.edu/sites/default/files/_docs/events/Achyuta%20Adhvaryu-Salt%20Iodization%20and%20the%20Enfranchisement%20of%20the%20American%C2%A0Worker-9-25-13.pdf)
 - Fletcher 2013, ["Friends or Family? Revisiting the Effects of High School Popularity on Adult Earnings"](/docs/iq/2014-fletcher.pdf)
 - Wai 2013, ["Investigating America's elite: Cognitive ability, education, and sex differences"](https://www.psychologytoday.com/files/attachments/56143/wai-americas-elite-2013.pdf)
@@ -1163,6 +1166,7 @@ We can say that while IES still looks years away and is not possible or cost-eff
 - Clark 2014, [_The Son Also Rises: Surnames and the History of Social Mobility_](http://www.amazon.com/The-Son-Also-Rises-Princeton/dp/0691162549)
 - Marioni et al 2014, ["Molecular genetic contributions to socioeconomic status and intelligence"](http://www.sciencedirect.com/science/article/pii/S0160289614000178) / Trzaskowski et al 2014b, ["Genetic influence on family socioeconomic status and children's intelligence"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907681/) (similar to [Krapohl & Plomin 2015](http://www.nature.com/mp/journal/v21/n3/full/mp20152a.html "Genetic link between family socioeconomic status and children's educational achievement estimated from genome-wide SNPs"))
 - Piffer & Lynn 2014, ["New evidence for differences in fluid intelligence between north and south Italy and against school resources as an explanation for the north-south IQ differential"](http://www.sciencedirect.com/science/article/pii/S0160289614000981)
+- Dutton & Lynn 2014, ["Regional Differences in Intelligence and their Social and Economic Correlates in Finland"](/docs/iq/2014-dutton.pdf)
 - Monahan et al 2015, ["Costs and benefits of iodine supplementation for pregnant women in a mildly to moderately iodine-deficient population: a modelling analysis"](/docs/iodine/2015-monahan.pdf)
 - Jones 2015, [_Hive Mind: How Your Nation's IQ Matters So Much More Than Your Own_](http://www.amazon.com/Hive-Mind-Your-Nation%C2%92s-Matters/dp/0804785961)^[See also [Chua](!Wikipedia "Amy Chua") 2002, [_World on Fire_](!Wikipedia "World on Fire (book)").]
 - Wai & Rindermann 2015, ["The path and performance of a company leader: A historical examination of the education and cognitive ability of Fortune 500 CEOs"](/docs/iq/2015-wai.pdf)
