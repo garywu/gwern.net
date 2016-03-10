@@ -129,7 +129,7 @@ I was able to find in total the following GCTA estimates:
 3. ["Common DNA Markers Can Account for More Than Half of the Genetic Influence on Cognitive Abilities"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3652710/), Plomin et al 2013
 
     Table 1: ".35 [.12, .58]" (95% CI; so presumably a standard error of `(0.35-0.12)/1.96 ~>0.117`), 12-year-old twins
-3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013 ([supplementary information](http://www.tweelingenregister.org/fileadmin/user_upload/publicaties/verslaggeving/NTR-publicaties_2014/Benyamin_MP_2014_sup.pdf))
+3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2014 ([supplementary information](http://www.tweelingenregister.org/fileadmin/user_upload/publicaties/verslaggeving/NTR-publicaties_2014/Benyamin_MP_2014_sup.pdf))
 
     pg4: TEDS (mean age 12yo, twins): 0.22(0.10), UMN (14yo, mostly twins^[The supplementary information for the UMN/University of Minnesota Study says (pg15) that the UMN sample is 3 combined samples, 2 twin samples, and that "IQs were available for 3376 offspring, 2909 of whom were twins".]): 0.40(0.21), ALSPAC (9yo): 0.46(0.06)
 4. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/iq/2013-rietveld.pdf), Rietveld et al 2013 ([supplementary information](/docs/iq/2013-rietveld-supplementary-revision2.pdf "http://www.science.sciencemag.org/highwire/filestream/594571/field_highwire_adjunct_files/1/Rietveld.SM.revision.2.pdf"))
@@ -169,9 +169,9 @@ Davies et al 2011, 0.99, 0.22, 65, FALSE
 Deary et al 2012, 0.48, 0.18, 11, FALSE
 Deary et al 2012, 0.28, 0.18, 71.3, FALSE
 Plomin et al 2013, 0.35, 0.117, 12, TRUE
-Benyamin et al 2013, 0.22, 0.10, 12, TRUE
-Benyamin et al 2013, 0.40, 0.21, 14, TRUE
-Benyamin et al 2013, 0.46, 0.06, 9, FALSE
+Benyamin et al 2014, 0.22, 0.10, 12, TRUE
+Benyamin et al 2014, 0.40, 0.21, 14, TRUE
+Benyamin et al 2014, 0.46, 0.06, 9, FALSE
 Rietveld et al 2013, 0.224, 0.042, 57.47, FALSE
 Marioni et al 2014, 0.29, 0.05, 57, FALSE
 Kirkpatrick et al 2014, 0.35, 0.11, 14.63, FALSE
@@ -266,7 +266,7 @@ Past polygenic scores for intelligence:
 2. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/iq/2013-rietveld.pdf), Rietveld et al 2013:
 
     This landmark study providing the first GWAS hits on intelligence also estimated multiple polygenic scores: the full polygenic scores predicted 2.5% of variance in cognitive function in a Swedish replication sample, and also performed well in within-family settings (0.31% & 0.19% of variance in attending college & years of education, respectively, in [Table S25](http://science.sciencemag.org/content/sci/suppl/2013/05/29/science.1235488.DC1/Rietveld.SM.revision.2.pdf)).
-3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2013:
+3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2014:
 
     0.5%, 1.2%, 3.5%.
 6. ["Results of a "GWAS Plus:" General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014:
@@ -1074,16 +1074,82 @@ IES is interesting, and progress is still being made on it (eg [Zhou et al 2016]
 1. application to human cells remains largely hypothetical, and it is difficult for any outsider to understand how effective current induced pluripotency methods for pluripotent stem cell-derived gametes are: how much will the mouse research transfer to human cells? How reliable is the induction? What might be the long-term effects - or in the case of iterating it, what may be the short-term effects? Is this 5 years or 20 years away from practicality? What does the process cost at the moment, and what sort of lower limit on materials & labor costs can we expect from a mature process?
 2. IES, considered as an extension to per-individual embryo selection like above, suffers from the same weaknesses: Presumably the additional steps of inducing pluripotency and re-fertilizing will be complicated & very expensive (especially given that the proposed timelines for a single cycle run 4-6 *months*) compared to a routine sequencing & implantation, and this makes the costs explode: if the iteration costs \$10k extra per cycle and each cycle of embryo selection is only gaining ~1.13 IQ points due to the inherent weakness of polygenic scores, then each cycle may well be a loss, and the entire process colossally expensive. The ability to create large numbers of eggs from stem cells would boost the _n_ but that still runs into diminishing returns and as shown above, does not drastically change matters. (If one is already spending \$10k on IVF and the SNP sequencing for each embryo costs \$100 then to get a respectable amount like 1 standard deviation through IES requires `(15/1.13) * (100+10000) + 10000 ~> 144070.7965`, which at almost \$9k a point is far beyond the ability to pay of almost everyone except multi-millionaires or governments who may have other reasons justifying use of the process.)
 
-So it's difficult to see when IES will ever be practical or cost-effective as a drop-in replacement for embryo selection.
+So it's difficult to see when IES will ever be practical or cost-effective as a simple drop-in replacement for embryo selection.
 
 The real value of IES is as a radically different paradigm than embryo selection.
 Instead of selecting on a few embryos, done separately for each set of parents, IES would instead be a total replacement for the sperm/egg donation industry.
-This is what Shulman & Bostrom mean by that final line: an IES program doing selection through dozens of generations might be colossally expensive compared to a single round of embryo selection, but the cost of creating that final generation of enhanced stem cells can then be amortized indefinitely by creating sperm & egg cells and giving them to all parents who need sperm or egg donations. (If it costs \$100m and is amortized over only 52k IVF births in the first year, then it costs a mere \$2k for what could be gains of many standard deviations on many traits.)
-The offspring may only be related to one of the parents, but that has proven to be acceptable to many couples in the past; and the expected genetic gain will also be halved, but half of a large gain may still be very large.
+This is what Shulman & Bostrom mean by that final line about "fixed investment": a single IES program doing selection through dozens of generations might be colossally expensive compared to a single round of embryo selection, but the cost of creating that final generation of enhanced stem cells can then be amortized indefinitely by creating sperm & egg cells and giving them to all parents who need sperm or egg donations. (If it costs \$100m and is amortized over only 52k IVF births in the first year, then it costs a mere \$2k for what could be gains of many standard deviations on many traits.)
+The offspring may only be related to one of the parents, but that has proven to be acceptable to many couples in the past opting for egg/sperm donation or adoption; and the expected genetic gain will also be halved, but half of a large gain may still be very large.
 Sparrow et al 2013 points towards further refinements based on agricultural practices: since we are not expecting the final stem cells to be related to the parents using them for eggs/sperms, we can start with a seed population of stem cells which is maximally diverse and contains as many rare variants as possible, and do multiple selection on it for many generations.
 (We can even [cross IES with other approaches like CRISPR gene editing](https://www.technologyreview.com/s/543541/how-to-really-engineer-a-human-baby/ "How to (Really) Engineer a Human Baby: A global meeting in Washington, D.C., isn’t just about whether or not we should alter our species with CRISPR. It’s about how we can pull it off."): CRISPR can be used to target known causal variants to speed things up, or be used to repair any mutations arising from the long culturing or selection process.)
 
 We can say that while IES still looks years away and is not possible or cost-effective at the moment, it definitely has the potential to be a game-changer, and a close eye should be kept on in vitro gametogenesis-related research.
+
+<!--
+## Limits to iterated selection
+
+One might wonder: how many generations of selection could IES do now, considering that the polygenic scores explore 'only' a few percent of variance and we've already seen that in 1 step of selection we get a small amount?
+Is it possible that after 2 or 3 rounds of selection, the polygenic score will peter out and one will 'run out' of variance?
+No. We can observe that in animal and plant breeding, it is almost never the case that selection on a complex trait gives increases for a few generation and then stops cold - unless it's a simple trait governed by one or two genes, in which case they might've been driven to fixation that fast.
+The more genes involved, the longer selection can operate and the more potential there is. It's true that a polygenic score might be able to predict only a small fraction of variance, but this is in part because of the Central Limit Theorem: with thousands of genes with additive effects, they sum up to a tight bell curve, and it's 5001 steps forward, 4999 steps backwards, which gives little hint as to what would happen if we could take 10000 steps forward.
+We can ask what the upper limit is by looking at an existing polygenic score and seeing what it would predict for a hypothetical individual who had the better version of each one.
+The Rietveld et al 2013 polygenic score for education-years is available and can be adjusted into intelligence, but for clarity I'll use the [Benyamin et al 2014 polygenic score on intelligence](http://ssgac.org/documents/CHIC_Summary_Benyamin2014.txt.gz) ([codebook](http://ssgac.org/documents/CHIC_Benyamin2014_Summary_Notes.pdf)):
+
+~~~{.R}
+benyamin <- read.table("CHIC_Summary_Benyamin2014.txt", header=TRUE)
+summary(benyamin)
+#          SNP               CHR               BP            A1         A2
+#  rs1000000 :      1   chr2   :124324   Min.   :     9795   A:679239   C:604939
+#  rs10000010:      1   chr1   :107143   1st Qu.: 34275773   C: 96045   G:699786
+#  rs10000012:      1   chr6   :100400   Median : 70967101   T:604874   T: 75433
+#  rs10000013:      1   chr3   : 98656   Mean   : 79544497
+#  rs1000002 :      1   chr5   : 93732   3rd Qu.:114430446
+#  rs10000023:      1   chr4   : 89260   Max.   :245380462
+#  (Other)   :1380152   (Other):766643
+#     FREQ_A1            EFFECT_A1                  SE                   P
+#  Min.   :0.0000000   Min.   :-1.99100e-01   Min.   :0.01260000   Min.   :0.00000361
+#  1st Qu.:0.2330000   1st Qu.:-1.12000e-02   1st Qu.:0.01340000   1st Qu.:0.23060000
+#  Median :0.4750000   Median : 0.00000e+00   Median :0.01480000   Median :0.48370000
+#  Mean   :0.4860482   Mean   : 2.30227e-06   Mean   :0.01699674   Mean   :0.48731746
+#  3rd Qu.:0.7330000   3rd Qu.: 1.12000e-02   3rd Qu.:0.01830000   3rd Qu.:0.74040000
+#  Max.   :1.0000000   Max.   : 2.00000e-01   Max.   :0.06760000   Max.   :1.00000000
+~~~
+
+Many of these estimates come with large _p_-values reflecting the relatively large standard error compared to the unbiased MLE estimate of its average additive effect on IQ points, and are definitely not genome-wide statistically-significant.
+Does this mean we cannot use them? Of course not!
+From a Bayesian perspective, many of these SNPs have high posterior probabilities; from a predictive perspective, even the tiny effects are gold because there are so many of them; from a decision perspective, the expected value is still non-zero as on average each will have its predicted effect - selecting on all the 0.05 variants will increase by that many 0.05s etc. (It's at the extremes that the MLE estimate is biased.)
+We can see that over a million have non-zero point-estimates, that the overall distribution of effects looks roughly exponentially distributed (possibly log-normally), and that the sum of effects (corresponding to our imagined population which has been selected on for so many generations that the polygenic score is literally useless as there is no longer any variance in scores) is the thoroughly absurd estimate of +19421 IQ points over all SNPs (going from minimum to maximum) and +15.7k points filtering down to _p_<0.5 and +9.7k points adjusting for existing frequencies, and that despite the wide range of possible scores they do indeed sum up to tight normality:
+
+~~~{.R}
+sum(abs(benyamin$EFFECT_A1)>0)
+# [1] 1376782
+sum(abs(benyamin$EFFECT_A1))
+# [1] 19421.3957
+with(benyamin[benyamin$P<0.5,], sum(abs(EFFECT_A1)))
+# [1] 15712.4559
+with(benyamin[benyamin$P<0.5,], sum(abs(EFFECT_A1)*FREQ_A1))
+# [1] 7593.511283
+with(benyamin[benyamin$EFFECT_A1>0,], sum(EFFECT_A1*FREQ_A1)) + with(benyamin[benyamin$EFFECT_A1<0,], abs(sum(EFFECT_A1*(1-FREQ_A1))))
+# [1] 9730.319545
+hist(abs(benyamin$EFFECT_A1), xlab="SNP intelligence estimates (SDs)", main="Benyamin et al 2014 polygenic score")
+
+
+simulates2 <- with(benyamin[benyamin$P<0.5,], replicate(100, sum(Filter(function(x){rbinom(1, 1, prob=FREQ_A1)}, EFFECT_A1/15))))
+
+simulates <- with(benyamin[benyamin$P<0.5,], replicate(100, sum(Filter(function(x){rbinom(1, 1, prob=FREQ_A1)}, EFFECT_A1))))
+sd(simulates)
+# [1] 9.739079512
+hist(simulates2, xlab="Net polygenic score", main="Histogram of simulated Benyamin et al 2014 polygenic scores")
+
+~~~
+
+![The betas/effect-sizes of the Benyamin et al 2014 polygenic score for intelligence, illustrating the many thousands of variants available for selection on.](/images/iq-selection-benyamin2014-polygenicscore-betas.png)
+
+9.7k SDs is meaningless, since intelligence reflects neurobiological traits like nerve conduction velocity, brain size, white matter integrity, metabolic demands etc, all of which must have inherent biological limits; so while it's reasonable to talk about boosting to 5-10SDs based on additive variants, beyond that there's no reason to expect additivity.
+Since the polygenic score becomes uninformative thousands of SDs beyond where other issues take over, we can safely say that the polygenic scores will not 'run dry' during an IES project.
+
+TODO: the Benyamin effect sizes seem all screwed up - 15x too large? emailed Visscher to ask
+-->
 
 # See also
 
