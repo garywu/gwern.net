@@ -1770,6 +1770,7 @@ General:
 
 - An aphorism is an algorithm, of we know not what input, we know not what output.
 - "It is easier to write an incorrect epigram than understand a correct one."
+- Voltaire's Third Law: for every aphorism, there is an equal and opposite anti-aphorism
 - The epigram is a compressed, golfed, idea, with all the virtues - and sins - of golfed code.
 - If we measure the entropy of epigrams by how many people understand them, who is the gzip of epigrams? The xz? (...the ZPAQ...?)
 - Remember! Most strings are incompressible, most reals uncomputable, most theorems unprovable, most programs undecidable.
