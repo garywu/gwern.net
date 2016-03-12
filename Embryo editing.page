@@ -260,3 +260,68 @@ The supplementary tables gives a count of all observed SNVs by category, which s
 https://en.wikipedia.org/wiki/Paternal_age_effect
 "Rate of de novo mutations and the importance of father's age to disease risk" http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3548427/
 "Novel variation and de novo mutation rates in population-wide de novo assembled Danish trios" http://www.nature.com/ncomms/2015/150119/ncomms6969/full/ncomms6969.html
+
+
+SNPs have two relevant properties: a frequency of being zero, and an effect size
+
+"cauchy"
+"exponential"
+"geometric"
+"lognormal"
+"Poisson"
+"weibull"
+
+Benyamin polygenic score distribution: looks either exponential or log-normal and a Cullen & Frey graph indicates it is closes to exponential & log-normal distributions.
+
+library(fitdistrplus)
+with(benyamin[benyamin$EFFECT_A1>0,], descdist(abs(EFFECT_A1)/15, discrete=FALSE))
+fit.exp <- with(benyamin[benyamin$EFFECT_A1>0,], fitdist(abs(EFFECT_A1)/15, "exp")); fit.exp
+# Fitting of the distribution ' exp ' by maximum likelihood
+# Parameters:
+#        estimate  Std. Error
+# rate 1063.15695 1.281452665
+fit.ln <- with(benyamin[benyamin$EFFECT_A1>0,], fitdist(abs(EFFECT_A1)/15, "lnorm")); fit.ln
+# Fitting of the distribution ' lnorm ' by maximum likelihood
+# Parameters:
+#             estimate      Std. Error
+# meanlog -7.402017853 0.0013198365617
+# sdlog    1.095050030 0.0009332618808
+
+Plotting residuals & diagnostics, the log-normal performs much worse due to overestimating the number of near-zero effects (the Q-Q plot is particularly bad), so we'll use the exponential for effect sizes
+
+As proportions, the frequencies are probably close to either uniform or beta distributions; in this case, they are very nearly uniformly distributed 0-1:
+
+R> fitdist(benyamin$FREQ_A1, "beta", method="mme")
+Fitting of the distribution ' beta ' by matching moments
+Parameters:
+          estimate
+shape1 1.065412339
+shape2 1.126576711
+
+Set up: 50k SNPs, true effect sizes are exponentially distributed with exponential(rate=1063.15695), frequencies distributed beta(1.065412339, 1.126576711)
+can't do full simulation of 500k SNPs with 100k datapoints, not enough RAM given inefficient R format for logicals: (100000 * 100000 * 48 bytes) / 1000000000 ; 4.8e+11 bytes or 480GB
+can JAGS even handle that much data?
+
+SNPs <- 500000
+SNPlimit <- 50000
+N <- 10000
+genes <- data.frame(Effects = sort(rexp(SNPs, rate=1063.15695), decreasing=TRUE)[1:SNPlimit], Frequencies = rbeta(SNPlimit, shape1=1.065412339, shape2=1.126576711))
+person <- function() { rbinom(SNPlimit, 1, prob=genes$Frequencies) }
+test <- as.data.frame(t(replicate(N, person())))
+format(object.size(test), units="GB")
+# [1] "1.9 Gb"
+test$Polygenic.score <- sapply(1:nrow(test), function(i) { sum(ifelse(test[i,], genes$Effects, 0)) })
+test$IQ <- 100 + 15 * rnorm(N, mean=scale(test$Polygenic.score), sd=sqrt(1-0.33))
+
+library(BGLR)
+b <- BGLR(test$IQ, ETA=list(list(X=test[,1:SNPlimit], model="BL", lambda=202, shape=1.1, rate=2.8e-06)), R2=0.33)
+gc()
+
+BGLR problem: I can't scale it to n=100k/SNP=500k, BGLR RAM consumption maxs out at n=10k/SNP=50k.
+This wouldn't be a problem for the Thompson sampling, but I need to use JAGS anyway for that.
+So BGLR can't give me posteriors for Rietveld et al 2013 or Benyamin 2014 data.
+
+can do Bayesian GWAS from public summary statistics using RSS "Bayesian large-scale multiple regression with summary statistics from genome-wide association studies" http://biorxiv.org/content/biorxiv/early/2016/03/04/042457.full.pdf Matlab library https://github.com/stephenslab/rss
+installation: https://github.com/stephenslab/rss/wiki/RSS-via-MCMC
+RSS example 1 https://github.com/stephenslab/rss/wiki/Example-1 code: https://github.com/stephenslab/rss/blob/master/examples/example1.m data https://uchicago.app.box.com/example1
+doesn't run under Octave at the moment although I got it close: https://github.com/stephenslab/rss/issues/1
