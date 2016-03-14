@@ -290,9 +290,9 @@ pdap <- hc(weightC)
 pdapc2 <- hc(weightC2)
 ## bigger is better:
 score(pdap, weightC)
-[1] -224.2563072
+# [1] -224.2563072
 score(pdapc2, weightC2)
-[1] -439.7811072
+# [1] -439.7811072
 ## stick with the original, then
 pdap
 #   Bayesian network learned via Score-based methods
@@ -964,6 +964,8 @@ Such an app might be considered an infeasible machine vision task, but I believe
 Specifically, one could implement the machine vision core as follows:
 
 1. multilayer neural networks trained for one task can be repurposed to similar tasks by removing the highest layer and retraining on the new task, potentially reaping great performance gains as the hybrid network has already learned much of what it needs for the second task (["transfer learning"](https://cs231n.github.io/transfer-learning/)). So one could take a publicly available NN trained for ImageNet (such as [AlexNet](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf "'ImageNet Classification with Deep Convolutional Neural Networks', Krizhevsky et al 2012"), available in [caffe](https://github.com/BVLC/caffe)), remove the top two layers, and retrain on a dataset of audiences; this will perform better since the original NN has already learned how to detect edges, recognize faces, etc
+
+    The simpler task of counting crowds has already shown itself susceptible to deep learning: eg ["Cross-scene Crowd Counting via Deep Convolutional Neural Networks"](http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Zhang_Cross-Scene_Crowd_Counting_2015_CVPR_paper.pdf "Zhang et al 2015").
 2. raid Flickr and Google Images for CC-licensed photos of audiences raising their arms; then one can manually count how many arms are raised (or outsource to Amazon Mechanical Turk). With the boost from a transferred convolutional deep network, one might get good performance with just a few thousand photos to train with. If each photo takes a minute to obtain and count, then one can create a useful corpus in a week or two of work.
 3. train the NN, applying the usual data augmentation tricks to increase one's meager corpus, trying out random hyperparameters, tweaking the architecture, etc
 
@@ -2072,16 +2074,16 @@ There are some potential problems:
 ## Genetic data availability
 ### Proprietary
 
-The known proprietary databases have long been large enough to carry out either analysis:
+The known proprietary databases have long been large enough to carry out either analysis, as well as countless other analyses (but have failed to and represent a [tragedy of the anticommons](!Wikipedia)):
 
 1. The mutation load analysis requires a whole-genome sample size small enough to have been carried out by innumerable groups post-2009.
-2. For SNPs, an incomplete list of examples of publications based on or groups with _n_>30k:
+2. For SNPs, an incomplete list of examples of publications based on large samples:
 
     - 23andMe reached [1 million customers in July 2015](http://blog.23andme.com/news/one-in-a-million/), of whom ~80% opt-in to research; the first questions 23andMe asks all customers are age and education, so they likely have at least 700,000 usable SNPs for both discovering educational associations & dysgenic tests. In [June 2010](http://blog.23andme.com/23andme-research/23andme-and-a-new-paradigm-for-research/), they claimed to have 29k opt-ins out of 50k customers, implying they were well-powered for a dysgenic test in 2010 if they had access to a polygenic score, and that in the absence of the score, they could have found the 85 SSGAC hits (using _n_=305k) themselves somewhere around mid-2011 or 2012 and then done a dysgenic test.
     - the SSGAC collaboration has _n_=305k as of late 2015
     - [GIANT: height](http://www.nature.com/ng/journal/v46/n11/full/ng.3097.html "'Defining the role of common variation in the genomic and biological architecture of adult human height', Wood et al 2015"): _n_=253,288
     - [cholesterol](http://www.nature.com/nm/journal/vaop/ncurrent/full/nm.3980.html "'Genome-wide identification of microRNAs regulating cholesterol and triglyceride homeostasis', Wagschal et al 2015"): _n_=188,000
-    - UK Biobank: _n_152,729 (as of June 2015; total planned, 500k)
+    - [UK Biobank](!Wikipedia): _n_=152,729 (sequenced/published on as of June 2015; 500k were enrolled and will be covered eventually)
     - [diabetes](http://www.nature.com/ng/journal/v44/n9/full/ng.2383.html "'Large-scale association analysis provides insights into the genetic architecture and pathophysiology of type 2 diabetes', Morris et al 2012"): _n_=114,981
     - [Psychiatric Genomics Consortium](http://www.med.unc.edu/pgc/results): has run multiple studies of varying sizes, the second-largest (a bipolar study) peaking at a total control group of _n_=51672, and the largest (schizophrenia) at a control group of _n_=113,075
     - [Parkinson's](http://www.nature.com/ng/journal/v46/n9/full/ng.3043.html "'Large-scale meta-analysis of genome-wide association data identifies six new risk loci for Parkinson's disease', Nalls et al 2014"): _n_=100,833 (may overlap with 23andMe and some others)
@@ -2091,6 +2093,7 @@ The known proprietary databases have long been large enough to carry out either 
     - Health and Retirement Survey: _n_=12,500
     - [Swedish TwinGene project](http://openarchive.ki.se/xmlui/bitstream/handle/10616/41868/Swedish_Twin_Registry_2013.pdf?sequence=3 "'The Swedish Twin Registry: establishment of a biobank and other recent developments', Magnusson et al 2013"): _n_=10,682
     - TwinsUK registry: _n_=4,905
+    - [Generation Scotland: the Scottish Family Health Study](http://www.generationscotland.org/): _n_=24,000
 
 The existing private groups do not seem to have any interest in testing dysgenics, with the possible exception of future GWAS studies examining fertility, one of which is mentioned by [Mills & Tropf 2015](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4577548/ "The Biodemography of Fertility: A Review and Future Research Frontiers"):
 
@@ -2189,7 +2192,13 @@ After calculating the loss of years, differing values of years, and cost of surg
 
 idea: can we teach an RNN artistic style using inline metadata?
 not quite supervised learning, not quite unsupervised
-that is, instead of hardwiring into the architecture a few nodes corresponding to a 'style' indicator (which is work, would require deep modifications to char-rnn, and may not be flexible), or trying to hack the layers of the rnn directly like in the recent 'artistic style' cnn stuff, perhaps we could provide texts from multiple authors but embed in the text markers of authorship, which the RNN may gradually learn indicates different vocabularies and syntaxes.
+that is, instead of hardwiring into the architecture a few nodes corresponding to a 'style' indicator (which is work, would require deep modifications to char-rnn, and may not be flexible), or trying to hack the layers of the rnn directly like in the recent 'artistic style' CNN stuff, perhaps we could provide texts from multiple authors but embed in the text markers of authorship, which the RNN may gradually learn indicates different vocabularies and syntaxes.
+eg in [Lipton et al 2015](http://arxiv.org/pdf/1511.03683v4.pdf "Capturing meaning in product reviews with character-level generative text models"),
+they model beer reviews with a character-level RNN which is given metadata (beer types: "American IPA", "Russian Imperial Stout", "American Porter", "Fruit/Vegetable Beer", and "American Adjunct Lager") as a hardwired input to the RNN at each timestep, noting that
+> "It might seem redundant to replicate $x_{aux}$ at each sequence step, but by providing it, we eliminate pressure on the model to memorize it.  Instead, all computation can focus on modeling the text and its interaction with the auxiliary input...Such models have successfully produced (short) image captions, but seem impractical for generating full reviews at the character level because signal from $x_{aux}$ must survive for hundreds of sequence steps. We take inspiration from an analogy to human text generation. Consider that given a topic and told to speak at length, a human might be apt to meander and ramble. But given a subject to stare at, it is far easier to remain focused. "
+This turns out to be difficult to train, and they adopt a strategy of training normally without the hardwired metadata to a loss of <1.0/character and then training with metadata to a final loss of 0.7-0.8.
+This is reasonable because at a loss of 1.1 on English text, sampled output has many clear errors, but at <0.9 the output becomes uncanny; it stands to reason that subtle differences of style & vocabulary will only begin to emerge once the RNN has the basics of English down pat (the differences between skilled authors' Englishes are, unsurprisingly, smaller than the differences between regular English & gibberish).
+Pretraining+metadata works well for Lipton et al 2015, but they don't compare it to inlined metadata, and I would note that while it may reduce pressure on the RNN's LSTMs to memorize the metadata, one is still losing RAM to reinjecting the metadata into the RNN at every timestep (on top of the inflexibility). If it's at all possible, inlined metadata would be better.
 
 If you told someone a quote was by Shakespeare, their expectations will be different than if you had told them, "As Charles Dickens once wrote...", and it seems reasonable to think that an RNN might be able to pick up on arbitrary prefixes and 'remember' them in its state-vector for hundreds of characters thereafter and adjust its prediction/style based on this memory.
 
@@ -2361,8 +2370,8 @@ wget 'http://dl.dropboxusercontent.com/u/182368464/umineko-compress.tar.xz'
 untar umineko-compress.tar.xz && rm umineko-compress.tar.xz
 mv umineko/umineko.txt  ryukishi07.txt; mv  umineko/wot.txt jordan.txt; rm -rf ./umineko/
 
-cat /home/gwern/doc/fiction/lafferty/*.txt > lafferty.txt
-cat /home/gwern/doc/fiction/wolfe/fiction/*.txt > wolfe.txt
+cat /home/gwern/doc-misc/fiction/lafferty/*.txt > lafferty.txt
+cat /home/gwern/doc-misc/fiction/wolfe/fiction/*.txt > wolfe.txt
 
 wget 'https://www.gutenberg.org/ebooks/10031.txt.utf-8' -O poe.txt
 wget 'https://www.gutenberg.org/ebooks/11.txt.utf-8' -O carroll.txt
@@ -2403,7 +2412,7 @@ wc --char *.txt
 for FILE in *.txt; do
   dos2unix $FILE;
   AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-  cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | tr -d '\f' | tr -d '^M' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=1500 | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
+  cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | tr -d '\f' | tr -d '^M' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
 done
 cat *.transformed | shuf > input.txt
 cd ../../
@@ -2471,6 +2480,43 @@ just Bible:
 
 so the penalty for the Bible for learning Jordan as well is 0.9763-0.9420=0.0343, and vice-versa is 0.9763-0.9638=0.0125.
 presumably the reason the Bible RNN is hurt 2.7x more is because the Jordan corpus is 4.3x larger and more learning capacity goes to its vocabulary & style.
+what if we balance corpus sizes?
+resuming with torch-rnn: added `| head --bytes=1M` to the pipeline; still imbalanced without deleting a lot of authors... But we'll see how it does. If it doesn't work, we'll delete everyone under 1M:
+    8   coleridge.txt.transformed
+    8   dante.txt.transformed
+    8   davinci.txt.transformed
+    8   eliot.txt.transformed
+    8   gilbertsullivan.txt.transformed
+    8   grant.txt.transformed
+    8   homer.txt.transformed
+    8   kafka.txt.transformed
+    8   pepys.txt.transformed
+    8   sherman.txt.transformed
+    152 carroll.txt.transformed
+    240 keats.txt.transformed
+    244 beowulf.txt.transformed
+    284 machiavelli.txt.transformed
+    356 poe.txt.transformed
+    560 doyle.txt.transformed
+    596 aristotle.txt.transformed
+    692 whitman.txt.transformed
+    832 stoker.txt.transformed
+    1028    bible.txt.transformed
+    1028    bonaparte.txt.transformed
+    1028    chaucer.txt.transformed
+    1028    jordan.txt.transformed
+    1028    lafferty.txt.transformed
+    1028    lincoln.txt.transformed
+    1028    maupassant.txt.transformed
+    1028    melville.txt.transformed
+    1028    montaigne.txt.transformed
+    1028    paine.txt.transformed
+    1028    ryukishi07.txt.transformed
+    1028    wolfe.txt.transformed
+
+    python scripts/preprocess.py  --input_txt data/multi/input.txt   --output_h5 multi.h5   --output_json multi.json --val_frac 0.005 --test_frac 0.005
+    nice th train.lua -input_h5 multi.h5 -input_json multi.json -batch_size 100 -dropout 0.5 -rnn_size 5000 -num_layers 1 ; alert; sleep 10h
+
 
 Can we learn multiple metadata prefixes? Like an author and then a transform of some sort - in music, a useful transform might be time signature or instrument set.
 
@@ -2640,3 +2686,54 @@ twinAll$n / generalAll$n
 ~~~
 
 In general, an experiment run using twins will require a sample 11% the size of the same experiment run using the general population.
+
+<!--
+> Would you change your mind on nutrition if shown, double-blind, placebo-controlled trials on nutrition?
+
+Non-randomized nutrition research has so badly discredited itself over many decades of manufacturing junk results through data-mining and multiple-testing that the randomized trials are about all I seriously would pay any attention to.
+
+> For example, a randomized, double-blinded, placebo-controlled trial of folks diagnosed with prediabetes. Half got supplements of curcumin, the yellow pigment in the spice turmeric and curry powder, and the other half got identical looking placebos, and they just followed them for nine months to see who ended up with diabetes. After nine months of treatment, 16% of subjects in the placebo group went on to get full-blown diabetes. How many in the curcumin group? None. The curcumin group saw a significant improvement in fasting blood sugars, glucose tolerance, hemoglobin A1C, insulin sensitivity, pancreatic  insulin-producing beta cell function (measured two different ways), and insulin sensitivity. https://www.ncbi.nlm.nih.gov/pubmed/22773702
+
+You should link to http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3476912/ instead. So let's take a look.
+A blind RCT, good, good. n=240, which is also good for greater power and indicates this is somewhat insulated from small-study effects. I see also that it was pre-registered and they even designed for power in advance. The pre-registration (https://clinicaltrials.gov/ct2/show/NCT01052025?term=NCT01052025&rank=1) looks fairly legitimate; I notice that the primary outcome is not whether subjects developed diabetes, but perhaps that's just that the difference was so striking they couldn't not notice, and the pre-reg claims single-blind not double, but perhaps they upgraded after preregistration. They don't report an explicit effect size in the abstract, which is annoying but one can estimate it: (240/2)*0.164=19 vs 0. Attrition weakens this down to 97/104, though Taken at face-value, we can say this is strong evidence:
+
+    R> library(BayesianFirstAid)
+    R> bayes.prop.test(matrix(c(0,19,97,104-19), ncol=2))
+
+        Bayesian First Aid propotion test
+
+    data: matrix(c(0, 19, 97, 104 - 19), ncol = 2)
+    number of successes:    0,  19
+    number of trials:      97, 104
+    Estimated relative frequency of success [95% credible interval]:
+      Group 1: 0.0069 [2.1e-06, 0.031]
+      Group 2: 0.19 [0.12, 0.26]
+    Estimated group difference (Group 1 - Group 2):
+      -0.18 [-0.26, -0.11]
+    The relative frequency of success is larger for Group 1 by a probability
+    of <0.001 and larger for Group 2 by a probability of >0.999 .
+
+With regular statistics it's difficult to say what the effect size really is because of the 0; one standard frequentist trick is to treat the 0 as 0.5 and a pseudo-observation, but the Bayesian analysis's noninformative priors also help, giving an estimate of 0.08 for theta1, giving us either
+
+    R> log(0.0069  / 0.19)
+    [1] -3.315502661
+    R> log((0.5/97) / (19/104))
+    [1] --3.567906239
+
+A log odds ratios of -3.6 is extremely large (in RRs, the estimated relative risk would be 6% using the 0.5 trick: `(0.5/9) / (97/104)`.)
+In fact, this is a case where it looks too good to be true. Is it plausible that anything could have an effect size like this on treating diabetes? Or to have noticed before: if curucumin can really cut diabetes risk by >95%, how has this not been confirmed before or become part of received wisdom? Curucumin is used in the cuisine of many countries, someone should have noticed that these countries have no diabetes. The dose may be relevant here:
+
+> All participants were instructed to take three capsules with blinded labels of either curcumin or placebo twice a day (total of six capsules per day) for 9 months continuously. Each curcumin capsule has curcuminoid content of 250 mg.
+
+So 6*250mg=1.5g of curcumin daily. The "Preparation of curcuminoids capsules" section doesn't mention any additions like black pepper. To put this in perspective, my own tumeric comes in a 31g canister; WP says "The best-studied compound is curcumin, which constitutes 3.14% (on average) of powdered turmeric", so my 31g is (31*0.0314) / 1.5 making it a 0.65-day supply, and I have used less than half of it for cooking. http://www.livestrong.com/article/104916-recommended-dosages-turmeric/ quotes a NIH estimate of 2g daily consumption of tumeric, or (2*0.0314)/1.5 = 4% of the dose used in the study, which could explain the lack of earlier results - it's 1/20th the dose used in this study, giving a log odds reduction of -0.18 or an OR of 0.83. This is noteworthy but not so great that it *must* have been discovered before, so we're left with just the implausibility of such a big effect.
+
+One concern is attrition: they lost 21 of the curcumin group but only 12 of the placebo. This suggests side-effects and undetected diabetics; if a few of the missing 21 had diabetes, the effect size would look much less impressive.
+There is also the concern they discuss in the Discussion: if Thais get diabetes at higher rates, that may overestimate the benefits for an American. We also need to remember that delaying getting diabetes is not the same thing as preventing it.
+
+This dosage is also surprisingly expensive: http://www.amazon.com/NOW-Foods-Curcumin-Extract-Capsules/dp/B0013OXD3I is decently priced at $14 for 60x665mg or $0.35/g or at 1.5g/annually, ~$200 ((14 / (60*0.665)) * 1.5 * 365). So if you take it for 40 years or so, you spend easily $8k on just curcumin extract. Diabetes costs like $100k over a lifetime so if you get it in your 40s and live another 40 years, that's around $2k a year; you have a risk of like 1/3 of ever getting diabetes, so the expected loss is $33k and halving that further would be worth $16k and so on so cutting it like in the experiment would be worth easily $20k, but per year that's only like $1k. So it makes a big difference whether curcumin is *preventing* diabetes permanently if you take it (in which case it looks like a bargain) or just delaying it a year or two (in which case it's a wash or even a loss). This is one way analyzing all-cause mortality is easier than specific diseases: everyone dies, so the only question is how many months you can buy.
+
+But the study looks good on its own, so next I turn to further reading, looking for criticism & meta-analyses: https://scholar.google.com/scholar?cites=6812983493704877436&as_sdt=20000005&sciodt=0,21&hl=en https://scholar.google.com/scholar?q=related:fAXhCmSUjF4J:scholar.google.com/&hl=en&as_sdt=0,21
+Nothing fatal pops up but I see no replications over longer time periods which could answer the prevention/delay question, and the human trials in general are small and very heterogenous (although indicating safety and lack of side-effects)
+
+So overall, I'd say that if I became prediabetic, I would give serious thought to using curcumin but it doesn't yet look compelling for healthy people.
+-->
