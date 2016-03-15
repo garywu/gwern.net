@@ -6,25 +6,59 @@ status: in progress
 belief: log
 ...
 
-This is the March 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [March 2016](http://www.gwern.net/newsletter/2016/02).
+This is the March 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [February 2016](http://www.gwern.net/newsletter/2016/02).
 This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
+
+- RNN?
+- embryo editing?
+- cryonics poll?
 
 # Media
 ## Links
 
 Everything is heritable:
 
+- ["Molecular genetic contributions to social deprivation and household income in UK Biobank (_n_=112,151)"](http://biorxiv.org/content/early/2016/03/09/043000), Hill et al 2016 ([correlation graph](https://pbs.twimg.com/media/CdMobKRXEAEMkmi.jpg:large))
+- ["Genetic relationship between five psychiatric disorders estimated from genome-wide SNPs"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3800159/), Psychiatric Genomics Consortium 2013
+- ["Height, body mass index, and socioeconomic status: Mendelian randomisation study in UK Biobank"](http://www.bmj.com/content/352/bmj.i582), Tyrrell et al 2016
+- ["Mutation and Human Exceptionalism: Our Future Genetic Load"](http://www.genetics.org/content/202/3/869), Lynch 2016
+- ["Engineering the Perfect Baby"](https://www.technologyreview.com/s/535661/engineering-the-perfect-baby/ "Scientists are developing ways to edit the DNA of tomorrow’s children. Should they stop before it’s too late?")
+
 Politics/religion:
 
-Statistics/AI/meta-science:
+- ["The Dog Thief Killings"](http://roadsandkingdoms.com/2016/the-dog-thief-killings/)
+
+AI:
+
+- ["Dynamic Memory Networks for Visual and Textual Question Answering"](http://arxiv.org/abs/1603.01417), Xiong et al 2016
+- ["Learning Hand-Eye Coordination for Robotic Grasping with Deep Learning and Large-Scale Data Collection"](http://arxiv.org/pdf/1603.02199v1.pdf), Levine et al 2016 ([video](https://www.youtube.com/watch?v=cXaic_k80uM))
+- ["Generating images with recurrent adversarial networks"](http://arxiv.org/abs/1602.05110), Im et al 2016 (Another nice improvement in the state of the art; getting RNNs working with adversarial training is believed to be pretty tricky.﻿)
+- ["Deep Exploration via Bootstrapped DQN"](http://arxiv.org/pdf/1602.04621.pdf), Osband et al 2016 (Who'd've thought there was a way to combine bootstrapping and deep q-networks?)
+- [AlphaGo as AI risk example](https://www.facebook.com/yudkowsky/posts/10154018209759228) (Inside View beat Outside View 4-1.﻿)
+
+Statistics/meta-science:
+
+- ["Underreporting in Psychology Experiments: Evidence From a Study Registry"](http://www.gwern.net/docs/statistics/2015-franco.pdf), Franco et al 2015 (previously: [Franco et al 2014](http://www.law.nyu.edu/sites/default/files/upload_documents/September%209%20Neil%20Malhotra.pdf "Publication Bias in the Social Sciences: Unlocking the File Drawer"))
+- ["The Scientific Impact of Positive and Negative Phase 3 Cancer Clinical Trials"](http://oncology.jamanetwork.com/article.aspx?articleid=2499777), Unger et al 2016
+- ["The Stress Test: Rivalries, intrigue, and fraud in the world of stem-cell research"](http://www.newyorker.com/magazine/2016/02/29/the-stem-cell-scandal)
 
 Psychology/biology:
 
+- ["What sparked the Cambrian explosion?"](http://www.nature.com/news/what-sparked-the-cambrian-explosion-1.19379 "An evolutionary burst 540 million years ago filled the seas with an astonishing diversity of animals. The trigger behind that revolution is finally coming into focus.")
+- ["Correlation and Causation in the Study of Personality"](http://causality.cs.ucla.edu/blog/wp-content/uploads/2012/08/lee2012.pdf), Lee 2012
+- ["State-Space of Drug Effects: Results"](http://qualiacomputing.com/2015/06/09/state-space-of-drug-effects-results/)
+- [2016 Nootropics survey results](http://slatestarcodex.com/2016/03/01/2016-nootropics-survey-results/)
+
 Technology:
 
+- [Heat pipe](https://en.wikipedia.org/wiki/Heat_pipe)
+- ["The Alameda-Weehawken Burrito Tunnel"](http://idlewords.com/2007/04/the_alameda_weehawken_burrito_tunnel.htm)
+
 Economics:
+
+- ["Typhoid Fever, Water Quality, and Human Capital Formation"](http://www.gwern.net/docs/2016-beach.pdf), Beach et al 2016
 
 Philosophy:
 
@@ -38,7 +72,12 @@ Fiction:
 
 Nonfiction:
 
+- Power's [_Drugs 2.0_](http://www.amazon.com/Drugs-2-0-Revolution-Thats-Changing-ebook/dp/B00BLCAD4O)
+
 ## Film/TV
+
+- [_The Tale of Princess Kaguya_](https://en.wikipedia.org/wiki/The_Tale_of_the_Princess_Kaguya)
+- [_Majin Tantei Nougami Neuro_](https://en.wikipedia.org/wiki/Neuro:_Supernatural_Detective)
 
 ## Games
 
@@ -46,4 +85,17 @@ Nonfiction:
 
 Touhou:
 
+- ["Longing of Forest"](https://www.youtube.com/watch?v=6xSg1JnCMp0) (ハム; _Re*Collection_ {C89}) [jazz/folk]
+- ["Doloza (Fires of Hokkai)"](https://www.youtube.com/watch?v=HhfHnrkgRJU) (Maurits"禅"Cornelis feat.舞花 & W.nova; _Spatial Moving_ {C89}) [trance]
+- ["死霊の夜桜"](https://www.dropbox.com/s/ugv3liqektqm9cn/marasy-%E5%B9%BB%E6%83%B3%E9%81%8A%E6%88%AF%EF%BC%9C%E7%A5%9E%EF%BC%9E-%E6%AD%BB%E9%9C%8A%E3%81%AE%E5%A4%9C%E6%A1%9C.ogg) (Marasy; _幻想遊戯＜神＞ ～ Museum of marasy_ {R12}) [classical]
+- ["素敵な墓場で暮らしましょ"](https://www.dropbox.com/s/dp3moyl4zykbqan/marasy-%E5%B9%BB%E6%83%B3%E9%81%8A%E6%88%AF%EF%BC%9C%E7%A5%9E%EF%BC%9E-%E7%B4%A0%E6%95%B5%E3%81%AA%E5%A2%93%E5%A0%B4%E3%81%A7%E6%9A%AE%E3%82%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87.ogg) (Marasy; _幻想遊戯＜神＞ ～ Museum of marasy_ {R12}) [classical]
+- ["神社の新しい風"](https://www.dropbox.com/s/mh0qkvwoa63h0g4/marasy-%E5%B9%BB%E6%83%B3%E9%81%8A%E6%88%AF%EF%BC%9C%E7%A5%9E%EF%BC%9E-%E7%A5%9E%E7%A4%BE%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E9%A2%A8.ogg) (Marasy; _幻想遊戯＜神＞ ～ Museum of marasy_ {R12}) [classical]
+
 Doujin:
+
+- ["Magic"](https://www.dropbox.com/s/46vmq5d1ebxio9p/chroma-blackmagic-magic.ogg) (Chroma; _Black Magic_ {C89}) [vocal/Jpop]
+- ["Sāi-bak-hō (HiRoSYO Remix)"](https://www.dropbox.com/s/axjwctcnlhd1qtv/kamomesano-tatsutacompilation4-s%C4%81ibakh%C5%8Dhirosyoremix.ogg) (kamome sano; _tatsuta compilation 4_ {2015}) [electronic]
+
+Vocaloid
+
+- ["Paradox"](https://www.dropbox.com/s/imrbmi8rsucjgqi/kimkim-monophobia-paradox.ogg) (Kimkim feat. Miku; _MONOPHOBIA_ {2015}) [electronic]
