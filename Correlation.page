@@ -91,6 +91,9 @@ The 'fairness' or 'quality' of each of the comparisons made was assessed for com
 
 - MacLehose RR, Reeves BC, Harvey IM, Sheldon TA, Russell IT, Black AMS. "A systematic review of comparisons of effect sizes derived from randomised and non-randomised studies" http://www.journalslibrary.nihr.ac.uk/__data/assets/pdf_file/0010/64828/FullReport-hta4340.pdf . _Health Technol Assess_ 2000;4(34).
 
+Pocock & Elbourne criticism of Benson and Concato studies: http://disciplinas.stoa.usp.br/pluginfile.php/338043/mod_folder/content/0/CR%C3%8DTICA/pocock_nejm_2000.pdf?forcedownload=1
+
+[3] Benson K, Hartz AJ. "A comparison of observational studies and randomized, controlled trials". N Engl J Med 2000;342:1878e86. https://www.researchgate.net/profile/Arthur_Hartz/publication/12248599_A_comparison_of_observational_studies_and_randomized_controlled_trials/links/0deec522bc84b2c1dd000000.pdf
 Benson and Hartz 32
 Benson and Hartz evaluated 19 treatment comparisons (eight in common with Britton and colleagues 25 ) for which they located at least one randomised and one observational study (defined as being a study where the treatment was not allocated for the purpose of research) in a search of MEDLINE and the databases in the Cochrane Library (Table 4). They only considered treatments administered by physicians. Across the 19 comparisons they found 53 observational and 83 randomised studies, the results of which were metaanalysed separately for each treatment comparison. Comparisons were made between the pooled estimates, noting whether the point estimate from the combined observational studies was within the confidence interval of the RCTs. They found only two instances where the observational and randomised studies did not meet this criterion.
 
@@ -702,8 +705,8 @@ A much larger literature within economics, statistics, and program evaluation ha
 "How Close Is Close Enough? Testing Nonexperimental Estimates of Impact against Experimental Estimates of Impact with Education Test Scores as Outcomes", Wilde & Hollister 2002 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.217.2276&rep=rep1&type=pdf
 
 In this study we test the performance of some nonexperimental estimators of impacts applied to
-an educational intervention—reduction in class size—where achievement test scores were the outcome.
-We compare the nonexperimental estimates of the impacts to “true impact” estimates provided by a
+an educational intervention-reduction in class size-where achievement test scores were the outcome.
+We compare the nonexperimental estimates of the impacts to "true impact" estimates provided by a
 random-assignment design used to assess the effects of that intervention. Our primary focus in this study
 is on a nonexperimental estimator based on a complex procedure called propensity score matching.
 Previous studies which tested nonexperimental estimators against experimental ones all had
@@ -716,19 +719,19 @@ experiment in Tennessee involving 79 schools in which students in kindergarten t
 randomly assigned to small classes (the treatment group) or to regular-size classes (the control group).
 The outcome variables from the data set were the math and reading achievement test scores.
 We carried out the propensity-score-matching estimating procedure separately for each of 11
-schools’ kindergartens and used it to derive nonexperimental estimates of the impact of smaller class
+schools' kindergartens and used it to derive nonexperimental estimates of the impact of smaller class
 size. We also developed proper standard errors for the propensity-score-matched estimators by using
 bootstrapping procedures. We found that in most cases, the propensity-score estimate of the impact
-differed substantially from the “true impact” estimated by the experiment. We then attempted to assess
+differed substantially from the "true impact" estimated by the experiment. We then attempted to assess
 how close the nonexperimental estimates were to the experimental ones. We suggested several different
-ways of attempting to assess “closeness.” Most of them led to the conclusion, in our view, that the
-nonexperimental estimates were not very “close” and therefore were not reliable guides as to what the
-“true impact” was.
-We put greatest emphasis on looking at the question of “how close is close enough?” in terms of
+ways of attempting to assess "closeness." Most of them led to the conclusion, in our view, that the
+nonexperimental estimates were not very "close" and therefore were not reliable guides as to what the
+"true impact" was.
+We put greatest emphasis on looking at the question of "how close is close enough?" in terms of
 a decision-maker trying to use the evaluation to determine whether to invest in wider application of the
-intervention being assessed—in this case, reduction in class size. We illustrate this in terms of a rough
+intervention being assessed-in this case, reduction in class size. We illustrate this in terms of a rough
 cost-benefit framework for small class size as applied to Project Star. We find that in 30 to 45 percent of
-the 11 cases, the propensity-score-matching nonexperimental estimators would have led to the “wrong”
+the 11 cases, the propensity-score-matching nonexperimental estimators would have led to the "wrong"
 decision.
 
 Two major considerations motivated us to undertake this study. First, four important studies
@@ -742,7 +745,7 @@ the outcome variables of earnings, employment rates, and welfare utilization.
 - Dehejia and Wahba, 1999 "Causal effects in non-experimental studies: re-evaluating the evaluation of training programs" http://isites.harvard.edu/fs/docs/icb.topic1311568.files/dehejia_wahba%201999.pdf
 
 Because we are interested in testing nonexperimental methods on educational outcomes, we use
-Tennessee’s Project Star as the source of the “true random-assignment” data. We describe Project Star in
+Tennessee's Project Star as the source of the "true random-assignment" data. We describe Project Star in
 detail below. We use the treatment group data from a given school for the treatments and then construct
 comparison groups in various nonexperimental ways with data taken out of the control groups in other
 schools.
@@ -752,19 +755,19 @@ status from over 11,000 students (Word, 1990). The schools chosen for the experi
 distributed throughout Tennessee. Originally, the project included eight schools from nonmetropolitan
 cities and large towns (for example, Manchester and Maryville), 38 schools from rural areas, and 17
 inner-city and 16 suburban schools drawn from four metropolitan areas: Knoxville, Nashville, Memphis,
-and Chattanooga. Beginning in 1985–86, the kindergarten teachers and students within Project Star
-classes were randomly assigned within schools to either “small” (13–17 pupils), “regular” (22–25), or
-“regular-with-aide” classes. New students who entered a Project Star school in 1986, 1987, 1988, or 1989
-were randomly assigned to classes. Because each school had “the same kinds of students, curriculum,
-principal, policy, schedule, expenditures, etc, for each class” and the randomization occurred within
+and Chattanooga. Beginning in 1985-86, the kindergarten teachers and students within Project Star
+classes were randomly assigned within schools to either "small" (13-17 pupils), "regular" (22-25), or
+"regular-with-aide" classes. New students who entered a Project Star school in 1986, 1987, 1988, or 1989
+were randomly assigned to classes. Because each school had "the same kinds of students, curriculum,
+principal, policy, schedule, expenditures, etc, for each class" and the randomization occurred within
 school, theoretically, the estimated within-school effect of small classes should have been unbiased.
 During the course of the project, however, there were several deviations from the original experimental
-design—for example, after kindergarten the students in the regular and regular-with-aide classes were
+design-for example, after kindergarten the students in the regular and regular-with-aide classes were
 randomly reassigned between regular and regular-with-aide classes, and a significant number of students
 switched class types between grades. However, Krueger found that, after adjusting for these and other
 problems, the main Project Star results were unaffected; in all four school types students in small classes
 scored significantly higher on standardized tests than students in regular-size classes.
-In this study, following Krueger’s example, test score is used as the measure of student
+In this study, following Krueger's example, test score is used as the measure of student
 achievement and is the outcome variable. For all comparisons, test score is calculated as a percentile rank
 of the combined raw Stanford Achievement reading and math scores within the entire sample distribution
 for that grade.
@@ -814,16 +817,16 @@ or the nonexperimental estimate.
 presenting aspects of his research using Project Star data, Krueger (1999, 2000) has developed some
 rough benefit-cost calculations related to reduction in class size. In Appendix B we sketch in a few
 elements of his calculations which provide the background for the summary measures derived from his
-calculations that we use to illustrate our “close enough.” The benefits Krueger focuses on are increases in
-future earnings that could be associated with test score gains. He carefully develops estimates—based on
-other literature—of what increase in future earnings might be associated with a gain in test scores in the
+calculations that we use to illustrate our "close enough." The benefits Krueger focuses on are increases in
+future earnings that could be associated with test score gains. He carefully develops estimates-based on
+other literature-of what increase in future earnings might be associated with a gain in test scores in the
 early years of elementary school. With appropriate discounting to present values, and other adjustments,
 he uses these values as estimates of benefits and then compares them to the estimated cost of reducing
 class size from 22 to 15, taken from the experience in Project Star and appropriately adjusted.
 For our purposes, what is most interesting is the way he uses these benefit-cost calculations to
 answer a slightly different question: How big an effect on test scores due to reduction of class size from
 22 to 15 would have been necessary to just justify the expenditures it took to reduce the class size by that
-much? He states the answer in terms of “effect size,” that is the impact divided by the estimated standard
+much? He states the answer in terms of "effect size," that is the impact divided by the estimated standard
 deviation of the impact. This is a measure that is increasingly used to compare across outcomes that are
 measured in somewhat different metrics. His answer is that an effect size of 0.2 of a standard deviation of
 tests scores would have been just large enough to generate estimated future earnings gains sufficient to
@@ -840,7 +843,7 @@ impact estimate is less than 5.4 or statistically not significantly different fr
 a conclusion that the class-size reduction was not cost-effective. Column 1 is the school ID, column 2
 gives the conclusion on the basis of the experimental impact estimate, column 3 gives the conclusion on
 the basis of the nonexperimental impact estimate, and column 4 contains an x if the nonexperimental
-estimate would have led to a “wrong” cost-effectiveness conclusion, i.e., a different conclusion from the
+estimate would have led to a "wrong" cost-effectiveness conclusion, i.e., a different conclusion from the
 experimental impact conclusion about cost-effectiveness.
 It is easy to see in Table 2 that the nonexperimental estimate would have led to the wrong
 conclusion in four of the 11 cases. For a fifth case, school 16, we entered a Maybe in Column 4 because,
@@ -849,14 +852,14 @@ only the 9 percent level, whereas the usual significance criterion is 5 percent.
 nonexperimental point estimate of impact was greater than 5.4 percentile points, strict use of the 5
 percent significance criterion would have led to the conclusion that the reduction in class size was not
 cost-effective. On the other hand, analysts sometimes use a 10 percent significance criterion, so it could
-be argued that they might have used that level to conclude the program was cost-effective—thus the
+be argued that they might have used that level to conclude the program was cost-effective-thus the
 Maybe entry for this school.
 
 In all seven selected cases, the experimental and nonexperimental estimates differ considerably
 from each other. One of the nonexperimental estimates is of the wrong sign, while in the other estimates,
 the signs are the same but all the estimates differ by at least 1.8 percentage points, ranging up to as much
 as 12 percentage points (rural-city). Statistical inferences about the significance of these program effects
-also vary (five of the seven pairs had differing inferences—i.e., only one estimate of the program effect
+also vary (five of the seven pairs had differing inferences-i.e., only one estimate of the program effect
 in a pair is statistically significant at the 10 percent level). All of the differences between the
 experimental and nonexperimental estimates (the test of difference between the outcomes for the
 experimental control group and the nonexperimental comparison group) in this subset were statistically
@@ -884,7 +887,7 @@ type differ by more than 5 percentage points.
 
 This meta-analysis compares effect size estimates from 51 randomized experiments to those from 47 nonrandomized experiments. These experiments were drawn from published and unpublished studies of Scholastic Aptitude Test coaching, ability grouping of students within classrooms, presurgical education of patients to improve postsurgical outcome, and drug abuse prevention with juveniles. The raw results suggest that the two kinds of experiments yield very different answers. But when studies are equated for crucial features (which is not always possible), nonrandomized experiments can yield a reasonably accurate effect size in comparison with randomized designs. Crucial design features include the activity level of the intervention given the control group, pretest effect size, selection and attrition levels, and the accuracy of the effect-size estimation method. Implications of these results for the conduct of meta-analysis and for the design of good nonrandomized experiments are discussed.
 
-...When certain assumptions are met (e.g., no treatment correlated attrition) and it is properly executed (e.g., assignment is not overridden), random assignment allows unbiased estimates of treatment effects and justifies the theory that leads to tests of significance. We compare this experiment to a closely related quasiexperimental design—the nonequivalent control group design—that is similar to the randomized experiment except that units are not assigned to conditions at random (Cook & Campbell, 1979).
+...When certain assumptions are met (e.g., no treatment correlated attrition) and it is properly executed (e.g., assignment is not overridden), random assignment allows unbiased estimates of treatment effects and justifies the theory that leads to tests of significance. We compare this experiment to a closely related quasiexperimental design-the nonequivalent control group design-that is similar to the randomized experiment except that units are not assigned to conditions at random (Cook & Campbell, 1979).
 Statistical theory is mostly silent about the statistical characteristics (bias, consistency, and efficiency) of this design. However, meta-analysts have empirically compared the two designs. In meta-analysis, study outcomes are summarized with an effect size statistic (Glass, 1976). In the present case, the standardized mean difference statistic is relevant:
 d = (mean_treatment - mean_control) / SD_all
 where A/ T is the mean of the experimental group, M c is the mean of the comparison group, and SD P is the pooled standard deviation. This statistic allows the meta-analyst to combine study outcomes that are in disparate metrics into a single metric for aggregation. Comparisons of effect sizes from randomized and nonrandomized experiments have yielded inconsistent results (e.g., Becker, 1990; Colditz, Miller, & Mosteller, 1988; Hazelrigg, Cooper, & Borduin, 1987; Shapiro & Shapiro, 1983; Smith, Glass & Miller, 1980). A recent summary of such work (Lipsey & Wilson, 1993) aggregated the results of 74 meta-analyses that reported separate standardized mean difference statistics for randomized and nonrandomized studies. Overall, the randomized studies yielded an average standardized mean difference statistic of d = 0.46 (SD = 0.28), trivially higher than the nonrandomized studies d = 0.41 (SD = 0.36); that is, the difference was near zero on the average over these 74 meta-analyses. Lipsey and Wilson (1993) concluded that "there is no strong pattern or bias in the direction of the difference made by lower quality methods. In a given treatment area, poor design or low methodological quality may result in a treatment estimate quite discrepant from what a better quality design would yield, but it is almost as likely to be an underestimate as an overestimate" (p. 1193). However, we believe that considerable ambiguity still remains about this methodological issue.
@@ -910,3 +913,10 @@ where A/ T is the mean of the experimental group, M c is the mean of the compari
 
 ...*Projecting the Results of an Ideal Comparison*:
 Given these findings, one might ask what an ideal comparison between randomized and nonrandomized experiments would yield. We simulate such a comparison in Table 6 using the results in Table 5, projecting effect sizes using predictor values that equate studies at an ideal or a reasonable level. The projections in Table 6 assume that both randomized and nonrandomized experiments used passive control groups, internal control groups, and matching; allowed exact computation of d; had no attrition; standardized treatments; were published; had pretest effect sizes of zero; used N = 1,000 subjects per study; did not allow self-selection of subjects into conditions; and used outcomes based on self-reports and specifically tailored to treatment. Area effects and interaction effects between area and assignment were included in the projection. Note that the overall difference among the eight cell means has diminished dramatically in comparison with Table 2. In Table 2, the lowest cell mean was -0.23 and the highest was 0.37, for a range of 0.60. The range in Table 6 is only half as large (0.34). The same conclusion is true for the range within each area. In Table 2 that range was 0.01 for the smallest difference between randomized and nonrandomized experiments (SAT coaching) to 0.21 for the largest difference (drug-use prevention). In Table 6, the range was 0.11 (SAT coaching), 0.01 (ability grouping), 0.05 (presurgical interventions), and 0.09 (druguse prevention). Put a bit more simply, nonrandomized experiments are more like randomized experiments if one takes confounds into account.
+
+["Comparison of evidence of treatment effects in randomized and nonrandomized studies", Ioannidis et al 2001](/docs/statistics/2001-ioannidis.pdf)
+
+Study Selection: 45 diverse topics were identified for which both randomized trials (n = 240) and nonrandomized studies (n = 168) had been performed and had been considered in meta-analyses of binary outcomes.
+Data Extraction: Data on events per patient in each study arm and design and characteristics of each study considered in each meta-analysis were extracted and synthesized separately for randomized and nonrandomized studies.
+Data Synthesis: Very good correlation was observed between the summary odds ratios of randomized and nonrandomized studies (r= 0.75; P<.001); however, non-randomized studies tended to show larger treatment effects (28 vs 11; P= .009). Between-study heterogeneity was frequent among randomized trials alone (23%) and very frequent among nonrandomized studies alone (41%). The summary results of the 2 types of designs differed beyond chance in 7 cases (16%). Discrepancies beyond chance were less common when only prospective studies were considered (8%). Occasional differences in sample size and timing of publication were also noted between discrepant randomized and nonrandomized studies. In 28 cases (62%), the natural logarithm of the odds ratio differed by at least 50%, and in 15 cases (33%), the odds ratio varied at least 2-fold between nonrandomized studies and randomized trials.
+Conclusions: Despite good correlation between randomized trials and nonrandomized studies—in particular, prospective studies—discrepancies beyond chance do occur and differences in estimated magnitude of treatment effect are very common.
