@@ -184,13 +184,20 @@ In the morning, the smart alarm mode seemed to work pretty well. I woke up early
 
 ## Replacing headband
 
-Around 15 May 2011, I gave up on the original headband - it was getting too dirty to get good readings - and decided to rip it apart to see what it was made of, and to order a new set of three for \$35 (which seems reasonable given the expensive material that the contacts are made of - silver fabric); they then [cost \$50](http://web.archive.org/web/20120605135712/http://www.myzeo.com/sleep/shop/zeo-accessories/zeo-bedside-headband-sensor-replacement-kit-x-3.html). A little googling found me a coupon, `FREESHIP`, but apparently it only applied to the Zeo itself and so the pads were actually \$40, or ~\$13 a piece. I won't say that buying replacement headbands semi-annually is something that *thrills* me, but \$20 a year for sleep data is a small sum. Certainly it's more cost-effective than most of the [nootropics](Nootropics) I have used. (Full disclosure: 9 months after starting this page, Zeo [offered me](#comment-309924264) a free set of sensors. I used them and when the news broke about Zeo going out of business, I bought another set.)
+Around 15 May 2011, I gave up on the original headband - it was getting too dirty to get good readings - and decided to rip it apart to see what it was made of, and to order a new set of three for \$35 (which seems reasonable given the expensive material that the contacts are made of - silver fabric); they then [cost \$50](http://web.archive.org/web/20120605135712/http://www.myzeo.com/sleep/shop/zeo-accessories/zeo-bedside-headband-sensor-replacement-kit-x-3.html). A little googling found me a coupon, `FREESHIP`, but apparently it only applied to the Zeo itself and so the pads were actually \$40, or ~\$13 a piece. I won't say that buying replacement headbands semi-annually is something that *thrills* me, but \$20 a year for sleep data is a small sum. Certainly it's more cost-effective than most of the [nootropics](Nootropics) I have used. (Full disclosure: 9 months after starting this page, Zeo [offered me](#comment-309924264) a free set of headbands. I used them and when the news broke about Zeo going out of business, I bought another set.)
 
 ![The old headband, with electrical tape residue](/images/zeo/zeo-headband-original.jpg) ![The disposable headband with the cloth covering removed](/images/zeo/zeo-headband-deconstructed.jpg)/
 ![Said headband with plastic removed; notice discoloration of metal despite cleaning](/images/zeo/zeo-headband-fabric1.jpg) ![The reverse side](/images/zeo/zeo-headband-fabric2.jpg)/
 ![The new headband's wrapper](/images/zeo/zeo-wrapper.jpg) ![The new headband](/images/zeo/zeo-new-headband.jpg)/
 
 In the future, I might try to make my own; [eok.gnah](http://www.flickr.com/photos/eokgnah/5489407407/) claims that buying the silver fabric is apparently cheaper than ordering from Zeo, marciot [reports success in making headbands](http://www.instructables.com/id/DIY-Replacement-Zeo-Sleep-Monitor-Headband-Sensor/), and it seems one can even [hook up other sensors](http://web.archive.org/web/20120107073301/http://www.myzeo.com/sleep/node/594) to the headband. Another alternative is, since the Zeo headband is a one-electrode EEG headset, to take an approach similar to the EEG people and occasionally add small dabs of conductive paste, since fairly large quantities are cheap (eg. [12oz for $30](http://www.amazon.com/Ten20-EEG-Conductive-Paste-Tube/dp/B002R16OUK)). There was a [disposable adhesive gel ECG electrodes with offset press-stud connections](https://forum.quantifiedself.com/thread-zeo-shutting-down-export-your-data?pid=3412#pid3412) being experimented with by Zeo Inc, but they never entered wide use before it shut down.
+
+One problem with the sensor mounted on the headband is that the lithium battery inside it can stop holding a charge.
+The casing is extremely difficult to open without damaging the circuitry or connections, and the battery inside is soldered to the circuit board:
+
+![An opened Zeo headband sensor](/images/zeo/zeo-headband-sensor-inside.jpg)
+
+Once safely opened, the battery can be replaced by another one of similar size. For details, see the Quantified Self forum thread.
 
 # Melatonin
 
