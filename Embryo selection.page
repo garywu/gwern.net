@@ -1096,7 +1096,34 @@ The more genes involved, the longer selection can operate and the more potential
 
 It's true that a polygenic score might be able to predict only a small fraction of variance, but this is in part because of the Central Limit Theorem: with thousands of genes with additive effects, they sum up to a tight bell curve, and it's 5001 steps forward, 4999 steps backwards, which gives little hint as to what would happen if we could take all 10000 steps forward.
 So the total potential gain has more to do with the heritability vs number of alleles, which makes sense - if a trait is mostly caused by a single gene which half the population already has, we would not expect to be able to make much difference; but if it's mostly caused by a few dozen genes, then few people will have the maximal value; and if by a few hundred or a few thousand, then probably no one will have ever had the maximal value and the gain could be enormous.
-Consider a simple binomial model of 10000 alleles with 1/0 unit weights at 50% frequency, explaining 80% of variance; the mean sum will be `10000*0.5=5000` with an SD of `sqrt(10000*0.5*0.5)=50`; if we observe a population IQ SD of 15, and each +SD is due 80% to having +50 beneficial variants, then each allele is worth ~0.26 points, and then, regardless of any 'polygenic score' we might've constructed explaining a few percent of the 10000 alleles' influence, the maximal gain over the average person is `0.26*(10000-5000)=1300` points.
+Consider a simple binomial model of 10000 alleles with 1/0 unit weights at 50% frequency, explaining 80% of variance; the mean sum will be `10000*0.5=5000` with an SD of `sqrt(10000*0.5*0.5)=50`; if we observe a population IQ SD of 15, and each +SD is due 80% to having +50 beneficial variants, then each allele is worth ~0.26 points, and then, regardless of any 'polygenic score' we might've constructed explaining a few percent of the 10000 alleles' influence, the maximal gain over the average person is `0.26*(10000-5000)=1300` points/86SDs.
+A more realistic model with exponentially distributed weights gives a similar estimate[^Benyamin-exponential]
+
+[^Benyamin-exponential]: Taking the binomial model from before, we replace the 1/0 unit weights with weights which are 0 or are drawn from an exponential distribution.
+    A fit to the Benyamin et al 2014 betas gives an [exponential distribution](!Wikipedia) with a rate/λ=1063 or since the betas were in SDs, λ=71. We can then simulate the consequences of going from 5000 0 alleles & 5000 positive alleles to all 10000 positive alleles:
+
+    ~~~{.R}
+    mean(replicate(1000, sum(sample(rexp(10000, rate=71), 5000))))
+    # [1] 70.41815521
+    sd(  replicate(1000, sum(sample(rexp(10000, rate=71), 5000))))
+    # [1] 0.9788748364
+
+    mean(replicate(1000, sum(sample(rexp(10000, rate=71), 10000))))
+    # [1] 140.8316512
+    sd(  replicate(1000, sum(sample(rexp(10000, rate=71), 10000))))
+    # [1] 1.42341606
+
+    (140.8316512 - 70.41815521) / 0.9788748364
+    # [1] 71.93309438
+
+    gains <- function (n) { upper <- n; lower <- upper*0.5; rate <- 70;
+                            (upper*rate^-1 - lower*rate^-1) / sqrt(lower * (rate^-1)^2) }
+    plot(sapply(seq(1, 100000, by=10), gains))
+    ~~~
+
+    Another way would be to calculate it: on average, one will have half the possible 10000 variants; the sum of _k_=5000 exponential variates of λ=71 is $\text{Gamma}(5000, 71^{-1})$, and the mean of that [gamma distribution](!Wikipedia) is $5000 \cdot 71^{-1}=70.4$ with a SD of $\sqrt{5000 \cdot ((71^{-1})^2)} = 0.99$; while the upper bound with all 10000 is 140.8(1.4) respectively.
+    So if existing genetic variation, leading to the differences in intelligence we can observe, represents the contribution of a genetic SD 0.99 on an absolute scale, then the possible increase going from ~5000 good variants to all 10000 variants represents an increase of $\frac{140.8 - 70.4}{0.99}= 71.1$ genetic SDs, which after weakening by a heritability of 80% is still large and fairly similar to the binomial result.
+
 
 We could also ask what the upper limit is by looking at an existing polygenic score and seeing what it would predict for a hypothetical individual who had the better version of each one.
 The Rietveld et al 2013 polygenic score for education-years is available and can be adjusted into intelligence, but for clarity I'll use the [Benyamin et al 2014 polygenic score on intelligence](http://ssgac.org/documents/CHIC_Summary_Benyamin2014.txt.gz) ([codebook](http://ssgac.org/documents/CHIC_Benyamin2014_Summary_Notes.pdf)):
