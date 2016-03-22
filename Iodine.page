@@ -143,6 +143,25 @@ I have looked at the following studies:
 33. Sangün et al 2015, ["The Effects of Six-Month L-Thyroxine Treatment on Cognitive Functions and Event-Related Brain Potentials in Children with Subclinical Hypothyroidism"](http://cms.galenos.com.tr/FileIssue/1/818/article/102-108.pd): non-randomized
 34. Prado et al 2016, ["Effects of maternal and child lipid-based nutrient supplements on infant development: a randomized trial in Malawi"](/docs/iodine/2016-prado.pdf): randomized, and includes children 6-18mo, but assessed only on development at 18mo, which can't be considered a useful IQ test
 35. Li et al 2015, ["Prenatal Micronutrient Supplementation Is Not Associated with Intellectual Development of Young School-Aged Children"](/docs/iodine/2015-li.pdf): 3 experimental groups: folate, folate+iron, folate+iron+others+150.0mg/d iodine, allowing a comparison of folate with folate+multivitamin; but only prenatal intervention was done.
+36. Zahrou et al 2016, ["Fortified Iodine Milk Improves Iodine Status and Cognitive Abilities in Schoolchildren Aged 7–9 Years Living in a Rural Mountainous Area of Morocco"](http://downloads.hindawi.com/journals/jnme/2016/8468594.pdf) (followup to [Zahrou et al 2015](https://www.ijntr.org/download_data/IJNTR01030019.pdf "Efficacy Study of Iodine Fortification of Milk on Iodine Status Markers: A Longitudinal Interventional, Controlled Study Among Schoolchildren in Morocco")): relevant
+
+<!--
+published 2016
+n: 50 experimental, 103 control according to Zahrou et al 2015
+
+
+Didn't report means or standard deviations or SMD...
+F = 5.564
+df=1
+so:
+r = sqrt(F / (F+df)) = sqrt(5.564 / (5.564+1)) = 0.9206811987
+d = sqrt((4 * r^2) / (1 - r^2)) = sqrt((4 * 0.9206811987^2) / (1 - 0.9206811987^2)) = 4.717626523 ?
+and that if I assume the medians=means in Figure 5 and so the experimental mean is 5 and the control mean is 4 and the _d_=4.712, I can then infer that the SDs must be (5-4)/4.712=0.212, which sounds reasonable.
+
+dose: "30% of cover of RDI iodine"; 20.8mcg/dose in control milk, 45mcg/dose in fortified milk, so 24.2mcg/dose additional; 9 months, including holidays & weekends so every day; 9*30*24.2=6534mcg total
+multi: false
+7-9 years, so average to 8: "The mean age of the studied population is 8.0 ± 6.7 years with sex ratio 1.10"
+-->
 
 <!-- TODO: Trowbridge requested ( http://lesswrong.com/r/discussion/lw/ji3/lesswrong_help_desk_free_paper_downloads_and_more/bjbc https://www.reddit.com/r/Scholar/comments/2o4e7n/article_intellectual_assessment_in_primitive/ ), but what about Fierro-Benitez/Ramirez/Fierro-Benitez/Dodge? Are they usable?
 
