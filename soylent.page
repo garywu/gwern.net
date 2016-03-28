@@ -36,3 +36,44 @@ In this scenario, the role of identical genomes would be played by identical mea
 I have been reading up on twin studies and structural equation modeling and googling heavily for keywords relating to variance. But so far the only relevant material I've found is framed exclusively in terms of genetics (which I am not sure how well it applies to my proposed use; the approach *seems* generic, but...), or the variance estimation concerns matters where the variable has been observed (diet being unobserved is the whole point of this) or they're interested in the latent variable behind observed variables, and so are not useful.
 
 <!-- MealSquares; Vaniver gave me 5 on 29 December 2014; ate last on 6 January 2015, so 30/01/02/05/06? -->
+<!-- first Soylent 1.5 order: 28 meals / 7 bags, $54, 17 Sep 2015 and arrived on 28 September 2015; only discount is for subscription, so didn't bother with a big order - I can try out the first order to see what it's like, then stockpile subsequent orders if need be. -->
+
+Time comparison of my regular food & Soylent, inclusive of total shopping, meal prep, consumption, & cleanup time:
+
+- 16 Sep 2015: standard egg/rice/spinach/kimchi breakfast: 18m33s; bread lunch: 3m; lentil soup dinner: 17.3m; second dinner of sausage: 22m
+- 17 Sep 2015: breakfast, 26m30s; grocery planning/shopping/putting-away/post-shopping-meal, 3h17m
+- 18 Sep 2015: breakfast, 19m22s; dinner, 26m33s; dessert, 15m
+- 19 Sep 2015: breakfast, 21m31s; cooking chili & pear picking, 1h58m; oatmeal dinner, 5m
+- 20 Sep 2015: breakfast, 25m; bread, 8m30s; lunch, 19m
+- 21 Sep 2015: breakfast, 44m; dinner, 27m
+- 22 Sep 2015: breakfast, 38m; pear sauce, 1h19m
+- 23 Sep 2015: breakfast, 30m; lunch, 20m; dinner, 25m
+- 24 Sep 2015: breakfast, 24m; lunch, 30m
+- 25 Sep 2015: breakfast, 18m
+- 26 Sep 2015: breakfast, 21m
+- 27 Sep 2015: breakfast, 28m; lunch, 10m
+- 28 Sep 2015: breakfast, 18m
+
+Soylent usage:
+
+- 28 Sep 2015: 2 meals
+- 29 Sep 2015: 1 meal
+
+    initial impressions: much better cold. Minor grittiness goes away after sitting overnight. Soylent Inc conveniently provides a big pitcher to make your Soylent in, narrow and tall but *just* short enough to fit in my refrigerator's top shelf. Well suited to shaking and pouring. Flavor is unoffensive and has a sort of nutty/oatmeal overtone. Some stomach rumblings the first night.
+- 30 Sep 2015: 3 meals
+- 2 Oct: 1 meal
+- 3 Oct: 2 meals
+- 18 Oct: 1 meal
+- 19 Oct: 2 meals
+- 21 Oct: 1 meal
+- 22 Oct: 1 meal
+- 27 Oct: 1 meal
+- 28 Oct: 1 meal
+- 2 Nov: 1 meal
+- 12 Nov: 1 meal
+- 14 Nov: 1 meal
+- 21 Nov: 1 meal
+- 25 Nov: 1 meal
+- 28 Nov: 1 meal
+
+<!-- variance component estimation for gut bacteria? https://www.reddit.com/r/Microbiome/comments/44j6zg/do_we_know_how_important_gut_microbiome/ using American Gut Project data http://nbviewer.jupyter.org/github/biocore/American-Gut/blob/master/ipynb/index.ipynb ; maybe also http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4255478/ or http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3787266/ ? -->
