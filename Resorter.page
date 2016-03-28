@@ -1,10 +1,10 @@
 ---
 title: Resorting Media Ratings
-description: Commandline tool providing interactive Bayesian pairwise ranking and sorting of items
+description: Commandline tool providing interactive statistical pairwise ranking and sorting of items
 created: 7 Sep 2015
 tags: computer science, statistics, criticism
 status: finished
-belief: log
+belief: likely
 ...
 
 > User-created datasets using ordinal scales (such as media ratings) have tendencies to drift or 'clump' towards the extremes and fail to be informative as possible, falling prey to ceiling effects and making it difficult to distinguish between the mediocre and truly excellent.
@@ -18,7 +18,7 @@ belief: log
 Available features:
 
 ~~~{.Bash}
-$ ./resorter.R --help
+$ ./resorter --help
 usage: resorter [--help] [--verbose] [--no-scale] [--no-progress] [--opts OPTS] [--input INPUT] [--output OUTPUT] [--queries QUERIES]
                 [--levels LEVELS] [--quantiles QUANTILES]
 
@@ -343,7 +343,7 @@ Instead, we'd like some comprehensible probability that each media is assigned t
 Since BF-2 is fundamentally a frequentist library, it will never give us this kind of answer; all it has to offer in this vein are _p_-values - which are answers to questions I've never asked - and standard errors, which are *sort* of indicators of uncertainty & better than nothing but still imperfect.
 Between our interest in a sequential trial approach and our interest in producing meaningful probabilities of errors (and my own preference for Bayesian approaches in general), this motivates looking at Bayesian implementations.
 
-The Bradley-Terry model can be fit easily in Bugs/JAGS; two less and more elaborate examples are in [Jim Albert's implementation](http://bayes.bgsu.edu/webinar.11.2012/R%20output/Rcode.part4.html "Part 4: INTRODUCTION TO JAGS") & [Shawn E. Hallinan](https://www.wpi.edu/Pubs/ETD/Available/etd-050505-154305/unrestricted/shawnhal.pdf "Paired Comparison Models for Ranking National Soccer Teams").
+The Bradley-Terry model can be fit easily in Bugs/JAGS; two less and more elaborate examples are in [Jim Albert's implementation](http://bayes.bgsu.edu/webinar.11.2012/R%20output/Rcode.part4.html "Part 4: Introduction to JAGS") & [Shawn E. Hallinan](https://www.wpi.edu/Pubs/ETD/Available/etd-050505-154305/unrestricted/shawnhal.pdf "Paired Comparison Models for Ranking National Soccer Teams").
 Although it doesn't implement the extended B-T with ties, Albert's example is easily adapted, and we could try to infer rankings like thus:
 
 ~~~{.R}
@@ -358,15 +358,15 @@ J = length(levels(comparisons$Media.1))
 data = list(y = y, n = n, N = N, J = J, teamA = teamA, teamH = teamH)
 
 model1 <- "model {
-for (i in 1:N){
-    y[i] ~ dbin (p[i], n[i])
-    logit(p[i]) <- a[teamH[i]] - a[teamA[i]]
-}
-for (j in 1:J){
-a[j] ~ dnorm(0, tau)
-}
-tau <- pow(sigma, -2)
-sigma ~ dunif (0, 100)
+    for (i in 1:N){
+        y[i] ~ dbin (p[i], n[i])
+        logit(p[i]) <- a[teamH[i]] - a[teamA[i]]
+    }
+    for (j in 1:J){
+        a[j] ~ dnorm(0, tau)
+    }
+    tau <- pow(sigma, -2)
+    sigma ~ dunif (0, 100)
 }"
 library(runjags)
 j1 <- autorun.jags(model=model1, monitor=c("a", "y"), data=data); j1
@@ -375,6 +375,7 @@ j1 <- autorun.jags(model=model1, monitor=c("a", "y"), data=data); j1
 (This reuses the converting-priors-to-data trick from before.)
 This yields sensible ratings but MCMC unavoidably have overhead compared to a quick iterative maximum-likelihood algorithm which only estimates the parameters - it takes about 1s to run on the example data.
 1s is too long for particularly pleasant interactive use (total time from response to next question should be <0.1s for best UX) but maybe it's worth paying if we can get much better questions?
+There might be speedups available; this is about estimating latent normal/Gaussian variables, which frequently has very fast implementations. For example, it would not surprise me if it turned out that the Bayesian inference could be done outside of MCMC through an analytic solution, or more likely, a Laplacian approximation, such as implemented in [INLA](http://www.r-inla.org/) which supports [latent Gaussians](http://bib.tiera.ru/b/101800#page=111 "'Case Studies in Bayesian Computation using INLA', Martino & Rue 2010").
 
 #### Optimal exploration
 
@@ -389,9 +390,8 @@ From a computational perspective: there are media^2^ possible actions; each MCMC
 With just 20 media, that'd require $>\frac{20^2 \cdot 10 \cdot 1}{60} = >66$ minutes.
 
 We could run these in parallel, could try to cut down the MCMC iterations even more and risk the occasional non-convergence, could try calculating EI for only a limited number of choices (perhaps 20 randomly chosen options), or look for some mindbending closed-form equations written down by a bearded Russian math professor 50 years ago which we wouldn't understand - but it's hard to see how to get total runtime down to 0.5s - much less ~0.1s.
-And on the packaging side of things, requiring users to have JAGS installed at all makes `resorter harder to install and much more likely that there will be opaque runtime errors.
+And on the packaging side of things, requiring users to have JAGS installed at all makes `resorter` harder to install and much more likely that there will be opaque runtime errors.
 
 If asking the user to compare two things was rare and expensive data, if we absolutely had to maximize the informational value of every single question, if we were doing hardcore science like [astronomical observations](http://www.astro.cornell.edu/staff/loredo/bayes/bae.pdf "'Bayesian Adaptive Exploration', Loredo & Chernoff 2003") where every minute of telescope time might be measured in thousands of dollars, then a runtime of 1 hour to optimize question choice would be fine. But we're not.
 If the user needs to be asked 5 additional questions because the standard-error exploration heuristic is suboptimal, that costs them a couple seconds. Not a big deal.
-
 And if we're not exploiting the additional power of Bayesian methods, why bother switching from BF-2 to JAGS?
