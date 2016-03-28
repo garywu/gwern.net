@@ -23,7 +23,7 @@ The community response was enthusiastic. People pointed out in comments & the fe
 
 ## Data
 
-I closed the survey ~1:10PM 2015-10-27, having gotten 3960 total responses. (My hope was to get ~1k responses.)
+I closed the survey ~1:10PM 2015-10-27, having gotten 3835 responses which pass QA. (My hope was to get <=1k responses, which makes this a big success.)
 
 The data:
 
@@ -902,3 +902,11 @@ Yes   2909  93.99
 Total 3095 100.00
 
 ~~~
+
+# External links
+
+- Nootropics survey:
+
+    - [2014](http://slatestarcodex.com/2014/02/16/nootropics-survey-results-and-analysis/)
+    - [2016](http://slatestarcodex.com/2016/03/01/2016-nootropics-survey-results/)
+- ["The rise of smart drugs: The use of performance-enhancing drugs like Modafinil is on the increase in elite universities and high-pressure professions, but is the competitive edge they promise really worth the personal cost? Charlotte Edwardes investigates"](http://www.tatler.com/news/articles/march-2016/the-rise-of-smart-drugs)
