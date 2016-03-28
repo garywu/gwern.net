@@ -3141,7 +3141,7 @@ Frustrated, I finally gave up and went the *easy* way: Torch provides an Amazon 
 
 ### EC2
 
-The [Torch AMI](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#LaunchInstanceWizard:ami=ami-b36981d8) can be immediately launched if you have an AWS account.
+The [Torch AMI](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#LaunchInstanceWizard:ami=ami-b36981d8) can be immediately launched if you have an AWS account. (I assume you have signed up, have a valid credit card, IP permission accesses set to allow you to connect to your VM at all, and a SSH public key set up so you can log in.)
 The two GPU instances seem to have the same number and kind of GPUs (1 Nvidia[^GPU-cost]) and differ mostly in RAM & CPUs, neither of which are the bottleneck here, so I picked the smaller/cheaper "g2.2xlarge" type.
 ("Cheaper" here is relative; "g2.2xlarge" still costs [\$0.65/hr](https://aws.amazon.com/ec2/pricing/) and when I looked at spot that day, ~\$0.21.)
 
