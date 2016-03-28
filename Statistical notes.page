@@ -2188,7 +2188,155 @@ Or more directly, the UK NHS prefers to pay <£20,000 per QALY and will generall
 
 After calculating the loss of years, differing values of years, and cost of surgery, the surgery still comes out as substantially better than not operating.
 
+# The Power of Twins: Revisiting Student's Scottish Milk Experiment Example
+
+> Randomized experiments require more subjects the more variable each datapoint is to overcome the noise which obscures any effects of the intervention. Reducing noise enables better inferences with the same data, or less data to be collected, which can be done by balancing observed characteristics between control and experimental datapoints.
+> A particularly dramatic example of this approach is running experiments on identical twins rather than regular people, because twins vary far less from each other than random people do. In 1931, the great statistician Student noted problems with an extremely large (_n_=20,000) Scottish experiment in feeding children milk (to see if they grew more in height or weight), and claimed that the experiment could have been done far more cost-effectively with an extraordinary reduction of >95% fewer children if it had been conducted using twins. He, however, did not provide any calculations or data demonstrating this.
+> I revisit the issue and run a power calculation on height indicating that Student's claims were correct and that the experiment would have required ~97% fewer children if run with twins.
+> This reduction is not unique to the Scottish experiment and in general, one can expect a reduction of 89% using twins rather than regular people.
+
+## Simple randomization vs blocking
+
+[Randomized experiments](!Wikipedia) enable causal inference by assuring that the experimental group is identical, on average, in all ways to the control group and the subsequent differences are caused by the intervention.
+If a coin is flipped, then each group will have the same fraction of women, the same fraction of atheists, the same fraction of people with a particular [SNP](!Wikipedia "Single-nucleotide polymorphism") on [COMT](!Wikipedia), the same fraction of people with latent cancers, etc - on average.
+But since there are thousands upon thousands of ways in which subjects can differ which might affect the results (just consider how [almost all human traits are genetically heritable](/docs/genetics/2015-polderman.pdf "'Meta-analysis of the heritability of human traits based on fifty years of twin studies', Polderman et al 2015")), and there may only be a few dozen subjects, randomization cannot guarantee exact or even approximate similarity of groups on every single trait and with same samples can generate grossly imbalanced samples (perhaps you have 2 groups of 10, and one group turns out to have 9 women and the other just 1).
+This doesn't bias the results or defeat the point of randomization, but it can add a lot of noise, reducing our [efficiency](!Wikipedia "Efficiency (statistics)"), thereby making our existing studies less meaningful, requiring more expensive studies to estimate effects to a useful level of precision, and blocking profitable decisions.
+
+When put this way, one might wonder how to improve the [design of simple randomized experiments](!Wikipedia "Design of experiments"): if you have a group with too many women and too few men, why not change your coin flip to instead pairs of women and men?
+Instead of flipping a fair coin for each patient to pick whether that patient goes into the control or experimental group, why not instead take a pair of women and flip a coin to decide whether the one on the left goes into the experimental group, and then the woman on the right goes into the other group? And likewise for the men.
+In fact, why not try to extend this 'matching up' to as many things as you can measure?
+If we use identical twins (like in [Gustav III of Sweden's coffee experiment](!Wikipedia)), we match them on not just nationality, gender, location, parents, age, food consumption or whatnot, we even match them on genetics too, which is part of why identical twins are so eerily identical even when raised apart. (Note that this point isn't the same as the variance component estimating going on in [twin study](!Wikipedia) or other family designs; we care that they are very similar and thus comparisons are less noisy, not the question of *how much* of that eerie similarity is due to genetics or other sources.)
+Indeed, since a person is matched with themselves on just about everything and are even better than identical twins, why not test the treatment [on the same person over multiple time periods](!Wikipedia "Repeated measures design")?
+But people do change over time and there might be lingering effects, so perhaps it would be even better if you can test it on the same person simultaneously: for example, test an acne cream A on one side of the face and acne cream B on the other half of each subject's face, flipping a coin to decide whether A/B or B/A.
+
+This is the concept of [blocking](!Wikipedia "Blocking (statistics)"), one of whose advocates was [Student](!Wikipedia "William Sealy Gosset"), the great early statistician.
+
+## Efficiency of blocking for the Lanarkshire Milk Experiment
+
+The history of blocking and its advantages compared to simple randomized experiments are discussed at length in ["Balanced versus Randomized Field Experiments in Economics: Why W. S. Gosset aka 'Student' Matters", Ziliak 2014](http://blogs.roosevelt.edu/sziliak/files/2013/07/Balanced-vs-Randomized-Field-Experiments-in-Economics-_-Ziliak-Review-of-Behavioral-Economics-2013.pdf).
+Ziliak writes (pg22) about an interesting example where Student calculates that a well-blocked sample of 100 could be better than 20,000 with simple randomization:
+
+> The intuition behind the higher power of ABBA and other balanced designs to detect a large and real treatment difference was given by Student in 1911.^68^ "Now if we are comparing two varieties it is clearly of advantage to arrange the plots in such a way that the yields of both varieties shall be affected as far as possible by the same causes to as nearly as possible an equal extent".^69^ He used this "principle of maximum contiguity" often, for example when he for example when he illustrated the higher precision and lower costs that would be associated with a small-sample study of biological twins, to determine the growth trajectory of children fed with pasteurized milk, unpasteurized milk, and no milk at all, in ["The Lanarkshire Milk Experiment" (Student, 1931a)](/docs/statistics/1931-student.pdf).^69^ Student (1931a, p. 405) estimated that "50 pairs of [identical twins] would give more reliable results than the 20,000" child sample, neither balanced nor random, actually studied in the experiment funded by the Scotland Department of Health. "[I]t would be possible to obtain much greater certainty" in the measured difference of growth in height and weight of children drinking [raw](!Wikipedia "Raw milk") versus [pasteurized milk](!Wikipedia) "at an expenditure of perhaps 1-2% of the money and less than 5% of the trouble." Likewise, [Karlan and List (2007, p. 1777)](http://www.povertyactionlab.org/sites/default/files/publications/49%20Does%20Price%20Matter%20in%20Charitable%20Giving%20Project.pdf "Does price matter in charitable giving? Evidence from a large-scale natural field experiment") could have revealed more about the economics of charitable giving - for less - using a variant of Student's method. Instead the AER article studied _n_ = 50,083 primarily white, male, pro-Al Gore donors to public radio, neither random nor balanced.
+
+I thought this was an awesome example and topical inasmuch as raw milk is still an issue because gourmands prize it greatly over pasteurized milk (leading to occasional illnesses or deaths and subsequent legal/political maneuvering to ban/preserve access to raw milk), and I was curious about the details of how Student computed that the surprisingly low number of 100 twins (50 pairs) would suffice.
+So I looked for Student's original paper.
+
+Student begins by summarizing the experiment in a little more detail:
+
+> In the spring of 1930, a nutritional experiment on a very large scale was carried out in the schools of Lanarkshire. For four months 10,000 school children received 0.75 pint of milk per day, 5000 of these got raw milk and 5,000 pasteurized milk, in both cases Grade A (Tuberculin tested^["milk from herd that has been attested free from [bovine tuberculosis](!Wikipedia)."]); another 10,000 children were selected as controls and the whole 20,000 children were weighed and their height was measured at the beginning and end of the experiment...The 20,000 children were chosen in 67 schools, not more than 400 nor less than 200 being chosen in any one school, and of these half were assigned as "feeders" and half as "controls", some schools were provided with raw milk and the others with pasteurized milk, no school getting both...Secondly, the selection of the children was left to the Head Teacher of the school and was made on the principle that both "controls" and "feeders" should be representative of the average children between 5 and 12 years of age: the actual method of selection being important I quote from [Drs Leighton and McKinlay's [1930] _Report_](http://babel.hathitrust.org/cgi/pt?id=wu.89042623009;view=1up;seq=1 "Milk Consumption and the Growth of School Children. Report on an Investigation in Lanarkshire Schools"): "The teachers selected the two classes of pupils, those getting milk and those acting as 'controls', in two different ways. In certain cases they selected them by ballot and in others on an alphabetical system."
+
+Unfortunately, while ambitious, the randomization was heavily compromised:
+
+> after invoking the goddess of chance they unfortunately wavered in their adherence to her for we read: "In any particular school where there was any group to which these methods had given an undue proportion of well fed or ill nourished children, others were substituted in order to obtain a more level selection." This is just the sort of afterthought that most of us have now and again and which is apt to spoil the best laid plans. In this case it was a fatal mistake, for in consequence the controls were, as pointed out in the _Report_, definitely superior both in weight and height to the "feeders" by an amount equivalent to about 3 months' growth in weight and 4 months' growth in height. Presumably this discrimination in height and weight was not made deliberately, but it would seem probable that the teachers, swayed by the very human feeling that the poorer children needed the milk more than the comparatively well to do, must have unconsciously made too large a substitution of the ill-nourished among the "feeders" and too few among the "controls" and that this unconscious selection affected, secondarily, both measurements.
+
+Student then observes that besides producing a baseline imbalance (which is clearly visible in the graphs on pg400 & pg402, where the controls are taller in every time period, although this advantage lessens with time), this favoring of the poor could produce a systematic bias in the recorded weights during winter, which were made with the childrens' clothes on, as it is entirely possible that poorer children will have lighter or fewer heavy winter clothes.
+Another issue is allocating entire schools to using either pasteurized or raw milk as their comprison to the no-milk controls (leading to problems in accounting for the hierarchical nature of the data due to confounding of school level effects with the pasteurized/raw effect).
+These three issues are reflected in anomalies in the data, reducing our confidence in the results despite it having been a randomized experiment (rather than something lamer like a survey noting that children who could afford milk were taller).
+
+Having performed the post-mortem on the Lanarkshire Milk Experiment, Student then proposes improvements to the design, culminating in the most radical (pg405):
+
+> \(2\) If it be agreed that milk is an advantageous addition to children's diet - and I doubt whether any one will combat that view - and that the difference between raw and pasteurised milk is the matter to be investigated, it would be possible to obtain much greater certainty at an expenditure of perhaps 1-2% of the money [This is a serious consideration: the Lanarkshire experiment cost about £7500. [Which is ~£374,800 in 2016 pounds sterling or ~\$541,100.]] and less than 5% of the trouble.
+>
+> For among 20,000 children there will be numerous pairs of twins; exactly how many it is not easy to say owing to the differential death rate, but, since there is about one pair of twins in 90 births, one might hope to get at least 160 pairs in 20,000 children. But as a matter of fact the 20,000 children were not all the Lanarkshire schools population, and I feel pretty certain that some 200-300 pairs of twins would be available for the purpose of the experiment. Of 200 pairs some 50 would be "identicals" and of course of the same sex, while half the remainder would be non-identical twins of the same sex.
+>
+> Now identical twins are probably better experimental material than is available for feeding experiments carried out on any other mammals, and the error of the comparison between them may be relied upon to be so small that 50 pairs of these would give more reliable results than the 20,000 with which we have been dealing. The proposal is then to experiment on all pairs of twins of the same sex available, noting whether each pair is so similar that they are probably "identicals" or whether they are dissimilar.
+> "Feed" one of each pair on raw and the other on pasteurised milk, deciding in each case which is to take raw milk by the toss of a coin. Take weekly measurements and weigh without clothes.
+> Some way of distinguishing the children from each other is necessary or the mischievous ones will play tricks. The obvious method is to take finger-prints, but as this is identified with crime in some people's minds, it may be necessary to make a different indelible mark on a fingernail of each, which will grow off after the experiment is over. With such comparatively small numbers further information about the dietetic habits and social position of the children could be collected and would doubtless prove invaluable.
+> The comparative variation in the effect in "identical" twins and in "unlike" twins should furnish useful information on the relative importance of "Nature and Nurture".
+> ...[The twin experiment] is likely to provide a much more accurate determination of the point at issue, owing to the possibility of balancing both nature and nurture in the material of the experiment.
+
+This is a reasonable suggestion, but I was disappointed to see that Student was, it seems, effectively guessing, as he gives no calculation or reference to another work with a similar calculation.
+(If Ziliak was going to cite it as an example, it would've been better if he had verified that Student's speculation was right at least to within an order of magnitude rather than simply quoting him as an authority.)
+
+## Power estimate of twins vs general population
+
+The calculation doesn't seem hard.
+For this example, using height, it'd go something like:
+
+1. take the estimated height gain in inches
+2. find the distribution of height differences for twins and find the distribution of height for the general population of Scottish kids those ages
+3. convert the inch gain into standard deviations for twins and for general population
+4. plug those two into an effect size calculator asking for, say, 80% power
+5. compare how big _n~1~_ you need of twin pairs and how many _n~2~_ of general population, and report the fraction $\frac{2\cdot n_1}{n_2}$ and how close it is to 5%.
+
+### Milk's effect on male height
+
+To start, on pg403, a table reports "Gain in height in inches by Feeders over Controls", for which the largest effect in boys is the 5-7yo boys group at +0.083(.011) inches.
+So we are targeting an average increase of a tenth of an inch.
+
+What is the height variability or standard deviations for twins and Lanarkshire children of a similar age?
+The followup paper ["The Lanarkshire Milk Experiment", Elderton 1933](/doc/statistics/1933-elderton.pdf) helpfully reports standard deviations both for Lanarkshire children and cites some standard deviation for twins' heights at that time (pg2):
+
+> Dr Stocks in his study of twins [Percy [Stocks 1930, assisted by Mary N. Karn: "A Biometric Investigation of Twins and their Brothers and Sisters"](/docs/genetics/1930-stocks.pdf), _Annals of Eugenics_, Vol. v, pp. 46-50. Francis Galton Laboratory for National Eugenics.] found differences in weight as great as 28 hectograms (10 ounces) in those twins he regarded as monozygotic whose ages corresponded to the children in the milk experiment. The standard deviation of weight in pounds is roughly twice that of the standard deviation of height in inches, so that if 8 ounces difference in initial weight be permitted, 1/4 inch difference in height could be allowed. Judging also by Dr Stocks' material in which monozygotic twins showed a modal difference of 1 cm in height it would have been justifiable to allow children to be paired who differed by two-eighths of an inch, but the labour of pairing would have been much heavier if a greater variation than that entered on the cards had been allowed for height as well as for weight...In Table I the standard deviations and coefficients of variation of the initial height and weight for each year of birth are given, and if these be compared with those for Glasgow boys and girls, it will be seen that they are distinctly less. The Glasgow figures were obtained by linear interpolation and are given in brackets after those for the selected Lanarkshire data.
+
+Elderton's Table 1 reports on the Lanarkshire children's grouped data by "6 years 9 months", "7 years 9 months", and then "8 years 9 months" & higher; the first two presumably map best onto our 5-7yo group, and have values of _n_=382 with standard deviation 1.483(2.58), and _n_=337 with standard deviation 1.648(2.82); [pooling the standard deviations](!Wikipedia "Pooled variance"), we get a standard deviation of 1.56 for the general population. <!-- (1.483*(382-1) + 1.648*(337-1))/ (382+337-2) -->
+
+Elderton's summary of Stocks's twin research is confusingly worded (partly because Stocks worked in centimeters and Elderton inches), but she appears to be saying that the standard deviation of differences in Stocks's twins is 0.25 inches, which compared with 1.483 is much smaller and around one-fifth; Table II (pg11) in Stocks 1930 records variability of identical twins vs fraternal vs their non-twin siblings in "mean corrected Deviates", mentioning that the root-mean-squared difference in the table is the standard deviation, so the σ~0~ of height for identical twins is 0.9497 while the general population is 6.01cm (pg13), and $\frac{0.9497}{6.01}$ comes out to one-fifth, confirming where Elderton got her specific estimate of ~0.25 inches as the standard deviation for identical twins.
+
+So the claimed effect is +0.083 inches, which represents _d_=0.05 (for the general population) and _d_=0.332 (twin differences).
+We then ask how much data is required to conduct a well-powered experiment to detect the existence of such an effect:
+
+~~~{.R}
+generalD <- 0.083/1.560322176
+twinD <- 0.083/0.25
+generalP <- power.t.test(d=generalD, power=0.8); generalP
+#      Two-sample t test power calculation
+#
+#               n = 5548.623219
+#           delta = 0.05319414239
+#              sd = 1
+#       sig.level = 0.05
+#           power = 0.8
+#     alternative = two.sided
+#
+# NOTE: n is number in *each* group
+twinP <- power.t.test(d=twinD, power=0.8); twinP
+#      Two-sample t test power calculation
+#
+#               n = 143.3836014
+#           delta = 0.332
+#              sd = 1
+#       sig.level = 0.05
+#           power = 0.8
+#     alternative = two.sided
+#
+# NOTE: n is number in *each* group
+twinP$n / generalP$n
+# [1] 0.02584129355
+~~~
+
+So with 143 twin-pairs or _n_=286, we can match the power of a sample drawn from the general population with 5548 in each group or _n_=11096 - savings of ~98% of the sample.
+(To put that in perspective, if costs scaled exactly per head, then that estimated cost of ~\$541,100 would have instead been \$13,982, for a savings of \$527,117.)
+Student's guess of "1-2%" proves to be on the money, and the experiment is also feasible as 143 twin-pairs is well below the number of twin-pairs that Student estimated to be available (>160, and more likely "200-300"; 300 twin-pairs would yield a power of ~98%, exceeding the Lanarkshire's 20000's <96% power).
+
+We can safely say that Student's Scottish milk experiment example does indeed demonstrate the power of twins.
+
+### All traits
+
+We can go further and estimate the power of twins in general for experimentation.
+While height is somewhat unusually heritable, we can say with confidence that almost all traits studied are highly heritable based on the previously mentioned mega-meta-analysis ["Meta-analysis of the heritability of human traits based on fifty years of twin studies", Polderman et al 2015](/docs/genetics/2015-polderman.pdf) which compiles data on 17,804 traits estimated from ~14.5m pairs.
+The upshot is that averaging over all those traits, 48.8% of variance is due to heritability and 17.4% shared-environment[^siblings]; implying that compared to a sample drawn from the general population (who share neither genetics nor the shared-environment upbringing), identical twins will have 33.8% (`1-(0.488+0.174)`) of the variability.
+
+[^siblings]: Note how much better identical twins are than siblings; sibling designs are valuable when we are hypothesizing about something in the shared-environment, and can be used for many purposes like showing that GWAS hits are not confounded by population stratification or that the harm from things like maternal smoking is overestimated by analyses ignoring genetic confounding, but since siblings are not all that similar, the gain is not particularly large. For some discussion of this topic from epidemiological perspectives, see ["Why are children in the same family so different from one another?"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3147063/ "Plomin & Daniels 2011") & [Smith 2011](http://ije.oxfordjournals.org/content/40/3/537.full "Epidemiology, epigenetics and the 'Gloomy Prospect': embracing randomness in population health research and practice").
+
+For easier comparison with the running example, we can redo the height calculation but assuming we are looking at a generic trait with a higher variability
+
+~~~{.R}
+twinAll <- 0.083/(0.338*1.560322176)
+generalAll <- 0.083/1.560322176
+generalAll <- power.t.test(d=generalD, power=0.8)
+twinAll <- power.t.test(d=twinAll, power=0.8)
+twinAll$n / generalAll$n
+# [1] 0.1143975625
+~~~
+
+In general, an experiment run using twins will require a sample 11% the size of the same experiment run using the general population.
+
+
 # RNN metadata for mimicking individual author style
+
+> Char-RNNs are unsupervised generative models which learn to mimic text sequences. I suggest extending char-RNNs with inline metadata such as genre or author prefixed to each line of input, allowing for better & more efficient metadata, and more controllable sampling of generated output by feeding in desired metadata. An experiment using `torch-rnn` on a set of ~30 Project Gutenberg e-books (1 per author) to train a large char-RNN shows that a char-RNN can learn to remember metadata such as authors, learn associated prose styles, and often generate text visibly similar to that of a specified author.
+
 ## Background
 
 A character-level [recurrent neural network](!Wikipedia) (char-RNN) trained on corpuses like [the Linux source code or Shakespeare](https://karpathy.github.io/2015/05/21/rnn-effectiveness/ "The Unreasonable Effectiveness of Recurrent Neural Networks") can produce amusing textual output mimicking them.
@@ -2220,7 +2368,7 @@ There are two approaches for how to encode the metadata into the RNN:
     So for example, a Shakespeare corpus might be transformed by prefixing each line with a distinctive string unlikely to appear in the corpus itself, eg "SHAKESPEARE|To be or not to be,|SHAKESPEARE". Then during sampling, Shakespearean prose will be triggered like `th sample.lua rnn.t7 -primetext "SHAKESPEARE|"`. (Why the pipe character? Because it's rarely used in prose but isn't hard to type or work with.)
     To add in more metadata, one adds in more prefixes; for example, perhaps the specific work might be thought relevant and so the corpus is transformed to "SHAKESPEARE|HAMLET|To be or not to be,|HAMLET|SHAKESPEARE". Then one can sample with the specific work, author, or both. For musical generation, relevant metadata might be musical genre, author, tempo, instruments, type of work, tags provided by music listeners ('energetic', 'kitties', 'for_running' etc), so one could ask for energetic Irish music for two fiddles.
 
-    This has the advantage of being easy to set up (some regexes to add metadata) and easy to extend (take an existing trained RNN and use it on the modified corpus); the disadvantage is that it may not work as the RNN may be unable to jointly learn to recall and use the metadata - it may instead learn to forget the metadata immediately, or spend all its learning capacity on modeling an 'average' input because that yields better log-loss error
+    This has the advantage of being easy to set up (some regexes to add metadata) and easy to extend (take an existing trained RNN and use it on the modified corpus); the disadvantage is that it may not work as the RNN may be unable to jointly learn to recall and use the metadata - it may instead learn to forget the metadata immediately, or spend all its learning capacity on modeling an 'average' input because that yields better log-loss error. This in band approach can also easily be extended to cover classification; in classification, the metadata is put at the *end* of each line, so instead of learning to predict text conditional on metadata & previous text, the RNN is learning to predict metadata conditional on previous text, and classifications can be extracted by sampling with the input as the prime text followed by the separator character and seeing what metadata is predicted (eg `th sample.lua classification.t7 -primetext "...text...|" ~> "SHAKESPEARE\n"`).
 
     As far as I know, no one has done this except perhaps inadvertently or implicitly.
 2. out of band: instead of depending on the RNN to learn the value of the metadata and preserving it in its hidden state, one can change the RNN architecture to inject the metadata at each timestep. So if one has an RNN of 500 neurons, 5 of them will be hardwired at each timestep to the metadata value for the sequence being worked on.
@@ -2571,7 +2719,7 @@ Yes.
 So of the 14 samples, 8 were definitely in the style of the right author, 5 were mixed successes as they mostly resembled their author but not entirely, and only 1 was a clear failure.
 With 31 authors to choose from, that's not an accident.
 
-For a more systematic look, I generated samples from all included authors:
+For a more systematic look, I [generated samples from all included authors](/docs/2016-03-27-rnn-metadata-samples-all.txt):
 
 ~~~{.Bash}
 (for AUTHOR in `echo "ARISTOTLE BEOWULF BIBLE BONAPARTE CARROLL CHAUCER COLERIDGE DANTE DAVINCI DOYLE ELIOT GILBERTSULLIVAN \
@@ -2581,8 +2729,32 @@ For a more systematic look, I generated samples from all included authors:
 done) > 2016-03-27-rnn-metadata-samples-all.txt
 ~~~
 
-bad: Aristotle, Beowulf, Bible
-good: Stoker, Paine, Bonaparte, Lafferty
+The Eliot output was perplexingly bad, consisting mostly of numbers, so I looked at the original.
+It turned out that in this particular corpus, 10 of the text files had failed to download, and instead, Project Gutenberg served up some HTML CAPTCHAs (not cool, guys).
+This affected: Coleridge, Dante, Da Vinci, Eliot, Gilbert & Sullivan, Grant, Homer, Kafka, Pepys, & Sherman.
+Excluding them:
+
+- bad: Aristotle, Beowulf, Bible, Chaucer, Jordan, Keats
+- uncertain: Carroll, Wolfe
+- good: Stoker, Paine, Bonaparte, Lafferty, Melville, Doyle, Ryukishi07, Whitman, Lafferty, Machiavelli, Aristotle, Bible
+
+The RNN is somewhat inconsistent: sometimes it'll generate spot-on prose and other times fail. In this case, good and bad Bible samples were present, and previous Chaucer was fine but the Chaucer in this sample was bad. (This might be due to the high temperature setting, or the messed-up texts.)
+But overall, it doesn't change my conclusion that the RNN has indeed learned to use metadata and successfully mimic different authors.
+
+## Conclusions
+
+So some lessons here are:
+
+1. use a sufficiently large RNN; 500 neurons may be adequate for a single author but is too small to learn many authors
+2. train to convergence; the differences between authors is smaller than between the average of authors & random noise, and the metadata will only show its worth at the end when it has reached ~1 loss
+3. keep data relatively balanced, or the RNN will spend all its effort trying to learn patterns & vocabulary of the most common kind of input
+
+Further work:
+
+1. see if results improve, either in faster training or low validation loss, by appending the metadata as well as prepending to force memorization
+2. see how low a loss unlabeled training can go, to get an idea of benefits of semi-supervision
+3. try classification rather than generation
+4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
 
 <!--
 try pretraining like beer reviews, using `cat *.txt > input.txt`:
@@ -2636,149 +2808,6 @@ First version sans dropout got to a loss of 0.7969 (!); contamination or leakage
 After it hit a limit at 0.79 and started turning in losses of 0.8+ for hours, tried retraining it with some dropout and the loss exploded, not shrinking even after training it all night, so I restarted with a fresh RNN and some dropout.
 -->
 
-# The Power of Twins: Revisiting Student's Scottish Milk Experiment Example
-
-> Randomized experiments require more subjects the more variable each datapoint is to overcome the noise which obscures any effects of the intervention. Reducing noise enables better inferences with the same data, or less data to be collected, which can be done by balancing observed characteristics between control and experimental datapoints.
-> A particularly dramatic example of this approach is running experiments on identical twins rather than regular people, because twins vary far less from each other than random people do. In 1931, the great statistician Student noted problems with an extremely large (_n_=20,000) Scottish experiment in feeding children milk (to see if they grew more in height or weight), and claimed that the experiment could have been done far more cost-effectively with an extraordinary reduction of >95% fewer children if it had been conducted using twins. He, however, did not provide any calculations or data demonstrating this.
-> I revisit the issue and run a power calculation on height indicating that Student's claims were correct and that the experiment would have required ~97% fewer children if run with twins.
-> This reduction is not unique to the Scottish experiment and in general, one can expect a reduction of 89% using twins rather than regular people.
-
-## Simple randomization vs blocking
-
-[Randomized experiments](!Wikipedia) enable causal inference by assuring that the experimental group is identical, on average, in all ways to the control group and the subsequent differences are caused by the intervention.
-If a coin is flipped, then each group will have the same fraction of women, the same fraction of atheists, the same fraction of people with a particular [SNP](!Wikipedia "Single-nucleotide polymorphism") on [COMT](!Wikipedia), the same fraction of people with latent cancers, etc - on average.
-But since there are thousands upon thousands of ways in which subjects can differ which might affect the results (just consider how [almost all human traits are genetically heritable](/docs/genetics/2015-polderman.pdf "'Meta-analysis of the heritability of human traits based on fifty years of twin studies', Polderman et al 2015")), and there may only be a few dozen subjects, randomization cannot guarantee exact or even approximate similarity of groups on every single trait and with same samples can generate grossly imbalanced samples (perhaps you have 2 groups of 10, and one group turns out to have 9 women and the other just 1).
-This doesn't bias the results or defeat the point of randomization, but it can add a lot of noise, reducing our [efficiency](!Wikipedia "Efficiency (statistics)"), thereby making our existing studies less meaningful, requiring more expensive studies to estimate effects to a useful level of precision, and blocking profitable decisions.
-
-When put this way, one might wonder how to improve the [design of simple randomized experiments](!Wikipedia "Design of experiments"): if you have a group with too many women and too few men, why not change your coin flip to instead pairs of women and men?
-Instead of flipping a fair coin for each patient to pick whether that patient goes into the control or experimental group, why not instead take a pair of women and flip a coin to decide whether the one on the left goes into the experimental group, and then the woman on the right goes into the other group? And likewise for the men.
-In fact, why not try to extend this 'matching up' to as many things as you can measure?
-If we use identical twins (like in [Gustav III of Sweden's coffee experiment](!Wikipedia)), we match them on not just nationality, gender, location, parents, age, food consumption or whatnot, we even match them on genetics too, which is part of why identical twins are so eerily identical even when raised apart. (Note that this point isn't the same as the variance component estimating going on in [twin study](!Wikipedia) or other family designs; we care that they are very similar and thus comparisons are less noisy, not the question of *how much* of that eerie similarity is due to genetics or other sources.)
-Indeed, since a person is matched with themselves on just about everything and are even better than identical twins, why not test the treatment [on the same person over multiple time periods](!Wikipedia "Repeated measures design")?
-But people do change over time and there might be lingering effects, so perhaps it would be even better if you can test it on the same person simultaneously: for example, test an acne cream A on one side of the face and acne cream B on the other half of each subject's face, flipping a coin to decide whether A/B or B/A.
-
-This is the concept of [blocking](!Wikipedia "Blocking (statistics)"), one of whose advocates was [Student](!Wikipedia "William Sealy Gosset"), the great early statistician.
-
-## Efficiency of blocking for the Lanarkshire Milk Experiment
-
-The history of blocking and its advantages compared to simple randomized experiments are discussed at length in ["Balanced versus Randomized Field Experiments in Economics: Why W. S. Gosset aka 'Student' Matters", Ziliak 2014](http://blogs.roosevelt.edu/sziliak/files/2013/07/Balanced-vs-Randomized-Field-Experiments-in-Economics-_-Ziliak-Review-of-Behavioral-Economics-2013.pdf).
-Ziliak writes (pg22) about an interesting example where Student calculates that a well-blocked sample of 100 could be better than 20,000 with simple randomization:
-
-> The intuition behind the higher power of ABBA and other balanced designs to detect a large and real treatment difference was given by Student in 1911.^68^ "Now if we are comparing two varieties it is clearly of advantage to arrange the plots in such a way that the yields of both varieties shall be affected as far as possible by the same causes to as nearly as possible an equal extent".^69^ He used this "principle of maximum contiguity" often, for example when he for example when he illustrated the higher precision and lower costs that would be associated with a small-sample study of biological twins, to determine the growth trajectory of children fed with pasteurized milk, unpasteurized milk, and no milk at all, in ["The Lanarkshire Milk Experiment" (Student, 1931a)](/docs/statistics/1931-student.pdf).^69^ Student (1931a, p. 405) estimated that "50 pairs of [identical twins] would give more reliable results than the 20,000" child sample, neither balanced nor random, actually studied in the experiment funded by the Scotland Department of Health. "[I]t would be possible to obtain much greater certainty" in the measured difference of growth in height and weight of children drinking [raw](!Wikipedia "Raw milk") versus [pasteurized milk](!Wikipedia) "at an expenditure of perhaps 1-2% of the money and less than 5% of the trouble." Likewise, [Karlan and List (2007, p. 1777)](http://www.povertyactionlab.org/sites/default/files/publications/49%20Does%20Price%20Matter%20in%20Charitable%20Giving%20Project.pdf "Does price matter in charitable giving? Evidence from a large-scale natural field experiment") could have revealed more about the economics of charitable giving - for less - using a variant of Student's method. Instead the AER article studied _n_ = 50,083 primarily white, male, pro-Al Gore donors to public radio, neither random nor balanced.
-
-I thought this was an awesome example and topical inasmuch as raw milk is still an issue because gourmands prize it greatly over pasteurized milk (leading to occasional illnesses or deaths and subsequent legal/political maneuvering to ban/preserve access to raw milk), and I was curious about the details of how Student computed that the surprisingly low number of 100 twins (50 pairs) would suffice.
-So I looked for Student's original paper.
-
-Student begins by summarizing the experiment in a little more detail:
-
-> In the spring of 1930, a nutritional experiment on a very large scale was carried out in the schools of Lanarkshire. For four months 10,000 school children received 0.75 pint of milk per day, 5000 of these got raw milk and 5,000 pasteurized milk, in both cases Grade A (Tuberculin tested^["milk from herd that has been attested free from [bovine tuberculosis](!Wikipedia)."]); another 10,000 children were selected as controls and the whole 20,000 children were weighed and their height was measured at the beginning and end of the experiment...The 20,000 children were chosen in 67 schools, not more than 400 nor less than 200 being chosen in any one school, and of these half were assigned as "feeders" and half as "controls", some schools were provided with raw milk and the others with pasteurized milk, no school getting both...Secondly, the selection of the children was left to the Head Teacher of the school and was made on the principle that both "controls" and "feeders" should be representative of the average children between 5 and 12 years of age: the actual method of selection being important I quote from [Drs Leighton and McKinlay's [1930] _Report_](http://babel.hathitrust.org/cgi/pt?id=wu.89042623009;view=1up;seq=1 "Milk Consumption and the Growth of School Children. Report on an Investigation in Lanarkshire Schools"): "The teachers selected the two classes of pupils, those getting milk and those acting as 'controls', in two different ways. In certain cases they selected them by ballot and in others on an alphabetical system."
-
-Unfortunately, while ambitious, the randomization was heavily compromised:
-
-> after invoking the goddess of chance they unfortunately wavered in their adherence to her for we read: "In any particular school where there was any group to which these methods had given an undue proportion of well fed or ill nourished children, others were substituted in order to obtain a more level selection." This is just the sort of afterthought that most of us have now and again and which is apt to spoil the best laid plans. In this case it was a fatal mistake, for in consequence the controls were, as pointed out in the _Report_, definitely superior both in weight and height to the "feeders" by an amount equivalent to about 3 months' growth in weight and 4 months' growth in height. Presumably this discrimination in height and weight was not made deliberately, but it would seem probable that the teachers, swayed by the very human feeling that the poorer children needed the milk more than the comparatively well to do, must have unconsciously made too large a substitution of the ill-nourished among the "feeders" and too few among the "controls" and that this unconscious selection affected, secondarily, both measurements.
-
-Student then observes that besides producing a baseline imbalance (which is clearly visible in the graphs on pg400 & pg402, where the controls are taller in every time period, although this advantage lessens with time), this favoring of the poor could produce a systematic bias in the recorded weights during winter, which were made with the childrens' clothes on, as it is entirely possible that poorer children will have lighter or fewer heavy winter clothes.
-Another issue is allocating entire schools to using either pasteurized or raw milk as their comprison to the no-milk controls (leading to problems in accounting for the hierarchical nature of the data due to confounding of school level effects with the pasteurized/raw effect).
-These three issues are reflected in anomalies in the data, reducing our confidence in the results despite it having been a randomized experiment (rather than something lamer like a survey noting that children who could afford milk were taller).
-
-Having performed the post-mortem on the Lanarkshire Milk Experiment, Student then proposes improvements to the design, culminating in the most radical (pg405):
-
-> \(2\) If it be agreed that milk is an advantageous addition to children's diet - and I doubt whether any one will combat that view - and that the difference between raw and pasteurised milk is the matter to be investigated, it would be possible to obtain much greater certainty at an expenditure of perhaps 1-2% of the money [This is a serious consideration: the Lanarkshire experiment cost about £7500. [Which is ~£374,800 in 2016 pounds sterling or ~\$541,100.]] and less than 5% of the trouble.
->
-> For among 20,000 children there will be numerous pairs of twins; exactly how many it is not easy to say owing to the differential death rate, but, since there is about one pair of twins in 90 births, one might hope to get at least 160 pairs in 20,000 children. But as a matter of fact the 20,000 children were not all the Lanarkshire schools population, and I feel pretty certain that some 200-300 pairs of twins would be available for the purpose of the experiment. Of 200 pairs some 50 would be "identicals" and of course of the same sex, while half the remainder would be non-identical twins of the same sex.
->
-> Now identical twins are probably better experimental material than is available for feeding experiments carried out on any other mammals, and the error of the comparison between them may be relied upon to be so small that 50 pairs of these would give more reliable results than the 20,000 with which we have been dealing. The proposal is then to experiment on all pairs of twins of the same sex available, noting whether each pair is so similar that they are probably "identicals" or whether they are dissimilar.
-> "Feed" one of each pair on raw and the other on pasteurised milk, deciding in each case which is to take raw milk by the toss of a coin. Take weekly measurements and weigh without clothes.
-> Some way of distinguishing the children from each other is necessary or the mischievous ones will play tricks. The obvious method is to take finger-prints, but as this is identified with crime in some people's minds, it may be necessary to make a different indelible mark on a fingernail of each, which will grow off after the experiment is over. With such comparatively small numbers further information about the dietetic habits and social position of the children could be collected and would doubtless prove invaluable.
-> The comparative variation in the effect in "identical" twins and in "unlike" twins should furnish useful information on the relative importance of "Nature and Nurture".
-> ...[The twin experiment] is likely to provide a much more accurate determination of the point at issue, owing to the possibility of balancing both nature and nurture in the material of the experiment.
-
-This is a reasonable suggestion, but I was disappointed to see that Student was, it seems, effectively guessing, as he gives no calculation or reference to another work with a similar calculation.
-(If Ziliak was going to cite it as an example, it would've been better if he had verified that Student's speculation was right at least to within an order of magnitude rather than simply quoting him as an authority.)
-
-## Power estimate of twins vs general population
-
-The calculation doesn't seem hard.
-For this example, using height, it'd go something like:
-
-1. take the estimated height gain in inches
-2. find the distribution of height differences for twins and find the distribution of height for the general population of Scottish kids those ages
-3. convert the inch gain into standard deviations for twins and for general population
-4. plug those two into an effect size calculator asking for, say, 80% power
-5. compare how big _n~1~_ you need of twin pairs and how many _n~2~_ of general population, and report the fraction $\frac{2\cdot n_1}{n_2}$ and how close it is to 5%.
-
-### Milk's effect on male height
-
-To start, on pg403, a table reports "Gain in height in inches by Feeders over Controls", for which the largest effect in boys is the 5-7yo boys group at +0.083(.011) inches.
-So we are targeting an average increase of a tenth of an inch.
-
-What is the height variability or standard deviations for twins and Lanarkshire children of a similar age?
-The followup paper ["The Lanarkshire Milk Experiment", Elderton 1933](/doc/statistics/1933-elderton.pdf) helpfully reports standard deviations both for Lanarkshire children and cites some standard deviation for twins' heights at that time (pg2):
-
-> Dr Stocks in his study of twins [Percy [Stocks 1930, assisted by Mary N. Karn: "A Biometric Investigation of Twins and their Brothers and Sisters"](/docs/genetics/1930-stocks.pdf), _Annals of Eugenics_, Vol. v, pp. 46-50. Francis Galton Laboratory for National Eugenics.] found differences in weight as great as 28 hectograms (10 ounces) in those twins he regarded as monozygotic whose ages corresponded to the children in the milk experiment. The standard deviation of weight in pounds is roughly twice that of the standard deviation of height in inches, so that if 8 ounces difference in initial weight be permitted, 1/4 inch difference in height could be allowed. Judging also by Dr Stocks' material in which monozygotic twins showed a modal difference of 1 cm in height it would have been justifiable to allow children to be paired who differed by two-eighths of an inch, but the labour of pairing would have been much heavier if a greater variation than that entered on the cards had been allowed for height as well as for weight...In Table I the standard deviations and coefficients of variation of the initial height and weight for each year of birth are given, and if these be compared with those for Glasgow boys and girls, it will be seen that they are distinctly less. The Glasgow figures were obtained by linear interpolation and are given in brackets after those for the selected Lanarkshire data.
-
-Elderton's Table 1 reports on the Lanarkshire children's grouped data by "6 years 9 months", "7 years 9 months", and then "8 years 9 months" & higher; the first two presumably map best onto our 5-7yo group, and have values of _n_=382 with standard deviation 1.483(2.58), and _n_=337 with standard deviation 1.648(2.82); [pooling the standard deviations](!Wikipedia "Pooled variance"), we get a standard deviation of 1.56 for the general population. <!-- (1.483*(382-1) + 1.648*(337-1))/ (382+337-2) -->
-
-Elderton's summary of Stocks's twin research is confusingly worded (partly because Stocks worked in centimeters and Elderton inches), but she appears to be saying that the standard deviation of differences in Stocks's twins is 0.25 inches, which compared with 1.483 is much smaller and around one-fifth; Table II (pg11) in Stocks 1930 records variability of identical twins vs fraternal vs their non-twin siblings in "mean corrected Deviates", mentioning that the root-mean-squared difference in the table is the standard deviation, so the σ~0~ of height for identical twins is 0.9497 while the general population is 6.01cm (pg13), and $\frac{0.9497}{6.01}$ comes out to one-fifth, confirming where Elderton got her specific estimate of ~0.25 inches as the standard deviation for identical twins.
-
-So the claimed effect is +0.083 inches, which represents _d_=0.05 (for the general population) and _d_=0.332 (twin differences).
-We then ask how much data is required to conduct a well-powered experiment to detect the existence of such an effect:
-
-~~~{.R}
-generalD <- 0.083/1.560322176
-twinD <- 0.083/0.25
-generalP <- power.t.test(d=generalD, power=0.8); generalP
-#      Two-sample t test power calculation
-#
-#               n = 5548.623219
-#           delta = 0.05319414239
-#              sd = 1
-#       sig.level = 0.05
-#           power = 0.8
-#     alternative = two.sided
-#
-# NOTE: n is number in *each* group
-twinP <- power.t.test(d=twinD, power=0.8); twinP
-#      Two-sample t test power calculation
-#
-#               n = 143.3836014
-#           delta = 0.332
-#              sd = 1
-#       sig.level = 0.05
-#           power = 0.8
-#     alternative = two.sided
-#
-# NOTE: n is number in *each* group
-twinP$n / generalP$n
-# [1] 0.02584129355
-~~~
-
-So with 143 twin-pairs or _n_=286, we can match the power of a sample drawn from the general population with 5548 in each group or _n_=11096 - savings of ~98% of the sample.
-(To put that in perspective, if costs scaled exactly per head, then that estimated cost of ~\$541,100 would have instead been \$13,982, for a savings of \$527,117.)
-Student's guess of "1-2%" proves to be on the money, and the experiment is also feasible as 143 twin-pairs is well below the number of twin-pairs that Student estimated to be available (>160, and more likely "200-300"; 300 twin-pairs would yield a power of ~98%, exceeding the Lanarkshire's 20000's <96% power).
-
-We can safely say that Student's Scottish milk experiment example does indeed demonstrate the power of twins.
-
-### All traits
-
-We can go further and estimate the power of twins in general for experimentation.
-While height is somewhat unusually heritable, we can say with confidence that almost all traits studied are highly heritable based on the previously mentioned mega-meta-analysis ["Meta-analysis of the heritability of human traits based on fifty years of twin studies", Polderman et al 2015](/docs/genetics/2015-polderman.pdf) which compiles data on 17,804 traits estimated from ~14.5m pairs.
-The upshot is that averaging over all those traits, 48.8% of variance is due to heritability and 17.4% shared-environment[^siblings]; implying that compared to a sample drawn from the general population (who share neither genetics nor the shared-environment upbringing), identical twins will have 33.8% (`1-(0.488+0.174)`) of the variability.
-
-[^siblings]: Note how much better identical twins are than siblings; sibling designs are valuable when we are hypothesizing about something in the shared-environment, and can be used for many purposes like showing that GWAS hits are not confounded by population stratification or that the harm from things like maternal smoking is overestimated by analyses ignoring genetic confounding, but since siblings are not all that similar, the gain is not particularly large. For some discussion of this topic from epidemiological perspectives, see ["Why are children in the same family so different from one another?"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3147063/ "Plomin & Daniels 2011") & [Smith 2011](http://ije.oxfordjournals.org/content/40/3/537.full "Epidemiology, epigenetics and the 'Gloomy Prospect': embracing randomness in population health research and practice").
-
-For easier comparison with the running example, we can redo the height calculation but assuming we are looking at a generic trait with a higher variability
-
-~~~{.R}
-twinAll <- 0.083/(0.338*1.560322176)
-generalAll <- 0.083/1.560322176
-generalAll <- power.t.test(d=generalD, power=0.8)
-twinAll <- power.t.test(d=twinAll, power=0.8)
-twinAll$n / generalAll$n
-# [1] 0.1143975625
-~~~
-
-In general, an experiment run using twins will require a sample 11% the size of the same experiment run using the general population.
 
 <!--
 > Would you change your mind on nutrition if shown, double-blind, placebo-controlled trials on nutrition?
