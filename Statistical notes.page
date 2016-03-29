@@ -2719,6 +2719,21 @@ Yes.
 So of the 14 samples, 8 were definitely in the style of the right author, 5 were mixed successes as they mostly resembled their author but not entirely, and only 1 was a clear failure.
 With 31 authors to choose from, that's not an accident.
 
+One Whitman sample I generated while testing struck me as quite poetic; with linebreaks inserted where indicated by capitalization:
+
+    "WITH THE QUEEN OF OTHER HOLY SAILOR"
+    And shes my brothers to be put upon me, intense and sound,
+    All are me. Sounds purified, O sound of the streets!
+    O landscapes! O still the fierce and the scraping of beauty!
+    The murderous twinkle of the sky and basement,
+    How the beasts at first began to bite and the waves near the floor.
+    The walls of lands discover'd passions,
+    Earth, sword-ships, enders, storms, pools, limailes, shapes of violent,
+    Rooters, alarms, the light-starring mail, untold arms, patients, portals, the well-managed number, the bravest farms,
+    The effect of doubts, the bad ways, the deeds of true signs, the curious things, the sound of the world,
+    It is of figure and anthem, the common battle rais'd,
+    The beautiful lips of the world that child in them can chase it
+
 For a more systematic look, I [generated samples from all included authors](/docs/2016-03-27-rnn-metadata-samples-all.txt):
 
 ~~~{.Bash}
