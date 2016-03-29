@@ -2368,7 +2368,7 @@ There are two approaches for how to encode the metadata into the RNN:
     So for example, a Shakespeare corpus might be transformed by prefixing each line with a distinctive string unlikely to appear in the corpus itself, eg "SHAKESPEARE|To be or not to be,|SHAKESPEARE". Then during sampling, Shakespearean prose will be triggered like `th sample.lua rnn.t7 -primetext "SHAKESPEARE|"`. (Why the pipe character? Because it's rarely used in prose but isn't hard to type or work with.)
     To add in more metadata, one adds in more prefixes; for example, perhaps the specific work might be thought relevant and so the corpus is transformed to "SHAKESPEARE|HAMLET|To be or not to be,|HAMLET|SHAKESPEARE". Then one can sample with the specific work, author, or both. For musical generation, relevant metadata might be musical genre, author, tempo, instruments, type of work, tags provided by music listeners ('energetic', 'kitties', 'for_running' etc), so one could ask for energetic Irish music for two fiddles.
 
-    This has the advantage of being easy to set up (some regexes to add metadata) and easy to extend (take an existing trained RNN and use it on the modified corpus); the disadvantage is that it may not work as the RNN may be unable to jointly learn to recall and use the metadata - it may instead learn to forget the metadata immediately, or spend all its learning capacity on modeling an 'average' input because that yields better log-loss error. This in band approach can also easily be extended to cover classification; in classification, the metadata is put at the *end* of each line, so instead of learning to predict text conditional on metadata & previous text, the RNN is learning to predict metadata conditional on previous text, and classifications can be extracted by sampling with the input as the prime text followed by the separator character and seeing what metadata is predicted (eg `th sample.lua classification.t7 -primetext "...text...|" ~> "SHAKESPEARE\n"`).
+    This has the advantage of being easy to set up (some regexes to add metadata) and easy to extend (take an existing trained RNN and use it on the modified corpus); the disadvantage is that it may not work as the RNN may be unable to jointly learn to recall and use the metadata - it may instead learn to forget the metadata immediately, or spend all its learning capacity on modeling an 'average' input because that yields better log-loss error. This in band approach can also easily be extended to cover classification; in classification, the metadata is put at the *end* of each line, so instead of learning to predict text conditional on metadata & previous text, the RNN is learning to predict metadata conditional on previous text, and classifications can be extracted by low-temperature sampling with the input as the prime text followed by the separator character and seeing what metadata is predicted (eg `th sample.lua classification.t7 -temperature 0.1 -primetext "...text...|" ~> "SHAKESPEARE\n"`).
 
     As far as I know, no one has done this except perhaps inadvertently or implicitly.
 2. out of band: instead of depending on the RNN to learn the value of the metadata and preserving it in its hidden state, one can change the RNN architecture to inject the metadata at each timestep. So if one has an RNN of 500 neurons, 5 of them will be hardwired at each timestep to the metadata value for the sequence being worked on.
@@ -2584,7 +2584,7 @@ wc --char *.txt
 for FILE in *.txt; do
   dos2unix $FILE;
   AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-  cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | tr -d '\f' | tr -d '^M' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
+  cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
 done
 cat *.transformed | shuf > input.txt
 cd ../../
@@ -2635,7 +2635,7 @@ rm *.transformed
 for FILE in *.txt; do
   dos2unix $FILE;
   AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-  cat $FILE | tail -n +80 | head -n -362 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | tr -d '\f' | tr -d '^M' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" -e "s/$/\|$AUTHOR/" > $FILE.transformed
+  cat $FILE | tail -n +80 | head -n -362 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | tr -d '[:cntrl:]' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
 done
 cat *.transformed | shuf > input.txt
 
@@ -2747,6 +2747,7 @@ done) > 2016-03-27-rnn-metadata-samples-all.txt
 The Eliot output was perplexingly bad, consisting mostly of numbers, so I looked at the original.
 It turned out that in this particular corpus, 10 of the text files had failed to download, and instead, Project Gutenberg served up some HTML CAPTCHAs (not cool, guys).
 This affected: Coleridge, Dante, Da Vinci, Eliot, Gilbert & Sullivan, Grant, Homer, Kafka, Pepys, & Sherman.
+(Checking the output, I also noticed that a number of words starting with capital 'M' were missing the 'M', which I traced to a `tr` call that did not do what I thought it did.)
 Excluding them:
 
 - bad: Aristotle, Beowulf, Bible, Chaucer, Jordan, Keats
@@ -2771,6 +2772,16 @@ Further work:
 3. try classification rather than generation
 4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
 
+<!-- Classification:
+fixed corrupt text files, `tr` problem
+
+for FILE in *.txt; do
+  dos2unix $FILE;
+  AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
+  cat $FILE | tail -n +80 | head -n -362 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/$/\|$AUTHOR/" > $FILE.transformed
+done
+
+-->
 <!--
 try pretraining like beer reviews, using `cat *.txt > input.txt`:
 
@@ -2790,7 +2801,7 @@ if pretraining doesn't work, another trick might be to put the label at the end 
     for FILE in *.txt; do
       dos2unix $FILE;
       AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-      cat $FILE | tail -n +80 | head -n -362 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | tr -d '\f' | tr -d '^M' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" -e "s/$/\|$AUTHOR/" > $FILE.transformed
+      cat $FILE | tail -n +80 | head -n -362 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" -e "s/$/\|$AUTHOR/" > $FILE.transformed
     done
     cat *.transformed | shuf > input.txt
 
@@ -2808,7 +2819,7 @@ At the end, we should get an RNN with a validation loss slightly worse than 0.97
 rm *.t7 *.transformed input.txt
 for FILE in *.txt; do
   AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-  TEXT=$(cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | tr -d '\f' | tr -d '^M' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g')
+  TEXT=$(cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g')
   echo $TEXT | fold --spaces --width=3000 |                              sed -e "s/^/$AUTHOR\|M\|/" >> $FILE.transformed
   echo $TEXT | fold --spaces --width=3000 | tr '[:lower:]' '[:upper:]' | sed -e "s/^/$AUTHOR\|U\|/" >> $FILE.transformed
   echo $TEXT | fold --spaces --width=3000 | tr '[:upper:]' '[:lower:]' | sed -e "s/^/$AUTHOR\|D\|/" >> $FILE.transformed
