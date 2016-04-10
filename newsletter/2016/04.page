@@ -17,13 +17,27 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 
 Everything is heritable:
 
+- ["Genome-wide association study of cognitive functions and educational attainment in UK Biobank (_n_=112151)"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp201645a.html), Davies et al 2016
+- ["Introducing precise genetic modifications into human 3PN embryos by CRISPR/Cas-mediated genome editing"](http://www.gwern.net/docs/genetics/2016-kang.pdf), Kang et al 2016 (see also Liang et al 2015; both describe the CRISPR state of the art as of early 2014, 2+ years ago)
+- ["Variants near CHRNA3/5 and APOE have age- and sex-related effects on human lifespan"](http://www.nature.com/ncomms/2016/160331/ncomms11174/pdf/ncomms11174.pdf), Joshi et al 2016
+
 Politics/religion:
 
 AI:
 
+- ["Deep Networks with Stochastic Depth"](http://arxiv.org/abs/1603.09382), Huang et al 2016 (dropout of random *layers*, which does not just work, but works better and enables >1200-layer residual networks)
+- ["Generating Large Images from Latent Vectors"](http://blog.otoro.net/2016/04/01/generating-large-images-from-latent-vectors/)
+- ["Convolutional Networks for Fast, Energy-Efficient Neuromorphic Computing"](http://arxiv.org/pdf/1603.08270v1.pdf), Esser et al 2016
+
 Statistics/meta-science:
 
+- ["A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook"](http://www.kellogg.northwestern.edu/faculty/gordon_b/files/kellogg_fb_whitepaper.pdf), Gordon et al 2016 (How often does correlation=causation? <50% of the time in Internet advertising, with gross over/underestimates even with detailed covariate & advanced modeling.)
+- ["The Bitter Fight Over the Benefits of Bilingualism"](http://www.theatlantic.com/science/archive/2016/02/the-battle-over-bilingualism/462114/) (So Bialystok is refusing a collaboration because a pre-registered protocol is unscientific *and* she refuses to work with someone so obviously 'biased' that they would damage the non-pre-registered results, and besides, publication bias doesn't exist - "there is absolutely no evidence". I see...﻿)
+
 Psychology/biology:
+
+- ["A Meta-Analysis of Blood Glucose Effects on Human Decision Making"](http://www.gwern.net/docs/2016-orquin.pdf), Orquin & Kurzban 2016:
+- ["The Voyeur’s Motel"](http://www.newyorker.com/magazine/2016/04/11/gay-talese-the-voyeurs-motel)
 
 Technology:
 
