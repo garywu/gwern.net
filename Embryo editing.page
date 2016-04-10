@@ -200,6 +200,7 @@ how to simulate posterior probabilities?
 https://cran.r-project.org/web/packages/BGLR/BGLR.pdf https://cran.r-project.org/web/packages/BGLR/vignettes/BGLR-extdoc.pdf looks useful but won't handle the mixture modeling
 
 previous: Liang et al 2015 "CRISPR/Cas9-mediated gene editing in human tripronuclear zygotes" http://download.springer.com/static/pdf/629/art%253A10.1007%252Fs13238-015-0153-5.pdf http://www.nature.com/news/chinese-scientists-genetically-modify-human-embryos-1.17378
+Kang et al 2016, "Introducing precise genetic modifications into human 3PN embryos by CRISPR/Cas-mediated genome editing" /docs/genetics/2016-kang.pdf http://www.nature.com/news/second-chinese-team-reports-gene-editing-in-human-embryos-1.19718
 
 legal in USA (no legislation), legal in China (only 'unenforceable guidelines') as of 2014, according to "International regulatory landscape and integration of corrective genome editing into in vitro fertilization", Araki & Ishii 2014 http://rbej.biomedcentral.com/articles/10.1186/1477-7827-12-108
 as of 2015 too according to http://www.nature.com/news/where-in-the-world-could-the-first-crispr-baby-be-born-1.18542
@@ -335,3 +336,63 @@ installation: https://github.com/stephenslab/rss/wiki/RSS-via-MCMC
 RSS example 1 https://github.com/stephenslab/rss/wiki/Example-1 code: https://github.com/stephenslab/rss/blob/master/examples/example1.m data https://uchicago.app.box.com/example1
 doesn't run under Octave at the moment although I got it close: https://github.com/stephenslab/rss/issues/1
 what are my alternatives? RSS is the best looking Bayesian one so far. I can try pirating Matlab, or apparently the Machine Learning Coursera gives one a temporary 120-day subscription
+
+groundTruth <- function(alleles, causal, genotype) {
+    score <- rnorm(1, mean=100, sd=15)
+    for (i in 1:length(genotype)) {
+      if(causal[i] && genotype[i]) { print(alleles[i]); score <- score + alleles[i]; } }
+      return(score);}
+
+alleles <- sort(rexp(10000, rate=70), decreasing=TRUE)[1:10]
+causal <- c(TRUE, rep(FALSE, 8), TRUE)
+
+df <- data.frame()
+for(i in 1:50) {
+ genotype <- rbinom(n=10,1,prob=0.50)
+ IQ <- groundTruth(alleles, causal, genotype)
+ df <- rbind(df, c(IQ, genotype))
+ }
+names(df) <- c("IQ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J")
+library(reshape2)
+df2 <- melt(df, "IQ")
+
+model1 <- function() {
+  for (i in 1:N) {
+   for (j in 1:K) {
+     b[j] ~ dexp(70)
+     y[i] ~ dnorm(100, 0.06) + b[j]
+    }
+    }
+    }
+data1 <- list(N=nrow(df2), K=10, y=df2$IQ, b=1:length(unique(df2$variable)))
+jags(data=data1, parameters.to.save="b", model.file=model1)
+
+
+
+
+# eg groundTruth(c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE))
+simulate <- function(a, c) {
+   }
+
+library(runjags)
+model1 <- "model {
+  for (i in 1:N) {
+   y[i] ~ dnorm(mu[i], tau[i])
+   mu[i] <- muOfClust[ clust[i] ]
+   clust[i] ~ dcat(pi[])
+  }
+
+  for (i in 1:K) {
+    pi[i] <- 0.05
+    muOfClust[i] ~ dexp(70)
+    tau[i] ~ dgamma(1.0E-3, 1.0E-3)
+  }
+ }"
+j1 <- autorun.jags(model1, monitor=c("theta"), data = list(N=nrow(oldData2), y=oldData2$Yes, n=oldData2$N, switch=c(0.5, 0.5), clust=c(1,NA))); j1
+# ...      Lower95  Median Upper95    Mean       SD Mode      MCerr MC%ofSD SSeff    AC.10   psrf
+# theta[1] 0.70582 0.75651 0.97263 0.77926  0.07178   --   0.001442       2  2478  0.12978 1.0011
+# theta[2] 0.72446 0.75078 0.77814 0.75054 0.013646   -- 0.00009649     0.7 20000 0.009458      1
+
+https://github.com/jeromyanglim/JAGS_by_Example/blob/master/03-multilevel/varying-intercept-long/varying-intercept-long.rmd
+http://doingbayesiandataanalysis.blogspot.com/2012/06/mixture-of-normal-distributions.html
+http://www.stats.ox.ac.uk/~bardenet/Material/mixture_with_jags_only_mu.html
