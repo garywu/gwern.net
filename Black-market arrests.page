@@ -560,6 +560,7 @@ Richard Petix        M    30                       seller                       
 Zhe Wang             M    20                       buyer                                       USA         New York       Bitcoin, Xanax, MDMA                  TRUE  2016-02-29 2016-03-20
 Kevin Szura          M    20                       buyer                                       USA         New York       Bitcoin, Xanax, MDMA                  TRUE  2016-02-29 2016-03-20
 Aditya Rajiv         M    28                       seller                                      Scotland    Aberdeen       financial data                                         2016-03-24
+Christian Olson      M    22                       buyer                                       USA         Arkansas       marijuana                             FALSE 2016-03-17 2016-03-19
 
 # Confirmed
 ## Agora
@@ -1402,6 +1403,10 @@ In January 2016, the fourth arrest of a bust centering around [4 Shelter Island,
 
 In March 2016, charges were announced against 3 NY men, 30yo Richard Petix / 20yo Zhe Wang / 20yo Kevin Szura (case `1:2016-cr-00026`; [press release](https://www.justice.gov/usao-wdny/pr/three-men-indicted-district-s-first-bitcoin-related-case "Three Men Indicted On District's First Bitcoin-Related Case"), [complaint](/docs/sr/2016-petix-complaint.pdf), [media](http://www.financemagnates.com/cryptocurrency/exchange/three-new-yorkers-indicted-sale-xanax-bitcoin/ "Three New Yorkers Indicted Over Sale of Xanax for Bitcoin: U.S authorities accuse the men of operating "an unlicensed money transmitting business" for selling smuggled drugs in bitcoin")).
 Petix had sold Bitcoin to an undercover agent, as he had to Wang/Szura; in an undercover buy beginning 29 February 2016, they admitted using the bitcoins to import MDMA & Xanax from a Canadian DNM seller for resale locally, and were arrested at the second one 7 March 2016.
+
+On 17 March 2016, 22yo Arkansas man Christian Olson was arrested for weekly orders of ~3lb marijuana from California paid in Bitcoin which he resold locally ([1](http://www.11alive.com/mb/news/local/22-year-old-made-16kmonth-after-shipping-pot-through-usps/100506739 "22-year-old made $16K/month after shipping pot through USPS"),
+[2](https://greenrushdaily.com/2016/03/25/kid-made-16k-month-selling-weed-in-mail/100010367894675/ "This Kid Made Over $16K a Month Selling Weed Through the Mail"),
+[3](http://www.thv11.com/news/crime/23-yr-old-allegedly-managed-ark-drug-ring-through-postal-service-/100936404 "More details: Man accused of receiving pot through mail")).
 
 <!-- TODO: 4 possible interconnected Colorado cases: https://bitcointalk.org/index.php?topic=934268.msg10972935#msg10972935 may be DNM-related due to combination of local-bitcoin sales with some drug charges -->
 <!-- TODO: possible reseller Kaleb Chhabra of 25i: https://www.reddit.com/r/DarkNetMarkets/comments/3c5mkx/if_chairman_pao_removes_this_subreddit_what_are/cssuz7o?context=3 http://www.clarionledger.com/story/news/2015/07/02/madison-man-pleads-guilty-on-synthetic-lsd-charges/29631749/ http://www.clarionledger.com/story/news/local/2014/09/15/former-msu-student-top-lsd-distributor-arrested/15674007/ -->
