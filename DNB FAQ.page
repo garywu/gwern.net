@@ -961,6 +961,19 @@ Block Design: 39.84 (9.52)
 >
 > Finding of our study suggest the importance of investigating factors associated with effectiveness of working memory training in future research.
 
+### Heinzel et al 2016
+
+["Neural correlates of training and transfer effects in working memory in older adults"](/docs/dnb/2016-heinzel.pdf), Heinzel et al 2016:
+
+> As indicated by previous research, aging is associated with a decline in working memory (WM) functioning, related to alterations in fronto-parietal neural activations. At the same time, previous studies showed that WM training in older adults may improve the performance in the trained task (training effect), and more importantly, also in untrained WM tasks (transfer effects). However, neural correlates of these transfer effects that would improve understanding of its underlying mechanisms, have not been shown in older participants as yet. In this study, we investigated blood-oxygen-level-dependent (BOLD) signal changes during n-back performance and an untrained delayed recognition (Sternberg) task following 12 sessions (45 minutes each) of adaptive n-back training in older adults. The Sternberg task used in this study allowed to test for neural training effects independent of specific task affordances of the trained task and to separate maintenance from updating processes. Thirty-two healthy older participants (60-75 years) were assigned either to an n-back training or a no-contact control group. Before (t1) and after (t2) training/waiting period, both the n-back task and the Sternberg task were conducted while BOLD signal was measured using functional Magnetic Resonance Imaging (fMRI) in all participants. In addition, neuropsychological tests were performed outside the scanner. WM performance improved with training and behavioral transfer to tests measuring executive functions, processing speed, and fluid intelligence was found. In the training group, BOLD signal in right lateral middle frontal gyrus/ caudal superior frontal sulcus (Brodmann area, BA 6/8) decreased in both the trained n-back and the updating condition of the untrained Sternberg task at t2, compared to the control group. FMRI findings indicate a training-related increase in processing efficiency of WM networks, potentially related to the process of WM updating. Performance gains in untrained tasks suggest that transfer to other cognitive tasks remains possible in aging.
+
+<!-- e n=15 17.73(1.20)
+no-contact control n=14 16.43(1.00)
+compensation: "Participants who completed the study received a monetary reimbursement." but no specific amount?
+training: visual n-back, 12 sessions x 45 minutes = 540
+Raven's Standard Progressive Matrices -->
+
+
 ## Criticism
 ### Moody 2009 (re: Jaeggi 2008)
 
@@ -1515,6 +1528,32 @@ control: -0.36 (2.1)
 ST: -0.23 (2.5)
 VT: 0.91 (3.1)
 -->
+
+### Lawlor-Savage & Goghari 2016
+
+["Dual N-Back Working Memory Training in Healthy Adults: A Randomized Comparison to Processing Speed Training"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0151817), Lawlor-Savage & Goghari 2016:
+
+> Enhancing cognitive ability is an attractive concept, particularly for middle-aged adults interested in maintaining cognitive functioning and preventing age-related declines. Computerized working memory training has been investigated as a safe method of cognitive enhancement in younger and older adults, although few studies have considered the potential impact of working memory training on middle-aged adults. This study investigated dual n-back working memory training in healthy adults aged 30–60. Fifty-seven adults completed measures of working memory, processing speed, and fluid intelligence before and after a 5-week web-based dual n-back or active control (processing speed) training program. Results: Repeated measures multivariate analysis of variance failed to identify improvements across the three cognitive composites, working memory, processing speed, and fluid intelligence, after training. Follow-up Bayesian analyses supported null findings for training effects for each individual composite. Findings suggest that dual n-back working memory training may not benefit working memory or fluid intelligence in healthy adults. Further investigation is necessary to clarify if other forms of working memory training may be beneficial, and what factors impact training-related benefits, should they occur, in this population.
+
+<!-- dual n-back
+Canada
+experimental n=27 11.48(2.98)
+active control n=30 11.02(2.34)
+17.16 minutes per session * 22.81 sessions = 391
+Wechsler Abbreviated Scale of Intelligence—Second Edition, RAPM, CCFT; WASI was baseline/pre-test, RAPM/CCFT post-test
+no compensation -->
+
+### Studer-Luethi et al 2015
+
+["Working memory training in children: Effectiveness depends on temperament"](https://www.researchgate.net/profile/Barbara_Studer-Luethi/publication/281064211_Working_memory_training_in_children_Effectiveness_depends_on_temperament/links/5609af6908ae840a08d3fe47.pdf), Studer-Luethi et al 2015:
+
+> Studies revealing transfer effects of working memory (WM) training on non-trained cognitive performance of children hold promising implications for scholastic learning. However, the results of existing training studies are not consistent and provoke debates about the potential and limitations of cognitive enhancement. To examine the influence of individual differences on training outcomes is a promising approach for finding causes for such inconsistencies. In this study, we implemented WM training in an elementary school setting. The aim was to investigate near and far transfer effects on cognitive abilities and academic achievement and to examine the moderating effects of a dispositional and a regulative temperament factor, neuroticism and effortful control. Ninetynine second-graders were randomly assigned to 20 sessions of computer-based adaptive WM training, computer-based reading training, or a no-contact control group. For the WM training group, our analyses reveal near transfer on a visual WM task, far transfer on a vocabulary task as a proxy for crystallized intelligence, and increased academic achievement in reading and math by trend. Considering individual differences in temperament, we found that effortful control predicts larger training mean and gain scores and that there is a moderation effect of both temperament factors on post-training improvement: WM training condition predicted higher post-training gains compared to both control conditions only in children with high effortful control or low neuroticism. Our results suggest that a short but intensive WM training program can enhance cognitive abilities in children, but that sufficient selfregulative abilities and emotional stability are necessary for WM training to be effective....We found no significant training group interaction on the performance in the Raven’s Progressive Matrices (F(2,92) = 1.57, p = .22, ηp2 = .004)...We found no significant long-term effects in the variables memory span, cognitive control, Gf, Gc, and scholastic tests (all T < 1.4).
+
+<!-- e n=34
+active control n=31
+passive control n=30
+RPM 10 minutes
+nominal compensation -->
 
 ## Meta-analysis
 

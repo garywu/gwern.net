@@ -96,6 +96,9 @@ The candidate studies:
     excluded: n-back experimental group was non-adaptive (single 1/2-back)
 - Lindeløv et al 2016
 - Schwarb et al 2015
+- Studer-Luethi et al 2015
+
+   excluded because did not report means/SDs for RPM scores
 
 Variables:
 
@@ -105,7 +108,7 @@ Variables:
    0. BOMAT
    1. Raven's Advanced Progressive Matrices (RAPM)
    2. Raven's Standard Progressive Matrices (SPM)
-   3. other (eg. WAIS, Cattell's Culture Fair Intelligence Test/CFIT, TONI)
+   3. other (eg. WAIS or WASI, Cattell's Culture Fair Intelligence Test/CFIT, TONI)
 2. record speed of IQ test: minutes allotted (upper bound if more details are given; if no time limits, default to 30 minutes since no subjects take longer)
 3. n-back type:
 
@@ -280,6 +283,8 @@ year study         Publication n.e   mean.e    sd.e   n.c   mean.c  sd.c   activ
 2015 Schwarb.1     Schwarb     26    0.11      2.5    26    0.69    3.2    FALSE    480        1    10    3       80    USA
 2015 Schwarb.2.1   Schwarb     22    0.23      2.5    10.5  -0.36   2.1    FALSE    480        1    10    1       80    USA
 2015 Schwarb.2.2   Schwarb     23    0.91      3.1    10.5  -0.36   2.1    FALSE    480        1    10    2       80    USA
+2016 Heinzel.1     Heinzel.2   15    17.73     1.20   14    16.43   1.00   FALSE    540        2    7.5   1       1     Germany
+2016 Lawlor-Savage Lawlor      27    11.48     2.98   30    11.02   2.34   TRUE     391        1    20    0       0     Canada
 
 # Analysis
 
@@ -633,6 +638,8 @@ Going through them, I must note:
 - Schwarb et al 2015: reports 2 experiments, both of whose RAPM data is reported as "change scores" (the average test-retest gain & the SDs of the paired differences); the [Cochrane Handbook](http://handbook.cochrane.org/chapter_9/9_4_5_2_meta_analysis_of_change_scores.htm "9.4.5.2  Meta-analysis of change scores") argues that change scores can be included as-is in a meta-analysis using post-test variables as the difference between the post-tests of controls/experimentals will become equivalent to change scores.
 
     The second experiment has 3 groups: a passive control group, a visual n-back, and an auditory n-back. The control group is split.
+- Heinzel et al 2016 does not specify how much participants were paid
+- Lawlor-Savage & Goghari 2016 recorded post-tests for both RAPM & CCFT; I use RAPM as usual
 
 <!-- Clouter:
 1. The post-training Mean and SD for the raw CFIT scores are: Control group mean = 28.83, SD = 2.68. Training group mean = 30.84, SD = 4.11.
