@@ -10,7 +10,7 @@ belief: likely
 > With genetic predictors of a phenotypic trait, it is possible to select embryos during an in vitro fertilization process to increase or decrease that trait.
 > I consider the case of human intelligence using SNP-based genetic prediction, finding:
 >
-> - a meta-analysis of GCTA indicates that SNPs can explain >33% of variance in human intelligence
+> - a meta-analysis of GCTA results indicates that SNPs can explain >33% of variance in current intelligence scores, and >44% with better-quality phenotype testing
 > - this sets an upper bound on the effectiveness of selection: a gain of 9 IQ points when selecting the top embryo out of 10
 > - the best 2015 polygenic score could achieve a gain of <4.5 IQ points when selecting out of 10
 > - the cost of embryo selection is modest, at \$1500 + \$200 per embryo, with the sequencing cost projected to drop rapidly
@@ -233,32 +233,36 @@ My best guess so far is that the apparent trend is due to a lack of middle-aged 
 
 ![Forest plot for meta-analysis of GCTA estimates of total additive SNPs' effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
 
-<!--
-"Genome-wide association study of cognitive functions and educational attainment in UK Biobank (_N_=112151)" http://www.nature.com/mp/journal/vaop/ncurrent/full/mp201645a.html Davies et al 2016
-giving a UK Biobank sample of _n_=30801, h^2_snp=0.31(0.018) for verbal–numerical reasoning based on a 13-item multiple choice test with test-retest reliability of 0.65.
-h^2_snp is a square, so it must be square-rooted to be a r and sqrt(0.31)=0.556.
-We assume the SNP test-retest reliability is ~1.
+This meta-analytic summary is an underestimate of the true genetic effect for several reasons, including as mentioned, measurement error.
+Using Spearman's formula, we can correct it.
 
-Then the correction for attenuation is r_x'y' = r_xy / sqrt(r_xx * r_yy) (according to the Wikipedia article & the rasch.org link)
-where x/y are IQ/SNP, so:
-r_x'y' = sqrt(0.31) / sqrt(1 * 0.65) = 0.691
+Davies et al 2016 is the most convenient and precise GCTA estimate to work with, and reports a test-retest reliability of 0.65 for its 13-question verbal-numerical reasoning test.
+Its _h_^2^~snp~=0.31 is a square, so it must be square-rooted to be a _r_ and $\sqrt{0.31}=0.556$.
+We assume the SNP test-retest reliability is ~1 as genome sequencing is highly accurate due to repeated passes.
 
-(The table in http://www.rasch.org/rmt/rmt101g.htm seems to agree: the reported r is 0.556 (columns), and 1*0.65=0.65 (rows), which gives a cell of 0.68, which is close enough.)
+The correction for attenuation is $r_{x'y'} = \frac{r_{xy}}{\sqrt{r_{xx} \cdot r_{yy}}}$
 
-So the r_snp' is 0.691, and to convert it back to h^2, 0.691^2 = 0.477481 = 0.48.
+_x_/_y_ are IQ/SNPs, so:
+
+$r_{x'y'} = \frac{\sqrt{0.31}}{\sqrt{1 \cdot 0.65}} = 0.691$
+
+So the _r_~snp~ is 0.691, and to convert it back to _h_^2^~snp~, 0.691^2^ = 0.477481 = 0.48, which is substantially larger than the measurement-error-contaminated underestimate of 0.31.
+
+0.48 represents the true underlying genetic contribution with indefinite amounts of exact data, but all IQ tests are imperfect and one may ask what is the practical limit with the best current IQ tests?
+
+One of the best current IQ tests is the [WAIS-IV](!Wikipedia) full-scale IQ test, with [a 32-day test-retest reliability of 0.93 (Table 2)](http://images.pearsonclinical.com/images/pdf/wisciv/WISCIVTechReport2.pdf).
+Knowing the true GCTA estimate, we can work backwards assuming a _r_~yy~=0.93:
 
 We can then work backwards as I suggest to figure out what a good IQ test could deliver, such as the WAIS-IV full-scale IQ test.
-http://images.pearsonclinical.com/images/pdf/wisciv/WISCIVTechReport2.pdf says a 32-day test-retest reliability of 0.93 (Table 2).
-We now know r_x'y'=0.691, but we want to know the r_xy assuming a r_yy=0.93. So:
+So:
 
-r_x'y' = r_xy / sqrt(r_xx * r_yy)
-0.691 = sqrt(x) / sqrt(1 * 0.93)
-0.691 * sqrt(1 * 0.93) = sqrt(x)
-(0.691 * sqrt(1 * 0.93))^2 = x
-0.44405733 = x
+1. $r_{x'y'} = \frac{r_{xy}}{\sqrt{r_xx \cdot r_yy}}$
+2. $0.691 = \frac{\sqrt{x}}{\sqrt{1 \cdot 0.93}}$
+3. $0.691 \cdot \sqrt{1 \cdot 0.93} = \sqrt{x}$
+4. $(0.691 \cdot \sqrt{1 \cdot 0.93})^2 = x$
+5. $0.444 = x$
 
-The better IQ test delivers a gain of 0.444-0.31=0.134 or 43% more possible variance explicable, with 4% still left over.
--->
+The better IQ test delivers a gain of 0.444-0.31=0.134 or 43% more possible variance explicable, with 4% still left over compared to a perfect test.
 
 ##### GCTA-based upper bound
 
@@ -277,10 +281,13 @@ embryoSelectionGain <- function(n, variance) { scores <- embryoScores(n, varianc
 simEmbryoSelection <- function(n=2, variance=0.33, iters=100000) { replicate(iters, embryoSelectionGain(n, variance)); }
 mean(simEmbryoSelection(n=10)) * 15
 # [1] 9.368836794
+mean(simEmbryoSelection(n=10, variance=0.444)) * 15
+# [1] 10.88073518
 ~~~
 
-So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Shulman & Bostrom's 11.5 because of my lower GCTA estimate.
-For comparison, the full genetic heritability of adult IQ (including SNPs, mutation load & de novo mutations, copy-number variation, etc) is generally estimated ~0.8, and the upper bound would be ~14.5 IQ points:
+So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Shulman & Bostrom's 11.5 because of my lower GCTA estimate, but using better IQ tests like the WAIS, we could go as high as ~11 points.
+
+For comparison, the full genetic heritability of adult IQ (including SNPs, mutation load & de novo mutations, copy-number variation, etc) is generally estimated ~0.8, which case the upper bound on selection out of 10 embryos would be ~14.5 IQ points:
 
 ~~~{.R}
 mean(simEmbryoSelection(n=10, variance=0.8)) * 15
