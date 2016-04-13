@@ -461,8 +461,11 @@ Some of the positive spaced repetition studies (from Son & Simon 2012):
 > - Carlson, R. A., Sullivan, M. A., & Schneider, W. (1989). ["Practice and working memory effects in building procedural skill"](/docs/spacedrepetition/1989-carlson.pdf)
 > - Jamieson, B. A., & Rogers, W. A. (2000). ["Age-related effects of blocked and random practice schedules on learning a new technology"](/docs/spacedrepetition/2000-jamieson.pdf)
 > - Le Blanc, K. & Simon, D. A. (2008). "Mixed practice enhances retention and JOL accuracy for mathematical skills". Poster presented at the 2008 annual meeting of the Psychonomic Society, Chicago, IL
+> - Wymbs et al 2016, ["Motor Skills Are Strengthened through Reconsolidation"](http://www.cell.com/cms/attachment/2045379445/2056784269/mmc2.pdf)
+> - Dayan & Cohen 2011, ["Neuroplasticity subserving motor skill learning"](http://www.sciencedirect.com/science/article/pii/S0896627311009184)
+> - Landin et al 1993, ["The Effects of Variable Practice on the Performance of a Basketball Skill"](/docs/spacedrepetition/1993-landin.pdf)
 
-In this vein, it's interesting to note that according to [Huang et al 2013](http://jeffhuang.com/Final_HaloLearning_CHI13.pdf "Mastering the Art of War: How Patterns of Gameplay Influence Skill in Halo") the rates at which _[Halo: Reach](!Wikipedia)_ players advance in skill matches nicely predictions from distribution: players who play 4-8 matches a week advance more in skill per match, than players who play more (distributed); but advance slower per week than players who play many more matches (massed).
+In this vein, it's interesting to note that interleaving may be helpful for tasks with a mental component as well: [Hatala et al 2003](/docs/spacedrepetition/2003-hatala.pdf "Practice Makes Perfect: The Critical Role of Mixed Practice in the Acquisition of ECG Interpretation Skills"), [Helsdingen et al 2011](http://dspace.ou.nl/bitstream/1820/2911/6/helsdingen_2009-0424-RRR.pdf "The effects of practice schedule and critical thinking prompts on learning and transfer of a complex judgment task"), and according to [Huang et al 2013](http://jeffhuang.com/Final_HaloLearning_CHI13.pdf "Mastering the Art of War: How Patterns of Gameplay Influence Skill in Halo") the rates at which _[Halo: Reach](!Wikipedia)_ players advance in skill matches nicely predictions from distribution: players who play 4-8 matches a week advance more in skill per match, than players who play more (distributed); but advance slower per week than players who play many more matches (massed).
 
 ##### Abstraction
 
@@ -698,11 +701,11 @@ In the course of using Mnemosyne, I've written a number of scripts to generate r
     You note there's repetition if you do this for each president - one asks the ordinal position of the item both ways (item -> position, position -> item), what precedes it, and what succeeds it. mnemo4.hs automates this, given a list. In order to be general, the wording is a bit odd, but it's better than writing it all out by hand! (Example output is in the [comments](!Wikipedia "Comment (computer programming)") to the source code).
 
 The reader might well be curious by this point what *my* Mnemosyne database looks like.
-I use Mnemosyne quite a bit, and as of 1 February 2015, I have 19,619 cards in my deck.
+I use Mnemosyne quite a bit, and as of 20 March 2016, I have 19,236 cards in my deck.
 Said curious reader may find my cards & media at [gwern.cards](https://www.dropbox.com/s/1ai82i7j0pc84ki/gwern.cards) (51M; Mnemosyne 2.x format).
 
 <!-- the metadata:
-Gwern's flashcards (~2008-2015)
+Gwern's flashcards (~2008-2016)
 gwern
 gwern@gwern.net
 English, Japanese, Korean, Haskell, R, statistics, China, quotes, philosophy (ancient & modern), etc.
@@ -747,7 +750,7 @@ The Mnemosyne project has been collecting user-submitted spaced repetition stati
 - ["A vote against spaced repetition"](http://lesswrong.com/r/discussion/lw/juq/a_vote_against_spaced_repetition/); ["How Flashcards Fail: Confessions of a Tired Memory Guy"](http://howtoremember.biz/content/how-flashcards-fail-confessions-tired-memory-guy)
 - ["Learning Ancient Egyptian in an Hour Per Week with Beeminder"](http://blog.beeminder.com/hieroglyphs/)
 - ["Anki, 10000 Cards Later: How my Anki usage has evolved"](http://rs.io/2014/04/05/anki-10000-cards-later.html)
-- [Duolingo](https://www.duolingo.com/)
+- [Duolingo](https://www.duolingo.com/) [uses spaced repetition](https://www.quora.com/Do-you-have-any-plans-for-optimizing-Duolingos-vocabulary-learning-using-spaced-repetition)
 - ["Everything You Thought You Knew About Learning Is Wrong"](http://archive.wired.com/geekdad/2012/01/everything-about-learning/)
 - [SeRiouS](http://www.spacedrepetition.com/): ["Spaced Repetition Technology for Legal Education"](http://conference.cali.org/2014/sessions/spaced-repetition-technology-legal-education), ["SeRiouS: an LPTI-supported Project to Improve Students' Learning and Bar Performance"](http://lawpracticetechnology.blogs.law.suffolk.edu/2014/03/11/serious-an-lpti-supported-project-to-improve-students-learning-and-bar-performance/), Gabe Teninbaum ([video presentation](https://www.youtube.com/watch?v=dtClgl07lg8))
 - ["The role of digital flashcards in legal education: theory and potential"](http://ejlt.org/article/view/320/424), Colbran et al 2014
