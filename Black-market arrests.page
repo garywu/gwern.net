@@ -563,6 +563,7 @@ Aditya Rajiv         M    28                       seller                       
 Christian Olson      M    22                       buyer                                       USA         Arkansas       marijuana                             FALSE 2016-03-17 2016-03-19
 Megan Schadeberg     F    19                       buyer                                       UK          Wales          gun                                         2015-10-01 2016-03-28
                      M    31   ShanSa              seller    AlphaBay                          Austria     Vienna         MDMA, amphetamine, LSD, cocaine        TRUE 2015-10-31 2016-04-14
+Adam Yates           M    26                       buyer     Silk Road 1                       UK          Derby          MDMA, cocaine, ketamine                TRUE 2014-02-31 2016-04-18
 
 # Confirmed
 ## Agora
@@ -974,10 +975,14 @@ Given the Bitcoin volume and addressed packages, Fay was clearly an unknown SR1 
 
 A [Reddit user](http://www.reddit.com/user/xxcxcxc) [claims in June 2014](http://www.reddit.com/r/IAmA/comments/27m64o/i_am_one_of_the_first_people_to_be_charged_with/?sort=old) to have been importing MDMA into the UK from the Netherlands off SR1 for personal consumption & resale through friends for ~6 months; sometime before 2013<!-- 'worst 18 months', posted 06 2014 --> a package of 100 pills was detected by customs and he accepted delivery, leading to his house being searched; he was then convicted (in large part due to text messages on his phone & emails on his computer) and given a suspended sentence.
 
+
 After the SR bust in October 2013, the Devon UK seller of accessories like marijuana seeds/MBB+ packaging/[kratom](!Wikipedia) ("PlutoPete"), reported he had been [raided & questioned](/docs/sr/2013-10-03-plutopete.mht "Title: WARNING PLUTOPETE HAS BEEN RAIDED! MOVE YOUR DRUGS NOW; Post by: RR on October 03, 2013, 12:14 am") and likely charged with his personal drugs^["My solicitor is confidant [sic] I've broken no UK laws in selling my products, but they did find a small amount of class A and class B drugs that were for my own personal use so i will be charged with that at the very least."]; he was eventually charged in 2015 with ["9 charges inc conspiracy and supply class A and B"](https://twitter.com/plutopete/status/568016817534447616).
 3 more in Manchester were [arrested & charged](http://www.reddit.com/r/SilkRoad/comments/1nz4yl/four_men_arrested_in_uk_over_role_in_silk_road/); the description of a three-man seller mailing from Manchester seems to match at least two SR sellers, "JesusOfRave" and "TechnoHippy" (or possibly a "Mangled1"?), the former of whom [quickly denied being arrested](http://silkroad5v7dywlc.onion/index.php?topic=1381.0;all), while the latter last appeared on the SR forums in mid-September 2013, he resurfaced on the SR2 forums [likewise denying any involvement](http://silkroad5v7dywlc.onion/index.php?topic=2889.0 "Technohippy is back! (and now verified)").
 
 [At Peter Ward/PlutoPete's sentencing](http://www.plymouthherald.co.uk/Devon-man-partner-jailed-selling-drugs-dark-web/story-28829157-detail/story.html ), it came out that the second person was Richard Hiley, who was arrested in December 2013; they had been in partnership to buy & sell marijuana/methamphetamine/cocaine and exchange Bitcoins/dollars. They were sentenced 29 February 2016 to ~5 years each.
+
+26yo Derby man [Adam Yates was raided](http://www.derbytelegraph.co.uk/Derby-worker-Toyota-bought-drugs-dark-web/story-29112765-detail/story.html "Derby Toyota worker bought drugs on 'dark web'") after a February 2014 intercept at Heathrow Airport of 50 MDMA tablets, turning up phone/computer evidence of purchases & local resale of MDMA/cocaine/ketamine back to December 2011, and was sentenced to 2 years (suspended) in April 2016.
+The coverage identifies SR1 as his main DNM, but not which one he had ordered from in February 2014 (SR2?).
 
 <!-- "I believe at least two of the vendors were based in Manchester, and I know one of them sold bitcons for cash deposits to a bank account so if it is the vendor I am thinking of who got busted that's probably why." which one was that? -->
 <!-- "There was a small UK vendor called something like Mangled1 who got busted.
@@ -1544,6 +1549,7 @@ The [Drugs Global Incident Map](http://drugs.globalincidentmap.com/) features ma
     - ["For South Florida feds, three strikeouts in drug importation trials"](http://www.miamiherald.com/news/local/crime/article56387700.html)
     - ["San Jose: Former postal inspector to serve 3 years for possessing stolen mail, marijuana trafficking"](http://www.mercurynews.com/crime-courts/ci_29443543/san-jose-former-postal-inspector-serve-3-years)
     - ["NY State Police announce 22 arrests in crackdown on drugs sent in mail"](https://www.syracuse.com/news/index.ssf/2016/04/ny_state_police_announced_22_arrests_in_crackdown_on_drugs_sent_in_mail.html)
+    - ["Hong Kong teen faces jail for Australia drug ring"](http://www.bbc.com/news/world-australia-36034772)
 
 Most are likely unrelated to the black-markets (part of regular drug smuggling or importing from fly-by-night chemical labs in China) and some rumors are wrong or flatly made up (for example, a seller may be covering up an exit scam with a fake story about being busted, or one seller may be trying to hurt another's sales eg [the TedDanzig incident](https://www.reddit.com/r/SilkRoad/comments/1xq97t/teddanzig_arrested/) or the 4lb PureFireMeds FUD), but of course, some will turn out to be real.
 
