@@ -267,7 +267,7 @@ Lisa Marie Clark      F   22                       buyer     Silk Road 1        
 Michael Duch          M   38  deezletime           seller    Silk Road 1                       USA         New York       clonazepam, hydrocodone, heroin       FALSE 2013-10-01 2015-01-13    38-39yo
 Angel W. Quinones     M   34  UnderGroundSyndicate seller    Silk Road 1 SuperTrips            USA         Florida        MDMA, cocaine, LSD                    TRUE  2013-10-02 2014-04-28     Miami International Airport, Miami, Florida
 Ross William Ulbricht M   29  Dread Pirate Roberts operator  Silk Road 1                       USA         California                                           TRUE  2013-10-02 2013-10-02     San Francisco
-Peter Ward            M   52  PlutoPete            seller    Silk Road 1                       UK          Devon          cocaine, marijuana, methamphetamine   TRUE  2013-10-02 2013-10-03
+Peter Ward            M   52  PlutoPete            seller    Silk Road 1                       UK          Devon          cocaine, marijuana, meth              TRUE  2013-10-02 2013-10-03
                       M                            seller    Silk Road 1                       UK                                                                     2013-10-02 2013-10-03    3 unknown Manchester UK arrests simultaneous with Ulbricht & Ward.
                       M                            seller    Silk Road 1                       UK                                                                     2013-10-02 2013-10-03
                       M                            seller    Silk Road 1                       UK                                                                     2013-10-02 2013-10-03
@@ -454,7 +454,7 @@ Taine M. P. Edwards   M   18                       buyer     SR2                
 Mohammed Ammer Ali    M   31   WEIRDOS OOOO        buyer     Evolution   Dark\_Mart            UK          Liverpool      ricin                                 TRUE  2015-02-11 2015-04-08    These two cases have not been confirmed as to the market & seller, but based on the extreme similarity of those two to Fnufnu, I have assigned them to the FBI sting operation on Evolution. Liverpool, Merseyside County
                       M                            buyer     Evolution   Dark\_Mart            UK                         abrin                                 TRUE  2015-02-16 2015-04-08    Two unnamed Manchester teenagers.
                       F                            buyer     Evolution   Dark\_Mart            UK                         abrin                                 TRUE  2015-02-16 2015-04-08
-Richard Hiley         M                            seller    Silk Road 1 happyman              UK                         marijuana, cocaine, methamphetamine         2013-12-31 2015-02-18    Peter Ward/PlutoPete co-conspirator
+Richard Hiley         M                            seller    Silk Road 1 happyman              UK                         marijuana, cocaine, meth                    2013-12-31 2015-02-18    Peter Ward/PlutoPete co-conspirator
                       M   31   Alexandrus          seller    Evolution                         Sweden      Skelleftea     marijuana, LSD, MDMA                  TRUE  2015-02-24 2015-03-27     Mentioned ages: 31yo, 26, 27, 28; there may be repeats?
                       M   26   Alexandrus          seller    Evolution                         Sweden      Skelleftea     marijuana, LSD, MDMA                  TRUE  2015-02-24 2015-03-27
                       M   27   Alexandrus          seller    Evolution                         Sweden      Skelleftea     marijuana, LSD, MDMA                  TRUE  2015-02-24 2015-03-27
@@ -485,7 +485,7 @@ Justin Moreira        M   21  jd497                buyer     Agora       weapons
                       M   40                       buyer     Silk Road 2                       Germany     Würzburg       MDMA, cocaine, amphetamine, marijuana TRUE  2015-02-01 2015-06-18    Known only arrested "April 2015". Since the 4 AU arrests stemmed from "the execution of 15 search warrants in February and March", I've assigned 2 to each month.
                       M   24                       buyer     Agora       weaponsguy            Australia   ACT            gun                                   TRUE  2015-03-01 2015-05-13
                       M   25                       buyer     Agora       weaponsguy            Australia   ACT            gun                                   TRUE  2015-03-01 2015-05-13
-Buddy Lipczynski      M   26                       buyer     Agora       weaponsguy            Australia                  gun, methamphetamine                  TRUE  2015-02-27 2015-05-13
+Buddy Lipczynski      M   26                       buyer     Agora       weaponsguy            Australia                  gun, meth                             TRUE  2015-02-27 2015-05-13
                                                    buyer     Agora       weaponsguy                                       gun                                   TRUE             2015-05-13
                                                    buyer     Agora       weaponsguy                                       gun                                   TRUE             2015-05-13
                                                    buyer     Agora       weaponsguy                                       gun                                   TRUE             2015-05-13
@@ -521,8 +521,8 @@ Jag Saipravesh        M   23                       buyer     Agora              
 Benjamin Koops        M   21                       buyer                                       UK          Lenton         marijuana                             TRUE             2015-10-03
 Jeffrey Paul Lloyd    M   37                       buyer     Agora                             UK          Gorseinon      gun                                   TRUE  2015-03-26 2015-11-05      May be a weaponsguy case.
                       M   17                       buyer                                       Australia   ACT            marijuana, MDMA, cocaine, LSD         TRUE  2015-05-31 2015-11-10      "A police raid on his home in May"
-B.V.                  M   47                       seller                                      Belgium     Genk           MDMA, methamphetamine, amphetamine    TRUE  2015-02-28 2015-11-20       The two were arrested sometime in February 2015, apparently.
-                                                   seller                                      Belgium     Maaseik        MDMA, methamphetamine, amphetamine    TRUE  2015-02-28 2015-11-20
+B.V.                  M   47                       seller                                      Belgium     Genk           MDMA, meth, amphetamine               TRUE  2015-02-28 2015-11-20       The two were arrested sometime in February 2015, apparently.
+                                                   seller                                      Belgium     Maaseik        MDMA, meth, amphetamine               TRUE  2015-02-28 2015-11-20
                           23                       buyer                                       New Zealand Dunedin        cocaine, MDMA, LSD, prescription      TRUE  2015-11-16 2015-11-18
                           23                       buyer                                       New Zealand Dunedin        cocaine, MDMA, LSD, prescription      TRUE  2015-11-16 2015-11-18
 Daniel A. Atkinson   M    30 MIA                   seller    Silk Road 1                       Australia   Adelaide       MDMA                                  TRUE             2015-09-05       Tentatively identified as "Meanwhile in Australia"/MIA
@@ -564,6 +564,7 @@ Christian Olson      M    22                       buyer                        
 Megan Schadeberg     F    19                       buyer                                       UK          Wales          gun                                         2015-10-01 2016-03-28
                      M    31   ShanSa              seller    AlphaBay                          Austria     Vienna         MDMA, amphetamine, LSD, cocaine        TRUE 2015-10-31 2016-04-14
 Adam Yates           M    26                       buyer     Silk Road 1                       UK          Derby          MDMA, cocaine, ketamine                TRUE 2014-02-31 2016-04-18
+                     M    21                       buyer     Silk Road 1                       Australia                                                                         2016-04-19
 
 # Confirmed
 ## Agora
@@ -837,6 +838,12 @@ At some point in mid-2013 ("just months before it [SR1] was closed down"), the A
 In August 2013, a 18yo South Bunbury, West Australian male Jackson R. was [charged with heroin (actually DMT)](http://www.abc.net.au/news/2013-08-23/police-turn-attention-to-online-drug-trade/4908264 "Police focus turns to online drug trade") [& 2C-e possession](https://www.youtube.com/watch?v=E7YCVuqaL2E "Silk Road delivery lands 18 year old in trouble 'Jackson R'"); in an [account on FB then reposted on Reddit](https://www.reddit.com/r/DarkNetMarkets/comments/3egrvv/silk_road_1_bust_not_documented_by_gwern/), he explains that he had ordered the DMT off SR1 from a Czech seller (the media coverage claiming it was heroin being wrong) and his parents turned the package in to the police after it arrived, with the subsequent police search turning up his 2C-E as well.
 
 The former Silk Road moderator/employee SSBD/Symmetry was [arrested in Brisbane on 20 December 2013](http://www.justice.gov/usao/nys/pressreleases/December13/JonesetalArrestsSilkRoad2PR.php) ([indictment](http://www.justice.gov/usao/nys/pressreleases/December13/JonesetalArrestsSilkRoad2PR/Jones,%20Andrew,%20et%20al%20\(Silk%20Road\)%20Indictment.pdf)).
+
+In [Barratt et al 2016](https://www.academia.edu/24382120 "'What if you live on top of a bakery and you like cakes?'-Drug use and harm trajectories before, during and after the emergence of Silk Road"), reporting about a series of anonymous interviews conducted over TorChat 2011-2014 with SR1 users, they mention one Australian user claimed to have been arrested:
+
+> ...Tapering down drug use after a honeymoon period was not only triggered by the practice of 'portion control' and/or satiated desires, but also by other life events. For example, P1 (21-25 yrs, USA) explained "After last semester I'm more interested in grades than highs" and P4 (21-25 yrs, Australia) described how "I'd rather buy a flight than a gram of coke". In the case of P25 (21-25 yrs, Australia), who was buying large amounts from Silk Road and dealing from his home, a police raid resulted in supply charges, which led to a tapering of drug use and cryptomarket activity.
+
+The age bracket and when they concluded interviewing suggests that this SR1 user was arrested before 2014, and there are only around two known arrests in that age bracket and period for SR1; combined with background knowledge that only a small fraction of buyer arrests are ever reported (see [discussion of completeness of the arrest table](#completeness)), it is highly likely that this arrest is not otherwise in the table.
 
 A [Launceston, Tasmania man was sentenced to prison during 23-29 March 2014](http://www.examiner.com.au/story/2185778/hidden-drug-site-use-increasing/) due to possession of 25i & BDMPEA partially (?) bought on SR; it's unclear how or when he was caught.
 
@@ -1715,7 +1722,7 @@ How complete is this inventory of arrests, that is, what percentage of *all* bla
 2. if they are arrested and the connection comes out, the case may never become public for many reasons - various legal or privacy regulations may block it, it may simply not hit the media because it was 'just' another local drug case, or it may be deliberately kept secret as part of ongoing investigations (and LE admits as much - in [one article](http://www.baltimoresun.com/news/maryland/baltimore-city/bs-md-ci-inside-silk-road-20131118-story.html) they are paraphrased as saying "Not all of those charges have been made public.", and other tactics include ["sealing documents, eliminating key information from public documents that point to the investigation - for example, the name Silk Road - or filing state charges instead of federal ones to keep a suspect's records out of the more-easily searched federal court [PACER] database."](http://www.wired.com/2013/11/silk-road/ "Headline: How the Feds Took Down the Silk Road Drug Wonderland")).
 3. the information may be public, but media coverage gets it wrong; unsophisticated & overworked journalists routinely confuse the deep web, dark web, forums, etc
 4. the media coverage may be right but is not in English
-5. etc etc
+5. etc
 
 Some evidence points weakly at how comprehensive this table may be:
 
@@ -1736,7 +1743,7 @@ In aggregate, I would guess that the completeness of the table is highly unlikel
 ~~~{.R}
 library(XML)
 # http://www.gwern.net/Black-market%20arrests
-arrests <- readHTMLTable("/tmp/burl11565bfw.html",
+arrests <- readHTMLTable("/tmp/burl3491UGv.html",
     colClasses = c("character", "factor", "integer", "character", "factor", "factor", "character", "factor",
                    "factor", "character", "logical", as.Date, as.Date, "character"))[[1]]
 # replace all empty-fields/""s with NAs
