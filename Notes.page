@@ -1733,8 +1733,9 @@ Overall, an interesting experience. The next cicada emergence I am near, I'll tr
 - A modest proposal: end tenure for computer security researchers. Given the status quo, if they're not rich, they can't be any good.
 - "What is the price of two satoshis - one copper coin? But not a single satoshi can fall to fees without your Eternal Blockchain knowing it."
 - The bravery of innovators: what sustained Satoshi during those lonely days in 2009 when no one cared enough even to attack Bitcoin?
-- One weird philo trick for analysis! Imagine worlds where X failed: "Sure Bitcoin died: a deflationary currency requiring ever more waste?"
+- One weird philosophy trick for analysis! Imagine worlds where X failed: "Sure Bitcoin died: a deflationary currency requiring ever more waste?"
 - Let us hope Karpeles will not be the Alcibiades of Bitcoin.
+- The optimal number of double-spends is not zero.
 
 ## Statistics
 
@@ -1845,6 +1846,137 @@ To test this:
     - Perhaps photos from dating sites where women might be expected to be explicitly optimizing for physical attractiveness? (But what dating sites record both hair length and breast size?)
     - Do porn preferences map onto attractiveness preferences enough? Then we might see the inverse relationship there. (One might worry that all porn performers would have huge surgically-augmented breasts, but [an analysis of the IAFDB](http://jonmillward.com/blog/studies/deep-inside-a-study-of-10000-porn-stars/ "Deep Inside: A Study of 10,000 Porn Stars and Their Careers") says the modal breast size is 34B and natural hair colors are common albeit blonde is still 6x overrepresented.)
 - more exotically, increases or decreases in cost should cause corresponding decreases & increases on the margin
+
+<!--
+http://tvtropes.org/pmwiki/pmwiki.php/Main/ImageBooru
+http://booru.org/top
+
+Danbooru:
+
+1. 1girl short_hair small_breasts: 6300
+2. 1girl long_hair small_breasts: 10400
+3. 1girl short_hair large_breasts: 35200
+4. 1girl long_hair large_breasts: 90100
+
+Safebooru:
+
+1. 1girl short_hair small_breasts: 44800
+2. 1girl long_hair small_breasts: 78400
+3. 1girl short_hair large_breasts: 281600
+4. 1girl long_hair large_breasts: 792000
+
+Gelbooru:
+
+1. 1girl short_hair small_breasts: 448056
+2. 1girl long_hair small_breasts: 712656
+3. 1girl short_hair large_breasts: 2245572
+4. 1girl long_hair large_breasts: 5741820
+
+Big Booru:
+
+1. 1girl short_hair small_breasts: 290000
+2. 1girl long_hair small_breasts: 487500
+3. 1girl short_hair large_breasts: 1450000
+4. 1girl long_hair large_breasts: 3825000
+
+Sankaku:
+
+1. 1girl short_hair small_breasts: 10254
+2. 1girl long_hair small_breasts: 16715
+3. 1girl short_hair large_breasts: NA
+4. 1girl long_hair large_breasts: NA
+
+Rule 34:
+
+1. 1girl short_hair small_breasts: 142002
+2. 1girl long_hair small_breasts: 220206
+3. 1girl short_hair large_breasts: 854070
+4. 1girl long_hair large_breasts: 2123856
+
+~~~{.R}
+hair <- read.csv(stdin(), header=TRUE)
+Source,Hair,Bust,Count
+D,0,0,6300
+D,1,0,10400
+D,0,1,35200
+D,1,1,90100
+S,0,0,44800
+S,1,0,78400
+S,0,1,281600
+S,1,1,792000
+G,0,0,448056
+G,1,0,712656
+G,0,1,2245572
+G,1,1,5741820
+B,0,0,290000
+B,1,0,487500
+B,0,1,1450000
+B,1,1,3825000
+SC,0,0,10254
+SC,1,0,16715
+R,0,0,142002
+R,1,0,220206
+R,0,1,854070
+R,1,1,2123856
+
+
+R> summary(lm(Count ~ Bust*Hair + Source, weights=hair$Count, data=hair))
+Call:
+lm(formula = Count ~ Bust * Hair + Source, data = hair, weights = hair$Count)
+
+Weighted Residuals:
+       Min         1Q     Median         3Q        Max
+-798138384 -288240567  193252689  533023699  941450087
+
+Coefficients:
+               Estimate  Std. Error  t value  Pr(>|t|)
+(Intercept)   -30694.32   755866.99 -0.04061 0.9682254
+Bust         1384690.13   785083.24  1.76375 0.1012455
+Hair          211974.71   912130.60  0.23240 0.8198497
+SourceD     -2770890.08  1868457.08 -1.48298 0.1619127
+SourceG      1424192.80   364668.74  3.90544 0.0018075
+SourceR     -1263029.02   474504.53 -2.66178 0.0195680
+SourceS     -2329375.92   696359.93 -3.34507 0.0052704
+SourceSC      -86426.14  4267593.31 -0.02025 0.9841501
+Bust:Hair    2358765.29   984894.94  2.39494 0.0323902
+
+Residual standard error: 695968600 on 13 degrees of freedom
+Multiple R-squared:  0.9203475,	Adjusted R-squared:  0.8713305
+F-statistic: 18.77611 on 8 and 13 DF,  p-value: 5.871975e-06
+
+R> summary(glm(Count ~ Bust*Hair + Source, data=hair, family=quasipoisson))
+
+Call:
+glm(formula = Count ~ Bust * Hair + Source, family = quasipoisson,
+    data = hair)
+
+Deviance Residuals:
+       Min          1Q      Median          3Q         Max
+-67.802390  -20.428275   -0.038452   11.096047   40.913905
+
+Coefficients:
+               Estimate  Std. Error   t value   Pr(>|t|)
+(Intercept) 12.55492580  0.04015097 312.69300 < 2.22e-16
+Bust         1.65372828  0.04166133  39.69456 5.9170e-15
+Hair         0.48294373  0.04840779   9.97657 1.8489e-07
+SourceD     -3.75239963  0.09916244 -37.84094 1.0963e-14
+SourceG      0.41307523  0.01935321  21.34401 1.6693e-11
+SourceR     -0.59446048  0.02517676 -23.61147 4.6336e-12
+SourceS     -1.62082008  0.03695088 -43.86417 1.6296e-15
+SourceSC    -3.31597685  0.22650330 -14.63986 1.8625e-09
+Bust:Hair    0.46622704  0.05227022   8.91955 6.6649e-07
+
+(Dispersion parameter for quasipoisson family taken to be 1364.304961)
+
+    Null deviance: 35294730.334  on 21  degrees of freedom
+Residual deviance:    18149.327  on 13  degrees of freedom
+AIC: NA
+
+Number of Fisher Scoring iterations: 3
+~~~
+
+Why isn't the popularity of big-long images just the sum of big+long? What is this interaction?
+-->
 
 # No-poo self-experiment
 
