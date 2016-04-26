@@ -35,6 +35,7 @@ belief: possible
 - music study claiming WM interaction: possible ceiling effect? see FB PM
 - attempt to measure effect of Nazi eugenics program failed to use breeder's equation to estimate possible size of effect, which is too small to detect with available data and hence attempt is foredoomed: https://www.reddit.com/r/eugenics/comments/3hqdll/between_73_and_100_of_all_individuals_with/cul2nzw
 - claim high IQ types almost 100% failure rates due to inappropriate model assumption of normal distribution with very narrow standard deviation: http://polymatharchives.blogspot.com/2015/01/the-inappropriately-excluded.html?showComment=1441741719623#c1407914596750199739
+- https://news.ycombinator.com/item?id=11491264
 
 # Estimating censored test scores
 
@@ -2767,7 +2768,7 @@ So some lessons here are:
 
 Further work:
 
-1. see if results improve, either in faster training or low validation loss, by appending the metadata as well as prepending to force memorization <!-- first appending: failure. Converged to a loss of 1.129 Second appending attempt, same settings etc: currently 1.16 -->
+1. see if results improve, either in faster training or low validation loss, by appending the metadata as well as prepending to force memorization <!-- first appending: failure. Converged to a loss of 1.129 Second appending attempt, same settings etc: converged to 1.1227 after 25 epochs (sampling shows that it has learned to create suffixes, but those suffixes are chosen at random); increased seq_length from 50 to 200 to see if that would help it. nope: best was 1.114, suffixes are still random. tried reducing dropout to 0.1 -->
 2. see how low a loss unlabeled training can go, to get an idea of benefits of semi-supervision
 3. try classification rather than generation
 4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
@@ -2837,7 +2838,7 @@ After it hit a limit at 0.79 and started turning in losses of 0.8+ for hours, tr
 # MCTS
 
 An implementation in R of a simple [Monte Carlo tree search](!Wikipedia) algorithm (using [Thompson sampling](!Wikipedia) rather than a UCT) implemented with [`data.tree`](https://cran.r-project.org/web/packages/data.tree/vignettes/data.tree.html).
-This MCTS assumes binary win/loss (1/0) rewards so it cannot be used to solve general [MDPs](!Wikipedia "Markov decision process"), and does not expand leaf nodes in the move tree passed to it.
+This MCTS assumes binary win/loss (1/0) terminal rewards with no intermediate rewards/costs so it cannot be used to solve general [MDPs](!Wikipedia "Markov decision process"), and does not expand leaf nodes in the move tree passed to it.
 (I also suspect parts of it are implemented wrong though it reaches the right answer in a simple Blockworld problem and seems OK in a Tic-Tac-Toe problem.)
 
 ~~~{.R}
@@ -3057,3 +3058,57 @@ Nothing fatal pops up but I see no replications over longer time periods which c
 
 So overall, I'd say that if I became prediabetic, I would give serious thought to using curcumin but it doesn't yet look compelling for healthy people.
 -->
+
+# DeFries-Fulker power analysis
+
+"Thinking positively: The genetics of high intelligence", Shakeshaft et al 2015 http://www.sciencedirect.com/science/article/pii/S0160289614001676
+
+DeFries–Fulker (DF) extremes analysis
+J.C. DeFries, D.W. Fulker Multiple regression analysis of twin data Behavior Genetics, 15 (1985), pp. 467–473 http://dx.doi.org/10.1007/BF01066239
+J.C. DeFries, D.W. Fulker Multiple regression analysis of twin data: Etiology of deviant scores versus individual differences Acta Geneticae Medicae et Gemellologiae, 37 (1988), pp. 205–216
+J.C. DeFries, D.W. Fulker, M.C. LaBuda Evidence for a genetic aetiology in reading disability of twins Nature, 329 (1987), pp. 537–539 http://dx.doi.org/10.1038/329537a0
+
+~~~{.R}
+generateSiblingPair <- function(ID=TRUE) {
+   ## Population mean 100, SD 15; let's make family means distributed normally too;
+   ## heritability 0.8, shared environment 0.1, siblings share half of genes on average + shared environment
+   ## so a pair of siblings has 1 - (0.8*0.5+0.1) = 0.5 of the variance of the general population.
+   parental <- mean(rnorm(1,mean=100,sd=15*0.8), rnorm(1,mean=100,sd=15*0.8))
+   siblings <- rnorm(2, mean=parental, sd=15*(1 - (0.8*0.5+0.1)))
+   ## Siblings will tend to vary this much, unless they are, lamentably, one of the, say,
+   ## 5% struck by mutational lightning and reduced to an IQ of, let's say, 80
+   if(ID) { siblings <- ifelse(rbinom(2,1,prob=0.05), siblings,rnorm(2, mean=80, sd=15)) }
+   return(c(max(siblings), min(siblings)))
+}
+generateSiblingPairs <- function(n,ID=TRUE) { as.data.frame(t(replicate(n, generateSiblingPair(ID=ID)))) }
+## dataset with lightning:
+df <- round(rescale(generateSiblingPairs(1000000, ID=TRUE), mean=5, sd=2))
+## floor/ceiling at 0/9 for everyone:
+df[df$V1>9,]$V1 <- 9
+df[df$V1<1,]$V1 <- 1
+df[df$V2>9,]$V2 <- 9
+df[df$V2<1,]$V2 <- 1
+
+## dataset without:
+df2 <- round(rescale(generateSiblingPairs(1000000, ID=FALSE), mean=5, sd=2))
+df2[df2$V1>9,]$V1 <- 9
+df2[df2$V1<1,]$V1 <- 1
+df2[df2$V2>9,]$V2 <- 9
+df2[df2$V2<1,]$V2 <- 1
+
+par(mfrow=c(2,1))
+hist(df$V1 - df$V2)
+hist(df2$V1 - df2$V2)
+
+## mixture modeling:
+library(flexmix)
+## check k=1 vs k=2 on df1, where k=2 is ground truth:
+g1.1 <- flexmix(I(V1-V2) ~ 1, k=1, data=df)
+g1.2 <- flexmix(I(V1-V2) ~ 1, k=2, data=df)
+summary(g1.1); summary(g1.2)
+
+## check k=1 vs k=2 on df2, where k=1 is ground truth:
+g2.1 <- flexmix(I(V1-V2) ~ 1, k=1, data=df2)
+g2.2 <- flexmix(I(V1-V2) ~ 1, k=2, data=df2)
+summary(g2.1); summary(g2.2)
+~~~
