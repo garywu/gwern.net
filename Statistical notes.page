@@ -2403,6 +2403,7 @@ So to deal with these 4 issues I'm going to process the PG collected works thusl
     But newlines *do* carry semantic information - think about dialogues - and does deleting them carry a cost? Perhaps we should map newlines to some rare character like tilde, or use the poetry convention of denoting newlines with forward-slashes?
 4. prefix each long line with the author it was sampled from
 
+## Training with prefixes
 ### Small RNN
 
 For my first try, I grabbed 7 authors, giving a good final dataset of 46M, and fed it into `char-rnn`, choosing a fairly small 2-layer RNN and using up the rest of my GPU RAM by doing unrolling far more than the default 50 timesteps to encourage it to learn the long-range dependencies of style:
@@ -2758,6 +2759,27 @@ Excluding them:
 The RNN is somewhat inconsistent: sometimes it'll generate spot-on prose and other times fail. In this case, good and bad Bible samples were present, and previous Chaucer was fine but the Chaucer in this sample was bad. (This might be due to the high temperature setting, or the messed-up texts.)
 But overall, it doesn't change my conclusion that the RNN has indeed learned to use metadata and successfully mimic different authors.
 
+## Training with prefixes+suffixes
+
+The RNN seems to learn the connection of the prefix metadata to the vocabulary & style of the following text only at the very end of training, as samples generated before then tend to have disconnected metadata/text.
+This might be due to the RNN initially learning to *forget* the metadata to focus on language modeling, and only after developing an implicit model of the different kinds of text, 'notice' the connection between the metadata and kinds of text.
+What if we tried to force the RNN to memorize the metadata as part of the hidden state, thereby making it easier to draw on it for predictions?
+One way of forcing the memorization is to append the metadata as well, so the RNN can improve predictions at the end of a sample; so text would look something like "SHAKESPEARE|...to be or not to be...|SHAKESPEARE".
+
+I modified the data preprocessing script slightly to append the author as well, but otherwise used the same dataset (including the corrupt authors) and training settings.
+
+My first try at appending resulted in a failure, as it converged to a loss of 1.129 after a week or two of training, much worse than the 1.03 achieved with prefix-only.
+Sampling text indicated that it had learned to generate random author metadata at the end of each line, and had learned to mimic some different prose styles (eg Biblical prose vs non-Biblical) but it had not learned to memorize the prefix nor the use of the prefix (!).
+
+A second try with the same settings converged to 1.1227 after 25 epochs, with the same sampling performance.
+
+In a third try, I resumed from that checkpoint but increased the BPTT unrolling `seq_length` from 50 to 210 to see if that would help it. It converged to 1.114 with suffixes still random.
+For a fourth try, I reduced dropout from 0.5 to 0.1, which did not make a difference and converged to 1.117 after 8 epoches.
+
+So in this case, training with suffixes did not speed up training, and impeded learning.
+
+While I am not too surprised that suffixes did not speed up training, I am surprised how it barred learning prefixes at all and I don't know why.
+
 ## Conclusions
 
 So some lessons here are:
@@ -2768,8 +2790,7 @@ So some lessons here are:
 
 Further work:
 
-1. see if results improve, either in faster training or low validation loss, by appending the metadata as well as prepending to force memorization <!-- first appending: failure. Converged to a loss of 1.129 Second appending attempt, same settings etc: converged to 1.1227 after 25 epochs (sampling shows that it has learned to create suffixes, but those suffixes are chosen at random); increased seq_length from 50 to 200 to see if that would help it. nope: best was 1.114, suffixes are still random. tried reducing dropout to 0.1 -->
-2. see how low a loss unlabeled training can go, to get an idea of benefits of semi-supervision
+2. see how low a loss unlabeled training can go, to get an idea of benefits of semi-supervision <!-- initially got to 1.28 before I killed it to work on suffixing -->
 3. try classification rather than generation
 4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
 
