@@ -21,30 +21,44 @@ Everything is heritable:
 
 - ["Analysis of shared heritability in common disorders of the brain"](http://biorxiv.org/content/biorxiv/early/2016/04/16/048991.full.pdf), Anttila et al 2016
 - ["Genome-wide association study of cognitive functions and educational attainment in UK Biobank (_n_=112151)"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp201645a.html), Davies et al 2016
+- ["Genetic variants associated with subjective well-being, depressive symptoms, and neuroticism identified through genome-wide analyses"](http://www.gwern.net/docs/genetics/2016-okbay.pdf), Okbay et al 2016
+- ["Physical and neurobehavioral determinants of reproductive onset and success"](http://www.gwern.net/docs/genetics/2016-day.pdf), Day et al 2016 (Okbay et al 2016 & Day et al 2016 continue the recent phenome theme of inter-correlations of negative traits and inter-correlation of positive traits.)
 - ["Introducing precise genetic modifications into human 3PN embryos by CRISPR/Cas-mediated genome editing"](http://www.gwern.net/docs/genetics/2016-kang.pdf), Kang et al 2016 (see also Liang et al 2015; both describe the CRISPR state of the art as of early 2014, 2+ years ago)
 - ["Variants near CHRNA3/5 and APOE have age- and sex-related effects on human lifespan"](http://www.nature.com/ncomms/2016/160331/ncomms11174/pdf/ncomms11174.pdf), Joshi et al 2016
+- [Friends are as genetically similar as fourth cousins](http://www.pnas.org/content/111/Supplement_3/10796.long "'Friendship and natural selection', Christakis & Fowler 2014") ([media](https://www.washingtonpost.com/national/health-science/research-human-friendships-based-on-genetic-similarities-beyond-the-superficial/2014/07/14/8aea04fe-0ab5-11e4-8c9a-923ecc0c7d23_story.html "Research: Human friendships based on genetic similarities beyond the superficial"))
 
 Politics/religion:
 
+- [Book Review: _Albion's Seed_](http://slatestarcodex.com/2016/04/27/book-review-albions-seed/)
+- ["Peer review: Troubled from the start"](http://www.nature.com/news/peer-review-troubled-from-the-start-1.19763)
+- ["My Year in San Francisco's \$2 Million Secret Society Startup"](https://motherboard.vice.com/read/my-year-in-san-franciscos-2-million-secret-society-startup)
+
 AI:
 
-- ["Deep Networks with Stochastic Depth"](http://arxiv.org/abs/1603.09382), Huang et al 2016 (dropout of random *layers*, which does not just work, but works better and enables >1200-layer residual networks)
+- ["Deep Networks with Stochastic Depth"](http://arxiv.org/abs/1603.09382), Huang et al 2016 (dropout of random *layers*, which does not just work, but works better and enables >1200-layer residual networks. This [might be related](https://www.reddit.com/r/MachineLearning/comments/4fgk8k/160403640v1_bridging_the_gaps_between_residual/d29ezsc) to [Liao & Poggio 2016](http://arxiv.org/abs/1604.03640 "Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex") claim that deep residual nets are effectively unrolled RNNs which apply slight variants of an algorithm to many timesteps.)
 - ["Generating Large Images from Latent Vectors"](http://blog.otoro.net/2016/04/01/generating-large-images-from-latent-vectors/)
 - ["Convolutional Networks for Fast, Energy-Efficient Neuromorphic Computing"](http://arxiv.org/pdf/1603.08270v1.pdf), Esser et al 2016
 
 Statistics/meta-science:
 
 - ["A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook"](http://www.kellogg.northwestern.edu/faculty/gordon_b/files/kellogg_fb_whitepaper.pdf), Gordon et al 2016 (How often does correlation=causation? <50% of the time in Internet advertising, with gross over/underestimates even with detailed covariate & advanced modeling.)
-- ["The Bitter Fight Over the Benefits of Bilingualism"](http://www.theatlantic.com/science/archive/2016/02/the-battle-over-bilingualism/462114/) (So Bialystok is refusing a collaboration because a pre-registered protocol is unscientific *and* she refuses to work with someone so obviously 'biased' that they would damage the non-pre-registered results, and besides, publication bias doesn't exist - "there is absolutely no evidence". I see...)
+- ["The Bitter Fight Over the Benefits of Bilingualism"](http://www.theatlantic.com/science/archive/2016/02/the-battle-over-bilingualism/462114/) (So Bialystok is refusing a collaboration because a pre-registered protocol is unscientific *and* she refuses to work with someone so 'biased' that they would damage the non-pre-registered results, and besides, publication bias doesn't exist - "there is absolutely no evidence". I see...)
 - ["Bandit based Monte-Carlo planning"](https://web.engr.oregonstate.edu/~afern/classes/cs533/notes/uct.pdf), Kocsis & Szepesvári 2006
+- ["How Kalman Filters Work, Part 1"](http://www.anuncommonlab.com/articles/how-kalman-filters-work/)
+- ["The importance of 'gold standard' studies for consumers of research"](http://blog.givewell.org/2016/01/19/the-importance-of-gold-standard-studies-for-consumers-of-research/)
 
 Psychology/biology:
 
 - ["The Production of Human Capital in Developed Countries: Evidence from 196 Randomized Field Experiments"](http://scholar.harvard.edu/files/fryer/files/handbook_fryer_03.25.2016.pdf), Fryer 2016 (education; lots of small effects):
-- ["A Meta-Analysis of Blood Glucose Effects on Human Decision Making"](http://www.gwern.net/docs/2016-orquin.pdf), Orquin & Kurzban 2016:
-- ["The Voyeur’s Motel"](http://www.newyorker.com/magazine/2016/04/11/gay-talese-the-voyeurs-motel)
+- ["A Meta-Analysis of Blood Glucose Effects on Human Decision Making"](http://www.gwern.net/docs/2016-orquin.pdf), Orquin & Kurzban 2016
+- ["Is Ego-Depletion a Replicable Effect? A Forensic Meta-Analysis of 165 Ego Depletion Articles"](https://replicationindex.wordpress.com/2016/04/18/is-ego-depletion-a-replicable-effect-a-forensic-meta-analysis-of-165-ego-depletion-articles/)
+- ["Indoor air quality and academic performance"](http://www.gwern.net/docs/2015-stafford.pdf), Stafford 2015
+- ["Seven Pervasive Statistical Flaws in Cognitive Training Interventions"](http://journal.frontiersin.org/article/10.3389/fnhum.2016.00153/full), Moreau et al 2016
+- ["The Voyeur's Motel"](http://www.newyorker.com/magazine/2016/04/11/gay-talese-the-voyeurs-motel)
 
 Technology:
+
+- [The Raising of Chicago](https://en.wikipedia.org/wiki/Raising_of_Chicago)
 
 Economics:
 
@@ -64,6 +78,7 @@ Nonfiction:
 
 ## Film/TV
 
+- [_Pirates of Silicon Valley_](https://en.wikipedia.org/wiki/Pirates_of_Silicon_Valley)
 - [_Majin Tantei Nougami Neuro_](https://en.wikipedia.org/wiki/Neuro:_Supernatural_Detective) ([review](http://myanimelist.net/reviews.php?id=216325))
 - [_Megazone 23_](https://en.wikipedia.org/wiki/Megazone_23)
 
