@@ -429,7 +429,7 @@ Besides prediction markets, one can make person-to-person bets. These are not co
 Person             Bet                                                            Accepted  Date offered   Expiration  Theirs   My $   My _P_    Bet Position    Result       Notes
 --------------     -------------------------------------------------------------- --------  -------------- ----------- ------   ----   --------- ----------      ----------  -----------------
 mostlyacoustic     Entrance fee/RSVP required at NYU lecture.                     No        3 March 2011   2 days         $5    $100   <5%        Against         Win          [LW discussion](http://lesswrong.com/lw/4mi/eliezer_yudkowsky_and_michael_vassar_at_nyu/3mg9)
-Eliezer Yudkowsky  _HP MoR_ will win Hugo for Best Novel 2013-2017                Yes       12 April 2012  5 Sep 2017     $5    $100   5%         Against                       [LW discussion](http://lesswrong.com/lw/bfo/harry_potter_and_the_methods_of_rationality/6bcw)
+Eliezer Yudkowsky  _HP MoR_ will win Hugo for Best Novel 2013-2017                Yes       12 April 2012  5 Sep 2017     $5    $100   5%         Against         Win          [LW discussion](http://lesswrong.com/lw/bfo/harry_potter_and_the_methods_of_rationality/6bcw)
 Filipe             Cosma Shalizi believes that P=NP                               Yes       4 June 2012    1 week       $100    $100   1%         Against          Win          I forgave the amount due to his personal circumstances.
 mtaran             Kim Suozzi's donation solicitations not a scam                 No        19 August 2012 1 Jan 2013    $10    $100   90%        Against          Win          [LW discussion](http://lesswrong.com/lw/e5d/link_reddit_help_me_find_some_peace_im_dying_young/786d); in negotiating the details, mtaran didn't seem to understand betting, so the bet fell through.
 chaosmosis         Mitt Romney lose 2012 Presidential election                    No        15 Oct 2012    3 Nov 2013    $30    $20    70%        For              Win
@@ -662,7 +662,7 @@ One of the things I hoped would make my site [unusual](About#long-content) was r
 - [_Harry Potter and the Methods of Rationality_ predictions](hpmor-predictions) -(an exercise similar to the _Evangelion_ predictions)
 - [Prediction markets](): political predictions, Intrade failure predictions, GJP acceptance
 - [Silk Road](): prediction of censorship on main Bitcoin forums (see above), and of no legal repercussions
-- [Slowing Moore's Law](Slowing Moore's Law): asserts semiconductor manufacturing is fragile and hence Kryder's law has been *permanently* set back by 2011 Thai floods
+- [Slowing Moore's Law](/Slowing Moore\'s Law): asserts semiconductor manufacturing is fragile and hence Kryder's law has been *permanently* set back by 2011 Thai floods
 - [_The Notenki Memoirs_](/docs/eva/2002-notenki-memoirs#fn222): [Hiroyuki Yamaga](!Wikipedia)'s perpetually in-planning movie _Aoki Uru_ will not be released.
 - [Modafinil](): correctly predicted tolerance for a particularly frequent user
 - [Death Note script](): I registered predictions on what replies I expected from Parlapanides, asking about whether he wrote the leaked script being analyzed, to forestall accusations of hindsight bias
