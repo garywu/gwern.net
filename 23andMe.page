@@ -83,7 +83,9 @@ http://clinical.illumina.com/clinical/illumina_clinical_laboratory/how-to-order.
 https://www.scienceexchange.com/services/whole-genome-seq very sketchy labs offering whole-genomes at $2.5k-$3k
 Knome: ???
 https://www.fullgenomes.com/news/ $2k, Full Genomes
-VeritasGenetics: announced ~30 September 2015 offering $1k genomes to PGP participants http://www.veritasgenetics.com/pgp/ http://www.nature.com/news/is-the-1-000-genome-for-real-1.14530
+VeritasGenetics: announced ~30 September 2015 offering $1k genomes to PGP participants http://www.veritasgenetics.com/pgp/ http://www.nature.com/news/is-the-1-000-genome-for-real-1.14530 ; began offering to general public in March 2016 https://www.veritasgenetics.com/documents/VG-launches-999-whole-genome.pdf
+NIH CIDR: charges $2.3k for 30x whole genome using Illumina, as of 10 Dec 2015: http://www.cidr.jhmi.edu/services/pricing.pdf
+FullGenomes: $1650 30x whole genome, 29 February 2016 https://www.fullgenomes.com/purchases/5/
 
 Orgs:
 PGP http://www.personalgenomes.org/
@@ -139,7 +141,13 @@ possible replications:
 http://snpedia.com/index.php/Rs4680
 rs4680  22  19951271    GG
 
-val=G, so I'm Val/Val; supposed to be good for modafinil
+conversion chart from http://www.snpedia.com/index.php/Orientation:
+    A->T
+    T->A
+    C->G
+    G->C
+
+and val=G, so I'm Val/Val; supposed to be good for modafinil
 
 ["Genetic biomarkers of placebo response: what could it mean for future trial design?"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3774308/), Hall & Kaptchuk 2013, essay:
 
