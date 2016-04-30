@@ -14,7 +14,7 @@ This page is about me; for information about `gwern.net`, see [About]().
 
 > Behind a remarkable scholar one often finds a mediocre man, and behind a mediocre artist, often, a very remarkable man.^[#137, [Friedrich Nietzsche](!Wikipedia)'s _[Beyond Good and Evil: Prelude to a Philosophy of the Future](!Wikipedia)_]
 
-I am a freelance writer & researcher. I have worked for or published in [MIRI](!Wikipedia "Machine Intelligence Research Institute")[^SIAI-work] (formerly SIAI), [CFAR](http://appliedrationality.org/), [_A Global Village_](http://www.aglobalvillage.org/), [_Cool Tools_](http://www.amazon.com/Cool-Tools-A-Catalog-Possibilities/dp/1940689007/ "ed. Kelly 2013"), [Quantimodo](https://quantimodo.com/), [New World Encyclopedia](http://www.newworldencyclopedia.org/entry/Info:Main_Page), [Bitcoin Weekly](http://bitcoinweekly.com/), [Mobify](!Wikipedia), [Bellroy](http://bellroy.com/), [Dominic Frisby](http://dominicfrisby.com/), and private clients; everything on `gwern.net` should be considered my own viewpoint or writing unless otherwise specified by a representative or publication. I am currently not accepting new commissions.<!-- If you are interested in hiring me, see [contacting me](#contact). --> <!-- Adam Augusta, Timothy Birch, Elijah Armstrong, Arram Sabeti -->
+I am a freelance writer & researcher. I have worked for or published in _Wired_, [MIRI](!Wikipedia "Machine Intelligence Research Institute")[^SIAI-work] (formerly SIAI), [CFAR](http://appliedrationality.org/), [_A Global Village_](http://www.aglobalvillage.org/), [_Cool Tools_](http://www.amazon.com/Cool-Tools-A-Catalog-Possibilities/dp/1940689007/ "ed. Kelly 2013"), [Quantimodo](https://web.archive.org/web/*/https://quantimodo.com/), [New World Encyclopedia](http://www.newworldencyclopedia.org/entry/Info:Main_Page), [Bitcoin Weekly](http://bitcoinweekly.com/), [Mobify](!Wikipedia), [Bellroy](http://bellroy.com/), [Dominic Frisby](http://dominicfrisby.com/), and private clients; everything on `gwern.net` should be considered my own viewpoint or writing unless otherwise specified by a representative or publication. I am currently not accepting new commissions.<!-- If you are interested in hiring me, see [contacting me](#contact). --> <!-- Adam Augusta, Timothy Birch, Elijah Armstrong, Arram Sabeti -->
 
 [^SIAI-work]: When I say "research assistant", I mean it in the older sense of someone who does detail work for another person's original research - so I spend a lot of time reading up on specific areas and making notes about stuff my boss needs, and only occasionally do independent work. Not all my work can be made public, but some of it is. A partial list in rough chronological order:
 
@@ -53,7 +53,6 @@ I am a freelance writer & researcher. I have worked for or published in [MIRI](!
 
         A simple email experiment on making applicants feel that their admission test is not a waste of time: they seem to do better work.
     - [Geopolitical intelligence failures](http://lesswrong.com/lw/d3h/open_thread_june_1630_2012/6w18) - notes from some reading in the history of intelligence failures
-    - ["*Against Utilitarianism: Sobel's attack on judging lives' goodness*"](http://lesswrong.com/lw/9oa/against_utilitarianism_sobels_attack_on_judging/)
     - ["Notes on the Psychology of Power"](http://lesswrong.com/r/discussion/lw/dtg/notes_on_the_psychology_of_power/)
     - ["Notes on Psychopathy"](http://lesswrong.com/lw/fzy/notes_on_psychopathy/)
     - ["Notes on Autonomous Cars"](http://lesswrong.com/r/discussion/lw/gfv/notes_on_autonomous_cars/)
@@ -190,7 +189,7 @@ My scores on the "Big 5 Personality Inventory", [short](/docs/personal/2011-gwer
 4. [Agreeableness](!Wikipedia)^[See also ["Self-Report Psychopathy Scale"](/docs/personal/2011-gwern-yourmorals.org/srpsf_process.html).]: medium-low or 3/3^rd^ percentile
 5. [Neuroticism](!Wikipedia)^[See also ["Experience in Purchasing Behavior Scale"](/docs/personal/2011-gwern-yourmorals.org/epbs2_process.html) & ["Kentucky Inventory of Mindfulness Skills "](/docs/personal/2011-gwern-yourmorals.org/mindfulness_process.html).]: medium-low or 16/13^th^ percentile
 
-For those who enjoy playing the game of 'ad hominem via lay psychiatric diagnosis', may I suggest not accusing me of [Asperger syndrome](!Wikipedia) - which is *so* overdone - but something more novel & scary-sounding like [schizoid personality disorder](!Wikipedia)?
+For those who enjoy playing the game of 'ad hominem via lay psychiatric diagnosis', may I suggest not accusing me of [Asperger syndrome](!Wikipedia) - which is *so* overdone - but something more novel & scary-sounding like [schizoid personality disorder](!Wikipedia)? <!-- https://plus.google.com/103530621949492999968/posts/Dy9isJcxQR5 -->
 
 ### Philosophy/morals
 
@@ -231,11 +230,10 @@ Other ways to approximate IQ are standardized tests which are heavily g-loaded; 
 
 - Email: [gwern@gwern.net](mailto:gwern@gwern.net); I do not use Skype.
 - Bitcoin: `1Gb89tyJq3P5K5M3GcpFvPrMsw33cik9wX` (canonical address; used for [`#bitcoin-otc`](http://bitcoin-otc.com/viewgpg.php?nick=gwern) trading)
-- [PGP key](http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x89C588CC) ([mirror](!Wikipedia "User:Gwern/Key"); fingerprint: `89C588CC`; my old key, `F7E5D682`, is now deprecated)
+- [PGP key](http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x89C588CC) ([mirror](!Wikipedia "User:Gwern/Key"); fingerprint: `89C588CC`; my old key, `F7E5D682`, is no longer usable)
 
 <pre>
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-Version: GnuPG v1
 
 mQINBFUXRioBEAC9iINWQuiLTVnA05ZwU8eMhcL19kiy8rWehWkpUHNMhLCw6ZCg
 k9K91WW6WBEqEHPadkL6cSQjNlduyGsEui2OZYxpMSM+1ugzEI6eNaMH8fynHpyZ
