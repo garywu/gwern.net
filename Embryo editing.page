@@ -156,6 +156,37 @@ Dealing with the delayed feedback is known to be difficult and multiple play Tho
 We can consider a simulation of the scenario in which every time-step is a day and 1 or more embryos must be edited that day; a noisy measure of IQ is then made available `9*31+5*365=2104` days later, which is fed into a GWAS [mixture model](!Wikipedia) in which the GWAS correlation for each SNP is considered as drawn with an unknown probability from a causal distribution and from a nuisance distribution, so with additional data, the effect estimates of the SNPs are refined, the probability of being drawn from the causal distribution is refined, and the overall mixture probability is likewise refined, similar to the ["Bayes B" paradigm from the "Bayesian alphabet" of genomic prediction methods in animal breeding](http://www.annualreviews.org/eprint/AEMMACidWrxGtS8eBFrT/full/10.1146/annurev-animal-022114-110733 "'One Hundred Years of Statistical Developments in Animal Breeding', Giancola & Rosa 2015").
 (So for the first 2104 time-steps, a Thompson sample would be performed to yield a new set of edits, then each subsequent time-step a datapoint would mature, the posteriors updated, and another set of edits created.) The relevant question is how much regret will fall and how many causal SNPs become the top picks after how many edits & days: hopefully high performance & low regret will be achieved within a few years after the initial 5-year delay.
 
+a more concrete example: imagine we have a budget of 60 edits (based on the multiplex pig editing), a causal probability of 10%, an exponential distribution (rate 70.87) over 500000 candidate alleles of which we consider the top 1000, each of which has a frequency of 50% and we sequence before editing to avoid wasting edits.
+What is our best case and worst-case IQ increase?
+In the worst case, the top 60 are all non-causal, so our improvement is 0 IQ points; in the best case where all hits are causal, half of the hits are discarded after sequencing, and then the remaining top 60 get us ~6.1 IQ points; the intermediate case of 10% causal gets us to ~0.61 IQ points, and so our regret is 5.49 IQ points per embryo.
+Unsurprisingly, a 10% causal rate is horribly inefficient.
+In the 10% case, if we can infer the true causal SNPs, we only need to start with ~600 SNPs to saturate our editing budget on average, or ~900 to have <1% chance of winding up with <60 causal SNPs, so 1000 SNPs seems like a good starting point.
+(Of course, we also want a larger window so as our edit budget increases with future income growth & technological improvement, we can smoothly incorporate the additional SNPs.)
+So what order of samples do we need here to reduce our regret of 5.49 to something more reasonable like <0.25 IQ points?
+
+~~~{.R}
+SNPs <- 500000
+SNPlimit <- 1000
+rate <- 70.87
+editBudget <- 60
+frequency <- 0.5
+mean(replicate(1000, {
+    hits <- sort(rexp(SNPs, rate=rate), decreasing=TRUE)[1:SNPlimit]
+    sum(sample(hits, length(hits) * 0.5)[1:editBudget])
+    }))
+~~~
+
+http://jmlr.csail.mit.edu/proceedings/papers/v31/agrawal13a.pdf
+Regret of Thompson sampling with Gaussian priors & likelihood is O(sqrt(N * T * ln(N))), where N = number of different arms/actions and T = current timestep
+hence, if we have 1000 actions and we sample 1 time, our expected total regret is on the order of sqrt(1000 * 1 * ln(1000)) = 83; with 100 samples, our expected total regret has increased by two orders to 831 but we are only incurring an additional expected regret of ~4 or 5% of the first timestep's regret
+diff(sapply((1:10000, function(t) { sqrt(1000 * t * log(1000)) } )))
+
+Thompson sampling also achieves the lower bound in multiple-play but the asymptotic is more complex, and does not take into account the long delay & noise in measuring IQ.
+TS empirically performs well but hard to know what sort of sample size is required. But at least we can say that the asymptotics don't imply dozens of thousands of embryos.
+
+
+
+
 [^t-test-editing]: Power calculation using the Rietveld et al 2013 polygenic score:
 
     ~~~{.R}
