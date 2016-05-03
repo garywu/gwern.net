@@ -9,7 +9,7 @@ belief: likely
 
 > User-created datasets using ordinal scales (such as media ratings) have tendencies to drift or 'clump' towards the extremes and fail to be informative as possible, falling prey to ceiling effects and making it difficult to distinguish between the mediocre and truly excellent.
 > This can be counteracted by rerating the dataset to create a more uniform (and hence, informative) distribution of ratings, but such manual rerating is difficult.
-> I provide an anytime CLI program, `resorter`, which keeps track of comparisons, infers underlying ratings assuming that they are noisy, and interactively & intelligently queries the user with comparisons of the media with the most uncertain current ratings, until the user ends the session and a fully rescaled set of ratings are output.
+> I provide an anytime CLI program, `resorter`, which keeps track of comparisons, infers underlying ratings assuming that they are noisy in the ELO-like Bradley-Terry model, and interactively & intelligently queries the user with comparisons of the media with the most uncertain current ratings, until the user ends the session and a fully rescaled set of ratings are output.
 
 # Use
 
@@ -281,7 +281,7 @@ So the ratings carry much less information than one might have guessed from the 
 If instead, my ratings were uniformly distributed over the 1-10 scale, such that 10% were rated 1, 10% were rated 2, etc, then my ratings would be much more informative, and my opinion clearer.
 (First-world problems, perhaps, but still annoying.)
 
-For only a few ratings like 10 or 20, it's easy to manually review and rescale ratings and resolve the ambiguities (which '8' is worse than the other '8's and should plummet down to 7?), but past that, it starts to become tedious and because judgment is so fragile and subjective and ['choice fatigue'](!Wikipedia "Decision fatigue") begins to set in, I find myself having to repeatedly scan the list and ask myself "is X *really* better than Y...? hm...".
+For only a few ratings like 10 or 20, it's easy to manually review and rescale ratings and resolve the ambiguities (which '8' is worse than the other '8's and should be knocked down to 7?), but past that, it starts to become tedious and because judgment is so fragile and subjective and ['choice fatigue'](!Wikipedia "Decision fatigue") begins to set in, I find myself having to repeatedly scan the list and ask myself "is X *really* better than Y...? hm...".
 So unsurprisingly, for a large corpus like my 408 anime or 2059 books, I've never bothered to try to do this - much less do it occasionally as the ratings drift.
 
 If I had some sort of program which could query me repeatedly for new ratings, store the results, and then spit out a consolidated list of exactly how to change ratings, then I might be able to, once in a great while, correct my ratings.
@@ -295,17 +295,18 @@ This cannot be done automatically.
 How to get rankings: if there are 1000 media, it's impossible for me to explicitly rank a book '#952', or '#501'. Nobody has that firm a grip.
 Perhaps it would be better for it to ask me to compare pairs of media?
 Comparison is much more natural, less fatiguing, and helps my judgment by reminding me of what other media there are and how I think of them - when a terrible movie gets mentioned in the same breath as a great movie, it reminds you why one was terrible and the other great.
-Comparison also immediately suggests an implementation as the classic comparison sort algorithms like Quicksort or Mergesort, where the comparison operation simply calls out to the user; yielding a reasonable $O(n \cdot log(n))$ number of queries (and possibly much less, $O(n)$, if we have the pre-existing ratings and can treat it as an [adaptive sort](!Wikipedia)).
+Comparison also immediately suggests an implementation as the classic comparison sort algorithms like Quicksort or Mergesort, where the comparison argument is an IO function which simply calls out to the user; yielding a reasonable $O(n \cdot log(n))$ number of queries (and possibly much less, $O(n)$, if we have the pre-existing ratings and can treat it as an [adaptive sort](!Wikipedia)).
+So we could solve this with a simple script in any decent programming language like Python, and this sort of re-sorting is provided by websites such as [Flickchart](http://www.flickchart.com/)
 
 The comparison-sort algorithms make an assumption that is outrageously unrealistic in this context: they assume that the comparison is 100% accurate.
 That is, say, you have two sorted lists of 1000 elements each and you compare the lowest element of one with the highest element of the other and the first is higher, then all 1000 items in the first are higher than all 1000 items in the second, that of the  1000^2^=1000000 possible pairwise comparisons, the sorting algorithms assume that not a single item is out of place, not a single pairwise comparison would be incorrect.
-This assumption is fine in programming, since the CPU is good at comparing bits for equality & may go trillions of operations without making a single mistake; but it's absurd to expect this of a human for any task, much less one in which we are clumsily feeling for the invisible movements of our souls in response to great artists.
+This assumption is fine in programming, since the CPU is good at comparing bits for equality & may go trillions of operations without making a single mistake; but it's absurd to expect this level of reliability of a human for any task, much less one in which we are clumsily feeling for the invisible movements of our souls in response to great artists.
 
 Our comparisons of movies, or books, or music, *are* error-prone and so we need some sort of statistical sorting algorithm.
 
-So we'd like a command-line tool which consumes a list of pairs of media & ratings, then queries the user repeatedly with pairs of media to get the user's rating of which one is better, somehow modeling underlying scores while allowing for the user to be wrong in multiple comparisons and ideally picking whatever is the 'most informative' next pair to ask about, and after enough questions, inferring the full ranking of media and mapping it onto a uniform distribution for a particular scale.
+So we'd like a command-line tool which consumes a list of pairs of media & ratings, then queries the user repeatedly with pairs of media to get the user's rating of which one is better, somehow modeling underlying scores while allowing for the user to be wrong in multiple comparisons and ideally picking whatever is the 'most informative' next pair to ask about to converge on accurate rankings as quickly as possible, and after enough questions, do a final inference of the full ranking of media and mapping it onto a uniform distribution over a particular rating scale.
 
-The natural way to see the problem is to treat every competitor as having an unobserved latent variable 'quality' or 'ability' or 'skill' on a cardinal scale, and then weaken transitivity to chain our comparisons: if A beats B and B beats C, then *probably* A beats C, weighted by how many times we've observed beating and have much precise our estimate of A-C's latent variables are.
+The natural way to see the problem is to treat every competitor as having an unobserved [latent variable](!Wikipedia) 'quality' or 'ability' or 'skill' on a cardinal scale which is measured with error by comparisons, and then weaken transitivity to chain our comparisons: if A beats B and B beats C, then *probably* A beats C, weighted by how many times we've observed beating and have much precise our estimate of A-C's latent variables are.
 
 ## Implementation
 
