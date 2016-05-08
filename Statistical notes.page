@@ -2784,14 +2784,14 @@ While I am not too surprised that suffixes did not speed up training, I am surpr
 
 So some lessons here are:
 
-1. use a sufficiently large RNN; 500 neurons may be adequate for a single author but is too small to learn many authors
+1. use a sufficiently large RNN; 500 neurons may be adequate to model a single author like the Bible or Shakespeare but is too small to learn many authors despite the savings
 2. train to convergence; the differences between authors is smaller than between the average of authors & random noise, and the metadata will only show its worth at the end when it has reached ~1 loss
 3. keep data relatively balanced, or the RNN will spend all its effort trying to learn patterns & vocabulary of the most common kind of input
 
 Further work:
 
-2. see how low a loss unlabeled training can go, to get an idea of benefits of semi-supervision <!-- initially got to 1.28 before I killed it to work on suffixing. then to 1.80 before power cord broke -->
-3. try classification rather than generation
+2. see how low a loss unlabeled training can go, to get an idea of benefits of semi-supervision <!-- initially got to 1.28 before I killed it to work on suffixing. then to 1.18 before power cord broke -->
+3. try classification rather than generation <!-- fixed the corrupt HTML files; initialized from an unlabeled RNN with 1.18 -->
 4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
 
 <!-- Classification:
@@ -3141,3 +3141,198 @@ g2.1 <- flexmix(I(V1-V2) ~ 1, k=1, data=df2)
 g2.2 <- flexmix(I(V1-V2) ~ 1, k=2, data=df2)
 summary(g2.1); summary(g2.2)
 ~~~
+
+# Candy Japan
+
+https://www.candyjapan.com/results-from-box-design-ab-test
+
+> Plain unbranded boxes go for just \$0.34 a piece, while a box with a full-color illustration printed on the cover costs almost twice as much: \$0.67.
+>
+> This may not seem like such a big difference, but in absolute terms using the new box means around \$500 less profit per month or roughly 10% of profit margin.
+>
+> In group A 38.27%, or 168 of the 439 customers receiving the new package design canceled during the test. In group B 39.59%, or 175 of the 442 customers receiving the old package design canceled during the test. This is not a statistically significant difference. In a world where it makes no difference which package is sent, you would get a result as significant as this 80% of the time.
+
+These cancellation rates strike me as bizarrely high: almost half of CJ's customers are so unhappy they cancel their first month? Is there an issue with selecting bad candy, or are there unrealistic expectations of how much candy can be bought for the subscription price of \$25/month, or do people not like semi-monthly delivery, or do people only want to try it once, or what?
+But moving on.
+
+~~{.R}
+prop.test(c(175, 168), c(442, 439))
+#
+#   2-sample test for equality of proportions with continuity correction
+#
+# data:  c(175, 168) out of c(442, 439)
+# X-squared = 0.11147052, df = 1, p-value = 0.7384761
+# alternative hypothesis: two.sided
+# 95 percent confidence interval:
+#  -0.05341862656  0.07989797596
+# sample estimates:
+#       prop 1       prop 2
+# 0.3959276018 0.3826879271
+~~~
+
+So CJ's _p_-value matches mine. Arguably, a one-tailed test here is appropriate since you are only interested in whether the new packaging has a better cancellation rate, which would be expected to halve the _p_-value, as it does:
+
+~~~{.R}
+prop.test(c(175, 168), c(442, 439), alternative="greater")
+#
+#   2-sample test for equality of proportions with continuity correction
+#
+# data:  c(175, 168) out of c(442, 439)
+# X-squared = 0.11147052, df = 1, p-value = 0.3692381
+# alternative hypothesis: greater
+# 95 percent confidence interval:
+#  -0.04306671907  1.00000000000
+# sample estimates:
+#       prop 1       prop 2
+# 0.3959276018 0.3826879271
+~~~
+
+But of course, what does a _p_-value mean, anyway? Not much. Switching over to a Bayesian approach, using BayesianFirstAid which gives us a `bayes.prop.test` with the exact same interface as `prop.test` using a highly uninformative `beta(1,1)` prior (effectively a flat prior implying that every probability from 0-1 is equally likely):
+
+~~~~{.R}
+library(BayesianFirstAid)
+fit <- bayes.prop.test(c(175, 168), c(442, 439)); fit
+#
+#   Bayesian First Aid propotion test
+#
+# data: c(175, 168) out of c(442, 439)
+# number of successes:  175, 168
+# number of trials:     442, 439
+# Estimated relative frequency of success [95% credible interval]:
+#   Group 1: 0.40 [0.35, 0.44]
+#   Group 2: 0.38 [0.34, 0.43]
+# Estimated group difference (Group 1 - Group 2):
+#   0.01 [-0.051, 0.078]
+# The relative frequency of success is larger for Group 1 by a probability
+# of 0.651 and larger for Group 2 by a probability of 0.349 .
+~~~
+
+It's often said that a null-hypothesis significance test is similar to Bayesian inference with flat priors, so our _p_-value winds up having a suspicious similarity to our posterior probability that the new box helped (which is _P_=0.651). Of course, we have prior knowledge here: A/B tests, or switching box packaging, cannot possibly lead to cancellation rates as high as 100% or as low as 0%, and in fact, it would be shocking if the usual 39% cancellation rate could be changed by more than a few percentage points; even ±5% would be surprising (but important).
+
+A more realistic prior than `beta(1,1)` would have a mean of 0.39 and a distribution narrow enough that, say, 95% of it falls within ±5% (34-44). The mean
+is
+0.39 = a / (a+b)
+which can be written as b=1.5461*a and we can look at quantiles of random samples increasing b until it is adequately narrow (there's probably an analytic equation here but I don't know it):
+
+~~~{.R}
+a <- 900; quantile(rbeta(100000, a, 1.5642*a))
+#           0%          25%          50%          75%         100%
+# 0.3496646950 0.3831142015 0.3899169957 0.3967543674 0.4365377333
+a; 1.5642*a
+# [1] 900
+# [1] 1407.78
+~~~
+
+Conveniently, BayesianFirstAid makes it easy to incorporate our new prior by printing out all the code we need to run it after we locate the `dbeta(1,1)` line and replace it with `dbeta(900, 1407)`, and add in a convenience line `theta_diff <- theta[1] - theta[2]` which reports directly on what we care about (how much the new box decreases the cancellation rate):
+
+~~~{.R}
+model.code(fit)
+# ...
+## copy, edit, paste:
+require(rjags)
+x <- c(175, 168)
+n <- c(442, 439)
+model_string <- "model {
+  for(i in 1:length(x)) {
+    x[i] ~ dbinom(theta[i], n[i])
+    theta[i] ~ dbeta(900, 1407)
+    x_pred[i] ~ dbinom(theta[i], n[i])
+  }
+  theta_diff <- theta[1] - theta[2]
+}"
+model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
+                    n.chains = 8, n.adapt=1000)
+samples <- coda.samples(model, c("theta", "x_pred", "theta_diff"), n.iter=10000)
+summary(samples)
+# 1. Empirical mean and standard deviation for each variable,
+#    plus standard error of the mean:
+#
+#                    Mean           SD     Naive SE Time-series SE
+# theta[1]   3.910082e-01  0.009262463 3.274775e-05   3.279952e-05
+# theta[2]   3.889790e-01  0.009300708 3.288297e-05   3.270599e-05
+# theta_diff 2.029166e-03  0.013132415 4.643010e-05   4.614718e-05
+# x_pred[1]  1.727948e+02 11.062655213 3.911239e-02   3.908579e-02
+# x_pred[2]  1.707583e+02 10.938572590 3.867369e-02   3.840689e-02
+#
+# 2. Quantiles for each variable:
+#
+#                    2.5%           25%          50%          75%        97.5%
+# theta[1]     0.37298246   0.384715477 3.909551e-01   0.39720057   0.40937636
+# theta[2]     0.37083603   0.382659446 3.889795e-01   0.39532425   0.40718608
+# theta_diff  -0.02381196  -0.006805355 1.998807e-03   0.01086074   0.02785733
+# x_pred[1]  151.00000000 165.000000000 1.730000e+02 180.00000000 195.00000000
+# x_pred[2]  149.00000000 163.000000000 1.710000e+02 178.00000000 192.00000000
+posterior <-  (samples[1][[1]])[,3]
+sum(posterior > 0) / length(posterior)
+# [1] 0.5623
+~~~
+
+So a much more informative prior reduces the posterior probability that the new box reduced the cancellation rate to _P_=0.5623.
+
+Since this is >50%, it is possible that switching to the new box is a good idea, but we will need to consider costs and benefits to turn our posterior estimate of the reduction into a posterior distribution of gains/losses.
+
+What is the value of a reduction in cancellations?
+
+CJ says that it has a profit margin of ~\$5000 on the 439+442=881 customers (881 is consistent with the totals reported in an earlier blog post https://www.candyjapan.com/candy-japan-crosses-10000-mrr ) or ~\$5.7 profit per customer per month.
+So a reduction from 0.3909 to 0.3847 is 4.96 customers staying, each of whom is worth \$5.7, so a gain of \$28.7 per month.
+
+What is the *total* benefit? Well, presumably it increases the lifetime value of a customer: the total they spend, and hence your amount of profit on them. If you profit \$1 per month on a customer and they stay 1 year before cancelling, you make $12; but if they stay 2 years on average, you'd make $24, which is better.
+
+If a 39% cancellation rate per month is typical, then a customer will stick around for an average of 2.56 months (this is a geometric distribution with _p_=0.39, whose mean is 1/_p_), for a lifetime value of 5.7 * (1/0.39) = 14.592. Then a gain is the difference between two lifetime values; so if we could somehow reduce cancellation rates by 10% points for free, the gain per customer would be (new lifetime value - old lifetime value) - cost:
+
+~~~{.R}
+R> ((5.7 * (1/(0.39-0.10)))  - (5.7 * (1/0.39))) - 0
+[1] 5.039787798
+~~~
+
+Which over 881 customers is a cool \$13553 for each batch of customers. We don't have a 10% point reduction in hand, but we do have a posterior distribution of reduction estimates.
+
+So to transform the posterior distribution of cancellation decreases, each sample of our posterior distribution is run through the formula:
+
+~~~{.R}
+gain <- sapply(posterior, function(r) { ((5.7 * (1/(0.39-r)))  - (5.7 * (1/0.39))) } )
+summary(gain)
+#        Min.     1st Qu.      Median        Mean     3rd Qu.        Max.
+# -1.64456500 -0.25657610  0.07018243  0.09104651  0.41660780  2.24548300
+~~~
+
+In this case, we estimate that rolling out the new package would increase per customer lifetime value by an average of \$0.09.
+The new boxes cost \$0.33 more per month than the old boxes, and a customer with a new box lasts 2.57 months, for a total box cost of 0.33 * 2.57 = \$0.84  so their cost exceeds their benefit by a factor of 10.
+To justify spending on the new box, we need a reduction of at least 2.26% in the cancellation rate down to ~36.7%:
+
+~~~{.R}
+lifetimeGain <- function(r) {
+    old_lifetime = 1/0.39
+    new_lifetime = 1/(0.39-r)
+    old_revenue = old_lifetime * 5.7
+    new_revenue = new_lifetime * 5.7
+    cost = new_lifetime * 0.33
+    return(new_revenue - cost - old_revenue) }
+lifetimeGain(0.0226)
+# [1] 0.0008374858674
+~~~
+
+How probable is it that the decrease in cancelation rate is as? Improbable, only ~6%:
+
+~~~{.R}
+sum(posterior > 0.0226) / length(posterior)
+# [1] 0.0591
+~~~
+
+Still, 6% is not totally negligible. There is a chance that we are making a mistake in not using the new boxes. Are the results favorable enough to justify an additional month or two of A/B testing?
+
+This gets into the 'expected value of perfect information' (EVPI): how valuable would be a definitive answer to the question of whether the decrease is better than 2.26%? Would we be willing to pay \$10 or \$100 or \$1000 for an oracle's answer?
+
+In 94% of the cases, the answer would be 'no', in which case we are no better off, so those are worth \$0; in 6% of the cases, the answer would be 'yes', but our gain depends on how large the cancellation reduction is - if it's exactly 2.27%, the gain is almost \$0 so we care little, but if the gain is 4% or higher, then we would have been leaving money on the table. So we need to go back to the posterior distribution to weight our gains per customer:
+
+~~~{.R}
+mean(sapply(posterior, function(r) { if(r<0.0226) { 0; } else { lifetimeGain(r) } } ))
+# [1] 0.01346836819
+0.01346836819 * 881
+# [1] 11.86563238
+~~~
+
+So because of the small possibility of a slightly profitable box, we'd be willing to pay up to \$12 for certain information.
+This would be enough to pay for 36 new boxes, which used as part of an A/B test (using 845 old boxes for comparison) would not provide anything near certainty, so we can safely guess that further experimentation is not profitable.
+
+How much would just 1 observation more be worth? We can estimate this by repeatedly simulating drawing 1 more observation, doing a Bayesian update, recalculating our expected profit, and seeing how much higher it is.
