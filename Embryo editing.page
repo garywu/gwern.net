@@ -430,3 +430,87 @@ j1 <- autorun.jags(model1, monitor=c("theta"), data = list(N=nrow(oldData2), y=o
 https://github.com/jeromyanglim/JAGS_by_Example/blob/master/03-multilevel/varying-intercept-long/varying-intercept-long.rmd
 http://doingbayesiandataanalysis.blogspot.com/2012/06/mixture-of-normal-distributions.html
 http://www.stats.ox.ac.uk/~bardenet/Material/mixture_with_jags_only_mu.html
+
+
+
+
+---
+
+let's say we have 74 SNP candidates with 2 levels each (on/off) which collectively determine the dependent variable IQ with an effect of +0.2 IQ points or +0.0133SDs each; we want power=0.80/alpha=0.05 to detect the main effect for each SNP to see if it has a non-zero effect. In factorial ANOVA terms, this would be a design with 74^2=5476 possible conditions (since we are only interested in main effects and not interactions, I think it could be a partial factorial design where many of those are dropped). As a multiple regression, it'd be something like `IQ ~ A + B + C + ... ZZ`. The effect of each variable is quite small, and so adding them all into a linear model will explain only a small amount of variance: (0.2/15)^2 * 74 = 0.0132.
+
+G*Power 3.1 (http://www.gpower.hhu.de/ Windows version under Wine), test family 'F test', statistical test 'Linear multiple regression: Fixed model, R increase', a priori power analysis:
+
+l = 0.0133766?
+n=2711
+
+Suppose we have a budget of 64 edits per embryo, and we want to be able to fill them all up with causal variants; we know that around half will already be the good variant, so we need to have at least 64*2=128 causal variants.  And since we know that each SNP candidate has a ~10% probability of being causal, we need to be testing 10 * 128 = >1280 SNPs to successfully winnow down to >128 causal SNPs which will yield >64 available edits.
+
+We'll drop the mean effect to 0.1 points and consider sample size requirements testing 1280 SNPs. (0.1/15)^2 * 1280 = 0.05688888889
+
+l=0.06032045
+n=2954
+
+What does 80% power and 5% alpha mean here? We know that ~10% are causal (our base rate for a true finding is 10%), so there are 128 causal SNPs and 1152 noncausal SNPs here. There is a 5% false positive rate, so there will be 0.05*1152=58 false positive SNPs. There is 80% power, so we will detect 0.8*128=102 causal SNPs. So we will have 58+102=160 apparently causal SNPs, but only 58/160=36% are actually causal. So we waste 64% of our edits. We need to do better.
+
+let's try with 0.9 and 0.01
+
+l=0.06032045
+n=3987
+
+0.9*0.1*1280=115
+0.01*(1280-115)=11
+115/(115+11)=0.91
+
+0.1 average effect might be optimistic even though effect sizes decline slowly, so one last try with 0.05 mean effect size over those 1280 SNPs: (0.05/15)^2 * 1280 = 0.0142
+
+l = 0.0144045
+n=14197
+
+
+
+n <- 100000
+alpha <- 0.05
+SNP_candidates <- 162
+SNP_mean_effect <- 0.2
+SNP_mean_frequency <- 0.5
+SNP_causal_probability <- 0.10
+SNP_effects <- sample(c(SNP_mean_effect, 0), SNP_candidates, replace=TRUE,
+                      prob=c(SNP_causal_probability, 1-SNP_causal_probability))
+which(SNP_effects>0)
+
+generateSample <- function(SNP_effects, SNP_candidates=162, SNP_mean_frequency=0.5) {
+    dm <- matrix(nrow=n, ncol=SNP_candidates+1)
+    for (i in 1:n) {
+        SNP_draw <- rbinom(SNP_candidates, 1, p=SNP_mean_frequency)
+        SNPs_genetic <- sum(ifelse(SNP_draw, 0, SNP_effects))
+        IQ <- rnorm(1, mean=100, sd=15) + SNPs_genetic
+        dm[i,] <- c(round(IQ), SNP_draw)
+        }
+    df <- as.data.frame(dm)
+    colnames(df) <- c("IQ", paste("SNP.", as.character(1:SNP_candidates), sep=""))
+    return(df)
+}
+df <- generateSample(SNP_effects, SNP_candidates, SNP_mean_frequency)
+# head(df, n=1)
+# library(MASS)
+# summary(lm.ridge(IQ ~ ., data=df))
+
+l <- summary(lm(IQ ~ ., data=df))
+# coefficients <- l$coefficients[,1]
+pvalues <- l$coefficients[,4][-1]
+causalPvalues <- na.omit(ifelse(SNP_effects>0, pvalues, NA))
+(sum(pvalues<alpha)) / length(pvalues)
+(sum(causalPvalues<alpha)) / length(causalPvalues)
+sum(causalPvalues<alpha) / (sum(pvalues<alpha))
+
+
+library(glmnet)
+cv <- cv.glmnet(as.matrix(df[-1]), df$IQ)
+g <- glmnet(as.matrix(df[-1]), df$IQ, lambda=cv$lambda.min)
+coef(g)
+causalSNPs <- which(SNP_effects>0)
+ridgeSNPs <- which(as.matrix(coef(g)[-1,])!=0)
+intersect(causalSNPs, ridgeSNPs)
+
+length(intersect(causalSNPs, ridgeSNPs)) / length(causalSNPs)
+length(intersect(causalSNPs, ridgeSNPs)) / length(ridgeSNPs)
