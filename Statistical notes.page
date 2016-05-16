@@ -3144,16 +3144,21 @@ summary(g2.1); summary(g2.2)
 
 # Candy Japan
 
-https://www.candyjapan.com/results-from-box-design-ab-test
+[Candy Japan](https://www.candyjapan.com/) is a small mail-order company which, since 2011, sends semi-monthly small packages of Japanese candies & novelty foods from Japan to subscribers typically in the West. They frequently publish detailed blog posts discussing their business, such as [how they were nearly killed by credit card fraud](https://www.candyjapan.com/how-i-got-credit-card-fraud-somewhat-under-control "How Candy Japan got credit card fraud somewhat under control"), [pricing](http://www.bemmu.com/how-i-decided-the-price-for-my-japanese-candy "How I decided the price for my Japanese candy subscription service"), [their overhead](https://www.reddit.com/r/startups/comments/44lgr7/running_costs_for_candy_japan/), [(non) sales from YouTube stardom](https://www.candyjapan.com/sales-results-from-getting-3-million-views-on-youtube "Sales results from getting 3 million views on YouTube"), [life as an expat in Japan](http://www.bemmu.com/two-years-of-candy), and annual summaries (eg [2012](http://www.bemmu.com/first-year-of-candy-japan "First year of Candy Japan"), [2013](http://www.candyjapan.com/2013-year-in-review), [2014](http://www.candyjapan.com/2014-year-in-review), [2015](http://www.candyjapan.com/2015-year-in-review))
 
-> Plain unbranded boxes go for just \$0.34 a piece, while a box with a full-color illustration printed on the cover costs almost twice as much: \$0.67.
->
-> This may not seem like such a big difference, but in absolute terms using the new box means around \$500 less profit per month or roughly 10% of profit margin.
+In 2016, [CJ ran an A/B test](https://www.candyjapan.com/results-from-box-design-ab-test) comparing subscription cancellation rates of customers sent candy in the standard undecorated box, and customers sent candy in prettier but more expensive boxes:
+
+> Plain unbranded boxes go for just \$0.34 a piece, while a box with a full-color illustration printed on the cover costs almost twice as much: \$0.67. This may not seem like such a big difference, but in absolute terms using the new box means around \$500 less profit per month or roughly 10% of profit margin.
 >
 > In group A 38.27%, or 168 of the 439 customers receiving the new package design canceled during the test. In group B 39.59%, or 175 of the 442 customers receiving the old package design canceled during the test. This is not a statistically significant difference. In a world where it makes no difference which package is sent, you would get a result as significant as this 80% of the time.
 
-These cancellation rates strike me as bizarrely high: almost half of CJ's customers are so unhappy they cancel their first month? Is there an issue with selecting bad candy, or are there unrealistic expectations of how much candy can be bought for the subscription price of \$25/month, or do people not like semi-monthly delivery, or do people only want to try it once, or what?
-But moving on.
+(These cancellation rates strike me as bizarrely high: almost half of CJ's customers are so unhappy they cancel their first month? Is there an issue with selecting bad candy, or are there unrealistic expectations of how much candy can be bought for the subscription price of \$25/month, or do people not like semi-monthly delivery, or do people only want to try it once, or what? But moving on.)
+
+CJ has here a straightforward decision problem: should it switch to the decorated boxes or not, based on the information provided by this randomized experiment? After all, the decorated boxes *did* perform slightly better than the undecorated boxes.
+
+The most conventional approach here would be what CJ did: treat this as a 2-sample test of proportions, or a binomial regression, and compute a _p_-value for the treatment; if the _p_-value of a decreased cancellation rate is smaller than the arbitrary threshold 0.05, switch to the new boxes.
+
+We can easily replicate CJ's analysis given the provided percentages and _n_s (the sufficient statistics in this case):
 
 ~~{.R}
 prop.test(c(175, 168), c(442, 439))
@@ -3187,13 +3192,17 @@ prop.test(c(175, 168), c(442, 439), alternative="greater")
 # 0.3959276018 0.3826879271
 ~~~
 
-But of course, what does a _p_-value mean, anyway? Not much. Switching over to a Bayesian approach, using BayesianFirstAid which gives us a `bayes.prop.test` with the exact same interface as `prop.test` using a highly uninformative `beta(1,1)` prior (effectively a flat prior implying that every probability from 0-1 is equally likely):
+But of course, what does a _p_-value mean, anyway? CJ correctly interprets what they do mean ("In a world where it makes no difference which package is sent, you would get a result as significant as this 80% of the time."), but that doesn't give us much help in understanding if we *are* in a world in which it *does* make a difference in which package is sent.
+_p_-values are an unreliable criterion for decisions: the result might be consistent with informative priors about the possible effect of packaging improvements; one might have compelling reason from earlier experiments to decide to switch to the new packaging; one might prefer the new boxes for other reasons; the new boxes might be profitable despite weak evidence (for example, if they cost as much); the result might be promising enough to justify further experimentation...
+It would be better to do a more informed Bayesian decision analysis including our knowledge that improvements should be small, giving a concrete probability that there is an improvement and if there is, how large it is - letting us calculate the probability that the switch would be profitable, and the profitability of further experimentation.
+
+Switching over to a Bayesian approach, using BayesianFirstAid which gives us a `bayes.prop.test` with the exact same interface as `prop.test` using a highly uninformative `beta(1,1)` prior (effectively a flat prior implying that every probability from 0-1 is equally likely):
 
 ~~~~{.R}
 library(BayesianFirstAid)
 fit <- bayes.prop.test(c(175, 168), c(442, 439)); fit
 #
-#   Bayesian First Aid propotion test
+#   Bayesian First Aid proportion test
 #
 # data: c(175, 168) out of c(442, 439)
 # number of successes:  175, 168
@@ -3312,7 +3321,7 @@ lifetimeGain(0.0226)
 # [1] 0.0008374858674
 ~~~
 
-How probable is it that the decrease in cancelation rate is as? Improbable, only ~6%:
+How probable is it that the decrease in cancellation rate is as? Improbable, only ~6%:
 
 ~~~{.R}
 sum(posterior > 0.0226) / length(posterior)
@@ -3336,3 +3345,6 @@ So because of the small possibility of a slightly profitable box, we'd be willin
 This would be enough to pay for 36 new boxes, which used as part of an A/B test (using 845 old boxes for comparison) would not provide anything near certainty, so we can safely guess that further experimentation is not profitable.
 
 How much would just 1 observation more be worth? We can estimate this by repeatedly simulating drawing 1 more observation, doing a Bayesian update, recalculating our expected profit, and seeing how much higher it is.
+
+
+<-- TODO: ping https://twitter.com/bemmu/status/728245235021582336 , /r/decisiontheory -->
