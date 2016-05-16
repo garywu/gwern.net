@@ -1748,6 +1748,7 @@ Overall, an interesting experience. The next cicada emergence I am near, I'll tr
 - The use of confidence intervals rather than _p_-values is a clear improvement; it makes our difficulties vanish like smoke in a fog.
 - Every time I think maybe the FDA and big blind clinical trials are unnecessary, I just go read Longecity threads until the feeling passes.
 - Not doing power analysis with informative priors is like looking into a haystack of unknown size for a needle which probably isn't there.
+- Remember: _p_-values are not posterior probabilities are not effect sizes are not utilities are not profits are not decisions.
 
 ## Misc
 
@@ -1941,7 +1942,7 @@ SourceSC      -86426.14  4267593.31 -0.02025 0.9841501
 Bust:Hair    2358765.29   984894.94  2.39494 0.0323902
 
 Residual standard error: 695968600 on 13 degrees of freedom
-Multiple R-squared:  0.9203475,	Adjusted R-squared:  0.8713305
+Multiple R-squared:  0.9203475, Adjusted R-squared:  0.8713305
 F-statistic: 18.77611 on 8 and 13 DF,  p-value: 5.871975e-06
 
 R> summary(glm(Count ~ Bust*Hair + Source, data=hair, family=quasipoisson))
@@ -2017,7 +2018,8 @@ I am not sure in advance how long I should run the experiment: I have no previou
 6. 4 April - 8 April: poo; 9 April - 5 May: no-poo
 7. 5 May: poo; 30 May - 30 June: no-poo
 8. 1 - 16 July: no-poo; 17 July - 7 September: poo
-9. 8 September -: no-poo
+9. 8 September - 30 September: no-poo; 1 October 2015 - 27 March 2016: poo
+10. 12 April 2016 - 20? May 2016: no-poo;
 
 The main concerns with this design seem to be whether a month is enough time to show any no-poo adaptation, and whether it would be possible to estimate time for each photo despite controlling the conditions as much as possible.
 
