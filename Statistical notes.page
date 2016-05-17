@@ -1499,7 +1499,7 @@ data <- list("prior1"=0.000000007451, "n.years"= length(kobe$Year), "successes"=
              "alpha1.pseudo"=1, "beta1.pseudo"=1, "alpha2.pseudo"=rep(1,8), "beta2.pseudo"=rep(1,8) )
 # inits <- function() { list(mu=rnorm(1),sd=30,t=as.vector(apply(mailSim,1,mean))) }
 params <- c("pi.free", "pi.fixed", "postr1", "postr2", "M", "successes.new.1", "successes.new.2")
-j1 <- run.jags(model=model1, monitor=params, data=data, n.chains=8, method="rjparallel", sample=500000); j1
+j1 <- run.jags(model=model1, monitor=params, data=data, n.chains=getOption("mc.cores"), method="rjparallel", sample=500000); j1
 # JAGS model summary statistics from 4000000 samples (chains = 8; adapt+burnin = 5000):
 #
 #                  Lower95  Median Upper95    Mean      SD Mode      MCerr MC%ofSD SSeff
@@ -3192,11 +3192,11 @@ prop.test(c(175, 168), c(442, 439), alternative="greater")
 # 0.3959276018 0.3826879271
 ~~~
 
-But of course, what does a _p_-value mean, anyway? CJ correctly interprets what they do mean ("In a world where it makes no difference which package is sent, you would get a result as significant as this 80% of the time."), but that doesn't give us much help in understanding if we *are* in a world in which it *does* make a difference in which package is sent.
+But of course, what does a _p_-value mean, anyway? CJ correctly interprets what they do mean ("In a world where it makes no difference which package is sent, you would get a result as significant as this 80% of the time."), but that doesn't give us much help in understanding if we *are* in the world where which package is sent *does* make an important difference.
 _p_-values are an unreliable criterion for decisions: the result might be consistent with informative priors about the possible effect of packaging improvements; one might have compelling reason from earlier experiments to decide to switch to the new packaging; one might prefer the new boxes for other reasons; the new boxes might be profitable despite weak evidence (for example, if they cost as much); the result might be promising enough to justify further experimentation...
 It would be better to do a more informed Bayesian decision analysis including our knowledge that improvements should be small, giving a concrete probability that there is an improvement and if there is, how large it is - letting us calculate the probability that the switch would be profitable, and the profitability of further experimentation.
 
-Switching over to a Bayesian approach, using BayesianFirstAid which gives us a `bayes.prop.test` with the exact same interface as `prop.test` using a highly uninformative `beta(1,1)` prior (effectively a flat prior implying that every probability from 0-1 is equally likely):
+Switching over to a Bayesian approach, using [BayesianFirstAid](https://github.com/rasmusab/bayesian_first_aid) gives us a `bayes.prop.test` function with the exact same interface as `prop.test` using a highly uninformative `beta(1,1)` prior (effectively a flat prior implying that every probability from 0-1 is equally likely):
 
 ~~~~{.R}
 library(BayesianFirstAid)
@@ -3215,6 +3215,8 @@ fit <- bayes.prop.test(c(175, 168), c(442, 439)); fit
 # The relative frequency of success is larger for Group 1 by a probability
 # of 0.651 and larger for Group 2 by a probability of 0.349 .
 ~~~
+
+(BayesianFirstAid is overkill in this case as it calls out to JAGS for MCMC, but the binomial/proportion test uses the famously tractable [beta distribution](!Wikipedia) where we can do the Bayesian update as simply as `Beta(1,1)` ~> `Beta(1+175, 1+442)` vs `Beta(1+168, 1+439)` for the two groups; the overlap can be found analytically or using `dbeta` or simulated using `rbeta`.)
 
 It's often said that a null-hypothesis significance test is similar to Bayesian inference with flat priors, so our _p_-value winds up having a suspicious similarity to our posterior probability that the new box helped (which is _P_=0.651). Of course, we have prior knowledge here: A/B tests, or switching box packaging, cannot possibly lead to cancellation rates as high as 100% or as low as 0%, and in fact, it would be shocking if the usual 39% cancellation rate could be changed by more than a few percentage points; even ±5% would be surprising (but important).
 
@@ -3250,7 +3252,7 @@ model_string <- "model {
   theta_diff <- theta[1] - theta[2]
 }"
 model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
-                    n.chains = 8, n.adapt=1000)
+                    n.chains = getOption("mc.cores"))
 samples <- coda.samples(model, c("theta", "x_pred", "theta_diff"), n.iter=10000)
 summary(samples)
 # 1. Empirical mean and standard deviation for each variable,
@@ -3278,14 +3280,14 @@ sum(posterior > 0) / length(posterior)
 
 So a much more informative prior reduces the posterior probability that the new box reduced the cancellation rate to _P_=0.5623.
 
-Since this is >50%, it is possible that switching to the new box is a good idea, but we will need to consider costs and benefits to turn our posterior estimate of the reduction into a posterior distribution of gains/losses.
+Since, while small, this is still >50%, it is possible that switching to the new box is a good idea, but we will need to consider costs and benefits to turn our posterior estimate of the reduction into a posterior distribution of gains/losses.
 
 What is the value of a reduction in cancellations?
 
 CJ says that it has a profit margin of ~\$5000 on the 439+442=881 customers (881 is consistent with the totals reported in an earlier blog post https://www.candyjapan.com/candy-japan-crosses-10000-mrr ) or ~\$5.7 profit per customer per month.
 So a reduction from 0.3909 to 0.3847 is 4.96 customers staying, each of whom is worth \$5.7, so a gain of \$28.7 per month.
 
-What is the *total* benefit? Well, presumably it increases the lifetime value of a customer: the total they spend, and hence your amount of profit on them. If you profit \$1 per month on a customer and they stay 1 year before cancelling, you make $12; but if they stay 2 years on average, you'd make $24, which is better.
+What is the *total* benefit? Well, presumably it increases the lifetime value of a customer: the total they spend, and hence your amount of profit on them. If you profit \$1 per month on a customer and they stay 1 year before canceling, you make \$12; but if they stay 2 years on average, you'd make \$24, which is better.
 
 If a 39% cancellation rate per month is typical, then a customer will stick around for an average of 2.56 months (this is a geometric distribution with _p_=0.39, whose mean is 1/_p_), for a lifetime value of 5.7 * (1/0.39) = 14.592. Then a gain is the difference between two lifetime values; so if we could somehow reduce cancellation rates by 10% points for free, the gain per customer would be (new lifetime value - old lifetime value) - cost:
 
@@ -3307,7 +3309,7 @@ summary(gain)
 
 In this case, we estimate that rolling out the new package would increase per customer lifetime value by an average of \$0.09.
 The new boxes cost \$0.33 more per month than the old boxes, and a customer with a new box lasts 2.57 months, for a total box cost of 0.33 * 2.57 = \$0.84  so their cost exceeds their benefit by a factor of 10.
-To justify spending on the new box, we need a reduction of at least 2.26% in the cancellation rate down to ~36.7%:
+To justify spending on the new box, we need a reduction of at least ~2.26% in the cancellation rate down to ~36.7%:
 
 ~~~{.R}
 lifetimeGain <- function(r) {
@@ -3317,14 +3319,18 @@ lifetimeGain <- function(r) {
     new_revenue = new_lifetime * 5.7
     cost = new_lifetime * 0.33
     return(new_revenue - cost - old_revenue) }
+lifetimeGain(0.20)
+# [1] 13.64777328
+lifetimeGain(0.05)
+# [1] 1.178733032
 lifetimeGain(0.0226)
 # [1] 0.0008374858674
 ~~~
 
-How probable is it that the decrease in cancellation rate is as? Improbable, only ~6%:
+How probable is it that the decrease in cancellation rate is as or larger? Improbable, only ~6%:
 
 ~~~{.R}
-sum(posterior > 0.0226) / length(posterior)
+sum(posterior >= 0.0226) / length(posterior)
 # [1] 0.0591
 ~~~
 
@@ -3346,5 +3352,52 @@ This would be enough to pay for 36 new boxes, which used as part of an A/B test 
 
 How much would just 1 observation more be worth? We can estimate this by repeatedly simulating drawing 1 more observation, doing a Bayesian update, recalculating our expected profit, and seeing how much higher it is.
 
+Looking at it on the monthly level, we could automate the analysis like so:
+
+~~~{.R}
+monthlyGain <- function(reduction, profit, cost) { (profit * -reduction) - cost }
+posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
+    model_string <- "model {\n  for(i in 1:length(x)) {\n    x[i] ~ dbinom(theta[i], n[i])\n    theta[i] ~ dbeta(900, 1407)\n
+                     x_pred[i] ~ dbinom(theta[i], n[i])\n  }\n  theta_diff <- theta[1] - theta[2]\n}"
+    model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
+                    n.chains = getOption("mc.cores"))
+    samples <- coda.samples(model, c("theta", "x_pred", "theta_diff"), n.iter=20000)
+    posteriorReduction <-  (samples[1][[1]])[,3]
+
+    gains <- sapply(posteriorReduction, function(r) { monthlyGain(r, monthlyProfit, monthlyCost) })
+    return(list(Profit=gains, Reduction=posteriorReduction))
+}
+gains <- posteriorProfit(x=c(175, 168), n=c(442, 439), monthlyProfit=5.7, monthlyCost=0.33)
+mean(gains$Profit)
+# [1] -0.341466714
+~~~
+
+It is easy to simulate collecting another datapoint: for the control group, flip a coin with 39% to decide whether the customer 'canceled' or not; for the experimental group, draw a possible reduction from the posterior distribution samples, add it to 39%, and then flip a coin.
+
+~~~{.R}
+simulateData <- function(control=TRUE, posterior) {
+  if (control) { rbinom(1,1, prob=0.39) } else { rbinom(1,1, prob=(0.39 + sample(posterior, 1))) } }
+~~~
+
+Now we can repeatedly simulate fake data, add it to the real data, rerun the analysis, see how often an additional datapoint would change our decision, and whether the profit resulting from that justifies the cost of another datapoint (\$0.33).
+For simplicity, I'll only simulate a new fake datapoint for the new boxes.
+
+~~~{.R}
+gains <- posteriorProfit(x=c(175, 168), n=c(442, 439), monthlyProfit=5.7, monthlyCost=0.33)
+evsi <- replicate(10000, { newdata <- simulateData(control=FALSE, gains$Reduction)
+                           simGains <- posteriorProfit(x=c(175, 168+newdata), n=c(442, 439+1), monthlyProfit=5.7, monthlyCost=0.33)
+                           return(mean(simGains$Profit)) }
+                           )
+Filter(function(x){x>0}, evsi)
+~~~
+
+Indeed, the gain from an additional datapoint turns out to be so little we have a hard time distinguishing it from zero, as expected from the very small EVPI, and certainly less than the cost.
+
+So to round up:
+
+1. there is only a 56-65% (depending on priors) chance that the new boxes reduced cancellation
+2. the plausible reductions are so small that the expected value of switching is negative and there is only ~6% chance that switching to new boxes would be profitable
+3. a definitive resolution of the remaining uncertainty would be worth only ~\$12
+4. further sampling is essentially worthless and should not be done
 
 <-- TODO: ping https://twitter.com/bemmu/status/728245235021582336 , /r/decisiontheory -->
