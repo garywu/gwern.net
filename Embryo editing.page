@@ -431,6 +431,62 @@ https://github.com/jeromyanglim/JAGS_by_Example/blob/master/03-multilevel/varyin
 http://doingbayesiandataanalysis.blogspot.com/2012/06/mixture-of-normal-distributions.html
 http://www.stats.ox.ac.uk/~bardenet/Material/mixture_with_jags_only_mu.html
 
+---
+
+"Genome-wide association study identifies 74 [162] loci associated with educational attainment", Okbay et al 2016 https://www.dropbox.com/s/my9719yd8s5hplf/2016-okbay-2.pdf
+supplementary info: http://www.nature.com/nature/journal/vaop/ncurrent/extref/nature17671-s1.pdf http://www.nature.com/nature/journal/vaop/ncurrent/extref/nature17671-s2.xlsx http://www.thessgac.org/#!data/kuzq8 http://ssgac.org/documents/FAQ_74_loci_educational_attainment.pdf
+
+Educational attainment is strongly influenced by social and other environmental factors, but genetic factors are estimated to account for at least 20% of the variation across individuals1. Here we report the results of a genome-wide association study (GWAS) for educational attainment that extends our earlier discovery sample1, 2 of 101,069 individuals to 293,723 individuals, and a replication study in an independent sample of 111,349 individuals from the UK Biobank. We identify 74 [162 total] genome-wide significant loci associated with the number of years of schooling completed. Single-nucleotide polymorphisms associated with educational attainment are disproportionately found in genomic regions regulating gene expression in the fetal brain. Candidate genes are preferentially expressed in neural tissue, especially during the prenatal period, and enriched for biological pathways involved in neural development. Our findings demonstrate that, even for a behavioural phenotype that is mostly environmentally determined, a well-powered GWAS identifies replicable associated genetic variants that suggest biologically relevant pathways. Because educational attainment is measured in large numbers of individuals, it will continue to be useful as a proxy phenotype in efforts to characterize the genetic influences of related phenotypes, including cognition and neuropsychiatric diseases.
+
+Using procedures identical to those described in SI Section 1.6, we conducted a meta-analysis of the EduYears phenotype, combining the results from our discovery cohorts (N = 293,723) and the results from the UKB replication cohort (N = 111,349). Expanding the overall sample size to N = 405,072 increases the number of approximately independent genome-wide significant loci from 74 to 162.
+
+
+This background suffices to motivate the biological questions that arise in the interpretation of GWAS results and the means by which these questions might be tentatively addressed. For starters, since a GWAS locus typically contains many other SNPs in LD with the defining lead SNP and with each other, it is natural to ask: which of these SNPs is the actual causal site responsible for the downstream phenotypic variation? Many SNPs in the genome appear to be biologically inert—neither encoding differences in protein composition nor affecting gene regulation—and a lead GWAS SNP may fall into this category and nonetheless show the strongest association signal as a result of statistical noise or happenstance LD with multiple causal sites. Fortunately, much is known from external sources of data about whether variation at a particular site is likely to have biological consequences, and exploiting these resources is our general strategy for fine-mapping loci: nominating individual sites that may be causally responsible for the GWAS signals. Descriptions of genomic sites or regions based on external sources of data are known as annotations, and readers will not go far astray if they interpret this term rather literally (as referring to a note of explanation or comment added to a text in one of the margins). If we regard the type genome as the basic text, then annotations are additional comments describing the structural or functional properties of particular sites or the regions in which they reside. For example, all nonsynonymous sites that influence protein structures might be annotated as such. An annotation can be far more specific than this; for instance, all sites that fall in a regulatory region active in the fetal liver might bear an annotation to this effect.
+A given causal site will exert its phenotypic effect through altering the composition of a gene product or regulating its expression. Conceptually, once a causal site has been identified or at least nominated, the next question to pursue is the identity of the mediating gene. In practice, because only a handful of genes at most will typically overlap a GWAS locus, we can make\ some progress toward answering this question without precise knowledge of the causal site. The difficulty of the problem, however, should still not be underestimated. It is natural to assume that a lead GWAS SNP lying inside the boundaries of a particular gene must reflect a causal mechanism involving that gene itself, but in certain cases such a conclusion would be premature. It is possible for a causal SNP lying inside a certain gene to exert its phenotypic effect by regulating the expression of a nearby gene or for several genes to intervene between the SNP and its regulatory target.
+Supplementary Table 4.1 ranks each gene overlapping a DEPICT-defined locus by the number of discrete evidentiary items favoring that gene (see Supplementary Information section 4.5 for details regarding DEPICT). These lines of evidence are taken from a number of our analyses to be detailed in the following subsections. Our primary tool for gene prioritization is DEPICT, which can be used to calculate a P-value and associated FDR for each gene. It is important to keep in mind, however, that a gene-level P-value returned by DEPICT refers to the tail probability under the null hypothesis that random sampling of loci can account for annotations and patterns of co-expression shared by the focal gene with genes in all other GWAS-identified loci. Although it is very reasonable to expect that genes involved in the same phenotype do indeed share annotations and patterns of co-expression, it may be the case that certain causal genes do not conform to this expectation and thus fail to yield low DEPICT P-values. This is why we do not rely on DEPICT alone but also the other lines of evidence described in the caption of Supplementary Table 4.1.
+
+However, a priori we know that some SNPs are more likely to be associated with the phenotype than others; for example, it is often assumed that nonsynonymous SNPs are more likely to influence phenotypes than sites that fall far from all known genes. So a P-value of 5×10 −7 , say, though not typically considered significant at the genome-wide level, might merit a second look if the SNP in question is nonsynonymous.
+Formalizing this intuition can be done with Bayesian statistics, which combines the strength of evidence in favor of a hypothesis (in our case, that a genomic site is associated with a phenotype) with the prior probability of the hypothesis. Deciding how to set this prior is often subjective. However, if many hypotheses are being tested (for example, if there are thousands of nonsynonymous polymorphisms in the genome), then the prior can be estimated from the data themselves using what is called “empirical Bayes” methodology. For example, if it turns out that SNPs with low P-values tend to be nonsynonymous sites rather than other types of sites, then the prior probability of true association is increased at all nonsynonymous sites. In this way a nonsynonymous site that otherwise falls short of the conventional significance threshold can become prioritized once the empirically estimated prior probability of association is taken into account. Note that such favorable reweighting of sites within a particular class is not set a priori, but is learned from the GWAS results themselves. In our case, we split the genome into approximately independent blocks and estimate the prior probability that each block contains a causal SNP that influences the phenotype and (within each block) the conditional prior probability that each individual SNP is the causal one. Each such probability is allowed to depend on annotations describing structural or functional properties of the genomic region or the SNPs within it. We can then empirically estimate to extent to each annotation predicts association with the focal phenotype. For a complete description of the fgwas method, see ref. 1.
+4.2.3
+Methods
+For application to the GWAS of EduYears, we used the same set of 450 annotations as ref. 1; these are available at https://github.com/joepickrell/1000-genomes.
+...4.2.6
+Reweighted GWAS and Fine Mapping
+We reweighted the GWAS results using the functional-genomic results described above. Using a regional posterior probability of association (PPA) greater than 0.90 as the cutoff, we identified 102 regions likely to harbor a causal SNP with respect to EduYears (Extended Data Fig. 7c and Supplementary Table 4.2.1). All but two of our 74 lead EduYears-associated SNPs fall within one of these 102 regions. The exceptions are rs3101246 and rs2837992, which attained PPA > 0.80 (Extended Data Fig. 7c). In previous applications of fgwas, the majority of novel loci that attained the equivalent of genome-wide significance only upon reweighting later attained the conventional P < 5×10 −8 in larger cohorts 1 .
+Within each region attaining PPA > 0.90, each SNP received a conditional posterior probability of being the causal SNP (under the assumption that there is just one causal SNP in the region). The method of assigning this latter posterior probability is similar to that of ref. 6, except that the input Bayes factors are reweighted by annotation-dependent and hence SNP-varying prior probabilities. In essence, the likelihood of causality at an individual SNP derives from its Bayes factor with respect to phenotypic association (which is monotonically related to the P-value under reasonable assumptions), whereas the prior probability is derived from any empirical genome-wide tendency for the annotations borne by the SNP to predict evidence of association. Thus, the SNP with the largest posterior probabilities of causality tend to exhibit among the strongest P-values within their loci and functional annotations that predict association throughout the genome. Note that proper calibration of this posterior probability requires that all potential causal sites have been either genotyped or imputed, which may not be the case in our application; we did not include difficult-to-impute non-SNP sites such as insertions/deletions in the GWAS meta-analysis. With this caveat in mind, we identified 17 regions where fine mapping amassed over 50 percent of the posterior probability on a single SNP (Supplementary Table 4.2.2). Of our 74 lead EduYears SNPs, 9 are good candidates for being the causal sites driving their association signals [12%]. One of our top SNPs, rs4500960, is in nearly perfect LD with the causal candidate rs2268894 (and is indeed the second most likely causal SNP in this region according to fgwas). The causal candidate rs6882046 is within 75kb of two lead SNPs on chromosome 5 (rs324886 and rs10061788), but no two of these three SNPs show strong LD. Interestingly, the remaining 6 causal candidates lie in genomic regions that only attain the equivalent of genome-wide significance upon Bayesian reweighting. Of the 17 causal candidates, 9 lie in regions that are DNase I hypersensitive in the fetal brain.
+
+Table 4.2.2:
+Posterior probability of causality
+0.992035
+0.766500
+0.842271
+0.567184
+0.697862
+0.524760
+0.632536
+0.885280
+0.968627
+0.781563
+0.629610
+0.837746
+0.725158
+0.755457
+0.784373
+0.682947
+0.832675
+
+
+[mean(c(0.524760, 0.567184, 0.629610, 0.632536, 0.682947, 0.697862, 0.725158, 0.755457, 0.766500, 0.781563, 0.784373, 0.832675, 0.837746, 0.842271, 0.885280, 0.968627, 0.992035)) = 0.76, 0.76*19=14.4]
+
+The results from both approaches show that prediction accuracy increases as more SNPs are used to construct the score, with the maximum predictive power achieved when using all the genotyped SNPs (with Approach 1). In that case, the weighted average across the two cohorts of the incremental R 2 is ~3.85%.
+
+[Versus 2% from Rietveld's n=100k; this is in line with the rough doubling of the main SSGAC sample size. The additional UK Biobank sample of n=111k does not seem to have been used but if it was used, should boost the polygenic score to ~5.3%?]
+
+...The magnitude of predictive power that we observe is less than one might have expected on the basis of statistical genetics calculations 6 and GCTA-GREML estimates of “SNP heritability” from individual cohorts. Indeed, Rietveld et al. (2013) 7 reported GCTA-GREML estimates of SNP heritability for each of two cohorts (STR and QIMR), and the mean estimate was 22.4%. Assuming that 22.4% is in fact the true SNP heritability, the calculations outlined in the SOM of Rietveld et al. (pp. 22-23) generate a prediction of R 2 = 11.0% for a score constructed from the GWAS estimates of this paper and of R 2 = 6.1% for a score constructed from the combined (discovery + replication cohorts, but excluding the validation cohorts) GWAS sample of N = ~117,000-119,000 in Rietveld et al.—substantially higher than the 3.85% that we achieve here (with the score based on all genotyped SNPs) and the 2.2% Rietveld et al. achieved, respectively.
+These discrepancies between the scores’ predicted and estimated R 2 may be due to the failure of some of the assumptions underlying the calculation of the predicted R 2 . An alternative (or additional) explanation is that the true SNP heritability for the GWAS sample pooled across cohorts is lower than 22.4%. That would be the case if the true GWAS coefficients differ across cohorts, perhaps due to heterogeneity in phenotype measurement or gene-by-environment interactions. If so, then a polygenic score constructed from the pooled GWAS sample would be expected to have lower predictive power in an individual cohort than implied by the calculations above. Based on that reasoning, the R 2 of 2.2% observed by Rietveld et al. (2013) could be rationalized by assuming that the proportion of variance accounted for by common variants across the pooled Rietveld cohorts is only 12.7% 6 . (We obtain a similar estimate, 11.5% with a standard error of 0.45%, when we use LD Score regression 5 to estimate the SNP heritability using our pooled-sample meta-analysis results from this paper, excluding deCODE and without GC. While we believe this estimate is based on cohort results without GC, it is biased downward if any cohort in fact applied GC.) If we assume that the 12.7% is valid also for the cohorts considered in this study, we would predict an R 2 equal to 4.5%, somewhat higher than we observe in HRS and STR but much closer. However, the degree of correlation in coefficients across cohorts appears to be relatively high (Supplementary Table 1.10 reports estimates of the genetic correlation between selected cohorts and deCODE; although the correlation estimates vary a lot across cohorts, they tend to be large for the largest cohorts, and the weighted average is 0.76). We do not know whether a pooled-cohort SNP heritability of 12.7% or lower can be reconciled with the observed degree of correlation in coefficients across cohorts.
+
+The results are reported in Supplementary Tables 6.3 and 6.4. In both the STR and the HRS, cognitive performance significantly mediates the effect of PGS on EduYears; in the HRS, Openness to Experience is also a significant mediator. The indirect effects for the other mediating variables are not significant s .
+The results for cognitive performance are similar across STR and HRS. In both datasets, a one-standard deviation increase in PGS is associated with ~0.6-0.7 more years of education, and a one-standard deviation increase in cognitive performance is associated with ~0.15 more years of education. In both datasets, the direct effect (θ 1 ) of PGS on EduYears is ~0.3-0.4 and the total indirect effect (β 1 θ 2 ) is ~0.19-0.31. This implies that a one-standard-deviation increase in PGS is associated with ~0.3-0.4 more years of education, keeping the mediating variables constant, and that changing the mediating variables to the levels they would have attained had PGS increased by one standard deviation (but keeping PGS fixed) increases years of education by ~0.19-0.31 years. Lastly, in both datasets, the partial indirect effect (θ 21 β 11 ) of cognitive performance is large and very significant: the estimates are equal to 0.29 and 0.14—or 42% and 23% of the total effect (γ 1 )—in STR and HRS, respectively. The results also suggest that a one-standard deviation increase in Openness to Experience is associated with ~0.06 more years of education, and the estimated partial indirect effect for Openness to Experience is equal to 0.04—or 7% of the total effect (γ 1 ).
 
 
 
@@ -469,7 +525,7 @@ n=14197
 
 
 n <- 100000
-alpha <- 0.05
+alpha <- 0.005
 SNP_candidates <- 162
 SNP_mean_effect <- 0.2
 SNP_mean_frequency <- 0.5
@@ -478,7 +534,7 @@ SNP_effects <- sample(c(SNP_mean_effect, 0), SNP_candidates, replace=TRUE,
                       prob=c(SNP_causal_probability, 1-SNP_causal_probability))
 which(SNP_effects>0)
 
-generateSample <- function(SNP_effects, SNP_candidates=162, SNP_mean_frequency=0.5) {
+generateSample <- function(n, SNP_effects, SNP_candidates=162, SNP_mean_frequency=0.5) {
     dm <- matrix(nrow=n, ncol=SNP_candidates+1)
     for (i in 1:n) {
         SNP_draw <- rbinom(SNP_candidates, 1, p=SNP_mean_frequency)
@@ -490,18 +546,47 @@ generateSample <- function(SNP_effects, SNP_candidates=162, SNP_mean_frequency=0
     colnames(df) <- c("IQ", paste("SNP.", as.character(1:SNP_candidates), sep=""))
     return(df)
 }
-df <- generateSample(SNP_effects, SNP_candidates, SNP_mean_frequency)
-# head(df, n=1)
-# library(MASS)
-# summary(lm.ridge(IQ ~ ., data=df))
+df <- generateSample(n, SNP_effects, SNP_candidates, SNP_mean_frequency)
 
-l <- summary(lm(IQ ~ ., data=df))
-# coefficients <- l$coefficients[,1]
-pvalues <- l$coefficients[,4][-1]
-causalPvalues <- na.omit(ifelse(SNP_effects>0, pvalues, NA))
-(sum(pvalues<alpha)) / length(pvalues)
-(sum(causalPvalues<alpha)) / length(causalPvalues)
-sum(causalPvalues<alpha) / (sum(pvalues<alpha))
+power <- sapply(seq(1, n, by=100), function(i) {
+    l <- summary(lm(IQ ~ ., data=df[1:i,]))
+    # coefficients <- l$coefficients[,1]
+    pvalues <- l$coefficients[,4][-1]
+    causalPvalues <- na.omit(ifelse(SNP_effects>0, pvalues, NA))
+    noncausalPvalues <- na.omit(ifelse(SNP_effects==0, pvalues, NA))
+
+    alphas <- seq(from=0.001, to=0.05, by=0.001)
+    alphaYields <- sapply(alphas, function(alpha) { sum(causalPvalues<alpha) / (sum(pvalues<alpha)) })
+    alpha <- alphas[which.max(alphaYields)]
+
+    positives <- sum(pvalues<alpha)
+    falsePositives <- sum(noncausalPvalues<alpha)
+    truePositives <- sum(causalPvalues<alpha)
+    truePositiveFraction <- truePositives / length(causalPvalues)
+    causalFraction <- (truePositives + falsePositives) / positives
+    return(causalFraction) })
+
+
+
+
+library(BGLR)
+# n <- 1000
+recovery <- sapply(seq(500, 20000, by=500), function(n) {
+  mean(replicate(10, {
+    b <- BGLR(df$IQ[1:n], ETA=list(list(X=df[1:n,-1], model="BayesB", probIn=SNP_causal_probability)), R2=0.01, burnIn=0, verbose=FALSE)
+    # plot((b$ETA[[1]]$b), SNP_effects!=0)
+    estimate <- data.frame(Causal=SNP_effects!=0, Estimate=(b$ETA[[1]]$b))
+    estimate <- estimate[order(estimate$Estimate),]
+    truePositives <- sum(estimate$Causal[1:64])
+    falseNegatives <- sum(estimate$Causal[-(1:64)])
+    # truePositives;falseNegatives
+    causalFraction <- truePositives / (truePositives+falseNegatives)
+    print(causalFraction)
+    return(causalFraction)
+    })) })
+recovery
+library(ggplot2)
+qplot(1:length(recovery), recovery) + stat_smooth()
 
 
 library(glmnet)
