@@ -16,7 +16,7 @@ While mail-order subscriptions services such as tea or chocolate of the month cl
 
 # Box A/B test
 
-In 2016, [CJ ran an A/B test](https://www.candyjapan.com/results-from-box-design-ab-test) comparing subscription cancellation rates of customers sent candy in the standard undecorated box, and customers sent candy in prettier but more expensive boxes:
+In 2016, [CJ ran an A/B test](https://www.candyjapan.com/results-from-box-design-ab-test) ([HN discussion](https://news.ycombinator.com/item?id=11641602)) comparing subscription cancellation rates of customers sent candy in the standard undecorated box, and customers sent candy in prettier but more expensive boxes:
 
 > Plain unbranded boxes go for just \$0.34 a piece, while a box with a full-color illustration printed on the cover costs almost twice as much: \$0.67. This may not seem like such a big difference, but in absolute terms using the new box means around \$500 less profit per month or roughly 10% of profit margin.
 >
@@ -321,6 +321,17 @@ Filter(function(x){x>0}, evsi)
 
 Indeed, the gain from 5000 additional datapoints turns out to be so little we have a hard time distinguishing it from zero, as expected from the very small EVPI, and certainly less than the cost of collecting that much additional data.
 We can say that further experimentation is definitely not cost-effective.
+
+#### Adaptive trials
+
+One key advantage of EVSI is that it can be calculated at any time.
+So a simple optimal adaptive trial can be run by collecting datapoints one by one, calculating EVSI after each new datapoint, and sampling another datapoint only if the EVSI > cost, otherwise ending with a decision.
+This procedure would sample until there is either enough evidence to justify a switch or until it is no longer a substantial possibility that the new box improvement exceeds 2.26%.
+
+In this case, such a procedure probably would have run the A/B test until perhaps _n_=100 in each arm, at which point the lack of dominance would start becoming clear and it would no longer be worth paying \$0.33 more for each new datapoint, thereby potentially saving CJ somewhere around \$80 in new boxes and ending the test early.
+
+The difficulty here is that the feedback is delayed: until the next billing cycle, you cannot know that a particular customer *won't* cancel; it is possible that they will but simply haven't yet. And if you wait until the next billing cycle, then CJ's experiment would already be over.
+This can be solved by treating it as a [survival analysis](!Wikipedia) problem in which customer cancellation is right-censored, a class of problems that JAGS can also handle without difficulty, but CJ doesn't provide exact time-until-cancellation data and expanding the model to a survival analysis to demonstrate how the EVSI decreases during the experiment and where exactly it would have halted is more work than I want to do.
 
 # Conclusion
 
