@@ -155,6 +155,7 @@ This is immediately recognizable as [reinforcement learning](!Wikipedia): the [m
 Dealing with the delayed feedback is known to be difficult and multiple play Thompson sampling may not be optimal, but in simulations it [performs better with delayed feedback than other standard MABs](http://www.research.rutgers.edu/~lihong/pub/Chapelle12Empirical.pdf "'An Empirical Evaluation of Thompson Sampling', Chapelle & Li 2011").
 We can consider a simulation of the scenario in which every time-step is a day and 1 or more embryos must be edited that day; a noisy measure of IQ is then made available `9*31+5*365=2104` days later, which is fed into a GWAS [mixture model](!Wikipedia) in which the GWAS correlation for each SNP is considered as drawn with an unknown probability from a causal distribution and from a nuisance distribution, so with additional data, the effect estimates of the SNPs are refined, the probability of being drawn from the causal distribution is refined, and the overall mixture probability is likewise refined, similar to the ["Bayes B" paradigm from the "Bayesian alphabet" of genomic prediction methods in animal breeding](http://www.annualreviews.org/eprint/AEMMACidWrxGtS8eBFrT/full/10.1146/annurev-animal-022114-110733 "'One Hundred Years of Statistical Developments in Animal Breeding', Giancola & Rosa 2015").
 (So for the first 2104 time-steps, a Thompson sample would be performed to yield a new set of edits, then each subsequent time-step a datapoint would mature, the posteriors updated, and another set of edits created.) The relevant question is how much regret will fall and how many causal SNPs become the top picks after how many edits & days: hopefully high performance & low regret will be achieved within a few years after the initial 5-year delay.
+<!-- best-arm Thompson sampling: http://imagine.enpc.fr/publications/papers/COLT10.pdf https://www.escholar.manchester.ac.uk/api/datastream?publicationPid=uk-ac-man-scw:227658&datastreamId=FULL-TEXT.PDF http://nowak.ece.wisc.edu/bestArmSurvey.pdf http://arxiv.org/pdf/1407.4443v1.pdf https://papers.nips.cc/paper/4478-multi-bandit-best-arm-identification.pdf -->
 
 a more concrete example: imagine we have a budget of 60 edits (based on the multiplex pig editing), a causal probability of 10%, an exponential distribution (rate 70.87) over 500000 candidate alleles of which we consider the top 1000, each of which has a frequency of 50% and we sequence before editing to avoid wasting edits.
 What is our best case and worst-case IQ increase?
@@ -613,6 +614,7 @@ generateExperimentalSample <- function(n, SNP_effects, SNP_candidates=162, SNP_m
     dm <- matrix(nrow=n, ncol=SNP_candidates+1)
     for (i in 1:n) {
         SNPs_genetic <- sum(ifelse(SNP_draw, SNP_effects, 0))
+        ## generate a N(100,15) - minus however much our candidate genes explain
         IQ <- rnorm(1, mean=100, sd= sqrt((15^2) * (1-r2))) + SNPs_genetic
         dm[i,] <- c(round(IQ), SNP_draw)
         }
@@ -622,7 +624,7 @@ generateExperimentalSample <- function(n, SNP_effects, SNP_candidates=162, SNP_m
 }
 library(BGLR)
 maximumN <- 10000
-## initialize with a seed of n=2
+## initialize with a seed of n=2; with an empty dataframe, BGLR will crash
 d <- generateSample(2, SNP_effects, SNP_candidates, SNP_mean_frequency)
 for (i in 1:maximumN) {
     ## quick Bayesian model of our data up to now, using Lasso priors and our SNP setup
@@ -638,7 +640,8 @@ for (i in 1:maximumN) {
     ## updates. If batch=1, it is the conventional Thompson sample (and most data-efficient) but computationally demanding
     batch <- 10
     for (i in 1:batch) {
-     SNPs_Thompson_sampled <- rnorm(n=SNP_candidates, mean=b$ETA[[1]]$b, sd=b$ETA[[1]]$SD.b) > 0
+     means <- b$ETA[[1]]$b; sds <- b$ETA[[1]]$SD.b
+     SNPs_Thompson_sampled <- rnorm(n=SNP_candidates, mean=means, sd=sds) > 0
      d <- rbind(d, generateExperimentalSample(1, SNP_effects, SNP_candidates, SNP_mean_frequency, SNPs_Thompson_sampled))
      }
 
@@ -653,3 +656,11 @@ for (i in 1:maximumN) {
 }
 
 b2 <- BGLR(d$IQ, ETA=list(list(X=d[-1], model="BL", probIn=SNP_causal_probability)), R2=r2, verbose=FALSE); estimate2 <- data.frame(Causal=SNP_effects!=0, Effect=SNP_effects, Estimate=(b2$ETA[[1]]$b)); qplot(estimate2$Causal, estimate2$Estimate); estimate2
+
+
+TODO:
+
+1. better logging of variables
+2. implement 5-year lag
+3. implement measurement error of r=.5
+4. implement subset selection: the experimental manipulation is only of k SNPs out of a much larger number (eg at each timestep, can manipulate 64 out of 10k)
