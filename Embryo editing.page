@@ -529,16 +529,17 @@ alpha <- 0.005
 SNP_candidates <- 162
 SNP_mean_effect <- 0.2
 SNP_mean_frequency <- 0.5
-SNP_causal_probability <- 0.10
+SNP_causal_probability <- 0.12
 SNP_effects <- sample(c(SNP_mean_effect, 0), SNP_candidates, replace=TRUE,
                       prob=c(SNP_causal_probability, 1-SNP_causal_probability))
 which(SNP_effects>0)
+r2 <- 0.01
 
 generateSample <- function(n, SNP_effects, SNP_candidates=162, SNP_mean_frequency=0.5) {
     dm <- matrix(nrow=n, ncol=SNP_candidates+1)
     for (i in 1:n) {
         SNP_draw <- rbinom(SNP_candidates, 1, p=SNP_mean_frequency)
-        SNPs_genetic <- sum(ifelse(SNP_draw, 0, SNP_effects))
+        SNPs_genetic <- sum(ifelse(SNP_draw, SNP_effects, 0))
         IQ <- rnorm(1, mean=100, sd=15) + SNPs_genetic
         dm[i,] <- c(round(IQ), SNP_draw)
         }
@@ -611,8 +612,8 @@ Thompson sampling:
 generateExperimentalSample <- function(n, SNP_effects, SNP_candidates=162, SNP_mean_frequency=0.5, SNP_draw) {
     dm <- matrix(nrow=n, ncol=SNP_candidates+1)
     for (i in 1:n) {
-        SNPs_genetic <- sum(ifelse(SNP_draw, 0, SNP_effects))
-        IQ <- rnorm(1, mean=100, sd=15) + SNPs_genetic
+        SNPs_genetic <- sum(ifelse(SNP_draw, SNP_effects, 0))
+        IQ <- rnorm(1, mean=100, sd= sqrt((15^2) * (1-r2))) + SNPs_genetic
         dm[i,] <- c(round(IQ), SNP_draw)
         }
     df <- as.data.frame(dm)
@@ -621,23 +622,29 @@ generateExperimentalSample <- function(n, SNP_effects, SNP_candidates=162, SNP_m
 }
 library(BGLR)
 maximumN <- 10000
-## initialize with a seed of n=1
-d <- generateSample(10, SNP_effects, SNP_candidates, SNP_mean_frequency)
+## initialize with a seed of n=2
+d <- generateSample(2, SNP_effects, SNP_candidates, SNP_mean_frequency)
 for (i in 1:maximumN) {
-    ## Bayesian model of our data up to now:
-    b <- BGLR(d$IQ, ETA=list(list(X=d[-1], model="BayesB", probIn=SNP_causal_probability)), R2=0.01, verbose=FALSE)
+    ## quick Bayesian model of our data up to now, using Lasso priors and our SNP setup
+    b <- BGLR(d$IQ, ETA=list(list(X=d[-1], model="BL", type="beta", probIn=0.12, counts=162, R2=r2)), R2=r2, burnIn=0, nIter=1000, verbose=FALSE)
 
     ## Thompson sampling: for Thompson sampling, we sample 1 possible value of each parameter from that parameter's
     ## posterior distribution. Normally, we would sample from the posterior samples returned by JAGS, but BGLR returns
     ## instead a mean+SD, so we sample from each parameter's normal distribution. Then we see if it was positive (and
     ## hence worth editing). This boolean is then passed into the simulation and a fresh datapoint generated according to
     ## that intervention. In the next loop, this new datapoint will be incorporated into the posterior and so on.
-    SNPs_Thompson_sampled <- rnorm(n=SNP_candidates, mean=b$ETA[[1]]$b, sd=b$ETA[[1]]$SD.b) > 0
-    d <- rbind(d, generateExperimentalSample(1, SNP_effects, SNP_candidates, SNP_mean_frequency, SNPs_Thompson_sampled))
+    ##
+    ## To save computations while simulating, or to be more realistic, we might have batches: multiple datapoints in between
+    ## updates. If batch=1, it is the conventional Thompson sample (and most data-efficient) but computationally demanding
+    batch <- 10
+    for (i in 1:batch) {
+     SNPs_Thompson_sampled <- rnorm(n=SNP_candidates, mean=b$ETA[[1]]$b, sd=b$ETA[[1]]$SD.b) > 0
+     d <- rbind(d, generateExperimentalSample(1, SNP_effects, SNP_candidates, SNP_mean_frequency, SNPs_Thompson_sampled))
+     }
 
     ## reports, evaluations, logging:
-    estimate <- data.frame(Causal=SNP_effects!=0, Estimate=(b$ETA[[1]]$b))
-    estimate <- estimate[order(estimate$Estimate),]
+    estimate <- data.frame(Causal=SNP_effects!=0, Effect=SNP_effects, Estimate=(b$ETA[[1]]$b), SD=b$ETA[[1]]$SD.b)
+    estimate <- estimate[order(estimate$Estimate, decreasing=TRUE),]
     truePositives <- sum(estimate$Causal[1:64])
     falseNegatives <- sum(estimate$Causal[-(1:64)])
     # truePositives;falseNegatives
@@ -645,4 +652,4 @@ for (i in 1:maximumN) {
     print(paste("N:", nrow(d), "fraction of causals found:", round(causalFraction,digits=2), "Causals found:", truePositives, "Causals not found:", falseNegatives))
 }
 
-"N: 2673 fraction of causals found: 0.44 Causals found: 8 Causals not found: 10"
+b2 <- BGLR(d$IQ, ETA=list(list(X=d[-1], model="BL", probIn=SNP_causal_probability)), R2=r2, verbose=FALSE); estimate2 <- data.frame(Causal=SNP_effects!=0, Effect=SNP_effects, Estimate=(b2$ETA[[1]]$b)); qplot(estimate2$Causal, estimate2$Estimate); estimate2
