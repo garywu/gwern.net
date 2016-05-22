@@ -610,32 +610,38 @@ length(intersect(causalSNPs, ridgeSNPs)) / length(ridgeSNPs)
 
 Thompson sampling:
 
-n <- 1000
+verbose <- TRUE
 SNP_mean_effect <- 0.2
 SNP_mean_frequency <- 0.5
 SNP_causal_probability <- 0.12
 SNP_candidates <- 162
 r2 <- 0.01
+iqError <- 0.55
 SNP_edit_limit <- 64
 SNP_effects <- sample(c(SNP_mean_effect, 0), SNP_candidates, replace=TRUE,
                       prob=c(SNP_causal_probability, 1-SNP_causal_probability))
 which(SNP_effects>0)
 
-generateExperimentalSample <- function(n, SNP_effects, SNP_candidates, SNP_mean_frequency, SNP_draw_generator) {
-    dm <- matrix(nrow=n, ncol=SNP_candidates+1)
+measurementError <- function(r, IQ) {
+    IQ.true.std <- (IQ-100)/15
+    IQ.measured.std <- r*IQ.true.std + rnorm(length(IQ), mean=0, sd=sqrt(1 - r^2))
+    IQ.measured <- 100 + 15 * IQ.measured.std
+    return(IQ.measured) }
+generateExperimentalSample <- function(n, r, SNP_effects, SNP_candidates, SNP_mean_frequency, SNP_draw_generator) {
+    dm <- matrix(nrow=n, ncol=SNP_candidates+1+1)
     for (i in 1:n) {
         SNP_draw <- SNP_draw_generator()
         SNPs_genetic <- sum(ifelse(SNP_draw, SNP_effects, 0))
         ## generate a N(100,15) - minus however much our candidate genes explain
         IQ <- rnorm(1, mean=100, sd= sqrt((15^2) * (1-r2))) + SNPs_genetic
-        dm[i,] <- c(round(IQ), SNP_draw)
+        dm[i,] <- c(round(IQ), measurementError(r, IQ), SNP_draw)
         }
     df <- as.data.frame(dm)
-    colnames(df) <- c("IQ", paste("SNP.", as.character(1:SNP_candidates), sep=""))
+    colnames(df) <- c("IQ", "IQ.measured", paste("SNP.", as.character(1:SNP_candidates), sep=""))
     return(df)
 }
-generateRandomSample <- function(n, SNP_effects, SNP_candidates=162, SNP_mean_frequency=0.5) {
-    generateExperimentalSample(n, SNP_effects, SNP_candidates, SNP_mean_frequency,
+generateRandomSample <- function(n, r=1, SNP_effects, SNP_candidates=162, SNP_mean_frequency=0.5) {
+    generateExperimentalSample(n, r, SNP_effects, SNP_candidates, SNP_mean_frequency,
                                function() { rbinom(SNP_candidates, 1, p=SNP_mean_frequency) })
 }
 
@@ -644,7 +650,7 @@ maximumDays <- 10000
 lag <- 5*365
 jumpForward <- lag+2
 ## initialize with a seed of n>=2; with less or an empty dataframe, BGLR will crash
-d <- generateRandomSample(jumpForward, SNP_effects, SNP_candidates, SNP_mean_frequency)
+d <- generateRandomSample(jumpForward, iqError, SNP_effects, SNP_candidates, SNP_mean_frequency)
 d$Date <- 1:jumpForward
 # d$Date <- -lag # available immediately
 regretLog <- data.frame(N=integer(), N.eff=integer(), Regret=numeric(), Fraction.causals=numeric(), Causal.found=integer(), Causal.notfound=integer())
@@ -654,8 +660,15 @@ for (i in jumpForward:maximumDays) {
     ## we will have 20-18=2 datapoints available. With a 5 year lag, we will go 1825 time-steps before any new data starts becoming available.
     dAvailable <- d[i >= (d$Date+lag),]
     ## quick Bayesian model of our data up to now, using Lasso priors and our SNP setup
-    b <- BGLR(dAvailable$IQ, ETA=list(list(X=dAvailable[-c(1, length(colnames(dAvailable)))], model="BL", type="beta", probIn=0.12, counts=162, R2=r2, lambda=202, max=500)),
-               burnIn=0, nIter=500, verbose=FALSE)
+    ## BGLR will randomly crash with a gamma/lambda range error every ~5k calls, so catch & retry until it succeeds:
+    while(TRUE) {
+    tryCatch({
+      b <- BGLR(dAvailable$IQ.measured, ETA=list(list(X=dAvailable[-c(1, 2, length(colnames(dAvailable)))],
+                                          model="BL", type="beta", probIn=0.12, counts=162, R2=r2, lambda=202, max=500)),
+                burnIn=0, nIter=500, verbose=FALSE)
+      break;
+      }, error = function(e) { print(e) })
+      }
 
     ## Thompson sampling: for Thompson sampling, we sample 1 possible value of each parameter from that parameter's
     ## posterior distribution. Normally, we would sample from the posterior samples returned by JAGS, but BGLR returns
@@ -670,7 +683,7 @@ for (i in jumpForward:maximumDays) {
     for (j in 1:batch) {
      means <- b$ETA[[1]]$b; sds <- b$ETA[[1]]$SD.b
      SNPs_Thompson_sampled <- rnorm(n=SNP_candidates, mean=means, sd=sds) > 0
-     newD <- generateExperimentalSample(1, SNP_effects, SNP_candidates, SNP_mean_frequency, function(){SNPs_Thompson_sampled})
+     newD <- generateExperimentalSample(1, iqError, SNP_effects, SNP_candidates, SNP_mean_frequency, function(){SNPs_Thompson_sampled})
      newD$Date <- i
      d <- rbind(d, newD)
      }
@@ -680,18 +693,15 @@ for (i in jumpForward:maximumDays) {
     estimate <- estimate[order(estimate$Estimate, decreasing=TRUE),]
     regretLog[i,]$Causal.found <- sum(estimate$Causal[1:SNP_edit_limit])
     regretLog[i,]$Causal.notfound <- sum(estimate$Causal[-(1:SNP_edit_limit)])
-    # truePositives;falseNegatives
     regretLog[i,]$Fraction.causals <- round(regretLog[i,]$Causal.found / (regretLog[i,]$Causal.found+regretLog[i,]$Causal.notfound), digits=2)
     regretLog[i,]$Regret <- sum(estimate$Effect) - sum(estimate$Effect[1:SNP_edit_limit])
     regretLog[i,]$N <- nrow(d)
     regretLog[i,]$N.eff <- nrow(dAvailable)
 
-    print(regretLog[i,])
-    # with(regretLog, print(paste("N:", N[i,], "Regret:", Regret[i,], "Fraction causals found:", Fraction.causals[i,], "Causals found:", Causal.found[i,], "Causals not found:", Causal.notfound[i,])))
+    if(verbose) { print(regretLog[i,]) }
 }
 traceback()
 
 TODO:
 
-3. implement measurement error of r=.5
 4. implement subset selection: the experimental manipulation is only of k SNPs out of a much larger number (eg at each timestep, can manipulate 64 out of 10k)
