@@ -10,7 +10,7 @@ belief: likely
 > With genetic predictors of a phenotypic trait, it is possible to select embryos during an in vitro fertilization process to increase or decrease that trait.
 > I consider the case of human intelligence using SNP-based genetic prediction, finding:
 >
-> - a meta-analysis of GCTA results indicates that SNPs can explain >33% of variance in current intelligence scores, and >44% with better-quality phenotype testing
+> - a meta-analysis of [GCTA](!Wikipedia) results indicates that SNPs can explain >33% of variance in current intelligence scores, and >44% with better-quality phenotype testing
 > - this sets an upper bound on the effectiveness of selection: a gain of 9 IQ points when selecting the top embryo out of 10
 > - the best 2015 polygenic score could achieve a gain of <4.5 IQ points when selecting out of 10
 > - the cost of embryo selection is modest, at \$1500 + \$200 per embryo, with the sequencing cost projected to drop rapidly
@@ -305,7 +305,7 @@ Past polygenic scores for intelligence:
     0.5776% of fluid intelligence in the NCNG replication sample, if I've understood their analysis correctly.
 2. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/iq/2013-rietveld.pdf), Rietveld et al 2013:
 
-    This landmark study providing the first GWAS hits on intelligence also estimated multiple polygenic scores: the full polygenic scores predicted 2.5% of variance in cognitive function in a Swedish replication sample, and also performed well in within-family settings (0.31% & 0.19% of variance in attending college & years of education, respectively, in [Table S25](http://science.sciencemag.org/content/sci/suppl/2013/05/29/science.1235488.DC1/Rietveld.SM.revision.2.pdf)).
+    This landmark study providing the first GWAS hits on intelligence also estimated multiple polygenic scores: the full polygenic scores predicted 2% of variance in education, and 2.5% of variance in cognitive function in a Swedish replication sample, and also performed well in within-family settings (0.31% & 0.19% of variance in attending college & years of education, respectively, in [Table S25](http://science.sciencemag.org/content/sci/suppl/2013/05/29/science.1235488.DC1/Rietveld.SM.revision.2.pdf)).
 3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2014:
 
     0.5%, 1.2%, 3.5%.
@@ -876,7 +876,40 @@ In general, embryo selection as of January 2016 is just barely profitable or som
 
 ### Value of Information
 
-To get an idea of the value of further research into improving the polygenic score or other parts of the procedure, we can look at the overall population gains in the USA if it was adopted by all IVF users.
+To get an idea of the value of further research into improving the polygenic score or other parts of the procedure, we can look at the overall population gains in the USA if it was adopted by all potential users.
+
+#### Public interest in selection
+
+How many people can we expect to use embryo selection as it becomes available?
+
+My belief is that total uptake will be fairly modest as a fraction of the population.
+A large fraction of the population expresses hostility towards any new fertility-related technology whatsoever, and the people open to the possibility will be deterred by the necessity of advanced family planning, the large financial cost of IVF, and the fact that the IVF process is lengthy and painful.
+I think that prospective mothers will not undergo it unless the gains are enormous: the difference between having kids or never having kids, or having a normal kid or one who will die young of a genetic disease. A fraction of an IQ point, or even a few points, is not going to cut it. (Perhaps boosts around 20 IQ points, a level with dramatic and visible effects on educational outcomes, would be enough?)
+
+We can see this unwillingness partially expressed in long-standing trends against the wide use of sperm & egg donation. As [Matt Ridley](!Wikipedia) points out (["Why Eugenics Won't Come Back"](http://www.rationaloptimist.com/blog/gene-editing-and-eugenics/)), a prospective mother could easily increase traits of her children by eugenic selection of sperm donors, such as eminent scientists, above and beyond the relatively unstringent screening done by current sperm banks and the selectness of sperm buyers:
+
+> ...we now know from 40 years of experience that without coercion there is little or no demand for genetic enhancement. People generally don't want paragon babies; they want healthy ones that are like them. At the time test-tube babies were first conceived in the 1970s, many people feared in-vitro fertilization would lead to people buying sperm and eggs off celebrities, geniuses, models and athletes. In fact, the demand for such things is negligible; people wanted to use the new technology to cure infertility - to have their own babies, not other people's. It is a persistent misconception shared among clever people to assume that everybody wants clever children.
+
+Ignoring that celebrities, models, and athletes are often highly successful sexually (which can be seen as a 'donation' of sorts), this sort of thing was in fact done by the [Repository for Germinal Choice](!Wikipedia); but despite [apparently positive results](!Wikipedia "Repository Germinal Choice#Outcomes") (as expected from selecting for highly intelligent donors), it was unpopular during its 29-year run and has no successors.
+
+So that largely limits the market for embryo selection to those who would already use it: those who *must* use it.
+
+Will they use it? Ridley's argument doesn't prove that they won't, because the use of sperm/egg donors comes at the cost of reducing relatedness. Non-use of "celebrities, geniuses, models, and athletes" merely shows that the perceived benefits do not outweigh the costs; it doesn't tell us what the benefits or costs are. And the cost of reducing relatedness is a severe one - a normal fertile pair of parents will no more be inclined to use a sperm or egg donor (and which one, exactly? who chooses?) than they would be to adopt.
+A more relevant situation would be how parents act in the infertility situation where avoiding reduced relatedness is impossible.
+
+In that situation, parents *are* notoriously eugenic in their preferences, demanding of sperm or egg banks that the donor be healthy, well-educated (at the Ivy League, of course, where egg donation is regularly advertised), have particular hair & eye colors (using sperm/eggs exported from Scandinavia, if necessary), be tall (men), and free of any mental illnesses.
+This pervasive selection works; [Lee 2013](https://www.donorsiblingregistry.com/sites/default/files/files/dissertation%281%29.pdf "Quantitative Genetics in the Postmodern Family of the Donor Sibling Registry") draws on a donor sibling registry, documenting selection in favor of taller sperm donors, and, as predicted by the breeder's equation, offspring were taller by 1.23 inches.^["Children in the DSR were taller than the median growth curve by R = 1.23 inches, averaged across all ages for both sexes (Figure 2.3B). The selection differential, S , measures the strength of selection and is defined as the difference between the mean height of the selected parents and the mean height of the population. Biological mothers were taller than the median Caucasian female by 0.7 inches and selected donors were taller than the median Caucasian male by 2 inches, resulting in a selection differential of S = 1.35 inches (Table 2.3) (18). The response to selection is related to the selection differential by the realized heritability h^2 = R / S . Assisted reproduction created a rare natural experiment to study artificial selection for height in humans; the effect of selection as described by the realized heritability h^2 = 0 .91 was consistent with the heritability of adult height calculated using traditional methods (19)."]
+Should parents discover that a sperm donor was actually autistic or schizophrenic, allegations of fraud & "[wrongful birth](!Wikipedia)" lawsuits will immediately begin flying, regardless of whether those parents would explicitly acknowledge that most human traits are highly heritable and embryo selection was possible.
+The practical willingness of parents to make eugenic choices based on donor profiles suggests that advertised correctly, embryo selection could become standard.
+(For example, given the pervasive Puritanical bias in health towards preventing illness instead of increasing health, embryo selection for intelligence or height can be framed as reducing the risk of developmental delays or shortness; which it would.)
+Reportedly as of 2016, PGD for hair and eye color is already quietly being offered to parents and accepted, and mentions are made of the potential for selection on other traits.
+
+Time will tell whether this becomes anything more than a exotic novelty, but it looks as though when relatedness is not a cost, parents will tend to accept it. This suggests that Ridley's argument is incorrect when extended to embryo selection/editing; people simply want to both have and eat their cake, and as embryo selection/editing entail little or no loss of relatedness, they are not comparable to sperm/egg donation.
+
+Hence, I suggest the most appropriate target market is simply the total number of IVF users, and not the much smaller number of egg/sperm donation users.
+
+#### VoI for USA IVF population
+
 Using the high estimate of an average gain of \$3772, and noting that there were 67,996 IVF babies in 2013, that suggests an annual gain of up to \$256.5m.
 What is the net present value of an annual gain of \$256.5m?
 Discounted at 5%, it'd be \$5.256b. (Why a 5% discount rate? This is the highest discount rate I've seen used in health economics; more typical are discount rates like NICE's 3.5%, which would yield a much larger NPV.)
