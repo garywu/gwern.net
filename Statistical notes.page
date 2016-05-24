@@ -1754,7 +1754,7 @@ Directional predictions are weak, and in this case we have quantitative predicti
 Most of the public genomes I looked at seem to have the earliest birthdates in the 1950s or so; genomes can come from any age person (parents can give permission, and sequencing has been done prenatally) so the maximum effect is the difference between 1950 and 2015, which is `65*0.007=0.455` standard deviations (but most genomes will come from intermediate birth-dates, which are less informative about the temporal trend - in the optimal experimental design for measuring a linear trend, half the samples would be from 1950 and the other half from 2015).
 If the genetic total is going down by 0.455SDs, how much do the frequencies of all the good genes go down?
 
-One simple model of genotypic IQ would be to treat it as a large number of alleles of equal binary effect: a binomial sum of _n_=10,000 1/0 variables with _P_=50% (population frequency) is reasonable. (For example, GIANT has found a large number of variants for height, and the GCTAs indicate that SNPs explain much more of variance than the top Rietveld hits currently account for; this specific model is loosely inspired by [Hsu 2014](http://arxiv.org/abs/1408.3421 "On the genetic architecture of intelligence and other quantitative traits").)
+One simple model of genotypic IQ would be to treat it as a large number of alleles of equal binary effect: a binomial sum of _n_=10,000 1/0 variables with _P_=50% (population frequency) is reasonable. (For example, GIANT has found a large number of variants for height, and the [GCTA](!Wikipedia)s indicate that SNPs explain much more of variance than the top Rietveld hits currently account for; this specific model is loosely inspired by [Hsu 2014](http://arxiv.org/abs/1408.3421 "On the genetic architecture of intelligence and other quantitative traits").)
 In such a model, the average value of the sum is of course `n*p=5000`, and the SD is `sqrt(n*p*(1-p))` or `sqrt(10000*0.5*0.5)` or 50.
 Applying our estimate of dysgenic effect, we would expect the sum to fall by `0.455*50=22.75`, so we would be comparing two populations, one with a mean of 5000 and a dysgenic mean of 4977.25.
 If we were given access to all alleles from a sample of 1950 and 2015 genomes and so we could construct the sum, how hard would it be able to tell the difference? In this case, the sum is normally distributed as there are more than enough alleles to create normality, so we can just treat this as a two-sample normally-distributed comparison of means (a _t_-test), and we already have a directional effect size in mind, -0.445SDs, so:
@@ -2403,6 +2403,10 @@ So to deal with these 4 issues I'm going to process the PG collected works thusl
     But newlines *do* carry semantic information - think about dialogues - and does deleting them carry a cost? Perhaps we should map newlines to some rare character like tilde, or use the poetry convention of denoting newlines with forward-slashes?
 4. prefix each long line with the author it was sampled from
 
+## Unlabeled
+
+As a baseline, a char-RNN with 2x2500 neurons, trained with 50% dropout, batch-size 55, and BPPT length 200, on the PG dataset without any author prefixes or suffixes, converges to a validation loss of ~1.08 after ~20 epoches.
+
 ## Training with prefixes
 ### Small RNN
 
@@ -2685,6 +2689,7 @@ nice th train.lua -input_h5 multi.h5 -input_json multi.json -batch_size 100 -seq
 
 This trained to convergence with a loss of ~1.03 after ~30 epochs taking a week or two, yielding [`2016-03-27-metadata.t7` (583MB)](https://drive.google.com/file/d/0B6xS2SGLSIsPdUg3bUM5dnI0Rm8/view?usp=sharing).
 <!-- validation loss: 1.119272199544,1.1240213459188,1.118467244235,1.1159150166945,1.1181990124963,1.117791316726,1.1143375851891,1.1138972910968,1.1086841496554,1.0889976024628,1.0735094113783,1.0696055347269,1.0646072842858,1.0614117925817,1.0580803914504,1.0524543307044,1.0542294979095,1.044807639989,1.0468455336311,1.0468643145128,1.0407323187048,1.0337921435183,1.0314508080482,1.028219900348,1.0236011472615,1.025171008977,1.0248840288682,1.0258186080239,1.0233649719845,1.023466007276,1.0223913463679,1.0219883431088,1.0237462141297,1.0181878371672,1.0185444896871,1.0184262123975,1.0178138288585,1.0185765136372,1.0194464217533,1.0185776569627,1.0181889425624,1.0190601240505,1.0193209214644,1.0186571370472,1.0189090967178,1.0187760754065,1.0209617614746,1.0181171785701,1.021080260927,1.0196570645679,1.020613193512,1.0218441432173,1.0223985151811,1.024932411584,1.0227410197258,1.023914819414,1.0236338214441,1.0253068317067,1.0264449715614,1.0247148817236,1.0273207967932,1.0262663852085,1.0264941941608,1.0269883491776,1.028011712161 -->
+This is ~0.05 better than the unlabeled baseline.
 
 Did it succeed in learning to use the metadata and mimicking style?
 
@@ -2790,8 +2795,7 @@ So some lessons here are:
 
 Further work:
 
-2. see how low a loss unlabeled training can go, to get an idea of benefits of semi-supervision <!-- initially got to 1.28 before I killed it to work on suffixing. then to 1.18 before power cord broke -->
-3. try classification rather than generation <!-- fixed the corrupt HTML files; initialized from an unlabeled RNN with 1.18 -->
+3. try classification rather than generation <!-- fixed the corrupt HTML files; initialized from the original prefix metadata cv/2016-03-27-metadata.t7 -->
 4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
 
 <!-- Classification:
