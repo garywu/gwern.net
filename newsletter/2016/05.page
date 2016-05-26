@@ -11,34 +11,77 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 
 # Writings
 
+- wrote Wikipedia article on [Genome-wide complex trait analysis](https://en.wikipedia.org/wiki/Genome-wide_complex_trait_analysis) (GCTA)
+- [Candy Japan new packaging decision analysis](http://www.gwern.net/Candy%20Japan "Bayesian decision-theoretic analysis of effect of fancier packaging on subscription cancellations")
+
 # Media
 ## Links
 
 Everything is heritable:
 
+- ["Detection of human adaptation during the past 2,000 years"](http://biorxiv.org/content/early/2016/05/07/052084.full.pdf), Field et al 2016 ([commentary](https://plus.google.com/103530621949492999968/posts/3DmLLdDfR61))
+- ["Genome-wide association study identifies 74 [162] loci associated with educational attainment"](http://www.gwern.net/docs/iq/2016-okbay-2.pdf), Okbay et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/PPzawWP2Cta))
+- ["Genetic link between family socioeconomic status and children's educational achievement estimated from genome-wide SNPs"](http://www.nature.com/mp/journal/v21/n3/full/mp20152a.html), Krapohl & Plomin 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/ZKrtSaMjVmx))
+- ["Schizophrenia and subsequent neighborhood deprivation: revisiting the social drift hypothesis using population, twin and molecular genetic data"](http://www.nature.com/tp/journal/v6/n5/full/tp201662a.html), Sariaslan et al 2016 (good use of polygenic scores for confirmation)
+- ["LD Hub: a centralized database and web interface to perform LD score regression that maximizes the potential of summary level GWAS data for SNP heritability and genetic correlation analysis"](http://biorxiv.org/content/biorxiv/early/2016/05/03/051094.full.pdf), Zheng et al 2016 (Web interface to scores of GWAS results, allowing combined inference over them all: [LD Hub](http://ldsc.broadinstitute.org/about/). Gets around privacy & scaling problems by using, not GCTA, but [LD regression](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4495769/ "'LD Score regression distinguishes confounding from polygenicity in genome-wide association studies', Bulik-Sullivan et al 2015") which only needs summary statistics.)
+- ["The phenotypic legacy of admixture between modern humans and Neandertals"](http://www.gwern.net/docs/genetics/2016-simonti.pdf), Simonti et al 2016
+- ["Quantitative Genetics in the Postmodern Family of the Donor Sibling Registry"](https://www.donorsiblingregistry.com/sites/default/files/files/dissertation%281%29.pdf), Lee 2013 (maternal selection of sperm donors for height increases offspring height as much as predicted by heritability estimates+breeder's equation)
+- ["Gene Flow by Selective Emigration as a Possible Cause for Personality Differences Between Small Islands and Mainland Populations"](http://www.gwern.net/docs/genetics/2011-ciani.pdf), Ciani & Cialuppi 2011 ([excerpts](https://plus.google.com/103530621949492999968/posts/fbZrM41hdSf))
+- ["The MC1R Gene and Youthful Looks"](http://www.gwern.net/docs/genetics/2016-liu.pdf), Liu et al 2016
+
 Politics/religion:
+
+- ["At Tampa Bay farm-to-table restaurants, you're being fed fiction"](http://www.tampabay.com/projects/2016/food/farm-to-fable/restaurants/) (_Qui vult decipi decipiatur._)
 
 AI:
 
+- ["One-shot Learning with Memory-Augmented Neural Networks"](https://arxiv.org/pdf/1605.06065v1.pdf), Santoro et al 2016
+- ["Programming with a Differentiable Forth Interpreter"](https://arxiv.org/abs/1605.06640), Riedel et al 2016
+- ["FractalNet: Ultra-Deep Neural Networks without Residuals"](https://arxiv.org/abs/1605.07648), Larsson 2016
+- ["Artistic style transfer for videos"](http://arxiv.org/pdf/1604.08610v1.pdf), Ruder et al 2016 ([video demonstration](https://www.youtube.com/watch?v=vQk_Sfl7kSc); I particularly like the inkwash-style footage at the end)
+
 Statistics/meta-science:
+
+- ["What should we learn from past AI forecasts?"](http://www.openphilanthropy.org/focus/global-catastrophic-risks/potential-risks-advanced-artificial-intelligence/what-should-we-learn-past-ai-forecasts)
+- ["Jeffreys' Substitution Posterior for the Median: A Nice Trick to Non-parametrically Estimate the Median"](http://www.sumsar.net/blog/2014/05/jeffreys-substitution-posterior/)
 
 Psychology/biology:
 
+- ["Dogs Test Drug [rapamycin] Aimed at Humans' Biggest Killer: Age"](http://www.nytimes.com/2016/05/17/us/aging-research-disease-dogs.html)
+- ["Effect of Calorie Restriction on Mood, Quality of Life, Sleep, and Sexual Function in Healthy Nonobese Adults: The CALERIE 2 Randomized Clinical Trial"](https://archinte.jamanetwork.com/article.aspx?articleID=2517920), Martin et al 2016
+- ["Continuous evolution of _Bacillus thuringiensis_ toxins overcomes insect resistance"](http://www.gwern.net/docs/genetics/2016-badran.pdf), Badran et al 2016
+- ["Physical Activity, Sleep, and Nutrition Do Not Predict Cognitive Performance in Young and Middle-Aged Adults"](http://journal.frontiersin.org/article/10.3389/fpsyg.2016.00642/full), Gijselaers et al 2016
+- ["A Second Year of Spaced Repetition Software in the Classroom"](http://lesswrong.com/r/discussion/lw/nkz/a_second_year_of_spaced_repetition_software_in/)
+
 Technology:
 
+- ["Beaver: A Decentralized Anonymous Marketplace with Secure Reputation"](https://eprint.iacr.org/2016/464.pdf), Soska et al 2016 ([discussion](https://www.reddit.com/r/DarkNetMarkets/comments/4ju0b1/beaver_a_decentralized_anonymous_marketplace_with/))
+- ["How Harry Brearley's Stubborn Insistence Gave Us Knives That Don't Rust"](http://nautil.us/issue/36/aging/the-father-of-modern-metal) (see also [multiple discovery](https://en.wikipedia.org/wiki/Multiple_discovery))
+
 Economics:
+
+- ["Results of an international drug testing service for cryptomarket users"](http://www.gwern.net/docs/sr/2016-caudevilla-2.pdf), Caudevilla et al 2016 ([excerpts](https://www.reddit.com/r/DarkNetMarkets/comments/4iqc0u/energy_control_drug_purity_results/))
+- ["Railway Paradise: How a Fine-Dining Empire Made the Southwest Palatable to Outsiders"](http://www.collectorsweekly.com/articles/railway-paradise/) (statistical discrimination vs taste discrimination: profiting from sexism)
 
 Philosophy:
 
 Fiction:
 
+- ["Spring and Fall"](http://www.poetryfoundation.org/poems-and-poets/poems/detail/44400), by [Gerard Manley Hopkins](https://en.wikipedia.org/wiki/Gerard_Manley_Hopkins)
+
 <!-- Back to 30 Sep 2012 -->
 
 ## Books
 
+Nonfiction:
+
+_Titan_, Chernow (biography of John D. Rockefeller)
+
 Fiction:
 
-Nonfiction:
+- [_Significant Digits_](http://www.anarchyishyperbole.com/p/significant-digits.html) (MoR sequel)
+- _Poems of Gerard Manley Hopkins_, by Gerard Manley Hopkins
+- "CORDYCEPS: Too clever for their own good" https://archiveofourown.org/works/6178036/chapters/14154868
 
 ## Film/TV
 
@@ -46,10 +89,33 @@ Live-action:
 
 Anime:
 
-## Games
+_Short Peace_
+ _Death Parade_
 
 ## Music
 
 Touhou:
 
+- ["無間の鐘 ～ Infinite Nightmare"](https://www.youtube.com/watch?v=sUPoqaL-vs4) (xi-on feat.oz_hiro; _Mapleaves_ {C89}) [jazz]
+- ["Zen～然～ -hybrid remix-"](https://www.youtube.com/watch?v=XG36h8Ow04g) (NSY feat. 茶太; _LessExtra_ {C89}) [electronic]
+- ["Monolog -Remix-"](https://www.dropbox.com/s/ncmdj5w2d0px8k5/pastry-plusieursfleur-monologremix.ogg) (Pastry; 'Plusieurs Fleur' {K8}) [electronic/classical]
+- ["金木犀"](https://www.youtube.com/watch?v=XYyUlY1UW1s) (Ringing Volcano; _Shinmyômaru's Little Adventures_ {C89}) [folk]
+- ["露時雨"](https://www.youtube.com/watch?v=aU7O_EEqXmU) (Ringing Volcano; _Shinmyômaru's Little Adventures_ {C89}) [folk]
+- ["Like the geese"](https://www.dropbox.com/s/pi12ujp98o287rn/escarmew-secretsealingmoratorium-likethegeese.ogg) (Escarmew; _Secret Sealing Moratorium_ {K2012}) [Celtic]
+- ["This apple is bad"](https://youtu.be/_IWccNNvFv0?t=26m22s) (thj.quartet; _Jazz Funk Live!_ {C89}) [jazz]
+- ["Tea Funk"](https://youtu.be/_IWccNNvFv0?t=5m2s) (thj.quartet; _Jazz Funk Live!_ {C89}) [jazz]
+
+- ["俯瞰する蒼然暮色"](https://www.dropbox.com/s/3tqu27k52hqwqtm/%E3%81%A8%E3%82%89%E3%81%A3%E3%81%97%E3%82%85-phantasmasoundarchiveno53-%E4%BF%AF%E7%9E%B0%E3%81%99%E3%82%8B%E8%92%BC%E7%84%B6%E6%9A%AE%E8%89%B2.ogg) (とらっしゅ; _秘封サウンドスケープ集III Phantasma Sound Archive No.53_ {TK10}) [orchestral rock]
+- ["還流大洋の原点へ"](https://www.dropbox.com/s/4mk986gzdwixeyr/%E3%81%A8%E3%82%89%E3%81%A3%E3%81%97%E3%82%85-phantasmasoundarchiveno53-%E9%82%84%E6%B5%81%E5%A4%A7%E6%B4%8B%E3%81%AE%E5%8E%9F%E7%82%B9%E3%81%B8.ogg) (とらっしゅ; _秘封サウンドスケープ集III Phantasma Sound Archive No.53_ {TK10}) [orchestral rock]
+- ["飛来する蓬莱物質"](https://www.dropbox.com/s/uxjqkxxcnzfc5hw/%E3%81%A8%E3%82%89%E3%81%A3%E3%81%97%E3%82%85-phantasmasoundarchiveno53-%E9%A3%9B%E6%9D%A5%E3%81%99%E3%82%8B%E8%93%AC%E8%8E%B1%E7%89%A9%E8%B3%AA.ogg) (とらっしゅ; _秘封サウンドスケープ集III Phantasma Sound Archive No.53_ {TK10}) [orchestral rock]
+- ["アンラクト・フィリング"](https://www.dropbox.com/s/pwltss6lzcj6o71/%E3%81%A8%E3%82%89%E3%81%A3%E3%81%97%E3%82%85-phantasmasoundarchiveno53-%E3%82%A2%E3%83%B3%E3%83%A9%E3%82%AF%E3%83%88%E3%83%BB%E3%83%95%E3%82%A3%E3%83%AA%E3%83%B3%E3%82%B0.ogg) (とらっしゅ; _秘封サウンドスケープ集III Phantasma Sound Archive No.53_ {TK10}) [orchestral rock]
+- ["Your World"](https://www.dropbox.com/s/anbjh2hjujbeus1/%E3%81%AF%E3%81%A1%E3%81%BF%E3%81%A4%E3%82%8C%E3%82%82%E3%82%93xaftergrow-touhousixstring02%E5%B0%81-%E3%82%AD%E3%83%9F%E3%83%8E%E3%82%BB%E3%82%AB%E3%82%A4yourworld.ogg) (はちみつれもんxAftergrow; _TOUHOU SIX STRING 02.封_ {C89}) [instrumental rock]
+- ["Month of Flowers"](https://www.youtube.com/watch?v=fzHb608BOT0) (あいざわ feat. ゆーな; _TOUHOU SIX STRING 02.封_ {C89}) [Jpop/ballad]
+
+Vocaloid:
+
+- ["Autumn Beat"](https://adidkh.bandcamp.com/track/autumn-beat) (Miku; adidkh; _PRE:Days EP_ {2016}) [electronic]
+
 Doujin:
+
+- ["Once Upon A Love"](https://www.youtube.com/watch?v=T4-UwJctlJ0) (P\*Light; _Colorful Palette_ {C89}) [hardcore]
