@@ -152,7 +152,7 @@ A naive answer might be something along the lines of a power analysis: in a two-
 This is unduly pessimistic, since we neither need nor desire 80% power, nor are we comparing to a null hypothesis, as our goal is more modest: since only a certain number of edits will be doable for any embryo, say 30, we merely want to accumulate enough evidence about the top 30 variants to either demote it to #31 (and so we no longer spend any edits on it) or confirm it belongs in the top 30 and we should always be editing it.
 This is immediately recognizable as [reinforcement learning](!Wikipedia): the [multi-armed bandit (MAB) problem](!Wikipedia "Multi-armed bandit") (each possible edit being an independent arm which can pulled or not); or more precisely, since early childhood (5yo) IQ scores are relatively poorly correlated with adult scores ([_r_=0.55](http://infoproc.blogspot.com/2011/08/predictive-power-of-early-childhood-iq.html)) and many embryos may be edited before data on the first edits starts coming in, a multi-armed bandit with multiple plays and delayed feedback. (There is no way immediately upon birth to receive meaningful feedback about the effect of an edit, although there might be ways to get feedback faster, such as using short-sleeper gene edits to enhance education.)
 [Thompson sampling](!Wikipedia) is a randomized Bayesian approach which is simple and theoretically optimal, with excellent performance in practice as well; an [extension to multiple plays](http://arxiv.org/abs/1506.00779 "'Optimal Regret Analysis of Thompson Sampling in Stochastic Multi-armed Bandit Problem with Multiple Plays', Komiyama et al 2015") is also optimal.
-Dealing with the delayed feedback is known to be difficult and multiple play Thompson sampling may not be optimal, but in simulations it [performs better with delayed feedback than other standard MABs](http://www.research.rutgers.edu/~lihong/pub/Chapelle12Empirical.pdf "'An Empirical Evaluation of Thompson Sampling', Chapelle & Li 2011").
+Dealing with the delayed feedback is known to be difficult and multiple-play Thompson sampling may not be optimal, but in simulations it [performs better with delayed feedback than other standard MABs](http://www.research.rutgers.edu/~lihong/pub/Chapelle12Empirical.pdf "'An Empirical Evaluation of Thompson Sampling', Chapelle & Li 2011").
 We can consider a simulation of the scenario in which every time-step is a day and 1 or more embryos must be edited that day; a noisy measure of IQ is then made available `9*31+5*365=2104` days later, which is fed into a GWAS [mixture model](!Wikipedia) in which the GWAS correlation for each SNP is considered as drawn with an unknown probability from a causal distribution and from a nuisance distribution, so with additional data, the effect estimates of the SNPs are refined, the probability of being drawn from the causal distribution is refined, and the overall mixture probability is likewise refined, similar to the ["Bayes B" paradigm from the "Bayesian alphabet" of genomic prediction methods in animal breeding](http://www.annualreviews.org/eprint/AEMMACidWrxGtS8eBFrT/full/10.1146/annurev-animal-022114-110733 "'One Hundred Years of Statistical Developments in Animal Breeding', Giancola & Rosa 2015").
 (So for the first 2104 time-steps, a Thompson sample would be performed to yield a new set of edits, then each subsequent time-step a datapoint would mature, the posteriors updated, and another set of edits created.) The relevant question is how much regret will fall and how many causal SNPs become the top picks after how many edits & days: hopefully high performance & low regret will be achieved within a few years after the initial 5-year delay.
 <!-- best-arm Thompson sampling: http://imagine.enpc.fr/publications/papers/COLT10.pdf https://www.escholar.manchester.ac.uk/api/datastream?publicationPid=uk-ac-man-scw:227658&datastreamId=FULL-TEXT.PDF http://nowak.ece.wisc.edu/bestArmSurvey.pdf http://arxiv.org/pdf/1407.4443v1.pdf https://papers.nips.cc/paper/4478-multi-bandit-best-arm-identification.pdf -->
@@ -617,7 +617,7 @@ SNP_mean_effect <- 0.2
 SNP_mean_frequency <- 0.5
 SNP_causal_probability <- 0.12
 r2 <- 0.05
-iqError <- 0.55
+iqError <- 0.55 ## 5yo IQ scores correlate r=0.55 with adult
 SNP_effects <- sample(c(SNP_mean_effect, 0), SNP_candidates, replace=TRUE,
                       prob=c(SNP_causal_probability, 1-SNP_causal_probability))
 which(SNP_effects>0)
@@ -628,15 +628,15 @@ measurementError <- function(r, IQ) {
     IQ.measured <- 100 + 15 * IQ.measured.std
     return(IQ.measured) }
 generateExperimentalSample <- function(n, r, SNP_effects, SNP_candidates, SNP_mean_frequency, SNP_draw_generator) {
-    dm <- matrix(nrow=n, ncol=SNP_candidates+1+1)
+    dm <- matrix(nrow=n, ncol=SNP_candidates+1+1) ## allocate space for all SNPs, true IQ, and measured IQ
     for (i in 1:n) {
-        SNP_draw <- SNP_draw_generator()
-        SNPs <- ifelse(SNP_draw, SNP_effects, 0)
-        SNPs_genetic <- SNPs>0
+        SNP_draw <- SNP_draw_generator() # which SNPs to toggle
+        SNPs <- ifelse(SNP_draw, SNP_effects, 0) ## convert to effects
         SNP_genetic_score <- sum(SNPs, na.rm=TRUE)
         ## generate a N(100,15) - minus however much our candidate genes explain
-        IQ <- rnorm(1, mean=100, sd= sqrt((15^2) * (1-r2))) + SNP_genetic_score
-        dm[i,] <- c(round(IQ), measurementError(r, IQ), SNPs_genetic)
+        IQ <- round(rnorm(1, mean=100, sd= sqrt((15^2) * (1-r2))) + SNP_genetic_score)
+        IQ_measured <- round(measurementError(r, IQ))
+        dm[i,] <- c(IQ, IQ_measured, SNP_draw)
         }
     df <- as.data.frame(dm)
     colnames(df) <- c("IQ", "IQ.measured", paste("SNP.", as.character(1:SNP_candidates), sep=""))
@@ -647,12 +647,15 @@ generateRandomSample <- function(n, r=1, SNP_effects, SNP_candidates, SNP_mean_f
                                function() { rbinom(SNP_candidates, 1, p=SNP_mean_frequency) })
 }
 
+d <- generateRandomSample(1000, iqError, SNP_effects, SNP_candidates, SNP_mean_frequency)
+summary(d)
+
 library(BGLR)
 library(ggplot2)
 maximumDays <- 10000
 batch <- 10
 lag <- 5*365
-jumpForward <- lag+2
+jumpForward <- lag*3
 ## initialize with a seed of n>=2; with less or an empty dataframe, BGLR will crash
 d <- generateRandomSample(jumpForward, iqError, SNP_effects, SNP_candidates, SNP_mean_frequency)
 d$Date <- 1:jumpForward
@@ -677,18 +680,30 @@ for (i in jumpForward:maximumDays) {
 
     ## Thompson sampling: for Thompson sampling, we sample 1 possible value of each parameter from that parameter's
     ## posterior distribution. Normally, we would sample from the posterior samples returned by JAGS, but BGLR returns
-    ## instead a mean+SD, so we sample from each parameter's normal distribution. Then we see if it was positive (and
-    ## hence worth editing). This boolean is then passed into the simulation and a fresh datapoint generated according to
+    ## instead a mean+SD, so we sample from each parameter's normal distribution defined by the mean/sd. Then we see if it
+    ## was positive (and hence worth editing); if it is positive, then we choose to edit it and toggle it to '1' (since
+    ## we set the problem up as 1=increasing). This boolean is then passed into the simulation and a fresh datapoint generated according to
     ## that intervention. In the next loop, this new datapoint will be incorporated into the posterior and so on.
+    ## For multiple-edit Thompson sampling where we can only edit _l_ out of _k_ possible SNPs, we sample 1 possible value
+    ## as before, then we sort and take the top _l_ out of _k_ actions;
+    ## then to decide whether to sample 1 or 0 in each arm, we do a second Thompson sample within each arm.
     ##
     ## To save computations while simulating, or to be more realistic, we might have batches: multiple datapoints in between
     ## updates. If batch=1, it is the conventional Thompson sample (and most data-efficient) but computationally demanding
     ## In the delayed-updates setting, 'batch' is how many get created each day
     for (j in 1:batch) {
      SNPs_Thompson_sampled <- function () {
-         samples <- rnorm(n=SNP_candidates, mean=means, sd=sds)
-         cutoff <- sort(samples, decreasing=TRUE)[SNP_edit_limit]
-         ifelse(samples>=cutoff, samples, NA) }
+         ## select the _l_ arms
+         samplesArms <- rnorm(n=SNP_candidates, mean=means, sd=sds)
+         cutoff <- sort(samplesArms, decreasing=TRUE)[SNP_edit_limit]
+         l <- which(samplesArms>=cutoff)
+
+         ## for each winner, do another Thompson sample, and record the losers as NA/not-played
+         choices <- rep(NA, SNP_candidates)
+         samplesActions <- rnorm(n=SNP_edit_limit, mean=means[l], sd=sds[l]) > 0
+         choices[l] <- samplesActions
+         return(choices)
+         }
      newD <- generateExperimentalSample(1, iqError, SNP_effects, SNP_candidates, SNP_mean_frequency, SNPs_Thompson_sampled)
      newD$Date <- i
      d <- rbind(d, newD)
@@ -708,3 +723,4 @@ for (i in jumpForward:maximumDays) {
 }
 qplot(regretLog$N, jitter(regretLog$Regret), xlab="Total N (not effective N)", ylab="Regret (expected lost IQ points compared to omniscience)", main=paste("Edits:", SNP_edit_limit, "; Candidates:", SNP_candidates)) + stat_smooth()
 qplot(SNP_effects, b$ETA[[1]]$b, color=b$ETA[[1]]$SD.b, main=paste("Edits:", SNP_edit_limit, "; Candidates:", SNP_candidates))
+image(as.matrix(d[-c(1, 2, length(colnames(d)))]), col=heat.colors(2))
