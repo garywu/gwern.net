@@ -150,6 +150,9 @@ I was able to find in total the following GCTA estimates:
 8. ["Genetic influence on family socioeconomic status and children's intelligence"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907681/), Trzaskowski et al 2014b
 
     Table 2: 0.32(0.14); appears to be a followup to Trzaskowski et al 2014a & report on same dataset
+9. ["Genomic architecture of human neuroanatomical diversity"](http://www.fondation-fondamental.org/upload/editeur/files/ToroMolPsy2014.pdf), Toro et al 2014 ([supplement](https://neuroanatomy.github.io/pdfs/2014Toro-Bourgeron;GenomicArchitecture;Supplement.pdf))
+
+    0.56(0.25)/0.52(0.25) (visual IQ vs performance IQ; mean: 0.54(0.25)); IMAGEN cohort, mean age 14.5
 9. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (_n_=53949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015
 
     ARIC (57.2yo): 0.29(0.05), HRS (70yo): 0.28(0.07); ages from [Supplementary Information 2](http://www.nature.com/mp/journal/v20/n2/extref/mp2014188x2.pdf).
@@ -157,7 +160,10 @@ I was able to find in total the following GCTA estimates:
     The article reports doing GCTAs only on the ARIC & HRS samples, but Figure 4 shows a forest plot which includes GCTA estimates from two other groups, CAGES ("Cognitive Ageing Genetics in England and Scotland Consortium") at ~0.5 & GS ("Generation Scotland") at ~0.25. The CAGES datapoint is cited to Davies et al 2011, which did report 0.51, and the GS citation is incorrect; so presumably those two datapoints were previously reported GCTA estimates which Davies et al 2015 was meta-analyzing together with their 2 new ARIC/HS estimates, and they simply didn't mention that.
 10. ["A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html), Spain et al 2015
 
-    0.174(0.017); but on the liability scale for extremely high intelligence, so of unclear relevance
+    0.174(0.017); but on the liability scale for extremely high intelligence, so of unclear relevance.
+10. ["Epigenetic age of the pre-frontal cortex is associated with neuritic plaques, amyloid load, and Alzheimer's disease related cognitive functioning"](http://www.impactaging.com/papers/v7/n12/full/100864.html), Levine et al 2015
+
+    As measures of cognitive function & aging, some sort of IQ test was done, with the GCTAs reported as 0/0, but no standard errors or other measures of precision were included and so it cannot be meta-analyzed. (Although with only _n_=700, orders of magnitude smaller than some other datapoints, the precision would be extremely poor and it is not much of a loss.)
 11. ["Genome-wide association study of cognitive functions and educational attainment in UK Biobank (_N_=112151)"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp201645a.html), Davies et al 2016
 
     _n_=30801, 0.31(0.018) for verbal-numerical reasoning (13-item multiple choice, test-retest 0.65) in UK Biobank, mean age 56.91 ([Supplementary Table S1](http://www.nature.com/mp/journal/vaop/ncurrent/extref/mp201645x11.doc))
@@ -179,6 +185,7 @@ Benyamin et al 2014, 0.40, 0.21, 14, TRUE
 Benyamin et al 2014, 0.46, 0.06, 9, FALSE
 Rietveld et al 2013, 0.224, 0.042, 57.47, FALSE
 Marioni et al 2014, 0.29, 0.05, 57, FALSE
+Toro et al 2014, 0.54, 0.25, 14.5, FALSE
 Kirkpatrick et al 2014, 0.35, 0.11, 14.63, FALSE
 Trzaskowski et al 2014, 0.26, 0.17, 7, TRUE
 Trzaskowski et al 2014, 0.45, 0.14, 12, TRUE
@@ -192,44 +199,67 @@ library(metafor)
 ## but this is more convenient and doesn't make a difference since the estimate is far from 0:
 rem <- rma(yi=HSNP, sei=SE, data=gcta); rem
 # ...estimate       se     zval     pval    ci.lb    ci.ub
-       0.3155   0.0234  13.5068   <.0001   0.2697   0.3613
-
+#      0.3176   0.0234  13.5450   <.0001   0.2717   0.3636
 remAge <- rma(yi=HSNP, sei=SE, mods = Age.mean, data=gcta); remAge
-# Mixed-Effects Model (k = 16; tau^2 estimator: REML)
+# Mixed-Effects Model (k = 17; tau^2 estimator: REML)
 #
-# tau^2 (estimated amount of residual heterogeneity):     0.0003 (SE = 0.0012)
-# tau (square root of estimated tau^2 value):             0.0167
-# I^2 (residual heterogeneity / unaccounted variability): 5.89%
-# H^2 (unaccounted variability / sampling variability):   1.06
-# R^2 (amount of heterogeneity accounted for):            86.94%
+# tau^2 (estimated amount of residual heterogeneity):     0.0002 (SE = 0.0011)
+# tau (square root of estimated tau^2 value):             0.0158
+# I^2 (residual heterogeneity / unaccounted variability): 5.03%
+# H^2 (unaccounted variability / sampling variability):   1.05
+# R^2 (amount of heterogeneity accounted for):            88.65%
 #
 # Test for Residual Heterogeneity:
-# QE(df = 14) = 19.4501, p-val = 0.1485
+# QE(df = 15) = 19.8581, p-val = 0.1774
 #
 # Test of Moderators (coefficient(s) 2):
-# QM(df = 1) = 4.4968, p-val = 0.0340
+# QM(df = 1) = 4.9606, p-val = 0.0259
 #
 # Model Results:
 #
 #          estimate      se     zval    pval    ci.lb    ci.ub
-# intrcpt    0.4043  0.0478   8.4521  <.0001   0.3106   0.4981
-# mods      -0.0019  0.0009  -2.1206  0.0340  -0.0037  -0.0001
+# intrcpt    0.4088  0.0473   8.6493  <.0001   0.3162   0.5014
+# mods      -0.0020  0.0009  -2.2272  0.0259  -0.0037  -0.0002
 remAgeT <- rma(yi=HSNP, sei=SE, mods = ~ Age.mean + Twin, data=gcta); remAgeT
-# ...      estimate      se     zval    pval    ci.lb    ci.ub
-# intrcpt      0.4619  0.0605   7.6364  <.0001   0.3433   0.5804
-# Age.mean    -0.0029  0.0011  -2.6261  0.0086  -0.0050  -0.0007
-# Twin TRUE   -0.1139  0.0769  -1.4810  0.1386  -0.2646   0.0368
-
+# intrcpt      0.4670  0.0594   7.8620  <.0001   0.3506   0.5835
+# Age.mean    -0.0029  0.0011  -2.7500  0.0060  -0.0050  -0.0008
+# Twin TRUE   -0.1181  0.0763  -1.5472  0.1218  -0.2677   0.0315
 gcta <- gcta[order(gcta$Age.mean),] # sort by age, young to old
 forest(rma(yi=HSNP, sei=SE, data=gcta), slab=gcta$Study)
 ## so estimated heritability at 30yo:
-0.4638 + 30*-0.0029
-# [1] 0.3768
+0.4088 + 30*-0.0020
+# [1] 0.3488
+## Take a look at the possible existence of a quadratic trend as suggested
+## by conventional IQ heritability results:
+remAgeTQ <- rma(yi=HSNP, sei=SE, mods = ~ I(Age.mean^2) + Twin, data=gcta); remAgeTQ
+# Mixed-Effects Model (k = 17; tau^2 estimator: REML)
+# tau^2 (estimated amount of residual heterogeneity):     0.0000 (SE = 0.0009)
+# tau (square root of estimated tau^2 value):             0.0009
+# I^2 (residual heterogeneity / unaccounted variability): 0.02%
+# H^2 (unaccounted variability / sampling variability):   1.00
+# R^2 (amount of heterogeneity accounted for):            99.97%
+# Test for Residual Heterogeneity:
+# QE(df = 14) = 18.2591, p-val = 0.1952
+# Test of Moderators (coefficient(s) 2,3):
+# QM(df = 2) = 6.8187, p-val = 0.0331
+#
+# Model Results:
+#                estimate      se     zval    pval    ci.lb    ci.ub
+# intrcpt          0.4271  0.0475   8.9874  <.0001   0.3340   0.5202
+# I(Age.mean^2)   -0.0000  0.0000  -2.6092  0.0091  -0.0001  -0.0000
+# Twin TRUE       -0.1070  0.0751  -1.4251  0.1541  -0.2541   0.0401
+## does fit better but enough?
 ~~~
 
-(Oddly, the estimates decrease with age rather than increase.
-I thought this might be driven by the samples using twins, which have been accused in the past of delivering higher heritability estimates due to higher SES of parents and correspondingly less environmental influence, but when added as a predictor, twin samples are non-statistically-significantly lower.
-My best guess so far is that the apparent trend is due to a lack of middle-aged samples: the studies jump all the way from 14yo to 57yo, so the usual quadratic curve of increasing heritability could be hidden and look flat, since the high estimates will all be missing from the middle.)
+The regression results, residuals, and funnel plots are generally sensible except for two issues:
+
+1. Davies et al 2011's second sample, with a GCTA estimate of 0.99(0.22), is 3 standard errors away from the overall estimate.
+
+    Nothing about the sample or procedures seem suspicious, so why is the estimate so high? The GCTA paper/manual do warn about the possibility of unstable estimation where parameter values escape to a boundary, and it is suspicious that this outlier is right at a boundary, so I suspect that that might be what happened in this procedure and if the Davies et al 2011 data were rerun, a more sensible value like 0.12 would be estimated.
+2. the estimates decrease with age rather than increase.
+
+    I thought this might be driven by the samples using twins, which have been accused in the past of delivering higher heritability estimates due to higher SES of parents and correspondingly less environmental influence, but when added as a predictor, twin samples are non-statistically-significantly lower. My best guess so far is that the apparent trend is due to a lack of middle-aged samples: the studies jump all the way from 14yo to 57yo, so the usual quadratic curve of increasing heritability could be hidden and look flat, since the high estimates will all be missing from the middle.
+    Testing this, I tried fitting a quadratic model instead, and as expected, it does fit somewhat better but without using Bayesian methods, hard to say how much better. This question awaits publication of further GCTA intelligence samples, with middle-aged subjects.
 
 ![Forest plot for meta-analysis of GCTA estimates of total additive SNPs' effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
 
