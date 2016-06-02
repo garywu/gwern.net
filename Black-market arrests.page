@@ -571,6 +571,7 @@ J. V.-Gomez Lemus    M                             seller    Evolution          
 A. B.-Vazquez        M         Poncho              seller    Evolution                         USA         Florida        marijuana, meth, hydrocodone                 2016-05-11 2016-05-24
 Tobias Wald          M         Natural Weed        seller    Silk Road 1                       Germany     Neuhof         marijuana                                               2015-10-01
                      M                             buyer     Silk Road 1                       Germany                    marijuana                             FALSE  2015-10-01 2015-10-01
+David Trail          M   26                        operator  Topix2                            Scotland    Edinburgh      diazepam, carding                     TRUE   2014-11-06 2016-06-02
 
 # Confirmed
 ## Agora
@@ -1264,6 +1265,14 @@ The [local police investigated](http://www.bellevuereporter.com/news/288854101.h
     > Current Investigation
     >
     > On July 30, 2014, Homeland Security Investigations (HSI) Seattle received information that a user associated with IP address 67.182.142.24 accessed the vendor portal of SR2. Records reveal the IP address was associated with a Comcast internet account registered to Steve Phelps at 4238 163rd Avenue SE - Bellevue, WA 98006. On August 8, 2014, the Washington Department of Licensing reported the following vehicle and driver information for that address:... On August 13, 2014, Homeland Security Investigations initiated surveillance activities on the above address, further observing the blue Volkswagen Beetle, and the white Chevrolet Camero...On October 10, 2014, Homeland Security investigations, assisted by a U.S. Postal Inspector, visited several U.S. Post Offices near 4238 163rd Avenue SE, Bellevue, WA 98006...Another employee at the same location recognized the photograph of Steve Phelps, further stating he may have dropped off a tub of letters for mailing and he drove a blue station wagon... [and so on through to pg9, then the rest seems to be search warrant boilerplate]
+
+## Topix2
+
+On 2 November 2015, 26yo Scottish man David Trail was arrested as part of Operation Onymous and pled guilty in mid-2016 ([1](/docs/sr/2016-06-02-heraldscotland-topixt.mht "Scots 'Sheldon Cooper' admits dealing drugs for bitcoin after FBI sting; http://www.heraldscotland.com/news/homenews/14519842.Scots__Sheldon_Cooper__admits_dealing_drugs_for_bitcoin_after_FBI_sting/"), [2](http://www.edinburghnews.scotsman.com/news/crime/fbi-helps-catch-edinburgh-man-selling-drugs-on-dark-web-1-4139454  "FBI helps catch Edinburgh man selling drugs on 'dark web'")). He may represent one of the missing UK arrests.
+According to the newspaper to coverage, "The initial investigation in to Trail began in August 2014 when the FBI handed over a range of IP addresses linked to a whole range of darkweb sites", and "His biggest slip-up was that, financially, he didn't know how to cover his tracks."
+Someone claiming to be Trail on Reddit [says](https://www.reddit.com/r/Scotland/comments/4lgh8d/scots_sheldon_cooper_admits_dealing_drugs_for/d3nvhz2):
+
+> The fbi cracked Tor and traced the German server back to me. There was encryption in place but they caught me with it all unlocked unfortunately. When you're not expecting a police raid by the FBI (was a very small scale website, 10s of users) you don't set up plausible deniability based encryption and automatic shutdown on your door being busted down.
 
 ## Unknown
 ### Australia
