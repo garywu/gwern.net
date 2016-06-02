@@ -1054,16 +1054,23 @@ This would be valuable, of course, but it is not a huge change.
 
 ### Multiple selection
 
-A weak polygenic score can be strengthened, but it can also be combined with other polygenic scores to do selection on multiple traits, taking the maximum among the embryos' weighted sums of polygenic scores.
-This can be done almost for free, since if one did sequencing on a comprehensive SNP array chip to compute 1 polygenic score, one probably has all the information needed. Indeed, you could see selection on a single trait as a multiple selection procedure where all traits' values are implausibly set to 0 except for 1 trait.
-In reality, while some traits are of much more value than others, there are few traits with no value at all; an embryo which scores mediocrely on our primary trait may still have many other advantages which more than compensate, so why not check? (It is a general principle that more information is better than less.)
+Intelligence is one of the most valuable traits to select on, and one of the easiest to analyze, but we shouldn't forget that it is neither necessary nor desirable to select *only* on intelligence.
+Selecting only on one trait means that most of the genotype information is being ignored; in the very long run (dozens of generations), selection only on one trait, particularly in a small breeding population, will have "unintended consequences" like greater disease rates, shorter lifespans, etc.
 
-A quick demonstration of the possible gain is to imagine summing several normal deviates.
-Working in batches of 10, we can generally get +1.53SD:
+This is why animal breeders do not select purely on a single valuable trait like egglaying rate but on an index of many traits, from maturity speed to disease resistance to lifespan; when breeding is done out of ignorance or with regard only to a few traits, one may wind up with problematic breeds like some purebred dog breeds which have serious health issues.
+
+In our case, a weak polygenic score can be strengthened, but it can also be combined with other polygenic scores to do selection on multiple traits, taking the maximum among the embryos' weighted sums of polygenic scores.
+This can be done almost for free, since if one did sequencing on a comprehensive SNP array chip to compute 1 polygenic score, one probably has all the information needed. Indeed, you could see selection on a single trait as a multiple selection procedure where all traits' values are (implausibly) set to 0 except for 1 trait.
+In reality, while some traits are of much more value than others, there are few traits with no value at all; an embryo which scores mediocrely on our primary trait may still have many other advantages which more than compensate, so why not check? (It is a general principle that more information is better than less.)
+Intelligence is valuable, but it's also valuable to live a long time, have less risk for schizophrenia, lower BMI, be happier, and so on.
+
+A quick demonstration of the possible gain is to imagine the total of 1 normal deviate ($\mathcal{N}(0,1)$) vs picking the most extreme out of several normal deviates.
+With 1 deviate, our average extreme is 0, and most of the time will be ±1SD.
+But if we can pick out of batches of 10, we can generally get +1.53SD:
 
 ~~~{.R}
 mean(replicate(100000, max(rnorm(10, mean = 0))))
-#[1] 1.537378753
+# [1] 1.537378753
 ~~~
 
 What if we have 4 different scores (with two downweighted substantially to reflect that they are less valuable)? We get 0.23SD for free:
@@ -1075,6 +1082,9 @@ mean(replicate(100000, max(   1*rnorm(10, mean = 0) +
                            0.33*rnorm(10, mean = 0))))
 # [1] 1.769910562
 ~~~
+
+This is just like selecting among multiple embryos: the more we have to pick from, the better the chance one will be particularly good.
+So in selecting embryos, we want to compute multiple polygenic scores for each embryo, weight them by the overall value of that trait, sum them to get a total score for each embryo, then select the best embryo for implantation.
 
 The advantage of multiple polygenic scores follows from the [sum of normally-distributed independent random variables](!Wikipedia "Sum of normally distributed random variables") for 2 variables _X_ & _Y_ is $\sim N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2)$; that is, the variances are added, so the standard deviation will increase, so our expected maximum sample will increase.
 Recalling $E[Z] \leq \sigma \cdot \sqrt{2 \cdot log(n)}$, increasing $\sigma$ beyond 1 will initially yield larger returns than increasing _n_ past 9 (it looks linear rather than square-root, but embryo selection is zero-sum - the gain is shrunk by the weighting of the multiple variables), and so multiple selection should not be neglected.
@@ -1116,9 +1126,9 @@ A more realistic example would be to use some of the existing polygenic scores f
     Polygenic scores: [2.7%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4382211/ "'Genetic studies of body mass index yield new insights for obesity biology', Locke et al 2015")/[7.1%](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015205a.html "'Assessing the genetic overlap between BMI and cognitive function', Marioni et al 2016")/[15.3%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3973018/ "'Genome-wide meta-analysis identifies 11 new loci for anthropometric traits and provides insights into genetic architecture', Berndt et al 2013"), population SD [(for men) is 4.67](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3651246/ "'Population Trends and Variation in Body Mass Index from 1971 to 2008 in the Framingham Heart Study Offspring Cohort', Block et al 2013"). Cost is a little trickier (low BMI can be as bad as high BMI, lots of costs are not paid by individuals, etc) but one could say there's ["an average marginal cost of \$175 per year per adult for a 1 unit change in BMI for each adult in the U.S. population."](http://vinecon.ucdavis.edu/publications/cwe1201.pdf "'The Marginal External Cost of Obesity in the United States', Parks et al 2012") Then we'd get a weight of 7% (`((175/log(1.05))*4.67) / iqHigh ~> 0.069`).
 4. [type 2 diabetes](!Wikipedia)
 
-    [Morris et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3442244/ "Large-scale association analysis provides insights into the genetic architecture and pathophysiology of type 2 diabetes")'s [supplementary information](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3442244/bin/NIHMS393294-supplement-2.pdf) reports a polygenic score predicting 5.73% on liability scale.
+    [Morris et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3442244/ "Large-scale association analysis provides insights into the genetic architecture and pathophysiology of type 2 diabetes")'s [supplementary information](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3442244/bin/NIHMS393294-supplement-2.pdf) reports a polygenic score predicting 5.73% on the liability scale.
 
-    Diabetes is not a continuous trait like IQ/height/BMI, but generally treated as a binary disease: you either have good blood sugar control and will not go blind and suffer all the other morbidity caused by diabetes, or you don't. The underlying genetics is still highly polygenic and mostly additive, though, and in some sense one's risk is normally distributed. The liability scale threshold model is the usual model for dealing with binary variables like this: one's risk is a normal variable (which is the sum of many individual genes), and when one is unlucky enough for this risk to be enough standard deviations out past a threshold, one has the disease. The enough standard deviations is set empirically; if 1% of the population will develop schizophrenia, then one has to be +2.33SD out to develop schizophrenia, and assuming a mean risk of 0, one can then calculate the effects of an increase or decrease. For example, if some change results in decreasing one's risk score 1SD such that it would takes another 3.33SD to develop schizophrenia, then one's probability of developing schizophrenia has decreased from 1% to 0.04%, a fall of 23x (`pnorm(qnorm(0.01)) / pnorm(qnorm(0.01)-1) ~> 22.73`) and so whatever one estimated the expected loss of schizophrenia at, it has decreased 23x and the change of 1SD can be valued at that.
+    Diabetes is not a continuous trait like IQ/height/BMI, but generally treated as a binary disease: you either have good blood sugar control and will not go blind and suffer all the other morbidity caused by diabetes, or you don't. The underlying genetics is still highly polygenic and mostly additive, though, and in some sense one's risk is normally distributed. The "liability scale threshold model" is the usual genetics model for dealing with binary variables like this: one's latent risk is considered a normal variable (which is the sum of many individual genes), and when one is unlucky enough for this risk to be enough standard deviations out past a threshold, one has the disease. The 'enough standard deviations' is set empirically; if 1% of the population will develop schizophrenia, then one has to be +2.33SD out to develop schizophrenia, and assuming a mean risk of 0, one can then calculate the effects of an increase or decrease. For example, if some change results in decreasing one's risk score 1SD such that it would takes another 3.33SD to develop schizophrenia, then one's probability of developing schizophrenia has decreased from 1% to 0.04%, a fall of 23x (`pnorm(qnorm(0.01)) / pnorm(qnorm(0.01)-1) ~> 22.73`) and so whatever one estimated the expected loss of schizophrenia at, it has decreased 23x and the change of 1SD can be valued at that. And vice versa for an increase: an increase of 1 SD in latent risk will increase the probability of developing schizophrenia several-fold and the expected loss must be increased accordingly.
 
     Similarly for diabetes. We can estimate the NPV of not developing diabetes at as much as [\$124,600 (NPV)](http://care.diabetesjournals.org/content/37/9/2557.full); the lifetime risk of diabetes in the USA is [approaching ~40%](http://jama.jamanetwork.com/article.aspx?articleid=197439 "'Lifetime Risk for Diabetes Mellitus in the United States', Narayan et al 2003") and has probably exceeded it by now (implying, incidentally, that diabetes is one of the most costly diseases in the world), so the expected loss is \$49840 and developing diabetes has a threshold of 0.39SD; a decrease of 1SD gives one a third less chance of developing diabetes (`pnorm(qnorm(0.40)-1) / pnorm(qnorm(0.40)) ~> 0.26`) for a savings of \$11k (`(124600 * 0.4) - (124600 * 0.4 * 0.26) ~> 36881`); finally, \$36.8k/SD, compared with IQ, gets a weight of 15%.
 5. [ADHD](!Wikipedia)
@@ -1157,7 +1167,7 @@ summary(simulateIVFCBs(9, 4.6, combineScores(polygenicScores, weights), 0.3, 0.9
 ~~~
 
 Note that this gain would be larger under lower values of IQ, as then more emphasis will be put on the other traits.
-Values may also be substantially underestimated for the mental health traits because they pervasively overlap genetically (indeed, in 1 case for ADHD, the schizophrenia/bipolar polygenic scores were better predictors of ADHD status than the ADHD polygenic score was!); counterbalancing this underestimation is that the long-noted correlation between schizophrenia & creativity is turning out to also be genetic, so the gain from reduced schizophrenia/bipolar/ADHD is a tradeoff coming at some cost to creativity.
+Values may also be substantially underestimated because there are many more traits with polygenic scores than just the 7 used here, and for the mental health traits because they pervasively overlap genetically (indeed, in 1 case for ADHD, the schizophrenia/bipolar polygenic scores were better predictors of ADHD status than the ADHD polygenic score was!); counterbalancing this underestimation is that the long-noted correlation between schizophrenia & creativity is turning out to also be genetic, so the gain from reduced schizophrenia/bipolar/ADHD is a tradeoff coming at some cost to creativity.
 
 # Iterated embryo selection
 
