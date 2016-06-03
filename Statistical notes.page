@@ -3090,6 +3090,10 @@ Nothing fatal pops up but I see no replications over longer time periods which c
 So overall, I'd say that if I became prediabetic, I would give serious thought to using curcumin but it doesn't yet look compelling for healthy people.
 -->
 
+# Candy Japan A/B test
+
+Due to length, has been split out to [Candy Japan's new box A/B test](/Candy Japan).
+
 # DeFries-Fulker power analysis
 
 DeFries–Fulker (DF) extremes analysis
@@ -3152,18 +3156,35 @@ g2.2 <- flexmix(I(V1-V2) ~ 1, k=2, data=df2)
 summary(g2.1); summary(g2.2)
 ~~~
 
-# Candy Japan A/B test
-
-Due to length, has been split out to [Candy Japan's new box A/B test](/Candy Japan).
-
 # Inferring mean IQs from SMPY/TIP elite samples
 
+> Samples taken from the extremes of mixtures of distributions can have very different properties than random samples, such as wildly disproportionate representation of one distribution. This can be used to infer differing means. I demonstrate working backwards from the racial composition of TIP/SMPY samples of extremely (1-in-10,000) gifted youth to estimate the overall racial means, which is consistent with the known racial means and hence an unbiased selection process, using ABC to infer Bayesian credible intervals on the estimated means.
+
+The general properties of statistical distributions can be very different from the properties of specific subsets in counterintuitive ways.
+One common example is that a small difference in means for many distributions can lead to large differences in [extreme](!Wikipedia "Extreme value theory") subsets.
+
+For example, male and female average heights differ by a relatively small amount, inches at most. So in a random sample, plenty of women will be taller than men, and vice versa.
+However, if instead ask the sex of the tallest person in the sample, it will often be male, and the larger the sample, the more certain we can be that it will be male, and that the top X% by height will be male.
+Likewise, if we wanted to start a basketball league and recruited the tallest 100 people in the country, this small mean difference will show up as our entire basketball league turning out to be male.
+(And since height is highly heritable, we may find out that [many of them are related](http://www.wsj.com/articles/nba-basketball-runs-in-the-family-1464130236 "Why Basketball Runs in the Family: A new WSJ study finds 48.8% of players are related to an elite athlete—that number is 17.5% for the NFL and 14.5% for MLB")!)
+What seemed like a small difference become a large one; we could have worked it out in advance if we had thought about it.
+
+Reasoning from the general to the particular turned out to be tricky in this case because we were dealing with extreme values rather than random samples - 1 basketball player *chosen by height* from thousands of people.
+Many things of great interest turn out to be like that: we are interested in the extremes much more than the expectation.
+Running a 2-hour marathon is an extreme on athleticism; winning the Nobel is an extreme on scientific accomplishment; being enlisted in the NBA is an extreme on height; being admitted to MIT/Stanford/Harvard is an extreme on intelligence; murdering someone is an extreme on violence; winning an Academy Award is an extreme on acting success.
+When we ask questions like, "why does the world record in this sport keep being shattered" or "why are so many NBA players related" or "how good can we expect the best chess player to be in 10 years" or "does this racial composition prove bias" or "how much more important are the best authors in literature than obscurer figures" or "why do so few women win the Field Medal", we're asking extreme value questions whose answers may be counterintuitive - and the answer may be as simple as the shape of distributions, and a slightly lower mean here or a slightly higher standard deviation there.
+
+The study ["When Lightning Strikes Twice: Profoundly Gifted, Profoundly Accomplished", Makel et al 2016](/docs/iq/2016-makel.pdf) describes the accomplishments of the [Duke TIP](!Wikipedia "Talent Identification Program") sample, 259 children selected for their intelligence by taking the highest-scorers out of 425,000 adolescents taking the SAT (usually <13yo) starting in 1981, representing the top 0.01% of the test-takers.
+The TIP sample parallels the better-known SMPY sample, which also selected extremely intelligent adolescents, who were included in a longitudinal sample.
+It's frequently suggested, based on anecdotal evidence or some biased convenience samples, that more intelligence may not be better; extremely intelligent people may be unhealthy, neurotic, insane, isolated, lonely, discriminated against by society and their peers, and doomed to failure; or if things are not quite that dire, as all studies show things improving up to 130, then at around that point greater intelligence may stop making any difference, and there be little difference between someone with an IQ of 130 and 160.
+This is difficult to study cross-sectionally, because once you start talking about as extreme as 0.01%, it is difficult to recruit any subjects at all, and your sample will be biased in unknown ways; if you only look at successful people, you are missing the hypothetical homeless bum living out of a trash can who is a troubled and misunderstood genius.
+To solve these problems, you want to filter through hundreds of thousands of people so you can select the very brightest possible, and you want to find them as early as possible in life, before they have had any chance to fail or succeed, and track them longitudinally as they grow up.
+This is what the SMPY & TIP studies do, and the results are that the subjects are spectacularly successful in life; great intelligence is not harmful and the returns to greater intelligence are not zero even as high as 1 in 10,000.
+
+Makel et al 2016 also reports the ethnic breakdown of the TIP and SMPY samples: 72% white, 22% Asian, 6% not reported or other.
+This distribution might seem remarkable given that subjects taking the SAT in 1981 were born ~1970, when the USA was ~77% white, ~11% black, and ~0.07% Asian, so white are slightly under-represented, blacks are very under-represented (even if we assume all 6% are black, then that's still half), and Asians are 31x (!) overrepresented.
+
 ~~~{.R}
-## "Bonus points if you these use White% and Asian% to back-estimate their population mean scores (assuming equal SDs)."
-
-## To back-estimate from the RR in a selected group, we need to know the RR correcting for population sizes
-## and how selected the group is, and then we can work backwards from the normal distribution's quantile/density functions.
-
 ## TIP/SMPY sample size & ethnic percentages: https://pbs.twimg.com/media/Cj9DXwxWEAEaQYk.jpg
 tip <- 259; smpy <- 320 ## total: 579
 white <- ((0.65*tip) + (0.78*smpy)) / (tip+smpy)
@@ -3173,38 +3194,73 @@ white; asian
 # [1] 0.2178929188
 
 # http://drjamesthompson.blogspot.com/2016/06/some-characteristics-of-eminent-persons.html
-# > The data on ethnicity are rather sparse, but we can do a little bit of work on them by looking at US Census figures for the 1970s when most of these children were born: White 178,119,221...Asian    1,526,401...So, in the absence of more detailed particulars about the Other category, Asians win the race by a country mile. If we simplify things by considering only Whites, Blacks and Asians the US in 1970 then the country at that time was 88% White, 11% Black, and less than 1% Asian. The actual results of eminent students are 77% White, 0% Black, 22% Asian. No need for a Chi square.
+# > The data on ethnicity are rather sparse, but we can do a little bit of work on them by looking at US Census
+# > figures for the 1970s when most of these children were born: White 178,119,221...Asia 1,526,401...So, in the
+# > absence of more detailed particulars about the Other category, Asians win the race by a country mile. If we
+# > simplify things by considering only Whites, Blacks and Asians the US in 1970 then the country at that time was
+# > 88% White, 11% Black, and less than 1% Asian. The actual results of eminent students are 77% White, 0% Black,
+# > 22% Asian. No need for a Chi square.
+#
 # Asian is 0.7%: R> 1526401  / (178119221 / 0.80)
-whiteRR <- white / 0.77; asianRR <- asian / 0.007;
+whiteRR <- white / 0.77; asianRR <- asian / 0.007
 whiteRR; asianRR
 # [1] 0.937464953
 # [1] 31.12755983
+~~~
 
-## SMPY/TIP are 1-in-10000, which is 3.71SDs out:
+Of course, races in the USA have long differed by mean intelligence, with the rule of thumb being Asians ~105 IQ, whites ~100, and blacks ~90.
+So the order is expected - but still, 31x!
+Are the results being driven by some sort of pro-Asian bias or otherwise bizarre?
+
+But this is an extreme sample. 1-in-10,000 is far out on the tails: 3.71SDs.
+
+~~~{.R}
 -qnorm(1/10000)
 # [1] 3.719016485
+~~~
 
-## What mean boost will create overrepresentations of 1.16x and 3.63x?
-## Average white IQ *should* be ~100, and average Asian-American ~105-110, going from national level inventories.
+Maybe this is normal. Can we work backwards from the overrepresentations to what differences would have generated them?
 
+Yes, we can, even with this small sample which is so extreme and unrepresentative of the general population.
+Since IQ is a normal distribution, we know the overrepresentation RR, and the exact cutoff/limit used in the sample, we can convert the limit to _a_ standard deviations, and then find the normal distribution $\mathcal{N}(100+x,15)$ which is RR (31) times the normal distribution $\mathcal{N}(100,15)$ at _a_ standard deviations.
+
+We can compare using two `pnorm`s and shifting the second by _a_ SDs. So for example, shifting by 15 IQ points or 1 SD would lead to 84x overrepresentation
+
+~~~{.R}
+pnorm(qnorm(1/10000)) / pnorm(qnorm(1/10000) - (15/15))
+# [1] 84.39259519
+~~~
+
+We would like to solve for the shift which leads to an exact overrepresentation like 31.127; an optimization routine like R's `optim` function can do that, but it requires an error to minimize, so minimizing `pnorm()/pnorm(x)` doesn't work since it just leads to negative infinity, nor will `RR == pnorm()/pnorm(x)` work, because it evaluates to 0 for all values of _x_ except the exact right one . Instead, we minimize the squared error between the ratio predicted by a particular _x_ and our observed RR.
+This works:
+
+~~~{.R}
 ## An optimization routine which automatically finds for us the IQ increase which most closely matches the RR:
-solver <- function(RR) {
+solver <- function(RR, cutoff=10000) {
     optim(1,
-        function(IQ_gain) { (RR - (pnorm(qnorm(1/10000)) / pnorm(qnorm(1/10000)-(IQ_gain/15))))^2 },
+        function(IQ_gain) { (RR - (pnorm(qnorm(1/cutoff)) / pnorm(qnorm(1/cutoff)-(IQ_gain/15))))^2 },
         )$par }
 
 100 + solver(whiteRR)
 # [1] 99.75488281
 100 + solver(asianRR)
 # [1] 111.8929688
+~~~
 
-## So inferred white & Asian populations mean: 99.8 and 111.9. These are relatively close to the expected values.
+So our inferred white & Asian populations means are: 99.8 and 111.9. These are relatively close to the expected values.
 
-## What sort of confidence do we have in these estimates given that these RRs are based only on? We can simulate TIP/SMPY-like selection by
-## taking the hypothetical means of the two groups, generating ~3 million simulates (579 * 10000) each, selecting the top 1/10000th, taking the RRs
-## and then solving for the mean IQ. If we provide a prior on the means and we hold onto only the means which successfully generate 1.16x and 3.63x,
-## this becomes ABC (Approximate Bayesian Computation) with the saved means forming the posterior distribution of means.
+But 112 strikes me as seeming on the high side. This could be due to underestimating the Asian population at the time - perhaps the Southeast/Midwest states that TIP samples from were more than 0.07% Asian - or it could be due to sampling error (only _n_=579, after all).
 
+Working backwards doesn't immediately provide any measurement of precision or confidence intervals. Presumably someone has worked out analytic formulas which come with standard errors and confidence intervals, but I don't know it.
+Instead, since the selection process which generated our data is straightforward (population mean -> millions of samples -> take top 1-in-10000s -> calculate overrepresentation), I can again use [Approximate Bayesian computation](!Wikipedia) (ABC) to turn a simulation of the data generating process into a method of Bayesian inference on the unknown parameters (population means) and get credible intervals.
+
+What sort of confidence do we have in these estimates given that these RRs are based only on?
+We can simulate TIP/SMPY-like selection by taking the hypothetical means of the two groups, generating ~3 million simulates (`579 * 10000`) each, selecting the top 1/10000th, taking the RRs and then solving for the mean IQ.
+If we provide a prior on the means and we hold onto only the means which successfully generate TIP/SMPY-like fractions of 72% & 21%, this becomes ABC with the saved means forming the posterior distribution of means.
+For my priors, I believe that the rule of thumbs of 100/105 are accurate and highly unlikely to be more than a few points off, so I use a very weak prior of populations means being $\mathcal{N}(100/105, 4)$.
+In exact ABC, we would keep only data which exactly matched 72%/22%, but that would require rejecting an extremely large number of samples. Here we'll loosen it to ±2% tolerance:
+
+~~~{.R}
 posteriorMeans <- replicate(10000, {
     ## informative priors: IQs are somewhere close to where we would estimate based on other datasets
     whiteMean <- round(rnorm(1, mean=100, sd=4), digits=2)
@@ -3213,18 +3269,30 @@ posteriorMeans <- replicate(10000, {
     iqCutoff <- 100 + -qnorm(1/10000) * 15
     whiteSample <- length(Filter(function(IQ) { IQ >= iqCutoff}, rnorm(0.77 * 579 * 10000, mean=whiteMean, sd=15)))
     asianSample <- length(Filter(function(IQ) { IQ >= iqCutoff}, rnorm(0.007 * 579 * 10000, mean=asianMean, sd=15)))
-    totalSample <- (whiteSample+asianSample) * (1 + (1-(white+asian))) ## white+Asian = 92% of original total sample, so inflate by that much: 1.08
+    ## white+Asian = 92% of original total sample, so inflate by that much to preserve proportions: 1.08
+    totalSample <- (whiteSample+asianSample) * (1 + (1-(white+asian)))
 
     whiteFraction <- round(whiteSample / totalSample, digits=2)
     asianFraction <- round(asianSample / totalSample, digits=2)
 
     print(paste0("White: ", whiteMean, "; ", whiteSample, "; ", whiteFraction, "; Asian: ", asianMean, "; ", asianSample, "; ", asianFraction))
 
-    ## In exact ABC, we would use 'whiteFraction == 0.72 && asianFraction == 0.22' as our criterion.
-    ## Here we'll loosen it to +-2% tolerance, to speed up how long it takes to get a decent number of samples:
     if ((whiteFraction <= 0.74 && whiteFraction >= 0.70) && (asianFraction <= 0.22 && asianFraction >= 0.20)) {
       return(list(White=whiteMean, Asian=asianMean))
     } else { return(list(White=NA, Asian=NA)) }
     })
-posteriorMeans
+quantile(probs=c(0.025, 0.975), unlist(posteriorMeans[1,]), na.rm=TRUE)
+#   2.5%  97.5%
+# 90.871 99.892
+quantile(probs=c(0.025, 0.975), unlist(posteriorMeans[2,]), na.rm=TRUE)
+#    2.5%   97.5%
+# 103.051 114.900
+par(mfrow=c(2,1))
+hist(unlist(posteriorMeans[1,]), main="Posterior white mean IQ estimated from TIP/SMPY cutoff & ratio", xlab="IQ")
+hist(unlist(posteriorMeans[2,]), main="Posterior Asian mean", xlab="IQ")
 ~~~
+
+![Histograms of the posterior estimate of white & Asian mean IQs ~1970 as estimated from fraction of TIP/SMPY sample using ABC](/images/iq-smpytip.png)
+
+So sampling error turns out to be substantial: our credible intervals are white 90.9-99.9, Asian 103-114.9.
+We are able to conclude that the rank ordering is highly likely to be correct, and the results are consistent with the conventional wisdom, so there is no prima facie case for bias in the results: the ethnic composition is in line with what one would calculate from the design of TIP/SMPY and population means.
