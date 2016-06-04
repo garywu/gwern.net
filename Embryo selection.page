@@ -354,6 +354,9 @@ Past polygenic scores for intelligence:
 6. ["Genome-wide association study of cognitive functions and educational attainment in UK Biobank (_N_=112151)"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp201645a.html), Davies et al 2016:
 
     The Biobank polygenic score constructed for "verbal-numerical reasoning" predicted 0.98%/1.32% of _g_/_gf_ scores in Generation Scotland, and 2.79% in Lothian Birth Cohort 1936 ([Figure 2](http://www.nature.com/mp/journal/vaop/ncurrent/fig_tab/mp201645f2.html#figure-title)).
+6. ["GWAS for executive function and processing speed suggests involvement of the CADM2 gene"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4722802/), Ibrahim-Verbaas et al 2016
+
+    Does not report a polygenic score.
 5. Upcoming in 2016 is another SSGAC paper with ~8x hits using _n_=305,000 but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score. (The polygenic score will be much better than the Rietveld et al 2013 polygenic score, and I intend to rerun the numbers when it comes out and becomes the new public state of the art.) In a [March 2016 roundtable](https://www.youtube.com/watch?v=v5ANweXCptM "Steven Pinker, Stephen Hsu and Dalton Conley: Can Genius Be Genetically Engineered?"), a mention was made of an upcoming polygenic score explaining "about 8-10% of IQ".
 
 Since these scores overlap and are not, like GCTA estimates, repeated measurements of a variable in any sense, there is little point in meta-analyzing them other than to estimate growth over time (even using them as an ensemble wouldn't be worth the complexity, and in any case, most studies do not provide the full list of beta values making up the polygenic score); for our purpose, the largest polygenic score is the important number.
@@ -1115,7 +1118,11 @@ summary(simulateIVFCBs(9, 4.6, combineScores(polygenicScores, weights), 0.3, 0.9
 ~~~
 
 So we double our gains by considering 3 traits instead of 1.
-A more realistic example would be to use some of the existing polygenic scores for complex traits, of which [a number are available](http://biorxiv.org/content/biorxiv/early/2016/01/14/035907.full.pdf "'Contrasting the genetic architecture of 30 complex traits from summary association data', Shi et al 2016"):
+
+A more realistic example would be to use some of the existing polygenic scores for complex traits, of which [a number are available](http://biorxiv.org/content/biorxiv/early/2016/01/14/035907.full.pdf "'Contrasting the genetic architecture of 30 complex traits from summary association data', Shi et al 2016").
+Generally speaking, to maximize the gains, we want to focus on continuous traits such as IQ, or diseases with high prevalence; the more horrifying genetic diseases are rare precisely because they are horrifying, so focusing on them will only occasionally pay off.
+(Much like how the [global burden of disease](!Wikipedia) shows that the largest losses of [DALY](!Wikipedia)s are due to such ordinary causes as [respiratory infections, heart disease, diabetes, car accidents, back+neck injuries, smoking etc](http://vizhub.healthdata.org/gbd-compare/) and not as much as one might think to HIV or malaria.)
+Here are 7 I looked up and was able to convert to relatively reasonable gains/losses:
 
 1. IQ
 2. height
@@ -1168,6 +1175,8 @@ summary(simulateIVFCBs(9, 4.6, combineScores(polygenicScores, weights), 0.3, 0.9
 
 Note that this gain would be larger under lower values of IQ, as then more emphasis will be put on the other traits.
 Values may also be substantially underestimated because there are many more traits with polygenic scores than just the 7 used here, and for the mental health traits because they pervasively overlap genetically (indeed, in 1 case for ADHD, the schizophrenia/bipolar polygenic scores were better predictors of ADHD status than the ADHD polygenic score was!); counterbalancing this underestimation is that the long-noted correlation between schizophrenia & creativity is turning out to also be genetic, so the gain from reduced schizophrenia/bipolar/ADHD is a tradeoff coming at some cost to creativity.
+
+In any case, in theory and in practice, selection on multiple traits will be much more effective than selecting on one trait.
 
 # Iterated embryo selection
 
