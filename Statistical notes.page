@@ -2801,7 +2801,8 @@ reached a minimum validation loss of 1.061821818 after 38,000 of 51,000 minibatc
 $ c /home/gwern/src/torch-rnn/ && th sample.lua -gpu -1 -checkpoint `ls -t cv/*.t7|head -1` -length 44 -temperature 0.1 -start_text "Thou shalt not tempt the Lord thy God|B"
 Thou shalt not tempt the Lord thy God|Becaus
 second try, restarting with the previous network; increase BPTT as much as possible at the expense of minibatch size, reduce dropout, add in batchnorm:
-$ nice th train.lua  -input_h5 classification.h5 -input_json classification.json -batch_size 6 -dropout 0.1 -batchnorm 1 -seq_length 1900 -rnn_size 2500 -num_layers 2 -checkpoint_name cv/classification2 -init_from cv/classification_51000.t7 -->
+$ nice th train.lua  -input_h5 classification.h5 -input_json classification.json -batch_size 6 -dropout 0.1 -batchnorm 1 -seq_length 1900 -rnn_size 2500 -num_layers 2 -checkpoint_name cv/classification2 -init_from cv/classification_51000.t7
+after 3 days, still no particular improvement in validation loss, and the training was extremely slow due to the BPTT; reduced to 500, increased minibatch to 23, removed dropout entirely -->
 4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
 
 <!-- Classification:
@@ -3248,8 +3249,50 @@ solver <- function(RR, cutoff=10000) {
 ~~~
 
 So our inferred white & Asian populations means are: 99.8 and 111.9. These are relatively close to the expected values.
+This approach can be used to infer other things as well.
+For example, the TIP/SMPY papers have not, as far as I've seen, mentioned what fraction of the white subjects were ethnic Jewish; since they are so over-represented in areas like Nobel prizes, we would expect many of the TIP/SMPY white students to have been Jewish.
+Using an estimate of the Jewish population in 1970 and estimates of their mean IQ, we can work forward to what fraction of TIP/SMPY subjects might be Jewish.
+The [1970-1971 National Jewish Population Study](http://www.jewishdatabank.org/studies/details.cfm?StudyID=304) estimated "5,800,000 persons (of whom 5,370,000 were Jews) living in Jewish households" out of a total US population of 205 million, or 2.8% of the total population or ~3.6% of the white population. (So of the ~418 white subjects, ~15 would be expected to be Jewish under the null hypothesis of no difference.)
+The majority of American Jews are of Ashkenazi descent, for whom intelligence estimates are [debated](!Wikipedia "Ashkenazi Jewish intelligence#Evidence for a group difference in intelligence") but tend to range 105-115 (with occasional samples suggesting even higher values, like [Levinson 1957](/docs/iq/1957-levinson.pdf "The Intelligence of Applicants for Admission to Jewish Day Schools")).
+In the [Barbe 1964](http://files.eric.ed.gov/fulltext/ED013518.pdf "One In A Thousand: A Comparative Study of Highly and Moderately Gifted Elementary School Children") Ohio sample (IQ ~143), 8% were Jewish^[The high IQ sample in Barbe 1964 might have been >8% Jewish, but the paper only reports the overall Jewishness, without specifying whether it's 4% vs 12% or something like that.]; in [Terman's](!Wikipedia "Genetic Studies of Genius") (ratio IQ >140) 1920s sample in SF/LA, 10% were Jewish; Hollingworth's 1930s sample (>180) turned up 51/55 or 90% Jewish[^Hollingworth]; [Byrns 1936's](/docs/iq/1936-byrns.pdf "Intelligence and Nationality of Wisconsin School Children") 1931 Wisconsin state sample found 18% of the Jewish sample to be in the top decile vs 10% American; in the [Hunter College Elementary School](!Wikipedia) sample 1940s-1950s (>140) in New York City was 62% ([Subotnik et al 1989](/docs/iq/1989-subotnik.pdf "High IQ children at midlife: An investigation into the generalizability of Terman's genetic studies of genius")). <!-- TODO: Murray's 24/28 claim? may be in Subotnik's _Genius Revisited: High IQ Children Grown Up_; ordered a copy to scan -->
+We can calculate the fraction of the white sample being Jewish for each possible mean IQ:
 
-But 112 strikes me as seeming on the high side. This could be due to underestimating the Asian population at the time - perhaps the Southeast/Midwest states that TIP samples from were more than 0.07% Asian - or it could be due to sampling error (only _n_=579, after all).
+[^Hollingworth]: [Hollingworth & Rust 1937](/docs/iq/1937-hollingworth.pdf "Application of the Bernreuter Inventory of Personality to Highly Intelligence Adolescents"): "The data of the present study were obtained early in 1933, the subjects being 36 boys and 19 girls, of the average age of 18 years 6 months. The IQ’s (S-B) of all had been taken in early childhood (9). The group ranged from 135-190 IQ (S-B), with a median at about 153 IQ (S-B). All but four of these young persons were Jewish, a factor which must be considered as of possible consequence (8, 14)..."
+
+~~~{.R}
+proportion <- function (gain, cutoff=10000) {
+   (pnorm(qnorm(1/cutoff)) / pnorm(qnorm(1/cutoff)-(gain/15))) }
+possibleIQs <- seq(5, 15, by=0.5)
+data.frame(Advantage=possibleIQs, Fraction.of.white=(sapply(possibleIQs, proportion) * 15) / 418)
+   Advantage Fraction.of.white
+1        5.0      0.1415427303
+2        5.5      0.1633099334
+3        6.0      0.1886246225
+4        6.5      0.2180947374
+5        7.0      0.2524371552
+6        7.5      0.2924980125
+7        8.0      0.3392769622
+8        8.5      0.3939561508
+9        9.0      0.4579348680
+10       9.5      0.5328710150
+11      10.0      0.6207307813
+12      10.5      0.7238482059
+13      11.0      0.8449966589
+14      11.5      0.9874747049
+15      12.0      1.1552093388
+16      12.5      1.3528802227
+17      13.0      1.5860693342
+18      13.5      1.8614413902
+19      14.0      2.1869615788
+20      14.5      2.5721585555
+21      15.0      3.0284424112
+~~~
+
+Judging from earlier samples with very high cutoffs, I'd guess TIP/SMPY has at least a majority Jewish, giving a mean IQ of ~110; this is pleasantly similar to estimates based on regular samples & estimation.
+If the mean IQ was as high as 112, then almost every single white subject would be Jewish in every sampling, which seems implausible and like something so striking that anyone writing or involved with TIP/SMPY would have to have mentioned at *some* point.
+
+For the same reason, the original estimate of 112 for the Asians strikes me as on the high side.
+This could be due to problems in the data like underestimating the Asian population at the time - perhaps the Southeast/Midwest states that TIP samples from were more than 0.07% Asian - or it could be due to sampling error (only _n_=579, after all).
 
 Working backwards doesn't immediately provide any measurement of precision or confidence intervals. Presumably someone has worked out analytic formulas which come with standard errors and confidence intervals, but I don't know it.
 Instead, since the selection process which generated our data is straightforward (population mean -> millions of samples -> take top 1-in-10000s -> calculate overrepresentation), I can again use [Approximate Bayesian computation](!Wikipedia) (ABC) to turn a simulation of the data generating process into a method of Bayesian inference on the unknown parameters (population means) and get credible intervals.
