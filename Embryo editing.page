@@ -75,6 +75,97 @@ One approach not discussed in Shulman & Bostrom is embryo editing, which has com
 
 The largest disadvantage of editing, and the largest advantage of embryo selection, is that selection relies on proven, well-understood known-priced PGD technology already in use for other purposes; while the former hasn't existed and has been science fiction, not fact.
 
+## Genome synthesis
+
+The cost of CRISPR editing will scale roughly as the number of edits: 100 edits will cost 10x 10 edits. It may also scale superlinearly if each edit makes the next edit more difficult.
+This poses challenges to profitable editing since the marginal gain of each edit will keep decreasing as the SNPs with largest effect sizes are edited first - it's hard to see how 500 or 1000 edits would be profitable.
+Similar to the daunting cost of iterated embryo selection, where the IES is done only once or a few times and then gametes are distributed en masse to prospective parents to amortize per-child costs to small amounts, one could imagine doing the same thing for a heavily CRISPR-edited embryo.
+
+But at some point, doing many edits raises the question of why you are bothering with the wild type genome? Couldn't you just create a *whole* [human genome](!Wikipedia) from scratch incorporating every possible edit?
+Synthesize a whole genome's DNA and incorporate all edits one wishes; in the design phase, take the GWASes for a wide variety of traits and set each SNP, no matter how weakly estimated, to the positive direction; in copying in the data of regions with rare variants, they are probably harmful and can be erased with the modal human base-pairs at those positions, for systematic health benefits across most diseases; or to imitate iterative embryo selection, which exploits the tagging power of SNPs to pull in the beneficial rare variants, copy over the haplotypes for beneficial SNPs which might be tagging a rare variant.
+Between the erasing of mutation load and exploiting all common variants simultaneously, the results could be a staggering phenotype.
+
+DNA synthesis, synthesizing a strand of DNA [base-pair](!Wikipedia) by base-pair, has long been done, but generally limited to a few hundred BPs, which is much less than the 23 human chromosomes' collective ~3.3 billion BP.
+Past work in synthesizing genomes has included Craig Venter's minimal bacterium in 2008 with 582,970 BP; http://www.nature.com/news/2008/080124/full/news.2008.522.html
+1.1 million BP in 2010 http://www.nature.com/news/2010/100520/full/news.2010.253.html
+483,000 BP and 531,000 BP in 2016 http://www.nature.com/news/minimal-cell-raises-stakes-in-race-to-harness-synthetic-life-1.19633
+(spending somewhere ~$40m on these projects)
+272,871 in 2014 (1 yeast chromosome; 90k BP costing \$50k at the time) and plans for synthesizing the whole yeast genome in 5 years http://www.nature.com/news/first-synthetic-yeast-chromosome-revealed-1.14941
+http://science.sciencemag.org/content/290/5498/1972
+http://science.sciencemag.org/content/329/5987/52
+http://science.sciencemag.org/content/342/6156/357
+http://science.sciencemag.org/content/333/6040/348
+
+https://www.quora.com/How-many-base-pairs-of-DNA-can-I-synthesize-for-1-dollar
+
+The biggest chromsome is #1, with 8.1% of the base-pairs or 249,250,621; the smallest is #21, 1.6%, or 48,129,895.
+DNA synthesis prices drop each year in an exponential decline (if not remotely as fast as the DNA sequencing cost curve), and so 2016 synthesizing costs have reached <$0.3; let's say \$0.25/BP.
+
+Chromosome Length in base-pairs Fraction Synthesis cost at \$0.25/BP
+---------- -------------------- -------- ---------------------------
+1 	        249,250,621         0.081    \$62,312,655
+2 	        243,199,373         0.079    \$60,799,843
+3 	        198,022,430         0.064    \$49,505,608
+4 	        191,154,276         0.062    \$47,788,569
+5 	        180,915,260         0.058    \$45,228,815
+6 	        171,115,067         0.055    \$42,778,767
+7 	        159,138,663         0.051    \$39,784,666
+8 	        146,364,022         0.047    \$36,591,006
+9 	        141,213,431         0.046    \$35,303,358
+10 	        135,534,747         0.044    \$33,883,687
+11 	        135,006,516         0.044    \$33,751,629
+12 	        133,851,895         0.043    \$33,462,974
+13 	        115,169,878         0.037    \$28,792,470
+14 	        107,349,540         0.035    \$26,837,385
+15 	        102,531,392         0.033    \$25,632,848
+16 	        90,354,753          0.029    \$22,588,688
+17 	        81,195,210          0.026    \$20,298,802
+18 	        78,077,248          0.025    \$19,519,312
+19 	        59,128,983          0.019    \$14,782,246
+20 	        63,025,520          0.020    \$15,756,380
+21 	        48,129,895          0.016    \$12,032,474
+22 	        51,304,566          0.017    \$12,826,142
+X 	        155,270,560         0.050    \$38,817,640
+Y 	        59,373,566          0.019    \$14,843,392
+total       3,095,693,981       1.000    \$773,923,495
+
+So the synthesis of one genome in 2016, assuming no economies of scale or futher improvement, would come in at ~\$773m.
+This is a staggering but finite and even feasible amount: the original [Human Genome Project](!Wikipedia) cost ~\$3b, and other large science projects like the LHC, Manhattan Project, ITER, Apollo Program, ISS, [the National Children's Study](http://undark.org/article/the-death-of-a-study-national-childrens-study/) etc have cost many times what 1 human genome would.
+
+https://en.wikipedia.org/wiki/Human_Genome_Project_-_Write
+http://www.nature.com/news/plan-to-synthesize-human-genome-triggers-mixed-response-1.20028
+http://science.sciencemag.org/content/early/2016/06/01/science.aaf6850.full
+http://science.sciencemag.org/content/sci/suppl/2016/06/01/science.aaf6850.DC1/Boeke.SM.pdf
+http://www.nytimes.com/2016/06/03/science/human-genome-project-write-synthetic-dna.html
+
+The benefit of this investment would be to bypass the death by a thousand cuts of CRISPR editing and create a genome with an arbitrary number of edits on an arbitrary number of traits for the fixed upfront cost.
+Unlike multiple selection, one would not need to trade off multiple traits against each other (except for pleiotropy); unlike editing, one would not be limited to making only edits with a marginal expected value exceeding the cost of 1 edit.
+Doing individual genome syntheses will be out of the question for a long time to come, so genome synthesis is like IES in amortizing its cost over prospective parents.
+
+The ["2013 Assisted Reproductive Technology National Summary Report"](http://www.cdc.gov/art/pdf/2013-report/art_2013_national_summary_report.pdf) says ~10% of IVF cycles use donor eggs, and a total of 67996 infants, implying >6.7k infants conceived with donor eggs, embryos, or sperm (sperm is not covered by that report) and were only half or less related to their parents.
+What immediate 1-year return over 6.7k infants would justify spending \$773m? Considering just the low estimate of IQ at \$3270/point and no other traits, that would translate to (773m/6.7k) / 3270 = 35 IQ points or at an average IQ gain of 0.1 points, the equivalent of 350 causal edits. This is doable.
+If we allow amortization at a high discount rate of 5% and reuse the genome indefinitely for each year's crop of 6.7k infants, then we need at least X iq points where
+((x*3270*6700) / log(1.05)) - 773000000 >= 0
+x >= 1.73
+or at ~0.1 points per edit, 18 edits.
+We could also synthesize only 1 chromosome and pay much less upfront (but at the cost of a lower upper bound, as GCTA heritability/length regressions and GWAS polygenic score results indicates that intelligence and many other complex traits are spread very evenly over the genome, so each chromosome will harbor variants proportional to its length).
+
+The causal edit problem remains but at 12% causal rates, 18 causal edits can easily be made with 150 edits of SNP candidates, which is less than already available.
+So at first glance, whole genome synthesis can be profitable with optimization of only one trait using existing GWAS hits, and will be extremely profitable if dozens of traits are optimized and mutation load minimized.
+
+How much profitable? ...see embryo selection calculations... At 70 SDs and 12% causal, then the profit would be 70*15*3270*0.12*6700 - 773000000 = $1,987,534,000 the first year or NPV of $55,806,723,536.
+
+TODO:
+- model DNA synthesis cost curve; when can we expect a whole human genome to be synthesizable with a single lab's resources, like $1m/$5m/$10m? when does synthesis begin to look better than IES?
+eyeballing http://science.sciencemag.org/content/sci/suppl/2016/06/01/science.aaf6850.DC1/Boeke.SM.pdf , 0.01/$ or 100$ in 1990, 3/$ or 0.3$ in 2015?
+R> synthesis <- data.frame(Year=c(1990,2015), Cost=c(100, 0.33))
+R> summary(l <- lm(log(Cost) ~ Year, data=synthesis))
+R> prettyNum(big.mark=",", round(exp(predict(l, data.frame(Year=c(2016:2040), Cost=NA))) * 3095693981))
+            1             2             3             4             5             6             7             8             9            10            11            12            13
+"812,853,950" "646,774,781" "514,628,265" "409,481,413" "325,817,758" "259,247,936" "206,279,403" "164,133,195" "130,598,137" "103,914,832"  "82,683,356"  "65,789,813"  "52,347,894"
+           14            15            16            17            18            19            20            21            22            23            24            25
+ "41,652,375"  "33,142,123"  "26,370,653"  "20,982,703"  "16,695,599"  "13,284,419"  "10,570,198"   "8,410,536"   "6,692,128"   "5,324,818"   "4,236,872"   "3,371,211"
+
 ## CRISPR
 
 The past 5 years have seen major breakthroughs in cheap, reliable, general-purpose genetic engineering & editing using [CRISPR](!Wikipedia), since the [2012 demonstration that it could edit cells](http://science.sciencemag.org/content/337/6096/816.long "'A Programmable Dual-RNA-Guided DNA Endonuclease in Adaptive Bacterial Immunity', Jinek et al 2012"), including human ones ([Jinek et al 2013](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3557905/ "RNA-programmed genome editing in human cells")).^[Interestingly, this was not even the first application of CRISPR. That would appear to be [DuPont in 2007](http://www.the-scientist.com/?articles.view/articleNo/41676/title/There-s-CRISPR-in-Your-Yogurt/ "There's CRISPR in Your Yogurt: We've all been eating food enhanced by the genome-editing tool for years"), which began improved breeding of virus-resistant dairy cultures by introducing troublesome viral infections, and selecting for further use only those bacteria with changed CRISPR-related genomes, indicating they had acquired resistance to the virus.] Commentary in 2012 and 2013 regarded prospects for embyro editing as highly remote^[[November 2013](http://www.independent.co.uk/news/science/crispr-gene-therapy-scientists-call-for-more-public-debate-around-breakthrough-technique-8927606.html "CRISPR gene therapy: Scientists call for more public debate around breakthrough technique"): "'But it is far too early to contemplate using these methods to alter the human germline'...Professor Dagan Wells, an IVF researcher at Oxford University, said that although there is still a long way to go before CRISPR could even be considered for use on IVF embryos"] Even as late as July 2014, coverage was highly circumspect, with [vague musing](http://www.nytimes.com/2014/07/17/science/a-call-to-fight-malaria-one-mosquito-at-a-time-by-altering-dna.html "A Call to Fight Malaria One Mosquito at a Time by Altering DNA") that "Some experiments also hint that doctors may someday be able to use it to treat genetic disorders"; successful editing of zebrafish ([Hwang et al 2013](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3686313/ "Efficient In Vivo Genome Editing Using RNA-Guided Nucleases")), monkey, and human embryos was already being demonstrated in the lab, and human trials would begin 2-3 years later.
@@ -145,7 +236,7 @@ We can note that some GWASes have compared how hits replicate across populations
 23. Ntzani et al 2012, "Consistency of genome-wide associations across major ancestral groups" /docs/genetics/2012-ntzani.pdf
 24. Marigorta & Navarro 2013 "High Trans-ethnic Replicability of GWAS Results Implies Common Causal Variants" http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3681663/
 
-
+[http://biorxiv.org/content/early/2016/02/23/036657 "Transethnic genetic correlation estimates from summary statistics"], Brown et al 2016
 
 Given the practice of embryo editing, the causal tagging problem can gradually solve itself: as edits are made, forcibly breaking the potential confounds, the causal nature of an SNP becomes clear. But how to allocate edits across the top SNPs to determine each's causal nature as efficiently as possible without spending too many edits investigating?
 A naive answer might be something along the lines of a power analysis: in a two-group _t_-test trying to detect a difference of ~0.03 SD for each variant (the rough size of the top few variants), with variance reduced by the known polygenic score, and desired power is the standard 80%; it follows that one would need to randomize a total sample of _n_=34842 to reject the null hypothesis of 0 effect[^t-test-editing]. Setting up a [factorial experiment](!Wikipedia) & randomizing several variants simultaneously may allow inferences on them as well, but clearly this is going to be a tough row to hoe.
@@ -442,7 +533,7 @@ Educational attainment is strongly influenced by social and other environmental 
 Using procedures identical to those described in SI Section 1.6, we conducted a meta-analysis of the EduYears phenotype, combining the results from our discovery cohorts (N = 293,723) and the results from the UKB replication cohort (N = 111,349). Expanding the overall sample size to N = 405,072 increases the number of approximately independent genome-wide significant loci from 74 to 162.
 
 
-This background suffices to motivate the biological questions that arise in the interpretation of GWAS results and the means by which these questions might be tentatively addressed. For starters, since a GWAS locus typically contains many other SNPs in LD with the defining lead SNP and with each other, it is natural to ask: which of these SNPs is the actual causal site responsible for the downstream phenotypic variation? Many SNPs in the genome appear to be biologically inert—neither encoding differences in protein composition nor affecting gene regulation—and a lead GWAS SNP may fall into this category and nonetheless show the strongest association signal as a result of statistical noise or happenstance LD with multiple causal sites. Fortunately, much is known from external sources of data about whether variation at a particular site is likely to have biological consequences, and exploiting these resources is our general strategy for fine-mapping loci: nominating individual sites that may be causally responsible for the GWAS signals. Descriptions of genomic sites or regions based on external sources of data are known as annotations, and readers will not go far astray if they interpret this term rather literally (as referring to a note of explanation or comment added to a text in one of the margins). If we regard the type genome as the basic text, then annotations are additional comments describing the structural or functional properties of particular sites or the regions in which they reside. For example, all nonsynonymous sites that influence protein structures might be annotated as such. An annotation can be far more specific than this; for instance, all sites that fall in a regulatory region active in the fetal liver might bear an annotation to this effect.
+This background suffices to motivate the biological questions that arise in the interpretation of GWAS results and the means by which these questions might be tentatively addressed. For starters, since a GWAS locus typically contains many other SNPs in LD with the defining lead SNP and with each other, it is natural to ask: which of these SNPs is the actual causal site responsible for the downstream phenotypic variation? Many SNPs in the genome appear to be biologically inert—neither encoding differences in protein composition nor affecting gene regulation—and a lead GWAS SNP may fall into this category and nonetheless show the strongest association signal as a result of statistical noise or happenstance LD with multiple causal sites. Fortunately, much is known from external sources of data about whether variation at a particular site is likely to have biological consequences, and exploiting these resources is our general strategy for fine-mapping loci: nominating individual sites that may be causally responsible for the GWAS signals. Descriptions of genomic sites or regions based on external sources of data are known as annotations, and readers will not go far astray if they interpret this term rather literally (as referring to a note of explanation or comment added to a text in one of the margins). If we regard the type genome as the basic text, then annotations are additional comments describing the structural or functional properties of particular sites or the regions in which they reside. For example, all nonsynonymous sites that influence protein structures might be annotated as such. An annotation can be far more specific than this; for instance, all sites that fall in a regulatory region active in the fetal liver might bear an annotation to this effect. <!-- TODO http://biorxiv.org/content/biorxiv/early/2015/10/20/028688.full.pdf -->
 A given causal site will exert its phenotypic effect through altering the composition of a gene product or regulating its expression. Conceptually, once a causal site has been identified or at least nominated, the next question to pursue is the identity of the mediating gene. In practice, because only a handful of genes at most will typically overlap a GWAS locus, we can make\ some progress toward answering this question without precise knowledge of the causal site. The difficulty of the problem, however, should still not be underestimated. It is natural to assume that a lead GWAS SNP lying inside the boundaries of a particular gene must reflect a causal mechanism involving that gene itself, but in certain cases such a conclusion would be premature. It is possible for a causal SNP lying inside a certain gene to exert its phenotypic effect by regulating the expression of a nearby gene or for several genes to intervene between the SNP and its regulatory target.
 Supplementary Table 4.1 ranks each gene overlapping a DEPICT-defined locus by the number of discrete evidentiary items favoring that gene (see Supplementary Information section 4.5 for details regarding DEPICT). These lines of evidence are taken from a number of our analyses to be detailed in the following subsections. Our primary tool for gene prioritization is DEPICT, which can be used to calculate a P-value and associated FDR for each gene. It is important to keep in mind, however, that a gene-level P-value returned by DEPICT refers to the tail probability under the null hypothesis that random sampling of loci can account for annotations and patterns of co-expression shared by the focal gene with genes in all other GWAS-identified loci. Although it is very reasonable to expect that genes involved in the same phenotype do indeed share annotations and patterns of co-expression, it may be the case that certain causal genes do not conform to this expectation and thus fail to yield low DEPICT P-values. This is why we do not rely on DEPICT alone but also the other lines of evidence described in the caption of Supplementary Table 4.1.
 
@@ -610,8 +701,8 @@ length(intersect(causalSNPs, ridgeSNPs)) / length(ridgeSNPs)
 
 Thompson sampling with a subset/edit budget:
 
-SNP_edit_limit <- 64
-SNP_candidates <- 1000
+SNP_edit_limit <- 100
+SNP_candidates <- 500
 verbose <- TRUE
 SNP_mean_effect <- 0.2
 SNP_mean_frequency <- 0.5
@@ -655,12 +746,12 @@ library(ggplot2)
 maximumDays <- 10000
 batch <- 10
 lag <- 5*365
-jumpForward <- lag*3
+jumpForward <- lag*5
 ## initialize with a seed of n>=2; with less or an empty dataframe, BGLR will crash
 d <- generateRandomSample(jumpForward, iqError, SNP_effects, SNP_candidates, SNP_mean_frequency)
 d$Date <- 1:jumpForward
 # d$Date <- -lag # available immediately
-regretLog <- data.frame(N=integer(), N.eff=integer(), Regret=numeric(), Fraction.causals=numeric(), Causal.found=integer(), Causal.notfound=integer())
+regretLog <- data.frame(N=integer(), N.eff=integer(), Regret=numeric(), Fraction.random=numeric(), Fraction.causals=numeric(), Causal.found=integer(), Causal.notfound=integer())
 for (i in jumpForward:maximumDays) {
 
     ## i=date; day 1, day 2, etc. A datapoint is only available if it was created more than 'lag' days ago; ie if we do 1 a day, then on day 20 with lag 18
@@ -714,6 +805,7 @@ for (i in jumpForward:maximumDays) {
     estimate <- estimate[order(estimate$Estimate, decreasing=TRUE),]
     regretLog[i,]$Causal.found <- sum(estimate$Causal[1:SNP_edit_limit])
     regretLog[i,]$Causal.notfound <- sum(estimate$Causal[-(1:SNP_edit_limit)])
+    regretLog[i,]$Fraction.random  <- sum(estimate$Causal!=0) / SNP_candidates  ## base rate: random guessing
     regretLog[i,]$Fraction.causals <- round(regretLog[i,]$Causal.found / (regretLog[i,]$Causal.found+regretLog[i,]$Causal.notfound), digits=2)
     regretLog[i,]$Regret <- (sum(estimate$Effect) - sum(estimate$Effect[1:SNP_edit_limit])) * SNP_mean_frequency
     regretLog[i,]$N <- nrow(d)
@@ -722,5 +814,7 @@ for (i in jumpForward:maximumDays) {
     if(verbose) { print(regretLog[i,]) }
 }
 qplot(regretLog$N, jitter(regretLog$Regret), xlab="Total N (not effective N)", ylab="Regret (expected lost IQ points compared to omniscience)", main=paste("Edits:", SNP_edit_limit, "; Candidates:", SNP_candidates)) + stat_smooth()
-qplot(SNP_effects, b$ETA[[1]]$b, color=b$ETA[[1]]$SD.b, main=paste("Edits:", SNP_edit_limit, "; Candidates:", SNP_candidates))
+
+b <- BGLR(d$IQ.measured, ETA=list(list(X=d[-c(1, 2, length(colnames(d)))], model="BL", type="beta", probIn=0.12, counts=162, R2=r2, lambda=202, max=500)), verbose=FALSE)
+means <- b$ETA[[1]]$b; sds <- b$ETA[[1]]$SD.b; qplot(SNP_effects, b$ETA[[1]]$b, color=b$ETA[[1]]$SD.b, main=paste("Edits:", SNP_edit_limit, "; Candidates:", SNP_candidates))
 image(as.matrix(d[-c(1, 2, length(colnames(d)))]), col=heat.colors(2))

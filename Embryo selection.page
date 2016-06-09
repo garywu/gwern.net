@@ -1248,7 +1248,6 @@ A more realistic model with exponentially distributed weights gives a similar es
     Another way would be to calculate it: on average, one will have half the possible 10000 variants; the sum of _k_=5000 exponential variates of λ=71 is $\text{Gamma}(5000, 71^{-1})$, and the mean of that [gamma distribution](!Wikipedia) is $5000 \cdot 71^{-1}=70.4$ with a SD of $\sqrt{5000 \cdot ((71^{-1})^2)} = 0.99$; while the upper bound with all 10000 is 140.8(1.4) respectively.
     So if existing genetic variation, leading to the differences in intelligence we can observe, represents the contribution of a genetic SD 0.99 on an absolute scale, then the possible increase going from ~5000 good variants to all 10000 variants represents an increase of $\frac{140.8 - 70.4}{0.99}= 71.1$ genetic SDs, which after weakening by a heritability of 80% is still large and fairly similar to the binomial result.
 
-
 We could also ask what the upper limit is by looking at an existing polygenic score and seeing what it would predict for a hypothetical individual who had the better version of each one.
 The Rietveld et al 2013 polygenic score for education-years is available and can be adjusted into intelligence, but for clarity I'll use the [Benyamin et al 2014 polygenic score on intelligence](http://ssgac.org/documents/CHIC_Summary_Benyamin2014.txt.gz) ([codebook](http://ssgac.org/documents/CHIC_Benyamin2014_Summary_Notes.pdf)):
 
