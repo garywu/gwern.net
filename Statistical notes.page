@@ -2802,7 +2802,8 @@ $ c /home/gwern/src/torch-rnn/ && th sample.lua -gpu -1 -checkpoint `ls -t cv/*.
 Thou shalt not tempt the Lord thy God|Becaus
 second try, restarting with the previous network; increase BPTT as much as possible at the expense of minibatch size, reduce dropout, add in batchnorm:
 $ nice th train.lua  -input_h5 classification.h5 -input_json classification.json -batch_size 6 -dropout 0.1 -batchnorm 1 -seq_length 1900 -rnn_size 2500 -num_layers 2 -checkpoint_name cv/classification2 -init_from cv/classification_51000.t7
-after 3 days, still no particular improvement in validation loss, and the training was extremely slow due to the BPTT; reduced to 500, increased minibatch to 23, removed dropout entirely -->
+after 3 days, still no particular improvement in validation loss, and the training was extremely slow due to the BPTT; reduced to 500, increased minibatch to 23, removed dropout entirely
+now it began improving validation loss, all the way down to 1.02 (!) -->
 4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
 
 <!-- Classification:
@@ -3174,6 +3175,7 @@ Reasoning from the general to the particular turned out to be tricky in this cas
 Many things of great interest turn out to be like that: we are interested in the extremes much more than the expectation.
 Running a 2-hour marathon is an extreme on athleticism; winning the Nobel is an extreme on scientific accomplishment; being enlisted in the NBA is an extreme on height; being admitted to MIT/Stanford/Harvard is an extreme on intelligence; murdering someone is an extreme on violence; winning an Academy Award is an extreme on acting success.
 When we ask questions like, "why does the world record in this sport keep being shattered" or "why are so many NBA players related" or "how good can we expect the best chess player to be in 10 years" or "does this racial composition prove bias" or "how much more important are the best authors in literature than obscurer figures" or "why do so few women win the Field Medal", we're asking extreme value questions whose answers may be counterintuitive - and the answer may be as simple as the shape of distributions, and a slightly lower mean here or a slightly higher standard deviation there.
+(Working backwards from a sample selected for passing a threshold to a mean can be called "the method of limits" or "the method of thresholds".)
 
 The study ["When Lightning Strikes Twice: Profoundly Gifted, Profoundly Accomplished", Makel et al 2016](/docs/iq/2016-makel.pdf) describes the accomplishments of the [Duke TIP](!Wikipedia "Talent Identification Program") sample, 259 children selected for their intelligence by taking the highest-scorers out of 425,000 adolescents taking the SAT (usually <13yo) starting in 1981, representing the top 0.01% of the test-takers.
 The TIP sample parallels the better-known SMPY sample, which also selected extremely intelligent adolescents, who were included in a longitudinal sample.
@@ -3252,8 +3254,8 @@ So our inferred white & Asian populations means are: 99.8 and 111.9. These are r
 This approach can be used to infer other things as well.
 For example, the TIP/SMPY papers have not, as far as I've seen, mentioned what fraction of the white subjects were ethnic Jewish; since they are so over-represented in areas like Nobel prizes, we would expect many of the TIP/SMPY white students to have been Jewish.
 Using an estimate of the Jewish population in 1970 and estimates of their mean IQ, we can work forward to what fraction of TIP/SMPY subjects might be Jewish.
-The [1970-1971 National Jewish Population Study](http://www.jewishdatabank.org/studies/details.cfm?StudyID=304) estimated "5,800,000 persons (of whom 5,370,000 were Jews) living in Jewish households" out of a total US population of 205 million, or 2.8% of the total population or ~3.6% of the white population. (So of the ~418 white subjects, ~15 would be expected to be Jewish under the null hypothesis of no difference.)
-The majority of American Jews are of Ashkenazi descent, for whom intelligence estimates are [debated](!Wikipedia "Ashkenazi Jewish intelligence#Evidence for a group difference in intelligence") but tend to range 105-115 (with occasional samples suggesting even higher values, like [Levinson 1957](/docs/iq/1957-levinson.pdf "The Intelligence of Applicants for Admission to Jewish Day Schools")).
+The [1970-1971 National Jewish Population Study](http://www.jewishdatabank.org/studies/details.cfm?StudyID=304) estimated "5,800,000 persons (of whom 5,370,000 were Jews) living in Jewish households" out of a total US population of 205 million, or 2.8% of the total population or ~3.6% of the white population. So of the ~418 white subjects, ~15 would be expected to be Jewish under the null hypothesis of no difference.
+The majority of American Jews are of Ashkenazi descent^[This renders the population estimate a bit off, but I couldn't find any sources on the breakdown of Sephardic vs Ashkenazi in the USA in 1970 other than a comment that the latter were a "vast majority". Since the Jewish Population Study was probably an undercount in not including all the people of Jewish descent, I'm hopeful those two biases simply cancel out.], for whom intelligence estimates are [debated](!Wikipedia "Ashkenazi Jewish intelligence#Evidence for a group difference in intelligence") but tend to range 105-115 (with occasional samples suggesting even higher values, like [Levinson 1957](/docs/iq/1957-levinson.pdf "The Intelligence of Applicants for Admission to Jewish Day Schools")).
 In the [Barbe 1964](http://files.eric.ed.gov/fulltext/ED013518.pdf "One In A Thousand: A Comparative Study of Highly and Moderately Gifted Elementary School Children") Ohio sample (IQ ~143), 8% were Jewish^[The high IQ sample in Barbe 1964 might have been >8% Jewish, but the paper only reports the overall Jewishness, without specifying whether it's 4% vs 12% or something like that.]; in [Terman's](!Wikipedia "Genetic Studies of Genius") (ratio IQ >140) 1920s sample in SF/LA, 10% were Jewish; Hollingworth's 1930s sample (>180) turned up 51/55 or 90% Jewish[^Hollingworth]; [Byrns 1936's](/docs/iq/1936-byrns.pdf "Intelligence and Nationality of Wisconsin School Children") 1931 Wisconsin state sample found 18% of the Jewish sample to be in the top decile vs 10% American; in the [Hunter College Elementary School](!Wikipedia) sample 1940s-1950s (>140) in New York City was 62% ([Subotnik et al 1989](/docs/iq/1989-subotnik.pdf "High IQ children at midlife: An investigation into the generalizability of Terman's genetic studies of genius")). <!-- TODO: Murray's 24/28 claim? may be in Subotnik's _Genius Revisited: High IQ Children Grown Up_; ordered a copy to scan -->
 We can calculate the fraction of the white sample being Jewish for each possible mean IQ:
 
@@ -3288,8 +3290,8 @@ data.frame(Advantage=possibleIQs, Fraction.of.white=(sapply(possibleIQs, proport
 21      15.0      3.0284424112
 ~~~
 
-Judging from earlier samples with very high cutoffs, I'd guess TIP/SMPY has at least a majority Jewish, giving a mean IQ of ~110; this is pleasantly similar to estimates based on regular samples & estimation.
-If the mean IQ was as high as 112, then almost every single white subject would be Jewish in every sampling, which seems implausible and like something so striking that anyone writing or involved with TIP/SMPY would have to have mentioned at *some* point.
+Judging from earlier samples with very high cutoffs, I'd guess TIP/SMPY has at least a majority Jewish, giving a mean IQ of ~110; this is pleasantly similar to estimates based on regular samples & estimation. This result is also similar to [La Griffe du Lion's 2003 threshold analysis](http://www.lagriffedulion.f2s.com/ashkenaz.htm "Assessing the Ashkenazic IQ") estimating a mean IQ of 112 based on Ashkenazi overrepresentation among USSR championship chess players, 111 based on Western [Fields Medal](!Wikipedia) awards, and 110 based on the USA/Canada [Putnam competition](!Wikipedia "William Lowell Putnam Mathematical Competition").
+But if the mean IQ was as high as 112, then almost every single white subject would be Jewish in every sampling, which seems implausible and like something so striking that anyone writing or involved with TIP/SMPY would have to have mentioned at *some* point - right?
 
 For the same reason, the original estimate of 112 for the Asians strikes me as on the high side.
 This could be due to problems in the data like underestimating the Asian population at the time - perhaps the Southeast/Midwest states that TIP samples from were more than 0.07% Asian - or it could be due to sampling error (only _n_=579, after all).
@@ -3300,7 +3302,41 @@ Instead, since the selection process which generated our data is straightforward
 What sort of confidence do we have in these estimates given that these RRs are based only on?
 We can simulate TIP/SMPY-like selection by taking the hypothetical means of the two groups, generating ~3 million simulates (`579 * 10000`) each, selecting the top 1/10000th, taking the RRs and then solving for the mean IQ.
 If we provide a prior on the means and we hold onto only the means which successfully generate TIP/SMPY-like fractions of 72% & 21%, this becomes ABC with the saved means forming the posterior distribution of means.
+(It would likely be faster to use MCMC like JAGS, but while JAGS provides truncated normal distributions which one could sample from quickly, and the necessary `pnorm`/`qnorm` functions, but it's not clear to me how one could go about estimating the overperformance ratio and the binomial.[^JAGS-TIP])
 For my priors, I believe that the rule of thumbs of 100/105 are accurate and highly unlikely to be more than a few points off, so I use a very weak prior of populations means being $\mathcal{N}(100/105, 4)$.
+
+[^JAGS-TIP]: My first attempt at it in JAGS went like this:
+
+    ~~~{.R}
+    model_string <- '
+      model {
+        cutoffIQ <- 100 + 3.719016485*15
+
+        mu_asian ~ dnorm(105, 4^-2)
+        X_asian ~ dnorm(mu_asian, 15^-2) # T(cutoffIQ,)
+        X_frac_asian <- X_asian > cutoffIQ
+        P_asian <- 0.07 * (X_frac_asian / length(X_asian))
+        Y_asian ~ dbinom(P_asian, total)
+
+        # mu_white ~ dnorm(100, 4^-2)
+        # X_white ~ dnorm(mu_white, 15^-2) # T(cutoffIQ,)
+        # X_frac_white <- X_white > cutoffIQ
+        # P_white <- 0.07 * (X_frac_white / length(X_white))
+        # Y_white ~ dbinom(P_white, total)
+      }
+      '
+    library(runjags)
+    Y_asian=126
+    Y_white=418
+    total=579
+    model <- run.jags(model_string, data = list(Y_asian=Y_asian, Y_white=Y_white, total=total),
+                                    monitor=c("mu_asian", "mu_white"),
+                        n.chains = getOption("mc.cores"), method="rjparallel")
+    summary(model)
+    ~~~
+
+    But then I realized that `X_frac_asian <- X_asian > cutoffIQ` didn't do what I thought it did and I needed to somehow draw a large number of samples, just like in the ABC simulation, and compare to the number after the truncation... or something.
+
 In exact ABC, we would keep only data which exactly matched 72%/22%, but that would require rejecting an extremely large number of samples. Here we'll loosen it to ±2% tolerance:
 
 ~~~{.R}
