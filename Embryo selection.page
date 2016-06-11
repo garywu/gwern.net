@@ -807,6 +807,21 @@ For many of the scenarios, the impact is not blatant until a second generation b
 A boost of 19 points is visible in a fair number of scenarios, and a boost of 100 is visible at almost any adoption rate/generation/elite-level.
 (Indeed, a boost of 100 results in almost meaninglessly large numbers under many scenarios; it's difficult to imagine a society with 100x as many geniuses running around, so it's even more difficult to imagine what it would mean for there to be 6,724x as many - other than many things will start changing extremely rapidly in unpredictable ways.)
 
+The tables do not attempt to give specific deadlines in years for when some of the effects will manifest, but we could try to extrapolate based on when eminent figures and [child prodigies](!Wikipedia "Child prodigy").
+[Chess prodigies](!Wikipedia "Chess prodigy") have become grandmasters at very early ages, such as [Sergey Karjakin](!Wikipedia)'s 12.6yo record, with (as of 2016) 24 other chess prodigies reaching grandmaster levels before age 15; the record age has dropped rapidly over time which is often credited to computers & the Internet unlocking chess databases & engines to intensively train against, providing a global pool of opponents 24/7, and intensive tutoring and training programs.
+[William James Sidis](!Wikipedia) is probably the most famous child prodigy, credited with feats such as reading by age 2, writing mathematical papers by age 12 and so on, but he abandoned academia and never produced any major accomplishments; his acquaintance and fellow child prodigy [Norbert Weiner](!Wikipedia), on the other hand, produced his first major work at age 17, [John von Neumann](!Wikipedia) at age 19; physicists in the early quantum era were noted for youth, with Bragg/Heisenberg/Pauli/Dirac producing their Nobel prize-winning results at ages 22/23/25/26 (respectively).
+In mathematics, [Évariste Galois](!Wikipedia) made major breakthroughs around age 18, [Saul Kripke](!Wikipedia)'s first modal logic result was age 17, [Srinivasa Ramanujan](!Wikipedia) likely began making major findings around age 16 and continued up to his youthful death at age 32, and [Terence Tao](!Wikipedia) began publishing age 15; young students making findings is such a trope that the Fields Medal has an age-limit of 39yo for awardees (who thus must've made their discoveries much earlier).
+Cliometrics and the age of scientists and their life-cycles of productivity across time and fields have been studied by Simonton, Jones, & Murray's [_Human Accomplishment_](/docs/2003-murray-human-accomplishment.pdf); we can also compare to the SMPY/TIP samples where most took normal schooling paths.
+The peak age for productivity, and average age for work that wins major prizes differs a great deal by field - physics and mathematics are generally younger than fields like medicine or biology.
+This suggests that different fields place different demands on _Gf_ vs _Gc_: a field like mathematics dealing in pure abstractions will stress deep thought & fluid intelligence (peaking in the early 20s); while a field like medicine will require a wide variety of experiences and factual knowledge and less raw intelligence, and so may require decades before one can make a major contribution.
+(In literature, it's often been noted that lyric poets seem to peak young while novelists may continue improving throughout their lifetimes.)
+
+So if we consider scenarios of intelligence enhancement up to 2 or 3 SDs (145), then we can expect that there may be a few initial results within 15 years heavily biased towards STEM fields with strong Internet presences and traditions of openness in papers/software/data (such as machine learning), followed by a gradual increase in number of results as the cohort begins reaching their 20s and 30s and their adult careers and a broadening across fields such as medicine and the humanities.
+While math and technology results can have outsized impact these days, in a 2-3SD scenario, the total number of 2-3SD researchers will not increase by more than a factor, and so the expected impact will be similar to what we already experience in the pace of technological development - quick, but not unmanageable.
+
+In the case of >=4SDs, things are a little different. The most comparable case is Sidis, who as mentioned was writing papers by age 12 after 10 years of reading; in an IES scenario, each member of the cohort might be far beyond Sidis, and so the entire cohort will likely reach the research frontier and begin making contributions before age 12 - although there must be a limit on how fast a human child can develop mentally, in calories consumed if nothing else, there is no good reason to think that Sidis's bound of 12 years is tight, especially given the modern context and the possibilities for accelerated education programs
+(With such advantages, there may also be much larger cohorts as parents decide the advantages are so compelling that they want them for their children and are willing to undergo the costs.)
+
 ## Cost-benefit
 
 As written, the IVF simulator cannot deliver a cost-benefit because the costs will depend on the internal state, like how many good embryos were created or the fact that a cycle ending in no live births will still incur costs, and report the marginal gain now that we're going case by case.
@@ -1310,6 +1325,8 @@ Since the polygenic score only becomes uninformative thousands of SDs beyond whe
 # External links
 
 - ["Society Is Fixed, Biology Is Mutable"](http://slatestarcodex.com/2014/09/10/society-is-fixed-biology-is-mutable/)
+- ["Xenopsychology"](http://www.rfreitas.com/Astro/Xenopsychology.htm) (Freitas 1984)
+- ["The Hollow Men II: Some reflections on Westminster and Whitehall dysfunction"](http://dominiccummings.wordpress.com/2014/10/30/the-hollow-men-ii-some-reflections-on-westminster-and-whitehall-dysfunction/), Dominic Cummings
 
 # Appendix
 ## IQ/income bibliography
