@@ -608,10 +608,12 @@ Notes on possibly-controversial excluded characters:
 - 2009: _Steins;gate_: Kurisu Makise is sometimes identified as a hafu because she is a returnee from America & has red hair, but both her parents seem to be Japanese nationals
 - 2010: _Seikimatsu Occult Gakuin_: Maya Kumashiro, daughter of the headmaster of "Waldstein Academy", Junichirou Kumashiro seems to have foreign connections and the eponymous occultism is purely Western; but while her father seems to be Japanese, nothing about her mother is shown and so her blue eyes may just be another case of mukokuseki  <!-- blue eyes, black hair -->
 - 2011: _Himitsu no Bara Juujidan_: classified by Baka Updates as "mixed-blood" but the main character seems to be an all-Japanese reincarnation.
+- 2011: [_Gangsta._](!Wikipedia "Gangsta (manga)"): character [Nicolas Brown](http://gangsta.wikia.com/wiki/Nicolas_Brown) is half-Asian, but the quasi-fantasy setting bars specific identification as a hafu <!-- Caucasian father; black/black -->
 - 2012: _Katawa Shoujo_: Lilly & Akira Satou are half-Scottish, but it is a Western open-source project
 - 2012: _Robotics;Notes_: "Frau Kōjiro"/Kona Furugōri is blond and may be part-German given her username, but there is no material online specifying ethnicities.
 - 2012: _tsuritama_: TvTropes speculates that the quasi-Indian character "Akira Agarkar Yamada" must be part-Japanese; omitted for lack of evidence
 - 2013: Mikasa Ackerman in _Shingeki no Kyojin_ is of the "Oriental race" on her mother's side; according to a slaver character in episode 6, her father was not. <!-- Khoth, #lesswrong; black hair, black eyes -->
+
 
 ## Analysis
 ### Descriptive
@@ -762,8 +764,11 @@ The model that `Rcapture` fit to logs of 296 characters (minimizing the [AIC](!W
     3. ["Part 3: Blonds Are Trouble"](http://www.sequentialtart.com/archive/apr04/cv_0404_2.shtml)
     4. ["Part 4: When Is a Blond Not a Blond?"](http://www.sequentialtart.com/archive/may04/cv_0504_2.shtml)
 - ["The Hafu Project: Exploring the question of what it means to be Japanese"](http://www.japantoday.com/category/lifestyle/view/the-hafu-project-exploring-the-question-of-what-it-means-to-be-japanese) -(the 317 comments demonstrate how polarizing the topic can be)
+
+    - [_Hafu_](http://hafufilm.com/en/) (2013 documentary)
 - ["How to Look Like a 'Haafu': Consumption of the Image of 'Part-White' Women in Contemporary Japan"](http://www.inter-disciplinary.net/critical-issues/wp-content/uploads/2014/05/Okamura_white4-dpaper.pdf) (Hyoue Okamura)
 - ["The Space Between Anime and Manga: #5: Katsuhiro Otomo, the Anti-"Story" Author by Kentaro Takekuma"](http://2chan.us/wordpress/2009/05/17/japanese-lectureblog-post-translation-the-space-between-anime-and-manga-5-katsuhiro-otomo-the-anti-story-author-by-kentaro-takekuma/)
+- [JapanSociology group blog: "hafu" tag](https://japansociology.com/tag/hafu/)
 
 # Appendices
 ## Capture-recapture code
