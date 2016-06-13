@@ -1747,8 +1747,9 @@ Overall, an interesting experience. The next cicada emergence I am near, I'll tr
 - Every normal man must be tempted now & then to sharpen knives, hoist a black flag, and run amok, shouting "No causation without randomization!"
 - The use of confidence intervals rather than _p_-values is a clear improvement; it makes our difficulties vanish like smoke in a fog.
 - Every time I think maybe the FDA and big blind clinical trials are unnecessary, I just go read Longecity threads until the feeling passes.
-- Not doing power analysis with informative priors is like looking into a haystack of unknown size for a needle which probably isn't there.
+- Not doing power analysis with informative priors is searching a haystack of unknown size for a needle which probably isn't there.
 - Remember: _p_-values are not posterior probabilities are not effect sizes are not utilities are not profits are not decisions.
+- All analyses are ultimately decision analyses. We can ignore that for convenience, but we must never forget that.
 
 ## Misc
 
@@ -2197,3 +2198,38 @@ I haven't gotten much use out of them, but changes in ambient lighting over time
 I've written a script using Imagemagick which analyzes each webcam photo and calculates the average brightness (as a grayscale intensity) and the average [LAB](!Wikipedia "Lab color space") color triplet.
 (I originally used RGB but the 3 colors turned out to correlate so highly that the data was redundant and I was told LAB better matches human perception; in any case, the LAB values turn out to be less inter-correlated and so should be more useful.)
 The light intensity might affect sleep patterns (particularly sleep timing) and daily productivity.
+
+# Newton's System of the World and Comets
+
+In the 1724 ["Account of a conversation between Newton and Conduitt"](http://www.newtonproject.sussex.ac.uk/view/texts/normalized/THEM00173), the aged (83) [Isaac Newton](!Wikipedia) reveals some of his speculations about the true system of the world to his inlaw [John Conduitt](!Wikipedia): Newton's [_Principia_](!Wikipedia "Philosophiæ Naturalis Principia Mathematica") had laid out the laws of celestial motion, but it didn't explain how old the Solar System was, how God kept it stable rather than chaotic, how long the Sun would burn until its fire went out, what is the fate of humanity, or the role of comets.
+
+He explains "what he had often hinted to me before" to Conduitt: celestial bodies grow by accretion due to gravity, and as they grow bigger, pass from moons to planets to even larger (!) comets. Comets, in looping past the Sun, slowly become 'cooked'. The Sun would go out due to its constant conflagration, but fortunately, it is constantly renewed and powered by the fresh fuel provided it by comets passing nearby. 'Intelligent beings' (angels?) oversee this whole process of regular fueling of the sun, but unfortunately the [Great Comet of 1680](!Wikipedia) passed *so* close to the Sun that it seems likely that it will soon fall directly into the sun, rather than feeding it a small measure of fuel. With an enormous quantity of fuel abruptly dumped into the Sun instead of dispensed over eons, it will flare up like a bonfire and quite likely roast the Earth (like a [red supergiant](!Wikipedia) might, incidentally), naturally killing everything on it. This possibly happens regularly, since humanity seems to have been created only recently, as evidenced by how recently such major innovations like printing or needles had been made (contradicting any supposition humanity had existed for more than a few thousand years). After this, possibly God would renew creation by repopulating instead the moons of Saturn or Jupiter which have escaped the inferno relatively intact.
+The quotes:
+
+> ...there was a sort of revolution in the heavenly bodies that the vapours & light emitted by the sun which had their sediment as water & other matter had gathered themselves by degrees into a body & attracted more matter from the planets & at last made a secondary planett (viz. one of those that go round another planet) & then by gathering to them & attracting more matter became a primary planet, & then by increasing still became a comet which after certain revolutions by coming nearer & nearer the sun had all its volatile parts condensed & became a matter fit to recruit & replenish the sun...as a fagot would this fire if put into it...
+>
+> ...that would probably be the effect of the comet in 1680 sooner or later...perhaps have 5 or 6 revolutions more first, but whenever it did it would so much increase the heat of the sun that this earth would be burnt & no animals in this earth could live
+>
+> ...He seemed to doubt wether there were not intelligent beings superior to us who superintended these revolutions of the heavenly bodies by the direction of the supreme being —
+>
+> He seemed to be very clearly of opinion that the inhabitants of this earth were of a short date & alledged as one reason for that opinion that all arts as letters long ships printing – needle &c were discovered within the memory of History which could not have happened if the world had been eternal
+>
+> ...how this earth could have been repeopled if ever it had undergone the same fate it was threatned with hereafter by the Comet of 1680, he answered that required the power of a creator
+
+[pg365-371](/docs/1694-gregory.pdf "Memoranda by David Gregory, 5-7 May 1694: Annotations Physical, Mathematical and Theological from Newton. 5, 6, 7 May 1694") of _The Correspondence of Isaac Newton_ (Turnbull 1961), Volume III:
+
+> [Newton says] that a continual miracle is needed to prevent the Sun and the fixed stars from rushing together through gravity: that the great eccentricity in Comets in directions both different from and contrary to the planets indicates a divine hand: and implies that the Comets are destined for a use other than that of the planets. The Satellites of Jupiter and Saturn can take the places of the Earth, Venus, Mars if they are destroyed, and be held in reserve for a new Creation.
+
+This is a remarkable cosmology and has a lot of sense to it (how *does* the Sun burn more than a long time without a magical process like 'fusion' or else regular resupply? pace Lord Kelvin's [well-reasoned & acute but wrong comments on the Sun's age, comets as inadequate fuel sources, & refuting Evolution](http://zapatopi.net/kelvin/papers/on_the_age_of_the_suns_heat.html "'On the Age of the Sun's Heat', 1862")), but is still very alien. Angels in charge of comets! Things really were different then.
+
+It would make for an excellent retro SF or [steampunk](!Wikipedia) novel, if nothing else. (Naturally, the heroes would be recruited by the angels to help deal with the crisis of the return of Newton's comet... Perhaps [Ted Chiang](!Wikipedia) would like to write a followup to ["Exhalation"](http://www.lightspeedmagazine.com/fiction/exhalation/) or ["Seventy Two Letters"](https://web.archive.org/web/20010802144026/http://www.tor.com/72ltrs.html)?)
+
+It's also interesting for why it's wrong: Newton needs comets to be at least planet-sized, because comets are too rare to be plausibly fuel sources for the Sun if they're small (they wouldn't dump enough fuel in to keep combustion going for another few years/decades/centuries until the next big comet), but of course they're very small; if they were planet-sized, you'd think they'd severely disturb planetary orbital calculations, so was the existing astronomical data insufficiently precise to prove the absence of such orbital disturbances or was there some other issue?
+
+The argument for the short duration of the human race is also wrong, since we know anatomically modern humans have been around for at least 50,000 years at this point. What's particularly interesting about his argument is that if he had made it at a randomly chosen point in human history, then he would have correctly concluded the opposite, that the human race was ancient, due to the lack of discernible progress: in fact, he could only have made this argument in a tiny window between the start of the Scientific/Industrial Revolution and the archaeological/geological/evolutionary proof of mankind's antiquity starting around the 1800s, so maybe 400 years or 0.4 millennia; he had to have the bad luck to be born into that exact 0.8% historical window for the argument from progress to be wrong! Kinda remarkable.
+
+Interestingly, it seems the 'short human history' argument is not original to Newton, because I came across a version of it in Lucretius's _[On the Nature of Things](!Wikipedia)_:
+
+> Moreover, if heaven and earth never had a beginning or birth, but have existed from everlasting, why have there not been other poets to sing of other events prior to the Theban war and the tragedy of Troy? Why have so many heroic deeds so often been buried in oblivion, instead of flowering somewhere, implanted in eternal memorials of fame? The true explanation, in my judgment, is that our world is in its youth: it was not created long ago, but is of comparatively recent origin. That is why at the present time some arts are still being refined, still being developed. This age has seen many improvements in shipbuilding; it is not long since musicians first molded melodious tunes; our system of philosophy too is a recent invention, and I myself am found to be the very first with the ability to expound it in the language of my country [Latin].
+>
+> If by chance you believe that all these same things happened before, but that the races of human beings perished in a great conflagration, or that their cities were razed by a mighty convulsion of the world, or that rivers, rapacious after unremitting rains, inundated the earth and submerged towns, there is all the more necessity for you to admit defeat and acknowledge that heaven and earth arc destined to be destroyed.
