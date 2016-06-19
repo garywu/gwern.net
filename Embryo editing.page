@@ -103,30 +103,30 @@ DNA synthesis prices drop each year in an exponential decline (if not remotely a
 
 Chromosome Length in base-pairs Fraction Synthesis cost at \$0.25/BP
 ---------- -------------------- -------- ---------------------------
-1 	        249,250,621         0.081    \$62,312,655
-2 	        243,199,373         0.079    \$60,799,843
-3 	        198,022,430         0.064    \$49,505,608
-4 	        191,154,276         0.062    \$47,788,569
-5 	        180,915,260         0.058    \$45,228,815
-6 	        171,115,067         0.055    \$42,778,767
-7 	        159,138,663         0.051    \$39,784,666
-8 	        146,364,022         0.047    \$36,591,006
-9 	        141,213,431         0.046    \$35,303,358
-10 	        135,534,747         0.044    \$33,883,687
-11 	        135,006,516         0.044    \$33,751,629
-12 	        133,851,895         0.043    \$33,462,974
-13 	        115,169,878         0.037    \$28,792,470
-14 	        107,349,540         0.035    \$26,837,385
-15 	        102,531,392         0.033    \$25,632,848
-16 	        90,354,753          0.029    \$22,588,688
-17 	        81,195,210          0.026    \$20,298,802
-18 	        78,077,248          0.025    \$19,519,312
-19 	        59,128,983          0.019    \$14,782,246
-20 	        63,025,520          0.020    \$15,756,380
-21 	        48,129,895          0.016    \$12,032,474
-22 	        51,304,566          0.017    \$12,826,142
-X 	        155,270,560         0.050    \$38,817,640
-Y 	        59,373,566          0.019    \$14,843,392
+1           249,250,621         0.081    \$62,312,655
+2           243,199,373         0.079    \$60,799,843
+3           198,022,430         0.064    \$49,505,608
+4           191,154,276         0.062    \$47,788,569
+5           180,915,260         0.058    \$45,228,815
+6           171,115,067         0.055    \$42,778,767
+7           159,138,663         0.051    \$39,784,666
+8           146,364,022         0.047    \$36,591,006
+9           141,213,431         0.046    \$35,303,358
+10          135,534,747         0.044    \$33,883,687
+11          135,006,516         0.044    \$33,751,629
+12          133,851,895         0.043    \$33,462,974
+13          115,169,878         0.037    \$28,792,470
+14          107,349,540         0.035    \$26,837,385
+15          102,531,392         0.033    \$25,632,848
+16          90,354,753          0.029    \$22,588,688
+17          81,195,210          0.026    \$20,298,802
+18          78,077,248          0.025    \$19,519,312
+19          59,128,983          0.019    \$14,782,246
+20          63,025,520          0.020    \$15,756,380
+21          48,129,895          0.016    \$12,032,474
+22          51,304,566          0.017    \$12,826,142
+X           155,270,560         0.050    \$38,817,640
+Y           59,373,566          0.019    \$14,843,392
 total       3,095,693,981       1.000    \$773,923,495
 
 So the synthesis of one genome in 2016, assuming no economies of scale or futher improvement, would come in at ~\$773m.
@@ -153,7 +153,7 @@ We could also synthesize only 1 chromosome and pay much less upfront (but at the
 The causal edit problem remains but at 12% causal rates, 18 causal edits can easily be made with 150 edits of SNP candidates, which is less than already available.
 So at first glance, whole genome synthesis can be profitable with optimization of only one trait using existing GWAS hits, and will be extremely profitable if dozens of traits are optimized and mutation load minimized.
 
-How much profitable? ...see embryo selection calculations... At 70 SDs and 12% causal, then the profit would be 70*15*3270*0.12*6700 - 773000000 = $1,987,534,000 the first year or NPV of $55,806,723,536.
+How much profitable? ...see embryo selection calculations... At 70 SDs and 12% causal, then the profit would be 70*15*3270*0.12*6700 - 773000000 = $1,987,534,000 the first year or NPV of $55,806,723,536. TODO: only half-relatedness
 
 TODO:
 - model DNA synthesis cost curve; when can we expect a whole human genome to be synthesizable with a single lab's resources, like $1m/$5m/$10m? when does synthesis begin to look better than IES?
@@ -316,6 +316,7 @@ https://crispr.bme.gatech.edu/
 http://crispr.mit.edu/
 low, near zero mutation rates: "High-fidelity CRISPR-Cas9 nucleases with no detectable genome-wide off-target effects" Kleinstiver et al 2016, /docs/genetics/2016-kleinstiver.pdf ; "Rationally engineered Cas9 nucleases with improved specificity", Slaymaker et al 2016 /docs/genetics/2016-slaymaker.pdf
 Church, April 2016: "Indeed, the latest versions of gene-editing enzymes have zero detectable off-target activities." http://www.wsj.com/articles/should-heritable-gene-editing-be-used-on-humans-1460340173
+Church, June 2016 "Church: In practice, when we introduced our first CRISPR in 2013,19 it was about 5% off target. In other words, CRISPR would edit five treated cells out of 100 in the wrong place in the genome. Now, we can get down to about one error per 6 trillion cells...Fahy: Just how efficient is CRISPR at editing targeted genes? Church: Without any particular tricks, you can get anywhere up to, on the high end, into the range of 50% to 80% or more of targeted genes actually getting edited in the intended way. Fahy: Why not 100%? Church: We don't really know, but over time, we're getting closer and closer to 100%, and I suspect that someday we will get to 100%. Fahy: Can you get a higher percentage of successful gene edits by dosing with CRISPR more than once? Church: Yes, but there are limits." http://www.lifeextension.com/Lpages/2016/CRISPR/index
 cost of the top variants?
 want to edit all variants such that:
 sequencing-based edit: posterior mean * value of IQ point > cost of 1 edit
