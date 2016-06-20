@@ -3588,6 +3588,19 @@ If we concluded that the gain from better education of those 5% in an elementary
 
 Matters could be improved, though, with more broad-ranging tests.
 
-For example, genetics: as adult IQ is a highly heritable trait with perhaps up to 80% of variance predictable from all genetic variants and <a href="/Embryo%20selection#gcta-meta-analysis">~50% predictable from all SNPs</a>, with the heritability increasing with age and only ~25% at age 5 (<a href="https://www.researchgate.net/profile/Thomas_Bouchard2/publication/255692897_The_Wilson_Effect_The_Increase_in_Heritability_of_IQ_With_Age/links/545b97120cf2f1dbcbcafb26.pdf" title="The Wilson Effect: The Increase in Heritability of IQ With Age">Bouchard 2013</a>), predictions of adult IQ based on 5yo testing could be improved substantially. If we consider a <a href="https://en.wikipedia.org/wiki/Path_analysis_(statistics)">path model</a> with genes ~> IQ (0.50), IQ~5yo~ ~>IQ (0.50), genes ~> IQ~5yo~ (0.25), then using an ideal SNP genetic score and a 5yo IQ test, one could expect to predict `0.5 + (1-0.25)\*0.5 = 0.875` or 87% of variance, giving a prediction/adult IQ of `sqrt(0.875) = 0.93`; with this sort of predictive power, the reversion to mediocrity is minimal and Hunter Elementary kids would then have adult IQs of `110 + (157-110) * 0.93 = 153`.
+For example, genetics: as adult IQ is a highly heritable trait with perhaps up to 80% of variance predictable from all genetic variants and <a href="/Embryo%20selection#gcta-meta-analysis">~50% predictable from all SNPs</a>, with the heritability increasing with age and only ~25% at age 5 (<a href="https://www.researchgate.net/profile/Thomas_Bouchard2/publication/255692897_The_Wilson_Effect_The_Increase_in_Heritability_of_IQ_With_Age/links/545b97120cf2f1dbcbcafb26.pdf" title="The Wilson Effect: The Increase in Heritability of IQ With Age">Bouchard 2013</a>), predictions of adult IQ based on 5yo testing could be improved substantially. If we consider a <a href="https://en.wikipedia.org/wiki/Path_analysis_(statistics)">path model</a> with genes ~> IQ (0.50), IQ~5yo~ ~>IQ (0.50), genes ~> IQ~5yo~ (0.25):
+
+~~~{.R}
+model <- 'IQ_adult ~ 0.8*Gene + 0.5*IQ_5
+          IQ_5 ~ 0.25*Gene'
+d <- simulateData(model)
+s <- sem(model, std.ov=TRUE, data=d)
+semPaths(s, "Standardized", "Estimates", style="lisrel", curve=0.8, nCharNodes=0, edge.color="black", label.scale=FALSE,
+    residuals=FALSE, fixedStyle=1, freeStyle=1, exoVar=FALSE, sizeMan=10, sizeLat=24, label.cex=3, edge.label.cex = 2.2)
+~~~
+
+![Path model relating childhood IQ measured at age 5, final adult IQ, and SNP heritability](/images/iq-hces-childhoodiq.png)
+
+Then using an ideal SNP genetic score and a 5yo IQ test, one could expect to predict `0.5 + (1-0.25)\*0.5 = 0.875` or 87% of variance, giving a prediction/adult IQ of `sqrt(0.875) = 0.93`; with this sort of predictive power, the reversion to mediocrity is minimal and Hunter Elementary kids would then have adult IQs of `110 + (157-110) * 0.93 = 153`.
 
 In that scenario, we *could* create a Hunter-like Elementary school which is as good at filtering as Hunter High is. While it's unclear when we will be able to predict 50% of variance in adult IQs based on polygenic scores, in the near future we can hope for polygenic scores on the order of 10%, which would still be helpful: `polygenicscore = 0.10; 110 + (157-110) * sqrt(polygenicscore + (1-0.25)*0.5) = 142.4`. Besides waiting for better polygenic scores, other factors could be included in a predictive model such as parental IQs and income/education, sibling IQs, and race. I don't know if such an elementary school for the gifted would be feasible, however: improved predictions will still maintain or increase the existing controversial racial disparities, the selection may strike the public as even more 'unfair' than it is now, and will inherently yield classrooms with more cognitive inequality at the moment (despite how the slower students will tend to catch up with time) which may itself impede the educational mission or foster resentment & rivalry.
