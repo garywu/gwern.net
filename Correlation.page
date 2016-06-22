@@ -9,8 +9,7 @@ status: in progress
 # Modeling
 
 
---
-
+-
 We investigated Student-t distributions as robust priors for the 's and 's as suggested by Gelman
 et al. 8 and Fu ́quene et al. 10 Gelman et al. recommend a weakly informative default prior of a Cauchy
 distribution (or t 1 distribution) which has heavier tails than a normal distribution and thus assigns
@@ -44,14 +43,14 @@ Cauchy prior with scale of 2.5. For the intercept terms,  0 or  0 , we use the
 
 Methods
 1. Three reviews were conducted to consider:
-● empirical evidence of bias associated with non-randomised studies
-● the content of quality assessment tools for non-randomised studies
-● the use of quality assessment in systematic reviews of non-randomised studies.
+- empirical evidence of bias associated with non-randomised studies
+- the content of quality assessment tools for non-randomised studies
+- the use of quality assessment in systematic reviews of non-randomised studies.
 These reviews were conducted systematically, identifying relevant literature through comprehensive searches across electronic databases, hand-searches and contact with experts.
 2. New empirical investigations were conducted generating non-randomised studies from two large, multi-centre RCTs by selectively resampling trial participants according to allocated treatment, centre and period. These were used to examine:
-● systematic bias introduced by the use of historical and non-randomised concurrent controls
-● whether results of non-randomised studies are more variable than results of RCTs
-● the ability of case-mix adjustment methods to correct for selection bias introduced by nonrandom allocation.
+- systematic bias introduced by the use of historical and non-randomised concurrent controls
+- whether results of non-randomised studies are more variable than results of RCTs
+- the ability of case-mix adjustment methods to correct for selection bias introduced by nonrandom allocation.
 The resampling design overcame particular problems of meta-confounding and variability of direction and magnitude of bias that hinder the interpretation of previous reviews.
 
 The first systematic review looks at existing evidence of bias in non-randomised studies, critically evaluating previous methodological studies that have attempted to estimate and characterise differences in results between RCTs and non-randomised studies.
@@ -343,8 +342,7 @@ A trial of 129 stunted Jamaican children found that both nutritional supplementa
 
 It is possible that high-profile journals may tend to publish occasionally very striking findings and that this may lead to some difficulty in replicating some of these findings. 163 Poynard et al ["Truth Survival in Clinical Research: An Evidence-Based Requiem?" http://www.planetadoctor.com/documentos/MBE-herramienta/13.pdf ] evaluated the conclusions of hepatology-related articles published between 1945 and 1999 and found that, overall, 60% of these conclusions were considered to be true in 2000 and that there was no difference between randomized and nonrandomized studies or high- vs low-quality studies. Allowing for somewhat different definitions, the higher rates of refutation and the generally worse performance of nonrandomized studies in the present analysis may stem from the fact that I focused on a selected sample of the most noticed and influential clinical research. For such highly cited studies, the turnaround of "truth" may be faster; in particular non-randomized studies may be more likely to be probed and challenged than non-randomized studies published in the general literature.
 
---
-Young and Karr 1 found 12 articles in prominent journals in which 52 claims coming from
+-Young and Karr 1 found 12 articles in prominent journals in which 52 claims coming from
 observational studies were tested in randomized clinical trials. Many of the RCTs were quite
 large, and most were run in factorial designs, e.g., vitamin D and calcium individually and
 together, along with a placebo group. Remarkably, none of the claims replicated in the direction
@@ -450,183 +448,27 @@ Editor. Journal of the American Medical Association,
 
 "Evaluating the Econometric Evaluations of Training Programs with Experimental Data", LaLonde 1986 http://isites.harvard.edu/fs/docs/icb.topic1141086.files/Lalonde%201986%20-%20Evaluating%20the%20Economietric%20Evaluations%20of%20Training%20Programs%20with%20Experimental%20Data.pdf
 
-This paper compares the effect on trainee earnings of an employment program
-that was run as a field experiment where participants were randomly assigned to
-treatment and control groups with the estimates that would have been produced by
-an econometrician. This comparison shows that many of the econometric procedures do not replicate the experimentally determined results, and it suggests that
-researchers should be aware of the potential for specification errors in other
-nonexperimental evaluations.
+This paper compares the effect on trainee earnings of an employment program that was run as a field experiment where participants were randomly assigned to treatment and control groups with the estimates that would have been produced by an econometrician. This comparison shows that many of the econometric procedures do not replicate the experimentally determined results, and it suggests that researchers should be aware of the potential for specification errors in other nonexperimental evaluations.
 
-The National Supported Work Demonstration (NSW) was a temporary employment program designed to help disadvantaged workers lacking basic job skills
-move into the labor market by giving them
-work experience and counseling in a sheltered
-environment. Unlike other federally sponsored employment and training programs,
-the NSW program assigned qualified applicants to training positions randomly. Those
-assigned to the treatment group received all
-the benefits of the NSW program, while those
-assigned to the control group were left to
-fend for themselves.3
-During the mid-1970s, the Manpower
-Demonstration
-Research Corporation
-(MDRC) operated the NSW program in ten
-sites across the United States. The MDRC
-admitted into the program AFDC women,
-ex-drug addicts, ex-criminal offenders, and
-high school dropouts of both sexes.4 For
-those assigned to the treatment group, the
-program guaranteed ajob for 9 to 18 months,
-depending on the target group and site. The
-treatment group was divided into crews of
-three to five participants who worked together and met frequently with an NSW
-counselor to discuss grievances and performance. The NSW program paid the treatment group members for their work. The
-wage schedule offered the trainees lower wage
-rates than they would have received on a
-regular job, but allowed their earnings to
-increase for satisfactory performance and attendance. The trainees could stay on their
-supported work jobs until their terms in the
-program expired and they were forced to
+The National Supported Work Demonstration (NSW) was a temporary employment program designed to help disadvantaged workers lacking basic job skills move into the labor market by giving them work experience and counseling in a sheltered environment. Unlike other federally sponsored employment and training programs, the NSW program assigned qualified applicants to training positions randomly. Those assigned to the treatment group received all the benefits of the NSW program, while those assigned to the control group were left to fend for themselves.3
+During the mid-1970s, the Manpower Demonstration Research Corporation (MDRC) operated the NSW program in ten sites across the United States. The MDRC admitted into the program AFDC women, ex-drug addicts, ex-criminal offenders, and high school dropouts of both sexes.4 For those assigned to the treatment group, the program guaranteed ajob for 9 to 18 months, depending on the target group and site. The treatment group was divided into crews of three to five participants who worked together and met frequently with an NSW counselor to discuss grievances and performance. The NSW program paid the treatment group members for their work. The wage schedule offered the trainees lower wage rates than they would have received on a regular job, but allowed their earnings to increase for satisfactory performance and attendance. The trainees could stay on their supported work jobs until their terms in the program expired and they were forced to
 find regular employment.
-..., male and female participants frequently performed different sorts
-of work. The female participants usually
-worked in service occupations, whereas the
-male participants tended to work in construction occupations. Consequently, the
-program costs varied across the sites and
-target groups. The program cost $9,100 per
-AFDC participant and approximately $6,800
-for the other target groups' trainees.
+..., male and female participants frequently performed different sorts of work. The female participants usually worked in service occupations, whereas the male participants tended to work in construction occupations. Consequently, the program costs varied across the sites and target groups. The program cost $9,100 per AFDC participant and approximately $6,800 for the other target groups' trainees.
 
-The first two columns of Tables 2 and 3
-present the annual earnings of the treatment
-and control group members.9 The earnings
-of the experimental groups were the same in
-the pre-training year 1975, diverged during
-the employment program, and converged to
-some extent after the program ended. The
-post-training year was 1979 for the AFDC
-females and 1978 for the males.10
-Columns 2 and 3 in the first row of Tables
-4 and 5 show that both the unadjusted and
-regression-adjusted pre-training earnings of
-the two sets of treatment and control group
-members are essentially identical. Therefore,
-because of the NSW program's experimental
-design, the difference between the post-training earnings of the experimental groups is an
-unbiased estimator of the training effect, and
-the other estimators described in columns
-5-10(11) are unbiased estimators as well.
-The estimates in column 4 indicate that the
-earnings of the AFDC females were $851
-higher than they would have been without
-the NSW program, while the earnings of the
-male participants were $886 higher.11 Moreover, the other columns show that the econometric procedure does not affect these estimates.
+The first two columns of Tables 2 and 3 present the annual earnings of the treatment and control group members.9 The earnings of the experimental groups were the same in the pre-training year 1975, diverged during the employment program, and converged to some extent after the program ended. The post-training year was 1979 for the AFDC females and 1978 for the males.10 Columns 2 and 3 in the first row of Tables 4 and 5 show that both the unadjusted and regression-adjusted pre-training earnings of the two sets of treatment and control group members are essentially identical. Therefore, because of the NSW program's experimental design, the difference between the post-training earnings of the experimental groups is an unbiased estimator of the training effect, and the other estimators described in columns 5-10(11) are unbiased estimators as well. The estimates in column 4 indicate that the earnings of the AFDC females were $851 higher than they would have been without the NSW program, while the earnings of the male participants were $886 higher.11 Moreover, the other columns show that the econometric procedure does not affect these estimates.
 
-The researchers who evaluated these federally sponsored programs devised both experimental and nonexperimental procedures
-to estimate the training effect, because they
-recognized that the difference between the
-trainees' pre- and post-training earnings was
-a poor estimate of the training effect. In a
-dynamic economy, the trainees' earnings may
-grow even without an effective program. The
-goal of these program evaluations is to
-estimate the earnings of the trainees had
-they not participated in the program. Researchers using experimental data take the
-earnings of the control group members to be
-an estimate of the trainees' earnings without
-the program. Without experimental data, researchers estimate the earnings of the trainees
-by using the regression-adjusted earnings of
-a comparison group drawn from the population. This adjustment takes into account that
-the observable characteristics of the trainees
-and the comparison group members differ,
-and their unobservable characteristics may
-differ as well.
+The researchers who evaluated these federally sponsored programs devised both experimental and nonexperimental procedures to estimate the training effect, because they recognized that the difference between the trainees' pre- and post-training earnings was a poor estimate of the training effect. In a dynamic economy, the trainees' earnings may grow even without an effective program. The goal of these program evaluations is to estimate the earnings of the trainees had they not participated in the program. Researchers using experimental data take the earnings of the control group members to be an estimate of the trainees' earnings without the program. Without experimental data, researchers estimate the earnings of the trainees by using the regression-adjusted earnings of a comparison group drawn from the population. This adjustment takes into account that the observable characteristics of the trainees and the comparison group members differ, and their unobservable characteristics may differ as well.
 
-The first step in a nonexperimental
-evaluation is to select a comparison group
-whose earnings can be compared to the earnings of the trainees. Tables 2 and 3 present
-the mean annual earnings of female and
-male comparison groups drawn from the
-Panel Study of Income Dynamics (PSID)
-and Westat's Matched Current Population
-Survey - Social Security Administration File
-(CPS-SSA). These groups are characteristic
-of two types of comparison groups frequently used in the program evaluation literature. The PSID-1 and the CPS-SSA-1
-groups are large, stratified random samples
-from populations of household heads and
-households, respectively.14 The other, smaller, comparison groups are composed of individuals whose characteristics are consistent
-with some of the eligibility criteria used to
-admit applicants into the NSW program.
-For example, the PSID-3 and CPS-SSA-4
-comparison groups in Table 2 include
-females from the PSID and the CPS-SSA
-who received AFDC payments in 1975, and
-were not employed in the spring of 1976.
-Tables 2 and 3 show that the NSW trainees
-and controls have earnings histories that are
-more similar to those of the smaller comparison groups
+The first step in a nonexperimental evaluation is to select a comparison group whose earnings can be compared to the earnings of the trainees. Tables 2 and 3 present the mean annual earnings of female and male comparison groups drawn from the Panel Study of Income Dynamics (PSID) and Westat's Matched Current Population Survey - Social Security Administration File (CPS-SSA). These groups are characteristic of two types of comparison groups frequently used in the program evaluation literature. The PSID-1 and the CPS-SSA-1 groups are large, stratified random samples from populations of household heads and households, respectively.14 The other, smaller, comparison groups are composed of individuals whose characteristics are consistent with some of the eligibility criteria used to admit applicants into the NSW program. For example, the PSID-3 and CPS-SSA-4 comparison groups in Table 2 include females from the PSID and the CPS-SSA who received AFDC payments in 1975, and were not employed in the spring of 1976. Tables 2 and 3 show that the NSW trainees and controls have earnings histories that are more similar to those of the smaller comparison groups
 
-Unlike the experimental estimates, the
-nonexperimental estimates are sensitive both
-to the composition of the comparison group
-and to the econometric procedure. For example, many of the estimates in column 9 of
-Table 4 replicate the experimental results,
-while other estimates are more than $1,000
-larger than the experimental results. More
-specifically, the results for the female participants (Table 4) tend to be positive and
-larger than the experimental estimate, while
-for the male participants (Table 5), the
-estimates tend to be negative and smaller
-than the experimental impact.20 Additionally, the nonexperimental procedures replicate the experimental results more closely
-when the nonexperimental data include pretraining earnings rather than cross-sectional
-data alone or when evaluating female rather
-than male participants.
+Unlike the experimental estimates, the nonexperimental estimates are sensitive both to the composition of the comparison group and to the econometric procedure. For example, many of the estimates in column 9 of Table 4 replicate the experimental results, while other estimates are more than $1,000 larger than the experimental results. More specifically, the results for the female participants (Table 4) tend to be positive and larger than the experimental estimate, while for the male participants (Table 5), the estimates tend to be negative and smaller than the experimental impact.20 Additionally, the nonexperimental procedures replicate the experimental results more closely when the nonexperimental data include pretraining earnings rather than cross-sectional data alone or when evaluating female rather than male participants.
 
-Before taking some of these estimates too seriously, many econometricians at a minimum
-would require that their estimators be based
-on econometric models that are consistent
-with the pre-training earnings data. Thus, if
-the regression-adjusted difference between
-the post-training earnings of the two groups
-is going to be a consistent estimator of the
-training effect, the regression-adjusted pretraining earnings of the two groups should
-be the same.
-Based on this specification test, econometricians might reject the nonexperimental estimates in columns 4-7 of Table 4 in
-favor of the ones in columns 8-11. Few
-econometricians would report the training
-effect of $870 in column 5, even though this
-estimate differs from the experimental result
-by only $19. If the cross-sectional estimator
-properly controlled for differences between
-the trainees and comparison group members,
-we would not expect the difference between
-the regression adjusted pre-training earnings
-of the two groups to be $1,550, as reported
-in column 3. Likewise, econometricians might
-refrain from reporting the difference in
-differences estimates in columns 6 and 7,
-even though all these estimates are within
-two standard errors of $3,000. As noted
-earlier, this estimator is not consistent with
-the decline in the trainees' pre-training earnings.
+Before taking some of these estimates too seriously, many econometricians at a minimum would require that their estimators be based on econometric models that are consistent with the pre-training earnings data. Thus, if the regression-adjusted difference between the post-training earnings of the two groups is going to be a consistent estimator of the training effect, the regression-adjusted pretraining earnings of the two groups should be the same.
+Based on this specification test, econometricians might reject the nonexperimental estimates in columns 4-7 of Table 4 in favor of the ones in columns 8-11. Few econometricians would report the training effect of $870 in column 5, even though this estimate differs from the experimental result by only $19. If the cross-sectional estimator properly controlled for differences between the trainees and comparison group members, we would not expect the difference between the regression adjusted pre-training earnings of the two groups to be $1,550, as reported in column 3. Likewise, econometricians might refrain from reporting the difference in differences estimates in columns 6 and 7, even though all these estimates are within two standard errors of $3,000. As noted earlier, this estimator is not consistent with the decline in the trainees' pre-training earnings.
 
-The two-step estimates are usually closer
-than the one-step estimates to the experimental results for the male trainees as well.
-One estimate, which used the CPS-SSA-1
-sample as a comparison group, is within
-$600 of the experimental result, while the
-one-step estimate falls short by $1,695. The
-estimates of the participation coefficients are
-negative, although unlike these estimates for
-the females, they are always significantly
-different from zero. This finding is consistent
-with the example cited earlier in which individuals with high participation unobservables and low earnings unobservables were
-more likely to be in training. As predicted,
-the unrestricted estimates are larger than the
-one-step estimates. However, as with the results for the females, this procedure may
-leave econometricians with a considerable
-range ($1,546) of imprecise estimates
+The two-step estimates are usually closer than the one-step estimates to the experimental results for the male trainees as well. One estimate, which used the CPS-SSA-1 sample as a comparison group, is within $600 of the experimental result, while the one-step estimate falls short by $1,695. The estimates of the participation coefficients are negative, although unlike these estimates for the females, they are always significantly different from zero. This finding is consistent with the example cited earlier in which individuals with high participation unobservables and low earnings unobservables were more likely to be in training. As predicted, the unrestricted estimates are larger than the one-step estimates. However, as with the results for the females, this procedure may leave econometricians with a considerable range ($1,546) of imprecise estimates
 
----
+--
 
 "The Endogeneity Problem in Developmental Studies", Duncan et al 2004 https://www.dropbox.com/s/iww2kmp3cf67vos/2004-duncan.pdf http://moscow.sci-hub.bz/b6ab184de3bae9fd0fc16ad0558de92c/10.1080%4015427609.2004.9683330.pdf  http://home.uchicago.edu/ludwigj/papers/Duncan_EndogeneityProblem.pdf
 
@@ -699,6 +541,14 @@ A much larger literature within economics, statistics, and program evaluation ha
 
 - Glazerman, S., Levy, D., & Myers, D. (2002). _Nonexperimental replications of social experiments: A systematic review_. Washington, DC: Mathematica Policy Research http://www.mathematica-mpr.com/publications/pdfs/nonexperimentalreps.pdf
 - Bloom, H. S., Michalopoulos, C., Hill, C., & Lei, Y. (2002) _Can non-experimental comparison group methods match the findings from a random assignment evaluation of mandatory welfare-to-work programs?_ New York: Manpower Demonstration Research Corporation. http://files.eric.ed.gov/fulltext/ED471814.pdf
+
+Allcott 2011, ["Social Norms and Energy Conservation"](http://bwl.univie.ac.at/fileadmin/user_upload/lehrstuhl_ind_en_uw/lehre/ws1213/SE_Energy_WS12_13/Social_norms_and_energy_conservation.pdf):
+
+> Nearly all energy efficiency programs are still evaluated using non-experimental estimators or engineering accounting approaches. How important is the experimental control group to consistently-estimated ATEs? This issue is crucial for several of OPOWER's initial programs that were implemented without a control group but must estimate impacts to report to state regulators. While Lalonde (1986) documented that non-experimental estimators performed poorly in evaluating job training programs and similar arguments have been made in many other domains, weather-adjusted non-experimental estimators could in theory perform well in modeling energy demand. The importance of randomized controlled trials has not yet been clearly documented to analysts and policymakers in this context.
+>
+> Without an experimental control group, there are two econometric approaches that could be used. The first is to use a difference estimator, comparing electricity use in the treated population before and after treatment. In implementing this, I control for weather differences non-parametrically, using bins with width one average degree day. This slightly outperforms the use of fourth degree polynomials in heating and cooling degree-days. This estimator is unbiased if and only if there are no other factors associated with energy demand that vary between the pre-treatment and post-treatment period. A second non-experimental approach is to use a difference-in-differences estimator with nearby households as a control group. For each experiment, I form a control group using the average monthly energy use of households in other utilities in the same state, using data that regulated utilities report to the U.S. Department of Energy on Form EIA 826. The estimator includes utility-by-month fixed effects to capture different seasonal patterns – for example, there may be local variation in how many households use electric heat instead of natural gas or oil, which then affects winter electricity demand. This estimator is unbiased if and only if there are no unobserved factors that differentially affect average household energy demand in the OPOWER partner utility vs. the other utilities in the same state. Fig. 6 presents the experimental ATEs for each experiment along with point estimates for the two types of non-experimental estimators. There is substantial variance in the non-experimental estimators: the average absolute errors for the difference and difference-in-differences estimators, respectively, are 2.1% and 3.0%. Across the 14 experiments, the estimators are also biased on average. In particular, the mean of the ATEs from the difference-in-differences estimator is −3.75%, which is nearly double the mean of the experimental ATEs.
+>
+> ...What's particularly insidious about the non-experimental estimates is that they would appear quite plausible if not compared to the experimental benchmark. Nearly all are within the confidence intervals of the small sample pilots by Schultz et al. (2007) and Nolan et al. (2008) that were discussed above. Evaluations of similar types of energy use information feedback programs have reported impacts of zero to 10% (Darby, 2006).
 
 # Sociology
 
