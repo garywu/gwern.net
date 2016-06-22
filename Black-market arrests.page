@@ -572,6 +572,7 @@ A. B.-Vazquez        M         Poncho              seller    Evolution          
 Tobias Wald          M         Natural Weed        seller    Silk Road 1                       Germany     Neuhof         marijuana                                               2015-10-01
                      M                             buyer     Silk Road 1                       Germany                    marijuana                             FALSE  2015-10-01 2015-10-01
 David Trail          M   26                        operator  Topix2                            Scotland    Edinburgh      diazepam, carding                     TRUE   2014-11-06 2016-06-02
+Mark Dornan          M   22                        buyer                                       UK          Stirling       marijuana                             TRUE   2016-04-08 2016-06-22
 
 # Confirmed
 ## Agora
@@ -1397,6 +1398,8 @@ In late October 2015, 19yo Welsh woman Megan Schadeberg was charged with attempt
 [3](http://www.carmarthenjournal.co.uk/Carmarthen-teen-tried-buy-pistol-writing-want/story-28949393-detail/story.html "Carmarthen teen tried to buy pistol after writing 'I want to kill everyone' in diary"))
 She had read up on the DNMs and had acquired Bitcoin and picked a Glock listing on an unspecified DNM, but apparently had not yet pulled the trigger on her order.
 
+[22yo Stirling man Mark Dornan](http://www.bbc.com/news/uk-scotland-tayside-central-36530120 "'Dark web' drug dealer jailed after parcel intercepted") ordered 500g of marijuana for local resale from Belgium which was intercepted by Customs and he was raided on 8 April 2016.
+
 ### USA
 
 On 25 November 2013, Brandon Howell [was arrested](http://www.wect.com/story/24088516/police-seized-hundreds-of-drugs-in-carolina-beach-bust) after "a month-long investigation" in North Carolina; he & his partner "imported MDMA from China through an online black market...The two then resold the imported drugs using the online currency Bitcoin, according to police." It is not clear which seller they were or what market they sold on, but the media coverage mentions Silk Road 1.
@@ -1589,6 +1592,7 @@ The [Drugs Global Incident Map](http://drugs.globalincidentmap.com/) features ma
     - ["Two arrested in drug bust in Huntington"](http://www.wsaz.com/content/news/Two-arrested-in-drug-bust-in-Huntington-379460341.html)
     - ["Bussage cannabis dealer Chance Gough avoids jail after ordering cocaine delivery from Holland"](http://www.stroudnewsandjournal.co.uk/news/14491113.Bussage_cannabis_dealer_Chance_Gough_avoids_jail_after_ordering_cocaine_delivery_from_Holland/)
     - ["Two pill dealers sentenced to federal prison for drug crimes"](http://williamsondailynews.com/news/4846/two-pill-dealers-sentenced-to-federal-prison-for-drug-crimes)
+    - ["North Haven police: Pair arrested after attempting to take delivery of package full of marijuana"](http://www.nhregister.com/general-news/20160616/north-haven-police-pair-arrested-after-attempting-to-take-delivery-of-package-full-of-marijuana)
 
 Most are likely unrelated to the black-markets (part of regular drug smuggling or importing from fly-by-night chemical labs in China) and some rumors are wrong or flatly made up (for example, a seller may be covering up an exit scam with a fake story about being busted, or one seller may be trying to hurt another's sales eg [the TedDanzig incident](https://www.reddit.com/r/SilkRoad/comments/1xq97t/teddanzig_arrested/) or the 4lb PureFireMeds FUD), but of course, some will turn out to be real.
 
@@ -1843,6 +1847,11 @@ qplot(YearMonth, log1p(Freq), data=x) + facet_grid(Country ~ .)
 ## try stacking the other way: https://imgur.com/gsol6Vr still pretty meh
 qplot(YearMonth, log1p(Freq), color=Country, facets=. ~ Country, data=x)
 ~~~
+
+<!-- # Citations
+http://www.nada.org.au/media/80570/advocate_issue4_15dec2015.pdf
+"Going International? Risk Taking by Cryptomarket Drug Vendors", Décary-Hétu et al 2016 http://www.sciencedirect.com/science/article/pii/S0955395916301724
+-->
 
 # See also
 
