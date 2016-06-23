@@ -11,26 +11,77 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 
 # Writings
 
+- Hunter?
+- TIP/SMPY?
+- Newton's comet apocalypse system?
+
 # Media
 ## Links
 
 Everything is heritable:
 
+- ["Assortative mating and differential fertility by phenotype and genotype across the 20th century"](http://www.pnas.org/content/early/2016/05/25/1523592113.full), Conley et al 2016 (Dysgenics found in the USA, 1920-1955: education/intelligence polygenic scores decrease over time, inversely correlate with offspring - education/intelligence polygenic score is dropping 0.0029 SDs per year, or 0.087SD over the 30 years covered, implying that the USA genetic potential has dropped 0.28SD since 1920 or <4 IQ points.)
+- ["The Genetics of Success: How Single-Nucleotide Polymorphisms Associated With Educational Attainment Relate to Life-Course Development"](http://www.gwern.net/docs/genetics/2016-belsky.pdf), Belsky et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/c8oDW58RJxw))
+- ["The Genome Project–Write"](http://science.sciencemag.org/content/early/2016/06/01/science.aaf6850.full), Boeke et al 2016 ([media](http://www.nytimes.com/2016/06/03/science/human-genome-project-write-synthetic-dna.html "Scientists Announce HGP-Write, Project to Synthesize the Human Genome"); [commentary](https://plus.google.com/103530621949492999968/posts/GH6LoxL8PG1))
+- ["Demonstrating the validity of twin research in criminology"](https://www.researchgate.net/publication/267158254_Demonstrating_the_validity_of_twin_research_in_criminology), Barnes et al 2014
+- ["Pleiotropy across academic subjects at the end of compulsory education"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4512149/), Rimfeld et al 2015
+- ["Genetics affects choice of academic subjects as well as achievement"](http://www.nature.com/articles/srep26373), Rimfeld et al 2016
+- ["The Genetic Basis of Mendelian Phenotypes: Discoveries, Challenges, and Opportunities"](http://www.cell.com/ajhg/abstract/S0002-9297\(15\)00245-1), Chong et al 2015 (But enough about common variants & complex traits - how have we been doing in finding the causes of genetic diseases like severe Mendelian diseases? Very well.﻿)
+- ["A Prospective Study of Sudden Cardiac Death among Children and Young Adults"](http://www.gwern.net/docs/genetics/2016-bagnall.pdf), Bagnall et al 2016 (Rare genetic mutations implicated in >13% of unexplained cardiac deaths. Makes one wonder how much of the long tail of deaths are due to rare variants, and how much of a benefit there would be to erasing the ~80k mutations everyone carries... (Population genetics rule: rare variants are more harmful than common variants; and 1 harmful mutation, 1 reproductive death to purge it from the population.) Very cool application of genetics.)
+- genetics of breast size ([commentary](https://plus.google.com/103530621949492999968/posts/HohQAcuhtLe)):
+
+    - Wade et al 2010 ["Body mass index and breast size in women: same or different genes?"](https://www.researchgate.net/profile/Tracey_Wade2/publication/46576952_Body_Mass_Index_and_Breast_Size_in_Women_Same_or_Different_Genes/links/00b7d52fbf89094b60000000.pdf)
+    - ["Genetic variants associated with breast size also influence breast cancer risk"](http://bmcmedgenet.biomedcentral.com/articles/10.1186/1471-2350-13-53), Eriksson et al 2012
+    - ["Large-scale genotyping identifies a new locus at 22q13.2 associated with female breast size"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4159740/), Li et al 2013
+
 Politics/religion:
+
+- ["Wealth, Health, and Child Development: Evidence from Administrative Data on Swedish Lottery Players"](http://qje.oxfordjournals.org/content/131/2/687.full), Cesarini et al 2016
+- ["The Unbelievable Tale of Jesus's Wife"](http://www.theatlantic.com/magazine/archive/2016/07/the-unbelievable-tale-of-jesus-wife/485573/), [King's response](http://www.theatlantic.com/politics/archive/2016/06/karen-king-responds-to-the-unbelievable-tale-of-jesus-wife/487484/) (_The Gospel of Jesus's Wife_ is probably a modern forgery. But it gets weirder. And kinkier. Forgeries like this always raise troubling issues about religious scriptures: if this forgery had been kept in private collections for another century before becoming known, in all likelihood, most of the damning evidence would either have disappeared or become inaccessible, and all that would be left is a few worries over the appearance. Most scriptures have even more vexed provenances than does the Gospel of Jesus's Wife, with blackouts of centuries not uncommon, and known destruction of variants (eg the well-known destruction of all variants of the Koran). Of course, you might think, who would dare counterfeit the Word of God Himself? Yet, humans are strange and inscrutable and can talk themselves into anything - why did Fritz do it? Probably even he doesn't really know. Who knows how many Fritzes there have been throughout history...﻿)
 
 AI:
 
+- ["Unifying Count-Based Exploration and Intrinsic Motivation"](https://arxiv.org/abs/1606.01868), Bellemare et al 2016 ([Video](https://www.youtube.com/watch?v=0yI2wJ6F8r0); big exploration improvement for DQN-like agents: where DQN can only get to two rooms in _Montezuma's Revenge_, because it takes actions mostly at random and it is unlikely that it will randomly do the 15 or 20 exact moves which will get it a reward, this version, with a way of measuring novelty and exploring novel states until a reward is found, can make it to 15 rooms!)
+- ["Improved Techniques for Training GANs"](https://arxiv.org/abs/1606.03498), Salimans et al 2016 (Even better image generation at 128px now. Synthesizing art can't be far off.﻿)
+- ["InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets"](https://arxiv.org/abs/1606.03657), Chen et al 2016 (are GANs and VAEs giving us a breakthrough in unsupervised learning?)
+- ["Early Visual Concept Learning with Unsupervised Deep Learning"](https://arxiv.org/pdf/1606.05579.pdf), Higgins et al 2016:
+- ["Progressive Neural Networks"](https://arxiv.org/abs/1606.04671), Rusu et al 2016 (NN factored to build different sub-nets for different tasks while allowing later learned tasks to draw on earlier-trained subnets. See also ["Actor-Mimic: Deep Multitask and Transfer Reinforcement Learning"](https://arxiv.org/abs/1511.06342), Parisotto et al 2015.)
+- ["Towards an integration of deep learning and neuroscience"](http://biorxiv.org/content/biorxiv/early/2016/06/13/058545.full.pdf), Marblestone et al 2016
+- ["DeepMath - Deep Sequence Models for Premise Selection"](https://arxiv.org/abs/1606.04442), Alemi et al 2016
+- ["Convolutional Sketch Inversion"](https://arxiv.org/pdf/1606.03073v1.pdf), G. et al 2016 (facial sketch->illustration)
+- ["Learning to learn by gradient descent by gradient descent"](https://arxiv.org/pdf/1606.04474v1.pdf), Andrychowicz et al 2016 (Replacing simple SGD, Adadelta, RMSprop etc by a very small RNN. Probably never practical but still amusing.)
+
 Statistics/meta-science:
+
+- ["Generalized Network Psychometrics: Combining Network and Latent Variable Models"](https://arxiv.org/abs/1605.09288), Epskamp et al 2016
+- ["Statistically Controlling for Confounding Constructs Is Harder than You Think"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719), Westfall & Yarkoni 2016 (This is part of why results in sociology/epidemiology/psychology are so unreliable: not only do they usually not control for genetics at all, they don't even control for the things they think they control for. You have *not* controlled for SES by throwing in a discretized income variable measured in one year plus a discretized college degree variable. Variables which correlate with or predict some outcome such as poverty, may be doing no more than correcting some measurement error (frequently, due to the heavy genetic loading of most outcomes, correcting the omission of genetic information). This is why within-family designs are desirable even without worries about genetics: they hold constant shared-environment factors so you don't need to measure or model them.﻿)
+- ["Linear Programming: How Does It Work?"](http://jadagul.tumblr.com/post/145201618713/linear-programming-how-does-it-work)
 
 Psychology/biology:
 
+- ["Ann Roe's scientists: original published papers"](https://infoproc.blogspot.com/2016/06/roes-scientists-original-published.html) (One of the very few data sets, excluding TIP/SMPY, of extremely intelligent people. I am still reading through them but one impression I get is that the education system in America when most of them were growing up around 1910-1920 was grossly inadequate and unchallenging; many of them seem to only drift into their field when they happen to run into a challenging course in college. Quite a few mention incredibly little access to books and severe poverty (although interestingly, they all come from what are clearly middle/upper-class descent families, even if in some cases they are so poor as to be unable to afford shoes). Smart kids are so much better off these days with Internet access to anything at all they want to read. As I've noted in reading biographies of American scientists, the academic environment pre- and post-WWII is strikingly different than the pressure-cooker race to the bottom we are familiar with now. Relative underperformance in grades compared to females is also a running theme. With the chemists and physicists, home chemistry kits seem to have been nigh universal - which is something that sure doesn't happen these days!﻿)
+- ["Gifted Today But Not Tomorrow? Longitudinal Changes in Ability and Achievement in Elementary School"](http://files.eric.ed.gov/fulltext/EJ746292.pdf), Lohman & Korb 2006 (Challenges in gifted education in elementary or earlier: IQ scores are unstable and so regression to the mean implies that few children in G&T programs will grow up to be gifted.)
+- ["Understanding the Improvement in Disability Free Life Expectancy In the U.S. Elderly Population"](https://www.nber.org/papers/w22306.pdf), Chernew et al 2016 (Adult disability-free life expectancy continues to increase, due in large part to eye surgery improvements; vision is probably, like falling, the proximate cause of a lot of health issues.﻿)
+- ["Nicotine Contents in Some Commonly Used Toothpastes and Toothpowders: A Present Scenario"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3263647/), Agrawal & Ray 2012 (/not sure if harmful or helpful﻿)
+
 Technology:
 
+- ["Preparing for the Worst: The Space Insurance Market's Realistic Disaster Scenarios"](http://online.liebertpub.com/doi/abs/10.1089/space.2015.0008), Robin et al 2016
+- ["37 Million Compilations: Investigating Novice Programming Mistakes in Large-Scale Student Data"](https://kar.kent.ac.uk/46742/1/fp1187-altadmri.pdf﻿), Altadmri & Brown 2015 ([commentary](http://neverworkintheory.org/2016/06/09/novice-programming-mistakes.html))
+- ["Climb Mount Improbable"](http://www.mountimprobable.com/) (JS reimplementation of Dawkin's evolutionary computation)
+
 Economics:
+
+- ["The Future of Agriculture"](http://neverworkintheory.org/2016/06/09/novice-programming-mistakes.html)
+- ["Gin, Television, and Social Surplus - Here Comes Everybody"](https://web.archive.org/web/20080701063952/http://www.shirky.com/herecomeseverybody/2008/04/looking-for-the-mouse.html) (Clay Shirky; A decade on... Twitch streaming, Minecraft, Snapchat... Not so much wikis or blogs anymore. Still tons of TV, though, especially the poor.﻿)
+- [Feeder of lice](https://en.wikipedia.org/wiki/Feeder_of_lice)
 
 Philosophy:
 
 Fiction:
+
+- ["Is the Great Attractor a Tengen Toppa Gurren Lagann?"](https://jgeekstudies.wordpress.com/2016/05/19/great-attractor-ttgl/), Tomotani 2016
+- [_The Neu Jorker_](https://static1.squarespace.com/static/52a74ecde4b01bb79a769329/t/575d922e7da24f2981092db0/1465750080617/Neu+Jorker%2C+Singles%2C+Lo-res.pdf) (I particularly liked the profile of a woman's courageous journey towards equestrianism, an investigation into some knotty issues, and a retrospective of the role of capes in NYC's crime reduction over the past 3 decades.﻿)
 
 <!-- Back to 30 Sep 2012 -->
 
@@ -38,13 +89,22 @@ Fiction:
 
 Nonfiction:
 
+- [_The Sports Gene_](http://thesportsgene.com/), Epstein
+- [_Genius Revisited: High IQ Children Grown Up_](/docs/iq/1993-subotnik-geniusrevisited.pdf), Subotnik et al 1993 ([review](http://www.gwern.net/Statistical%20notes#genius-revisited-on-the-value-of-high-iq-elementary-schools))
+
+
 Fiction:
 
 ## Film/TV
 
 Live-action:
 
+- [_Bridge of Spies_](https://en.wikipedia.org/wiki/Bridge_of_Spies_(film)) (overly earnest - painfully and ironically so given the War on Terror - Cold War Spielberg film about a lawyer defending a spy; becomes much better and tense when the primary plot begins and [Donovan](https://en.wikipedia.org/wiki/James_B._Donovan) must carefully play off the East Germans and Soviets while not blowing the whole deal. Standard Hollywood polish, perhaps a bit too heavy on the deliberate symbolism like the cold passed from Abel to Donovan onwards or the train/fence pairings and the contrast between the film implying Abel would be treated as a traitor by the USSR compared to Powers, which was the departure from history I found most objectionable.)
+
 Anime:
+
+- [_Basilisk_](https://en.wikipedia.org/wiki/Basilisk_(manga)) ([review](http://myanimelist.net/reviews.php?id=221630))
+- [_Michiko to Hatchin_](https://en.wikipedia.org/wiki/Michiko_%26_Hatchin) ([review](http://myanimelist.net/reviews.php?id=221644))
 
 ## Games
 
@@ -52,6 +112,25 @@ Anime:
 
 Touhou:
 
+- ["C.Experiment"](https://dl.dropboxusercontent.com/u/182368464/music/syrufitocr-cexperiment-cexperiment.ogg) (Syrufit/OCR; _C.Experiment_ {R13}) [post-rock]
+- ["Prison Sign 'Restless Confination'"](https://www.youtube.com/watch?v=8ivvOB9F0-k) (RD-Sounds; _掲_ {R13}) [orchestral]
+- ["契符「狐憑顕現の祭祀」"](https://www.youtube.com/watch?v=oPGYZel-4c0) (RD-Sounds; _掲_ {R13}) [orchestral]
+- ["夢へと揺られながら"](https://dl.dropboxusercontent.com/u/182368464/music/mameya-%E5%A4%9A%E5%B9%B8%E6%B6%99%E9%9B%A8-%E5%A4%A2%E3%81%B8%E3%81%A8%E6%8F%BA%E3%82%89%E3%82%8C%E3%81%AA%E3%81%8C%E3%82%89.ogg) (mameya; _多幸涙雨_ {R13}) [classical]
+- ["目をさませば幻想郷"](https://dl.dropboxusercontent.com/u/182368464/music/mameya-%E5%A4%9A%E5%B9%B8%E6%B6%99%E9%9B%A8-%E7%9B%AE%E3%82%92%E3%81%95%E3%81%BE%E3%81%9B%E3%81%B0%E5%B9%BB%E6%83%B3%E9%83%B7.ogg) (mameya; _多幸涙雨_ {R13}) [classical]
+- ["雨垂れ拍子は誰が為に"](https://www.dropbox.com/s/2ed0stm2o9y768d/foxtailgrassstudio-kazegatari-%E9%9B%A8%E5%9E%82%E3%82%8C%E6%8B%8D%E5%AD%90%E3%81%AF%E8%AA%B0%E3%81%8C%E7%82%BA%E3%81%AB.ogg) (Foxtail-Grass Studio; _Kazegatari._ {R13}) [folk/traditional]
+- ["眠れぬ浮世の月明り"](https://www.youtube.com/watch?v=UMQfkBMCW_g) (Foxtail-Grass Studio; _Kazegatari._ {R13}) [folk/traditional]
+- ["signification"](https://www.dropbox.com/s/atfuri56drw26bf/mark-%E3%83%AC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%88-signification.ogg) (m@rk feat. 灯下はこ、; _レタレイト_ {R13}) [trance]
+- ["by your side"](https://dl.dropboxusercontent.com/u/182368464/music/syrufitfeatcathy-cexperiment-byyourside.ogg) (Syrufit feat. Cathy; _C.Experiment_ {R13}) [electronic]
+- ["Lunatic Princess"](https://dl.dropboxusercontent.com/u/182368464/music/syrufitfeatcathy-cexperiment-lunaticprincess.ogg) (Syrufit feat. Cathy; _C.Experiment_ {R13}) [electronic]
+- ["Lævateinn"](https://www.youtube.com/watch?v=bi-OTpMF5v8) (denshūto; _Sungrazer_ {2013}) [metal]
+- ["Shrimp and avocado salad"](https://www.dropbox.com/s/rf730rwjmeyco36/baguettesensemble-tohojazzsessionstypespb2-shrimpandavocadosalad.ogg) (Baguettes Ensemble; _Toho Jazz Sessions type SPB2_ {R13}) [jazz]
+
 Vocaloid:
 
+- ["Reincarnation"](http://www.nicovideo.jp/watch/sm1886358) (Rin; JevanniP {2009}) [trance]
+
 Doujin:
+
+A cappella:
+
+- ["Thomas Gemma Cantuarie"](https://www.youtube.com/watch?v=HV5S_Z-6Eus) (Hilliard Ensemble; _Medieval English Music_) [Renaissance]
