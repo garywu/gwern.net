@@ -3640,6 +3640,7 @@ The second night, I did the same but left the door open. CO2 peaked at 1619PPM a
 For the third night, door open, but one fan turned on slightly facing the door. CO2 peaked at 1405PPM at 4:58AM.
 The fourth night reverted to closed, first peaking at 2775PPM at 5:21AM and then peaking at 2912PPM at 9:55AM.
 Fifth night was open with fan: 1407PPM at 5:57AM.
+When the door is closed and the fan is on, there is a small but not useful reduction in CO2 (peaking one night at 2452PPM), which could be due either to a more even distribution within the room or possibly from accelerating air infiltration from the outside.
 The next 5 nights yielded similar numbers: closed leads to steady increases peaking 2900-3000PPM, open with no fan or with fan tends to not be more than ~1400PPM and possibly less.
 
 To model sleep effects, I want to take into account bedroom temperature, humidity, CO2, sound, and measure sleep.
@@ -3727,6 +3728,8 @@ airNight <- merge(konginDaily, netatmoDaily, all=TRUE)
 # door <- TODO
 # night <- merge(door, merge(zeo, airNight, all=TRUE), all=TRUE)
 # night[is.na(night$Intervention.r),]$Intervention.r <- 0 # I have always slept with door shut, so impute any missing data to 0/shut
+## TODO: add in squared terms for humidity/temperature? lavaan can't do arithmetic transforms inside the model so it has to be
+## done something like 'night$Humidity.Netatmo.2 <- night$Humidity.Netatmo^2' and then in the regressions as ''Humidity.Netatmo + Humidity.Netatmo.2'...
 # write.csv(night, file="...csv", row.names=FALSE)
 # night <- read.csv("...csv", colClasses=c(...))
 
@@ -3739,7 +3742,10 @@ model <- '
      CO2   ~ Door.r + Fan.r
      HUMIDITY ~ Door.r + Fan.r + Door.r*Fan.r
      TEMPERATURE ~ Door.r + Fan.r + Door.r*Fan.r
+
      SLEEP ~ HUMIDITY + TEMPERATURE + Noise + CO2 + Door.r + Fan.r + Door.r*Fan.r
+     MP ~ CO2 + SLEEP
+     Mnemosyne ~ CO2 + SLEEP
      '
 s <- sem(model, se="boot", missing="FIML", data=night)
 ~~~
@@ -5344,10 +5350,18 @@ June
 11: 0 0
 12: 0 1
 13: 0 1
-14:
+14: 0 1
+15: 0 0
+16: 0 1
+17: 0 1
+18: 0 1
+19: 0 0
+20: 0 0
+21: 0 1
+22: 0 0
 -->
 
-<!-- Alcohol log: 18, 22, 23, 24, 26, 27, 30 July 2014; 1, 4, 5, 8, 11, 12, 14, 16, 17, 19, 21, 23, 25, 27, 30 August 2014; 3, 4, 6, 9, 10, 12, 15, 18, 19, 20, 27 September 2014; 1, 8, 9, 10, 12, 20, 22, 24, 29 October; 3, 4, 6, 8, 10, 13, 14, 15, 16, 20, 21, 22, 24, 25, 26, 27 November 2014; 1, 22 December 2014; 2015: 05, 07, 09, 12, 14, 16, 30, 31 January; 7, 14 February; 9 March; 2, 3, 4, 5 April; 22, 23 May; 26, 27, 28 June; 19, 20 July; 8, 24, 25, 26, 27, 28, 29 August; 3, 4, 25, 26 September; 7, 8 October; 9, 24, 26, 27, 30 December; 5, 7 10, 11, 13, 19, 27, 31 January; 2, 13, 17, 19, 21, 23, 25, 26, 28 February; 1, 3, 4, 7, 9, 11, 14, 16, 17, 20, 26 March, 8, 16, 27, 28 May; 3, 5 June 2016 -->
+<!-- Alcohol log: 18, 22, 23, 24, 26, 27, 30 July 2014; 1, 4, 5, 8, 11, 12, 14, 16, 17, 19, 21, 23, 25, 27, 30 August 2014; 3, 4, 6, 9, 10, 12, 15, 18, 19, 20, 27 September 2014; 1, 8, 9, 10, 12, 20, 22, 24, 29 October; 3, 4, 6, 8, 10, 13, 14, 15, 16, 20, 21, 22, 24, 25, 26, 27 November 2014; 1, 22 December 2014; 2015: 05, 07, 09, 12, 14, 16, 30, 31 January; 7, 14 February; 9 March; 2, 3, 4, 5 April; 22, 23 May; 26, 27, 28 June; 19, 20 July; 8, 24, 25, 26, 27, 28, 29 August; 3, 4, 25, 26 September; 7, 8 October; 9, 24, 26, 27, 30 December; 5, 7 10, 11, 13, 19, 27, 31 January; 2, 13, 17, 19, 21, 23, 25, 26, 28 February; 1, 3, 4, 7, 9, 11, 14, 16, 17, 20, 26 March, 8, 16, 27, 28 May; 3, 5, 18 June 2016 -->
 <!-- melatonin: last night of Now's melatonin+niacin+B6+magnesium 19 Feb 2014; began Nature's Bounty 1mg 21 March 2014 -->
 <!-- vitamin D: last day 4 August 2014 -->
 <!-- added aluminum foil to bedroom, 9 August 2014 -->
