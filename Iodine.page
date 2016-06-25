@@ -111,7 +111,7 @@ I have looked at the following studies:
 4. ["Supplementary iodine fails to reverse hypothyroidism in adolescents and adults with endemic cretinism"](/docs/iodine/1990-boyages.pdf), Boyages et al 1990; 28 Chinese aged 14-52, severely deficient, with no gains on the "Hiskey Nebraska Test of Learning Aptitude" or the "Griffiths Mental Development Scales" - no effect
 5. ["Controlled trial of vitamin-mineral supplementation: Effects of intelligence and performance "](/docs/iodine/1991-schoenthaler.pdf), Schoenthaler et al 1991; multivitamin with 0.075mg iodine, IQ gain in the 8th and 10th graders - beneficial effect
 6. ["Timing of Vulnerability of the Brain to Iodine Deficiency in Endemic Cretinism"](http://www.nejm.org/doi/pdf/10.1056/NEJM199412293312603), Cao et al 1994: 689 children 0-3 years of age, minimal effect in the children
-7. ["Dietary intake and micronutrient status of adolescents: effect of vitamin and trace element supplementation on indices of status and performance in tests of verbal and non-verbal intelligence"](http://www.idpas.org/pdf/084DietaryIntakeAndMicronutrientStatus.pdf), Southon et al 1994: 13-15 year olds with a multivitamin of things including iodine (0.15mg); no effect on IQ test
+7. ["Dietary intake and micronutrient status of adolescents: effect of vitamin and trace element supplementation on indices of status and performance in tests of verbal and non-verbal intelligence"](/docs/iodine/1994-southon.pdf), Southon et al 1994: 13-15 year olds with a multivitamin of things including iodine (0.15mg); no effect on IQ test
 8. ["Effect of iodine and iron supplementation on physical, psychomotor and mental development in primary school children in Malawi"](http://library.wur.nl/WebQuery/clc/190890) ([mirror](/docs/iodine/1994-shrestha.pdf)), Shrestha 1994
 9. ["Effect of iodized oil supplementation on thyroid hormone levels and mental performance among _Orang Asli_ schoolchildren and pregnant mothers in an endemic goitre area in Peninsular Malaysia"](http://web.archive.org/web/20090109062445/http://apjcn.nhri.org.tw/server/APJCN/Volume9/vol9.4/Isa.pdf), Isa et al 2000
 10. ["Improved iodine status is associated with improved mental performance of schoolchildren in Benin"](http://www.ajcn.org/content/72/5/1179.full), van den Briel et al 2000; originally a double-blind RCT, but subjects were contaminated by importation of iodized salt (there was an apparent small-medium effect on the matrix subtest)
@@ -144,6 +144,10 @@ I have looked at the following studies:
 34. Prado et al 2016, ["Effects of maternal and child lipid-based nutrient supplements on infant development: a randomized trial in Malawi"](/docs/iodine/2016-prado.pdf): randomized, and includes children 6-18mo, but assessed only on development at 18mo, which can't be considered a useful IQ test
 35. Li et al 2015, ["Prenatal Micronutrient Supplementation Is Not Associated with Intellectual Development of Young School-Aged Children"](/docs/iodine/2015-li.pdf): 3 experimental groups: folate, folate+iron, folate+iron+others+150.0mg/d iodine, allowing a comparison of folate with folate+multivitamin; but only prenatal intervention was done.
 36. Zahrou et al 2016, ["Fortified Iodine Milk Improves Iodine Status and Cognitive Abilities in Schoolchildren Aged 7–9 Years Living in a Rural Mountainous Area of Morocco"](http://downloads.hindawi.com/journals/jnme/2016/8468594.pdf) (followup to [Zahrou et al 2015](https://www.ijntr.org/download_data/IJNTR01030019.pdf "Efficacy Study of Iodine Fortification of Milk on Iodine Status Markers: A Longitudinal Interventional, Controlled Study Among Schoolchildren in Morocco")): relevant
+37. ["A cluster-randomized, controlled trial of nutritional supplementation and promotion of responsive parenting in Madagascar: the MAHAY study design and rationale"](https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-016-3097-7), Fernald et al 2016: preregistration of a study protocol for a Madagascar study; daily 90μg iodine in the lipid-based T~2~/T~3~ arms vs T~0~/T~1~/T~4~ for children aged 6-18 months, developmental outcomes "Ages and Stages Questionnaire: Inventory" & "Bayley Scale" but no IQ test-analogue.
+38. ["Effect of iodine supplementation during pregnancy on thyroid function and cognitive development of offspring"](http://library.wur.nl/WebQuery/wurpubs/fulltext/344705#page=48), Jaiswal (Bangalore India): pregnant only, no IQ tests
+39. Solon et al 2003, ["Effect of a multiple-micronutrient-fortified fruit powder beverage on the nutrition status, physical fitness, and cognitive performance of schoolchildren in the Philippines"](http://fnb.sagepub.com/content/24/4_suppl2/S129.full.pdf): RCT in Philippine school-children (mean age 9.9); 4 groups total (fortified supplement x deworming), 10.8mg total iodine delivered over 16 weeks; Primary Mental Abilities Test for Filipino Children (PMAT-FC) used to measure cognitive performance <!-- "Each study subject received  a 200-ml serving of either fortified or nonfortified  beverage twice each school day for a total of 16 weeks."; so 2 * 7 * 16 * 48mcg / 1000 = 10.752mg; "Cognitive ability was measured using a standardized written mental-abilities test called the Primary Mental Abilities Test for Filipino Children (PMAT-FC), developed by Dr. Nelia T. Vargas-Benito in 1993. The test measures the following three basic mental abilities: verbal, nonverbal, and quantitative."; experimental (_n_=203+209=412): 1.82 ± 0.22; non-experimental (_n_=213+206=419): 1.66 ± 0.22 -->
+40. Lien et al 2009, ["Impact of milk consumption on performance and health of primary school children in rural Vietnam"](http://apjcn.org/update%5Cpdf%5C2009%5C3%5C326-334%5C326.pdf): claims cognitive benefits, especially to short-term memory, but paper does not report quantitative results <!-- TODO emailed te Biesebeke; "A total of 454 children aged 7 to 8 years attending three primary schools in the Northern delta province of Vietnam were either provided with regular milk, milk fortified with vitamins, minerals and inulin or served as a reference control group"; "children in the milk consuming groups had significantly better short-term memory scores"; 6 months; "The children consumed two servings of 250 ml milk in the morning of each class day (6 days a week) for six months, except for holidays"; 0.015mg per regular milk / n=75 0.037mg per fortified milk; n=70 /control: n=71 / so 0.015 * 6 * (52/12) * 6 = 2.34mg / 0.037 * 6 * (52/12) * 6 = 5.77mg / 7-8yo, so 7.5? "The milk drinking children achieved significant higher work volume (speed) and higher work efficiency in the later minutes of the exercise (results not shown). Children drinking milk had significantly higher recall of memorized words and numbers compared to children in the control group (results not shown). Children consuming fortified milk showed superior performance compared to the regular milk drinking group...Deputy Professors Dinh Ngoc Bao and Vo Thi Minh Tri of the Hanoi National University of Education are greatly acknowledged for their excellent work in mental performance testing." -->
 
 <!--
 published 2016
@@ -204,27 +208,28 @@ Unfortunately, a few of the useful studies also tested a variety of substances, 
 
 ## Data
 
-First, the data from the surviving studies: <!-- TODO: methodological covariates - randomization, blinding etc -->
+First, the data from the surviving studies: <!-- TODO: methodological covariates - randomization, individual or cluster randomization, blinding, duration of trial, pre-study iodine status, exact test etc -->
 
-study           group        year   n.e   mean.e   sd.e   n.c   mean.c   sd.c   age   dose    multi
------           ----         ---   ------   -----  ----  ------   -----  ----  -----   -----
-Bautista        Bautista     1982   100   69.43    10.96  100   70.31    10.96  8.75  475     0
-Boyages         Boyages      1990   28    34.4     15.4   24    29.5     8.5    29.5  720     0
-Schoenthaler.1  Schoenthaler 1991   100   10.1     8.9    33.3  8.9      7.3    14    12.68   1
-Schoenthaler.2  Schoenthaler 1991   105   12.6     7.9    33.3  8.9      7.3    14    25.35   1
-Schoenthaler.3  Schoenthaler 1991   105   10.4     7.6    33.3  8.9      7.3    14    25.35   1
-Southon         Southon      1994   22    63.94    2.6    29    64.1     1.87   13.5  16.8    1
-Shrestha.1      Shrestha     1994   72    17.1     1.8    36    10.7     2.4    7.1   490     0
-Shrestha.2      Shrestha     1994   80    18.2     1.5    36    10.7     2.4    7.1   490     0
-Isa             Isa          2000   60    85.25    14.6   100   83.6     16.2   11.39 480     0
-Huda            Huda         2001   145   14.88    3.28   142   14.60    3.19   9.8   400     0
-Zimmerman       Zimmerman    2006   159   25       6.3    151   20.5     5.6    11    400     0
-McNeill         McNeill      2007   398   11.5     2.3    374   11.7     2.1    72    54.75   1
-Gordon          Gordon       2009   84    10.2     3      82    9.6      2.4    11.5  29.4    0
-Dewi            Dewi         2012   33    110.27   9.04   34    103.06   9.99   3.1   8.4     0
-Salarkia        Salarkia     2004   19    96       10     246   89       13     1.5   1272    0
-Untoro          Untoro       1999   121   89       7      43    88       6      9     464     0
-Redman          Redman       2011   86    20.85    3.43   86    20.59    3.27   21.28 45      0
+study           group        year   n.e   mean.e   sd.e   n.c   mean.c   sd.c   age   dose    multi country
+-----           ----         ----   ----  -----    ----   ----- -----    ----   ----- -----   ----- -------
+Bautista        Bautista     1982   100   69.43    10.96  100   70.31    10.96  8.75  475     0     Bolivia
+Boyages         Boyages      1990   28    34.4     15.4   24    29.5     8.5    29.5  720     0     China
+Schoenthaler.1  Schoenthaler 1991   100   10.1     8.9    33.3  8.9      7.3    14    12.68   1     USA
+Schoenthaler.2  Schoenthaler 1991   105   12.6     7.9    33.3  8.9      7.3    14    25.35   1     USA
+Schoenthaler.3  Schoenthaler 1991   105   10.4     7.6    33.3  8.9      7.3    14    25.35   1     USA
+Southon         Southon      1994   22    63.94    2.6    29    64.1     1.87   13.5  16.8    1     UK
+Shrestha.1      Shrestha     1994   72    17.1     1.8    36    10.7     2.4    7.1   490     0     Malawi
+Shrestha.2      Shrestha     1994   80    18.2     1.5    36    10.7     2.4    7.1   490     0     Malawi
+Isa             Isa          2000   60    85.25    14.6   100   83.6     16.2   11.39 480     0     Malaysia
+Huda            Huda         2001   145   14.88    3.28   142   14.60    3.19   9.8   400     0     Bangladesh
+Zimmerman       Zimmerman    2006   159   25       6.3    151   20.5     5.6    11    400     0     Albania
+McNeill         McNeill      2007   398   11.5     2.3    374   11.7     2.1    72    54.75   1     UK
+Gordon          Gordon       2009   84    10.2     3      82    9.6      2.4    11.5  29.4    0     NZ
+Dewi            Dewi         2012   33    110.27   9.04   34    103.06   9.99   3.1   8.4     0     Indonesia
+Salarkia        Salarkia     2004   19    96       10     246   89       13     1.5   1272    0     Iran
+Untoro          Untoro       1999   121   89       7      43    88       6      9     464     0     Indonesia
+Redman          Redman       2011   86    20.85    3.43   86    20.59    3.27   21.28 45      0     NZ
+Solon           Solon        2003   412   1.82     0.22   419   1.66     0.22   9.9   10.752  1     Philippines
 
 Comments:
 
