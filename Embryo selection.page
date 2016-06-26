@@ -1231,7 +1231,7 @@ One might wonder: how many generations of selection could IES do now, considerin
 Is it possible that after 2 or 3 rounds of selection, the polygenic score will peter out and one will 'run out' of variance?
 
 No. We can observe that in animal and plant breeding, it is almost never the case that selection on a complex trait gives increases for a few generation and then stops cold - unless it's a simple trait governed by one or two genes, in which case they might've been driven to fixation that fast.
-The more genes involved, the longer selection can operate and the more potential there is.
+Paradoxically, the more genes involved and thus the worse our polygenic scores are at a given fraction of heritability, the longer selection can operate and the *more* the potential gains.
 
 It's true that a polygenic score might be able to predict only a small fraction of variance, but this is in part because of the Central Limit Theorem: with thousands of genes with additive effects, they sum up to a tight bell curve, and it's 5001 steps forward, 4999 steps backwards, which gives little hint as to what would happen if we could take all 10000 steps forward.
 So the total potential gain has more to do with the heritability vs number of alleles, which makes sense - if a trait is mostly caused by a single gene which half the population already has, we would not expect to be able to make much difference; but if it's mostly caused by a few dozen genes, then few people will have the maximal value; and if by a few hundred or a few thousand, then probably no one will have ever had the maximal value and the gain could be enormous.
@@ -1317,6 +1317,15 @@ hist(abs(benyamin$EFFECT_A1), xlab="SNP intelligence estimates (SDs)", main="Ben
 
 Thousands of SDs is meaningless, since intelligence reflects neurobiological traits like nerve conduction velocity, brain size, white matter integrity, metabolic demands etc, all of which must have inherent biological limits (although considerations from the scaling of the primate brain architecture suggest that the human brain could be increased substantially, similar to the increase from Australopithecus to humans, before gains disappear; see [Hofman 2015](/docs/iq/2015-hofman.pdf "Evolution of the Human Brain: From Matter to Mind")); so while it's reasonable to talk about boosting to 5-10SDs based on additive variants, beyond that there's no reason to expect additivity to hold.
 Since the polygenic score only becomes uninformative thousands of SDs beyond where other issues will take over, we can safely say that the polygenic scores will not 'run dry' during an IES project, much less normal embryo selection - additivity will run out before the polygenic score's information does.
+
+One might wonder about what if we were to start with the genome of someone extremely intelligent, such as a John von Neumann, perhaps cloning cells obtained from grave-robbing the Princeton Cemetary?
+Would selection or editing *then* be ineffective because one is starting with such an excellent baseline?
+Such clones would be equivalent to an "identical twin raised apart", sharing 100% of genetics but none of the shared-environment or non shared-environment, and thus the usual ~80% of variance in the clones' intelligence would be predictable from the original's intelligence; however, since the donor is chosen for his intelligence, [regression to the mean](!Wikipedia) will kick in and the clones will not be as intelligent as the original.
+How much less? If we suppose von Neumann was 170 (+4.6SDs), then his identical-twin/embryos would regress to the genetic mean of $4.6 \cdot 0.8=3.68$ SDs or IQ 155.
+(His siblings would’ve been lower still than this, of course, as they would only be 50% related even if they did have the same shared-environment.)
+With <0.2 IQ points per beneficial allele and a genetic contribution of +55, then von Neumann would've only needed $\frac{155-100}{<0.2} = >275$ positive variants compared to the average person; but he would still have had thousands of negative variants left for selection to act against.
+Having gone through the polygenic scores and binomial/gamma models, this conclusion will not come as a surprise: since existing differences in intelligence are driven so much by the effects of thousands of variants, the CLT/standard deviation of a binomial/gamma distribution implies that those differences represent a net difference of only a few extra variants, as almost everyone has, say, 4990 or 5001 or 4970 or 5020 good variants and no one has extremes like 9000 or 3000 variants - even a von Neumann only had slightly better genes than everyone else, probably no more than a few hundred.
+Hence, anyone who does get thousands of extra good variants will be many SDs beyond what we currently see.
 
 # See also
 
