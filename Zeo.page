@@ -3522,6 +3522,37 @@ switching to magnesium-only:
 23: 1
 24: 0
 25: 1
+26: NA
+27: NA
+28: NA
+29: NA
+30: NA
+31: NA
+June
+01: 1
+02: 0
+02: 0
+03: 1
+04: 0
+05: 1
+06: 0
+07: 1
+08: 0
+09: 1
+10: 0
+11: 1
+12: 0
+13: 1
+14: 0
+15: 1
+16: 0
+17: 1
+18: 0
+19: 1
+20: 0
+21: 1
+22: 0
+23: 1
 -->
 
 
@@ -3621,7 +3652,7 @@ It would have had to have been at least twice as high (~3000PPM) in which case t
 High levels CO2 could potentially worsen sleep, similar to [hypercapnia](!Wikipedia), where the panic/arousal impedes sleep.
 Existing sleep research mostly investigates [sleep apnea](!Wikipedia), infants, and [SIDS](!Wikipedia).
 
-- Ayas, N.T., Brown, R., & Shea, S.A. (2000). ["Hypercapnia can induce arousal from sleep in the absence of altered respiratory mechanoreception"](http://www.atsjournals.org/doi/full/10.1164/ajrccm.162.3.9908040). AmericanJournal ofRespiratory andCriticalCare Medicine, 162(3 Pt 1), 1004-1008.
+- Ayas, N.T., Brown, R., & Shea, S.A. (2000). ["Hypercapnia can induce arousal from sleep in the absence of altered respiratory mechanoreception"](http://www.atsjournals.org/doi/full/10.1164/ajrccm.162.3.9908040)
 - Berry, R.B., Mahutte, C.K., & Light, R.W. (1993) "Effect of hypercapnia on the arousal response to airway occlusion during sleep in normal subjects". Journal of Applied Physiology, 74(5), 2269-2275
 - Berthon-Jones, M., & Sullivan, C.E. (1984). "Ventilation and arousal responses to hypercapnia in normal sleeping humans". Journal of Applied Physiology, 57(1), 59-67
 - Frey, M. A., Sulzman, F. M., Oser, H.,& Ruyters, G. (1998). "Joint NASA-ESA-DARA study, part one: the effects of moderately elevated ambient carbon dioxide levels on human physiology and performance". Aviation, Space, and Environmental Medicine, 69(3), 282-284
@@ -3644,7 +3675,7 @@ When the door is closed and the fan is on, there is a small but not useful reduc
 The next 5 nights yielded similar numbers: closed leads to steady increases peaking 2900-3000PPM, open with no fan or with fan tends to not be more than ~1400PPM and possibly less.
 
 To model sleep effects, I want to take into account bedroom temperature, humidity, CO2, sound, and measure sleep.
-The Neatmo measures temperature/humidity/CO2/sound.
+The Netatmo measures temperature/humidity/CO2/sound.
 My Kongin temperature/humidity logger, which I have used since October 2014, will be useful for examining temperature/humidity effects stretching back much further than the Netatmo's measurements and can be used to double-check the Netatmo measurements.
 For sleep, I have the Zeo.
 
@@ -3684,9 +3715,20 @@ Netatmo usage started: 28 May 2016
 - 7-8 June: 0 1 open; 1368PPM
 - 8-9 June: NA
 - 9-10 June: 1 1 open+fan; 1159PPM
+- 10-12 June: NA
 - 11-12 June: 0 0 closed; 3029PPM
 - 12-13 June: 0 1 open; 915PPM
 - 13-14 June: NA
+- 14-15: 1 0
+- 15-16: 0 0
+- 16-17: 1 0
+- 17-18: 0 1
+- 18-19: 1 1
+- 19-20: NA
+- 20-21: 1 0
+- 21-22: 0 0
+- 22-23: 0 1
+- 23-24: 1 1
 
 ~~~{.R}
 zeo <- read.csv("~/wiki/docs/zeo/gwern-zeodata.csv")
@@ -3707,6 +3749,7 @@ zeo$Start.of.Night <- ifelse(zeo$Start.of.Night<500, zeo$Start.of.Night + 1440, 
 zeo$Time.to.Z.log <- log1p(zeo$Time.to.Z) # reduce skew
 zeo <- subset(zeo, select=c("Date", "ZQ", "Total.Z", "Time.to.Z.log", "Time.in.Wake", "Time.in.REM", "Time.in.Light", "Time.in.Deep", "Awakenings", "Morning.Feel"))
 
+## need to create a fresh humidity.csv using existing R routines:
 kongin <- read.csv("~/selfexperiment/humidity/humidity.csv", colClasses=c("POSIXct", "numeric", "numeric"))
 kongin$Date <- as.Date(kongin$Timestamp, tz="EST")
 # only interested in midnight-to-11AM:
@@ -3725,29 +3768,113 @@ colnames(konginDaily) <- c("Date", "Humidity.K", "Temperature.F.K")
 colnames(netatmoDaily) <- c("Date", "Humidity.N", "Temperature.F.N", "CO2.N", "Noise.N")
 airNight <- merge(konginDaily, netatmoDaily, all=TRUE)
 
-# door <- TODO
-# night <- merge(door, merge(zeo, airNight, all=TRUE), all=TRUE)
-# night[is.na(night$Intervention.r),]$Intervention.r <- 0 # I have always slept with door shut, so impute any missing data to 0/shut
-## TODO: add in squared terms for humidity/temperature? lavaan can't do arithmetic transforms inside the model so it has to be
-## done something like 'night$Humidity.Netatmo.2 <- night$Humidity.Netatmo^2' and then in the regressions as ''Humidity.Netatmo + Humidity.Netatmo.2'...
-# write.csv(night, file="...csv", row.names=FALSE)
-# night <- read.csv("...csv", colClasses=c(...))
+door <- read.csv(stdin(), header=TRUE, colClasses=c("Date","integer","integer"))
+Date,Fan.r,Door.r
+2016-06-02,0,0
+2016-06-03,0,1
+2016-06-04,1,1
+2016-06-05,0,0
+2016-06-06,1,1
+2016-06-07,0,1
+2016-06-08,NA,NA
+2016-06-09,1,1
+2016-06-10,NA,NA
+2016-06-11,0,0
+2016-06-12,0,1
+2016-06-13,NA,NA
+2016-06-14,1,0
+2016-06-15,0,0
+2016-06-16,1,0
+2016-06-17,0,1
+2016-06-18,1,1
+2016-06-19,NA,NA
+2016-06-20,1,0
+2016-06-21,0,0
+2016-06-22,0,1
+2016-06-23,1,1
 
-library(lavaan)
+
+mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
+
+## Mnemosyne is a measure of cognitive performance; but taking the mean 'grade' per day doesn't work well
+## since harder cards will tend to come up more often and a low daily grade may simply mean some hard cards
+## came up, not that one's memory/energy is worse or better. Grades are nested within each card, but also nested
+## within each day as random effects. So we do a multilevel model inferred daily random effects on grade, using
+## as covariates Mnemosyne's own estimate of each card's current difficulty and how long since the last review/grade
+## of each card. Then the daily random effects represent how much better than predicted based on card characteristics
+## I performed each day, and hopefully a measure of how well I was thinking that day.
+library(sqldf)
+target <- "~/.local/share/mnemosyne/default.db"
+mnemosyneGrades <- sqldf("SELECT timestamp,object_id,grade,easiness,actual_interval FROM log WHERE event_type==9;",
+                dbname=target,
+                method = c("integer", "factor","integer","numeric","integer"))
+mnemosyneGrades$timestamp <- as.POSIXct(mnemosyneGrades$timestamp, origin = "1970-01-01", tz = "EST")
+colnames(mnemosyneGrades) <- c("Timestamp", "ID", "Grade", "Easiness", "Interval.length")
+mnemosyneGrades$Interval.length.log <- log1p(mnemosyneGrades$Interval.length)
+mnemosyneGrades$Date    <- as.Date(mnemosyneGrades$Timestamp)
+library(blme)
+b <- blmer(Grade ~ (1|Date) + (1|ID) + Easiness + Interval.length.log, data=mnemosyneGrades); summary(b)
+dailyscores <- ranef(b)$Date
+mnemosynePerformance <- data.frame(Date=as.Date(rownames(dailyscores)), Mnemosyne.score= dailyscores$"(Intercept)")
+
+night <- merge(mnemosynePerformance, merge(mp, merge(door, merge(zeo, airNight, all=TRUE), all=TRUE), all=TRUE), all=TRUE)
+night[is.na(night$Door.r),]$Door.r <- 0 # I have always slept with door shut & fan off, so impute any missing data to 0/shut
+night[is.na(night$Fan.r),]$Fan.r <- 0
+
+## lavaan/blavaan can't handle arithmetic transforms inside the model syntax, so squaring temperature/humidity to look for quadratic
+## effects
+night$Humidity.N.2 <- night$Humidity.N^2
+night$Humidity.K.2 <- night$Humidity.K^2
+night$Temperature.F.N.2 <- night$Temperature.F.N^2
+night$Temperature.F.K.2 <- night$Temperature.F.K^2
+
+# write.csv(night, file="zeo-co2.csv", row.names=FALSE)
+# night <- read.csv("zeo-co2.csv", colClasses=c("Date", rep("numeric", 23)))
+
+library(blavaan)
 model <- '
      SLEEP       =~ ZQ + Total.Z + Time.to.Z.log + Time.in.Wake + Time.in.REM + Time.in.Light + Time.in.Deep + Awakenings + Morning.Feel
-     HUMIDITY    =~ Humidity.Netatmo    + Humidity.Kongin
-     TEMPERATURE =~ Temperature.Netatmo + Temperature.Kongin
+     HUMIDITY    =~ Humidity.N + Humidity.N.2      + Humidity.K + Humidity.K.2
+     TEMPERATURE =~ Temperature.F.N + Temperature.F.N.2 + Temperature.F.K + Temperature.F.K.2
 
-     CO2   ~ Door.r + Fan.r
-     HUMIDITY ~ Door.r + Fan.r + Door.r*Fan.r
+     CO2.N       ~ Door.r + Fan.r + Door.r*Fan.r
+     HUMIDITY    ~ Door.r + Fan.r + Door.r*Fan.r
      TEMPERATURE ~ Door.r + Fan.r + Door.r*Fan.r
 
-     SLEEP ~ HUMIDITY + TEMPERATURE + Noise + CO2 + Door.r + Fan.r + Door.r*Fan.r
-     MP ~ CO2 + SLEEP
-     Mnemosyne ~ CO2 + SLEEP
+     SLEEP ~ HUMIDITY + TEMPERATURE + Noise.N + CO2.N + Door.r + Fan.r + Door.r*Fan.r
+     MP ~ CO2.N + SLEEP
+     Mnemosyne.score ~ CO2.N + SLEEP
      '
-s <- sem(model, se="boot", missing="FIML", data=night)
+system.time(s <- bsem(model, test="none", n.chains=6, jagcontrol=list(method="rjparallel"), inits="jags", fixed.x=FALSE, data=night)); summary(s)
+~~~
+
+Lessons from trial run:
+
+0. ~3h runtime with defaults
+1. the squared humidity/temperature variables don't look helpful and may be harmful to convergence/estimation; remove them
+2. Total.Z has a left skew and should probably be transformed; the square looks better
+3. CO2 is too flatly distributed; a log or square-root transform would be good
+4. Time.in.Wake is right-skewed; log it
+
+~~~{.R}
+night$Total.Z.2 <- night$Total.Z^2
+night$CO2.N.root <- sqrt(night$CO2.N)
+night$Time.in.Wake.log <- log1p(night$Time.in.Wake)
+model2 <- '
+     SLEEP       =~ ZQ + Total.Z.2 + Time.to.Z.log + Time.in.Wake.log + Time.in.REM + Time.in.Light + Time.in.Deep + Awakenings + Morning.Feel
+     HUMIDITY    =~ Humidity.N + Humidity.K
+     TEMPERATURE =~ Temperature.F.N + Temperature.F.K
+
+     CO2.N.root  ~ Door.r + Fan.r + Door.r*Fan.r
+     HUMIDITY    ~ Door.r + Fan.r + Door.r*Fan.r
+     TEMPERATURE ~ Door.r + Fan.r + Door.r*Fan.r
+
+     SLEEP ~ HUMIDITY + TEMPERATURE + Noise.N + CO2.N.root + Door.r + Fan.r + Door.r*Fan.r
+     MP ~ CO2.N.root + SLEEP
+     Mnemosyne.score ~ CO2.N.root + SLEEP
+     '
+system.time(s2 <- bsem(model2, test="none", n.chains=6, jagcontrol=list(method="rjparallel"), fixed.x=FALSE, data=night)); summary(s2)
+BF(s, s2)
 ~~~
 
 -->
@@ -5359,6 +5486,9 @@ June
 20: 0 0
 21: 0 1
 22: 0 0
+23: 0 0
+24: 1 0
+25:
 -->
 
 <!-- Alcohol log: 18, 22, 23, 24, 26, 27, 30 July 2014; 1, 4, 5, 8, 11, 12, 14, 16, 17, 19, 21, 23, 25, 27, 30 August 2014; 3, 4, 6, 9, 10, 12, 15, 18, 19, 20, 27 September 2014; 1, 8, 9, 10, 12, 20, 22, 24, 29 October; 3, 4, 6, 8, 10, 13, 14, 15, 16, 20, 21, 22, 24, 25, 26, 27 November 2014; 1, 22 December 2014; 2015: 05, 07, 09, 12, 14, 16, 30, 31 January; 7, 14 February; 9 March; 2, 3, 4, 5 April; 22, 23 May; 26, 27, 28 June; 19, 20 July; 8, 24, 25, 26, 27, 28, 29 August; 3, 4, 25, 26 September; 7, 8 October; 9, 24, 26, 27, 30 December; 5, 7 10, 11, 13, 19, 27, 31 January; 2, 13, 17, 19, 21, 23, 25, 26, 28 February; 1, 3, 4, 7, 9, 11, 14, 16, 17, 20, 26 March, 8, 16, 27, 28 May; 3, 5, 18 June 2016 -->
