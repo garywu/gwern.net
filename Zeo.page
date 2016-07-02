@@ -3553,8 +3553,14 @@ June
 21: 1
 22: 0
 23: 1
+24: 0
+25: 1
+26: 0
+27: 1
+28: 0
+29: 1
+30: 0
 -->
-
 
 ## Hammock
 
@@ -3792,6 +3798,12 @@ Date,Fan.r,Door.r
 2016-06-21,0,0
 2016-06-22,0,1
 2016-06-23,1,1
+2016-06-24,1,1
+2016-06-25,0,0
+2016-06-26,0,0
+2016-06-27,1,0
+2016-06-28,0,1
+2016-06-29,1,1
 
 
 mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
@@ -3921,102 +3933,12 @@ Fifth run, using inits:
 
 0. ~15.6h for `samples=100000`
 1. PSRFs improved a little more, possibly due to better initialization: none larger than 1.117
-2. unclear the initialization helped because it threw 50+ warnings of the form:
-
-        ...
-        3: In if (inits != "jags") { ... :
-          the condition has length > 1 and only the first element will be used
-        Calls: system.time ... tryCatchList -> tryCatchOne -> doTryCatch -> lav2jags
-        4: In if (inits == "prior") { ... :
-          the condition has length > 1 and only the first element will be used
-        Calls: system.time ... tryCatchList -> tryCatchOne -> doTryCatch -> lav2jags -> set_inits
-        5: In if (inits == "prior") { ... :
-          the condition has length > 1 and only the first element will be used
-        Calls: system.time ... tryCatchList -> tryCatchOne -> doTryCatch -> lav2jags -> set_inits
-        ...
-        50: In if (inits == "prior") { ... :
-          the condition has length > 1 and only the first element will be used
-        Calls: system.time ... tryCatchList -> tryCatchOne -> doTryCatch -> lav2jags -> set_inits
+2. unclear the initialization helped because it threw 50+ warnings. Merkle seems to imply that initialization can't currently be done.
 
 Merkle suggests the slowdown may be due to the enormous amount of missing data; since I have Mnemosyne data back to ~2009 (2009-05-31), sleep back to 2010 (2010-12-26) MP back to ~2012 (2012-02-16), but the Kongin only goes back to 2014 and the Netatmo only back to May 2016, there is enormous missingness and some variables are estimated much more precisely than others, and may not be worth causing the slowdown in the MCMC.
 So let's drop everything after the current day and before 2016 and see how much that speeds up 100k samples (it may even make it possible to turn back on posterior predictive checks, which would allow model comparison through `BF()`).
 Then we can gradually extend data coverage back to see how computation time scales with years.
-
-~~~{.R}
-nightShort <- night[night$Date>=as.Date("2016-01-01") & night$Date<Sys.Date(),]
-nrow(night); nrow(nightShort); nrow(nightShort) / nrow(night) ## ~7% of the data by _n_/rows, so should take ~1.04h if computation time scales linearly with the rows
-# [1] 2678
-# [1] 179
-system.time(s5 <- bsem(model3, test="none", n.chains=6, jagcontrol=list(method="rjparallel"), sample=100000, fixed.x=FALSE, data=scale(nightShort[-1]))); summary(s5)
-~~~
-
-1841 seconds or ~0.51 hours, less than half expected
-
-~~~{.R}
-nightShort2015 <- night[night$Date>=as.Date("2015-01-01") & night$Date<Sys.Date(),]
-nrow(night); nrow(nightShort2015); nrow(nightShort2015) / nrow(night); (nrow(nightShort2015) / nrow(night)) *  15.6
-# [1] 2678
-# [1] 545
-# [1] 0.2035100822
-# [1] 3.174757282 ## so expected to run over 3.17h if runtime is merely proportional to rows, but will probably run less since missingness still isn't high back in 2015...
-system.time(s6 <- bsem(model3, test="none", n.chains=6, jagcontrol=list(method="rjparallel"), sample=100000, fixed.x=FALSE, data=scale(nightShort2015[-1]))); summary(s6)
-~~~
-
-10305 seconds or 2.86h rather than 3.17h - still better but starting to converge on predicted.
-
-~~~{.R}
-nightShort2014 <- night[night$Date>=as.Date("2014-01-01") & night$Date<Sys.Date(),]
-nrow(night); nrow(nightShort2014); nrow(nightShort2014) / nrow(night); (nrow(nightShort2014) / nrow(night)) *  15.6
-# [1] 2678
-# [1] 911
-# [1] 0.3401792382
-# [1] 5.306796117
-system.time(s7 <- bsem(model3, test="none", n.chains=6, jagcontrol=list(method="rjparallel"), sample=100000, fixed.x=FALSE, data=scale(nightShort2014[-1]))); summary(s7)
-~~~
-
-24489 seconds or 6.8h, more than 5.3h - now more than predicted
-
-~~~{.R}
-nightShort2013 <- night[night$Date>=as.Date("2013-01-01") & night$Date<Sys.Date(),]
-nrow(night); nrow(nightShort2013); nrow(nightShort2013) / nrow(night); (nrow(nightShort2013) / nrow(night)) *  15.6
-# [1] 2678
-# [1] 1279
-# [1] 0.4775952203
-# [1] 7.450485437
-system.time(s8 <- bsem(model3, test="none", n.chains=6, jagcontrol=list(method="rjparallel"), sample=100000, fixed.x=FALSE, data=scale(nightShort2013[-1]))); summary(s8)
-~~~
-
-26218 seconds or 7.28h - less than predicted.
-
-~~~{.R}
-nightShort2012 <- night[night$Date>=as.Date("2012-01-01") & night$Date<Sys.Date(),]
-nrow(night); nrow(nightShort2012); nrow(nightShort2012) / nrow(night); (nrow(nightShort2012) / nrow(night)) *  15.6
-# [1] 2678
-# [1] 1645
-# [1] 0.6142643764
-# [1] 9.582524272
-system.time(s9 <- bsem(model3, test="none", n.chains=6, jagcontrol=list(method="rjparallel"), sample=100000, fixed.x=FALSE, data=scale(nightShort2012[-1]))); summary(s9)
-~~~
-
----
-
-General timing with the `bsem()` example:
-
-
-1. baseline example model: 73s:
-
-    system.time(fit <- bsem(model, data=PoliticalDemocracy, dp=dpriors(nu="dnorm(5,1e-2)"), jagcontrol=list(method="rjparallel")))
-2. baseline w/n=100k: 414s:
-
-    system.time(fit <- bsem(model, data=PoliticalDemocracy, dp=dpriors(nu="dnorm(5,1e-2)"), jagcontrol=list(method="rjparallel"), sample=100000))
-3. baseline with n/100k & same options as my SEMs: 440s
-
-    system.time(fit <- bsem(model, data=PoliticalDemocracy, dp=dpriors(nu="dnorm(5,1e-2)"), jagcontrol=list(method="rjparallel"), sample=100000, test="none", fixed.x=FALSE))
-4. baseline with n/100k & same options as my SEMs & equivalent parallelism: 868s
-
-    system.time(fit <- bsem(model, data=PoliticalDemocracy, dp=dpriors(nu="dnorm(5,1e-2)"), jagcontrol=list(method="rjparallel"), test="none", n.chains=6, sample=100000, fixed.x=FALSE))
-
-
+Using only 2016 data (the most complete) resulted in a 50% speedup compared to predicted from the total 15h runtime, with the speedup vanishing as I added in years back to 2011. So missingness is not *that* big a deal.
 -->
 
 <!-- R conversion routine for merging old and new Zeo Data:
@@ -5632,7 +5554,11 @@ June
 26: 0 0
 27: 0 1
 28: 0 1
-29: 1 ?
+29: 1 0
+30: 0 1
+July
+01: 0 1
+02:
 -->
 
 <!-- Alcohol log: 18, 22, 23, 24, 26, 27, 30 July 2014; 1, 4, 5, 8, 11, 12, 14, 16, 17, 19, 21, 23, 25, 27, 30 August 2014; 3, 4, 6, 9, 10, 12, 15, 18, 19, 20, 27 September 2014; 1, 8, 9, 10, 12, 20, 22, 24, 29 October; 3, 4, 6, 8, 10, 13, 14, 15, 16, 20, 21, 22, 24, 25, 26, 27 November 2014; 1, 22 December 2014; 2015: 05, 07, 09, 12, 14, 16, 30, 31 January; 7, 14 February; 9 March; 2, 3, 4, 5 April; 22, 23 May; 26, 27, 28 June; 19, 20 July; 8, 24, 25, 26, 27, 28, 29 August; 3, 4, 25, 26 September; 7, 8 October; 9, 24, 26, 27, 30 December; 5, 7 10, 11, 13, 19, 27, 31 January; 2, 13, 17, 19, 21, 23, 25, 26, 28 February; 1, 3, 4, 7, 9, 11, 14, 16, 17, 20, 26 March, 8, 16, 27, 28 May; 3, 5, 18 June 2016 -->
