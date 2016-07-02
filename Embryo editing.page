@@ -327,6 +327,7 @@ https://cran.r-project.org/web/packages/BGLR/BGLR.pdf https://cran.r-project.org
 
 previous: Liang et al 2015 "CRISPR/Cas9-mediated gene editing in human tripronuclear zygotes" http://link.springer.com/article/10.1007/s13238-015-0153-5%20/fulltext.html http://www.nature.com/news/chinese-scientists-genetically-modify-human-embryos-1.17378
 Kang et al 2016, "Introducing precise genetic modifications into human 3PN embryos by CRISPR/Cas-mediated genome editing" /docs/genetics/2016-kang.pdf http://www.nature.com/news/second-chinese-team-reports-gene-editing-in-human-embryos-1.19718
+Komor et al 2016, "Programmable editing of a target base in genomic DNA without double-stranded DNA cleavage" https://ase.tufts.edu/chemistry/kumar/jc/pdf/Liu_2016.pdf
 
 legal in USA (no legislation), legal in China (only 'unenforceable guidelines') as of 2014, according to "International regulatory landscape and integration of corrective genome editing into in vitro fertilization", Araki & Ishii 2014 http://rbej.biomedcentral.com/articles/10.1186/1477-7827-12-108
 as of 2015 too according to http://www.nature.com/news/where-in-the-world-could-the-first-crispr-baby-be-born-1.18542
@@ -377,10 +378,10 @@ http://www.addgene.org/crispr/
 "Individual plasmids can be ordered at $65 per plasmid, and will be shipped as bacterial stabs" https://www.addgene.org/crispr/yamamoto/multiplex-crispr-kit/
 "At least since 1953, when James Watson and Francis Crick characterized the helical structure of DNA, the central project of biology has been the effort to understand how the shifting arrangement of four compounds-adenine, guanine, cytosine, and thymine-determines the ways in which humans differ from each other and from everything else alive. CRISPR is not the first system to help scientists pursue that goal, but it is the first that anyone with basic skills and a few hundred dollars' worth of equipment can use. "CRISPR is the Model T of genetics," Hank Greely told me when I visited him recently, at Stanford Law School, where he is a professor and the director of the Center for Law and the Biosciences. "The Model T wasn't the first car, but it changed the way we drive, work, and live. CRISPR has made a difficult process cheap and reliable. It's incredibly precise. But an important part of the history of molecular biology is the history of editing genes."..."In the past, this would have taken the field a decade, and would have required a consortium," Platt said. "With CRISPR, it took me four months to do it by myself." In September, Zhang published a report, in the journal Cell, describing yet another CRISPR protein, called Cpf1, that is smaller and easier to program than Cas9." http://www.newyorker.com/magazine/2015/11/16/the-gene-hackers?mbid=rss
 
-2017 10% http://predictionbook.com/predictions/177110
-2018 35% http://predictionbook.com/predictions/177114
-2019 60% http://predictionbook.com/predictions/177115
-by 2020, 70% http://predictionbook.com/predictions/177111
+2017 7% http://predictionbook.com/predictions/177110
+2018 30% http://predictionbook.com/predictions/177114
+2019 55% http://predictionbook.com/predictions/177115
+by 2020, 75% http://predictionbook.com/predictions/177111
 
 Whither embryo editing? The problem with IVF is that it is expensive, painful, and requires patience & planning. Even with large gains from editing, can we expect more than the current 1% or so of parents to ever be willing to conceive via IVF for those gains? If not, then the benefits may take generations to mix into the general population as offspring reproduce normally with unedited people and people happen to need to use IVF for regular fertility reasons. A solution is suggested by the adult CRISPR trials: make the germline edits in advance. In females, it seems like it might be hard to reach all the eggs which could potentially result in conception, but in males, sperm turnover is constant https://en.wikipedia.org/wiki/Spermatogenesis and sperm are replenished by stem cells in https://en.wikipedia.org/wiki/Seminiferous_tubule
 already demonstrated CRISPR edits to spermatogonia and subsequent inheritance by offspring: "Targeted Germline Modifications in Rats Using CRISPR/Cas9 and Spermatogonial Stem Cells", Chapman et al 2014 http://www.sciencedirect.com/science/article/pii/S2211124715001989
@@ -400,13 +401,6 @@ http://www.genetics.org/content/202/3/869
 "Thus, keeping in mind that some mutations in repetitive DNA likely go undetected owing to mapping difficulties in genome-sequencing projects, with a diploid genome size of ~6 billion bases, an average newborn contains ~100 de novo mutations....Numerous studies with model organisms indicate that such effects have a broad distribution (Lynch et al. 1999; Halligan and Keightley 2009)-most mutations have minor effects, very few have lethal consequences, and even fewer are beneficial. In all organisms, the majority of mutations with effects on fitness reduce viability/fecundity by something on the order of 1% per mutation (Lynch et al. 1999; Yampolsky et al. 2005; Eyre-Walker and Keightley 2007), and this class is thought to constitute 1-10% of all human mutations, the remainder being essentially neutral (Lindblad-Toh et al. 2011; Keightley 2012; Rands et al. 2014). Taking the lower end of the latter range suggests that the recurrent load of mutations imposed on the human population drags fitness down by 1% per generation, more so if the fraction of deleterious mutations exceeds 0.01 or if the environment is mutagenic, and less so if the average fitness effect of a mutation were to be <1%"
 
 SNPs have two relevant properties: a frequency of being zero, and an effect size
-
-"cauchy"
-"exponential"
-"geometric"
-"lognormal"
-"Poisson"
-"weibull"
 
 Benyamin polygenic score distribution: looks either exponential or log-normal and a Cullen & Frey graph indicates it is closes to exponential & log-normal distributions.
 
