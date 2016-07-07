@@ -75,5 +75,63 @@ Soylent usage:
 - 21 Nov: 1 meal
 - 25 Nov: 1 meal
 - 28 Nov: 1 meal
+- 2016
+- 19 May: 3
+- 22 May: 3
+- 2 June: 3
+- 5 June: 1
+- 6 June: 1
+- 7 June: 1
 
 <!-- variance component estimation for gut bacteria? https://www.reddit.com/r/Microbiome/comments/44j6zg/do_we_know_how_important_gut_microbiome/ using American Gut Project data http://nbviewer.jupyter.org/github/biocore/American-Gut/blob/master/ipynb/index.ipynb ; maybe also http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4255478/ or http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3787266/ ? -->
+
+<!-- Power analysis:
+for an additive food factor explaining 10% of variance on a continuous variable using 100% vs 50% identity (MZ vs DZ), https://genepi.qimr.edu.au/general/TwinPowerCalculator/ indicates that >28 pairs are necessary, so >14 pairs each, or >28 days each and >56 total. Since 1 Soylent bag covers 1 day, the >28 100% days require >28 bags, while third-ed days would require 1/3*>28 = >10 bags, or >38 bags total, about >1.2 months of Soylent.
+
+library(OpenMx)
+DZ <- matrix(cov(subset(twinData, zyg==3, c('bmi1','bmi2')),use="complete"), ncol=2)
+rownames(DZ) <- c("P1", "P2"); colnames(DZ) <- c("P1", "P2")
+MZ <- matrix(cov(subset(twinData, zyg==1, c('bmi1','bmi2')),use="complete"), ncol=2)
+rownames(MZ) <- c("P1", "P2"); colnames(MZ) <- c("P1", "P2")
+MZ; DZ
+#              P1           P2
+# P1 0.7246660883 0.5890844312
+# P2 0.5890844312 0.7915261064
+#              P1           P2
+# P1 0.7786128630 0.2461126024
+# P2 0.2461126024 0.8365104928
+bmi.cov <- list(MZ=MZ, DZ=DZ)
+bmi.n   <- list(MZ=534, DZ=328)
+bmi.cov; bmi.n
+# $MZ
+#              P1           P2
+# P1 0.7246660883 0.5890844312
+# P2 0.5890844312 0.7915261064
+#
+# $DZ
+#              P1           P2
+# P1 0.7786128630 0.2461126024
+# P2 0.2461126024 0.8365104928
+#
+# $MZ
+# [1] 534
+#
+# $DZ
+# [1] 328
+library(lavaan)
+bmi.ae.model <- '
+    # genetic model
+    A1 =~ NA*P1 + c(a,a)*P1 + start(c(.5,.5))*P1
+    A2 =~ NA*P2 + C(a,a)*P2 + start(c(.5,.5))*P2
+
+    # variances
+    P1 ~~ c(e2,e2)*P1
+    P2 ~~ c(e2,e2)*P2
+
+    # covariances
+    A1 ~~ c(1,.5)*A2
+ '
+fit <- cfa(bmi.ae.model, sample.cov=bmi.cov, sample.nobs=bmi.n); summary(fit, standardized=TRUE)
+
+
+-->
