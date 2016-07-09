@@ -97,16 +97,15 @@ If it's large, then I've learned I may not want to neglect recording data on my 
 
 ## Design
 
-
 The outcome variable is my MP self-rating; it's not a good outcome variable, but I am still working on creating a better productivity variable using factor analysis, so it will have to do.
 I have MPs going back several years, so the variance of normal eating can be estimated from that and reducing the sample size requirements.
 
 The full blown SEM apparatus of twin study designs turn out to not be necessary here as all days are expected to have the same mean (hence, 'pairs' of days will have zero correlation) and I can frame the problem as a test of different variances in two 'populations': days with 0 Soylent meals and days with 3 Soylent meals (to maximize the contrast).
 This can be done as an [_F_-test](!Wikipedia "F-test").
+As a side check, a _t_-test for difference in means (not that I expect Soylent to increase my daily ratings, but I should check for decreases).
 
 Randomization can be done as pairs of days to avoid temporal trends.
-I began 7 July 2016 with 35 Soylent bags available.
-
+I began 7 July 2016 with 35 Soylent 1.5 bags available I had ordered over the previous months as a subscription.
 
 ### Power
 
@@ -186,4 +185,57 @@ library(ggplot2)
 qplot(powerSummary$Pvalue, powerSummary$N, facets=as.ordered(powerSummary$Heritability), data=powerSummary)
 ~~~
 
-Power depends tremendously on how much variance is reduced. At an implausible 50%, a variance test is easy. At a more reasonable 10%, it requires hundreds of days.
+Power depends tremendously on how much variance is reduced.
+At an implausible 50%, a variance test is easy; at 10%, it requires hundreds of days.
+What should our prior be about effects?
+Some people claim that their diet affects them tremendously and eating one wrong thing (which they are not allergic to) can ruin a day; on the other hand, humans are evolved to be omnivorous and robust to disturbances in food supply (eg the Pirahã will routinely skip a day or two of food every so often to 'harden' themselves) or variety of food, nor have I ever seen anything in the diet literature hinting that day to day variance might be important (researchers tending to focus on the average effects on outcome variables of particular foods like blueberries, or the effect of consistent changes in macronutrient composition, but not on how much variance/noise is due to eating more blueberries one day and less the next).
+I think we should expect small changes in variance, because large changes in variance attributed to diet variation must crowd out all the other possible sources like sleep, weather, blood glucose, stress and anxiety, day of the week or the lunar cycle, etc - can all of that together really only be as large as diet shifts (as a 50% prior would claim) or only be 2x larger (as 25% claims) or only be 9x larger (as 10% claims)?
+
+Bayesian analysis: two-group problem testing for difference of mean & SD, using the interval to model the discretized nature of the MP ratings:
+
+~~~{.R}
+mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
+mpGenerate <- function(n, m, s, variance) {
+    M <- round(rnorm(n, mean=m, sd=sqrt((1-variance))*s))
+    M2 <- ifelse(M>4, 4, M)
+    M3 <- ifelse(M2<2, 2, M2)
+    return(M3) }
+population_m <- mean(mp$MP, na.rm=TRUE)
+population_sd <- sd(mp$MP, na.rm=TRUE)
+heritability <- 0.2
+n <- 80
+allSoylent <- mpGenerate(n, population_m, population_sd, heritability*(3/3))
+
+library(runjags)
+breaks <- 1:5
+model1 <- "model {
+    # first group:
+    for (i in 1:n_1) {
+           y_1[i] ~ dinterval(true_1[i], breaks)
+           true_1[i] ~ dnorm(mu_1, tau_1)
+       }
+
+    mu_1 ~ dnorm(3, pow(1, -2))
+    tau_1 ~ dgamma(0.001, 0.001)
+    sd_1 <- pow(tau_1, -2)
+
+    # second group:
+    for (i in 1:n_2) {
+           y_2[i] ~ dinterval(true_2[i], breaks)
+           true_2[i] ~ dnorm(mu_2, tau_2)
+       }
+
+    mu_2 ~ dnorm(3, pow(1, -2))
+    tau_2 ~ dgamma(.001,.001)
+    sd_2 <- pow(tau_2, -2)
+
+    mu_delta <- mu_2 - mu_1
+
+    sd_delta <- sd_2 - sd_1
+    variance_ratio <- sqrt(sd_2) / sqrt(sd_1)
+
+    }"
+data <- list(breaks=breaks, y_1=mp$MP, n_1=length(mp$MP), y_2=allSoylent, n_2=length(allSoylent) )
+params <- c("mu_delta", "sd_delta", "variance_ratio")
+j1 <- run.jags(model=model1, monitor=params, data=data, n.chains=getOption("mc.cores"), method="rjparallel", sample=(50000/getOption("mc.cores"))); j1
+~~~
