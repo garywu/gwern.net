@@ -7,6 +7,7 @@ status: notes
 belief: possible
 ...
 
+<!--
 my criticism of a regular diet: http://lesswrong.com/lw/hht/link_soylent_crowdfunding/90y7
 add a link in http://lesswrong.com/lw/hht/link_soylent_crowdfunding/914n
 
@@ -22,18 +23,7 @@ http://diy.soylent.me/recipes/hacker-school-soylent
 http://diy.soylent.me/recipes/2potatoes-hacker-school-not-modified
 http://www.cookingfor20.com/2013/06/18/hacker-school-soylent-recipe/
 http://diy.soylent.me/recipes/my-take-on-hacker-school-soylent-recipe
-
-Twin study idea:
-
-One of my hobbies is gathering data & [running experiments](http://www.gwern.net/tags/experiments) on myself. For the most part, I can take the usual approaches of measure data on relevant variables, randomize an intervention, and regress to get the mean effect.
-
-One set of data I *don't* collect is data about my diet and the food I eat: this is tedious, difficult to do right (weighing portions and calculating calories or nutritional value), cannot be automated, and I don't want to do it unless I absolutely have to - say, because diet turns out to be a large influence on my daily energy levels and explain a lot of currently unexplained variation. I could try to estimate how big the influence is by simply collecting the data and regressing on it but that would incur a lot of work for possibly little benefit.
-
-What if I could do something easier, to just estimate the total variability rather than its specific effect? It occurred to me that this was a similar setup as with the famous twin studies of the genetic heritability of traits: since one knows how related on average identical twins, fraternal twins, siblings etc are, one can examine the variation of sets and estimate how much all genes influence traits, without ever having to sequence a genome or identify the exact effect of a particular gene. But instead of heritability with genes, it's 'heritability' for food.
-
-In this scenario, the role of identical genomes would be played by identical meals (prepared meals like those sold to dieters, or liquid meals like the notorious Soylent & its knockoffs & Mealsquares). Days on which all 3 meals were one of the identical meals would be similar to identical twins (a 1 in the relationship matrix), days with 2 of 3 meals (0.66) or 1 of 3 meals identical (0.33) would be like siblings, and days of normal food would be like unrelated (0) people from the general population. Do this for a month or two, then plug daily data on mood/energy/work into one's favorite R library along with the meal similarity for each day (which would be much easier to record than my exact diet), and see if the _h^2_ is something meaningful like >0.1. If it's large, then I've learned I may not want to neglect recording data on my diet. (I suggested this [some time ago](https://www.reddit.com/r/HPMOR/comments/2i1mb6/hpmor_progress_report_oct_2014/ckzlqk3) and have been looking into it in more detail today.)
-
-I have been reading up on twin studies and structural equation modeling and googling heavily for keywords relating to variance. But so far the only relevant material I've found is framed exclusively in terms of genetics (which I am not sure how well it applies to my proposed use; the approach *seems* generic, but...), or the variance estimation concerns matters where the variable has been observed (diet being unobserved is the whole point of this) or they're interested in the latent variable behind observed variables, and so are not useful.
+-->
 
 <!-- MealSquares; Vaniver gave me 5 on 29 December 2014; ate last on 6 January 2015, so 30/01/02/05/06? -->
 <!-- first Soylent 1.5 order: 28 meals / 7 bags, $54, 17 Sep 2015 and arrived on 28 September 2015; only discount is for subscription, so didn't bother with a big order - I can try out the first order to see what it's like, then stockpile subsequent orders if need be. -->
@@ -59,7 +49,7 @@ Soylent usage:
 - 28 Sep 2015: 2 meals
 - 29 Sep 2015: 1 meal
 
-    initial impressions: much better cold. Minor grittiness goes away after sitting overnight. Soylent Inc conveniently provides a big pitcher to make your Soylent in, narrow and tall but *just* short enough to fit in my refrigerator's top shelf. Well suited to shaking and pouring. Flavor is unoffensive and has a sort of nutty/oatmeal overtone. Some stomach rumblings the first night.
+    initial impressions: much better cold. Minor grittiness goes away after sitting overnight. Soylent Inc conveniently provides a big pitcher to make your Soylent in, narrow and tall but *just* short enough to fit in my refrigerator's top shelf. Well suited to shaking and pouring. Flavor is unoffensive and has a sort of nutty/oatmeal overtone. Some stomach rumblings the first night. This stomach rumbling and flatulence is a well-known effect of Soylent and I'm afraid it hasn't gone away for me even by 2016...
 - 30 Sep 2015: 3 meals
 - 2 Oct: 1 meal
 - 3 Oct: 2 meals
@@ -82,56 +72,118 @@ Soylent usage:
 - 5 June: 1
 - 6 June: 1
 - 7 June: 1
+- 8 July: 3
 
 <!-- variance component estimation for gut bacteria? https://www.reddit.com/r/Microbiome/comments/44j6zg/do_we_know_how_important_gut_microbiome/ using American Gut Project data http://nbviewer.jupyter.org/github/biocore/American-Gut/blob/master/ipynb/index.ipynb ; maybe also http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4255478/ or http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3787266/ ? -->
 
-<!-- Power analysis:
-for an additive food factor explaining 10% of variance on a continuous variable using 100% vs 50% identity (MZ vs DZ), https://genepi.qimr.edu.au/general/TwinPowerCalculator/ indicates that >28 pairs are necessary, so >14 pairs each, or >28 days each and >56 total. Since 1 Soylent bag covers 1 day, the >28 100% days require >28 bags, while third-ed days would require 1/3*>28 = >10 bags, or >38 bags total, about >1.2 months of Soylent.
+# Variance experiment
+## Background
 
-library(OpenMx)
-DZ <- matrix(cov(subset(twinData, zyg==3, c('bmi1','bmi2')),use="complete"), ncol=2)
-rownames(DZ) <- c("P1", "P2"); colnames(DZ) <- c("P1", "P2")
-MZ <- matrix(cov(subset(twinData, zyg==1, c('bmi1','bmi2')),use="complete"), ncol=2)
-rownames(MZ) <- c("P1", "P2"); colnames(MZ) <- c("P1", "P2")
-MZ; DZ
-#              P1           P2
-# P1 0.7246660883 0.5890844312
-# P2 0.5890844312 0.7915261064
-#              P1           P2
-# P1 0.7786128630 0.2461126024
-# P2 0.2461126024 0.8365104928
-bmi.cov <- list(MZ=MZ, DZ=DZ)
-bmi.n   <- list(MZ=534, DZ=328)
-bmi.cov; bmi.n
-# $MZ
-#              P1           P2
-# P1 0.7246660883 0.5890844312
-# P2 0.5890844312 0.7915261064
-#
-# $DZ
-#              P1           P2
-# P1 0.7786128630 0.2461126024
-# P2 0.2461126024 0.8365104928
-#
-# $MZ
-# [1] 534
-#
-# $DZ
-# [1] 328
-library(lavaan)
-bmi.ae.model <- '
-    # genetic model
-    A1 =~ NA*P1 + c(a,a)*P1 + start(c(.5,.5))*P1
-    A2 =~ NA*P2 + C(a,a)*P2 + start(c(.5,.5))*P2
+One of my hobbies is gathering data & [running experiments](/tags/experiments) on myself.
+For the most part, I can take the usual experimental approaches of measure data on relevant variables such as my usual mood/productivity MP self-rating, randomize an intervention, and regress to get the mean treatment effect.
 
-    # variances
-    P1 ~~ c(e2,e2)*P1
-    P2 ~~ c(e2,e2)*P2
+One set of data I *don't* collect is data about my diet and the food I eat: this is tedious, difficult to do right (weighing portions and calculating calories or nutritional value), cannot be automated, and I don't want to do it unless I absolutely have to - say, because diet turns out to be a large influence on my daily energy levels and explain a lot of currently unexplained variation.
+I could try to estimate how big the influence is by simply collecting the data and regressing on it but that would incur a lot of work for possibly little benefit.
 
-    # covariances
-    A1 ~~ c(1,.5)*A2
- '
-fit <- cfa(bmi.ae.model, sample.cov=bmi.cov, sample.nobs=bmi.n); summary(fit, standardized=TRUE)
+What if I could do something easier, to just estimate the total [variance](!Wikipedia) attributable to differences in food rather than nailing down the exact effect of each food?
+It occurred to me that this was a similar setup as with the famous twin studies of the genetic heritability of traits: since one knows how related on average identical twins, fraternal twins, siblings etc are, one can examine the variation of sets and estimate how much all genes influence traits, without ever having to sequence a genome or identify the exact effect of a particular gene.
+But instead of heritability with genes, it's 'heritability' for food.
+
+In this scenario, the role of identical genomes would be played by identical meals (prepared meals like those sold to dieters, or liquid meals like the notorious Soylent & its knockoffs & Mealsquares).
+Days on which all 3 meals were one of the identical meals would be similar to identical twins (a genetic relatedness of 1), days with 2 of 3 meals (0.66) or 1 of 3 meals identical (0.33) would be like siblings, and days of normal food would be like unrelated (0) people from the general population.
+Do this for a month or two, then plug daily data on mood/energy/work into one's favorite R library along with the meal similarity for each day (which would be possible to record as compared to my exact diet), and see if the reduction in variance is something meaningful like >10%.
+If it's large, then I've learned I may not want to neglect recording data on my diet, since apparently day-to-day differences
+(I suggested this [some time ago](https://www.reddit.com/r/HPMOR/comments/2i1mb6/hpmor_progress_report_oct_2014/ckzlqk3) and have been looking into it in more detail since.)
+
+## Design
 
 
--->
+The outcome variable is my MP self-rating; it's not a good outcome variable, but I am still working on creating a better productivity variable using factor analysis, so it will have to do.
+I have MPs going back several years, so the variance of normal eating can be estimated from that and reducing the sample size requirements.
+
+The full blown SEM apparatus of twin study designs turn out to not be necessary here as all days are expected to have the same mean (hence, 'pairs' of days will have zero correlation) and I can frame the problem as a test of different variances in two 'populations': days with 0 Soylent meals and days with 3 Soylent meals (to maximize the contrast).
+This can be done as an [_F_-test](!Wikipedia "F-test").
+
+Randomization can be done as pairs of days to avoid temporal trends.
+I began 7 July 2016 with 35 Soylent bags available.
+
+
+### Power
+
+Twin and family designs are powerful and can estimate low levels of heritability with surprisingly little data - for an additive food factor explaining 10% of variance on a continuous variable using 100% vs 50% identity (MZ vs DZ), [a twin power calculator](https://genepi.qimr.edu.au/general/TwinPowerCalculator/) indicates that >28 pairs are necessary, so >14 pairs each, or >28 days each and >56 total, which is not too bad.
+Unfortunately, as I know from discussions of sex-linked variance in psychology, tests of difference in variance in general populations (as opposed to differences in means) tend to be data-hungry, presumably because twin studies benefit from pairs of twins having widely distributed means.
+
+The power of a variance test can probably be estimated with standard ANOVA-linked power routines.
+However, my mood/productivity self-rating is not a continuous normal variable as such routines would assume, but a discrete variable with 3 levels, which will be less informative (so any standard power routine will underestimate the power, possibly by a lot).
+So a power simulation is necessary.
+
+We can simulate realistic MP data by generating normal deviates with the same population mean/SD as my current MP dataset, rounding, and then ceiling/flooring:
+
+~~~{.R}
+mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
+sd(mp$MP, na.rm=T)
+# [1] 0.6947745861
+mean(mp$MP, na.rm=T)
+# [1] 3.127727856
+M <- round(rnorm(100, mean=3.127727856, sd=0.6947745861)); M2 <- ifelse(M>4, 4, M); M3 <- ifelse(M2<2, 2, M2)
+M3
+#  [1] 2 3 2 3 3 2 2 3 3 2 3 3 3 2 4 4 2 3 4 3 3 2 4 3 4 3 3 4 4 2 4 3 4 3 3 4 3 3 3 2 3 3 4 3 3 3 2 3 3 3 3 4 4 3 2 4 3 3 2 2 4 3 4 3 4 2 3 2 4 3 3 3 4 4 2 4 3 3 2 4 3 2 3 4 4 3 4 3 3 3 3 3
+# [93] 4 3 2 3 3 4 2 3
+sd(M3)
+# [1] 0.6936945446
+mean(M3)
+# [1] 3.06
+~~~
+
+How to generate such deviates with particular diet-related reduction in variance, though? Not too hard:
+
+~~~{.R}
+mpGenerate <- function(n, m, s, variance) {
+    M <- round(rnorm(n, mean=m, sd=sqrt((1-variance))*s))
+    M2 <- ifelse(M>4, 4, M)
+    M3 <- ifelse(M2<2, 2, M2)
+    return(M3) }
+~~~
+
+Once that is set up, it is straightforward to pass in a set of possible reductions in variance, loop over sample sizes, simulate out a few hundred 3-meal Soylent datasets, and record the result of an _F_-test comparing the Soylent variance with the past non-Soylent MP variance:
+
+~~~{.R}
+mpVariancePowerAnalysis <- function(heritabilities, n_additional) {
+
+ mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
+ population_m <- mean(mp$MP, na.rm=TRUE)
+ population_sd <- sd(mp$MP, na.rm=TRUE)
+
+ iters <- 300
+
+ ## preallocate space for all the possible combinations, so we don't spend all our time
+ ## merging data frames
+ results <- data.frame(N=rep(NA, n_additional*iters*length(heritabilities)),
+    Heritability=rep(NA, n_additional*iters*length(heritabilities)),
+    Pvalue=rep(NA, n_additional*iters*length(heritabilities)),
+    Ratio=rep(NA, n_additional*iters*length(heritabilities)))
+
+ for (heritability in heritabilities) {
+   for (n in 10:n_additional) {
+    for (i in 1:iters) {
+      allSoylent <- mpGenerate(n, population_m, population_sd, heritability*(3/3))
+
+      test <- var.test(mp$MP, allSoylent)
+
+      results$N[n*i*which(heritabilities==heritability)]            <- n
+      results$Heritability[n*i*which(heritabilities==heritability)] <- heritability
+      results$Pvalue[n*i*which(heritabilities==heritability)]       <- test$p.value
+      results$Ratio[n*i*which(heritabilities==heritability)]        <- test$estimate
+      }
+   }
+ }
+ return(results)
+}
+power <- rbind(power, mpVariancePowerAnalysis(seq(0.1, 0.5, by=0.05), 1000))
+powerSummary <- aggregate(Pvalue ~ N + Heritability, function(ps) { sum(ps<=0.05)/length(ps)})
+plot(powerSummary[power$Heritability==0.5,])
+library(ggplot2)
+qplot(powerSummary$Pvalue, powerSummary$N, facets=as.ordered(powerSummary$Heritability), data=powerSummary)
+~~~
+
+Power depends tremendously on how much variance is reduced. At an implausible 50%, a variance test is easy. At a more reasonable 10%, it requires hundreds of days.
