@@ -188,7 +188,10 @@ staticImg x@(TagOpen "img" xs) = do let optimized = lookup "height" xs
                                                                        -- body max-width is 1100 px, sidebar is 150px, so any image wider than 900px
                                                                        -- will wind up being reflowed by the 'img { max-width: 100%; }' responsive-image CSS declaration;
                                                                        -- let's avoid that specific case by lying about its width, although this doesn't fix all the reflowing.
-                                                                       return (TagOpen "img" (uniq ([("height", height), ("width", show ((read width::Int) `min` 900))]++xs)))
+                                                                       -- No images should be more than a screen in height either, so we'll set a maximum of 900
+                                                                       let width' =  show ((read width::Int) `min` 900)
+                                                                       let height' = show ((read height::Int) `min` 900)
+                                                                       return (TagOpen "img" (uniq ([("height", height'), ("width", width')]++xs)))
             where uniq = nub . sort
 staticImg x = return x
 -- | Use FileStore util to run imageMagick's 'identify', & extract the dimensions
