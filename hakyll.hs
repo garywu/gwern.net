@@ -185,7 +185,10 @@ staticImg x@(TagOpen "img" xs) = do let optimized = lookup "height" xs
                                                           Nothing -> return x
                                                           Just p -> do let p' = if head p == '/' then tail p else p
                                                                        (height,width) <- imageMagick p' `onException` (putStrLn p)
-                                                                       return (TagOpen "img" (uniq ([("height",height), ("width",width)]++xs)))
+                                                                       -- body max-width is 1100 px, sidebar is 150px, so any image wider than 900px
+                                                                       -- will wind up being reflowed by the 'img { max-width: 100%; }' responsive-image CSS declaration;
+                                                                       -- let's avoid that specific case by lying about its width, although this doesn't fix all the reflowing.
+                                                                       return (TagOpen "img" (uniq ([("height", height), ("width", show ((read width::Int) `min` 900))]++xs)))
             where uniq = nub . sort
 staticImg x = return x
 -- | Use FileStore util to run imageMagick's 'identify', & extract the dimensions
