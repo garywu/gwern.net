@@ -2810,7 +2810,8 @@ sampling indicated good text generation but zero classification performance othe
 
 Why didn't it work? Maybe the training signal wasn't strong enough because the lines were too long? 3k char lines... TODO try 500 char lines to fit in the BPTT window?
 
-based on the impressive improvement from batchnorm, I went back to the original metadata generator to see if that will help reduce the original 1.028 -->
+based on the impressive improvement from batchnorm, I went back to the original metadata generator to see if that will help reduce the original 1.028
+500-wide produced 1.10... giving it one last try with longer BPTT -->
 4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
 
     My belief is that a genre/author-classification+unsupervised-prediction char-RNN may be able to do style transfer. This is because such a char-RNN should learn a clean separation between the metadata (style) and the semantics (content).
@@ -2831,7 +2832,7 @@ for FILE in *.txt; do
 done
 
 first try: 3000-wide characters; didn't work
-second try: 500-wide
+second try: 500-wide; didn't work either, minimum validation loss of
 
 -->
 <!--
@@ -3516,7 +3517,11 @@ As Gallagher then points out:
 
 > ...Yet, there are very few such individuals alive in any particular era. The statistical odds against any one of them having graduated from one elementary school in New York City is great. Whether the "creative rebel" would have survived the selection process at Hunter, or any similar school, is one of those remaining questions that should puzzle and intrigue us.
 
-(If we consider the [STEM Nobel Prizes](!Wikipedia "List of countries by Nobel laureates per capita#Scientific prizes"), the USA has perhaps 1 per *million* people.)
+If we consider the [STEM Nobel Prizes](!Wikipedia "List of countries by Nobel laureates per capita#Scientific prizes"), the USA has perhaps 1 per *million* people.
+So if even 1 HCES student had won a STEM Nobel out of 210, or 600, that would imply an enormous increase in odds ratio of >1666 ($\frac{\frac{1}{1}}{\frac{600}{1000000}}$); or to put it another, if we genuinely expected 1 or more Nobels from our HCES alumni, then to achieve that >1666 increases in odds with only +57 early-childhood IQ points, we'd also have to believe something along the lines of each individual IQ point on average increasing the odds by 29x!
+And of course, if we did believe in such effect sizes, we would still frequently expect to observe a HCES-sized cohort to not win a Nobel (eg if we had expected 1 Nobel prize per 600, for a probability of $\frac{1}{600}$ per student, then the probability of seeing 0 Nobels in _n_=600 is very high: $(1-\frac{1}{600})^{600} = 0.367$; to drive the non-Nobel probability down to <5%, we would have to expect >=3 Nobels per 600).
+
+So it's unclear how much weight we ought to put on the apparent 'failure' of the HCES alumni, because even the ludicrously optimistic model is consistent with often seeing 'failure'.
 
 ### Weak childhood IQ scores: regression to the mean
 
