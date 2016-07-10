@@ -147,6 +147,14 @@ mpGenerate <- function(n, m, s, variance) {
 Once that is set up, it is straightforward to pass in a set of possible reductions in variance, loop over sample sizes, simulate out a few hundred 3-meal Soylent datasets, and record the result of an _F_-test comparing the Soylent variance with the past non-Soylent MP variance:
 
 ~~~{.R}
+library(ggplot2)
+library(parallel)
+library(plyr)
+mpGenerate <- function(n, m, s, variance) {
+    M <- round(rnorm(n, mean=m, sd=sqrt((1-variance))*s))
+    M2 <- ifelse(M>4, 4, M)
+    M3 <- ifelse(M2<2, 2, M2)
+    return(M3) }
 mpVariancePowerAnalysis <- function(heritabilities, n_additional) {
 
  mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
@@ -155,34 +163,34 @@ mpVariancePowerAnalysis <- function(heritabilities, n_additional) {
 
  iters <- 300
 
- ## preallocate space for all the possible combinations, so we don't spend all our time
- ## merging data frames
- results <- data.frame(N=rep(NA, n_additional*iters*length(heritabilities)),
-    Heritability=rep(NA, n_additional*iters*length(heritabilities)),
-    Pvalue=rep(NA, n_additional*iters*length(heritabilities)),
-    Ratio=rep(NA, n_additional*iters*length(heritabilities)))
+ results <- ldply( # merge the identical data-frames
+  mclapply(heritabilities, function(heritability) { # parallelize estimation of each possible heritability
+   ## preallocate space for all the possible combinations, so we don't spend all our time
+   ## merging data frames
+   results <- data.frame(N=rep(NA, n_additional*iters),
+      Heritability=rep(NA, n_additional*iters),
+      Pvalue=rep(NA, n_additional*iters),
+      Ratio=rep(NA, n_additional*iters))
 
- for (heritability in heritabilities) {
-   for (n in 10:n_additional) {
+   for (n in 5:n_additional) {
     for (i in 1:iters) {
       allSoylent <- mpGenerate(n, population_m, population_sd, heritability*(3/3))
 
       test <- var.test(mp$MP, allSoylent)
 
-      results$N[n*i*which(heritabilities==heritability)]            <- n
-      results$Heritability[n*i*which(heritabilities==heritability)] <- heritability
-      results$Pvalue[n*i*which(heritabilities==heritability)]       <- test$p.value
-      results$Ratio[n*i*which(heritabilities==heritability)]        <- test$estimate
+      results$N[n*i]            <- n
+      results$Heritability[n*i] <- heritability
+      results$Pvalue[n*i]       <- test$p.value
+      results$Ratio[n*i]        <- test$estimate
       }
    }
- }
+   return(results)
+ }))
  return(results)
 }
-power <- rbind(power, mpVariancePowerAnalysis(seq(0.1, 0.5, by=0.05), 1000))
-powerSummary <- aggregate(Pvalue ~ N + Heritability, function(ps) { sum(ps<=0.05)/length(ps)})
-plot(powerSummary[power$Heritability==0.5,])
-library(ggplot2)
-qplot(powerSummary$Pvalue, powerSummary$N, facets=as.ordered(powerSummary$Heritability), data=powerSummary)
+power <- rbind(power, mpVariancePowerAnalysis(seq(0.1, 0.5, by=0.05), 365))
+powerSummary <- aggregate(Pvalue ~ N + Heritability, function(ps) { sum(ps<=0.05)/length(ps)}, data=power)
+qplot(N, Pvalue, color=as.ordered(Heritability), data=powerSummary) + stat_smooth()
 ~~~
 
 Power depends tremendously on how much variance is reduced.
@@ -239,3 +247,5 @@ data <- list(breaks=breaks, y_1=mp$MP, n_1=length(mp$MP), y_2=allSoylent, n_2=le
 params <- c("mu_delta", "sd_delta", "variance_ratio")
 j1 <- run.jags(model=model1, monitor=params, data=data, n.chains=getOption("mc.cores"), method="rjparallel", sample=(50000/getOption("mc.cores"))); j1
 ~~~
+
+TODO: dround is simpler than dinterval but crashes for no reason I can see... posted at https://sourceforge.net/p/mcmc-jags/discussion/610037/thread/d6006dd3/
