@@ -17,7 +17,7 @@ do
             -e "http://www.coursera.org" -e ".wiley.com/" -e "http://www.ncbi.nlm.nih.gov/pubmed/" \
             -e "www.tandfonline.com/doi/abs/" -e "jstor.org" -e "springer.com" -e "springerlink.com" \
             -e "www.mendeley.com" -- "$PAGE";
-        egp -e "http://www.pnas.org/content/.*/.*/.*.abstract" -e '[^\.]t\.test\(' -- "$PAGE";
+        egp -e "http://www.pnas.org/content/.*/.*/.*.abstract" -e '[^\.]t\.test\(' -e '^\~\~\{\.' -- "$PAGE";
         fgp -e "<q>" -e "</q>" -e "(www" -e ")www" -e "![](" -e "]()" -e "](/wiki/" -e "](wiki/" \
             -e " percent " -e "    Pearson'" -e '~~~{.sh}' -e 'library("' -- "$PAGE";
 
