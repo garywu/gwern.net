@@ -1,5 +1,6 @@
 ---
 title: RNN metadata for mimicking individual author style
+description: Teaching a text-generating RNN to automatically imitate many different authors by labeling the input text by author
 tags: statistics, NN, fiction
 created: 12 Sep 2015
 status: finished
