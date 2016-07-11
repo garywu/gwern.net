@@ -362,7 +362,7 @@ New violations:
 - `[Weight.visceral.fat|Weight.Omron]`
 - `[Weight.muscle|Weight.BMI]`
 
-~~{.R}
+~~~{.R}
 pdap4 <- hc(weightC, blacklist=data.frame(from=c("Weight.body.age", "Weight.resting.metabolism", "Weight.BMI", "Weight.Omron", "Weight.Omron", "Weight.BMI"), to=c("Weight.visceral.fat","Weight.muscle", "Weight.visceral.fat", "Weight.muscle", "Weight.visceral.fat", "Weight.muscle")))
 ~~~
 
