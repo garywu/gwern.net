@@ -72,10 +72,10 @@ http://graphics8.nytimes.com/packages/pdf/science/Ending_Med_Rev_Chap_1.pdf
 
 cholesterol http://www.nytimes.com/2016/04/04/health/dashing-hopes-study-shows-cholesterol-drug-has-no-benefits.html http://blogs.sciencemag.org/pipeline/archives/2016/04/04/cetp-finally-heads-to-the-trash-heap
 
-Ioannidis JP. Contradicted and initially stronger effects in highly cited clinical research. JAMA. 2005;294(2):218 https://jama.jamanetwork.com/article.aspx?articleid=201218
-[25] Prasad V, Cifu A, Ioannidis JP. Reversals of established medical practices: evidence to abandon ship. JAMA 2012;307:37e8. https://www.researchgate.net/profile/Vinay_Prasad3/publication/51981180_Reversals_of_Established_Medical_Practices_Evidence_to_Abandon_Ship/links/55bd388208aed621de108a84.pdf
-[26] Prasad V, Cifu A. Medical reversal: why we must raise the bar before adopting new technologies. Yale J Biol Med 2011;84:471e8. https://www.researchgate.net/profile/Vinay_Prasad3/publication/51899214_Medical_Reversal_Why_We_Must_Raise_the_Bar_Before_Adopting_New_Technologies/links/55b26ae008aec0e5f431947a.pdf
-[27] Prasad V, Gall V, Cifu A. The frequency of medical reversal. Arch Intern Med 2011;171:1675e6. https://archinte.jamanetwork.com/article.aspx?articleid=1105961
+- Ioannidis JP. "Contradicted and initially stronger effects in highly cited clinical research". JAMA. 2005;294(2):218 https://jama.jamanetwork.com/article.aspx?articleid=201218
+- Prasad V, Cifu A, Ioannidis JP. "Reversals of established medical practices: evidence to abandon ship". JAMA 2012;307:37e8. https://www.researchgate.net/profile/Vinay_Prasad3/publication/51981180_Reversals_of_Established_Medical_Practices_Evidence_to_Abandon_Ship/links/55bd388208aed621de108a84.pdf
+- Prasad V, Cifu A. "Medical reversal: why we must raise the bar before adopting new technologies". Yale J Biol Med 2011;84:471e8. https://www.researchgate.net/profile/Vinay_Prasad3/publication/51899214_Medical_Reversal_Why_We_Must_Raise_the_Bar_Before_Adopting_New_Technologies/links/55b26ae008aec0e5f431947a.pdf
+- Prasad V, Gall V, Cifu A. "The frequency of medical reversal". Arch Intern Med 2011;171:1675e6. https://archinte.jamanetwork.com/article.aspx?articleid=1105961
 
 -->
 <!-- http://www.newyorker.com/magazine/2015/12/07/bacteria-on-the-brain -->
@@ -148,7 +148,7 @@ When networks are inferred on real-world data, they often start to look pretty g
 [Daphne Koller](https://en.wikipedia.org/wiki/Daphne_Koller) early on in her [Probabilistic Graphical Models course](https://www.coursera.org/course/pgm) shows an example from a medical setting where the network has like 600 nodes and you can't understand it at all.
 When you look at a biological causal network like this:
 
-!["A Toolkit Supporting Formal Reasoning about Causality in Metabolic Networks"](http://www.di.unipi.it/~braccia/ToolCode/pathway_03.jpg)
+!["A Toolkit Supporting Formal Reasoning about Causality in Metabolic Networks"](/images/causality-examplebionetwork-pathway03.jpg "http://www.di.unipi.it/~braccia/ToolCode/pathway_03.jpg")
 
 You start to appreciate how everything might be correlated with everything, but not cause each other.
 
@@ -518,7 +518,7 @@ Additional citations are welcome.
 
 ["Causality and Statistical Learning"](http://www.stat.columbia.edu/~gelman/research/published/causalreview4.pdf), Gelman 2010:
 
-> There are (almost) no true zeroes: difficulties with the research program of learning causal structure
+> *There are (almost) no true zeroes: difficulties with the research program of learning causal structure*
 >
 > We can distinguish between learning within a causal model (that is, inference about parameters characterizing a specified directed graph) and learning causal structure itself (that is, inference about the graph itself). In social science research, I am extremely skeptical of this second goal.
 >
