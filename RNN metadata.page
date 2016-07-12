@@ -131,7 +131,8 @@ du -ch *.txt; wc --char *.txt
 for FILE in *.txt; do
   dos2unix $FILE
   AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-  cat $FILE | tail -n +80 | grep -v -i 'Gutenberg' | iconv -c -tascii | tr '\n' ' ' | fold --spaces --bytes --width=10000 | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
+  cat $FILE | tail -n +80 | grep -v -i 'Gutenberg' | iconv -c -tascii | tr '\n' ' ' | \
+   fold --spaces --bytes --width=10000 | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
 done
 rm input.txt
 cat *.transformed | shuf > input.txt
@@ -158,13 +159,33 @@ After about 22 hours of training yielding a validation loss of 1.0402 (with litt
 ~~~{.Bash}
 BEST=`ls cv/*.t7 | sort --field-separator="_" --key=4 --numeric-sort --reverse | tail -1`
 th sample.lua $BEST -temperature 0.8 -length 500 -primetext "SHAKESPEARE|"
-# SHAKESPEARE|is of no regular complexion.  The action of the plain chatter--"  "Alas, they have discovered what was to be afforded since then?"  "We can believe--for the signature of the Church."  "So they do, dear lord, do they their home?  Oh, no, to the devil which we have not written, the Church is not in the world; but not in this harmless way then to the captain of man--therefore while the praise of it was allurious he would not reflect on the curious man's hatch deemed that his life should be very con
+# SHAKESPEARE|is of no regular complexion.  The action of the plain chatter--"  "Alas, they
+have discovered what was to be afforded since then?"  "We can believe--for the signature of
+the Church."  "So they do, dear lord, do they their home?  Oh, no, to the devil which we
+have not written, the Church is not in the world; but not in this harmless way then to the
+captain of man--therefore while the praise of it was allurious he would not reflect on the
+curious man's hatch deemed that his life should be very con
 th sample.lua $BEST -temperature 0.8 -length 500 -primetext "SHAKESPEARE|" -seed 105
-# SHAKESPEARE|   CHAPTER VII  FROM A WESPERON IN STORY  "MOST INGURIFELLOWSELLES," Antoinette now looked at him a sharp pleasure in passing southward and again in portion of his mother's reach of it. Suddenly the thing was said.  "We'll sit down and find out," he inquired, with a pity to see Mr. Carvel driving beside the bedroom, which was almost as much as he could bear the potion.  "You say you're strong," said Mrs. Holy, indignantly, "you won't have to go away, about the doctor. What is it?"  "Why, we are"
+# SHAKESPEARE|   CHAPTER VII  FROM A WESPERON IN STORY  "MOST INGURIFELLOWSELLES," Antoinette
+now looked at him a sharp pleasure in passing southward and again in portion of his mother's
+reach of it. Suddenly the thing was said.  "We'll sit down and find out," he inquired, with a
+pity to see Mr. Carvel driving beside the bedroom, which was almost as much as he could bear
+the potion.  "You say you're strong," said Mrs. Holy, indignantly, "you won't have to go
+away, about the doctor. What is it?"  "Why, we are"
 th sample.lua $BEST -temperature 0.8 -length 500 -primetext "AUSTEN|"
-# AUSTEN|business, and the gout--a constant and foolish figure in which Fellowes' ring is nearer to distemper than meek and steady interest and clean iron. The episode for the future and the war, and the seedy and effective sun-elogs and the others ventured its remote room, whose hair was a suffering man--that the work of the circumstance interested him. It had no long served to open the papers to answer up a quiet road, free from the long row of white to the lash called No. 14,000 to a sweet conversatio
+# AUSTEN|business, and the gout--a constant and foolish figure in which Fellowes' ring is
+nearer to distemper than meek and steady interest and clean iron. The episode for the future
+and the war, and the seedy and effective sun-elogs and the others ventured its remote room,
+whose hair was a suffering man--that the work of the circumstance interested him. It had no
+long served to open the papers to answer up a quiet road, free from the long row of white
+to the lash called No. 14,000 to a sweet conversatio
 th sample.lua $BEST -temperature 0.8 -length 500 -primetext "TWAIN|"
-# TWAIN|quarrelling with a little book, and so on, considering its sensations as to whether it were not possible to eat it.  He thought that the leader of the conference with his own death would be recognized as a common expression.  The men that mounted from motive powers, how big the calf, commander of the rights of the new economic steamer, the English, a lass of manhood, will exhibit no praise or increase out of a sort of meaning in the senses, and send them back to such a winter as we can go into t
+# TWAIN|quarrelling with a little book, and so on, considering its sensations as to whether
+it were not possible to eat it.  He thought that the leader of the conference with his own
+death would be recognized as a common expression.  The men that mounted from motive powers,
+how big the calf, commander of the rights of the new economic steamer, the English, a lass
+of manhood, will exhibit no praise or increase out of a sort of meaning in the senses, and
+send them back to such a winter as we can go into t
 ~~~
 
 We can see that while the RNN is producing very English-sounding novelistic prose and produces its usual mix of flawless syntax and hilarious semantics (I particularly like the phrase "Oh, no, to the devil which we have not written, the Church is not in the world"), it has failed to learn the styles I was hoping for.
@@ -187,7 +208,8 @@ rm input.txt *.transformed
 for FILE in *.txt; do
   dos2unix $FILE
   AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-  cat $FILE | tail -n +80 | grep -v -i 'Gutenberg' | iconv -c -tascii | tr '\n' '/' | fold --spaces --bytes --width=1000 | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
+  cat $FILE | tail -n +80 | grep -v -i 'Gutenberg' | iconv -c -tascii | tr '\n' '/' | \
+   fold --spaces --bytes --width=1000 | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
 done
 cat *.transformed | shuf > input.txt
 cd ../../
@@ -209,12 +231,23 @@ Errored out of memory early the next day; the validation loss is still pretty me
 $ th sample.lua cv/lm_lstm_epoch0.93_1.1705.t7 -temperature 0.8 -length 500 -primetext "SHAKESPEARE|"
 seeding with SHAKESPEARE|
 --------------------------
-SHAKESPEARE|jung's own,/which is on the house again.  There is no endeavour to be dressed in the midst of the/present of Belle, who persuades himself to know to have a condition of/the half, but "The garnal she was necessary, but it was high, consecrets, and/excursions of the worst and thing and different honor to flew himself.  But/since the building closed the mass of inspiration of the children of French wind,/hurried down--but he was in the second farmer of the Cald endless figures, Mary/Maeaches, and t
+SHAKESPEARE|jung's own,/which is on the house again.  There is no endeavour to be dressed in the midst of the/present of
+Belle, who persuades himself to know to have a condition of/the half, but "The garnal she was necessary, but it was high,
+consecrets, and/excursions of the worst and thing and different honor to flew himself.  But/since the building closed the
+mass of inspiration of the children of French wind,/hurried down--but he was in the second farmer of the Cald endless figures,
+Mary/Maeaches, and t
 $ th sample.lua cv/lm_lstm_epoch0.93_1.1705.t7 -temperature 0.8 -length 500 -primetext "AUSTEN|"
-AUSTEN|mill./And now the good deal now be alone, there is no endeavour to be dreaming./In fact, what was the story of his state, must be a steady carriages of pointing out/both till he has walked at a long time, and not convinced that he remembers/her in this story of a purpose of this captain in stock. There was/no doubt of interest, that Mr. Crewe's mother could not be got the/loss of first poor sister, and who looked warm enough by a/great hay below and making a leaver and with laid with a murder to
+AUSTEN|mill./And now the good deal now be alone, there is no endeavour to be dreaming./In fact, what was the story of his
+state, must be a steady carriages of pointing out/both till he has walked at a long time, and not convinced that he
+remembers/her in this story of a purpose of this captain in stock. There was/no doubt of interest, that Mr. Crewe's
+mother could not be got the/loss of first poor sister, and who looked warm enough by a/great hay below and making a
+leaver and with laid with a murder to
 $ th sample.lua cv/lm_lstm_epoch0.93_1.1705.t7 -temperature 0.8 -length 500 -primetext "TWAIN|"
-TWAIN|nor contributed/she has filled on behind him.  He had been satisfied by little just as to/deliver that the inclination of the possession of a thousand expenses in the group of feeling had destroyed/him to descend.  The physical had he darted before him that he was worth a
-PARKER|George Pasha, for instance?"//"Then it is not the marvel of laws upon Sam and the Sellers."  She said/he would ask himself to, one day standing from the floor, as he/stood for the capital.  He was no good of conversation
+TWAIN|nor contributed/she has filled on behind him.  He had been satisfied by little just as to/deliver that the inclination
+of the possession of a thousand expenses in the group of feeling had destroyed/him to descend.  The physical had he darted
+before him that he was worth a
+PARKER|George Pasha, for instance?"//"Then it is not the marvel of laws upon Sam and the Sellers."  She said/he would ask
+himself to, one day standing from the floor, as he/stood for the capital.  He was no good of conversation
 ~~~
 
 ### Larger author count
@@ -269,7 +302,9 @@ wc --char *.txt
 for FILE in *.txt; do
   dos2unix $FILE;
   AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-  cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
+  cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' \
+   | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | \
+   fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
 done
 cat *.transformed | shuf > input.txt
 cd ../../
@@ -320,7 +355,9 @@ rm *.transformed
 for FILE in *.txt; do
   dos2unix $FILE;
   AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-  cat $FILE | tail -n +80 | head -n -362 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | tr -d '[:cntrl:]' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
+  cat $FILE | tail -n +80 | head -n -362 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' \
+    -e 'ISBN' | tr -d '[:cntrl:]' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g' | \
+    fold --spaces --bytes --width=3000 | head --bytes=1M | sed -e "s/^/$AUTHOR\|/" > $FILE.transformed
 done
 cat *.transformed | shuf > input.txt
 
@@ -360,7 +397,7 @@ findhog *.transformed
 
 cd ../../
 python scripts/preprocess.py --input_txt data/multi/input.txt --output_h5 multi.h5 --output_json multi.json --val_frac 0.005 --test_frac 0.005
-nice th train.lua -input_h5 multi.h5 -input_json multi.json -batch_size 100 -seq_length 70 -dropout 0.5 -rnn_size 2500 -num_layers 2 ; alert; sleep 10h
+nice th train.lua -input_h5 multi.h5 -input_json multi.json -batch_size 100 -seq_length 70 -dropout 0.5 -rnn_size 2500 -num_layers 2
 # ...
 # Epoch 28.52 / 50, i = 65000 / 118100, loss = 0.901009
 # val_loss =      1.028011712161
@@ -571,7 +608,8 @@ At the end, we should get an RNN with a validation loss slightly worse than 0.97
 rm *.t7 *.transformed input.txt
 for FILE in *.txt; do
   AUTHOR=$(echo $FILE | sed -e 's/\.txt//' | tr '[:lower:]' '[:upper:]')
-  TEXT=$(cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' -e 'ISBN' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g')
+  TEXT=$(cat $FILE | tail -n +80 | grep -i -v -e 'Gutenberg' -e 'http' -e 'file://' -e 'COPYRIGHT' -e 'ELECTRONIC VERSION' \
+    -e 'ISBN' | iconv -c -tascii | sed -e ':a;N;$!ba;s/\n/ /g' -e 's/  */ /g' -e 's/ \/ \/ //g')
   echo $TEXT | fold --spaces --width=3000 |                              sed -e "s/^/$AUTHOR\|M\|/" >> $FILE.transformed
   echo $TEXT | fold --spaces --width=3000 | tr '[:lower:]' '[:upper:]' | sed -e "s/^/$AUTHOR\|U\|/" >> $FILE.transformed
   echo $TEXT | fold --spaces --width=3000 | tr '[:upper:]' '[:lower:]' | sed -e "s/^/$AUTHOR\|D\|/" >> $FILE.transformed
@@ -597,13 +635,15 @@ So some lessons here are:
 
 Further work:
 
-3. multiple metadata: author/genre/work, perhaps. The RNN might learn to disentangle the various factors, so one could generate samples from `BIBLE|RELIGION|RAYMOND_CHANDLER|`. Music in ABC notation would be another target as ABC supports genre metadata and there might be useful ABC databases.
-4. [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
+- multiple metadata: author/genre/work, perhaps. The RNN might learn to disentangle the various factors, so one could generate samples from `BIBLE|RELIGION|RAYMOND_CHANDLER|`. Music in ABC notation would be another target as ABC supports genre metadata and there might be useful ABC databases.
+- [visualize](http://cs.stanford.edu/people/karpathy/viscode.zip) the RNN hidden state to look for 'grandmother neurons'; could such neurons be used to create the equivalent of [DeepDream](!Wikipedia) or [Neural Style](http://arxiv.org/abs/1508.06576 "'A Neural Algorithm of Artistic Style', Gatys et al 2015") and 'transfer' the style of, say, Biblical prose to hard-boiled detective stories?
 
     My belief is that a genre/author-classification+unsupervised-prediction char-RNN may be able to do style transfer. This is because such a char-RNN should learn a clean separation between the metadata (style) and the semantics (content).
 
     In genre/author classification, the hidden state incrementally builds up an inferred genre/author as it processes the text sequence; in unsupervised prediction, the hidden state incrementally builds up a summary of past semantics+syntax as it tries to predict the next character. The hidden state representing the best current guess for classification will be mostly static because it will quickly reach high confidence as to the genre/author and then the neurons encoding that information must be protected long-term from being modified; in contrast, the semantics+syntax hidden state is changing every time-step and if its distributed encoding overlapped with the genre/author distributed encoding, it would quickly forget its original conclusions about genre/author.
 
-    This opposition should yield a trained char-RNN with a few neurons devoted solely to genre/author and the rest devoted to semantics+syntax encoding. Given such a clean split, something analogous to the style transfer CNN should be possible. First, figure out which neurons are which; then feed in texts from different genre/authors and extract the hidden state corresponding to each genre/author, eg Bible vs Wheel of Time. To convert a piece of Wheel of Time prose into Biblical prose or vice versa, feed in a desired piece of text to produce the genre/author and semantics+syntax hidden state vectors; now, hardwire the semantics+syntax vector and do gradient ascent on the input text to gradually turn the original genre/author hidden state into the target genre/author hidden state; once the transformed text yields both the target genre/author hidden state but also the same semantics+syntax hidden state, it has been converted. Hypothetically, to the extent that the char-RNN has learned English semantics and prose styles, this would convert text into different styles while preserving the semantics.
+    This opposition should yield a trained char-RNN with a few neurons devoted solely to genre/author and the rest devoted to semantics+syntax encoding.
+
+    Given such a clean split, something analogous to the style transfer CNN should be possible. First, figure out which neurons are which; then feed in texts from different genre/authors and extract the hidden state corresponding to each genre/author, eg Bible vs Wheel of Time. To convert a piece of Wheel of Time prose into Biblical prose or vice versa, feed in a desired piece of text to produce the genre/author and semantics+syntax hidden state vectors; now, hardwire the semantics+syntax vector and do gradient ascent on the input text to gradually turn the original genre/author hidden state into the target genre/author hidden state; once the transformed text yields both the target genre/author hidden state but also the same semantics+syntax hidden state, it has been converted. Hypothetically, to the extent that the char-RNN has learned English semantics and prose styles, this would convert text into different styles while preserving the semantics.
 
     This might not work with a char-RNN doing character-level prediction if the learned semantics+syntax turns out to be weak enough that a converted piece of text only bears a faint resemblance to the original. (Perhaps the semantics don't add enough predictive power, or the char-RNN is small enough that it must use all its capacity learning vocabulary etc.) If it doesn't, some other approaches might be to train a classification char-RNN, providing the style metric, and also a sequence-to-sequence autoencoding RNN to provide a semantics encoding; then set the style target to be the desired style, hardwire the autoencoder, and use them jointly as a loss to do gradient descent on. RNNs can also be combined with CNNs, and this may allow a more direct borrowing of the original style transfer algorithm.
