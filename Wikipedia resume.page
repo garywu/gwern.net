@@ -23,35 +23,17 @@ I've done my best to pull together a list of my major contributions; I've based 
     - [Rhwawn](http://tools.wmflabs.org/xtools/pages/index.php?name=Rhwawn&lang=en&wiki=wikipedia&namespace=0&redirects=noredirects)
     - [Gwern](http://tools.wmflabs.org/xtools/pages/index.php?name=Gwern&lang=en&wiki=wikipedia&namespace=0&redirects=noredirects)
 
-Those lists are unreliable, however. They are obviously incomplete; 'created' may be misleading, as I make many [redirects](!Wikipedia "Wikipedia:Redirect") which may be turned into an actual article by a later user (for example, I am credited with creating the valuable computer science article [green threads](!Wikipedia) when all I did was redirect that name to the main article on [threads](!Wikipedia "Thread (computer science)")). The tool tries to filter out redirects, but may be wrong. The most-edited listings are also misleading in the sense that a great many edits on a page may simply be undoing vandalism; I do not list [René Descartes](!Wikipedia) below because my dozens of edits there are just reverts and I do not feel reverts are a particularly valuable service. Article writing is. Some such articles are listed where I have watched them for many years and feel that my supervision has risen to the level of a major contribution. Conversely, sometimes I have written articles offline and then added them as single giant edits with a few followup edits to fix formatting errors; such articles would not show up very highly on the most-edited list.
+Those lists are unreliable, however. They are incomplete; 'created' may be misleading, as I make many [redirects](!Wikipedia "Wikipedia:Redirect") which may be turned into an actual article by a later user (for example, I am credited with creating the valuable computer science article [green threads](!Wikipedia) when all I did was redirect that name to the main article on [threads](!Wikipedia "Thread (computer science)")). The tool tries to filter out redirects, but may be wrong. The most-edited listings are also misleading in the sense that a great many edits on a page may simply be undoing vandalism; I do not list [René Descartes](!Wikipedia) below because my dozens of edits there are just reverts and I do not feel reverts are a particularly valuable service. Article writing is. Some such articles are listed where I have watched them for many years and feel that my supervision has risen to the level of a major contribution. Conversely, sometimes I have written articles offline and then added them as single giant edits with a few followup edits to fix formatting errors; such articles would not show up very highly on the most-edited list.
 
 I am certain that some of the following entries are erroneous, and I have omitted some articles that should be included. But I have done what I can. I am especially proud of the highlighted articles such as the Medici bank, Brethren of Purity articles, and the Fujiwara no Teika article.
 
 # Subject areas
-## History
-
-- **[Medici bank](!Wikipedia)**
-- [House of Medici](!Wikipedia)
-- [Scharfrichter](!Wikipedia)
-- [Joshua Roll](!Wikipedia)
-- [Intercursus Magnus](!Wikipedia)
-- [Francesco Sassetti](!Wikipedia)
-- [Tommaso Portinari](!Wikipedia)
-- _[Hamlet's Mill](!Wikipedia)_
-
-## Philosophy/religion
-
-### Islamic
-
-- **[Brethren of Purity](!Wikipedia)**
-- _[Encyclopedia of the Brethren of Purity](!Wikipedia)_
-- [List of rasa'il in the Encyclopedia of the Brethren of Purity](!Wikipedia)
-
 ## Psychology
 
 - [Rubin vase](!Wikipedia)
 - [LSD and schizophrenia](!Wikipedia)
-- [GCTA](!Wikipedia)
+- **[Genome-wide complex trait analysis](!Wikipedia)** (GCTA)
+- [Result-blind peer review](!Wikipedia)
 
 ## Technology
 
@@ -97,91 +79,60 @@ I am certain that some of the following entries are erroneous, and I have omitte
 - [Paul Graham (computer programmer)](!Wikipedia)
 - [Haskell (programming language)](!Wikipedia)
 
-## American
-### History
+## History
+
+- **[Medici bank](!Wikipedia)**
+- [House of Medici](!Wikipedia)
+- [Scharfrichter](!Wikipedia)
+- [Joshua Roll](!Wikipedia)
+- [Intercursus Magnus](!Wikipedia)
+- [Francesco Sassetti](!Wikipedia)
+- [Tommaso Portinari](!Wikipedia)
+- _[Hamlet's Mill](!Wikipedia)_
+
+### American history
 
 - [World Finance Corporation](!Wikipedia)
 - **[Guillermo Hernández-Cartaya](!Wikipedia)**
 - [Alfred W. McCoy](!Wikipedia)
 
-### Art
-
-- **[Mark Lombardi](!Wikipedia)**
-- [David Wright (poet)](!Wikipedia)
-
-### SF
-
-- _[Dune (novel)](!Wikipedia)_
-- [R. A. Lafferty](!Wikipedia)
-- _[Across the Sea of Suns](!Wikipedia)_
-- _[Against the Odds](!Wikipedia)_
-- _[Change of Command](!Wikipedia)_
-- _[Path of the Fury](!Wikipedia)_
-- _[Hunting Party](!Wikipedia)_
-- _[Heirs of Empire](!Wikipedia)_
-- _[In the Ocean of Night](!Wikipedia)_
-- _[Winning Colors](!Wikipedia)_
-- _[Rules of Engagement (novel)](!Wikipedia)_
-- _[Once a Hero (novel)](!Wikipedia)_
-- _[Prayers to Broken Stones](!Wikipedia)_
-- _[Sporting Chance](!Wikipedia)_
-- "[Orphans of the Helix](!Wikipedia)"
-- _[Far Horizons](!Wikipedia)_
-- _[The Armageddon Inheritance](!Wikipedia)_
-- _[Mutineers' Moon](!Wikipedia)_
-- _[The Book of Fantasy](!Wikipedia)_
-- _[Hyperion (Simmons novel)](!Wikipedia)_
-- _[Blue Wizard Is About To Die!](!Wikipedia)_
-- _[The Man Who Never Missed](!Wikipedia)_
-- _[Fourth Mansions](!Wikipedia)_
-- [Gene Wolfe](!Wikipedia)
-- _[The Iron Dream](!Wikipedia)_
-
-#### _Star Wars_
-
-- [Palpatine](!Wikipedia) -(the early version was my pride and joy; it has since been dismembered)
-- [Lightsaber combat](!Wikipedia)
-- [General Grievous](!Wikipedia)
-- [Revan](!Wikipedia)
-- [Great Jedi Purge](!Wikipedia)
-- [Darth Vader](!Wikipedia)
-- [Star Destroyer](!Wikipedia)
-- [Yoda](!Wikipedia)
-- [Luke Skywalker](!Wikipedia)
-- _[Star Wars: Knights of the Old Republic II The Sith Lords](!Wikipedia)_
-- _[Dark Empire](!Wikipedia)_
-- "Chronology of Star Wars" -(deleted)
-- [Obi-Wan Kenobi](!Wikipedia)
-- [Jedi Exile](!Wikipedia)
-
-## Chinese
-
-### Philosophy/religion
-
-- **[Yunmen Wenyan](!Wikipedia)**
-- _[The Book of Lord Shang](!Wikipedia)_
-- [Legalism (Chinese philosophy)](!Wikipedia)
-
-### Literature
-
-- **[Hanshan (poet)](!Wikipedia)**
-- [Shide (monk)](!Wikipedia)
-- [Fenggan](!Wikipedia)
-
-## Japanese
-
-### Art
-
-- **[Hiroshige](!Wikipedia)**
-
-### History
+### Japanese history
 
 - [Miyamoto Musashi](!Wikipedia)
 - **_[Japan's Imperial Conspiracy](!Wikipedia)_**
 - [Nakano School](!Wikipedia)
 - [Sasaki Kojiro](!Wikipedia)
 
-### Literature
+## Philosophy/religion
+### Islamic
+
+- **[Brethren of Purity](!Wikipedia)**
+- _[Encyclopedia of the Brethren of Purity](!Wikipedia)_
+- [List of rasa'il in the Encyclopedia of the Brethren of Purity](!Wikipedia)
+
+## Art
+
+- **[Mark Lombardi](!Wikipedia)**
+
+### Japanese art
+
+- **[Hiroshige](!Wikipedia)**
+
+## Philosophy/religion
+### Chinese
+
+- **[Yunmen Wenyan](!Wikipedia)**
+- _[The Book of Lord Shang](!Wikipedia)_
+- [Legalism (Chinese philosophy)](!Wikipedia)
+
+## Literature
+### Chinese
+
+- **[Hanshan (poet)](!Wikipedia)**
+- [Shide (monk)](!Wikipedia)
+- [Fenggan](!Wikipedia)
+
+### Japanese
 
 - **[Fujiwara no Teika](!Wikipedia)**^[My Teika article bears a unique distinction: it is the only Wikipedia work on which I have profited (as opposed to the 3 stalkers I earned at various points), by selling it to the New World Encyclopedia (a [Moonie](!Wikipedia) encyclopedia).]
 - **[Shotetsu](!Wikipedia)**
@@ -211,7 +162,7 @@ I am certain that some of the following entries are erroneous, and I have omitte
 
 - _[The Tokyo Zodiac Murders](!Wikipedia)_
 
-### Anime/manga
+#### Anime/manga
 
 - _[Oh My Goddess!](!Wikipedia)_
 - _[Serial Experiments Lain](!Wikipedia)_
@@ -225,3 +176,52 @@ I am certain that some of the following entries are erroneous, and I have omitte
     - [Hideaki Anno](!Wikipedia)
     - [Gainax](!Wikipedia)
 - _[Royal Space Force: The Wings of Honnêamise](!Wikipedia)_
+
+### Western
+
+- [David Wright (poet)](!Wikipedia)
+
+#### SF
+
+- _[Dune (novel)](!Wikipedia)_
+- [R. A. Lafferty](!Wikipedia)
+- _[Across the Sea of Suns](!Wikipedia)_
+- _[Against the Odds](!Wikipedia)_
+- _[Change of Command](!Wikipedia)_
+- _[Path of the Fury](!Wikipedia)_
+- _[Hunting Party](!Wikipedia)_
+- _[Heirs of Empire](!Wikipedia)_
+- _[In the Ocean of Night](!Wikipedia)_
+- _[Winning Colors](!Wikipedia)_
+- _[Rules of Engagement (novel)](!Wikipedia)_
+- _[Once a Hero (novel)](!Wikipedia)_
+- _[Prayers to Broken Stones](!Wikipedia)_
+- _[Sporting Chance](!Wikipedia)_
+- "[Orphans of the Helix](!Wikipedia)"
+- _[Far Horizons](!Wikipedia)_
+- _[The Armageddon Inheritance](!Wikipedia)_
+- _[Mutineers' Moon](!Wikipedia)_
+- _[The Book of Fantasy](!Wikipedia)_
+- _[Hyperion (Simmons novel)](!Wikipedia)_
+- _[Blue Wizard Is About To Die!](!Wikipedia)_
+- _[The Man Who Never Missed](!Wikipedia)_
+- _[Fourth Mansions](!Wikipedia)_
+- [Gene Wolfe](!Wikipedia)
+- _[The Iron Dream](!Wikipedia)_
+
+##### _Star Wars_
+
+- [Palpatine](!Wikipedia) -(the early version was my pride and joy; it has since been dismembered)
+- [Lightsaber combat](!Wikipedia)
+- [General Grievous](!Wikipedia)
+- [Revan](!Wikipedia)
+- [Great Jedi Purge](!Wikipedia)
+- [Darth Vader](!Wikipedia)
+- [Star Destroyer](!Wikipedia)
+- [Yoda](!Wikipedia)
+- [Luke Skywalker](!Wikipedia)
+- _[Star Wars: Knights of the Old Republic II The Sith Lords](!Wikipedia)_
+- _[Dark Empire](!Wikipedia)_
+- "Chronology of Star Wars" -(deleted)
+- [Obi-Wan Kenobi](!Wikipedia)
+- [Jedi Exile](!Wikipedia)
