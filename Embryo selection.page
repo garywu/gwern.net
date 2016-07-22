@@ -12,12 +12,12 @@ belief: likely
 >
 > - a meta-analysis of [GCTA](!Wikipedia) results indicates that SNPs can explain >33% of variance in current intelligence scores, and >44% with better-quality phenotype testing
 > - this sets an upper bound on the effectiveness of selection: a gain of 9 IQ points when selecting the top embryo out of 10
-> - the best 2015 polygenic score could achieve a gain of <4.5 IQ points when selecting out of 10
+> - the best 2016 polygenic score could achieve a gain of ~3 IQ points when selecting out of 10
 > - the cost of embryo selection is modest, at \$1500 + \$200 per embryo, with the sequencing cost projected to drop rapidly
-> - a model of the IVF process, incorporating number of extracted eggs, losses to abnormalities & vitrification & failed implantation & miscarriages from 3 real IVF patient populations, estimates feasible gains of 0.14, 0.36, & 0.56 IQ points
-> - embryo selection is currently unprofitable (mean: -\$673) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$4763). The main constraints on selection profitability is the polygenic score; under the highest value, the NPV EVPI of a perfect SNP predictor is \$27b and the EVSI per education/SNP sample is \$71k
+> - a model of the IVF process, incorporating number of extracted eggs, losses to abnormalities & vitrification & failed implantation & miscarriages from 2 real IVF patient populations, estimates feasible gains of 0.39 & 0.68 IQ points
+> - embryo selection is currently unprofitable (mean: -\$358) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$6230). The main constraints on selection profitability is the polygenic score; under the highest value, the NPV EVPI of a perfect SNP predictor is \$24b and the EVSI per education/SNP sample is \$71k
 > - under the worst-case estimate, selection can be made profitable with a better polygenic score, which would require _n_>237,300 using education phenotype data (and much less using fluid intelligence measures)
-> - selection can be made much more profitable by selecting on multiple phenotype traits; selection scales near-linearly with equally-valuable traits, and considering an example using 7 traits (IQ/height/BMI/diabetes/ADHD/bipolar/schizophrenia), there is a gain of 2.8x over IQ alone (\$4977 ~> \$14130)
+> - selection can be made more effective by selecting on multiple phenotype traits: considering an example using 7 traits (IQ/height/BMI/diabetes/ADHD/bipolar/schizophrenia), there is a gain of 2.3x over IQ alone (total of \$14653)
 
 # Embryo selection cost-effectiveness
 
@@ -383,28 +383,30 @@ Past polygenic scores for intelligence:
 
     Does not report a polygenic score.
 5. Upcoming in 2016 is another SSGAC paper with ~8x hits using _n_=305,000 but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score. (The polygenic score will be much better than the Rietveld et al 2013 polygenic score, and I intend to rerun the numbers when it comes out and becomes the new public state of the art.) In a [March 2016 roundtable](https://www.youtube.com/watch?v=v5ANweXCptM "Steven Pinker, Stephen Hsu and Dalton Conley: Can Genius Be Genetically Engineered?"), a mention was made of an upcoming polygenic score explaining "about 8-10% of IQ".
+5. in 2016, a consortium combined the SSGAC dataset with UK Biobank, expanding the combined dataset to >300,000 and yielding a total of 162 education hits; the results were reported in two papers, the latter giving the polygenic scores:
 
-<!-- http://www.isironline.org/wp-content/uploads/2016/07/ISIR-2016_full_programme.pdf
-"Results are more encouraging in a recent GWA study for the proxy variable of educational attainment (years of education, EduYears). The EduYears GPS accounts for about 4% of the variance of intelligence and about 9% of the variance of educational achievement at age 16 in TEDS.", Plomin
-5.1%? https://twitter.com/KirkegaardEmil/status/753861264061845504 -->
+    - ["Genome-wide association study identifies 74 [162] loci associated with educational attainment"](http://www.gwern.net/docs/iq/2016-okbay-2.pdf), Okbay et al 2016
+    - ["Predicting educational achievement from DNA"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016107a.html), Selzam et al 2016 ([supplement](http://www.nature.com/mp/journal/vaop/ncurrent/extref/mp2016107x1.pdf))
+
+    The polygenic score predicts 3.5% of intelligence, 7% of family SES, and 9% of education in a heldout sample.
 
 Since these scores overlap and are not, like GCTA estimates, repeated measurements of a variable in any sense, there is little point in meta-analyzing them other than to estimate growth over time (even using them as an ensemble wouldn't be worth the complexity, and in any case, most studies do not provide the full list of beta values making up the polygenic score); for our purpose, the largest polygenic score is the important number.
 ([Emil Kirkegaard](http://emilkirkegaard.dk/en/?p=5813) notes that the polygenic scores are also inefficient: polygenic scores are not always published, not always based on individual patient data, and generally use maximum-likelihood estimation neglecting our strong priors on the number of hits & distribution of effect sizes. But these published scores are what we have as of January 2016, so we must make do.)
 
-Rietveld et al 2013's reported polygenic score for cognitive performance was 2.5%.
+Selzam et al 2016's reported polygenic score for cognitive performance was 3.5%.
 Thus:
 
 ~~~{.R}
-rietveld2013 <- 0.025
-mean(simEmbryoSelection(n=10, variance=rietveld2013)) * 15
-# [1] 2.577291155
+selzam2016 <- 0.035
+mean(simEmbryoSelection(n=10, variance=selzam2016)) * 15
+# [1] 3.054150704
 ~~~
 
 ## Cost of embryo selection
 
 PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genetic diagnosis#United States"), so there are no criminal or legal costs; even if there were, clinics in other countries will continue to offer it, and the cost of using a Chinese fertility clinic may not be particularly noticeable financially[^China-trip] and their quality may eventually be higher[^China-quality].
 
-[^China-trip]: We could consider a hypothetical trip to China to make use of fertility clinics there. How much additional would one pay?
+[^China-trip]: We could consider a hypothetical trip to China to make use of fertility clinics there. How much extra would it cost?
 
     Costs:
 
@@ -629,30 +631,21 @@ Using the Tan et al 2014 data:
 4. P=0.24 that an implanted egg yields a birth
 
 ~~~{.R}
-simulateTan <- function() { return(simulateIVFs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24)); }
+simulateTan <- function() { return(simulateIVFs(3, 4.6, selzam2016, 0.5, 0.96, 0.24)); }
 iqTan <- mean(simulateTan()) * 15; iqTan
-# [1] 0.3169408043
+# [1] 0.3945506292
 ~~~
 
-That is, the couples in Tan et al 2014 would have seen a 0.3IQ increase.
+That is, the couples in Tan et al 2014 would have seen a ~0.4IQ increase.
 
 The Murugappan et al 2015 cost-benefit analysis uses data from American fertility clinics reported in [Hodes-Wertz's "Idiopathic recurrent miscarriage is caused mostly by aneuploid embryos"](http://www.researchgate.net/profile/Jamie_Grifo/publication/225286057_Idiopathic_recurrent_miscarriage_is_caused_mostly_by_aneuploid_embryos/links/00b4951fbe350b4300000000.pdf):
 278 cycles yielding 2282 blastocysts or ~8.2 on average; 35% normal; there is no mention of losses to cryostorage, so I borrow 0.96 from Tan et al 2015; 1.65 implanted on average in 181 transfers, yielding 40% live-births.
 So:
 
 ~~~{.R}
-simulateHodesWertz <- function() { return(simulateIVFs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40)) }
+simulateHodesWertz <- function() { return(simulateIVFs(8.2, 4.6, selzam2016, 0.35, 0.96, 0.40)) }
 iqHW <- mean(simulateHodesWertz()) * 15; iqHW
-# [1] 0.5666326846
-~~~
-
-Both Tan et al 2014 and Hodes-Wertz et al 2012 are unrepresentative, since they focused on subjects with particular difficulties or low genetic quality ("They were carriers of either translocation or inversion mutations, or were patients with recurrent miscarriage and/or advanced maternal age", and "Recurrent pregnancy loss (RPL), defined as two or more failed pregnancies" respectively).
-The more nationally representative USA data from the CDC reports net numbers rather than per step, but using the imputed probabilities:
-
-~~~{.R}
-simulateUSA <- function(liveBirth) { return(simulateIVFs(9, 4.6, rietveld2013, 0.3, 0.90, liveBirth)); };
-iqUSA <- sapply(c(10.8, 8.6, 5.7, 3.2, 1.56, 0.49)/100, function(lb){mean(simulateUSA(lb))*15;}); iqUSA
-# [1] 0.13808892057 0.12210943484 0.09868347490 0.03544036910 0.05130600081 0.02770834405
+# [1] 0.684226242
 ~~~
 
 ### Societal effects
@@ -895,58 +888,58 @@ Now we have all our parameters set:
 ~~~{.R}
 iqLow <- 3270*15; iqHigh <- 16151*15
 ## Tan:
-summary(simulateIVFCBs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24, 1500, 200, iqLow))
+summary(simulateIVFCBs(3, 4.6, selzam2016, 0.5, 0.96, 0.24, 1500, 200, iqLow))
 #     Trait.SD               Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3900.0000
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-4100.0000
 #  1st Qu.:0.00000000   1st Qu.:1500.00   1st Qu.:-1700.0000
 #  Median :0.00000000   Median :1700.00   Median :-1500.0000
-#  Mean   :0.02379969   Mean   :1868.04   Mean   : -700.6651
-#  3rd Qu.:0.02571865   3rd Qu.:2100.00   3rd Qu.: -854.4607
-#  Max.   :0.36255503   Max.   :4100.00   Max.   :16083.3242
-summary(simulateIVFCBs(3, 4.6, rietveld2013, 0.5, 0.96, 0.24, 1500, 200, iqHigh))
+#  Mean   :0.02801017   Mean   :1874.39   Mean   : -500.4911
+#  3rd Qu.:0.02927008   3rd Qu.:2100.00   3rd Qu.: -730.6793
+#  Max.   :0.44094948   Max.   :4300.00   Max.   :19928.5718
+summary(simulateIVFCBs(3, 4.6, selzam2016, 0.5, 0.96, 0.24, 1500, 200, iqHigh))
 #     Trait.SD               Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-4100.000
-#  1st Qu.:0.00000000   1st Qu.:1500.00   1st Qu.:-1700.000
-#  Median :0.00000000   Median :1700.00   Median :-1500.000
-#  Mean   :0.02419341   Mean   :1876.54   Mean   : 3984.676
-#  3rd Qu.:0.02616264   3rd Qu.:2100.00   3rd Qu.: 4197.886
-#  Max.   :0.36983743   Max.   :4100.00   Max.   :87898.665
+#  Min.   :0.00000000   Min.   :1500.00   Min.   : -4300.000
+#  1st Qu.:0.00000000   1st Qu.:1500.00   1st Qu.: -1700.000
+#  Median :0.00000000   Median :1700.00   Median : -1500.000
+#  Mean   :0.02876628   Mean   :1868.35   Mean   :  5100.712
+#  3rd Qu.:0.03163196   3rd Qu.:2100.00   3rd Qu.:  5545.998
+#  Max.   :0.51011076   Max.   :4900.00   Max.   :120666.277
 
 ## Hodes-Wertz:
-summary(simulateIVFCBs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40, 1500, 200, iqLow))
-#     Trait.SD                Cost              Net
-#  Min.   :0.000000000   Min.   :1500.00   Min.   :-3900.00000
-#  1st Qu.:0.000000000   1st Qu.:1700.00   1st Qu.:-1900.00000
-#  Median :0.007885594   Median :2100.00   Median :-1500.00000
-#  Mean   :0.043730740   Mean   :2091.24   Mean   :   53.75279
-#  3rd Qu.:0.076300343   3rd Qu.:2300.00   3rd Qu.: 1486.46919
-#  Max.   :0.404614876   Max.   :4100.00   Max.   :17146.35965
-summary(simulateIVFCBs(8.2, 4.6, rietveld2013, 0.35, 0.96, 0.40, 1500, 200, iqHigh))
+summary(simulateIVFCBs(8.2, 4.6, selzam2016, 0.35, 0.96, 0.40, 1500, 200, iqLow))
 #     Trait.SD                Cost              Net
 #  Min.   :0.000000000   Min.   :1500.00   Min.   :-3700.0000
-#  1st Qu.:0.000000000   1st Qu.:1700.00   1st Qu.:-1700.0000
-#  Median :0.006204365   Median :2100.00   Median : -675.3017
-#  Mean   :0.043163042   Mean   :2074.54   Mean   : 8382.3544
-#  3rd Qu.:0.074069384   3rd Qu.:2300.00   3rd Qu.:15744.6932
-#  Max.   :0.379461446   Max.   :3900.00   Max.   :90230.2272
+#  1st Qu.:0.000000000   1st Qu.:1700.00   1st Qu.:-1900.0000
+#  Median :0.007067949   Median :2100.00   Median :-1500.0000
+#  Mean   :0.050269041   Mean   :2077.96   Mean   :  387.7364
+#  3rd Qu.:0.087702810   3rd Qu.:2300.00   3rd Qu.: 2048.4342
+#  Max.   :0.564267504   Max.   :4300.00   Max.   :25577.3211
+summary(simulateIVFCBs(8.2, 4.6, selzam2016, 0.35, 0.96, 0.40, 1500, 200, iqHigh))
+#     Trait.SD                Cost             Net
+#  Min.   :0.000000000   Min.   :1500.0   Min.   : -3700.000
+#  1st Qu.:0.000000000   1st Qu.:1700.0   1st Qu.: -1729.544
+#  Median :0.005219926   Median :2100.0   Median :  -895.304
+#  Mean   :0.050460809   Mean   :2079.2   Mean   : 10145.688
+#  3rd Qu.:0.088175260   3rd Qu.:2300.0   3rd Qu.: 19113.344
+#  Max.   :0.568129317   Max.   :4500.0   Max.   :134537.849
 
 ## USA, youngest:
-summary(simulateIVFCBs(9, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
+summary(simulateIVFCBs(9, 4.6, selzam2016, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
 #     Trait.SD               Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-4100.00000
-#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-2100.00000
-#  Median :0.00000000   Median :2100.00   Median :-1700.00000
-#  Mean   :0.02826084   Mean   :2049.02   Mean   : -662.82577
-#  3rd Qu.:0.04251262   3rd Qu.:2300.00   3rd Qu.:  -83.30865
-#  Max.   :0.42444969   Max.   :4100.00   Max.   :18319.25752
-summary(simulateIVFCBs(9, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
+#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3900.0000
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-2100.0000
+#  Median :0.00000000   Median :1900.00   Median :-1521.1983
+#  Mean   :0.03435545   Mean   :2043.96   Mean   : -358.8253
+#  3rd Qu.:0.05222450   3rd Qu.:2300.00   3rd Qu.:  389.0717
+#  Max.   :0.44004791   Max.   :4100.00   Max.   :19684.3500
+summary(simulateIVFCBs(9, 4.6, selzam2016, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
 #     Trait.SD               Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3700.000
-#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-1900.000
-#  Median :0.00000000   Median :1900.00   Median :-1500.000
-#  Mean   :0.02897211   Mean   :2041.58   Mean   : 4977.349
-#  3rd Qu.:0.04426675   3rd Qu.:2300.00   3rd Qu.: 8561.770
-#  Max.   :0.34742869   Max.   :4100.00   Max.   :82469.810
+#  Min.   :0.00000000   Min.   :1500.00   Min.   : -3700.000
+#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.: -1900.000
+#  Median :0.00000000   Median :1900.00   Median : -1500.000
+#  Mean   :0.03414784   Mean   :2042.67   Mean   :  6230.156
+#  3rd Qu.:0.05215105   3rd Qu.:2300.00   3rd Qu.: 10474.862
+#  Max.   :0.49288710   Max.   :4100.00   Max.   :117709.293
 ~~~
 
 In general, embryo selection as of January 2016 is just barely profitable or somewhat unprofitable in each group using the lowest estimate of IQ's value; it is always profitable on average with the highest estimate.
@@ -971,7 +964,9 @@ Ignoring that celebrities, models, and athletes are often highly successful sexu
 
 So that largely limits the market for embryo selection to those who would already use it: those who *must* use it.
 
-Will they use it? Ridley's argument doesn't prove that they won't, because the use of sperm/egg donors comes at the cost of reducing relatedness. Non-use of "celebrities, geniuses, models, and athletes" merely shows that the perceived benefits do not outweigh the costs; it doesn't tell us what the benefits or costs are. And the cost of reducing relatedness is a severe one - a normal fertile pair of parents will no more be inclined to use a sperm or egg donor (and which one, exactly? who chooses?) than they would be to adopt, and they would be willing to extract sperm from a dead man just for the relatedness.^["Today, Rothman is co-founder and medical director of California Cryobank, the largest sperm bank in the US. He estimates that the practice has performed close to 200 post-mortem sperm extractions. Their records show just three extractions in the 1980s and 15 in the 1990s. But from 2000 to 2014, they performed 130: an average of just under nine a year. Rothman's is by no means the only clinic that offers this service. Recent statistics are scarce, but surveys of US fertility centres in 1997 and 2002 found increasing numbers of requests for post-mortem sperm retrieval, although from a very low base." --["The Moral Maze of using a dead man's sperm"](http://www.bbc.com/future/story/20160518-the-moral-maze-of-using-a-dead-mans-sperm)]
+Will they use it? Ridley's argument doesn't prove that they won't, because the use of sperm/egg donors comes at the cost of reducing relatedness.
+Non-use of "celebrities, geniuses, models, and athletes" merely shows that the perceived benefits do not outweigh the costs; it doesn't tell us what the benefits or costs are.
+And the cost of reducing relatedness is a severe one - a normal fertile pair of parents will no more be inclined to use a sperm or egg donor (and which one, exactly? who chooses?) than they would be to adopt, and they would be willing to extract sperm from a dead man just for the relatedness.^["Today, Rothman is co-founder and medical director of California Cryobank, the largest sperm bank in the US. He estimates that the practice has performed close to 200 post-mortem sperm extractions. Their records show just three extractions in the 1980s and 15 in the 1990s. But from 2000 to 2014, they performed 130: an average of just under nine a year. Rothman's is by no means the only clinic that offers this service. Recent statistics are scarce, but surveys of US fertility centres in 1997 and 2002 found increasing numbers of requests for post-mortem sperm retrieval, although from a very low base." --["The Moral Maze of using a dead man's sperm"](http://www.bbc.com/future/story/20160518-the-moral-maze-of-using-a-dead-mans-sperm)]
 A more relevant situation would be how parents act in the infertility situation where avoiding reduced relatedness is impossible.
 
 In that situation, parents *are* notoriously eugenic in their preferences, demanding of sperm or egg banks that the donor be healthy, well-educated (at the Ivy League, of course, where egg donation is regularly advertised), have particular hair & eye colors (using sperm/eggs exported from Scandinavia, if necessary), be tall (men) and young ([Whyte et al 2016](/docs/genetics/2016-whyte.pdf "What women want in their sperm donor: a study of more than 1000 women's sperm donor selections")), and free of any mental illnesses.
@@ -987,21 +982,22 @@ Hence, I suggest the most appropriate target market is simply the total number o
 
 #### VoI for USA IVF population
 
-Using the high estimate of an average gain of \$3772, and noting that there were 67,996 IVF babies in 2013, that suggests an annual gain of up to \$256.5m.
-What is the net present value of an annual gain of \$256.5m?
-Discounted at 5%, it'd be \$5.256b. (Why a 5% discount rate? This is the highest discount rate I've seen used in health economics; more typical are discount rates like NICE's 3.5%, which would yield a much larger NPV.)
+Using the high estimate of an average gain of \$6230, and noting that there were 67996 IVF babies in 2013, that suggests an annual gain of up to \$423m.
+What is the net present value of that annually?
+Discounted at 5%, it'd be \$8.6b.
+(Why a 5% discount rate? This is the highest discount rate I've seen used in health economics; more typical are discount rates like NICE's 3.5%, which would yield a much larger NPV.)
 
 We might also ask: as an upper bound, in the realistic USA IVF model, how much would a perfect SNP polygenic score be worth?
 
 ~~~{.R}
 summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
-    Trait.SD              Cost              Net
- Min.   :0.0000000   Min.   :1500.00   Min.   :-3700.000
- 1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-2100.000
- Median :0.0000000   Median :1900.00   Median :-1500.000
- Mean   :0.1037614   Mean   :2042.24   Mean   : 3047.259
- 3rd Qu.:0.1562492   3rd Qu.:2300.00   3rd Qu.: 5516.869
- Max.   :1.4293926   Max.   :3900.00   Max.   :68411.709
+#     Trait.SD              Cost              Net
+#  Min.   :0.0000000   Min.   :1500.00   Min.   :-3700.000
+#  1st Qu.:0.0000000   1st Qu.:1700.00   1st Qu.:-2100.000
+#  Median :0.0000000   Median :1900.00   Median :-1500.000
+#  Mean   :0.1037614   Mean   :2042.24   Mean   : 3047.259
+#  3rd Qu.:0.1562492   3rd Qu.:2300.00   3rd Qu.: 5516.869
+#  Max.   :1.4293926   Max.   :3900.00   Max.   :68411.709
 summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
 #     Trait.SD              Cost             Net
 #  Min.   :0.0000000   Min.   :1500.0   Min.   : -4100.00
@@ -1011,13 +1007,14 @@ summary(simulateIVFCBs(9, 4.6, 0.33, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
 #  3rd Qu.:0.1530295   3rd Qu.:2300.0   3rd Qu.: 34652.62
 #  Max.   :1.3798166   Max.   :4100.0   Max.   :331981.26
 ivfBirths <- 67996; discount <- 0.05
-current <- 4763; perfect <- 23650
+current <- 6230; perfect <- 23650
 (ivfBirths * perfect)/(log(1+discount)) - (ivfBirths * current)/(log(1+discount))
-# [1] 26,321,707,948
+# [1] 24277235795
 ~~~
 
-Increasing the polygenic score to its maximum of 33% increases the profit by 5x. This increase, over the number of annual IVF births, gives a net present expected value of perfect information (EVPI) for a perfect score of something like \$26.3b.
-How much would it cost to gain perfect information? [Hsu 2014](http://arxiv.org/abs/1408.3421 "On the genetic architecture of intelligence and other quantitative traits") argues that a sample around 1 million would suffice to reach the GCTA upper bound using a particular algorithm; the largest usable^[23andMe has a much larger sample with education phenotyping, _n_>700k, but has declined to use it.] sample I know of, SSGAC, is around _n_=300k, leaving 700k to go; with SNPs costing ~\$200, that implies that it would cost \$0.14b for perfect SNP information.
+Increasing the polygenic score to its maximum of 33% increases the profit by 5x. This increase, over the number of annual IVF births, gives a net present expected value of perfect information (EVPI) for a perfect score of something like \$24b.
+How much would it cost to gain perfect information?
+[Hsu 2014](http://arxiv.org/abs/1408.3421 "On the genetic architecture of intelligence and other quantitative traits") argues that a sample around 1 million would suffice to reach the GCTA upper bound using a particular algorithm; the largest usable^[23andMe has a much larger sample with education phenotyping, _n_>700k, but has declined to use it.] sample I know of, SSGAC, is around _n_=300k, leaving 700k to go; with SNPs costing ~\$200, that implies that it would cost \$0.14b for perfect SNP information.
 Hence, the expected value of information would then be ~\$26.15b and safely profitable.
 From that, we could also estimate the expected value of sample information (EVSI): if the 700k SNPs would be worth that much, then on average^[I say on average because in the Hsu 2014 simulations, the compressed-sensing algorithm exhibits an interesting 'phase transition' behavior where the accuracy of the inferences will abruptly jump past a certain sample size, rather than smoothly increase with each datapoint like most methods.] each additional datapoint is worth \$37.6k.
 Aside from the Hsu 2014 estimate, we can use a formula from a model in the Rietveld et al 2013 supplementary materials (pg22-23), where they offer a population genetics-based approximation of how much variance a given sample size & heritability will explain:
@@ -1072,43 +1069,42 @@ How much would getting scores or hundreds of eggs help, and how does the gain sc
 Since returns diminish, and we already know that under the low value of IQ embryo selection is not profitable, it follows that no larger number of eggs will be profitable either; so like with EVSI, we look at the high value's upper bound if we could choose an arbitrary number of eggs for free:
 
 ~~~{.R}
-gainByEggcount <- sapply(1:1000, function(egg) { mean(simulateIVFCBs(egg, 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh)$Net) })
+gainByEggcount <- sapply(1:300, function(egg) { mean(simulateIVFCBs(egg, 4.6, selzam2016, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh)$Net) })
 max(gainByEggcount); which.max(gainByEggcount)
-# [1] 19975.13989
-# [1] 253
-plot(1:1000, gainByEggcount, xlab="Average number of eggs available", ylab="Profit")
-summary(simulateIVFCBs(which.max(gainByEggcount), 4.6, rietveld2013, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
-#     Trait.SD               Cost              Net
-#  Min.   :0.00000000   Min.   :10900.0   Min.   :-20100.000
-#  1st Qu.:0.09910237   1st Qu.:15700.0   1st Qu.:  7427.242
-#  Median :0.14840366   Median :16700.0   Median : 19288.436
-#  Mean   :0.14974864   Mean   :16679.4   Mean   : 19599.455
-#  3rd Qu.:0.19606833   3rd Qu.:17700.0   3rd Qu.: 30746.035
-#  Max.   :0.43358366   Max.   :23100.0   Max.   : 88342.145
-max(gainByEggcount)/which.max(gainByEggcount)
-# [1] 78.95312211
+# [1] 26657.1117
+# [1] 281
+plot(1:300, gainByEggcount, xlab="Average number of eggs available", ylab="Profit")
+summary(simulateIVFCBs(which.max(gainByEggcount), 4.6, selzam2016, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
+#     Trait.SD              Cost              Net
+#  Min.   :0.0000000   Min.   :12300.0   Min.   :-21900.00
+#  1st Qu.:0.1284192   1st Qu.:17300.0   1st Qu.: 12711.92
+#  Median :0.1817688   Median :18300.0   Median : 25630.74
+#  Mean   :0.1845060   Mean   :18369.1   Mean   : 26330.25
+#  3rd Qu.:0.2372748   3rd Qu.:19500.0   3rd Qu.: 39162.75
+#  Max.   :0.5661427   Max.   :25300.0   Max.   :117856.55
+max(gainByEggcount) / which.max(gainByEggcount)
+# [1] 94.86516619
 ~~~
 
 ![Net profit vs average number of eggs](/images/iq-selection-eggcurve.png)
 
-The maxima is ~253, yielding 0.149SD/~2.23 points & a net profit ~\$19.6k, indicating that with that many eggs, the cost of the additional SNPing exceeds the marginal IQ gain from having 1 more egg available which could turn into an embryo & be selected amongst.
-With \$19.9k profit vs 253 eggs, we could say that the gain from unlimited eggs compared to the normal yield of ~9 eggs is ~\$14k (\$19k vs the best current scenario of \$4763), and that the average profit from adding each egg was \$79, giving an idea of the sort of per-egg costs one would need from an egg stem cell technology (ie small).
-The total number of eggs will decrease with an increase in per-egg costs; if it costs another \$200 per embryo, then the optimal number of eggs is ~125, and so on.
+The maxima is ~281, yielding 0.18SD/~2.7 points & a net profit ~\$26k, indicating that with that many eggs, the cost of the additional SNPing exceeds the marginal IQ gain from having 1 more egg available which could turn into an embryo & be selected amongst.
+With \$26k profit vs 281 eggs, we could say that the gain from unlimited eggs compared to the normal yield of ~9 eggs is ~\$20k (\$26k vs the best current scenario of \$6l), and that the average profit from adding each egg was \$73, giving an idea of the sort of per-egg costs one would need from an egg stem cell technology (small).
+The total number of eggs will decrease with an increase in per-egg costs; if it costs another \$200 per embryo, then the optimal number of eggs is around half, and so on.
 
 So with present polygenic-scores & SNP costs, an unlimited number of eggs would only increase profit by 4x, as we are still constrained by the polygenic score.
-(If, for example, we also raised the polygenic score to 33%, then with 253 eggs, we'd get 8 points & \$99k.)
 This would be valuable, of course, but it is not a huge change.
 
 ### Multiple selection
 
 Intelligence is one of the most valuable traits to select on, and one of the easiest to analyze, but we shouldn't forget that it is neither necessary nor desirable to select *only* on intelligence.
-Selecting only on one trait means that most of the genotype information is being ignored; in the very long run (dozens of generations), selection only on one trait, particularly in a small breeding population, will have "unintended consequences" like greater disease rates, shorter lifespans, etc.
+Selecting only on one trait means that most of the genotype information is being ignored; at best, this is a lost opportunity, and at worst, it is harmful - in the very long run (dozens of generations), selection only on one trait, particularly in a small breeding population, will have "unintended consequences" like greater disease rates, shorter lifespans, etc.
 
-This is why animal breeders do not select purely on a single valuable trait like egglaying rate but on an index of many traits, from maturity speed to disease resistance to lifespan; when breeding is done out of ignorance or with regard only to a few traits, one may wind up with problematic breeds like some purebred dog breeds which have serious health issues.
+This is why animal breeders do not select purely on a single valuable trait like egglaying rate but on an index of many traits, from maturity speed to disease resistance to lifespan; when breeding is done out of ignorance or with regard only to a few traits, one may wind up with problematic breeds like some purebred dog breeds which have serious health issues due to inbreeding, small founding populations, no selection against negative mutations popping up, and variants which increase the selected trait at the expense of another trait.
 
-In our case, a weak polygenic score can be strengthened, but it can also be combined with other polygenic scores to do selection on multiple traits, taking the maximum among the embryos' weighted sums of polygenic scores.
-This can be done almost for free, since if one did sequencing on a comprehensive SNP array chip to compute 1 polygenic score, one probably has all the information needed. Indeed, you could see selection on a single trait as a multiple selection procedure where all traits' values are (implausibly) set to 0 except for 1 trait.
-In reality, while some traits are of much more value than others, there are few traits with no value at all; an embryo which scores mediocrely on our primary trait may still have many other advantages which more than compensate, so why not check? (It is a general principle that more information is better than less.)
+In our case, a weak polygenic score can be strengthened by better GWASes, but it can also be combined with other polygenic scores to do selection on multiple traits by summing the scores per embryo and taking the maximum.
+This can be done almost for free, since if one did sequencing on a comprehensive SNP array chip to compute 1 polygenic score, one probably has all the information needed. (Indeed, you could see selection on a single trait as a multiple selection procedure where all traits' values are implausibly set to 0 except for 1 trait.)
+In reality, while some traits are of much more value than others, there are few traits with *no* value at all; an embryo which scores mediocrely on our primary trait may still have many other advantages which more than compensate, so why not check? (It is a general principle that more information is better than less.)
 Intelligence is valuable, but it's also valuable to live a long time, have less risk for schizophrenia, lower BMI, be happier, and so on.
 
 A quick demonstration of the possible gain is to imagine the total of 1 normal deviate ($\mathcal{N}(0,1)$) vs picking the most extreme out of several normal deviates.
@@ -1150,21 +1146,21 @@ What sort of gain can we expect above our starting point of \$4977?
 
 ~~~{.R}
 weights <- c(1, 0.5, 0.5)
-polygenicScores <- c(rietveld2013, 0.6, 0.05)
+polygenicScores <- c(selzam2016, 0.6, 0.05)
 summary(simulateIVFCBs(9, 4.6, combineScores(polygenicScores, weights), 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
 #     Trait.SD               Cost              Net
 #  Min.   :0.00000000   Min.   :1500.00   Min.   : -3900.00
 #  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.: -1900.00
-#  Median :0.00000000   Median :2100.00   Median : -1500.00
-#  Mean   :0.06018805   Mean   :2047.98   Mean   : 12533.48
-#  3rd Qu.:0.08943410   3rd Qu.:2300.00   3rd Qu.: 19436.00
-#  Max.   :0.83221364   Max.   :4100.00   Max.   :199916.24
+#  Median :0.00000000   Median :1900.00   Median : -1500.00
+#  Mean   :0.07524308   Mean   :2039.25   Mean   : 16189.51
+#  3rd Qu.:0.11491090   3rd Qu.:2300.00   3rd Qu.: 25638.72
+#  Max.   :1.00232683   Max.   :4100.00   Max.   :241128.71
 ~~~
 
 So we double our gains by considering 3 traits instead of 1.
 
 A more realistic example would be to use some of the existing polygenic scores for complex traits, of which [a number are available](http://biorxiv.org/content/biorxiv/early/2016/01/14/035907.full.pdf "'Contrasting the genetic architecture of 30 complex traits from summary association data', Shi et al 2016").
-Generally speaking, to maximize the gains, we want to focus on continuous traits such as IQ, or diseases with high prevalence; the more horrifying genetic diseases are rare precisely because they are horrifying, so focusing on them will only occasionally pay off.
+Perhaps a little counterintuitively, to maximize the gains, we want to focus on universal traits such as IQ, or common diseases with high prevalence; the more horrifying genetic diseases are rare precisely because they are horrifying (natural selection keeps them rare), so focusing on them will only occasionally pay off.
 (Much like how the [global burden of disease](!Wikipedia) shows that the largest losses of [DALY](!Wikipedia)s are due to such ordinary causes as [respiratory infections, heart disease, diabetes, car accidents, back+neck injuries, smoking etc](http://vizhub.healthdata.org/gbd-compare/) and not as much as one might think to HIV or malaria.)
 Here are 7 I looked up and was able to convert to relatively reasonable gains/losses:
 
@@ -1202,19 +1198,19 @@ Here are 7 I looked up and was able to convert to relatively reasonable gains/lo
 The low weights suggest we won't see a 6x scaling from adding 6 more traits, but we still see a substantial gain from multiple selection - up to \$14k/2.8x better than IQ alone:
 
 ~~~{.R}
-polygenicScores <- c(rietveld2013, 0.6,  0.153, 0.0573, 0.015, 0.0283, 0.184)
+polygenicScores <- c(selzam2016,   0.6,  0.153, 0.0573, 0.015, 0.0283, 0.184)
 weights <-         c(1,            0.27, 0.07,  0.15,   0.047, 0.01,   0.04)
 summary(simulateIVFCBs(9, 4.6, combineScores(polygenicScores, weights), 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
 #     Trait.SD               Cost              Net
 #  Min.   :0.00000000   Min.   :1500.00   Min.   : -3900.00
 #  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.: -1900.00
 #  Median :0.00000000   Median :1900.00   Median : -1500.00
-#  Mean   :0.06675311   Mean   :2041.78   Mean   : 14130.16
-#  3rd Qu.:0.10294009   3rd Qu.:2300.00   3rd Qu.: 22756.41
-#  Max.   :0.89975711   Max.   :4100.00   Max.   :214879.66
+#  Mean   :0.06892926   Mean   :2045.56   Mean   : 14653.59
+#  3rd Qu.:0.10634265   3rd Qu.:2300.00   3rd Qu.: 23516.44
+#  Max.   :1.02970634   Max.   :4300.00   Max.   :247561.81
 
-14130 / 4977
-# [1] 2.839059675
+14653 / 6230
+# [1] 2.352006421
 ~~~
 
 Note that this gain would be larger under lower values of IQ, as then more emphasis will be put on the other traits.
