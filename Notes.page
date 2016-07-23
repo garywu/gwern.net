@@ -2023,7 +2023,7 @@ I am not sure in advance how long I should run the experiment: I have no previou
 8. 1 - 16 July: no-poo; 17 July - 7 September: poo
 9. 8 September - 30 September: no-poo; 1 October 2015 - 27 March 2016: poo
 10. 12 April 2016 - 20 May 2016: no-poo; 21 May - 24 June: poo
-11. 25 June 2016 - 25? July 2016: no-poo;
+11. 25 June 2016 - 17 July 2016: no-poo; 18 July - 18 August?: poo
 
 The main concerns with this design seem to be whether a month is enough time to show any no-poo adaptation, and whether it would be possible to estimate time for each photo despite controlling the conditions as much as possible.
 
@@ -2244,3 +2244,88 @@ Interestingly, it seems the 'short human history' argument is not original to Ne
 > Moreover, if heaven and earth never had a beginning or birth, but have existed from everlasting, why have there not been other poets to sing of other events prior to the Theban war and the tragedy of Troy? Why have so many heroic deeds so often been buried in oblivion, instead of flowering somewhere, implanted in eternal memorials of fame? The true explanation, in my judgment, is that our world is in its youth: it was not created long ago, but is of comparatively recent origin. That is why at the present time some arts are still being refined, still being developed. This age has seen many improvements in shipbuilding; it is not long since musicians first molded melodious tunes; our system of philosophy too is a recent invention, and I myself am found to be the very first with the ability to expound it in the language of my country [Latin].
 >
 > If by chance you believe that all these same things happened before, but that the races of human beings perished in a great conflagration, or that their cities were razed by a mighty convulsion of the world, or that rivers, rapacious after unremitting rains, inundated the earth and submerged towns, there is all the more necessity for you to admit defeat and acknowledge that heaven and earth arc destined to be destroyed.
+
+# Simplicity is the Price of Reliability
+
+Why should we care about simple systems and long part lifetimes?
+Because for many things, the only way to build a reliable system is out of as few and more reliable parts as possible.
+
+[Kevin Kelly](http://kk.org/thetechnium/the-art-of-endl/ "The Art of Endless Upgrades") notes a a lesson from a home-repair story:
+
+> When we first moved into our current house, newly married, I had some caulking to do around the place. I found some silicon caulking that boasted on the tube that it was warranted for 20 years. Cool, I thought. I'll never have to do this again. Twenty years later, what's this? The caulking is staring to fray, disintegrate, fail. I realize now that 20 years is not forever, though it seemed that way before. Now that I am almost 60, I can see very permanent things decay in my own lifetime.
+
+Consider a 20 year lifetime for a part. This may sound like a lot, and just like Kelly, you may intuitively feel that 20 years is close enough to 'forever' as to need little more thought.
+But each such part or object cannot be considered in isolation, because you have *many* objects.
+On a yearly basis, I photograph all my possessions for backup purposes and to sort through my possessions; despite my best efforts to keep clutter down and to photography multiple objects in the same photo, I find it takes more and more photographs every year, and for 2015, had to take 281 photographs of what is probably at least 10 objects per photo so perhaps 3000+ individual objects (of which each may have many components and parts which can break in exciting & novel ways).
+Kevin Kelly notes that in [an inventory of his own household](http://kk.org/thetechnium/the-number-of-s/ "The Number of Species We Use"), there was probably 10,000 objects, surprisingly close to the [Inventory of Henry VIII of England](!Wikipedia)'s crown holdings of 17,810 items (pre-[Consumer Revolution](!Wikipedia)), but far more than a selection of Third World households, who supposedly averaged 127 objects. Self-storage complexes, overflowing garages, hoarders...
+Thousands of objects, at a minimum, without including infrastructure: the circuit breakers, the hot water tanks, the faucets, the showerheads, the light bulbs, the fans, the lamps, the switches, the floor & roof boards, the pipes and plumbing, the septic tank, the grinder, the windows - the list is fractal.
+Stuff breeds stuff, and [kipple](!Wikipedia) lurks under every corner.
+
+But each of these objects can be a problem. They can be lost, or forgotten, or decay, or they can damage other things. (They can also be mental burdens.)
+If an object lasts 20 years or 7305 days, but you have 10000 objects, then on average something will break on a daily basis; worse, on a good 30 days, 3 objects will break simultaneously; on around 16 days, 4 will, and on a handful of days, 6 or more objects will break.^[Modeling it as a binomial in R: `table(sort(rbinom(365, size=10000, prob=1/(20*365.25))))`]
+(Fortunately, most objects breaking do not cause *serious* problems, and many objects easily last 20+ years and don't contribute too many failures. But if you've ever wondered why in military histories, it seems like every ship or airplane is half-broken all the time and units routinely are disabled by mechanical problems, this is partially why: many moving parts and objects placed in harsh environments.)
+If one object breaking can cause another to break, things get even worse...
+
+I recently ran into an example of this.
+I use a Zeo EEG-based sleep tracking device, and it is one of my favorite objects which [I have used to run many self-experiments](/Zeo).
+I also record my sleep using an Android smartphone accelerometer-based app, since I know my Zeo will not last forever (in particular, the rechargeable battery is expected to die within a few years) and I will most likely be forced to replace it with an accelerator app.
+
+Sometime in late 2015, my Zeo stopped working.
+The headset would not relay any data no matter if it should have been fully charged or not.
+I concluded the battery had finally died as I long feared; Zeo Inc closed a long time ago, so there are no replacement headsets (or if some can be found used, they will probably cost \$200+ and be using original batteries as well), and one has to DIY by finding a random rechargeable battery, cracking open the headset, and soldering the new one in, which is all new to me.
+While I was getting around to this, the lights went out in my bedroom: they flickered irregularly, began going out for hours at a time, and then finally one day they went out entirely.
+This was irritating and made my bedroom difficult to use, but not a big problem, because of the 4 sockets in the bedroom, the socket nearest my bed (the one my smartphone, Zeo, and electric mattress for cold nights were all plugged into)
+My landlord lackadaisically began to think about calling an electrician.
+
+I did some work on repairing my broken Zeo: reading up on the topic further, ordering the new battery for \$9, and most tricky, cracking open the headset which turned out to be almost impervious to my prying, even when I put it in a vice, and to my horror, when I finally wiggled a razor blade through the corner and started to crack it open, I had cut too far into it and cut a metal ribbon connecting the circuit board with the metal headband!
+I had no idea if I had destroyed it or not, but I hoped that if I superglued it down, the physical connection would be enough for the EEG functionality to work.
+Unnerved by that, I didn't cut out the original battery and try to solder in a new battery (likely botching it and destroying the irreplaceable headset); I would do that sometime later.
+After about a month of the blackout, my smartphone began having trouble recording through the night, apparently running out of power; I wasn't sure what was going on, but after verifying that the smartphone would properly charge while plugged into my laptop, and while plugged into its charger plugged into a socket in the living room, I concluded it had to be the power strip or loose placement in the power socket in the bedroom.
+While wiggling the charger around, the lights abruptly came back on, and I began hearing 'pop' sounds and I noticed simultaneous flashes from behind the faceplate of the power socket.
+Immediately yanking everything out, I smelt burnt insulation and feared the worst: an electrical fire inside the walls.
+I unplugged everything, flipped the circuit breaker, and after monitoring my bedroom with a fire extinguisher for a few hours, insisted an electrician be called within the week.
+He came, and... the whole thing was nothing but a loose wire in the one socket I had thought *was* working!
+The poor connection caused it to heat up and burn the insulation, and blocked electricity from flowing 'downstream' to the lamps.
+Then the smartphone hadn't been charging because it wasn't getting enough electricity through the charger, and as I quickly verified, the Zeo had been suffering the same problem and was perfectly functional. (The superglue had worked.)
+
+I hadn't known it was possible for digital devices to appear to be turned on and receiving power but only *partial* power as I naturally assumed that if the Zeo turned on and appeared operational then the power socket must be perfectly fine, and I was completely surprised that the one power socket I had verified as working - did it not power everything I had plugged into it? - was both malfunctioning, had been for at least 3 months if not for years before that, and this was the root of multiple apparently unrelated problems.
+So one loose wire had caused a cascade of issues eventually costing: the electrician's repair bill, \$9, 3 months of sleep logs, a good deal of trouble on my part, and nearly destroyed an nearly irreplaceable favorite possession.
+
+Such a cascade of issues and odd edge-cases with interacting objects is common.
+With enough objects in a system such as a home, at least some objects will always be failing and can trigger interactions with some other objects; all of these interactions cannot be predicted because each of these objects is complex in its own right, and their behaviors must be understood on a superficial and black box level.[^Winner]
+Cook gives some principles in his well-known ["How Complex Systems Fail"](http://web.mit.edu/2.75/resources/random/How%20Complex%20Systems%20Fail.pdf):
+
+> 4. *Complex systems contain changing mixtures of failures latent within them.*
+>
+>     The complexity of these systems makes it impossible for them to run without multiple flaws being present. Because these are individually insufficient to cause failure they are regarded as minor factors during operations. Eradication of all latent failures is limited primarily by economic cost but also because it is difficult before the fact to see how such failures might contribute to an accident. The failures change constantly because of changing technology, work organization, and efforts to eradicate failures.
+> 5. *Complex systems run in degraded mode.*
+>
+>     A corollary to the preceding point is that complex systems run as broken systems. The system continues to function because it contains so many redundancies and because people can make it function, despite the presence of many flaws. After accident reviews nearly always note that the system has a history of prior "proto-accidents" that nearly generated catastrophe. Arguments that these degraded conditions should have been recognized before the overt accident are usually predicated on naïve notions of system performance. System operations are dynamic, with components (organizational, human, technical) failing and being replaced continuously.
+> 6. *Catastrophe is always just around the corner.*
+>
+>     Complex systems possess potential for catastrophic failure. Human practitioners are nearly always in close physical and temporal proximity to these potential failures - disaster can occur at any time and in nearly any place. The potential for catastrophic outcome is a hallmark of complex systems. It is impossible to eliminate the potential for such catastrophic failure; the potential for such failure is always present by the system's own nature.
+> 7. *Post-accident attribution accident to a "root cause" is fundamentally wrong.*
+>
+>     Because overt failure requires multiple faults, there is no isolated 'cause' of an accident. There are multiple contributors to accidents. Each of these is necessary insufficient in itself to create an accident. Only jointly are these causes sufficient to create an accident. Indeed, it is the linking of these causes together that creates the circumstances required for the accident. Thus, no isolation of the 'root cause' of an accident is possible. The evaluations based on such reasoning as 'root cause' do not reflect a technical understanding of the nature of failure but rather the social, cultural need to blame specific, localized forces or events for outcomes.
+
+[^Winner]: Life is too short to understand everything to a meaningful level, as specialization has far outstripped individuals' ability or interest to understand them all, and such division of cognitive labor is required to create the modern world, even if this comes at the cost of any global understanding: _Autonomous Technology: Technics-Out-Of-Control_, Winner 1989:
+
+    > Society is composed of persons who cannot design, build, repair, or even operate most of the devices upon which their lives depend...In the complexity of this world people are confronted with extraordinary events and functions that are literally unintelligible to them. They are unable to give an adequate explanation of man-made phenomena in their immediate experience. They are unable to form a coherent, rational picture of the whole. Under the circumstances, all persons do, and indeed must, accept a great number of things on faith...Their way of understanding is basically religious, rather than scientific; only a small portion of one's everyday experience in the technological society can be made scientific...The plight of members of the technological society can be compared to that of a newborn child. Much of the data that enters its sense does not form coherent wholes. There are many things the child cannot understand or, after it has learned to speak, cannot successfully explain to anyone...Citizens of the modern age in this respect are less fortunate than children. They never escape a fundamental bewilderment in the face of the complex world that their senses report. They are not able to organize all or even very much of this into sensible wholes....
+
+    TODO: ln bicycle drawing site
+
+My Zeo accident follows several of these: the Zeo could've failed at any time due to the battery getting too old, insufficient voltage or amperage, electrical surges from lightning strikes, the headband conductivity being destroyed by sweat/dirt, software errors etc.
+A failure in a separate object triggered a latent but unknown Zeo design flaw (not telling the user it is *unable* to charge the headset due to insufficient electricity and trying to anyway); this led to further errors.
+Root-cause attribution is difficult as none of the causes are individually sufficient, and even now I don't see how I could have done better without being an electrician.
+
+Trying to add in preventive objects or procedures runs the risk of creating even further problems; as [one sysadmin on HN says](https://news.ycombinator.com/item?id=8282923)
+
+> Your fail-safes are themselves the source of faults and failures. I've seen, just to list a few: Load balancers which failed due to software faults (they'd hang and reboot, fortunately fairly quickly, but resulting in ~40 second downtimes), back-up batteries which failed, back-up generators which failed, fire-detection systems which tripped, generator fuel supplies which clogged due to algae growth, power transfers which failed, failover systems which didn't, failover systems which did (when there wasn't a failure to fail over from), backups which weren't, password storage systems which were compromised, RAID systems which weren't redundant (critical drive failures during rebuild or degraded mode, typically), far too many false alerts from notifications systems (a very common problem even outside IT: [on hospital alarms](http://redd.it/1x0p1b)), disaster recovery procedures which were incomplete / out of date / otherwise in error. That's all direct personal experience.
+
+When I was still contributing a bit to the DCVS [darcs](!Wikipedia), I thought then-maintainer Eric Kow's efforts to set up automated tests & buildbots, while well-intended in trying to catch errors in patches and ensure that the code always compiled and software engineering best practices, wound up wasting far more time than it ever saved because the build infrastructure itself kept crashing and needed constant configuration & upgrades.
+Given limited contribution time, dealing with the buildbots did not seem like a good investment.
+This also applies to programmers tempted to automate or script stuff on their computers: [how much time are you *really* saving](http://www.xkcd.com/1205 "Is It Worth The Time?") and was it worth the risk that one day a year from now you'll wake up and discover a cron job hasn't been running for months because of some Bash error?
+(Due to upgrading to a Shellshock-resistant Bash, in my case, which caused an inscrutable interaction with an exported function name in my Bash aliases file.)
+
+Complexity and automation create a technical debt in the form of the fallout from future unreliability.
+"The price of reliability is the pursuit of the utmost simplicity. It is a price which the very rich find most hard to pay."
