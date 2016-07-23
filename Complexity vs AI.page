@@ -2,88 +2,138 @@
 title: Complexity no Bar to AI
 description: Critics of AI risk suggest diminishing returns to computing means AI will be weak; I argue argument breaks if any premises rejected
 tags: computer science, transhumanism
-created: 01 June 2014
+created: 1 June 2014
 status: in progress
 belief: possible
 ...
 
-there's a lot of bad reasoning out there. for example, this is just an abuse of computational complexity:
+> Computational complexity theory describes the steep increase in computing power required for many algorithms to solve larger problems; frequently, the increase is large enough to render problems a few times larger totally intractable. Many of these algorithms are used in AI-relevant contexts. It has been argued that this implies that AIs will fundamentally be limited in accomplishing real-world tasks better than humans because they will run into the same computational complexity limit as humans, and so the consequences will be small, thus it is impossible for there to be any large fast global changes due to human or superhuman-level AIs. I examine the assumptions of this argument and find it neglects the many conditions under which computational complexity theorems are valid and so the argument doesn't work: problems can be solved more efficiently than complexity classes would imply, large differences in problem solubility between humans and AIs is possible, the real-world consequences of small differences on individual tasks can be large, such consequences can compound, and any of these independent objections being true destroys the argument.
+
+# Background
+
+One argument against powerful artificial intelligences, and the Singularity in general, draws from [computational complexity theory](!Wikipedia).
+Complexity theory attempts to describe the resource usage of algorithms from the abstract vantage point of considering how running time on some idealized computer relatively increases for a specific algorithm as the inputs scale in size towards infinity.
+For many important algorithms used in AI and programming in general, the difficulty turns out to increase steeply with extra data - comparison-based sorting algorithms like [Quicksort](!Wikipedia) take only $\mathcal{O}(n \cdot log(n))$ and so you can sort just about any amount of data in a feasible time, but problems like the [Traveling Salesman problem](!Wikipedia) become exponentially hard (or worse) as the data increases and quickly go from fast to infeasible to impossible.
+
+# Complexity implies Singularities are impossible
+
 http://www.antipope.org/charlie/blog-static/2014/02/the-singularity-is-further-tha.html
 http://www.antipope.org/charlie/blog-static/2014/02/why-ais-wont-ascend-in-blink-of-an-eye.html
 http://www.antipope.org/charlie/blog-static/2014/02/a-rebuttal-of-the-singularity-.html
-and I've been thinking about writing a
-rebuttal
 
-I mean, where to start? he ignores increased resource consumption; constant factors; redefining problems for major speedups; algorithmic
-breakthroughs; avoiding unnecessarily general algorithms...
-he understands the very basics of asymptotic complexity but he ignores all the potential loopholes and what
-asymptotic complexity explicitly excludes from its domain
-and also omits the possibility of solving entirely different problems
-see also Chalmer's paper on the singularity
+http://lesswrong.com/r/discussion/lw/lke/the_unique_games_conjecture_and_fai_a_troubling/bvy0
 
-http://rjlipton.wordpress.com/2014/07/21/shifts-in-algorithm-design/
+So the argument (filling in the gaps and omitting the various graphs showing scaling) goes something like this:
 
-> Now today, in the 21st century, we have a better way to attack problems. We change the problem, often to one that is more tractable and useful. In many situations solving the exact problem is not really what a practitioner needs. If computing X exactly requires too much time, then it is useless to compute it. A perfect example is the weather: computing tomorrow's weather in a week's time is clearly not very useful.
->
-> The brilliance of the current approach is that we can change the problem. There are at least two major ways to do this:
->
-> - Change the answer required. Allow approximation, or allow a partial answer. Do not insist on an exact answer.
-> - Change the algorithmic method. Allow algorithms that can be wrong, or allow algorithms that use randomness. Do not insist that the algorithm is a perfect deterministic one.
->
-> This is exactly what Chayes and her co-authors have done.
+1. most tasks an intelligent agent (human or artificial intelligence) needs to solve are in difficult complexity classes, such as NP or NP-hard: Traveling Salesman, 3-SAT, Bayesian network belief propagation, deep neural network training, theorem proving, playing Go, solving POMPDs...
+2. a task in NP or higher complexity class can only be solved for small problem sizes
+3. if a task can only be solved for small problem sizes, then the best agent will solve only slightly larger problem sizes
+4. the real-world reward to an agent from solving a slightly larger problem is only slightly greater
+5. the long-term consequence of slightly greater rewards is itself small
+6. if an AI becomes the best agent, then it must solve problems in difficult complexity classes (1), so it will be able to solve only slightly larger programs (2-3), receiving slightly greater rewards (4), with only small long-term consequences (5)
+7. thus, AIs becoming intelligent agents will have only small long-term consequences
 
---
+This argument is valid as far as it goes and can probably be formalized successfully. But is the argument sound?
 
-"The asymptotically best algorithms frequently turn out to be worst on all problems for which they are used." - D. G. CANTOR and H. ZASSENHAUS (1981)
-  "Rule 3. Fancy algorithms are slow when n is small, and n is usually small. Fancy algorithms have big constants. Until you know that n is frequently going to be big, don't get fancy. (Even if n does get big, use Rule 2 first.)"  --Rob Pike" Ken Thompson rephrased Pike's rules 3 and 4 as "When in doubt, use brute force."." http://users.ece.utexas.edu/~adnan/pike.html  This list is from Rob's "Notes on Programming on C", written 25 years ago: http://doc.cat-v.org/bell_labs/pikestyle
+## Complexity caveats
 
-"Knuth did a comparison between Fibonacci heap and binary heaps for minimum spanning trees back in 1993 for his book Stanford GraphBase. He found Fibonacci to be 30 to 60 percent slower than binary heaps at the graph sizes he was testing, 128 vertices at different densities." https://stackoverflow.com/questions/504823/has-anyone-actually-implemented-a-fibonacci-heap-efficiently
+One difficulty with applying computational complexity theory outside of its usual area is that people tend to neglect the requirements of complexity theory which gives it its generality: that it omits the 'constant factors' and the actual runtime, that many of the statements are lower/upper bounds or statements about worst-case complexity, that the statements tend to be about specific algorithms which are by no means the only way to solve a real-world problem, and that it doesn't try to say anything about utility or consequences.
 
-> In general I'm looking for more focus on algorithms that work fast with respect to problems whose size, n, is feasible. Most of today's literature is devoted to algorithms that are asymptotically great, but they are helpful only when n exceeds the size of the universe...Another issue, when we come down to earth, is the efficiency of algorithms on real computers. As part of the Stanford GraphBase project I implemented four algorithms to compute minimum spanning trees of graphs, one of which was the very pretty method that you developed with Cheriton and Karp. Although I was expecting your method to be the winner, because it examines much of the data only half as often as the others, it actually came out two to three times worse than Kruskal's venerable method. Part of the reason was poor cache interaction, but the main cause was a large constant factor hidden by O notation.
+Laid out bare, I would have to say that the argument depends critically on each of the premises being true, but every premise 1-5 is either questionable or false.
 
-http://www.informit.com/articles/article.aspx?p=2213858
+### Are all problems worst-case and NP-hard?
 
-"The Coppersmith-Winograd algorithm is frequently used as a building block in other algorithms to prove theoretical time bounds. However, unlike the Strassen algorithm, it is not used in practice because it only provides an advantage for matrices so large that they cannot be processed by modern hardware.[6]" https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm
+Premise 1 is incorrect because the proofs of those complexities generally depend on general solutions with deterministic exactly-optimal worst-case behavior.
+In the *worst case*, 3-SAT/Traveling Salesman are wildly intractable for any realistic dataset like planning a trip across the USA; but the *average-case* performance is quite different and in practice, 3-SAT/Traveling Salesman are solved all the time, to the extent where SAT solvers are routinely used in computer security or theorem proving or type-checking and logistics companies are able to heavily optimize their shipping with them. Similarly for linear programming's simplex algorithm and other operations research algorithms, with are theoretically intimidating but in real-world problems yield excellent solutions - they work in practice, but not in theory.
+A NP problem can be rendered soluble by:
 
-# IQ
+0. converting it to P (while it is highly unlikely that P=NP, I include it for completeness)
+1. needing good average-case behavior rather than worst-case behavior
+2. giving up determinism and using randomized algorithms which are faster but may not return an answer or a correct answer[^Lipton-shifts] (they typically can be run many times if correctness is important; after a few times, the probability of an erroneous error will be smaller than the probability that the computer hardware has suffered [a glitch due to cosmic rays](The Existential Risk of Mathematical Error))
+3. giving up optimality and computing an approximation of the optimal answer (often very close to the optimal answer)
+4. giving up generality: an algorithm may be unnecessarily general. A comparison sort can be done in $\mathcal{O}(n \cdot log(n))$, yes, but one frequently doesn't need to sort any kind of datatype for which an ordering is available but specifically strings, numbers, etc, for which $\mathcal{O}(n)$ is possible using radix sort or bucket sort TODO: check. An algorithm could also have prior information about the kind of data input which will be available - Timsort TODO is aware that most inputs will be partially sorted already and can outperform a naive sort. Data structures can be tuned for particular distributions of data, and JIT & profile-guided compilation & supercompilation can be seen as specializing general algorithms to the current or likely-future inputs TODO
+4. changing the problem rather than succumbing to functional fixity: many problems or environments can be tweaked to bypass a challenge. A self-driving car may not be as good at vision as a human driver, but LIDAR sensors can be incorporated into it in a way that cannot for humans as it would distract them; a Kiva robot in Amazon's warehouses may not be as good at driving around as a human worker, but the environment can be altered with tags on the floor so the robots always know where they are.
+5. solving entirely different problems which humans cannot or will not solve. As [Hamming](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html "You and Your Research") says, "There are wavelengths that people cannot see, there are sounds that people cannot hear, and maybe computers have thoughts that people cannot think." There are problems humans could never solve because it would require too much training, or too much memory, or too bizarre solutions. A human would never come up with many solutions that genetic algorithms or neural networks do, and they can be used on scales that humans never would; an unimportant but interesting example would be ["PlaNet - Photo Geolocation with Convolutional Neural Networks"](http://arxiv.org/pdf/1602.05314v1.pdf "Weyand et al 2016") - I can't imagine any human ever beginning to compete with such a CNN, or even trying to accomplish the same thing. In such cases, scaling concerns are totally besides the point.
 
-> Maybe I'm mistaken and most of the membership here views Less Wrong as a "super high G" community, but I don't.
+[^Lipton-shifts]: http://rjlipton.wordpress.com/2014/07/21/shifts-in-algorithm-design/
 
-How much time do you spend with normal people? What's your score on Murray's high-IQ bubble checklist?
+    > Now today, in the 21st century, we have a better way to attack problems. We change the problem, often to one that is more tractable and useful. In many situations solving the exact problem is not really what a practitioner needs. If computing _X_ exactly requires too much time, then it is useless to compute it. A perfect example is the weather: computing tomorrow's weather in a week's time is clearly not very useful. The brilliance of the current approach is that we can change the problem. There are at least two major ways to do this:
+    >
+    > - Change the answer required. Allow approximation, or allow a partial answer. Do not insist on an exact answer.
+    > - Change the algorithmic method. Allow algorithms that can be wrong, or allow algorithms that use randomness. Do not insist that the algorithm is a perfect deterministic one.
+    >
+    > This is exactly what Chayes and her co-authors have done.
 
-> but still, for Ivy Leaguers, who have a high level of clout in our society, to have an average IQ around that level, does not address the question of whether additional IQ above that level has diminishing impact.
+### Are all implementations equally fast?
 
-No, but the original claim was clearly wrong. Society *is* dominated by high-IQ people. Diminishing returns seems to be weirdly interpreted as 'no returns' in a lot of people's minds.
+Premise 3 ignores that complexity classes by design try to abstract away from the 'constant factors' which is the computation time determined not by input size but by the details of computer architectures, implementations, and available computing hardware.
 
-It may help if I quote a bit of what I've [written on a similar issue](http://www.gwern.net/the-long-stagnation) before about diminishing returns to research:
+But with carefully optimized code, proper use of the cache hierarchy, and specialized hardware (eg GPUs, ASICs), it is possible to see [performance gains of multiple orders of magnitude](/Aria's past, present, and future#fn3), which implies that one can increase the input size several times before hitting the scaling way that another agent might who paid less attention to constant factors.
+The importance of constant factors is one of the major traps in practical use of complexity classes: a fancy algorithm with a superior complexity class may easily be defeated by a simpler algorithm with worse complexity but faster implementation.[^galactic-algorithms] (One reason that programmers are exhorted to benchmark, benchmark, benchmark!)
+Finally, increased resource use / brute force is always an option for a powerful agent. Thanks to its intelligence, humanity now controls a large fraction of the biosphere's energy and with a supercomputer, or tech giants like Google or Amazon who control millions of processor-cores, can compute things totally out of reach of other agents; no limits to the amount of computation that can be done on (or off) Earth have yet been reached.
 
-> The Long Stagnation thesis can be summarized as: "Western civilization is experiencing a general decline in marginal returns to investment". That is, every $1 or other resource (such as 'trained scientist') buys less in human well-being or technology than before, aggregated over the entire economy.
->
-> This does *not* imply any of the following:
->
-> 1. No exponential curves exist (rather, they are exponential curves which are part of sigmoids which have yet to level off; Moore's law and stagnation can co-exist)
->
->     Sudden dramatic curves can exist even amid an economy of diminishing marginal returns; to overturn the overall curve, such a spike would have to be a massive society-wide revolution that can make up for huge shortfalls in output.
-> 2. Any metrics in absolute numbers have ceased to increase or have begun to fall (patents can continue growing each year if the amount invested in R&D or number of researchers increases)
-> 3. We cannot achieve meaningful increases in standards of living or capabilities (the Internet is a major accomplishment)
-> 4. Specific scientific or technological will not be achieved (eg. AI or nanotech) or be achieved by certain dates
-> 5. The stagnation will be visible in a dramatic way (eg. barbarians looting New York City)
+This doesn't disprove the complexity class, which is about asymptotic scaling and will still kick in at some point, but if it's possible to double or dectuple or more the input, this is enough of an increase that it's hard to dismiss the difference between best and worst agents' problem sizes as being only 'slight'.
 
-Similarly, arguing over diminishing returns to IQ is building in a rather strange premise to the argument: that the entities in discussion will be within a few standard deviations of current people. It may be true that people with IQs of 150 are only *somewhat* more likely to be billionaires ruling the world than 140, but how much does that help when you're considering the actions of people with IQs much much higher? The returns can really add up.
+[^galactic-algorithms]: Some examples of this folk wisdom: Cantor & Zassenhaus 1981:
 
-To take an example I saw today: [Hsu posted](http://infoproc.blogspot.com/2014/06/chicago-conference-on-genetics-and.html) slides from [an April talk](https://drive.google.com/file/d/0ByYDxaP-OyVjNzZBMWZlbEI3ZnM/edit?usp=sharing), which on pg10 points out that the estimates of the additive genetic influence on intelligence (the kind we can most easily identify and do stuff like embryo selection with) & estimates of number of minor alleles imply a potential upper bound of +25 SD if you can select all beneficial variants, or in more familiar notation, IQs of 475 (100 + 15 * 25). Suppose I completely totally grant all assumptions about diminishing marginal returns to IQ based on the small samples we have available of 130+; what happens when someone with an IQ of 475 gets turned loose? Who the heck knows; they'll probably rule the world, if they want.
+    > The asymptotically best algorithms frequently turn out to be worst on all problems for which they are used.
 
--One of the problems with discussing this is that IQ scores and all research based on it is purely an ordinal scale based on comparing existing humans, while what we really want is to measures of intelligence on a cardinal scale which lets us compare not just humans but potential future humans and AIs too.
+    ["Notes on Programming on C"](http://doc.cat-v.org/bell_labs/pikestyle), Rob Pike:
 
-For all we know, diminishing returns in IQ is purely an artifact of human biology: maybe each standard deviation represents less and less 'objective intelligence', and the true gains to objective intelligence don't diminish at all or in some cases *increase* (chimps vs humans)!
+    > Rule 3. Fancy algorithms are slow when _n_ is small, and _n_ is usually small. Fancy algorithms have big constants. Until you know that _n_ is frequently going to be big, don't get fancy. (Even if _n_ does get big, use Rule 2 first.)
 
-(Hsu likes to cite a maize experiment where "over 100 generations of selection have produced a difference in oil content between the high and low selected strains of 32 times the original standard deviation!"; so when we're dealing with something that's clearly on a cardinal scale - oil content - the promised increases can be quite literal. Intelligence is not a fluid, so we're not going to get 25x more 'brain fluid', but that doesn't help us calculate the consequences: an intelligent agent is competing against humans and other software, and small absolute edges may have large consequences. A hedge fund trader who can be right 1% more of the time than his competition may be able to make a huge freaking fortune. Or, a researcher 1% better at all aspects of research may, under the log-normal model of research productivity [proposed by Shockley](http://www.gwern.net/docs/1967-shockley.pdf), be much more than 1% more productive than his peers.)
+    [Knuth](http://www.informit.com/articles/article.aspx?p=2213858):
 
-We know 'human' is not a inherent limit on possible cognition or a good measurement of all activities/problems: eg chess programs didn't stagnate in strength after Deep Blue beat Kasparov, having hit the ceiling on possible performance but they kept getting better. Human performance turned out to not run the gamut from worst to best-possible but rather marked out a fairly narrow window that the chess programs were in for a few decades but passed out of, on their trajectory upwards on whatever 'objective chess intelligence' metric there may be.
+    > In general I'm looking for more focus on algorithms that work fast with respect to problems whose size, _n_, is feasible. Most of today's literature is devoted to algorithms that are asymptotically great, but they are helpful only when n exceeds the size of the universe...Another issue, when we come down to earth, is the efficiency of algorithms on real computers. As part of the Stanford GraphBase project I implemented four algorithms to compute minimum spanning trees of graphs, one of which was the very pretty method that you developed with Cheriton and Karp. Although I was expecting your method to be the winner, because it examines much of the data only half as often as the others, it actually came out two to three times worse than Kruskal's venerable method. Part of the reason was poor cache interaction, but the main cause was a large constant factor hidden by O notation.
 
-(I think this may help explain why some events surprise a lot of observers: when we look at entities below the human performance window, we just see it as a uniform 'bad' level of performance, we can't see any meaningful differences and can't see any trends, so our predictions tend to be hilariously optimistic or pessimistic based on our prior views; then, when they finally enter the human performance window, we can finally apply our existing expertise and become surprised and optimistic, and then the entities can with small objective increases in performance move out of the human window entirely and it becomes an activity humans are now uncompetitive at like chess but may still contribute a bit on the margin in things like advanced chess, and eventually becomes truly superhuman as computer chess will likely soon be.)
+    More specifically: ["Knuth did a comparison between Fibonacci heap and binary heaps for minimum spanning trees back in 1993 for his book _Stanford GraphBase_. He found Fibonacci to be 30 to 60% slower than binary heaps at the graph sizes he was testing, 128 vertices at different densities."](https://stackoverflow.com/questions/504823/has-anyone-actually-implemented-a-fibonacci-heap-efficiently)
 
-# Parable of the Worms
+    On the [Coppersmith-Winograd algorithm](!Wikipedia):
+
+    > The Coppersmith-Winograd algorithm is frequently used as a building block in other algorithms to prove theoretical time bounds. However, unlike the Strassen algorithm, it is not used in practice because it only provides an advantage for matrices so large that they cannot be processed by modern hardware.[6]
+
+    Some algorithms are particularly infamous for their excellent asymptotics but abysmal constant factors, such as the computable versions of AIXI. Lipton dubs such algorithms "galactic algorithms" TODO: ln 'galactic algorithms'
+
+### Are all returns linear?
+
+Premise 4 is where the argument starts trying to tie statements about complexity to real-world consequences.
+
+Aside from the issue that the complexity claims are probably false, this one is particularly questionable: small advantages on a task *do* translate to large real-world consequences, particularly in competitive settings.
+A horse or an athlete wins a race by a fraction of a second; a stock-market investing edge of 1% annually is worth a billionaire's fortune; a slight advantage in picking each move in a game likes chess translates to almost certain victory (consider how AlphaGo's ranking changed with small improvements in the CNN's ability to predict next moves TODO); a logistics/shipping company which could shave the remaining 1-2% of inefficiency off its planning algorithms would have a major advantage over its rivals inasmuch as shipping is their major cost and the profit margin of such companies is itself only a few percentage points; or consider network effects & winner-take-all markets.
+
+Turning to human intelligence, the absolute range of human intelligence is very small: differences in reaction times are small, backwards digit spans range from 3-7, brain imaging studies have difficulty spotting neurological differences, the genetic influence on intelligence is [on net minimal](Embryo selection#limits-to-iterated-selection), and this may be a general phenomenon about humans TODO ln Wechsler book; and yet, in human society, [how critical](/iq) are these tiny absolute differences in determining who will become rich or poor, who will become a criminal, who will do cutting-edge scientific research, who will get into the Ivy Leagues, who will be a successful politician, and this holds true as high as IQ can be measured reliably (see [TIP/SMPY etc](Embryo selection#societal-effects)).
+(I think this narrowness of objective performance may help explain why some events surprise a lot of observers: when we look at entities below the human performance window, we just see it as a uniform 'bad' level of performance, we can't see any meaningful differences and can't see any trends, so our predictions tend to be hilariously optimistic or pessimistic based on our prior views; then, when they finally enter the human performance window, we can finally apply our existing expertise and become surprised and optimistic, and then the entities can with small objective increases in performance move out of the human window entirely and it becomes an activity humans are now uncompetitive at like chess but may still contribute a bit on the margin in things like advanced chess, and within a few years, becomes truly superhuman.)
+
+This also ignores the many potential advantages of AIs which have nothing to do with computational complexity; AlphaGo may confront the same PEXP TODO scaling wall that human Go players do, but as software it is immortal and can be continuously improved. TODO: ln Sotala paper on benefits of AI
+
+### Are all scenarios one-shot?
+
+Premise 5 would seem to assume that there is no such thing as compound interest or exponential growth or that small advantages can accumulate to become crushing ones; which of course there is for companies, countries, and individuals alike.
+
+Something similar has been noted about human intelligence - while any particular day-to-day decision has little to do with intelligence, the effects of intelligence are consistently beneficial and accumulate over a lifetime, so the random noise starts to cancel out, and intelligence is seen to have strong correlations with long-term outcomes (eg [Gottfredson 1997](http://www.udel.edu/educ/gottfredson/reprints/1997whygmatters.pdf "Why _g_ Matters: The Complexity of Everyday Life")).
+More abstractly, many career or intellectual outcomes have been noticed to follow a roughly [log-normal distribution](!Wikipedia) ([Shockley 1957](/docs/1957-shockley.pdf "On the Statistics of Individual Variations of Productivity in Research Laboratories"), [Murray 2003](/docs/2003-murray-human-accomplishment.pdf "_Human Accomplishment_")); a log-normal distributed can be generated when an outcome is caused by a 'leaky pipeline' (scientific output might be due to motivation times intelligence times creativity...), in which case a small improvement on each variable can yield a large improvement in the output.[^Shockley-example]
+For repeated actions, advantages can build up.  A chess example: [Magnus Carlsen](!Wikipedia) may be the strongest human chess player in history, with a peak ELO rating of ~2882; as of 2016, the top-rated [chess engine](!Wikipedia) is probably Komodo at ELO 3358. The ELO expected score formula implies that if Komodo 2016 played peak Carlsen, it would have an expected score of $\frac{1}{1 + 10^{\frac{(2882-3358)}{400}}} = 0.94$, so it would win ~94% of its games; this is impressive enough (it would lose only 1 time out of 20), however, in the standard 5-game match, it would win not 94%, but ~99.8% of the 5-game matches (losing only 1 time out of *500*).
+One thinks of Amara's law: "We tend to overestimate the effect of a technology in the short run and underestimate the effect in the long run."
+
+[^Shockley-example]: Shockley notes that with 8 variables and an advantage of 50%, the output under a log-normal model would be increased by as much as 25x:
+
+    ~~~{.R}
+    simulateLogNormal <- function(advantage, n.variables, iters=100000) {
+    regular <- 1
+    advantaged <- replicate(iters, Reduce(`*`, rnorm(n.variables, mean=(1+advantage), sd=1), 1))
+    ma <- mean(advantaged)
+    return(ma)
+    }
+    simulateLogNormal(0.5, 8)
+    # [1] 25.58716574
+    ~~~
+
+    With more variables, the output difference would be larger still, and is connected to the [o-ring theory of productivity](!Wikipedia). This poses a challenge to those who expect small differences in ability to lead to small output differences, as the log-normal distribution is common in the real world, and also implies that hybrid human-AI systems are unstable as the human will quickly become a bottleneck.
+
+TODO see also Chalmer's paper on the singularity
+TODO http://www.karlin.mff.cuni.cz/~krajicek/ri5svetu.pdf
+
+## Parable of the Worms
 
 Once upon a time, two _[C. elegans](!Wikipedia)_ were debating the prospect of "transwormism", and specifically the possibility of hypothetical creatures from elsewhere in the space of all possible organisms, which might exceed worms by as much as worms exceed the bacteria they thrive upon.
 
@@ -105,8 +155,8 @@ What would they do with, say, 1000 neurons that would justify a metabolic cost o
 And to be truly worthy of the name transworm, they might need 10s of thousands, or even millions of neurons!
 Consider the absurdity of such an architecture: could our manure pile support a single such transworm?
 Where would the food come from? For that matter, how would its body support so many neurons?
-And its genes could no longer specify cell placement one by one, but organization would have to somehow 'emerge', which you are rather obscure about how this might happen.
-Not to mention the many problems you seem to gloss over in your faith in progress: for example, diffusion would no longer work to feed each cell, requiring nonexistent mechanisms to move fluids around.
+And its genes could no longer specify cell placement one by one, but organization would have to somehow 'emerge' or be 'learned', which you are rather obscure about how this might happen.
+Not to mention the many problems you seem to gloss over in your faith in progress: for example, diffusion would no longer work to feed each cell, requiring novel mechanisms to move fluids around.
 If a transworm *could* exist, it would be exponentially difficult for it to eat bacteria and reproduce faster than regular worms, and its performance would likely converge with ours: it would solve our problems only slightly better than us, at tremendously increased cost.
 (We could even make an evolutionary argument: we have evolved to be as smart as is optimal in our niche - and no more or less.)
 Certainly, any Moundularity would be so slow us worms would smell it coming long in advance and wriggle together in a big ball to crush it."
@@ -115,12 +165,12 @@ Crawlviati:
 
 "Your argument seems very narrow to me.
 Yes, I agree that it would be difficult to support so many neurons packed together in one worm, but I'm sure the engineering difficulties can be overcome - there seems to be no fundamental limit to wormputation much greater than 302 neurons, so there must be a way.
-And your food objection is likewise soluble: perhaps transworms can migrate from compost pile to garden regularly as they exhaust resources there, or even figure out some way to easily knock down low-hanging fruit & let them rot.
-They may not, bacterium for bacterium, be as efficient as us, but that doesn't matter as long as the diminishing returns don't turn into *negative* returns.
+And your food objection is likewise soluble: perhaps transworms can migrate from compost pile to garden to compost pile regularly as they exhaust resources in each one, or even figure out some way to easily knock down low-hanging fruit & let them rot.
+They may not, bacterium for bacterium or cell for cell, be as efficient as us, but that doesn't matter as long as the diminishing returns don't turn into *negative* returns.
 As long as the returns are positive, they will be able to pay for their increased resource utilization and continue climbing up the exponential curves.
 And what does 'better' even mean here? The wormputational complexity of a maze may increase sharply with maze size, but that's a statement about mazes, not about comparing maze-solvers, which might be arbitrarily better or worse than each other, so there's a problem: maybe they could solve mazes 100x faster.
-Then there's figuring out what any bit of performance means: if a transworm could solve mazes twice as fast as you or I, maybe it'll get *all* the treats when it beats us to the end, and not less than twice as much.
-Heck, we're *worms*! What do we know about the world? Maybe there are all sorts of cool things which can be done, besides stimulus, response, stimulus, response - if we could just *think* for once in our lives!"
+Then there's figuring out what any bit of performance means: if a transworm could solve mazes twice as fast as you or I, maybe it'll get *all* the treats when it beats us in a race to the end, and not less than twice as much.
+Heck, we're *worms* - what do we know about the world? Maybe there are all sorts of cool things which can be done, besides stimulus, response, stimulus, response, stimulus, response - if we could just *think* for once in our lives!"
 
 Slimeplicius:
 
@@ -138,44 +188,7 @@ Slimeplicius:
 So they did.
 A week later, the farm was sold to a developer, and the mound was rolled flat, and then paved over with asphalt - the construction workers neither hated nor loved the worms, but they were made of atoms useful for stabilizing the road to the townhouses being built there.
 
-# Parable of Nacirema
+# See also
 
-http://lesswrong.com/lw/kfd/a_parable_of_elites_and_takeoffs/
-
-Let me tell you a parable of the future. Let's say, 70 years from now, in a large Western country we'll call Nacirema.
-
-One day far from now: scientific development has continued apace, and a large government project (with, unsurprisingly, a lot of military funding) has taken the scattered pieces of cutting-edge research and put them together into a single awesome technology, which could revolutionize (or at least, vastly improve) all sectors of the economy. Leading thinkers had long forecast that this area of science's mysteries would eventually yield to progress, despite theoretical confusion and perhaps-disappointing initial results and the scorn of more conservative types and the incomprehension (or outright disgust, for 'playing god') of the general population, and at last - it had! The future was bright.
-
-Unfortunately, it was hurriedly decided to use an early prototype outside the lab in an impoverished foreign country. Whether out of arrogance, bureaucratic inertia, overconfidence on the part of the involved researchers, condescending racism, the need to justify the billions of grant-dollars that cumulative went into the project over the years by showing *some* use of it - whatever, the reasons no longer mattered after the final order was signed. The technology was used, but the consequences turned out to be horrific: over a brief period of what seemed like mere days, entire cities collapsed and scores - hundreds - of thousands of people died. (Modern economies are extremely interdependent and fragile, and small disruptions can have large consequences; more people died in the chaos of the evacuation of the areas around Fukushima than will die of the radiation.)
-
-An unmitigated disaster. Worse, the technology didn't even accomplish the assigned goal - that was thanks to a third party's actions! Ironic. But that's how life goes: ['Man Proposes, God Disposes'](https://www.royalholloway.ac.uk/archives/itemofthemonth/items/may2013.aspx).
-
-So, what to do with it? The positive potential was still there, but no one could doubt anymore that there was a horrific dark side: they had just seen what it could do if misused, even if the authorities (as usual) were spinning the events as furiously as possible to avoid frightening the public. You could put it under heavy government control, and they did.
-
-But what was to stop Nacirema's rivals from copying the technology and using it domestically or as a weapon against Nacirema? In particular, Nacirema's enormous furiously-industrializing rival far to the East in Asia, which aspired to regional hegemony, had a long history of being an "oriental despotism" and still had a repressive political system - ruled by an opaque corrupt oligarchy - which abrogated basic human rights such as free speech, and was not a little racist/xenophobic & angry at historical interference in its domestic affairs by Seilla & Nacirema...
-
-The 'arms race' was obvious to anyone who thought about the issue. You had to obtain your own tech or be left in the dust. But an arms race was terrifyingly dangerous - one power with the tech was bad enough, but if there were two holders? A dozen? There was no reason to expect all the wishes to be benign once everyone had their own genie-in-a-bottle. It would not be hyperbolic to say that the fate of global civilization was at stake (even if there were survivors off-planet or in Hanson-style 'disaster refuges', they could hardly rebuild civilization on their own; not to mention that a lot of resources like hydrocarbons have already been depleted beyond the ability of a small primitive group to exploit) or maybe even the human race itself. If ever an x-risk was a clear and present danger, this was it.
-
-Fortunately, the 'hard take-off' scenario did not come to pass, as each time it took years to double the power of the tech; nor was it something you could make in your bedroom, even if you knew the key insights (deducible by a grad student from published papers, as concerned agencies in Nacirema proved). Rather, the experts forecast a slower take-off, on a more human time-scale, where the technology escalated in power over the next two or three decades; importantly, they thought that the Eastern rival's scientists would not be able to clone the technology for another decade or perhaps longer.
-
-So one of the involved researchers - a bona fide world-renowned genius who had made signal contributions to the design of the computers and software involved and had the utmost credibility - made the obvious suggestion. *Don't* let the arms race start. *Don't* expose humanity to an unstable equilibrium of the sort which has collapsed many times in human history. Instead, Nacirema should boldly deliver an ultimatum to the rival: submit to examination and verification that they were not developing the tech, or be destroyed. Stop the contagion from spreading and root out the x-risk. Research in the area would be proscribed, as almost all of it was inherently dual-use.
-
-Others disagreed, of course, with many alternative proposals: perhaps researchers could be trusted to self-regulate; or, related research could be regulated by a special UN agency; or the tech could be distributed to all major countries to reach an equilibrium immediately; or, treaties could be signed; or Nacirema could voluntarily abandon the technology, continue to do things the old-fashioned way, and lead by moral authority.
-
-You might think that the politicians would do *something*, even if they ignored the genius: the prognostications of a few obscure researchers and of short stories published in science fiction had turned out to be truth; the dangers had been realized in practice, and there was no uncertainty about what a war with the tech would entail; the logic of the arms race has been well-documented by many instances to lead to instability and propel countries into war (consider the battleship arms race leading up to WWI); the proposer had impeccable credentials and deep domain-specific expertise and was far from alone in being deeply concerned about the issue; there were multiple years to cope with the crisis after fair warning had been given, so there was enough time; and so on. If the Nacireman political system were to ever be willing to take major action to prevent an x-risk, this would seem to be the ideal scenario. So did they?
-
-One might have faith in the political elites of this country. Surely given the years of warning as the tech became more sophisticated, people would see that this time really was different, this time it was the gravest threat humanity had faced, that the warnings of elite scientists of doomsday would be taken seriously; surely everyone would see the truth of proposition X, leading them to endorse Y and agree with the 'extremists' about policy decision Z (to condense our hopes into one formula); how can we doubt that policy-makers and research funders would begin to respond to the tech safety challenge? After all, we can point to some other instances where policymakers reached good outcomes for minor problems like CFC damages to the atmosphere.
-
-So in our little future world, did the Nacireman political system respond effectively?
-
-I'm a bit cynical, so let's say the answer was... No. Of course not. They did not follow his plan.
-
-And it's not that they found a better plan, either. (Let's face it, any plan calling for more war has to be considered a last resort, even if you have a special new tech to help, and is likely to fail.) Nothing meaningful was done. "Man plans, God laughs." The trajectory of events was indistinguishable from bureaucratic inertia, self-serving behavior by various groups, and was the usual story. After all, what was in it for the politicians? Did such a strategy swell any corporation's profits? Or offer scope for further taxation & regulation? Or could it be used to appeal to anyone's emotion-driven ethics by playing on disgust or purity or in-group loyalty? The strategy had no constituency except those who were concerned by an abstract threat in the future (perhaps, as their opponents insinuated, they were neurotic 'hawks' hellbent on war). Besides, the Nacireman people were exhausted from long years of war in multiple foreign countries and a large domestic depression whose scars remained. Time passed.
-
-Eventually the experts turned out to be wrong but in the worst possible way: the rival took half the time projected to develop their own tech, and the window of opportunity snapped shut. The arms race had begun, and humanity would tremble in fear, as it wondered if it would live out the century or the unthinkable happen.
-
-Good luck, people of the future! I wish you all the best, although I can't be optimistic; if you survive, it will be by the skin of your teeth, and I suspect that due to hindsight bias and near-miss bias, you won't even be able to appreciate how dire the situation was afterwards and will forget your peril or minimize the danger or reason that the tech couldn't have been *that* dangerous since you survived - which would be a sad & pathetic coda indeed.
-
-The End.
-
-(Oh, I'm sorry. Did I write "70 years from now"? I meant: "70 years *ago*". The technology is, of course, nuclear fission which had many potential applications in civilian economy - if nothing else, every sector benefits from electricity 'too cheap to meter'; Nacirema is America & the eastern rival is Russia; the genius is John von Neumann, the SF stories were by Heinlein & Cartmill among others - the latter giving rise to the _Astounding_ incident; and we all know how the Cold War led civilization to the brink of thermonuclear war. Why, did you think it was about something else?)
+- [Embryo selection]()
+- [Simulation inferences]()
