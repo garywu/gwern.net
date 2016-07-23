@@ -99,6 +99,7 @@ The candidate studies:
 - Studer-Luethi et al 2015
 
    excluded because did not report means/SDs for RPM scores
+- Minear et al 2016
 
 Variables:
 
@@ -285,6 +286,8 @@ year study         Publication n.e   mean.e    sd.e   n.c   mean.c  sd.c   activ
 2015 Schwarb.2.2   Schwarb     23    0.91      3.1    10.5  -0.36   2.1    FALSE    480        1    10    2       80    USA
 2016 Heinzel.1     Heinzel.2   15    17.73     1.20   14    16.43   1.00   FALSE    540        2    7.5   1       1     Germany
 2016 Lawlor-Savage Lawlor      27    11.48     2.98   30    11.02   2.34   TRUE     391        1    20    0       0     Canada
+2016 Minear.1      Minear      15.5  24.1      4.5    26    24      5.1    TRUE     400        1    15    1       300   USA
+2016 Minear.2      Minear      15.5  24.1      4.5    37    22.8    4.6    TRUE     400        1    15    1       300   USA
 
 # Analysis
 
@@ -640,6 +643,7 @@ Going through them, I must note:
     The second experiment has 3 groups: a passive control group, a visual n-back, and an auditory n-back. The control group is split.
 - Heinzel et al 2016 does not specify how much participants were paid
 - Lawlor-Savage & Goghari 2016 recorded post-tests for both RAPM & CCFT; I use RAPM as usual
+- Minear et al 2016: two active control groups (_Starcraft_ and non-adaptive n-back), split control group. They also administered two subtests of the ETS Kit of Factor-Referenced Tests, the RPM, and Cattell Culture Fair Tests, so I use the RPM
 
 <!-- Clouter:
 1. The post-training Mean and SD for the raw CFIT scores are: Control group mean = 28.83, SD = 2.68. Training group mean = 30.84, SD = 4.11.

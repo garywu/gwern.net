@@ -1555,6 +1555,27 @@ passive control n=30
 RPM 10 minutes
 nominal compensation -->
 
+### Minear et al 2016
+
+["A simultaneous examination of two forms of working memory training: Evidence for near transfer only"](/docs/dnb/2016-minear.pdf), Minear et al 2016
+
+> The efficacy of working-memory training is a topic of considerable debate, with some studies showing transfer to measures such as fluid intelligence while others have not. We report the results of a study designed to examine two forms of working-memory training, one using a spatial n-back and the other a verbal complex span. Thirty-one undergraduates completed 4 weeks of n-back training and 32 completed 4 weeks of verbal complex span training. We also included two active control groups. One group trained on a non-adaptive version of n-back and the other trained on a real-time strategy video game. All participants completed pre- and post-training measures of a large battery of transfer tasks used to create composite measures of short-term and working memory in both verbal and visuospatial domains as well as verbal reasoning and fluid intelligence. We only found clear evidence for near transfer from the spatial n-back training to new forms of n-back, and this was the case for both adaptive and non-adaptive n-back.
+
+<!--
+"Each training session consisted of 15 blocks with each block consisting of 20+n trials and lasted approximately 20 min. Participants were scheduled for five sessions each week for 4 weeks for a total of 20 sessions."
+
+20*20=400 minutes of training
+n=31 spatial n-back 24.1(4.5)
+n=26 non-adaptive 24.0(5.1)
+n=37 RTS 22.8(4.6)
+
+IQ: RPM, 15 minutes
+
+payment: $300
+
+USA (College of Idaho)
+-->
+
 ## Meta-analysis
 
 > I construct a meta-analysis of the >19 studies which measure IQ after an n-back intervention, confirming that there is a [gain](DNB meta-analysis#analysis) of small-to-medium effect size. I also investigate several n-back claims, criticisms, and indicators of bias, finding:
