@@ -3576,6 +3576,45 @@ July
 13: 1
 14: 0
 15: 0
+16: 0
+17: 1
+18: 0
+19: 1
+20: 0
+21: 1
+22: 0
+23: 1
+-->
+
+<!--
+caffeine.r <- read.csv("~/2016-05-04-caffeinemorning.csv", colClasses=c("Date", "integer"))
+caffeine.c <- read.csv("~/wiki/docs/zeo/2014-06-28-gwern-zeodata-caffeinecorrelation.csv")
+caffeine.c$Date <- as.Date(caffeine.c$Sleep.Date, format="%m/%d/%Y")
+mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
+caffeine <- merge(mp, merge(caffeine.r, subset(caffeine.c, select=c("Date", "Morning.Caffeine")), all=TRUE), all=TRUE)
+
+zeo <- read.csv("~/wiki/docs/zeo/gwern-zeodata.csv")
+zeo$Date <- as.Date(zeo$Sleep.Date, format="%m/%d/%Y")
+zeo$Rise.Time <- sapply(strsplit(as.character(zeo$Rise.Time), " "), function(x) { x[2] })
+interval <- function(x) { if (!is.na(x)) { if (grepl(" s",x)) as.integer(sub(" s","",x))
+                                           else { y <- unlist(strsplit(x, ":")); as.integer(y[[1]])*60 + as.integer(y[[2]]); }
+                                         }
+                          else NA
+                        }
+zeo$Rise.Time <- sapply(zeo$Rise.Time, interval)
+
+zeoCaffeine <- merge(caffeine, zeo, all=TRUE)
+
+library(blavaan)
+## Mediated model: impact on MP through both earlier rising & extra caffeine
+model1 <- 'Rise.Time ~ Caffeine.morning.r + Morning.Caffeine
+           MP ~ Rise.Time + Caffeine.morning.r + Morning.Caffeine'
+b <- bsem(model1, test="none", n.chains=8, sample=2000, jagcontrol=list(method="rjparallel"), data=zeoCaffeine); summary(b)
+
+s1 <- bsem(model1, test="none", n.chains=2, sample=25000, jagcontrol=list(method="rjparallel"), fixed.x=FALSE, data=scale(night[-1])); summary(s1)
+
+## PSRFs are horrible, even after scaling, and limiting the dataset. Does adding semi-informative priors fix it? If not, what about imputing the missing Caffeine.morning.r/Morning.Caffeine NAs to 0?
+# b <- bsem(model1, test="none", n.chains=4, burnin=600000, sample=900000, dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"), jagcontrol=list(method="rjparallel"), fixed.x=FALSE, data=scale(subset(zeoCaffeine[zeoCaffeine$Date>=as.Date("2013-11-10"),], select=c("Rise.Time", "Caffeine.morning.r", "Morning.Caffeine", "MP")))); summary(b)
 -->
 
 ## Hammock
@@ -3843,6 +3882,14 @@ Date,Fan.r,Door.r
 2016-07-13,0,0
 2016-07-14,1,0
 2016-07-15,0,1
+2016-07-16,0,1
+2016-07-17,0,0
+2016-07-18,1,1
+2016-07-19,1,0
+2016-07-20,NA,NA
+2016-07-21,1,0
+2016-07-22,1,1
+2016-07-23,0,0
 
 
 ## I want an interaction effect on `Fan*Door`, since they may have different effects
@@ -5550,9 +5597,14 @@ July
 14: 0 0
 15: 0 0
 16: 0 0
+17: 0 0
+18: 0 0
+19: 0 1
+20: 0 1
+21: 0 0
 -->
 
-<!-- Alcohol log: 18, 22, 23, 24, 26, 27, 30 July 2014; 1, 4, 5, 8, 11, 12, 14, 16, 17, 19, 21, 23, 25, 27, 30 August 2014; 3, 4, 6, 9, 10, 12, 15, 18, 19, 20, 27 September 2014; 1, 8, 9, 10, 12, 20, 22, 24, 29 October; 3, 4, 6, 8, 10, 13, 14, 15, 16, 20, 21, 22, 24, 25, 26, 27 November 2014; 1, 22 December 2014; 2015: 05, 07, 09, 12, 14, 16, 30, 31 January; 7, 14 February; 9 March; 2, 3, 4, 5 April; 22, 23 May; 26, 27, 28 June; 19, 20 July; 8, 24, 25, 26, 27, 28, 29 August; 3, 4, 25, 26 September; 7, 8 October; 9, 24, 26, 27, 30 December; 5, 7 10, 11, 13, 19, 27, 31 January; 2, 13, 17, 19, 21, 23, 25, 26, 28 February; 1, 3, 4, 7, 9, 11, 14, 16, 17, 20, 26 March, 8, 16, 27, 28 May; 3, 5, 18 June; 4 July 2016 -->
+<!-- Alcohol log: 18, 22, 23, 24, 26, 27, 30 July 2014; 1, 4, 5, 8, 11, 12, 14, 16, 17, 19, 21, 23, 25, 27, 30 August 2014; 3, 4, 6, 9, 10, 12, 15, 18, 19, 20, 27 September 2014; 1, 8, 9, 10, 12, 20, 22, 24, 29 October; 3, 4, 6, 8, 10, 13, 14, 15, 16, 20, 21, 22, 24, 25, 26, 27 November 2014; 1, 22 December 2014; 2015: 05, 07, 09, 12, 14, 16, 30, 31 January; 7, 14 February; 9 March; 2, 3, 4, 5 April; 22, 23 May; 26, 27, 28 June; 19, 20 July; 8, 24, 25, 26, 27, 28, 29 August; 3, 4, 25, 26 September; 7, 8 October; 9, 24, 26, 27, 30 December; 5, 7 10, 11, 13, 19, 27, 31 January; 2, 13, 17, 19, 21, 23, 25, 26, 28 February; 1, 3, 4, 7, 9, 11, 14, 16, 17, 20, 26 March, 8, 16, 27, 28 May; 3, 5, 18 June; 4, 21 July 2016 -->
 <!-- melatonin: last night of Now's melatonin+niacin+B6+magnesium 19 Feb 2014; began Nature's Bounty 1mg 21 March 2014 -->
 <!-- vitamin D: last day 4 August 2014 -->
 <!-- added aluminum foil to bedroom, 9 August 2014 -->
