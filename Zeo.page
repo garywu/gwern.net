@@ -3615,6 +3615,61 @@ s1 <- bsem(model1, test="none", n.chains=2, sample=25000, jagcontrol=list(method
 
 ## PSRFs are horrible, even after scaling, and limiting the dataset. Does adding semi-informative priors fix it? If not, what about imputing the missing Caffeine.morning.r/Morning.Caffeine NAs to 0?
 # b <- bsem(model1, test="none", n.chains=4, burnin=600000, sample=900000, dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"), jagcontrol=list(method="rjparallel"), fixed.x=FALSE, data=scale(subset(zeoCaffeine[zeoCaffeine$Date>=as.Date("2013-11-10"),], select=c("Rise.Time", "Caffeine.morning.r", "Morning.Caffeine", "MP")))); summary(b)
+# blavaan (0.1-4) results of 900000 samples after 601000 adapt+burnin iterations
+#
+#                                                   Used       Total
+#   Number of observations                           963        1155
+#
+#   Number of missing patterns                         7
+#
+#   Statistic
+#   Value
+#
+# Parameter Estimates:
+#
+#   Information                                     MCMC
+#   Standard Errors                                 MCMC
+#
+# Regressions:
+#                    Post.Mean  Post.SD  HPD.025  HPD.975     PSRF         Prior
+#   Rise.Time ~
+#     Caffen.mrnng.r    -0.036    0.049   -0.134    0.057    1.000  dnorm(0,200)
+#     Morning.Caffen    -0.071    0.060   -0.187    0.047    1.000  dnorm(0,200)
+#   MP ~
+#     Rise.Time         -0.078    0.032    -0.14   -0.016    1.000  dnorm(0,200)
+#     Caffen.mrnng.r     0.022    0.046   -0.068    0.113    1.000  dnorm(0,200)
+#     Morning.Caffen     0.015    0.054   -0.089    0.121    1.000  dnorm(0,200)
+#
+# Covariances:
+#                         Post.Mean  Post.SD  HPD.025  HPD.975     PSRF         Prior
+#   Caffeine.morning.r ~~
+#     Morning.Caffen          0.339    0.452   -0.558    1.069    1.009    dbeta(1,1)
+#
+# Intercepts:
+#                    Post.Mean  Post.SD  HPD.025  HPD.975     PSRF         Prior
+#     Rise.Time         -0.006    0.036   -0.078    0.064    1.000    dnorm(0,1)
+#     MP                 0.002    0.033   -0.062    0.067    1.000    dnorm(0,1)
+#     Caffen.mrnng.r     0.003    0.048   -0.091    0.096    1.000    dnorm(0,1)
+#     Morning.Caffen    -0.063    0.093   -0.245    0.121    1.000    dnorm(0,1)
+#
+# Variances:
+#                    Post.Mean  Post.SD  HPD.025  HPD.975     PSRF         Prior
+#     Rise.Time          0.987    0.050    0.892    1.087    1.000  dgamma(1,.5)
+#     MP                 0.991    0.046    0.901    1.082    1.000  dgamma(1,.5)
+#     Caffen.mrnng.r     1.004    0.068    0.878    1.142    1.000  dgamma(1,.5)
+#     Morning.Caffen     1.009    0.118    0.786    1.242    1.000  dgamma(1,.5)
+
+nightSubset <- subset(zeoCaffeine[zeoCaffeine$Date>=as.Date("2013-11-10"),], select=c("Date", "Rise.Time", "Caffeine.morning.r", "Morning.Caffeine", "MP"))
+write.csv(file="2016-06-04-caffeine.csv", nightSubset, row.names=FALSE)
+b <- bsem(model1, test="none", sample=100000,
+          dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"),
+          n.chains=4, jagcontrol=list(method="rjparallel"), fixed.x=FALSE,
+          data=scale(nightSubset[,-1]))
+summary(b)
+
+Interpretation: considerable evidence for the caffeine pill strategy working and waking me up earlier - the randomized and unrandomized estimates are almost identical
+There is also some evidence for MP improvement through the earlier waking and perhaps directly; the net effect of the randomized caffeine on MP is (-0.036 * -0.078) + 0.022 = 0.025 SDs
+TODO: redo with merged caffeine variable
 -->
 
 ## Hammock
