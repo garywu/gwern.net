@@ -7,11 +7,16 @@ status: finished
 belief: log
 ...
 
-> In September 2012, I was extorted for $32 for being gwern; I declined to pay. In November 2013, I called an encryption bluff that I was Dread Pirate Roberts. In December 2013, a crazy person tried to blackmail me for billions of dollars for being Satoshi Nakamoto; I declined to pay. In March 2014, the black-market Evolution threatened to dox me if I did not reveal information about their security vulnerabilities.
+> In September 2012, I was extorted for $32 for being gwern; I declined to pay. In November 2013, I called an encryption bluff that I was Dread Pirate Roberts. In December 2013, a crazy person tried to blackmail me for billions of dollars for being Satoshi Nakamoto; I declined to pay. In March 2014, the black-market Evolution threatened to dox me if I did not reveal information about their security vulnerabilities. In February 2015, an Agora user doxed me in an unexpected way and I paid a small bounty.
 
 I have long been interested in cryptographic topics, and in June 2011, I began researching the new black-markets, as epitomized by [Silk Road]() (SR). Between my sustained coverage of black-market topics, occasional interventions like my Sheep-MarketPlace/BlackMarket-Reloaded bet, and my minor role in the doxing of Sheep MarketPlace's owner, and my essays [Bitcoin is Worse is Better]() & [Time-lock cryptography](Self-decrypting files), I have been sometimes accused of being more involved than I appear - possibly Dread Pirate Roberts (really Ross Ulbricht), [Satoshi Nakamoto](!Wikipedia), a high-level seller, a law enforcement agent, or other things.
 
-While sometimes flattering (I wish I was Satoshi Nakamoto!), these are all quite wrong: I am but an impoverished writer who barely makes ends meet, and certainly not a Bitcoin billionaire or elite C++ P2P crypto programmer, though I write *about* Bitcoin/cryptography/black-markets. Still, some tinge of notoriety can be useful if it means people are willing to tell me private information. On the other hand, sometimes it is plain irritating. They don't always go anywhere. Here are 3 examples of things that went nowhere, or at least, not where I wanted them to go.
+While sometimes flattering (I wish I was Satoshi Nakamoto!), these are all quite wrong: I am but an impoverished writer who barely makes ends meet, and certainly not a Bitcoin billionaire or elite C++ P2P crypto programmer, though I write *about* Bitcoin/cryptography/black-markets. Still, some tinge of notoriety can be useful if it means people are willing to tell me private information. On the other hand, sometimes it is plain irritating. They don't always go anywhere. Here are some examples of things that went nowhere, or at least, not where I wanted them to go.
+
+# Pseudonymity bounty
+
+Prompted by my bounty to nwerg, I am making a standing offer of \$10 (~฿0.01 as of July 2016) to anyone who can de-anonymize me in a way I do not already know about or which is impressive.
+To claim it, email me at `gwern@gwern.net` with my name, the method, and a Bitcoin address.
 
 # 2012
 ## Anonymous
@@ -386,7 +391,7 @@ His next reply, thankfully, was properly formatted, and so I could import anothe
 
 Wow. I was wrong: Jack didn't think I was DPR, or SR staff. He thought I was *Satoshi Nakamoto*. Wow. Leaving aside the basic issues with the theory (like how I don't know C++, have little familiarity with cryptocurrencies prior to Bitcoin, certainly wouldn't be living my current lifestyle if I had Nakamoto's estimated ฿800,000, could barely program Java when Nakamoto was starting to work on Bitcoin in 2006 etc), this immediately raised red flags as being megalomaniac, grandiose, and providing precisely zero hard evidence about anything. I have done a little research on Nakamoto myself, and there is nothing Jack could have found in Nakamoto's background which would tie him to me, and that meant it was highly unlikely I could learn anything of value from Jack and I had wasted my time.
 
-On the other hand... how deep did this rabbit hole go? If he thought I was Nakamoto, what on earth led him to him to such a profoundly erroneous conclusion? I admit to a certain interest in diseased thinking (one of my [favorite books](Book reviews) is [Umberto Eco](!Wikipedia)'s _[Foucault's Pendulum](!Wikipedia)_ and I enjoy reading psychology books like Oliver Sack's), and Jack might have a rare gem of conspiracy theorizing if I could but extract it from him. And his purple prose is hilarious (what, does he think he's Moriarty or something?) So, a challenge: could I provoke him into revealing his hand?
+On the other hand... how deep did this rabbit hole go? If he thought I was Nakamoto, what on earth led him to him to such a profoundly erroneous conclusion? I admit to a certain interest in diseased thinking (one of my [favorite books](Book reviews) is [Umberto Eco](!Wikipedia)'s _[Foucault's Pendulum](!Wikipedia)_ and I enjoy reading psychology books like Oliver Sacks's), and Jack might have a rare gem of conspiracy theorizing if I could but extract it from him. And his purple prose is hilarious (what, does he think he's Moriarty or something?) So, a challenge: could I provoke him into revealing his hand?
 
 > Hello again. Hopefully this key works this time. Since you've been so kind as to put up with my crypto-nitpicking and given the timeline you've set, I will be blunt: I think you are bluffing me.
 >
@@ -715,24 +720,20 @@ After reading it, he gave me permission to publish it and did not seem worried. 
 >
 > But ignoring the problem won't make it go away.
 
-As of 3 January 2014, I have heard nothing back from Jack, nor of any real-world incidents connected to this. So he seems to have given up. I hope he did get help, but I am not optimistic.
+I did receive one last message on 3 February 2014: <!-- ( -->
 
+> Just some crazy guy,
+>
+> It's so odd how Charlie was a free man one day and now his life is basically over. We both knew what a pawn he really was though. Tell Gavin I said thanks for allowing you to publish me last month! I'm sure the bitcoin foundation has been thrilled to receive calls all this past week about last weeks incident lol!
+>
+> You should've acted when you had the chance, I'm sorry to see bitcoin hit the ground so fast this year. The day I stand before you Gwern, you'll wish it was all under very different circumstances. You'll wish we were standing looking at each other at eye-level too. But mostly, you'll wish we were less than enemies from the start, because I reached out to help and you spit in my face lol.
+>
+> Meth? Schizo? Really!? Lol way to mix it up for your audience even changed up the text a bit I see? I can't wait to meet you in the flesh--soon enough!! I obviously have never had proof so please do me the courtesy of putting this last message up on gwern.net. Have a splendid year! ;) RIP Satoshi/BTC Foundation 2014.
+>
+> -j0n
+
+As of 23 July 2016, I have heard nothing further from Jack, nor of any real-world incidents connected to this. So he seems to have given up. I hope he did get help, but I am not optimistic.
 It was an interesting experience, overall. But I think the next time I receive a strange mention and casually note that it sounded like the author was crazy, I will probably ignore it or break the conversation off early: one dialogue with a crazy person is enough.
-
-<!--
-6:11PM 3 February 2014:
-from theyarecomingsoon sent 5 minutes ago
-
-Just some crazy guy,
-
-It's so odd how Charlie was a free man one day and now his life is basically over. We both knew what a pawn he really was though. Tell Gavin I said thanks for allowing you to publish me last month! I'm sure the bitcoin foundation has been thrilled to receive calls all this past week about last weeks incident lol!
-
-You should've acted when you had the chance, I'm sorry to see bitcoin hit the ground so fast this year. The day I stand before you Gwern, you'll wish it was all under very different circumstances. You'll wish we were standing looking at each other at eye-level too. But mostly, you'll wish we were less than enemies from the start, because I reached out to help and you spit in my face lol.
-
-Meth? Schizo? Really!? Lol way to mix it up for your audience even changed up the text a bit I see? I can't wait to meet you in the flesh--soon enough!! I obviously have never had proof so please do me the courtesy of putting this last message up on gwern.net. Have a splendid year! ;) RIP Satoshi/BTC Foundation 2014.
-
--j0n
--->
 
 # 2014
 ## March
@@ -798,9 +799,13 @@ At 8:53PM, I received 2 threatening emails from "ya pravda <pravda.yapravda@yand
 >     =i6PK
 >     -----END PGP PUBLIC KEY BLOCK-----
 
-I was a little amused by the rationale given: you are bothered by people badmouthing your market, so you decide to... go around threatening people? That does not seem like a very good way to win friends & influence people.
+I was a little amused by the rationale given: you are bothered by people badmouthing your market, so you decide to... go around threatening people?
+That does not seem like a very good way to win friends & influence people.
 
-But since I am not a "Dan Crow" (and my searches failed to turn up anyone of that nick on the black-markets or elsewhere), I was a little baffled by this, but after discussing it with [/u/the_avid](http://www.reddit.com/user/the_avid) (a security specialist who has found holes in a number of black-markets & consulted for them), we think this is a representative of Evolution Marketplace, which is a minor black-market founded by Anglophone carders after their Tor Carding Forum was hacked. the_avid had posted to a private subreddit a short writeup (which I've [since reposted publicly](https://www.reddit.com/r/DarkNetMarkets/comments/2ips02/carding_forums_ponzi_schemes_and_law_enforcement/ "'Carding Forums, Ponzi Schemes and Law Enforcement: A background on Evolution Marketplace', by the_avid")) of the history of carding forums and why Anglophone carding forums were insecure & incompetent compared to the Slavic originals, to support his argument that Evolution was unusually dangerous for drug buyers to use. Then a mod alluded to the post [in a public discussion](http://reddit.com/r/DarkNetMarkets/comments/20i2os/why_isnt_evolution_used_more/cg3iw0u) when he implied Evolution was to be avoided, and while not IDing the_avid as the author, clearly was talking about either him or myself. Hence the Evolution staffer's threats to me: he assumed I had written up the material based on tips from the_avid. A reasonable guess, but wrong.
+But since I am not a "Dan Crow" (and my searches failed to turn up anyone of that nick on the black-markets or elsewhere), I was a little baffled by this, but after discussing it with [/u/the\_avid](http://www.reddit.com/user/the_avid) (a security specialist who has found holes in a number of black-markets & consulted for them), we think this is a representative of Evolution Marketplace, which is a minor black-market founded by Anglophone carders after their Tor Carding Forum was hacked.
+the\_avid had posted to a private subreddit a short writeup (which I've [since reposted publicly](https://www.reddit.com/r/DarkNetMarkets/comments/2ips02/carding_forums_ponzi_schemes_and_law_enforcement/ "'Carding Forums, Ponzi Schemes and Law Enforcement: A background on Evolution Marketplace', by the_avid")) of the history of carding forums and why Anglophone carding forums were insecure & incompetent compared to the Slavic originals, to support his argument that Evolution was unusually dangerous for drug buyers to use.
+Then a mod alluded to the post [in a public discussion](http://reddit.com/r/DarkNetMarkets/comments/20i2os/why_isnt_evolution_used_more/cg3iw0u) when he implied Evolution was to be avoided, and while not IDing the\_avid as the author, clearly was talking about either him or myself.
+Hence the Evolution staffer's threats to me: he assumed I had written up the material based on tips from the\_avid. A reasonable guess, but wrong.
 
 The Dan Crow thing is simply wrong, however, and I was curious what on earth led them to him. So I replied with my usual baiting:
 
@@ -814,7 +819,8 @@ But also as usual, they declined to cough up anything meaningful:
 >
 > Which darknet markets are you involved with, either directly or indirectly?
 
-If he really had a report with "irrefutable evidence" not even I could talk my way out of, and was planning to make it public if I refused to give him information, then he should be perfectly happy to provide me it and cut through all the tedious negotiating - I would see the ironclad evidence, realize he had me by the curlies, and leak like a sieve. Hence, he was bluffing. Sad but predictable. It occurred to me that I didn't yet have proof this was Evolution's fault; hypothetically speaking, it might be another black-market trying to make Evolution look bad. So:
+If he really had a report with "irrefutable evidence" not even I could talk my way out of, and was planning to make it public if I refused to give him information, then he should be perfectly happy to provide me it and cut through all the tedious negotiating - I would see the ironclad evidence, realize he had me by the curlies, and leak like a sieve.
+Hence, he was bluffing. Sad but predictable. It occurred to me that I didn't yet have proof this was Evolution's fault; hypothetically speaking, it might be another black-market trying to make Evolution look bad. So:
 
 > BTW, I forgot to ask this earlier but: how do I know you even represent Evolution in the first place? Which staffer are you?
 
@@ -829,13 +835,10 @@ Since we were clearly done, I threw in a taunt:
 
 No reply. A check of Reddit and the Evolution forums turned up no doxes either. Was it all a bluff?
 
-<!--
 # 2015
 ## February
 
-February 09, 2015, 09:15:07 PM  (No subject)    Sansa
-
-On "February 08, 2015, 08:38:25 AM", I received an encrypted PM on the Agora forums from a new account named ["nwerg"](http://lacbzxobeprssrfx.onion/index.php?action=profile;u=43274), titled "your average doxing", which said:
+On "February 08, 2015, 08:38:25 AM", I received an encrypted PM on the Agora forums from a new account named "nwerg", titled "your average doxing", which said:
 
 > Gwern, having perused your Blackmail page and having had a good laugh at the conspiratorial wannabes there, I'm here to inform you that you can in fact be doxxed rather easily. If I'm the first to do so, do I get a bounty?
 >
@@ -947,7 +950,7 @@ I replied 3 days later on 11 February 2015:
 >
 > > How about if I vend the information on Evolution, where you seem to be disliked?
 >
-> I don't think they dislike me *that* much... The threat on my Blackmail page was because of the_avid's essay and I posted that publicly a while ago, so why would they pay for my dox now?
+> I don't think they dislike me *that* much... The threat on my Blackmail page was because of the\_avid's essay and I posted that publicly a while ago, so why would they pay for my dox now?
 >
 > > Or upload the information to Doxbin?
 >
@@ -958,7 +961,32 @@ I replied 3 days later on 11 February 2015:
 > FWIW, it's safer to include the public key in the original message. Harder to pull off any sort of MITM or leak the fact that a key exchange is being done.
 >
 > Also, the Agora forums is a bad contact. I don't read it because it's so stuffed with spam, I just crawl it. I saw your PM only because I was checking the cookie was still valid.
--->
+
+Agora forum downtime meant he didn't reply until the 13th:
+
+> > You removed the comment, I see. Not even a token 0.01 BTC for alerting you to its presence?
+>
+> Actually... you make a good point about that one. I didn't know about it at all, and so I did learn something interesting from you (specifically, that Gravatar betrayed me). I'm not going to pay blackmail, but I am willing to pay for interesting information, and ฿0.01 is a fair amount.
+>
+> > Anyhow, you've been a good sport about the whole thing, I'd frankly have been amazed if you gave me anything. So unlike most doxxers, I'll probably keep this to myself and just fade back into the mist and you'll never hear from me again. No Doxbin, no Evolution. This entire exercise was mainly in response to the accumulation of fanboys you seem to have developed on Reddit, who think of you as a demi-god for some reason. This was my petty way of showing that, no, you're not some super-anonymous enigma, you're just a [].
+>
+> I never claimed otherwise. I find the recent stuff on Reddit more than a little over the top as well. Or have you seen the stuff on Quora? Someone seems to spend an inordinate amount of time coming up with all sorts of bizarre and often personal questions they seem to want me to answer...
+>
+> > And PayPal had nothing to do with it, BTW. No, the actual method was even more prosaic: a simple [] ..
+>
+> I figured as much. As far as I know, [] and [] are probably the main leaks. IIRC, I accepted the risk with [] but I got careless about the [].
+>
+> > As a post-script, feel free to add this conversation to your Blackmail page, with your vital details redacted, as it would amuse me to no end. Though I doubt it's going to happen.
+>
+> Of course. There's no point in having a big blackmail page to prove that I don't pay blackmail - and then *leave incidents out*!
+>
+> []
+>
+> > Last question: I noticed the letters in "gwern branwen" happens to be contained in your full real name (including middle name). Was that on purpose, or a happy coincidence? I considered anagramming your whole name but decided I'd just ask you instead.
+>
+> More than a coincidence, less than on purpose; with my funny name, I've always been drawn to more consonant-y names, so the overlap is not random.
+
+Of my attempted blackmailers and doxers, nwerg was by far the most competent and I actually learned something from him.
 
 # See also
 
