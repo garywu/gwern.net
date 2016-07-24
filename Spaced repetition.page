@@ -385,6 +385,7 @@ Rea, Cornelius P; Modigliani, Vito. ["The effect of expanded versus massed pract
 - biology (middle school; [Kelly & Whatson 2013](http://www.frontiersin.org/Journal/10.3389/fnhum.2013.00589/full "Making long-term memories in minutes: a spaced learning pattern from memory research in education"))
 - statistics (introductory; [Maas et al 2015](http://www.researchgate.net/profile/Phil_Pavlik_Jr/publication/277247763_How_Spacing_and_Variable_Retrieval_Practice_Affect_the_Learning_of_Statistics_Concepts/links/5564dd0908aec4b0f48593aa.pdf "How Spacing and Variable Retrieval Practice Affect the Learning of Statistics Concepts"))
 - memorizing website passwords ([Bonneau & Schechter 2014](http://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-bonneau.pdf "Towards Reliable Storage of 56-bit Secrets in Human Memory"), [Blocki et al 2014](http://arxiv.org/abs/1410.1490 "Spaced Repetition and Mnemonics Enable Recall of Multiple Strong Passwords"))
+- possibly not Australian constitutional law ([Colbran et al 2015](/docs/spacedrepetition/2015-colbran.pdf "The impact of student-generated digital flashcards on student learning of constitutional law"))
 
 [^Rohrer-warning]: Rohrer & Taylor 2006 warns us, though, about many of the other math studies:
 
@@ -515,7 +516,9 @@ To bring it all together with the gist:
 
 ## Using it
 
-One doesn't need to use SuperMemo, of course; there are plenty of free alternatives. I like [Mnemosyne](!Wikipedia "Mnemosyne (software)") ([homepage](http://www.mnemosyne-proj.org/)) myself - [Free](!Wikipedia "Free software"), packaged for [Ubuntu Linux](!Wikipedia), and quite easy to use.
+One doesn't need to use SuperMemo, of course; there are plenty of free alternatives.
+I like [Mnemosyne](!Wikipedia "Mnemosyne (software)") ([homepage](http://www.mnemosyne-proj.org/)) myself - [Free](!Wikipedia "Free software"), packaged for [Ubuntu Linux](!Wikipedia), easy to use, free mobile client, long track record of development.
+But the SRS client Anki is also popular, and has advantages in being more feature-rich and a larger & more active community (and possibly better support for East Asian language material).
 
 OK, but what does one do with it? It's a surprisingly difficult question, actually. It's akin to "the  tyranny of the blank page" (or blank wiki); now that I have all this power - a mechanical golem that will never forget and never let me forget whatever I chose to - what do I choose to remember?
 
@@ -719,7 +722,7 @@ The Mnemosyne project has been collecting user-submitted spaced repetition stati
 - ["Teaching linear algebra"](http://bentilly.blogspot.com/2009/09/teaching-linear-algebra.html) (with spaced repetition), by Ben Tilly
 
     - [Manual flashcards for his 2^nd^ grader](http://bentilly.blogspot.com/2012/10/my-sons-flashcard-routine.html)
-- ["A Year of Spaced Repetition Software in the Classroom"](http://lesswrong.com/r/discussion/lw/mfm/a_year_of_spaced_repetition_software_in_the/)
+- ["A Year of Spaced Repetition Software in the Classroom"](http://lesswrong.com/r/discussion/lw/mfm/a_year_of_spaced_repetition_software_in_the/); [two years](http://lesswrong.com/r/discussion/lw/nkz/a_second_year_of_spaced_repetition_software_in/)
 - [AJATT table of contents](http://www.alljapaneseallthetime.com/blog/all-japanese-all-the-time-ajatt-how-to-learn-japanese-on-your-own-having-fun-and-to-fluency) -(applying SRS to learning Japanese)
 - SRS for programming:
 
@@ -759,6 +762,7 @@ The Mnemosyne project has been collecting user-submitted spaced repetition stati
 - ["Studying for the Test by Taking It"](http://www.nytimes.com/2014/11/23/sunday-review/studying-for-the-test-by-taking-it.html)
 - ["Making Summer Count: How Summer Programs Can Boost Children's Learning"](http://www.rand.org/content/dam/rand/pubs/monographs/2011/RAND_MG1120.pdf), McCombs et al 2011 (RAND MG1120)
 - [_Learning Medicine: An Evidence-Based Guide_](http://www.learningmedicinebook.com/)
+- ["Factors that Influence Skill Decay And Retention: a Quantitative Review and Analysis"](http://www.owlnet.rice.edu/~antonvillado/courses/13c_psyc630002/Arthur,%20Bennett,%20Stanush,%20&%20McNelly%20%281998%29%20HP.pdf), Arthur et al 1998
 
 ## Flashcard sources
 
