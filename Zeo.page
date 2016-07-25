@@ -2637,9 +2637,12 @@ Then I was reminded [by Kaj Sotala](http://lesswrong.com/lw/h2m/solved_problems_
 
 > I set my alarm to 6:00 and 8:00. At 6:00 I go up, take a 50mg caffeine pill, and go to bed again. Then I sleep and wake up rested and energetic around 8. In my case the time for the pill to start working seems to be 1.5 hours. A dose of one pill ensures that I wake up (but still yawning) while two pills makes me start the day much more quickly. The added benefit is of course a regular sleep schedule.
 
-It sounds logical enough (why *wouldn't* a caffeine pill work?), and he cites [a study successfully trying a similar trick with naps](http://faculty.vet.upenn.edu/uep/user_documents/Van_Dongen_etal_Sleep_24_7_2001.pdf "'Caffeine eliminates psychomotor vigilance deficits from sleep inertia', Van Dongen et al 2001"). I'd meant to try it out at some point, and winter was as good a reason as any. I already had an ample supply of caffeine pills (technically, piracetam+caffeine+others), so I had just been procrastinating on doing a design & setting up my usual RCT. I decided that I might as well try it out as a simple easy non-blinded alternate-day pilot experiment and if I felt like it after a month or two of data, I might try an RCT.
+It sounds logical enough (why *wouldn't* a caffeine pill work?), and he cites [a study successfully trying a similar trick with naps](http://faculty.vet.upenn.edu/uep/user_documents/Van_Dongen_etal_Sleep_24_7_2001.pdf "'Caffeine eliminates psychomotor vigilance deficits from sleep inertia', Van Dongen et al 2001").
+I'd meant to try it out at some point, and winter was as good a reason as any. I already had an ample supply of caffeine pills (technically, piracetam+caffeine+others), so I had just been procrastinating on doing a design & setting up my usual RCT.
+I decided that I might as well try it out as a simple easy non-blinded quasi-experimental alternate-day pilot experiment and if I felt like it after a month or two of data, I might try an RCT.
 
-So on 4 November 2013, I started keeping a little jar of my caffeine+piracetam pills by my bedside and using them on alternate days (specifically, my Zeo SmartWake fires in the 9-9:30AM window and I take it then, while I may or may not snooze on). Thus far they do seem to wake me up. I stopped around April 2014.
+So on 4 November 2013, I started keeping a little jar of my caffeine+piracetam pills by my bedside and using them on alternate days (specifically, my Zeo SmartWake fires in the 9-9:30AM window and I take it then, while I may or may not snooze on).
+I stopped around April 2014.
 
 ### Pilot analysis
 
@@ -2721,7 +2724,8 @@ Two observations immediately jump out:
 
 A more precise analysis with covariates is possible; for example, depending on how late I went to bed, that might affect when I get up in the morning.
 But you have to be careful in what you look at - if you look at something like 'total sleep length', well, that's partially *caused by* sleeping in!
-It must be impossible for the variables to be affected by sleeping in or not. So, `Total.Z`, `Time.in.REM`, etc are all out. I think we can include:
+It must be impossible for the variables to be affected by sleeping in or not. So, `Total.Z`, `Time.in.REM`, etc are all out as covariates (at least, without digging into the time-series data to create new versions which exclude any sleep time after 8AM or so).
+I think we can safely include:
 
 1. how long it took to fall asleep;
 2. what time I went to sleep; which gives us a smaller estimate of 15 minutes:
@@ -2810,10 +2814,14 @@ power.t.test(d=0.3482, power=0.80, type="paired", alternative="one.sided")
 # NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs
 ~~~
 
-Using _d_=0.35 as an effect size estimate, a proper blind experiment (blocking pairs of days) will take 100 days total (50 placebo pills, 50 caffeine pills).
+Using _d_=0.35 as an effect size estimate, a proper blind experiment (blocking pairs of days) will take >100 days (>50 placebo pills, >50 caffeine pills).
+
+### Full experiment
+
 I began 29 June 2014.
 I made the placebo pills the usual way with Bisquick, tossed together with the caffeine pills to equalize any coating; I made 120, more than I needed, because it's always annoying to set up & make pills, and it only took 40 minutes from start to cleanup.
 Unfortunately, a few days into the experiment it became clear that my old caffeine pills had absorbed some ambient moisture and the tossing had not equalized the surface flavor, so the placebo pills could be easily distinguished from the caffeine pills by both flavor & texture, rendering this not a blinded & randomized experiment but just a randomized experiment.
+I ran out of caffeine on 4 May 2016 and terminated the experiment with _n_=441.
 
 <!-- TODO: followup analysis per http://lesswrong.com/lw/2p5/humans_are_not_automatically_strategic/b5lo - and maybe shift the alarm to 8:30 as suggested by the correlation -->
 
@@ -3587,11 +3595,18 @@ July
 -->
 
 <!--
-caffeine.r <- read.csv("~/2016-05-04-caffeinemorning.csv", colClasses=c("Date", "integer"))
+Data preparation:
+
+~~~{.R}
+caffeine.r <- read.csv("~/wiki/docs/zeo/2016-05-04-caffeinemorning.csv", colClasses=c("Date", "integer"))
 caffeine.c <- read.csv("~/wiki/docs/zeo/2014-06-28-gwern-zeodata-caffeinecorrelation.csv")
 caffeine.c$Date <- as.Date(caffeine.c$Sleep.Date, format="%m/%d/%Y")
 mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
 caffeine <- merge(mp, merge(caffeine.r, subset(caffeine.c, select=c("Date", "Morning.Caffeine")), all=TRUE), all=TRUE)
+## combine Morning.Caffeine.r + Morning.Caffeine while preserving the NAs:
+caffeine$Caffeine <- unlist(Map(function(a,b) { if (!is.na(a) & !is.na(b)) { return(a+b); } else
+    { if(is.na(a)) { return(b);} else { return(a);}}},
+    caffeine$Morning.Caffeine.r, caffeine$Morning.Caffeine))
 
 zeo <- read.csv("~/wiki/docs/zeo/gwern-zeodata.csv")
 zeo$Date <- as.Date(zeo$Sleep.Date, format="%m/%d/%Y")
@@ -3602,28 +3617,63 @@ interval <- function(x) { if (!is.na(x)) { if (grepl(" s",x)) as.integer(sub(" s
                           else NA
                         }
 zeo$Rise.Time <- sapply(zeo$Rise.Time, interval)
+zeo$Start.of.Night <- sapply(strsplit(as.character(zeo$Start.of.Night), " "), function(x) { x[2] })
+zeo$Start.of.Night <- sapply(zeo$Start.of.Night, interval)
 
 zeoCaffeine <- merge(caffeine, zeo, all=TRUE)
 
+nightSubset <- subset(zeoCaffeine[zeoCaffeine$Date>=as.Date("2013-11-10") & zeoCaffeine$Date<=as.Date("2016-05-04"),],
+  select=c("Date", "Start.of.Night", "Time.to.Z", "Total.Z", "Time.in.Wake", "Rise.Time", "Morning.Caffeine.r", "Morning.Caffeine", "Caffeine", "MP"))
+write.csv(file="~/wiki/docs/zeo/2016-05-04-caffeine.csv", nightSubset, row.names=FALSE)
+~~~
+
+Analysis:
+
+~~~{.R}
+caffeine <- read.csv("~/wiki/docs/zeo/2016-05-04-caffeine.csv", colClasses=c("Date", rep("numeric", 9)))
+
+wilcox.test(Rise.Time ~ Morning.Caffeine.r, conf.int=TRUE, data=caffeine)
+#   Wilcoxon rank sum test with continuity correction
+#
+# data:  Rise.Time by Morning.Caffeine.r
+# W = 20672.5, p-value = 0.4470533
+# alternative hypothesis: true location shift is not equal to 0
+# 95 percent confidence interval:
+#  -5.000008791 14.999948639
+# sample estimates:
+# difference in location
+#             4.99994868
+
+library(ggplot2)
+qplot(Date, Rise.Time, color=as.logical(Morning.Caffeine.r), data=caffeine) + theme(legend.position = "none")
+~~~
+
+![Waking up time vs randomized caffeine pill, 2014-2016](/images/zeo/2016-05-04-caffeine-experiment.png)
+
+The U-test is unimpressed, but we'll continue on with a more detailed mediation analysis, examining the impact of the two caffeine variables on `Rise.Time` and `MP` adjusting for `Start.of.Night` (as the only available sleep variable unaffected by the intervention).
+I also transform to more normality some sleep variables which are skewed, scale the dataset, and add some mildly informative priors (implying mostly that effects larger than 1SD are unlikely) to stabilize the blavaan run:
+
+~~~{.R}
 library(blavaan)
-## Mediated model: impact on MP through both earlier rising & extra caffeine
-model1 <- 'Rise.Time ~ Caffeine.morning.r + Morning.Caffeine
-           MP ~ Rise.Time + Caffeine.morning.r + Morning.Caffeine'
-b <- bsem(model1, test="none", n.chains=8, sample=2000, jagcontrol=list(method="rjparallel"), data=zeoCaffeine); summary(b)
+## transform
+caffeine$Time.to.Z.root <- caffeine$Time.to.Z^(1/3)
+caffeine$Rise.Time.root <- sqrt(caffeine$Rise.Time)
+caffeine$Total.Z.2 <- caffeine$Total.Z^2
+caffeine$Time.in.Wake.log <- log1p(caffeine$Time.in.Wake)
 
-s1 <- bsem(model1, test="none", n.chains=2, sample=25000, jagcontrol=list(method="rjparallel"), fixed.x=FALSE, data=scale(night[-1])); summary(s1)
+model1 <- 'Rise.Time.root    ~ Start.of.Night + Time.to.Z.root + Morning.Caffeine.r + Morning.Caffeine
+           Total.Z.2         ~ Start.of.Night + Time.to.Z.root + Morning.Caffeine.r + Morning.Caffeine
+           Time.in.Wake.log  ~ Start.of.Night + Time.to.Z.root + Morning.Caffeine.r + Morning.Caffeine
+           MP                ~ Start.of.Night + Time.to.Z.root + Total.Z.2 + Time.in.Wake.log + Morning.Caffeine.r + Morning.Caffeine + Rise.Time.root'
 
-## PSRFs are horrible, even after scaling, and limiting the dataset. Does adding semi-informative priors fix it? If not, what about imputing the missing Caffeine.morning.r/Morning.Caffeine NAs to 0?
-# b <- bsem(model1, test="none", n.chains=4, burnin=600000, sample=900000, dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"), jagcontrol=list(method="rjparallel"), fixed.x=FALSE, data=scale(subset(zeoCaffeine[zeoCaffeine$Date>=as.Date("2013-11-10"),], select=c("Rise.Time", "Caffeine.morning.r", "Morning.Caffeine", "MP")))); summary(b)
-# blavaan (0.1-4) results of 900000 samples after 601000 adapt+burnin iterations
-#
-#                                                   Used       Total
-#   Number of observations                           963        1155
-#
-#   Number of missing patterns                         7
-#
-#   Statistic
-#   Value
+b <- bsem(model1,
+          dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"),
+          n.chains=7, jagcontrol=list(method="rjparallel"), fixed.x=FALSE,
+          data=scale(caffeine[,-1]))
+summary(b)
+# ...
+#   Statistic                                 MargLogLik         PPP
+#   Value                                      -7465.245       0.000
 #
 # Parameter Estimates:
 #
@@ -3631,45 +3681,63 @@ s1 <- bsem(model1, test="none", n.chains=2, sample=25000, jagcontrol=list(method
 #   Standard Errors                                 MCMC
 #
 # Regressions:
-#                    Post.Mean  Post.SD  HPD.025  HPD.975     PSRF         Prior
-#   Rise.Time ~
-#     Caffen.mrnng.r    -0.036    0.049   -0.134    0.057    1.000  dnorm(0,200)
-#     Morning.Caffen    -0.071    0.060   -0.187    0.047    1.000  dnorm(0,200)
+#                      Post.Mean  Post.SD  HPD.025  HPD.975     PSRF         Prior
+#   Rise.Time.root ~
+#     Start.of.Night       0.209    0.037    0.136    0.281    1.005  dnorm(0,200)
+#     Time.to.Z.root       0.036    0.033    -0.03    0.099    1.003  dnorm(0,200)
+#     Morning.Cffn.r      -0.039    0.054   -0.147    0.066    1.017  dnorm(0,200)
+#     Morning.Caffen      -0.195    0.073   -0.328   -0.051    1.027  dnorm(0,200)
+#   Total.Z.2 ~
+#     Start.of.Night      -0.185    0.038    -0.26   -0.113    1.006  dnorm(0,200)
+#     Time.to.Z.root       0.014    0.033   -0.051    0.079    1.002  dnorm(0,200)
+#     Morning.Cffn.r      -0.033    0.049    -0.13    0.063    1.015  dnorm(0,200)
+#     Morning.Caffen      -0.157    0.085   -0.313    0.009    1.024  dnorm(0,200)
+#   Time.in.Wake.log ~
+#     Start.of.Night      -0.002    0.034    -0.07    0.064    1.001  dnorm(0,200)
+#     Time.to.Z.root       0.112    0.033    0.049    0.178    1.000  dnorm(0,200)
+#     Morning.Cffn.r       0.003    0.043   -0.082    0.086    1.001  dnorm(0,200)
+#     Morning.Caffen      -0.040    0.055   -0.148    0.069    1.003  dnorm(0,200)
 #   MP ~
-#     Rise.Time         -0.078    0.032    -0.14   -0.016    1.000  dnorm(0,200)
-#     Caffen.mrnng.r     0.022    0.046   -0.068    0.113    1.000  dnorm(0,200)
-#     Morning.Caffen     0.015    0.054   -0.089    0.121    1.000  dnorm(0,200)
-#
-# Covariances:
-#                         Post.Mean  Post.SD  HPD.025  HPD.975     PSRF         Prior
-#   Caffeine.morning.r ~~
-#     Morning.Caffen          0.339    0.452   -0.558    1.069    1.009    dbeta(1,1)
-#
-# Intercepts:
-#                    Post.Mean  Post.SD  HPD.025  HPD.975     PSRF         Prior
-#     Rise.Time         -0.006    0.036   -0.078    0.064    1.000    dnorm(0,1)
-#     MP                 0.002    0.033   -0.062    0.067    1.000    dnorm(0,1)
-#     Caffen.mrnng.r     0.003    0.048   -0.091    0.096    1.000    dnorm(0,1)
-#     Morning.Caffen    -0.063    0.093   -0.245    0.121    1.000    dnorm(0,1)
-#
-# Variances:
-#                    Post.Mean  Post.SD  HPD.025  HPD.975     PSRF         Prior
-#     Rise.Time          0.987    0.050    0.892    1.087    1.000  dgamma(1,.5)
-#     MP                 0.991    0.046    0.901    1.082    1.000  dgamma(1,.5)
-#     Caffen.mrnng.r     1.004    0.068    0.878    1.142    1.000  dgamma(1,.5)
-#     Morning.Caffen     1.009    0.118    0.786    1.242    1.000  dgamma(1,.5)
-
-nightSubset <- subset(zeoCaffeine[zeoCaffeine$Date>=as.Date("2013-11-10"),], select=c("Date", "Rise.Time", "Caffeine.morning.r", "Morning.Caffeine", "MP"))
-write.csv(file="2016-06-04-caffeine.csv", nightSubset, row.names=FALSE)
-b <- bsem(model1, test="none", sample=100000,
-          dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"),
-          n.chains=4, jagcontrol=list(method="rjparallel"), fixed.x=FALSE,
-          data=scale(nightSubset[,-1]))
-summary(b)
+#     Start.of.Night      -0.039    0.036   -0.109    0.032    1.000  dnorm(0,200)
+#     Time.to.Z.root       0.063    0.033   -0.003    0.128    1.000  dnorm(0,200)
+#     Total.Z.2           -0.057    0.035   -0.126    0.012    1.000  dnorm(0,200)
+#     Time.in.Wak.lg      -0.018    0.033   -0.084    0.047    1.000  dnorm(0,200)
+#     Morning.Cffn.r       0.024    0.042   -0.061    0.106    1.001  dnorm(0,200)
+#     Morning.Caffen       0.030    0.052   -0.073     0.13    1.001  dnorm(0,200)
+#     Rise.Time.root      -0.057    0.036   -0.127    0.015    1.000  dnorm(0,200)
+# ...
+~~~
 
 Interpretation: considerable evidence for the caffeine pill strategy working and waking me up earlier - the randomized and unrandomized estimates are almost identical
-There is also some evidence for MP improvement through the earlier waking and perhaps directly; the net effect of the randomized caffeine on MP is (-0.036 * -0.078) + 0.022 = 0.025 SDs
-TODO: redo with merged caffeine variable
+The similar estimates for `Morning.Caffeine.r` and `Morning.Caffeine` suggests that the quasi-experimental alternate-day intervention yields the same effect as the randomized one and they can be merged for a more precise estimate (since blavaan doesn't yet support multilevel modeling):
+
+~~~{.R}
+model2 <- 'Rise.Time.root    ~ Start.of.Night + Time.to.Z.root + Caffeine
+           Total.Z.2         ~ Start.of.Night + Time.to.Z.root + Caffeine
+           Time.in.Wake.log  ~ Start.of.Night + Time.to.Z.root + Caffeine
+           MP                ~ Start.of.Night + Time.to.Z.root + Total.Z.2 + Time.in.Wake.log + Caffeine + Rise.Time.root'
+b2 <- bsem(model2,
+          dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"),
+          n.chains=7, jagcontrol=list(method="rjparallel"), fixed.x=FALSE,
+          data=scale(caffeine[,-1]))
+
+BF(b, b2)
+# Laplace approximation to the log-Bayes factor (experimental):
+#   -1.272
+
+library(lavaan)
+s <- sem(model1, se="boot", missing="FIML", data=scale(caffeine[,-1]))
+s2 <- sem(model2, se="boot", missing="FIML", data=scale(caffeine[,-1]))
+anova(s, s2)
+#    Df       AIC       BIC    Chisq Chisq diff Df diff Pr(>Chisq)
+# s   3 14774.655 14904.079  74.7225
+# s2  3 14817.198 14927.447 115.0204  40.297899       0 < 2.22e-16
+~~~
+
+
+
+There is also some evidence for MP improvement through the earlier waking and perhaps directly; the net effect of the randomized caffeine on MP is (-0.036 * -0.078) + 0.022 = 0.025 SDs TODO
+
 -->
 
 ## Hammock
