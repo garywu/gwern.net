@@ -16,13 +16,15 @@ For many important algorithms used in AI and programming in general, the difficu
 
 # Complexity implies Singularities are impossible
 
-One argument against powerful artificial intelligences, and the Singularity in general, draws from [computational complexity theory](!Wikipedia).
+One argument against powerful artificial intelligences, and scenarios corresponding to [Singularities](!Wikipedia "Technological singularity") in general, draws from [computational complexity theory](!Wikipedia).
 
 http://www.antipope.org/charlie/blog-static/2014/02/the-singularity-is-further-tha.html
 http://www.antipope.org/charlie/blog-static/2014/02/why-ais-wont-ascend-in-blink-of-an-eye.html
 http://www.antipope.org/charlie/blog-static/2014/02/a-rebuttal-of-the-singularity-.html
 
 http://lesswrong.com/r/discussion/lw/lke/the_unique_games_conjecture_and_fai_a_troubling/bvy0
+
+This can be seen as one of the "structural objections" (as CH)
 
 So the argument (filling in the gaps and omitting the various graphs showing scaling) goes something like this:
 
@@ -32,7 +34,8 @@ So the argument (filling in the gaps and omitting the various graphs showing sca
 4. the real-world reward to an agent from solving a slightly larger problem is only slightly greater
 5. the long-term consequence of slightly greater rewards is itself small
 6. if an AI becomes the best agent, then it must solve problems in difficult complexity classes (1), so it will be able to solve only slightly larger programs (2-3), receiving slightly greater rewards (4), with only small long-term consequences (5)
-7. thus, AIs becoming intelligent agents will have only small long-term consequences
+7. if each AI has only small long-term consequences, all AIs together will have a small total long-term consequence
+8. thus, AIs becoming intelligent agents will have only small total long-term consequences
 
 This argument is valid as far as it goes and can probably be formalized successfully. But is the argument sound?
 
@@ -48,7 +51,7 @@ Premise 1 is incorrect because the proofs of those complexities generally depend
 The apparent barrier of a complex problem can be bypassed by:
 
 0. converting it to a smaller complexity class: existing proofs could be incorrect, inapplicable, or based on open conjectures widely believed by humans one way but which could still resolve in the more advantageous direction (eg [P=NP](!Wikipedia))
-1. needing good average-case behavior rather than worst-case behavior
+1. needing good [average-case](http://www.karlin.mff.cuni.cz/~krajicek/ri5svetu.pdf "'A Personal View of Average-Case Complexity', Impagliazzo 1995") behavior rather than worst-case behavior
 
     In the *worst case*, 3-SAT/Traveling Salesman are wildly intractable for any realistic dataset like planning a trip across the USA; but the *average-case* performance is quite different and in practice, 3-SAT/Traveling Salesman are solved all the time, to the extent where SAT solvers are routinely used in computer security or theorem proving or type-checking and logistics companies are able to heavily optimize their shipping with them.
     Similarly for linear programming's [simplex algorithm](!Wikipedia) and other operations research algorithms, with are theoretically intimidating but in real-world problems yield solutions after reasonable runtime - they work in practice, but not in theory.
@@ -63,9 +66,9 @@ The apparent barrier of a complex problem can be bypassed by:
     A [self-driving car](!Wikipedia) may not be as good at vision as a human driver, but [LIDAR](!Wikipedia) sensors can be incorporated into it in a way that cannot for humans as it would distract them; a [robot in a warehouses](!Wikipedia "Amazon Robotics") may not be as good at driving around as a human worker, but the environment can be altered with white lines or barcode tags on the floor so the robots always know where they are.
 5. solving entirely different problems which humans cannot or will not solve.
 
-    As [Hamming](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html "You and Your Research") says, "There are wavelengths that people cannot see, there are sounds that people cannot hear, and maybe computers have thoughts that people cannot think." There are problems humans could never solve because it would require too much training, or too much memory, or too bizarre solutions. A human would never come up with many solutions that genetic algorithms or neural networks do, and they can be used on scales that humans never would; an unimportant but interesting example would be ["PlaNet - Photo Geolocation with Convolutional Neural Networks"](http://arxiv.org/pdf/1602.05314v1.pdf "Weyand et al 2016") - I can't imagine any human ever beginning to compete with such a CNN, or even trying to accomplish the same thing. In such cases, scaling concerns are totally besides the point.
+    As [Hamming](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html "You and Your Research") says, "There are wavelengths that people cannot see, there are sounds that people cannot hear, and maybe computers have thoughts that people cannot think." There are problems humans could never solve because it would require too much training, or too much memory, or too bizarre solutions. A human would never come up with many solutions that [genetic algorithms](!Wikipedia) or neural networks do, and they can be used on scales that humans never would; an unimportant but interesting example would be ["PlaNet - Photo Geolocation with Convolutional Neural Networks"](http://arxiv.org/pdf/1602.05314v1.pdf "Weyand et al 2016") - I can't imagine any human ever beginning to compete with such a CNN, or even trying to accomplish the same thing. In such cases, scaling concerns are totally besides the point.
 
-[^Lipton-shifts]: http://rjlipton.wordpress.com/2014/07/21/shifts-in-algorithm-design/
+[^Lipton-shifts]: ["Shifts In Algorithm Design"](http://rjlipton.wordpress.com/2014/07/21/shifts-in-algorithm-design/), Lipton/Regan:
 
     > Now today, in the 21st century, we have a better way to attack problems. We change the problem, often to one that is more tractable and useful. In many situations solving the exact problem is not really what a practitioner needs. If computing _X_ exactly requires too much time, then it is useless to compute it. A perfect example is the weather: computing tomorrow's weather in a week's time is clearly not very useful. The brilliance of the current approach is that we can change the problem. There are at least two major ways to do this:
     >
@@ -125,7 +128,7 @@ This also ignores the many potential advantages of AIs which have nothing to do 
 Premise 5 would seem to assume that there is no such thing as compound interest or exponential growth or that small advantages can accumulate to become crushing ones; which of course there is for companies, countries, and individuals alike.
 
 Something similar has been noted about human intelligence - while any particular day-to-day decision has little to do with intelligence, the effects of intelligence are consistently beneficial and accumulate over a lifetime, so the random noise starts to cancel out, and intelligence is seen to have strong correlations with long-term outcomes (eg [Gottfredson 1997](http://www.udel.edu/educ/gottfredson/reprints/1997whygmatters.pdf "Why _g_ Matters: The Complexity of Everyday Life")).
-More abstractly, many career or intellectual outcomes have been noticed to follow a roughly [log-normal distribution](!Wikipedia) ([Shockley 1957](/docs/1957-shockley.pdf "On the Statistics of Individual Variations of Productivity in Research Laboratories"), [Murray 2003](/docs/2003-murray-human-accomplishment.pdf _"Human Accomplishment")); a log-normal distributed can be generated when an outcome is caused by a 'leaky pipeline' (scientific output might be due to motivation times intelligence times creativity...), in which case a small improvement on each variable can yield a large improvement in the output.[^Shockley-example]
+More abstractly, many career or intellectual outcomes have been noticed to follow a roughly [log-normal distribution](!Wikipedia) ([Shockley 1957](/docs/1957-shockley.pdf "On the Statistics of Individual Variations of Productivity in Research Laboratories"), [Murray 2003](/docs/2003-murray-human-accomplishment.pdf "Human Accomplishment")); a log-normal distributed can be generated when an outcome is caused by a 'leaky pipeline' (scientific output might be due to motivation times intelligence times creativity...), in which case a small improvement on each variable can yield a large improvement in the output.[^Shockley-example]
 For repeated actions, advantages can build up.  A chess example: [Magnus Carlsen](!Wikipedia) may be the strongest human chess player in history, with a peak [ELO](!Wikipedia "Elo rating system") rating of ~2882; as of 2016, the top-rated [chess engine](!Wikipedia) is probably Komodo at ELO 3358. The ELO expected score formula implies that if Komodo 2016 played peak Carlsen, it would have an expected score of $\frac{1}{1 + 10^{\frac{(2882-3358)}{400}}} = 0.94$, so it would win ~94% of its games; this is impressive enough (it would lose only 1 time out of 20), however, in the standard 5-game match, it would win not 94%, but ~99.8% of the 5-game matches (losing only 1 time out of *500*).
 One thinks of Amara's law: "We tend to overestimate the effect of a technology in the short run and underestimate the effect in the long run."
 
@@ -144,10 +147,14 @@ One thinks of Amara's law: "We tend to overestimate the effect of a technology i
 
     With more variables, the output difference would be larger still, and is connected to the [o-ring theory of productivity](!Wikipedia). This poses a challenge to those who expect small differences in ability to lead to small output differences, as the log-normal distribution is common in the real world, and also implies that hybrid human-AI systems are unstable as the human will quickly become a bottleneck.
 
-TODO see also Chalmer's paper on the singularity
-TODO http://www.karlin.mff.cuni.cz/~krajicek/ri5svetu.pdf
-TODO ln on index when done
-TODO ping Aaronson?
+<!-- TODO ping Aaronson? -->
+
+### Are AI agents rare?
+
+Expanding on the observation that AIs can have advantages which are unrelated to computational complexity or solving larger instances of problems, is it really the case that a Singularity can happen *only* if AIs are able to surpass humans on particular algorithmic tasks?
+This is unlikely. For example, in a [whole-brain emulation](!Wikipedia) scenario ([Sandberg & Bostrom 2008](http://www.fhi.ox.ac.uk/wp-content/uploads/brain-emulation-roadmap-report1.pdf "Whole Brain Emulation: A Roadmap")), such uploaded minds would not necessarily be gifted with any new accomplishments with regard to complexity classes but can we really swallow the argument's conclusion that this scenario simply *cannot* lead to any major changes worthy of the name Singularity?
+Far from it - it seems that such an achievement would radically change human society in a number of ways, ranging from redefining mortality to accelerating neuroscience to transformations of the economy as such emulated brains can be copied indefinitely onto as much hardware as is available (consider [Robin Hanson](!Wikipedia)'s extrapolations in [_Age of Em_](http://ageofem.com/)).
+It would be surprising if one could run human-level intelligences (perhaps arbitrarily many of them) on a pocket smartphone, with millions or billions of them across the world, even outnumbering regular biological humans, and still have no 'Singularity' through sheer numbers.
 
 ## Parable of the Worms
 
@@ -155,51 +162,51 @@ Once upon a time, two _[C. elegans](!Wikipedia)_ were debating the prospect of "
 
 Crawlviati argues for transwormism:
 
-"There is no a priori reason to believe that worms must be the pinnacle of creation, and that there are no larger or more complex or more intelligent organisms possible.
-We should be applying the Poopernican Principle here - the manure piles in which we live are but a tiny segment of the universe in both space and time, of no privileged perspective, and so in the Great Chain of Eating, we should expect us to be in a mediocre position.
-Indeed, from the start of life, we can see many breakthroughs: multicellular life has produced endless forms most different from unicellular life, and fairly recently have neurons been invented, so we're at an exciting point in time.
-We can speculate about the possibilities: a transworm might be completely different from us worms; or it might be similar in architecture to us worms, perhaps with a much longer body with many more neurons and so much smarter than us.
-Regardless, a transworm would be difficult for us to predict, and may be able to develop very fast as it learns new ways of hunting bacteria and self-fertilization, in what we might call a Moundularity in which it piles up resources and offspring faster than anyone else; inasmuch as a transworm may have very different priorities from us and change the environment to fit its needs, it would be dangerous to us."
+> "There is no a priori reason to believe that worms must be the pinnacle of creation, and that there are no larger or more complex or more intelligent organisms possible.
+> We should be applying the Poopernican Principle here - the manure piles in which we live are but a tiny segment of the universe in both space and time, of no privileged perspective, and so in the Great Chain of Eating, we should expect us to be in a mediocre position.
+> Indeed, from the start of life, we can see many breakthroughs: multicellular life has produced endless forms most different from unicellular life, and fairly recently have neurons been invented, so we're at an exciting point in time.
+> We can speculate about the possibilities: a transworm might be completely different from us worms; or it might be similar in architecture to us worms, perhaps with a much longer body with many more neurons and so much smarter than us.
+> Regardless, a transworm would be difficult for us to predict, and may be able to develop very fast as it learns new ways of hunting bacteria and self-fertilization, in what we might call a Moundularity in which it piles up resources and offspring faster than anyone else; inasmuch as a transworm may have very different priorities from us and change the environment to fit its needs, it would be dangerous to us."
 
 Slimeplicius disagrees:
 
-"Ridiculous! Think for a moment about your claims.
-We are blessed with 302 neurons, with which we can react to stimuli, move forward, move backward, hunt bacteria, and solve challenging navigational puzzles of many worm-lengths.
-But these problems exhibit diminishing returns - optimal maze navigation is exponentially difficult, for example.
-Transworms would immediately find their additional cognition to be of ever less marginal value as they run up against the wall of wormputational complexity.
-What would they do with, say, 1000 neurons that would justify a metabolic cost of *over 3 times more*?
-And to be truly worthy of the name transworm, they might need 10s of thousands, or even millions of neurons!
-Consider the absurdity of such an architecture: could our manure pile support a single such transworm?
-Where would the food come from? For that matter, how would its body support so many neurons?
-And its genes could no longer specify cell placement one by one, but organization would have to somehow 'emerge' or be 'learned', which you are rather obscure about how this might happen.
-Not to mention the many problems you seem to gloss over in your faith in progress: for example, diffusion would no longer work to feed each cell, requiring novel mechanisms to move fluids around.
-If a transworm *could* exist, it would be exponentially difficult for it to eat bacteria and reproduce faster than regular worms, and its performance would likely converge with ours: it would solve our problems only slightly better than us, at tremendously increased cost.
-(We could even make an evolutionary argument: we have evolved to be as smart as is optimal in our niche - and no more or less.)
-Certainly, any Moundularity would be so slow us worms would smell it coming long in advance and wriggle together in a big ball to crush it."
-
+> "Ridiculous! Think for a moment about your claims.
+> We are blessed with 302 neurons, with which we can react to stimuli, move forward, move backward, hunt bacteria, and solve challenging navigational puzzles of many worm-lengths.
+> But these problems exhibit diminishing returns - optimal maze navigation is exponentially difficult, for example.
+> Transworms would immediately find their additional cognition to be of ever less marginal value as they run up against the wall of wormputational complexity.
+> What would they do with, say, 1000 neurons that would justify a metabolic cost of *over 3 times more*?
+> And to be truly worthy of the name transworm, they might need 10s of thousands, or even millions of neurons!
+> Consider the absurdity of such an architecture: could our manure pile support a single such transworm?
+> Where would the food come from? For that matter, how would its body support so many neurons?
+> And its genes could no longer specify cell placement one by one, but organization would have to somehow 'emerge' or be 'learned', which you are rather obscure about how this might happen.
+> Not to mention the many problems you seem to gloss over in your faith in progress: for example, diffusion would no longer work to feed each cell, requiring novel mechanisms to move fluids around.
+> If a transworm *could* exist, it would be exponentially difficult for it to eat bacteria and reproduce faster than regular worms, and its performance would likely converge with ours: it would solve our problems only slightly better than us, at tremendously increased cost.
+> (We could even make an evolutionary argument: we have evolved to be as smart as is optimal in our niche - and no more or less.)
+> Certainly, any Moundularity would be so slow us worms would smell it coming long in advance and wriggle together in a big ball to crush it."
+>
 Crawlviati:
 
-"Your argument seems very narrow to me.
-Yes, I agree that it would be difficult to support so many neurons packed together in one worm, but I'm sure the engineering difficulties can be overcome - there seems to be no fundamental limit to wormputation much greater than 302 neurons, so there must be a way.
-And your food objection is likewise soluble: perhaps transworms can migrate from compost pile to garden to compost pile regularly as they exhaust resources in each one, or even figure out some way to easily knock down low-hanging fruit & let them rot.
-They may not, bacterium for bacterium or cell for cell, be as efficient as us, but that doesn't matter as long as the diminishing returns don't turn into *negative* returns.
-As long as the returns are positive, they will be able to pay for their increased resource utilization and continue climbing up the exponential curves.
-And what does 'better' even mean here? The wormputational complexity of a maze may increase sharply with maze size, but that's a statement about mazes, not about comparing maze-solvers, which might be arbitrarily better or worse than each other, so there's a problem: maybe they could solve mazes 100x faster.
-Then there's figuring out what any bit of performance means: if a transworm could solve mazes twice as fast as you or I, maybe it'll get *all* the treats when it beats us in a race to the end, and not less than twice as much.
-Heck, we're *worms* - what do we know about the world? Maybe there are all sorts of cool things which can be done, besides stimulus, response, stimulus, response, stimulus, response - if we could just *think* for once in our lives!"
+> "Your argument seems very narrow to me.
+> Yes, I agree that it would be difficult to support so many neurons packed together in one worm, but I'm sure the engineering difficulties can be overcome - there seems to be no fundamental limit to wormputation much greater than 302 neurons, so there must be a way.
+> And your food objection is likewise soluble: perhaps transworms can migrate from compost pile to garden to compost pile regularly as they exhaust resources in each one, or even figure out some way to easily knock down low-hanging fruit & let them rot.
+> They may not, bacterium for bacterium or cell for cell, be as efficient as us, but that doesn't matter as long as the diminishing returns don't turn into *negative* returns.
+> As long as the returns are positive, they will be able to pay for their increased resource utilization and continue climbing up the exponential curves.
+> And what does 'better' even mean here? The wormputational complexity of a maze may increase sharply with maze size, but that's a statement about mazes, not about comparing maze-solvers, which might be arbitrarily better or worse than each other, so there's a problem: maybe they could solve mazes 100x faster.
+> Then there's figuring out what any bit of performance means: if a transworm could solve mazes twice as fast as you or I, maybe it'll get *all* the treats when it beats us in a race to the end, and not less than twice as much.
+> Heck, we're *worms* - what do we know about the world? Maybe there are all sorts of cool things which can be done, besides stimulus, response, stimulus, response, stimulus, response - if we could just *think* for once in our lives!"
 
 Slimeplicius:
 
-"These claims seem to rest entirely on what I might call an appeal to ignorance: maybe mazes can be run faster than we can, maybe there are great things which could be done with more neurons, maybe there's lots of food we can't obtain but could with more intelligence...
-Sure, maybe I can't prove that there aren't, but is any of this what a reasonable worm, the ordinary worm in the dirt, would believe? Certainly not."
-
+> "These claims seem to rest entirely on what I might call an appeal to ignorance: maybe mazes can be run faster than we can, maybe there are great things which could be done with more neurons, maybe there's lots of food we can't obtain but could with more intelligence...
+> Sure, maybe I can't prove that there aren't, but is any of this what a reasonable worm, the ordinary worm in the dirt, would believe? Certainly not."
+>
 Crawlviati:
 
-"If you'll just think a little more about the possibilities..."
+> "If you'll just think a little more about the possibilities..."
 
 Slimeplicius:
 
-"There are better things to worry about, like pile warming. What if our wastes and their decay make our mound too hot for us? We should discuss that instead."
+> "There are better things to worry about, like pile warming. What if our wastes and their decay make our mound too hot for us? We should discuss that instead."
 
 So they did.
 A week later, the farm was sold to a developer, and the mound was rolled flat, and then paved over with asphalt - the construction workers neither hated nor loved the worms, but they were made of atoms useful for stabilizing the road to the townhouses being built there.
