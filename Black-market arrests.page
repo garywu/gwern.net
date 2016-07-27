@@ -35,7 +35,7 @@ http://ia801506.us.archive.org/27/items/gov.uscourts.nysd.422824/gov.uscourts.ny
 
 > Silk Road was an online black market of unprecedented scope. By the time it was shuttered in October 2013, over 13,000 offerings were listed on its homepage for illegal drugs of every conceivable variety. (PSR ¶ 25; GX- 910). A wide variety of other illicit goods and services were sold on the site as well, including fake IDs and passports, computer-hacking tools and services, counterfeit goods and pirated media, criminal guidebooks and instruction manuals, and money laundering services. (PSR ¶¶ 29, 32, 34; see also Ex. A (sample screenshots)). 1 In total, over 1.5 million transactions were conducted over Silk Road, involving over 100,000 buyer accounts and nearly 4,000 seller accounts. (PSR ¶ 59). Those transactions had a total value of nearly $214 million in U.S. currency. (Id.) Nearly 95% of those sales were for illegal drugs - including at least $8.9 million in sales of heroin, $17.3 million in sales of cocaine, and $8.1 million in sales of methamphetamine. (Id.) The buyers and sellers involved in these transactions were spread across the world, from Argentina to Australia, from the United States to the Ukraine. (Id.; GX-940F; GX-940-G).
 
-GX-940.pdf:
+GX-940.pdf: https://www.reddit.com/r/SilkRoad/comments/3a2xqp/sr1_sales_data_6_feb_2011_2_oct_2013/
 1530252 sales total
 
 let's see. there's 59 known SR1 buyer arrests. 10x to 590. there were 1530252 sales total, so 1 inferred arrest per 2593 purchases
@@ -577,6 +577,9 @@ Tom Callahan         M         JumboMonkeyBiscuit  seller    Silk Road 1        
 Amanda Callahan      F         JumboMonkeyBiscuit  seller    Silk Road 1                       USA         Maryland       Bitcoin                               FALSE  2014-11-05 2016-07-01
 Ross Brennan         M                             buyer                                       UK          Exeter         diazepam, carding                     TRUE   2016-06-01 2016-07-01
 Kelly Brennan        F                             buyer                                       UK          Exeter         diazepam, carding                     TRUE   2016-06-01 2016-07-01
+Baljit Singh         M   27                        buyer                                       India       Punjab         carding                               TRUE   2016-07-16 2016-07-25
+Amritpal Singh       M   27                        buyer                                       India       Punjab         carding                               TRUE   2016-07-16 2016-07-25
+Aaron James Glende   M   35    IcyEagle            seller    AlphaBay                          USA         Minnesota      carding, Xanax, oxycodone, diazepam   FALSE  2016-03-11 2016-07-26
 
 # Confirmed
 ## Agora
@@ -699,6 +702,13 @@ Michael Q. Lin M 20 buyer Mlin/Mr. Casino USA Pennsylvania counterfeit currency 
 ### Austria
 
 Sometime in October 2015, the [31yo male Viennese AlphaBay seller "ShanSa" was arrested in Austria](http://derstandard.at/2000034526427/Wiener-Dealer-betrieb-internationalen-Drogenversand-im-Internet "Wiener Dealer betrieb internationalen Drogenversand im Internet: Über Darknet-Plattform AlphaBay - 31-Jähriger verschickte Suchtgift auch nach Indien und Australien"); the search turned up records of 182 international & 73 Austrian sales, amphetamine/MDMA/cocaine/LSD/RCs/tablet machine.
+
+### USA
+
+35yo Minnesotan man Aaron James Glende ("IcyEagle") was [raided 11 March 2016 based on USPS information](http://www.winonadailynews.com/news/local/crime-and-courts/federal-charges-winona-man-tried-to-sell-stolen-bank-account/article_965a0cf7-3390-5217-b8ae-c3a578dc50fa.html "Federal charges: Winona man tried to sell stolen bank account info online"), turning up Xanax & cash & "other prescriptions" (charged with Xanax, oxycodone, amphetamine, diazepam, and marijuana); the local Minnesota case was apparently promoted to the federal level as the fully sealed case 1:16-mj-366.
+In July 2016, charges in another (apparently unrelated?) case were filed in Georgia based on an undercover agent purchase of bank account information from IcyEagle (case gandce 1:2016-cr-00239; [press release](https://www.justice.gov/usao-ndga/pr/icyeagle-dark-web-vendor-stolen-information-charged-atlanta "ICYEAGLE, a Dark Web Vendor of Stolen Information, Charged in Atlanta"); [indictment](/docs/sr/2016-07-26-icyeagle-indictment-gov.uscourts.gand.228648.15.0.pdf)) but he had already been arrested.
+Neither the press release nor indictment specifies how an undercover purchase of digital information could possibly lead to his deanonymization or arrest, and the majority of documents in that case as well as the complaint have been sealed.
+(I wonder what the connection between the cases is, why Glende was still selling even after his raid, and what all the sealing is about in his case?)
 
 ## Black Market Reloaded
 ### Germany/Netherlands
@@ -1306,6 +1316,10 @@ In December 2014, 3 men in Northern Cyprus/TRNC [were](https://www.reddit.com/r/
 
 In November 2015, it was announced that [9 men 19-24yo from Forcheim, Bamberg and Herzogenaurach]((http://www.infranken.de/regional/forchheim/Im-Darknet-mit-Drogen-gehandelt-Kripo-entlarvt-neun-Maenner-aus-Franken;art216,1355609 "Im "Darknet" mit Drogen gehandelt: Kripo entlarvt neun Männer aus Franken; Insgesamt neun jungen Männern aus Forchheim, Bamberg und Herzogenaurach kam jetzt die Kripo Bamberg auf die Spur. Über das Internet handelten die Männer in großem Stil mit verschiedenen Betäubungsmitteln")) had cumulatively been arrested who had made ~70 purchases of marijuana, MDMA, LSD, amphetamine from the DNMs for local resale; the case probably began when the first was arrested and flipped.
 
+### India
+
+2 men were arrested as part of a Bitcoin carding ring in [July 2016](http://www.hindustantimes.com/punjab/financial-fraud-punjab-cops-brush-with-darknet-bitcoins/story-w4YDmUJFDgkV12scPzWWxO.html "Financial fraud: Punjab cops’ brush with Darknet, Bitcoins").
+
 ### Israel
 
 An [Israeli man Weitzman](http://www.ynet.co.il/articles/0,7340,L-4611084,00.html "חשד: הזמין שוקולד עם קוקאין ברשת האפלה :צעיר מכפר סבא חשוד שהזמין קוקאין דרך ה'דארקנט', והסם הגיע ארצה בתוך פרלינים. קו ההגנה שלו: 'בכלל הזמנתי סמי הזיה שאינם אסורים בחוק'") was arrested ~4 January 2015 after a "darknet" package containing cocaine was detected by a sniffer dog at Customs.
@@ -1603,6 +1617,8 @@ The [Drugs Global Incident Map](http://drugs.globalincidentmap.com/) features ma
     - ["Bussage cannabis dealer Chance Gough avoids jail after ordering cocaine delivery from Holland"](http://www.stroudnewsandjournal.co.uk/news/14491113.Bussage_cannabis_dealer_Chance_Gough_avoids_jail_after_ordering_cocaine_delivery_from_Holland/)
     - ["Two pill dealers sentenced to federal prison for drug crimes"](http://williamsondailynews.com/news/4846/two-pill-dealers-sentenced-to-federal-prison-for-drug-crimes)
     - ["North Haven police: Pair arrested after attempting to take delivery of package full of marijuana"](http://www.nhregister.com/general-news/20160616/north-haven-police-pair-arrested-after-attempting-to-take-delivery-of-package-full-of-marijuana)
+    - ["Stand and Deliver"](http://blog.simplejustice.us/2016/06/30/stand-and-deliver/)
+    - ["Drug raid leads to arrest"](http://www.kswo.com/story/32405546/drug-raid-leads-to-arrest)
 
 Most are likely unrelated to the black-markets (part of regular drug smuggling or importing from fly-by-night chemical labs in China) and some rumors are wrong or flatly made up (for example, a seller may be covering up an exit scam with a fake story about being busted, or one seller may be trying to hurt another's sales eg [the TedDanzig incident](https://www.reddit.com/r/SilkRoad/comments/1xq97t/teddanzig_arrested/) or the 4lb PureFireMeds FUD), but of course, some will turn out to be real.
 
