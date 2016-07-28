@@ -583,6 +583,7 @@ Aaron James Glende   M   35    IcyEagle            seller    AlphaBay           
                      M                             seller                                      Germany                    gun                                   TRUE   2016-07-05 2016-07-06
                      M                             seller                                      Germany                    gun                                   TRUE   2016-07-05 2016-07-06
                      M                             seller                                      Germany                    gun                                   TRUE   2016-07-05 2016-07-06
+David Ryan Burchard  M   38    CaliConnect         seller    AlphaBay                          USA         California     marijuana, cocaine                    FALSE  2016-01-21 2016-04-01
 
 # Confirmed
 ## Agora
@@ -707,6 +708,17 @@ Michael Q. Lin M 20 buyer Mlin/Mr. Casino USA Pennsylvania counterfeit currency 
 Sometime in October 2015, the [31yo male Viennese AlphaBay seller "ShanSa" was arrested in Austria](http://derstandard.at/2000034526427/Wiener-Dealer-betrieb-internationalen-Drogenversand-im-Internet "Wiener Dealer betrieb internationalen Drogenversand im Internet: Über Darknet-Plattform AlphaBay - 31-Jähriger verschickte Suchtgift auch nach Indien und Australien"); the search turned up records of 182 international & 73 Austrian sales, amphetamine/MDMA/cocaine/LSD/RCs/tablet machine.
 
 ### USA
+
+38yo Californian man David Ryan Burchard ("CaliConnect"/"the\_real\_caliconnect"/"caliconnect4life"), a major marijuana & cocaine on SR1 (DoJ claims >\$1.4m in sales based on the SR1 server image[^CaliConnect-sales]) and then Agora, Nucleus, Abraxas, and AlphaBay, was raided 21 January 2016 and arrested 28 March 2016 ([press release](https://www.justice.gov/usao-edca/pr/merced-man-arrested-distributing-marijuana-and-cocaine-nationwide-through-silk-road-and "Merced Man Arrested for Distributing Marijuana and Cocaine Nationwide Through the Silk Road and Other Dark-Web Marketplace Websites"); [complaint](https://www.justice.gov/usao-edca/file/836576/download)), following an investigation starting March 2015 into the large number of bitcoins he had been selling to an "unlicensed digital currency exchanger" (possibly another SR1 user named "fishing01") which, after tracking devices monitored him dropping off packages & unencrypted PMs contained tracking numbers from the SR1 server image was further linked to his area, was combined with an earlier postal investigation into an undeliverable package which was opened & contained marijuana and Burchard's packages were intercepted; the unencrypted SR1 PMs further indicated that CaliConnect was using MoneyPak and gave the transaction IDs of several, one of which MoneyPak & AccountNow subpoenas revealed was paid to David Burchard, and had sent his personal information unencrypted to a SR1 seller of fake IDs and a benzo seller. This was followed up by a undercover purchase on AlphaBay (Burchard's primary market in 2016) & surveillance of Burchard mailing it.
+After the raid, several of Burchard's computer records were decrypted by trying a password he reused on a subpoenaed website, revealing at least 49 buyer records.[^CaliConnect-password]
+
+[^CaliConnect-sales]: pg10 of CaliConnect complaint:
+
+    > As part of the investigation, the FBI was able to seize information about vendors on the Silk Road, which has since been made available to law enforcement.  27. The Silk Road NTC Vendor List, referenced above, contained a list of vendors on Silk Road with over \$100,000.00 in sales, compiled from information on computing servers that were seized by law enforcement during the investigation into Silk Road.  Included in this document was the vendor name "caliconnect."  "Caliconnect" was described as a marijuana trafficker with a sales volume at approximately \$1,250,248.65.  "Caliconnect" is listed on the NTC Vendor List as the one of the largest vendors on the Silk Road.The FBI estimates that "caliconnect" was the eighteenth largest vendor worldwide out of the approximately 4,000 vendors who sold goods on the Silk Road.As such, this information indicated that BURCHARD was likely a large-scale vendor on the Silk Road utilizing the vendor name "Caliconnect."  I requested additional data from the seized Silk Road servers pertaining to "Caliconnect."  I received this information on June 11, 2015and began to review it (as described below)
+[^CaliConnect-password]: pg25:
+
+    > CFA Solorio provided me with decrypted messages found on BURCHARD's thumb drive. BURCHARD used a program called GPG4USB, which automatically used Burchard's Pretty Good Privacy (PGP) private key to decrypt messages sent to him from customers. The GPG4USB program required a password to decrypt messages. CFA Solorio discovered that "asshole209" was the password, which was a password utilized by BURCHARD based on subpoenaed records obtained by me...I noted approximately 49 orders within the decrypted messages from customers who were  buying marijuana from BURCHARD.
+
 
 35yo Minnesotan man Aaron James Glende ("IcyEagle") was [raided 11 March 2016 based on USPS information](http://www.winonadailynews.com/news/local/crime-and-courts/federal-charges-winona-man-tried-to-sell-stolen-bank-account/article_965a0cf7-3390-5217-b8ae-c3a578dc50fa.html "Federal charges: Winona man tried to sell stolen bank account info online"), turning up Xanax & cash & "other prescriptions" (charged with Xanax, oxycodone, amphetamine, diazepam, and marijuana); the local Minnesota case was apparently promoted to the federal level as the fully sealed case 1:16-mj-366.
 In July 2016, charges in another (apparently unrelated?) case were filed in Georgia based on an undercover agent purchase of bank account information from IcyEagle (case gandce 1:2016-cr-00239; [press release](https://www.justice.gov/usao-ndga/pr/icyeagle-dark-web-vendor-stolen-information-charged-atlanta "ICYEAGLE, a Dark Web Vendor of Stolen Information, Charged in Atlanta"); [indictment](/docs/sr/2016-07-26-icyeagle-indictment-gov.uscourts.gand.228648.15.0.pdf)) but he had already been arrested.
@@ -1324,7 +1336,7 @@ These conversions may be connected to the [2016 Munich shooting](!Wikipedia) by 
 
 ### India
 
-2 men were arrested as part of a Bitcoin carding ring in [July 2016](http://www.hindustantimes.com/punjab/financial-fraud-punjab-cops-brush-with-darknet-bitcoins/story-w4YDmUJFDgkV12scPzWWxO.html "Financial fraud: Punjab cops’ brush with Darknet, Bitcoins").
+2 men were arrested as part of a Bitcoin carding ring in [July 2016](http://www.hindustantimes.com/punjab/financial-fraud-punjab-cops-brush-with-darknet-bitcoins/story-w4YDmUJFDgkV12scPzWWxO.html "Financial fraud: Punjab cops' brush with Darknet, Bitcoins").
 
 ### Israel
 
