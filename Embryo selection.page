@@ -447,7 +447,8 @@ The [NHGRI Genome Sequencing Program's DNA Sequencing Cost dataset](http://www.g
 Illumina has boasted about a \$1000 whole-genome starting around 2014 (under an unspecified cost model), and around December 2015, Veritas Genetics started taking orders for a consumer 20x whole-genome priced at \$1000.
 So if a comprehensive SNP cost >\$1000, it would be cheaper to do a whole-genome, and historically at that price, we would expect a SNP cost of ~\$170.
 
-The date & cost of getting a large selection of SNPs is not collected in any dataset I know of, so here are a few 2014-2016 price quotes.
+The date & cost of getting a large selection of SNPs is not collected in any dataset I know of, so here are a few 2010-2016 price quotes.
+Tur-Kaspa et al 2010 estimates "Genetic analyses of oocytes by polar bodies biopsy and embryos by blastomere biopsy" at \$3000.
 Hsu 2014 estimates an SNP costs "~\$100 USD" and "At the time of this writing SNP genotyping costs are below \$50 USD per individual", without specifying a source; given the latter is below any 23andMe price offered, it is probably an internal Beijing Genomics Institute cost estimate.
 The [Center for Applied Genomics price list](https://caglab.org/index.php/for-researchers/pricing-and-services.html) (unspecified date but presumably 2015) lists [Affymetrix SNP 6.0](http://www.affymetrix.com/catalog/131533/AFFY/Genome-Wide+Human+SNP+Array+6.0) at \$355 & the [Human Omni Express-24](http://www.illumina.com/content/dam/illumina-marketing/documents/products/brochures/datasheet_omni_whole-genome_arrays.pdf) at \$170.
 23andMe famously offered its services for \$108.95 for >600k SNPs as of October 2014, but that price apparently was substantially subsidized by research & sales as they raised the price to \$200 & lowered comprehensiveness in October 2015.
@@ -489,8 +490,43 @@ exp(sapply(1:10, function(t) { 7.3937180 + -0.1548441*t } )) / 6
 An IVF cycle involving PGD will need ~4-5 SNPs (given a median egg count of 9 and half being abnormal), so I estimate the genetic part costs ~\$800-1000.
 The net cost of PGD will include the cell harvesting part (one needs to extract cells from embryos to sequence) and interpretation (although scoring and checking the genetic data for abnormality should be automatable), so we can compare with current PGD price quotes.
 
-- "The Fertility Institutes" say ["Average costs for the medical and genetic portions of the service provided by the Fertility Institutes approach \$27,000 U.S"](http://www.fertility-docs.com/programs-and-services/pgd-screening/genetic-diagnosis-of-embryos-for-diseases-using-pgd.php) (unspecified date) without breaking out the PGD part
-- [Genetic Alliance UK](http://www.geneticalliance.org.uk/aboutpgd.htm#Question6) claims (in 2012, based on PDF creation date) that "The cost of PGD is typically split into two parts: procedural costs (consultations, laboratory testing, egg collection, embryo transfer, ultrasound scans, and blood tests) and drug costs (for ovarian stimulation and embryo transfer). PGD combined with IVF will cost £6,000 [\$8.5k] - £9,000 [\$12.8k] per treatment cycle." but doesn't specify the marginal cost of the PGD rather than IVF part
+- "The Fertility Institutes" say ["Average costs for the medical and genetic portions of the service provided by the Fertility Institutes approach \$27,000 U.S"](http://www.fertility-docs.com/programs-and-services/pgd-screening/genetic-diagnosis-of-embryos-for-diseases-using-pgd.php) (unspecified date) without breaking out the PGD part.
+- [Tur-Kaspa et al 2010](https://www.researchgate.net/profile/Ilan_Tur-Kaspa/publication/44901501_PGD_for_all_cystic_fibrosis_carrier_couples_novel_strategy_for_preventive_medicine_and_cost_analysis/links/0f31752d5f15beb5f6000000.pdf "PGD for all cystic fibrosis carrier couples: novel strategy for preventive medicine and cost analysis"), using 2000-2005 data from the Reproductive Genetics Institute (RGI) in Illinois estimates the first PGD cycle at \$6k, and subsequent at \$4.5k, giving a full table of costs:
+
+    > -------------------------------------------------------------------------------------
+    > Procedure  Subprocedure                              Cost (US\$)   Notes
+    > ---------  ----------------------------------------- ------------  ------------------
+    > IVF        Pre-IVF laboratory screening              1000          Range \$600 to \$2000; needs to be performed only once each year
+    >
+    >            Medications                               3000          Range \$1500 to \$5000
+    >
+    >            Cost of IVF treatment cycle               12000         Range \$6000 to \$18000
+    >
+    >            Total cost, first IVF cycle               16000
+    >
+    >            Total cost, each additional IVF cycle     15000
+    >
+    > PGD        Genetic system set-up for PGD of a        1500          Range \$1000 to \$2000; performed once for a specific couple, with or without analysis of second generation, if applicable
+    >            specific couple
+    >
+    >            Biopsy of oocytes and embryos             1500
+    >
+    >            Genetic analyses of oocytes by polar      3000          Variable; upper end presented; depends on number of mutations anticipated
+    >            bodies biopsy and embryos by blastomere
+    >            biopsy
+    >
+    >            Subtotal: cost of PGD, first cycle        6000
+    >
+    >            Subtotal: cost of PGD, each repeated      4500
+    >            cycle
+    >
+    > IVF-PGD    Total cost, first IVF–PGD cycle           22000
+    >
+    >            Total cost, each additional IVF–PGD cycle 19500
+    > -------------------------------------------------------------------------------------
+    >
+    > Table: Table 2: Estimated cost of IVF–preimplantation genetic diagnosis (PGD) treatment for cystic fibrosis (CF) carriers
+- [Genetic Alliance UK](http://www.geneticalliance.org.uk/aboutpgd.htm#Question6) claims (in 2012, based on PDF creation date) that "The cost of PGD is typically split into two parts: procedural costs (consultations, laboratory testing, egg collection, embryo transfer, ultrasound scans, and blood tests) and drug costs (for ovarian stimulation and embryo transfer). PGD combined with IVF will cost £6,000 [\$8.5k] - £9,000 [\$12.8k] per treatment cycle." but doesn't specify the marginal cost of the PGD rather than IVF part.
 - [Alzforum](http://www.alzforum.org/news/research-news/preimplantation-genetic-diagnosis-its-no-walk-park "Preimplantation Genetic Diagnosis: It's No Walk in the Park") (July 2014): "In Madison, Wisconsin, genetic counselor Margo Grady at Generations Fertility Care estimated the out-of-pocket price of one IVF cycle at about \$12,000, and PGD adds another \$3,000."
 - [Reproductive Health Technologies Project](http://www.rhtp.org/fertility/pgd/) (2015?): "One round of IVF typically costs around \$9,000. PGD adds another \$4,000 to \$7,500 to the cost of each IVF attempt. A standard round of IVF results in a successful pregnancy only 10-35% of the time (depending on the age and health of the woman), and a woman may need to undergo subsequent attempts to achieve a viable pregnancy."
 - [SDFC](https://www.sdfertility.com/fertility-treatments/genetic-testing/pgd) (2015?): "PGD typically costs between \$4,000-\$10,000 depending on the cost of creating the specific probe used to detect the presence of a single gene."
@@ -618,7 +654,31 @@ The transition probabilities can be estimated from the flows reported in papers 
     CDC report doesn't specify how many eggs on average are retrieved or abnormality rate by age, although we can note that ~10% of retrievals didn't lead to any transfers (since there were 85k retrievals but only 74k transfers) which looks consistent with an overall mean & SD of 9(4.6) and 50% abnormality rate.
     We could also try to back out from the figures on average number of embryos per transfer, number of transfers, and number of cycles (eg 1.8 for <35yos, and 33750, so 60750 transferred embryos, as part of the 40083 cycles, indicating each cycle must have yielded at least 1.5 embryos), but that only gives a loose lower bound since there may be many left over embryos and the abnormality rate is unknown.
 
-    So for an American model of <35yos (the chance of IVF success declines so drastically with age that it's not worth considering older age brackets), we could go with a set of parameters like {9, 4.6, 0.5, 0.96, 0.28}.
+    So for an American model of <35yos (the chance of IVF success declines so drastically with age that it's not worth considering older age brackets), we could go with a set of parameters like {9, 4.6, 0.5, 0.96, 0.28}, but it's unclear how accurate a guess that would be.
+7. Tur-Kaspa et al 2010 reports results from an Illinois fertility clinic treating cystic fibrosis carriers who were using PGD to avoid
+
+Table 1
+Outcomes of IVF–preimplantation genetic diagnosis (PGD)
+cycles for cystic fibrosis (CF) (2000–2005).
+Parameter
+Value
+No. of patients (age
+
+42 years)                     74
+No. of cycles for PGD for CF                        104
+Mean no. of IVF–PGD cycles/couple                 1.4 (104/74)
+No. of cycles with embryo transfer (%)               94 (90.4)
+No. of embryos transferred                         184
+Mean no. of embryos transferred                    1.96 (184/94)
+Total number of pregnancies                        44
+No. of miscarriages (%)                             7 (15.9)
+No. of deliveries                                   37
+No. of healthy babies born                          49
+No. of babies per delivery                          1.3
+No. of cycles resulting in pregnancy (%)              44/104 (42.3)
+No. of transfer cycles resulting in a pregnancy (%)     44/94 (46.8)
+Take-home baby rate per IVF–PGD cycle (%)          37/104
+
 
 With these sets of data, we can fill in parameter values for the simulation and estimate gains.
 
@@ -1145,7 +1205,7 @@ combineScores <- function(polygenicScores, weights) {
 ~~~
 
 Let's imagine a US example but with 3 traits now, IQ and 2 we consider to be roughly half as valuable as IQ, but which have better polygenic scores available of 60% and 5%.
-What sort of gain can we expect above our starting point of \$4977?
+What sort of gain can we expect above our starting point?
 
 ~~~{.R}
 weights <- c(1, 0.5, 0.5)
@@ -1163,11 +1223,15 @@ summary(simulateIVFCBs(9, 4.6, combineScores(polygenicScores, weights), 0.3, 0.9
 So we double our gains by considering 3 traits instead of 1.
 
 A more realistic example would be to use some of the existing polygenic scores for complex traits, of which [a number are available](http://biorxiv.org/content/biorxiv/early/2016/01/14/035907.full.pdf "'Contrasting the genetic architecture of 30 complex traits from summary association data', Shi et al 2016").
-Perhaps a little counterintuitively, to maximize the gains, we want to focus on universal traits such as IQ, or common diseases with high prevalence; the more horrifying genetic diseases are rare precisely because they are horrifying (natural selection keeps them rare), so focusing on them will only occasionally pay off.
-(Much like how the [global burden of disease](!Wikipedia) shows that the largest losses of [DALY](!Wikipedia)s are due to such ordinary causes as [respiratory infections, heart disease, diabetes, car accidents, back+neck injuries, smoking etc](http://vizhub.healthdata.org/gbd-compare/) and not as much as one might think to HIV or malaria.)
+Perhaps a little counterintuitively, to maximize the gains, we want to focus on universal traits such as IQ, or common diseases with high prevalence; the more horrifying genetic diseases are rare precisely because they are horrifying (natural selection keeps them rare), so focusing on them will only occasionally pay off.[^cystic-fibrosis]
+
+[^cystic-fibrosis]: This much like how the [global burden of disease](!Wikipedia) shows that the largest losses of [DALY](!Wikipedia)s are due to such ordinary causes as [respiratory infections, heart disease, diabetes, car accidents, back+neck injuries, smoking etc](http://vizhub.healthdata.org/gbd-compare/) and not as much as one might think to HIV or malaria.
+
+    For example, [cystic fibrosis](!Wikipedia) is  easily screened for in PGD and one of the most expensive genetic diseases around: the lifetime costs of CF in the USA are ~\$63k annually (more when [lung transplants](!Wikipedia "Lung transplantation") are required) or >\$2.3m over their life expectancy of 37 years. However, CF is quite rare with ~30,000 CF patients in the USA and thus <1000 born each year. [Tur-Kaspa et al 2010]("PGD for all cystic fibrosis carrier couples: novel strategy for preventive medicine and cost analysis") estimates that use of PGD to prevent 1 year's worth of 929 CF patients has an undiscounted profit of \$2.17 billion. (Discounted at 5%, that would be more like \$1.2b: `(939*63000) / log(1.05)`.) Which is less than selection on a commoner trait like IQ would yield. CF, while disabling and extraordinarily expensive is thankfully rare.
+
 Here are 7 I looked up and was able to convert to relatively reasonable gains/losses:
 
-1. IQ
+1. IQ (using the previously given value and Selzam et al 2016 polygenic score, and excluding any valuation of the 7% of family SES & 9% of education that the IQ polygenic score comes with for free)
 2. height
 
     As previously, the best polygenic score for height predicts ~60% of variance with a population standard deviation of ~4 inches; the economics estimate is \$800 of annual income per inch or a NPV of \$16k per inch or \$65k per SD, so we would weight it as a quarter as valuable as the high IQ estimate (`((800/log(1.05))*4) / iqHigh ~> 0.27`). The causal link is not fully known, but a [Mendelian randomization study](http://www.bmj.com/content/352/bmj.i582 "'Height, body mass index, and socioeconomic status: Mendelian randomisation study in UK Biobank', Tyrrell et al 2016") of height & BMI supports causal estimates of \$300/\$1616 per SD respectively, which shows the correlations are not solely due to confounding.
@@ -1438,6 +1502,7 @@ Hence, anyone who does get thousands of extra good variants will be many SDs bey
 - Roivaninen 2012, ["Economic, educational, and IQ gains in eastern Germany 1990-2006"](http://www.iapsych.com/iqmr/fe/LinkedDocuments/roivainen2012.pdf)
 - Templer 2012, ["Biological correlates of northern-southern Italy differences in IQ"](http://www.sciencedirect.com/science/article/pii/S0160289612000554)
 - Lynn 2012, ["North-South Differences in Spain in IQ, Educational Attainment, per capita Income, Literacy, Life Expectancy and Employment"](/docs/iq/2012-lynn.pdf)
+- Hanushek & Woessman 2009, ["Do better schools lead to more growth? Cognitive skills, economic outcomes, and causation"](http://hanushek.stanford.edu/sites/default/files/publications/Hanushek%2BWoessmann%202012%20JEconGrowth%2017\(4\).pdf)
 - Adhvaryu et al 2013, ["Salt Iodization and the Enfranchisement of the American Worker"](http://www.arec.umd.edu/sites/default/files/_docs/events/Achyuta%20Adhvaryu-Salt%20Iodization%20and%20the%20Enfranchisement%20of%20the%20American%C2%A0Worker-9-25-13.pdf)
 - Fletcher 2013, ["Friends or Family? Revisiting the Effects of High School Popularity on Adult Earnings"](/docs/iq/2014-fletcher.pdf)
 - Wai 2013, ["Investigating America's elite: Cognitive ability, education, and sex differences"](https://www.psychologytoday.com/files/attachments/56143/wai-americas-elite-2013.pdf)
