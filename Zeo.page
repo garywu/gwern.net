@@ -3617,12 +3617,14 @@ interval <- function(x) { if (!is.na(x)) { if (grepl(" s",x)) as.integer(sub(" s
                           else NA
                         }
 zeo$Rise.Time <- sapply(zeo$Rise.Time, interval)
+zeo[(zeo$Date >= as.Date("2013-03-11")),]$Rise.Time  <-
+ (zeo[(zeo$Date >= as.Date("2013-03-11")),]$Rise.Time + 226) %% (24*60)
 zeo$Start.of.Night <- sapply(strsplit(as.character(zeo$Start.of.Night), " "), function(x) { x[2] })
 zeo$Start.of.Night <- sapply(zeo$Start.of.Night, interval)
 
 zeoCaffeine <- merge(caffeine, zeo, all=TRUE)
 
-nightSubset <- subset(zeoCaffeine[zeoCaffeine$Date>=as.Date("2013-11-10") & zeoCaffeine$Date<=as.Date("2016-05-04"),],
+nightSubset <- subset(zeoCaffeine[zeoCaffeine$Date<=as.Date("2016-05-04"),],
   select=c("Date", "Start.of.Night", "Time.to.Z", "Total.Z", "Time.in.Wake", "Rise.Time", "Morning.Caffeine.r", "Morning.Caffeine", "Caffeine", "MP"))
 write.csv(file="~/wiki/docs/zeo/2016-05-04-caffeine.csv", nightSubset, row.names=FALSE)
 ~~~
@@ -3666,7 +3668,7 @@ model1 <- 'Rise.Time.root    ~ Start.of.Night + Time.to.Z.root + Morning.Caffein
            Time.in.Wake.log  ~ Start.of.Night + Time.to.Z.root + Morning.Caffeine.r + Morning.Caffeine
            MP                ~ Start.of.Night + Time.to.Z.root + Total.Z.2 + Time.in.Wake.log + Morning.Caffeine.r + Morning.Caffeine + Rise.Time.root'
 
-b <- bsem(model1,
+b <- bsem(model1, convergence="auto", burnin=50000,
           dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"),
           n.chains=7, jagcontrol=list(method="rjparallel"), fixed.x=FALSE,
           data=scale(caffeine[,-1]))
@@ -3706,29 +3708,8 @@ summary(b)
 #     Morning.Caffen       0.030    0.052   -0.073     0.13    1.001  dnorm(0,200)
 #     Rise.Time.root      -0.057    0.036   -0.127    0.015    1.000  dnorm(0,200)
 # ...
-
-## Morning.Caffeine.r is the third variable in the samples, "beta[3,1]"
-posteriorSamplesRiseTimeCaffeine <- unlist(b@external$runjags$mcmc[,3])
-sum(posteriorSamplesRiseTimeCaffeine<0) / length(posteriorSamplesRiseTimeCaffeine)
-# [1] 0.7628714286
-
-# beta[7,1]
-posteriorSamplesTotalzCaffeine <- unlist(b@external$runjags$mcmc[,7])
-# beta[11,1]
-posteriorSamplesTimeinwakeCaffeine <- unlist(b@external$runjags$mcmc[,11])
-# beta[17,1]
-posteriorSamplesMPCaffeine <- unlist(b@external$runjags$mcmc[,17])
-# beta[19,1]
-posteriorSamplesMPRiseTime <- unlist(b@external$runjags$mcmc[,19])
-# beta[15,1]
-posteriorSamplesMPTotalz <- unlist(b@external$runjags$mcmc[,15])
-# beta[16,1]
-posteriorSamplesMPTimeinwake <- unlist(b@external$runjags$mcmc[,16])
-
-totalEffectMPCaffeine <- posteriorSamplesMPCaffeine + posteriorSamplesRiseTimeCaffeine*posteriorSamplesMPRiseTime + posteriorSamplesTotalzCaffeine*posteriorSamplesMPTotalz + posteriorSamplesMPTimeinwake*posteriorSamplesTimeinwakeCaffeine
 ~~~
 
-Interpretation: considerable evidence for the caffeine pill strategy working and waking me up earlier - the randomized and unrandomized estimates are almost identical
 The similar estimates for `Morning.Caffeine.r` and `Morning.Caffeine` suggests that the quasi-experimental alternate-day intervention yields the same effect as the randomized one and they can be merged for a more precise estimate (since blavaan doesn't yet support multilevel modeling):
 
 ~~~{.R}
@@ -3736,7 +3717,7 @@ model2 <- 'Rise.Time.root    ~ Start.of.Night + Time.to.Z.root + Caffeine
            Total.Z.2         ~ Start.of.Night + Time.to.Z.root + Caffeine
            Time.in.Wake.log  ~ Start.of.Night + Time.to.Z.root + Caffeine
            MP                ~ Start.of.Night + Time.to.Z.root + Total.Z.2 + Time.in.Wake.log + Caffeine + Rise.Time.root'
-b2 <- bsem(model2,
+b2 <- bsem(model2, convergence="auto", burnin=50000,
           dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"),
           n.chains=7, jagcontrol=list(method="rjparallel"), fixed.x=FALSE,
           data=scale(caffeine[,-1]))
@@ -3787,6 +3768,32 @@ anova(s, s2)
 
 A log BF of >0 favors the second model, while <0 favors the first model; so a log BF of -1.272 or (exponentiated) a BF of 0.28 suggests that the merged caffeine variable is ~1/3rd as likely as prior, which agrees with the lavaan-based ANOVA and AICs/BICs which slightly favor the original two-caffeine-variable.
 
+~~~{.R}
+## Morning.Caffeine.r is the third variable in the samples, "beta[3,1]"
+posteriorSamplesRiseTimeCaffeine <- unlist(b@external$runjags$mcmc[,3])
+sum(posteriorSamplesRiseTimeCaffeine<0) / length(posteriorSamplesRiseTimeCaffeine)
+# [1] 0.7628714286
+
+# beta[7,1]
+posteriorSamplesTotalzCaffeine <- unlist(b@external$runjags$mcmc[,7])
+# beta[11,1]
+posteriorSamplesTimeinwakeCaffeine <- unlist(b@external$runjags$mcmc[,11])
+# beta[17,1]
+posteriorSamplesMPCaffeine <- unlist(b@external$runjags$mcmc[,17])
+# beta[19,1]
+posteriorSamplesMPRiseTime <- unlist(b@external$runjags$mcmc[,19])
+# beta[15,1]
+posteriorSamplesMPTotalz <- unlist(b@external$runjags$mcmc[,15])
+# beta[16,1]
+posteriorSamplesMPTimeinwake <- unlist(b@external$runjags$mcmc[,16])
+
+totalEffectMPCaffeine <- posteriorSamplesMPCaffeine + posteriorSamplesRiseTimeCaffeine*posteriorSamplesMPRiseTime + posteriorSamplesTotalzCaffeine*posteriorSamplesMPTotalz + posteriorSamplesMPTimeinwake*posteriorSamplesTimeinwakeCaffeine
+summary(totalEffectMPCaffeine)
+~~~
+
+Interpretation: considerable evidence for the caffeine pill strategy working and waking me up earlier
+
+caffeine pills cost ~\$0.05
 
 There is also some evidence for MP improvement through the earlier waking and perhaps directly; the net effect of the randomized caffeine on MP is (-0.036 * -0.078) + 0.022 = 0.025 SDs TODO
 
