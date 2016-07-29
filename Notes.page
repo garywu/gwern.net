@@ -2216,9 +2216,9 @@ The quotes:
 >
 > ...that would probably be the effect of the comet in 1680 sooner or later...perhaps have 5 or 6 revolutions more first, but whenever it did it would so much increase the heat of the sun that this earth would be burnt & no animals in this earth could live
 >
-> ...He seemed to doubt whether there were not intelligent beings superior to us who superintended these revolutions of the heavenly bodies by the direction of the supreme being —
+> ...He seemed to doubt whether there were not intelligent beings superior to us who superintended these revolutions of the heavenly bodies by the direction of the supreme being -
 >
-> He seemed to be very clearly of opinion that the inhabitants of this earth were of a short date & alleged as one reason for that opinion that all arts as letters long ships printing – needle &c were discovered within the memory of History which could not have happened if the world had been eternal
+> He seemed to be very clearly of opinion that the inhabitants of this earth were of a short date & alleged as one reason for that opinion that all arts as letters long ships printing - needle &c were discovered within the memory of History which could not have happened if the world had been eternal
 >
 > ...how this earth could have been repeopled if ever it had undergone the same fate it was threatened with hereafter by the Comet of 1680, he answered that required the power of a creator
 
@@ -2322,7 +2322,7 @@ Trying to add in preventive objects or procedures runs the risk of creating even
 
 > Your fail-safes are themselves the source of faults and failures. I've seen, just to list a few: Load balancers which failed due to software faults (they'd hang and reboot, fortunately fairly quickly, but resulting in ~40 second downtimes), back-up batteries which failed, back-up generators which failed, fire-detection systems which tripped, generator fuel supplies which clogged due to algae growth, power transfers which failed, failover systems which didn't, failover systems which did (when there wasn't a failure to fail over from), backups which weren't, password storage systems which were compromised, RAID systems which weren't redundant (critical drive failures during rebuild or degraded mode, typically), far too many false alerts from notifications systems (a very common problem even outside IT: [on hospital alarms](http://redd.it/1x0p1b)), disaster recovery procedures which were incomplete / out of date / otherwise in error. That's all direct personal experience.
 
-When I was still contributing a bit to the DVCS [darcs](!Wikipedia), I thought then-maintainer Eric Kow's efforts to set up automated tests & buildbots, while well-intended in trying to catch errors in patches and ensure that the code always compiled and software engineering best practices, wound up wasting far more time than it ever saved because the build infrastructure itself kept crashing and needed constant configuration & upgrades.
+When I was still contributing a bit to the DVCS [darcs](!Wikipedia), I thought then-maintainer Eric Kow's efforts to set up automated tests & buildbots, while well-intended in trying to catch errors in patches & ensure that the code always compiled and software engineering best practices, wound up wasting far more time than it ever saved because the testing infrastructure itself kept crashing and needed constant configuration & upgrades.
 Given limited contribution time, dealing with the buildbots did not seem like a good investment.
 This also applies to programmers tempted to automate or script stuff on their computers: [how much time are you *really* saving](http://www.xkcd.com/1205 "Is It Worth The Time?") and was it worth the risk that one day a year from now you'll wake up and discover a cron job hasn't been running for months because of some Bash error?
 (Due to upgrading to a Shellshock-resistant Bash, in my case, which caused an inscrutable interaction with an exported function name in my Bash aliases file.)
@@ -2337,7 +2337,7 @@ when did man vs machine become impossible?
 - Kasparov says the era of human competitiveness was ~10 years, 1994-2004: "Before 1994 and after 2004 these duels held little interest. The computers quickly went from too weak to too strong."
 - 2005 Hydra: https://en.chessbase.com/post/adams-vs-hydra-man-0-5-machine-5-5
 
-    Cowen 2013: "The last time a serious public contest was tried, in 2005, Hydra crushed Michael Adams 5.5 to 0.5. A half point indicates a draw, and Adams was lucky to come away with that one draw. In the other games he didn’t put up much of a fight, even though he was ranked number seven in the world at the time—among humans."
+    Cowen 2013: "The last time a serious public contest was tried, in 2005, Hydra crushed Michael Adams 5.5 to 0.5. A half point indicates a draw, and Adams was lucky to come away with that one draw. In the other games he didn't put up much of a fight, even though he was ranked number seven in the world at the time-among humans."
 
 https://en.wikipedia.org/wiki/Advanced_Chess
 "advanced chess"/"cyborg chess"/"centaur chess"/"freestyle chess"
@@ -2373,12 +2373,31 @@ https://en.wikipedia.org/wiki/Advanced_Chess
     > Just to give you clue, I would say that the strength of good Advanced Chess players must be something around Elo 3000. Frederic Friedel was right in his conclusions last year: "The level of play may be the highest ever seen at these time settings. There cannot be a doubt that a human player, even one of the top players in the world, would have no serious chance in such a field."
 
     TODO: when did chess AIs reach ELO 3000?
-4. Ken Regan, 2012: near-perfect play may be ~3600 ELO; with Komodo in 2016 at 3358 ELO and regular ELO improvements at ~50 per year (not just from the computing power doubling; see eg https://en.chessbase.com/post/komodo-8-the-smartphone-vs-desktop-challenge ), that limit will be approached within 5 years, and hence advanced chess obsolete, setting an upper bound of ~2021
+4. Vasik Rajlich 2009 http://rybkaforum.net/cgi-bin/rybkaforum/topic_show.pl?tid=10960 : the Rybka cluster may be slightly better than any other freestyle team (presumably due to its much greater computing capacity)
+4. Ken Regan, 2012: near-perfect play may be ~3600 ELO (http://www.cse.buffalo.edu/~regan/papers/pdf/RMH11b.pdf); with Komodo in 2016 at 3358 ELO and regular ELO improvements at ~50 per year (not just from the computing power doubling; see eg https://en.chessbase.com/post/komodo-8-the-smartphone-vs-desktop-challenge ), that limit will be approached within 5 years, and hence advanced chess obsolete, setting an upper bound of ~2021
 4. Cowen 2013, based on interviewing top Advanced Chess players/teams: "Today, the top Freestyle players fear that the next or maybe even the current generation of programs (e.g., Rybka Cluster) will beat or hold even with the top Freestyle teams."
 
     > Vasik Rajlich says that, to date, the gap between the programs and the top Freestyle teams has stayed more or less constant. The human element really does add something, at least for the time being, although he too wonders how long this will remain the case.
 
-    TODO "For estimates on the strength of some Freestyle teams over the machines, see Vasik Rajlich, “Interviews with Freestylers,” http://www.rybkachess.com/docs/free stylers_version_2.htm . The Arno Nickel quotation is from that same source."
+    TODO "For estimates on the strength of some Freestyle teams over the machines, see Vasik Rajlich, "Interviews with Freestylers," http://www.rybkachess.com/docs/free stylers_version_2.htm . The Arno Nickel quotation is from that same source."
+4. GM Hikaru Nakamura + Rykba (200 Elo weaker on 2008 laptop) vs 2014 Stockfish without opening/endgame books; Nakamura lost 3-1 https://www.chess.com/news/stockfish-outlasts-nakamura-3634
+4. InfinityChess 2014: " InfinityChess Freestyle Battle 2014" tournament articles+writeups http://www.infinitychess.com/News/Freestyle%20Chess : general attitude that it's getting very difficult to beat a chess AI without extensive preparations and a surprising number of games decided by [human screwups like mouse misclicks](http://www.infinitychess.com/Page/Public/Article/DefaultArticle.aspx?id=162) (!). Evaluation of engine vs centaur is given in ["The Freestyle Battle 2014: Computer-based Chess with Houdini & Co", Nickel 2014](http://www.infinitychess.com/Page/Public/Article/DefaultArticle.aspx?id=118)
+
+> A few years ago, between 2005-2008, during the PAL/CSS-Freestyle-Tournaments on the ChessBase server, which offered prizes, this question was hotly debated, and answered with a "yes, but...". The results were in favor of the centaurs despite some occasional spectacular success of the machines. Here preparation played a significant role, because the superiority of the centaurs was more marked in round robin tournaments than in open tournaments with short term pairings. Specific opening choices, time management, structural knowledge, positional feeling, and deep analysis of critical variations in advance (going into the variations) were cornerstones of the centaur-strategy, even though one had to concede that the computers achieved a relatively high number of draws, particularly so when playing with White. Today, at a time when computer developments are rapidly taking place, and a new generation of chess engine has changed the chess world, the question of the role humans play in this battle can no longer be answered that clearly. A lot of chess commentary and video-livestreams at tournaments, in which engines (mostly Houdini) run parallel to the games, sometimes create the impression that the chess engines know it all. What, then, can a human do? However, in reality things look rather different as everybody knows who has ever tried to analyze positions, in which several candidate moves of apparently rather equal value are possible, with the help of a computer knows.
+>
+> ...*Centaurs against pure engines*
+>
+> In the Freestyle Battle 2014 the participants every round can choose whether they want to play as centaurs, which technically means having to enter the moves manually, or whether they let any UCI-engine play automatically (of course with a specifically prepared opening book). 16 of the 30 participants always play as centaurs; another 9 play mainly as centaurs, but in a few cases (when they had other obligations) employed an engine; 3 computer players occasionally tried their luck as centaurs, and only 2 players relied exclusively on the engines. Roughly speaking, 83% of the field are centaurs and 17% pure engine players. The engine players thus more often than not play against centaurs, and a third of all games is played between these two groups. Only in 10 from 265 games did computer programs play against each other.
+>
+> In the competition between centaurs and pure engines, which, however, does not affect the distribution of prizes, the centaurs lead 53,5 to 42,5 after 18 rounds: +24 / =59 / -13, which on average is one point in every ten games (5.5:4.5). In 54 of these 96 games the centaurs played with White, in 42 games they played with Black, and thus they had a certain advantage resulting from the random sequence of the games. This, however, might later be leveled. But the distribution of color is an important factor because the superiority of the centaurs strongly relies on the white pieces - of the 24 wins the centaurs scored against the engines 20 were achieved with White. The engines score 9 wins with White compared to 4 wins with Black. This means that according to the current trend centaurs have a 65 % winning chance with White, but only a 45 % winning chance with Black. This allows one to conclude that the advantage of the centaurs lies mainly in the exploitation of opening advantages, but that it almost vanishes if no opening advantage is gained.
+
+http://www.infinitychess.com/Page/Public/Article/DefaultArticle.aspx?id=141 "Freestyle Battle 2014: Hours of decision"
+
+> Engines 70 (46%) : Centaurs 82 (54%)
+
+Looks like 46% vs 54% translates to an Elo difference of 52 using a 2014 Stockfish Elo estimate of 3247: (3247 + 400*(82-70)) / (82+70)
+
+InfinityChess appears to have run no freestyle tournaments since 2014.
 
 4. 2015 GM Daniel Naroditsky + Rybka vs Stockfish match: expected score of Stockfish was 0.799, actual score was 3 wins & 1 draw; Naroditsky apparently made no positive contribution (judging from his comments and how the score is consistent with the expected score predicted by the chess AIs' ELOs) but was not experienced at advanced chess
 
@@ -2416,7 +2435,7 @@ http://smarterthanyouthink.net/excerpt/ _Smarter Than You Think_, Clive Thompson
 
 _Average is Over_, Tyler Cowen 2013
 
-> As the programs improved, Freestyle chess circa 2004–2007 favored players who understood very well how the computer programs worked. These individuals did not have to be great chess players and very often they were not, although they were very swift at processing information and figuring out which lines of chess play required a deeper look with the most powerful programs. Today, the top Freestyle players fear that the next or maybe even the current generation of programs (e.g., Rybka Cluster) will beat or hold even with the top Freestyle teams. The programs, playing alone without guidance, may not be so easy for the human to improve upon. If the program’s play is close enough to perfection, what room is there for the human partners to add wisdom?
+> As the programs improved, Freestyle chess circa 2004-2007 favored players who understood very well how the computer programs worked. These individuals did not have to be great chess players and very often they were not, although they were very swift at processing information and figuring out which lines of chess play required a deeper look with the most powerful programs. Today, the top Freestyle players fear that the next or maybe even the current generation of programs (e.g., Rybka Cluster) will beat or hold even with the top Freestyle teams. The programs, playing alone without guidance, may not be so easy for the human to improve upon. If the program's play is close enough to perfection, what room is there for the human partners to add wisdom?
 >
 > ...A series of Freestyle tournaments was held starting in 2005. In the first tournament, grandmasters played, but the winning trophy was taken by ZackS. In a final round, ZackS defeated Russian grandmaster Vladimir Dobrov and his very well rated (2,600+) colleague, who of course worked together with the programs. Who was ZackS? Two guys from New Hampshire, Steven Cramton and Zackary Stephen, then rated at the relatively low levels of 1,685 and 1,398, respectively. Those ratings would not make them formidable local club players, much less regional champions. But they were the best when it came to aggregating the inputs from different computers. In addition to some formidable hardware, they used the chess software engines Fritz, Shredder, Junior, and Chess Tiger. The ZackS duo operated more like a frantic, octopus-armed techno disc jockey than your typical staid chess player, clutching his hands around his head in tectonic concentration. They understand their programs - and presumably themselves - very, very well.
 >
@@ -2499,6 +2518,68 @@ https://en.chessbase.com/post/freestyle-tournament-advice-from-an-expert "Free s
 
 https://en.chessbase.com/post/a-history-of-cheating-in-chess-4 "A history of cheating in chess (4)" 2000 Frederic Friedel
 
+["Playing Chess With the Devil"](https://rjlipton.wordpress.com/2015/07/28/playing-chess-with-the-devil/), Regan & Lipton:
+
 > Potentially computers can play a decisive role at the very highest levels of chess. This was made very clear to me during the Super GM tournament in Las Palmas in 1997...At this point Kasparov went into a deep think. Jan Timman started to speculate whether White couldn't play the very forceful 20.g4...The game lasted six hours, Anand defended very tenaciously and at around 10 p.m., much to the disappointment of Kasparov, a draw was agreed. When he left the stage Garry spotted me and walked straight over. "I couldn't win it, could I, Fred?" he asked, with a troubled look on his face. It was a bit shocking: the world champion and best player of all times consulting a chess amateur, asking for an evaluation of the game he has just spent six hours on! Naturally Garry wasn't asking me, he was asking Fritz. He knew I would have been following the game with the computer. "Yes, you had a win, Garry. With 20.g4!" My answer vexed him deeply. "But I saw that! It didn't work. How does it work? Show me." He and Anand listened in horror while Juri dictated the critical lines...The next day Garry did an interview with the German magazine Der Spiegel. He spoke about "Advanced Chess", a new concept he has developed, which involves playing games in real time with computer assistance. He used the game against Anand from the previous day to illustrate his point. This is what he had to say: "That game provides us with new arguments for Advanced Chess. If I had had a computer yesterday, I would give you the full line with 20.g4 within five minutes. Maybe less. I would enter g4 and check all the lines. I know where to go. It would give me the confidence to play moves like this. Can you imagine the quality of the games, the brilliancy one could achieve?"
 >
 > In the time since those remarks there have been two Advanced Chess matches in León, Spain. In the first Kasparov was unable to defeat Bulgarian GM Veselin Topalov, who made efficient use of Fritz to defend against the world champion. The match ended in a 3:3 draw, although Kasparov had just demolished Topalov 5:1 in a match without computers. In the following year Vishy Anand played against Anatoly Karpov. Both players were assisted during the game by ChessBase 7.0 and the chess engine Hiarcs 7.32. Karpov was quite inexperienced at operating a computer, while Anand happens to be one of the most competent ChessBase users on the planet. The result was that we were witness to an (unplanned) experiment of man and computer vs man. Karpov didn't have a chance and was trounced 5:1 by his opponent. I am convinced that a player like Anand, using a computer to check crucial lines during the game, is playing at a practical level of over 3000 Elo points.
+
+> One-on-one the programs totally dominate the humans-even on laptops programs such as Stockfish and Komodo have Elo ratings well above 3100 whereas the best humans struggle to reach even 2900-but the human+computer "Centaurs" had better results than the computers alone. In the audience were representatives of defense and industrial systems that involve humans and computers. Ken got into freestyle chess not as a player but because of his work on chess cheating-see this for example. Freestyle chess says "go ahead and cheat, and let's see what happens..." The audience was not interested in cheating but rather in how combining humans and computers changes the game. While chess programs are extremely strong players, they may have weaknesses that humans can help avoid. Thus, the whole point of freestyle chess is:
+>
+>> Are humans + computers > computers alone?
+>
+> That is the central question. Taken out of the chess context it becomes a vital question as computers move more and more into our jobs and our control systems. The chess context attracts interest because it involves extreme performance that can can be precisely quantified, and at least until recently, the answer has been a clear "Yes."
+
+http://www.infinitychess.com/Page/Public/Article/DefaultArticle.aspx?id=83 centaur-only Elo rankings
+
+http://www.cse.buffalo.edu/~regan/papers/pdf/RBZ14aaai.pdf http://www.cse.buffalo.edu/~regan/chess/fidelity/FreestyleStudy.html
+
+> The PAL/CSS "Freestyle" dataset comprises 3,226 games played in the series of eight tournaments of human-computer tandems sponsored in 2005-2008 by the PAL Group of Abu Dhabi and the German magazine Computer-Schach und Spiele. All of these games were analyzed with Stockfish 4 in the same mode as for CEGT. ...unfortunately no Freestyle events of comparable level and prize funds have been held between 2008 and a tournament begun by InfinityChess.com in February 2014 through April 10.
+>
+> ...Figure 9 measures that the two CEGT and three PAL/CSS data sources are respectively close to each other, that personal computer engines under similar playing conditions were significantly stronger in 2013 than in 2007-08, and that the human-computer tandems were significantly ahead of the engines playing alone even without aggregating the events together.  The 2-sigma confidence intervals are the empirically-tested "adjusted" ones of (Regan and Haworth 2011); we show them to four digits although the rating values themselves should be rounded to the nearest 5 or 10.
+
+computer: CEGT 2007: 3009
+computer CEGT 2008: 2963
+computer: CEGT all (2007-2008): 2985
+computer: TCEC (2013): 3083
+computer: Komodo 2016: 3358
+PAL/CSS 2005: 3102
+PAL/CSS 2006: 3086
+PAL/CSS 2008: 3128
+human-computer: PAL/CSS all (2005-2008): Elo 3106
+
+
+(3083-2985) / (2013-2005.5) = 13 Elo points per year
+Komodo 2016 vs CEGT 2007: (3358 - 3009) / (2016-2007) = 38 Elo points per year
+PAL/CSS 2005 vs PAL/CSS 2008: (3128-3102)/(2008-2005) = 8.6 Elo points per year
+
+baseline year 2008:
+computer trend: 2963 + 38*x
+human-computer trend: 3128 + 8.6*x
+
+2963 + 38*x = 3128 + 8.6*x
+x=5.6 or 2013.6
+
+or comparing to the 2014 InfiniChess: 52 Elo difference between centaurs and engines
+2008 difference: 3128 PAL/CSS vs CEGT 2963: 165 Elo difference
+165->52 from 2008->2014 implies the gap is shrinking by 18 Elo points per year; so 52 Elo would take 2.8 years, putting crossover at 2016.8
+
+2007 PAL/CSS group interview http://www.rybkachess.com/docs/freestylers_version_2.htm
+
+> Q. It's pretty evident now that a top centaur combination is stronger than an unassisted engine. How would you quantify this difference? By what margin could you win a match against the newest Rybka running on your strongest machine and using Noomen's latest RybkaII.ctg opening book?
+>
+> Dagh Nielsen: I would not dare to try and quantify the difference in playing level. Personally, if I had an engine running on auto, I would be horrified about the risk that a type of position is entered that the machine simply will not play very well on its own. An additional advantage for the centaur is that he can identify critical situations. Perhaps at some point in a sharp game, the game will essentially be won, drawn or lost within a span of, say, 5 moves. Also, I don't think pure engines can be expected to react properly on tricky novelties, and I am not really aware of any method to ensure that you will be the last one leaving preparation in every single game.
+>
+> Arno Nickel: Knowing that Rybka plays with its own opening book might be a decisive advantage for the centaur. Further on the time-management of unassisted engines is one of their weaknesses. These two points should guarantee a score of about 66%. But without knowing Rybka's opening book the score should not be more than 60%.
+>
+> Jiri Dufek: I can predict, that Xakru team under this condition probably scored about 70-80% (match with minimum 12 games).
+>
+> Nelson Hernandez: Quantifying this difference is difficult to do as a lot depends on the centaur's technique (see #3 in previous paragraph). This is further muddled by the relative strength of each side's opening book, hardware, access to EGTBs etc and other factors previously mentioned. However my general impression is that, all other things being equal, a top centaur has a 100-150 ELO advantage. You can calculate how that translates into a success rate. An indifferent centaur might have no advantage at all.
+>
+> Nolan Denson: Centaur don't walk blindly into the well know traps. Most programs when following books made for it do not always follow the best line. - 75%
+>
+> Jochen Rindfleisch: As the most recent tournament has shown, only the best - or most lucky? - centaur teams perform better than a well adjusted engine. So - taking a wild guess now - I would hope for 53% in a Kaputtze/Rybka match, if using identical hardware for analysis.
+>
+> Nick Carlin: 60-40 is my guess, I suspect that the centaur advantage will come especially in the end game, where human assistance can avoid losses and win games that engines might draw. An example is in some rook endings where the engine will push a pawn to the seventh rank and obtain a draw in a won position.  The missed win is coming through leaving the pawn on the sixth rank and bringing the King up to support its coronation.
+>
+> Eros Riccio: the advantage(s) of the combination Human(s) + engine(s) is obvious: In general, an engine alone is "stupid". It plays random openings, wastes precious time on forced moves, stubbornly wants to play for the win, sometimes forcing the position and losing, when a draw would have been enough to qualify... so, relying on an automatic engine may be quite risky... a human instead, may control all those things which an engine can't. The only advantage of automatic engine I can see, is with little time left in difficult positions, as there is no risk of mouse slips and losing on time.
