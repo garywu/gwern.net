@@ -2312,7 +2312,7 @@ Cook gives some principles in his well-known ["How Complex Systems Fail"](http:/
 
     > Society is composed of persons who cannot design, build, repair, or even operate most of the devices upon which their lives depend...In the complexity of this world people are confronted with extraordinary events and functions that are literally unintelligible to them. They are unable to give an adequate explanation of man-made phenomena in their immediate experience. They are unable to form a coherent, rational picture of the whole. Under the circumstances, all persons do, and indeed must, accept a great number of things on faith...Their way of understanding is basically religious, rather than scientific; only a small portion of one's everyday experience in the technological society can be made scientific...The plight of members of the technological society can be compared to that of a newborn child. Much of the data that enters its sense does not form coherent wholes. There are many things the child cannot understand or, after it has learned to speak, cannot successfully explain to anyone...Citizens of the modern age in this respect are less fortunate than children. They never escape a fundamental bewilderment in the face of the complex world that their senses report. They are not able to organize all or even very much of this into sensible wholes....
 
-    TODO: ln bicycle drawing site
+    [Do you know how to draw a bicycle?](https://www.behance.net/gallery/35437979/Velocipedia)
 
 My Zeo accident follows several of these: the Zeo could've failed at any time due to the battery getting too old, insufficient voltage or amperage, electrical surges from lightning strikes, the headband conductivity being destroyed by sweat/dirt, software errors etc.
 A failure in a separate object triggered a latent but unknown Zeo design flaw (not telling the user it is *unable* to charge the headset due to insufficient electricity and trying to anyway); this led to further errors.
@@ -2331,6 +2331,40 @@ Complexity and automation create a technical debt in the form of the fallout fro
 "The price of reliability is the pursuit of the utmost simplicity. It is a price which the very rich find most hard to pay."
 
 # Advanced Chess obituary
+
+As automation and AI advance in any field, it will first find a task impossible, then gradually become capable of doing it at all, then eventually capable of better than many or most humans who try to do something, and then better than the best human.
+But improvement does not stop there, as 'better than the best human' may still be worse than 'the best human using the best tool'; so this implies a further level of skill, where no human is able to improve the AI's results at all rather than get in the way or harm it.
+We might call these different phases 'subhuman', 'human', 'superhuman', and 'ultrahuman'.
+
+The interesting thing about this distinction is that each level has different practical implications.
+At subhuman, the AI is unimportant and used largely in cases where performance doesn't matter much or where a human is unusable for some reason (such as environment).
+Taking arithmetic as an example, Pascal's calculator was ingenious but sold only a handful of units and made correspondingly little difference.
+Once the human phase is reached, then it may become an economic force to be reckoned with, as it will be better than many humans and have other advantages; this may prompt a global revolution in that field as all the humans adopt the new technology and use it to assist themselves.
+A calculator as fast & accurate as the median human at arithmetic will be better than the median human because it is more systematically reliable. Here the mechanical calculator can take off, with de Colmar's Arithmometer selling millions of units. The calculator becomes a 'complement' to a human accountant or clerk, as it double-checks sums and by its reliability helps handle the escalating arithmetic needs of the industrial economy such as double-entry accounting & statistics for small businesses, corporations, researchers etc.
+At the superhuman level, no longer does any human do the task on their own except for learning purposes or debugging; those humans now focus on things like when the task should be done or from what perspective it should be described.
+The humans using it become more productive and more valuable and employment increases; they do not become unemployed because the accountant still needs to punch in the right numbers to the calculator to figure out the corporation's balance, and the (human) computers are still executing more complex algorithms than the calculator understands even if the calculator is now doing all the arithmetic - a pile of fancy electro-mechanical calculators could not replace the human computers for the Manhattan Project, they needed many people (often women) to handle the full workflow to answer various questions the physicists set up, check the answers at a higher level for sanity, etc.
+At the ultrahuman level, the technology becomes autonomous in the sense that a human no longer contributes to it at all, and that occupation disappears.
+The calculator, having developed to the level of a programmable digital computer, now fully obsoletes ; the 'computer' is fully unemployed and no longer exists as an occupation. The calculator has gone from 'complement' to 'substitute': it now fully replaces a computer.
+No human does arithmetic or square roots for a living, nor do they even double-check the arithmetic results, 'computer' now means exclusively programmable digital computers', and the lower-skilled parts of occupations which formerly involved much arithmetic cease to exist and people are now employed for higher-skilled roles - eg accountants now specialize in international tax evasion rather than cranking through the balance sheet and verifying that all accounts balance to zero.
+
+From the global perspective, the ultrahuman level is the ultimate goal of all technological development: to eliminate the need for any human involvement and allow unlimited expansion and efficiency.
+Arithmetic done by a human is expensive, and can be afforded only in limited circumstances like accounting; but as arithmetic becomes cheaper, it allows for ever more complicated and arithmetic-heavy things to be done. FLOP for FLOP, computing a business's solvency in 1500 is far more valuable than calculating the critical mass of an atomic bomb in 1945, which is far more valuable than running agricultural statistics in 1960, which is far more valuable than animating a bouncing icon on your smartphone, but despite these steeply diminishing returns, humanity is vastly better off because arithmetic has become so cheap that unimaginable amounts of it can be used for anything at all.
+For the occupants of a particular occupation, on the other hand, things may not be so rosy; forced out of a job, they may have trouble finding another one, particularly if they are old or unexceptional.
+For them, the ideal phase was superhuman: the point at which their personal productivity was steeply increased by the technology and they can reap most of the gains, but where it's not *so* good that it replaces them entirely.
+
+Chess has gone through a similar sequence of technological improvement.
+Early mechanical automatons could not play a full game of chess at all.
+Alan Turing wrote the first computer chess program in 1951, inaugurating the subhuman phase; the subhuman phase could be said to have lasted until Mac Hack Six in 1967 or Chess 4.6 in 1977, so perhaps 26 years.
+The human phase saw the first defeat of a chess master in 1981, the first defeat of a grandmaster in 1988, and then as well known, last until the 1997 victory of Deep Blue, for a total of 20 years.
+The superhuman phase begun in 1997 still allowed for the top grandmasters to occasionally beat a computer, depending on available hardware (not everyone could afford computing power on par with Deep Blue), rules and timesettings (computers perform much better than humans at short time controls like blitz due to their calculating and tactical advantage in avoiding blunders), how well the human had prepared 'anti-computer tactics', luck etc, but it's suggested that by 2004-2005, chess AIs were definitively superhuman and no human could systematically beat them.
+
+However, the story does not end there. A grandmaster alone couldn't defeat a chess AI, but what about a grandmaster assisted by another chess AI? Kasparov proposed this "advanced chess" variant and the first tournament was run in June 1998; Kasparov only drew with Topalov instead of crushing him, because of Topalov's AI assistance. Both players played better than on their own. Indeed, in 2005-2007, the best advanced chess teams often had humans who weren't all that great at playing chess themselves, but were great at compiling game databases, and watching the chess AIs evaluate moves while intuiting where the AIs were weak and should be overridden. These advanced chess games were likely among the best chess games to ever be played (along with the best correspondence chess games).
+
+As such, advanced chess has been employed (particularly in a rash of books/op-eds ~2013) as an exemplar of what increasing technological development may imply: not technological unemployment, but increasing partnership. The rising tide will lift all ships.
+
+However, if advanced chess is going to be used this way, we should remember that after the superhuman phase, comes the ultrahuman phase, and ask how long the superhuman phase lasts in which 'advanced chess' is possible. Advanced chess players generally admit that at some point humans will cease to be net contributors; when was that?
+
+The subhuman to human phase lasted 26 years, and the human to superhuman phase took 20 years; splitting the difference we might guess that the next phase, superhuman to ultrahuman would take a similar amount of time, 23 years, and that would put the transition point at 2020. Alternately, if each transition takes 6 years less and so the last transition takes 14 years, then it would happen in 2011.
 
 when did man vs machine become impossible?
 
@@ -2359,7 +2393,7 @@ https://en.wikipedia.org/wiki/Advanced_Chess
     > Well, it makes sense. It is clear that with the computer the difference in playing strength is reduced. Normally I can beat a player of 2600 without great difficulty, but if we both have a computer it is already not so easy. At the highest level it is not just about understanding, the very top players are also better at everything - calculation, imagination. With the computer that is no longer so useful.
 
     TODO: what was Kramnik's ELO in 2002 when he said this?
-3. 2005 freestyle tournament: TODO what was the highest-ranking computer-only team? Cowen 2013:
+3. 2005 freestyle tournament: Cowen 2013:
 
     > ZackS defeated Russian grandmaster Vladimir Dobrov and his very well rated (2,600+) colleague, who of course worked together with the programs. Who was ZackS? Two guys from New Hampshire, Steven Cramton and Zackary Stephen, then rated at the relatively low levels of 1,685 and 1,398, respectively...Anson does not have any formal chess rating, but he estimates his chess skill at about 1,700 or 1,800 rating points, or that of a competent local club player. Nonetheless, he has done very well with his two quad-core laptops at the Freestyle level. Anson and his team would crush any grandmaster in a match. Against other teams, during one span of top-level play, Anson's team scored twenty-three wins against only one defeat (and twenty-seven draws) across four Freestyle tournaments and fifty-one games.
 
@@ -2372,14 +2406,10 @@ https://en.wikipedia.org/wiki/Advanced_Chess
 
     > Just to give you clue, I would say that the strength of good Advanced Chess players must be something around Elo 3000. Frederic Friedel was right in his conclusions last year: "The level of play may be the highest ever seen at these time settings. There cannot be a doubt that a human player, even one of the top players in the world, would have no serious chance in such a field."
 
-    TODO: when did chess AIs reach ELO 3000?
+    The first chess engine, Rybka, reached ELo 3000 by ~2006 http://chessok.com/?p=21214
 4. Vasik Rajlich 2009 http://rybkaforum.net/cgi-bin/rybkaforum/topic_show.pl?tid=10960 : the Rybka cluster may be slightly better than any other freestyle team (presumably due to its much greater computing capacity)
-4. Ken Regan, 2012: near-perfect play may be ~3600 ELO (http://www.cse.buffalo.edu/~regan/papers/pdf/RMH11b.pdf); with Komodo in 2016 at 3358 ELO and regular ELO improvements at ~50 per year (not just from the computing power doubling; see eg https://en.chessbase.com/post/komodo-8-the-smartphone-vs-desktop-challenge ), that limit will be approached within 5 years, and hence advanced chess obsolete, setting an upper bound of ~2021
-4. Cowen 2013, based on interviewing top Advanced Chess players/teams: "Today, the top Freestyle players fear that the next or maybe even the current generation of programs (e.g., Rybka Cluster) will beat or hold even with the top Freestyle teams."
-
-    > Vasik Rajlich says that, to date, the gap between the programs and the top Freestyle teams has stayed more or less constant. The human element really does add something, at least for the time being, although he too wonders how long this will remain the case.
-
-    TODO "For estimates on the strength of some Freestyle teams over the machines, see Vasik Rajlich, "Interviews with Freestylers," http://www.rybkachess.com/docs/free stylers_version_2.htm . The Arno Nickel quotation is from that same source."
+4. Ken Regan, 2012: near-perfect play may be ~3600 ELO (http://www.cse.buffalo.edu/~regan/papers/pdf/RMH11b.pdf); with Komodo in 2016 at 3358 ELO and regular ELO improvements at ~50 per year (not just from the computing power doubling; see eg https://en.chessbase.com/post/komodo-8-the-smartphone-vs-desktop-challenge ), that limit will be approached within 5 years, and hence advanced chess obsolete, setting an upper bound of ~2021 chess engines with standard hardware or 2016 chess engines with 32x that Komodo's computing power ((3600-3358)/50) (32x is not even that unreasonable, when Amazon EC2 will rent you a x1.32xlarge instance with 128 CPUs for \$12/hour)
+4. Cowen 2013, based on interviewing top Advanced Chess players/teams: "Today, the top Freestyle players fear that the next or maybe even the current generation of programs (e.g., Rybka Cluster) will beat or hold even with the top Freestyle teams....Vasik Rajlich says that, to date, the gap between the programs and the top Freestyle teams has stayed more or less constant. The human element really does add something, at least for the time being, although he too wonders how long this will remain the case."
 4. GM Hikaru Nakamura + Rykba (200 Elo weaker on 2008 laptop) vs 2014 Stockfish without opening/endgame books; Nakamura lost 3-1 https://www.chess.com/news/stockfish-outlasts-nakamura-3634
 4. InfinityChess 2014: " InfinityChess Freestyle Battle 2014" tournament articles+writeups http://www.infinitychess.com/News/Freestyle%20Chess : general attitude that it's getting very difficult to beat a chess AI without extensive preparations and a surprising number of games decided by [human screwups like mouse misclicks](http://www.infinitychess.com/Page/Public/Article/DefaultArticle.aspx?id=162) (!). Evaluation of engine vs centaur is given in ["The Freestyle Battle 2014: Computer-based Chess with Houdini & Co", Nickel 2014](http://www.infinitychess.com/Page/Public/Article/DefaultArticle.aspx?id=118)
 
@@ -2564,7 +2594,7 @@ or comparing to the 2014 InfiniChess: 52 Elo difference between centaurs and eng
 2008 difference: 3128 PAL/CSS vs CEGT 2963: 165 Elo difference
 165->52 from 2008->2014 implies the gap is shrinking by 18 Elo points per year; so 52 Elo would take 2.8 years, putting crossover at 2016.8
 
-2007 PAL/CSS group interview http://www.rybkachess.com/docs/freestylers_version_2.htm
+2007 PAL/CSS group interview http://www.rybkachess.com/docs/freestylers_version_2.htm differences mentioned were 53%, 60%, 75%, 80%, and 100-150 Elo
 
 > Q. It's pretty evident now that a top centaur combination is stronger than an unassisted engine. How would you quantify this difference? By what margin could you win a match against the newest Rybka running on your strongest machine and using Noomen's latest RybkaII.ctg opening book?
 >
