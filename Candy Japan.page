@@ -65,8 +65,9 @@ prop.test(c(175, 168), c(442, 439), alternative="greater")
 # 0.3959276018 0.3826879271
 ~~~
 
-But of course, what does a _p_-value mean, anyway? CJ [correctly](!Wikipedia "P-value#Misunderstandings") interprets what they do mean ("In a world where it makes no difference which package is sent, you would get a result as statistically-significant as this 80% of the time."), but that doesn't give us much help in understanding if we *are* in the world where which box is sent *does* make an important difference and how *much* of a difference.
-_p_-values are an unreliable criterion for decisions: the result might be consistent with informative priors about the possible effect of box improvements; one might have compelling reason from earlier experiments to decide to switch to the new box; one might prefer the new boxes for other reasons; the new boxes might be profitable despite weak evidence (for example, if they cost as much); the result might be promising enough to justify further experimentation...
+But of course, what does a _p_-value mean, anyway? CJ [correctly](!Wikipedia "P-value#Misunderstandings") interprets what they do mean ("In a world where it makes no difference which package is sent, you would get a result as statistically-significant as this 80% of the time."), but that doesn't give us much help in understanding if we *are* in the world where which box is sent *does* make an important difference and *how much* of a difference and whether we want to *decide* whether to switch.
+
+_p_-values are an unreliable criterion for decisions: the result might be consistent with informative priors about the possible effect of box improvements; one might have compelling reason from earlier experiments to decide to switch to the new box; one might prefer the new boxes for other reasons; the new boxes might be profitable despite weak evidence (for example, if they cost the same); the result might be promising enough to justify further experimentation...
 
 ## Bayesian
 
@@ -134,7 +135,7 @@ model_string <- "model {
 }"
 model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
                     n.chains = getOption("mc.cores"))
-samples <- coda.samples(model, c("theta", "x_pred", "theta_diff"), n.iter=10000)
+samples <- coda.samples(model, c("theta", "x_pred", "theta_diff"), n.iter=100000)
 summary(samples)
 # 1. Empirical mean and standard deviation for each variable,
 #    plus standard error of the mean:
@@ -159,7 +160,7 @@ sum(posterior > 0) / length(posterior)
 # [1] 0.5623
 ~~~
 
-So a much more informative prior reduces the posterior probability that the new box reduced the cancellation rate to _P_=0.5623.
+So a much more informative prior reduces the posterior probability that the new box reduced the cancellation rate to _P_=0.56.
 
 # Decision
 ## Benefit
@@ -181,7 +182,7 @@ Then a gain is the difference between two lifetime values; so if we could someho
 # [1] 5.039787798
 ~~~
 
-Which over a batch 881 customers is a cool additional \$13553.
+Which over a batch of 881 customers is a cool additional \$13553.
 
 ## Cost-benefit
 
@@ -251,17 +252,16 @@ So because of the small possibility of a slightly profitable box, we'd be willin
 
     ~~~{.R}
     power.prop.test(power=0.8, p1=0.39, p2=0.3674)
-
-         Two-sample comparison of proportions power calculation
-
-                  n = 7230.138793
-                 p1 = 0.39
-                 p2 = 0.3674
-          sig.level = 0.05
-              power = 0.8
-        alternative = two.sided
-
-    NOTE: n is number in *each* group
+    #      Two-sample comparison of proportions power calculation
+    #
+    #               n = 7230.138793
+    #              p1 = 0.39
+    #              p2 = 0.3674
+    #       sig.level = 0.05
+    #           power = 0.8
+    #     alternative = two.sided
+    #
+    # NOTE: n is number in *each* group
     ~~~
 
 ### Expected Value of Sample Information (EVSI)
@@ -295,7 +295,7 @@ mean(gains$Profit)
 
 So with the current data, we would suffer an average loss of \$0.31 per customer per month by switching to the new box.
 
-It is easy to simulate collecting another datapoint: for the control group, flip a coin with 39% to decide whether the customer 'canceled' or not; for the experimental group, draw a possible reduction from the posterior distribution samples, add it to 39%, and then flip a coin.
+It is easy to simulate collecting another datapoint: for the control group, flip a coin with probability 39% to decide whether the customer 'canceled' or not; for the experimental group, draw a possible reduction from the posterior distribution samples, add it to 39%, and then flip a coin with the new probability.
 
 ~~~{.R}
 simulateData <- function(control=TRUE, posterior) {
@@ -308,14 +308,16 @@ For simplicity, I'll only simulate fake datapoints for the new boxes.
 ~~~{.R}
 gains <- posteriorProfit(x=c(175, 168), n=c(442, 439), monthlyProfit=5.7, monthlyCost=0.33)
 n_additional <- 5000
-evsi <- replicate(100, { newdata <- replicate(n_additional, simulateData(control=FALSE, gains$Reduction))
-                           simGains <- posteriorProfit(x=c(175, 168+sum(newdata))
-                                                       n=c(442, 439+n_additional),
+evsi <- function(posteriorProfitSamples, x, n, n_additional, iters=100) {
+   replicate(iters, { newdata <- replicate(n_additional, simulateData(control=FALSE, posteriorProfitSamples$Reduction))
+                           simGains <- posteriorProfit(x=c(x[1], x[2]+sum(newdata)),
+                                                       n=c(n[1], n[2]+n_additional),
                                                        monthlyProfit=5.7, monthlyCost=0.33)
                            return(mean(simGains$Profit)) }
                            )
-evsi
-Filter(function(x){x>0}, evsi)
+                           }
+evsiEstimate <- evsi(gains, c(175, 168), c(442, 439), n_additional)
+mean(evsiEstimate)
 # numeric()
 ~~~
 
@@ -331,7 +333,61 @@ This procedure would sample until there is either enough evidence to justify a s
 In this case, such a procedure probably would have run the A/B test until perhaps _n_=100 in each arm, at which point the lack of dominance would start becoming clear and it would no longer be worth paying \$0.33 more for each new datapoint, thereby potentially saving CJ somewhere around \$80 in new boxes and ending the test early.
 
 The difficulty here is that the feedback is delayed: until the next billing cycle, you cannot know that a particular customer *won't* cancel; it is possible that they will but simply haven't yet. And if you wait until the next billing cycle, then CJ's experiment would already be over.
-This can be solved by treating it as a [survival analysis](!Wikipedia) problem in which customer cancellation is right-censored, a class of problems that JAGS can also handle without difficulty, but CJ doesn't provide exact time-until-cancellation data and expanding the model to a survival analysis to demonstrate how the EVSI decreases during the experiment and where exactly it would have halted is more work than I want to do.
+This can be solved by treating it as a [survival analysis](!Wikipedia) problem in which customer cancellation is right-censored, a class of problems that JAGS can also handle without difficulty, but CJ's writeup/code doesn't provide exact time-until-cancellation data.
+
+We can try simulating out something similar by imagining that CJ mails off 1 package per day and 31 days later, learns if the customer has canceled or not.
+[Thompson sampling](!Wikipedia) can handle such delayed feedback because it will allocate the intervention stochastically rather than solely one intervention or the other.
+
+~~~{.R}
+posterior <- function(x, n, init=0.39) {
+    model_string <- "model {\n  for(i in 1:length(x)) {\n    x[i] ~ dbinom(theta[i], n[i])
+                     theta[i] ~ dbeta(1, 1)\n
+                     }\n  theta_diff <- theta[1] - theta[2]\n}"
+
+    model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
+                        inits = list(theta=c(init, init)),
+                        n.chains = getOption("mc.cores"))
+    samples <- coda.samples(model, c("theta", "theta_diff"), n.iter=1000)
+
+    posteriorReduction <-  unlist(samples[,3])
+    return(posteriorReduction)
+    }
+monthlyGain <- function(reduction, profit, cost) { (profit * reduction) - cost }
+posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
+    posteriorReduction <- posterior(x, n)
+    gains <- sapply(posteriorReduction, function(r) { monthlyGain(r, monthlyProfit, monthlyCost) })
+    return(list(Profit=gains, Reduction=posteriorReduction)) }
+
+
+# ground truth
+oldP <- 3.910082e-01
+newP <- 3.889790e-01
+max <- 439+442
+customersTotal <- data.frame(Date=numeric(), Intervention=logical(), Canceled=logical(), Profit=numeric(), Reduction=numeric(), Cost=numeric())
+for (date in 1:max) {
+
+  customers <- subset(customersTotal, Date <= (date+31))
+
+  cancels <- c(sum(subset(customers, Intervention)$Canceled),
+               sum(subset(customers, !Intervention)$Canceled))
+  ns <- c(nrow(subset(customers, Intervention)),
+          nrow(subset(customers, !Intervention)))
+    print(cancels); print(ns)
+
+    gains <- posteriorProfit(x=cancels, n=ns, monthlyProfit=5.70, monthlyCost=0.33)
+    intervention <- sample(gains$Profit, 1) > 0
+
+    willCancel <- if(intervention) { rbinom(1,1, prob=newP) } else { rbinom(1,1, prob=oldP) }
+    customersTotal <- rbind(customersTotal,
+                            data.frame(Date=date, Intervention=intervention, Canceled=willCancel, Profit.estimated=mean(gains$Profit),
+                                       Reduction.estimated=mean(gains$Reduction), Cost=if(intervention) {0.33} else {0}))
+}
+which(customersTotal$Profit.estimated>0)
+
+example Thompson run: 479 out of 10000 allocated to the inferior branch, predicted profit has definitively gone negative by n=443
+second run: last positive n=881, 840, 843, 24, 0, 239, 10, 114, 254, 52
+
+data.frame(Date=c(1,2,3,4,5,6,7,8,9), Intervention=c(TRUE, FALSE, TRUE, FALSE,TRUE,TRUE,TRUE,TRUE), Canceled=c(FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE))
 
 # Conclusion
 
