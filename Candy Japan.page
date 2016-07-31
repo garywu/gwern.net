@@ -7,7 +7,7 @@ status: finished
 belief: likely
 ...
 
-> I analyze an A/B test from a mail-order company of two different kinds of box packaging from a Bayesian decision-theory perspective, balancing posterior probability of improvements & greater profit against the cost of packaging & risk of worse results, finding that as the company's analysis suggested, the new box is unlikely to be sufficiently better than the old and, calculating expected values of information, not worth experimenting on further.
+> I analyze an A/B test from a mail-order company of two different kinds of box packaging from a Bayesian decision-theory perspective, balancing posterior probability of improvements & greater profit against the cost of packaging & risk of worse results, finding that as the company's analysis suggested, the new box is unlikely to be sufficiently better than the old and, calculating expected values of information, not worth experimenting on further. A sequential trial approach would have saved up to \$143 in packaging costs.
 
 # Background
 
@@ -217,7 +217,9 @@ lifetimeGain(0.0226)
 # [1] 0.0008374858674
 ~~~
 
-If we were absolutely certain that the reduction was as large as 2.26%, then the new boxes would break even. How probable is it that the decrease in cancellation rate is as or larger? Improbable, only ~6%:
+If we were absolutely certain that the reduction was as large as 2.26%, then the new boxes would hit breakeven.
+How probable is it that the decrease in cancellation rate is as or larger?
+Improbable, only ~6%:
 
 ~~~{.R}
 sum(posterior >= 0.0226) / length(posterior)
@@ -272,81 +274,14 @@ We can estimate this by repeatedly simulating drawing 1 more observation, doing 
 Looking at it on the monthly level, we could automate the analysis like so:
 
 ~~~{.R}
-monthlyGain <- function(reduction, profit, cost) { (profit * reduction) - cost }
-posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
+posterior <- function(x, n, init=0.39) {
     model_string <- "model {\n  for(i in 1:length(x)) {\n    x[i] ~ dbinom(theta[i], n[i])
                      theta[i] ~ dbeta(900, 1407)\n
                      }\n  theta_diff <- theta[1] - theta[2]\n}"
 
     model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
-                        inits = list(theta=c(0.39,0.39)),
-                        n.chains = getOption("mc.cores"), n.adapt=100)
-    samples <- coda.samples(model, c("theta", "theta_diff"), n.iter=10000)
-
-    posteriorReduction <-  (samples[1][[1]])[,3]
-
-    gains <- sapply(posteriorReduction, function(r) { monthlyGain(r, monthlyProfit, monthlyCost) })
-    return(list(Profit=gains, Reduction=posteriorReduction))
-}
-gains <- posteriorProfit(x=c(175, 168), n=c(442, 439), monthlyProfit=5.7, monthlyCost=0.33)
-mean(gains$Profit)
-# [1] -0.3176010559
-~~~
-
-So with the current data, we would suffer an average loss of \$0.31 per customer per month by switching to the new box.
-
-It is easy to simulate collecting another datapoint: for the control group, flip a coin with probability 39% to decide whether the customer 'canceled' or not; for the experimental group, draw a possible reduction from the posterior distribution samples, add it to 39%, and then flip a coin with the new probability.
-
-~~~{.R}
-simulateData <- function(control=TRUE, posterior) {
-  if (control) { rbinom(1,1, prob=0.39) } else { rbinom(1,1, prob=(0.39 + sample(posterior, 1))) } }
-~~~
-
-Now we can repeatedly simulate fake data, add it to the real data, rerun the analysis, see how often an additional datapoint would change our decision, and whether the profit resulting from that justifies the cost of another datapoint (\$0.33).
-For simplicity, I'll only simulate fake datapoints for the new boxes.
-
-~~~{.R}
-gains <- posteriorProfit(x=c(175, 168), n=c(442, 439), monthlyProfit=5.7, monthlyCost=0.33)
-n_additional <- 5000
-evsi <- function(posteriorProfitSamples, x, n, n_additional, iters=100) {
-   replicate(iters, { newdata <- replicate(n_additional, simulateData(control=FALSE, posteriorProfitSamples$Reduction))
-                           simGains <- posteriorProfit(x=c(x[1], x[2]+sum(newdata)),
-                                                       n=c(n[1], n[2]+n_additional),
-                                                       monthlyProfit=5.7, monthlyCost=0.33)
-                           return(mean(simGains$Profit)) }
-                           )
-                           }
-evsiEstimate <- evsi(gains, c(175, 168), c(442, 439), n_additional)
-mean(evsiEstimate)
-# numeric()
-~~~
-
-Indeed, the gain from 5000 additional datapoints turns out to be so little we have a hard time distinguishing it from zero, as expected from the very small EVPI, and certainly less than the cost of collecting that much additional data.
-We can say that further experimentation is definitely not cost-effective.
-
-#### Adaptive trials
-
-One key advantage of EVSI is that it can be calculated at any time.
-So a simple optimal adaptive trial can be run by collecting datapoints one by one, calculating EVSI after each new datapoint, and sampling another datapoint only if the EVSI > cost, otherwise ending with a decision.
-This procedure would sample until there is either enough evidence to justify a switch or until it is no longer a substantial possibility that the new box improvement exceeds 2.26%.
-
-In this case, such a procedure probably would have run the A/B test until perhaps _n_=100 in each arm, at which point the lack of dominance would start becoming clear and it would no longer be worth paying \$0.33 more for each new datapoint, thereby potentially saving CJ somewhere around \$80 in new boxes and ending the test early.
-
-The difficulty here is that the feedback is delayed: until the next billing cycle, you cannot know that a particular customer *won't* cancel; it is possible that they will but simply haven't yet. And if you wait until the next billing cycle, then CJ's experiment would already be over.
-This can be solved by treating it as a [survival analysis](!Wikipedia) problem in which customer cancellation is right-censored, a class of problems that JAGS can also handle without difficulty, but CJ's writeup/code doesn't provide exact time-until-cancellation data.
-
-We can try simulating out something similar by imagining that CJ mails off 1 package per day and 31 days later, learns if the customer has canceled or not.
-[Thompson sampling](!Wikipedia) can handle such delayed feedback because it will allocate the intervention stochastically rather than solely one intervention or the other.
-
-~~~{.R}
-posterior <- function(x, n, init=0.39) {
-    model_string <- "model {\n  for(i in 1:length(x)) {\n    x[i] ~ dbinom(theta[i], n[i])
-                     theta[i] ~ dbeta(1, 1)\n
-                     }\n  theta_diff <- theta[1] - theta[2]\n}"
-
-    model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
                         inits = list(theta=c(init, init)),
-                        n.chains = getOption("mc.cores"))
+                        n.chains = getOption("mc.cores"), quiet=TRUE)
     samples <- coda.samples(model, c("theta", "theta_diff"), n.iter=1000)
 
     posteriorReduction <-  unlist(samples[,3])
@@ -358,12 +293,109 @@ posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
     gains <- sapply(posteriorReduction, function(r) { monthlyGain(r, monthlyProfit, monthlyCost) })
     return(list(Profit=gains, Reduction=posteriorReduction)) }
 
+gains <- posteriorProfit(x=c(175, 168), n=c(442, 439), monthlyProfit=5.7, monthlyCost=0.33)
+mean(gains$Profit)
+# [1] -0.3176010559
+~~~
 
+So with the current data, we would suffer an average loss of \$0.31 per customer per month by switching to the new box.
+
+It is easy to simulate collecting another datapoint: for the control group, flip a coin with probability 39% to decide whether the customer 'canceled' or not; for the experimental group, draw a possible reduction from the posterior distribution samples, add it to 39%, and then flip a coin with the new probability.
+
+~~~{.R}
+simulateData <- function(control=TRUE, posterior) {
+  simProb <- max(0, min(1, (0.39 + sample(posterior, 1)))) # enforce 0-1
+  if (control) { rbinom(1,1, prob=0.39) } else { rbinom(1,1, prob=simProb) } }
+~~~
+
+Now we can repeatedly simulate fake data, add it to the real data, rerun the analysis, see what the new estimated profit is, compare the new estimated profit against the old profit, and thus whether the increase in profit resulting from that new datapoint justifies the cost of a new datapoint (\$0.33).
+For simplicity, I'll only simulate fake datapoints for the new boxes.
+
+~~~{.R}
+evsis <- function(x, n, n_additional=1, iters=100) {
+   gains <- posteriorProfit(x=x, n=n, monthlyProfit=5.7, monthlyCost=0.33)
+   replicate(iters, {
+                newdata <- replicate(n_additional, simulateData(control=FALSE, gains$Reduction))
+                simGains <- posteriorProfit(x=c(x[1], x[2]+sum(newdata)),
+                                            n=c(n[1], n[2]+n_additional),
+                                            monthlyProfit=5.7, monthlyCost=0.33)
+                sampleGain <- mean(simGains$Profit) - mean(gains$Profit)
+                return(sampleGain) }
+            )
+        }
+evsiEstimate <- function(x, n) {
+  evsiEstimates <- evsis(x, n)
+  evsi <- mean(ifelse(evsiEstimates>0, evsiEstimates, 0))
+  return(evsi) }
+
+evsiEstimate(c(175, 168), c(442, 439))
+# [1] 0.003542508575
+~~~
+
+Indeed, the gain from 5000 additional datapoints turns out to be so little we have a hard time distinguishing it from zero, as expected from the very small EVPI, and certainly less than the cost of collecting that much additional data.
+We can say that further experimentation is definitely not cost-effective.
+
+#### Sampling to a foregone conclusion
+
+In considering whether to pay for an experiment, the parameters need to be in a fairly narrow range: if the prior probability of success is high (or the potential profit high, or the cost low, or some combination thereof), then one is best off simply implementing the intervention without any further experimentation; while if the prior probability is low (or the potential profit low, or the cost high), the intervention is not worth testing at all; only in between is the probability of profit sufficiently uncertain that the EVPI or EVSI is high enough to justify running an experiment.
+In the other two cases, collecting data is sampling to a foregone conclusion: regardless of what the first datapoint turns out to be, the decision will still be the same; and if the first datapoint doesn't change one's decision, why bother collecting it?
+(And since the first datapoint is more informative on average than the second, if it's pointless to collect the first, then it's even more pointless to collect the second, and so on.)
+
+Earlier I noted that from the cost of the new boxes and the value of customers, the new boxes would have to reduce cancellation by at least 2.26% just to break-even.
+This is already a priori fairly unlikely because it seems that cancellations ought to be primarily due to issues like pricing, selection of wares, social media marketing, customer support & problems in shipping or charging, and that sort of thing - packaging is the sort of thing a business should experiment on when it's run out of better ideas.
+And then the profit from >2.26% must pay for the experimentation costs which could establish such a reduction.
+This raises a question: was it *ever* a good idea to decide to run such an experiment?
+
+We can ask what the EVSI was before the experiment was begun, when no data had been collected, based on our informative prior and the known gains/costs:
+
+~~~{.R}
+evsiEstimate(c(0, 0), c(0, 0))
+# [1] 0.5557574869
+~~~
+
+So experimentation is on the knife's edge: just barely profitable. With this in mind, one might not want to bother at all, considering the overhead/fixed-costs of running an experiment.
+
+#### Adaptive trials
+
+One key advantage of EVSI is that it can be calculated at any time.
+So a simple optimal adaptive trial can be run by collecting datapoints one by one, calculating EVSI after each new datapoint, and sampling another datapoint only if the EVSI > cost, otherwise ending with a decision.
+This procedure would sample until there is either enough evidence to justify a switch or until it is no longer a substantial possibility that the new box improvement exceeds 2.26% and would be profitable.
+
+In this case, such a procedure probably would have run the A/B test until perhaps _n_=100 in each arm, at which point the lack of dominance would start becoming clear and it would no longer be worth paying \$0.33 more for each new datapoint, thereby potentially saving CJ ~\$80 in new boxes and ending the test early.
+
+The difficulty here is that the feedback is delayed: until the next billing cycle, you cannot know that a particular customer *won't* cancel; it is possible that they will but simply haven't yet. And if you wait until the next billing cycle, then CJ's experiment would already be over.
+This can be solved by treating it as a [survival analysis](!Wikipedia) problem in which customer cancellation is right-censored, a class of problems that JAGS can also handle without difficulty, but CJ's writeup/code doesn't provide exact time-until-cancellation data.
+
+We can try simulating out something similar by imagining that CJ mails off 1 package per day and 31 days later, learns if the customer has canceled or not.
+[Thompson sampling](!Wikipedia) can handle such delayed feedback because it will allocate the intervention stochastically rather than solely one intervention or the other.
+Since the starting EVSI is already on the knife's edge and says that we should only allocate 1 sample to begin with, this would lead to a very quick and abrupt end to experimenting; I'll loosen the informative prior back to the uninformative prior `Beta(1,1)` for demonstration purposes:
+
+~~~{.R}
+posterior <- function(x, n, init=0.39) {
+    model_string <- "model {\n  for(i in 1:length(x)) {\n    x[i] ~ dbinom(theta[i], n[i])
+                     theta[i] ~ dbeta(1, 1)\n
+                     }\n  theta_diff <- theta[1] - theta[2]\n}"
+
+    model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
+                        inits = list(theta=c(init, init)),
+                        n.chains = getOption("mc.cores"), quiet=TRUE)
+    samples <- coda.samples(model, c("theta", "theta_diff"), n.iter=1000)
+
+    posteriorReduction <-  unlist(samples[,3])
+    return(posteriorReduction)
+    }
+monthlyGain <- function(reduction, profit, cost) { (profit * reduction) - cost }
+posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
+    posteriorReduction <- posterior(x, n)
+    gains <- sapply(posteriorReduction, function(r) { monthlyGain(r, monthlyProfit, monthlyCost) })
+    return(list(Profit=gains, Reduction=posteriorReduction)) }
+
+stoppingTimes <- c(stoppingTimes, replicate(90, {
 # ground truth
 oldP <- 3.910082e-01
 newP <- 3.889790e-01
 max <- 439+442
-customersTotal <- data.frame(Date=numeric(), Intervention=logical(), Canceled=logical(), Profit=numeric(), Reduction=numeric(), Cost=numeric())
+customersTotal <- data.frame(Date=numeric(), Intervention=logical(), Canceled=logical(), Profit=numeric(), EVSI=numeric(), Reduction=numeric(), Cost=numeric())
 for (date in 1:max) {
 
   customers <- subset(customersTotal, Date <= (date+31))
@@ -371,33 +403,50 @@ for (date in 1:max) {
   cancels <- c(sum(subset(customers, Intervention)$Canceled),
                sum(subset(customers, !Intervention)$Canceled))
   ns <- c(nrow(subset(customers, Intervention)),
-          nrow(subset(customers, !Intervention)))
-    print(cancels); print(ns)
+        nrow(subset(customers, !Intervention)))
 
-    gains <- posteriorProfit(x=cancels, n=ns, monthlyProfit=5.70, monthlyCost=0.33)
-    intervention <- sample(gains$Profit, 1) > 0
+  ## optional stopping: calculate the EVSI of 1 more datapoint, and unless it is >$0.33,
+  ## further experimentation is futile.
 
-    willCancel <- if(intervention) { rbinom(1,1, prob=newP) } else { rbinom(1,1, prob=oldP) }
-    customersTotal <- rbind(customersTotal,
-                            data.frame(Date=date, Intervention=intervention, Canceled=willCancel, Profit.estimated=mean(gains$Profit),
-                                       Reduction.estimated=mean(gains$Reduction), Cost=if(intervention) {0.33} else {0}))
+  evsi <- evsiEstimate(cancels, ns)
+  if (evsi < 0.33) { break; } else {
+      gains <- posteriorProfit(x=cancels, n=ns, monthlyProfit=5.70, monthlyCost=0.33)
+      intervention <- sample(gains$Profit, 1) > 0
+
+      willCancel <- if(intervention) { rbinom(1,1, prob=newP) } else { rbinom(1,1, prob=oldP) }
+      customersTotal <- rbind(customersTotal,
+                              data.frame(Date=date, Intervention=intervention, Canceled=willCancel, Profit.estimated=mean(gains$Profit), EVSI=evsi,
+                                         Reduction.estimated=mean(gains$Reduction), Cost=if(intervention) {0.33} else {0}))
+      }
 }
-which(customersTotal$Profit.estimated>0)
+return(nrow(customersTotal))
+}))
+stoppingTimes
+#  [1]  3  1  2  1  3  4  4  3  1  7  2  1  5  1  1  2  1  2  4  1  2  4  4  1  3  8  1  2  5  4  2  2  1  5  4  2
+# 1  1  5  1  1  3  1  5  1  2  3  4  2  1  1  5  4  1  6  1  1 10  5  2  1  6  5  5  1 10  3  3  1  1  1  4  1  7
+# 4  5  2  2  5  5  2  6  1  4  3  6  1  2  4  2  4  1  4  1  7  1  5  2  4  1
+~~~
 
-example Thompson run: 479 out of 10000 allocated to the inferior branch, predicted profit has definitively gone negative by n=443
-second run: last positive n=881, 840, 843, 24, 0, 239, 10, 114, 254, 52
+So in this scenario, we would tend to halt the experiment by _n_=3 and usually by _n_=10, having spent 1-5 new box samples at a cost of \$1-2.
+In contrast, the actual CJ experiment involved 439 new boxes presumably costing ~\$145.
+By stopping quickly as futility became evident, ~\$143 would've been saved.
 
-data.frame(Date=c(1,2,3,4,5,6,7,8,9), Intervention=c(TRUE, FALSE, TRUE, FALSE,TRUE,TRUE,TRUE,TRUE), Canceled=c(FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE))
+If we did not want to use EVSI for early stopping and wanted to ignore the cost of experimenting while eliminating the risk of making a mistake, a [multi-armed bandit](!Wikipedia) approach never turns in a final decision but instead allocates ever fewer samples to inferior arms.
+Since a MAB never sets an arm to 0, it never makes a mistake.
+If we stripped out the EVSI part of the loop and instead ran Thompson sampling on its own for, say, 1000 samples, we could get ask at what point the profitability permanently goes negative and very few samples will be allocated henceforth; in such runs, I see profitability permanently turns negative at _n_=443, 881, 840, 843, 24, 0, 239, 10, 114, 254, 52 (mean: 336).
+So with Thompson sampling alone, the experiment would still tend to largely stop experimenting long before 439 new box samples.
 
 # Conclusion
 
 So to round up:
 
-1. there is only a 56-65% (depending on priors) chance that the new boxes reduced cancellation
-2. the plausible reductions are so small that the expected value of switching is negative and there is only ~6% chance that switching to new boxes would be profitable
-3. a definitive resolution of the remaining uncertainty would be worth only ~\$12
-4. further sampling is essentially worthless and should not be done
-5. future experimentation should focus on the more important business issues CJ seems to have
+1. potential packaging improvements are small enough that packaging is hardly worth running an A/B test on in the first place
+2. there is a 56-65% (depending on priors) chance that the new boxes reduced cancellation
+3. the plausible reductions are so small that the expected value of switching is negative and there is ~6% chance that switching to new boxes would be profitable
+4. a definitive resolution of the remaining uncertainty would be worth ~\$12
+5. further sampling would cost more than it would be worth and should not be done
+6. a sequential trial using EVSI could stop sampling when the cost of a new box exceeds the benefit of more data; such a trial, under 1 approach, would generally stop sampling by _n_=10, saving 400+ new boxes
+7. future experimentation should focus on the more important business issues CJ seems to have
 
 # See Also
 
