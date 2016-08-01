@@ -319,6 +319,12 @@ So:
 
 The better IQ test delivers a gain of 0.444-0.31=0.134 or 43% more possible variance explicable, with 4% still left over compared to a perfect test.
 
+Measurement error has considerable implications for how GWASes will be run in years to come.
+As SNP costs decline from their 2016 cost of ~\$50 and whole genomes from ~\$1000, sample sizes >500,000 and into the millions will become routine, especially as whole-genome sequencing becomes a routine practice for all babies and for any patients with a serious disease (if nothing else, for [pharmacogenomics](!Wikipedia) reasons).
+Sample sizes in the millions will recover almost the full measured GCTA heritability of ~0.33 (eg Hsu's argument that sparsity priors will recover all of IQ at ~_n_=1m); but at that point, additional samples become worthless as they will not be able to pass the measured ceiling of 0.33 and explain the full 0.48.
+Only better measurements will allow any further progress.
+Considering that a well-run IQ test will cost <$100, the crossover point may well have been passed with current _n_=400k datasets, where resources would be better put into fewer but better measured IQ/SNP datapoints rather than more low quality IQ/SNP datapoints.
+
 ##### GCTA-based upper bound
 
 Since half of additives will be shared within family, then we get `0.33*0.5 = 0.165` within-family variance, which gives `sqrt(0.165) = 0.4062019202` SD or 6.1 IQ points
