@@ -95,7 +95,23 @@ fit <- bayes.prop.test(c(175, 168), c(442, 439)); fit
 # of 0.651 and larger for Group 2 by a probability of 0.349 .
 ~~~
 
-(BayesianFirstAid is overkill in this case as it calls out to JAGS for MCMC, but the binomial/proportion test uses the famously tractable [beta distribution](!Wikipedia) where we can do the Bayesian update as simply as `Beta(1,1)` ~> `Beta(1+175, 1+442)` vs `Beta(1+168, 1+439)` for the two groups; the overlap can be found analytically or using `dbeta` or simulated using `rbeta`.)
+BayesianFirstAid is overkill in this case as it calls out to JAGS for MCMC, but the binomial/proportion test uses the famously tractable [beta distribution](!Wikipedia) where we can do the Bayesian update as simply as `Beta(1,1)` ~> `Beta(1+175, 1+442-175)` vs `Beta(1+168, 1+439-168)` for the two groups; the overlap can be found analytically or using `dbeta` or simulated using `rbeta`.
+Given the overhead, that would be much faster (~97x), although it wouldn't be able to handle more complex real world problems (eg any A/B test will probably want to include covariates, to improve power).
+This also makes it easy to implement informative priors as options.
+We could implement a replacement for `bayes.prop.test` like this:
+
+~~~{.R}
+betaPosterior <- function(xs, ns, n.samples=10000, prior1.a=1, prior1.b=1, prior2.a=1, prior2.b=2) {
+    sample1 <- rbeta(n.samples, prior1.a+xs[1], prior1.b+ns[1]-xs[1])
+    sample2 <- rbeta(n.samples, prior2.a+xs[2], prior2.b+ns[2]-xs[2])
+    return(list(Theta_1=sample1, Theta_2=sample2, Theta_diff=sample1 - sample2)) }
+
+## Timing:
+mean(replicate(1000, system.time(betaPosterior(  c(175, 168), c(442, 439)))[3]))
+# [1] 0.004309
+mean(replicate(1000, system.time(bayes.prop.test(c(175, 168), c(442, 439)))[3]))
+# [1] 0.420237
+~~~
 
 ### Informative
 
@@ -438,7 +454,7 @@ So with Thompson sampling alone, the experiment would still tend to largely stop
 
 # Conclusion
 
-So to round up:
+So to round up, by employing Bayesian decision theory instead of standard NHST _p_-values, we can conclude in a principled and flexible fashion that:
 
 1. potential packaging improvements are small enough that packaging is hardly worth running an A/B test on in the first place
 2. there is a 56-65% (depending on priors) chance that the new boxes reduced cancellation
