@@ -7,7 +7,7 @@ status: finished
 belief: likely
 ...
 
-> I analyze an A/B test from a mail-order company of two different kinds of box packaging from a Bayesian decision-theory perspective, balancing posterior probability of improvements & greater profit against the cost of packaging & risk of worse results, finding that as the company's analysis suggested, the new box is unlikely to be sufficiently better than the old and, calculating expected values of information, not worth experimenting on further. A sequential trial approach would have saved up to \$143 in packaging costs.
+> I analyze an A/B test from a mail-order company of two different kinds of box packaging from a Bayesian decision-theory perspective, balancing posterior probability of improvements & greater profit against the cost of packaging & risk of worse results, finding that as the company's analysis suggested, the new box is unlikely to be sufficiently better than the old. However, calculating expected values of information shows that it is worth experimenting on further.
 
 # Background
 
@@ -173,13 +173,13 @@ summary(samples)
 # theta_diff  -0.02381196  -0.006805355 1.998807e-03   0.01086074   0.02785733
 # x_pred[1]  151.00000000 165.000000000 1.730000e+02 180.00000000 195.00000000
 # x_pred[2]  149.00000000 163.000000000 1.710000e+02 178.00000000 192.00000000
-posterior <-  (samples[1][[1]])[,3]
-mean(posterior > 0)
+posteriors <-  (samples[1][[1]])[,3]
+mean(posteriors > 0)
 # [1] 0.5623
 
 ## Or using `betaPosterior()`
-posterior <- betaPosterior(x, n, prior1.a=900, prior1.b=1407)
-mean(posterior$Theta_diff > 0)
+posteriors <- betaPosterior(x, n, prior1.a=900, prior1.b=1407)
+mean(posteriors$Theta_diff > 0)
 # [1] 0.5671
 ~~~
 
@@ -205,7 +205,41 @@ Then a gain is the difference between two lifetime values; so if we could someho
 # [1] 5.039787798
 ~~~
 
-Which over a batch of 881 customers is a cool additional \$13553.
+Which over CJ's entire set of 881 customers is a cool additional \$13553.
+If 881 is CJ's steady-state and each customer lasts ~2.56, then by [Little's law](!Wikipedia), CJ must be getting $\frac{881}{2.56}=344$ new customers per month.
+So the annual total gain from a hypothetical improvement _r_=0.10 is
+
+~~~{.R}
+(344 * 12) * (((5.7 * (1/(0.39-0.10)))  - (5.7 * (1/0.39))) - 0)
+# [1] 20804.24403
+~~~
+
+Finally, if the improvement is permanent & repeatable for all future customers, we should consider the [net present value](!Wikipedia) (NPV) of \$20.8k per year; an online mailorder business is unstable and might go out of business at anytime (and most businesses fail within the first few years), so a common discount rate like 5% is probably much too low, I would suggest at least 10%, in which case we can estimate the NPV at
+
+~~~{.R}
+20804.24403 / log(1.10)
+# [1] 218279.3493
+~~~
+
+Putting it all together:
+
+~~~{.R}
+improvementTotalGain <- function(customerProfit, cancellationRate, cancellationImprovement, customerN, discountRate) {
+ oldLifetimeValue <- customerProfit * (1/cancellationRate)
+ newLifetimeValue <- customerProfit * (1/(cancellationRate-cancellationImprovement))
+ customerGain     <- newLifetimeValue - oldLifetimeValue
+ annualGain       <- customerN * customerGain
+ NPV              <- annualGain / log(1+discountRate)
+ return(NPV) }
+
+## hypothetical example
+improvementTotalGain(5.7, 0.3909, 0.10, 344*12, 0.10)
+# [1] 217103.0195
+## actual example:
+improvementTotalGain(5.7, 0.3909, 2.029166e-03, 344*12, 0.10)
+# [1] 3295.503599
+~~~
+
 
 ## Cost-benefit
 
@@ -214,66 +248,56 @@ We don't have a 10% point reduction in hand, but we do have a posterior distribu
 So to transform the posterior distribution of cancellation decreases, each sample of our posterior distribution is run through the formula:
 
 ~~~{.R}
-gain <- sapply(posterior$Theta_diff, function(r) { ((5.7 * (1/(0.39-r)))  - (5.7 * (1/0.39))) } )
+gain <- sapply(posteriors$Theta_diff, function(r) { improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10) } )
 summary(gain)
-#        Min.     1st Qu.      Median        Mean     3rd Qu.        Max.
-# -1.64456500 -0.25657610  0.07018243  0.09104651  0.41660780  2.24548300
+#       Min.    1st Qu.     Median       Mean    3rd Qu.       Max.
+# -78880.530 -10646.060   3352.669   4044.440  18125.030  88739.940
 ~~~
 
-In this case, we estimate that rolling out the new box would increase per customer lifetime value by an average of \$0.09.
-The new boxes cost \$0.33 more per month than the old boxes, and a customer with a new box lasts 2.57 months, for a total box cost of 0.33 * 2.57 = \$0.84  so their cost exceeds their benefit by a factor of 10.
-To justify spending on the new box, we need a reduction of at least ~2.26% in the cancellation rate down to ~36.7%:
+In this case, we estimate that rolling out the new box would increase revenue by a NPV of \$4044.
 
-~~~{.R}
-lifetimeGain <- function(r) {
-    old_lifetime = 1/0.39
-    new_lifetime = 1/(0.39-r)
-    old_revenue = old_lifetime * 5.7
-    new_revenue = new_lifetime * 5.7
-    cost = new_lifetime * 0.33
-    return(new_revenue - cost - old_revenue) }
-lifetimeGain(0.20)
-# [1] 13.64777328
-lifetimeGain(0.05)
-# [1] 1.178733032
-lifetimeGain(0.0226)
-# [1] 0.0008374858674
-~~~
+The new boxes cost \$0.33 more per month per customer than the old boxes, so at 344 new customers per month with lifetimes of 2.57 months, that's
+`344*12*2.57*-0.33=-3500` a year, which translates to a NPV of -\$36,732.
 
-If we were absolutely certain that the reduction was as large as 2.26%, then the new boxes would hit breakeven.
+\$4k-\$36k yields a loss of \$32k, so we conclude that the new boxes are an order of magnitude too expensive to be worthwhile.
+To justify spending on the new box, we need a reduction of new box price down to ~\$0.04, or at least ~2.16% reduction in the cancellation rate.
+
+If we were absolutely certain that the reduction was as large as ~2.16%, then the new boxes would hit breakeven.
 How probable is it that the decrease in cancellation rate is as or larger?
-Improbable, only ~6%:
+Improbable, only ~7%:
 
 ~~~{.R}
-mean(posterior$Theta_diff >= 0.0226)
-# [1] 0.0617
+mean(posterior$Theta_diff >= 0.0216)
+# [1] 0.0731
 ~~~
 
 ## Value of Information
 ### Expected Value of Perfect Information (EVPI)
 
-Still, 6% is not totally negligible. There is still a chance that we are making a mistake in not using the new boxes.
+Still, 7% is not negligible - there is still a chance that we are making a mistake in not using the new boxes.
 Are the results favorable enough to justify an additional month or two of A/B testing?
 
-This gets into the "[expected value of perfect information](!Wikipedia)" (EVPI): how valuable would be a definitive answer to the question of whether the decrease is better than 2.26%?
+This gets into the "[expected value of perfect information](!Wikipedia)" (EVPI): how valuable would be a definitive answer to the question of whether the decrease is better than 2.16%?
 Would we be willing to pay \$10 or \$100 or \$1000 for an oracle's answer?
 
-In 94% of the cases, we believe the answer would be 'no', the oracle is worth nothing since it could only tell us what we already believe (that the decrease is less than 2.26%), in which case we are no better off, so in those cases the oracle is worth \$0; in 6% of the cases, the answer would be 'yes'.
-But in that case, our gain depends on how large the cancellation reduction is - if it's exactly 2.27%, the gain is almost \$0 so we care little, but if the gain is 4% or higher, then we would have been leaving real money on the table.
+In 93% of the cases, we believe the answer would be 'no', the oracle is worth nothing since it could only tell us what we already believe (that the decrease is less than 2.26%), in which case we are no better off, so in those cases the oracle is worth \$0; in 7% of the cases, the answer would be 'yes'.
+But in that case, our gain depends on how large the cancellation reduction is - if it's exactly 2.17%, the gain is ~\$0 so we care little, but if the gain is 3% or 4% or even higher, then we would have been leaving real money on the table.
 So we need to go back to the posterior distribution to weight our gains per customer by the possible reductions:
 
 ~~~{.R}
-mean(sapply(posterior$Theta_diff, function(r) { if(r<0.0226) { 0; } else { lifetimeGain(r) } } ))
-# [1] 0.01411378716
-0.01411378716 * 881
-# [1] 12.43424649
+
+gain <- sapply(posteriors$Theta_diff, function(r) { improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10) - 36732 } )
+EVPI <- mean(ifelse(gain>0, gain, 0))
+EVPI
+# [1] 717.4136276
 ~~~
 
-So because of the small possibility of a slightly profitable box, we'd be willing to pay up to a grand total of \$12 for certain information.
+So because of the small possibility of a profitable box (which might be very profitable applied to all customers indefinitely), we'd be willing to pay up to a grand total of \$717 for [certain information](!Wikipedia "Expected value of perfect information").
 
-\$12 would be enough to pay for 36 new boxes; used as part of another A/B test (using, say, 845 old boxes for comparison), we can intuit it would not provide anything near certainty[^power], so we can safely guess that further experimentation is not profitable.
+\$717 would be enough to pay for 2.2k new boxes; used as part of another A/B test, we can intuit it would not provide certainty[^power], so we might guess that further experimentation is not profitable.
 
-[^power]: The difference between 36 boxes whose customers cancel at 39%, and 36 boxes whose customers cancel at 39%-2.26%, is 14 cancellations vs 13 cancellations on average. Or to go back to NHST, a well-powered experiment to detect a difference between 39% and 36.74% would require _n_=14460 (_n_=7230 in each arm):
+[^power]: The difference between 36 boxes whose customers cancel at 39%, and 36 boxes whose customers cancel at 39%-2.26%, is 14 cancellations vs 13 cancellations on average. Or to go back to NHST, a well-powered experiment to detect a difference between 39% and 36.74% would require _n_=14460 (_n_=7230 in each arm).
+    With 2.2k new boxes (contrasted against another 2.2k old boxes for free), we would have 50% power:
 
     ~~~{.R}
     power.prop.test(power=0.8, p1=0.39, p2=0.3674)
@@ -287,6 +311,15 @@ So because of the small possibility of a slightly profitable box, we'd be willin
     #     alternative = two.sided
     #
     # NOTE: n is number in *each* group
+    power.prop.test(n=2172*2, p1=0.39, p2=0.3674)
+    #  Two-sample comparison of proportions power calculation
+    #
+    #           n = 4344
+    #          p1 = 0.39
+    #          p2 = 0.3674
+    #   sig.level = 0.05
+    #       power = 0.5837492282
+    # alternative = two.sided
     ~~~
 
 ### Expected Value of Sample Information (EVSI)
@@ -294,61 +327,65 @@ So because of the small possibility of a slightly profitable box, we'd be willin
 How much would just 1 observation more be worth, the "[expected value of sample information](!Wikipedia)"?
 We can estimate this by repeatedly simulating drawing 1 more observation, doing a Bayesian update, recalculating our expected profit, and seeing how much higher it is.
 
-Looking at it on the monthly level, we could automate the analysis like so:
+We could automate the analysis like so:
 
 ~~~{.R}
 posterior <- function(x, n) { betaPosterior(x,n, prior1.a=900, prior1.b=1407)$Theta_diff }
-monthlyGain <- function(reduction, profit, cost) { (profit * reduction) - cost }
-posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
+posteriorProfit <- function(x, n) {
     posteriorReduction <- posterior(x, n)
-    gains <- sapply(posteriorReduction, function(r) { monthlyGain(r, monthlyProfit, monthlyCost) })
+    gains <- sapply(posteriorReduction, function(r) { improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10) - 36732 })
     return(list(Profit=gains, Reduction=posteriorReduction)) }
 
-gains <- posteriorProfit(x=c(175, 168), n=c(442, 439), monthlyProfit=5.7, monthlyCost=0.33)
+gains <- posteriorProfit(x=c(175, 168), n=c(442, 439))
 mean(gains$Profit)
-# [1] -0.3177853191
+# [1] -33019.54686
 ~~~
 
-So with the current data, we would suffer an average loss of \$0.31 per customer per month by switching to the new box.
+So with the current data, we would suffer a total loss of \$33k by switching to the new box.
 
 It is easy to simulate collecting another datapoint: for the control group, flip a coin with probability 39% to decide whether the customer 'canceled' or not; for the experimental group, draw a possible reduction from the posterior distribution samples, add it to 39%, and then flip a coin with the new probability.
 
 ~~~{.R}
 simulateData <- function(control=TRUE, posterior) {
-  simProb <- max(0, min(1, (0.39 + sample(posterior, 1)))) # enforce 0-1
-  if (control) { rbinom(1,1, prob=0.39) } else { rbinom(1,1, prob=simProb) } }
+  simProb <- max(0, min(1, (0.3909 + sample(posterior, 1)))) # enforce 0-1
+  if (control) { rbinom(1,1, prob=0.3909) } else { rbinom(1,1, prob=simProb) } }
 ~~~
 
 Now we can repeatedly simulate fake data, add it to the real data, rerun the analysis, see what the new estimated profit is from the best action (usually we will conclude what we already conclude, that the box is not worthwhile and the value of the new information is then \$0, but in some possible universes it will change our mind), compare the new estimated profit against the old profit, and thus whether the increase in profit resulting from that new datapoint justifies the cost of a new datapoint (\$0.33).
-For simplicity, I'll only simulate fake datapoints for the new boxes.
 
 ~~~{.R}
-evsis <- function(x, n, n_additional=1, iters=100) {
-   gains <- posteriorProfit(x=x, n=n, monthlyProfit=5.7, monthlyCost=0.33)
-   replicate(iters, {
+library(parallel)
+library(plyr)
+
+evsis <- function(x, n, n_additional, iters=1000) {
+   gains <- posteriorProfit(x=x, n=n)
+   unlist(mclapply(1:iters, # parallelize
+      function (i) {
                 newdata <- replicate(n_additional, simulateData(control=FALSE, gains$Reduction))
-                simGains <- posteriorProfit(x=c(x[1], x[2]+sum(newdata)),
-                                            n=c(n[1], n[2]+n_additional),
-                                            monthlyProfit=5.7, monthlyCost=0.33)
+                olddata <- replicate(n_additional, simulateData(control=TRUE, gains$Reduction))
+
+                simGains <- posteriorProfit(x=c(x[1]+sum(olddata), x[2]+sum(newdata)),
+                                            n=c(n[1]+n_additional, n[2]+n_additional))
+
                 sampleGain <- mean(simGains$Profit) - mean(gains$Profit)
                 return(sampleGain) }
-            )
+            ) )
         }
-evsiEstimate <- function(x, n) {
-  evsiEstimates <- evsis(x, n)
+
+evsiEstimate <- function(x, n, n_additional=1) {
+  evsiEstimates <- evsis(x, n, n_additional)
   evsi <- mean(ifelse(evsiEstimates>0, evsiEstimates, 0))
   return(evsi) }
 
-evsiEstimate(c(175, 168), c(442, 439))
-# [1] 0.0001665625951
+evsiEstimate(c(175, 168), c(442, 439), n_additional=1)
+# [1] 91.71148354
 ~~~
 
-Indeed, the gain from 5000 additional datapoints turns out to be so little we have a hard time distinguishing it from zero, as expected from the very small EVPI, and certainly less than the cost of collecting that much additional data.
-We can say that further experimentation is definitely not cost-effective.
+So the expected value of 1 additional datapoint is \$91.
 
 #### Sampling to a foregone conclusion
 
-In considering whether to pay for an experiment, the parameters need to be in a fairly narrow range: if the prior probability of success is high (or the potential profit high, or the cost low, or some combination thereof), then one is best off simply implementing the intervention without any further experimentation; while if the prior probability is low (or the potential profit low, or the cost high), the intervention is not worth testing at all; only in between is the probability of profit sufficiently uncertain that the EVPI or EVSI is high enough to justify running an experiment.
+In considering whether to pay for an experiment, the parameters need to be in a fairly narrow range: if the prior probability of success is high (or the potential profit high, or the cost low, or some combination thereof), then one is best off simply implementing the intervention without any further experimentation; while if the prior probability is low (or the potential profit low, or the cost high), the intervention is not worth testing at all (since the data is unlikely to discourage one enough to stop using it); only in between is the probability of profit sufficiently uncertain that the EVPI or EVSI is high enough to justify running an experiment.
 In the other two cases, collecting data is sampling to a foregone conclusion: regardless of what the first datapoint turns out to be, the decision will still be the same; and if the first datapoint doesn't change one's decision, why bother collecting it?
 (And since the first datapoint is more informative on average than the second, if it's pointless to collect the first, then it's even more pointless to collect the second, and so on.)
 
@@ -361,10 +398,10 @@ We can ask what the EVSI was before the experiment was begun, when no data had b
 
 ~~~{.R}
 evsiEstimate(c(0, 0), c(0, 0))
-# [1] 0.0003412342683
+# [1] 239.5780514
 ~~~
 
-So experimentation was probably not profitable in the first place.
+So apparently yes, this was something worth experimenting on.
 
 #### Adaptive trials
 
@@ -382,22 +419,17 @@ We can try simulating out something similar by imagining that CJ mails off 1 pac
 Since the starting EVSI is already on the knife's edge and says that we should only allocate 1 sample to begin with, this would lead to a very quick and abrupt end to experimenting; I'll loosen the informative prior back to the uninformative prior `Beta(1,1)` for demonstration purposes:
 
 ~~~{.R}
-posterior <- function(x, n) { betaPosterior(x,n)$Theta_diff }
-monthlyGain <- function(reduction, profit, cost) { (profit * reduction) - cost }
-posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
-    posteriorReduction <- posterior(x, n)
-    gains <- sapply(posteriorReduction, function(r) { monthlyGain(r, monthlyProfit, monthlyCost) })
-    return(list(Profit=gains, Reduction=posteriorReduction)) }
+oldP <- 3.910082e-01
+newP <- 3.889790e-01
+max <- 439+442
+iters <- 1
+customersTotal <- data.frame(I=integer(), Date=numeric(), Intervention=logical(), Canceled=logical(), Profit=numeric(),
+                             EVSI=numeric(), Reduction=numeric(), Cost=numeric())
 
-stoppingTimes <- replicate(100, {
-  # ground truth
-  oldP <- 3.910082e-01
-  newP <- 3.889790e-01
-  max <- 439+442
-  customersTotal <- data.frame(Date=numeric(), Intervention=logical(), Canceled=logical(), Profit=numeric(), EVSI=numeric(), Reduction=numeric(), Cost=numeric())
+stoppingTimes <- ldply(lapply(1:iters, {
   for (date in 1:max) {
 
-    customers <- subset(customersTotal, Date <= (date+31))
+    customers <- subset(customersTotal, Date <= (date-31))
 
     cancels <- c(sum(subset(customers, Intervention)$Canceled),
                  sum(subset(customers, !Intervention)$Canceled))
@@ -409,17 +441,18 @@ stoppingTimes <- replicate(100, {
 
     evsi <- evsiEstimate(cancels, ns)
     if (evsi < 0.33) { break; } else {
-        gains <- posteriorProfit(x=cancels, n=ns, monthlyProfit=5.70, monthlyCost=0.33)
+        gains <- posteriorProfit(x=cancels, n=ns)
         intervention <- sample(gains$Profit, 1) > 0
 
         willCancel <- if(intervention) { rbinom(1,1, prob=newP) } else { rbinom(1,1, prob=oldP) }
         customersTotal <- rbind(customersTotal,
-                                data.frame(Date=date, Intervention=intervention, Canceled=willCancel, Profit.estimated=mean(gains$Profit), EVSI=evsi,
+                                data.frame(I=iters, Date=date, Intervention=intervention, Canceled=willCancel, Profit.estimated=mean(gains$Profit), EVSI=evsi,
                                            Reduction.estimated=mean(gains$Reduction), Cost=if(intervention) {0.33} else {0}))
+        print(customersTotal)
         }
   }
-  return(nrow(customersTotal))
-})
+  return(customersTotal)
+}))
 stoppingTimes
 # [1]  1  3  2  4  5  2  4  1  3  1  2  2  1  2  3  1  6  1  1  1  2  1  1  1  1
 #      4  1  3  3  2  2  2  5  1  2  2  4  9  1  3  1  2  1  1  1  5  1  3  3  4
@@ -433,20 +466,18 @@ By stopping quickly as futility became evident, ~\$143 would've been saved.
 
 If we did not want to use EVSI for early stopping and wanted to ignore the cost of experimenting while eliminating the risk of making a mistake, a [multi-armed bandit](!Wikipedia) approach never turns in a final decision but instead allocates ever fewer samples to inferior arms.
 Since a MAB never sets an arm to 0, it never makes a mistake.
-If we stripped out the EVSI part of the loop and instead ran Thompson sampling on its own for, say, 1000 samples, we could get ask at what point the profitability permanently goes negative and very few samples will be allocated henceforth; in such runs, I see profitability permanently turns negative at _n_=443, 881, 840, 843, 24, 0, 239, 10, 114, 254, 52 (mean: 336).
-So with Thompson sampling alone, the experiment would still tend to largely stop experimenting long before 439 new box samples.
 
 # Conclusion
 
 So to round up, by employing Bayesian decision theory instead of standard NHST _p_-values, we can conclude in a principled and flexible fashion that:
 
-1. potential packaging improvements are small enough that packaging is hardly worth running an A/B test on in the first place
+1. potential packaging improvements are large enough that packaging is hardly worth running an A/B test on in the first place
 2. there is a 56-65% (depending on priors) chance that the new boxes reduced cancellation
-3. the plausible reductions are so small that the expected value of switching is negative and there is ~6% chance that switching to new boxes would be profitable
-4. a definitive resolution of the remaining uncertainty would be worth ~\$12
-5. further sampling would cost more than it would be worth and should not be done
-6. a sequential trial using EVSI could stop sampling when the cost of a new box exceeds the benefit of more data; such a trial, under 1 approach, would generally stop sampling by _n_=10, saving 400+ new boxes
-7. future experimentation should focus on the more important business issues CJ seems to have
+3. the plausible reductions are small enough that the expected value of switching is negative as there is ~6% chance that switching to new boxes would be profitable
+4. a definitive resolution of the remaining uncertainty would be worth ~\$717
+5. further sampling to reduce uncertainty more would be profitable
+6. a sequential trial using EVSI could stop sampling when the cost of a new box exceeds the benefit of more data; such a trial, under 1 approach, would TODO
+7. in general, future experimentation should focus on the more important business issues CJ seems to have
 
 # See Also
 
