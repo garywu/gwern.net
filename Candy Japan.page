@@ -14,9 +14,9 @@ belief: likely
 [Candy Japan](https://www.candyjapan.com/) is a small mail-order company which, since 2011, sends semi-monthly small packages of Japanese candies & novelty foods from Japan to subscribers typically in the West.
 While mail-order subscriptions services such as tea or chocolate of the month clubs are not rare, Candy Japan publishes unusually detailed blog posts discussing their business, such as [how they were nearly killed by credit card fraud](https://www.candyjapan.com/how-i-got-credit-card-fraud-somewhat-under-control "How Candy Japan got credit card fraud somewhat under control"), [pricing](http://www.bemmu.com/how-i-decided-the-price-for-my-japanese-candy "How I decided the price for my Japanese candy subscription service"), [their overhead](https://www.reddit.com/r/startups/comments/44lgr7/running_costs_for_candy_japan/), [(non) sales from YouTube stardom](https://www.candyjapan.com/sales-results-from-getting-3-million-views-on-youtube "Sales results from getting 3 million views on YouTube"), [life as an expat in Japan](http://www.bemmu.com/two-years-of-candy), and annual summaries (eg [2012](http://www.bemmu.com/first-year-of-candy-japan "First year of Candy Japan"), [2013](http://www.candyjapan.com/2013-year-in-review), [2014](http://www.candyjapan.com/2014-year-in-review), [2015](http://www.candyjapan.com/2015-year-in-review)), which are [often discussed on Hacker News](https://hn.algolia.com/?query=%22Candy%20Japan%22&sort=byPopularity&prefix&page=0&dateRange=all&type=all).
 
-# Box A/B test
+# New Box A/B test
 
-In 2016, [CJ ran an A/B test](https://www.candyjapan.com/results-from-box-design-ab-test) ([HN discussion](https://news.ycombinator.com/item?id=11641602)) comparing subscription cancellation rates of customers sent candy in the standard undecorated box, and customers sent candy in prettier but more expensive boxes:
+Starting on 28 November 2015 & publishing results 5 May 2016, [CJ ran an A/B test](https://www.candyjapan.com/results-from-box-design-ab-test "Results from Candy Japan box design A/B test") ([HN discussion](https://news.ycombinator.com/item?id=11641602)) comparing subscription cancellation rates of customers sent candy in the standard undecorated box, and customers sent candy in prettier but more expensive boxes:
 
 > Plain unbranded boxes go for just \$0.34 a piece, while a box with a full-color illustration printed on the cover costs almost twice as much: \$0.67. This may not seem like such a big difference, but in absolute terms using the new box means around \$500 less profit per month or roughly 10% of profit margin.
 >
@@ -31,11 +31,10 @@ CJ has here a straightforward decision problem: should it switch to the decorate
 
 The most conventional approach here would be what CJ did: treat this as a 2-sample test of proportions, or a binomial regression, and compute a _p_-value for the treatment; if the _p_-value of a decreased cancellation rate is smaller than the arbitrary threshold 0.05, switch to the new boxes.
 
-We can easily replicate CJ's analysis given the provided percentages and _n_s (the sufficient statistics in this case):
+We can easily replicate CJ's analysis given the provided percentages and _n_s (the [sufficient statistics](!Wikipedia) in this case):
 
 ~~~{.R}
 prop.test(c(175, 168), c(442, 439))
-#
 #   2-sample test for equality of proportions with continuity correction
 #
 # data:  c(175, 168) out of c(442, 439)
@@ -48,11 +47,11 @@ prop.test(c(175, 168), c(442, 439))
 # 0.3959276018 0.3826879271
 ~~~
 
-So CJ's _p_-value matches mine. Arguably, a one-tailed test here is appropriate since you are only interested in whether the new box has a better cancellation rate, which would be expected to halve the _p_-value, as it does:
+So CJ's _p_-value (0.80) roughly matches mine.^[CJ ran their test using a [Fisher's exact test](!Wikipedia): `fisher.test(rbind(c(439,168),c(442,175)))`. Fisher's exact test is most useful when sample sizes are very small, like _n_<20, but it doesn't make a difference here, and I find the proportion test easier to interpret.]
+Arguably, a one-tailed test here is appropriate since you are only interested in whether the new box has a better cancellation rate, which would be expected to halve the _p_-value, as it does:
 
 ~~~{.R}
 prop.test(c(175, 168), c(442, 439), alternative="greater")
-#
 #   2-sample test for equality of proportions with continuity correction
 #
 # data:  c(175, 168) out of c(442, 439)
@@ -65,17 +64,18 @@ prop.test(c(175, 168), c(442, 439), alternative="greater")
 # 0.3959276018 0.3826879271
 ~~~
 
-But of course, what does a _p_-value mean, anyway? CJ [correctly](!Wikipedia "P-value#Misunderstandings") interprets what they do mean ("In a world where it makes no difference which package is sent, you would get a result as statistically-significant as this 80% of the time."), but that doesn't give us much help in understanding if we *are* in the world where which box is sent *does* make an important difference and *how much* of a difference and whether we want to *decide* whether to switch.
+But of course, what does a _p_-value mean, anyway?
+CJ [correctly](!Wikipedia "P-value#Misunderstandings") interprets what they do mean ("In a world where it makes no difference which package is sent, you would get a result as statistically-significant as this 80% of the time."), but that doesn't give us much help in understanding if we *are* in the world where which box is sent *does* make an important difference and *how much* of a difference and whether we want to *decide* whether to switch.
 
-_p_-values are an unreliable criterion for decisions: the result might be consistent with informative priors about the possible effect of box improvements; one might have compelling reason from earlier experiments to decide to switch to the new box; one might prefer the new boxes for other reasons; the new boxes might be profitable despite weak evidence (for example, if they cost the same); the result might be promising enough to justify further experimentation...
+These are all questions that conventional approaches will struggle with and _p_-values in particular are hard to use as a criterion for decisions: the result might be consistent with informative priors about the possible effect of box improvements; one might have compelling reason from earlier experiments to decide to switch to the new box; one might prefer the new boxes for other reasons; the new boxes might be profitable despite weak evidence (for example, if they cost the same); the result might be promising enough to justify further experimentation...
 
 ## Bayesian
 
-It would be better to do a more informed Bayesian decision analysis including our knowledge that improvements should be small, giving a concrete probability that there is an improvement and if there is, how large it is - letting us calculate the probability that the switch would be profitable, and the profitability of further experimentation.
+It would be better to do a more informed [Bayesian](!Wikipedia "Bayesian statistics") [decision theory](!Wikipedia) approach ([Schlaifer 1959](/docs/statistics/1959-schlaifer-probabilitystatisticsbusinessdecisions.djvu "_Probability and Statistics for Business Decisions: an Introduction to Managerial Economics Under Uncertainty_"), [Raiffa & Schlaifer 1961](/docs/statistics/1961-raiffa-appliedstatisticaldecisiontheory.pdf "_Applied Statistical Decision Theory_"), [Pratt et al 1995](/docs/statistics/1995-pratt-introductionstatisticaldecisiontheory.epub "_Introduction to Statistical Decision Theory_")) including our knowledge that improvements should be small, giving a concrete probability that there is an improvement and if there is how large, letting us calculate the probability that the switch would be profitable using money as our [loss function](!Wikipedia), the profitability of further experimentation, and how we would run an A/B test more efficiently in terms of maximizing profit rather than some other criterion.
 
 ### Uninformative
 
-Switching over to a Bayesian approach, using [BayesianFirstAid](https://github.com/rasmusab/bayesian_first_aid) gives us a `bayes.prop.test` function with the exact same interface as `prop.test` using a highly uninformative `beta(1,1)` prior (effectively a flat prior implying that every probability from 0-1 is equally likely):
+Switching over to a Bayesian approach, using [BayesianFirstAid](https://github.com/rasmusab/bayesian_first_aid) gives us a `bayes.prop.test` function with the exact same interface as `prop.test` using a highly uninformative [beta distribution](!Wikipedia) prior `beta(1,1)` prior (effectively a flat prior implying that every probability from 0-1 is equally likely):
 
 ~~~{.R}
 library(BayesianFirstAid)
@@ -95,13 +95,14 @@ fit <- bayes.prop.test(c(175, 168), c(442, 439)); fit
 # of 0.651 and larger for Group 2 by a probability of 0.349 .
 ~~~
 
-BayesianFirstAid is overkill in this case as it calls out to JAGS for MCMC, but the binomial/proportion test uses the famously tractable [beta distribution](!Wikipedia) where we can do the Bayesian update as simply as `Beta(1,1)` ~> `Beta(1+175, 1+442-175)` vs `Beta(1+168, 1+439-168)` for the two groups; the overlap can be found analytically or using `dbeta` or simulated using `rbeta`.
+BayesianFirstAid is overkill in this case as it calls out to [JAGS](!Wikipedia "Just another Gibbs sampler") for [MCMC](!Wikipedia "Markov chain Monte Carlo"), but the binomial/proportion test uses the famously tractable [conjugate prior](!Wikipedia) beta distribution where we can do the Bayesian update as simply as `Beta(1,1)` ~> `Beta(1+175, 1+442-175)` vs `Beta(1+168, 1+439-168)` for the two groups; the overlap can be found analytically or using `dbeta()` or simulated using `rbeta()`.
 Given the overhead, that would be much faster (~97x), although it wouldn't be able to handle more complex real world problems (eg any A/B test will probably want to include covariates, to improve power).
 This also makes it easy to implement informative priors as options.
 We could implement a replacement for `bayes.prop.test` like this:
 
 ~~~{.R}
-betaPosterior <- function(xs, ns, n.samples=10000, prior1.a=1, prior1.b=1, prior2.a=1, prior2.b=2) {
+betaPosterior <- function(xs, ns, n.samples=10000,
+                  prior1.a=1, prior1.b=1, prior2.a=prior1.a, prior2.b=prior1.b) {
     sample1 <- rbeta(n.samples, prior1.a+xs[1], prior1.b+ns[1]-xs[1])
     sample2 <- rbeta(n.samples, prior2.a+xs[2], prior2.b+ns[2]-xs[2])
     return(list(Theta_1=sample1, Theta_2=sample2, Theta_diff=sample1 - sample2)) }
@@ -131,6 +132,7 @@ a; 1.5642*a
 # [1] 1407.78
 ~~~
 
+So an informative prior here would be `Beta(900,1407)`.
 BayesianFirstAid [does not support user-specified priors](https://github.com/rasmusab/bayesian_first_aid/issues/13) but it does make it relatively easy to incorporate any change we wish by printing out all the code we need to run it in the form of the R boilerplate and the JAGS model.
 We locate the `dbeta(1,1)` line and replace it with `dbeta(900, 1407)`, and add in a convenience line `theta_diff <- theta[1] - theta[2]` which reports directly on what we care about (how much the new box decreases the cancellation rate):
 
@@ -172,8 +174,13 @@ summary(samples)
 # x_pred[1]  151.00000000 165.000000000 1.730000e+02 180.00000000 195.00000000
 # x_pred[2]  149.00000000 163.000000000 1.710000e+02 178.00000000 192.00000000
 posterior <-  (samples[1][[1]])[,3]
-sum(posterior > 0) / length(posterior)
+mean(posterior > 0)
 # [1] 0.5623
+
+## Or using `betaPosterior()`
+posterior <- betaPosterior(x, n, prior1.a=900, prior1.b=1407)
+mean(posterior$Theta_diff > 0)
+# [1] 0.5671
 ~~~
 
 So a much more informative prior reduces the posterior probability that the new box reduced the cancellation rate to _P_=0.56.
@@ -207,7 +214,7 @@ We don't have a 10% point reduction in hand, but we do have a posterior distribu
 So to transform the posterior distribution of cancellation decreases, each sample of our posterior distribution is run through the formula:
 
 ~~~{.R}
-gain <- sapply(posterior, function(r) { ((5.7 * (1/(0.39-r)))  - (5.7 * (1/0.39))) } )
+gain <- sapply(posterior$Theta_diff, function(r) { ((5.7 * (1/(0.39-r)))  - (5.7 * (1/0.39))) } )
 summary(gain)
 #        Min.     1st Qu.      Median        Mean     3rd Qu.        Max.
 # -1.64456500 -0.25657610  0.07018243  0.09104651  0.41660780  2.24548300
@@ -238,8 +245,8 @@ How probable is it that the decrease in cancellation rate is as or larger?
 Improbable, only ~6%:
 
 ~~~{.R}
-sum(posterior >= 0.0226) / length(posterior)
-# [1] 0.0591
+mean(posterior$Theta_diff >= 0.0226)
+# [1] 0.0617
 ~~~
 
 ## Value of Information
@@ -256,10 +263,10 @@ But in that case, our gain depends on how large the cancellation reduction is - 
 So we need to go back to the posterior distribution to weight our gains per customer by the possible reductions:
 
 ~~~{.R}
-mean(sapply(posterior, function(r) { if(r<0.0226) { 0; } else { lifetimeGain(r) } } ))
-# [1] 0.01346836819
-0.01346836819 * 881
-# [1] 11.86563238
+mean(sapply(posterior$Theta_diff, function(r) { if(r<0.0226) { 0; } else { lifetimeGain(r) } } ))
+# [1] 0.01411378716
+0.01411378716 * 881
+# [1] 12.43424649
 ~~~
 
 So because of the small possibility of a slightly profitable box, we'd be willing to pay up to a grand total of \$12 for certain information.
@@ -290,19 +297,7 @@ We can estimate this by repeatedly simulating drawing 1 more observation, doing 
 Looking at it on the monthly level, we could automate the analysis like so:
 
 ~~~{.R}
-posterior <- function(x, n, init=0.39) {
-    model_string <- "model {\n  for(i in 1:length(x)) {\n    x[i] ~ dbinom(theta[i], n[i])
-                     theta[i] ~ dbeta(900, 1407)\n
-                     }\n  theta_diff <- theta[1] - theta[2]\n}"
-
-    model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
-                        inits = list(theta=c(init, init)),
-                        n.chains = getOption("mc.cores"), quiet=TRUE)
-    samples <- coda.samples(model, c("theta", "theta_diff"), n.iter=1000)
-
-    posteriorReduction <-  unlist(samples[,3])
-    return(posteriorReduction)
-    }
+posterior <- function(x, n) { betaPosterior(x,n, prior1.a=900, prior1.b=1407)$Theta_diff }
 monthlyGain <- function(reduction, profit, cost) { (profit * reduction) - cost }
 posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
     posteriorReduction <- posterior(x, n)
@@ -311,7 +306,7 @@ posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
 
 gains <- posteriorProfit(x=c(175, 168), n=c(442, 439), monthlyProfit=5.7, monthlyCost=0.33)
 mean(gains$Profit)
-# [1] -0.3176010559
+# [1] -0.3177853191
 ~~~
 
 So with the current data, we would suffer an average loss of \$0.31 per customer per month by switching to the new box.
@@ -324,7 +319,7 @@ simulateData <- function(control=TRUE, posterior) {
   if (control) { rbinom(1,1, prob=0.39) } else { rbinom(1,1, prob=simProb) } }
 ~~~
 
-Now we can repeatedly simulate fake data, add it to the real data, rerun the analysis, see what the new estimated profit is, compare the new estimated profit against the old profit, and thus whether the increase in profit resulting from that new datapoint justifies the cost of a new datapoint (\$0.33).
+Now we can repeatedly simulate fake data, add it to the real data, rerun the analysis, see what the new estimated profit is from the best action (usually we will conclude what we already conclude, that the box is not worthwhile and the value of the new information is then \$0, but in some possible universes it will change our mind), compare the new estimated profit against the old profit, and thus whether the increase in profit resulting from that new datapoint justifies the cost of a new datapoint (\$0.33).
 For simplicity, I'll only simulate fake datapoints for the new boxes.
 
 ~~~{.R}
@@ -345,7 +340,7 @@ evsiEstimate <- function(x, n) {
   return(evsi) }
 
 evsiEstimate(c(175, 168), c(442, 439))
-# [1] 0.003542508575
+# [1] 0.0001665625951
 ~~~
 
 Indeed, the gain from 5000 additional datapoints turns out to be so little we have a hard time distinguishing it from zero, as expected from the very small EVPI, and certainly less than the cost of collecting that much additional data.
@@ -366,10 +361,10 @@ We can ask what the EVSI was before the experiment was begun, when no data had b
 
 ~~~{.R}
 evsiEstimate(c(0, 0), c(0, 0))
-# [1] 0.5557574869
+# [1] 0.0003412342683
 ~~~
 
-So experimentation is on the knife's edge: just barely profitable. With this in mind, one might not want to bother at all, considering the overhead/fixed-costs of running an experiment.
+So experimentation was probably not profitable in the first place.
 
 #### Adaptive trials
 
@@ -387,63 +382,52 @@ We can try simulating out something similar by imagining that CJ mails off 1 pac
 Since the starting EVSI is already on the knife's edge and says that we should only allocate 1 sample to begin with, this would lead to a very quick and abrupt end to experimenting; I'll loosen the informative prior back to the uninformative prior `Beta(1,1)` for demonstration purposes:
 
 ~~~{.R}
-posterior <- function(x, n, init=0.39) {
-    model_string <- "model {\n  for(i in 1:length(x)) {\n    x[i] ~ dbinom(theta[i], n[i])
-                     theta[i] ~ dbeta(1, 1)\n
-                     }\n  theta_diff <- theta[1] - theta[2]\n}"
-
-    model <- jags.model(textConnection(model_string), data = list(x = x, n = n),
-                        inits = list(theta=c(init, init)),
-                        n.chains = getOption("mc.cores"), quiet=TRUE)
-    samples <- coda.samples(model, c("theta", "theta_diff"), n.iter=1000)
-
-    posteriorReduction <-  unlist(samples[,3])
-    return(posteriorReduction)
-    }
+posterior <- function(x, n) { betaPosterior(x,n)$Theta_diff }
 monthlyGain <- function(reduction, profit, cost) { (profit * reduction) - cost }
 posteriorProfit <- function(x, n, monthlyProfit, monthlyCost) {
     posteriorReduction <- posterior(x, n)
     gains <- sapply(posteriorReduction, function(r) { monthlyGain(r, monthlyProfit, monthlyCost) })
     return(list(Profit=gains, Reduction=posteriorReduction)) }
 
-stoppingTimes <- c(stoppingTimes, replicate(90, {
-# ground truth
-oldP <- 3.910082e-01
-newP <- 3.889790e-01
-max <- 439+442
-customersTotal <- data.frame(Date=numeric(), Intervention=logical(), Canceled=logical(), Profit=numeric(), EVSI=numeric(), Reduction=numeric(), Cost=numeric())
-for (date in 1:max) {
+stoppingTimes <- replicate(100, {
+  # ground truth
+  oldP <- 3.910082e-01
+  newP <- 3.889790e-01
+  max <- 439+442
+  customersTotal <- data.frame(Date=numeric(), Intervention=logical(), Canceled=logical(), Profit=numeric(), EVSI=numeric(), Reduction=numeric(), Cost=numeric())
+  for (date in 1:max) {
 
-  customers <- subset(customersTotal, Date <= (date+31))
+    customers <- subset(customersTotal, Date <= (date+31))
 
-  cancels <- c(sum(subset(customers, Intervention)$Canceled),
-               sum(subset(customers, !Intervention)$Canceled))
-  ns <- c(nrow(subset(customers, Intervention)),
-        nrow(subset(customers, !Intervention)))
+    cancels <- c(sum(subset(customers, Intervention)$Canceled),
+                 sum(subset(customers, !Intervention)$Canceled))
+    ns <- c(nrow(subset(customers, Intervention)),
+          nrow(subset(customers, !Intervention)))
 
-  ## optional stopping: calculate the EVSI of 1 more datapoint, and unless it is >$0.33,
-  ## further experimentation is futile.
+    ## optional stopping: calculate the EVSI of 1 more datapoint, and unless it is >$0.33,
+    ## further experimentation is futile.
 
-  evsi <- evsiEstimate(cancels, ns)
-  if (evsi < 0.33) { break; } else {
-      gains <- posteriorProfit(x=cancels, n=ns, monthlyProfit=5.70, monthlyCost=0.33)
-      intervention <- sample(gains$Profit, 1) > 0
+    evsi <- evsiEstimate(cancels, ns)
+    if (evsi < 0.33) { break; } else {
+        gains <- posteriorProfit(x=cancels, n=ns, monthlyProfit=5.70, monthlyCost=0.33)
+        intervention <- sample(gains$Profit, 1) > 0
 
-      willCancel <- if(intervention) { rbinom(1,1, prob=newP) } else { rbinom(1,1, prob=oldP) }
-      customersTotal <- rbind(customersTotal,
-                              data.frame(Date=date, Intervention=intervention, Canceled=willCancel, Profit.estimated=mean(gains$Profit), EVSI=evsi,
-                                         Reduction.estimated=mean(gains$Reduction), Cost=if(intervention) {0.33} else {0}))
-      }
-}
-return(nrow(customersTotal))
-}))
+        willCancel <- if(intervention) { rbinom(1,1, prob=newP) } else { rbinom(1,1, prob=oldP) }
+        customersTotal <- rbind(customersTotal,
+                                data.frame(Date=date, Intervention=intervention, Canceled=willCancel, Profit.estimated=mean(gains$Profit), EVSI=evsi,
+                                           Reduction.estimated=mean(gains$Reduction), Cost=if(intervention) {0.33} else {0}))
+        }
+  }
+  return(nrow(customersTotal))
+})
 stoppingTimes
-#  [1]  3  1  2  1  3  4  4  3  1  7  2  1  5  1  1  2  1  2  4  1  2  4  4  1  3  8  1  2  5  4  2  2  1  5  4  2
-# 1  1  5  1  1  3  1  5  1  2  3  4  2  1  1  5  4  1  6  1  1 10  5  2  1  6  5  5  1 10  3  3  1  1  1  4  1  7
-# 4  5  2  2  5  5  2  6  1  4  3  6  1  2  4  2  4  1  4  1  7  1  5  2  4  1
+# [1]  1  3  2  4  5  2  4  1  3  1  2  2  1  2  3  1  6  1  1  1  2  1  1  1  1
+#      4  1  3  3  2  2  2  5  1  2  2  4  9  1  3  1  2  1  1  1  5  1  3  3  4
+#      3  4  1  1  2  3  2  8  2  5 15 6  1  1  3  1  2  3  3  1  5  4  2  8  1
+#      2  1  5  6  1  1  1  5  2  2  2  1  2  1  1  4  2  3  1  1  2  2  1  2  4
 ~~~
 
-So in this scenario, we would tend to halt the experiment by _n_=3 and usually by _n_=10, having spent 1-5 new box samples at a cost of \$1-2.
+So in this scenario, we would tend to halt the experiment by _n_=3 and usually by _n_=15, having spent 1-5 new box samples at a cost of \$1-2.
 In contrast, the actual CJ experiment involved 439 new boxes presumably costing ~\$145.
 By stopping quickly as futility became evident, ~\$143 would've been saved.
 
