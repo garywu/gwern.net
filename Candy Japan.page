@@ -101,7 +101,7 @@ This also makes it easy to implement informative priors as options.
 We could implement a replacement for `bayes.prop.test` like this:
 
 ~~~{.R}
-betaPosterior <- function(xs, ns, n.samples=10000,
+betaPosterior <- function(xs, ns, n.samples=20000,
                   prior1.a=1, prior1.b=1, prior2.a=prior1.a, prior2.b=prior1.b) {
     sample1 <- rbeta(n.samples, prior1.a+xs[1], prior1.b+ns[1]-xs[1])
     sample2 <- rbeta(n.samples, prior2.a+xs[2], prior2.b+ns[2]-xs[2])
@@ -267,7 +267,7 @@ How probable is it that the decrease in cancellation rate is as or larger?
 Improbable, only ~7%:
 
 ~~~{.R}
-mean(posterior$Theta_diff >= 0.0216)
+mean(posteriors$Theta_diff >= 0.0216)
 # [1] 0.0731
 ~~~
 
@@ -285,7 +285,6 @@ But in that case, our gain depends on how large the cancellation reduction is - 
 So we need to go back to the posterior distribution to weight our gains per customer by the possible reductions:
 
 ~~~{.R}
-
 gain <- sapply(posteriors$Theta_diff, function(r) { improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10) - 36732 } )
 EVPI <- mean(ifelse(gain>0, gain, 0))
 EVPI
@@ -357,7 +356,7 @@ Now we can repeatedly simulate fake data, add it to the real data, rerun the ana
 library(parallel)
 library(plyr)
 
-evsis <- function(x, n, n_additional, iters=1000) {
+evsis <- function(x, n, n_additional, iters=10000) {
    gains <- posteriorProfit(x=x, n=n)
    unlist(mclapply(1:iters, # parallelize
       function (i) {
@@ -420,13 +419,19 @@ Since the starting EVSI is already on the knife's edge and says that we should o
 
 ~~~{.R}
 oldP <- 3.910082e-01
-newP <- 3.889790e-01
-max <- 439+442
+newP <- oldP - 0.05 # newP <- 3.889790e-01
+max <- 10000
 iters <- 1
-customersTotal <- data.frame(I=integer(), Date=numeric(), Intervention=logical(), Canceled=logical(), Profit=numeric(),
-                             EVSI=numeric(), Reduction=numeric(), Cost=numeric())
+thompsonSample <- FALSE
 
-stoppingTimes <- ldply(lapply(1:iters, {
+## set up a dataframe expressing the results as of the end of the CJ test
+a <- c(rep(TRUE, 168), rep(FALSE, 439-168))
+b <- c(rep(TRUE, 175), rep(FALSE, 442-175))
+interventionState <- c(rep(TRUE, 439), rep(FALSE, 442))
+customersTotal <- data.frame(I=NA, Date=-880:0, N=881, Intervention=interventionState, Canceled=c(a,b), Profit=NA, ProfitP=NA,
+                             EVSI=NA, Reduction=NA, Cost=c(rep(0.33, 439), rep(0.00, 442)))
+
+ldply(lapply(1:iters, {
   for (date in 1:max) {
 
     customers <- subset(customersTotal, Date <= (date-31))
@@ -442,27 +447,21 @@ stoppingTimes <- ldply(lapply(1:iters, {
     evsi <- evsiEstimate(cancels, ns)
     if (evsi < 0.33) { break; } else {
         gains <- posteriorProfit(x=cancels, n=ns)
-        intervention <- sample(gains$Profit, 1) > 0
+        profitP <- mean(gains$Profit>0)
 
-        willCancel <- if(intervention) { rbinom(1,1, prob=newP) } else { rbinom(1,1, prob=oldP) }
+        intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else { as.logical(rbinom(1,1, prob=0.5)) }
+
+        willCancel <- if (intervention) { rbinom(1,1, prob=newP) } else { rbinom(1,1, prob=oldP) }
         customersTotal <- rbind(customersTotal,
-                                data.frame(I=iters, Date=date, Intervention=intervention, Canceled=willCancel, Profit.estimated=mean(gains$Profit), EVSI=evsi,
-                                           Reduction.estimated=mean(gains$Reduction), Cost=if(intervention) {0.33} else {0}))
-        print(customersTotal)
+                                data.frame(I=iters, Date=date, N=nrow(customers), Intervention=intervention, Canceled=willCancel, Profit=mean(gains$Profit),
+                                           ProfitP=profitP, EVSI=evsi,
+                                           Reduction=mean(gains$Reduction), Cost=if(intervention) {0.33} else {0}))
+        print(tail(customersTotal, n=100))
         }
   }
-  return(customersTotal)
 }))
 stoppingTimes
-# [1]  1  3  2  4  5  2  4  1  3  1  2  2  1  2  3  1  6  1  1  1  2  1  1  1  1
-#      4  1  3  3  2  2  2  5  1  2  2  4  9  1  3  1  2  1  1  1  5  1  3  3  4
-#      3  4  1  1  2  3  2  8  2  5 15 6  1  1  3  1  2  3  3  1  5  4  2  8  1
-#      2  1  5  6  1  1  1  5  2  2  2  1  2  1  1  4  2  3  1  1  2  2  1  2  4
 ~~~
-
-So in this scenario, we would tend to halt the experiment by _n_=3 and usually by _n_=15, having spent 1-5 new box samples at a cost of \$1-2.
-In contrast, the actual CJ experiment involved 439 new boxes presumably costing ~\$145.
-By stopping quickly as futility became evident, ~\$143 would've been saved.
 
 If we did not want to use EVSI for early stopping and wanted to ignore the cost of experimenting while eliminating the risk of making a mistake, a [multi-armed bandit](!Wikipedia) approach never turns in a final decision but instead allocates ever fewer samples to inferior arms.
 Since a MAB never sets an arm to 0, it never makes a mistake.
