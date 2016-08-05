@@ -1584,6 +1584,56 @@ _The Genius Factory: The Curious History of the Nobel Prize Sperm Bank_, Plotz 2
 > The consumer revolution also changed sperm banking in ways that Robert Graham would have grumbled about. Graham limited his customers to wives, but married couples have less need to resort to donor sperm these days. Vasectomies are often reversible, and a treatment called ICSI can harvest a single sperm cell from the testes and use it to fertilize an in vitro egg.
 > ...That means that lesbians and single mothers increasingly drive sperm banking. They now make up 40 percent of the customers at California Cryobank and 75 percent at some other banks. Their prevalence is altering how sperm banks treat confidentiality. Lesbians and single mothers can't deceive their children about their origins, so they don't. They tell their kids the truth. As a result, they're clamoring for ever more information about the donors to pass on to their kids. Increasingly, they are even demanding that sperm banks open their records so that children can learn the name of their donor. (Lesbians and single moms have also pioneered the practice of "known donors," in which they recruit a sperm provider from among their friends. The known donor, so nice in theory, can be a legal nightmare: known donors, unlike anonymous donors, don't automatically shed their paternal obligations. The state still considers them legal fathers. So mothers and donors have to write elaborate contracts to try to eliminate those rights.)
 >
-> ...From the beginning, sperm banking had a comic aspect to it. In July 1976, a prankster named Joey Skaggs announced that he would be auctioning rock star sperm from his "Celebrity Sperm Bank" in Greenwich Village. "We'll have sperm from the likes of Mick Jagger, Bob Dylan, John Lennon, Paul McCartney, and vintage sperm from Jimi Hendrix," he declared. On the morning of the auction, Skaggs and his lawyer appeared to announce that the sperm had been kidnapped. They read a ransom note: "Caught you with your pants down. A sperm in the hand is worth a million in a Swiss bank. And that's what it will cost you. More to cum. [signed] Abbie." Hundreds of women called the nonexistent sperm bank asking if they could buy; radio and TV shows reported the aborted auction without realizing it had been a joke. And at the end of the year, Gloria Steinem-presumably unaware that it had been a hoax-appeared on an NBC special to give the Celebrity Sperm Bank an award for bad taste.
+> ...From the beginning, sperm banking had a comic aspect to it. In July 1976, a prankster named Joey Skaggs announced that he would be auctioning rock star sperm from his "Celebrity Sperm Bank" in Greenwich Village. "We'll have sperm from the likes of Mick Jagger, Bob Dylan, John Lennon, Paul McCartney, and vintage sperm from Jimi Hendrix," he declared. On the morning of the auction, Skaggs and his lawyer appeared to announce that the sperm had been kidnapped. They read a ransom note: "Caught you with your pants down. A sperm in the hand is worth a million in a Swiss bank. And that's what it will cost you. More to cum. [signed] Abbie." Hundreds of women called the nonexistent sperm bank asking if they could buy; radio and TV shows reported the aborted auction without realizing it had been a joke. And at the end of the year, Gloria Steinem - presumably unaware that it had been a hoax - appeared on an NBC special to give the Celebrity Sperm Bank an award for bad taste.
 >
-> ...The Repository sustained its popularity during the early and mid-1990s. The waiting list reached eighteen months, because there were never enough donors. Usually, Anita could supply only fifteen women at a time with sperm. California Cryobank, by contrast, could supply hundreds of customers at once. Demand at the Repository remained strong even when Graham started charging for sperm. In the mid-1990s, the bank collected a $3,500 flat fee per client, a lot more than other banks. Ever the economic rationalist, Graham had concluded that customers would value his product more if they had to pay for it...Neff wasn't nostalgic when she recounted the end of the bank. "Sperm banking will be a blip in history," she said. The Nobel sperm bank, she implied, would be a blip on that blip. And in some ways, she is clearly right. The Repository for Germinal Choice pioneered sperm banking but ended up in a fertility cul-de-sac. Other sperm banks took Graham's best ideas-donor choice, donor testing, and high-achieving donors-and did them better. They offered more choice, more testing, more men. And they managed to do so without Graham's peculiar eugenics theories, implicit racism, and distaste for single women and lesbians. The Repository died because no one needed it anymore.
+> ...The Repository sustained its popularity during the early and mid-1990s. The waiting list reached eighteen months, because there were never enough donors. Usually, Anita could supply only fifteen women at a time with sperm. California Cryobank, by contrast, could supply hundreds of customers at once. Demand at the Repository remained strong even when Graham started charging for sperm. In the mid-1990s, the bank collected a $3,500 flat fee per client, a lot more than other banks. Ever the economic rationalist, Graham had concluded that customers would value his product more if they had to pay for it...Neff wasn't nostalgic when she recounted the end of the bank. "Sperm banking will be a blip in history," she said. The Nobel sperm bank, she implied, would be a blip on that blip. And in some ways, she is clearly right. The Repository for Germinal Choice pioneered sperm banking but ended up in a fertility cul-de-sac. Other sperm banks took Graham's best ideas-donor choice, donor testing, and high-achieving donors - and did them better. They offered more choice, more testing, more men. And they managed to do so without Graham's peculiar eugenics theories, implicit racism, and distaste for single women and lesbians. The Repository died because no one needed it anymore.
+
+<!--
+In single selection, the embryo selected is picked from the batch solely based on its polygenic score on 1 trait, even if the gain is very small and some of the other embryos have large genetic advantages on other, almost as important, traits.
+In multiple selection, we take the maximum from the embryos based on all the scores summed together, allowing for excellence on 1 trait or general high quality on a few other traits.
+What sort of advantage do we expect? It's not as simple as generating some random numbers and then summing them, because the actual genetic scores will turn out to be intercorrelated: a high polygenic score for intelligence will also tend to lower the BMI polygenic score, and a high BMI polygenic score will increase the childhood obesity polygenic score or the smoking polygenic score because they are genetically correlated.
+In fact, all traits will tend to be a little (or a lot) genetically correlated. If we ignore this, we may badly over or underestimate the advantage of multiple selection.
+We need a dataset giving the pairwise genetic correlations of a lot of important traits, and then we can generate hypothetical multivariate sets of polygenic scores which follow what the real-world distribution of polygenic scores would look like, and *then* we can sum them up, maximize, and see what sort of gain we have.
+
+LD Hub http://ldsc.broadinstitute.org/
+http://biorxiv.org/content/biorxiv/early/2016/05/03/051094.full.pdf "LD Hub: a centralized database and web interface to perform LD score regression that maximizes the potential of summary level GWAS data for SNP heritability and genetic correlation analysis", Zheng et al 2016
+
+http://ldsc.broadinstitute.org/lookup/
+http://ldsc.broadinstitute.org/static/media/LD-Hub_genetic_correlation_49x49.xlsx
+save as CSV, edit first lines
+
+~~~{.R}
+rg <- read.csv("/home/gwern/LD-Hub_genetic_correlation_49x49.csv")
+library(reshape2)
+rgMatrix <- acast(subset(rg, select=c("Trait1", "Trait2", "rg")), Trait2 ~ Trait1)
+
+# convert from half-matrix to full symmetric matrix
+library(psych)
+rgMatrix <- lowerUpper(t(rgMatrix), rgMatrix)
+rgMatrix[is.na(rgMatrix)] <- 1
+
+independent <- matrix(ncol=48, nrow=48, 0)
+diag(independent) <- 1
+
+## gain from selection out of 10 embryos on 1 trait (where assume higher=better, eg IQ):
+mean(replicate(100000, max(rnorm(10, mean=0, sd=1))))
+# [1] 1.53685008
+
+library(mvtnorm)
+library(MBESS)
+## gain from selection on 48 traits with 10 embryos, assuming all traits are independent/uncorrelated and higher=better (which they aren't since most are diseases/signs of ill-health):
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(independent, sd=rep(1,48)), method="svd")))))
+# [1] 10.6586306
+## gain from selection on 48/10, assuming all traits are correlated as they actually are in the full LD Hub dataset:
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=rep(1,48)), method="svd")))))
+# [1] 22.73963777
+
+## set good/bad trait values such that higher=better (although some are a bit guesswork about whether higher or lower is better) and re-estimate gain:
+utilities <- data.frame(Trait=c("ADHD", "Age at Menarche", "Age at Smoking", "Alzheimer's", "Anorexia", "Autism Spectrum", "Bipolar", "Birth Length", "Birth Weight", "BMI", "BMI 2010", "Childhood IQ", "Childhood Obesity", "Cigarettes per Day", "College", "Coronary Artery Disease", "Crohn's Disease", "Depression", "Ever/Never Smoked", "Extreme BMI", "Extreme Height", "Fasting Glucose", "Fasting Insulin", "Fasting Proinsulin", "Former/Current Smoker", "HbA1C", "HDL", "Height", "Height 2010", "Hip Circumference", "HOMA-B", "HOMA-IR", "Infant Head Circumference", "LDL", "Lumbar Spine BMD", "Neck BMD", "Obesity Class 1", "Obesity Class 2", "Obesity Class 3", "Overweight", "Rheumatoid Arthritis", "Schizophrenia", "T2D", "Total Cholesterol", "Triglycerides", "Ulcerative Colitis", "Waist Circumference", "Waist-Hip Ratio"), Sign=c(-1, 1, 1, -1, -1, -1, -1, -1, 1, -1, -1, 1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1))
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(independent, sd=rep(1,48)), method="svd") * utilities$Sign))))
+# [1] 10.66108106
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=rep(1,48)), method="svd") * utilities$Sign))))
+# [1] 16.42573046
+~~~
+
+-->
