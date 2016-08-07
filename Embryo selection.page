@@ -1265,7 +1265,23 @@ Here are 7 I looked up and was able to convert to relatively reasonable gains/lo
 
     [Morris et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3442244/ "Large-scale association analysis provides insights into the genetic architecture and pathophysiology of type 2 diabetes")'s [supplementary information](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3442244/bin/NIHMS393294-supplement-2.pdf) reports a polygenic score predicting 5.73% on the liability scale.
 
-    Diabetes is not a continuous trait like IQ/height/BMI, but generally treated as a binary disease: you either have good blood sugar control and will not go blind and suffer all the other morbidity caused by diabetes, or you don't. The underlying genetics is still highly polygenic and mostly additive, though, and in some sense one's risk is normally distributed. The "liability scale threshold model" is the usual genetics model for dealing with binary variables like this: one's latent risk is considered a normal variable (which is the sum of many individual genes), and when one is unlucky enough for this risk to be enough standard deviations out past a threshold, one has the disease. The 'enough standard deviations' is set empirically; if 1% of the population will develop schizophrenia, then one has to be +2.33SD out to develop schizophrenia, and assuming a mean risk of 0, one can then calculate the effects of an increase or decrease. For example, if some change results in decreasing one's risk score 1SD such that it would takes another 3.33SD to develop schizophrenia, then one's probability of developing schizophrenia has decreased from 1% to 0.04%, a fall of 23x (`pnorm(qnorm(0.01)) / pnorm(qnorm(0.01)-1) ~> 22.73`) and so whatever one estimated the expected loss of schizophrenia at, it has decreased 23x and the change of 1SD can be valued at that. And vice versa for an increase: an increase of 1 SD in latent risk will increase the probability of developing schizophrenia several-fold and the expected loss must be increased accordingly.
+    Diabetes is not a continuous trait like IQ/height/BMI, but generally treated as a binary disease: you either have good blood sugar control and will not go blind and suffer all the other morbidity caused by diabetes, or you don't. The underlying genetics is still highly polygenic and mostly additive, though, and in some sense one's risk is normally distributed.
+
+    The "[liability scale threshold model](!Wikipedia)" is the usual genetics model for dealing with binary variables like this: one's latent risk is considered a normal variable (which is the sum of many individual variables, both genetic and environmental/random), and when one is unlucky enough for this risk to be enough standard deviations out past a threshold, one has the disease. The 'enough standard deviations' is set empirically; if 1% of the population will develop schizophrenia, then one has to be +2.33SD (`qnorm(0.01)`) out to develop schizophrenia, and assuming a mean risk of 0, one can then calculate the effects of an increase or decrease of 1SD. For example, if some change results in decreasing one's risk score -1SD such that it would now take another 3.33SD to develop schizophrenia, then one's probability of developing schizophrenia has decreased from 1% to 0.04%, a fall of 23x (`pnorm(qnorm(0.01)) / pnorm(qnorm(0.01)-1) ~> 22.73`) and so whatever one estimated the expected loss of schizophrenia at, it has decreased 23x and the change of 1SD can be valued at that. And vice versa for an increase: an increase of 1 SD in latent risk will increase the probability of developing schizophrenia several-fold and the expected loss must be increased accordingly. So if we have a polygenic score for schizophrenia which can produce a reduction (out of, say, 10 embryos) of 0.10SDs, a population prevalence of 1%, and a lifetime cost of \$1m, then the expected reduction would be from 1% to 0.762%,  or from an expected loss of \$10000 (1m * 1%) to \$7625 (1m * 0.762%) and the value of that quarter reduction would be around a quarter of the original loss. One consequence of this is that as a disorder becomes rarer, selection becomes worth less; or to put it another way, people with high risk of passing on schizophrenia (such as a diagnosed schizophrenic) will benefit far more: the child of 1 schizophrenic parent (and no other relatives) has a [~10% chance of developing schizophrenia and of 2, 40%](http://schizophrenia.com/family/FAQoffspring.htm#inherit), implying thresholds of 1.28SDs and 0.25SDs respectively. Putting it together, we can compute the value like this:
+
+    ~~~{.R}
+    liabilityThresholdValue <- function(populationFraction, gainSD, value) { reducedFraction <- pnorm(qnorm(populationFraction) + gainSD)
+                                                                             difference      <- (populationFraction - reducedFraction) * value
+                                                                             return(c(reducedFraction, difference)) }
+    liabilityThresholdValue(0.01, -0.1, 1000000)
+    # [1] 7.625821493e-03 2.374178507e+03
+    liabilityThresholdValue(0.10, -0.1, 1000000)
+    # [1] 8.355471719e-02 1.644528281e+04
+    liabilityThresholdValue(0.40, -0.1, 1000000)
+    # [1] 3.619141184e-01 3.808588159e+04
+    3.808588159e+04 / 2.374178507e+03
+    # [1] 16.04170937
+    ~~~
 
     Similarly for diabetes. We can estimate the NPV of not developing diabetes at as much as [\$124,600 (NPV)](http://care.diabetesjournals.org/content/37/9/2557.full); the lifetime risk of diabetes in the USA is [approaching ~40%](http://jama.jamanetwork.com/article.aspx?articleid=197439 "'Lifetime Risk for Diabetes Mellitus in the United States', Narayan et al 2003") and has probably exceeded it by now (implying, incidentally, that diabetes is one of the most costly diseases in the world), so the expected loss is \$49840 and developing diabetes has a threshold of 0.39SD; a decrease of 1SD gives one a third less chance of developing diabetes (`pnorm(qnorm(0.40)-1) / pnorm(qnorm(0.40)) ~> 0.26`) for a savings of \$11k (`(124600 * 0.4) - (124600 * 0.4 * 0.26) ~> 36881`); finally, \$36.8k/SD, compared with IQ, gets a weight of 15%.
 5. [ADHD](!Wikipedia)
@@ -1612,6 +1628,229 @@ library(psych)
 rgMatrix <- lowerUpper(t(rgMatrix), rgMatrix)
 rgMatrix[is.na(rgMatrix)] <- 1
 
+library(psych)
+nfactors(rgMatrix[1:47,], n.obs=20000)
+# Number of factors
+# Call: vss(x = x, n = n, rotate = rotate, diagonal = diagonal, fm = fm,
+#     n.obs = n.obs, plot = FALSE, title = title, use = use, cor = cor)
+# VSS complexity 1 achieves a maximimum of 0.64  with  1  factors
+# VSS complexity 2 achieves a maximimum of 0.78  with  3  factors
+# The Velicer MAP achieves a minimum of 0.03  with  8  factors
+# Empirical BIC achieves a minimum of  -2827.98  with  4  factors
+# Sample Size adjusted BIC achieves a minimum of  765.56  with  20  factors
+#
+# Statistics by number of factors
+#    vss1 vss2   map  dof chisq     prob sqresid  fit RMSEA   BIC SABIC complex eChisq  SRMR eCRMS  eBIC
+# 1  0.64 0.00 0.045 1080  2671 8.1e-136    80.1 0.64  0.26 -1487  1900     1.0   2351 0.149 0.152 -1807
+# 2  0.53 0.75 0.036 1033  2457 1.7e-117    56.1 0.75  0.25 -1520  1720     1.4   1529 0.120 0.125 -2449
+# 3  0.52 0.78 0.033  987  2316 2.1e-108    40.4 0.82  0.25 -1484  1612     1.6   1051 0.100 0.106 -2749
+# 4  0.51 0.78 0.033  942  2204 1.0e-102    31.1 0.86  0.26 -1423  1531     1.8    799 0.087 0.095 -2828
+# 5  0.54 0.78 0.032  898  2101  4.0e-98    25.3 0.89  0.26 -1356  1461     1.9    651 0.078 0.088 -2807
+# 6  0.54 0.78 0.033  855  2006  3.7e-94    20.3 0.91  0.27 -1286  1396     2.0    523 0.070 0.081 -2769
+# 7  0.48 0.77 0.032  813  1895  3.7e-88    16.7 0.93  0.27 -1235  1315     2.1    422 0.063 0.074 -2708
+# 8  0.46 0.71 0.032  772  1800  7.7e-84    13.4 0.94  0.28 -1172  1249     2.3    337 0.056 0.068 -2635
+# 9  0.48 0.72 0.032  732  1718  5.3e-81    10.7 0.95  0.28 -1101  1195     2.4    269 0.050 0.063 -2549
+# 10 0.47 0.76 0.033  693  1646  2.7e-79     8.7 0.96  0.29 -1022  1151     2.6    222 0.046 0.058 -2446
+# 11 0.52 0.75 0.034  655  1582  2.2e-78     7.2 0.97  0.30  -940  1114     2.7    191 0.042 0.056 -2331
+# 12 0.52 0.75 0.034  618  1499  6.8e-75     5.9 0.97  0.30  -881  1058     2.7    155 0.038 0.052 -2225
+# 13 0.53 0.75 0.035  582  1433  2.1e-73     5.0 0.98  0.31  -808  1017     2.7    132 0.035 0.049 -2109
+# 14 0.52 0.73 0.037  547  1369  4.3e-72     4.1 0.98  0.32  -737   979     2.7    112 0.032 0.047 -1994
+# 15 0.51 0.74 0.037  513  1309  5.6e-71     3.3 0.99  0.33  -666   943     2.8     90 0.029 0.043 -1885
+# 16 0.52 0.75 0.040  480  1261  1.8e-71     2.8 0.99  0.35  -587   919     2.7     79 0.027 0.042 -1769
+# 17 0.50 0.74 0.042  448  1205  1.2e-70     2.4 0.99  0.36  -520   885     2.6     69 0.026 0.040 -1656
+# 18 0.51 0.74 0.043  417  1148  1.6e-69     2.1 0.99  0.37  -458   850     2.7     60 0.024 0.039 -1545
+# 19 0.50 0.74 0.046  387  1092  2.1e-68     1.7 0.99  0.39  -398   816     2.7     51 0.022 0.038 -1439
+# 20 0.48 0.73 0.048  358  1021  4.9e-65     1.5 0.99  0.40  -357   766     2.9     43 0.020 0.036 -1335
+omega(rgMatrix[1:47,], n.obs=20000, nfactors=4)
+# In factor.scores, the correlation matrix is singular, an approximation is used
+# Omega
+# Call: omega(m = rgMatrix[1:47, ], nfactors = 4, n.obs = 20000)
+# Alpha:                 0.89
+# G.6:                   1
+# Omega Hierarchical:    0.53
+# Omega H asymptotic:    0.56
+# Omega Total            0.94
+#
+# Schmid Leiman Factor loadings greater than  0.2
+#                               g   F1*   F2*   F3*   F4*   h2   u2   p2
+# ADHD                                        -0.20  0.23 0.16 0.84 0.15
+# Age at Menarche-           0.53        0.37             0.45 0.55 0.64
+# Age at Smoking-            0.26             -0.29       0.19 0.81 0.34
+# Alzheimer's-               0.22  0.24        0.34  0.34 0.36 0.64 0.13
+# Anorexia-                  0.45        0.28             0.34 0.66 0.59
+# Autism Spectrum-                                  -0.49 0.28 0.72 0.10
+# Bipolar-                   0.33                   -0.68 0.59 0.41 0.19
+# Birth Length-                               -0.66       0.44 0.56 0.00
+# Birth Weight                                 0.53       0.31 0.69 0.01
+# BMI                        0.71        0.51             0.78 0.22 0.65
+# BMI 2010                   0.68        0.52             0.73 0.27 0.63
+# Childhood IQ-                   -0.24       -0.50       0.38 0.62 0.07
+# Childhood Obesity          0.61  0.20  0.40             0.59 0.41 0.64
+# Cigarettes per Day         0.28 -0.29  0.35        0.34 0.41 0.59 0.20
+# College-                   0.42        0.35 -0.28       0.40 0.60 0.44
+# Coronary Artery Disease    0.33        0.28 -0.35  0.33 0.43 0.57 0.26
+# Crohn's Disease-           0.21                   -0.62 0.44 0.56 0.10
+# Depression-                     -0.31        0.20 -0.51 0.41 0.59 0.02
+# Ever/Never Smoked          0.28  0.58                   0.47 0.53 0.16
+# Extreme BMI                0.68        0.48             0.73 0.27 0.63
+# Extreme Height-                             -0.61  0.21 0.43 0.57 0.02
+# Fasting Glucose            0.37  0.49                   0.41 0.59 0.33
+# Fasting Insulin            0.64  0.29  0.41             0.67 0.33 0.61
+# Fasting Proinsulin              -0.35             -0.31 0.28 0.72 0.08
+# Former/Current Smoker-     0.26 -0.23  0.22       -0.32 0.27 0.73 0.24
+# HbA1C                           -0.46       -0.44 -0.36 0.55 0.45 0.00
+# HDL-                       0.44  0.35  0.23 -0.48       0.61 0.39 0.33
+# Height-                          0.33       -0.63       0.54 0.46 0.00
+# Height 2010                      0.55        0.58       0.67 0.33 0.01
+# Hip Circumference          0.61  0.48  0.32             0.71 0.29 0.52
+# HOMA-B                     0.45  0.69                   0.70 0.30 0.29
+# HOMA-IR                    0.59        0.42             0.59 0.41 0.59
+# Infant Head Circumference        0.22       -0.26       0.14 0.86 0.09
+# LDL-                                   0.21  0.45  0.38 0.40 0.60 0.05
+# Lumbar Spine BMD-                                       0.01 0.99 0.02
+# Neck BMD                   0.21  0.77        0.23       0.70 0.30 0.06
+# Obesity Class 1            0.50  0.77                   0.88 0.12 0.28
+# Obesity Class 2            0.50  0.76                   0.86 0.14 0.28
+# Obesity Class 3            0.49  0.78                   0.88 0.12 0.28
+# Overweight                 0.29  0.24                   0.21 0.79 0.41
+# Rheumatoid Arthritis-      0.25  0.25             -0.62 0.52 0.48 0.13
+# Schizophrenia                    0.63                   0.45 0.55 0.06
+# T2D-                                         0.52  0.27 0.38 0.62 0.02
+# Total Cholesterol          0.21  0.66       -0.37       0.60 0.40 0.07
+# Triglycerides-                   0.30             -0.52 0.39 0.61 0.05
+# Ulcerative Colitis         0.41  0.73                   0.75 0.25 0.23
+# Waist Circumference        0.30  0.77                   0.70 0.30 0.13
+# Waist-Hip Ratio-                 0.73       -0.23       0.60 0.40 0.03
+#
+# With eigenvalues of:
+#   g F1* F2* F3* F4*
+# 6.2 7.9 2.4 4.0 3.3
+#
+# general/max  0.79   max/min =   3.22
+# mean percent general =  0.23    with sd =  0.22 and cv of  0.93
+# Explained Common Variance of the general factor =  0.26
+#
+# The degrees of freedom are 942  and the fit is  83.16
+# The number of observations was  47  with Chi Square =  2203.64  with prob <  1e-102
+# The root mean square of the residuals is  0.09
+# The df corrected root mean square of the residuals is  0.09
+# RMSEA index =  0.258  and the 90 % confidence intervals are  0.16 NA
+# BIC =  -1423.2
+#
+# Compare this with the adequacy of just a general factor and no group factors
+# The degrees of freedom for just the general factor are 1080  and the fit is  98.05
+# The number of observations was  47  with Chi Square =  2794.46  with prob <  5e-152
+# The root mean square of the residuals is  0.2
+# The df corrected root mean square of the residuals is  0.2
+#
+# RMSEA index =  0.263  and the 90 % confidence intervals are  0.175 NA
+# BIC =  -1363.7
+#
+# Measures of factor score adequacy
+#                                                  g  F1*   F2* F3*  F4*
+# Correlation of scores with factors            0.81 0.97  0.64   1 0.99
+# Multiple R square of scores with factors      0.65 0.95  0.41   1 0.99
+# Minimum correlation of factor score estimates 0.30 0.90 -0.17   1 0.97
+#
+#  Total, General and Subset omega for each subset
+#                                                  g  F1*  F2*  F3*  F4*
+# Omega total for total scores and subscales    0.94 0.93 0.95 0.36 0.78
+# Omega general for total scores and subscales  0.53 0.25 0.62 0.18 0.19
+# Omega group for total scores and subscales    0.25 0.68 0.33 0.18 0.59
+## https://imgur.com/a/TwZXc
+fa(rgMatrix[1:47,], n.obs=20000, nfactors=4)
+# In factor.scores, the correlation matrix is singular, an approximation is used
+# Factor Analysis using method =  minres
+# Call: fa(r = rgMatrix[1:47, ], nfactors = 4, n.obs = 20000)
+# Standardized loadings (pattern matrix) based upon correlation matrix
+#                             MR1   MR2   MR3   MR4    h2   u2 com
+# ADHD                      -0.11  0.29 -0.20  0.23 0.164 0.84 3.0
+# Age at Menarche           -0.15 -0.61 -0.07  0.01 0.446 0.55 1.1
+# Age at Smoking            -0.04 -0.25  0.29  0.15 0.194 0.81 2.5
+# Alzheimer's               -0.25 -0.26 -0.34 -0.35 0.356 0.64 3.7
+# Anorexia                  -0.17 -0.45 -0.08  0.18 0.343 0.66 1.7
+# Autism Spectrum            0.07 -0.13 -0.07  0.50 0.283 0.72 1.2
+# Bipolar                   -0.08 -0.22  0.01  0.69 0.594 0.41 1.2
+# Birth Length               0.01  0.00  0.66 -0.04 0.441 0.56 1.0
+# Birth Weight               0.07  0.04  0.53 -0.10 0.307 0.69 1.1
+# BMI                        0.10  0.83 -0.02 -0.11 0.784 0.22 1.1
+# BMI 2010                   0.02  0.84  0.01 -0.02 0.730 0.27 1.0
+# Childhood IQ               0.26 -0.29  0.50  0.05 0.380 0.62 2.2
+# Childhood Obesity          0.22  0.65 -0.07 -0.09 0.589 0.41 1.3
+# Cigarettes per Day        -0.31  0.58 -0.02  0.34 0.405 0.59 2.2
+# College                    0.06 -0.57  0.28 -0.12 0.397 0.60 1.6
+# Coronary Artery Disease    0.05  0.46 -0.35  0.34 0.428 0.57 2.8
+# Crohn's Disease           -0.05 -0.10 -0.06  0.63 0.440 0.56 1.1
+# Depression                 0.33 -0.14 -0.20  0.52 0.413 0.59 2.2
+# Ever/Never Smoked          0.62  0.12  0.13  0.19 0.468 0.53 1.4
+# Extreme BMI                0.06  0.79  0.04 -0.19 0.730 0.27 1.1
+# Extreme Height            -0.02 -0.11  0.61 -0.21 0.430 0.57 1.3
+# Fasting Glucose            0.52  0.26  0.06  0.11 0.414 0.59 1.6
+# Fasting Insulin            0.31  0.67 -0.08  0.05 0.668 0.33 1.5
+# Fasting Proinsulin        -0.38  0.28 -0.11 -0.32 0.284 0.72 3.0
+# Former/Current Smoker      0.25 -0.35  0.08  0.33 0.274 0.73 2.9
+# HbA1C                     -0.50  0.12 -0.44 -0.36 0.546 0.45 3.0
+# HDL                       -0.37 -0.38  0.48 -0.08 0.607 0.39 2.9
+# Height                    -0.35  0.12  0.63 -0.19 0.537 0.46 1.8
+# Height 2010                0.59 -0.14  0.58 -0.03 0.672 0.33 2.1
+# Hip Circumference          0.52  0.53 -0.03 -0.02 0.707 0.29 2.0
+# HOMA-B                     0.74  0.23 -0.02  0.01 0.697 0.30 1.2
+# HOMA-IR                    0.06  0.69  0.19 -0.16 0.586 0.41 1.3
+# Infant Head Circumference  0.23 -0.01 -0.26 -0.14 0.143 0.86 2.6
+# LDL                        0.09 -0.34 -0.45 -0.39 0.401 0.60 2.9
+# Lumbar Spine BMD           0.04 -0.02  0.09  0.05 0.012 0.99 2.3
+# Neck BMD                   0.82 -0.09  0.23  0.05 0.695 0.30 1.2
+# Obesity Class 1            0.83  0.23  0.04 -0.12 0.885 0.12 1.2
+# Obesity Class 2            0.82  0.23  0.02 -0.12 0.863 0.14 1.2
+# Obesity Class 3            0.83  0.22  0.03 -0.10 0.879 0.12 1.2
+# Overweight                 0.25  0.21 -0.19 -0.13 0.207 0.79 3.4
+# Rheumatoid Arthritis      -0.27 -0.06 -0.07  0.63 0.517 0.48 1.4
+# Schizophrenia              0.68 -0.10 -0.16  0.00 0.451 0.55 1.2
+# T2D                        0.16 -0.28 -0.52 -0.27 0.384 0.62 2.3
+# Total Cholesterol          0.70 -0.09 -0.37 -0.05 0.602 0.40 1.6
+# Triglycerides             -0.32  0.10 -0.06  0.53 0.391 0.61 1.8
+# Ulcerative Colitis         0.78  0.14  0.13 -0.13 0.754 0.25 1.2
+# Waist Circumference        0.82  0.00 -0.17  0.00 0.699 0.30 1.1
+# Waist-Hip Ratio           -0.78  0.20  0.23 -0.04 0.604 0.40 1.3
+#
+#                        MR1  MR2  MR3  MR4
+# SS loadings           9.35 6.91 4.02 3.52
+# Proportion Var        0.19 0.14 0.08 0.07
+# Cumulative Var        0.19 0.34 0.42 0.50
+# Proportion Explained  0.39 0.29 0.17 0.15
+# Cumulative Proportion 0.39 0.68 0.85 1.00
+#
+#  With factor correlations of
+#       MR1   MR2   MR3   MR4
+# MR1  1.00  0.28  0.01 -0.08
+# MR2  0.28  1.00 -0.05 -0.15
+# MR3  0.01 -0.05  1.00 -0.02
+# MR4 -0.08 -0.15 -0.02  1.00
+#
+# Mean item complexity =  1.8
+# Test of the hypothesis that 4 factors are sufficient.
+#
+# The degrees of freedom for the null model are  1128  and the objective function was  107.8 with Chi Square of  3144.17
+# The degrees of freedom for the model are 942  and the objective function was  83.16
+#
+# The root mean square of the residuals (RMSR) is  0.09
+# The df corrected root mean square of the residuals is  0.09
+#
+# The harmonic number of observations is  47 with the empirical chi square  798.86  with prob <  1
+# The total number of observations was  47  with MLE Chi Square =  2203.64  with prob <  1e-102
+#
+# Tucker Lewis Index of factoring reliability =  0.126
+# RMSEA index =  0.258  and the 90 % confidence intervals are  0.16 NA
+# BIC =  -1423.2
+# Fit based upon off diagonal values = 0.9
+# Measures of factor score adequacy
+#                                                MR1 MR2 MR3 MR4
+# Correlation of scores with factors               1   1   1   1
+# Multiple R square of scores with factors         1   1   1   1
+# Minimum correlation of possible factor scores    1   1   1   1
+~~~
+
+~~~{.R}
 independent <- matrix(ncol=48, nrow=48, 0)
 diag(independent) <- 1
 
@@ -1651,6 +1890,116 @@ mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=sqrt(u
 # [1] 5.069354953
 ~~~
 
+Sources/drops:
+
+- Age at Menarche: [Perry et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4185210/ "Parent-of-origin specific allelic associations among 106 genomic loci for age at menarche") reports a polygenic score explaining 15.8% of variance. [Day et al 2016](/docs/genetics/2016-day.pdf "Physical and neurobehavioral determinants of reproductive onset and success") demonstrates a causal impact of early puberty on "earlier first sexual intercourse, earlier first birth and lower educational attainment", consistent with the intercorrelations (strong negative correlation with childhood IQ); clearly the sign should be negative, and early puberty has been linked to all sorts of problems ([_Atlantic_](http://www.theatlantic.com/health/archive/2016/06/the-long-term-risks-of-early-puberty/488834/): "greater risk for breast cancer, teen pregnancy, HPV, heart disease, diabetes, and all-cause mortality, which is the risk of dying from any cause. There are psychological risks as well. Girls who develop early are at greater risk for depression, are more likely to drink, smoke tobacco and marijuana, and tend to have sex earlier.") but no costs are available
+- Age at Smoking initiation:  [TAG 2010](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2914600/ "Genome-wide meta-analyses identify multiple loci associated with smoking behavior"), no polygenic score reported.
+- Alzheimer's disease: [Escott-Price et al 2015](http://www.dementiasplatform.uk/wp-content/uploads/2015/12/Common-polygenic-variation-enhances-risk-prediction-for-Alzheimers-disease.pdf "Common polygenic variation enhances risk prediction for Alzheimer’s disease") report a polygenic score of 0.021 for AD. The lifetime risk at age 65 is 9% men & 17% women; few people die before age 65 so I'll take the average 13% as the lifetime risk at birth (since Alzheimer's rates tend to increase, this should be conservative for future rates). Costs rise steeply before death as the dementia cripples the patient, imposing extraordinary costs for daily care & on families & caregivers. USA total costs have been estimated at >\$200b; for dementia, the last 5 years of life can incur [\$287k in costs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4809412/ "'The Burden of Health Care Costs in the Last 5 Years of Life', Kelley et al 2016"). Discounting Alzheimer treatment cost is a little tricky: unlike height/BMI/IQ or BPD which we could treat on an annual cost/gain basis and discount out indefinitely, that \$287k of expenses will only be incurred 60+ years after birth on average. We can treat it as a single lump sum expense incurred 70 years in the future, discounted at 5% (as usual to be conservative): `287000 / (1+0.05)^70 ~> 9432`
+- Anorexia: ~1% prevalence. [Boraska et al 2014](http://europepmc.org/articles/pmc4325090 "A genome-wide association study of anorexia nervosa") does not report a polygenic score.
+
+LD Hub issues:
+
+- it is unclear where one goes to report bugs or issues with LD Hub. The front page and about links http://ldsc.broadinstitute.org/about/ do not provide any emails or Github links. The software tab links to https://github.com/bulik/ldsc which doesn't mention LD Hub at all.
+- sessions expire too quickly and one has to log in repeatedly; this also interrupts uploads, apparently - an upload can just terminate halfway through
+- available genetic correlation matrix in the Lookup Center is out of date: there are 173 traits with SNP heritabilities available (and so I assume have full data and can be used for genetic correlations as well), but only 49 traits are in the genetic correlation page. It's nice to provide the exact correlation data for the LD Hub paper, but why not provide the old 49x49 matrix as just a link and update it with the full 173x173 correlation matrix?
+- naming of traits is inconsistent from the SNP heritabilities list to the genetic correlation spreadsheet
+- GWAShare Center page is unclear: who is allowed to contribute under what basis? Must a consortium/lead author authorize an upload, or is any public dataset fair game? I wanted to see genetic correlations for the 'years of education' variable from the new study Okbay et al 2016 (available [on SSGAC's website](http://www.thessgac.org/#!data/kuzq8), `EduYears_Main.txt`) which obsoletes the existing 'years of education' variable based on Rietveld et al 2013, but I don't know if I am allowed to upload that (or any other) dataset or not.
+- Test Center documentation is unclear about the requirements for an uploaded file. Does the header format have to be *exactly* "snpid   A1  A2  Z (or beta)     N   P-value"? I assume "Z (or beta)" actually means "Z" or "beta". A column name of "P-value" is quite awkward for R users, since by default you can't even create a dataframe with that as a column name (it will be automatically converted to "P.value" instead for safety, and this has to be overridden using `check.names=FALSE`). Does the ZIP filename have to be *exactly* "file"++".zip"?
+- unknown arbitrary requirement on submitted file names: `2016-okbay-eduyears.txt` (zipped as `2016-okbay-eduyears.txt.zip`) with summary name "EduYears" for clarity, still fails and the resulting error logs insist that it's named `/tmp/uploaded_files/EduYears_Main.txt.4242c174-f6a3-4ac4-b95a-fda9cf699a9e`!
+- the upload & analysis process doesn't do any kind of error-checking, it seems, so an upload can fail but one doesn't realize this until you download the results and inspect them manually
+- when uploading, it would be very helpful if the interface could provide some information about where one is in the process, so one could know when an error popped up. I ran into issues with the formatting but I initially attributed it to incomplete uploads since the file is so big (178M)
+
+Okbay et al 2016 use with LD Hub
+
+using EduYears_Main.txt
+
+~~~{.R}
+okbay <- read.table("EduYears_Main.txt", header=TRUE)
+## SSGAC file format: "MarkerName      CHR     POS     A1      A2      EAF     Beta    SE      Pval"
+## LD Hub file format: "snpid   A1  A2  Z (or beta)     N   P-value"
+## select just the ones we need:
+okbay <- subset(okbay, select=c("MarkerName", "A1", "A2", "Beta", "Pval"))
+## SSGAC->LD Hub names
+## rearrange to put N before P-value
+okbay <- with(okbay, data.frame(snpid=MarkerName, A1=A1, A2=A2, beta=Beta, N=293723+111439, "P-value"=Pval, check.names=FALSE))
+write.table(okbay, file="2016-okbay-eduyears.txt", row.names=FALSE, quote=FALSE, sep="\t")
+system("zip 2016-okbay-eduyears.txt.zip 2016-okbay-eduyears.txt")
+~~~
+
+
+ERROR converting summary statistics:
+
+Traceback (most recent call last):
+  File "/root/ldsc/munge_sumstats.py", line 582, in munge_sumstats
+    'Could not find a signed summary statistic column.'
+    ValueError: Could not find a signed summary statistic column.
+
+"Beta", "beta", "b" all fail despite the constants in https://github.com/bulik/ldsc/blob/master/munge_sumstats.py suggesting they should be fine
+
+
+~~~{.R}
+liabilityThresholdValue <- function(populationFraction, gainSD, value) { reducedFraction <- pnorm(qnorm(populationFraction) + gainSD)
+                                                                         difference      <- (populationFraction - reducedFraction) * value
+                                                                         return(c(reducedFraction, difference)) }
+liabilityThresholdPolygenicValue <- function(populationFraction, value, polygenicScore, n=10) {
+    gainSD <- mean(simEmbryoSelection(n=n, variance=polygenicScore, iters=100000))
+    if (value>0) { liabilityThresholdValue(populationFraction,  gainSD,  value) } else {
+                   liabilityThresholdValue(populationFraction, -gainSD, -value) } }
+# example: bipolar
+liabilityThresholdPolygenicValue(0.03, -87088, 0.0283)
+# [1]   0.01951715808 912.92973685022
+
+iqHigh <- 16151*15
+selzam2016 <- 0.035
+Trait, Prevalence, Cost, Polygenic.score
+"ADHD", 0.07, -182000, 0.015
+"Age at Menarche",1,NA,0.158
+"Age at Smoking",1,NA,NA
+"Alzheimer's",0.13,9432,0.021
+"Anorexia",0.01,,
+"Autism Spectrum",
+"Bipolar", 0.03, -87088, 0.0283
+"Birth Length",
+"Birth Weight",
+"BMI",1, -16750, 0.153
+"BMI 2010",
+"Childhood IQ", 1, iqHigh, selzam2016
+"Childhood Obesity",
+"Cigarettes per Day",
+"College",
+"Coronary Artery Disease",
+"Crohn's Disease",
+"Depression",
+"Ever/Never Smoked",
+"Extreme BMI",
+"Extreme Height",
+"Fasting Glucose",
+"Fasting Insulin",
+"Fasting Proinsulin",
+"Former/Current Smoker",
+"HbA1C",
+"HDL",
+"Height",1, 1616, 0.60
+"Height 2010",1,0,0
+"Hip Circumference",
+"HOMA-B",
+"HOMA-IR",
+"Infant Head Circumference",
+"LDL",
+"Lumbar Spine BMD",
+"Neck BMD",
+"Obesity Class 1",
+"Obesity Class 2",
+"Obesity Class 3",
+"Overweight",
+"Rheumatoid Arthritis",
+"Schizophrenia", 0.01, -49379, 0.184
+"T2D", 0.40, -124600, 0.0573
+"Total Cholesterol",
+"Triglycerides",
+"Ulcerative Colitis",
+"Waist Circumference",
+"Waist-Hip Ratio"
 
 
 -->
