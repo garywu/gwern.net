@@ -101,14 +101,14 @@ This also makes it easy to implement informative priors as options.
 We could implement a replacement for `bayes.prop.test` like this:
 
 ~~~{.R}
-betaPosterior <- function(xs, ns, n.samples=20000,
+betaPosterior <- function(xs, ns, n.samples=100000,
                   prior1.a=1, prior1.b=1, prior2.a=prior1.a, prior2.b=prior1.b) {
     sample1 <- rbeta(n.samples, prior1.a+xs[1], prior1.b+ns[1]-xs[1])
     sample2 <- rbeta(n.samples, prior2.a+xs[2], prior2.b+ns[2]-xs[2])
     return(list(Theta_1=sample1, Theta_2=sample2, Theta_diff=sample1 - sample2)) }
 
 ## Timing:
-mean(replicate(1000, system.time(betaPosterior(  c(175, 168), c(442, 439)))[3]))
+mean(replicate(1000, system.time(betaPosterior(  c(175, 168), c(442, 439), n.samples=10000))[3]))
 # [1] 0.004309
 mean(replicate(1000, system.time(bayes.prop.test(c(175, 168), c(442, 439)))[3]))
 # [1] 0.420237
@@ -345,9 +345,7 @@ So with the current data, we would suffer a total loss of \$33k by switching to 
 It is easy to simulate collecting another datapoint: for the control group, flip a coin with probability 39% to decide whether the customer 'canceled' or not; for the experimental group, draw a possible reduction from the posterior distribution samples, add it to 39%, and then flip a coin with the new probability.
 
 ~~~{.R}
-simulateData <- function(control=TRUE, posterior) {
-  simProb <- max(0, min(1, (0.3909 + sample(posterior, 1)))) # enforce 0-1
-  if (control) { rbinom(1,1, prob=0.3909) } else { rbinom(1,1, prob=simProb) } }
+simulateData <- function(posterior) { rbinom(1, 1, prob=sample(posterior, 1)) }
 ~~~
 
 Now we can repeatedly simulate fake data, add it to the real data, rerun the analysis, see what the new estimated profit is from the best action (usually we will conclude what we already conclude, that the box is not worthwhile and the value of the new information is then \$0, but in some possible universes it will change our mind), compare the new estimated profit against the old profit, and thus whether the increase in profit resulting from that new datapoint justifies the cost of a new datapoint (\$0.33).
@@ -357,13 +355,15 @@ library(parallel)
 library(plyr)
 
 evsis <- function(x, n, n_additional, iters=10000) {
+   originalPosterior <- betaPosterior(x, n)
    gains <- posteriorProfit(x=x, n=n)
+
    unlist(mclapply(1:iters, # parallelize
       function (i) {
-                newdata <- replicate(n_additional, simulateData(control=FALSE, gains$Reduction))
-                olddata <- replicate(n_additional, simulateData(control=TRUE, gains$Reduction))
+                control      <- replicate(n_additional, simulateData(originalPosterior$Theta_1))
+                experimental <- replicate(n_additional, simulateData(originalPosterior$Theta_2))
 
-                simGains <- posteriorProfit(x=c(x[1]+sum(olddata), x[2]+sum(newdata)),
+                simGains <- posteriorProfit(x=c(x[1]+sum(control), x[2]+sum(experimental)),
                                             n=c(n[1]+n_additional, n[2]+n_additional))
 
                 sampleGain <- mean(simGains$Profit) - mean(gains$Profit)
@@ -373,8 +373,9 @@ evsis <- function(x, n, n_additional, iters=10000) {
 
 evsiEstimate <- function(x, n, n_additional=1) {
   evsiEstimates <- evsis(x, n, n_additional)
-  evsi <- mean(ifelse(evsiEstimates>0, evsiEstimates, 0))
-  return(evsi) }
+  filteredEVSIs <- ifelse(evsiEstimates>0, evsiEstimates, 0)
+  print(summary(filteredEVSIs)); print(sd(filteredEVSIs))
+  return(mean(filteredEVSIs)) }
 
 evsiEstimate(c(175, 168), c(442, 439), n_additional=1)
 # [1] 91.71148354
