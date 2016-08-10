@@ -354,9 +354,10 @@ Now we can repeatedly simulate fake data, add it to the real data, rerun the ana
 library(parallel)
 library(plyr)
 
-evsis <- function(x, n, n_additional, iters=10000) {
+evsis <- function(x, n, n_additional, iters) {
    originalPosterior <- betaPosterior(x, n)
    gains <- posteriorProfit(x=x, n=n)
+   oldProfit <- mean(gains$Profit)
 
    unlist(mclapply(1:iters, # parallelize
       function (i) {
@@ -366,22 +367,25 @@ evsis <- function(x, n, n_additional, iters=10000) {
                 simGains <- posteriorProfit(x=c(x[1]+sum(control), x[2]+sum(experimental)),
                                             n=c(n[1]+n_additional, n[2]+n_additional))
 
-                sampleGain <- mean(simGains$Profit) - mean(gains$Profit)
+                sampleGain <- mean(simGains$Profit) - oldProfit
                 return(sampleGain) }
             ) )
         }
 
-evsiEstimate <- function(x, n, n_additional=1) {
-  evsiEstimates <- evsis(x, n, n_additional)
+evsiEstimate <- function(x, n, n_additional=1, iters=1000) {
+  evsiEstimates <- evsis(x, n, n_additional, iters)
   filteredEVSIs <- ifelse(evsiEstimates>0, evsiEstimates, 0)
-  print(summary(filteredEVSIs)); print(sd(filteredEVSIs))
   return(mean(filteredEVSIs)) }
 
-evsiEstimate(c(175, 168), c(442, 439), n_additional=1)
-# [1] 91.71148354
+evsiEstimate(c(175, 168), c(442, 439), n_additional=1, iters=1000)
+# [1] 167
+evsiEstimate(c(175, 168), c(442, 439), n_additional=100, iters=1000)
+# [1] 1821.153663
+evsiEstimate(c(175, 168), c(442, 439), n_additional=1000, iters=1000)
+# [1] 6538.258835
 ~~~
 
-So the expected value of 1 additional datapoint is \$91.
+So the expected value of 1 additional datapoint is \$167.
 
 #### Sampling to a foregone conclusion
 
@@ -416,7 +420,6 @@ This can be solved by treating it as a [survival analysis](!Wikipedia) problem i
 
 We can try simulating out something similar by imagining that CJ mails off 1 package per day and 31 days later, learns if the customer has canceled or not.
 [Thompson sampling](!Wikipedia) can handle such delayed feedback because it will allocate the intervention stochastically rather than solely one intervention or the other.
-Since the starting EVSI is already on the knife's edge and says that we should only allocate 1 sample to begin with, this would lead to a very quick and abrupt end to experimenting; I'll loosen the informative prior back to the uninformative prior `Beta(1,1)` for demonstration purposes:
 
 ~~~{.R}
 oldP <- 3.910082e-01
@@ -426,42 +429,56 @@ iters <- 1
 thompsonSample <- FALSE
 
 ## set up a dataframe expressing the results as of the end of the CJ test
-a <- c(rep(TRUE, 168), rep(FALSE, 439-168))
-b <- c(rep(TRUE, 175), rep(FALSE, 442-175))
-interventionState <- c(rep(TRUE, 439), rep(FALSE, 442))
-customersTotal <- data.frame(I=NA, Date=-880:0, N=881, Intervention=interventionState, Canceled=c(a,b), Profit=NA, ProfitP=NA,
-                             EVSI=NA, Reduction=NA, Cost=c(rep(0.33, 439), rep(0.00, 442)))
+# a <- c(rep(TRUE, 168), rep(FALSE, 439-168))
+# b <- c(rep(TRUE, 175), rep(FALSE, 442-175))
+# interventionState <- c(rep(TRUE, 439), rep(FALSE, 442))
+# customersTotal <- data.frame(I=NA, Date=-880:0, N=881, Intervention=interventionState, Canceled=c(a,b), Profit=NA, ProfitP=NA,
+#                              EVSI=NA, Reduction=NA, Cost=c(rep(0.33, 439), rep(0.00, 442)))
+customersTotal <- data.frame(I=integer(), Date=numeric(), Control.p=numeric(), Experiment.p=numeric(), Ns=numeric(), Intervention=logical(), Canceled=integer(), Profit=numeric(),
+                             EVSI=numeric(), Reduction=numeric(), Cost=numeric())
 
 ldply(lapply(1:iters, {
   for (date in 1:max) {
 
     customers <- subset(customersTotal, Date <= (date-31))
 
-    cancels <- c(sum(subset(customers, Intervention)$Canceled),
-                 sum(subset(customers, !Intervention)$Canceled))
-    ns <- c(nrow(subset(customers, Intervention)),
-          nrow(subset(customers, !Intervention)))
+    cancels <- c(sum(subset(customers, !Intervention)$Canceled),
+                 sum(subset(customers, Intervention)$Canceled))
+    ns <- c(nrow(subset(customers, !Intervention)),
+          nrow(subset(customers, Intervention)))
+    results <- cancels / ns
 
     ## optional stopping: calculate the EVSI of 1 more datapoint, and unless it is >$0.33,
     ## further experimentation is futile.
 
-    evsi <- evsiEstimate(cancels, ns)
-    if (evsi < 0.33) { break; } else {
+    ## optimizations: 1. skip expensive EVSI estimate if no additional data yet available. Data-less EVSI is ~$239
+    ## 2. EVSI estimate is still noisy and doesn't change that fast, so let's compute it only every 20 days in simulation
+    ## to speed things up
+    evsi <- if (nrow(customers)<=31 | (date %% 20) != 0) { NA; } else { evsiEstimate(cancels, ns) }
+    if (evsi < 0.33 & !is.na(evsi)) { break; } else {
         gains <- posteriorProfit(x=cancels, n=ns)
         profitP <- mean(gains$Profit>0)
 
-        intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else { as.logical(rbinom(1,1, prob=0.5)) }
+        # intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else { as.logical(rbinom(1,1, prob=0.5)) }
 
-        willCancel <- if (intervention) { rbinom(1,1, prob=newP) } else { rbinom(1,1, prob=oldP) }
+        cancelExperiment <- rbinom(1,1, prob=newP)
+        cancelControl    <- rbinom(1,1, prob=oldP)
         customersTotal <- rbind(customersTotal,
-                                data.frame(I=iters, Date=date, N=nrow(customers), Intervention=intervention, Canceled=willCancel, Profit=mean(gains$Profit),
-                                           ProfitP=profitP, EVSI=evsi,
-                                           Reduction=mean(gains$Reduction), Cost=if(intervention) {0.33} else {0}))
-        print(tail(customersTotal, n=100))
+                                data.frame(I=iters, Date=date, N=nrow(customers), Control.p=round(results[1],digits=3), Experiment.p=round(results[2], digits=3), Intervention=TRUE, Canceled=cancelExperiment, Profit=round(mean(gains$Profit)),
+                                           ProfitP=round(profitP, digits=4), EVSI=round(evsi, digits=2),
+                                           Reduction=round(mean(gains$Reduction), digits=4), Cost=0.33),
+                                data.frame(I=iters, Date=date, N=nrow(customers), Control.p=round(results[1],digits=3), Experiment.p=round(results[2], digits=3), Intervention=FALSE, Canceled=cancelControl, Profit=round(mean(gains$Profit)),
+                                           ProfitP=round(profitP, digits=4), EVSI=round(evsi, digits=2),
+                                           Reduction=round(mean(gains$Reduction), digits=4), Cost=0))
+        print(tail(customersTotal, n=2))
         }
   }
-}))
-stoppingTimes
+  }))
+
+# experimental visualization:
+customersTotalLong <- melt(subset(customersTotal, select="Date", "N", "Control.p", "Experiment.P", "Profit", "ProfitP", "Reduction"), id.vars="Date")
+library(ggplot2)
+ggplot(data=melted, aes(x=Date, y=value, group=variable)) + geom_line()
 ~~~
 
 If we did not want to use EVSI for early stopping and wanted to ignore the cost of experimenting while eliminating the risk of making a mistake, a [multi-armed bandit](!Wikipedia) approach never turns in a final decision but instead allocates ever fewer samples to inferior arms.
