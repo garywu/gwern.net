@@ -53,21 +53,22 @@ Here are some suggested uses:
 
 ## Works using this dataset
 
-Papers or articles:
+Papers:
 
 - R Munksgaard, J Demant, G Branwen 2016, ["A replication and methodological critique of the study 'Evaluating drug trafficking on the Tor Network'"](/docs/sr/2016-munksgaard.pdf)
 - Décary-Hétu, David & Luca Giommoni. (Forthcoming). "Do Police Crackdowns Disrupt Drug Cryptomarkets? A Longitudinal Analysis Of The Effects Of Operation Onymous." _Crime, Law and Social Change_.
 - Graczyk & Kinningham 2015, ["Automatic Product Categorization for Anonymous Marketplaces"](http://cs229.stanford.edu/proj2015/184_report.pdf)
 - Demant, Munksgaard, & Houborg 2016, ["Personal use, social supply or redistribution? cryptomarket demand on Silk Road 2 and Agora"](/docs/sr/2016-demant.pdf)
 - Munksgaard & Demant 2016, ["Mixing politics and crime - the prevalence and decline of political discourse on the cryptomarket"](/docs/sr/2016-munksgaard-2.pdf)
-- _The Economist_, 16 July 2016, ["Shedding light on the dark web: The drug trade is moving from the street to online cryptomarkets. Forced to compete on price and quality, sellers are upping their game"](http://www.economist.com/news/international/21702176-drug-trade-moving-street-online-cryptomarkets-forced-compete)
 
-Posts:
+Posts or articles:
 
 - ["Darknet Market [Evolution] Basket Analysis"](http://ryancompton.net/2015/03/24/darknet-market-basket-analysis/), Ryan Compton
 - ["Deanonymizing Darknet Data": GPS coordinates in image metadata](http://atechdad.com/Deanonymizing-Darknet-Data/)
 - ["What illegal drugs cost on the dark web"](http://qz.com/466273/what-illegal-drugs-cost-on-the-dark-web/)
 - ["How A Teenager Came Within Hours Of Carrying Out A College Massacre"](http://www.buzzfeed.com/patricksmith/how-one-british-teenager-used-the-digital-black-ma "Liam Lyburd, from Newcastle, was today sentenced to life in prison for buying a gun, gas canisters, and pipe bomb materials from the Dark Web with intent to shoot students at his former college. BuzzFeed News follows the trail and asks whether someone in future might succeed where he failed.")
+- _The Economist_, 16 July 2016, ["Shedding light on the dark web: The drug trade is moving from the street to online cryptomarkets. Forced to compete on price and quality, sellers are upping their game"](http://www.economist.com/news/international/21702176-drug-trade-moving-street-online-cryptomarkets-forced-compete)
+- ["Bachelor of Waffenexport: Der Student, der zum globalen Waffen-Dealer wurde"](https://motherboard.vice.com/de/read/bachelor-of-waffenexport-der-student-der-zum-globalen-waffen-dealer-wurde)
 
 ## Citing
 
@@ -796,7 +797,7 @@ A number of other datasets are known to exist but are unavailable, including:
 - Digital Citizens Alliance
 - Dolliver 2015 (claimed NDA on SR2 crawls)
 - [Hardy & Norgaard 2015](/docs/sr/2015-hardy.pdf "Reputation in the Internet black market: an empirical and theoretical analysis of the Deep Web"): HTTrack-based scrapes of SR2 marijuana listings November 2013 to October 2014
-
+- [Marin et al 2016](https://arxiv.org/abs/1607.07903 "Product Offerings in Malicious Hacker Markets")
 
 # External links
 
