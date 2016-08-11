@@ -12,12 +12,12 @@ belief: log
 
 Technically, rewriting the site to use Hakyll-4 as a static site generator and converting the repository from Darcs to Git were major pieces of technical debt I needed to pay off. Very painful, but it had to be done. I was also pleased to finish my annotated ebook of _Radiance_: I think it's an unjustly obscure piece of literary scientific fiction which shines even more when the historical context is laid out.
 My [public release of the Mnemosyne spaced repetition dataset](https://groups.google.com/d/msg/mnemosyne-proj-users/tPHlkTFVX_4/oF61BF44iQkJ) is something I'm proud of - the last release was inaccessible despite being a throve of data on flashcards in the real world.
-The sort-key trick ([Spatial locality for better file compression](Archiving URLs#sort---key-compression-trick)) was originally just a random command-line trick, but in working with the black-market scrapes, I've come to appreciate how it yields major space savings. (I haven't finished any writings on the black-markets lately, but I have been amusing myself inordinately by trying to write some [epigrams on them & technology in general](Notes#technology-epigrams).)
+The sort-key trick ([Spatial locality for better file compression](/Archiving URLs#sort---key-compression-trick)) was originally just a random command-line trick, but in working with the black-market scrapes, I've come to appreciate how it yields major space savings. (I haven't finished any writings on the black-markets lately, but I have been amusing myself inordinately by trying to write some [epigrams on them & technology in general](/Notes#technology-epigrams).)
 My [McCaleb email interview on MtGox](/docs/2014-mccaleb) helped set the record straight on Wikipedia about the history of MtGox. And not a moment too soon, given how toxic the topic is now for anyone previously associated with it.
-- [do causal networks explain why correlation≠causation is so often true?](Causality)
-- lithium orotate experiment finished: [no effects positive or negative](Nootropics#lithium-experiment)
+- [do causal networks explain why correlation≠causation is so often true?](/Causality)
+- lithium orotate experiment finished: [no effects positive or negative](/Nootropics#lithium-experiment)
 [Treadmill spaced repetition experiment](http://www.gwern.net/Treadmill#treadmill-effect-on-spaced-repetition-performance-randomized-experiment)
-- [Redshift self-experiment](Zeo#redshiftf.lux): screen-reddening software shifts bedtime forward by 20 minutes
+- [Redshift self-experiment](/Zeo#redshiftf.lux): screen-reddening software shifts bedtime forward by 20 minutes
 - [Bicycle face](https://en.wikipedia.org/wiki/Talk:Bicycle_face#Serious_sourcing_issues)
 - ["Rail travel at high speed is not possible because passengers, unable to breathe, would die of asphyxia."](https://en.wikipedia.org/wiki/Talk:Dionysius_Lardner#Did_he_actually_say_that.3F)
 - [did _Fifty Shades of Gray_ have only 4k readers as the original Twilight fanfiction?](http://lesswrong.com/lw/kl3/fifty_shades_of_selffulfilling_prophecy/#entry_t1_b5bj)
