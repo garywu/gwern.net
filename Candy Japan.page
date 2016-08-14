@@ -214,14 +214,15 @@ So the annual total gain from a hypothetical improvement _r_=0.10 is
 # [1] 20804.24403
 ~~~
 
-Finally, if the improvement is permanent & repeatable for all future customers, we should consider the [net present value](!Wikipedia) (NPV) of \$20.8k per year; an online mailorder business is unstable and might go out of business at anytime (and most businesses fail within the first few years), so a common discount rate like 5% is probably much too low, I would suggest at least 10%, in which case we can estimate the NPV at
+Finally, if the improvement is permanent & repeatable for all future customers, we should consider the [net present value](!Wikipedia) (NPV) of \$20.8k per year.
+What discount rate should CJ calculate its NPV at? An online mail-order business is unstable and might go out of business at anytime (and most businesses fail within the first few years), so a common discount rate like 5% is probably much too low to reflect the risk that CJ will go out of business before it has had a chance to profit from any improvements; I would suggest a discount rate of at least 10%, in which case we can estimate the NPV for that hypothetical _r_=0.10 at:
 
 ~~~{.R}
 20804.24403 / log(1.10)
 # [1] 218279.3493
 ~~~
 
-Putting it all together:
+Putting all the profit formulas together to generalize it, I get:
 
 ~~~{.R}
 improvementTotalGain <- function(customerProfit, cancellationRate, cancellationImprovement, customerN, discountRate) {
@@ -240,7 +241,6 @@ improvementTotalGain(5.7, 0.3909, 2.029166e-03, 344*12, 0.10)
 # [1] 3295.503599
 ~~~
 
-
 ## Cost-benefit
 
 We don't have a 10% point reduction in hand, but we do have a posterior distribution of reduction estimates.
@@ -256,8 +256,7 @@ summary(gain)
 
 In this case, we estimate that rolling out the new box would increase revenue by a NPV of \$4044.
 
-The new boxes cost \$0.33 more per month per customer than the old boxes, so at 344 new customers per month with lifetimes of 2.57 months, that's
-`344*12*2.57*-0.33=-3500` a year, which translates to a NPV of -\$36,732.
+The new boxes cost \$0.33 more per month per customer than the old boxes, so at 344 new customers per month with lifetimes of 2.57 months, that's `344*12*2.57*-0.33=-3500` a year, which translates to a NPV of -\$36,732.
 
 \$4k-\$36k yields a loss of \$32k, so we conclude that the new boxes are an order of magnitude too expensive to be worthwhile.
 To justify spending on the new box, we need a reduction of new box price down to ~\$0.04, or at least ~2.16% reduction in the cancellation rate.
@@ -275,13 +274,16 @@ mean(posteriors$Theta_diff >= 0.0216)
 ### Expected Value of Perfect Information (EVPI)
 
 Still, 7% is not negligible - there is still a chance that we are making a mistake in not using the new boxes.
-Are the results favorable enough to justify an additional month or two of A/B testing?
+Are the results favorable enough to justify additional A/B testing?
 
 This gets into the "[expected value of perfect information](!Wikipedia)" (EVPI): how valuable would be a definitive answer to the question of whether the decrease is better than 2.16%?
 Would we be willing to pay \$10 or \$100 or \$1000 for an oracle's answer?
 
-In 93% of the cases, we believe the answer would be 'no', the oracle is worth nothing since it could only tell us what we already believe (that the decrease is less than 2.26%), in which case we are no better off, so in those cases the oracle is worth \$0; in 7% of the cases, the answer would be 'yes'.
-But in that case, our gain depends on how large the cancellation reduction is - if it's exactly 2.17%, the gain is ~\$0 so we care little, but if the gain is 3% or 4% or even higher, then we would have been leaving real money on the table.
+In 93% of the cases, we believe the answer would be 'no': the oracle is worth nothing since it could only tell us what we already believe (that the decrease is less than 2.26%), in which case we are no better off, so in those cases the oracle is worth \$0; in the other 7% of the cases, the answer would be 'yes' and we would change our decision and make a profit.
+So the value of the oracle is \$0 + expected-value-of-those-other-7%s.
+
+But in that case, our gain depends on how large the cancellation reduction is - if it's exactly 2.17%, the gain is ~\$0 so we are indifferent, but if the gain is 3% or 4% or even higher like 5%, then we would have been leaving real money on the table (\$52k, \$72k, & \$93k respectively).
+Of course, each of those large gains is increasingly unlikely,
 So we need to go back to the posterior distribution to weight our gains per customer by the possible reductions:
 
 ~~~{.R}
@@ -354,35 +356,67 @@ Now we can repeatedly simulate fake data, add it to the real data, rerun the ana
 library(parallel)
 library(plyr)
 
-evsis <- function(x, n, n_additional, iters) {
+evsiEstimate <- function(x, n, n_additional, iters) {
+   oldBoxProfit <- 0
+
    originalPosterior <- betaPosterior(x, n)
    gains <- posteriorProfit(x=x, n=n)
    oldProfit <- mean(gains$Profit)
 
-   unlist(mclapply(1:iters, # parallelize
+   evsis <- unlist(mclapply(1:iters, ## parallelize
       function (i) {
-                control      <- replicate(n_additional, simulateData(originalPosterior$Theta_1))
-                experimental <- replicate(n_additional, simulateData(originalPosterior$Theta_2))
+                ## draw a set of hypothetical parameters from the posterior & simulate the collection of additional data
+                controlP      <- sample(originalPosterior$Theta_1, 1)
+                experimentalP <- sample(originalPosterior$Theta_2, 1)
+                control      <- replicate(n_additional, simulateData(controlP))
+                experimental <- replicate(n_additional, simulateData(experimentalP))
 
+                ## the old box profit remains 0; what is the estimated profit of the new boxes given the additional data?
                 simGains <- posteriorProfit(x=c(x[1]+sum(control), x[2]+sum(experimental)),
                                             n=c(n[1]+n_additional, n[2]+n_additional))
+                newBoxProfit <- mean(simGains$Profit)
 
-                sampleGain <- mean(simGains$Profit) - oldProfit
-                return(sampleGain) }
-            ) )
-        }
-
-evsiEstimate <- function(x, n, n_additional=1, iters=1000) {
-  evsiEstimates <- evsis(x, n, n_additional, iters)
-  filteredEVSIs <- ifelse(evsiEstimates>0, evsiEstimates, 0)
-  return(mean(filteredEVSIs)) }
+                ## choose the maximum of the two actions:
+                evsi <- max(c(newBoxProfit, oldBoxProfit))
+                # print(cat("EVSI", evsi, " Profit: ", newBoxProfit, " OldP: ", controlP, " NewP: ", experimentalP))
+                return(evsi) }
+   ) )
+   # print(summary(evsis))
+   return(mean(evsis))
+   }
 
 evsiEstimate(c(175, 168), c(442, 439), n_additional=1, iters=1000)
-# [1] 167
+# [1] 0
 evsiEstimate(c(175, 168), c(442, 439), n_additional=100, iters=1000)
-# [1] 1821.153663
+# [1] 0
+evsiEstimate(c(175, 168), c(442, 439), n_additional=500, iters=1000)
+# [1] 17.94430843
 evsiEstimate(c(175, 168), c(442, 439), n_additional=1000, iters=1000)
-# [1] 6538.258835
+# [1] 408.9334119
+evsiEstimate(c(175, 168), c(442, 439), n_additional=2000, iters=1000)
+# [1] 2538.491142
+evsiEstimate(c(175, 168), c(442, 439), n_additional=3000, iters=1000)
+# [1] 4931.28135
+evsiEstimate(c(175, 168), c(442, 439), n_additional=4000, iters=1000)
+# [1] 6388.002952
+evsiEstimate(c(175, 168), c(442, 439), n_additional=5000, iters=1000)
+# [1] 7397.697931
+evsiEstimate(c(175, 168), c(442, 439), n_additional=6000, iters=1000)
+# [1] 9084.300072
+evsiEstimate(c(175, 168), c(442, 439), n_additional=7000, iters=1000)
+# [1] 8984.125231
+evsiEstimate(c(175, 168), c(442, 439), n_additional=8000, iters=1000)
+# [1] 10851.27231
+
+optimize(function(n) { print(n); evsiEstimate(c(175, 168), c(442, 439), n_additional=n, iters=100) - 0.33*n; }, interval=c(9000, 20000), maximum=TRUE, tol=1)
+
+optimize(function(n) { print(n); evsiEstimate(c(0, 0), c(0, 0), n_additional=n, iters=1000) - 0.33*n; }, interval=c(1, 20000), maximum=TRUE, tol=1)
+
+9914?
+
+
+evsiEstimate(c(0, 0), c(0, 0), n_additional=1, iters=1000); evsiEstimate(c(0, 0), c(0, 0), n_additional=10, iters=1000); evsiEstimate(c(0, 0), c(0, 0), n_additional=100, iters=1000); evsiEstimate(c(0, 0), c(0, 0), n_additional=1000, iters=1000)
+
 ~~~
 
 So the expected value of 1 additional datapoint is \$167.
@@ -423,10 +457,12 @@ We can try simulating out something similar by imagining that CJ mails off 1 pac
 
 ~~~{.R}
 oldP <- 3.910082e-01
-newP <- oldP - 0.05 # newP <- 3.889790e-01
-max <- 10000
+# newP <- oldP - 0.05
+# newP <- 3.889790e-01
+newP <- oldP + 0.05
+max <- 20000
 iters <- 1
-thompsonSample <- FALSE
+thompsonSample <- TRUE
 
 ## set up a dataframe expressing the results as of the end of the CJ test
 # a <- c(rep(TRUE, 168), rep(FALSE, 439-168))
@@ -435,7 +471,7 @@ thompsonSample <- FALSE
 # customersTotal <- data.frame(I=NA, Date=-880:0, N=881, Intervention=interventionState, Canceled=c(a,b), Profit=NA, ProfitP=NA,
 #                              EVSI=NA, Reduction=NA, Cost=c(rep(0.33, 439), rep(0.00, 442)))
 customersTotal <- data.frame(I=integer(), Date=numeric(), Control.p=numeric(), Experiment.p=numeric(), Ns=numeric(), Intervention=logical(), Canceled=integer(), Profit=numeric(),
-                             EVSI=numeric(), Reduction=numeric(), Cost=numeric())
+                             EVSI=numeric(), Reduction=numeric(), Cost=numeric(), Cost.total=numeric())
 
 ldply(lapply(1:iters, {
   for (date in 1:max) {
@@ -448,37 +484,40 @@ ldply(lapply(1:iters, {
           nrow(subset(customers, Intervention)))
     results <- cancels / ns
 
-    ## optional stopping: calculate the EVSI of 1 more datapoint, and unless it is >$0.33,
-    ## further experimentation is futile.
+    ## optional stopping: calculate the EVSI of 1 more datapoint, and if it is <$0.33,
+    ## further experimentation is futile, as enough information has been collected to sufficiently rule out profitability.
 
     ## optimizations: 1. skip expensive EVSI estimate if no additional data yet available. Data-less EVSI is ~$239
-    ## 2. EVSI estimate is still noisy and doesn't change that fast, so let's compute it only every 20 days in simulation
+    ## 2. EVSI estimate is still noisy and doesn't change that fast, so let's compute it only every 50 days in simulation
     ## to speed things up
-    evsi <- if (nrow(customers)<=31 | (date %% 20) != 0) { NA; } else { evsiEstimate(cancels, ns) }
+    # evsi <- if (nrow(customers)<=31 | (date %% 50) != 0) { NA; } else { evsiEstimate(cancels, ns) }
+    evsi <- NA
     if (evsi < 0.33 & !is.na(evsi)) { break; } else {
         gains <- posteriorProfit(x=cancels, n=ns)
         profitP <- mean(gains$Profit>0)
 
-        # intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else { as.logical(rbinom(1,1, prob=0.5)) }
+        intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else { as.logical(rbinom(1,1, prob=0.5)) }
 
-        cancelExperiment <- rbinom(1,1, prob=newP)
-        cancelControl    <- rbinom(1,1, prob=oldP)
+        canceled <- rbinom(1,1, prob=if(intervention) { newP; } else { oldP; })
         customersTotal <- rbind(customersTotal,
-                                data.frame(I=iters, Date=date, N=nrow(customers), Control.p=round(results[1],digits=3), Experiment.p=round(results[2], digits=3), Intervention=TRUE, Canceled=cancelExperiment, Profit=round(mean(gains$Profit)),
+                                data.frame(I=iters, Date=date, N=nrow(customers), Control.p=round(results[1],digits=3), Experiment.p=round(results[2], digits=3), Intervention=intervention, Canceled=canceled, Profit=round(mean(gains$Profit)),
                                            ProfitP=round(profitP, digits=4), EVSI=round(evsi, digits=2),
-                                           Reduction=round(mean(gains$Reduction), digits=4), Cost=0.33),
-                                data.frame(I=iters, Date=date, N=nrow(customers), Control.p=round(results[1],digits=3), Experiment.p=round(results[2], digits=3), Intervention=FALSE, Canceled=cancelControl, Profit=round(mean(gains$Profit)),
-                                           ProfitP=round(profitP, digits=4), EVSI=round(evsi, digits=2),
-                                           Reduction=round(mean(gains$Reduction), digits=4), Cost=0))
-        print(tail(customersTotal, n=2))
+                                           Reduction=round(mean(gains$Reduction), digits=4), Cost=if(intervention) { 0.33; } else { 0; }, Cost.total=NA))
+        customersTotal$Cost.total <- cumsum(customersTotal$Cost)
+        print(tail(customersTotal, n=1))
         }
   }
   }))
 
 # experimental visualization:
-customersTotalLong <- melt(subset(customersTotal, select="Date", "N", "Control.p", "Experiment.P", "Profit", "ProfitP", "Reduction"), id.vars="Date")
 library(ggplot2)
-ggplot(data=melted, aes(x=Date, y=value, group=variable)) + geom_line()
+library(gridExtra)
+p1 <- ggplot(customersTotal, aes(N, y = value, color = variable)) + geom_point(aes(y = Control.p, col = "y1")) + geom_point(aes(y = Experiment.p, col = "y2"))
+p2 <- qplot(N, Reduction, data=customersTotal)
+p3 <- qplot(N, Profit, color=ProfitP, data=customersTotal)
+p4 <- qplot(N, ProfitP, data=customersTotal)
+p5 <- qplot(N, EVSI, data=customersTotal)
+grid.arrange(p1, p2, p3, p4, p5, ncol=1)
 ~~~
 
 If we did not want to use EVSI for early stopping and wanted to ignore the cost of experimenting while eliminating the risk of making a mistake, a [multi-armed bandit](!Wikipedia) approach never turns in a final decision but instead allocates ever fewer samples to inferior arms.
