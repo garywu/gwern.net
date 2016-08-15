@@ -273,7 +273,7 @@ mean(posteriors$Theta_diff >= 0.0216)
 ## Value of Information
 ### Expected Value of Perfect Information (EVPI)
 
-Still, 7% is not negligible - there is still a chance that we are making a mistake in not using the new boxes.
+Still, 7% is not negligible - there is still a chance that we are making a mistake in not using the new boxes, as we did get evidence suggesting the new boxes are better.
 Are the results favorable enough to justify additional A/B testing?
 
 This gets into the "[expected value of perfect information](!Wikipedia)" (EVPI): how valuable would be a definitive answer to the question of whether the decrease is better than 2.16%?
@@ -393,35 +393,36 @@ evsiEstimate(c(175, 168), c(442, 439), n_additional=1)
 evsiEstimate(c(175, 168), c(442, 439), n_additional=100)
 # [1] 0
 evsiEstimate(c(175, 168), c(442, 439), n_additional=500)
-# [1] 17.94430843
+# [1] 0
 evsiEstimate(c(175, 168), c(442, 439), n_additional=1000)
-# [1] 408.9334119
+# [1] 4.179743603
 evsiEstimate(c(175, 168), c(442, 439), n_additional=2000)
-# [1] 2538.491142
+# [1] 33.58719093
 evsiEstimate(c(175, 168), c(442, 439), n_additional=3000)
-# [1] 4931.28135
+# [1] 152.0107205
 evsiEstimate(c(175, 168), c(442, 439), n_additional=4000)
-# [1] 6388.002952
+# [1] 259.4423937
 evsiEstimate(c(175, 168), c(442, 439), n_additional=5000)
-# [1] 7397.697931
+# [1] 305.9021146
 evsiEstimate(c(175, 168), c(442, 439), n_additional=6000)
-# [1] 9084.300072
+# [1] 270.1474476
 evsiEstimate(c(175, 168), c(442, 439), n_additional=7000)
-# [1] 8984.125231
+# [1] 396.8461236
 evsiEstimate(c(175, 168), c(442, 439), n_additional=8000)
-# [1] 10851.27231
+# [1] 442.0281358
 
-## Search for the _n_ which maximizes the EVSI minus the cost of the samples, from n=1 to n=20000
-
+## Search for the _n_ which maximizes the EVSI minus the cost of the samples ("Expected Net Benefit"/ENBS), from n=1 to n=20000,
 optimize(function(n) { evsiEstimate(c(175, 168), c(442, 439), n_additional=n, iters=5000) - 0.33*n; }, interval=c(1, 20000), maximum=TRUE, tol=1)
 # $maximum
-# [1] 15282.01663
+# [1] 1.483752763
 # $objective
-# [1] 8680.502039
+# [1] -0.4896384119
 ~~~
 
-EVSI exhibits an interesting behavior in that decisions are discrete, so unlike one might intuitively expect, the EVSI of _n_=1 can be small but the EVSI of _n_=1000 can be large.
+EVSI exhibits an interesting behavior in that decisions are discrete, so unlike one might intuitively expect, the EVSI of eg _n_=1-100 can be zero but the EVSI of _n_=1000 can suddenly be large.
 Typically an EVSI curve will be zero (and hence expected profit increasingly negative) for small sample sizes where the data cannot possibly change one's decision no matter how positive it looks, and then when it does become ample enough to affect the decision, becomes increasingly valuable until a peak is reached and then diminishing returns sets in and it eventually stops improving noticeably (while the cost continues to increase linearly).
+
+In this case, the end result of the CJ experiment is that no fixed-sample extension is worthwhile as the EVSI remains less than the cost of the sample for all natural numbers.
 
 #### Sampling to a foregone conclusion
 
@@ -441,41 +442,76 @@ posteriorsBefore <- betaPosterior(c(0,0), c(0,0), prior1.a=900, prior1.b=1407)
 EVPIBefore <- mean(sapply(posteriorsBefore$Theta_diff, function(r) { max(0, improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10)) } ))
 EVPIBefore
 # [1] 9656.250988
+~~~
 
+(Note that the EVPI a posteriori was larger than this EVPI a priori, since we received evidence which increased the probability of beneficial effects.)
+
+~~~{.R}
+evsiEstimate(c(0, 0), c(0, 0), n_additional=1)
+# [1] 0
+evsiEstimate(c(0, 0), c(0, 0), n_additional=100)
+# [1] 0
 evsiEstimate(c(0, 0), c(0, 0), n_additional=442)
 # [1] 0
+evsiEstimate(c(0, 0), c(0, 0), n_additional=500)
+# [1] 0
+evsiEstimate(c(0, 0), c(0, 0), n_additional=1000)
+# [1] 24.59309008
+evsiEstimate(c(0, 0), c(0, 0), n_additional=2000)
+# [1] 87.27781568
+evsiEstimate(c(0, 0), c(0, 0), n_additional=3000)
+# [1] 163.0583877
+evsiEstimate(c(0, 0), c(0, 0), n_additional=4000)
+# [1] 296.6085928
+evsiEstimate(c(0, 0), c(0, 0), n_additional=5000)
+# [1] 284.8454662
+evsiEstimate(c(0, 0), c(0, 0), n_additional=6000)
+# [1] 302.5872152
+evsiEstimate(c(0, 0), c(0, 0), n_additional=7000)
+# [1] 313.9936967
+evsiEstimate(c(0, 0), c(0, 0), n_additional=8000)
+# [1] 536.5548796
+evsiEstimate(c(0, 0), c(0, 0), n_additional=20000)
+# [1] 633.8689055
+evsiEstimate(c(0, 0), c(0, 0), n_additional=1000000)
+# [1] 1001.659894
 
 optimize(function(n) { evsiEstimate(c(0, 0), c(0, 0), n_additional=n, iters=5000) - 0.33*n; }, interval=c(1, 20000), maximum=TRUE, tol=1)
 # $maximum
-# [1] 4726.352873
+# [1] 1.483752763
 # $objective
-# [1] 1262499.397
+# [1] -0.4896384119
 ~~~
 
-So apparently yes, this was something worth experimenting on but the chosen sample size is far from optimal (it is big enough to be expensive, but not big enough to change decisions) and should've been TODO.
+So while there are worthwhile gains to be found, a priori, experimentation costs too much for any fixed-sample trial to be cost-effective.
+To change this, we need some combination of cheaper experiments (eg boxes costing \$0.07 each), more powerful experiments (adding in covariates to explain variance & allow inference at smaller sample sizes?), some reason for a more optimistic prior (positive results from other experiments indicating large effects), a reduction in discount rate (a new owner of CJ in for the long run?) or increase in customer base or customer lifetime value, or use of a different experimental approach entirely like an adaptive sequential trial.
 
 #### Adaptive trials
 
-One key advantage of EVSI is that it can be calculated at any time.
-So a simple optimal adaptive trial can be run by collecting datapoints one by one, calculating EVSI after each new datapoint, and sampling another datapoint only if the EVSI > cost, otherwise ending with a decision.
-This procedure would sample until there is either enough evidence to justify a switch or until it is no longer a substantial possibility that the new box improvement exceeds 2.26% and would be profitable.
+Fixed-sample experiments, whether planned using EVSI or not, suffer from the problem that they receive feedback only in fixed steps: even if the first half of the data is extremely unpromising, one still has to pay for the second half of the data.
+One has no options to stop early and change one's decision.
+In a sequential trial, in which the data comes in smaller chunks (ideally, 1 by 1), one pays for information more gradually; as it is always better to have information than to not have it, sequential trials can be much better than fixed-sample trials.
 
-In this case, such a procedure probably would have run the A/B test until perhaps _n_=100 in each arm, at which point the lack of dominance would start becoming clear and it would no longer be worth paying \$0.33 more for each new datapoint, thereby potentially saving CJ ~\$80 in new boxes and ending the test early.
+We could see the CJ experiment as a two-player game against Nature, and calculate a game tree which gives the optimal decision by [backwards induction](!Wikipedia); but the necessary samples might get into the thousands and it might be very difficult to calculate the decision tree.
+A more effective approach would be to treat it as not an experiment which must terminate soon, but a perpetual choice by CJ: a [multi-armed bandit](!Wikipedia) problem.
 
-The difficulty here is that the feedback is delayed: until the next billing cycle, you cannot know that a particular customer *won't* cancel; it is possible that they will but simply haven't yet. And if you wait until the next billing cycle, then CJ's experiment would already be over.
-This can be solved by treating it as a [survival analysis](!Wikipedia) problem in which customer cancellation is right-censored, a class of problems that JAGS can also handle without difficulty, but CJ's writeup/code doesn't provide exact time-until-cancellation data.
+Then the solution is simple: [Thompson sampling](!Wikipedia).
+We simply calculate the probability that the new box is profitable (which we already know how to do) and allocate a customer to new boxes with that probability. Hardly takes more than a line of code, yet it will automatically balance exploration & exploitation while minimizing wasted samples.
 
-We can try simulating out something similar by imagining that CJ mails off 1 package per day and 31 days later, learns if the customer has canceled or not.
-[Thompson sampling](!Wikipedia) can handle such delayed feedback because it will allocate the intervention stochastically rather than solely one intervention or the other.
+We can try simulating out something similar to the CJ experiment by imagining that CJ mails off 1 package per day and 31 days later, learns if the customer has canceled or not.^[One difficulty with MAB techniques in this context is that the feedback is delayed: until the next billing cycle, you cannot know that a particular customer *won't* cancel; it is possible that they will but simply haven't yet. And if you wait until the next billing cycle, then CJ's experiment would already be over. This can be solved by treating it as a [survival analysis](!Wikipedia) problem in which customer cancellation is right-censored, a class of problems that JAGS can also handle without difficulty, but CJ's writeup/code doesn't provide exact time-until-cancellation data. Fortunately, Thompson sampling is one of the MAB techniques which can handle such delayed feedback because it will allocate the intervention stochastically rather than solely one intervention or the other.]
+Run this for, say, 20,000 days, and watch how the total cost and estimated probability of profitability evolve under various scenarios.
 
 ~~~{.R}
 oldP <- 3.910082e-01
-newP <- oldP - 0.05
-# newP <- 3.889790e-01
+
+## 4 possible scenarios: -5%, 5%, exactly equal, or exactly equal to sample estimates:
+# newP <- oldP - 0.05
 # newP <- oldP + 0.05
+# newP <- 3.889790e-01
+newP <- oldP
+
 maximumN <- 20000
-iters <- 1
-thompsonSample <- TRUE
+thompsonSample <- TRUE ## alternative is simple 50-50 randomization
 
 ## set up a dataframe expressing the results as of the end of the CJ test
 # a <- c(rep(TRUE, 168), rep(FALSE, 439-168))
@@ -486,69 +522,63 @@ thompsonSample <- TRUE
 customersTotal <- data.frame(I=integer(), Date=numeric(), Control.p=numeric(), Experiment.p=numeric(), Ns=numeric(), Intervention=logical(), Canceled=integer(), Profit=numeric(),
                              EVSI=numeric(), Reduction=numeric(), Cost=numeric(), Cost.total=numeric())
 
-ldply(lapply(1:iters, {
-  for (date in 1:maximumN) {
+for (date in 1:maximumN) {
 
-    customers <- subset(customersTotal, Date <= (date-31))
+  customers <- subset(customersTotal, Date <= (date-31))
 
-    cancels <- c(sum(subset(customers, !Intervention)$Canceled),
-                 sum(subset(customers, Intervention)$Canceled))
-    ns <- c(nrow(subset(customers, !Intervention)),
-          nrow(subset(customers, Intervention)))
-    results <- cancels / ns
+  cancels <- c(sum(subset(customers, !Intervention)$Canceled),
+               sum(subset(customers, Intervention)$Canceled))
+  ns <- c(nrow(subset(customers, !Intervention)),
+        nrow(subset(customers, Intervention)))
+  results <- cancels / ns
 
-    ## optional stopping: calculate the EVSI of 1 more datapoint, and if it is <$0.33,
-    ## further experimentation is futile, as enough information has been collected to sufficiently rule out profitability.
+  ## optional stopping: calculate the EVSI of 1 more datapoint, and if it is <$0.33,
+  ## further experimentation is futile, as enough information has been collected to sufficiently rule out profitability.
 
-    ## optimizations: 1. skip expensive EVSI estimate if no additional data yet available. Data-less EVSI is ~$239
-    ## 2. EVSI estimate is still noisy and doesn't change that fast, so let's compute it only every 50 days in simulation
-    ## to speed things up
-    # evsi <- if (nrow(customers)<=31 | (date %% 50) != 0) { NA; } else { evsiEstimate(cancels, ns) }
-    evsi <- NA
-    if (evsi < 0.33 & !is.na(evsi)) { break; } else {
-        gains <- posteriorProfit(x=cancels, n=ns)
-        profitP <- mean(gains$Profit>0)
+  ## optimizations: 1. skip expensive EVSI estimate if no additional data yet available. Data-less EVSI is ~$239
+  ## 2. EVSI estimate is still noisy and doesn't change that fast, so let's compute it only every 50 days in simulation
+  ## to speed things up
+  # evsi <- if (nrow(customers)<=31 | (date %% 50) != 0) { NA; } else { evsiEstimate(cancels, ns) }
+  evsi <- NA
+  if (evsi < 0.33 & !is.na(evsi)) { break; } else {
+      gains <- posteriorProfit(x=cancels, n=ns)
+      profitP <- mean(gains$Profit>0)
 
-        intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else { as.logical(rbinom(1,1, prob=0.5)) }
+      intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else { as.logical(rbinom(1,1, prob=0.5)) }
 
-        canceled <- rbinom(1,1, prob=if(intervention) { newP; } else { oldP; })
-        customersTotal <- rbind(customersTotal,
-                                data.frame(I=iters, Date=date, N=nrow(customers), Control.p=round(results[1],digits=3), Experiment.p=round(results[2], digits=3), Intervention=intervention, Canceled=canceled, Profit=round(mean(gains$Profit)),
-                                           ProfitP=round(profitP, digits=4), EVSI=round(evsi, digits=2),
-                                           Reduction=round(mean(gains$Reduction), digits=4), Cost=if(intervention) { 0.33; } else { 0; }, Cost.total=NA))
-        customersTotal$Cost.total <- cumsum(customersTotal$Cost)
-        print(tail(customersTotal, n=1))
-        }
-  }
-  }))
-
-# experimental visualization:
-library(ggplot2)
-library(gridExtra)
-p1 <- ggplot(customersTotal, aes(N, y = value, color = variable)) + geom_point(aes(y = Control.p, col = "y1")) + geom_point(aes(y = Experiment.p, col = "y2"))
-p2 <- qplot(N, Reduction, data=customersTotal)
-p3 <- qplot(N, Profit, color=ProfitP, data=customersTotal)
-p4 <- qplot(N, ProfitP, data=customersTotal)
-p5 <- qplot(N, EVSI, data=customersTotal)
-grid.arrange(p1, p2, p3, p4, p5, ncol=1)
+      canceled <- rbinom(1,1, prob=if(intervention) { newP; } else { oldP; })
+      customersTotal <- rbind(customersTotal,
+                              data.frame(I=iters, Date=date, N=nrow(customers), Control.p=round(results[1],digits=3), Experiment.p=round(results[2], digits=3), Intervention=intervention, Canceled=canceled, Profit=round(mean(gains$Profit)),
+                                         ProfitP=round(profitP, digits=4), EVSI=round(evsi, digits=2),
+                                         Reduction=round(mean(gains$Reduction), digits=4), Cost=if(intervention) { 0.33; } else { 0; }, Cost.total=NA))
+      customersTotal$Cost.total <- cumsum(customersTotal$Cost)
+      print(tail(customersTotal, n=1))
+      }
+      }
 ~~~
 
-If we did not want to use EVSI for early stopping and wanted to ignore the cost of experimenting while eliminating the risk of making a mistake, a [multi-armed bandit](!Wikipedia) approach never turns in a final decision but instead allocates ever fewer samples to inferior arms.
-Since a MAB never sets an arm to 0, it never makes a mistake.
+A multi-armed bandit approach never turns in a final decision but instead allocates ever fewer samples to inferior arms; since a MAB never sets an arm to 0, it never makes a final decision (which might be wrong).
+Still, after _n_=10,000 or 20,000, the results are unlikely to change and it becomes extremely unlikely for a bad box to be chosen.
 
-5% worse: $56.76 total spent, profit _P_=0.0052, _n_ is 172 of 20000
-5% better:
+Here's the results of 1 run of 4 possible scenarios:
+
+- new boxes are 5% worse (unprofitable): \$56.76 total spent, profit _P_=0.0052, _n_ is 172 of 20000
+- \* equal probability (unprofitable): \$93.39 total spent, profit _P_=0.0172, _n_ is 283 of 20000
+- \* sample estimates (unprofitable): \$90.42 total spent, profit _P_=0.0062, _n_ is 274 of 20000
+- \* 5% better (profitable): \$3552.12 total spent, profit _P_>0.9999 (_P_>0.50 by _n_=10000), _n_ is 10764 of 20000
+
+The Thompson sampler has reached the correct conclusion in all cases, at modest costs in the unprofitable cases.
 
 # Conclusion
 
 So to round up, by employing Bayesian decision theory instead of standard NHST _p_-values, we can conclude in a principled and flexible fashion that:
 
-1. potential packaging improvements are large enough that packaging is hardly worth running an A/B test on in the first place
 2. there is a 56-65% (depending on priors) chance that the new boxes reduced cancellation
 3. the plausible reductions are small enough that the expected value of switching is negative as there is ~6% chance that switching to new boxes would be profitable
-4. a definitive resolution of the remaining uncertainty would be worth ~\$717
-5. further sampling to reduce uncertainty more would be profitable
-6. a sequential trial using EVSI could stop sampling when the cost of a new box exceeds the benefit of more data; such a trial, under 1 approach, would TODO
+4. a definitive resolution of the remaining uncertainty would be worth ~\$10773
+1. potential packaging improvements are not large enough to be worth running an A/B test on in the first place
+5. further sampling to reduce uncertainty more would not be profitable
+6. a sequential trial using Thompson sampling could do experimentation in a cost-effective manner
 7. in general, future experimentation should focus on the more important business issues CJ seems to have
 
 # See Also
