@@ -225,7 +225,8 @@ What discount rate should CJ calculate its NPV at? An online mail-order business
 Putting all the profit formulas together to generalize it, I get:
 
 ~~~{.R}
-improvementTotalGain <- function(customerProfit, cancellationRate, cancellationImprovement, customerN, discountRate) {
+improvementTotalGain <- function(customerProfit, cancellationRate, cancellationImprovement,
+                                 customerN, discountRate) {
  oldLifetimeValue <- customerProfit * (1/cancellationRate)
  newLifetimeValue <- customerProfit * (1/(cancellationRate-cancellationImprovement))
  customerGain     <- newLifetimeValue - oldLifetimeValue
@@ -287,7 +288,9 @@ Of course, each of those large gains is increasingly unlikely,
 So we need to go back to the posterior distribution to weight our gains per customer by averaging over the posterior distribution of possible reductions:
 
 ~~~{.R}
-EVPI <- mean(sapply(posteriors$Theta_diff, function(r) { max(0, improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10)) } ))
+EVPI <- mean(sapply(posteriors$Theta_diff,
+         function(r) { max(0, ## old
+                            improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10)) } )) ## new
 EVPI
 # [1] 10773
 ## convert value back to how many boxes that would pay for:
@@ -336,7 +339,8 @@ First, we can automate the posterior & profit analysis like so:
 posterior <- function(x, n) { betaPosterior(x,n, prior1.a=900, prior1.b=1407)$Theta_diff }
 posteriorProfit <- function(x, n) {
     posteriorReduction <- posterior(x, n)
-    gains <- sapply(posteriorReduction, function(r) { improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10) - 36732 })
+    gains <- sapply(posteriorReduction,
+              function(r) { improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10) - 36732 })
     return(list(Profit=gains, Reduction=posteriorReduction)) }
 
 gains <- posteriorProfit(x=c(175, 168), n=c(442, 439))
@@ -367,23 +371,22 @@ evsiEstimate <- function(x, n, n_additional, iters=1000) {
 
    evsis <- unlist(mclapply(1:iters, ## parallelize
       function (i) {
-                ## draw a set of hypothetical parameters from the posterior & simulate the collection of additional data
+                ## draw a set of hypothetical parameters from the posterior
                 controlP      <- sample(originalPosterior$Theta_1, 1)
                 experimentalP <- sample(originalPosterior$Theta_2, 1)
+                ##  simulate the collection of additional data
                 control      <- replicate(n_additional, simulateData(controlP))
                 experimental <- replicate(n_additional, simulateData(experimentalP))
 
-                ## the old box profit remains 0; what is the estimated profit of the new boxes given the additional data?
+                ## the old box profit is 0; what's the estimated profit of new boxes given additional data?
                 simGains <- posteriorProfit(x=c(x[1]+sum(control), x[2]+sum(experimental)),
                                             n=c(n[1]+n_additional, n[2]+n_additional))
                 newBoxProfit <- mean(simGains$Profit)
 
                 ## choose the maximum of the two actions:
                 evsi <- max(c(newBoxProfit, oldBoxProfit))
-                # print(cat("EVSI", evsi, " Profit: ", newBoxProfit, " OldP: ", controlP, " NewP: ", experimentalP))
                 return(evsi) }
    ) )
-   # print(summary(evsis))
    return(mean(evsis))
    }
 
@@ -411,8 +414,9 @@ evsiEstimate(c(175, 168), c(442, 439), n_additional=7000)
 evsiEstimate(c(175, 168), c(442, 439), n_additional=8000)
 # [1] 442.0281358
 
-## Search for the _n_ which maximizes the EVSI minus the cost of the samples ("Expected Net Benefit"/ENBS), from n=1 to n=20000,
-optimize(function(n) { evsiEstimate(c(175, 168), c(442, 439), n_additional=n, iters=5000) - 0.33*n; }, interval=c(1, 20000), maximum=TRUE, tol=1)
+## Search for _n_ maximizing the EVSI minus the cost of the samples ("Expected Net Benefit"/ENBS)
+optimize(function(n) { evsiEstimate(c(175, 168), c(442, 439), n_additional=n, iters=5000) - 0.33*n; },
+ interval=c(1, 20000), maximum=TRUE, tol=1)
 # $maximum
 # [1] 1.483752763
 # $objective
@@ -439,7 +443,8 @@ We can ask what the EVPI & EVSI was before the experiment was begun, when no dat
 
 ~~~{.R}
 posteriorsBefore <- betaPosterior(c(0,0), c(0,0), prior1.a=900, prior1.b=1407)
-EVPIBefore <- mean(sapply(posteriorsBefore$Theta_diff, function(r) { max(0, improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10)) } ))
+EVPIBefore <- mean(sapply(posteriorsBefore$Theta_diff,
+              function(r) { max(0, improvementTotalGain(5.7, 0.3909, r, 344*12, 0.10)) } ))
 EVPIBefore
 # [1] 9656.250988
 ~~~
@@ -476,7 +481,8 @@ evsiEstimate(c(0, 0), c(0, 0), n_additional=20000)
 evsiEstimate(c(0, 0), c(0, 0), n_additional=1000000)
 # [1] 1001.659894
 
-optimize(function(n) { evsiEstimate(c(0, 0), c(0, 0), n_additional=n, iters=5000) - 0.33*n; }, interval=c(1, 20000), maximum=TRUE, tol=1)
+optimize(function(n) { evsiEstimate(c(0, 0), c(0, 0), n_additional=n, iters=5000) - 0.33*n; },
+         interval=c(1, 20000), maximum=TRUE, tol=1)
 # $maximum
 # [1] 1.483752763
 # $objective
@@ -492,8 +498,9 @@ Fixed-sample experiments, whether planned using EVSI or not, suffer from the pro
 One has no options to stop early and change one's decision.
 In a sequential trial, in which the data comes in smaller chunks (ideally, 1 by 1), one pays for information more gradually; as it is always better to have information than to not have it, sequential trials can be much better than fixed-sample trials.
 
-We could see the CJ experiment as a two-player game against Nature, and calculate a game tree which gives the optimal decision by [backwards induction](!Wikipedia); but the necessary samples might get into the thousands and it might be very difficult to calculate the decision tree.
-A more effective approach would be to treat it as not an experiment which must terminate soon, but a perpetual choice by CJ: a [multi-armed bandit](!Wikipedia) problem.
+We could see the CJ experiment as a two-player game against Nature, and calculate a game tree which gives the optimal decision by [backwards induction](!Wikipedia) ([example for an A/B test](http://www.win-vector.com/blog/2015/07/dynamic-prog-ab-test-design/ "A dynamic programming solution to A/B test design")); but the necessary samples might get into the thousands and it might be very difficult to calculate the decision tree.
+(With i.i.d binomial samples and the sufficient statistics of _m_ cancels out of _n_ trials, then for a total sample/horizon of 100, there are 100 possible splits between the two options - 100 new boxes and 0 old boxes, 99 new boxes and 1 old box ... 0 new boxes and 100 old boxes etc - and each has 100 possible 'cancels of trials'  - 1 canceled out of 100 ... 100 canceled out of 100 - so the deepest layer has 100^2^=10000 terminal nodes; this is feasible. But we might need to run as long as _n_=10000, in which case now there would be 10000^2^=1e+08 terminal nodes to evaluate and propagate back through the decision tree, which is more problematic.)
+A more easily implemented approach would be to treat it as not an experiment which must terminate soon, but a perpetual choice by CJ: a [multi-armed bandit](!Wikipedia) problem (a kind of [partially observable Markov decision process](!Wikipedia)).
 
 Then the solution is simple: [Thompson sampling](!Wikipedia).
 We simply calculate the probability that the new box is profitable (which we already know how to do) and allocate a customer to new boxes with that probability. Hardly takes more than a line of code, yet it will automatically balance exploration & exploitation while minimizing wasted samples.
@@ -513,14 +520,15 @@ newP <- oldP
 maximumN <- 20000
 thompsonSample <- TRUE ## alternative is simple 50-50 randomization
 
-## set up a dataframe expressing the results as of the end of the CJ test
+## set up a dataframe expressing the results as of the end of the CJ test:
 # a <- c(rep(TRUE, 168), rep(FALSE, 439-168))
 # b <- c(rep(TRUE, 175), rep(FALSE, 442-175))
 # interventionState <- c(rep(TRUE, 439), rep(FALSE, 442))
-# customersTotal <- data.frame(I=NA, Date=-880:0, N=881, Intervention=interventionState, Canceled=c(a,b), Profit=NA, ProfitP=NA,
-#                              EVSI=NA, Reduction=NA, Cost=c(rep(0.33, 439), rep(0.00, 442)))
-customersTotal <- data.frame(I=integer(), Date=numeric(), Control.p=numeric(), Experiment.p=numeric(), Ns=numeric(), Intervention=logical(), Canceled=integer(), Profit=numeric(),
-                             EVSI=numeric(), Reduction=numeric(), Cost=numeric(), Cost.total=numeric())
+# customersTotal <- data.frame(Date=-880:0, N=881, Intervention=interventionState, Canceled=c(a,b),
+#                              Profit=NA, ProfitP=NA, Reduction=NA, Cost=c(rep(0.33, 439), rep(0.00, 442)))
+customersTotal <- data.frame(Date=numeric(), Control.p=numeric(), Experiment.p=numeric(), Ns=numeric(),
+                             Intervention=logical(), Canceled=integer(), Profit=numeric(),
+                             Reduction=numeric(), Cost=numeric(), Cost.total=numeric())
 
 for (date in 1:maximumN) {
 
@@ -532,29 +540,23 @@ for (date in 1:maximumN) {
         nrow(subset(customers, Intervention)))
   results <- cancels / ns
 
-  ## optional stopping: calculate the EVSI of 1 more datapoint, and if it is <$0.33,
-  ## further experimentation is futile, as enough information has been collected to sufficiently rule out profitability.
+  gains <- posteriorProfit(x=cancels, n=ns)
+  profitP <- mean(gains$Profit>0)
 
-  ## optimizations: 1. skip expensive EVSI estimate if no additional data yet available. Data-less EVSI is ~$239
-  ## 2. EVSI estimate is still noisy and doesn't change that fast, so let's compute it only every 50 days in simulation
-  ## to speed things up
-  # evsi <- if (nrow(customers)<=31 | (date %% 50) != 0) { NA; } else { evsiEstimate(cancels, ns) }
-  evsi <- NA
-  if (evsi < 0.33 & !is.na(evsi)) { break; } else {
-      gains <- posteriorProfit(x=cancels, n=ns)
-      profitP <- mean(gains$Profit>0)
+  intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else {
+                   as.logical(rbinom(1,1, prob=0.5)) }
 
-      intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else { as.logical(rbinom(1,1, prob=0.5)) }
-
-      canceled <- rbinom(1,1, prob=if(intervention) { newP; } else { oldP; })
-      customersTotal <- rbind(customersTotal,
-                              data.frame(I=iters, Date=date, N=nrow(customers), Control.p=round(results[1],digits=3), Experiment.p=round(results[2], digits=3), Intervention=intervention, Canceled=canceled, Profit=round(mean(gains$Profit)),
-                                         ProfitP=round(profitP, digits=4), EVSI=round(evsi, digits=2),
-                                         Reduction=round(mean(gains$Reduction), digits=4), Cost=if(intervention) { 0.33; } else { 0; }, Cost.total=NA))
-      customersTotal$Cost.total <- cumsum(customersTotal$Cost)
-      print(tail(customersTotal, n=1))
-      }
-      }
+  canceled <- rbinom(1,1, prob=if(intervention) { newP; } else { oldP; })
+  customersTotal <- rbind(customersTotal,
+                          data.frame(Date=date, N=nrow(customers), Control.p=round(results[1],digits=3),
+                                     Experiment.p=round(results[2], digits=3), Intervention=intervention,
+                                     Canceled=canceled, Profit=round(mean(gains$Profit)),
+                                     ProfitP=round(profitP, digits=4),
+                                     Reduction=round(mean(gains$Reduction), digits=4),
+                                     Cost=if(intervention) { 0.33; } else { 0; }, Cost.total=NA))
+  customersTotal$Cost.total <- cumsum(customersTotal$Cost)
+  print(tail(customersTotal, n=1))
+}
 ~~~
 
 A multi-armed bandit approach never turns in a final decision but instead allocates ever fewer samples to inferior arms; since a MAB never sets an arm to 0, it never makes a final decision (which might be wrong).
