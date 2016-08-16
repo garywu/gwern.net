@@ -335,8 +335,8 @@ With that, we can write a simulation like Shulman & Bostrom where we generate _n
 For generality to other continuous normally-distributed complex traits, we'll work in standardized units rather than the IQ scale (SD=15), but convert back to points for easier reading:
 
 ~~~{.R}
-## select 1 out of N siblings
-embryoScores <- function(n, variance) { rnorm(n, mean=0, sd=sqrt(variance*0.5)); }
+## select 1 out of N embryos (default: siblings, who are half-related)
+embryoScores <- function(n, variance, relatedness=0.5) { rnorm(n, mean=0, sd=sqrt(variance*relatedness)); }
 embryoSelectionGain <- function(n, variance) { scores <- embryoScores(n, variance)
                                                return(max(scores)); }
 simEmbryoSelection <- function(n=2, variance=0.33, iters=100000) { replicate(iters, embryoSelectionGain(n, variance)); }
@@ -1062,7 +1062,11 @@ The practical willingness of parents to make eugenic choices based on donor prof
 (For example, given the pervasive Puritanical bias in health towards preventing illness instead of increasing health, embryo selection for intelligence or height can be framed as reducing the risk of developmental delays or shortness; which it would.)
 Reportedly as of 2016, PGD for hair and eye color is already quietly being offered to parents and accepted, and mentions are made of the potential for selection on other traits.
 
-Time will tell whether this becomes anything more than a exotic novelty, but it looks as though when relatedness is not a cost, parents will tend to accept it. This suggests that Ridley's argument is incorrect when extended to embryo selection/editing; people simply want to both have and eat their cake, and as embryo selection/editing entail little or no loss of relatedness, they are not comparable to sperm/egg donation.
+More drastically, in cases of screening for severe genetic disorders by testing potential carrier parents and fetuses, parents in practice are willing to make use of screening (if they know about it) and use PGD or selective abortions in anywhere up to 95-100% of cases (depending on disease & sample) in diseases such as [Down syndrome](!Wikipedia "Down syndrome#Abortion rates") (eg [Choi et al 2012](/docs/genetics/2012-choi.pdf "Decision Making Following a Prenatal Diagnosis of Down Syndrome: An Integrative Review")), [Tay-Sachs disease](!Wikipedia "Prevention of Tay%E2%80%93Sachs disease") (eg [Kaback 2000](/docs/genetics/2000-kaback.pdf "Population-based genetic screening for reproductive counseling: the Tay-Sachs disease model")), [Thalassemia](!Wikipedia "Thalassemia#Carrier detection") (eg [Liao et al 2005](/docs/genetics/2005-liao.pdf "Carrier screening for alpha- and beta-thalassemia in pregnancy: the results of an 11-year prospective program in Guangzhou Maternal and Neonatal hospital"), [Scotet et al 2008](/docs/genetics/2008-scotet.pdf "Prenatal diagnosis of cystic fibrosis: the 18-year experience of Brittany (western France)")), [Cystic fibrosis](!Wikipedia "Cystic fibrosis#Prenatal") (eg [Ioannou et al 2015](/docs/genetics/2015-ioannou.pdf "'Suddenly Having two Positive People who are Carriers is a Whole New Thing' - Experiences of Couples Both Identified as Carriers of Cystic Fibrosis Through a Population-Based Carrier Screening Program in Australia"), [Sawyer et al 2006](/docs/genetics/2006-sawyer.pdf "Changing Their Minds With Time: A Comparison of Hypothetical and Actual Reproductive Behaviors in Parents of Children With Cystic Fibrosis"), [Hale et al 2008](http://www.nejm.org/doi/full/10.1056/NEJMc0707530 "Newborn Screening Showing Decreasing Incidence of Cystic Fibrosis"), [Cunningham & Marshall 1998](http://adc.bmj.com/content/78/4/345.full.html "Influence of five years of antenatal screening on the paediatric cystic fibrosis population in one region"), [Massie et al 2009](https://www.researchgate.net/profile/Liane_Ioannou/publication/26837605_Population-based_carrier_screening_for_cystic_fibrosis_in_Victoria_the_first_three_years_experience/links/00b4951dcb63b1d0ec000000.pdf "Population-based carrier screening for cystic fibrosis in Victoria: The first three years experience")), and in general (eg [Ghiossi et al 2016](http://biorxiv.org/content/early/2016/08/14/069393 "Clinical Utility of Expanded Carrier Screening: Reproductive Behaviors of At-Risk Couples"), [Franasiak et al 2016](/docs/genetics/2016-franasiak.pdf "Expanded carrier screening in an infertile population: how often is clinical decision making affected?")).
+This willingness is enough to noticeably affect population levels of these disorders (particularly Down's syndrome, which has dropped dramatically in the USA despite an aging population that should be increasing it).
+The willingness to use PGD or abort rises with the severity of the disorder, true, but here again there are extenuating factors: parents considerably underestimate their willingness to use PGD/abortion before diagnosis compared to after they are actually diagnosed, and using IVF just for PGD or aborting a pregnancy are expensive & highly undesirable steps to take; so the rates being so high regardless suggest that in other scenarios (like a couple using IVF for fertility reasons), willingness may be high (and higher than people think before being offered the option).
+
+Time will tell whether embryo selection becomes anything more than a exotic novelty, but it looks as though when relatedness is not a cost, parents will tend to accept it. This suggests that Ridley's argument is incorrect when extended to embryo selection/editing; people simply want to both have and eat their cake, and as embryo selection/editing entail little or no loss of relatedness, they are not comparable to sperm/egg donation.
 
 Hence, I suggest the most appropriate target market is simply the total number of IVF users, and not the much smaller number of egg/sperm donation users.
 
@@ -1924,6 +1928,7 @@ okbay <- subset(okbay, select=c("MarkerName", "A1", "A2", "Beta", "Pval"))
 okbay <- with(okbay, data.frame(snpid=MarkerName, A1=A1, A2=A2, beta=Beta, N=293723+111439, "P-value"=Pval, check.names=FALSE))
 write.table(okbay, file="2016-okbay-eduyears.txt", row.names=FALSE, quote=FALSE, sep="\t")
 system("zip 2016-okbay-eduyears.txt.zip 2016-okbay-eduyears.txt")
+# https://www.dropbox.com/s/rfvetxywppmxega/EduYears_Main.txt.zip
 ~~~
 
 
