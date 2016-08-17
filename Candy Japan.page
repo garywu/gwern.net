@@ -586,3 +586,86 @@ So to round up, by employing Bayesian decision theory instead of standard NHST _
 # See Also
 
 - [When Should I Check The Mail? Bayesian decision-theoretic analysis of mail delivery times](/Mail delivery)
+
+<!--
+library(data.tree)
+
+createTree <- function(depth, tree=NULL) {
+
+    cancellationLoss <- -0.33 + -14.59
+    noncancellationGain <- 5.7
+
+    if (is.null(tree)) { tree <- Node$new("", cancel_e=0, n_e=0, cancel_c=0, n_c=0, loss=0, profit=0) }
+
+    if (depth != 0) {
+    name <- tree$name
+       if (tree$name == "Experiment") {
+         # 2 possibilities: experimental & canceled, experimental & not-canceled
+         ec <- tree$AddChild("Canceled", cancel_e = tree$cancel_e+1, n_e=tree$n_e+1, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=cancellationLoss, profit=NA)
+         createTree(depth-1, tree=ec)
+         enc <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e+1, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=noncancellationGain, profit=NA)
+         createTree(depth-1, tree=enc)
+       } else {
+        if (tree$name == "Control") {
+            cc <- tree$AddChild("Canceled", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c+1, n_c=tree$n_c+1, loss=cancellationLoss, profit=NA)
+            createTree(depth-1, tree=cc)
+            cn <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c, n_c=tree$n_c+1, loss=noncancellationGain, profit=NA)
+            createTree(depth-1, tree=cn) } else {
+                 e <- tree$AddChild("Experiment", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=NA, profit=NA)
+                 createTree(depth, tree=e)
+                 c <- tree$AddChild("Control", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=NA, profit=NA)
+                 createTree(depth, tree=c)
+            }
+
+}
+}
+    return(tree)
+}
+
+propagateProbabilities <- function(tree) { tree$Do(function(node) {
+    posterior <- betaPosterior(c(node$cancel_c, node$cancel_e), c(node$n_c, node$n_e))
+    p <- if (node$name == "Control") { mean(posterior$Theta_1) } else { mean(posterior$Theta_2) }
+    node$children[[1]]$P <- p
+    node$children[[2]]$P <- 1-p
+    }, filterFun = function(n) { n$name!="Canceled" && n$name!="Not.c" }) }
+
+estimateProfit <- function(x,n) { mean(posteriorProfit(x=x, n=n)$Profit) }
+
+propagateProfit <- function(node) {
+    if (isLeaf(node)) {
+    node$profit <- node$loss + max(0, estimateProfit(c(node$cancel_c, node$cancel_e), c(node$n_c, node$n_e)))
+        } else {
+            propagateProfit(node$children[[1]])
+            propagateProfit(node$children[[2]])
+
+            if (node$name=="Experiment"||node$name=="Control") {
+               node$profit <- (node$children[[1]]$P * node$children[[1]]$profit) +
+                              (node$children[[2]]$P * node$children[[2]]$profit)
+                              }
+                              else {
+                                      node$profit <- node$loss + max(node$children[[1]]$profit,
+                                                                 node$children[[2]]$profit)
+                                      }
+}}
+
+tmp <- createTree(10)
+propagateProbabilities(tmp)
+propagateProfit(tmp)
+tmp$Sort("profit", decreasing=TRUE)
+print(tmp, "cancel_e", "n_e", "cancel_c", "n_c", "loss", "P", "profit")
+
+prune <- function(node) {
+    if (!isLeaf(node)) {
+    print(node$name)
+    if (node$name=="Canceled" || node$name=="Not.c" || node$name=="") {
+     if (node$children[[1]]$profit < node$children[[2]]$profit) { node$children[[1]] <- NULL } else { node$children[[2]] <- NULL }
+
+    prune(node$children[[1]]$children[[1]])
+    prune(node$children[[1]]$children[[2]])
+    }
+    }
+    }
+prune(tmp)
+print(tmp, "cancel_e", "n_e", "cancel_c", "n_c", "loss", "P", "profit")
+
+-->
