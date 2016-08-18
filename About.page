@@ -540,11 +540,11 @@ Donations: the ebook fell through when O'Reilly decided to cancel the entire ser
 
 To Hacker News, Reddit, and LessWrong, I can add as a major referrer Wikipedia - primarily to the Silk Road article, but also to a few _Evangelion_-related pages. StumbleUpon has declined to the 10th largest referrer:
 
-1. `news.ycombinator.com`: 16,886
-2. `reddit.com`: 15,219
-3. `en.wikipedia.org`: 7,531
-4. `lesswrong.com`: 6,332
-5. `facebook.com`: 3,952
+1. HN: 16,886
+2. Reddit: 15,219
+3. Wikipedia: 7,531
+4. LessWrong: 6,332
+5. Facebook: 3,952
 6. `brainworkshop.sourceforge.net`: 3,733
 7. `google.com`: 2,649
 8. `youtube.com`: 1,798
@@ -895,6 +895,52 @@ As before, I did minimal active promotion of my content.
 (I have no idea why Facebook traffic increased so much, since the referrers are useless.)
 
 My monthly mailing list has reached 857 subscribers.
+
+### January 2016 - July 2016
+
+> "It is easy enough to say that man is immortal simply because he will endure: that when the last ding-dong of doom has clanged and faded from the last worthless rock hanging tideless in the last red and dying evening, that even then there will still be one more sound: that of his puny inexhaustible voice, still talking. I refuse to accept this. I believe that man will not merely endure: he will prevail."^[[William Faulkner](http://www.historyplace.com/speeches/faulkner.htm), 1950.]
+
+Activity graph for this period (4 January 2016 - 3 July 2016):
+
+![Plot of patch creations (y-axis) versus date (x-axis): January 2016 to July 2016](/images/traffic/2016-july-git-history.png)
+
+#### Traffic
+
+[Analytics traffic](/docs/traffic/20160104-20160703-gwern.net-analytics.pdf) records 294,009 page-views by 141,795 unique visitors over the 182 days, or 1615 page-views per day for a daily decrease of 937 compared to the previous six months. (Lifetime total: 5,036,804 page-views by 2,329,713 unique visitors.)
+
+![Plot of page-views (y-axis) versus date (x-axis), early 2016](/images/traffic/20160104-20160703-traffic-history.png)
+
+Page rankings:
+
+1. homepage/index: 35,673
+2. Modafinil: 33,928
+3. LSD microdosing: 21,712
+4. Black-market arrests: 14,322
+5. Spaced repetition: 14,044
+6. Nootropics: 12,117
+7. DNB FAQ: 10,983
+8. Silk Road: 7,654
+9. About: 6,642
+10. Links: 6,410
+
+[My Patreon profile](https://www.patreon.com/gwern) continues to be a success.
+
+#### Promotion
+
+As before, I did minimal active promotion of my content.
+
+1. Reddit: 17,792
+2. Facebook: 4119
+3. Twitter: 2,572
+4. HN: 2,518
+5. Slate Star Codex: 2,467
+6. LessWrong: 2,135
+7. Longecity: 1,555
+8. [rs.io](http://rs.io/): 1,440
+9. `brainworkshop.sourceforge.net`: 1,035
+10. MetaFilter: 1,018
+
+My monthly mailing list has reached 1053 subscribers.
 
 ## Colophon
 ### Hosting
