@@ -7,7 +7,7 @@ status: finished
 belief: likely
 ...
 
-> I analyze an A/B test from a mail-order company of two different kinds of box packaging from a Bayesian decision-theory perspective, balancing posterior probability of improvements & greater profit against the cost of packaging & risk of worse results, finding that as the company's analysis suggested, the new box is unlikely to be sufficiently better than the old. However, calculating expected values of information shows that it is worth experimenting on further.
+> I analyze an A/B test from a mail-order company of two different kinds of box packaging from a Bayesian decision-theory perspective, balancing posterior probability of improvements & greater profit against the cost of packaging & risk of worse results, finding that as the company's analysis suggested, the new box is unlikely to be sufficiently better than the old. Calculating expected values of information shows that it is not worth experimenting on further, and that such fixed-sample trials are unlikely to ever be cost-effective for packaging improvements. However, adaptive experiments may be worthwhile.
 
 # Background
 
@@ -22,9 +22,8 @@ Starting on 28 November 2015 & publishing results 5 May 2016, [CJ ran an A/B tes
 >
 > In group A 38.27%, or 168 of the 439 customers receiving the new package design canceled during the test. In group B 39.59%, or 175 of the 442 customers receiving the old package design canceled during the test. This is not a statistically significant difference. In a world where it makes no difference which package is sent, you would get a result as significant as this 80% of the time.
 
-(These cancellation rates strike me as bizarrely high: almost half of CJ's customers are so unhappy they cancel their first month? Is there an issue with selecting bad candy, or are there unrealistic expectations of how much candy can be bought for the subscription price of \$25/month, or do people not like semi-monthly delivery, or not like the limit on candy imposed by two deliveries rather than one, or do people only want to try it once, or what? Looking through early CJ posts, I see these issues, as well as other potential problems like not documenting past shipments adequately, have been raised repeatedly by commenters but never addressed or experimented on by CJ. Have any surveys been done to find out why the cancellation rate is so high? But moving on.)
-
-CJ has here a straightforward decision problem: should it switch to the decorated boxes or not, based on the information provided by this randomized experiment? After all, the decorated boxes *did* perform slightly better than the undecorated boxes.
+These cancellation rates strike me as bizarrely high^[Almost half of CJ's customers are so unhappy they cancel their first month? Is there an issue with selecting bad candy, or are there unrealistic expectations of how much candy can be bought for the subscription price of \$25/month, or do people not like semi-monthly delivery, or not like the limit on candy imposed by two deliveries rather than one, or do people only want to try it once, or what? Looking through early CJ posts, I see these issues, as well as other potential problems like not documenting past shipments adequately, have been raised repeatedly by commenters but never addressed or experimented on by CJ. Have any surveys been done to find out why the cancellation rate is so high? But moving on.], but CJ has here a straightforward decision problem: should it switch to the decorated boxes or not, based on the information provided by this randomized experiment?
+After all, the decorated boxes *did* perform slightly better than the undecorated boxes.
 
 # Analysis
 ## NHST
@@ -47,7 +46,7 @@ prop.test(c(175, 168), c(442, 439))
 # 0.3959276018 0.3826879271
 ~~~
 
-So CJ's _p_-value (0.80) roughly matches mine.^[CJ ran their test using a [Fisher's exact test](!Wikipedia): `fisher.test(rbind(c(439,168),c(442,175)))`. Fisher's exact test is most useful when sample sizes are very small, like _n_<20, but it doesn't make a difference here, and I find the proportion test easier to interpret.]
+So CJ's _p_-value (0.80) matches mine.^[CJ ran their test using a [Fisher's exact test](!Wikipedia): `fisher.test(rbind(c(439,168),c(442,175)))`. Fisher's exact test is most useful when sample sizes are very small, like _n_<20, but it doesn't make a difference here, and I find the proportion test easier to interpret.]
 Arguably, a one-tailed test here is appropriate since you are only interested in whether the new box has a better cancellation rate, which would be expected to halve the _p_-value, as it does:
 
 ~~~{.R}
@@ -67,15 +66,15 @@ prop.test(c(175, 168), c(442, 439), alternative="greater")
 But of course, what does a _p_-value mean, anyway?
 CJ [correctly](!Wikipedia "P-value#Misunderstandings") interprets what they do mean ("In a world where it makes no difference which package is sent, you would get a result as statistically-significant as this 80% of the time."), but that doesn't give us much help in understanding if we *are* in the world where which box is sent *does* make an important difference and *how much* of a difference and whether we want to *decide* whether to switch.
 
-These are all questions that conventional approaches will struggle with and _p_-values in particular are hard to use as a criterion for decisions: the result might be consistent with informative priors about the possible effect of box improvements; one might have compelling reason from earlier experiments to decide to switch to the new box; one might prefer the new boxes for other reasons; the new boxes might be profitable despite weak evidence (for example, if they cost the same); the result might be promising enough to justify further experimentation...
+These are all questions that conventional approaches will struggle with and _p_-values in particular are hard to use as a criterion for decisions: the result might be consistent with informative priors about the possible effect of box improvements; one might have compelling reason from earlier experiments to decide to switch to the new box; one might prefer the new boxes for other reasons; the new boxes might be profitable despite weak evidence (for example, if they cost the same); one might have such a large customer base that the result might be promising enough to justify further experimentation...
 
 ## Bayesian
 
 It would be better to do a more informed [Bayesian](!Wikipedia "Bayesian statistics") [decision theory](!Wikipedia) approach ([Schlaifer 1959](/docs/statistics/1959-schlaifer-probabilitystatisticsbusinessdecisions.djvu "_Probability and Statistics for Business Decisions: an Introduction to Managerial Economics Under Uncertainty_"), [Raiffa & Schlaifer 1961](/docs/statistics/1961-raiffa-appliedstatisticaldecisiontheory.pdf "_Applied Statistical Decision Theory_"), [Pratt et al 1995](/docs/statistics/1995-pratt-introductionstatisticaldecisiontheory.epub "_Introduction to Statistical Decision Theory_")) including our knowledge that improvements should be small, giving a concrete probability that there is an improvement and if there is how large, letting us calculate the probability that the switch would be profitable using money as our [loss function](!Wikipedia), the profitability of further experimentation, and how we would run an A/B test more efficiently in terms of maximizing profit rather than some other criterion.
 
-### Uninformative
+### Uninformative priors
 
-Switching over to a Bayesian approach, using [BayesianFirstAid](https://github.com/rasmusab/bayesian_first_aid) gives us a `bayes.prop.test` function with the exact same interface as `prop.test` using a highly uninformative [beta distribution](!Wikipedia) prior `beta(1,1)` prior (effectively a flat prior implying that every probability from 0-1 is equally likely):
+Switching over to a Bayesian approach, using [BayesianFirstAid](https://github.com/rasmusab/bayesian_first_aid) gives us a `bayes.prop.test` function with the same interface as `prop.test` and using a highly uninformative [beta distribution](!Wikipedia) prior `beta(1,1)` prior (effectively a flat prior implying that every probability from 0-1 is equally likely):
 
 ~~~{.R}
 library(BayesianFirstAid)
@@ -95,14 +94,14 @@ fit <- bayes.prop.test(c(175, 168), c(442, 439)); fit
 # of 0.651 and larger for Group 2 by a probability of 0.349 .
 ~~~
 
-BayesianFirstAid is overkill in this case as it calls out to [JAGS](!Wikipedia "Just another Gibbs sampler") for [MCMC](!Wikipedia "Markov chain Monte Carlo"), but the binomial/proportion test uses the famously tractable [conjugate prior](!Wikipedia) beta distribution where we can do the Bayesian update as simply as `Beta(1,1)` ~> `Beta(1+175, 1+442-175)` vs `Beta(1+168, 1+439-168)` for the two groups; the overlap can be found analytically or using `dbeta()` or simulated using `rbeta()`.
+BayesianFirstAid is overkill in this case as it calls out to [JAGS](!Wikipedia "Just another Gibbs sampler") for [MCMC](!Wikipedia "Markov chain Monte Carlo"), but the binomial/proportion test uses a tractable [conjugate prior](!Wikipedia) beta distribution where we can do the Bayesian update as simply as `Beta(1,1)` ~> `Beta(1+175, 1+442-175)` vs `Beta(1+168, 1+439-168)` for the two groups; the overlap can be found analytically or using `dbeta()` or simulated using `rbeta()`.
 Given the overhead, that would be much faster (~97x), although it wouldn't be able to handle more complex real world problems (eg any A/B test will probably want to include covariates, to improve power).
 This also makes it easy to implement informative priors as options.
 We could implement a replacement for `bayes.prop.test` like this:
 
 ~~~{.R}
 betaPosterior <- function(xs, ns, n.samples=100000,
-                  prior1.a=1, prior1.b=1, prior2.a=prior1.a, prior2.b=prior1.b) {
+                          prior1.a=1, prior1.b=1, prior2.a=prior1.a, prior2.b=prior1.b) {
     sample1 <- rbeta(n.samples, prior1.a+xs[1], prior1.b+ns[1]-xs[1])
     sample2 <- rbeta(n.samples, prior2.a+xs[2], prior2.b+ns[2]-xs[2])
     return(list(Theta_1=sample1, Theta_2=sample2, Theta_diff=sample1 - sample2)) }
@@ -114,10 +113,10 @@ mean(replicate(1000, system.time(bayes.prop.test(c(175, 168), c(442, 439)))[3]))
 # [1] 0.420237
 ~~~
 
-### Informative
+### Informative priors
 
 It's often said that a null-hypothesis significance test is similar to Bayesian inference with flat priors, so our _p_-value winds up having a suspicious similarity to our posterior probability that the new box helped (which is _P_=0.651).
-Of course, we have prior knowledge here: A/B tests, or switching boxes, cannot possibly lead to cancellation rates as high as 100% or as low as 0%, and in fact, it would be shocking if the usual 39% cancellation rate could be changed by more than a few percentage points; even ±5% would be surprising (but important).
+Of course, we have prior knowledge here: A/B tests, or switching boxes, cannot possibly lead to cancellation rates as high as 100% or as low as 0%, and in fact, it would be shocking if the usual 39% cancellation rate could be changed by more than a few percentage points; even ±5% would be surprising (but practically important).
 
 A more realistic prior than `beta(1,1)` would have a mean of 0.39 and a distribution narrow enough that, say, 95% of it falls within ±5% (34-44).
 We can come up with a beta prior which encodes this belief.
@@ -133,7 +132,7 @@ a; 1.5642*a
 ~~~
 
 So an informative prior here would be `Beta(900,1407)`.
-BayesianFirstAid [does not support user-specified priors](https://github.com/rasmusab/bayesian_first_aid/issues/13) but it does make it relatively easy to incorporate any change we wish by printing out all the code we need to run it in the form of the R boilerplate and the JAGS model.
+Our `betaPosterior` function already supports user-specified priors, but BayesianFirstAid [does not support user-specified priors](https://github.com/rasmusab/bayesian_first_aid/issues/13); a least it does make it possible to incorporate any change we wish by printing out all the code we need to run it in the form of the R boilerplate and the JAGS model.
 We locate the `dbeta(1,1)` line and replace it with `dbeta(900, 1407)`, and add in a convenience line `theta_diff <- theta[1] - theta[2]` which reports directly on what we care about (how much the new box decreases the cancellation rate):
 
 ~~~{.R}
@@ -181,18 +180,22 @@ mean(posteriors > 0)
 posteriors <- betaPosterior(x, n, prior1.a=900, prior1.b=1407)
 mean(posteriors$Theta_diff > 0)
 # [1] 0.5671
+mean(posteriors$Theta_diff)
+# [1] 0.002094560485
 ~~~
 
-So a much more informative prior reduces the posterior probability that the new box reduced the cancellation rate to _P_=0.56.
+<!-- $ -->
+
+So a much more informative prior reduces the posterior probability that the new box reduced the cancellation rate to _P_=0.56, with the mean estimate of the reduction being ~0.21%.
 
 # Decision
 ## Benefit
 
 Since, while small, this is still >50%, it is possible that switching to the new box is a good idea, but we will need to consider costs and benefits to turn our posterior estimate of the reduction into a posterior distribution of gains/losses.
 
-What is the value of a reduction in cancellations?
+What is the value of a reduction in cancellations such as 0.21%?
 
-CJ says that it has a profit margin of ~\$5000 on the $439+442=881$ customers (881 is consistent with the [totals reported in an earlier blog post](https://www.candyjapan.com/candy-japan-crosses-10000-mrr "Candy Japan crosses $10000 MRR")) or ~\$5.7 profit per customer per month.
+CJ says that it has a profit margin of ~\$5000 on the 439+442=881 customers (881 is consistent with the [totals reported in an earlier blog post](https://www.candyjapan.com/candy-japan-crosses-10000-mrr "Candy Japan crosses $10000 MRR")) or ~\$5.7 profit per customer per month.
 So a reduction from 0.3909 to 0.3847 is 4.96 customers staying, each of whom is worth \$5.7, so a gain of \$28.7 per month.
 
 What is the *total* benefit? Well, presumably it increases the lifetime value of a customer: the total they spend, and hence your amount of profit on them. If you profit \$1 per month on a customer and they stay 1 year before canceling, you make \$12; but if they stay 2 years on average, you'd make \$24, which is better.
@@ -215,7 +218,8 @@ So the annual total gain from a hypothetical improvement _r_=0.10 is
 ~~~
 
 Finally, if the improvement is permanent & repeatable for all future customers, we should consider the [net present value](!Wikipedia) (NPV) of \$20.8k per year.
-What discount rate should CJ calculate its NPV at? An online mail-order business is unstable and might go out of business at anytime (and most businesses fail within the first few years), so a common discount rate like 5% is probably much too low to reflect the risk that CJ will go out of business before it has had a chance to profit from any improvements; I would suggest a discount rate of at least 10%, in which case we can estimate the NPV for that hypothetical _r_=0.10 at:
+What [discount rate](!Wikipedia) should CJ calculate its NPV at?
+An online mail-order business is unstable and might go out of business at anytime (and most businesses fail within the first few years), so a common discount rate like 5% is probably much too low to reflect the risk that CJ will go out of business before it has had a chance to profit from any improvements; I would suggest a discount rate of at least 10%, in which case we can estimate the NPV for that hypothetical _r_=0.10 at:
 
 ~~~{.R}
 20804.24403 / log(1.10)
@@ -260,7 +264,7 @@ In this case, we estimate that rolling out the new box would increase revenue by
 The new boxes cost \$0.33 more per month per customer than the old boxes, so at 344 new customers per month with lifetimes of 2.57 months, that's `344*12*2.57*-0.33=-3500` a year, which translates to a NPV of -\$36,732.
 
 \$4k-\$36k yields a loss of \$32k, so we conclude that the new boxes are an order of magnitude too expensive to be worthwhile.
-To justify spending on the new box, we need a reduction of new box price down to ~\$0.04, or at least ~2.16% reduction in the cancellation rate.
+To justify spending on the new box, we need a reduction of new box price down to ~\$0.04, or get at least a ~2.16% reduction in the cancellation rate.
 
 If we were absolutely certain that the reduction was as large as ~2.16%, then the new boxes would hit breakeven.
 How probable is it that the decrease in cancellation rate is as or larger?
@@ -270,6 +274,8 @@ Improbable, only ~7%:
 mean(posteriors$Theta_diff >= 0.0216)
 # [1] 0.0731
 ~~~
+
+So our decision is to stick with the old boxes.
 
 ## Value of Information
 ### Expected Value of Perfect Information (EVPI)
@@ -284,8 +290,7 @@ In 93% of the cases, we believe the answer would be 'no': the oracle is worth no
 So the value of the oracle is \$0 + expected-value-of-those-other-7%s.
 
 But in that case, our gain depends on how large the cancellation reduction is - if it's exactly 2.17%, the gain is ~\$0 so we are indifferent, but if the gain is 3% or 4% or even higher like 5%, then we would have been leaving real money on the table (\$52k, \$72k, & \$93k respectively).
-Of course, each of those large gains is increasingly unlikely,
-So we need to go back to the posterior distribution to weight our gains per customer by averaging over the posterior distribution of possible reductions:
+Of course, each of those large gains is increasingly unlikely, so we need to go back to the posterior distribution to weight our gains per customer by averaging over the posterior distribution of possible reductions:
 
 ~~~{.R}
 EVPI <- mean(sapply(posteriors$Theta_diff,
@@ -300,7 +305,7 @@ round(EVPI / 0.33)
 
 So because of the small possibility of a profitable box (which might be very profitable applied to all customers indefinitely), we'd be willing to pay up to a grand total of \$10773 for [certain information](!Wikipedia "Expected value of perfect information").
 
-That would be enough to pay for 33.2k new boxes; used as part of another A/B test, it would provide extreme power by standard _p_-value testing[^power], so we might guess that further experimentation is profitable.
+That would be enough to pay for 33.2k new boxes; used as part of another A/B test, it would provide extreme power by standard _p_-value testing[^power], so we might wonder if further experimentation is profitable.
 
 [^power]: A well-powered experiment to detect a difference between 39% and 36.74% would require _n_=14460 (_n_=7230 in each arm). With 33.2k new boxes (contrasted against another 33.2k old boxes for free), we would have >99.9% power, leaving us with hardly any probability of not detecting the current effect:
 
@@ -350,20 +355,19 @@ mean(gains$Profit)
 
 So with the current data, we would suffer an expected loss of \$33k by switching to the new box.
 
-It is easy to simulate collecting another datapoint since it's binary data without any covariates or anything: for the control group, flip a coin with probability 39% to decide whether the customer 'canceled' or not; for the experimental group, draw a possible reduction from the posterior distribution samples, add it to 39%, and then flip a coin with the new probability.
+It is easy to simulate collecting another datapoint since it's binary data without any covariates or anything: draw a possible cancellation probability from the posterior distribution for that group, and then flip a coin with the new probability.
 
 ~~~{.R}
 simulateData <- function(posterior) { rbinom(1, 1, prob=sample(posterior, 1)) }
 ~~~
 
-Now we can repeatedly simulate fake data, add it to the real data, rerun the analysis, see what the new estimated profit is from the best action (usually we will conclude what we already conclude, that the box is not worthwhile and the value of the new information is then \$0, but in some possible universes it will change our mind), compare the new estimated profit against the old profit, and thus whether the increase in profit resulting from that new datapoint justifies the cost of the new datapoints.
+Now we can repeatedly simulate fake data, add it to the real data, rerun the analysis, see what the new estimated profit is from the best action (usually we will conclude what we already conclude, that the box is not worthwhile and the value of the new information is then \$0 - but in some possible universes the new data will change our decision), compare the new estimated profit against the old profit, and thus whether the increase in profit resulting from that new datapoint justifies the cost of the new datapoints.
 
 ~~~{.R}
 library(parallel)
 library(plyr)
 
 evsiEstimate <- function(x, n, n_additional, iters=1000) {
-   oldBoxProfit <- 0
 
    originalPosterior <- betaPosterior(x, n, prior1.a=900, prior1.b=1407)
    gains <- posteriorProfit(x=x, n=n)
@@ -382,6 +386,7 @@ evsiEstimate <- function(x, n, n_additional, iters=1000) {
                 simGains <- posteriorProfit(x=c(x[1]+sum(control), x[2]+sum(experimental)),
                                             n=c(n[1]+n_additional, n[2]+n_additional))
                 newBoxProfit <- mean(simGains$Profit)
+                oldBoxProfit <- 0
 
                 ## choose the maximum of the two actions:
                 evsi <- max(c(newBoxProfit, oldBoxProfit))
@@ -430,9 +435,8 @@ In this case, the end result of the CJ experiment is that no fixed-sample extens
 
 #### Sampling to a foregone conclusion
 
-In considering whether to pay for an experiment, the parameters need to be in a fairly narrow range: if the prior probability of success is high (or the potential profit high, or the cost low, or some combination thereof), then one is best off simply implementing the intervention without any further experimentation; while if the prior probability is low (or the potential profit low, or the cost high), the intervention is not worth testing at all (since the data is unlikely to discourage one enough to stop using it); only in between is the probability of profit sufficiently uncertain that the EVPI or EVSI is high enough to justify running an experiment.
+In considering whether to pay for an experiment, the parameters need to be in a fairly narrow range: if the prior probability of success is high (or the potential profit high, or the cost low, or some combination thereof), then one is best off simply implementing the intervention without any further experimentation; while if the prior probability is low (or the potential profit low, or the cost high), the intervention is not worth testing at all (since the data is unlikely to discourage one enough to stop using it); only in between is the probability of profit sufficiently uncertain that the EVSI is high enough to justify running an experiment.
 In the other two cases, collecting data is sampling to a foregone conclusion: regardless of what the first datapoint turns out to be, the decision will still be the same; and if the first datapoint doesn't change one's decision, why bother collecting it?
-(And since the first datapoint is more informative on average than the second, if it's pointless to collect the first, then it's even more pointless to collect the second, and so on.)
 
 Earlier I noted that from the cost of the new boxes and the value of customers, the new boxes would have to reduce cancellation by at least 2.26% just to break-even.
 This is already a priori fairly unlikely because it seems that cancellations ought to be primarily due to issues like pricing, selection of wares, social media marketing, customer support & problems in shipping or charging, and that sort of thing - packaging is the sort of thing a business should experiment on when it's run out of better ideas.
@@ -498,98 +502,26 @@ Fixed-sample experiments, whether planned using EVSI or not, suffer from the pro
 One has no options to stop early and change one's decision.
 In a sequential trial, in which the data comes in smaller chunks (ideally, 1 by 1), one pays for information more gradually; as it is always better to have information than to not have it, sequential trials can be much better than fixed-sample trials.
 
-We could see the CJ experiment as a two-player game against Nature, and calculate a game tree which gives the optimal decision by [backwards induction](!Wikipedia) ([example for an A/B test](http://www.win-vector.com/blog/2015/07/dynamic-prog-ab-test-design/ "A dynamic programming solution to A/B test design")); but the necessary samples might get into the thousands and it might be very difficult to calculate the decision tree.
-Naively, with two possible actions and two possible outcomes we'd get a full [binary tree](!Wikipedia) of $2^2n$ nodes (alternating choice and outcome layers), so we'd need to store 1,048,576 nodes to express a _n_=10 trial.
-In this case we can do better: with i.i.d binomial samples and the sufficient statistics of _m_ cancels out of _n_ trials, then for a total sample/horizon of 100, there are 100 possible splits between the two options - 100 new boxes and 0 old boxes, 99 new boxes and 1 old box ... 0 new boxes and 100 old boxes etc - and each has 100 possible 'cancels of trials'  - 1 canceled out of 100 ... 100 canceled out of 100 - so the deepest layer has 100^2^=10000 terminal nodes and our number of nodes grows slower than exponentially (quadratically?); this is feasible. But we might need to run as long as _n_=10000, in which case now there would be 10000^2^=1e+08 terminal nodes to evaluate and propagate back through the decision tree, which is more problematic.
+##### Decision tree
 
-A more easily implemented approach would be to treat it as not an experiment which must terminate soon, but a perpetual choice by CJ: a [multi-armed bandit](!Wikipedia) problem (a kind of [partially observable Markov decision process](!Wikipedia)).
+We could see the CJ experiment as a two-player game against Nature, and calculate a game tree which gives the optimal decision by [backwards induction](!Wikipedia) ([example for an A/B test](http://www.win-vector.com/blog/2015/07/dynamic-prog-ab-test-design/ "A dynamic programming solution to A/B test design"); see also [chapter 38, "Sequential Decision Procedures" (pg590) of Schlaifer 1959](/docs/statistics/1959-schlaifer-probabilitystatisticsbusinessdecisions.djvu#page=600 "_Probability and Statistics for Business Decisions: an Introduction to Managerial Economics Under Uncertainty_")).
+This will maximize our profit during the sequence of decisions (but not necessarily afterwards).
 
-Then the solution is simple: [Thompson sampling](!Wikipedia).
-We simply calculate the probability that the new box is profitable (which we already know how to do) and allocate a customer to new boxes with that probability. Hardly takes more than a line of code, yet it will automatically balance exploration & exploitation while minimizing wasted samples.
+In this conception, we
 
-We can try simulating out something similar to the CJ experiment by imagining that CJ mails off 1 package per day and 31 days later, learns if the customer has canceled or not.^[One difficulty with MAB techniques in this context is that the feedback is delayed: until the next billing cycle, you cannot know that a particular customer *won't* cancel; it is possible that they will but simply haven't yet. And if you wait until the next billing cycle, then CJ's experiment would already be over. This can be solved by treating it as a [survival analysis](!Wikipedia) problem in which customer cancellation is right-censored, a class of problems that JAGS can also handle without difficulty, but CJ's writeup/code doesn't provide exact time-until-cancellation data. Fortunately, Thompson sampling is one of the MAB techniques which can handle such delayed feedback because it will allocate the intervention stochastically rather than solely one intervention or the other.]
-Run this for, say, 20,000 days, and watch how the total cost and estimated probability of profitability evolve under various scenarios.
+1. create a tree in which a level expresses our two choices (to sample 1 old box or 1 new box), and then those 2 nodes link to a deeper layer of 2 nodes expressing Nature's choices (to have the customer cancel or stay).
+2. Now each node has the cancellations & _n_s available, so we can calculate what the posterior probability of cancellation would be conditional on us and Nature making a particular sequence of choices.
+
+    (If we choose 9 new boxes and Nature chooses 9 cancellations, the posterior probability of cancellation is going to increase a lot, and vice versa if Nature chose 0 cancellations.)
+3. Then for each outcome node, we can define a loss: if the customer cancels and we used a new box, we lose their successive lifetime value of \$14.59 and the cost of the new box of \$0.3; if we used an old box and they canceled, just \$14.59; if they don't cancel and we used an old box, we gain the monthly profit of \$5.7, and if they don't cancel and we used a new box, the monthly profit of \$5.7 minus the new box cost of \$0.33.
+4. With the posterior probability and losses, we can then calculate the expected value of each node.
+5. Now that every node has an expected value, we can then propagate the values backwards to each choice node; the value of a choice is not the *average* of the two outcomes - because we are choosing intelligently rather than at random - but the *maximum* of the two choices. We start at the root/first choice and recursively define the profit as the loss plus the sum of its best descendant; when we reach a terminal/leaf node, just like in the original decision analysis or EVSI, we consider the expected profit of a new box (often something like -\$33,000) vs an old box (\$0) and we pick the maximum.
+With that, the optimal decision can be read off the tree.
+6. It is helpful for reading if we finish by pruning the decision tree and delete any subtrees which are inferior to their siblings, since we will never follow them.
+
+Here is a (slow and inefficient) implementation in R using `data.tree`; I'll assume that cancellation is known immediately and no prior information is available on new vs old boxes and we are using an uninformative prior (to demonstrate switching/exploration):
 
 ~~~{.R}
-oldP <- 3.910082e-01
-
-## 4 possible scenarios: -5%, 5%, exactly equal, or exactly equal to sample estimates:
-# newP <- oldP - 0.05
-# newP <- oldP + 0.05
-# newP <- 3.889790e-01
-newP <- oldP
-
-maximumN <- 20000
-thompsonSample <- TRUE ## alternative is simple 50-50 randomization
-
-## set up a dataframe expressing the results as of the end of the CJ test:
-# a <- c(rep(TRUE, 168), rep(FALSE, 439-168))
-# b <- c(rep(TRUE, 175), rep(FALSE, 442-175))
-# interventionState <- c(rep(TRUE, 439), rep(FALSE, 442))
-# customersTotal <- data.frame(Date=-880:0, N=881, Intervention=interventionState, Canceled=c(a,b),
-#                              Profit=NA, ProfitP=NA, Reduction=NA, Cost=c(rep(0.33, 439), rep(0.00, 442)))
-customersTotal <- data.frame(Date=numeric(), Control.p=numeric(), Experiment.p=numeric(), Ns=numeric(),
-                             Intervention=logical(), Canceled=integer(), Profit=numeric(),
-                             Reduction=numeric(), Cost=numeric(), Cost.total=numeric())
-
-for (date in 1:maximumN) {
-
-  customers <- subset(customersTotal, Date <= (date-31))
-
-  cancels <- c(sum(subset(customers, !Intervention)$Canceled),
-               sum(subset(customers, Intervention)$Canceled))
-  ns <- c(nrow(subset(customers, !Intervention)),
-        nrow(subset(customers, Intervention)))
-  results <- cancels / ns
-
-  gains <- posteriorProfit(x=cancels, n=ns)
-  profitP <- mean(gains$Profit>0)
-
-  intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else {
-                   as.logical(rbinom(1,1, prob=0.5)) }
-
-  canceled <- rbinom(1,1, prob=if(intervention) { newP; } else { oldP; })
-  customersTotal <- rbind(customersTotal,
-                          data.frame(Date=date, N=nrow(customers), Control.p=round(results[1],digits=3),
-                                     Experiment.p=round(results[2], digits=3), Intervention=intervention,
-                                     Canceled=canceled, Profit=round(mean(gains$Profit)),
-                                     ProfitP=round(profitP, digits=4),
-                                     Reduction=round(mean(gains$Reduction), digits=4),
-                                     Cost=if(intervention) { 0.33; } else { 0; }, Cost.total=NA))
-  customersTotal$Cost.total <- cumsum(customersTotal$Cost)
-  print(tail(customersTotal, n=1))
-}
-~~~
-
-A multi-armed bandit approach never turns in a final decision but instead allocates ever fewer samples to inferior arms; since a MAB never sets an arm to 0, it never makes a final decision (which might be wrong).
-Still, after _n_=10,000 or 20,000, the results are unlikely to change and it becomes extremely unlikely for a bad box to be chosen.
-
-Here's the results of 1 run of 4 possible scenarios:
-
-- new boxes are 5% worse (unprofitable): \$56.76 total spent, profit _P_=0.0052, _n_ is 172 of 20000
-- \* equal probability (unprofitable): \$93.39 total spent, profit _P_=0.0172, _n_ is 283 of 20000
-- \* sample estimates (unprofitable): \$90.42 total spent, profit _P_=0.0062, _n_ is 274 of 20000
-- \* 5% better (profitable): \$3552.12 total spent, profit _P_>0.9999 (_P_>0.50 by _n_=10000), _n_ is 10764 of 20000
-
-The Thompson sampler has reached the correct conclusion in all cases, at modest costs in the unprofitable cases.
-
-# Conclusion
-
-So to round up, by employing Bayesian decision theory instead of standard NHST _p_-values, we can conclude in a principled and flexible fashion that:
-
-2. there is a 56-65% (depending on priors) chance that the new boxes reduced cancellation
-3. the plausible reductions are small enough that the expected value of switching is negative as there is ~6% chance that switching to new boxes would be profitable
-4. a definitive resolution of the remaining uncertainty would be worth ~\$10773
-1. potential packaging improvements are not large enough to be worth running an A/B test on in the first place
-5. further sampling to reduce uncertainty more would not be profitable
-6. a sequential trial using Thompson sampling could do experimentation in a cost-effective manner
-7. in general, future experimentation should focus on the more important business issues CJ seems to have
-
-# See Also
-
-- [When Should I Check The Mail? Bayesian decision-theoretic analysis of mail delivery times](/Mail delivery)
-
-<!--
 library(data.tree)
 
 createTree <- function(depth, tree=NULL) {
@@ -605,25 +537,30 @@ createTree <- function(depth, tree=NULL) {
     name <- tree$name
        if (tree$name == "Experiment") {
          # 2 possibilities: experimental & canceled, experimental & not-canceled
-         ec <- tree$AddChild("Canceled", cancel_e = tree$cancel_e+1, n_e=tree$n_e+1, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=eCancellationLoss, profit=NA)
+         ec <- tree$AddChild("Canceled", cancel_e = tree$cancel_e+1, n_e=tree$n_e+1, cancel_c=tree$cancel_c,
+                                          n_c=tree$n_c, loss=eCancellationLoss, profit=NA)
          createTree(depth-1, tree=ec)
-         enc <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e+1, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=eNoncancellationGain, profit=NA)
+         enc <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e+1, cancel_c=tree$cancel_c,
+                                       n_c=tree$n_c, loss=eNoncancellationGain, profit=NA)
          createTree(depth-1, tree=enc)
        } else {
         if (tree$name == "Control") {
-            cc <- tree$AddChild("Canceled", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c+1, n_c=tree$n_c+1, loss=cCancellationLoss, profit=NA)
+            cc <- tree$AddChild("Canceled", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c+1,
+                                            n_c=tree$n_c+1, loss=cCancellationLoss, profit=NA)
             createTree(depth-1, tree=cc)
-            cn <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c, n_c=tree$n_c+1, loss=cNoncancellationGain, profit=NA)
+            cn <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c,
+                                         n_c=tree$n_c+1, loss=cNoncancellationGain, profit=NA)
             createTree(depth-1, tree=cn) } else {
-                 e <- tree$AddChild("Experiment", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=NA, profit=NA)
+                 e <- tree$AddChild("Experiment", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c,
+                                                  n_c=tree$n_c, loss=NA, profit=NA)
                  createTree(depth, tree=e)
-                 c <- tree$AddChild("Control", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=NA, profit=NA)
+                 c <- tree$AddChild("Control", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c,
+                                               n_c=tree$n_c, loss=NA, profit=NA)
                  createTree(depth, tree=c)
+                 }
             }
-
-}
-}
-    return(tree)
+    }
+   return(tree)
 }
 
 propagateProbabilities <- function(tree) { tree$Do(function(node) {
@@ -651,28 +588,90 @@ propagateProfit <- function(node) {
                                                                  node$children[[2]]$profit)
                                       }
 }}
-
-tmp <- createTree(9)
-propagateProbabilities(tmp)
-propagateProfit(tmp)
-tmp$Sort("profit", decreasing=TRUE)
-object.size(tmp)
-print(tmp, "cancel_e", "n_e", "cancel_c", "n_c", "loss", "P", "profit")
-
 prune <- function(node) {
     if (!isLeaf(node)) {
     print(node$name)
     if (node$name=="Canceled" || node$name=="Not.c" || node$name=="") {
-     if (node$children[[1]]$profit < node$children[[2]]$profit) { node$children[[1]] <- NULL } else { node$children[[2]] <- NULL }
+     if (node$children[[1]]$profit < node$children[[2]]$profit) { node$children[[1]] <- NULL } else {
+                                                                  node$children[[2]] <- NULL }
 
-    prune(node$children[[1]]$children[[1]])
-    prune(node$children[[1]]$children[[2]])
+     prune(node$children[[1]]$children[[1]])
+     prune(node$children[[1]]$children[[2]])
     }
-    }
-    }
+  }
+}
+
+tmp <- createTree(4)
+propagateProbabilities(tmp)
+propagateProfit(tmp)
 prune(tmp)
-print(tmp, "cancel_e", "n_e", "cancel_c", "n_c", "loss", "P", "profit")
+~~~
 
+The optimal decision tree for n=4:
+
+~~~{.R}
+print(tmp, "cancel_e", "n_e", "cancel_c", "n_c", "loss", "P", "profit")
+#                                   levelName cancel_e n_e cancel_c n_c   loss            P         profit
+# 1                                                  0   0        0   0   0.00           NA -12.6316427851
+# 2   °--Control                                     0   0        0   0     NA 0.5005166416 -12.6316427851
+# 3       ¦--Not.c                                   0   0        0   1   5.70 0.4991407526   2.9014261861
+# 4       ¦   °--Control                             0   0        0   1     NA           NA  -2.7985738139
+# 5       ¦       ¦--Not.c                           0   0        0   2   5.70 0.6662979782   6.9510036217
+# 6       ¦       ¦   °--Control                     0   0        0   2     NA           NA   1.2510036217
+# 7       ¦       ¦       ¦--Not.c                   0   0        0   3   5.70 0.7496239474   7.3477044374
+# 8       ¦       ¦       ¦   °--Control             0   0        0   3     NA           NA   1.6477044374
+# 9       ¦       ¦       ¦       ¦--Not.c           0   0        0   4   5.70 0.8002811453   5.7000000000
+# 10      ¦       ¦       ¦       °--Canceled        0   0        1   4 -14.59 0.1997188547 -14.5900000000
+# 11      ¦       ¦       °--Canceled                0   0        1   3 -14.59 0.2503760526 -17.0024710375
+# 12      ¦       ¦           °--Control             0   0        1   3     NA           NA  -2.4124710375
+# 13      ¦       ¦               ¦--Not.c           0   0        1   4   5.70 0.6001739262   5.7000000000
+# 14      ¦       ¦               °--Canceled        0   0        2   4 -14.59 0.3998260738 -14.5900000000
+# 15      ¦       °--Canceled                        0   0        1   2 -14.59 0.3337020218 -22.2654134133
+# 16      ¦           °--Experiment                  0   0        1   2     NA           NA  -7.6754134133
+# 17      ¦               ¦--Not.c                   0   1        1   2   5.37 0.5009864481   3.9780861684
+# 18      ¦               ¦   °--Experiment          0   1        1   2     NA           NA  -1.3919138316
+# 19      ¦               ¦       ¦--Not.c           0   2        1   2   5.37 0.6667366273   5.3700000000
+# 20      ¦               ¦       °--Canceled        1   2        1   2 -14.92 0.3332633727 -14.9200000000
+# 21      ¦               °--Canceled                1   1        1   2 -14.92 0.4990135519 -19.3749861841
+# 22      ¦                   °--Control             1   1        1   2     NA           NA  -4.4549861841
+# 23      ¦                       ¦--Not.c           1   1        1   3   5.70 0.4995078273   5.7000000000
+# 24      ¦                       °--Canceled        1   1        2   3 -14.59 0.5004921727 -14.5900000000
+# 25      °--Canceled                                0   0        1   1 -14.59 0.5008592474 -28.1114163485
+# 26          °--Experiment                          0   0        1   1     NA           NA -13.5214163485
+# 27              ¦--Not.c                           0   1        1   1   5.37 0.5004016883   2.5851685160
+# 28              ¦   °--Experiment                  0   1        1   1     NA           NA  -2.7848314840
+# 29              ¦       ¦--Not.c                   0   2        1   1   5.37 0.6671687861   5.6595106846
+# 30              ¦       ¦   °--Experiment          0   2        1   1     NA           NA   0.2895106846
+# 31              ¦       ¦       ¦--Not.c           0   3        1   1   5.37 0.7496062437   5.3700000000
+# 32              ¦       ¦       °--Canceled        1   3        1   1 -14.92 0.2503937563 -14.9200000000
+# 33              ¦       °--Canceled                1   2        1   1 -14.92 0.3328312139 -19.7117340045
+# 34              ¦           °--Experiment          1   2        1   1     NA           NA  -4.7917340045
+# 35              ¦               ¦--Not.c           1   3        1   1   5.37 0.4991752585   5.3700000000
+# 36              ¦               °--Canceled        2   3        1   1 -14.92 0.5008247415 -14.9200000000
+# 37              °--Canceled                        1   1        1   1 -14.92 0.4995983117 -29.6539013285
+# 38                  °--Control                     1   1        1   1     NA           NA -14.7339013285
+# 39                      ¦--Not.c                   1   1        1   2   5.70 0.3336765541   1.2854091899
+# 40                      ¦   °--Control             1   1        1   2     NA           NA  -4.4145908101
+# 41                      ¦       ¦--Not.c           1   1        1   3   5.70 0.5014987279   5.7000000000
+# 42                      ¦       °--Canceled        1   1        2   3 -14.59 0.4985012721 -14.5900000000
+# 43                      °--Canceled                1   1        2   2 -14.59 0.6663234459 -22.7559338216
+# 44                          °--Experiment          1   1        2   2     NA           NA  -8.1659338216
+# 45                              ¦--Not.c           1   2        2   2   5.37 0.3328765982   5.3700000000
+# 46                              °--Canceled        2   2        2   2 -14.92 0.6671234018 -14.9200000000
+~~~
+
+So in this scenario, we start with a control box (unsurprisingly, as it's cheaper) but if we get bad feedback, we'll try switching to the new boxes, and if that doesn't work, switch back to controls immediately.
+
+What about a more realistic example like _n_=800 since the necessary samples for a A/B test might get into the thousands?
+Unfortunately, such brute force planning doesn't scale well.
+Naively, with two possible actions and two possible outcomes we'd get a full [binary tree](!Wikipedia) of $2^{2n}$ nodes (alternating choice and outcome layers), so we'd need to store 1,048,576 nodes to express a _n_=10 trial.
+As it is, the _n_=9 tree is the largest I can fit in RAM.
+
+In this case we can do better: with i.i.d binomial samples and the sufficient statistics of _m_ cancels out of _n_ trials, then for a total sample/horizon of 100, there are 100 possible splits between the two options - 100 new boxes and 0 old boxes, 99 new boxes and 1 old box ... 0 new boxes and 100 old boxes etc - and each has 100 possible 'cancels of trials'  - 1 canceled out of 100 ... 100 canceled out of 100 - so the deepest layer has 100^2^=10000 terminal nodes and our number of nodes grows slower than exponentially (quadratically?); this is feasible.
+But we might need to run as long as _n_=10000, in which case now there would be 10000^2^=1e+08 terminal nodes to evaluate and propagate back through the decision tree, which is more problematic.
+At this point, one might switch to specialized MDP/POMDP solvers or approximation solvers like [Monte Carlo tree search](!Wikipedia) which use clever abstractions to prune the tree or generalize over many states or expand only parts of the tree for deeper evaluation.
+
+<!--
 Alternate implementation using `environment` hash tables and the sufficient statistics as the lookup keys:
 
 ~~~{.R}
@@ -722,5 +721,96 @@ sapply(ls(e), function(key) {
 })
 
 sapply(ls(e), function(key) print(get(key, e)))
-
+~~~
 -->
+
+##### Multi-armed bandit
+
+A more easily implemented approach would be to treat it as not an experiment which must terminate soon, but a perpetual choice by CJ: a [multi-armed bandit](!Wikipedia) problem.
+
+Then the solution is simple: [Thompson sampling](!Wikipedia).
+We calculate the probability that the new box is profitable (which we already know how to do) and allocate a customer to new boxes with that probability.
+Hardly takes more than a line of code, yet it will automatically balance exploration & exploitation while minimizing wasted samples.
+
+We can try simulating out something similar to the CJ experiment by imagining that CJ mails off 1 package per day and 31 days later, learns if the customer has canceled or not.^[One difficulty with MAB techniques in this context is that the feedback is delayed: until the next billing cycle, you cannot know that a particular customer *won't* cancel; it is possible that they will but simply haven't yet. And if you wait until the next billing cycle, then CJ's experiment would already be over. This can be solved by treating it as a [survival analysis](!Wikipedia) problem in which customer cancellation is right-censored, a class of problems that JAGS can also handle without difficulty, but CJ's writeup/code doesn't provide exact time-until-cancellation data. Fortunately, Thompson sampling is one of the MAB techniques which can handle such delayed feedback because it will allocate the intervention stochastically rather than solely one intervention or the other.]
+Run this for, say, 20,000 days, and watch how the total cost and estimated probability of profitability evolve under various scenarios.
+
+~~~{.R}
+oldP <- 3.910082e-01
+
+## 4 possible scenarios: -5%, 5%, exactly equal, or exactly equal to sample estimates:
+# newP <- oldP - 0.05
+# newP <- oldP + 0.05
+# newP <- 3.889790e-01
+newP <- oldP
+
+maximumN <- 20000
+thompsonSample <- TRUE ## alternative is simple 50-50 randomization
+
+## If we want  a data.frame expressing the results as of the end of the CJ test:
+# a <- c(rep(TRUE, 168), rep(FALSE, 439-168))
+# b <- c(rep(TRUE, 175), rep(FALSE, 442-175))
+# interventionState <- c(rep(TRUE, 439), rep(FALSE, 442))
+# customersTotal <- data.frame(Date=-880:0, N=881, Intervention=interventionState, Canceled=c(a,b),
+#                              Profit=NA, ProfitP=NA, Reduction=NA, Cost=c(rep(0.33, 439), rep(0.00, 442)))
+customersTotal <- data.frame(Date=numeric(), Control.p=numeric(), Experiment.p=numeric(), Ns=numeric(),
+                             Intervention=logical(), Canceled=integer(), Profit=numeric(),
+                             Reduction=numeric(), Cost=numeric(), Cost.total=numeric())
+
+for (date in 1:maximumN) {
+
+  customers <- subset(customersTotal, Date <= (date-31))
+
+  cancels <- c(sum(subset(customers, !Intervention)$Canceled),
+               sum(subset(customers, Intervention)$Canceled))
+  ns <- c(nrow(subset(customers, !Intervention)),
+          nrow(subset(customers, Intervention)))
+  results <- cancels / ns
+
+  gains <- posteriorProfit(x=cancels, n=ns)
+  profitP <- mean(gains$Profit>0)
+
+  intervention <- if (thompsonSample) { sample(gains$Profit, 1) > 0 } else {
+                   as.logical(rbinom(1,1, prob=0.5)) }
+  canceled <- rbinom(1,1, prob=if(intervention) { newP; } else { oldP; })
+
+  customersTotal <- rbind(customersTotal,
+                          data.frame(Date=date, N=nrow(customers), Control.p=round(results[1],digits=3),
+                                     Experiment.p=round(results[2], digits=3), Intervention=intervention,
+                                     Canceled=canceled, Profit=round(mean(gains$Profit)),
+                                     ProfitP=round(profitP, digits=4),
+                                     Reduction=round(mean(gains$Reduction), digits=4),
+                                     Cost=if(intervention) { 0.33; } else { 0; }, Cost.total=NA))
+  customersTotal$Cost.total <- cumsum(customersTotal$Cost)
+  print(tail(customersTotal, n=1))
+}
+~~~
+
+A multi-armed bandit approach never turns in a final decision but instead allocates ever fewer samples to inferior arms; since a MAB never sets an arm to 0, it never makes a final decision (which might be wrong).
+Still, after _n_=10,000 or 20,000, the results are unlikely to change and it becomes extremely unlikely for a bad box to be chosen.
+
+Here's the results of 1 run of 4 possible scenarios:
+
+- new boxes are 5% worse (unprofitable): \$56.76 total spent, profit _P_=0.0052, _n_ is 172 of 20000
+- \* equal probability (unprofitable): \$93.39 total spent, profit _P_=0.0172, _n_ is 283 of 20000
+- \* sample estimates (unprofitable): \$90.42 total spent, profit _P_=0.0062, _n_ is 274 of 20000
+- \* 5% better (profitable): \$3552.12 total spent, profit _P_>0.9999 (_P_>0.50 by _n_=10000), _n_ is 10764 of 20000
+
+The Thompson sampler has reached the correct conclusion in all cases, at modest costs in the unprofitable cases.
+The simplicity and efficiency of Thompson sampling, and ease of aligning it with business objectives, is one reason it's popular in the tech world.
+
+# Conclusion
+
+So to round up, by employing Bayesian decision theory instead of standard NHST _p_-values, we can conclude in a principled and flexible fashion that:
+
+1. there is a 56-65% (depending on priors) chance that the new boxes reduced cancellation
+2. the plausible reductions are small enough that the expected value of switching is negative as there is ~6% chance that switching to new boxes would be profitable
+3. a definitive resolution of the remaining uncertainty would be worth ~\$10773
+4. further experimentation would not be profitable
+5. potential packaging improvements were probably not large enough to be worth running an A/B test on in the first place
+6. a sequential trial using Thompson sampling could do experimentation in a cost-effective manner
+7. in general, future experimentation should focus on the more important business issues CJ seems to have
+
+# See Also
+
+- [When Should I Check The Mail? Bayesian decision-theoretic analysis of mail delivery times](/Mail delivery)
