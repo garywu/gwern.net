@@ -6,33 +6,60 @@ status: in progress
 belief: log
 ...
 
-This is the August 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [August 2016](http://www.gwern.net/newsletter/2016/07).
+This is the August 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [July 2016](http://www.gwern.net/newsletter/2016/07).
 This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
 - morning caffeine?
+- Candy Japan?
+- Scott name?
+- genetic correlations?
 
 # Media
 ## Links
 
 Everything is heritable:
 
+- Human evolution:
+
+    - ["Divergent Ah receptor ligand selectivity during hominin evolution"](http://www.gwern.net/docs/genetics/2016-hubbard.pdf), Hubbard et al 2016 (Evolution to tolerate smoke poisoning, 350-45kya)
+    - ["Genetic Markers of Human Evolution Are Enriched in Schizophrenia"](http://www.biologicalpsychiatryjournal.com/article/S0006-3223%2815%2900855-0/pdf), Srinivasan et al 2016 (Our evolution is not yet complete: evolution is still working out the kinks. Fortunately, we don't have to wait for it to finish the job.)
+    - ["Genetic Associations Between Personality Traits and Lifetime Reproductive Success in Humans"](http://www.gwern.net/docs/genetics/2016-berg.pdf), Berg et al 2016 (contemporary selection for personality traits)
+    - ["Humans Never Stopped Evolving: The emergence of blood abnormalities, an adult ability to digest milk, and changes in our physical appearance point to the continued evolution of the human race"](http://www.the-scientist.com/?articles.view/articleNo/46651/title/Humans-Never-Stopped-Evolving/)
+- ["Identification of 15 genetic loci associated with risk of major depression in individuals of European descent"](http://www.gwern.net/docs/genetics/2016-hyde.pdf), Hyde et al 2016
+- ["Sweet Taste Perception is Associated with Body Mass Index at the Phenotypic and Genotypic Level"](http://www.gwern.net/docs/genetics/2016-hwang.pdf), Hwang et al 2016
+
 Politics/religion:
+
+- ["Evolution is Not Relevant to Sex Differences in Humans Because I Want it That Way! Evidence for the Politicization of Human Evolutionary Psychology"](http://www.evostudies.org/pdf/GeherVol2Iss1.pdf), Geher & Gambacorta 2016
+- ["Science Is Not Always "Self-Correcting": Fact-Value Conflation and the Study of Intelligence"](http://www.gwern.net/docs/iq/2015-cofnas.pdf), Cofnas 2015 (scientific endorsement of the Noble Lie)
+Academia, liberalism, and propensity to blank slate beliefs like believing hens & roosters differ due to nurture:
+- ["Insane. Invisible. In danger. Florida cut $100 million from its mental hospitals. Chaos quickly followed"](http://www.tampabay.com/projects/2015/investigations/florida-mental-health-hospitals/)
 
 AI:
 
 Statistics/meta-science:
 
+- ["How Multiple Imputation Makes a Difference"](http://scholar.harvard.edu/files/ranjitlall/files/pa_website_version_1.pdf?platform=hootsuite), Lall 2016 (many political science results biased & driven by treatment of missing data)
+
 Psychology/biology:
 
+- ["Heads or tails: the impact of a coin toss on major life decisions and subsequent happiness"](https://www.nber.org/papers/w22487), Levitt 2016 (You can randomize anything if you're sufficiently clever about it - even having babies, quitting jobs, moving, or starting a business. Arguably, like computer chess or 'comfort zone expansion', this suggests humans may be too risk-averse: the people on the margin, the 6% who apparently could be swayed by a coin flip, should be making these decisions more often, suggesting a bias towards the status quo.) TODO: track down fulltext, the NBER copy has gone full paywall
+
 Technology:
+
+- ["Strategy Letter V"](http://www.joelonsoftware.com/articles/StrategyLetterV.html) (Reminder: Android vs iPhone, Oculus vs Vive, Microsoft vs Apple, Facebook vs media, Twitter vs API users, Amazon vs anything - everything in SV is ruled by 'commoditize your complement' and low marginal costs.)
 
 Economics:
 
 Philosophy:
 
 Fiction:
+
+Misc:
+
+- ["Detailed Discussion of Legal Rights and Duties in Lost Pet Disputes"](https://www.animallaw.info/article/detailed-discussion-legal-rights-and-duties-lost-pet-disputes), Berry 2010 (lost/abandoned pets are surprisingly complex legally)
 
 <!-- Back to 20 Sep 2012 -->
 
@@ -46,7 +73,11 @@ Fiction:
 
 Live-action:
 
+- [_Marty_](https://en.wikipedia.org/wiki/Marty_%28film%29) (1955)
+
 Anime:
+
+- [_The Dog of Flanders_](https://en.wikipedia.org/wiki/The_Dog_of_Flanders)
 
 ## Games
 
