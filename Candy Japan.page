@@ -499,7 +499,9 @@ One has no options to stop early and change one's decision.
 In a sequential trial, in which the data comes in smaller chunks (ideally, 1 by 1), one pays for information more gradually; as it is always better to have information than to not have it, sequential trials can be much better than fixed-sample trials.
 
 We could see the CJ experiment as a two-player game against Nature, and calculate a game tree which gives the optimal decision by [backwards induction](!Wikipedia) ([example for an A/B test](http://www.win-vector.com/blog/2015/07/dynamic-prog-ab-test-design/ "A dynamic programming solution to A/B test design")); but the necessary samples might get into the thousands and it might be very difficult to calculate the decision tree.
-(With i.i.d binomial samples and the sufficient statistics of _m_ cancels out of _n_ trials, then for a total sample/horizon of 100, there are 100 possible splits between the two options - 100 new boxes and 0 old boxes, 99 new boxes and 1 old box ... 0 new boxes and 100 old boxes etc - and each has 100 possible 'cancels of trials'  - 1 canceled out of 100 ... 100 canceled out of 100 - so the deepest layer has 100^2^=10000 terminal nodes; this is feasible. But we might need to run as long as _n_=10000, in which case now there would be 10000^2^=1e+08 terminal nodes to evaluate and propagate back through the decision tree, which is more problematic.)
+Naively, with two possible actions and two possible outcomes we'd get a full [binary tree](!Wikipedia) of $2^2n$ nodes (alternating choice and outcome layers), so we'd need to store 1,048,576 nodes to express a _n_=10 trial.
+In this case we can do better: with i.i.d binomial samples and the sufficient statistics of _m_ cancels out of _n_ trials, then for a total sample/horizon of 100, there are 100 possible splits between the two options - 100 new boxes and 0 old boxes, 99 new boxes and 1 old box ... 0 new boxes and 100 old boxes etc - and each has 100 possible 'cancels of trials'  - 1 canceled out of 100 ... 100 canceled out of 100 - so the deepest layer has 100^2^=10000 terminal nodes and our number of nodes grows slower than exponentially (quadratically?); this is feasible. But we might need to run as long as _n_=10000, in which case now there would be 10000^2^=1e+08 terminal nodes to evaluate and propagate back through the decision tree, which is more problematic.
+
 A more easily implemented approach would be to treat it as not an experiment which must terminate soon, but a perpetual choice by CJ: a [multi-armed bandit](!Wikipedia) problem (a kind of [partially observable Markov decision process](!Wikipedia)).
 
 Then the solution is simple: [Thompson sampling](!Wikipedia).
@@ -591,9 +593,11 @@ So to round up, by employing Bayesian decision theory instead of standard NHST _
 library(data.tree)
 
 createTree <- function(depth, tree=NULL) {
+    cCancellationLoss <- -14.59
+    cNoncancellationGain <- 5.7
 
-    cancellationLoss <- -0.33 + -14.59
-    noncancellationGain <- 5.7
+    eCancellationLoss <- -0.33 + -14.59
+    eNoncancellationGain <- -0.33 + 5.7
 
     if (is.null(tree)) { tree <- Node$new("", cancel_e=0, n_e=0, cancel_c=0, n_c=0, loss=0, profit=0) }
 
@@ -601,15 +605,15 @@ createTree <- function(depth, tree=NULL) {
     name <- tree$name
        if (tree$name == "Experiment") {
          # 2 possibilities: experimental & canceled, experimental & not-canceled
-         ec <- tree$AddChild("Canceled", cancel_e = tree$cancel_e+1, n_e=tree$n_e+1, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=cancellationLoss, profit=NA)
+         ec <- tree$AddChild("Canceled", cancel_e = tree$cancel_e+1, n_e=tree$n_e+1, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=eCancellationLoss, profit=NA)
          createTree(depth-1, tree=ec)
-         enc <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e+1, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=noncancellationGain, profit=NA)
+         enc <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e+1, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=eNoncancellationGain, profit=NA)
          createTree(depth-1, tree=enc)
        } else {
         if (tree$name == "Control") {
-            cc <- tree$AddChild("Canceled", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c+1, n_c=tree$n_c+1, loss=cancellationLoss, profit=NA)
+            cc <- tree$AddChild("Canceled", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c+1, n_c=tree$n_c+1, loss=cCancellationLoss, profit=NA)
             createTree(depth-1, tree=cc)
-            cn <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c, n_c=tree$n_c+1, loss=noncancellationGain, profit=NA)
+            cn <- tree$AddChild("Not.c", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c, n_c=tree$n_c+1, loss=cNoncancellationGain, profit=NA)
             createTree(depth-1, tree=cn) } else {
                  e <- tree$AddChild("Experiment", cancel_e = tree$cancel_e, n_e=tree$n_e, cancel_c=tree$cancel_c, n_c=tree$n_c, loss=NA, profit=NA)
                  createTree(depth, tree=e)
@@ -648,10 +652,11 @@ propagateProfit <- function(node) {
                                       }
 }}
 
-tmp <- createTree(10)
+tmp <- createTree(9)
 propagateProbabilities(tmp)
 propagateProfit(tmp)
 tmp$Sort("profit", decreasing=TRUE)
+object.size(tmp)
 print(tmp, "cancel_e", "n_e", "cancel_c", "n_c", "loss", "P", "profit")
 
 prune <- function(node) {
@@ -667,5 +672,55 @@ prune <- function(node) {
     }
 prune(tmp)
 print(tmp, "cancel_e", "n_e", "cancel_c", "n_c", "loss", "P", "profit")
+
+Alternate implementation using `environment` hash tables and the sufficient statistics as the lookup keys:
+
+~~~{.R}
+createTable <- function(n) {  e <- new.env(hash=TRUE, parent=emptyenv(), size=sum((1:n)^2)) }
+
+cCancellationLoss <- -14.59
+cNoncancellationGain <- 5.7
+
+eCancellationLoss <- -0.33 + -14.59
+eNoncancellationGain <- -0.33 + 5.7
+
+e <- createTable(5)
+
+fillTable <- function(depth, table, c_c, n_c, c_e, n_e, type) {
+if (depth>=0) {
+  if (type == "choice") {
+      fillTable(depth-1, table, c_c, n_c, c_e, n_e, "Control")
+      fillTable(depth-1, table, c_c, n_c, c_e, n_e, "Experiment")
+      }
+      else { if (type == "Control") {
+
+     assign(paste(c_c, n_c+1, c_e, n_e),   list(type="Control", loss=cNoncancellationGain, P=NA, profit=NA), table)
+     fillTable(depth, table, c_c, n_c+1, c_e, n_e, type="choice")
+     assign(paste(c_c+1, n_c+1, c_e, n_e), list(type="Control", loss=cCancellationLoss,    P=NA, profit=NA), table)
+     fillTable(depth, table, c_c+1, n_c+1, c_e, n_e, type="choice")
+
+      } else {
+
+      assign(paste(c_c, n_c, c_e, n_e+1),   list(type="Experiment", loss=eNoncancellationGain, P=NA, profit=NA), table)
+      fillTable(depth, table, c_c, n_c, c_e, n_e+1, type="choice")
+      assign(paste(c_c, n_c, c_e+1, n_e+1), list(type="Experiment", loss=eCancellationLoss,    P=NA, profit=NA), table)
+      fillTable(depth, table, c_c, n_c, c_e+1, n_e+1, type="choice")
+  }}
+}
+}
+fillTable(9, e, 0, 0, 0, 0, "choice")
+
+sapply(ls(e), function(key) {
+    sufficient <- as.integer(unlist(strsplit(key, " ")))
+    current <- get(key, e)
+
+    posterior <- betaPosterior(c(sufficient[1], sufficient[3]), c(sufficient[2], sufficient[4]))
+    p <- if (current$type == "Control") { mean(posterior$Theta_1) } else { mean(posterior$Theta_2) }
+
+    current$P <- p
+    assign(key, current, e)
+})
+
+sapply(ls(e), function(key) print(get(key, e)))
 
 -->
