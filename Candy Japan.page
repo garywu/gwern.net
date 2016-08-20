@@ -494,15 +494,15 @@ optimize(function(n) { evsiEstimate(c(0, 0), c(0, 0), n_additional=n, iters=5000
 ~~~
 
 So while there are worthwhile gains to be found, a priori, experimentation costs too much for any fixed-sample trial to be cost-effective.
-To change this, we need some combination of cheaper experiments (eg boxes costing \$0.07 each), more powerful experiments (adding in covariates to explain variance & allow inference at smaller sample sizes?), some reason for a more optimistic prior (positive results from other experiments indicating large effects), a reduction in discount rate (a new owner of CJ in for the long run?) or increase in customer base or customer lifetime value, or use of a different experimental approach entirely like an adaptive sequential trial.
+To change this, we need some combination of cheaper experiments (eg boxes costing \$0.07 each), more powerful experiments (adding in covariates to explain variance & allow inference at smaller sample sizes?), some reason for a more optimistic prior (positive results from other experiments indicating large effects), a reduction in discount rate (a new owner of CJ in for the long run?) or increase in customer base or customer lifetime value, or use of a different experimental approach entirely like an adaptive [sequential trial](!Wikipedia "Sequential analysis").
 
-#### Adaptive trials
+## Adaptive trials
 
 Fixed-sample experiments, whether planned using EVSI or not, suffer from the problem that they receive feedback only in fixed steps: even if the first half of the data is extremely unpromising, one still has to pay for the second half of the data.
 One has no options to stop early and change one's decision.
-In a sequential trial, in which the data comes in smaller chunks (ideally, 1 by 1), one pays for information more gradually; as it is always better to have information than to not have it, sequential trials can be much better than fixed-sample trials.
+In a sequential trial, in which the data comes in smaller chunks (ideally, 1 by 1), one pays for information more gradually; as it is always better to have information than to not have it, sequential trials can be much better than fixed-sample trials and closer to an [optimal design](!Wikipedia).
 
-##### Decision tree
+### Decision tree
 
 We could see the CJ experiment as a two-player game against Nature, and calculate a game tree which gives the optimal decision by [backwards induction](!Wikipedia) ([example for an A/B test](http://www.win-vector.com/blog/2015/07/dynamic-prog-ab-test-design/ "A dynamic programming solution to A/B test design"); see also [chapter 38, "Sequential Decision Procedures" (pg590) of Schlaifer 1959](/docs/statistics/1959-schlaifer-probabilitystatisticsbusinessdecisions.djvu#page=600 "_Probability and Statistics for Business Decisions: an Introduction to Managerial Economics Under Uncertainty_")).
 This will maximize our profit during the sequence of decisions (but not necessarily afterwards).
@@ -668,9 +668,111 @@ Unfortunately, such brute force planning doesn't scale well.
 Naively, with two possible actions and two possible outcomes we'd get a full [binary tree](!Wikipedia) of $2^{2n}$ nodes (alternating choice and outcome layers), so we'd need to store 1,048,576 nodes to express a _n_=10 trial.
 As it is, the _n_=9 tree is the largest I can fit in RAM.
 
-In this case we can do better: with i.i.d binomial samples and the sufficient statistics of _m_ cancels out of _n_ trials, then for a total sample/horizon of 100, there are 100 possible splits between the two options - 100 new boxes and 0 old boxes, 99 new boxes and 1 old box ... 0 new boxes and 100 old boxes etc - and each has 100 possible 'cancels of trials'  - 1 canceled out of 100 ... 100 canceled out of 100 - so the deepest layer has 100^2^=10000 terminal nodes and our number of nodes grows slower than exponentially (quadratically?); this is feasible.
-But we might need to run as long as _n_=10000, in which case now there would be 10000^2^=1e+08 terminal nodes to evaluate and propagate back through the decision tree, which is more problematic.
-At this point, one might switch to specialized MDP/POMDP solvers or approximation solvers like [Monte Carlo tree search](!Wikipedia) which use clever abstractions to prune the tree or generalize over many states or expand only parts of the tree for deeper evaluation.
+In this case we can do better: with i.i.d binomial samples and the sufficient statistics of _m_ cancels out of _n_ trials, then for a total sample/horizon of 100, there are 100 possible splits between the two options - 100 new boxes and 0 old boxes, 99 new boxes and 1 old box ... 0 new boxes and 100 old boxes etc - and each has 100 possible 'cancels of trials'  - 1 canceled out of 100 ... 100 canceled out of 100 - so the deepest layer has 100^2^=10000 terminal nodes and our number of nodes grows slower than exponentially (quartic?); this is feasible.
+
+[Neil Shepperd](https://zlkj.in/) wrote a [memoized](!Wikipedia "Memoization") version in Haskell & `Data.Vector`:
+
+~~~{.Haskell}
+import           Data.Function
+import           Data.Vector (Vector)
+import qualified Data.Vector.Generic as V
+
+npv annual = annual / log 1.10
+
+-- unrealistic assumptions
+npv_customer = 14.620912124582869
+monthly = 5.7
+new_box_cost = 0.33
+
+data Beta = B Double Double
+
+posterior :: Beta -> Int -> Int -> Double
+posterior (B alpha beta) n_cancel n_trial = (alpha + fromIntegral n_cancel) /
+                                            (alpha + beta + fromIntegral n_trial)
+
+-- Expected posterior lifetime. This is not just 1 / posterior, because we need
+-- E[1 / p], which is the harmonic mean of the beta distribution, not 1 / E[p].
+lifetime :: Beta -> Int -> Int -> Double
+lifetime (B alpha beta) n_cancel n_trial = (alpha + beta + fromIntegral n_trial - 1) /
+                                           (alpha + fromIntegral n_cancel - 1)
+
+uninformative = B 1.1 1.1 -- B 1 1 is unstable & produces Infinities
+informative = B 900 1407
+informative_old = B (900 + 175) (1407 + 442 - 175)
+informative_new = B (900 + 168) (1407 + 439 - 168)
+
+posterior_old, posterior_new :: Int -> Int -> Double
+posterior_old = posterior uninformative
+posterior_new = posterior uninformative
+
+lifetime_old, lifetime_new :: Int -> Int -> Double
+lifetime_old = lifetime uninformative
+lifetime_new = lifetime uninformative
+
+type Depth = Int
+
+-- Comparison strategy - "experiment" where we just send the old boxes d times
+idlevalue :: Depth -> Double
+idlevalue d = (-npv_customer) * n_cancel + future
+  where
+    p_cancel = posterior_old 0 0
+    n_cancel = p_cancel * fromIntegral d
+    future = npv (lifetime_old 0 0 * monthly * 344 * 12)
+
+-- Adaptive experiment strategy
+value :: (Depth -> Int -> Int -> Int -> Int -> Double) -> Depth -> Int -> Int -> Int -> Int -> Double
+value loop 0 old_trials old_cancel new_trials new_cancel = e_box_cost + cancelled_loss + future
+  where
+    -- NPV at end of experiment consists of:
+    -- Cost of the boxes used in experiment
+    e_box_cost = (-new_box_cost) * fromIntegral new_trials
+    -- Income lost from customers who cancelled
+    cancelled_loss = -npv_customer * fromIntegral (old_cancel + new_cancel)
+    -- Expected future profit from following the suggested policy (old or new boxes)
+    future = npv (future_customer_totals * 344 * 12)
+    future_customer_totals = (max
+                              (lifetime_old old_cancel old_trials * monthly)
+                              (lifetime_new new_cancel new_trials * (monthly - new_box_cost)))
+    -- (not used: Profit from customers who did not cancel)
+    -- noncancel_profit = monthly * fromIntegral (new_trials + old_trials - old_cancel - new_cancel)
+value loop n old_trials old_cancel new_trials new_cancel = max value_new value_old
+  where
+    p_cancel_new = posterior_new new_cancel new_trials
+    p_cancel_old = posterior_old old_cancel old_trials
+    value_new = p_cancel_new * loop (n-1) old_trials old_cancel (new_trials + 1) (new_cancel + 1) +
+                (1 - p_cancel_new) * loop (n-1) old_trials old_cancel (new_trials + 1) new_cancel
+    value_old = p_cancel_old * loop (n-1) (old_trials + 1) (old_cancel + 1) new_trials new_cancel +
+                (1 - p_cancel_old) * loop (n-1) (old_trials + 1) old_cancel new_trials new_cancel
+
+-- memoized version
+run :: Depth -> Double
+run d = getvalue d 0 0 0 0
+  where
+    memo :: Vector (Vector (Vector (Vector Double)))
+    memo = V.generate (d+1) $ \n ->
+      let trials = d - n in
+      V.generate (trials + 1) $ \new_trials ->
+      let old_trials = trials - new_trials in
+      V.generate (new_trials + 1) $ \new_cancel ->
+      V.generate (old_trials + 1) $ \old_cancel ->
+      value getvalue n old_trials old_cancel new_trials new_cancel
+
+    getvalue n ot oc nt nc = memo V.! n V.! nt V.! nc V.! oc
+
+-- direct recursion version
+run' :: Depth -> Double
+run' d = fix value d 0 0 0 0
+
+main = print (run 242) >> print (idlevalue 242)
+~~~
+
+This version when compiled is performant enough to reach _n_=242 before running out of RAM (peaks at ~9.6GB use).
+A tree this big is hard to visualize, so we can compare the value of the optimal trial to that of a constant decision to use only the old box.
+With uninformative priors, at _n_=242, it estimates that the constant strategy is worth \$2,960,718 but the adaptive trial is worth \$5,275,332.
+With the informative prior, at _n_=242, the constant strategy is worth \$631869 and the adaptive trial is worth \$631869 (that is, the new boxes are never worth sampling with such a short horizon) and likewise at shorter horizons like _n_=100 (\$632679).
+
+To be sampling over a long enough run to make the new boxes worth testing despite the informative priors' negativity, we might need to run as long as _n_=10000, in which case now there would be 10000^2^=1e+08 terminal nodes to evaluate and propagate back through the decision tree in addition to their storage space, which is problematic.
+At this point, one would have to switch to specialized MDP/POMDP solvers or approximation solvers like [Monte Carlo tree search](!Wikipedia) which use clever abstractions to prune the tree or generalize over many states or expand only parts of the tree for deeper evaluation.
 
 <!--
 Alternate implementation using `environment` hash tables and the sufficient statistics as the lookup keys:
@@ -725,7 +827,7 @@ sapply(ls(e), function(key) print(get(key, e)))
 ~~~
 -->
 
-##### Multi-armed bandit
+### Multi-armed bandits
 
 A more easily implemented approach would be to treat it as not an experiment which must terminate soon, but a perpetual choice by CJ: a [multi-armed bandit](!Wikipedia) problem.
 
