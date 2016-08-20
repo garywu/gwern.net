@@ -10,7 +10,7 @@ belief: highly likely
 > Dark Net Markets (DNM) are online markets typically hosted as Tor hidden services providing escrow services between buyers & sellers transacting in Bitcoin or other cryptocoins, usually for drugs or other illegal/regulated goods; the most famous DNM was Silk Road 1, which pioneered the business model in 2011.
 > From 2013-2015, I scraped/mirrored on a weekly or daily basis all existing English-language DNMs as part of my research into their [usage](/Silk Road), [lifetimes/characteristics](/Black-market survival), & [legal riskiness](/Black-market arrests); these scrapes covered vendor pages, feedback, images, etc.
 > In addition, I made or obtained copies of as many other datasets & documents related to the DNMs as I could.
-> This uniquely comprehensive collection is now publicly released as a 50GB (~1.6TB) collection covering 89 DNMs & 37+ related forums, representing <4,438 mirrors, and is available for any research.
+> This uniquely comprehensive collection is now publicly released as a 50GB (~1.6TB uncompressed) collection covering 89 DNMs & 37+ related forums, representing <4,438 mirrors, and is available for any research.
 > This page documents the download, contents, interpretation, and technical methods behind the scrapes.
 
 I have been involved in DNMs since June 2011 when Adrian Chen published his famous _Gawker_ article proving that Silk Road 1 was, contrary to my assumption when it was announced in January/February 2011, not a scam and had become a functional drug black-market; fascinated, I signed up, made my first order, and began documenting how to use SR1 and then a few months later, began documenting the first known SR1-linked arrests.
@@ -24,7 +24,7 @@ These are the results.
 
 # Download
 
-The full archive is available for download from [the Internet Archive as a torrent](https://archive.org/download/dnmarchives/dnmarchives_archive.torrent) ([magnet](magnet:?xt=urn:btih:c5a0064ca7329aade4d79e7619e4a2415e624c0b&dn=dnmarchives&tr=http%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=http%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&ws=https%3A%2F%2Farchive.org%2Fdownload%2F&ws=http%3A%2F%2Fia601504.us.archive.org%2F12%2Fitems%2F&ws=http%3A%2F%2Fia801504.us.archive.org%2F12%2Fitems%2F); [item page](https://archive.org/details/dnmarchives))[^IA-torrent-limit].
+The full archive is [available for download from the Internet Archive as a torrent](https://archive.org/download/dnmarchives/dnmarchives_archive.torrent) ([magnet](magnet:?xt=urn:btih:c5a0064ca7329aade4d79e7619e4a2415e624c0b&dn=dnmarchives&tr=http%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=http%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&ws=https%3A%2F%2Farchive.org%2Fdownload%2F&ws=http%3A%2F%2Fia601504.us.archive.org%2F12%2Fitems%2F&ws=http%3A%2F%2Fia801504.us.archive.org%2F12%2Fitems%2F); [item page](https://archive.org/details/dnmarchives))[^IA-torrent-limit].
 (If the download does not start, it may be a [Torrent client problem related to Getright-webseeding-support](https://archive.org/about/faqs.php#316); if the torrent does not work, all files can be downloaded normally over HTTP from the IA item page, but if possible, torrents are recommended for reducing the bandwidth burden & error-checking.)
 
 [^IA-torrent-limit]: Something that might be useful for those seeking to upload large datasets or derivatives to the IA: there is a mostly-undocumented ~25GB size limit on its torrents. Past that, the background processes will no longer update the torrent to cover the additional files, and one will be handed valid but incomplete torrents. Without IA support staff intervention to remove the limit, the full set of files will then only be downloadable over HTTP, not through the torrent.
@@ -284,7 +284,7 @@ The September SR1 crawl is processed data stored in [SPSS](!Wikipedia) `.sav` Da
 ### DNStats
 
 [DNStats](https://dnstats.net/) is a service which periodically pings hidden services and records the response & latency, generating graphs of uptime and allowing users to see how long a market has been down and if an error is likely to be transient.
-The owner has provided me with a SQL export of the ping database; this database could be useful for comparing downtime across markets, examining the effect of DoS attacks, or regressing downtime against things like the Bitcoin exchange rate (presumably if the markets still drive more than a trivial amount of the Bitcoin economy, downtime of the largest markets or market deaths should predict falls in the exchange rate).
+The owner has provided me with two SQL exports of the ping database; this database could be useful for comparing downtime across markets, examining the effect of DoS attacks, or regressing downtime against things like the Bitcoin exchange rate (presumably if the markets still drive more than a trivial amount of the Bitcoin economy, downtime of the largest markets or market deaths should predict falls in the exchange rate).
 
 For example, to graph an average of site uptime per day and highlight as an exogenous event Operation Onymous, the R code would go like this:
 
@@ -306,29 +306,46 @@ The service is a useful one and accepts donations: `1DNstATs59JANuXjbpS5ngWHqvAp
 ### Grams
 
 [Grams](http://grams7enufi7jmdl.onion/) ([subreddit](https://www.reddit.com/r/grams)) is a service primarily specializing in searching market listings; they can pull listings from API exports provided by markets (Evolution, Cloud9, Middle Earth, Bungee54, Outlaw), or they may use their own custom crawls (the rest).
-They have generously given me near-daily CSV exports of the current state of listings in their search engine, ranging from 2014-06-09 to 2015-07-12.
+They have generously given me near-daily CSV exports of the current state of listings in their search engine, ranging from 2014-06-09 to 2015-07-12 for the first archive and 2015-07-14 to 2016-04-17 for the second.
 Grams coverage:
 
-- 1776
-- Abraxas
-- ADM
-- Agora
-- Alpaca
-- AlphaBay
-- BlackBank
-- Bungee54
-- Cloud9
-- Evolution
-- Haven
-- Middle Earth
-- NK
-- Outlaw
-- Oxygen
-- Pandora
-- Silkkitie
-- Silk Road 2
-- TOM
-- TPM
+1. first:
+
+    - 1776
+    - Abraxas
+    - ADM
+    - Agora
+    - Alpaca
+    - AlphaBay
+    - BlackBank
+    - Bungee54
+    - Cloud9
+    - Evolution
+    - Haven
+    - Middle Earth
+    - NK
+    - Outlaw
+    - Oxygen
+    - Pandora
+    - Silkkitie
+    - Silk Road 2
+    - TOM
+    - TPM
+2. second archive:
+
+    - Abraxas
+    - Agora
+    - AlphaBay
+    - Dream Market
+    - Hansa
+    - Middle Earth
+    - Nucleus
+    - Oasis
+    - Oxygen
+    - RealDeal
+    - Silkkitie
+    - Tochka
+    - Valhalla
 
 The Grams archive has three virtues:
 
