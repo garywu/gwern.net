@@ -7,7 +7,7 @@ status: in progress
 belief: highly likely
 ...
 
-> I compile a table and discussion of all known arrests and prosecutions related to English-language Tor-Bitcoin black-markets such as Silk Road 1, along with discussion of how they came to be arrested.
+> I compile a table and discussion of all known arrests and prosecutions related to English-language Tor-Bitcoin black-markets such as Silk Road 1, primarily 2011-2015, along with discussion of how they came to be arrested.
 
 Online black-market users have been arrested in a number of countries, for many different reasons, and dating back to not long after the opening of Silk Road 1 in January 2011.
 Because of the novelty of such markets and the relatively durable communities, a surprising number of arrests eventually become known.
@@ -838,8 +838,9 @@ The operator of the minor marketplace Hydra [was detained or arrested](http://ww
 ## Sheep Marketplace (SMP)
 ### Czech
 
-In March 2015, news broke that the Czech man Tomáš Jiřikovský was the target of [a criminal complaint for money laundering](https://www.reddit.com/r/DarkNetMarkets/comments/30k8d8/a_little_official_info_about_sheep_case_from/ "A little official info about Sheep case from Czech Ministry of Finance") related to [large sales of bitcoins for Czech crowns then used to purchase a house](https://www.reddit.com/r/DarkNetMarkets/comments/30h8r9/sheepmarketplace_owner_busted_by_czech_police/cpsgt2o) (the house was seized).
+In March 2015, news broke that the Czech man Tomáš Jiřikovský <!-- Tomas Jirikovsky --> was the target of [a criminal complaint for money laundering](https://www.reddit.com/r/DarkNetMarkets/comments/30k8d8/a_little_official_info_about_sheep_case_from/ "A little official info about Sheep case from Czech Ministry of Finance") related to [large sales of bitcoins for Czech crowns deposited into his wife's account, reported by her bank, which were then used to purchase a house](https://www.reddit.com/r/DarkNetMarkets/comments/30h8r9/sheepmarketplace_owner_busted_by_czech_police/cpsgt2o) (the house was seized).
 Jiřikovský had been [identified in November 2013 by an anonymous American](/docs/sr/2013-11-03-sheepmarketplace-doxxing.maff), based on circumstantial evidence, as the operator of Sheep Marketplace, not long before Sheep shut down in an apparent exit scam; it's unknown whether that doxing has any connection to the money-laundering accusation or if that was triggered purely by the money transfers, or when exactly the complaint was filed & house seized (the news broke publicly in March 2015 but the finance ministry 2014 report mentioning the case is dated 22 February 2015 and the investigation may've begun January 2014).
+He was then arrested [sometime before 30 April 2016](http://brnensky.denik.cz/zlociny-a-soudy/ukradl-109-milionu-ve-virtualni-mene-20160430.html "Ukradl 109 milionů. Ve virtuální měně") on both money laundering & drug charges; as of [16 August 2016](http://brno.idnes.cz/bitcoiny-jihomoravska-policie-rozhovor-fd6-/brno-zpravy.aspx?c=A160816_2266665_brno-zpravy_krut "Bitcoinový mág vydělal miliony, díky jihomoravským policistům sedí v cele") he was (but not his wife) was still in prison.
 
 ### Sweden
 
@@ -1670,6 +1671,8 @@ A [Reddit user in March 2014](https://pay.reddit.com/r/DarkNetMarkets/comments/2
 The [Agora seller Ripefreefly](https://www.reddit.com/r/DarkNetMarkets/comments/24zt2o/ripefreefly_busted_or_scam_what_do_i_do/) reportedly claimed in May 2014 on his seller page to have been busted and was pleading guilty; his story has some issues and I have seen no confirmation.
 
 On 26 August 2014, a ["cook"/underground-lab for steroids was busted in Australia](https://www.reddit.com/r/DarkNetMarkets/comments/2esz2q/all_markets_ugloz_busted_by_feds/ck2ttbn); this may have been the supplier for the SR2 steroids seller "UGLOZ" and related to why UGLOZ apparently began scamming in early August according to the [SR2F](/docs/sr/sr2f-20140831-uglozcomplaintthread.html "*****BEWARE***** UGLOZ ***** SCAMMERS *****").
+
+A Bendigo, Victoria gang leader, 25yo Dean Poot, was [arrested 17 May 2016 for methamphetamine trafficking](http://www.bendigoadvertiser.com.au/story/4057769/alleged-bendigo-drug-kingpin-refused-bail/ "Alleged Bendigo drug kingpin refused bail"); the meth was imported by mail and the "dark web" may have been involved in some fashion.
 
 ## Germany
 
