@@ -2706,7 +2706,7 @@ simulateWorlds <- function(agent, iters=1000) {
     mean(ldply(mclapply(1:iters, function(i) { tail(simulateWorld(agent), n=1)$Reward }))$V1)  }
 
 simulateWorlds(constantReductionAgent)
-# [1] 596.0130383
+# [1] 2423.308636
 simulateWorlds(investThenReduceAgent)
 # [1] 10127204.73
 simulateWorlds(constantInvestmentAgent)
@@ -2728,38 +2728,28 @@ The partial probability matching agent turns out to have a suboptimal switch poi
 What's going on there? I suspect it's something similar to the difference in multi-armed bandit problems between the asymptotically optimal solution and the optimal solution for a fixed horizon found using dynamic programming: in the former scenario, there's an indefinite amount of time to do any exploration or investment in information, but in the latter, there's only a finite time left and exploration/growth must be done up front and then the optimal decision increasingly shifts to exploitation rather than growth.
 
 Why does probability matching in general work so well?
+It may simply be because it's the only baseline strategy which adjusts its xrisk investment over time.
 
-Attempt at PPPDL for hmpd:
-~~~{.Lisp}
-(define (domain xrisk)
-    (:requirements  :probabilistic-effects)
-    (:predicates
-        (Alive ?x)
-        (T ?x)
-        (Wealth ?x)
-        (XriskP ?x)
-    )
+This doesn't demonstrate that probability matching is optimal, just that it beats the other baseline strategies.
+Other strategies could be used to decrease xrisk investment over time - instead of being proportional to xrisk P, it could shrink linearly over time, or by square root, or logarithmically, or...
 
-    (:action update :parameters (?w ?p)
-                    :effect (and (T (+ T 1))
-                                 (Wealth (* Wealth ?w))
-                                 (XriskP (* XriskP (^ (- 1 0.01) (/ ?p 0.01))))))
+What reinforcement learning techniques might we use to solve this?
 
-    )
+This problem represents a large Markov Decision Process with 1 discrete state variable (time, _t_=0-10000), 2 continuous state variables (wealth, and risk probability), and 1 continuous action (fraction of growth to allocate to the economy vs existential risk reduction).
+The continuous action can be discretized into 11 actions without probably losing anything (allocate 100%/90%..10%/0%), but the 2 state variables can't be discretized easily because they can span many orders of magnitude.
 
-(define (problem xrisk-init)
-    (:domain xrisk)
-    (:init
-        (Start)
-        (Alive #t)
-        (T 0)
-        (Wealth 0.248)
-        (XriskP 0.001)
-    )
+- dynamic programming a decision tree with backwards induction: optimal, but requires discrete actions and state variables, and even if discretized, 10000 time steps would be infeasibly large.
+- standard tabular learning: Q-learning, SARSA, temporal differences: requires discrete actions and state variables
 
-    (:goal (or (not Alive) (= T 10000)))
-    )
-~~~
+    - Deep Q-Networks: requires discrete actions, but not state variables
+- MDP solvers: value iteration etc: optimal, but requires discrete actions and state variables
+- hybrid MDP solvers: optimal, and can handle a limited amount of continuous state variables (but not continuous actions), which would work here; but high quality software implementations are rarely available.
+
+    One such hybrid MDP solver is [`hmpd`](https://github.com/beniz/hmdp), which solves problems specified in the [PDDL](!Wikipedia "Planning Domain Definition Language") Lisp-like DSL (judging from the examples, a version with probabilistic effects, so PPDDL 1.0?). After trying to write down a PPDDL model corresponding to this scenario, it seems that PPDDL is unable to represent probabilities or rewards which change with time and so cannot represent the increase in wealth or decrease in x-risk probability.
+- policy gradients: can handle continuous state variables & actions but are highly complex and unstable; high quality software implementations are unavailable
+
+Of the possible options, a DQN agent seems like the best choice: a small neural network should be able to handle the problem and DQN only requires the actions to be discretized.
+[`reinforce.js`](https://cs.stanford.edu/people/karpathy/reinforcejs/) provides a DQN implementation in JS which [I've used before](/docs/rl/armstrong-controlproblem/index.html), so I start there by rewriting the problem in JS
 
 ~~~{.Javascript}
 var script = document.createElement("script");
@@ -2780,26 +2770,25 @@ var defaultState = {t: 0, w: 0.248, xrp: 0.001}
 // simulate(defaultState, 0.99, 0.01)
 // simulate(defaultState, 0.99, 0.01)
 
-  var total_reward = 0;
-  var env = {};
-  env.getNumStates = function() { return 3; }; // there are only 3 state variables: t/w/xrp
-  env.getMaxNumActions = function() { return 11; }; // we'll specify 10 possible allocations: 1/0, 0.998/0.002 .. 0.98/0.02
-  var spec = {
-    num_hidden_units: 100,
-    experience_add_every: 20,
-    learning_steps_per_iteration: 10,
-    experience_size: 500000,
-    alpha: 0.01,
-    epsilon: 1.0,
-    gamma: 0.99 // minimal discounting
-  };
-  var agent = new RL.DQNAgent(env, spec);
+var agent = new RL.DQNAgent(env, spec);
+var env = {};
+env.getNumStates = function() { return 3; }; // there are only 3 state variables: t/w/xrp
+env.getMaxNumActions = function() { return 11; }; // we'll specify 10 possible allocations: 1/0, 0.998/0.002 .. 0.98/0.02
+var spec = {
+  num_hidden_units: 100,
+  experience_add_every: 20,
+  learning_steps_per_iteration: 10,
+  experience_size: 500000,
+  alpha: 0.01,
+  epsilon: 1.0,
+  gamma: 0.99 // minimal discounting
+};
 
-  state = defaultState;
-  spec.epsilon = 1.0; // reset epsilon if we've been running the loop multiple times
+var total_reward = 0;
+state = defaultState;
+spec.epsilon = 1.0; // reset epsilon if we've been running the loop multiple times
 
-  for(var i=0; i < 10000*100; i++) {
-
+for(var i=0; i < 10000*1000; i++) {
    var action = agent.act(state)
    state = simulate(state, 1-(action/500), 0+(action/500) );
    agent.learn(state.reward);
@@ -2812,7 +2801,7 @@ var defaultState = {t: 0, w: 0.248, xrp: 0.001}
      total_reward = 0;
      state = defaultState;
      }
-     }
+}
 
 //exercise the trained agent to see how it thinks
 total_reward=0
