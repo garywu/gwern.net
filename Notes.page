@@ -2429,7 +2429,7 @@ https://en.wikipedia.org/wiki/Advanced_Chess
 4. 2015 GM Daniel Naroditsky + Rybka vs Stockfish match: expected score of Stockfish was 0.799, actual score was 3 wins & 1 draw; Naroditsky apparently made no positive contribution (judging from his comments and how the score is consistent with the expected score predicted by the chess AIs' ELOs) but was not experienced at advanced chess
 4. Internet Chess Club ran a ["1st Ultimate Chess Championship"](https://www.chessclub.com/ucc) in October 2015 with 8 players. Of the 28 games in [the finals](https://www.chessclub.com/user/bits/pgn/UCC/1/UCC15-finals.pgn), 25 were drawn, so it's difficult to infer anything from the results. Of the 8 players, the top one was human+AI, the middle 6 were ~4 AIs (guessing from their profile pages; "jpsingh1972", "ComputerGOD"?, "Blitz-Masta") and 2 human+AIs ("RayJr", "Bookbuilder"?), and the last place was human+AI ("Gaon"). The winner of the tournament was Alvin Alcala (["ENGINEMASTER"](https://www.chessclub.com/finger/ENGINEMASTER); [as of 2014](http://www.infinitychess.com/Page/Public/Article/DefaultArticle.aspx?id=156 "Portrait of Alvin Alcala") he used Houdini 4/Komodo TCEC/Stockfish) with 1 win & 6 draws. [Bobby Ang asks how](http://www.bworldonline.com/content.php?section=Sports&title=draw-death-not&id=122530 "Draw death? Not!"):
 
-    > Wow! three decisive results out of 28 games. I asked my fellow-admins in the ICC why there were so many draws and they replied that it wasn’t for lack of trying. According to the admin who ran the tournament, the observation was that with all the powerful computer hardware and software around winning is basically impossible unless someone goes bonkers or is simply weak and has a bad computer or something.... Alvin’s secret is that he built a huge database collection of human games, correspondence chess games, computer engine games and freestyle chess games, and put together several “trees” of opening analysis, similar to the method described by Alexander Kotov in “Think like a Grandmaster”. Every move is a branch, and the possible replies to each move is a sub-branch.
+    > Wow! three decisive results out of 28 games. I asked my fellow-admins in the ICC why there were so many draws and they replied that it wasn't for lack of trying. According to the admin who ran the tournament, the observation was that with all the powerful computer hardware and software around winning is basically impossible unless someone goes bonkers or is simply weak and has a bad computer or something.... Alvin's secret is that he built a huge database collection of human games, correspondence chess games, computer engine games and freestyle chess games, and put together several "trees" of opening analysis, similar to the method described by Alexander Kotov in "Think like a Grandmaster". Every move is a branch, and the possible replies to each move is a sub-branch.
 
     The few participants, small prizes, and high rate of draws suggests that the 'Ultimate Chess Championship' might not be drawing the best advanced chess players or represent the state of the art, but to the extent it does, it suggests that the AIs are now on par with the humans as Alcala won by a single game and almost all were draws.
 4. InfinityChess has run a series of 8 monthly "Centaur Weekend Tourney" tournaments in 2015 for selection into a planned 2016/2017 freestyle tournament with human+AI, mixed, and AI-only participation. (The rules encourage either pure human+AI or engine play.) I can't find the final results, but the cumulative rankings of the 30 players after the 7th are available: http://infinitychess.com/Page/Public/Article/DefaultArticle.aspx?id=262 Pure centaurs took rankings #1-3, 9, 12, 18, & 21; while pure engines took 4-7, 10-11, 12, 15-17, 19, 22-27, 29-30; and mixes took 8, 12, 20, & 28. (Many of these rankings are ties, broken by ELO - 19 players have the same score of 3.5 due to 85% of games ending in draws.) Centaur advantages sound like they are down primarily to opening book preparation & finding 'novelties in advance', with the engines playing remarkably well - in earlier tournaments one certainly didn't find pure engines taking up almost the entire middle and threatening to enter the top 3. ELO ratings for InfinityChess's centaur-specific ELO ranking scale, which in this tourney ranges 2300-2686; on this particular ELO scale, centaurs average +100 points with average 2502(65.5) vs 2607(71.4) and a gap of 141 ELO between the best centaur & AI, with an average points of 3.75 vs 3.375 or 0.8 wins vs 0.4. Centaurs won 8 of 70 games, and AIs won 8 of 140 games; a multilevel model estimates a base probability of winning a game as 4.3% and being a centaur roughly doubles that to 8.7%. <!-- elo <- c(2641, 2655, 2686, 2500, 2500, 2500, 2500, 2622, 2476, 2500, 2300, 2560, 2500, 2565, 2643, 2500, 2619, 2646, 2500, 2618, 2666, 2500, 2500, 2450, 2480, 2498, 2496, 2500, 2508, 2500); points <- c(5.0,4.5,4.0,4.0,4.0,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.0,3.0,3.0,2.5,2.0); centaur <- rep(FALSE, 30); .0centaur[c(1:3, 9, 12, 18, 21, 8, 12, 20,  28)]  <- TRUE; wins <- c(3,2,1,1,1,2,1,1,1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0); cwt7 <- data.frame(Player=1:30, ELO=elo, Points=points, Wins=wins, Centaur=centaur); t.test(ELO ~ Centaur, data=cwt7) -->
@@ -2622,7 +2622,7 @@ or comparing to the 2014 InfiniChess: 52 Elo difference between centaurs and eng
 # Optimal Existential Risk Reduction Investment
 
 An existential risk is any risk which destroys or permanently cripples human civilization, such as an asteroid strike or pandemic.
-Since humanity might otherwise continue for millions of years, creating untold trillions of humans and colonizing the galaxy, human extinction represents the loss of literally astronomical amounts of utility.
+Since humanity might otherwise continue for millions of years, creating untold trillions of humans and colonizing the galaxy, human extinction represents the loss of literally [astronomical amounts of utility](http://www.nickbostrom.com/astronomical/waste.html "'Astronomical Waste: The Opportunity Cost of Delayed Technological Development', Bostrom 2003").
 The loss is greater than any disaster up to extinction levels, as humanity can always recover from lesser disasters; but there is no recovery from a total destruction.
 Thus, the expected value of even a slight reduction in an exotic risk ought to itself be astronomical, or at least extremely large; under plausible values for well-characterized x-risks like asteroid strikes or nuclear war or pandemic, preventing them may be the charitable spending with the highest expected value and they should be receiving all charitable expenditures.
 
@@ -2653,10 +2653,13 @@ If one is badly ignorant, or poor, or unable to meaningfully reduce an x-risk, o
 One would prefer to get rid of the x-risk as soon as possible, of course, but given one's starting position, there may simply be no better strategy and the risk must be accepted.
 
 This raises the question: what is the optimal distribution of resources to economic growth vs x-risk reduction over time which maximizes expected utility?
+
 Intuitively, we might expect something like early on investing nothing at all in x-risk reduction as there's not much money available to be spent, and money spent now costs a lot of money down the low in lost compound growth; and then as the economy reaches modern levels and the opportunity cost of x-risk becomes dire, money is increasingly diverted to x-risk reduction.
 One might analogize it to insurance - poor people skimp on insurance because they need the money for other things which hopefully will pay off down the line like education or starting a business, while rich people want to buy lots of insurance because they already have enough and they fear the risks.
 If this were an investment question, a good strategy would be something like the [Kelly criterion](!Wikipedia) or [probability matching](!Wikipedia) strategies like [Thompson sampling](!Wikipedia): even if the expected value of x-risk reduction is higher than other investments, it only pays off very rarely and so receives a very small fraction of one's investments.
-However, it's not clear that the Kelly criterion or Thompson sampling are optimal or even relevant: because while Kelly avoids bankruptcy in the form of [gambler's ruin](!Wikipedia) but does so only by making arbitrarily small bets to avoid going bankrupt & refusing to ever risk one's entire wealth; with x-risks, the 'bankruptcy' (extinction) can't be avoided so easily, as the risk is there whether you like it or not, and one cannot turn it to 0.
+However, it's not clear that the Kelly criterion or Thompson sampling are optimal or even relevant: because while Kelly avoids bankruptcy in the form of [gambler's ruin](!Wikipedia) but does so only by making arbitrarily small bets to avoid going bankrupt & refusing to ever risk one's entire wealth; with x-risks, the 'bankruptcy' (extinction) can't be avoided so easily, as the risk is there whether you like it or not, and one cannot turn it to 0. (This comes up often in discussion of why the Kelly criterion is relevant to decision-making under risk; see also [Peters 2011](http://rsta.royalsocietypublishing.org/content/369/1956/4913 "The time resolution of the St Petersburg paradox") and the niche area of "evolutionary finance" like [Evstigneev et al 2008](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1155014 "Evolutionary finance")/[Lensberg & Schenk-Hoppé 2006](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=951242 "On the Evolution of Investment Strategies and the Kelly Rule - A Darwinian Approach") which draws connections between the Kelly criterion, probability matching, long-term survival & evolutionary fitness.)
+In economics, similar questions are often dealt with in terms of the [life-cycle hypothesis](!Wikipedia) in which economic agents strive to maximize their utility over a career/lifetime while [avoiding inefficient intertemporal allocation of wealth](!Wikipedia "Consumption smoothing") (as Mark Twain put it, "when in youth a dollar would bring a hundred pleasures, you can't have it. When you are old, you get it & there is nothing worth buying with it then. It's an epitome of life. The first half of it consists of the capacity to enjoy without the chance; the last half consists of the chance without the capacity."); in the life-cycle, one tries to build wealth as quickly as possible while young, even going into debt for investments like a college education, then begins saving up, consuming some, until retirement, at which point one consumes it all until one dies.
+But as far as I've seen any results, life-cycle models tend to not include any mechanism for spending in order to reduce mortality/aging and accept the risk of death as a given.
 
 We could create a simple Markov decision process model.
 An agent (humanity), each time period (year), has a certain amount of wealth and an x-risk probability _P_.
@@ -2689,7 +2692,7 @@ simulateWorld <- function(agent, t=10000) {
         xrisk <- rbinom(1,1, p=last$XriskP)
         if (xrisk) { break; } else {
           choices <- agent(last$T, last$Wealth, last$XriskP)
-          newXriskP <- last$XriskP * (1 - 0.01)^(choices[2] / 0.01)
+          newXriskP <- last$XriskP * (1 - 0.01)^(choices[2] / 0.001)
           newWealth <- choices[1] * 1.02
           df <- rbind(df, data.frame(T=i, Wealth=newWealth, XriskP=newXriskP))
           }
@@ -2715,7 +2718,7 @@ simulateWorlds(probabilityMatchAgent)
 
 switches <- sapply(seq(1, 10000, by=100), function(N) { simulateWorlds(function(t,w,xrp) { investThenMatchAgent(t, w, xrp, n=N) }, iters=100)})
 simulateWorlds(function(t,w,xrp) { investThenMatchAgent(t, w, xrp, n=300) })
-simulateWorlds(function(t,w,xrp) { investTheReduceAgent(t, w, xrp, n=300) })
+# [1] 9.446988049e+86
 ~~~
 
 So of our 5 strategies, the constant reduction agent performs the worst (probably because with economic growth choked off, it can only buy small x-risk reductions), followed by the invest-then-reduce agent; then the 'get rich before you get old' constant investment agent manages to often attain very high growth rates when it's lucky enough that x-risks don't strike early on; but far better than any of them, by orders of magnitude, are the partial and full probability matching agents.
@@ -2724,3 +2727,98 @@ The partial probability matching agent turns out to have a suboptimal switch poi
 What's going on there? I suspect it's something similar to the difference in multi-armed bandit problems between the asymptotically optimal solution and the optimal solution for a fixed horizon found using dynamic programming: in the former scenario, there's an indefinite amount of time to do any exploration or investment in information, but in the latter, there's only a finite time left and exploration/growth must be done up front and then the optimal decision increasingly shifts to exploitation rather than growth.
 
 Why does probability matching in general work so well?
+
+Attempt at PPPDL for hmpd:
+~~~{.Lisp}
+(define (domain xrisk)
+    (:requirements  :probabilistic-effects)
+    (:predicates
+        (Alive ?x)
+        (T ?x)
+        (Wealth ?x)
+        (XriskP ?x)
+    )
+
+    (:action update :parameters (?w ?p)
+                    :effect (and (T (+ T 1))
+                                 (Wealth (* Wealth ?w))
+                                 (XriskP (* XriskP (^ (- 1 0.01) (/ ?p 0.01))))))
+
+    )
+
+(define (problem xrisk-init)
+    (:domain xrisk)
+    (:init
+        (Start)
+        (Alive #t)
+        (T 0)
+        (Wealth 0.248)
+        (XriskP 0.001)
+    )
+
+    (:goal (or (not Alive) (= T 10000)))
+    )
+~~~
+
+~~~{.Javascript}
+var script = document.createElement("script");
+script.src = "http://www.gwern.net/docs/rl/armstrong-controlproblem/2016-02-02-karpathy-rl.js";
+document.body.appendChild(script);
+
+// environment: t, w, xrp
+function simulate(environment, w_weight, xrp_weight) {
+    var xrisk = Math.random() < environment.xrp
+    if (xrisk) {
+    return {reward: 0, alive: false, t: environment.t, w: environment.w, xrp: environment.xrp};
+    } else {
+    return {reward: environment.w, alive: true, t: environment.t+1,
+            w: environment.w*w_weight*1.02, xrp: environment.xrp * (Math.pow((1 - 0.01), (xrp_weight / 0.001))) }
+ }
+}
+var defaultState = {t: 0, w: 0.248, xrp: 0.001}
+// simulate(defaultState, 0.99, 0.01)
+// simulate(defaultState, 0.99, 0.01)
+
+  var total_reward = 0;
+  var env = {};
+  env.getNumStates = function() { return 3; }; // there are only 3 state variables: t/w/xrp
+  env.getMaxNumActions = function() { return 10; }; // we'll specify 10 possible allocations: 0.99/0.01 .. 0.90/0.10
+  var spec = {
+    num_hidden_units: 100,
+    experience_add_every: 10,
+    learning_steps_per_iteration: 10,
+    experience_size: 100000,
+    alpha: 0.01,
+    epsilon: 1.0,
+    gamma: 0.99 // minimal discounting
+  };
+  var agent = new RL.DQNAgent(env, spec);
+
+  state = defaultState;
+
+  for(var i=0; i < 1000000; i++) {
+
+   var action = agent.act(state)
+   state = simulate(state, 1-(action/100), 0+(action/100) );
+   agent.learn(state.reward);
+
+   total_reward = total_reward + state.reward;
+   console.log(state.t)
+   if (Number.isInteger(Math.log(i) / Math.log(10)) ) { spec.epsilon = spec.epsilon / 2; }
+   if (!state.alive) {
+     console.log(total_reward);
+     total_reward = 0;
+     state = defaultState;
+     }
+     }
+
+//exercise the trained agent to see how it thinks
+total_reward=0
+state=defaultState;
+for (var t=0; t <= 100; t++) {
+    action = agent.act(state)
+    state = simulate(state, 1-(action/100), 0+(action/100) );
+    total_reward = total_reward + state.reward
+    console.log(state)
+    }
+~~~
