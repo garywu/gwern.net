@@ -2654,8 +2654,8 @@ One would prefer to get rid of the x-risk as soon as possible, of course, but gi
 
 This raises the question: what is the optimal distribution of resources to economic growth vs x-risk reduction over time which maximizes expected utility?
 
-Intuitively, we might expect something like early on investing nothing at all in x-risk reduction as there's not much money available to be spent, and money spent now costs a lot of money down the low in lost compound growth; and then as the economy reaches modern levels and the opportunity cost of x-risk becomes dire, money is increasingly diverted to x-risk reduction.
-One might analogize it to insurance - poor people skimp on insurance because they need the money for other things which hopefully will pay off down the line like education or starting a business, while rich people want to buy lots of insurance because they already have enough and they fear the risks.
+Intuitively, we might expect something like early on investing nothing at all in x-risk reduction as there's not much money available to be spent, and money spent now costs a lot of money down the line in lost compound growth; and then as the economy reaches modern levels and the opportunity cost of x-risk becomes dire, money is increasingly diverted to x-risk reduction.
+One might analogize it to insurance - poor people skimp on insurance because they need the money for other things which hopefully will pay off later like education or starting a business, while rich people want to buy lots of insurance because they already have enough and they fear the risks.
 If this were an investment question, a good strategy would be something like the [Kelly criterion](!Wikipedia) or [probability matching](!Wikipedia) strategies like [Thompson sampling](!Wikipedia): even if the expected value of x-risk reduction is higher than other investments, it only pays off very rarely and so receives a very small fraction of one's investments.
 However, it's not clear that the Kelly criterion or Thompson sampling are optimal or even relevant: because while Kelly avoids bankruptcy in the form of [gambler's ruin](!Wikipedia) but does so only by making arbitrarily small bets to avoid going bankrupt & refusing to ever risk one's entire wealth; with x-risks, the 'bankruptcy' (extinction) can't be avoided so easily, as the risk is there whether you like it or not, and one cannot turn it to 0. (This comes up often in discussion of why the Kelly criterion is relevant to decision-making under risk; see also [Peters 2011](http://rsta.royalsocietypublishing.org/content/369/1956/4913 "The time resolution of the St Petersburg paradox") and the niche area of "evolutionary finance" like [Evstigneev et al 2008](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1155014 "Evolutionary finance")/[Lensberg & Schenk-Hoppé 2006](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=951242 "On the Evolution of Investment Strategies and the Kelly Rule - A Darwinian Approach") which draws connections between the Kelly criterion, probability matching, long-term survival & evolutionary fitness.)
 In economics, similar questions are often dealt with in terms of the [life-cycle hypothesis](!Wikipedia) in which economic agents strive to maximize their utility over a career/lifetime while [avoiding inefficient intertemporal allocation of wealth](!Wikipedia "Consumption smoothing") (as Mark Twain put it, "when in youth a dollar would bring a hundred pleasures, you can't have it. When you are old, you get it & there is nothing worth buying with it then. It's an epitome of life. The first half of it consists of the capacity to enjoy without the chance; the last half consists of the chance without the capacity."); in the life-cycle, one tries to build wealth as quickly as possible while young, even going into debt for investments like a college education, then begins saving up, consuming some, until retirement, at which point one consumes it all until one dies.
@@ -2677,7 +2677,7 @@ A few simple ones come to mind:
 
 ~~~{.R}
 constantInvestmentAgent <- function (t, w, xrp) { return(c(w, 0)) }
-constantReductionAgent  <- function (t, w, xrp) { return(c(0.98*w, 0.02*w)) }
+constantReductionAgent  <- function (t, w, xrp) { drawdown <- 0.9803921573; return(c(drawdown*w, (1-drawdown)*w)) }
 probabilityMatchAgent   <- function (t, w, xrp) { return(c(w*(1-xrp), w*xrp)) }
 investThenReduceAgent   <- function (t, w, xrp, n=516) { if (t<n) { return(constantInvestmentAgent(t, w, xrp)) } else { return(constantReductionAgent(t, w, xrp)) } }
 investThenMatchAgent    <- function (t, w, xrp, n=516) { if (t<n) { return(constantInvestmentAgent(t, w, xrp)) } else { return(probabilityMatchAgent(t, w, xrp)) } }
@@ -2706,19 +2706,20 @@ simulateWorlds <- function(agent, iters=1000) {
     mean(ldply(mclapply(1:iters, function(i) { tail(simulateWorld(agent), n=1)$Reward }))$V1)  }
 
 simulateWorlds(constantReductionAgent)
-# [1] 547.8912738
+# [1] 596.0130383
 simulateWorlds(investThenReduceAgent)
-# [1] 10517873.01
+# [1] 10127204.73
 simulateWorlds(constantInvestmentAgent)
-# [1] 2.171765951e+40
+# [1] 1.154991741e+76
 simulateWorlds(investThenMatchAgent)
-# [1] 7.610599874e+86
-simulateWorlds(probabilityMatchAgent)
-# [1] 8.757684976e+86
-
-switches <- sapply(seq(1, 10000, by=100), function(N) { simulateWorlds(function(t,w,xrp) { investThenMatchAgent(t, w, xrp, n=N) }, iters=100)})
+# [1] 7.53514145e+86
+## Optimize the switch point:
+which.max(sapply(seq(1, 10000, by=100), function(N) { simulateWorlds(function(t,w,xrp) { investThenMatchAgent(t, w, xrp, n=N) }, iters=100)}))
+# [1] 3
 simulateWorlds(function(t,w,xrp) { investThenMatchAgent(t, w, xrp, n=300) })
-# [1] 9.446988049e+86
+# [1] 9.331170221e+86
+simulateWorlds(probabilityMatchAgent)
+# [1] 1.006834082e+87
 ~~~
 
 So of our 5 strategies, the constant reduction agent performs the worst (probably because with economic growth choked off, it can only buy small x-risk reductions), followed by the invest-then-reduce agent; then the 'get rich before you get old' constant investment agent manages to often attain very high growth rates when it's lucky enough that x-risks don't strike early on; but far better than any of them, by orders of magnitude, are the partial and full probability matching agents.
@@ -2782,12 +2783,12 @@ var defaultState = {t: 0, w: 0.248, xrp: 0.001}
   var total_reward = 0;
   var env = {};
   env.getNumStates = function() { return 3; }; // there are only 3 state variables: t/w/xrp
-  env.getMaxNumActions = function() { return 10; }; // we'll specify 10 possible allocations: 0.99/0.01 .. 0.90/0.10
+  env.getMaxNumActions = function() { return 11; }; // we'll specify 10 possible allocations: 1/0, 0.998/0.002 .. 0.98/0.02
   var spec = {
     num_hidden_units: 100,
-    experience_add_every: 10,
+    experience_add_every: 20,
     learning_steps_per_iteration: 10,
-    experience_size: 100000,
+    experience_size: 500000,
     alpha: 0.01,
     epsilon: 1.0,
     gamma: 0.99 // minimal discounting
@@ -2795,18 +2796,19 @@ var defaultState = {t: 0, w: 0.248, xrp: 0.001}
   var agent = new RL.DQNAgent(env, spec);
 
   state = defaultState;
+  spec.epsilon = 1.0; // reset epsilon if we've been running the loop multiple times
 
-  for(var i=0; i < 1000000; i++) {
+  for(var i=0; i < 10000*100; i++) {
 
    var action = agent.act(state)
-   state = simulate(state, 1-(action/100), 0+(action/100) );
+   state = simulate(state, 1-(action/500), 0+(action/500) );
    agent.learn(state.reward);
 
    total_reward = total_reward + state.reward;
-   console.log(state.t)
-   if (Number.isInteger(Math.log(i) / Math.log(10)) ) { spec.epsilon = spec.epsilon / 2; }
+   if (Number.isInteger(Math.log(i) / Math.log(10)) ) { spec.epsilon = spec.epsilon / 1.5; } // decrease exploration
+
    if (!state.alive) {
-     console.log(total_reward);
+     console.log(state.t, total_reward);
      total_reward = 0;
      state = defaultState;
      }
@@ -2815,10 +2817,11 @@ var defaultState = {t: 0, w: 0.248, xrp: 0.001}
 //exercise the trained agent to see how it thinks
 total_reward=0
 state=defaultState;
-for (var t=0; t <= 100; t++) {
+spec.epsilon = 0;
+for (var t=0; t <= 10000; t++) {
     action = agent.act(state)
-    state = simulate(state, 1-(action/100), 0+(action/100) );
+    state = simulate(state, 1-(action/500), 0+(action/500) );
     total_reward = total_reward + state.reward
-    console.log(state)
+    console.log(action, state)
     }
 ~~~
