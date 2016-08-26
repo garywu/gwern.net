@@ -412,7 +412,7 @@ mean(simEmbryoSelection(n=10, variance=selzam2016)) * 15
 
 PGD is currently [legal everywhere in the USA](!Wikipedia "Preimplantation genetic diagnosis#United States"), so there are no criminal or legal costs; even if there were, clinics in other countries will continue to offer it, and the cost of using a Chinese fertility clinic may not be particularly noticeable financially[^China-trip] and their quality may eventually be higher[^China-quality].
 
-[^China-trip]: We could consider a hypothetical trip to China to make use of fertility clinics there. How much extra would it cost?
+[^China-trip]: We could consider a hypothetical trip to China to make use of fertility clinics there. (Or [potentially South Korea](http://koreajoongangdaily.joins.com/news/article/Article.aspx?aid=2953870 "Foreigners come to Korea for fertility treatment"), whose fertility clinics are close to US levels of expertise and benefit from [state subsidies](http://www.koreaherald.com/view.php?ud=20160825000693 "Korea prepares emergency measures to bolster birthrate: Subsidies to apply to all households seeking infertility treatment, benefits to expand for paternal leave") intended to boost the national birthrate.) How much extra would it cost?
 
     Costs:
 
@@ -1901,21 +1901,8 @@ Sources/drops:
 - Alzheimer's disease: [Escott-Price et al 2015](http://www.dementiasplatform.uk/wp-content/uploads/2015/12/Common-polygenic-variation-enhances-risk-prediction-for-Alzheimers-disease.pdf "Common polygenic variation enhances risk prediction for Alzheimer’s disease") report a polygenic score of 0.021 for AD. The lifetime risk at age 65 is 9% men & 17% women; few people die before age 65 so I'll take the average 13% as the lifetime risk at birth (since Alzheimer's rates tend to increase, this should be conservative for future rates). Costs rise steeply before death as the dementia cripples the patient, imposing extraordinary costs for daily care & on families & caregivers. USA total costs have been estimated at >\$200b; for dementia, the last 5 years of life can incur [\$287k in costs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4809412/ "'The Burden of Health Care Costs in the Last 5 Years of Life', Kelley et al 2016"). Discounting Alzheimer treatment cost is a little tricky: unlike height/BMI/IQ or BPD which we could treat on an annual cost/gain basis and discount out indefinitely, that \$287k of expenses will only be incurred 60+ years after birth on average. We can treat it as a single lump sum expense incurred 70 years in the future, discounted at 5% (as usual to be conservative): `287000 / (1+0.05)^70 ~> 9432`
 - Anorexia: ~1% prevalence. [Boraska et al 2014](http://europepmc.org/articles/pmc4325090 "A genome-wide association study of anorexia nervosa") does not report a polygenic score.
 
-LD Hub issues:
-
-- it is unclear where one goes to report bugs or issues with LD Hub. The front page and about links http://ldsc.broadinstitute.org/about/ do not provide any emails or Github links. The software tab links to https://github.com/bulik/ldsc which doesn't mention LD Hub at all.
-- sessions expire too quickly and one has to log in repeatedly; this also interrupts uploads, apparently - an upload can just terminate halfway through
-- available genetic correlation matrix in the Lookup Center is out of date: there are 173 traits with SNP heritabilities available (and so I assume have full data and can be used for genetic correlations as well), but only 49 traits are in the genetic correlation page. It's nice to provide the exact correlation data for the LD Hub paper, but why not provide the old 49x49 matrix as just a link and update it with the full 173x173 correlation matrix?
-- naming of traits is inconsistent from the SNP heritabilities list to the genetic correlation spreadsheet
-- GWAShare Center page is unclear: who is allowed to contribute under what basis? Must a consortium/lead author authorize an upload, or is any public dataset fair game? I wanted to see genetic correlations for the 'years of education' variable from the new study Okbay et al 2016 (available [on SSGAC's website](http://www.thessgac.org/#!data/kuzq8), `EduYears_Main.txt`) which obsoletes the existing 'years of education' variable based on Rietveld et al 2013, but I don't know if I am allowed to upload that (or any other) dataset or not.
-- Test Center documentation is unclear about the requirements for an uploaded file. Does the header format have to be *exactly* "snpid   A1  A2  Z (or beta)     N   P-value"? I assume "Z (or beta)" actually means "Z" or "beta". A column name of "P-value" is quite awkward for R users, since by default you can't even create a dataframe with that as a column name (it will be automatically converted to "P.value" instead for safety, and this has to be overridden using `check.names=FALSE`). Does the ZIP filename have to be *exactly* "file"++".zip"?
-- unknown arbitrary requirement on submitted file names: `2016-okbay-eduyears.txt` (zipped as `2016-okbay-eduyears.txt.zip`) with summary name "EduYears" for clarity, still fails and the resulting error logs insist that it's named `/tmp/uploaded_files/EduYears_Main.txt.4242c174-f6a3-4ac4-b95a-fda9cf699a9e`!
-- the upload & analysis process doesn't do any kind of error-checking, it seems, so an upload can fail but one doesn't realize this until you download the results and inspect them manually
-- when uploading, it would be very helpful if the interface could provide some information about where one is in the process, so one could know when an error popped up. I ran into issues with the formatting but I initially attributed it to incomplete uploads since the file is so big (178M)
-
-Okbay et al 2016 use with LD Hub
-
-using EduYears_Main.txt
+On SSGAC's website http://www.thessgac.org/#!data/kuzq8 : `EduYears_Main.txt`
+getting the Okbay et al 2016 polygenic score (using `EduYears_Main.txt`) to work with LD Hub:
 
 ~~~{.R}
 okbay <- read.table("EduYears_Main.txt", header=TRUE)
@@ -1931,15 +1918,6 @@ system("zip 2016-okbay-eduyears.txt.zip 2016-okbay-eduyears.txt")
 # https://www.dropbox.com/s/rfvetxywppmxega/EduYears_Main.txt.zip
 ~~~
 
-
-ERROR converting summary statistics:
-
-Traceback (most recent call last):
-  File "/root/ldsc/munge_sumstats.py", line 582, in munge_sumstats
-    'Could not find a signed summary statistic column.'
-    ValueError: Could not find a signed summary statistic column.
-
-"Beta", "beta", "b" all fail despite the constants in https://github.com/bulik/ldsc/blob/master/munge_sumstats.py suggesting they should be fine
 
 
 ~~~{.R}
