@@ -65,6 +65,7 @@ prop.test(c(175, 168), c(442, 439), alternative="greater")
 
 But of course, what does a _p_-value mean, anyway?
 CJ [correctly](!Wikipedia "P-value#Misunderstandings") interprets what they do mean ("In a world where it makes no difference which package is sent, you would get a result as statistically-significant as this 80% of the time."), but that doesn't give us much help in understanding if we *are* in the world where which box is sent *does* make an important difference and *how much* of a difference and whether we want to *decide* whether to switch.
+(_p_-values are not posterior probabilities are not effect sizes are not utilities are not profits are not decisions...)
 
 These are all questions that conventional approaches will struggle with and _p_-values in particular are hard to use as a criterion for decisions: the result might be consistent with informative priors about the possible effect of box improvements; one might have compelling reason from earlier experiments to decide to switch to the new box; one might prefer the new boxes for other reasons; the new boxes might be profitable despite weak evidence (for example, if they cost the same); one might have such a large customer base that the result might be promising enough to justify further experimentation...
 
