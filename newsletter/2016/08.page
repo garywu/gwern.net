@@ -27,8 +27,13 @@ Everything is heritable:
     - ["Genetic Markers of Human Evolution Are Enriched in Schizophrenia"](http://www.biologicalpsychiatryjournal.com/article/S0006-3223%2815%2900855-0/pdf), Srinivasan et al 2016 (Our evolution is not yet complete: evolution is still working out the kinks. Fortunately, we don't have to wait for it to finish the job.)
     - ["Genetic Associations Between Personality Traits and Lifetime Reproductive Success in Humans"](http://www.gwern.net/docs/genetics/2016-berg.pdf), Berg et al 2016 (contemporary selection for personality traits)
     - ["Humans Never Stopped Evolving: The emergence of blood abnormalities, an adult ability to digest milk, and changes in our physical appearance point to the continued evolution of the human race"](http://www.the-scientist.com/?articles.view/articleNo/46651/title/Humans-Never-Stopped-Evolving/)
+- ["How cognitive genetic factors influence fertility outcomes: A mediational SEM analysis"](http://biorxiv.org/content/early/2016/08/18/070128), Woodley et al 2016 (More on dysgenics in the USA: mostly mediated through education's effects on fertility.﻿)
+- ["Phenome-wide Heritability Analysis of the UK Biobank"](http://biorxiv.org/content/early/2016/08/18/070177), Ge et al 2016 (SNP heritability for 551 complex traits)
 - ["Identification of 15 genetic loci associated with risk of major depression in individuals of European descent"](http://www.gwern.net/docs/genetics/2016-hyde.pdf), Hyde et al 2016
 - ["Sweet Taste Perception is Associated with Body Mass Index at the Phenotypic and Genotypic Level"](http://www.gwern.net/docs/genetics/2016-hwang.pdf), Hwang et al 2016
+- ["Analysis of Intellectual Disability Copy Number Variants for Association With Schizophrenia"](http://www.gwern.net/docs/genetics/2016-rees.pdf), Rees et al 2016 (more on the pervasive genetic overlap between mental illnesses/intellectual problems)
+- ["Heritability and causal reasoning"](http://www.gwern.net/docs/genetics/2016-lynch.pdf), Lynch 2016
+- ["Prevalence of Congenital Amusia"](http://biorxiv.org/content/early/2016/08/22/070961), Peretz & Vuvan 2016
 
 Politics/religion:
 
@@ -39,12 +44,16 @@ Academia, liberalism, and propensity to blank slate beliefs like believing hens 
 
 AI:
 
+- ["Decoupled Neural Interfaces using Synthetic Gradients"](https://arxiv.org/abs/1608.05343), Jaderberg et al 2016 (potentially allows for extreme parallelization of neural nets across GPUs)
+- ["Apprenticeship learning using Inverse Reinforcement Learning"](https://jangirrishabh.github.io/2016/07/09/virtual-car-IRL/)
+
 Statistics/meta-science:
 
 - ["How Multiple Imputation Makes a Difference"](http://scholar.harvard.edu/files/ranjitlall/files/pa_website_version_1.pdf?platform=hootsuite), Lall 2016 (many political science results biased & driven by treatment of missing data)
 
 Psychology/biology:
 
+- ["Long-Term Outcomes Associated with Traumatic Brain Injury in Childhood and Adolescence: A Nationwide Swedish Cohort Study of a Wide Range of Medical and Social Outcomes"](http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002103), Sariaslan et al 2016 (Terrifyingly large within-family estimates, and the risk increases with age in adolescence.﻿)
 - ["Heads or tails: the impact of a coin toss on major life decisions and subsequent happiness"](https://www.nber.org/papers/w22487), Levitt 2016 (You can randomize anything if you're sufficiently clever about it - even having babies, quitting jobs, moving, or starting a business. Arguably, like computer chess or 'comfort zone expansion', this suggests humans may be too risk-averse: the people on the margin, the 6% who apparently could be swayed by a coin flip, should be making these decisions more often, suggesting a bias towards the status quo.) TODO: track down fulltext, the NBER copy has gone full paywall
 
 Technology:
@@ -60,12 +69,16 @@ Fiction:
 Misc:
 
 - ["Detailed Discussion of Legal Rights and Duties in Lost Pet Disputes"](https://www.animallaw.info/article/detailed-discussion-legal-rights-and-duties-lost-pet-disputes), Berry 2010 (lost/abandoned pets are surprisingly complex legally)
+- [Tendril perversion](https://en.wikipedia.org/wiki/Tendril_perversion) (An uncommon name for a common phenomenon; investigated by no less than Charles Darwin.﻿)
 
 <!-- Back to 20 Sep 2012 -->
 
 ## Books
 
 Nonfiction:
+
+- _Fortune's Formula_, Poundstone 2005
+- _The Future of Machine Intelligence: Perspectives from Leading Practitioners_, ed Beyer 2016
 
 Fiction:
 
@@ -77,6 +90,7 @@ Live-action:
 
 Anime:
 
+- _The Wind Rises_
 - [_The Dog of Flanders_](https://en.wikipedia.org/wiki/The_Dog_of_Flanders)
 
 ## Games
