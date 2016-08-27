@@ -1730,11 +1730,16 @@ Sources/drops:
 - Autism: ~1.4% prevelance. [Clarke et al 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3714010/ "Common polygenic risk for autism spectrum disorder (ASD) is associated with cognitive ability in the general population") report that the earlier PGS results found 17% of liability explained (though this does not seem to be reported in the original paper or appendix that I can find). [Cost](!Wikipedia "Autism#Cost") ~\$4m.
 - Birth length, weight: skip as difficult to pin down the causal effects
 - College: ~42% of younger Americans have [a college degree](!Wikipedia "Educational attainment in the United States"). Rietveld reports a polygenic score ~2% for both college & 'years of education'. A college degree is worth an estimating \$250k+ for an American.
-- Coronary Artery Disease: ~40% lifetime risk. [Deloukas et al 2013](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3679547/ "Large-scale association analysis identifies new risk loci for coronary artery disease") report a limited polygenic score explaining 10.6% of the estimated 40% additive heritability or 4.24% of variance.
-Cardiovascular diseases are some of the most common, expensive, and fatal diseases, and US costs range into the hundreds of billions of dollars.
-[Birnbaum et al 2003]("Lifetime medical costs for women: Cardiovascular disease, diabetes, and stress urinary incontinence")
-423,000
-287000 / (1+0.05)^70
+- Coronary Artery Disease: ~40% lifetime risk. [Deloukas et al 2013](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3679547/ "Large-scale association analysis identifies new risk loci for coronary artery disease") report a limited polygenic score explaining 10.6% of the estimated 40% additive heritability or 4.24% of variance. Cardiovascular diseases are some of the most common, expensive, and fatal diseases, and US costs range into the hundreds of billions of dollars. [Birnbaum et al 2003](/docs/2003-birnbaum.pdf "Lifetime medical costs for women: Cardiovascular disease, diabetes, and stress urinary incontinence") estimates annual costs ~\$7k up to age 64 but then ~\$31k annually afterwards for total lifetime costs of \$599k. Around half of people will be diagnosed by ~age 60, so at a first cut, we might discount it at `423000 / (1+0.05)^60 ~> 32067` or \$32k.
+- Crohn's disease: 0.32% incidence. [Jostins et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3491803/ "Host-microbe interactions have shaped the genetic architecture of inflammatory bowel disease") reports a polygenic score explaining 13.6% of variance. Crohn's strikes young and lasts a lifetime; [PARA](http://www.crohns.org/congress/submission00/appendix2.htm) estimates \$8330 annually or \$374850 over the estimated 45 years after diagnosis around age 20, suggesting a discounting of `(8330/log(1.05)) / ((1+0.05)^20) ~> 64346`.
+- Depression: [17% lifetime rate](!Wikipedia "Epidemiology of depression"). [Sullivan et al 2013](http://neurogenetics.qimrberghofer.edu.au/papers/Ripke2013MolPsychiatry.pdf "A mega-analysis of genome-wide association studies for major depressive disorder") reports a polygenic score of 0.6%. ([Hyde et al 2016](/docs/genetics/2016-hyde.pdf "Identification of 15 genetic loci associated with risk of major depression in individuals of European descent")'s polygenic score used only the top 17 SNPs, and they don't report the variance explained of MDD, just the secondary phenotypes.) Another major burden of disease, both common and crippling and frequently fatal, depression has large direct costs for treatment and larger indirect costs from wages, worse health etc. [Smith et al](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2887689/ "Long-Term Economic Costs of Psychological Problems During Childhood") finds children with depression have \$300k less lifetime income, which doesn't take into account the medical treatment costs or suicide etc and is a lower bound. I can't find any lifetime costs so I will guesstimate that as the total cost for adults, starting at age 32, giving ~\$63k as the cost.
+- Fasting glucose/insulin/proinsulin, HbA1C: skip as their effects should be covered by diabetes.
+- Former/Current Smoker: [~42% of the American population circa 2005](http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5542a1.htm "Tobacco Use Among Adults --- United States, 2005") has smoked >100 cigarettes (although by 2016 currently smoking adults were down to ~15% of the population).
+Supplemental material for [Vink et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4048635/ "Polygenic risk scores for smoking: predictors for alcohol and cannabis use?") reports a polygenic score for ever smoking of 6.7%. The lifetime cost of tobacco smoking includes the direct cost of tobacco, increased lung cancer risk, lower work output, fires, general worsened health, any second hand or fetal effects, and early mortality; the cost, from various perspectives (individual vs national healthcare systems etc) has been heavily debated, but I think it's safe to put it at least \$100k over a lifetime or \$27k discounted.
+- Hip Circumference: should be covered by BMI
+- HOMA-B/HOMA-IR/Lumbar Spine BMD/Neck BMD: I have no idea where to start with these, so skipping
+- Infant Head Circumference: should be covered by IQ and education?
+- Rheumatoid Arthritis: [2.65%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3078757/ "'The Lifetime Risk of Adult-Onset Rheumatoid Arthritis and Other Inflammatory Autoimmune Rheumatic Diseases', Crowson et al 2012").
 
 ~~~{.R}
 liabilityThresholdValue <- function(populationFraction, gainSD, value) { reducedFraction <- pnorm(qnorm(populationFraction) + gainSD)
@@ -1758,29 +1763,29 @@ Trait, Prevalence, Cost, Polygenic.score
 "Anorexia",0.01,NA,NA
 "Autism Spectrum",0.014,-4000000, 0.17
 "Bipolar", 0.03, -87088, 0.0283
-"Birth Length",,,
-"Birth Weight",,,
+"Birth Length",1,,
+"Birth Weight",1,,
 "BMI",1, -16750, 0.153
 "Childhood IQ", 1, iqHigh, selzam2016
 "College",0.42,250000,0.03
-"Coronary Artery Disease",0.404,,0.0424
-"Crohn's Disease",
-"Depression",
-"Fasting Glucose",
-"Fasting Insulin",
-"Fasting Proinsulin",
-"Former/Current Smoker",
-"HbA1C",
+"Coronary Artery Disease",0.404,,0.0424,32000
+"Crohn's Disease",0.0032,64346,0.136
+"Depression",0.17,62959,0.006
+"Fasting Glucose",1,,,
+"Fasting Insulin",1,,,
+"Fasting Proinsulin",1,,,
+"Former/Current Smoker",0.42,27327,0.067
+"HbA1C",1,,
 "HDL",
 "Height",1, 1616, 0.60
-"Hip Circumference",
-"HOMA-B",
-"HOMA-IR",
-"Infant Head Circumference",
+"Hip Circumference",1,,
+"HOMA-B",1,,
+"HOMA-IR",1,,
+"Infant Head Circumference",1,,
 "LDL",
-"Lumbar Spine BMD",
-"Neck BMD",
-"Rheumatoid Arthritis",
+"Lumbar Spine BMD",1,,
+"Neck BMD",1,,
+"Rheumatoid Arthritis",0.0265,,
 "Schizophrenia", 0.01, -49379, 0.184
 "T2D", 0.40, -124600, 0.0573
 "Total Cholesterol",
