@@ -1739,58 +1739,76 @@ Supplemental material for [Vink et al 2014](https://www.ncbi.nlm.nih.gov/pmc/art
 - Hip Circumference: should be covered by BMI
 - HOMA-B/HOMA-IR/Lumbar Spine BMD/Neck BMD: I have no idea where to start with these, so skipping
 - Infant Head Circumference: should be covered by IQ and education?
-- Rheumatoid Arthritis: [2.65%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3078757/ "'The Lifetime Risk of Adult-Onset Rheumatoid Arthritis and Other Inflammatory Autoimmune Rheumatic Diseases', Crowson et al 2012").
+- Rheumatoid Arthritis: [2.65%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3078757/ "'The Lifetime Risk of Adult-Onset Rheumatoid Arthritis and Other Inflammatory Autoimmune Rheumatic Diseases', Crowson et al 2012"). [MHC](!WIkipedia "Major histocompatibility complex") hits explain ~12% and [Okada et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3944098/ "Genetics of rheumatoid arthritis contributes to biology and drug discovery") report a polygenic score providing another 5.5%. [Cooper 2000](http://rheumatology.oxfordjournals.org/content/39/1/28.long "Economic burden of rheumatoid arthritis: a systematic review") estimates total annual costs for RA at ~\$11542/year and cites a Stone 1984 estimate of lifetime cost of \$15,504 (\$35,909 in 2016); with typical age of onset around 60, the total annual cost might be discounted to \$13k.
+- LDL, total cholesterol, triglycerides: harmful effects should be redundant with coronary artery disease
+- Ulcerative colitis: 0.3%. [Jostins et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3491803/ "Host-microbe interactions have shaped the genetic architecture of inflammatory bowel disease") reports a polygenic score of 7.5%. [Cohen et al 2010](http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2036.2010.04234.x/pdf "Systematic review: the costs of ulcerative colitis in Western countries") & [Park & Bass 2011](https://www.researchgate.net/profile/Dorsey_Bass/publication/47680877_Inflammatory_bowel_disease-attributable_costs_and_cost-effective_strategies_in_the_United_States_a_review/links/5452597b0cf2bccc4908e0f2.pdf "Inflammatory Bowel Disease-Attributable Costs and Cost-effective Strategies in the United States: A Review") report \$15k medical expenses annually & \$5k employment loss. With mean age diagnosis of ~35 [da Silva et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4110577/ "Epidemiology, demographic characteristics and prognostic predictors of ulcerative colitis"), something like `(20000/log(1.05)) / ((1+0.05)^35) ~> 74314`.
 
 ~~~{.R}
-liabilityThresholdValue <- function(populationFraction, gainSD, value) { reducedFraction <- pnorm(qnorm(populationFraction) + gainSD)
-                                                                         difference      <- (populationFraction - reducedFraction) * value
-                                                                         return(c(reducedFraction, difference)) }
-liabilityThresholdPolygenicValue <- function(populationFraction, value, polygenicScore, n=10) {
+liabilityThresholdValue <- function(populationFraction, gainSD, value) {
+    fraction <- pnorm(qnorm(populationFraction) + gainSD)
+    if (value<0) {
+          difference      <- (populationFraction - fraction) * value
+        } else {
+          difference      <- (fraction - populationFraction) * value
+    }
+    return(c(fraction, difference))
+    }
+liabilityThresholdPolygenicValue <- function(populationFraction, value, polygenicScore, n=1000) {
     gainSD <- mean(simEmbryoSelection(n=n, variance=polygenicScore, iters=100000))
-    if (value>0) { liabilityThresholdValue(populationFraction,  gainSD,  value) } else {
-                   liabilityThresholdValue(populationFraction, -gainSD, -value) } }
-# example: bipolar
+    if (populationFraction==1) { if (value<0) { gainSD <- -gainSD }; c(populationFraction, gainSD*value) } else {
+                                 ## the value of increasing healthy fraction:
+                                 liabilityThresholdValue(populationFraction,  gainSD,  value) }  }
+## example: BMI
+liabilityThresholdPolygenicValue(1, -16750, 0.153)
+# [1]     1.00000 17838.04046
+## example: IQ
+liabilityThresholdPolygenicValue(1, 242265, 0.035)
+# [1]      1.0000 123381.4138
+## example: bipolar
 liabilityThresholdPolygenicValue(0.03, -87088, 0.0283)
-# [1]   0.01951715808 912.92973685022
+# #example: college
+liabilityThresholdPolygenicValue(0.42, 250000, 0.03)
 
 iqHigh <- 16151*15
 selzam2016 <- 0.035
 utilitiesScores <- read.csv(stdin(), header=TRUE, colClasses=c("factor", "numeric", "numeric","numeric"))
-Trait, Prevalence, Cost, Polygenic.score
-"ADHD", 0.07, -182000, 0.015
-"Age at Menarche",1,NA,0.158
-"Alzheimer's",0.13,-9432,0.021
-"Anorexia",0.01,NA,NA
-"Autism Spectrum",0.014,-4000000, 0.17
-"Bipolar", 0.03, -87088, 0.0283
-"Birth Length",1,,
-"Birth Weight",1,,
-"BMI",1, -16750, 0.153
-"Childhood IQ", 1, iqHigh, selzam2016
+Trait, Prevalence, Cost, Polygenic.score, Selection.value
+"ADHD", 0.07, -182000, 0.015,2948
+"Age at Menarche",1,0,0.158,0
+"Alzheimer's",0.13,-9432,0.021,287
+"Anorexia",0.01,0,0,0
+"Autism Spectrum",0.014,-4000000, 0.17,3.972950153e+04
+"Bipolar", 0.03, -87088, 0.0283,914.4837211045
+"Birth Length",1,0,0,0
+"Birth Weight",1,0,0,0
+"BMI",1, -16750, 0.153,7118
+"Childhood IQ", 1, 242265, 0.035,
 "College",0.42,250000,0.03
-"Coronary Artery Disease",0.404,,0.0424,32000
-"Crohn's Disease",0.0032,64346,0.136
-"Depression",0.17,62959,0.006
-"Fasting Glucose",1,,,
-"Fasting Insulin",1,,,
-"Fasting Proinsulin",1,,,
-"Former/Current Smoker",0.42,27327,0.067
-"HbA1C",1,,
-"HDL",
+"Coronary Artery Disease",0.404,-32000,0.0424
+"Crohn's Disease",0.0032,-64346,0.136
+"Depression",0.17,-62959,0.006
+"Fasting Glucose",1,0,0
+"Fasting Insulin",1,0,0
+"Fasting Proinsulin",1,0,0
+"Former/Current Smoker",0.42,-27327,0.067
+"HbA1C",1,0,0
+"HDL",1,0,0
 "Height",1, 1616, 0.60
-"Hip Circumference",1,,
-"HOMA-B",1,,
-"HOMA-IR",1,,
-"Infant Head Circumference",1,,
-"LDL",
-"Lumbar Spine BMD",1,,
-"Neck BMD",1,,
-"Rheumatoid Arthritis",0.0265,,
+"Hip Circumference",1,0,0
+"HOMA-B",1,0,0
+"HOMA-IR",1,0,0
+"Infant Head Circumference",1,0,0
+"LDL",1,0,0
+"Lumbar Spine BMD",1,0,0
+"Neck BMD",1,0,0
+"Rheumatoid Arthritis",0.0265,-12664,0.175
 "Schizophrenia", 0.01, -49379, 0.184
 "T2D", 0.40, -124600, 0.0573
-"Total Cholesterol",
-"Triglycerides",
-"Ulcerative Colitis",
+"Total Cholesterol",1,0,0
+"Triglycerides",1,0,0
+"Ulcerative Colitis",0.003,-74314,0.075
 
+
+with(utilitiesScores, Map(liabilityThresholdPolygenicValue, Prevalence, Cost, Polygenic.score))
 
 -->
