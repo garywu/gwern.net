@@ -7,7 +7,7 @@ status: finished
 belief: likely
 ...
 
-> Computational complexity theory describes the steep increase in computing power required for many algorithms to solve larger problems; frequently, the increase is large enough to render problems a few times larger totally intractable. Many of these algorithms are used in AI-relevant contexts. It has been argued that this implies that AIs will fundamentally be limited in accomplishing real-world tasks better than humans because they will run into the same computational complexity limit as humans, and so the consequences will be small, thus it is impossible for there to be any large fast global changes due to human or superhuman-level AIs. I examine the assumptions of this argument and find it neglects the many conditions under which computational complexity theorems are valid and so the argument doesn't work: problems can be solved more efficiently than complexity classes would imply, large differences in problem solubility between humans and AIs is possible, greater resource consumption is possible, the real-world consequences of small differences on individual tasks can be large, such consequences can compound, and any of these independent objections being true destroys the argument.
+> Computational complexity theory describes the steep increase in computing power required for many algorithms to solve larger problems; frequently, the increase is large enough to render problems a few times larger totally intractable. Many of these algorithms are used in AI-relevant contexts. It has been argued that this implies that AIs will fundamentally be limited in accomplishing real-world tasks better than humans because they will run into the same computational complexity limit as humans, and so the consequences of developing AI will be small, as it is impossible for there to be any large fast global changes due to human or superhuman-level AIs. I examine the assumptions of this argument and find it neglects the many conditions under which computational complexity theorems are valid and so the argument doesn't work: problems can be solved more efficiently than complexity classes would imply, large differences in problem solubility between humans and AIs is possible, greater resource consumption is possible, the real-world consequences of small differences on individual tasks can be large on agent impacts, such consequences can compound, and many agents can be created; any of these independent objections being true destroys the argument.
 
 # Background
 
@@ -201,8 +201,6 @@ One thinks of Amara's law: "We tend to overestimate the effect of a technology i
 
     With more variables, the output difference would be larger still, and is connected to the [o-ring theory of productivity](!Wikipedia). This poses a challenge to those who expect small differences in ability to lead to small output differences, as the log-normal distribution is common in the real world, and also implies that hybrid human-AI systems are unstable as the human will quickly become a bottleneck.
 
-<!-- TODO ping Aaronson? -->
-
 ### Are AI agents rare?
 
 Expanding on the observation that AIs can have advantages which are unrelated to computational complexity or solving larger instances of problems, is it really the case that a Singularity can happen *only* if AIs are able to surpass humans on particular algorithmic tasks?
@@ -268,7 +266,7 @@ A week later, the farm was sold to a developer, and the mound was rolled flat, a
 ## Conclusion
 
 Computational complexity classes offer little guidance about the capabilities of humans, AIs, or other agents as they are too universal and generalized and do not tightly bind outcomes; at most, they demonstrate that neither humans nor AIs are omnipotent.
-If one wants to put limits on the ability of an AI by way of computational resources, a much more detailed analysis must be done linking improvement in algorithmic performance to performance on an ensemble of tasks and access to additional resources, with the consequent economic, military, or social outcomes.
+If one wants to put limits on the ability of an AI by way of computational resources, a much more detailed analysis must be done linking data/sample efficiency or algorithmic performance to capability improvement to performance on an ensemble of tasks & access to additional resources, with the consequent economic, military, or social outcomes.
 
 # See also
 
@@ -283,3 +281,4 @@ If one wants to put limits on the ability of an AI by way of computational resou
     - Reddit: [1](https://www.reddit.com/r/ControlProblem/comments/4upo7r/complexity_no_bar_to_ai/), [2](https://www.reddit.com/r/slatestarcodex/comments/4up89b/complexity_no_bar_to_ai_gwernnet/)
     - [LW](http://lesswrong.com/r/discussion/lw/nsm/open_thread_jul_25_jul_31_2016/ddja)
     - Facebook: [1](https://www.facebook.com/yudkowsky/posts/10154413180579228), [2](https://www.facebook.com/MachineIntelligenceResearchInstitute/posts/1084181481619235)
+    - [HN](https://news.ycombinator.com/item?id=12354097)
