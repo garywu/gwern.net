@@ -7,26 +7,30 @@ status: in progress
 belief: likely
 ...
 
-CATNIP, VALERIAN, HONEYSUCKLE AND OTHER CAT-ATTRACTANT PLANTS http://messybeast.com/catnip-valerian.htm Hartwell
+[Catnip](!Wikipedia) is a plant which causes stimulated and excitable behavior in many domestic cats, which is fun to play with.
+It is the best known of at least a dozen plants with psychoactive effects on cats, and far more popular, cheaper, and easily purchased than alternatives like [tatarian honeysuckle](!Wikipedia "Lonicera tatarica"), [silvervine](!Wikipedia "Actinidia polygama"), or [cat thyme](!Wikipedia "Teucrium miarum").
+However, a large fraction of cats do not respond (non-response may be a genetic trait given Todd 1962's pedigree chart) but may respond to one of the alternatives.
+For example, of my family's two cats, neither responds to catnip but one responds to valerian, one to honeysuckle, and both to silvervine.
 
-# Population frequencies
+This raises several questions:
 
-- Palen GF, Goddard GV. ["Catnip and oestrous behavior in the cat"](/docs/catnip/1966-palen.pdf). _Anim Behav_ 1966; 14: 372-377
+1. what fraction of cats, exactly, are catnip-immune?
+2. how often do the catnip alternatives work?
+3. does immunity to one alternative predict immunity to others?
+4. since some alternatives can be hard to find and expensive, what is the optimal order of alternatives a cat owner should try to find one that works?
 
-    Reactions: 23 responders, 20 non-responders, so 47% immunity rate
-- Todd NB. ["Inheritance of the catnip response in domestic cats"](/docs/catnip/1962-todd.pdf). _Journal of Heredity_ 1962; 53: 54-56
+# Population frequency of catnip response
+## Studies
 
-    Pedigree chart reproduced in https://www.hoddereducation.co.uk/media/Documents/magazine-extras/Biological%20Sciences%20Review/BSR%20Vol%2025%20No%204/BiolRev-25_4-cat-genetics.pdf & Todd 1963 ; 14 responders, 12 non-responders in a Siamese breeding colony so 46% immunity rate in this sample. Todd also surveyed cats in local pounds and animal hospitals, finding 26 of 84 sampled were non-responders or a ~31% immunity.
-- Wells, D.L., Egli, J.M., 2004. ["The influence of olfactory enrichment on the behaviour of captive black-footed cats, _Felis nigripes_"](/docs/catnip/2004-wells.pdf):
+Catnip is frequently discussed in the popular & secondary literature without citation, and after tracking down claims, the primary literature on catnip effects & response is relatively small^[For example, Todd 1962's genetic analysis was based on just 34 cats of which 7 cats' response were unknown; as far as I can tell, another pedigree analysis has never been done since then, much less extended to newer genetic methods like [linkage](!Wikipedia "Genetic linkage") or GWASes, although it continues to be cited as the justification for treating catnip response as an autosomal dominant genetic trait.]; for a good overview, see [Tucker & Tucker 1987](/docs/catnip/1987-tucker.pdf "Catnip and the Catnip Response")
 
-    6 black-footed cats, catnip did interest them but paper doesn't break down by cat. Not useful unless want to contact authors.
-- McElvain, P. M. Walters, and R. D. Bright. 1942. ["The constituents of the volatile oil of catnip. II. The neutral components. Nepetalic anhydride"](/docs/catnip/1942-mcelvain.pdf):
+- McElvain et al 1942, ["The constituents of the volatile oil of catnip. II. The neutral components. Nepetalic anhydride"](/docs/catnip/1942-mcelvain.pdf):
 
     tested extracted nepetalactone and caryophyllene on 10 lions; the 7 adults all responded to the nepetalactone and not the caryophyllene (the 3 cubs responded to nothing).
-- Hatch 1972, ["Effect of drugs on catnip (_Nepeta cataria_) induced pleasure behavior in cats"](/docs/catnip/1972-hatch.pdf)
+- Todd 1962, ["Inheritance of the catnip response in domestic cats"](/docs/catnip/1962-todd.pdf)
 
-    tested 17 cats initially; 3 did not respond.
-- Todd, N.B. 1963. ["The catnip response"](/docs/catnip/1963-todd.pdf). Doctoral dissertation, Harvard. [Tucker & Tucker 1987](/docs/catnip/1987-tucker.pdf "Catnip and the Catnip Response")
+    Pedigree chart reproduced in https://www.hoddereducation.co.uk/media/Documents/magazine-extras/Biological%20Sciences%20Review/BSR%20Vol%2025%20No%204/BiolRev-25_4-cat-genetics.pdf & Todd 1963 ; 14 responders, 12 non-responders in a Siamese breeding colony so 46% immunity rate in this sample. Todd also surveyed cats in local pounds and animal hospitals, finding 26 of 84 sampled were non-responders or a ~31% immunity. Todd considers the genetic pattern most consistent with a fairly common genetic variant which is autosomal dominant.
+- Todd 1963, ["The catnip response"](/docs/catnip/1963-todd.pdf)
 
     - In surveying the 26 breeding colony & 84 local cats, Todd found no large correlations with sex, breed type (Manx/Siamese/tabby/Agouti), white spotting, blue dilution, polydactyly, long hair, or castration.  (Except the usual observation that young kittens rarely display a catnip response: of 39 under 12 weeks of age, 4 responded.)
     - Cross-species results:
@@ -48,11 +52,20 @@ CATNIP, VALERIAN, HONEYSUCKLE AND OTHER CAT-ATTRACTANT PLANTS http://messybeast.
             >
             > Table: Table 3. Results of testing Viverrids with catnip. Figure in parentheses indicates number of individuals tested. `+` = positive, `?+` = possibly positive, `?-` = probably negative, `-` = negative, `I` = indetermine, animal would not or did not investigate leaves.
         2. Hyenas (Hyenidae): 0/3 responders (pg41/72)
-        3. Felidae: (pg42/74). Todd's table and results have been summarized as thus:
+        3. Felidae: (pg42/74). Todd's table and results have been summarized as thus by Tucker & Tucker:
 
             > Within the subfamily Pantherinae of the Felidae, Todd (1963) found the typical catnip response in 16 lions (Panthera leo) (14 positive responders, 2 negative responders), 23 tigers (Panthera tigris) (8 incomplete responders, 13 negative responders, 2 inconclusive responders), 18 leopards (Panthera pardus) (14 positive responders, 4 negative responders), 8 jaguars (Panthera onca) (7 positive responders, 1 negative responder), 4 snow leopards (Panthera uncia) (4 positive responders), and 1 clouded leopard (Neofelis [Panthera] nebulosa). Within the subfamily Acynonychinae of the Felidae, he found that 3 cheetahs (Acinonyx jubatus) did not respond to catnip. Within the subfamily Felinae of the Felidae, he found the typical catnip response in the 2 bobcats (Felis [Lynx] rufus) (1 positive responder, 1 negative responder), 1 European lynx (Felis [Lynx] lynx), 5 pumas (Felis [Puma] concolor) (2 positive responders, 2 negative responders, 1 inconclusive responder), 1 Asiatic golden cat (Felis [Profelis] temmincki), 5 ocelots (Felis [Leopardus] pardalis) (4 positive responders, 1 negative responder), and 6 margay cats (Felis [Leopardus] wiedii) (4 positive responders, 2 negative responders); no catnip response was observed in 2 servals (Felis [Leptailurus] serval), 1 swamp cat or jungle cat (Felis chaus), 1 Pallas' cat (Felis [Octocolobus] manul), 1 leopard cat (Felis [Prionailurus] bengalensis), 1 African golden cat (Felis [Profelis] aurata), 2 fishing cats (Felis [Prionailurus] viverrina), 4 jaguarundis (Felis [Herpailurus] yagouaroundi), and 1 pampas cat (Felis [Lynchailurus] pajeros).
 
-            The summary of Todd's Felidae results is correct but omits that Todd also used a questionnaire to estimate 4 responders & 13 non-responders among the ocelots in addition to his personal testing of the 5 ocelots but Todd notes he "has reservations about the validity of the data gathered by this method" (possibly because the response frequency 4/17 is so different from his personal 4/5 response frequency). Todd also mentions a report of a "ligeress" (female hybrid of a male lion & tigress) from de Bary of the Utah Hogle Zoological Garden who is a catnip non-responder.
+            The summary of Todd's Felidae results is correct but omits that Todd also used a questionnaire to estimate 4 responders & 13 non-responders among the ocelots in addition to his personal testing of the 5 ocelots but Todd notes he "has reservations about the validity of the data gathered by this method" (possibly because the response frequency 4/17 is so different from his personal 4/5 response frequency) so that data is probably best excluded. Todd also mentions a report of a "[ligeress](!Wikipedia "Liger")" (female hybrid of a male lion & tigress) from de Bary of the Utah Hogle Zoological Garden who is a catnip non-responder.
+- Bates & Siegel 1963, ["Terpenoids. _Cis-trans-_ and _trans-cis-_ nepetalactones"](/docs/catnip/1963-bates.pdf)
+
+    They chemically separated the two [isomers](!Wikipedia); the extracted isomer I was mostly inactive when presented to 8 cats with just 1 more interested in I than II (though they caution there might still have been contaminating II in the I extract), but "three were strongly attracted" and "two showed slight preference" for isomer II (_trans-cis-_nepetalactone), so arguably 5 out of 8 were responders.
+- Palen & Goddard 1966, ["Catnip and oestrous behavior in the cat"](/docs/catnip/1966-palen.pdf)
+
+    Reactions: 23 responders, 20 non-responders, so 47% immunity rate
+- Hatch 1972, ["Effect of drugs on catnip (_Nepeta cataria_) induced pleasure behavior in cats"](/docs/catnip/1972-hatch.pdf)
+
+    tested 17 cats initially; 3 did not respond.
 - Hill et al 1976, ["Species-characteristic Responses to Catnip by Undomesticated Felids"](/docs/catnip/1976-hill.pdf) TODO: extract data; Tucker & Tucker summary:
 
     > Hill et al. (1976) found that lions (5 positive responders,  partial responders, 1 negative responder) and jaguars (3 positive responders) are extremely sensitive to catnip, while tigers (5 negative responders), pumas (4 negative responders), leopards (4 partial responders, 4 negative responders), and bobcats (2 negative responders) gave little or no response. They also found that both males and females of the same species test alike, while reproductive-age adults are more sensitive than either aged or immature animals.
@@ -60,24 +73,30 @@ CATNIP, VALERIAN, HONEYSUCKLE AND OTHER CAT-ATTRACTANT PLANTS http://messybeast.
 
     > TABLE 1. Number of animals, species-wide, that showed interest in various toys. Key: 0 = none, 1 = 25%, 2 = 50%, 3 = the majority of the animals. We define interest as the amount of toy destruction and/or movement that we noted in daily observations.
     >
-    > - ...balls: catnip 3
-    > - balls: punch 3
+    > - ...balls: catnip: 3
+    > - balls: punch: 3
     > - Cat-a-Comb: NA
     > - Purrsuit: 3
     >
-    > ...8-12 cats...The cats' favorite toys-like the 12 in. giant sheepskin mice (Petraport, Anaheim, CA)-contained catnip. We hung fresh catnip in stockinette bags which the cats quickly pulled down and ultimately batted into the water bowls. We gave them catnip-treated punchball toys (Petraport, Anaheim, CA- Fig. 7)-2 in. puffs mounted by a spring to a 6 in. x 6 in. base. The cats always played with these toys, and they lasted longer than the catnip bags. The cats also had "Mr. Spats' Cat-a-combs" groomer (Tarel Seven Designs, Secaucus, NJ) mounted on the walls. They usually knocked these off the wall and used them as play-things (they managed to open the compartment and dig out the catnip) rather than as grooming tools. Most of the cats spent time playing "Purrsuit" (Tarel Seven Designs, Secaucus, NJ)-every morning, we placed toys inside a maze and the cats chased them and tried, with a great deal of success, to get the smaller ones out. The cats had a preference for balls or bells with catnip in them, and for golf balls. They ignored the Squish balls (Ethical Inc., Newark, NJ).
+    > ...8-12 cats...The cats' favorite toys - like the 12 in. giant sheepskin mice (Petraport, Anaheim, CA) - contained catnip. We hung fresh catnip in stockinette bags which the cats quickly pulled down and ultimately batted into the water bowls. We gave them catnip-treated punchball toys (Petraport, Anaheim, CA- Fig. 7)-2 in. puffs mounted by a spring to a 6 in. x 6 in. base. The cats always played with these toys, and they lasted longer than the catnip bags. The cats also had "Mr. Spats' Cat-a-combs" groomer (Tarel Seven Designs, Secaucus, NJ) mounted on the walls. They usually knocked these off the wall and used them as play-things (they managed to open the compartment and dig out the catnip) rather than as grooming tools. Most of the cats spent time playing "Purrsuit" (Tarel Seven Designs, Secaucus, NJ)-every morning, we placed toys inside a maze and the cats chased them and tried, with a great deal of success, to get the smaller ones out. The cats had a preference for balls or bells with catnip in them, and for golf balls. They ignored the Squish balls (Ethical Inc., Newark, NJ).
 
     So based on the reported data, we can guess that at least 5-7 cats responded to catnip of the 8-12 sample.
+- Wells & Egli 2004, ["The influence of olfactory enrichment on the behaviour of captive black-footed cats, _Felis nigripes_"](/docs/catnip/2004-wells.pdf):
 
-- Holmes, R.J., 1993. Environmental enrichment for confined dogs and cats. The TG Hungerford Refresher Course for Veterinarians. In: Proceedings from the Postgraduate Committee in Veterinary Science, University of Sydney, vol. 214. pp. 191-197.
-- Barry, D., 2005. "Catnip". Chem. Eng. News 83, 39.
-- Hart, B.L., 1977. "Feline behaviour: olfaction and feline behaviour". Feline Practice 7, 8-10.
+    6 [black-footed cats](!Wikipedia) (_Felis nigripes_), catnip did interest them and cause increases in activity, but paper doesn't break down by cat. Not useful unless want to contact authors.
+- Ellis 2007, ["Sensory enrichment for cats (Felis silvestris catus) housed in an animal rescue shelter"](http://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.486142); apparently republished as Ellis & Wells 2009, ["The influence of olfactory stimulation on the behaviour of cats housed in a rescue shelter"](https://www.researchgate.net/profile/Sarah_Ellis6/publication/248336419_The_influence_of_olfactory_stimulation_on_the_behaviour_of_cats_housed_in_a_rescue_shelter/links/00463529c654680937000000.pdf)
 
-- Hayashi, T. 1968. "Motor reflexes of cats to _Actinidia polygama_ (Japan) and to catnip (U.S.A.)". Pages 351-358 in N. N. Tanyolag, ed., _Theories of odor and odor measurement_. N. N. Tanyolac, Istanbul.
-("Hayashi (1968), who tested a wide range of animals (dogs, rabbits, mice, rats, guinea pigs, fowls, and cats) with powders ofActinidia polygama and N. cataria, found that the catnip response is induced in cats alone.")
+    Shelter animals were given catnip-infused clothes to play with; Ellis notes that the catnip toys were played with more than other scents on average in the catnip group, but made no effort to ascertain how many were catnip responders.
+
+
+---
+
+TODO http://gen.lib.rus.ec/scimag/index.php?s=catnip&journalid=&v=&i=&p=&redirect=1
+
+- Hart, B.L., 1977. "Olfaction and feline behaviour". _Feline Practice_ 7(5): 8-10. TODO: https://www.reddit.com/r/Scholar/comments/501shm/article_olfaction_and_feline_behaviour_feline/
+- Hayashi, T. 1968. "Motor reflexes of cats to _Actinidia polygama_ (Japan) and to catnip (USA)". Pages 351-358 in N. N. Tanyolag, ed., _Theories of odor and odor measurement_. N. N. Tanyolac, Istanbul. TODO: if /r/scholar can't deliver https://www.reddit.com/r/Scholar/comments/501u52/chapter_motor_reflexes_of_cats_to_actinidia/ then the used book isn't *too* expensive... http://www.abebooks.co.uk/book-search/title/theories-of-odor-and-odor-measurement/author/necmi-n-tanyolac-ed/ ("Hayashi (1968), who tested a wide range of animals (dogs, rabbits, mice, rats, guinea pigs, fowls, and cats) with powders of _Actinidia polygama_ and _N. cataria_, found that the catnip response is induced in cats alone.")
 
 - Baslas, R.K. 1970. Chemistry of Indian essential oils--Part IX. Flavour Industr. 1:475--478.
-- Bates and C. W. Siegel. 1963. Terpenoids. Cis-trans- and Trans-cis-nepetalactones. Experientia 19:564-565.
 - Bicchi, Sandra, M. Schelfaut, and M. Verzele. 1983. Studies on the essential oil of Valeriana celtica L. J. High Resolution Chromatogr. & Chromatogr. Commun. 6:213-215.
 - Campbell, J. F., D. Bindra, H. Krebs, and R. P. Ferenchak. 1969. Responses of single units of the hypothalamic ventromedial nucleus to environmental stimuli. Physiol. & Behav. 4:183-187.
 - Cionga, E., V. Popesco, O. Contz, and L. Boniforti. 1976. The alkaloids from Valeriana officinalis: identification of actinidine. Pages 299-302 in A. Frigerio and N. Castagnoli, eds., Advances in mass spectrometry in biochemistry and medicine, vol. 1. Spectrum Publ., New York.
@@ -109,10 +128,16 @@ CATNIP, VALERIAN, HONEYSUCKLE AND OTHER CAT-ATTRACTANT PLANTS http://messybeast.
 - Wood, J . G . 1854. Sketches and anecdotes of animal life. George Routledge & Sons, London.
 - Yoshii et al. 1963
 - Yoshii, N., K. Hano, and Y. Suzuki. 1963. Effect of certain substances isolated from 'matatabi' on the EEG of cat. Folia Psychiat. & Neurol. Jap. 17:335-350
-- Ellis SLH. Sensory enrichment for cats (Felis silvestris catus) housed in an animal rescue shelter. PhD Thesis; Queen's University Belfast, UK, 2007. http://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.486142
 - Dolejs et al 1960: describes a "racemic mixture of iridomyrmecin (II) and iso-iridomyrmecin (IIa)" which is stimulative
 
+
+## Analysis
+
+
+
 # Known cat stimulants
+
+["Catnip, Valerian, Honeysuckle and other cat-attractant plants"](http://messybeast.com/catnip-valerian.htm), Hartwell
 
 - Nepeta cataria (catnip) https://en.wikipedia.org/wiki/Catnip#Effect_on_cats : active ingredient nepetalactone
 - Lonicera Tatarica (Tatarian Honeysuckle) https://en.wikipedia.org/wiki/Lonicera_tatarica :  nepetalactone
@@ -134,7 +159,7 @@ Speculative:
 
 - there are anecdotal reports that some cats are attracted to olive products: olive wood, olive oil, and olive fruits themselves
 
-# Local cats
+# Local cat experiments
 
 The catnip literature has a good sample of what the catnip frequency response is, but it's clear that a lot of cats are immune and their owners need to use one of the many substitutes.
 The literature does not seem to have much, if any, coverage of all the main alternatives, so owners don't know what to try after catnip.
@@ -165,7 +190,8 @@ Specifically, I'll look at the most common and easy to come by stimulants, since
         - [Large Olive Wood Pen Blanks from Bethlehem - 15.5 x 3.8 x 3.8 cm (6.1 x 1.496 x 1.496 Inch)](http://www.amazon.com/Large-Olive-Wood-Blanks-Bethlehem/dp/B00MYHBBW8): \$9.59
 
             Cheapest unworked/unprocessed chunk of olive wood I could find on Amazon.
-    - subtotal: \$94.12
+    - Cat thyme/_Teucrium marum_ potted plant from [Companion Plants](http://companionplants.com/catalog/product_info.php?products_id=392): \$17
+    - subtotal: \$111.12
 - Toys (need multiple to avoid cross-contamination):
 
     - [Go Cat Teaser Cat Catcher Wand Cat Toy](http://www.amazon.com/Go-Cat-Catcher-Teaser-Mouse/dp/B000LPOUNW/): \$7.03
