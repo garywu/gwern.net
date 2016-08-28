@@ -1,0 +1,1177 @@
+Trait1,Trait2,rg,se,z,p
+ADHD,Age at Menarche,-0.121,0.083,-1.453,0.146
+ADHD,Age at Smoking,-0.148,0.223,-0.666,0.505
+ADHD,Alzheimer's,-0.17,0.191,-0.886,0.376
+ADHD,Anorexia,0.174,0.107,1.623,0.105
+ADHD,Autism Spectrum,-0.13,0.13,-0.999,0.318
+ADHD,Bipolar,0.528,0.128,4.12,3.79E-05
+ADHD,Birth Length,-0.043,0.179,-0.238,0.812
+ADHD,Birth Weight,0.067,0.172,0.387,0.699
+ADHD,BMI,0.324,0.094,3.451,0.001
+ADHD,BMI 2010,0.281,0.084,3.354,0.001
+ADHD,Childhood IQ,-0.115,0.197,-0.585,0.559
+ADHD,Childhood Obesity,0.119,0.128,0.934,0.351
+ADHD,Cigarettes per Day,0.218,0.178,1.224,0.221
+ADHD,College,-0.397,0.158,-2.52,0.012
+ADHD,Coronary Artery Disease,0.208,0.098,2.118,0.034
+ADHD,Crohn's Disease,0.066,0.114,0.575,0.565
+ADHD,Depression,0.432,0.187,2.305,0.021
+ADHD,Ever/Never Smoked,0.363,0.148,2.45,0.014
+ADHD,Extreme BMI,0.181,0.127,1.422,0.155
+ADHD,Extreme Height,0.011,0.11,0.105,0.917
+ADHD,Fasting Glucose,-0.024,0.126,-0.194,0.846
+ADHD,Fasting Insulin,-0.005,0.161,-0.031,0.976
+ADHD,Fasting Proinsulin,0.016,0.209,0.077,0.939
+ADHD,Former/Current Smoker,0.156,0.169,0.92,0.357
+ADHD,HbA1C,0.259,0.175,1.483,0.138
+ADHD,HDL,-0.177,0.115,-1.53,0.126
+ADHD,Height,-0.029,0.06,-0.484,0.629
+ADHD,Height 2010,-0.037,0.072,-0.511,0.609
+ADHD,Hip Circumference,0.21,0.1,2.094,0.036
+ADHD,HOMA-B,0.039,0.168,0.233,0.816
+ADHD,HOMA-IR,0.079,0.174,0.456,0.649
+ADHD,Infant Head Circumference,-0.375,0.201,-1.866,0.062
+ADHD,LDL,0.1,0.11,0.908,0.364
+ADHD,Lumbar Spine BMD,-0.071,0.103,-0.687,0.492
+ADHD,Neck BMD,-0.018,0.113,-0.16,0.873
+ADHD,Obesity Class 1,0.215,0.085,2.516,0.012
+ADHD,Obesity Class 2,0.162,0.105,1.539,0.124
+ADHD,Obesity Class 3,-0.014,0.165,-0.087,0.931
+ADHD,Overweight,0.266,0.099,2.673,0.008
+ADHD,Rheumatoid Arthritis,0.022,0.094,0.237,0.812
+ADHD,Schizophrenia,0.181,0.08,2.257,0.024
+ADHD,T2D,0.128,0.109,1.166,0.243
+ADHD,Total Cholesterol,0.063,0.091,0.693,0.488
+ADHD,Triglycerides,0.102,0.092,1.106,0.269
+ADHD,Ulcerative Colitis,0.168,0.117,1.436,0.151
+ADHD,Waist Circumference,0.339,0.11,3.082,0.002
+ADHD,Waist-Hip Ratio,0.332,0.106,3.142,0.002
+ADHD,Years of Education,-0.304,0.14,-2.174,0.03
+Age at Menarche,Age at Smoking,0.017,0.068,0.256,0.798
+Age at Menarche,Alzheimer's,0.061,0.056,1.098,0.272
+Age at Menarche,Anorexia,0.007,0.03,0.229,0.819
+Age at Menarche,Autism Spectrum,-0.079,0.044,-1.792,0.073
+Age at Menarche,Bipolar,0.057,0.037,1.571,0.116
+Age at Menarche,Birth Length,0.014,0.042,0.344,0.731
+Age at Menarche,Birth Weight,-0.067,0.052,-1.308,0.191
+Age at Menarche,BMI,-0.321,0.019,-17.022,5.61E-65
+Age at Menarche,BMI 2010,-0.331,0.025,-13.156,1.58E-39
+Age at Menarche,Childhood IQ,-0.076,0.056,-1.361,0.174
+Age at Menarche,Childhood Obesity,-0.355,0.041,-8.568,1.06E-17
+Age at Menarche,Cigarettes per Day,-0.08,0.055,-1.454,0.146
+Age at Menarche,College,0.065,0.036,1.795,0.073
+Age at Menarche,Coronary Artery Disease,-0.109,0.029,-3.828,0
+Age at Menarche,Crohn's Disease,0.045,0.032,1.415,0.157
+Age at Menarche,Depression,-0.053,0.058,-0.914,0.361
+Age at Menarche,Ever/Never Smoked,-0.003,0.045,-0.056,0.956
+Age at Menarche,Extreme BMI,-0.345,0.04,-8.718,2.83E-18
+Age at Menarche,Extreme Height,0.099,0.031,3.154,0.002
+Age at Menarche,Fasting Glucose,-0.04,0.034,-1.163,0.245
+Age at Menarche,Fasting Insulin,-0.188,0.05,-3.742,0
+Age at Menarche,Fasting Proinsulin,-0.095,0.057,-1.667,0.096
+Age at Menarche,Former/Current Smoker,0.05,0.056,0.906,0.365
+Age at Menarche,HbA1C,-0.12,0.052,-2.301,2.10E-02
+Age at Menarche,HDL,0.172,0.033,5.207,1.92E-07
+Age at Menarche,Height,0.116,0.021,5.577,2.44E-08
+Age at Menarche,Height 2010,0.106,0.023,4.594,4.34E-06
+Age at Menarche,Hip Circumference,-0.212,0.025,-8.456,2.78E-17
+Age at Menarche,HOMA-B,-0.155,0.05,-3.105,2.00E-03
+Age at Menarche,HOMA-IR,-0.209,0.065,-3.22,1.00E-03
+Age at Menarche,Infant Head Circumference,-0.12,0.058,-2.06,0.039
+Age at Menarche,LDL,0.025,0.032,0.795,0.427
+Age at Menarche,Lumbar Spine BMD,-0.067,0.033,-2.046,0.041
+Age at Menarche,Neck BMD,-0.069,0.032,-2.152,0.031
+Age at Menarche,Obesity Class 1,-0.316,0.028,-11.238,2.64E-29
+Age at Menarche,Obesity Class 2,-0.362,0.035,-10.325,5.41E-25
+Age at Menarche,Obesity Class 3,-0.391,0.052,-7.557,4.12E-14
+Age at Menarche,Overweight,-0.331,0.027,-12.108,9.64E-34
+Age at Menarche,Rheumatoid Arthritis,-0.008,0.032,-0.261,0.794
+Age at Menarche,Schizophrenia,0.014,0.026,0.551,0.582
+Age at Menarche,T2D,-0.126,0.037,-3.39,0.001
+Age at Menarche,Total Cholesterol,0.032,0.028,1.139,0.255
+Age at Menarche,Triglycerides,-0.12,0.029,-4.121,3.78E-05
+Age at Menarche,Ulcerative Colitis,0.041,0.044,0.943,0.345
+Age at Menarche,Waist Circumference,-0.239,0.024,-10.078,6.93E-24
+Age at Menarche,Waist-Hip Ratio,-0.198,0.027,-7.404,1.32E-13
+Age at Menarche,Years of Education,0.043,0.035,1.253,0.21
+Age at Smoking,Alzheimer's,0.18,0.173,1.041,0.298
+Age at Smoking,Anorexia,0.096,0.105,0.912,0.362
+Age at Smoking,Autism Spectrum,-0.07,0.148,-0.474,0.635
+Age at Smoking,Bipolar,0.269,0.114,2.359,0.018
+Age at Smoking,Birth Length,0.061,0.163,0.374,0.708
+Age at Smoking,Birth Weight,0.324,0.167,1.935,0.053
+Age at Smoking,BMI,-0.085,0.059,-1.443,0.149
+Age at Smoking,BMI 2010,-0.086,0.066,-1.298,0.194
+Age at Smoking,Childhood IQ,0.223,0.149,1.502,0.133
+Age at Smoking,Childhood Obesity,-0.214,0.11,-1.951,0.051
+Age at Smoking,Cigarettes per Day,0.242,0.193,1.256,0.209
+Age at Smoking,College,0.302,0.103,2.939,0.003
+Age at Smoking,Coronary Artery Disease,-0.213,0.093,-2.289,0.022
+Age at Smoking,Crohn's Disease,0.06,0.099,0.611,0.541
+Age at Smoking,Depression,-0.067,0.143,-0.47,0.638
+Age at Smoking,Ever/Never Smoked,-0.305,0.134,-2.274,0.023
+Age at Smoking,Extreme BMI,-0.076,0.123,-0.618,0.537
+Age at Smoking,Extreme Height,0.098,0.121,0.807,0.42
+Age at Smoking,Fasting Glucose,-0.087,0.122,-0.716,0.474
+Age at Smoking,Fasting Insulin,-0.149,0.151,-0.983,0.326
+Age at Smoking,Fasting Proinsulin,-0.33,0.239,-1.38,0.168
+Age at Smoking,Former/Current Smoker,-0.202,0.16,-1.265,0.206
+Age at Smoking,HbA1C,0.069,0.166,0.419,0.675
+Age at Smoking,HDL,0.07,0.098,0.709,0.478
+Age at Smoking,Height,0.11,0.062,1.785,0.074
+Age at Smoking,Height 2010,0.092,0.073,1.256,0.209
+Age at Smoking,Hip Circumference,0.068,0.072,0.95,0.342
+Age at Smoking,HOMA-B,0.081,0.174,0.463,0.643
+Age at Smoking,HOMA-IR,-0.048,0.186,-0.261,0.794
+Age at Smoking,Infant Head Circumference,-0.029,0.162,-0.182,0.856
+Age at Smoking,LDL,-0.188,0.103,-1.828,0.068
+Age at Smoking,Lumbar Spine BMD,0.107,0.103,1.038,0.299
+Age at Smoking,Neck BMD,0.075,0.098,0.762,0.446
+Age at Smoking,Obesity Class 1,-0.159,0.094,-1.694,0.09
+Age at Smoking,Obesity Class 2,-0.227,0.111,-2.05,0.04
+Age at Smoking,Obesity Class 3,-0.107,0.145,-0.741,0.459
+Age at Smoking,Overweight,-0.166,0.089,-1.866,0.062
+Age at Smoking,Rheumatoid Arthritis,-0.003,0.103,-0.026,0.979
+Age at Smoking,Schizophrenia,0.131,0.084,1.566,0.117
+Age at Smoking,T2D,0.014,0.121,0.112,0.911
+Age at Smoking,Total Cholesterol,-0.173,0.086,-2.008,0.045
+Age at Smoking,Triglycerides,-0.178,0.092,-1.934,0.053
+Age at Smoking,Ulcerative Colitis,0.059,0.125,0.471,0.638
+Age at Smoking,Waist Circumference,-0.036,0.066,-0.537,0.591
+Age at Smoking,Waist-Hip Ratio,-0.149,0.073,-2.046,0.041
+Age at Smoking,Years of Education,0.216,0.098,2.21,0.027
+Alzheimer's,Anorexia,0.108,0.077,1.412,0.158
+Alzheimer's,Autism Spectrum,0.042,0.109,0.388,0.698
+Alzheimer's,Bipolar,-0.002,0.082,-0.02,0.984
+Alzheimer's,Birth Length,-0.135,0.116,-1.165,0.244
+Alzheimer's,Birth Weight,-0.034,0.131,-0.261,0.794
+Alzheimer's,BMI,-0.028,0.059,-0.484,0.629
+Alzheimer's,BMI 2010,-0.096,0.068,-1.415,0.157
+Alzheimer's,Childhood IQ,-0.362,0.111,-3.257,0.001
+Alzheimer's,Childhood Obesity,-0.095,0.102,-0.93,0.352
+Alzheimer's,Cigarettes per Day,0.079,0.152,0.519,0.604
+Alzheimer's,College,-0.364,0.1,-3.639,0
+Alzheimer's,Coronary Artery Disease,-0.039,0.071,-0.546,0.585
+Alzheimer's,Crohn's Disease,-0.107,0.087,-1.229,0.219
+Alzheimer's,Depression,0.152,0.145,1.051,0.293
+Alzheimer's,Ever/Never Smoked,-0.048,0.098,-0.488,0.626
+Alzheimer's,Extreme BMI,-0.056,0.096,-0.582,0.56
+Alzheimer's,Extreme Height,-0.015,0.073,-0.207,0.836
+Alzheimer's,Fasting Glucose,0.183,0.095,1.931,0.053
+Alzheimer's,Fasting Insulin,-0.237,0.122,-1.947,0.052
+Alzheimer's,Fasting Proinsulin,-0.423,0.178,-2.38,0.017
+Alzheimer's,Former/Current Smoker,0.037,0.127,0.288,0.773
+Alzheimer's,HbA1C,-0.141,0.137,-1.031,0.303
+Alzheimer's,HDL,0.197,0.093,2.118,0.034
+Alzheimer's,Height,-0.127,0.051,-2.486,0.013
+Alzheimer's,Height 2010,-0.105,0.058,-1.806,0.071
+Alzheimer's,Hip Circumference,-0.088,0.063,-1.393,0.164
+Alzheimer's,HOMA-B,-0.161,0.129,-1.25,0.211
+Alzheimer's,HOMA-IR,-0.123,0.139,-0.885,0.376
+Alzheimer's,Infant Head Circumference,-0.317,0.163,-1.948,0.051
+Alzheimer's,LDL,0.003,0.12,0.023,0.982
+Alzheimer's,Lumbar Spine BMD,0.206,0.085,2.427,0.015
+Alzheimer's,Neck BMD,0.112,0.082,1.365,0.172
+Alzheimer's,Obesity Class 1,-0.064,0.068,-0.942,0.346
+Alzheimer's,Obesity Class 2,-0.017,0.091,-0.187,0.851
+Alzheimer's,Obesity Class 3,0.1,0.121,0.827,0.408
+Alzheimer's,Overweight,-0.061,0.066,-0.926,0.354
+Alzheimer's,Rheumatoid Arthritis,-0.13,0.094,-1.387,0.165
+Alzheimer's,Schizophrenia,0.052,0.054,0.961,0.337
+Alzheimer's,T2D,0.062,0.105,0.586,0.558
+Alzheimer's,Total Cholesterol,0.045,0.097,0.467,0.641
+Alzheimer's,Triglycerides,-0.065,0.073,-0.883,0.377
+Alzheimer's,Ulcerative Colitis,-0.156,0.103,-1.51,0.131
+Alzheimer's,Waist Circumference,-0.052,0.064,-0.812,0.417
+Alzheimer's,Waist-Hip Ratio,-0.009,0.065,-0.14,0.889
+Alzheimer's,Years of Education,-0.29,0.092,-3.156,0.002
+Anorexia,Autism Spectrum,0.009,0.06,0.145,0.884
+Anorexia,Bipolar,0.158,0.05,3.16,0.002
+Anorexia,Birth Length,0.027,0.067,0.406,6.85E-01
+Anorexia,Birth Weight,-0.054,0.065,-0.831,0.406
+Anorexia,BMI,-0.14,0.029,-4.754,2.00E-06
+Anorexia,BMI 2010,-0.123,0.036,-3.45,0.001
+Anorexia,Childhood IQ,0.062,0.106,0.589,0.556
+Anorexia,Childhood Obesity,-0.112,0.052,-2.152,0.031
+Anorexia,Cigarettes per Day,-0.064,0.081,-0.786,0.432
+Anorexia,College,0.162,0.05,3.247,0.001
+Anorexia,Coronary Artery Disease,-0.052,0.038,-1.367,0.171
+Anorexia,Crohn's Disease,-0.019,0.047,-0.401,0.689
+Anorexia,Depression,0.189,0.069,2.759,0.006
+Anorexia,Ever/Never Smoked,-0.178,0.056,-3.19,0.001
+Anorexia,Extreme BMI,-0.102,0.056,-1.808,0.071
+Anorexia,Extreme Height,-0.038,0.046,-0.817,0.414
+Anorexia,Fasting Glucose,-0.07,0.048,-1.465,0.143
+Anorexia,Fasting Insulin,-0.254,0.055,-4.583,4.59E-06
+Anorexia,Fasting Proinsulin,-0.149,0.084,-1.777,0.076
+Anorexia,Former/Current Smoker,0.193,0.074,2.606,0.009
+Anorexia,HbA1C,0.082,0.059,1.382,0.167
+Anorexia,HDL,0.098,0.043,2.285,0.022
+Anorexia,Height,-0.033,0.025,-1.321,0.186
+Anorexia,Height 2010,-0.027,0.031,-0.867,0.386
+Anorexia,Hip Circumference,-0.112,0.033,-3.36,0.001
+Anorexia,HOMA-B,-0.187,0.067,-2.805,0.005
+Anorexia,HOMA-IR,-0.288,0.079,-3.633,0
+Anorexia,Infant Head Circumference,-0.236,0.084,-2.818,0.005
+Anorexia,LDL,-0.056,0.051,-1.095,0.273
+Anorexia,Lumbar Spine BMD,0.069,0.044,1.554,0.12
+Anorexia,Neck BMD,0.026,0.04,0.643,0.52
+Anorexia,Obesity Class 1,-0.155,0.037,-4.193,2.75E-05
+Anorexia,Obesity Class 2,-0.164,0.05,-3.251,0.001
+Anorexia,Obesity Class 3,-0.171,0.076,-2.262,0.024
+Anorexia,Overweight,-0.112,0.038,-2.95,0.003
+Anorexia,Rheumatoid Arthritis,-0.117,0.042,-2.811,0.005
+Anorexia,Schizophrenia,0.186,0.036,5.21,1.88E-07
+Anorexia,T2D,-0.004,0.049,-0.08,0.936
+Anorexia,Total Cholesterol,-0.054,0.044,-1.227,0.22
+Anorexia,Triglycerides,-0.1,0.038,-2.663,0.008
+Anorexia,Ulcerative Colitis,0.059,0.052,1.151,0.25
+Anorexia,Waist Circumference,-0.206,0.032,-6.416,1.40E-10
+Anorexia,Waist-Hip Ratio,-0.219,0.037,-5.864,4.52E-09
+Anorexia,Years of Education,0.175,0.05,3.534,0
+Autism Spectrum,Bipolar,0.063,0.077,0.82,0.412
+Autism Spectrum,Birth Length,0.195,0.103,1.888,0.059
+Autism Spectrum,Birth Weight,0.044,0.089,0.494,0.621
+Autism Spectrum,BMI,-0.003,0.038,-0.068,0.946
+Autism Spectrum,BMI 2010,0.004,0.05,0.088,0.93
+Autism Spectrum,Childhood IQ,0.425,0.106,4.023,5.74E-05
+Autism Spectrum,Childhood Obesity,-0.058,0.069,-0.84,0.401
+Autism Spectrum,Cigarettes per Day,-0.082,0.119,-0.693,0.489
+Autism Spectrum,College,0.339,0.069,4.892,1.00E-06
+Autism Spectrum,Coronary Artery Disease,-0.063,0.049,-1.306,0.191
+Autism Spectrum,Crohn's Disease,-0.034,0.047,-0.72,0.471
+Autism Spectrum,Depression,0.135,0.1,1.354,1.76E-01
+Autism Spectrum,Ever/Never Smoked,0.087,0.072,1.21,0.226
+Autism Spectrum,Extreme BMI,0.016,0.075,0.21,0.834
+Autism Spectrum,Extreme Height,-0.13,0.063,-2.067,0.039
+Autism Spectrum,Fasting Glucose,-0.157,0.07,-2.23,0.026
+Autism Spectrum,Fasting Insulin,0.025,0.088,0.289,0.773
+Autism Spectrum,Fasting Proinsulin,0.057,0.113,0.503,0.615
+Autism Spectrum,Former/Current Smoker,0.088,0.108,0.814,0.415
+Autism Spectrum,HbA1C,0.102,0.1,1.021,0.307
+Autism Spectrum,HDL,0.008,0.055,0.142,0.887
+Autism Spectrum,Height,-0.034,0.036,-0.933,0.351
+Autism Spectrum,Height 2010,-0.082,0.043,-1.916,0.055
+Autism Spectrum,Hip Circumference,0.022,0.046,0.474,0.635
+Autism Spectrum,HOMA-B,0.06,0.11,0.544,0.587
+Autism Spectrum,HOMA-IR,-0.087,0.123,-0.711,0.477
+Autism Spectrum,Infant Head Circumference,0.063,0.104,0.604,0.546
+Autism Spectrum,LDL,-0.024,0.059,-0.403,0.687
+Autism Spectrum,Lumbar Spine BMD,0.055,0.065,0.846,0.397
+Autism Spectrum,Neck BMD,0.041,0.054,0.772,0.44
+Autism Spectrum,Obesity Class 1,0.03,0.054,0.548,0.583
+Autism Spectrum,Obesity Class 2,0.027,0.064,0.423,0.672
+Autism Spectrum,Obesity Class 3,0.057,0.095,0.604,0.546
+Autism Spectrum,Overweight,0.001,0.056,0.021,0.983
+Autism Spectrum,Rheumatoid Arthritis,-0.077,0.057,-1.348,0.178
+Autism Spectrum,Schizophrenia,0.181,0.051,3.514,0.00E+00
+Autism Spectrum,T2D,-0.048,0.078,-0.618,0.537
+Autism Spectrum,Total Cholesterol,0.016,0.049,0.331,0.741
+Autism Spectrum,Triglycerides,0.053,0.063,0.833,0.405
+Autism Spectrum,Ulcerative Colitis,0.003,0.066,0.039,0.969
+Autism Spectrum,Waist Circumference,0.039,0.044,0.876,0.381
+Autism Spectrum,Waist-Hip Ratio,0.075,0.047,1.587,0.113
+Autism Spectrum,Years of Education,0.34,0.071,4.763,1.91E-06
+Bipolar,Birth Length,-0.005,0.076,-0.061,0.951
+Bipolar,Birth Weight,-0.008,0.085,-0.096,0.924
+Bipolar,BMI,-0.068,0.04,-1.726,0.084
+Bipolar,BMI 2010,-0.062,0.04,-1.534,0.125
+Bipolar,Childhood IQ,0.132,0.088,1.495,0.135
+Bipolar,Childhood Obesity,-0.004,0.059,-0.067,0.947
+Bipolar,Cigarettes per Day,0.056,0.091,0.611,0.541
+Bipolar,College,0.302,0.059,5.143,2.70E-07
+Bipolar,Coronary Artery Disease,0.004,0.041,0.103,0.918
+Bipolar,Crohn's Disease,0.209,0.047,4.408,1.04E-05
+Bipolar,Depression,0.636,0.081,7.891,3.01E-15
+Bipolar,Ever/Never Smoked,0.09,0.054,1.661,0.097
+Bipolar,Extreme BMI,-0.077,0.066,-1.174,0.241
+Bipolar,Extreme Height,0.065,0.053,1.235,0.217
+Bipolar,Fasting Glucose,0.011,0.068,0.168,0.867
+Bipolar,Fasting Insulin,-0.025,0.082,-0.306,0.76
+Bipolar,Fasting Proinsulin,-0.021,0.098,-0.218,0.828
+Bipolar,Former/Current Smoker,0.141,0.086,1.64,0.101
+Bipolar,HbA1C,0.0004,0.081,-0.005,0.996
+Bipolar,HDL,0.026,0.05,0.528,0.598
+Bipolar,Height,0.012,0.033,0.377,0.707
+Bipolar,Height 2010,0.046,0.037,1.23,0.219
+Bipolar,Hip Circumference,-0.084,0.049,-1.704,0.088
+Bipolar,HOMA-B,0.039,0.075,0.523,0.601
+Bipolar,HOMA-IR,0.043,0.098,0.441,0.659
+Bipolar,Infant Head Circumference,0.089,0.098,0.907,0.364
+Bipolar,LDL,-0.03,0.053,-0.563,0.574
+Bipolar,Lumbar Spine BMD,0.102,0.056,1.819,0.069
+Bipolar,Neck BMD,0.195,0.053,3.711,0
+Bipolar,Obesity Class 1,-0.121,0.045,-2.699,0.007
+Bipolar,Obesity Class 2,-0.165,0.054,-3.076,0.002
+Bipolar,Obesity Class 3,-0.205,0.077,-2.668,0.008
+Bipolar,Overweight,-0.086,0.046,-1.86,0.063
+Bipolar,Rheumatoid Arthritis,-0.164,0.063,-2.622,0.009
+Bipolar,Schizophrenia,0.832,0.038,21.867,5.31E-106
+Bipolar,T2D,0.069,0.06,1.146,0.252
+Bipolar,Total Cholesterol,-0.011,0.051,-0.214,0.831
+Bipolar,Triglycerides,-0.007,0.049,-0.134,0.894
+Bipolar,Ulcerative Colitis,0.207,0.057,3.611,0
+Bipolar,Waist Circumference,-0.041,0.047,-0.875,0.381
+Bipolar,Waist-Hip Ratio,-0.054,0.044,-1.241,0.215
+Bipolar,Years of Education,0.334,0.056,5.949,2.70E-09
+Birth Length,Birth Weight,0.721,0.079,9.077,1.12E-19
+Birth Length,BMI,0.038,0.05,0.759,0.448
+Birth Length,BMI 2010,0.037,0.053,0.693,0.488
+Birth Length,Childhood IQ,0.043,0.097,0.446,0.655
+Birth Length,Childhood Obesity,0.036,0.085,0.423,0.672
+Birth Length,Cigarettes per Day,-0.014,0.118,-0.117,0.907
+Birth Length,College,0.133,0.071,1.874,0.061
+Birth Length,Coronary Artery Disease,-0.176,0.059,-2.979,0.003
+Birth Length,Crohn's Disease,0.024,0.069,0.352,0.725
+Birth Length,Depression,-0.078,0.116,-0.674,0.5
+Birth Length,Ever/Never Smoked,-0.098,0.084,-1.158,0.247
+Birth Length,Extreme BMI,-0.054,0.078,-0.689,0.491
+Birth Length,Extreme Height,0.525,0.073,7.209,5.63E-13
+Birth Length,Fasting Glucose,-0.07,0.075,-0.941,0.347
+Birth Length,Fasting Insulin,0.051,0.103,0.498,0.618
+Birth Length,Fasting Proinsulin,-0.004,0.13,-0.029,0.977
+Birth Length,Former/Current Smoker,-0.131,0.116,-1.124,0.261
+Birth Length,HbA1C,-0.181,0.111,-1.636,0.102
+Birth Length,HDL,0.042,0.066,0.639,0.523
+Birth Length,Height,0.503,0.049,10.274,9.22E-25
+Birth Length,Height 2010,0.514,0.056,9.231,2.69E-20
+Birth Length,Hip Circumference,0.265,0.059,4.456,8.33E-06
+Birth Length,HOMA-B,0.089,0.12,0.739,0.46
+Birth Length,HOMA-IR,0.143,0.13,1.099,0.272
+Birth Length,Infant Head Circumference,0.562,0.118,4.771,1.83E-06
+Birth Length,LDL,-0.151,0.077,-1.96,0.05
+Birth Length,Lumbar Spine BMD,0.014,0.079,0.172,0.863
+Birth Length,Neck BMD,0.013,0.066,0.203,0.839
+Birth Length,Obesity Class 1,0.03,0.056,0.538,0.59
+Birth Length,Obesity Class 2,-0.034,0.067,-0.51,0.61
+Birth Length,Obesity Class 3,-0.066,0.091,-0.72,0.472
+Birth Length,Overweight,0.026,0.059,0.438,0.661
+Birth Length,Rheumatoid Arthritis,-0.014,0.072,-0.192,0.847
+Birth Length,Schizophrenia,0.032,0.054,0.587,0.557
+Birth Length,T2D,-0.213,0.08,-2.651,0.008
+Birth Length,Total Cholesterol,-0.123,0.066,-1.859,0.063
+Birth Length,Triglycerides,-0.106,0.061,-1.73,0.084
+Birth Length,Ulcerative Colitis,0.189,0.089,2.118,0.034
+Birth Length,Waist Circumference,0.167,0.055,3.062,0.002
+Birth Length,Waist-Hip Ratio,-0.019,0.048,-0.404,0.687
+Birth Length,Years of Education,0.146,0.077,1.891,0.059
+Birth Weight,BMI,0.078,0.044,1.781,0.075
+Birth Weight,BMI 2010,0.11,0.057,1.939,0.052
+Birth Weight,Childhood IQ,0.141,0.124,1.134,0.257
+Birth Weight,Childhood Obesity,0.092,0.077,1.184,0.236
+Birth Weight,Cigarettes per Day,-0.284,0.125,-2.274,2.30E-02
+Birth Weight,College,0.066,0.064,1.034,0.301
+Birth Weight,Coronary Artery Disease,-0.146,0.055,-2.636,0.008
+Birth Weight,Crohn's Disease,0.097,0.071,1.366,0.172
+Birth Weight,Depression,-0.08,0.107,-0.753,0.452
+Birth Weight,Ever/Never Smoked,-0.064,0.082,-0.779,0.436
+Birth Weight,Extreme BMI,0.028,0.075,0.372,7.10E-01
+Birth Weight,Extreme Height,0.374,0.064,5.888,3.90E-09
+Birth Weight,Fasting Glucose,-0.177,0.081,-2.197,0.028
+Birth Weight,Fasting Insulin,-0.186,0.111,-1.676,0.094
+Birth Weight,Fasting Proinsulin,-0.069,0.132,-0.524,0.601
+Birth Weight,Former/Current Smoker,-0.058,0.111,-0.521,0.603
+Birth Weight,HbA1C,-0.397,0.114,-3.486,0
+Birth Weight,HDL,0.057,0.063,0.908,3.64E-01
+Birth Weight,Height,0.434,0.05,8.681,3.92E-18
+Birth Weight,Height 2010,0.41,0.053,7.753,8.96E-15
+Birth Weight,Hip Circumference,0.242,0.055,4.44,9.01E-06
+Birth Weight,HOMA-B,-0.009,0.102,-0.086,0.931
+Birth Weight,HOMA-IR,-0.093,0.117,-0.795,0.426
+Birth Weight,Infant Head Circumference,0.407,0.125,3.258,0.001
+Birth Weight,LDL,-0.145,0.078,-1.86,0.063
+Birth Weight,Lumbar Spine BMD,0.037,0.071,0.525,0.6
+Birth Weight,Neck BMD,0.004,0.072,0.059,0.953
+Birth Weight,Obesity Class 1,0.074,0.06,1.226,2.20E-01
+Birth Weight,Obesity Class 2,0.076,0.068,1.12,0.263
+Birth Weight,Obesity Class 3,0.098,0.096,1.014,0.31
+Birth Weight,Overweight,0.071,0.058,1.212,0.225
+Birth Weight,Rheumatoid Arthritis,-0.066,0.067,-0.981,3.26E-01
+Birth Weight,Schizophrenia,-0.002,0.056,-0.036,0.972
+Birth Weight,T2D,-0.337,0.089,-3.794,0.00E+00
+Birth Weight,Total Cholesterol,-0.131,0.066,-2,0.046
+Birth Weight,Triglycerides,-0.174,0.063,-2.745,0.006
+Birth Weight,Ulcerative Colitis,-0.014,0.087,-0.162,8.71E-01
+Birth Weight,Waist Circumference,0.139,0.055,2.509,1.20E-02
+Birth Weight,Waist-Hip Ratio,-0.084,0.059,-1.425,0.154
+Birth Weight,Years of Education,0.096,0.064,1.512,0.131
+BMI,BMI 2010,1.008,0.006,156.631,0
+BMI,Childhood IQ,-0.164,0.052,-3.138,0.002
+BMI,Childhood Obesity,0.733,0.04,18.504,1.91E-76
+BMI,Cigarettes per Day,0.282,0.063,4.471,7.79E-06
+BMI,College,-0.246,0.032,-7.756,8.74E-15
+BMI,Coronary Artery Disease,0.231,0.028,8.166,3.18E-16
+BMI,Crohn's Disease,-0.002,0.029,-0.08,0.936
+BMI,Depression,-0.028,0.051,-0.547,0.585
+BMI,Ever/Never Smoked,0.181,0.034,5.369,7.93E-08
+BMI,Extreme BMI,1.031,0.024,43.088,0
+BMI,Extreme Height,-0.058,0.033,-1.748,0.08
+BMI,Fasting Glucose,0.3,0.046,6.538,6.22E-11
+BMI,Fasting Insulin,0.656,0.06,10.946,6.95E-28
+BMI,Fasting Proinsulin,0.272,0.093,2.915,0.004
+BMI,Former/Current Smoker,-0.184,0.056,-3.307,0.001
+BMI,HbA1C,0.183,0.054,3.394,0.001
+BMI,HDL,-0.375,0.031,-12.065,1.62E-33
+BMI,Height,-0.072,0.02,-3.563,0
+BMI,Height 2010,-0.067,0.023,-2.937,0.003
+BMI,Hip Circumference,0.838,0.011,76.399,0
+BMI,HOMA-B,0.456,0.059,7.689,1.49E-14
+BMI,HOMA-IR,0.66,0.073,9.004,2.17E-19
+BMI,Infant Head Circumference,0.164,0.051,3.199,0.001
+BMI,LDL,0.054,0.033,1.628,0.104
+BMI,Lumbar Spine BMD,0.092,0.028,3.24,0.001
+BMI,Neck BMD,0.071,0.026,2.7,0.007
+BMI,Obesity Class 1,1.032,0.01,106.409,0
+BMI,Obesity Class 2,1.038,0.016,62.984,0
+BMI,Obesity Class 3,0.975,0.052,18.635,1.66E-77
+BMI,Overweight,1.022,0.012,87.433,0
+BMI,Rheumatoid Arthritis,0.046,0.029,1.602,0.109
+BMI,Schizophrenia,-0.103,0.021,-4.889,1.01E-06
+BMI,T2D,0.381,0.038,10.133,3.96E-24
+BMI,Total Cholesterol,-0.002,0.028,-0.058,0.954
+BMI,Triglycerides,0.279,0.034,8.131,4.25E-16
+BMI,Ulcerative Colitis,-0.122,0.034,-3.604,0
+BMI,Waist Circumference,0.897,0.008,106.477,0
+BMI,Waist-Hip Ratio,0.572,0.024,24.132,1.16E-128
+BMI,Years of Education,-0.289,0.032,-9.073,1.16E-19
+BMI 2010,Childhood IQ,-0.163,0.054,-3.016,0.003
+BMI 2010,Childhood Obesity,0.79,0.04,19.614,1.17E-85
+BMI 2010,Cigarettes per Day,0.227,0.074,3.061,0.002
+BMI 2010,College,-0.219,0.037,-5.953,2.64E-09
+BMI 2010,Coronary Artery Disease,0.22,0.032,6.81,9.75E-12
+BMI 2010,Crohn's Disease,0.026,0.038,0.691,0.49
+BMI 2010,Depression,-0.049,0.055,-0.887,0.375
+BMI 2010,Ever/Never Smoked,0.164,0.046,3.562,0
+BMI 2010,Extreme BMI,1.021,0.022,47.284,0.00E+00
+BMI 2010,Extreme Height,-0.046,0.035,-1.321,0.187
+BMI 2010,Fasting Glucose,0.237,0.046,5.113,3.17E-07
+BMI 2010,Fasting Insulin,0.567,0.058,9.758,1.71E-22
+BMI 2010,Fasting Proinsulin,0.205,0.074,2.758,0.006
+BMI 2010,Former/Current Smoker,-0.177,0.065,-2.728,6.00E-03
+BMI 2010,HbA1C,0.142,0.05,2.859,0.004
+BMI 2010,HDL,-0.345,0.045,-7.602,2.91E-14
+BMI 2010,Height,-0.051,0.024,-2.12,0.034
+BMI 2010,Height 2010,-0.056,0.026,-2.131,0.033
+BMI 2010,Hip Circumference,0.819,0.015,54.538,0
+BMI 2010,HOMA-B,0.398,0.064,6.22,4.97E-10
+BMI 2010,HOMA-IR,0.665,0.083,7.984,1.42E-15
+BMI 2010,Infant Head Circumference,0.172,0.058,2.954,0.003
+BMI 2010,LDL,0.029,0.042,0.703,0.482
+BMI 2010,Lumbar Spine BMD,0.087,0.033,2.602,0.009
+BMI 2010,Neck BMD,0.09,0.029,3.064,0.002
+BMI 2010,Obesity Class 1,1.044,0.009,111.008,0
+BMI 2010,Obesity Class 2,1.042,0.016,64.781,0
+BMI 2010,Obesity Class 3,1.023,0.05,20.552,7.32E-94
+BMI 2010,Overweight,1.031,0.01,107.951,0
+BMI 2010,Rheumatoid Arthritis,0.068,0.035,1.949,0.051
+BMI 2010,Schizophrenia,-0.075,0.024,-3.092,0.002
+BMI 2010,T2D,0.347,0.047,7.323,2.43E-13
+BMI 2010,Total Cholesterol,-0.021,0.034,-0.613,0.54
+BMI 2010,Triglycerides,0.231,0.038,6.039,1.55E-09
+BMI 2010,Ulcerative Colitis,-0.126,0.043,-2.925,0.003
+BMI 2010,Waist Circumference,0.873,0.014,61.853,0
+BMI 2010,Waist-Hip Ratio,0.547,0.032,17.089,1.80E-65
+BMI 2010,Years of Education,-0.258,0.037,-6.927,4.29E-12
+Childhood IQ,Childhood Obesity,-0.14,0.087,-1.602,0.109
+Childhood IQ,Cigarettes per Day,-0.181,0.135,-1.338,1.81E-01
+Childhood IQ,College,0.731,0.085,8.56,1.13E-17
+Childhood IQ,Coronary Artery Disease,-0.066,0.068,-0.961,0.336
+Childhood IQ,Crohn's Disease,-0.119,0.092,-1.293,0.196
+Childhood IQ,Depression,-0.025,0.12,-0.211,0.833
+Childhood IQ,Ever/Never Smoked,-0.23,0.108,-2.133,0.033
+Childhood IQ,Extreme BMI,-0.14,0.094,-1.493,0.136
+Childhood IQ,Extreme Height,0.158,0.074,2.131,0.033
+Childhood IQ,Fasting Glucose,0,0.094,0.001,0.999
+Childhood IQ,Fasting Insulin,-0.23,0.106,-2.172,0.03
+Childhood IQ,Fasting Proinsulin,-0.137,0.135,-1.016,0.309
+Childhood IQ,Former/Current Smoker,0.41,0.149,2.75,0.006
+Childhood IQ,HbA1C,-0.047,0.129,-0.364,0.716
+Childhood IQ,HDL,0.137,0.069,1.994,0.046
+Childhood IQ,Height,0.102,0.047,2.173,0.03
+Childhood IQ,Height 2010,0.108,0.052,2.077,0.038
+Childhood IQ,Hip Circumference,-0.078,0.06,-1.305,0.192
+Childhood IQ,HOMA-B,-0.251,0.114,-2.195,0.028
+Childhood IQ,HOMA-IR,-0.122,0.12,-1.018,0.309
+Childhood IQ,Infant Head Circumference,0.381,0.142,2.686,0.007
+Childhood IQ,LDL,-0.253,0.08,-3.146,0.002
+Childhood IQ,Lumbar Spine BMD,0.066,0.077,0.857,0.391
+Childhood IQ,Neck BMD,-0.004,0.065,-0.055,0.956
+Childhood IQ,Obesity Class 1,-0.177,0.059,-3.019,0.003
+Childhood IQ,Obesity Class 2,-0.138,0.074,-1.865,0.062
+Childhood IQ,Obesity Class 3,-0.204,0.103,-1.975,0.048
+Childhood IQ,Overweight,-0.156,0.063,-2.471,0.013
+Childhood IQ,Rheumatoid Arthritis,-0.222,0.078,-2.864,0.004
+Childhood IQ,Schizophrenia,-0.055,0.057,-0.954,0.34
+Childhood IQ,T2D,-0.091,0.095,-0.961,0.337
+Childhood IQ,Total Cholesterol,-0.221,0.07,-3.142,0.002
+Childhood IQ,Triglycerides,-0.181,0.063,-2.876,0.004
+Childhood IQ,Ulcerative Colitis,-0.012,0.102,-0.117,0.907
+Childhood IQ,Waist Circumference,-0.156,0.056,-2.77,0.006
+Childhood IQ,Waist-Hip Ratio,-0.145,0.051,-2.828,5.00E-03
+Childhood IQ,Years of Education,0.752,0.085,8.893,5.94E-19
+Childhood Obesity,Cigarettes per Day,0.266,0.101,2.64,8.00E-03
+Childhood Obesity,College,-0.214,0.05,-4.309,1.64E-05
+Childhood Obesity,Coronary Artery Disease,0.163,0.046,3.542,0
+Childhood Obesity,Crohn's Disease,-0.013,0.053,-0.242,0.809
+Childhood Obesity,Depression,-0.07,0.09,-0.771,0.441
+Childhood Obesity,Ever/Never Smoked,0.177,0.065,2.706,7.00E-03
+Childhood Obesity,Extreme BMI,0.852,0.072,11.814,3.32E-32
+Childhood Obesity,Extreme Height,-0.057,0.064,-0.896,0.37
+Childhood Obesity,Fasting Glucose,0.049,0.063,0.778,0.437
+Childhood Obesity,Fasting Insulin,0.322,0.087,3.714,0
+Childhood Obesity,Fasting Proinsulin,-0.071,0.117,-0.604,0.546
+Childhood Obesity,Former/Current Smoker,-0.153,0.092,-1.664,0.096
+Childhood Obesity,HbA1C,0.115,0.079,1.453,0.146
+Childhood Obesity,HDL,-0.187,0.056,-3.356,1.00E-03
+Childhood Obesity,Height,-0.018,0.038,-0.484,0.628
+Childhood Obesity,Height 2010,-0.025,0.042,-0.607,0.544
+Childhood Obesity,Hip Circumference,0.629,0.046,13.707,9.28E-43
+Childhood Obesity,HOMA-B,0.344,0.093,3.678,0
+Childhood Obesity,HOMA-IR,0.397,0.103,3.845,0
+Childhood Obesity,Infant Head Circumference,0.273,0.091,2.996,0.003
+Childhood Obesity,LDL,-0.135,0.059,-2.278,0.023
+Childhood Obesity,Lumbar Spine BMD,0.047,0.053,0.893,0.372
+Childhood Obesity,Neck BMD,0.008,0.052,0.16,8.73E-01
+Childhood Obesity,Obesity Class 1,0.787,0.047,16.568,1.18E-61
+Childhood Obesity,Obesity Class 2,0.845,0.054,15.498,3.61E-54
+Childhood Obesity,Obesity Class 3,0.8,0.081,9.92,3.40E-23
+Childhood Obesity,Overweight,0.815,0.047,17.361,1.64E-67
+Childhood Obesity,Rheumatoid Arthritis,0.058,0.059,0.984,0.325
+Childhood Obesity,Schizophrenia,-0.045,0.041,-1.103,0.27
+Childhood Obesity,T2D,0.223,0.064,3.475,0.001
+Childhood Obesity,Total Cholesterol,-0.111,0.049,-2.25,0.024
+Childhood Obesity,Triglycerides,0.111,0.05,2.208,2.70E-02
+Childhood Obesity,Ulcerative Colitis,-0.239,0.056,-4.268,1.97E-05
+Childhood Obesity,Waist Circumference,0.608,0.041,14.878,4.61E-50
+Childhood Obesity,Waist-Hip Ratio,0.353,0.043,8.197,2.47E-16
+Childhood Obesity,Years of Education,-0.23,0.048,-4.743,2.10E-06
+Cigarettes per Day,College,-0.29,0.103,-2.816,0.005
+Cigarettes per Day,Coronary Artery Disease,0.252,0.085,2.964,0.003
+Cigarettes per Day,Crohn's Disease,0.217,0.081,2.671,0.008
+Cigarettes per Day,Depression,0.045,0.127,0.355,0.723
+Cigarettes per Day,Ever/Never Smoked,0.366,0.104,3.508,0
+Cigarettes per Day,Extreme BMI,0.263,0.12,2.193,0.028
+Cigarettes per Day,Extreme Height,-0.067,0.077,-0.868,0.385
+Cigarettes per Day,Fasting Glucose,0.059,0.099,0.594,0.553
+Cigarettes per Day,Fasting Insulin,0.033,0.12,0.273,0.785
+Cigarettes per Day,Fasting Proinsulin,0.102,0.165,0.62,5.35E-01
+Cigarettes per Day,Former/Current Smoker,-0.619,0.141,-4.394,1.11E-05
+Cigarettes per Day,HbA1C,0.13,0.117,1.115,0.265
+Cigarettes per Day,HDL,-0.332,0.096,-3.458,0.001
+Cigarettes per Day,Height,-0.034,0.045,-0.746,0.455
+Cigarettes per Day,Height 2010,-0.015,0.053,-0.291,0.771
+Cigarettes per Day,Hip Circumference,0.152,0.068,2.22,0.026
+Cigarettes per Day,HOMA-B,0.041,0.12,0.342,0.732
+Cigarettes per Day,HOMA-IR,0.024,0.14,0.175,0.861
+Cigarettes per Day,Infant Head Circumference,0.135,0.148,0.911,0.362
+Cigarettes per Day,LDL,-0.032,0.094,-0.344,0.731
+Cigarettes per Day,Lumbar Spine BMD,0.062,0.083,0.747,0.455
+Cigarettes per Day,Neck BMD,0.022,0.074,0.295,0.768
+Cigarettes per Day,Obesity Class 1,0.329,0.092,3.563,0
+Cigarettes per Day,Obesity Class 2,0.322,0.097,3.332,0.001
+Cigarettes per Day,Obesity Class 3,0.29,0.136,2.126,0.034
+Cigarettes per Day,Overweight,0.338,0.092,3.688,0
+Cigarettes per Day,Rheumatoid Arthritis,0.123,0.074,1.672,0.095
+Cigarettes per Day,Schizophrenia,0.105,0.059,1.785,0.074
+Cigarettes per Day,T2D,0.218,0.093,2.339,0.019
+Cigarettes per Day,Total Cholesterol,-0.028,0.082,-0.344,0.731
+Cigarettes per Day,Triglycerides,0.263,0.075,3.522,0
+Cigarettes per Day,Ulcerative Colitis,0.117,0.094,1.237,2.16E-01
+Cigarettes per Day,Waist Circumference,0.291,0.073,4.017,5.89E-05
+Cigarettes per Day,Waist-Hip Ratio,0.346,0.081,4.275,1.91E-05
+Cigarettes per Day,Years of Education,-0.308,0.099,-3.113,2.00E-03
+College,Coronary Artery Disease,-0.279,0.043,-6.528,6.66E-11
+College,Crohn's Disease,-0.055,0.056,-0.979,3.28E-01
+College,Depression,-0.091,0.081,-1.126,2.60E-01
+College,Ever/Never Smoked,-0.354,0.059,-5.974,2.32E-09
+College,Extreme BMI,-0.21,0.05,-4.195,2.73E-05
+College,Extreme Height,0.078,0.043,1.805,0.071
+College,Fasting Glucose,-0.074,0.056,-1.337,1.81E-01
+College,Fasting Insulin,-0.258,0.066,-3.897,9.74E-05
+College,Fasting Proinsulin,-0.156,0.096,-1.622,1.05E-01
+College,Former/Current Smoker,0.555,0.097,5.715,1.09E-08
+College,HbA1C,-0.203,0.083,-2.442,0.015
+College,HDL,0.283,0.047,6.018,1.77E-09
+College,Height,0.118,0.027,4.321,1.55E-05
+College,Height 2010,0.11,0.032,3.483,0
+College,Hip Circumference,-0.133,0.037,-3.602,0.00E+00
+College,HOMA-B,-0.164,0.075,-2.194,2.80E-02
+College,HOMA-IR,-0.257,0.078,-3.283,0.001
+College,Infant Head Circumference,0.19,0.089,2.141,0.032
+College,LDL,-0.13,0.05,-2.622,0.009
+College,Lumbar Spine BMD,0.046,0.046,1.014,0.311
+College,Neck BMD,0.035,0.044,0.806,4.20E-01
+College,Obesity Class 1,-0.253,0.036,-6.987,2.80E-12
+College,Obesity Class 2,-0.271,0.044,-6.16,7.27E-10
+College,Obesity Class 3,-0.332,0.064,-5.182,2.20E-07
+College,Overweight,-0.267,0.04,-6.704,2.03E-11
+College,Rheumatoid Arthritis,-0.274,0.052,-5.26,1.44E-07
+College,Schizophrenia,0.053,0.036,1.484,0.138
+College,T2D,-0.178,0.054,-3.292,0.001
+College,Total Cholesterol,-0.089,0.041,-2.167,3.00E-02
+College,Triglycerides,-0.236,0.042,-5.609,2.03E-08
+College,Ulcerative Colitis,0.057,0.06,0.942,3.46E-01
+College,Waist Circumference,-0.239,0.033,-7.146,8.91E-13
+College,Waist-Hip Ratio,-0.285,0.036,-7.99,1.35E-15
+College,Years of Education,1.012,0.014,72.095,0
+Coronary Artery Disease,Crohn's Disease,0.078,0.04,1.938,0.053
+Coronary Artery Disease,Depression,0.147,0.06,2.454,1.40E-02
+Coronary Artery Disease,Ever/Never Smoked,0.266,0.046,5.756,8.62E-09
+Coronary Artery Disease,Extreme BMI,0.252,0.047,5.32,1.04E-07
+Coronary Artery Disease,Extreme Height,-0.13,0.036,-3.595,0
+Coronary Artery Disease,Fasting Glucose,0.106,0.047,2.279,2.30E-02
+Coronary Artery Disease,Fasting Insulin,0.269,0.064,4.227,2.37E-05
+Coronary Artery Disease,Fasting Proinsulin,0.01,0.081,0.127,8.99E-01
+Coronary Artery Disease,Former/Current Smoker,-0.319,0.068,-4.712,2.46E-06
+Coronary Artery Disease,HbA1C,0.24,0.062,3.886,0
+Coronary Artery Disease,HDL,-0.314,0.042,-7.532,4.98E-14
+Coronary Artery Disease,Height,-0.098,0.023,-4.236,2.28E-05
+Coronary Artery Disease,Height 2010,-0.098,0.025,-3.925,8.66E-05
+Coronary Artery Disease,Hip Circumference,0.139,0.034,4.128,3.66E-05
+Coronary Artery Disease,HOMA-B,0.126,0.063,2.01,4.40E-02
+Coronary Artery Disease,HOMA-IR,0.223,0.069,3.255,0.001
+Coronary Artery Disease,Infant Head Circumference,-0.062,0.075,-0.823,4.10E-01
+Coronary Artery Disease,LDL,0.221,0.051,4.343,1.41E-05
+Coronary Artery Disease,Lumbar Spine BMD,0.047,0.039,1.198,0.231
+Coronary Artery Disease,Neck BMD,0.035,0.036,0.954,3.40E-01
+Coronary Artery Disease,Obesity Class 1,0.205,0.035,5.885,3.98E-09
+Coronary Artery Disease,Obesity Class 2,0.234,0.042,5.545,2.93E-08
+Coronary Artery Disease,Obesity Class 3,0.212,0.061,3.48,1.00E-03
+Coronary Artery Disease,Overweight,0.204,0.036,5.63,1.80E-08
+Coronary Artery Disease,Rheumatoid Arthritis,0.078,0.038,2.077,0.038
+Coronary Artery Disease,Schizophrenia,-0.027,0.029,-0.932,3.51E-01
+Coronary Artery Disease,T2D,0.367,0.051,7.167,7.69E-13
+Coronary Artery Disease,Total Cholesterol,0.155,0.049,3.196,1.00E-03
+Coronary Artery Disease,Triglycerides,0.269,0.039,6.837,8.08E-12
+Coronary Artery Disease,Ulcerative Colitis,0.025,0.047,0.53,5.96E-01
+Coronary Artery Disease,Waist Circumference,0.262,0.032,8.289,1.14E-16
+Coronary Artery Disease,Waist-Hip Ratio,0.301,0.032,9.272,1.82E-20
+Coronary Artery Disease,Years of Education,-0.324,0.046,-7.025,2.14E-12
+Crohn's Disease,Depression,0.003,0.057,0.058,0.954
+Crohn's Disease,Ever/Never Smoked,-0.02,0.055,-0.366,0.715
+Crohn's Disease,Extreme BMI,-0.037,0.055,-0.681,0.496
+Crohn's Disease,Extreme Height,0.095,0.053,1.792,0.073
+Crohn's Disease,Fasting Glucose,-0.097,0.056,-1.727,0.084
+Crohn's Disease,Fasting Insulin,-0.006,0.063,-0.095,0.925
+Crohn's Disease,Fasting Proinsulin,0.186,0.094,1.983,0.047
+Crohn's Disease,Former/Current Smoker,-0.015,0.076,-0.195,0.846
+Crohn's Disease,HbA1C,-0.002,0.07,-0.028,0.978
+Crohn's Disease,HDL,-0.052,0.046,-1.128,0.259
+Crohn's Disease,Height,0.053,0.029,1.838,0.066
+Crohn's Disease,Height 2010,0.087,0.033,2.595,0.009
+Crohn's Disease,Hip Circumference,0.022,0.037,0.604,0.546
+Crohn's Disease,HOMA-B,0.025,0.068,0.362,0.717
+Crohn's Disease,HOMA-IR,-0.046,0.071,-0.64,0.522
+Crohn's Disease,Infant Head Circumference,0.071,0.081,0.873,0.383
+Crohn's Disease,LDL,-0.085,0.046,-1.868,0.062
+Crohn's Disease,Lumbar Spine BMD,-0.04,0.051,-0.779,0.436
+Crohn's Disease,Neck BMD,-0.111,0.046,-2.391,0.017
+Crohn's Disease,Obesity Class 1,0.007,0.038,0.175,0.861
+Crohn's Disease,Obesity Class 2,-0.033,0.044,-0.754,0.451
+Crohn's Disease,Obesity Class 3,-0.098,0.07,-1.395,0.163
+Crohn's Disease,Overweight,-0.02,0.041,-0.492,0.623
+Crohn's Disease,Rheumatoid Arthritis,0.071,0.057,1.244,0.213
+Crohn's Disease,Schizophrenia,0.101,0.034,2.965,0.003
+Crohn's Disease,T2D,0.034,0.054,0.619,0.536
+Crohn's Disease,Total Cholesterol,-0.08,0.042,-1.881,0.06
+Crohn's Disease,Triglycerides,0.016,0.047,0.334,7.39E-01
+Crohn's Disease,Ulcerative Colitis,0.7,0.047,14.93,2.12E-50
+Crohn's Disease,Waist Circumference,0.002,0.037,0.062,0.95
+Crohn's Disease,Waist-Hip Ratio,-0.014,0.04,-0.356,0.722
+Crohn's Disease,Years of Education,-0.051,0.054,-0.953,0.34
+Depression,Ever/Never Smoked,0.168,0.09,1.864,0.062
+Depression,Extreme BMI,-0.149,0.091,-1.641,0.101
+Depression,Extreme Height,-0.025,0.076,-0.335,0.737
+Depression,Fasting Glucose,-0.061,0.079,-0.771,0.441
+Depression,Fasting Insulin,-0.105,0.109,-0.969,0.332
+Depression,Fasting Proinsulin,-0.019,0.137,-0.137,0.891
+Depression,Former/Current Smoker,-0.109,0.116,-0.937,0.349
+Depression,HbA1C,-0.132,0.108,-1.225,0.221
+Depression,HDL,-0.037,0.075,-0.488,0.626
+Depression,Height,-0.065,0.041,-1.595,0.111
+Depression,Height 2010,-0.062,0.048,-1.29,0.197
+Depression,Hip Circumference,-0.08,0.058,-1.39,0.165
+Depression,HOMA-B,0.05,0.112,0.448,0.654
+Depression,HOMA-IR,0.064,0.135,0.47,0.638
+Depression,Infant Head Circumference,0.053,0.129,0.414,0.679
+Depression,LDL,-0.058,0.082,-0.71,0.478
+Depression,Lumbar Spine BMD,0.044,0.072,0.607,0.544
+Depression,Neck BMD,0.091,0.068,1.353,0.176
+Depression,Obesity Class 1,-0.052,0.065,-0.804,0.421
+Depression,Obesity Class 2,-0.116,0.086,-1.349,0.177
+Depression,Obesity Class 3,-0.024,0.118,-0.205,0.838
+Depression,Overweight,-0.049,0.07,-0.695,0.487
+Depression,Rheumatoid Arthritis,-0.028,0.071,-0.398,6.91E-01
+Depression,Schizophrenia,0.461,0.06,7.728,1.09E-14
+Depression,T2D,0.051,0.086,0.586,0.558
+Depression,Total Cholesterol,-0.014,0.075,-0.187,0.852
+Depression,Triglycerides,0.134,0.069,1.94,0.052
+Depression,Ulcerative Colitis,0.194,0.082,2.36,0.018
+Depression,Waist Circumference,0.027,0.06,0.45,0.653
+Depression,Waist-Hip Ratio,0.12,0.059,2.049,4.00E-02
+Depression,Years of Education,0.008,0.081,0.093,0.926
+Ever/Never Smoked,Extreme BMI,0.183,0.064,2.873,0.004
+Ever/Never Smoked,Extreme Height,-0.075,0.058,-1.295,0.195
+Ever/Never Smoked,Fasting Glucose,0.088,0.065,1.354,0.176
+Ever/Never Smoked,Fasting Insulin,0.182,0.081,2.254,0.024
+Ever/Never Smoked,Fasting Proinsulin,0.281,0.149,1.886,5.90E-02
+Ever/Never Smoked,Former/Current Smoker,-0.535,0.1,-5.335,9.56E-08
+Ever/Never Smoked,HbA1C,0.081,0.081,1.002,0.316
+Ever/Never Smoked,HDL,-0.147,0.052,-2.839,0.005
+Ever/Never Smoked,Height,-0.062,0.032,-1.915,0.056
+Ever/Never Smoked,Height 2010,-0.045,0.035,-1.299,0.194
+Ever/Never Smoked,Hip Circumference,0.073,0.042,1.726,0.084
+Ever/Never Smoked,HOMA-B,0.087,0.081,1.084,0.278
+Ever/Never Smoked,HOMA-IR,0.204,0.102,1.998,0.046
+Ever/Never Smoked,Infant Head Circumference,-0.025,0.105,-0.239,0.811
+Ever/Never Smoked,LDL,-0.002,0.054,-0.028,0.977
+Ever/Never Smoked,Lumbar Spine BMD,-0.014,0.058,-0.247,0.805
+Ever/Never Smoked,Neck BMD,0.018,0.054,0.338,7.36E-01
+Ever/Never Smoked,Obesity Class 1,0.216,0.047,4.602,4.19E-06
+Ever/Never Smoked,Obesity Class 2,0.174,0.058,2.99,0.003
+Ever/Never Smoked,Obesity Class 3,0.183,0.083,2.188,0.029
+Ever/Never Smoked,Overweight,0.146,0.05,2.932,0.003
+Ever/Never Smoked,Rheumatoid Arthritis,0.146,0.052,2.805,0.005
+Ever/Never Smoked,Schizophrenia,0.1,0.041,2.449,0.014
+Ever/Never Smoked,T2D,0.04,0.069,0.573,0.567
+Ever/Never Smoked,Total Cholesterol,-0.002,0.048,-0.05,0.96
+Ever/Never Smoked,Triglycerides,0.16,0.047,3.38,0.001
+Ever/Never Smoked,Ulcerative Colitis,0.009,0.065,0.142,8.87E-01
+Ever/Never Smoked,Waist Circumference,0.176,0.043,4.112,3.92E-05
+Ever/Never Smoked,Waist-Hip Ratio,0.196,0.042,4.664,3.10E-06
+Ever/Never Smoked,Years of Education,-0.337,0.06,-5.578,2.44E-08
+Extreme BMI,Extreme Height,-0.069,0.045,-1.536,0.124
+Extreme BMI,Fasting Glucose,0.225,0.06,3.77,0.00E+00
+Extreme BMI,Fasting Insulin,0.645,0.091,7.071,1.53E-12
+Extreme BMI,Fasting Proinsulin,0.307,0.102,3.005,0.003
+Extreme BMI,Former/Current Smoker,-0.126,0.086,-1.465,0.143
+Extreme BMI,HbA1C,0.125,0.092,1.36,0.174
+Extreme BMI,HDL,-0.349,0.082,-4.258,2.06E-05
+Extreme BMI,Height,-0.082,0.031,-2.634,8.00E-03
+Extreme BMI,Height 2010,-0.079,0.038,-2.078,3.80E-02
+Extreme BMI,Hip Circumference,0.861,0.031,27.657,2.29E-168
+Extreme BMI,HOMA-B,0.512,0.118,4.349,1.37E-05
+Extreme BMI,HOMA-IR,0.653,0.115,5.675,1.39E-08
+Extreme BMI,Infant Head Circumference,0.134,0.097,1.375,0.169
+Extreme BMI,LDL,0.056,0.055,1.028,0.304
+Extreme BMI,Lumbar Spine BMD,0.039,0.051,0.764,0.445
+Extreme BMI,Neck BMD,0.049,0.048,1.018,0.309
+Extreme BMI,Obesity Class 1,1.002,0.024,41.6,0
+Extreme BMI,Obesity Class 2,1.029,0.022,46.322,0.00E+00
+Extreme BMI,Obesity Class 3,1.057,0.043,24.569,2.68E-133
+Extreme BMI,Overweight,1.022,0.028,36.558,1.34E-292
+Extreme BMI,Rheumatoid Arthritis,0.074,0.053,1.394,0.163
+Extreme BMI,Schizophrenia,-0.041,0.041,-1,3.17E-01
+Extreme BMI,T2D,0.362,0.066,5.508,3.63E-08
+Extreme BMI,Total Cholesterol,-0.004,0.044,-0.1,0.92
+Extreme BMI,Triglycerides,0.208,0.055,3.763,0
+Extreme BMI,Ulcerative Colitis,-0.196,0.062,-3.153,2.00E-03
+Extreme BMI,Waist Circumference,0.893,0.03,29.412,3.91E-190
+Extreme BMI,Waist-Hip Ratio,0.522,0.047,11.008,3.51E-28
+Extreme BMI,Years of Education,-0.215,0.051,-4.187,2.83E-05
+Extreme Height,Fasting Glucose,0.048,0.059,0.805,0.421
+Extreme Height,Fasting Insulin,0.011,0.067,0.169,0.866
+Extreme Height,Fasting Proinsulin,0.146,0.083,1.744,0.081
+Extreme Height,Former/Current Smoker,0.009,0.071,0.128,0.898
+Extreme Height,HbA1C,-0.118,0.085,-1.394,0.163
+Extreme Height,HDL,0.023,0.057,0.406,6.85E-01
+Extreme Height,Height,0.988,0.014,71.141,0
+Extreme Height,Height 2010,0.98,0.013,77.633,0
+Extreme Height,Hip Circumference,0.398,0.036,11.113,1.09E-28
+Extreme Height,HOMA-B,-0.035,0.079,-0.44,0.66
+Extreme Height,HOMA-IR,0.067,0.078,0.86,0.39
+Extreme Height,Infant Head Circumference,0.202,0.092,2.199,0.028
+Extreme Height,LDL,-0.12,0.048,-2.48,0.013
+Extreme Height,Lumbar Spine BMD,0.023,0.045,0.499,0.618
+Extreme Height,Neck BMD,-0.005,0.047,-0.096,0.924
+Extreme Height,Obesity Class 1,-0.069,0.04,-1.749,0.08
+Extreme Height,Obesity Class 2,-0.016,0.042,-0.385,0.7
+Extreme Height,Obesity Class 3,-0.086,0.049,-1.748,0.081
+Extreme Height,Overweight,-0.052,0.038,-1.357,0.175
+Extreme Height,Rheumatoid Arthritis,0.042,0.045,0.946,0.344
+Extreme Height,Schizophrenia,0.042,0.034,1.219,0.223
+Extreme Height,T2D,-0.038,0.061,-0.631,0.528
+Extreme Height,Total Cholesterol,-0.106,0.042,-2.543,0.011
+Extreme Height,Triglycerides,-0.068,0.039,-1.746,0.081
+Extreme Height,Ulcerative Colitis,0.045,0.064,0.707,4.80E-01
+Extreme Height,Waist Circumference,0.225,0.036,6.216,5.10E-10
+Extreme Height,Waist-Hip Ratio,-0.086,0.038,-2.236,0.025
+Extreme Height,Years of Education,0.075,0.044,1.705,0.088
+Fasting Glucose,Fasting Insulin,0.296,0.093,3.173,0.002
+Fasting Glucose,Fasting Proinsulin,0.359,0.143,2.515,0.012
+Fasting Glucose,Former/Current Smoker,-0.201,0.086,-2.344,0.019
+Fasting Glucose,HbA1C,0.4,0.098,4.065,4.81E-05
+Fasting Glucose,HDL,-0.208,0.067,-3.121,2.00E-03
+Fasting Glucose,Height,-0.016,0.034,-0.472,6.37E-01
+Fasting Glucose,Height 2010,-0.018,0.04,-0.461,6.45E-01
+Fasting Glucose,Hip Circumference,0.238,0.056,4.246,2.18E-05
+Fasting Glucose,HOMA-B,-0.47,0.104,-4.521,6.17E-06
+Fasting Glucose,HOMA-IR,0.497,0.088,5.639,1.71E-08
+Fasting Glucose,Infant Head Circumference,0.008,0.096,0.085,0.933
+Fasting Glucose,LDL,-0.055,0.066,-0.833,0.405
+Fasting Glucose,Lumbar Spine BMD,0.125,0.06,2.086,0.037
+Fasting Glucose,Neck BMD,0.141,0.055,2.573,1.00E-02
+Fasting Glucose,Obesity Class 1,0.26,0.05,5.225,1.74E-07
+Fasting Glucose,Obesity Class 2,0.249,0.062,4.048,5.16E-05
+Fasting Glucose,Obesity Class 3,0.258,0.081,3.195,1.00E-03
+Fasting Glucose,Overweight,0.271,0.054,5.044,4.55E-07
+Fasting Glucose,Rheumatoid Arthritis,0.035,0.057,0.623,0.533
+Fasting Glucose,Schizophrenia,-0.037,0.035,-1.052,2.93E-01
+Fasting Glucose,T2D,0.667,0.103,6.488,8.69E-11
+Fasting Glucose,Total Cholesterol,-0.096,0.065,-1.482,0.138
+Fasting Glucose,Triglycerides,0.117,0.095,1.226,0.22
+Fasting Glucose,Ulcerative Colitis,0.044,0.07,0.636,5.25E-01
+Fasting Glucose,Waist Circumference,0.302,0.051,5.945,2.76E-09
+Fasting Glucose,Waist-Hip Ratio,0.202,0.052,3.868,0
+Fasting Glucose,Years of Education,-0.11,0.059,-1.858,0.063
+Fasting Insulin,Fasting Proinsulin,0.252,0.139,1.82,0.069
+Fasting Insulin,Former/Current Smoker,-0.135,0.1,-1.35,0.177
+Fasting Insulin,HbA1C,0.166,0.109,1.525,0.127
+Fasting Insulin,HDL,-0.554,0.077,-7.192,6.39E-13
+Fasting Insulin,Height,0.035,0.039,0.89,3.74E-01
+Fasting Insulin,Height 2010,0.044,0.046,0.961,3.37E-01
+Fasting Insulin,Hip Circumference,0.554,0.064,8.662,4.64E-18
+Fasting Insulin,HOMA-B,1.102,0.077,14.406,4.72E-47
+Fasting Insulin,HOMA-IR,1.532,0.108,14.202,8.89E-46
+Fasting Insulin,Infant Head Circumference,0.038,0.121,0.317,0.751
+Fasting Insulin,LDL,0.082,0.084,0.976,0.329
+Fasting Insulin,Lumbar Spine BMD,0.047,0.075,0.62,0.536
+Fasting Insulin,Neck BMD,0.119,0.068,1.761,7.80E-02
+Fasting Insulin,Obesity Class 1,0.606,0.059,10.361,3.73E-25
+Fasting Insulin,Obesity Class 2,0.669,0.08,8.394,4.71E-17
+Fasting Insulin,Obesity Class 3,0.632,0.114,5.544,2.97E-08
+Fasting Insulin,Overweight,0.635,0.062,10.156,3.10E-24
+Fasting Insulin,Rheumatoid Arthritis,0.033,0.063,0.528,0.597
+Fasting Insulin,Schizophrenia,-0.008,0.048,-0.162,8.71E-01
+Fasting Insulin,T2D,0.483,0.095,5.074,3.90E-07
+Fasting Insulin,Total Cholesterol,0.035,0.071,0.485,6.28E-01
+Fasting Insulin,Triglycerides,0.457,0.094,4.877,1.08E-06
+Fasting Insulin,Ulcerative Colitis,-0.051,0.069,-0.749,4.54E-01
+Fasting Insulin,Waist Circumference,0.729,0.065,11.233,2.82E-29
+Fasting Insulin,Waist-Hip Ratio,0.661,0.061,10.884,1.37E-27
+Fasting Insulin,Years of Education,-0.204,0.063,-3.247,0.001
+Fasting Proinsulin,Former/Current Smoker,-0.24,0.179,-1.341,0.18
+Fasting Proinsulin,HbA1C,0.063,0.153,0.413,0.68
+Fasting Proinsulin,HDL,-0.235,0.111,-2.126,0.034
+Fasting Proinsulin,Height,0.081,0.052,1.566,0.117
+Fasting Proinsulin,Height 2010,0.076,0.058,1.299,0.194
+Fasting Proinsulin,Hip Circumference,0.289,0.109,2.651,0.008
+Fasting Proinsulin,HOMA-B,-0.011,0.158,-0.071,0.943
+Fasting Proinsulin,HOMA-IR,0.257,0.141,1.817,0.069
+Fasting Proinsulin,Infant Head Circumference,0.073,0.181,0.402,0.688
+Fasting Proinsulin,LDL,0.074,0.118,0.626,0.532
+Fasting Proinsulin,Lumbar Spine BMD,0.028,0.094,0.291,0.771
+Fasting Proinsulin,Neck BMD,-0.028,0.122,-0.225,0.822
+Fasting Proinsulin,Obesity Class 1,0.265,0.086,3.074,0.002
+Fasting Proinsulin,Obesity Class 2,0.218,0.084,2.586,0.01
+Fasting Proinsulin,Obesity Class 3,0.263,0.115,2.283,0.022
+Fasting Proinsulin,Overweight,0.219,0.078,2.802,0.005
+Fasting Proinsulin,Rheumatoid Arthritis,0.044,0.089,0.498,0.619
+Fasting Proinsulin,Schizophrenia,-0.008,0.06,-0.142,0.887
+Fasting Proinsulin,T2D,0.227,0.128,1.779,0.075
+Fasting Proinsulin,Total Cholesterol,0.012,0.099,0.122,0.903
+Fasting Proinsulin,Triglycerides,0.127,0.1,1.276,0.202
+Fasting Proinsulin,Ulcerative Colitis,0.088,0.107,0.821,0.412
+Fasting Proinsulin,Waist Circumference,0.329,0.114,2.891,0.004
+Fasting Proinsulin,Waist-Hip Ratio,0.23,0.084,2.75,0.006
+Fasting Proinsulin,Years of Education,-0.152,0.099,-1.538,0.124
+Former/Current Smoker,HbA1C,-0.321,0.109,-2.957,0.003
+Former/Current Smoker,HDL,0.266,0.084,3.153,0.002
+Former/Current Smoker,Height,0.002,0.043,0.039,0.969
+Former/Current Smoker,Height 2010,0.03,0.052,0.588,0.556
+Former/Current Smoker,Hip Circumference,-0.121,0.064,-1.902,0.057
+Former/Current Smoker,HOMA-B,0.083,0.135,0.611,0.541
+Former/Current Smoker,HOMA-IR,-0.182,0.141,-1.294,0.196
+Former/Current Smoker,Infant Head Circumference,-0.014,0.136,-0.104,0.917
+Former/Current Smoker,LDL,-0.176,0.092,-1.904,0.057
+Former/Current Smoker,Lumbar Spine BMD,0.019,0.074,0.253,0.8
+Former/Current Smoker,Neck BMD,-0.053,0.071,-0.744,0.457
+Former/Current Smoker,Obesity Class 1,-0.154,0.064,-2.412,0.016
+Former/Current Smoker,Obesity Class 2,-0.138,0.082,-1.69,0.091
+Former/Current Smoker,Obesity Class 3,-0.107,0.106,-1.003,0.316
+Former/Current Smoker,Overweight,-0.188,0.072,-2.614,0.009
+Former/Current Smoker,Rheumatoid Arthritis,-0.21,0.085,-2.458,0.014
+Former/Current Smoker,Schizophrenia,-0.031,0.069,-0.454,0.65
+Former/Current Smoker,T2D,-0.153,0.098,-1.556,0.12
+Former/Current Smoker,Total Cholesterol,-0.11,0.079,-1.388,0.165
+Former/Current Smoker,Triglycerides,-0.159,0.084,-1.886,0.059
+Former/Current Smoker,Ulcerative Colitis,0.213,0.093,2.284,2.20E-02
+Former/Current Smoker,Waist Circumference,-0.269,0.066,-4.08,4.50E-05
+Former/Current Smoker,Waist-Hip Ratio,-0.322,0.064,-5.052,4.38E-07
+Former/Current Smoker,Years of Education,0.523,0.092,5.708,1.14E-08
+HbA1C,HDL,-0.188,0.066,-2.85,0.004
+HbA1C,Height,-0.069,0.043,-1.604,0.109
+HbA1C,Height 2010,-0.1,0.05,-2.018,4.40E-02
+HbA1C,Hip Circumference,0.045,0.063,0.711,0.477
+HbA1C,HOMA-B,-0.199,0.119,-1.673,9.40E-02
+HbA1C,HOMA-IR,0.214,0.127,1.69,9.10E-02
+HbA1C,Infant Head Circumference,-0.227,0.128,-1.77,0.077
+HbA1C,LDL,0.157,0.078,2.022,0.043
+HbA1C,Lumbar Spine BMD,0.165,0.073,2.275,0.023
+HbA1C,Neck BMD,0.22,0.072,3.071,0.002
+HbA1C,Obesity Class 1,0.205,0.061,3.374,0.001
+HbA1C,Obesity Class 2,0.165,0.08,2.069,0.039
+HbA1C,Obesity Class 3,0.076,0.116,0.657,0.511
+HbA1C,Overweight,0.213,0.063,3.375,0.001
+HbA1C,Rheumatoid Arthritis,0.038,0.075,0.504,0.614
+HbA1C,Schizophrenia,-0.004,0.054,-0.078,9.38E-01
+HbA1C,T2D,0.586,0.092,6.399,1.56E-10
+HbA1C,Total Cholesterol,0.154,0.066,2.337,0.019
+HbA1C,Triglycerides,0.161,0.062,2.596,9.00E-03
+HbA1C,Ulcerative Colitis,-0.059,0.079,-0.743,0.457
+HbA1C,Waist Circumference,0.174,0.063,2.781,5.00E-03
+HbA1C,Waist-Hip Ratio,0.264,0.059,4.498,6.86E-06
+HbA1C,Years of Education,-0.178,0.076,-2.355,0.019
+HDL,Height,-0.007,0.03,-0.221,0.825
+HDL,Height 2010,0.005,0.034,0.151,0.88
+HDL,Hip Circumference,-0.276,0.039,-7.146,8.95E-13
+HDL,HOMA-B,-0.355,0.078,-4.551,5.33E-06
+HDL,HOMA-IR,-0.543,0.086,-6.284,3.31E-10
+HDL,Infant Head Circumference,-0.106,0.078,-1.363,0.173
+HDL,LDL,0.081,0.083,0.986,0.324
+HDL,Lumbar Spine BMD,-0.044,0.046,-0.963,0.335
+HDL,Neck BMD,-0.054,0.04,-1.362,0.173
+HDL,Obesity Class 1,-0.384,0.054,-7.115,1.12E-12
+HDL,Obesity Class 2,-0.346,0.071,-4.859,1.18E-06
+HDL,Obesity Class 3,-0.39,0.095,-4.105,4.04E-05
+HDL,Overweight,-0.415,0.049,-8.53,1.47E-17
+HDL,Rheumatoid Arthritis,0.012,0.049,0.243,0.808
+HDL,Schizophrenia,0.056,0.037,1.524,1.28E-01
+HDL,T2D,-0.404,0.06,-6.73,1.70E-11
+HDL,Total Cholesterol,0.207,0.072,2.892,0.004
+HDL,Triglycerides,-0.594,0.069,-8.551,1.22E-17
+HDL,Ulcerative Colitis,0.035,0.059,0.592,0.554
+HDL,Waist Circumference,-0.424,0.034,-12.553,3.81E-36
+HDL,Waist-Hip Ratio,-0.471,0.054,-8.686,3.76E-18
+HDL,Years of Education,0.295,0.05,5.953,2.64E-09
+Height,Height 2010,1.006,0.004,253.229,0.00E+00
+Height,Hip Circumference,0.412,0.021,19.866,8.05E-88
+Height,HOMA-B,0.034,0.044,0.79,0.429
+Height,HOMA-IR,0.042,0.045,0.924,0.355
+Height,Infant Head Circumference,0.272,0.051,5.312,1.09E-07
+Height,LDL,-0.102,0.031,-3.277,0.001
+Height,Lumbar Spine BMD,0.078,0.029,2.693,0.007
+Height,Neck BMD,0.042,0.029,1.446,1.48E-01
+Height,Obesity Class 1,-0.071,0.024,-2.929,0.003
+Height,Obesity Class 2,-0.064,0.029,-2.162,0.031
+Height,Obesity Class 3,-0.114,0.036,-3.185,0.001
+Height,Overweight,-0.066,0.026,-2.513,1.20E-02
+Height,Rheumatoid Arthritis,0.05,0.028,1.81,0.07
+Height,Schizophrenia,-0.004,0.02,-0.22,0.826
+Height,T2D,-0.014,0.035,-0.406,0.685
+Height,Total Cholesterol,-0.116,0.03,-3.901,9.59E-05
+Height,Triglycerides,-0.084,0.024,-3.566,0.00E+00
+Height,Ulcerative Colitis,0.044,0.039,1.141,2.54E-01
+Height,Waist Circumference,0.248,0.021,11.773,5.37E-32
+Height,Waist-Hip Ratio,-0.058,0.023,-2.498,0.013
+Height,Years of Education,0.141,0.027,5.261,1.43E-07
+Height 2010,Hip Circumference,0.407,0.024,16.827,1.55E-63
+Height 2010,HOMA-B,0.027,0.053,0.512,0.608
+Height 2010,HOMA-IR,0.039,0.059,0.671,0.502
+Height 2010,Infant Head Circumference,0.264,0.06,4.366,1.27E-05
+Height 2010,LDL,-0.115,0.033,-3.512,0.00E+00
+Height 2010,Lumbar Spine BMD,0.071,0.032,2.261,0.024
+Height 2010,Neck BMD,0.037,0.032,1.181,2.38E-01
+Height 2010,Obesity Class 1,-0.068,0.028,-2.396,0.017
+Height 2010,Obesity Class 2,-0.062,0.034,-1.823,0.068
+Height 2010,Obesity Class 3,-0.11,0.042,-2.593,0.01
+Height 2010,Overweight,-0.063,0.029,-2.19,0.029
+Height 2010,Rheumatoid Arthritis,0.046,0.032,1.426,1.54E-01
+Height 2010,Schizophrenia,-0.008,0.023,-0.336,0.737
+Height 2010,T2D,-0.043,0.042,-1.005,3.15E-01
+Height 2010,Total Cholesterol,-0.122,0.029,-4.174,2.99E-05
+Height 2010,Triglycerides,-0.084,0.027,-3.073,0.002
+Height 2010,Ulcerative Colitis,0.042,0.044,0.953,0.341
+Height 2010,Waist Circumference,0.249,0.024,10.534,6.02E-26
+Height 2010,Waist-Hip Ratio,-0.056,0.027,-2.091,0.036
+Height 2010,Years of Education,0.129,0.032,4.055,5.02E-05
+Hip Circumference,HOMA-B,0.373,0.067,5.565,2.62E-08
+Hip Circumference,HOMA-IR,0.577,0.08,7.223,5.07E-13
+Hip Circumference,Infant Head Circumference,0.29,0.063,4.584,4.57E-06
+Hip Circumference,LDL,-0.026,0.04,-0.64,5.22E-01
+Hip Circumference,Lumbar Spine BMD,0.009,0.038,0.252,8.01E-01
+Hip Circumference,Neck BMD,-0.006,0.032,-0.179,0.858
+Hip Circumference,Obesity Class 1,0.848,0.018,47.116,0
+Hip Circumference,Obesity Class 2,0.902,0.023,39.197,0.00E+00
+Hip Circumference,Obesity Class 3,0.854,0.055,15.505,3.20E-54
+Hip Circumference,Overweight,0.828,0.022,37.777,0.00E+00
+Hip Circumference,Rheumatoid Arthritis,0.038,0.033,1.158,0.247
+Hip Circumference,Schizophrenia,-0.077,0.027,-2.847,4.00E-03
+Hip Circumference,T2D,0.282,0.046,6.175,6.63E-10
+Hip Circumference,Total Cholesterol,-0.07,0.038,-1.828,0.068
+Hip Circumference,Triglycerides,0.148,0.038,3.883,0
+Hip Circumference,Ulcerative Colitis,-0.079,0.043,-1.841,6.60E-02
+Hip Circumference,Waist Circumference,0.887,0.009,101.198,0.00E+00
+Hip Circumference,Waist-Hip Ratio,0.324,0.035,9.28,1.69E-20
+Hip Circumference,Years of Education,-0.157,0.036,-4.384,1.17E-05
+HOMA-B,HOMA-IR,0.709,0.063,11.221,3.22E-29
+HOMA-B,Infant Head Circumference,-0.004,0.134,-0.027,0.978
+HOMA-B,LDL,0.071,0.071,1.01,0.313
+HOMA-B,Lumbar Spine BMD,-0.075,0.077,-0.985,3.25E-01
+HOMA-B,Neck BMD,-0.035,0.071,-0.493,6.22E-01
+HOMA-B,Obesity Class 1,0.4,0.07,5.747,9.09E-09
+HOMA-B,Obesity Class 2,0.463,0.089,5.211,1.88E-07
+HOMA-B,Obesity Class 3,0.452,0.117,3.854,0
+HOMA-B,Overweight,0.42,0.072,5.856,4.74E-09
+HOMA-B,Rheumatoid Arthritis,-0.017,0.065,-0.265,7.91E-01
+HOMA-B,Schizophrenia,0,0.051,0.006,0.996
+HOMA-B,T2D,0.01,0.1,0.1,9.20E-01
+HOMA-B,Total Cholesterol,0.07,0.06,1.164,0.244
+HOMA-B,Triglycerides,0.377,0.074,5.098,3.43E-07
+HOMA-B,Ulcerative Colitis,0.013,0.081,0.158,8.74E-01
+HOMA-B,Waist Circumference,0.506,0.065,7.805,5.95E-15
+HOMA-B,Waist-Hip Ratio,0.497,0.059,8.446,3.00E-17
+HOMA-B,Years of Education,-0.123,0.069,-1.764,0.078
+HOMA-IR,Infant Head Circumference,0.001,0.135,0.005,0.996
+HOMA-IR,LDL,-0.015,0.082,-0.19,0.85
+HOMA-IR,Lumbar Spine BMD,-0.013,0.088,-0.145,0.885
+HOMA-IR,Neck BMD,0.096,0.073,1.308,0.191
+HOMA-IR,Obesity Class 1,0.614,0.081,7.614,2.65E-14
+HOMA-IR,Obesity Class 2,0.659,0.099,6.631,3.34E-11
+HOMA-IR,Obesity Class 3,0.71,0.137,5.167,2.39E-07
+HOMA-IR,Overweight,0.669,0.086,7.768,7.99E-15
+HOMA-IR,Rheumatoid Arthritis,-0.021,0.076,-0.276,0.782
+HOMA-IR,Schizophrenia,-0.043,0.054,-0.787,0.431
+HOMA-IR,T2D,0.487,0.123,3.97,7.20E-05
+HOMA-IR,Total Cholesterol,-0.017,0.072,-0.229,0.819
+HOMA-IR,Triglycerides,0.488,0.095,5.121,3.03E-07
+HOMA-IR,Ulcerative Colitis,-0.02,0.089,-0.22,8.26E-01
+HOMA-IR,Waist Circumference,0.721,0.077,9.341,9.50E-21
+HOMA-IR,Waist-Hip Ratio,0.653,0.074,8.851,8.64E-19
+HOMA-IR,Years of Education,-0.261,0.075,-3.474,0.001
+Infant Head Circumference,LDL,-0.148,0.086,-1.725,0.084
+Infant Head Circumference,Lumbar Spine BMD,0.139,0.084,1.653,0.098
+Infant Head Circumference,Neck BMD,0.097,0.076,1.288,0.198
+Infant Head Circumference,Obesity Class 1,0.155,0.065,2.389,0.017
+Infant Head Circumference,Obesity Class 2,0.141,0.079,1.779,0.075
+Infant Head Circumference,Obesity Class 3,0.209,0.119,1.747,0.081
+Infant Head Circumference,Overweight,0.174,0.07,2.473,0.013
+Infant Head Circumference,Rheumatoid Arthritis,-0.046,0.081,-0.569,0.569
+Infant Head Circumference,Schizophrenia,-0.051,0.064,-0.797,0.425
+Infant Head Circumference,T2D,-0.082,0.092,-0.895,0.371
+Infant Head Circumference,Total Cholesterol,-0.188,0.075,-2.49,0.013
+Infant Head Circumference,Triglycerides,-0.081,0.071,-1.151,0.25
+Infant Head Circumference,Ulcerative Colitis,-0.023,0.102,-0.226,0.821
+Infant Head Circumference,Waist Circumference,0.21,0.06,3.488,0
+Infant Head Circumference,Waist-Hip Ratio,-0.002,0.061,-0.034,0.973
+Infant Head Circumference,Years of Education,0.25,0.083,3.023,0.003
+LDL,Lumbar Spine BMD,-0.15,0.06,-2.501,0.012
+LDL,Neck BMD,-0.134,0.051,-2.607,0.009
+LDL,Obesity Class 1,0.046,0.048,0.955,0.34
+LDL,Obesity Class 2,0.019,0.058,0.336,0.737
+LDL,Obesity Class 3,-0.014,0.07,-0.195,0.846
+LDL,Overweight,0.08,0.048,1.686,0.092
+LDL,Rheumatoid Arthritis,0.001,0.054,0.014,0.989
+LDL,Schizophrenia,-0.023,0.034,-0.689,0.491
+LDL,T2D,0.066,0.064,1.027,0.304
+LDL,Total Cholesterol,0.998,0.014,71.489,0.00E+00
+LDL,Triglycerides,0.391,0.067,5.824,5.75E-09
+LDL,Ulcerative Colitis,-0.108,0.055,-1.978,0.048
+LDL,Waist Circumference,0.024,0.037,0.65,0.516
+LDL,Waist-Hip Ratio,0.128,0.048,2.66,0.008
+LDL,Years of Education,-0.126,0.049,-2.553,1.10E-02
+Lumbar Spine BMD,Neck BMD,0.808,0.033,24.823,5.10E-136
+Lumbar Spine BMD,Obesity Class 1,0.063,0.035,1.774,0.076
+Lumbar Spine BMD,Obesity Class 2,0.005,0.046,0.1,0.92
+Lumbar Spine BMD,Obesity Class 3,-0.009,0.067,-0.128,0.898
+Lumbar Spine BMD,Overweight,0.065,0.037,1.739,0.082
+Lumbar Spine BMD,Rheumatoid Arthritis,-0.14,0.052,-2.662,0.008
+Lumbar Spine BMD,Schizophrenia,0.044,0.037,1.197,0.231
+Lumbar Spine BMD,T2D,0.136,0.056,2.407,0.016
+Lumbar Spine BMD,Total Cholesterol,-0.151,0.05,-3.048,0.002
+Lumbar Spine BMD,Triglycerides,-0.036,0.046,-0.776,0.438
+Lumbar Spine BMD,Ulcerative Colitis,-0.098,0.051,-1.928,0.054
+Lumbar Spine BMD,Waist Circumference,0.03,0.036,0.837,0.403
+Lumbar Spine BMD,Waist-Hip Ratio,0.049,0.041,1.208,0.227
+Lumbar Spine BMD,Years of Education,0.083,0.045,1.833,0.067
+Neck BMD,Obesity Class 1,0.046,0.033,1.394,0.163
+Neck BMD,Obesity Class 2,0.029,0.043,0.666,0.505
+Neck BMD,Obesity Class 3,-0.056,0.058,-0.961,0.336
+Neck BMD,Overweight,0.051,0.033,1.538,0.124
+Neck BMD,Rheumatoid Arthritis,-0.03,0.046,-0.645,0.519
+Neck BMD,Schizophrenia,0.054,0.033,1.633,0.103
+Neck BMD,T2D,0.175,0.05,3.479,0.001
+Neck BMD,Total Cholesterol,-0.131,0.042,-3.116,0.002
+Neck BMD,Triglycerides,-0.025,0.034,-0.741,0.459
+Neck BMD,Ulcerative Colitis,-0.083,0.046,-1.814,0.07
+Neck BMD,Waist Circumference,0.005,0.032,0.154,0.877
+Neck BMD,Waist-Hip Ratio,0.008,0.037,0.207,0.836
+Neck BMD,Years of Education,0.084,0.045,1.868,0.062
+Obesity Class 1,Obesity Class 2,1.017,0.013,76.655,0.00E+00
+Obesity Class 1,Obesity Class 3,0.987,0.045,21.705,1.84E-104
+Obesity Class 1,Overweight,1.022,0.008,123.696,0
+Obesity Class 1,Rheumatoid Arthritis,0.05,0.037,1.37,0.171
+Obesity Class 1,Schizophrenia,-0.083,0.027,-3.036,2.00E-03
+Obesity Class 1,T2D,0.357,0.046,7.703,1.33E-14
+Obesity Class 1,Total Cholesterol,0.003,0.038,0.085,9.33E-01
+Obesity Class 1,Triglycerides,0.257,0.04,6.373,1.85E-10
+Obesity Class 1,Ulcerative Colitis,-0.13,0.047,-2.77,0.006
+Obesity Class 1,Waist Circumference,0.918,0.016,55.858,0.00E+00
+Obesity Class 1,Waist-Hip Ratio,0.583,0.032,18.14,1.55E-73
+Obesity Class 1,Years of Education,-0.295,0.038,-7.824,5.12E-15
+Obesity Class 2,Obesity Class 3,1.012,0.034,29.947,4.86E-197
+Obesity Class 2,Overweight,1.033,0.017,59.086,0
+Obesity Class 2,Rheumatoid Arthritis,0.069,0.045,1.533,0.125
+Obesity Class 2,Schizophrenia,-0.088,0.034,-2.579,1.00E-02
+Obesity Class 2,T2D,0.323,0.053,6.099,1.07E-09
+Obesity Class 2,Total Cholesterol,-0.021,0.05,-0.413,6.80E-01
+Obesity Class 2,Triglycerides,0.233,0.049,4.799,1.60E-06
+Obesity Class 2,Ulcerative Colitis,-0.153,0.056,-2.746,0.006
+Obesity Class 2,Waist Circumference,0.947,0.023,40.868,0.00E+00
+Obesity Class 2,Waist-Hip Ratio,0.566,0.041,13.717,8.07E-43
+Obesity Class 2,Years of Education,-0.304,0.042,-7.233,4.74E-13
+Obesity Class 3,Overweight,0.962,0.05,19.104,2.34E-81
+Obesity Class 3,Rheumatoid Arthritis,0.081,0.064,1.259,0.208
+Obesity Class 3,Schizophrenia,-0.059,0.048,-1.21,2.26E-01
+Obesity Class 3,T2D,0.328,0.07,4.661,3.15E-06
+Obesity Class 3,Total Cholesterol,-0.05,0.062,-0.808,4.19E-01
+Obesity Class 3,Triglycerides,0.251,0.064,3.926,8.63E-05
+Obesity Class 3,Ulcerative Colitis,-0.109,0.079,-1.38,1.68E-01
+Obesity Class 3,Waist Circumference,0.892,0.055,16.167,8.61E-59
+Obesity Class 3,Waist-Hip Ratio,0.568,0.057,10.023,1.20E-23
+Obesity Class 3,Years of Education,-0.353,0.063,-5.602,2.11E-08
+Overweight,Rheumatoid Arthritis,0.025,0.037,0.681,0.496
+Overweight,Schizophrenia,-0.066,0.028,-2.381,1.70E-02
+Overweight,T2D,0.389,0.049,7.944,1.96E-15
+Overweight,Total Cholesterol,0.023,0.038,0.617,5.38E-01
+Overweight,Triglycerides,0.271,0.042,6.378,1.79E-10
+Overweight,Ulcerative Colitis,-0.125,0.049,-2.558,0.011
+Overweight,Waist Circumference,0.897,0.019,46.876,0.00E+00
+Overweight,Waist-Hip Ratio,0.587,0.034,17.236,1.43E-66
+Overweight,Years of Education,-0.316,0.042,-7.482,7.34E-14
+Rheumatoid Arthritis,Schizophrenia,-0.034,0.032,-1.062,0.288
+Rheumatoid Arthritis,T2D,-0.062,0.05,-1.242,0.214
+Rheumatoid Arthritis,Total Cholesterol,-0.015,0.048,-0.307,0.759
+Rheumatoid Arthritis,Triglycerides,-0.065,0.039,-1.663,0.096
+Rheumatoid Arthritis,Ulcerative Colitis,0.098,0.059,1.657,0.098
+Rheumatoid Arthritis,Waist Circumference,0.034,0.032,1.064,0.287
+Rheumatoid Arthritis,Waist-Hip Ratio,0.009,0.037,0.253,8.00E-01
+Rheumatoid Arthritis,Years of Education,-0.258,0.048,-5.35,8.79E-08
+Schizophrenia,T2D,-0.024,0.039,-0.607,0.544
+Schizophrenia,Total Cholesterol,-0.013,0.031,-0.417,0.676
+Schizophrenia,Triglycerides,-0.039,0.03,-1.291,0.197
+Schizophrenia,Ulcerative Colitis,0.112,0.037,3.032,0.002
+Schizophrenia,Waist Circumference,-0.077,0.026,-3.024,0.002
+Schizophrenia,Waist-Hip Ratio,-0.038,0.025,-1.502,0.133
+Schizophrenia,Years of Education,0.086,0.037,2.319,0.02
+T2D,Total Cholesterol,0.009,0.054,0.166,8.68E-01
+T2D,Triglycerides,0.334,0.061,5.493,3.95E-08
+T2D,Ulcerative Colitis,0.076,0.066,1.16,2.46E-01
+T2D,Waist Circumference,0.401,0.04,9.911,3.73E-23
+T2D,Waist-Hip Ratio,0.419,0.046,9.103,8.76E-20
+T2D,Years of Education,-0.21,0.059,-3.567,0.00E+00
+Total Cholesterol,Triglycerides,0.454,0.063,7.188,6.57E-13
+Total Cholesterol,Ulcerative Colitis,-0.09,0.049,-1.84,0.066
+Total Cholesterol,Waist Circumference,-0.019,0.034,-0.565,0.572
+Total Cholesterol,Waist-Hip Ratio,0.092,0.039,2.361,0.018
+Total Cholesterol,Years of Education,-0.096,0.042,-2.29,0.022
+Triglycerides,Ulcerative Colitis,-0.034,0.057,-0.593,5.53E-01
+Triglycerides,Waist Circumference,0.325,0.037,8.758,1.98E-18
+Triglycerides,Waist-Hip Ratio,0.414,0.044,9.449,3.42E-21
+Triglycerides,Years of Education,-0.251,0.044,-5.761,8.37E-09
+Ulcerative Colitis,Waist Circumference,-0.106,0.044,-2.407,0.016
+Ulcerative Colitis,Waist-Hip Ratio,-0.079,0.045,-1.765,0.078
+Ulcerative Colitis,Years of Education,0.039,0.059,0.658,0.511
+Waist Circumference,Waist-Hip Ratio,0.733,0.017,42.03,0.00E+00
+Waist Circumference,Years of Education,-0.287,0.034,-8.332,7.95E-17
+Waist-Hip Ratio,Years of Education,-0.321,0.037,-8.606,7.56E-18

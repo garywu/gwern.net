@@ -17,7 +17,7 @@ belief: likely
 > - a model of the IVF process, incorporating number of extracted eggs, losses to abnormalities & vitrification & failed implantation & miscarriages from 2 real IVF patient populations, estimates feasible gains of 0.39 & 0.68 IQ points
 > - embryo selection is currently unprofitable (mean: -\$358) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$6230). The main constraints on selection profitability is the polygenic score; under the highest value, the NPV EVPI of a perfect SNP predictor is \$24b and the EVSI per education/SNP sample is \$71k
 > - under the worst-case estimate, selection can be made profitable with a better polygenic score, which would require _n_>237,300 using education phenotype data (and much less using fluid intelligence measures)
-> - selection can be made more effective by selecting on multiple phenotype traits: considering an example using 7 traits (IQ/height/BMI/diabetes/ADHD/bipolar/schizophrenia), there is a gain of 2.3x over IQ alone (total of \$14653)
+> - selection can be made more effective by selecting on multiple phenotype traits: considering an example using 7 traits (IQ/height/BMI/diabetes/ADHD/bipolar/schizophrenia), there is a gain of 2.3x over IQ alone (total of \$14653); the outperformance of multiple selection remains after adjusting for genetic correlations & polygenic scores and using a broader set of 16 traits with an estimated gain of 1.4x.
 
 # Embryo selection cost-effectiveness
 
@@ -74,6 +74,7 @@ Anders Sandberg provides a descriptive table (expanded from [Gottfredson 2003](h
 
 Estimating the value of an additional IQ point is difficult as there are many perspectives one could take: zero-sum, including only personal earnings or wealth and neglecting all the wealthy produced for society (eg through research), often based on correlating income with intelligence scores or education; positive-sum, attempting to include the positive externalities, perhaps through cross or longitudinal global comparisons, as intelligence predicts later wealth and the wealth of a country is closely linked to the average intelligence of its population which captures many (but not all) of the positive externalities; measures which include the greater longevity & happiness of more intelligent people, etc.
 Further, intelligence has intrinsic value of its own, and the genetic hits appear to be pleiotropic and improve other desirable traits; the intelligence/longevity correlation has been found to be due to common genetics, and [Krapohl et al 2015](http://www.hungrymindlab.com/wp-content/uploads/2015/10/Krapohl-et-al-2015.pdf "Phenome-wide analysis of genome-wide polygenic scores") examines the correlation of polygenic scores with 50 diverse traits, finding that the college/IQ polygenic scores correlate with 10+ of them in generally desirable directions[^Krapohl-phenome], similar to [Hagenaars et al 2016](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html "Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (N=112 151) and 24 GWAS consortia")[^Hagenaars-phenome] & [Hill et al 2016](http://biorxiv.org/content/early/2016/03/09/043000 "Molecular genetic contributions to social deprivation and household income in UK Biobank (n=112,151)"), indicating both causation for those correlations & benefits beyond income.
+(For a more detailed discussion of embryo selection on multiple traits and whether [genetic correlations](!Wikipedia) increase or decrease selection gains, [see later](#multiple-selection).)
 There are also pitfalls, like the fallacy of controlling for an intermediate variable, exemplified by studies which attempt to correlate intelligence with income after "controlling for" education, despite knowing that educational attainment is caused *by* intelligence and so their estimates are actually something irrelevant like 'the gain from greater intelligence for reasons other than through its effect on education'.
 Estimates have come from a variety of sources, such as iodine and lead studies, using a variety of methodologies from cross-sectional surveys or administrative data up to natural experiments.
 Given the difficulty of coming up with reliable estimates for 'the' value of an IQ point, which would be a substantial research project in its own right (but highly useful in other analyses like lead remediation or iodization), I will just reuse the \$3270-16151 range.
@@ -339,7 +340,8 @@ For generality to other continuous normally-distributed complex traits, we'll wo
 embryoScores <- function(n, variance, relatedness=0.5) { rnorm(n, mean=0, sd=sqrt(variance*relatedness)); }
 embryoSelectionGain <- function(n, variance) { scores <- embryoScores(n, variance)
                                                return(max(scores)); }
-simEmbryoSelection <- function(n=2, variance=0.33, iters=100000) { replicate(iters, embryoSelectionGain(n, variance)); }
+simEmbryoSelection <- function(n=2, variance=0.33, iters=100000) {
+                       replicate(iters, embryoSelectionGain(n, variance)); }
 mean(simEmbryoSelection(n=10)) * 15
 # [1] 9.368836794
 mean(simEmbryoSelection(n=10, variance=0.444)) * 15
@@ -1249,6 +1251,8 @@ summary(simulateIVFCBs(9, 4.6, combineScores(polygenicScores, weights), 0.3, 0.9
 
 So we double our gains by considering 3 traits instead of 1.
 
+#### Multiple selection on independent traits
+
 A more realistic example would be to use some of the existing polygenic scores for complex traits, of which [a number are available](http://biorxiv.org/content/biorxiv/early/2016/01/14/035907.full.pdf "'Contrasting the genetic architecture of 30 complex traits from summary association data', Shi et al 2016").
 Perhaps a little counterintuitively, to maximize the gains, we want to focus on universal traits such as IQ, or common diseases with high prevalence; the more horrifying genetic diseases are rare precisely because they are horrifying (natural selection keeps them rare), so focusing on them will only occasionally pay off.[^cystic-fibrosis]
 
@@ -1327,6 +1331,233 @@ Note that this gain would be larger under lower values of IQ, as then more empha
 Values may also be substantially underestimated because there are many more traits with polygenic scores than just the 7 used here, and for the mental health traits because they pervasively overlap genetically (indeed, in 1 case for ADHD, the schizophrenia/bipolar polygenic scores were better predictors of ADHD status than the ADHD polygenic score was!); counterbalancing this underestimation is that the long-noted correlation between schizophrenia & creativity is turning out to also be genetic, so the gain from reduced schizophrenia/bipolar/ADHD is a tradeoff coming at some cost to creativity.
 
 In any case, in theory and in practice, selection on multiple traits will be much more effective than selecting on one trait.
+
+#### Multiple selection on genetically correlated traits
+
+In single selection, the embryo selected is picked from the batch solely based on its polygenic score on 1 trait, even if the gain is small and some of the other embryos have large genetic advantages on other, almost as important, traits.
+In multiple selection, we take the maximum from the embryos based on all the scores summed together, allowing for excellence on 1 trait or general high quality on a few other traits.
+
+What sort of advantage do we expect? It's not as simple as generating some random numbers independently from a distribution and then summing them, because the actual genetic scores will turn out to be intercorrelated: a high polygenic score for intelligence will also tend to lower the BMI polygenic score, and a high BMI polygenic score will increase the childhood obesity polygenic score or the smoking polygenic score because they genetically overlap on the same SNPs.
+In fact, all traits will tend to be a little (or a lot) genetically correlated.
+If we ignore this, we may badly over or underestimate the advantage of multiple selection: the advantage of selection on a good trait may be partially negated if it drags in a bad trait, or the advantage may be amplified if it comes with other good traits.
+
+We need a dataset giving the pairwise genetic correlations of a lot of important traits, and then we can generate hypothetical multivariate sets of polygenic scores which follow what the real-world distribution of polygenic scores would look like, and *then* we can sum them up, maximize, and see what sort of gain we have.
+
+A specific genetic correlation can be estimated from twin studies, or as part of GWAS studies using an algorithm like GCTA or LD score regression.
+LD score regression has the notable advantage of being usable on solely the polygenic scores for individual traits released by GWASes, without requiring the same subjects to be phenotyped or access to subject-level data, and computationally tractable; hence it is possible to collect various publicly released polygenic scores for any traits and calculate the correlations for all pairs of traits.
+
+This has been done by done by [LD Hub](http://ldsc.broadinstitute.org/) (described in [Zheng et al 2016](http://biorxiv.org/content/biorxiv/early/2016/05/03/051094.full.pdf "LD Hub: a centralized database and web interface to perform LD score regression that maximizes the potential of summary level GWAS data for SNP heritability and genetic correlation analysis")), which provides a web interface to an implementation of LD score regression and >100 polygenic scores available for calculating SNP heritability or genetic correlations.
+Zheng et al 2016 describes the initial correlation matrix for 49 traits, a number which are of practical interest in multiple selection; [the spreadsheet](http://ldsc.broadinstitute.org/static/media/LD-Hub_genetic_correlation_49x49.xlsx) can be downloaded, saved as CSV, and the first lines edited to provide a usable file in R.
+
+Several of the traits are redundant or overlapping: it is scientifically useful to know that height as measured in one study is the same thing as measured in a different study (implying that the relevant genetics in the two populations are the same, and that the phenotype data was collected in a similar manner, which is something you might take for granted for a trait like height, but would be in considerable doubt for mental illnesses), but we really don't need 4 slightly different traits related to tobacco use or ~9 traits about obesity.
+So before turning into a correlation matrix, we need to drop those to leave with 34 relevant traits:
+
+~~~{.R}
+rg <- read.csv("http://www.gwern.net/docs/genetics/2016-zheng-ldhub-49x49geneticcorrelation.csv")
+# delete redundant/overlapping/obsolete ones:
+dupes <- c("BMI 2010", "Childhood Obesity", "Extreme BMI", "Obesity Class 1", "Obesity Class 2",
+           "Obesity Class 3", "Overweight", "Waist Circumference", "Waist-Hip Ratio", "Cigarettes per Day",
+           "Ever/Never Smoked", "Age at Smoking", "Extreme Height", "Height 2010")
+rgClean <- rg[!(rg$Trait1 %in% dupes | rg$Trait2 %in% dupes),]
+rgClean <- subset(rgClean, select=c("Trait1", "Trait2", "rg"))
+
+library(reshape2)
+rgMatrix <- acast(rgClean, Trait2 ~ Trait1)
+
+# convert from half-matrix to full symmetric matrix
+library(psych)
+rgMatrix <- lowerUpper(t(rgMatrix), rgMatrix)
+rgMatrix[is.na(rgMatrix)] <- 1
+~~~
+
+For a baseline, let's revisit the single selection case, in which we have 1 trait where higher=better with a heritability of 0.33 where we are choosing from 10 half-related embryos: we can get +0.62SD in this case.
+For a multiple selection version, we can consider a correlation matrix for 34 traits in which every trait is uncorrelated, with the same settings (higher=better, 0.33 heritability, 10 half-related siblings): with more traits to sum, the best choice becomes much better, giving us +3.644SDs on an overall index.
+Finally, what if we populate the correlation matrix with genetic correlations like those in the LD Hub dataset (ignoring the issues of trait-specific heritabilities, losses/gains, and available polygenic scores)?
+Do we get less or more than 3.644SD because traits cancel out? We get much more, +5.19SDs, because the pattern of correlations turn out to be favorable.
+
+~~~{.R}
+mean(replicate(100000, max(rnorm(10, mean=0, sd=sqrt(0.33*0.5)))))
+# [1] 0.6250647743
+
+independent <- matrix(ncol=34, nrow=34, 0)
+diag(independent) <- 1
+
+library(mvtnorm)
+library(MBESS)
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(independent, sd=rep(sqrt(0.33*0.5),34)), method="svd")))))
+# [1] 3.644660885
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=rep(sqrt(0.33*0.5),34)), method="svd")))))
+# [1] 5.199043247
+~~~
+
+Next we consider what happens when we include SNP heritabilities (which set upper bounds on the polygenic scores, but see earlier GCTA discussion on why they're loose upper bounds in practice).
+The heritabilities for 173 traits are provided by LD Hub in [a different](http://ldsc.broadinstitute.org/static/media/LD-Hub_study_information_and_SNP_heritability.xlsx) spreadsheet but the trait names don't always match up with the names in the correlation spreadsheet ones, so I had to convert them manually.
+(The height heritability is also missing from the heritability page & spreadsheet so I borrowed a GCTA estimate from [Trzaskowski et al 2016](http://ije.oxfordjournals.org/content/45/2/417.full "Application of linear mixed models to study genetic stability of height and body mass index across countries and time").)
+While we're at it, I classified the traits by desirability to consistently set higher=better:
+
+~~~{.R}
+utilities <- read.csv(stdin(), header=TRUE, colClasses=c("factor", "factor", "numeric","integer"))
+"Trait","Measurement.type","H2_snp","Sign"
+"ADHD","d",0.2573,-1
+"Age at Menarche","c",0.183,1
+"Alzheimer's","d",0.0688,-1
+"Anorexia","d",0.559,-1
+"Autism Spectrum","d",0.559,-1
+"Bipolar","d",0.432,-1
+"Birth Length","c",0.1697,-1
+"Birth Weight","c",0.1124,1
+"BMI","c",0.1855,-1
+"Childhood IQ","c",0.2735,1
+"College","d",0.0563,1
+"Coronary Artery Disease","d",0.0781,-1
+"Crohn's Disease","d",0.4799,-1
+"Depression","d",0.1745,-1
+"Fasting Glucose","c",0.0984,-1
+"Fasting Insulin","c",0.0695,-1
+"Fasting Proinsulin","c",0.1443,1
+"Former/Current Smoker","d",0.0645,-1
+"HbA1C","c",0.0656,-1
+"HDL","c",0.116,1
+"Height","c",0.69,1
+"Hip Circumference","c",0.1266,-1
+"HOMA-B","c",0.0888,-1
+"HOMA-IR","c",0.0686,-1
+"Infant Head Circumference","c",0.2352,-1
+"LDL","c",0.1347,1
+"Lumbar Spine BMD","c",0.2684,1
+"Neck BMD","c",0.2977,1
+"Rheumatoid Arthritis","d",0.161,-1
+"Schizophrenia","d",0.4541,-1
+"T2D","d",0.0872,-1
+"Total Cholesterol","c",0.1014,-1
+"Triglycerides","c",0.1525,-1
+"Ulcerative Colitis","d",0.2631,-1
+
+
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(independent, sd=rep(sqrt(0.33*0.5),34)), method="svd") * utilities$Sign))))
+# [1] 3.638056955
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=rep(sqrt(0.33*0.5),34)), method="svd") * utilities$Sign))))
+# [1] 4.159339696
+
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(independent, sd=sqrt(utilities$H2_snp * 0.5)), method="svd") * utilities$Sign))))
+# [1] 2.936800189
+mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=sqrt(utilities$H2_snp * 0.5)), method="svd") * utilities$Sign))))
+# [1] 3.286329413
+~~~
+
+Re-estimating with higher=better corrected, the original multiple selection turned out to be somewhat overestimated.
+Adding the real trait heritabilities, we see that the gains to multiple selection remain large compared to single selection (2.9 or 3.3SDs vs 0.6SDs), and that the genetic correlations do *not* substantially reduce gains to multiple selection but in fact benefits multiple selection by adding +0.35SD.
+
+Continuing onward: if multiple selection is helpful, what sort of net benefit to selection would we get after assigning some reasonable costs to each trait & using current polygenic scores?
+
+Coming up with that information for 34 traits in the same detail as I have for intelligence would be extremely challenging, so I will settle for some quicker and dirtier estimates; in cases where the causal impact is not clear or I cannot find reasonably reliable cost estimates, I will simply drop the trait (which will be conservative and underestimate possible gains from multiple selection).
+The traits:
+
+- Age at [Menarche](!Wikipedia): [Perry et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4185210/ "Parent-of-origin specific allelic associations among 106 genomic loci for age at menarche") reports a polygenic score explaining 15.8% of variance. [Day et al 2016](/docs/genetics/2016-day.pdf "Physical and neurobehavioral determinants of reproductive onset and success") demonstrates a causal impact of early puberty on "earlier first sexual intercourse, earlier first birth and lower educational attainment", consistent with the intercorrelations (strong negative correlation with childhood IQ); clearly the sign should be negative, and early puberty has been linked to all sorts of problems ([_Atlantic_](http://www.theatlantic.com/health/archive/2016/06/the-long-term-risks-of-early-puberty/488834/): "greater risk for breast cancer, teen pregnancy, HPV, heart disease, diabetes, and all-cause mortality, which is the risk of dying from any cause. There are psychological risks as well. Girls who develop early are at greater risk for depression, are more likely to drink, smoke tobacco and marijuana, and tend to have sex earlier.") but no costs are available
+- [Alzheimer's disease](!Wikipedia): [Escott-Price et al 2015](http://www.dementiasplatform.uk/wp-content/uploads/2015/12/Common-polygenic-variation-enhances-risk-prediction-for-Alzheimers-disease.pdf "Common polygenic variation enhances risk prediction for Alzheimer's disease") report a polygenic score of 0.021 for AD. The lifetime risk at age 65 is 9% men & 17% women; few people die before age 65 so I'll take the average 13% as the lifetime risk at birth (since Alzheimer's rates tend to increase, this should be conservative for future rates). Costs rise steeply before death as the dementia cripples the patient, imposing extraordinary costs for daily care & on families & caregivers. USA total costs have been estimated at >\$200b; for dementia, the last 5 years of life can incur [\$287k in costs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4809412/ "'The Burden of Health Care Costs in the Last 5 Years of Life', Kelley et al 2016"). Discounting Alzheimer treatment cost is a little tricky: unlike height/BMI/IQ or BPD which we could treat on an annual cost/gain basis and discount out indefinitely, that \$287k of expenses will only be incurred 60+ years after birth on average. We can treat it as a single lump sum expense incurred 70 years in the future, discounted at 5% (as usual to be conservative): `287000 / (1+0.05)^70 ~> 9432`
+- [Anorexia](!Wikipedia): ~1% prevalence. [Boraska et al 2014](http://europepmc.org/articles/pmc4325090 "A genome-wide association study of anorexia nervosa") does not report a polygenic score.
+- [Autism](!Wikipedia): ~1.4% prevalence. [Clarke et al 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3714010/ "Common polygenic risk for autism spectrum disorder (ASD) is associated with cognitive ability in the general population") report that the earlier PGS results found 17% of liability explained (though this does not seem to be reported in the original paper or appendix that I can find). [Cost](!Wikipedia "Autism#Cost") ~\$4m.
+- Birth length, weight: skip as difficult to pin down the causal effects
+- College: ~42% of younger Americans have [a college degree](!Wikipedia "Educational attainment in the United States"). Rietveld reports a polygenic score ~2% for both college & 'years of education'. A college degree is worth an estimating \$250k+ for an American.
+- [Coronary Artery Disease](!Wikipedia): ~40% lifetime risk. [Deloukas et al 2013](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3679547/ "Large-scale association analysis identifies new risk loci for coronary artery disease") report a limited polygenic score explaining 10.6% of the estimated 40% additive heritability or 4.24% of variance. Cardiovascular diseases are some of the most common, expensive, and fatal diseases, and US costs range into the hundreds of billions of dollars. [Birnbaum et al 2003](/docs/2003-birnbaum.pdf "Lifetime medical costs for women: Cardiovascular disease, diabetes, and stress urinary incontinence") estimates annual costs ~\$7k up to age 64 but then ~\$31k annually afterwards for total lifetime costs of \$599k. Around half of people will be diagnosed by ~age 60, so at a first cut, we might discount it at `423000 / (1+0.05)^60 ~> 32067` or \$32k.
+- [Crohn's disease](!Wikipedia): 0.32% incidence. [Jostins et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3491803/ "Host-microbe interactions have shaped the genetic architecture of inflammatory bowel disease") reports a polygenic score explaining 13.6% of variance. Crohn's strikes young and lasts a lifetime; [PARA](http://www.crohns.org/congress/submission00/appendix2.htm) estimates \$8330 annually or \$374850 over the estimated 45 years after diagnosis around age 20, suggesting a discounting of `(8330/log(1.05)) / ((1+0.05)^20) ~> 64346`.
+- [Major depressive disorder](!Wikipedia): [17% lifetime rate](!Wikipedia "Epidemiology of depression"). [Sullivan et al 2013](http://neurogenetics.qimrberghofer.edu.au/papers/Ripke2013MolPsychiatry.pdf "A mega-analysis of genome-wide association studies for major depressive disorder") reports a polygenic score of 0.6%. ([Hyde et al 2016](/docs/genetics/2016-hyde.pdf "Identification of 15 genetic loci associated with risk of major depression in individuals of European descent")'s polygenic score used only the top 17 SNPs, and they don't report the variance explained of MDD, just the secondary phenotypes.) Another major burden of disease, both common and crippling and frequently fatal, depression has large direct costs for treatment and larger indirect costs from wages, worse health etc. [Smith et al](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2887689/ "Long-Term Economic Costs of Psychological Problems During Childhood") finds children with depression have \$300k less lifetime income, which doesn't take into account the medical treatment costs or suicide etc and is a lower bound. I can't find any lifetime costs so I will guesstimate that as the total cost for adults, starting at age 32, giving ~\$63k as the cost.
+- Fasting glucose/insulin/proinsulin, [HbA1C](!Wikipedia): skip as their effects should be covered by diabetes.
+- Former/Current Smoker: [~42% of the American population circa 2005](http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5542a1.htm "Tobacco Use Among Adults --- United States, 2005") has smoked >100 cigarettes (although by 2016 currently smoking adults were down to ~15% of the population).
+Supplemental material for [Vink et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4048635/ "Polygenic risk scores for smoking: predictors for alcohol and cannabis use?") reports a polygenic score for ever smoking of 6.7%. The lifetime cost of tobacco smoking includes the direct cost of tobacco, increased lung cancer risk, lower work output, fires, general worsened health, any second hand or fetal effects, and early mortality; the cost, from various perspectives (individual vs national healthcare systems etc) has been heavily debated, but I think it's safe to put it at least \$100k over a lifetime or \$27k discounted.
+- Hip Circumference: should be covered by BMI
+- HOMA-B/HOMA-IR/Lumbar Spine BMD/Neck BMD: I have no idea where to start with these, so skipping
+- Infant Head Circumference: should be covered by IQ and education?
+- [Rheumatoid Arthritis](!Wikipedia): [2.65%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3078757/ "'The Lifetime Risk of Adult-Onset Rheumatoid Arthritis and Other Inflammatory Autoimmune Rheumatic Diseases', Crowson et al 2012"). [MHC](!WIkipedia "Major histocompatibility complex") hits explain ~12% and [Okada et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3944098/ "Genetics of rheumatoid arthritis contributes to biology and drug discovery") report a polygenic score providing another 5.5%. [Cooper 2000](http://rheumatology.oxfordjournals.org/content/39/1/28.long "Economic burden of rheumatoid arthritis: a systematic review") estimates total annual costs for RA at ~\$11542/year and cites a Stone 1984 estimate of lifetime cost of \$15,504 (\$35,909 in 2016); with typical age of onset around 60, the total annual cost might be discounted to \$13k.
+- LDL, total cholesterol, triglycerides: harmful effects should be redundant with coronary artery disease
+- [Ulcerative colitis](!Wikipedia): 0.3%. [Jostins et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3491803/ "Host-microbe interactions have shaped the genetic architecture of inflammatory bowel disease") reports a polygenic score of 7.5%. [Cohen et al 2010](http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2036.2010.04234.x/pdf "Systematic review: the costs of ulcerative colitis in Western countries") & [Park & Bass 2011](https://www.researchgate.net/profile/Dorsey_Bass/publication/47680877_Inflammatory_bowel_disease-attributable_costs_and_cost-effective_strategies_in_the_United_States_a_review/links/5452597b0cf2bccc4908e0f2.pdf "Inflammatory Bowel Disease-Attributable Costs and Cost-effective Strategies in the United States: A Review") report \$15k medical expenses annually & \$5k employment loss. With mean age diagnosis of ~35 ([da Silva et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4110577/ "Epidemiology, demographic characteristics and prognostic predictors of ulcerative colitis")), something like `(20000/log(1.05)) / ((1+0.05)^35) ~> 74314`.
+
+This gives us 16 usable traits:
+
+~~~{.R}
+liabilityThresholdValue <- function(populationFraction, gainSD, value) {
+    if (value<0) {
+          fraction <- pnorm(qnorm(populationFraction) - gainSD)
+        } else {
+          fraction <- pnorm(qnorm(populationFraction) + gainSD) }
+    gain  <- (fraction - populationFraction) * value
+    return(gain)
+    }
+## handle both continuous & dichotomous traits:
+polygenicValue <- function(populationFraction, value, polygenicScore, n=10) {
+    gainSD <- mean(simEmbryoSelection(n=n, variance=polygenicScore, iters=100000))
+    if (populationFraction==1) { if (value<0) { gainSD <- -gainSD }; return(gainSD*value) } else {
+                                 ## the value of increasing healthy fraction:
+                                 liabilityThresholdValue(populationFraction,  gainSD,  value) }  }
+## examples for single selection: BMI
+polygenicValue(1, -16750, 0.153)
+# [1] 7125.151193
+## example: IQ
+iqHigh <- 16151*15
+selzam2016 <- 0.035
+polygenicValue(1, iqHigh, selzam2016)
+# [1] 49347.3885
+## example: bipolar
+polygenicValue(0.03, -87088, 0.0283)
+# [1] 911.28581092779
+## example: college
+polygenicValue(0.42, 250000, 0.03)
+# [1] 18670.466258862
+
+utilitiesScores <- read.csv(stdin(), header=TRUE, colClasses=c("factor","factor","numeric", "numeric","numeric"))
+Trait, Measurement.type, Prevalence, Cost, Polygenic.score
+"ADHD","d", 0.07, -182000, 0.015
+"Age at Menarche","c", 1,0,0.158
+"Alzheimer's","d",0.13,-9432,0.021
+"Anorexia","d",0.01,0,0
+"Autism Spectrum","d",0.014,-4000000, 0.17
+"Bipolar","d", 0.03, -87088, 0.0283
+"Birth Length","c",1,0,0
+"Birth Weight","c",1,0,0
+"BMI","c",1, -16750, 0.153
+"Childhood IQ","c", 1, 242265, 0.035
+"College","d",0.42,250000,0.03
+"Coronary Artery Disease","d",0.404,-32000,0.0424
+"Crohn's Disease","d",0.0032,-64346,0.136
+"Depression","d",0.17,-62959,0.006
+"Fasting Glucose","c",1,0,0
+"Fasting Insulin","c",1,0,0
+"Fasting Proinsulin","c",1,0,0
+"Former/Current Smoker","d",0.42,-27327,0.067
+"HbA1C","c",1,0,0
+"HDL","c",1,0,0
+"Height","c",1, 1616, 0.60
+"Hip Circumference","c",1,0,0
+"HOMA-B","c",1,0,0
+"HOMA-IR","c",1,0,0
+"Infant Head Circumference","c",1,0,0
+"LDL","c",1,0,0
+"Lumbar Spine BMD","c",1,0,0
+"Neck BMD","c",1,0,0
+"Rheumatoid Arthritis","d",0.0265,-12664,0.175
+"Schizophrenia","d",0.01, -49379, 0.184
+"T2D","d", 0.40, -124600, 0.0573
+"Total Cholesterol","c",1,0,0
+"Triglycerides","c",1,0,0
+"Ulcerative Colitis","d",0.003,-74314,0.075
+
+
+utilitiesScores$Value <- with(utilitiesScores,
+                     ifelse((Measurement.type=="c"),
+                           Cost,
+                           unlist(Map(liabilityThresholdValue, Prevalence, 1, Cost))))
+
+mean(replicate(10000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix,
+    sd=sqrt(0.000001+utilitiesScores$Polygenic.score * 0.5)), method="svd") * utilitiesScores$Value))))
+# [1] 34218.17767
+
+mean(replicate(10000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix,
+    sd=sqrt(utilities$H2_snp * 0.5)), method="svd") * utilitiesScores$Value))))
+# [1] 146147.3353
+~~~
+
+So with current polygenic scores, we could expect a gain of ~\$70k out of 10 embryos (at least, before the inevitable losses of the IVF process), which is indeed around as much more as expected than IQ on its own (which was \$49k).
+We could also take a look at the expected gain if we could have perfect polygenic scores equal to the SNP heritabilities; then we would get as much as \$146k.
 
 # Iterated embryo selection
 
@@ -1607,222 +1838,3 @@ _The Genius Factory: The Curious History of the Nobel Prize Sperm Bank_, Plotz 2
 > ...From the beginning, sperm banking had a comic aspect to it. In July 1976, a prankster named Joey Skaggs announced that he would be auctioning rock star sperm from his "Celebrity Sperm Bank" in Greenwich Village. "We'll have sperm from the likes of Mick Jagger, Bob Dylan, John Lennon, Paul McCartney, and vintage sperm from Jimi Hendrix," he declared. On the morning of the auction, Skaggs and his lawyer appeared to announce that the sperm had been kidnapped. They read a ransom note: "Caught you with your pants down. A sperm in the hand is worth a million in a Swiss bank. And that's what it will cost you. More to cum. [signed] Abbie." Hundreds of women called the nonexistent sperm bank asking if they could buy; radio and TV shows reported the aborted auction without realizing it had been a joke. And at the end of the year, Gloria Steinem - presumably unaware that it had been a hoax - appeared on an NBC special to give the Celebrity Sperm Bank an award for bad taste.
 >
 > ...The Repository sustained its popularity during the early and mid-1990s. The waiting list reached eighteen months, because there were never enough donors. Usually, Anita could supply only fifteen women at a time with sperm. California Cryobank, by contrast, could supply hundreds of customers at once. Demand at the Repository remained strong even when Graham started charging for sperm. In the mid-1990s, the bank collected a $3,500 flat fee per client, a lot more than other banks. Ever the economic rationalist, Graham had concluded that customers would value his product more if they had to pay for it...Neff wasn't nostalgic when she recounted the end of the bank. "Sperm banking will be a blip in history," she said. The Nobel sperm bank, she implied, would be a blip on that blip. And in some ways, she is clearly right. The Repository for Germinal Choice pioneered sperm banking but ended up in a fertility cul-de-sac. Other sperm banks took Graham's best ideas-donor choice, donor testing, and high-achieving donors - and did them better. They offered more choice, more testing, more men. And they managed to do so without Graham's peculiar eugenics theories, implicit racism, and distaste for single women and lesbians. The Repository died because no one needed it anymore.
-
-<!--
-In single selection, the embryo selected is picked from the batch solely based on its polygenic score on 1 trait, even if the gain is small and some of the other embryos have large genetic advantages on other, almost as important, traits.
-In multiple selection, we take the maximum from the embryos based on all the scores summed together, allowing for excellence on 1 trait or general high quality on a few other traits.
-
-What sort of advantage do we expect? It's not as simple as generating some random numbers independently from a distribution and then summing them, because the actual genetic scores will turn out to be intercorrelated: a high polygenic score for intelligence will also tend to lower the BMI polygenic score, and a high BMI polygenic score will increase the childhood obesity polygenic score or the smoking polygenic score because they genetically overlap on the same SNPs.
-In fact, all traits will tend to be a little (or a lot) genetically correlated.
-If we ignore this, we may badly over or underestimate the advantage of multiple selection: the advantage of selection on a good trait may be partially negated if it drags in a bad trait, or the advantage may be amplified if it comes with other good traits.
-
-We need a dataset giving the pairwise genetic correlations of a lot of important traits, and then we can generate hypothetical multivariate sets of polygenic scores which follow what the real-world distribution of polygenic scores would look like, and *then* we can sum them up, maximize, and see what sort of gain we have.
-
-A specific genetic correlation can be estimated from twin studies, or as part of GWAS studies using an algorithm like GCTA or LD score regression.
-LD score regression has the notable advantage of being usable on solely the polygenic scores for individual traits released by GWASes, without requiring the same subjects to be phenotyped or access to subject-level data, and computationally tractable; hence it is possible to collect various publicly released polygenic scores for any traits and calculate the correlations for all pairs of traits.
-
-This has been done by done by [LD Hub](http://ldsc.broadinstitute.org/) (described in [Zheng et al 2016](http://biorxiv.org/content/biorxiv/early/2016/05/03/051094.full.pdf "LD Hub: a centralized database and web interface to perform LD score regression that maximizes the potential of summary level GWAS data for SNP heritability and genetic correlation analysis")), which provides a web interface to an implementation of LD score regression and >100 polygenic scores available for calculating SNP heritability or genetic correlations.
-Zheng et al 2016 describes the initial correlation matrix for 49 traits, a number which are of practical interest in multiple selection; [the spreadsheet](http://ldsc.broadinstitute.org/static/media/LD-Hub_genetic_correlation_49x49.xlsx) can be downloaded, saved as CSV, and the first lines edited to provide a usable file in R.
-
-Several of the traits are redundant or overlapping: it is scientifically useful to know that height as measured in one study is the same thing as measured in a different study (implying that the relevant genetics in the two populations are the same, and that the phenotype data was collected in a similar manner, which is something you might take for granted for a trait like height, but would be in considerable doubt for mental illnesses), but we really don't need 4 slightly different traits related to tobacco use or ~9 traits about obesity.
-So before turning into a correlation matrix, we need to drop those to leave with 34 relevant traits:
-
-~~~{.R}
-rg <- read.csv("/home/gwern/LD-Hub_genetic_correlation_49x49.csv")
-# delete redundant/overlapping/obsolete ones:
-dupes <- c("BMI 2010", "Childhood Obesity", "Extreme BMI", "Obesity Class 1", "Obesity Class 2", "Obesity Class 3", "Overweight", "Waist Circumference", "Waist-Hip Ratio", "Cigarettes per Day", "Ever/Never Smoked", "Age at Smoking", "Extreme Height", "Height 2010")
-rgClean <- rg[!(rg$Trait1 %in% dupes | rg$Trait2 %in% dupes),]
-rgClean <- subset(rgClean, select=c("Trait1", "Trait2", "rg"))
-
-library(reshape2)
-rgMatrix <- acast(rgClean, Trait2 ~ Trait1)
-
-# convert from half-matrix to full symmetric matrix
-library(psych)
-rgMatrix <- lowerUpper(t(rgMatrix), rgMatrix)
-rgMatrix[is.na(rgMatrix)] <- 1
-~~~
-
-For a baseline, let's revisit the single selection case, in which we have 1 trait where higher=better with a heritability of 0.33 where we are choosing from 10 half-related embryos: we can get +0.62SD in this case.
-For a multiple selection version, we can consider a correlation matrix for 34 traits in which every trait is uncorrelated, with the same settings (higher=better, 0.33 heritability, 10 half-related siblings): with more traits to sum, the best choice becomes much better, giving us +3.644SDs on an overall index.
-Finally, what if we populate the correlation matrix with genetic correlations like those in the LD Hub dataset (ignoring the issues of trait-specific heritabilities, losses/gains, and available polygenic scores)?
-Do we get less or more than 3.644SD because traits cancel out? We get much more, +5.19SDs, because the pattern of correlations turn out to be favorable.
-
-~~~{.R}
-mean(replicate(100000, max(rnorm(10, mean=0, sd=sqrt(0.33*0.5)))))
-# [1] 0.6250647743
-
-independent <- matrix(ncol=34, nrow=34, 0)
-diag(independent) <- 1
-
-library(mvtnorm)
-library(MBESS)
-mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(independent, sd=rep(sqrt(0.33*0.5),34)), method="svd")))))
-# [1] 3.644660885
-mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=rep(sqrt(0.33*0.5),34)), method="svd")))))
-# [1] 5.199043247
-~~~
-
-Next we consider what happens when we include SNP heritabilities (which set upper bounds on the polygenic scores, but see earlier GCTA discussion on why they're loose upper bounds in practice).
-The heritabilities for 173 traits are provided by LD Hub in [a different](http://ldsc.broadinstitute.org/static/media/LD-Hub_study_information_and_SNP_heritability.xlsx) spreadsheet but the trait names don't always match up with the names in the correlation spreadsheet ones, so I had to convert them manually.
-(The height heritability is also missing from the heritability page & spreadsheet so I borrowed a GCTA estimate from [Trzaskowski et al 2016](http://ije.oxfordjournals.org/content/45/2/417.full "Application of linear mixed models to study genetic stability of height and body mass index across countries and time").)
-While we're at it, I classified the traits by desirability to consistently set higher=better:
-
-~~~{.R}
-utilities <- read.csv(stdin(), header=TRUE, colClasses=c("factor", "factor", "numeric","integer"))
-"Trait","Measurement.type","H2_snp","Sign"
-"ADHD","d",0.2573,-1
-"Age at Menarche","c",0.183,1
-"Alzheimer's","d",0.0688,-1
-"Anorexia","d",0.559,-1
-"Autism Spectrum","d",0.559,-1
-"Bipolar","d",0.432,-1
-"Birth Length","c",0.1697,-1
-"Birth Weight","c",0.1124,1
-"BMI","c",0.1855,-1
-"Childhood IQ","c",0.2735,1
-"College","d",0.0563,1
-"Coronary Artery Disease","d",0.0781,-1
-"Crohn's Disease","d",0.4799,-1
-"Depression","d",0.1745,-1
-"Fasting Glucose","c",0.0984,-1
-"Fasting Insulin","c",0.0695,-1
-"Fasting Proinsulin","c",0.1443,1
-"Former/Current Smoker","d",0.0645,-1
-"HbA1C","c",0.0656,-1
-"HDL","c",0.116,1
-"Height","c",0.69,1
-"Hip Circumference","c",0.1266,-1
-"HOMA-B","c",0.0888,-1
-"HOMA-IR","c",0.0686,-1
-"Infant Head Circumference","c",0.2352,-1
-"LDL","c",0.1347,1
-"Lumbar Spine BMD","c",0.2684,1
-"Neck BMD","c",0.2977,1
-"Rheumatoid Arthritis","d",0.161,-1
-"Schizophrenia","d",0.4541,-1
-"T2D","d",0.0872,-1
-"Total Cholesterol","c",0.1014,-1
-"Triglycerides","c",0.1525,-1
-"Ulcerative Colitis","d",0.2631,-1
-
-
-mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(independent, sd=rep(sqrt(0.33*0.5),34)), method="svd") * utilities$Sign))))
-# [1] 3.638056955
-mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=rep(sqrt(0.33*0.5),34)), method="svd") * utilities$Sign))))
-# [1] 4.159339696
-
-mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(independent, sd=sqrt(utilities$H2_snp * 0.5)), method="svd") * utilities$Sign))))
-# [1] 2.936800189
-mean(replicate(100000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=sqrt(utilities$H2_snp * 0.5)), method="svd") * utilities$Sign))))
-# [1] 3.286329413
-~~~
-
-Re-estimating with higher=better corrected, the original multiple selection turned out to be somewhat overestimated.
-Adding the real trait heritabilities, we see that the gains to multiple selection remain large compared to single selection (2.9 or 3.3SDs vs 0.6SDs), and that the genetic correlations do *not* substantially reduce gains to multiple selection but in fact benefits multiple selection by adding +0.35SD.
-
-Continuing onward: if multiple selection is helpful, what sort of net benefit to selection would we get after assigning some reasonable costs to each trait & using current polygenic scores?
-
-Coming up with that information for 34 traits in the same detail as I have for intelligence would be extremely challenging, so I will settle for some quicker and dirtier estimates; in cases where the causal impact is not clear or I cannot find reasonably reliable cost estimates, I will simply drop the trait (which will be conservative and underestimate possible gains from multiple selection).
-The traits:
-
-- Age at Menarche: [Perry et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4185210/ "Parent-of-origin specific allelic associations among 106 genomic loci for age at menarche") reports a polygenic score explaining 15.8% of variance. [Day et al 2016](/docs/genetics/2016-day.pdf "Physical and neurobehavioral determinants of reproductive onset and success") demonstrates a causal impact of early puberty on "earlier first sexual intercourse, earlier first birth and lower educational attainment", consistent with the intercorrelations (strong negative correlation with childhood IQ); clearly the sign should be negative, and early puberty has been linked to all sorts of problems ([_Atlantic_](http://www.theatlantic.com/health/archive/2016/06/the-long-term-risks-of-early-puberty/488834/): "greater risk for breast cancer, teen pregnancy, HPV, heart disease, diabetes, and all-cause mortality, which is the risk of dying from any cause. There are psychological risks as well. Girls who develop early are at greater risk for depression, are more likely to drink, smoke tobacco and marijuana, and tend to have sex earlier.") but no costs are available
-- Alzheimer's disease: [Escott-Price et al 2015](http://www.dementiasplatform.uk/wp-content/uploads/2015/12/Common-polygenic-variation-enhances-risk-prediction-for-Alzheimers-disease.pdf "Common polygenic variation enhances risk prediction for Alzheimer's disease") report a polygenic score of 0.021 for AD. The lifetime risk at age 65 is 9% men & 17% women; few people die before age 65 so I'll take the average 13% as the lifetime risk at birth (since Alzheimer's rates tend to increase, this should be conservative for future rates). Costs rise steeply before death as the dementia cripples the patient, imposing extraordinary costs for daily care & on families & caregivers. USA total costs have been estimated at >\$200b; for dementia, the last 5 years of life can incur [\$287k in costs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4809412/ "'The Burden of Health Care Costs in the Last 5 Years of Life', Kelley et al 2016"). Discounting Alzheimer treatment cost is a little tricky: unlike height/BMI/IQ or BPD which we could treat on an annual cost/gain basis and discount out indefinitely, that \$287k of expenses will only be incurred 60+ years after birth on average. We can treat it as a single lump sum expense incurred 70 years in the future, discounted at 5% (as usual to be conservative): `287000 / (1+0.05)^70 ~> 9432`
-- Anorexia: ~1% prevalence. [Boraska et al 2014](http://europepmc.org/articles/pmc4325090 "A genome-wide association study of anorexia nervosa") does not report a polygenic score.
-- Autism: ~1.4% prevalence. [Clarke et al 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3714010/ "Common polygenic risk for autism spectrum disorder (ASD) is associated with cognitive ability in the general population") report that the earlier PGS results found 17% of liability explained (though this does not seem to be reported in the original paper or appendix that I can find). [Cost](!Wikipedia "Autism#Cost") ~\$4m.
-- Birth length, weight: skip as difficult to pin down the causal effects
-- College: ~42% of younger Americans have [a college degree](!Wikipedia "Educational attainment in the United States"). Rietveld reports a polygenic score ~2% for both college & 'years of education'. A college degree is worth an estimating \$250k+ for an American.
-- Coronary Artery Disease: ~40% lifetime risk. [Deloukas et al 2013](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3679547/ "Large-scale association analysis identifies new risk loci for coronary artery disease") report a limited polygenic score explaining 10.6% of the estimated 40% additive heritability or 4.24% of variance. Cardiovascular diseases are some of the most common, expensive, and fatal diseases, and US costs range into the hundreds of billions of dollars. [Birnbaum et al 2003](/docs/2003-birnbaum.pdf "Lifetime medical costs for women: Cardiovascular disease, diabetes, and stress urinary incontinence") estimates annual costs ~\$7k up to age 64 but then ~\$31k annually afterwards for total lifetime costs of \$599k. Around half of people will be diagnosed by ~age 60, so at a first cut, we might discount it at `423000 / (1+0.05)^60 ~> 32067` or \$32k.
-- Crohn's disease: 0.32% incidence. [Jostins et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3491803/ "Host-microbe interactions have shaped the genetic architecture of inflammatory bowel disease") reports a polygenic score explaining 13.6% of variance. Crohn's strikes young and lasts a lifetime; [PARA](http://www.crohns.org/congress/submission00/appendix2.htm) estimates \$8330 annually or \$374850 over the estimated 45 years after diagnosis around age 20, suggesting a discounting of `(8330/log(1.05)) / ((1+0.05)^20) ~> 64346`.
-- Depression: [17% lifetime rate](!Wikipedia "Epidemiology of depression"). [Sullivan et al 2013](http://neurogenetics.qimrberghofer.edu.au/papers/Ripke2013MolPsychiatry.pdf "A mega-analysis of genome-wide association studies for major depressive disorder") reports a polygenic score of 0.6%. ([Hyde et al 2016](/docs/genetics/2016-hyde.pdf "Identification of 15 genetic loci associated with risk of major depression in individuals of European descent")'s polygenic score used only the top 17 SNPs, and they don't report the variance explained of MDD, just the secondary phenotypes.) Another major burden of disease, both common and crippling and frequently fatal, depression has large direct costs for treatment and larger indirect costs from wages, worse health etc. [Smith et al](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2887689/ "Long-Term Economic Costs of Psychological Problems During Childhood") finds children with depression have \$300k less lifetime income, which doesn't take into account the medical treatment costs or suicide etc and is a lower bound. I can't find any lifetime costs so I will guesstimate that as the total cost for adults, starting at age 32, giving ~\$63k as the cost.
-- Fasting glucose/insulin/proinsulin, HbA1C: skip as their effects should be covered by diabetes.
-- Former/Current Smoker: [~42% of the American population circa 2005](http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5542a1.htm "Tobacco Use Among Adults --- United States, 2005") has smoked >100 cigarettes (although by 2016 currently smoking adults were down to ~15% of the population).
-Supplemental material for [Vink et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4048635/ "Polygenic risk scores for smoking: predictors for alcohol and cannabis use?") reports a polygenic score for ever smoking of 6.7%. The lifetime cost of tobacco smoking includes the direct cost of tobacco, increased lung cancer risk, lower work output, fires, general worsened health, any second hand or fetal effects, and early mortality; the cost, from various perspectives (individual vs national healthcare systems etc) has been heavily debated, but I think it's safe to put it at least \$100k over a lifetime or \$27k discounted.
-- Hip Circumference: should be covered by BMI
-- HOMA-B/HOMA-IR/Lumbar Spine BMD/Neck BMD: I have no idea where to start with these, so skipping
-- Infant Head Circumference: should be covered by IQ and education?
-- Rheumatoid Arthritis: [2.65%](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3078757/ "'The Lifetime Risk of Adult-Onset Rheumatoid Arthritis and Other Inflammatory Autoimmune Rheumatic Diseases', Crowson et al 2012"). [MHC](!WIkipedia "Major histocompatibility complex") hits explain ~12% and [Okada et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3944098/ "Genetics of rheumatoid arthritis contributes to biology and drug discovery") report a polygenic score providing another 5.5%. [Cooper 2000](http://rheumatology.oxfordjournals.org/content/39/1/28.long "Economic burden of rheumatoid arthritis: a systematic review") estimates total annual costs for RA at ~\$11542/year and cites a Stone 1984 estimate of lifetime cost of \$15,504 (\$35,909 in 2016); with typical age of onset around 60, the total annual cost might be discounted to \$13k.
-- LDL, total cholesterol, triglycerides: harmful effects should be redundant with coronary artery disease
-- Ulcerative colitis: 0.3%. [Jostins et al 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3491803/ "Host-microbe interactions have shaped the genetic architecture of inflammatory bowel disease") reports a polygenic score of 7.5%. [Cohen et al 2010](http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2036.2010.04234.x/pdf "Systematic review: the costs of ulcerative colitis in Western countries") & [Park & Bass 2011](https://www.researchgate.net/profile/Dorsey_Bass/publication/47680877_Inflammatory_bowel_disease-attributable_costs_and_cost-effective_strategies_in_the_United_States_a_review/links/5452597b0cf2bccc4908e0f2.pdf "Inflammatory Bowel Disease-Attributable Costs and Cost-effective Strategies in the United States: A Review") report \$15k medical expenses annually & \$5k employment loss. With mean age diagnosis of ~35 [da Silva et al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4110577/ "Epidemiology, demographic characteristics and prognostic predictors of ulcerative colitis"), something like `(20000/log(1.05)) / ((1+0.05)^35) ~> 74314`.
-
-~~~{.R}
-liabilityThresholdValue <- function(populationFraction, gainSD, value) {
-    if (value<0) {
-          fraction <- pnorm(qnorm(populationFraction) - gainSD)
-        } else {
-          fraction <- pnorm(qnorm(populationFraction) + gainSD) }
-    gain  <- (fraction - populationFraction) * value
-    return(c(fraction, gain))
-    }
-## handle both continuous & dichotomous traits:
-polygenicValue <- function(populationFraction, value, polygenicScore, n=10) {
-    gainSD <- mean(simEmbryoSelection(n=n, variance=polygenicScore, iters=100000))
-    if (populationFraction==1) { if (value<0) { gainSD <- -gainSD }; c(populationFraction, gainSD*value) } else {
-                                 ## the value of increasing healthy fraction:
-                                 liabilityThresholdValue(populationFraction,  gainSD,  value) }  }
-## examples: BMI
-polygenicValue(1, -16750, 0.153)
-# [1]    1.000000 7125.151193
-## example: IQ
-iqHigh <- 16151*15
-selzam2016 <- 0.035
-polygenicValue(1, iqHigh, selzam2016)
-# [1]     1.0000 49347.3885
-## example: bipolar
-polygenicValue(0.03, -87088, 0.0283)
-# [1]   0.01953603469 911.28581092779
-## example: college
-polygenicValue(0.42, 250000, 0.03)
-# [1]     0.494681865 18670.466258862
-
-utilitiesScores <- read.csv(stdin(), header=TRUE, colClasses=c("factor", "numeric", "numeric","numeric", "numeric"))
-Trait, Prevalence, Cost, Polygenic.score, Selection.value
-"ADHD", 0.07, -182000, 0.015,2.949252555e+03
-"Age at Menarche",1,0,0.158,0
-"Alzheimer's",0.13,-9432,0.021,286.93158078581
-"Anorexia",0.01,0,0,0
-"Autism Spectrum",0.014,-4000000, 0.17,3.973805917e+04
-"Bipolar", 0.03, -87088, 0.0283,914.13217317287
-"Birth Length",1,0,0,0
-"Birth Weight",1,0,0,0
-"BMI",1, -16750, 0.153,7123.644616
-"Childhood IQ", 1, 242265, 0.035, 49308.10888
-"College",0.42,250000,0.03,1.864748009e+04
-"Coronary Artery Disease",0.404,-32000,0.0424,2677.6412613579
-"Crohn's Disease",0.0032,-64346,0.136,1.492896121e+02
-"Depression",0.17,-62959,0.006,1288.8797636889
-"Fasting Glucose",1,0,0,0
-"Fasting Insulin",1,0,0,0
-"Fasting Proinsulin",1,0,0,0
-"Former/Current Smoker",0.42,-27327,0.067,2889.0031462085
-"HbA1C",1,0,0,0
-"HDL",1,0,0,0
-"Height",1, 1616, 0.60,1363.976541
-"Hip Circumference",1,0,0,0
-"HOMA-B",1,0,0,0
-"HOMA-IR",1,0,0,0
-"Infant Head Circumference",1,0,0,0
-"LDL",1,0,0,0
-"Lumbar Spine BMD",1,0,0,0
-"Neck BMD",1,0,0,0
-"Rheumatoid Arthritis",0.0265,-12664,0.175,2.291162587e+02
-"Schizophrenia", 0.01, -49379, 0.184,3.648174672e+02
-"T2D", 0.40, -124600, 0.0573,1.201371798e+04
-"Total Cholesterol",1,0,0,0
-"Triglycerides",1,0,0,0
-"Ulcerative Colitis",0.003,-74314,0.075,1.367704838e+02
-
-
-# with(utilitiesScores, Map(polygenicValue, Prevalence, Cost, Polygenic.score))
-
-mean(replicate(1000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=sqrt(utilities$H2_snp * 0.5)), method="svd") * utilitiesScores$Selection.value))))
-# [1] 37395.96218
-
-fullPolygenicScoreValues <- ifelse(utilitiesScores$Polygenic.score>0, utilities$H2_snp / utilitiesScores$Polygenic.score, 0) * utilitiesScores$Selection.value
-replicate(1000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix, sd=sqrt(utilities$H2_snp * 0.5)), method="svd") * fullPolygenicScoreValues)))
-# [1]
-~~~
-
-So with current polygenic scores, we could expect a gain of ~\$70k out of 10 embryos, while with
-
--->
