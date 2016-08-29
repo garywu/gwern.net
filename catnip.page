@@ -69,6 +69,11 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 - Hill et al 1976, ["Species-characteristic Responses to Catnip by Undomesticated Felids"](/docs/catnip/1976-hill.pdf) TODO: extract data; Tucker & Tucker summary:
 
     > Hill et al. (1976) found that lions (5 positive responders,  partial responders, 1 negative responder) and jaguars (3 positive responders) are extremely sensitive to catnip, while tigers (5 negative responders), pumas (4 negative responders), leopards (4 partial responders, 4 negative responders), and bobcats (2 negative responders) gave little or no response. They also found that both males and females of the same species test alike, while reproductive-age adults are more sensitive than either aged or immature animals.
+- Sakurai et al 1988, ["Both (4a_S_, 7_S_, 7a_R_) –(+)-Nepetalactone and Its Antipode Are Powerful Attractants for Cats"](http://ci.nii.ac.jp/els/110006324016.pdf?id=ART0008331313&type=pdf&lang=en&host=cinii&ppv_type=0)
+
+    Another investigation of which isomers/enantiomers of nepetalactone are active, the isolated versions were tested in 9 cats with vials of the liquid; 7 responded (while the two 6-month olds didn't and Sakurai et al 1988 attributes the non-response to their being 'immature', 6 months sounds old enough for reactions to have developed). Possibly contradicting Bates & Siegel 1963's results where only 1 isomer worked, Sakurai finds both isomers work equally well.
+
+    Confusingly, Sakurai also mentions a second experiment in impregnating filter paper with the isomers, noting that "sixteen Japanese cats reacted to the 0.01mg dose"; it's unclear where these cats came from when only 9 cats (4 Japanese) were mentioned for the first experiment, and whether they were selected out of a larger group of cats or if it's implied that it was 16 out of 16 responders - inasmuch as with catnip response rates ~70%, it would be highly improbable for all of a group of 16 cats to be catnip responders (0.7^16^=0.3%). One possible explanation is that Japanese cats, being a historically isolated population (eg the [Japanese Bobtail](!Wikipedia)) after their introduction ~500AD from Korea, may have much higher population frequencies or even fixed the catnip mutation due to genetic drift or a founder effect; on the other hand, if Japanese cats were almost all catnip responders, you would think someone would have noticed by now.
 - DeLuca & Kranda 1992, ["Environmental enrichment in a large animal facility"](/docs/catnip/1992-deluca.pdf):
 
     > TABLE 1. Number of animals, species-wide, that showed interest in various toys. Key: 0 = none, 1 = 25%, 2 = 50%, 3 = the majority of the animals. We define interest as the amount of toy destruction and/or movement that we noted in daily observations.
@@ -81,17 +86,20 @@ Catnip is frequently discussed in the popular & secondary literature without cit
     > ...8-12 cats...The cats' favorite toys - like the 12 in. giant sheepskin mice (Petraport, Anaheim, CA) - contained catnip. We hung fresh catnip in stockinette bags which the cats quickly pulled down and ultimately batted into the water bowls. We gave them catnip-treated punchball toys (Petraport, Anaheim, CA- Fig. 7)-2 in. puffs mounted by a spring to a 6 in. x 6 in. base. The cats always played with these toys, and they lasted longer than the catnip bags. The cats also had "Mr. Spats' Cat-a-combs" groomer (Tarel Seven Designs, Secaucus, NJ) mounted on the walls. They usually knocked these off the wall and used them as play-things (they managed to open the compartment and dig out the catnip) rather than as grooming tools. Most of the cats spent time playing "Purrsuit" (Tarel Seven Designs, Secaucus, NJ)-every morning, we placed toys inside a maze and the cats chased them and tried, with a great deal of success, to get the smaller ones out. The cats had a preference for balls or bells with catnip in them, and for golf balls. They ignored the Squish balls (Ethical Inc., Newark, NJ).
 
     So based on the reported data, we can guess that at least 5-7 cats responded to catnip of the 8-12 sample.
+- Clapperton et al 1994, ["Development and Testing of Attractants for Feral Cats, _Felis catus_ L."](https://www.researchgate.net/profile/David_Morgan36/publication/262958697_Development_and_Testing_of_Attractants_for_Feral_Cats_Felis_Catus_L/links/54f51b3a0cf2f28c13632fc2.pdf)
+
+    Catnip & silvervine were tested as cat lures for trapping; simultaneous testing over multiple environments showed that catnip, silvervine, and urine all garnered substantial attention from cats. Clapperton notes that 4/4 domestics and 8/20 feral cats responded (pg7).
 - Wells & Egli 2004, ["The influence of olfactory enrichment on the behaviour of captive black-footed cats, _Felis nigripes_"](/docs/catnip/2004-wells.pdf):
 
     6 [black-footed cats](!Wikipedia) (_Felis nigripes_), catnip did interest them and cause increases in activity, but paper doesn't break down by cat. Not useful unless want to contact authors.
 - Ellis 2007, ["Sensory enrichment for cats (Felis silvestris catus) housed in an animal rescue shelter"](http://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.486142); apparently republished as Ellis & Wells 2009, ["The influence of olfactory stimulation on the behaviour of cats housed in a rescue shelter"](https://www.researchgate.net/profile/Sarah_Ellis6/publication/248336419_The_influence_of_olfactory_stimulation_on_the_behaviour_of_cats_housed_in_a_rescue_shelter/links/00463529c654680937000000.pdf)
 
     Shelter animals were given catnip-infused clothes to play with; Ellis notes that the catnip toys were played with more than other scents on average in the catnip group, but made no effort to ascertain how many were catnip responders.
+- Resende et al 2011, ["Influence of Cinnamon and Catnip on the Stereotypical Pacing of Oncilla Cats (_Leopardus tigrinus_) in Captivity"](/docs/catnip/2011-resende.pdf)
 
+    8 oncilla cats' activity were measured over several days after each dose was introduced into their enclosures. While the doses were small (1g), the cinnamon produced statistically-significant overall average difference while catnip did not, suggesting none of the oncilla cats responded to the catnip.
 
 ---
-
-TODO http://gen.lib.rus.ec/scimag/index.php?s=catnip&journalid=&v=&i=&p=&redirect=1
 
 - Hart, B.L., 1977. "Olfaction and feline behaviour". _Feline Practice_ 7(5): 8-10. TODO: https://www.reddit.com/r/Scholar/comments/501shm/article_olfaction_and_feline_behaviour_feline/
 - Hayashi, T. 1968. "Motor reflexes of cats to _Actinidia polygama_ (Japan) and to catnip (USA)". Pages 351-358 in N. N. Tanyolag, ed., _Theories of odor and odor measurement_. N. N. Tanyolac, Istanbul. TODO: if /r/scholar can't deliver https://www.reddit.com/r/Scholar/comments/501u52/chapter_motor_reflexes_of_cats_to_actinidia/ then the used book isn't *too* expensive... http://www.abebooks.co.uk/book-search/title/theories-of-odor-and-odor-measurement/author/necmi-n-tanyolac-ed/ ("Hayashi (1968), who tested a wide range of animals (dogs, rabbits, mice, rats, guinea pigs, fowls, and cats) with powders of _Actinidia polygama_ and _N. cataria_, found that the catnip response is induced in cats alone.")
@@ -247,7 +255,7 @@ For _n_ cats, ask:
 - specify should be at least >6 months old
 - sex (M/F)
 - spayed/neutered
-- breed: free response? maybe ask long vs short haired, mutt vs purebred
+- breed: free response? maybe ask long vs short haired, mutt vs purebred... definitely ask about Japanese bobtails
 - fur color
 - general activity level (1-5)
 - personality: "The personality and emotional factors were found to be the most important: withdrawn cats react poorly while friendly, outgoing cats react best"
