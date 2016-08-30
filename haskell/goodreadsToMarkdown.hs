@@ -111,7 +111,9 @@ titleOrIsbnToLink ttle i10 i13 = let url = case i of
                       -- Nothing, the case expression above will handle it
                       i = if isJust i10 then i10 else i13
                       getAmazonPage :: String -> String
-                      getAmazonPage ibn = "http://www.amazon.com/s?ie=UTF8&field-isbn=" ++ ibn ++ "&page=1&rh=i:stripbooks"
+                      getAmazonPage ibn = "http://www.amazon.com/s?ie=UTF8&field-isbn=" ++ transformISBN ibn ++ "&page=1&rh=i:stripbooks"
+                      -- chop "="1401302025"" into "1401302025" by dropping first 2 characters & last character
+                      transformISBN ib = reverse (drop 1 (reverse (drop 2 ib)))
 
 isbnDB, urlDB :: M.Map String String
 isbnDB = M.fromList [
