@@ -2836,7 +2836,7 @@ env.getMaxNumActions = function() { return 11; }; // we'll specify 10 possible a
 var spec = {
   num_hidden_units: 200,
   experience_add_every: 20,
-  learning_steps_per_iteration: 10,
+  learning_steps_per_iteration: 1,
   experience_size: 1000000,
   alpha: 0.01,
   epsilon: 1.0,
@@ -2848,7 +2848,7 @@ var total_reward = 0;
 state = defaultState;
 spec.epsilon = 1.0; // reset epsilon if we've been running the loop multiple times
 
-for(var i=0; i < 10000*2000; i++) {
+for(var i=0; i < 10000*3000; i++) {
    var action = agent.act(state)
    state = simulate(state, 1-(action/500), 0+(action/500) );
    agent.learn(state.reward);
@@ -2879,5 +2879,10 @@ After a day of training, the DQN agent had learned to get up to 5e41, which was 
 The NN looks big enough for this problem and the experience replay buffer was more than adequate; NNs in RL are known to have issues with the reward, though, and typically 'clamp' the reward to a narrow range, so I suspected that rewards going up to 5e41 (interpreting wealth on each turn as the reward) might be playing havoc with convergence, and switched the reward to log wealth instead.
 This did not make a noticeable difference overnight (aside from the DQN agent now achieving 9.5e41).
 I wondered if the risk was too rare for easy learning and 100 neurons was not enough to approximate the curve over time, so I fixed a bug I noticed where the simulation did not terminate at t=10000, doubled the neuron count, increased the initial x-risk to 1%, and began a fresh run.
+After 1 day, it reached 9.4e41 total reward (unlogged).
 
-Cumulative log score for DQN after tweaks and ~2h of training: regularly reaches ~470k when it doesn't die immediately (which happens ~1/20 of the time). In comparison, probability-matching agent averages a cumulative log score of 866k
+Cumulative log score for DQN after tweaks and ~2h of training: regularly reaches ~470k when it doesn't die immediately (which happens ~1/20 of the time).
+In comparison, probability-matching agent averages a cumulative log score of 866k.
+After 2 days of training, the DQN had improved only slightly; the on-policy strategy appears mostly random aside from having driven the xrisk probability down to what appears to be the smallest float JS supports, so it still had not learned a meaningful compromise between xrisk reduction and investment.
+
+TODO: revisit with MCTS at some point?
