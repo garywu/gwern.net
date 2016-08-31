@@ -107,15 +107,6 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 - Hart, B.L., 1977. "Olfaction and feline behaviour". _Feline Practice_ 7(5): 8-10. TODO: https://www.reddit.com/r/Scholar/comments/501shm/article_olfaction_and_feline_behaviour_feline/
 - Hayashi, T. 1968. "Motor reflexes of cats to _Actinidia polygama_ (Japan) and to catnip (USA)". Pages 351-358 in N. N. Tanyolag, ed., _Theories of odor and odor measurement_. N. N. Tanyolac, Istanbul. TODO: if /r/scholar can't deliver https://www.reddit.com/r/Scholar/comments/501u52/chapter_motor_reflexes_of_cats_to_actinidia/ then the used book isn't *too* expensive... http://www.abebooks.co.uk/book-search/title/theories-of-odor-and-odor-measurement/author/necmi-n-tanyolac-ed/ ("Hayashi (1968), who tested a wide range of animals (dogs, rabbits, mice, rats, guinea pigs, fowls, and cats) with powders of _Actinidia polygama_ and _N. cataria_, found that the catnip response is induced in cats alone.")
 
-- Cionga, E., V. Popesco, O. Contz, and L. Boniforti. 1976. "The alkaloids from Valeriana officinalis: identification of actinidine". Pages 299-302 in A. Frigerio and N. Castagnoli, eds., _Advances in mass spectrometry in biochemistry and medicine, volume 1_. Spectrum Publ., New York.
-- Gupta, Y. N., K. K. Baslas, and R. N. S. Chauhan. 1971. Chemical examination of essential oil from the plant Nepeta leucophylla. Indian Oil Soap J. 36(9):257-267.
-- Purohit, R. M., and S. S. Nigam. 1959. Chemical examination of the essential oil derived from the leaves of Nepeta hindostana Roth. Saugar, India (City) Univ. J. Pt. II, Sect. A 8:46-49
-- Sakan et al. 1960a Chemical components in matatabi. I. The isolation of the physiologically active principles, matatabilactone and actinidine [in Japanese]. J. Chem. Soc. Japan, Pure Chem. Sect. 81:1320-1324.
-
-- Torssel and Wahlberg 1966 The structure of the principal alkaloid from Valeriana officinalis (L.). Tetrahedron Lett. 1966:445-448.
-- Torssel and Wahlberg 1967 Isolation, structure and synthesis of alkaloids from Valeriana offtcinalis. Acta Chem. Scand. 21:53-62.
-- Hazama N (1942) Felidae species and Actinidia polygama. Shizen 6:55-59
-
 ## Analysis
 
 # Known cat stimulants
@@ -134,7 +125,17 @@ Catnip is frequently discussed in the popular & secondary literature without cit
     - [Hayashi 1968](/docs/catnip/1968-hayashi.pdf "Pseudo-Affective Reflexes of Cats produced by Extracts from the Plant _Actinidia polygama_") claims to have found no responses in an unspecified but probably >4 number of cats when testing nepetalactone (catnip) and actinidine solutions, aside from two actinidine reactions: salivation when poured into one cat's mouth and vomiting after an injection. Oddly, Hayashi claims in the conclusion section "Our experiments do not support the claim that _Actinidia palygama_ produces behavioural changes in cats" and then immediately following that in the summary section that "The actinidine reflexes, called forth by the odour of the fluid, were observed in cats but not in mice, rabbits or guinea pigs.", so I am left confused about what Hayashi's results were.
     - non-response rate: 3 of 31 in [Katahara & Iwai 1975](https://www.jstage.jst.go.jp/article/tjem1920/115/2/115_2_137/_pdf "Effect of Unilateral Lesion of Amygdala on Unmanifested Response to Matatabi (_Actinidia polygama_) in Cats")/[Katahira 1993](/docs/catnip/1993-katahira.pdf "Emotional Behavior in Cats Induced Olfactorily by matatabi (Actinidia polygama)")
     - [Shoyama et al 1998](/docs/catnip/1998-shoyama.pdf "I _Actinidia polygama_ (Japanese name Matatabi): In Vitro Culture, Micropropagation, and the Production of Monoterpenes and Triterpenoids") notes that their cultured fruit [calluses](!Wikipedia "Callus (cell biology)") would "produce only a low amount of attractant for cats", so wood/leaf is probably necessary for a response
-- Acalypha indica (Indian acalypha/Indian nettle) https://en.wikipedia.org/wiki/Acalypha_indica#Effect_on_domestic_cats active ingredient TODO
+    - Sakan et al 1960a, ["Chemical components in matatabi. I. The isolation of the physiologically active principles, matatabilactone and actinidine"](https://www.jstage.jst.go.jp/article/nikkashi1948/81/8/81_8_1320/_pdf) [in Japanese]
+    - Sakan et al 1969, ["Biologically active C~9~-, C~10~-, and C~11~-terpenes from _Actinidia polygama_, _Boschniakia rossica_, and _Menyanthes trifoliata_"](https://www.jstage.jst.go.jp/article/nikkashi1948/90/6/90_6_507/_pdf)  (in Japanese; Tucker & Tucker summary: "Sakan et al. (1969) also isolated onikulactone from _B. rossica_ and found that it induced the catnip response in cats." None of the Sakan papers in English mention behavioral data or experiments, just chemistry.)
+    - Hazama N (1942) "Felidae species and Actinidia polygama". Shizen ['Nature'; or 'Shijizen'?] 6:55-59 [in Japanese?]
+
+        A "Hazama, N" is mentioned several times in _The Monkeys of Arashiyama: Thirty-five Years of Research in Japan and the West_ as one of the first researchers to study those monkeys, so apparently he was a biologist of some sort, but is listed as deceased as of 1991. The bibliography includes a 1962 publication in "Iwatayama Shizen Kenkyujo Chosa Kenkyu Hokoku" but it's cited as volume 1, so can't be the 'Shizen' in question. [_Folia psychiatrica et neurologica japonica, Volumes 17-18_ 1963](https://books.google.com/books?id=p7owAQAAMAAJ) cites Hazama twice:
+
+        - Hazama, N: Felidae and Matatabi. Shizen (Nature), 6: 55-59, 1951 (Japanese)
+        - Hazama, N: Cat and Matatabi. Iden (Heredity), 7: 33-37, 1953 (Japanese)
+
+        So the original citation to 1942 may be wrong or he may've published three almost identically-titled papers ("Matatabi" = "Actinidia polygama").
+- [Acalypha indica](https://en.wikipedia.org/wiki/Acalypha_indica#Effect_on_domestic_cats) (Indian acalypha/Indian nettle) active ingredient TODO
 - cat thyme (teucrium marum) : active ingredient TODO
 - Buckbean (Menyanthes trifoliata): mitsugashiwalactone
 
