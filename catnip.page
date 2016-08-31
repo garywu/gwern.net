@@ -50,7 +50,7 @@ Catnip is frequently discussed in the popular & secondary literature without cit
             > Herpestinae         Ichneumia    1  0  0  0  0  1
             > Cryptoproctinae     Cryptoprocta 1  0  0  1  0  0
             >
-            > Table: Table 3. Results of testing Viverrids with catnip. Figure in parentheses indicates number of individuals tested. `+` = positive, `?+` = possibly positive, `?-` = probably negative, `-` = negative, `I` = indetermine, animal would not or did not investigate leaves.
+            > Table: Table 3. Results of testing Viverrids with catnip. Figure in parentheses indicates number of individuals tested. `+` = positive, `?+` = possibly positive, `?-` = probably negative, `-` = negative, `I` = indeterminate, animal would not or did not investigate leaves.
         2. Hyenas (Hyenidae): 0/3 responders (pg41/72)
         3. Felidae: (pg42/74). Todd's table and results have been summarized as thus by Tucker & Tucker:
 
@@ -118,8 +118,6 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 
 ## Analysis
 
-
-
 # Known cat stimulants
 
 ["Catnip, Valerian, Honeysuckle and other cat-attractant plants"](http://messybeast.com/catnip-valerian.htm), Hartwell 2008
@@ -133,7 +131,8 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 - Actinidia Polygama (Japanese Catnip or Matatabi or Silvervine or silver vine or cat powder) https://en.wikipedia.org/wiki/Actinidia_polygama#Pets : active ingredient Actinidine and dihydroactinidiolide
 
 
-    - non-response rate: 3 of 31 in [Katahara & Iwai 1975](https://www.jstage.jst.go.jp/article/tjem1920/115/2/115_2_137/_pdf "Effect of Unilateral Lesion of Amygdala on Unmanifested Response to Matatabi (_Actinidia polygama_) in Cats")
+    - [Hayashi 1968](/docs/catnip/1968-hayashi.pdf "Pseudo-Affective Reflexes of Cats produced by Extracts from the Plant _Actinidia polygama_") claims to have found no responses in an unspecified but probably >4 number of cats when testing nepetalactone (catnip) and actinidine solutions, aside from two actinidine reactions: salivation when poured into one cat's mouth and vomiting after an injection. Oddly, Hayashi claims in the conclusion section "Our experiments do not support the claim that _Actinidia palygama_ produces behavioural changes in cats" and then immediately following that in the summary section that "The actinidine reflexes, called forth by the odour of the fluid, were observed in cats but not in mice, rabbits or guinea pigs.", so I am left confused about what Hayashi's results were.
+    - non-response rate: 3 of 31 in [Katahara & Iwai 1975](https://www.jstage.jst.go.jp/article/tjem1920/115/2/115_2_137/_pdf "Effect of Unilateral Lesion of Amygdala on Unmanifested Response to Matatabi (_Actinidia polygama_) in Cats")/[Katahira 1993](/docs/catnip/1993-katahira.pdf "Emotional Behavior in Cats Induced Olfactorily by matatabi (Actinidia polygama)")
     - [Shoyama et al 1998](/docs/catnip/1998-shoyama.pdf "I _Actinidia polygama_ (Japanese name Matatabi): In Vitro Culture, Micropropagation, and the Production of Monoterpenes and Triterpenoids") notes that their cultured fruit [calluses](!Wikipedia "Callus (cell biology)") would "produce only a low amount of attractant for cats", so wood/leaf is probably necessary for a response
 - Acalypha indica (Indian acalypha/Indian nettle) https://en.wikipedia.org/wiki/Acalypha_indica#Effect_on_domestic_cats active ingredient TODO
 - cat thyme (teucrium marum) : active ingredient TODO
