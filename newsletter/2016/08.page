@@ -21,18 +21,22 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 
 Everything is heritable:
 
-- Human evolution:
+- Evolution:
 
     - ["Divergent Ah receptor ligand selectivity during hominin evolution"](http://www.gwern.net/docs/genetics/2016-hubbard.pdf), Hubbard et al 2016 (Evolution to tolerate smoke poisoning, 350-45kya)
     - ["Genetic Markers of Human Evolution Are Enriched in Schizophrenia"](http://www.biologicalpsychiatryjournal.com/article/S0006-3223%2815%2900855-0/pdf), Srinivasan et al 2016 (Our evolution is not yet complete: evolution is still working out the kinks. Fortunately, we don't have to wait for it to finish the job.)
     - ["Genetic Associations Between Personality Traits and Lifetime Reproductive Success in Humans"](http://www.gwern.net/docs/genetics/2016-berg.pdf), Berg et al 2016 (contemporary selection for personality traits)
+    - ["How cognitive genetic factors influence fertility outcomes: A mediational SEM analysis"](http://biorxiv.org/content/early/2016/08/18/070128), Woodley et al 2016 (More on dysgenics in the USA: mostly mediated through education's effects on fertility.)
     - ["Humans Never Stopped Evolving: The emergence of blood abnormalities, an adult ability to digest milk, and changes in our physical appearance point to the continued evolution of the human race"](http://www.the-scientist.com/?articles.view/articleNo/46651/title/Humans-Never-Stopped-Evolving/)
-- ["How cognitive genetic factors influence fertility outcomes: A mediational SEM analysis"](http://biorxiv.org/content/early/2016/08/18/070128), Woodley et al 2016 (More on dysgenics in the USA: mostly mediated through education's effects on fertility.﻿)
+    - ["Rapid evolutionary response to a transmissible cancer in Tasmanian devils"](http://www.nature.com/ncomms/2016/160830/ncomms12684/full/ncomms12684.html), Epstein et al 2016 (quick evolution through soft selection sweeps)
 - ["Phenome-wide Heritability Analysis of the UK Biobank"](http://biorxiv.org/content/early/2016/08/18/070177), Ge et al 2016 (SNP heritability for 551 complex traits)
 - ["Identification of 15 genetic loci associated with risk of major depression in individuals of European descent"](http://www.gwern.net/docs/genetics/2016-hyde.pdf), Hyde et al 2016
+- ["Associations between Polygenic Risk for Psychiatric Disorders and Substance Involvement"](http://journal.frontiersin.org/article/10.3389/fgene.2016.00149/full), Carey et al 2016
+- ["Genetic Prediction of Male Pattern Baldness"](http://biorxiv.org/content/early/2016/08/31/072306), Hagenaars et al 2016 (baldness GCTA of 52%, and GWAS with 250 new hits from the UK Biobank.)
 - ["Sweet Taste Perception is Associated with Body Mass Index at the Phenotypic and Genotypic Level"](http://www.gwern.net/docs/genetics/2016-hwang.pdf), Hwang et al 2016
 - ["Analysis of Intellectual Disability Copy Number Variants for Association With Schizophrenia"](http://www.gwern.net/docs/genetics/2016-rees.pdf), Rees et al 2016 (more on the pervasive genetic overlap between mental illnesses/intellectual problems)
 - ["Heritability and causal reasoning"](http://www.gwern.net/docs/genetics/2016-lynch.pdf), Lynch 2016
+- ["Genes, Evolution and Intelligence"](http://emilkirkegaard.dk/en/wp-content/uploads/Genes-Evolution-and-Intelligence.pdf), Bouchard 2014
 - ["Prevalence of Congenital Amusia"](http://biorxiv.org/content/early/2016/08/22/070961), Peretz & Vuvan 2016
 
 Politics/religion:
@@ -40,67 +44,86 @@ Politics/religion:
 - ["Evolution is Not Relevant to Sex Differences in Humans Because I Want it That Way! Evidence for the Politicization of Human Evolutionary Psychology"](http://www.evostudies.org/pdf/GeherVol2Iss1.pdf), Geher & Gambacorta 2016
 - ["Science Is Not Always "Self-Correcting": Fact-Value Conflation and the Study of Intelligence"](http://www.gwern.net/docs/iq/2015-cofnas.pdf), Cofnas 2015 (scientific endorsement of the Noble Lie)
 Academia, liberalism, and propensity to blank slate beliefs like believing hens & roosters differ due to nurture:
-- ["Insane. Invisible. In danger. Florida cut $100 million from its mental hospitals. Chaos quickly followed"](http://www.tampabay.com/projects/2015/investigations/florida-mental-health-hospitals/)
+- ["Insane. Invisible. In danger. Florida cut \$100 million from its mental hospitals. Chaos quickly followed"](http://www.tampabay.com/projects/2015/investigations/florida-mental-health-hospitals/)
+- ["The Drugs Won: The Case for Ending the Sports War on Doping"](https://sports.vice.com/en_us/article/the-drugs-won-the-case-for-ending-the-sports-war-on-doping)
+- ["Incorruptibly Evil"](http://econlog.econlib.org/archives/2012/09/incorruptibly_e.html)
+- ["Is God an Accident?"](http://www.theatlantic.com/magazine/archive/2005/12/is-god-an-accident/304425/?single_page=true)
+- ["The Lie Factory: How politics became a business"](http://www.newyorker.com/magazine/2012/09/24/the-lie-factory)
+- ["Intelligence challenged people and free speech"](http://blogs.discovermagazine.com/gnxp/2012/09/intelligence-challenged-people-and-free-speech/)
+- [Stanislav Petrov](https://en.wikipedia.org/wiki/Stanislav_Petrov)
 
 AI:
 
-- ["Decoupled Neural Interfaces using Synthetic Gradients"](https://arxiv.org/abs/1608.05343), Jaderberg et al 2016 (potentially allows for extreme parallelization of neural nets across GPUs)
+- ["Decoupled Neural Interfaces using Synthetic Gradients"](https://arxiv.org/abs/1608.05343), Jaderberg et al 2016 ([DeepMind explainer](https://deepmind.com/blog#decoupled-neural-interfaces-using-synthetic-gradients); potentially allows for extreme parallelization of neural nets across GPUs)
+- ["Why does deep and cheap learning work so well?"](https://arxiv.org/abs/1608.08225), Lin & Tegmark 2016 (Tegmark tries to explain from a physics perspective why deep learning works.)
+- ["Densely Connected Convolutional Networks"](https://arxiv.org/abs/1608.06993), Huang et al 2016 (A new twist on highway/residual/fractal networks, with further records set on image tasks.)
+- ["How To Save Mankind From The New Breed of Killer Robots"](https://www.buzzfeed.com/sarahatopol/how-to-save-mankind-from-the-new-breed-of-killer-robots) (Tool AIs want to become agent AIs.)
 - ["Apprenticeship learning using Inverse Reinforcement Learning"](https://jangirrishabh.github.io/2016/07/09/virtual-car-IRL/)
 
 Statistics/meta-science:
 
 - ["How Multiple Imputation Makes a Difference"](http://scholar.harvard.edu/files/ranjitlall/files/pa_website_version_1.pdf?platform=hootsuite), Lall 2016 (many political science results biased & driven by treatment of missing data)
+- [Fundamental theorem of poker](https://en.wikipedia.org/wiki/Fundamental_theorem_of_poker)
+- ["Dynamic Programming in Python: Bayesian Blocks"](http://jakevdp.github.io/blog/2012/09/12/dynamic-programming-in-python/)
 
 Psychology/biology:
 
-- ["Long-Term Outcomes Associated with Traumatic Brain Injury in Childhood and Adolescence: A Nationwide Swedish Cohort Study of a Wide Range of Medical and Social Outcomes"](http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002103), Sariaslan et al 2016 (Terrifyingly large within-family estimates, and the risk increases with age in adolescence.﻿)
-- ["Heads or tails: the impact of a coin toss on major life decisions and subsequent happiness"](https://www.nber.org/papers/w22487), Levitt 2016 (You can randomize anything if you're sufficiently clever about it - even having babies, quitting jobs, moving, or starting a business. Arguably, like computer chess or 'comfort zone expansion', this suggests humans may be too risk-averse: the people on the margin, the 6% who apparently could be swayed by a coin flip, should be making these decisions more often, suggesting a bias towards the status quo.) TODO: track down fulltext, the NBER copy has gone full paywall
+- ["Long-Term Outcomes Associated with Traumatic Brain Injury in Childhood and Adolescence: A Nationwide Swedish Cohort Study of a Wide Range of Medical and Social Outcomes"](http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002103), Sariaslan et al 2016 (Terrifyingly large within-family estimates, and the risk increases with age in adolescence.)
+- ["Heads or tails: the impact of a coin toss on major life decisions and subsequent happiness"](http://www.gwern.net/docs/2016-levitt.pdf), Levitt 2016 (You can randomize anything if you're sufficiently clever about it - even having babies, quitting jobs, moving, or starting a business. Arguably, like computer chess or 'comfort zone expansion', this suggests humans may be too risk-averse: the people on the margin, the 6% who apparently could be swayed by a coin flip, should be making these decisions more often, suggesting a bias towards the status quo.)
+- ["The Long-Term Impact of International Migration on Economic Decision-Making: Evidence from a Migration Lottery and Lab-in-the-Field Experiments"](http://ftp.iza.org/dp10110.pdf), Gibson et al 2016 (Many traits are stable. Migrants aren't going to become more patient, intelligent, peaceful, pro-capitalism, or long-term oriented just because they've immigrated to your country.)
+- ["To Study or to Sleep? The Academic Costs of Extra Studying at the Expense of Sleep"](http://www.highschoolengineering.com/Downloads/ForDaytoDayOnSupportPage/ResearchArticleSleep.pdf), Gillen-O'Neel et al 2013
+- ["We Add Near, Average Far"](http://www.overcomingbias.com/2012/10/we-add-near-average-far.html)
 
 Technology:
 
 - ["Strategy Letter V"](http://www.joelonsoftware.com/articles/StrategyLetterV.html) (Reminder: Android vs iPhone, Oculus vs Vive, Microsoft vs Apple, Facebook vs media, Twitter vs API users, Amazon vs anything - everything in SV is ruled by 'commoditize your complement' and low marginal costs.)
+- ["DDoSCoin: Cryptocurrency with a Malicious Proof-of-Work"](https://www.usenix.org/system/files/conference/woot16/woot16-paper-wustrow.pdf), Wustrow & VanderSloot 2016 (Who knew HTTPS connections could provide third-party-verifiable signatures and so HTTPS is a valid Proof-of-Work and one can incentivize creating HTTPS connections and hence DDoSes?)
+- ["Losing My Revolution: How Many Resources Shared on Social Media Have Been Lost?"](http://arxiv.org/abs/1209.3026), SalahEldeen & Nelson 2012
+- ["Learnable Programming: Designing a programming system for understanding programs"](http://worrydream.com/LearnableProgramming/)
 
 Economics:
 
+- ["The Case Against Everyone's Favorite Tax Break: The Mortgage Interest Deduction"](https://priceonomics.com/the-case-against-everyones-favorite-tax-break-the/)
+- ["Fair Division of Black-Hole Negentropy: an Introduction to Cooperative Game Theory"](http://lesswrong.com/lw/12v/fair_division_of_blackhole_negentropy_an/)
+- ["Arbitrage and equilibrium in the _Team Fortress 2_ economy"](https://web.archive.org/web/20121020031732/http://blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/)
+- ["Open-access deal for particle physics: Consortium brokers agreement with 12 journals"](http://www.nature.com/news/open-access-deal-for-particle-physics-1.11468)
+- ["Grade inflation: why weren't the instructors all giving all A's already?"](http://andrewgelman.com/2012/09/22/grade-inflation-why-werent-the-instructors-all-giving-all-as-already/)
+
 Philosophy:
 
+- ["Trying to See Through: A Unified Theory of Nerddom"](http://theviewfromhell.blogspot.com/2012/09/trying-to-see-through-unified-theory-of.html)
+- ["Covert virtue - the signal that doesn't bark?"](http://www.overcomingbias.com/2012/09/covert-virtue-the-signal-that-doesnt-bark.html)
+- ["Let Us Give To Future"](http://www.overcomingbias.com/2011/09/let-us-give-to-future.html)
+- [Alarm Bell Phrase](http://c2.com/cgi/wiki?AlarmBellPhrase)
+
 Fiction:
+
+- [_The Mongolian Wizard_](http://www.tor.com/series/mongolian-wizard-stories-michael-swanwick/): ["Day of the Kraken"](http://www.tor.com/2012/09/26/day-of-the-kraken/), Michael Swanwick
+- ["Villon's Straight Tip To All Cross Coves"](http://www.fromoldbooks.org/Farmer-MusaPedestris/villons-straight-tip-to-all-cross-coves.html)
 
 Misc:
 
 - ["Detailed Discussion of Legal Rights and Duties in Lost Pet Disputes"](https://www.animallaw.info/article/detailed-discussion-legal-rights-and-duties-lost-pet-disputes), Berry 2010 (lost/abandoned pets are surprisingly complex legally)
-- [Tendril perversion](https://en.wikipedia.org/wiki/Tendril_perversion) (An uncommon name for a common phenomenon; investigated by no less than Charles Darwin.﻿)
+- ["What was it like to try a rat? (Comparative Jurisprudence, part 1)"](https://www.highbeam.com/doc/1G1-17381493.html)
+- [Tendril perversion](https://en.wikipedia.org/wiki/Tendril_perversion) (An uncommon name for a common phenomenon; investigated by no less than Charles Darwin.)
+- [WSJ hedcut](https://en.wikipedia.org/wiki/Hedcut)
 
-<!-- Back to 20 Sep 2012 -->
+<!-- Back to 17 Sep 2012 -->
 
 ## Books
 
 Nonfiction:
 
-- _Fortune's Formula_, Poundstone 2005
-- _The Future of Machine Intelligence: Perspectives from Leading Practitioners_, ed Beyer 2016
-
-Fiction:
+- [_Fortune's Formula_](https://www.amazon.com/Fortunes-Formula-Scientific-Betting-Casinos/dp/0809045990), Poundstone 2005
+- _The Future of Machine Intelligence: Perspectives from Leading Practitioners_, ed Beyer 2016 (short 80pg ebook of interviews with ML experts; some are notable, like Ilya Sutskever, some much less so (an evolutionary computation guy? what has that field done in years?) but all interviews are so short, ~5 pages, that they hardly get into any depth, and it's a waste of time.)
 
 ## Film/TV
 
 Live-action:
 
-- [_Marty_](https://en.wikipedia.org/wiki/Marty_%28film%29) (1955)
+- [_Marty_ (1955)](https://en.wikipedia.org/wiki/Marty_%28film%29)
 
 Anime:
 
-- _The Wind Rises_
+- [_The Wind Rises_](https://en.wikipedia.org/wiki/The_Wind_Rises)
 - [_The Dog of Flanders_](https://en.wikipedia.org/wiki/The_Dog_of_Flanders)
-
-## Games
-
-## Music
-
-Touhou:
-
-Vocaloid:
-
-Doujin:
-
-A cappella:
