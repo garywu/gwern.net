@@ -133,6 +133,10 @@ Probably at some point whole-genomes will become cost-effective compared to SNPs
 ##### GCTA meta-analysis
 
 Davies et al 2011's 0.5 is a little outdated and small, based on _n_=3511 with correspondingly large imprecision in the GCTA estimates.
+We can do better by incorporating additional GCTAs which have been published since 2011.
+
+###### Intelligence GCTA literature
+
 I was able to find in total the following GCTA estimates:
 
 0. ["Genome-wide association studies establish that human intelligence is highly heritable and polygenic"](http://www.nature.com/mp/journal/v16/n10/full/mp201185a.html), Davies et al 2011 ([supplementary](http://www.nature.com/mp/journal/v16/n10/extref/mp201185x1.doc))
@@ -150,35 +154,37 @@ I was able to find in total the following GCTA estimates:
     0.47; no measure of precision reported in paper or supplementary information but the relevant sample seems to be _n_=2,441 and so the standard error will be high.
 2. ["Genetic contributions to stability and change in intelligence from childhood to old age"](http://www.researchgate.net/profile/David_Dave_Liewald/publication/221760226_Genetic_contributions_to_stability_and_change_in_intelligence_from_childhood_to_old_age/links/02e7e52ca9a723a8fa000000.pdf), Deary et al 2012
 
-    > The bivariate analysis resulted in estimates of the proportion of phenotypic variation explained by all SNPs for cognition, as follows: 0.48 (standard error 0.18) at age 11; and 0.28 (standard error 0.18) at age 65, 70 or 79
+    > The bivariate analysis resulted in estimates of the proportion of phenotypic variation explained by all SNPs for cognition, as follows: 0.48 (standard error 0.18) at age 11; and 0.28 (standard error 0.18) at age 65, 70 or 79.
+
+   This re-reports the Aberdeen & Lothian Birth Cohorts from Davies et al 2011.
 3. ["Common DNA Markers Can Account for More Than Half of the Genetic Influence on Cognitive Abilities"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3652710/), Plomin et al 2013
 
-    Table 1: ".35 [.12, .58]" (95% CI; so presumably a standard error of `(0.35-0.12)/1.96 ~>0.117`), 12-year-old twins
+    England/Wales TEDS cohort. Table 1: ".35 [.12, .58]" (95% CI; so presumably a standard error of `(0.35-0.12)/1.96 ~>0.117`), 12-year-old twins
 3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2014 ([supplementary information](http://www.tweelingenregister.org/fileadmin/user_upload/publicaties/verslaggeving/NTR-publicaties_2014/Benyamin_MP_2014_sup.pdf))
 
-    pg4: TEDS (mean age 12yo, twins): 0.22(0.10), UMN (14yo, mostly twins^[The supplementary information for the UMN/University of Minnesota Study says (pg15) that the UMN sample is 3 combined samples, 2 twin samples, and that "IQs were available for 3376 offspring, 2909 of whom were twins".]): 0.40(0.21), ALSPAC (9yo): 0.46(0.06)
+    Cohorts from England, USA, Australia, Netherlands, & Scotland. pg4: TEDS (mean age 12yo, twins): 0.22(0.10), UMN (14yo, mostly twins^[The supplementary information for the UMN/University of Minnesota Study says (pg15) that the UMN sample is 3 combined samples, 2 twin samples, and that "IQs were available for 3376 offspring, 2909 of whom were twins".]): 0.40(0.21), ALSPAC (9yo): 0.46(0.06)
 4. ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](/docs/iq/2013-rietveld.pdf), Rietveld et al 2013 ([supplementary information](/docs/iq/2013-rietveld-supplementary-revision2.pdf "http://www.science.sciencemag.org/highwire/filestream/594571/field_highwire_adjunct_files/1/Rietveld.SM.revision.2.pdf"))
 
-    pg2: 0.224(0.042); mean age ~57 (using the supplementary information's Table S4 on pg92 & equal-weighting all reported mean ages; majority of subjects are non-twin)
+    Education years phenotype. pg2: 0.224(0.042); mean age ~57 (using the supplementary information's Table S4 on pg92 & equal-weighting all reported mean ages; majority of subjects are non-twin)
     <!-- mean(c(76.33,76.52,76.41,28.69,28.69,65.95,64.93,65.51,69.18,73.66,71.63,78.74,78.74,79.05,79.05,68.80,68.80,66.67,66.67,62.47,58.39,59.39,53.88,52.92,53.43,56.52,59.04,57.42,53.51,52.54,53.10,58.48,57.82,58.20,60.60,48.24,55.94,51.59,51.98,51.77,57.86,54.90,46.28,55.06,54.77,54.88,54.07,56.99,55.48,55.08,55.63,55.33,73.63,73.90,73.77,61.53,61.40,61.47,70.70,69.01,69.95,53.03,53.54,53.28,53.65,54.23,53.93,79.10,79.11,79.10,69.61,69.59,69.60,48.35,48.86,48.57,31.80,31.80,31.80,31.80,46.22,47.59,46.69,31.00,31.00,31.00,52.11,53.84,53.02,50.16,53.25,51.39,44.82,45.12,44.95,69.97,68.05,69.18,64.54,65.36,64.97,56.21,55.99,56.11,80.99,81.38,81.10,76.28,74.59,75.70,38.59,38.89,38.70,51.96,53.91,52.81,52.22,54.34,53.27,63.41,64.28,63.82,51.03,51.03,37.73,37.70,37.72,53.08,55.49,54.22,58.72,59.97,59.87,52.37,49.25,50.83,51.98,49.26,50.66,65.69,66.55,66.13,68.33,68.99,68.61,42.85,44.91,43.80,75.78,76.59,76.10,42.27,43.06,42.54,54.48,56.42,55.37,58.67,59.72,59.26,57.58,56.95,57.16,53.33,53.10,53.19)) -->
 5. ["Molecular genetic contributions to socioeconomic status and intelligence"](http://www.sciencedirect.com/science/article/pii/S0160289614000178), Marioni et al 2014
 
-    Table 3: 0.29(0.05), median age 57
+    Generation Scotland cohort. Table 3: 0.29(0.05), median age 57.
 6. ["Results of a 'GWAS Plus': General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014
 
-    0.35( 0.11), 11.78 & 17.48yos (average: 14.63)
+    Two Minnesota family & twin cohorts. 0.35( 0.11), 11.78 & 17.48yos (average: 14.63)
 7. ["DNA evidence for strong genetic stability and increasing heritability of intelligence from age 7 to 12"](http://www.researchgate.net/profile/Maciej_Trzaskowski/publication/235379639_DNA_evidence_for_strong_genetic_stability_and_increasing_heritability_of_intelligence_from_age_7_to_12/links/004635162d9aa8ba50000000.pdf), Trzaskowski et al 2014a
 
-    pg4: age 7: 0.26(0.17); age 12: 0.45(0.14); used unrelated twins for the GCTA
+    Rereports the TEDS cohort. pg4: age 7: 0.26(0.17); age 12: 0.45(0.14); used unrelated twins for the GCTA.
 8. ["Genetic influence on family socioeconomic status and children's intelligence"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907681/), Trzaskowski et al 2014b
 
     Table 2: 0.32(0.14); appears to be a followup to Trzaskowski et al 2014a & report on same dataset
 9. ["Genomic architecture of human neuroanatomical diversity"](http://www.fondation-fondamental.org/upload/editeur/files/ToroMolPsy2014.pdf), Toro et al 2014 ([supplement](https://neuroanatomy.github.io/pdfs/2014Toro-Bourgeron;GenomicArchitecture;Supplement.pdf))
 
-    0.56(0.25)/0.52(0.25) (visual IQ vs performance IQ; mean: 0.54(0.25)); IMAGEN cohort, mean age 14.5
+    0.56(0.25)/0.52(0.25) (visual IQ vs performance IQ; mean: 0.54(0.25)); IMAGEN cohort (Ireland, England, Scotland, France, Germany, Norway), mean age 14.5
 9. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (_n_=53949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015
 
-    ARIC (57.2yo): 0.29(0.05), HRS (70yo): 0.28(0.07); ages from [Supplementary Information 2](http://www.nature.com/mp/journal/v20/n2/extref/mp2014188x2.pdf).
+    ARIC (57.2yo, USA, _n_=6617): 0.29(0.05), HRS (70yo, USA, _n_=5976): 0.28(0.07); ages from [Supplementary Information 2](http://www.nature.com/mp/journal/v20/n2/extref/mp2014188x2.pdf).
 
     The article reports doing GCTAs only on the ARIC & HRS samples, but Figure 4 shows a forest plot which includes GCTA estimates from two other groups, CAGES ("Cognitive Ageing Genetics in England and Scotland Consortium") at ~0.5 & GS ("Generation Scotland") at ~0.25. The CAGES datapoint is cited to Davies et al 2011, which did report 0.51, and the GS citation is incorrect; so presumably those two datapoints were previously reported GCTA estimates which Davies et al 2015 was meta-analyzing together with their 2 new ARIC/HS estimates, and they simply didn't mention that.
 10. ["A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html), Spain et al 2015
@@ -195,85 +201,91 @@ I was able to find in total the following GCTA estimates:
     _n_=3689, 0.360(0.108) for the principal factor extracted from their battery of tests, non-twins mean age 13.7
 
 The earlier estimates tend to be smaller samples and higher, and as heritability increases with age, it's not surprising that the GCTA estimates of SNP contribution also increases with age.
+
+###### Meta-analysis
+
 [Jian Yang](http://gcta.freeforums.net/thread/213/analysis-greml-results-multiple-cohorts) says that GCTA estimates can be meta-analytically combined straightforwardly in the usual way.
 Excluding Chabris et al 2012 (no precision reported) and Spain et al 2015 and the duplicate Trzaskowski and doing a random-effects meta-analysis with mean age as a covariate:
 
 ~~~{.R}
 gcta <- read.csv(stdin(), header=TRUE)
-Study, HSNP, SE, Age.mean, Twin
-Davies et al 2011, 0.17, 0.2, 70.82, FALSE
-Davies et al 2011, 0.99, 0.22, 65, FALSE
-Deary et al 2012, 0.48, 0.18, 11, FALSE
-Deary et al 2012, 0.28, 0.18, 71.3, FALSE
-Plomin et al 2013, 0.35, 0.117, 12, TRUE
-Benyamin et al 2014, 0.22, 0.10, 12, TRUE
-Benyamin et al 2014, 0.40, 0.21, 14, TRUE
-Benyamin et al 2014, 0.46, 0.06, 9, FALSE
-Rietveld et al 2013, 0.224, 0.042, 57.47, FALSE
-Marioni et al 2014, 0.29, 0.05, 57, FALSE
-Toro et al 2014, 0.54, 0.25, 14.5, FALSE
-Kirkpatrick et al 2014, 0.35, 0.11, 14.63, FALSE
-Trzaskowski et al 2014, 0.26, 0.17, 7, TRUE
-Trzaskowski et al 2014, 0.45, 0.14, 12, TRUE
-Davies et al 2015, 0.29, 0.05, 57.2, FALSE
-Davies et al 2015, 0.28, 0.07, 70, FALSE
-Davies et al 2016, 0.31, 0.018, 56.91, FALSE
-Robinson et al 2015, 0.36, 0.108, 13.7, FALSE
+Study, N, HSNP, SE, Age.mean, Twin, Country
+Davies et al 2011, 2139, 0.17, 0.2, 70.82, FALSE, Scotland
+Davies et al 2011, 6063, 0.99, 0.22, 65, FALSE, England
+Plomin et al 2013, 3154, 0.35, 0.117, 12, TRUE, England
+Benyamin et al 2014, 3376, 0.40, 0.21, 14, TRUE, USA
+Benyamin et al 2014, 5517, 0.46, 0.06, 9, FALSE, England
+Rietveld et al 2013, 7959, 0.224, 0.042, 57.47, FALSE, international
+Marioni et al 2014, 6609, 0.29, 0.05, 57, FALSE, Scotland
+Kirkpatrick et al 2014, 3322, 0.35, 0.11, 14.63, FALSE, USA
+Toro et al 2014, 1765, 0.54, 0.25, 14.5, FALSE, international
+Davies et al 2015, 6617, 0.29, 0.05, 57.2, FALSE, USA
+Davies et al 2015, 5976, 0.28, 0.07, 70, FALSE, USA
+Davies et al 2016, 30801, 0.31, 0.018, 56.91, FALSE, England
+Robinson et al 2015, 3689, 0.36, 0.108, 13.7, FALSE, USA
+
 
 library(metafor)
-## Model as continuous normal variable; heritabilities are decimals/percentages 0-1,
-## but this is more convenient and doesn't make a difference since the estimate is far from 0:
-rem <- rma(yi=HSNP, sei=SE, data=gcta); rem
+## Model as continuous normal variable; heritabilities are ratios 0-1,
+## but metafor doesn't support heritability ratios, or correlations with
+## standard errors rather than _n_s (which grossly overstates precision)
+## so, as is common and safe when the estimates are not near 0/1, we treat it
+## as a standardized mean difference
+rem <- rma(measure="SMD", yi=HSNP, sei=SE, data=gcta); rem
 # ...estimate       se     zval     pval    ci.lb    ci.ub
-#      0.3176   0.0234  13.5450   <.0001   0.2717   0.3636
+#  0.3207   0.0253  12.6586   <.0001   0.2711   0.3704
 remAge <- rma(yi=HSNP, sei=SE, mods = Age.mean, data=gcta); remAge
-# Mixed-Effects Model (k = 17; tau^2 estimator: REML)
+# Mixed-Effects Model (k = 13; tau^2 estimator: REML)
 #
-# tau^2 (estimated amount of residual heterogeneity):     0.0002 (SE = 0.0011)
-# tau (square root of estimated tau^2 value):             0.0158
-# I^2 (residual heterogeneity / unaccounted variability): 5.03%
-# H^2 (unaccounted variability / sampling variability):   1.05
-# R^2 (amount of heterogeneity accounted for):            88.65%
+# tau^2 (estimated amount of residual heterogeneity):     0.0001 (SE = 0.0010)
+# tau (square root of estimated tau^2 value):             0.0100
+# I^2 (residual heterogeneity / unaccounted variability): 2.64%
+# H^2 (unaccounted variability / sampling variability):   1.03
+# R^2 (amount of heterogeneity accounted for):            96.04%
 #
 # Test for Residual Heterogeneity:
-# QE(df = 15) = 19.8581, p-val = 0.1774
+# QE(df = 11) = 15.6885, p-val = 0.1531
 #
 # Test of Moderators (coefficient(s) 2):
-# QM(df = 1) = 4.9606, p-val = 0.0259
+# QM(df = 1) = 6.6593, p-val = 0.0099
 #
 # Model Results:
 #
 #          estimate      se     zval    pval    ci.lb    ci.ub
-# intrcpt    0.4088  0.0473   8.6493  <.0001   0.3162   0.5014
-# mods      -0.0020  0.0009  -2.2272  0.0259  -0.0037  -0.0002
+# intrcpt    0.4393  0.0523   8.3953  <.0001   0.3368   0.5419
+# mods      -0.0025  0.0010  -2.5806  0.0099  -0.0044  -0.0006
 remAgeT <- rma(yi=HSNP, sei=SE, mods = ~ Age.mean + Twin, data=gcta); remAgeT
-# intrcpt      0.4670  0.0594   7.8620  <.0001   0.3506   0.5835
-# Age.mean    -0.0029  0.0011  -2.7500  0.0060  -0.0050  -0.0008
-# Twin TRUE   -0.1181  0.0763  -1.5472  0.1218  -0.2677   0.0315
+# intrcpt      0.4505  0.0571   7.8929  <.0001   0.3387   0.5624
+# Age.mean    -0.0027  0.0010  -2.5757  0.0100  -0.0047  -0.0006
+# Twin TRUE   -0.0552  0.1119  -0.4939  0.6214  -0.2745   0.1640
 gcta <- gcta[order(gcta$Age.mean),] # sort by age, young to old
 forest(rma(yi=HSNP, sei=SE, data=gcta), slab=gcta$Study)
 ## so estimated heritability at 30yo:
-0.4088 + 30*-0.0020
-# [1] 0.3488
+0.4505 + 30*-0.0027
+# [1] 0.3695
 ## Take a look at the possible existence of a quadratic trend as suggested
 ## by conventional IQ heritability results:
 remAgeTQ <- rma(yi=HSNP, sei=SE, mods = ~ I(Age.mean^2) + Twin, data=gcta); remAgeTQ
-# Mixed-Effects Model (k = 17; tau^2 estimator: REML)
+# Mixed-Effects Model (k = 13; tau^2 estimator: REML)
+#
 # tau^2 (estimated amount of residual heterogeneity):     0.0000 (SE = 0.0009)
-# tau (square root of estimated tau^2 value):             0.0009
-# I^2 (residual heterogeneity / unaccounted variability): 0.02%
-# H^2 (unaccounted variability / sampling variability):   1.00
-# R^2 (amount of heterogeneity accounted for):            99.97%
+# tau (square root of estimated tau^2 value):             0.0053
+# I^2 (residual heterogeneity / unaccounted variability): 0.83%
+# H^2 (unaccounted variability / sampling variability):   1.01
+# R^2 (amount of heterogeneity accounted for):            98.87%
+#
 # Test for Residual Heterogeneity:
-# QE(df = 14) = 18.2591, p-val = 0.1952
+# QE(df = 10) = 16.1588, p-val = 0.0952
+#
 # Test of Moderators (coefficient(s) 2,3):
-# QM(df = 2) = 6.8187, p-val = 0.0331
+# QM(df = 2) = 6.2797, p-val = 0.0433
 #
 # Model Results:
+#
 #                estimate      se     zval    pval    ci.lb    ci.ub
-# intrcpt          0.4271  0.0475   8.9874  <.0001   0.3340   0.5202
-# I(Age.mean^2)   -0.0000  0.0000  -2.6092  0.0091  -0.0001  -0.0000
-# Twin TRUE       -0.1070  0.0751  -1.4251  0.1541  -0.2541   0.0401
+# intrcpt          0.4150  0.0457   9.0879  <.0001   0.3255   0.5045
+# I(Age.mean^2)   -0.0000  0.0000  -2.4524  0.0142  -0.0001  -0.0000
+# Twin TRUE       -0.0476  0.1112  -0.4285  0.6683  -0.2656   0.1703
 ## does fit better but enough?
 ~~~
 
@@ -288,6 +300,8 @@ The regression results, residuals, and funnel plots are generally sensible excep
     Testing this, I tried fitting a quadratic model instead, and as expected, it does fit somewhat better but without using Bayesian methods, hard to say how much better. This question awaits publication of further GCTA intelligence samples, with middle-aged subjects.
 
 ![Forest plot for meta-analysis of GCTA estimates of total additive SNPs' effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
+
+###### Correcting for measurement error
 
 This meta-analytic summary is an underestimate of the true genetic effect for several reasons, including as mentioned, measurement error.
 Using Spearman's formula, we can correct it.
@@ -326,7 +340,7 @@ Sample sizes in the millions will recover almost the full measured GCTA heritabi
 Only better measurements will allow any further progress.
 Considering that a well-run IQ test will cost <\$100, the crossover point may well have been passed with current _n_=400k datasets, where resources would be better put into fewer but better measured IQ/SNP datapoints rather than more low quality IQ/SNP datapoints.
 
-##### GCTA-based upper bound
+##### GCTA-based upper bound on selection gains
 
 Since half of additives will be shared within family, then we get `0.33*0.5 = 0.165` within-family variance, which gives `sqrt(0.165) = 0.4062019202` SD or 6.1 IQ points
 (Occasionally within-family differences are cited in a format like "siblings have an average difference of 12 IQ points", which comes from an SD of ~0.7/0.8, since `0.8*15=12`, but you could also check what SD yields an average difference of 12 via simulation: eg `mean(abs(rnorm(n=10000000, mean=0, sd=0.71) - rnorm(n=10000000, mean=0, sd=0.71))) * 15 ~> 12.01807542`.)
@@ -1346,7 +1360,7 @@ We need a dataset giving the pairwise genetic correlations of a lot of important
 A specific genetic correlation can be estimated from twin studies, or as part of GWAS studies using an algorithm like GCTA or LD score regression.
 LD score regression has the notable advantage of being usable on solely the polygenic scores for individual traits released by GWASes, without requiring the same subjects to be phenotyped or access to subject-level data, and computationally tractable; hence it is possible to collect various publicly released polygenic scores for any traits and calculate the correlations for all pairs of traits.
 
-This has been done by done by [LD Hub](http://ldsc.broadinstitute.org/) (described in [Zheng et al 2016](http://biorxiv.org/content/biorxiv/early/2016/05/03/051094.full.pdf "LD Hub: a centralized database and web interface to perform LD score regression that maximizes the potential of summary level GWAS data for SNP heritability and genetic correlation analysis")), which provides a web interface to an implementation of LD score regression and >100 polygenic scores available for calculating SNP heritability or genetic correlations.
+This has been done by done by [LD Hub](http://ldsc.broadinstitute.org/) (described in [Zheng et al 2016](http://biorxiv.org/content/biorxiv/early/2016/05/03/051094.full.pdf "LD Hub: a centralized database and web interface to perform LD score regression that maximizes the potential of summary level GWAS data for SNP heritability and genetic correlation analysis")), which provides a web interface to an implementation of LD score regression and >100 public polygenic scores which are now also available for estimating SNP heritability or genetic correlations.
 Zheng et al 2016 describes the initial correlation matrix for 49 traits, a number which are of practical interest in multiple selection; [the spreadsheet](http://ldsc.broadinstitute.org/static/media/LD-Hub_genetic_correlation_49x49.xlsx) can be downloaded, saved as CSV, and the first lines edited to provide a usable file in R.
 
 Several of the traits are redundant or overlapping: it is scientifically useful to know that height as measured in one study is the same thing as measured in a different study (implying that the relevant genetics in the two populations are the same, and that the phenotype data was collected in a similar manner, which is something you might take for granted for a trait like height, but would be in considerable doubt for mental illnesses), but we really don't need 4 slightly different traits related to tobacco use or ~9 traits about obesity.
