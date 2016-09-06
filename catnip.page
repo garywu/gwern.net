@@ -163,6 +163,28 @@ inverseLogit <- function(lo) { exp(lo) / (exp(lo)+1) }
 inverseLogit(0.5749)
 # [1] 0.6398930541
 forest(r)
+## some issues in the funnel plot of too-extreme values:
+funnel(r)
+trimfill(r)
+# Estimated number of missing studies on the left side: 4 (SE = 2.5057)
+#
+# Random-Effects Model (k = 18; tau^2 estimator: REML)
+#
+# tau^2 (estimated amount of total heterogeneity): 0.1558 (SE = 0.1792)
+# tau (square root of estimated tau^2 value):      0.3947
+# I^2 (total heterogeneity / total variability):   28.84%
+# H^2 (total variability / sampling variability):  1.41
+#
+# Test for Heterogeneity:
+# Q(df = 17) = 28.4745, p-val = 0.0397
+#
+# Model Results:
+#
+# estimate       se     zval     pval    ci.lb    ci.ub
+#   0.4577   0.1881   2.4329   0.0150   0.0890   0.8265
+## doesn't make much of a difference because the added studies are all tiny:
+inverseLogit(0.4577)
+# [1] 0.6124684106
 
 ## Examine all moderators:
 rall <- rma(xi=Responders, ni=N, measure="PLO", slab=Study,
@@ -196,16 +218,38 @@ summary(rall)
 # BreedAmerican short-hair   -0.3365    2.1647  -0.1554  0.8765   -4.5791    3.9062
 # BreedJapanese               0.2513    2.1232   0.1184  0.9058   -3.9101    4.4127
 # Breedmixed                  0.8697    0.5473   1.5889  0.1121   -0.2031    1.9425
+
+## moderately informative Bayesian meta-analysis
+## (bayesmeta doesn't support moderators/meta-regression, so estimate just mean/SD):
+library(bayesmeta)
+b <- bayesmeta(y = escalc(xi=Responders, ni=N, measure="PLO", data=catnip),
+               mu.prior.mean=0, mu.prior.sd=1); summary(b)
+# ...marginal posterior summary:
+#                    tau            mu         theta
+# mode      0.3505572714 0.41111640936  0.4274950461
+# median    0.3990154931 0.40367428238  0.4132051144
+# mean      0.4377635292 0.39907308595  0.3990730859
+# sd        0.2845688843 0.17263767946  0.5499756874
+# 95% lower 0.0000000000 0.05364410904 -0.7744893696
+# 95% upper 0.9582348346 0.73677962999  1.5397331111
+#
+# relative heterogeneity I^2 (posterior median): 0.3410379591
+inverseLogit(0.39907308595)
+# [1] 0.5984649387
+## multilevel tau/heterogeneity in SDs:
+sqrt(1/(0.4377635292))
+# [1] 1.511402762
 ~~~
 
 ![Meta-analytic forest plot of catnip response rates in experimental studies](/images/catnip-forest.png)
 
-The 2/3 rule of thumb proves to be almost exactly right, with a meta-analytic summary of 64% catnip response rates.
+The 2/3 rule of thumb proves to be almost exactly right, with a meta-analytic summary of 60-64% catnip response rates.
 
-The heterogeneity of the results indicates that somethings are different from study to study; including the sex and breed covariates doesn't help much because of the missing data, but there's interesting trends of decreases with a study being conducted later in time and inside the USA, in line with my speculation about the Japanese studies finding catnip sensitivity to be almost universal.
-(The suspicious Sakurai 16/16 datapoint doesn't enter into the final model because it has no sex information and gets dropped, so the Japanese trend is being driven by the other Sakurai datapoints; hopefully the Hayashi chapter, or translations of Sakan's papers, will surface at some point and allow inclusion of other Japanese experimental results.)
+The heterogeneity of the results indicates that somethings are different from study to study or that biases like publication bias are at play; including the sex and breed covariates doesn't help much because of the missing data, but there's interesting trends of decreases with a study being conducted later in time and inside the USA, in line with my speculation about the Japanese studies finding catnip sensitivity to be almost universal.
+(The suspicious Sakurai 16/16 datapoint doesn't enter into the full model because it has no sex information and gets dropped, so the Japanese trend is being driven by the other Sakurai datapoints; hopefully the Hayashi chapter, or translations of Sakan's papers, will surface at some point and allow inclusion of other Japanese experimental results.)
 The decrease with time is odd, but it's much more likely that it's reflecting differences in experimental procedure or breeds or countries than indicating that catnip response rates are being heavily selected against.[^catnip-selection]
 Overall, the data quality is low as many authors (especially the chemists) did not report individual response rates or key details of the cats used such as their age, breed, or sex, which is particularly unfortunate as all the samples are small enough that the original data could've been easily included as short tables.
+This is ironic because while some authors claim that sex/breed doesn't matter at all, others claim that females react much more strongly (or was it males?), and yet most don't bother to break the data down by those variables, so their results can't be pooled and an answer found!
 
 [^catnip-selection]: If catnip sensitivity frequency was 70% in 1950, and for the sake of argument we accepted that the proportion had decreased ~0.0024 per year and was 54.16% in 2016, and we also accept Todd 1962's analysis that catnip sensitivity is a dominant gene, then that implies that the frequency of the gene in 1950 was $0.7 = P^2 + 2P(1-P)$ and so in 1950 _P_=0.45; similarly, $0.516 = P^2 + 2P(1-P)$, and so in 2016 _P_=0.30, so the gene frequency would've fallen by 0.15 from 1950 to 2016. If a cat generation is 3 years, then that 66 years is 22 cat generations, and spreading a fall of 15% over that, the gene frequency would be falling ~0.68% per generation.
 
@@ -229,7 +273,7 @@ Overall, the data quality is low as many authors (especially the chemists) did n
     - [Shoyama et al 1998](/docs/catnip/1998-shoyama.pdf "I _Actinidia polygama_ (Japanese name Matatabi): In Vitro Culture, Micropropagation, and the Production of Monoterpenes and Triterpenoids") notes that their cultured fruit [calluses](!Wikipedia "Callus (cell biology)") would "produce only a low amount of attractant for cats", so wood/leaf is probably necessary for a response
     - Sakan et al 1960a, ["Chemical components in matatabi. I. The isolation of the physiologically active principles, matatabilactone and actinidine"](https://www.jstage.jst.go.jp/article/nikkashi1948/81/8/81_8_1320/_pdf) [in Japanese]
     - Sakan et al 1969, ["Biologically active C~9~-, C~10~-, and C~11~-terpenes from _Actinidia polygama_, _Boschniakia rossica_, and _Menyanthes trifoliata_"](https://www.jstage.jst.go.jp/article/nikkashi1948/90/6/90_6_507/_pdf)  (in Japanese; Tucker & Tucker summary: "Sakan et al. (1969) also isolated onikulactone from _B. rossica_ and found that it induced the catnip response in cats." None of the Sakan papers in English mention behavioral data or experiments, just chemistry.)
-    - Hazama N (1942) "Felidae species and Actinidia polygama". Shizen ['Nature'; or 'Shijizen'?] 6:55-59 [in Japanese?]
+    - Hazama N (1942) "Felidae species and Actinidia polygama". Shizen ['Nature'] 6:55-59 [in Japanese]
 
         A "Hazama, N" is mentioned several times in _The Monkeys of Arashiyama: Thirty-five Years of Research in Japan and the West_ as one of the first researchers to study those monkeys, so apparently he was a biologist of some sort, but is listed as deceased as of 1991. The bibliography includes a 1962 publication in "Iwatayama Shizen Kenkyujo Chosa Kenkyu Hokoku" but it's cited as volume 1, so can't be the 'Shizen' in question. [_Folia psychiatrica et neurologica japonica, Volumes 17-18_ 1963](https://books.google.com/books?id=p7owAQAAMAAJ) cites Hazama twice:
 
