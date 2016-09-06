@@ -1,7 +1,7 @@
 ---
 title: Catnip immunity and alternatives
 description: Prevalence of cat reactions to catnip and catnip substitutes
-tags: statistics, psychology
+tags: statistics, psychology, meta-analysis
 created: 7 Nov 2015
 status: in progress
 belief: likely
@@ -20,7 +20,7 @@ This raises several questions:
 4. since some alternatives can be hard to find and expensive, what is the optimal order of alternatives a cat owner should try to find one that works?
 
 # Population frequency of catnip response
-## Studies
+## Literature review
 
 Catnip is frequently discussed in the popular & secondary literature without citation, and after tracking down claims, the primary literature on catnip effects & response is relatively small^[For example, Todd 1962's genetic analysis was based on just 34 cats of which 7 cats' response were unknown; as far as I can tell, another pedigree analysis has never been done since then, much less extended to newer genetic methods like [linkage](!Wikipedia "Genetic linkage") or GWASes, although it continues to be cited as the justification for treating catnip response as an autosomal dominant genetic trait.]; for a good overview, see [Tucker & Tucker 1987](/docs/catnip/1987-tucker.pdf "Catnip and the Catnip Response")
 
@@ -29,10 +29,10 @@ Catnip is frequently discussed in the popular & secondary literature without cit
     tested extracted nepetalactone and caryophyllene on 10 lions; the 7 adults all responded to the nepetalactone and not the caryophyllene (the 3 cubs responded to nothing).
 - Todd 1962, ["Inheritance of the catnip response in domestic cats"](/docs/catnip/1962-todd.pdf)
 
-    Pedigree chart reproduced in https://www.hoddereducation.co.uk/media/Documents/magazine-extras/Biological%20Sciences%20Review/BSR%20Vol%2025%20No%204/BiolRev-25_4-cat-genetics.pdf & Todd 1963 ; 14 responders, 12 non-responders in a Siamese breeding colony so 46% immunity rate in this sample. Todd also surveyed cats in local pounds and animal hospitals, finding 26 of 84 sampled were non-responders or a ~31% immunity. Todd considers the genetic pattern most consistent with a fairly common genetic variant which is autosomal dominant.
+    14 responders, 12 non-responders in a Siamese breeding colony so 46% immunity rate in this sample. (8 male responders, 6 female responders, 2 male non-responders, 10 female non-responders.) Todd also surveyed cats in local pounds and animal hospitals, finding 26 of 84 sampled were non-responders or a ~31% immunity. Todd considers the genetic pattern most consistent with a fairly common genetic variant which is autosomal dominant.
 - Todd 1963, ["The catnip response"](/docs/catnip/1963-todd.pdf)
 
-    - In surveying the 26 breeding colony & 84 local cats, Todd found no large correlations with sex, breed type (Manx/Siamese/tabby/Agouti), white spotting, blue dilution, polydactyly, long hair, or castration.  (Except the usual observation that young kittens rarely display a catnip response: of 39 under 12 weeks of age, 4 responded.)
+    - In surveying the 26 breeding colony & 84 local cats, Todd found no large correlations with sex, breed type (Manx/Siamese/tabby/Agouti), white spotting, blue dilution, polydactyly, long hair, or castration. (32 male responders, 11 male non-responders, 26 female responders, 15 female non-responders.) Except the usual observation that young kittens rarely display a catnip response: of 39 under 12 weeks of age, 4 responded.
     - Cross-species results:
 
         1. Viverrids (pg42/73):
@@ -62,19 +62,19 @@ Catnip is frequently discussed in the popular & secondary literature without cit
     They chemically separated the two [isomers](!Wikipedia); the extracted isomer I was mostly inactive when presented to 8 cats with just 1 more interested in I than II (though they caution there might still have been contaminating II in the I extract), but "three were strongly attracted" and "two showed slight preference" for isomer II (_trans-cis-_nepetalactone), so arguably 5 out of 8 were responders.
 - Palen & Goddard 1966, ["Catnip and oestrous behavior in the cat"](/docs/catnip/1966-palen.pdf)
 
-    Reactions: 23 responders, 20 non-responders, so 47% immunity rate.
+    Reactions: 23 responders, 20 non-responders, so 47% immunity rate. (37 male, 28 female, mixed breeds: 6 male responders, 6 male non-responders, 9 castrated male responders, 5 castrated male non-responders, 5 female responders, 5 female non-responders, 3 spayed female responders, 4 spayed female non-responders.)
 - Waller et al 1969, ["Feline Attractant, cis,trans-Nepetalactone: Metabolism in the Domestic Cat"](/docs/catnip/1969-waller.pdf)
 
-    In a metabolic study, purified nepetalactone was force-fed to 6 cats in gel capsules; as expected due to the olfactory requirement (previously demonstrated by Todd with surgical manipulations of olfaction), none of the cats exhibited the catnip response.
+    In a metabolic study, purified nepetalactone was force-fed to 6 cats in gel capsules; as expected due to the olfactory requirement (previously demonstrated by Todd with surgical manipulations of olfaction), none of the cats exhibited the catnip response and the result is irrelevant.
 - Hatch 1972, ["Effect of drugs on catnip (_Nepeta cataria_) induced pleasure behavior in cats"](/docs/catnip/1972-hatch.pdf)
 
-    tested 17 cats initially; 3 did not respond.
+    Tested 17 cats initially; 14 responders. (Mixed breed, both genders; breakdowns of response not given.)
 - Hill et al 1976, ["Species-characteristic Responses to Catnip by Undomesticated Felids"](/docs/catnip/1976-hill.pdf) TODO: extract data; Tucker & Tucker summary:
 
     > Hill et al. (1976) found that lions (5 positive responders,  partial responders, 1 negative responder) and jaguars (3 positive responders) are extremely sensitive to catnip, while tigers (5 negative responders), pumas (4 negative responders), leopards (4 partial responders, 4 negative responders), and bobcats (2 negative responders) gave little or no response. They also found that both males and females of the same species test alike, while reproductive-age adults are more sensitive than either aged or immature animals.
 - Sakurai et al 1988, ["Both (4a_S_, 7_S_, 7a_R_) –(+)-Nepetalactone and Its Antipode Are Powerful Attractants for Cats"](http://ci.nii.ac.jp/els/110006324016.pdf?id=ART0008331313&type=pdf&lang=en&host=cinii&ppv_type=0)
 
-    Another investigation of which isomers/enantiomers of nepetalactone are active, the isolated versions were tested in 9 cats with vials of the liquid; 7 responded (while the two 6-month olds didn't and Sakurai et al 1988 attributes the non-response to their being 'immature', 6 months sounds old enough for reactions to have developed). Possibly contradicting Bates & Siegel 1963's results where only 1 isomer worked, Sakurai finds both isomers work equally well.
+    Another investigation of which isomers/enantiomers of nepetalactone are active, the isolated versions were tested in 9 cats with vials of the liquid; 7 responded (while the two 6-month olds didn't and Sakurai et al 1988 attributes the non-response to their being 'immature', 6 months sounds old enough for reactions to have developed). The cat breeds are specified as 4 Japanese, 3 Abyssinian, and 2 American short-hairs, but not sexes. Possibly contradicting Bates & Siegel 1963's results where only 1 isomer worked, Sakurai finds both isomers work equally well.
 
     Confusingly, Sakurai also mentions a second experiment in impregnating filter paper with the isomers, noting that "sixteen Japanese cats reacted to the 0.01mg dose"; it's unclear where these cats came from when only 9 cats (4 Japanese) were mentioned for the first experiment, and whether they were selected out of a larger group of cats or if it's implied that it was 16 out of 16 responders - inasmuch as with catnip response rates ~70%, it would be highly improbable for all of a group of 16 cats to be catnip responders (0.7^16^=0.3%). One possible explanation is that Japanese cats, being a historically isolated population (eg the [Japanese Bobtail](!Wikipedia)) after their introduction ~500AD from Korea, may have much higher population frequencies or even fixed the catnip mutation due to [genetic drift](!Wikipedia) or a [founder effect](!Wikipedia); on the other hand, if Japanese cats were almost all catnip responders, you would think someone would have noticed by now.
 - DeLuca & Kranda 1992, ["Environmental enrichment in a large animal facility"](/docs/catnip/1992-deluca.pdf):
@@ -88,7 +88,7 @@ Catnip is frequently discussed in the popular & secondary literature without cit
     >
     > ...8-12 cats...The cats' favorite toys - like the 12 in. giant sheepskin mice (Petraport, Anaheim, CA) - contained catnip. We hung fresh catnip in stockinette bags which the cats quickly pulled down and ultimately batted into the water bowls. We gave them catnip-treated punchball toys (Petraport, Anaheim, CA- Fig. 7)-2 in. puffs mounted by a spring to a 6 in. x 6 in. base. The cats always played with these toys, and they lasted longer than the catnip bags. The cats also had "Mr. Spats' Cat-a-combs" groomer (Tarel Seven Designs, Secaucus, NJ) mounted on the walls. They usually knocked these off the wall and used them as play-things (they managed to open the compartment and dig out the catnip) rather than as grooming tools. Most of the cats spent time playing "Purrsuit" (Tarel Seven Designs, Secaucus, NJ)-every morning, we placed toys inside a maze and the cats chased them and tried, with a great deal of success, to get the smaller ones out. The cats had a preference for balls or bells with catnip in them, and for golf balls. They ignored the Squish balls (Ethical Inc., Newark, NJ).
 
-    So based on the reported data, we can guess that at least 5-7 cats responded to catnip of the 8-12 sample.
+    So based on the reported data, we can guess that at least 5-7 cats responded to catnip of the 8-12 sample. (Mixed breeds, unspecified sex.)
 - Clapperton et al 1994, ["Development and Testing of Attractants for Feral Cats, _Felis catus_ L."](https://www.researchgate.net/profile/David_Morgan36/publication/262958697_Development_and_Testing_of_Attractants_for_Feral_Cats_Felis_Catus_L/links/54f51b3a0cf2f28c13632fc2.pdf)
 
     Catnip & silvervine were tested as cat lures for trapping; simultaneous testing over multiple environments showed that catnip, silvervine, and urine all garnered substantial attention from cats. Clapperton notes that 4/4 domestics and 8/20 feral cats responded (pg7).
@@ -107,7 +107,99 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 - Hart, B.L., 1977. "Olfaction and feline behaviour". _Feline Practice_ 7(5): 8-10. TODO: https://www.reddit.com/r/Scholar/comments/501shm/article_olfaction_and_feline_behaviour_feline/
 - Hayashi, T. 1968. "Motor reflexes of cats to _Actinidia polygama_ (Japan) and to catnip (USA)". Pages 351-358 in N. N. Tanyolag, ed., _Theories of odor and odor measurement_. N. N. Tanyolac, Istanbul. TODO: if /r/scholar can't deliver https://www.reddit.com/r/Scholar/comments/501u52/chapter_motor_reflexes_of_cats_to_actinidia/ then the used book isn't *too* expensive... http://www.abebooks.co.uk/book-search/title/theories-of-odor-and-odor-measurement/author/necmi-n-tanyolac-ed/ ("Hayashi (1968), who tested a wide range of animals (dogs, rabbits, mice, rats, guinea pigs, fowls, and cats) with powders of _Actinidia polygama_ and _N. cataria_, found that the catnip response is induced in cats alone.")
 
-## Analysis
+## Data
+
+~~~{.R}
+catnip <- read.csv(stdin(), header=TRUE)
+Study, Year, Responders, N, Country, Sex, Breed
+Todd 1962, 1962, 8, 10, USA, M, Siamese
+Todd 1962, 1962, 6, 16, USA, F, Siamese
+Todd 1963, 1963, 32, 43, USA, M, NA
+Todd 1963, 1963, 26, 41, USA, F, NA
+Bates & Siegel 1963, 1963, 5, 8, USA, NA, NA
+Palen & Goddard 1966, 1966, 15, 26, USA, M, NA
+Palen & Goddard 1966, 1966, 8, 17, USA, F, NA
+Hatch 1972, 1972, 14, 17, USA, NA, NA
+Sakurai et al 1988, 1988, 4, 4, Japan, NA, Japanese
+Sakurai et al 1988, 1988, 3, 3, Japan, NA, Abyssinian
+Sakurai et al 1988, 1988, 2, 2, Japan, NA, American short-hair
+Sakurai et al 1988, 1988, 16, 16, Japan, NA, Japanese
+DeLucaa & Kranda 1992, 1992, 5, 8, USA, NA, NA
+Clapperton et al 1994, 1994, 12, 24, USA, NA, NA
+~~~
+
+## Meta-analysis
+
+~~~{.R}
+
+library(metafor)
+
+r <- rma(xi=Responders, ni=N, measure="PR", slab=Study, data=catnip)
+summary(r)
+# Random-Effects Model (k = 14; tau^2 estimator: REML)
+#
+#   logLik  deviance       AIC       BIC      AICc
+#   3.3234   -6.6468   -2.6468   -1.5169   -1.4468
+#
+# tau^2 (estimated amount of total heterogeneity): 0.0234 (SE = 0.0142)
+# tau (square root of estimated tau^2 value):      0.1529
+# I^2 (total heterogeneity / total variability):   71.72%
+# H^2 (total variability / sampling variability):  3.54
+#
+# Test for Heterogeneity:
+# Q(df = 13) = 58.3423, p-val < .0001
+#
+# Model Results:
+#
+# estimate       se     zval     pval    ci.lb    ci.ub
+#   0.6990   0.0516  13.5500   <.0001   0.5979   0.8001
+forest(r)
+rall <- rma(xi=Responders, ni=N, measure="PR", slab=Study, mods= ~ Year + Country + Sex + Breed, data=catnip); summary(rall)
+# Warning message:
+# In rma(xi = Responders, ni = N, measure = "PR", slab = Study, mods = ~Year + ) :
+#   Redundant predictors dropped from the model.
+#
+# Mixed-Effects Model (k = 14; tau^2 estimator: REML)
+#
+#   logLik  deviance       AIC       BIC      AICc
+#   4.0011   -8.0021    9.9979    8.1237  189.9979
+#
+# tau^2 (estimated amount of residual heterogeneity):     0.0028 (SE = 0.0079)
+# tau (square root of estimated tau^2 value):             0.0531
+# I^2 (residual heterogeneity / unaccounted variability): 20.27%
+# H^2 (unaccounted variability / sampling variability):   1.25
+# R^2 (amount of heterogeneity accounted for):            87.95%
+#
+# Test for Residual Heterogeneity:
+# QE(df = 6) = 7.7230, p-val = 0.2591
+#
+# Test of Moderators (coefficient(s) 2,3,4,5,6,7,8):
+# QM(df = 7) = 28.7518, p-val = 0.0002
+#
+# Model Results:
+#
+#                            estimate       se     zval    pval    ci.lb    ci.ub
+# intrcpt                     19.2732  10.6051   1.8174  0.0692  -1.5124  40.0587
+# Year                        -0.0094   0.0054  -1.7464  0.0807  -0.0199   0.0011
+# Country USA                 -0.3451   0.2206  -1.5644  0.1177  -0.7774   0.0872
+# Sex M                        0.1735   0.0894   1.9406  0.0523  -0.0017   0.3488
+# Sex NA                       0.2781   0.1330   2.0914  0.0365   0.0175   0.5387
+# Breed American short-hair   -0.0417   0.2816  -0.1480  0.8824  -0.5935   0.5102
+# Breed Japanese               0.0830   0.1840   0.4513  0.6518  -0.2776   0.4437
+# Breed NA                     0.0637   0.1084   0.5876  0.5568  -0.1488   0.2762
+19.2732 + -0.0094*2016
+# [1] 0.3228
+~~~
+
+![Meta-analytic forest plot of catnip response rates in experimental studies](/images/catnip-forest.png)
+
+The 2/3 rule of thumb proves to be almost exactly right, with a meta-analytic summary of 70% catnip response rates.
+The heterogeneity of the results indicates that somethings are different from study to study; including the sex and breed covariates doesn't help much because of the missing data, but there's interesting trends of decreases with a study being conducted later in time and inside the USA, in line with my speculation about the Japanese studies finding catnip sensitivity to be almost universal.
+The decrease with time is odd, but it's much more likely that it's reflecting differences in experimental procedure or breeds or countries than indicating that catnip response rates are being heavily selected against.[^catnip-selection]
+
+[^catnip-selection]: If catnip sensitivity frequency was 70% in 1950, and for the sake of argument we accepted that it had decreased 0.0024 per year and was 54.16% in 2016, and we also accept Todd 1962's analysis that catnip sensitivity is a dominant gene, then that implies that the frequency of the gene in 1950 was $0.7 = P^2 + 2P(1-P)$ and so in 1950 _P_=0.45; similarly, $0.516 = P^2 + 2P(1-P)$, and so in 2016 _P_=0.30, so the gene frequency would've fallen by 0.15 from 1950 to 2016. If a cat generation is 3 years, then that 66 years is 22 cat generations, and spreading a fall of 15% over that, the gene frequency would be falling ~0.68% per generation.
+
+    While this could be caused by fairly weak selection against catnip responders, it's hard to imagine what could possibly cause that selection or how it is consistent with the continued existence of catnip responders given that: catnip has no known ill effects on cats, is rarely found in the wild, most cats are never exposed, those cats which are exposed at all tend to be pets which are spayed/neutered, no solid sex or breed correlation has been observed, and the existence of catnip responders has been documented for centuries (according to Tucker & Tucker 1988, [John Ray](!Wikipedia), died 1705, was the first, and [Gary Lockhart](http://www.arthurleej.com/HerbalScraps.pdf) attributes the first mention of catnip to [Al-Biruni](!Wikipedia), died 1048).
 
 # Known cat stimulants
 
