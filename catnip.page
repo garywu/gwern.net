@@ -88,7 +88,7 @@ Catnip is frequently discussed in the popular & secondary literature without cit
     >
     > ...8-12 cats...The cats' favorite toys - like the 12 in. giant sheepskin mice (Petraport, Anaheim, CA) - contained catnip. We hung fresh catnip in stockinette bags which the cats quickly pulled down and ultimately batted into the water bowls. We gave them catnip-treated punchball toys (Petraport, Anaheim, CA- Fig. 7)-2 in. puffs mounted by a spring to a 6 in. x 6 in. base. The cats always played with these toys, and they lasted longer than the catnip bags. The cats also had "Mr. Spats' Cat-a-combs" groomer (Tarel Seven Designs, Secaucus, NJ) mounted on the walls. They usually knocked these off the wall and used them as play-things (they managed to open the compartment and dig out the catnip) rather than as grooming tools. Most of the cats spent time playing "Purrsuit" (Tarel Seven Designs, Secaucus, NJ)-every morning, we placed toys inside a maze and the cats chased them and tried, with a great deal of success, to get the smaller ones out. The cats had a preference for balls or bells with catnip in them, and for golf balls. They ignored the Squish balls (Ethical Inc., Newark, NJ).
 
-    So based on the reported data, we can guess that at least 5-7 cats responded to catnip of the 8-12 sample. (Mixed breeds, unspecified sex.)
+    So based on the reported data, we can guess that at least 5-7 cats responded to catnip of the 8-12 sample, for a best guess of 6 responders out of 10 cats. (Mixed breeds, unspecified sex.)
 - Clapperton et al 1994, ["Development and Testing of Attractants for Feral Cats, _Felis catus_ L."](https://www.researchgate.net/profile/David_Morgan36/publication/262958697_Development_and_Testing_of_Attractants_for_Feral_Cats_Felis_Catus_L/links/54f51b3a0cf2f28c13632fc2.pdf)
 
     Catnip & silvervine were tested as cat lures for trapping; simultaneous testing over multiple environments showed that catnip, silvervine, and urine all garnered substantial attention from cats. Clapperton notes that 4/4 domestics and 8/20 feral cats responded (pg7). (Sex not specified, but breeds were clearly mixed as feral cats are never single breeds.)
@@ -124,11 +124,12 @@ Sakurai et al 1988,1988,4,4,Japan,mixed,Japanese
 Sakurai et al 1988,1988,3,3,Japan,mixed,Abyssinian
 Sakurai et al 1988,1988,2,2,Japan,mixed,American short-hair
 Sakurai et al 1988,1988,16,16,Japan,NA,Japanese
-DeLuca & Kranda 1992,1992,5,8,USA,NA,mixed
+DeLuca & Kranda 1992,1992,6,10,USA,NA,mixed
 Clapperton et al 1994,1994,12,24,USA,NA,mixed
 
 
 catnip$Sex <- ordered(catnip$Sex, levels=c("F", "mixed", "M"))
+catnip$Country <- relevel(catnip$Country, "USA")
 ~~~
 
 ## Meta-analysis
@@ -137,29 +138,33 @@ A random-effects meta-analysis on the log-odds of catnip response using `metafor
 
 ~~~{.R}
 sum(catnip$Responders) / sum(catnip$N)
-# [1] 0.6638297872
+# [1] 0.6624472574
 
 library(metafor)
 r <- rma(xi=Responders, ni=N, measure="PLO", slab=Study, data=catnip); summary(r)
 # Random-Effects Model (k = 14; tau^2 estimator: REML)
 #
-# tau^2 (estimated amount of total heterogeneity): 0.1564 (SE = 0.1824)
-# tau (square root of estimated tau^2 value):      0.3955
-# I^2 (total heterogeneity / total variability):   33.42%
-# H^2 (total variability / sampling variability):  1.50
+#   logLik  deviance       AIC       BIC      AICc
+# -17.2017   34.4035   38.4035   39.5334   39.6035
+#
+# tau^2 (estimated amount of total heterogeneity): 0.1492 (SE = 0.1772)
+# tau (square root of estimated tau^2 value):      0.3863
+# I^2 (total heterogeneity / total variability):   32.66%
+# H^2 (total variability / sampling variability):  1.49
 #
 # Test for Heterogeneity:
-# Q(df = 13) = 20.7809, p-val = 0.0774
+# Q(df = 13) = 20.8207, p-val = 0.0766
 #
 # Model Results:
 #
 # estimate       se     zval     pval    ci.lb    ci.ub
-#   0.5848   0.1952   2.9956   0.0027   0.2022   0.9674
+#   0.5749   0.1923   2.9899   0.0028   0.1980   0.9518
 inverseLogit <- function(lo) { exp(lo) / (exp(lo)+1) }
-inverseLogit(0.5848)
-# [1] 0.6421711368
+inverseLogit(0.5749)
+# [1] 0.6398930541
 forest(r)
 
+## Examine all moderators:
 rall <- rma(xi=Responders, ni=N, measure="PLO", slab=Study,
             mods= ~ Year + Country + Sex + Breed, data=catnip)
 summary(rall)
@@ -182,22 +187,25 @@ summary(rall)
 #
 # Model Results:
 #
-#                           estimate        se     zval    pval     ci.lb      ci.ub
-# intrcpt                   493.1070  258.8146   1.9053  0.0567  -14.1603  1000.3744
-# Year                       -0.2481    0.1305  -1.9004  0.0574   -0.5039     0.0078
-# CountryUSA                 -5.2440    2.9104  -1.8019  0.0716  -10.9482     0.4602
-# Sex.L                       0.4818    0.2490   1.9346  0.0530   -0.0063     0.9699
-# Sex.Q                      -2.4151    0.9996  -2.4161  0.0157   -4.3742    -0.4560
-# BreedAmerican short-hair   -0.3365    2.1647  -0.1554  0.8765   -4.5791     3.9062
-# BreedJapanese               0.2513    2.1232   0.1184  0.9058   -3.9101     4.4127
-# Breedmixed                  0.8697    0.5473   1.5889  0.1121   -0.2031     1.9425
+#                           estimate        se     zval    pval     ci.lb     ci.ub
+# intrcpt                   487.8630  256.4541   1.9023  0.0571  -14.7777  990.5038
+# Year                       -0.2481    0.1305  -1.9004  0.0574   -0.5039    0.0078
+# CountryJapan                5.2440    2.9104   1.8019  0.0716   -0.4602   10.9482
+# Sex.L                       0.4818    0.2490   1.9346  0.0530   -0.0063    0.9699
+# Sex.Q                      -2.4151    0.9996  -2.4161  0.0157   -4.3742   -0.4560
+# BreedAmerican short-hair   -0.3365    2.1647  -0.1554  0.8765   -4.5791    3.9062
+# BreedJapanese               0.2513    2.1232   0.1184  0.9058   -3.9101    4.4127
+# Breedmixed                  0.8697    0.5473   1.5889  0.1121   -0.2031    1.9425
 ~~~
 
 ![Meta-analytic forest plot of catnip response rates in experimental studies](/images/catnip-forest.png)
 
 The 2/3 rule of thumb proves to be almost exactly right, with a meta-analytic summary of 64% catnip response rates.
+
 The heterogeneity of the results indicates that somethings are different from study to study; including the sex and breed covariates doesn't help much because of the missing data, but there's interesting trends of decreases with a study being conducted later in time and inside the USA, in line with my speculation about the Japanese studies finding catnip sensitivity to be almost universal.
+(The suspicious Sakurai 16/16 datapoint doesn't enter into the final model because it has no sex information and gets dropped, so the Japanese trend is being driven by the other Sakurai datapoints; hopefully the Hayashi chapter, or translations of Sakan's papers, will surface at some point and allow inclusion of other Japanese experimental results.)
 The decrease with time is odd, but it's much more likely that it's reflecting differences in experimental procedure or breeds or countries than indicating that catnip response rates are being heavily selected against.[^catnip-selection]
+Overall, the data quality is low as many authors (especially the chemists) did not report individual response rates or key details of the cats used such as their age, breed, or sex, which is particularly unfortunate as all the samples are small enough that the original data could've been easily included as short tables.
 
 [^catnip-selection]: If catnip sensitivity frequency was 70% in 1950, and for the sake of argument we accepted that the proportion had decreased ~0.0024 per year and was 54.16% in 2016, and we also accept Todd 1962's analysis that catnip sensitivity is a dominant gene, then that implies that the frequency of the gene in 1950 was $0.7 = P^2 + 2P(1-P)$ and so in 1950 _P_=0.45; similarly, $0.516 = P^2 + 2P(1-P)$, and so in 2016 _P_=0.30, so the gene frequency would've fallen by 0.15 from 1950 to 2016. If a cat generation is 3 years, then that 66 years is 22 cat generations, and spreading a fall of 15% over that, the gene frequency would be falling ~0.68% per generation.
 
