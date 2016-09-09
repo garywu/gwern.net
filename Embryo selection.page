@@ -1367,7 +1367,7 @@ Several of the traits are redundant or overlapping: it is scientifically useful 
 So before turning into a correlation matrix, we need to drop those to leave with 34 relevant traits:
 
 ~~~{.R}
-rg <- read.csv("http://www.gwern.net/docs/genetics/2016-zheng-ldhub-49x49geneticcorrelation.csv")
+rg <- read.csv("http://www.gwern.net/docs/genetics/correlation/2016-zheng-ldhub-49x49geneticcorrelation.csv")
 # delete redundant/overlapping/obsolete ones:
 dupes <- c("BMI 2010", "Childhood Obesity", "Extreme BMI", "Obesity Class 1", "Obesity Class 2",
            "Obesity Class 3", "Overweight", "Waist Circumference", "Waist-Hip Ratio", "Cigarettes per Day",
