@@ -67,6 +67,7 @@ There are two approaches for how to encode the metadata into the RNN:
 
     Pretraining+metadata works well for Lipton et al 2015, but they don't compare it to inlined metadata or show that the pretraining is necessary. I am also a little skeptical about the rationale that out of band signaling is useful because it puts less pressure on the hidden state: while it may reduce pressure on the RNN's LSTMs to memorize the metadata, one is still losing RAM to reinjecting the metadata into the RNN at every timestep. Either way, the metadata must be stored *somewhere* in RAM and it doesn't make much difference if it's 495 effective neurons (with 5 hardwired to metadata) or if it's 500 effective neurons (of which 5 eventually get trained to hold metadata, yielding 495 effective neurons).
     Pretraining also won't work with `torch-rnn` as the word-embedding it computes is different on each dataset, so [it's currently impossible](https://github.com/jcjohnson/torch-rnn/issues/37) to train on an unlabeled dataset, change the data to labeled, and resume training.
+    5. after my experiments here, DeepMind published a CNN for generating raw audio: ["WaveNet: A Generative Model for Raw Audio"](https://drive.google.com/file/d/0B3cxcnOkPx9AeWpLVXhkTDJINDQ/view), van den Oord et al 2016. They noted similar phenomena: the WaveNet could imitate specific speakers if provided speaker labels along with the raw audio, and specifying metadata like instruments allowed control of generated musical output.
 
 Given the attractive simplicity, I am going to try in band metadata.
 
