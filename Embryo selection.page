@@ -289,7 +289,51 @@ remAgeTQ <- rma(yi=HSNP, sei=SE, mods = ~ I(Age.mean^2) + Twin, data=gcta); remA
 ## does fit better but enough?
 ~~~
 
-The regression results, residuals, and funnel plots are generally sensible except for two issues:
+![Forest plot for meta-analysis of GCTA estimates of total additive SNPs' effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
+
+The regression results, residuals, and funnel plots are generally sensible.
+The overall estimate of ~0.30 is about what one would have predicted based on prior research: [Polderman et al 2015](/docs/genetics/2015-polderman.pdf "Meta-analysis of the heritability of human traits based on fifty years of twin studies"), meta-analyzing thousands of twin studies on hundreds of measurements, finds wide dispersal among traits but an overall grand mean of 0.49, of which most is additive genetic effects, so combined with the usually greater measurement error of GCTA studies compared to twin registries (which can do detailed testing over many years) and the limitation of SNP arrays in measuring a subset of genetic variants, one would guess at a GCTA grand mean of about half that or ~0.25; more directly, [Ge et al 2016](http://biorxiv.org/content/early/2016/08/18/070177 "Phenome-wide Heritability Analysis of the UK Biobank") runs a GCTA-like SNP heritability algorithm on 551 traits available in the UK Biobank with a grand mean of 16% ([supplementary 'All Tables'](http://biorxiv.org/highwire/filestream/19425/field_highwire_adjunct_files/0/070177-1.xlsx), worksheet 3 'Supp Table 1') and education/fluid-intelligence/numeric-memory/pairs-matching/prospective-memory/reaction-time at 29%/23%/15%/6%/11%/7% respectively.[^Ge2016-grand-mean]
+Hence, ~0.30 is an ordinary result.
+
+[^Ge2016-grand-mean]: Overall & specific SNP heritabilities from Ge et al 2016:
+
+    ~~~{.R}
+    ## http://biorxiv.org/content/early/2016/08/18/070177
+    ## http://biorxiv.org/highwire/filestream/19425/field_highwire_adjunct_files/0/070177-1.xlsx
+    ge <- read.csv("http://www.gwern.net/docs/genetics/2016-ge-ukbiobank-snpheritability.csv")
+    subset(ge[ge$Trait.Domain=="Cognitive Function",], select=c("Category.Name", "h2", "SE"))
+    #              Category.Name     h2     SE
+    # 49 Fluid intelligence test 0.2327 0.0115
+    # 50     Numeric memory test 0.1515 0.0349
+    # 51     Pairs matching test 0.0643 0.0038
+    # 52 Prospective memory test 0.1101 0.0228
+    # 53      Reaction time test 0.0732 0.0038
+    subset(ge[ge$Trait.Domain=="Sociodemographics",], select=c("Category.Name", "h2", "SE"))
+    #                      Category.Name     h2     SE
+    # 250                      Education 0.2939 0.0066
+    # 251                      Household 0.0358 0.0059
+    # 252                      Household 0.0904 0.0068
+    # 253 Other sociodemographic factors 0.0709 0.0199
+    # 269       Baseline characteristics 0.0662 0.0038
+    library(metafor)
+    rem <- rma(measure="SMD", yi=h2, sei=SE, data=ge); rem
+    # ...Random-Effects Model (k = 269; tau^2 estimator: REML)
+    #
+    # tau^2 (estimated amount of total heterogeneity): 0.0167 (SE = 0.0015)
+    # tau (square root of estimated tau^2 value):      0.1293
+    # I^2 (total heterogeneity / total variability):   99.72%
+    # H^2 (total variability / sampling variability):  356.64
+    #
+    # Test for Heterogeneity:
+    # Q(df = 268) = 82514.3218, p-val < .0001
+    #
+    # Model Results:
+    #
+    # estimate       se     zval     pval    ci.lb    ci.ub
+    #   0.1559   0.0080  19.5261   <.0001   0.1402   0.1715
+    ~~~
+
+There are two issues with some of the details:
 
 1. Davies et al 2011's second sample, with a GCTA estimate of 0.99(0.22), is 3 standard errors away from the overall estimate.
 
@@ -298,8 +342,6 @@ The regression results, residuals, and funnel plots are generally sensible excep
 
     I thought this might be driven by the samples using twins, which have been accused in the past of delivering higher heritability estimates due to higher SES of parents and correspondingly less environmental influence, but when added as a predictor, twin samples are non-statistically-significantly lower. My best guess so far is that the apparent trend is due to a lack of middle-aged samples: the studies jump all the way from 14yo to 57yo, so the usual quadratic curve of increasing heritability could be hidden and look flat, since the high estimates will all be missing from the middle.
     Testing this, I tried fitting a quadratic model instead, and as expected, it does fit somewhat better but without using Bayesian methods, hard to say how much better. This question awaits publication of further GCTA intelligence samples, with middle-aged subjects.
-
-![Forest plot for meta-analysis of GCTA estimates of total additive SNPs' effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
 
 ###### Correcting for measurement error
 
