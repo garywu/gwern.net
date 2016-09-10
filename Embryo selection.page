@@ -1237,6 +1237,7 @@ So in selecting embryos, we want to compute multiple polygenic scores for each e
 
 The advantage of multiple polygenic scores follows from the [sum of normally-distributed independent random variables](!Wikipedia "Sum of normally distributed random variables") for 2 variables _X_ & _Y_ is $\sim N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2)$; that is, the variances are added, so the standard deviation will increase, so our expected maximum sample will increase.
 Recalling $E[Z] \leq \sigma \cdot \sqrt{2 \cdot log(n)}$, increasing $\sigma$ beyond 1 will initially yield larger returns than increasing _n_ past 9 (it looks linear rather than square-root, but embryo selection is zero-sum - the gain is shrunk by the weighting of the multiple variables), and so multiple selection should not be neglected.
+Using such a total score on _n_ uncorrelated traits, as compared to alternative methods like selecting for 1 trait in each generation, is considerably more efficient, ~$\sqrt(n)$ times as efficient (Hazel & Lush 1943, ["The efficiency of three methods of selection"](/docs/genetics/correlation/1943-hazel.pdf)).
 
 We could rewrite `simulateIVFCB` to accept as parameters a series of polygenic score functions and simulate out each polygenic score and their sums; but we could also use the sum of random variables to create a single composite polygenic score - since the variances simply sum up ($\sigma_X^2 + \sigma_Y^2$), we can take the polygenic scores, weight them, and sum them.
 
