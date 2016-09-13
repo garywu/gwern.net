@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?> 
+<?xml version="1.0" encoding="UTF-8" ?>
 	
 	<!--
 	 Created by XML Export feature at MyAnimeList.net
@@ -87,8 +87,8 @@
 				<manga>
 					<manga_mangadb_id>39883</manga_mangadb_id>
 					<manga_title><![CDATA[Ansatsu Kyoushitsu]]></manga_title>
-					<manga_volumes>0</manga_volumes>
-					<manga_chapters>0</manga_chapters>
+					<manga_volumes>21</manga_volumes>
+					<manga_chapters>187</manga_chapters>
 					<my_id>18026451</my_id>
 					<my_read_volumes>0</my_read_volumes>
 					<my_read_chapters>16</my_read_chapters>
@@ -193,7 +193,7 @@
 					<manga_mangadb_id>1409</manga_mangadb_id>
 					<manga_title><![CDATA[Biomega]]></manga_title>
 					<manga_volumes>6</manga_volumes>
-					<manga_chapters>42</manga_chapters>
+					<manga_chapters>43</manga_chapters>
 					<my_id>43815772</my_id>
 					<my_read_volumes>6</my_read_volumes>
 					<my_read_chapters>42</my_read_chapters>
