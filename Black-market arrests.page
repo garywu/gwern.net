@@ -571,26 +571,26 @@ J. V.-Gomez Lemus    M                             seller    Evolution          
 A. B.-Vazquez        M         Poncho              seller    Evolution                         USA         Florida        marijuana, meth, hydrocodone                     2016-05-11 2016-05-24
 Tobias Wald          M         Natural Weed        seller    Silk Road 1                       Germany     Neuhof         marijuana                                                   2015-10-01
                      M                             buyer     Silk Road 1                       Germany                    marijuana                                 FALSE  2015-10-01 2015-10-01
-David Trail          M   26                        operator  Topix2                            Scotland    Edinburgh      diazepam, carding                         TRUE   2014-11-06 2016-06-02
-Mark Dornan          M   22                        buyer                                       UK          Stirling       marijuana                                 TRUE   2016-04-08 2016-06-22
+David Trail          M    26                       operator  Topix2                            Scotland    Edinburgh      diazepam, carding                         TRUE   2014-11-06 2016-06-02
+Mark Dornan          M    22                       buyer                                       UK          Stirling       marijuana                                 TRUE   2016-04-08 2016-06-22
 Tom Callahan         M         JumboMonkeyBiscuit  seller    Silk Road 1                       USA         Maryland       Bitcoin                                   FALSE  2014-11-05 2016-07-01
 Amanda Callahan      F         JumboMonkeyBiscuit  seller    Silk Road 1                       USA         Maryland       Bitcoin                                   FALSE  2014-11-05 2016-07-01
 Ross Brennan         M                             buyer                                       UK          Exeter         diazepam, carding                         TRUE   2016-06-01 2016-07-01
 Kelly Brennan        F                             buyer                                       UK          Exeter         diazepam, carding                         TRUE   2016-06-01 2016-07-01
-Baljit Singh         M   27                        buyer                                       India       Punjab         carding                                   TRUE   2016-07-16 2016-07-25
-Amritpal Singh       M   27                        buyer                                       India       Punjab         carding                                   TRUE   2016-07-16 2016-07-25
-Aaron James Glende   M   35    IcyEagle            seller    AlphaBay                          USA         Minnesota      carding, Xanax, oxycodone, diazepam       FALSE  2016-03-11 2016-07-26
+Baljit Singh         M    27                       buyer                                       India       Punjab         carding                                   TRUE   2016-07-16 2016-07-25
+Amritpal Singh       M    27                       buyer                                       India       Punjab         carding                                   TRUE   2016-07-16 2016-07-25
+Aaron James Glende   M    35   IcyEagle            seller    AlphaBay                          USA         Minnesota      carding, Xanax, oxycodone, diazepam       FALSE  2016-03-11 2016-07-26
                      M                             seller                                      Germany                    gun                                       TRUE   2016-07-05 2016-07-06
                      M                             seller                                      Germany                    gun                                       TRUE   2016-07-05 2016-07-06
                      M                             seller                                      Germany                    gun                                       TRUE   2016-07-05 2016-07-06
 
-David Ryan Burchard  M   38    CaliConnect         seller    AlphaBay                          USA         California     marijuana, cocaine                        FALSE  2016-01-21 2016-04-01
-Moynul Haque         M   21                        buyer                                       UK          Smethwick      gun, amphetamine                          TRUE   2015-04-31 2016-07-02
+David Ryan Burchard  M    38   CaliConnect         seller    AlphaBay                          USA         California     marijuana, cocaine                        FALSE  2016-01-21 2016-04-01
+Moynul Haque         M    21                       buyer                                       UK          Smethwick      gun, amphetamine                          TRUE   2015-04-31 2016-07-02
                      M                             seller                                      USA         Michigan       gun                                       TRUE   2015-04-31 2016-07-02
-Chrissano S. Leslie  M   26    owlcity             seller    Alphabay                          USA         Florida        fentanyl, alpha-PVP, MDMA, cocaine, Xanax        2016-07-27 2016-08-02
-Abdullah Almashwali  M   31    Area51/DarkApollo   seller    Alphabay                          USA         New York       heroin, cocaine                                  2016-08-02 2016-08-12
-Chaudhry A. Farooq   M   24    Area51/DarkApollo   seller    Alphabay                          USA         New York       heroin, cocaine                                  2016-08-02 2016-08-12
-Zhe Wang             M   20                        buyer                                       USA         New York       MDMA, Xanax                                 TRUE 2015-10-29 2016-09-05
+Chrissano S. Leslie  M    26   owlcity             seller    Alphabay                          USA         Florida        fentanyl, alpha-PVP, MDMA, cocaine, Xanax        2016-07-27 2016-08-02
+Abdullah Almashwali  M    31   Area51/DarkApollo   seller    Alphabay                          USA         New York       heroin, cocaine                                  2016-08-02 2016-08-12
+Chaudhry A. Farooq   M    24   Area51/DarkApollo   seller    Alphabay                          USA         New York       heroin, cocaine                                  2016-08-02 2016-08-12
+Zhe Wang             M    20                       buyer                                       USA         New York       MDMA, Xanax                                 TRUE 2015-10-29 2016-09-05
 Kevin Szura          M                             buyer                                       USA         New York       MDMA, Xanax                                 TRUE 2015-10-29 2016-09-05
 
 # Confirmed
@@ -1857,7 +1857,7 @@ In aggregate, I would guess that the completeness of the table is highly unlikel
 ~~~{.R}
 library(XML)
 # http://www.gwern.net/Black-market%20arrests
-arrests <- readHTMLTable("/tmp/burl3491UGv.html",
+arrests <- readHTMLTable("http://www.gwern.net/Black-market%20arrests",
     colClasses = c("character", "factor", "integer", "character", "factor", "factor", "character", "factor",
                    "factor", "character", "logical", as.Date, as.Date, "character"))[[1]]
 # replace all empty-fields/""s with NAs
