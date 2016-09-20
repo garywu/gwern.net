@@ -7,6 +7,8 @@ status: in progress
 belief: likely
 ...
 
+> Not all cats respond to the catnip stimulant; the rate of responders is generally estimated at ~70% of cats. A meta-analysis of catnip response experiments since the 1940s indicates the true value is ~62%. The low quality of studies and the reporting of their data makes examination of possible moderators like age and gender difficult, but one possible moderator is that Japanese cats may have a response rate closer to 90%. Catnip responses have been recorded for a number of species both inside and outside the _Felidae_ family; of them, there is evidence for a catnip response in the Felidae, and, more uncertainly, the Paradoxurinae, and Herpestinae.
+
 [Catnip](!Wikipedia) is a plant which causes stimulated and excitable behavior in many domestic cats, which is fun to play with.
 It is the best known of at least a dozen plants with psychoactive effects on cats, and far more popular, cheaper, and easily purchased than alternatives like [tatarian honeysuckle](!Wikipedia "Lonicera tatarica"), [silvervine](!Wikipedia "Actinidia polygama"), or [cat thyme](!Wikipedia "Teucrium miarum").
 However, a large fraction of cats do not respond (non-response may be a genetic trait given Todd 1962's pedigree chart) but may respond to one of the alternatives.
@@ -63,13 +65,24 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 - Palen & Goddard 1966, ["Catnip and oestrous behavior in the cat"](/docs/catnip/1966-palen.pdf)
 
     Reactions: 23 responders, 20 non-responders, so 47% immunity rate. (37 male, 28 female, mixed breeds: 6 male responders, 6 male non-responders, 9 castrated male responders, 5 castrated male non-responders, 5 female responders, 5 female non-responders, 3 spayed female responders, 4 spayed female non-responders.)
+- Hayashi 1968a, ["Pseudo-Affective Reflexes of Cats produced by Extracts from the Plant _Actinidia polygama_"](/docs/catnip/1968-hayashi.pdf) claims to have found no responses in an unspecified but probably >4 number of cats (as he used "young and old cats of both sexes") when testing nepetalactone (catnip) and actinidine solutions, aside from two actinidine reactions
+- Hayashi 1968b, ["Motor reflexes of cats to _Actinidia polygama_ (Japan) and to catnip (USA)"](/docs/catnip/1968-hayashi-2.pdf)
+
+    A 1966 conference talk published in the 1968 proceedings, Hayashi 1968 is light on details. Tucker & Tucker summarize it as "Hayashi (1968), who tested a wide range of animals (dogs, rabbits, mice, rats, guinea pigs, fowls, and cats) with powders of _Actinidia polygama_ and _N. cataria_, found that the catnip response is induced in cats alone.", which tells one about as much as the original report does:
+
+    > ...actinidine (1) and catnip...have always been the source of much interest...When powder of these plants was presented to cats, they displayed a peculiar behavior...The reflex behavior is induced by the smell, not by taste and not via the circulation. The cat must be tamed by the experimenters and must be adult: male or female are quite the same...Once I tried with English cats in London, and with American cats in New York, each time taking advantage of visiting my friend's laboratories, but English as well as American cats were rather cold...We tried experiments with dogs, rabbits, mice, rats, guinea pigs and also with fowls but they had no such reflexes to the plant powder...From these results, we presume that the reflex ability is restricted to cats and feline species in vertebrates, and its reflex centre would be situated in the subcortical, presumably limbic, structures...That the phenomenon is restricted to the cat family is said also in Japan.
+    >
+    > - `Q` [J.W. Johnson Jr]: This is a simple question that might be relevant to your point, Doctor. In Northern Virginia, where I live, there are stands or clumps of catnip. I'm not aware of house cats visiting the catnip stands while in the living state. Do you know whether this has been reported.
+    > - `A` [T. Hayashi]: No, I don't think so. We have natural growths of bushes of actidinia polygama in several parts of Japan, but nobody noticed that these bushes attracted cats from the villages....In the central part of Japan we have many actidinia distributed from north to south. But I have not heard that cats gather in the stands of the plant. Maybe the drying of the plants or burning of them is the most effective.
+
+    From this I gather that Hayashi must have tested at least 2 cats in the USA, 2 in the UK, and 2 in Japan (because he always uses the plural "cats", and he compares the US/UK cats to Japanese cats). Hayashi 1968a implies >=4 cats were used but not their national distribution. To be conservative in lieu of more precise data, one would have to code the Hayashi data as 2 cats per country. He does mention that the USA/UK cats were "rather cold", which implies an intermediate but existent response much less than the Japanese cats. (It is also intriguing given Sakurai et al 1988's later possible implication that 16 of 16 cats in Japan reacted to catnip but not foreign breeds.) If we assume the _n_ of each group of cats is 2, then the response rate must be 1/1/2 respectively, as otherwise Hayashi would either have described it as *no* response like the other species or as the same response as the Japanese cats. The other species are also pluralized, so at least 2 of each, and all responses must have all been 0 responders since "they had no such reflexes" and it is "restricted to cats and feline species". Specific species (presumably the other animals are either domestic or lab species), sexes, breeds, and ages are not given.
 - Waller et al 1969, ["Feline Attractant, cis,trans-Nepetalactone: Metabolism in the Domestic Cat"](/docs/catnip/1969-waller.pdf)
 
     In a metabolic study, purified nepetalactone was force-fed to 6 cats in gel capsules; as expected due to the olfactory requirement (previously demonstrated by Todd with surgical manipulations of olfaction), none of the cats exhibited the catnip response and the result is irrelevant.
 - Hatch 1972, ["Effect of drugs on catnip (_Nepeta cataria_) induced pleasure behavior in cats"](/docs/catnip/1972-hatch.pdf)
 
     Tested 17 cats initially; 14 responders. (Mixed breed, both genders; breakdowns of response not given.)
-- Hill et al 1976, ["Species-characteristic Responses to Catnip by Undomesticated Felids"](/docs/catnip/1976-hill.pdf) TODO: extract data; Tucker & Tucker summary (apparently based on counting the descriptions in Table 3 or Table 4):
+- Hill et al 1976, ["Species-characteristic Responses to Catnip by Undomesticated Felids"](/docs/catnip/1976-hill.pdf); Tucker & Tucker summary (apparently based on counting the descriptions in Table 3 or Table 4):
 
     > Hill et al. (1976) found that lions (5 positive responders, 6 partial responders, 1 negative responder) and jaguars (3 positive responders) are extremely sensitive to catnip, while tigers (5 negative responders), pumas (4 negative responders), leopards (4 partial responders, 4 negative responders), and bobcats (2 negative responders) gave little or no response. They also found that both males and females of the same species test alike, while reproductive-age adults are more sensitive than either aged or immature animals.
 - Sakurai et al 1988, ["Both (4a_S_, 7_S_, 7a_R_) –(+)-Nepetalactone and Its Antipode Are Powerful Attractants for Cats"](http://ci.nii.ac.jp/els/110006324016.pdf?id=ART0008331313&type=pdf&lang=en&host=cinii&order_no=&ppv_type=0&lang_sw=&no=1473185422&cp=)
@@ -102,10 +115,13 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 
     8 oncilla cats' activity were measured over several days after each dose was introduced into their enclosures. While the doses were small (1g), the cinnamon produced statistically-significant overall average difference while catnip did not, suggesting none of the oncilla cats responded to the catnip. Nevertheless, like Wells & Egli 2004, cannot be meta-analyzed.
 
+Overall, study quality is low and at high risk of bias.
+Key variables like sex/age/breed is almost always never reported and sometimes even _n_ or species is not reported; placebo controls are not used; the experimenters are never blind to the substance being used; important studies are not available in English; the catnip used is not standardized; and the animals are not necessarily familiarized & comfortable with the experimenter despite the need for them to be relaxed and willing to play in order to gauge the presence or absence of a response.
+Probably any estimate is something of a lower bound as most of these biases would tend to mask a catnip response (like using old catnip or an animal feeling stressed), and it will be difficult to prove or disprove any sex or breed effects.
+
 ---
 
 - Hart, B.L., 1977. "Olfaction and feline behavior". _Feline Practice_ 7(5): 8-10. TODO: https://www.reddit.com/r/Scholar/comments/501shm/article_olfaction_and_feline_behaviour_feline/
-- Hayashi 1968, "Motor reflexes of cats to _Actinidia polygama_ (Japan) and to catnip (USA)" ("Hayashi (1968), who tested a wide range of animals (dogs, rabbits, mice, rats, guinea pigs, fowls, and cats) with powders of _Actinidia polygama_ and _N. cataria_, found that the catnip response is induced in cats alone.")
 
 ## Data
 
@@ -160,6 +176,15 @@ Felidae,Felis,catus,cat,Todd 1963,1963,26,41,USA,F,mixed
 Felidae,Felis,catus,cat,Bates & Siegel 1963,1963,5,8,USA,NA,NA
 Felidae,Felis,catus,cat,Palen & Goddard 1966,1966,15,26,USA,M,mixed
 Felidae,Felis,catus,cat,Palen & Goddard 1966,1966,8,17,USA,F,mixed
+Felidae,Felis,catus,cat,Hayashi 1968,1966,1,2,USA,NA,NA
+Felidae,Felis,catus,cat,Hayashi 1968,1966,1,2,UK,NA,NA
+Felidae,Felis,catus,cat,Hayashi 1968,1966,2,2,Japan,NA,NA
+Canidae,Canis,lupus,dog,Hayashi 1968,1966,0,2,Japan,NA,NA
+Leporidae,Oryctolagus,cuniculus,rabbit,Hayashi 1968,1966,0,2,Japan,NA,NA
+Muridae,Mus,musculus,mouse,Hayashi 1968,1966,0,2,Japan,NA,NA
+Muridae,Rattus,norvegicus,rat,Hayashi 1968,1966,0,2,Japan,NA,NA
+Caviidae,Cavia,porcellus,guinea pig,Hayashi 1968,1966,0,2,Japan,NA,NA
+Phasianidae,NA,NA,fowl,Hayashi 1968,1966,0,2,Japan,NA,NA
 Felidae,Felis,catus,cat,Hatch 1972,1972,14,17,USA,mixed,mixed
 Felidae,Panthera,leo,African lion,Hill et al 1976,1976,3,4,USA,M,NA
 Felidae,Panthera,leo,African lion,Hill et al 1976,1976,5,5,USA,F,NA
@@ -193,30 +218,31 @@ A random-effects meta-analysis on the log-odds of catnip response in domestic ca
 ~~~{.R}
 cat <- subset(catnip, Name=="cat")
 sum(cat$Responders) / sum(cat$N)
-# [1] 0.6624472574
+# [1] 0.6625514403
 
 library(metafor)
 r <- rma(xi=Responders, ni=N, measure="PLO", slab=Study, data=cat); summary(r)
-# Random-Effects Model (k = 14; tau^2 estimator: REML)
+# Random-Effects Model (k = 17; tau^2 estimator: REML)
 #
 #   logLik  deviance       AIC       BIC      AICc
-# -17.2017   34.4035   38.4035   39.5334   39.6035
+# -21.4749   42.9497   46.9497   48.4949   47.8728
 #
-# tau^2 (estimated amount of total heterogeneity): 0.1492 (SE = 0.1772)
-# tau (square root of estimated tau^2 value):      0.3863
-# I^2 (total heterogeneity / total variability):   32.66%
-# H^2 (total variability / sampling variability):  1.49
+# tau^2 (estimated amount of total heterogeneity): 0.1270 (SE = 0.1644)
+# tau (square root of estimated tau^2 value):      0.3564
+# I^2 (total heterogeneity / total variability):   25.81%
+# H^2 (total variability / sampling variability):  1.35
 #
 # Test for Heterogeneity:
-# Q(df = 13) = 20.8207, p-val = 0.0766
+# Q(df = 16) = 21.5875, p-val = 0.1570
 #
 # Model Results:
 #
 # estimate       se     zval     pval    ci.lb    ci.ub
-#   0.5749   0.1923   2.9899   0.0028   0.1980   0.9518
+#   0.5642   0.1822   3.0965   0.0020   0.2071   0.9213
 inverseLogit <- function(lo) { exp(lo) / (exp(lo)+1) }
-inverseLogit(0.5749)
-# [1] 0.6398930541
+inverseLogit(0.5642)
+# [1] 0.6374237812
+
 png(file="~/wiki/images/catnip-forest.png", width = 580, height = 600)
 forest(r)
 invisible(dev.off())
@@ -224,25 +250,26 @@ invisible(dev.off())
 ## some issues in the funnel plot of too-extreme values:
 funnel(r)
 trimfill(r)
-# Estimated number of missing studies on the left side: 4 (SE = 2.5057)
+# Estimated number of missing studies on the left side: 4 (SE = 2.7779)
 #
-# Random-Effects Model (k = 18; tau^2 estimator: REML)
+# Random-Effects Model (k = 21; tau^2 estimator: REML)
 #
-# tau^2 (estimated amount of total heterogeneity): 0.1558 (SE = 0.1792)
-# tau (square root of estimated tau^2 value):      0.3947
-# I^2 (total heterogeneity / total variability):   28.84%
-# H^2 (total variability / sampling variability):  1.41
+# tau^2 (estimated amount of total heterogeneity): 0.1338 (SE = 0.1668)
+# tau (square root of estimated tau^2 value):      0.3658
+# I^2 (total heterogeneity / total variability):   23.46%
+# H^2 (total variability / sampling variability):  1.31
 #
 # Test for Heterogeneity:
-# Q(df = 17) = 28.4745, p-val = 0.0397
+# Q(df = 20) = 29.2278, p-val = 0.0834
 #
 # Model Results:
 #
 # estimate       se     zval     pval    ci.lb    ci.ub
-#   0.4577   0.1881   2.4329   0.0150   0.0890   0.8265
+#   0.4580   0.1789   2.5603   0.0105   0.1074   0.8086
+
 ## doesn't make much of a difference because the added studies are all tiny:
-inverseLogit(0.4577)
-# [1] 0.6124684106
+inverseLogit(0.4580)
+# [1] 0.6125396134
 
 ## Examine all moderators:
 rall <- rma(xi=Responders, ni=N, measure="PLO", slab=Study,
@@ -277,6 +304,48 @@ summary(rall)
 # BreedJapanese               0.2513    2.1232   0.1184  0.9058   -3.9101    4.4127
 # Breedmixed                  0.8697    0.5473   1.5889  0.1121   -0.2031    1.9425
 
+r_country <- rma(xi=Responders, ni=N, measure="PLO", slab=Study,
+            mods= ~ Country, data=cat)
+summary(r_country)
+# Mixed-Effects Model (k = 17; tau^2 estimator: REML)
+#
+#   logLik  deviance       AIC       BIC      AICc
+# -15.8901   31.7801   39.7801   42.3364   44.2246
+#
+# tau^2 (estimated amount of residual heterogeneity):     0.0928 (SE = 0.1466)
+# tau (square root of estimated tau^2 value):             0.3046
+# I^2 (residual heterogeneity / unaccounted variability): 22.00%
+# H^2 (unaccounted variability / sampling variability):   1.28
+# R^2 (amount of heterogeneity accounted for):            26.97%
+#
+# Test for Residual Heterogeneity:
+# QE(df = 14) = 14.9709, p-val = 0.3801
+#
+# Test of Moderators (coefficient(s) 2,3):
+# QM(df = 2) = 6.2927, p-val = 0.0430
+#
+# Model Results:
+#
+#               estimate      se     zval    pval    ci.lb   ci.ub
+# intrcpt         0.4493  0.1801   2.4943  0.0126   0.0962  0.8023
+# CountryJapan    1.7603  0.7102   2.4786  0.0132   0.3683  3.1522
+# CountryUK      -0.4493  1.4578  -0.3082  0.7579  -3.3065  2.4080
+inverseLogit(0.4493)
+# [1] 0.6104727898
+inverseLogit(0.4493+1.7603)
+# [1] 0.9011082877
+power.prop.test(power=0.8, p1=inverseLogit(0.4493), p2=inverseLogit(0.4493+1.7603))
+#      Two-sample comparison of proportions power calculation
+#
+#               n = 33.09682229
+#              p1 = 0.6104727898
+#              p2 = 0.9011082877
+#       sig.level = 0.05
+#           power = 0.8
+#     alternative = two.sided
+#
+# NOTE: n is number in *each* group
+
 ## moderately informative Bayesian meta-analysis
 ## (bayesmeta doesn't support moderators/meta-regression, so estimate just mean/SD):
 library(bayesmeta)
@@ -284,27 +353,28 @@ b <- bayesmeta(y = escalc(xi=Responders, ni=N, measure="PLO", data=cat),
                mu.prior.mean=0, mu.prior.sd=1); summary(b)
 # ...marginal posterior summary:
 #                    tau            mu         theta
-# mode      0.3505572714 0.41111640936  0.4274950461
-# median    0.3990154931 0.40367428238  0.4132051144
-# mean      0.4377635292 0.39907308595  0.3990730859
-# sd        0.2845688843 0.17263767946  0.5499756874
-# 95% lower 0.0000000000 0.05364410904 -0.7744893696
-# 95% upper 0.9582348346 0.73677962999  1.5397331111
+# mode      0.3480797501 0.5425026093  0.5264895978
+# median    0.3855448743 0.5538847072  0.5440077639
+# mean      0.4160027643 0.5613715973  0.5613715973
+# sd        0.2619204808 0.2027041738  0.5320967280
+# 95% lower 0.0000000000 0.1662104894 -0.5345947665
+# 95% upper 0.8911628412 0.9718232601  1.7058585118
 #
-# relative heterogeneity I^2 (posterior median): 0.3410379591
-inverseLogit(0.39907308595)
-# [1] 0.5984649387
+# relative heterogeneity I^2 (posterior median): 0.2893639912
+
+inverseLogit(0.2893639912)
+# [1] 0.5718404203
 ## multilevel tau/heterogeneity in SDs:
-sqrt(1/(0.4377635292))
-# [1] 1.511402762
+sqrt(1/(0.2893639912))
+# [1] 1.858993011
 ~~~
 
 ![Meta-analytic forest plot of catnip response rates in experimental studies](/images/catnip-forest.png)
 
-The 2/3 rule of thumb proves to be almost exactly right, with a meta-analytic summary of 60-64% catnip response rates.
+The 2/3 rule of thumb proves to be almost exactly right, with a meta-analytic summary of 61-63% catnip response rates.
 
 The heterogeneity of the results indicates that somethings are different from study to study or that biases like publication bias are at play; including the sex and breed covariates doesn't help much because of the missing data, but there's interesting trends of decreases with a study being conducted later in time and inside the USA, in line with my speculation about the Japanese studies finding catnip sensitivity to be almost universal.
-(The suspicious Sakurai 16/16 datapoint doesn't enter into the full model because it has no sex information and gets dropped, so the Japanese trend is being driven by the other Sakurai datapoints; hopefully the Hayashi chapter, or translations of Sakan's papers, will surface at some point and allow inclusion of other Japanese experimental results.)
+(The suspicious Sakurai 16/16 datapoint doesn't enter into the full model because it has no sex information and gets dropped, so the Japanese trend there is being driven by the other Sakurai datapoints; the Hayashi results further support the Japanese anomaly.)
 The decrease with time is odd, but it's much more likely that it's reflecting differences in experimental procedure or breeds or countries than indicating that catnip response rates are being heavily selected against.[^catnip-selection]
 Overall, the data quality is low as many authors (especially the chemists) did not report individual response rates or key details of the cats used such as their age, breed, or sex, which is particularly unfortunate as all the samples are small enough that the original data could've been easily included as short tables.
 This is ironic because while some authors claim that sex/breed doesn't matter at all, others claim that females react much more strongly (or was it males?), and yet most don't bother to break the data down by those variables, so their results can't be pooled and an answer found!
@@ -330,6 +400,7 @@ library(metafor)
 ## sort by taxonomy:
 catnip <- catnip[with(catnip, order(Family, Genus, Species)),]
 catnip$Label <- with(catnip, Map(function(f,g,s, n) { paste0(n, " (", paste(f, g, s), ")") }, Family, Genus, Species, Name))
+
 cross <- rma(xi=Responders, ni=N, measure="PLO", slab=Label,
             data=catnip)
 summary(cross)
