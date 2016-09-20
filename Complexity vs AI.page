@@ -66,7 +66,7 @@ The apparent barrier of a complex problem can be bypassed by (in roughly increas
 1. giving up determinism and using [randomized algorithms](!Wikipedia) which are faster but [may not return an answer](!Wikipedia "Las Vegas algorithm") or a [correct answer](!Wikipedia "Monte Carlo algorithm")[^Lipton-shifts] (they typically can be run many times if correctness is important; after a few times, the probability of an error will be smaller than the probability that the computer hardware has suffered [a glitch due to cosmic rays](The Existential Risk of Mathematical Error)); randomization can be applied to algorithms and to [data structures](!Wikipedia "Category:Probabilistic data structures").
 2. needing good [average-case](http://www.karlin.mff.cuni.cz/~krajicek/ri5svetu.pdf "'A Personal View of Average-Case Complexity', Impagliazzo 1995") behavior rather than worst-case behavior
 
-    Rather than merge sort, one could use [Quicksort](!Wikipedia) - mergesort has better worst-case complexity than Quicksort (which renders it vulnerable to DoS attacks if there are adversaries who can force the worst-case $\mathcal{O}(n^2)$), but Quicksort is still usually faster. Likewise, in the *worst case*, 3-SAT/Traveling Salesman are wildly intractable for any realistic dataset like planning a trip across the USA; but the *average-case* performance is quite different and in practice, 3-SAT/Traveling Salesman are solved all the time, to the extent where SAT solvers are routinely used in computer security or theorem proving or type-checking and logistics companies are able to heavily optimize their shipping with them.
+    Rather than merge sort, one could use [Quicksort](!Wikipedia) - merge sort has better worst-case complexity than Quicksort (which renders it vulnerable to DoS attacks if there are adversaries who can force the worst-case $\mathcal{O}(n^2)$), but Quicksort is still usually faster. Likewise, in the *worst case*, 3-SAT/Traveling Salesman are wildly intractable for any realistic dataset like planning a trip across the USA; but the *average-case* performance is quite different and in practice, 3-SAT/Traveling Salesman are solved all the time, to the extent where SAT solvers are routinely used in computer security or theorem proving or type-checking and logistics companies are able to heavily optimize their shipping with them.
     Similarly for linear programming's [simplex algorithm](!Wikipedia) and other operations research algorithms, with are theoretically intimidating but in real-world problems yield solutions after reasonable runtime - they work in practice, but not in theory.
     For example, TSP instances up to [85,900 cities](https://web.archive.org/web/20160326013407/http://www.math.uwaterloo.ca/tsp/pla85900/index.html) have been solved.
 3. giving up generality: an algorithm may be unnecessarily general.
@@ -74,7 +74,7 @@ The apparent barrier of a complex problem can be bypassed by (in roughly increas
     A comparison sort can be done in $\mathcal{O}(n \cdot log(n))$, yes, but one frequently doesn't need to sort any kind of datatype for which an ordering is available but specifically strings, numbers, etc, for which quasi linear/$\mathcal{O}(n)$ sorting is possible using [counting sort](!Wikipedia)/[radix sort](!Wikipedia). An algorithm could also have prior information about the kind of data input which will be available - [Timsort](!Wikipedia) is aware that most inputs will be partially sorted already and can outperform a naive sort. Data structures can be tuned for particular distributions of data, and [JIT](!Wikipedia "Just-in-time compilation") & [profile-guided optimization](!Wikipedia) & [supercompilation](!Wikipedia) can be seen as [specializing](!Wikipedia "Futamura projection") general algorithms to the current or likely-future inputs.
 4. giving up optimality and computing an approximation of the optimal answer (often very close to the optimal answer)
 
-    Already mentioned is 3-SAT/TSP, for which there is a [World Tour of 1,904,711-cities](https://web.archive.org/web/20160308183523/http://www.math.uwaterloo.ca/tsp/world/ "World TSP") which has been solved with a tour within 0.0474% of the optimal tour by 2007, and Naam gives chemistry as an example by noting that while the exact physics is totally intractable, approximations which are much more feasible are used. The last fraction of a percentage point of optimality can take truly enormous amounts of computation to squeeze out.
+    Already mentioned is 3-SAT/TSP, for which there is a [World Tour of 1,904,711-cities](https://web.archive.org/web/20160308183523/http://www.math.uwaterloo.ca/tsp/world/ "World TSP") which has been solved with a tour within 0.0474% of the optimal tour by 2007, and planning problems soluble by translation into SAT form can have millions of clauses & variables[^SAT-planning]; Naam gives chemistry as an example by noting that while the exact physics is totally intractable, approximations which are much more feasible are used. The last fraction of a percentage point of optimality can take truly enormous amounts of computation to squeeze out.
 5. changing the problem rather than succumbing to functional fixity: many problems can be redefined or environments can be tweaked to bypass a challenge & leverage computer strengths.
 
     A [self-driving car](!Wikipedia) may not be as good at vision as a human driver, but [LIDAR](!Wikipedia) sensors can be incorporated into it in a way that cannot for humans as it would distract them; a [robot in a warehouses](!Wikipedia "Amazon Robotics") may not be as good at driving around as a human worker, but the environment can be altered with white lines or barcode tags on the floor so the robots always know where they are. To quote [Dyson's](!Wikipedia "Freeman Dyson") paraphrase of [John von Neumann](!Wikipedia)^[_[Infinite in All Directions](!Wikipedia)_, 1988; Dyson is summarizing/paraphrasing a weather prediction lecture by von Neumann ~1950. It's unclear if von Neumann said this exact thing, although it is usually attributed to him.]:
@@ -92,6 +92,11 @@ The apparent barrier of a complex problem can be bypassed by (in roughly increas
     > - Change the algorithmic method. Allow algorithms that can be wrong, or allow algorithms that use randomness. Do not insist that the algorithm is a perfect deterministic one.
     >
     > This is exactly what Chayes and her co-authors have done.
+[^SAT-planning]: Rintanen 2012, ["Planning as Satisfiability: Heuristics"](https://pdfs.semanticscholar.org/db22/e1f9d48aed94e29174214673dea3b9f65d33.pdf), discussing how to turn AI planning problems into SAT problems which can be solved efficiently, notes that
+
+    > A peculiarity of SAT problems obtained by translation from the standard planning benchmark problems from the planning competitions, in contrast to SAT problems representing many other applications, is their extremely large size and the fact that these problems can still often be solved quickly. The largest SAT problems Lingeling solves (within the time bounds explained earlier) are instance 41 of AIRPORT (417476 propositional variables, 92.9 million clauses) and instance 26 of TRUCKS (926857 propositional variables, 11.3 million clauses).
+    >
+    > Our planner solves instance 49 of AIRPORT (13840 actions and 14770 state variables) with a completed unsatisfiability test for horizon 65, with 1.12 million propositional variables and 108.23 million clauses, and a plan for horizon 85, with 1.46 million propositional variables and 141.54 million clauses. The planner also solves instance 33 of SATELLITE (989250 actions and 5185 state variables), with a plan found for horizon 20, with 19.89 million propositional variables and 69.99 million clauses, backtrack-free in 14.50 seconds excluding translation into SAT and including search effort for shorter horizons. These are extreme cases.  More typical SAT instances have less than 2 million propositional variables and a couple of million clauses
 
 Several of these categories might ring familiar to those interested in computer security, because computer security suffers from similar issues in the attempt to close the gap between the theoretical guarantees about the security of particular cryptography algorithms and what security one gets in practice.
 
@@ -190,10 +195,10 @@ One thinks of Amara's law: "We tend to overestimate the effect of a technology i
 
     ~~~{.R}
     simulateLogNormal <- function(advantage, n.variables, iters=100000) {
-    regular <- 1
-    advantaged <- replicate(iters, Reduce(`*`, rnorm(n.variables, mean=(1+advantage), sd=1), 1))
-    ma <- mean(advantaged)
-    return(ma)
+      regular <- 1
+      advantaged <- replicate(iters, Reduce(`*`, rnorm(n.variables, mean=(1+advantage), sd=1), 1))
+      ma <- mean(advantaged)
+      return(ma)
     }
     simulateLogNormal(0.5, 8)
     # [1] 25.58716574
