@@ -26,7 +26,7 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 
 - McElvain et al 1942, ["The constituents of the volatile oil of catnip. II. The neutral components. Nepetalic anhydride"](/docs/catnip/1942-mcelvain.pdf):
 
-    tested extracted nepetalactone and caryophyllene on 10 lions; the 7 adults all responded to the nepetalactone and not the caryophyllene (the 3 cubs responded to nothing).
+    tested extracted nepetalactone and caryophyllene on 10 lions of unspecified but mixed genders/ages; the 7 adults all responded to the nepetalactone and not the caryophyllene (the 3 cubs responded to nothing).
 - Todd 1962, ["Inheritance of the catnip response in domestic cats"](/docs/catnip/1962-todd.pdf)
 
     14 responders, 12 non-responders in a Siamese breeding colony so 46% immunity rate in this sample. (8 male responders, 6 female responders, 2 male non-responders, 10 female non-responders.) Todd also surveyed cats in local pounds and animal hospitals, finding 26 of 84 sampled were non-responders or a ~31% immunity. Todd considers the genetic pattern most consistent with a fairly common genetic variant which is autosomal dominant.
@@ -35,7 +35,7 @@ Catnip is frequently discussed in the popular & secondary literature without cit
     - In surveying the 26 breeding colony & 84 local cats, Todd found no large correlations with sex, breed type (Manx/Siamese/tabby/Agouti), white spotting, blue dilution, polydactyly, long hair, or castration. (32 male responders, 11 male non-responders, 26 female responders, 15 female non-responders.) Except the usual observation that young kittens rarely display a catnip response: of 39 under 12 weeks of age, 4 responded.
     - Cross-species results:
 
-        1. Viverrids (pg42/73):
+        1. Viverrids (pg42/73), unspecified gender/age/species:
 
             > Sub-families        Genera       N  +  ?+ ?- -  I
             > ------------        ------------ -- -- -- -- -- --
@@ -51,12 +51,12 @@ Catnip is frequently discussed in the popular & secondary literature without cit
             > Cryptoproctinae     Cryptoprocta 1  0  0  1  0  0
             >
             > Table: Table 3. Results of testing Viverrids with catnip. Figure in parentheses indicates number of individuals tested. `+` = positive, `?+` = possibly positive, `?-` = probably negative, `-` = negative, `I` = indeterminate, animal would not or did not investigate leaves.
-        2. Hyenas (Hyenidae): 0/3 responders (pg41/72)
+        2. Hyenas (Hyenidae): 0/3 responders of 2 males/1 female (pg41/72), unspecified age, genus, or species, presumably either spotted or striped hyenas.
         3. Felidae: (pg42/74). Todd's table and results have been summarized as thus by Tucker & Tucker:
 
             > Within the subfamily Pantherinae of the Felidae, Todd (1963) found the typical catnip response in 16 lions (Panthera leo) (14 positive responders, 2 negative responders), 23 tigers (Panthera tigris) (8 incomplete responders, 13 negative responders, 2 inconclusive responders), 18 leopards (Panthera pardus) (14 positive responders, 4 negative responders), 8 jaguars (Panthera onca) (7 positive responders, 1 negative responder), 4 snow leopards (Panthera uncia) (4 positive responders), and 1 clouded leopard (Neofelis [Panthera] nebulosa). Within the subfamily Acynonychinae of the Felidae, he found that 3 cheetahs (Acinonyx jubatus) did not respond to catnip. Within the subfamily Felinae of the Felidae, he found the typical catnip response in the 2 bobcats (Felis [Lynx] rufus) (1 positive responder, 1 negative responder), 1 European lynx (Felis [Lynx] lynx), 5 pumas (Felis [Puma] concolor) (2 positive responders, 2 negative responders, 1 inconclusive responder), 1 Asiatic golden cat (Felis [Profelis] temmincki), 5 ocelots (Felis [Leopardus] pardalis) (4 positive responders, 1 negative responder), and 6 margay cats (Felis [Leopardus] wiedii) (4 positive responders, 2 negative responders); no catnip response was observed in 2 servals (Felis [Leptailurus] serval), 1 swamp cat or jungle cat (Felis chaus), 1 Pallas' cat (Felis [Octocolobus] manul), 1 leopard cat (Felis [Prionailurus] bengalensis), 1 African golden cat (Felis [Profelis] aurata), 2 fishing cats (Felis [Prionailurus] viverrina), 4 jaguarundis (Felis [Herpailurus] yagouaroundi), and 1 pampas cat (Felis [Lynchailurus] pajeros).
 
-            The summary of Todd's Felidae results is correct but omits that Todd also used a questionnaire to estimate 4 responders & 13 non-responders among the ocelots in addition to his personal testing of the 5 ocelots but Todd notes he "has reservations about the validity of the data gathered by this method" (possibly because the response frequency 4/17 is so different from his personal 4/5 response frequency) so that data is probably best excluded. Todd also mentions a report of a "[ligeress](!Wikipedia "Liger")" (female hybrid of a male lion & tigress) from de Bary of the Utah Hogle Zoological Garden who is a catnip non-responder.
+            The summary of Todd's Felidae results is correct but omits that Todd also used a questionnaire to estimate 4 responders & 13 non-responders among the ocelots in addition to his personal testing of the 5 ocelots but Todd notes he "has reservations about the validity of the data gathered by this method" (possibly because the response frequency 4/17 is so different from his personal 4/5 response frequency) so that data is probably best excluded. Todd also mentions a report of a "[ligeress](!Wikipedia "Liger")" (female hybrid of a male lion & tigress) from de Bary of the Utah Hogle Zoological Garden who is a catnip non-responder. For the meta-analysis, I code the 'questionable' positive/negative responses as confirmed responses. Sex is usually unspecified, but individual-level data is provided on the lions, tigers, & leopards. I excluded the pampas cat and additional questionnaire data in line with Todd's notes that the data were highly unreliable.
 - Bates & Siegel 1963, ["Terpenoids. _Cis-trans-_ and _trans-cis-_ nepetalactones"](/docs/catnip/1963-bates.pdf)
 
     They chemically separated the two [isomers](!Wikipedia); the extracted isomer I was mostly inactive when presented to 8 cats with just 1 more interested in I than II (though they caution there might still have been contaminating II in the I extract), but "three were strongly attracted" and "two showed slight preference" for isomer II (_trans-cis-_nepetalactone), so arguably 5 out of 8 were responders. (Breed and sexes unspecified.)
@@ -69,9 +69,9 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 - Hatch 1972, ["Effect of drugs on catnip (_Nepeta cataria_) induced pleasure behavior in cats"](/docs/catnip/1972-hatch.pdf)
 
     Tested 17 cats initially; 14 responders. (Mixed breed, both genders; breakdowns of response not given.)
-- Hill et al 1976, ["Species-characteristic Responses to Catnip by Undomesticated Felids"](/docs/catnip/1976-hill.pdf) TODO: extract data; Tucker & Tucker summary:
+- Hill et al 1976, ["Species-characteristic Responses to Catnip by Undomesticated Felids"](/docs/catnip/1976-hill.pdf) TODO: extract data; Tucker & Tucker summary (apparently based on counting the descriptions in Table 3 or Table 4):
 
-    > Hill et al. (1976) found that lions (5 positive responders,  partial responders, 1 negative responder) and jaguars (3 positive responders) are extremely sensitive to catnip, while tigers (5 negative responders), pumas (4 negative responders), leopards (4 partial responders, 4 negative responders), and bobcats (2 negative responders) gave little or no response. They also found that both males and females of the same species test alike, while reproductive-age adults are more sensitive than either aged or immature animals.
+    > Hill et al. (1976) found that lions (5 positive responders, 6 partial responders, 1 negative responder) and jaguars (3 positive responders) are extremely sensitive to catnip, while tigers (5 negative responders), pumas (4 negative responders), leopards (4 partial responders, 4 negative responders), and bobcats (2 negative responders) gave little or no response. They also found that both males and females of the same species test alike, while reproductive-age adults are more sensitive than either aged or immature animals.
 - Sakurai et al 1988, ["Both (4a_S_, 7_S_, 7a_R_) –(+)-Nepetalactone and Its Antipode Are Powerful Attractants for Cats"](http://ci.nii.ac.jp/els/110006324016.pdf?id=ART0008331313&type=pdf&lang=en&host=cinii&order_no=&ppv_type=0&lang_sw=&no=1473185422&cp=)
 
     Another investigation of which isomers/enantiomers of nepetalactone are active, the isolated versions were tested in 9 cats with vials of the liquid; 7 responded (while the two 6-month olds didn't and Sakurai et al 1988 attributes the non-response to their being 'immature', 6 months sounds old enough for reactions to have developed). The cat breeds are specified as 4 Japanese, 3 Abyssinian, and 2 American short-hairs, but not sexes (although Sakurai used a mix, given their comments that "the females showed more emotional behavior than the males...the females were quite reactive, while the males were not...both of them [isomers] were extremely attractive to mature cats, especially to females"). Possibly contradicting Bates & Siegel 1963's results where only 1 isomer worked, Sakurai finds both isomers work equally well.
@@ -100,7 +100,7 @@ Catnip is frequently discussed in the popular & secondary literature without cit
     Shelter animals were given catnip-infused clothes to play with; Ellis notes that the catnip toys were played with more than other scents on average in the catnip group, but made no effort to ascertain how many were catnip responders.
 - Resende et al 2011, ["Influence of Cinnamon and Catnip on the Stereotypical Pacing of Oncilla Cats (_Leopardus tigrinus_) in Captivity"](/docs/catnip/2011-resende.pdf)
 
-    8 oncilla cats' activity were measured over several days after each dose was introduced into their enclosures. While the doses were small (1g), the cinnamon produced statistically-significant overall average difference while catnip did not, suggesting none of the oncilla cats responded to the catnip.
+    8 oncilla cats' activity were measured over several days after each dose was introduced into their enclosures. While the doses were small (1g), the cinnamon produced statistically-significant overall average difference while catnip did not, suggesting none of the oncilla cats responded to the catnip. Nevertheless, like Wells & Egli 2004, cannot be meta-analyzed.
 
 ---
 
@@ -111,21 +111,74 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 
 ~~~{.R}
 catnip <- read.csv(stdin(), header=TRUE)
-Study, Year, Responders, N, Country, Sex, Breed
-Todd 1962,1962,8,10,USA,M,Siamese
-Todd 1962,1962,6,16,USA,F,Siamese
-Todd 1963,1963,32,43,USA,M,mixed
-Todd 1963,1963,26,41,USA,F,mixed
-Bates & Siegel 1963,1963,5,8,USA,NA,NA
-Palen & Goddard 1966,1966,15,26,USA,M,mixed
-Palen & Goddard 1966,1966,8,17,USA,F,mixed
-Hatch 1972,1972,14,17,USA,mixed,mixed
-Sakurai et al 1988,1988,4,4,Japan,mixed,Japanese
-Sakurai et al 1988,1988,3,3,Japan,mixed,Abyssinian
-Sakurai et al 1988,1988,2,2,Japan,mixed,American short-hair
-Sakurai et al 1988,1988,16,16,Japan,NA,Japanese
-DeLuca & Kranda 1992,1992,6,10,USA,NA,mixed
-Clapperton et al 1994,1994,12,24,USA,NA,mixed
+Family,Genus,Species,Name,Study, Year, Responders, N, Country, Sex, Breed
+Felidae,Panthera,leo,African lion,McElvain et al 1942,1942,7,7,USA,mixed,NA
+Viverrinae,Civettictis,NA,NA,Todd 1962,1962,0,3,USA,mixed,NA
+Viverrinae,Viverra,NA,NA,Todd 1962,1962,0,1,USA,mixed,NA
+Viverrinae,Civettictis,NA,NA,Todd 1962,1962,0,2,USA,mixed,NA
+Paradoxurinae,Nandinia,NA,NA,Todd 1962,1962,0,5,USA,mixed,NA
+Paradoxurinae,Paguma,NA,NA,Todd 1962,1962,0,2,USA,mixed,NA
+Paradoxurinae,Arctictis,NA,NA,Todd 1962,1962,2,3,USA,mixed,NA
+Herpestinae,Herpestes,NA,NA,Todd 1962,1962,0,1,USA,mixed,NA
+Herpestinae,Atilax,NA,NA,Todd 1962,1962,1,3,USA,mixed,NA
+Herpestinae,Ichneumia,NA,NA,Todd 1962,1962,0,1,USA,mixed,NA
+Cryptoproctinae,Cryptoprocta,NA,NA,Todd 1962,1962,0,1,USA,mixed,NA
+Hyaenidae,NA,NA,hyena,Todd 1962,1962,0,1,USA,F,NA
+Hyaenidae,NA,NA,hyena,Todd 1962,1962,0,2,USA,M,NA
+Felidae,Panthera,leo,African lion,Todd 1962,1962,6,6,USA,M,NA
+Felidae,Panthera,leo,African lion,Todd 1962,1962,8,10,USA,F,NA
+Felidae,Panthera,tigris,tiger,Todd 1962,1962,1,9,USA,M,NA
+Felidae,Panthera,tigris,tiger,Todd 1962,1962,7,13,USA,F,NA
+Felidae,Panthera,leo/tigris,ligeress,Todd 1962,1962,0,1,USA,F,NA
+Felidae,Panthera,pardus,leopard,Todd 1962,1962,6,8,USA,M,NA
+Felidae,Panthera,pardus,leopard,Todd 1962,1962,8,10,USA,F,NA
+Felidae,Panthera,onca,jaguar,Todd 1962,1962,4,5,USA,M,NA
+Felidae,Panthera,onca,jaguar,Todd 1962,1962,3,3,USA,F,NA
+Felidae,Panthera,uncia,snow leopard,Todd 1962,1962,2,2,USA,M,NA
+Felidae,Panthera,uncia,snow leopard,Todd 1962,1962,2,2,USA,F,NA
+Felidae,Neofelis,nebulosa,clouded leopard,Todd 1962,1962,1,2,USA,NA,NA
+Felidae,Acinonyx,jubatus,cheetah,Todd 1962,1962,0,3,USA,NA,NA
+Felidae,Felis,rufus,bobcat,Todd 1962,1962,1,2,USA,NA,NA
+Felidae,Felis,lynx,European lynx,Todd 1962,1962,1,1,USA,NA,NA
+Felidae,Felis,concolor,puma,Todd 1962,1962,2,3,USA,M,NA
+Felidae,Felis,concolor,puma,Todd 1962,1962,1,2,USA,F,NA
+Felidae,Felis,temmincki,African golden cat,Todd 1962,1962,1,1,USA,NA,NA
+Felidae,Felis,aurata,Asian golden cat,Todd 1962,1962,0,1,USA,NA,NA
+Felidae,Felis,pardalis,ocelot,Todd 1962,1962,4,5,USA,NA,NA
+Felidae,Felis,wiedii,margay,Todd 1962,1962,4,6,USA,NA,NA
+Felidae,Felis,serval,serval,Todd 1962,1962,0,2,USA,NA,NA
+Felidae,Felis,chaus,swamp cat,Todd 1962,1962,0,1,USA,NA,NA
+Felidae,Felis,manul,Pallas' cat,Todd 1962,1962,0,1,USA,NA,NA
+Felidae,Felis,bengalensis,leopard cat,Todd 1962,1962,0,1,USA,NA,NA
+Felidae,Felis,viverrina,fishing cat,Todd 1962,1962,0,2,USA,NA,NA
+Felidae,Felis,yagouaroundi,jaguarundi,Todd 1962,1962,0,4,USA,NA,NA
+Felidae,Felis,pajeros,pampas cat,Todd 1962,1962,0,1,USA,NA,NA
+Felidae,Felis,catus,cat,Todd 1962,1962,8,10,USA,M,Siamese
+Felidae,Felis,catus,cat,Todd 1962,1962,6,16,USA,F,Siamese
+Felidae,Felis,catus,cat,Todd 1963,1963,32,43,USA,M,mixed
+Felidae,Felis,catus,cat,Todd 1963,1963,26,41,USA,F,mixed
+Felidae,Felis,catus,cat,Bates & Siegel 1963,1963,5,8,USA,NA,NA
+Felidae,Felis,catus,cat,Palen & Goddard 1966,1966,15,26,USA,M,mixed
+Felidae,Felis,catus,cat,Palen & Goddard 1966,1966,8,17,USA,F,mixed
+Felidae,Felis,catus,cat,Hatch 1972,1972,14,17,USA,mixed,mixed
+Felidae,Panthera,leo,African lion,Hill et al 1976,1976,3,4,USA,M,NA
+Felidae,Panthera,leo,African lion,Hill et al 1976,1976,5,5,USA,F,NA
+Felidae,Panthera,onca,jaguar,Hill et al 1976,1976,1,1,USA,M,NA
+Felidae,Panthera,onca,jaguar,Hill et al 1976,1976,2,2,USA,F,NA
+Felidae,Panthera,pardus,leopard,Hill et al 1976,1976,2,4,USA,M,NA
+Felidae,Panthera,pardus,leopard,Hill et al 1976,1976,2,4,USA,F,NA
+Felidae,Panthera,tigrus,tiger,Hill et al 1976,1976,0,1,USA,M,NA
+Felidae,Panthera,tigrus,tiger,Hill et al 1976,1976,0,4,USA,F,NA
+Felidae,Felis,rufus,bobcat,Hill et al 1976,1976,0,1,USA,M,NA
+Felidae,Felis,rufus,bobcat,Hill et al 1976,1976,0,1,USA,F,NA
+Felidae,Puma,concolor,cougar,Hill et al 1976,1976,0,2,USA,M,NA
+Felidae,Puma,concolor,cougar,Hill et al 1976,1976,0,2,USA,F,NA
+Felidae,Felis,catus,cat,Sakurai et al 1988,1988,4,4,Japan,mixed,Japanese
+Felidae,Felis,catus,cat,Sakurai et al 1988,1988,3,3,Japan,mixed,Abyssinian
+Felidae,Felis,catus,cat,Sakurai et al 1988,1988,2,2,Japan,mixed,American short-hair
+Felidae,Felis,catus,cat,Sakurai et al 1988,1988,16,16,Japan,NA,Japanese
+Felidae,Felis,catus,cat,DeLuca & Kranda 1992,1992,6,10,USA,NA,mixed
+Felidae,Felis,catus,cat,Clapperton et al 1994,1994,12,24,USA,NA,mixed
 
 
 catnip$Sex <- ordered(catnip$Sex, levels=c("F", "mixed", "M"))
@@ -133,15 +186,17 @@ catnip$Country <- relevel(catnip$Country, "USA")
 ~~~
 
 ## Meta-analysis
+### Cats' catnip response rate
 
-A random-effects meta-analysis on the log-odds of catnip response using `metafor`:
+A random-effects meta-analysis on the log-odds of catnip response in domestic cats using `metafor`:
 
 ~~~{.R}
-sum(catnip$Responders) / sum(catnip$N)
+cat <- subset(catnip, Name=="cat")
+sum(cat$Responders) / sum(cat$N)
 # [1] 0.6624472574
 
 library(metafor)
-r <- rma(xi=Responders, ni=N, measure="PLO", slab=Study, data=catnip); summary(r)
+r <- rma(xi=Responders, ni=N, measure="PLO", slab=Study, data=cat); summary(r)
 # Random-Effects Model (k = 14; tau^2 estimator: REML)
 #
 #   logLik  deviance       AIC       BIC      AICc
@@ -162,7 +217,10 @@ r <- rma(xi=Responders, ni=N, measure="PLO", slab=Study, data=catnip); summary(r
 inverseLogit <- function(lo) { exp(lo) / (exp(lo)+1) }
 inverseLogit(0.5749)
 # [1] 0.6398930541
+png(file="~/wiki/images/catnip-forest.png", width = 580, height = 600)
 forest(r)
+invisible(dev.off())
+
 ## some issues in the funnel plot of too-extreme values:
 funnel(r)
 trimfill(r)
@@ -188,7 +246,7 @@ inverseLogit(0.4577)
 
 ## Examine all moderators:
 rall <- rma(xi=Responders, ni=N, measure="PLO", slab=Study,
-            mods= ~ Year + Country + Sex + Breed, data=catnip)
+            mods= ~ Year + Country + Sex + Breed, data=cat)
 summary(rall)
 # Mixed-Effects Model (k = 10; tau^2 estimator: REML)
 #
@@ -222,7 +280,7 @@ summary(rall)
 ## moderately informative Bayesian meta-analysis
 ## (bayesmeta doesn't support moderators/meta-regression, so estimate just mean/SD):
 library(bayesmeta)
-b <- bayesmeta(y = escalc(xi=Responders, ni=N, measure="PLO", data=catnip),
+b <- bayesmeta(y = escalc(xi=Responders, ni=N, measure="PLO", data=cat),
                mu.prior.mean=0, mu.prior.sd=1); summary(b)
 # ...marginal posterior summary:
 #                    tau            mu         theta
@@ -254,6 +312,36 @@ This is ironic because while some authors claim that sex/breed doesn't matter at
 [^catnip-selection]: If catnip sensitivity frequency was 70% in 1950, and for the sake of argument we accepted that the proportion had decreased ~0.0024 per year and was 54.16% in 2016, and we also accept Todd 1962's analysis that catnip sensitivity is a dominant gene, then that implies that the frequency of the gene in 1950 was $0.7 = P^2 + 2P(1-P)$ and so in 1950 _P_=0.45; similarly, $0.516 = P^2 + 2P(1-P)$, and so in 2016 _P_=0.30, so the gene frequency would've fallen by 0.15 from 1950 to 2016. If a cat generation is 3 years, then that 66 years is 22 cat generations, and spreading a fall of 15% over that, the gene frequency would be falling ~0.68% per generation.
 
     While this could be caused by fairly weak selection against catnip responders, it's hard to imagine what could possibly cause that selection or how it is consistent with the continued existence of catnip responders given that: catnip has no known ill effects on cats, is rarely found in the wild, most cats are never exposed, those cats which are exposed at all tend to be pets which are spayed/neutered, no solid sex or breed correlation has been observed, and the existence of catnip responders has been documented for centuries (according to Tucker & Tucker 1988, [John Ray](!Wikipedia), died 1705, was the first, and [Gary Lockhart](http://www.arthurleej.com/HerbalScraps.pdf) attributes the first mention of catnip to [Al-Biruni](!Wikipedia), died 1048).
+
+### Cross-species catnip response rates
+
+To examine cross-species trends, we would like to fit a multilevel model using family/genus/species, since one would expect the catnip response rate to be more similar between, say, African lions & tigers than between snow leopards & hyenas.
+Since each species might have different gender effects and population bottlenecks, we would ideally nest in each species the sex/country/breed/year covariates.
+We would also like independent random-effects for each study to allow for the heterogeneity we observed before (which could be independent of the family/genus/species hierarchy, in which case it would model things like different experimental procedures - eg catnip leaves vs extract, or the experimenter being good or bad with animals - or it could be species-specific too).
+Unfortunately, such a full model would require estimating a huge number of parameters (with 24 species, 14 genuses, & 6 families, 10 studies, and 4 variables for each species, that's easily 270 parameters which must be fit) and there is far too little data (and the available data is compromised by the frequent missingness of species and sex), so we have to settle for something more modest, focusing on just the cross-species aspect.
+
+~~~{.R}
+## full model is unidentifiable due to too few data points and missingness:
+# b <- bglmer(cbind(Responders, N) ~ (Sex+Country+Breed+Year|Species/Genus/Family) + (1|Study), family="binomial", data=catnip)
+
+library(metafor)
+# levels(catnip$Name) <- c(levels(catnip$Name), as.character(catnip[is.na(catnip$Name),]$Genus))
+# catnip[is.na(catnip$Name),]$Name <- as.character(catnip[is.na(catnip$Name),]$Genus)
+## sort by taxonomy:
+catnip <- catnip[with(catnip, order(Family, Genus, Species)),]
+catnip$Label <- with(catnip, Map(function(f,g,s, n) { paste0(n, " (", paste(f, g, s), ")") }, Family, Genus, Species, Name))
+cross <- rma(xi=Responders, ni=N, measure="PLO", slab=Label,
+            data=catnip)
+summary(cross)
+
+png(file="~/wiki/images/catnip-forest-crossspecies.png", width = 580, height = 1000)
+forest(cross)
+invisible(dev.off())
+
+library(blme)
+b <- bglmer(cbind(Responders, N) ~ (1|Species/Genus/Family) + (1|Study) + Year, family="binomial", data=catnip)
+summary(b); ranef(b)
+~~~
 
 # Known cat stimulants
 
