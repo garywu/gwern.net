@@ -385,6 +385,8 @@ This is ironic because while some authors claim that sex/breed doesn't matter at
 
 ### Cross-species catnip response rates
 
+Catnip has been tested in a number of species. It would be interesting to include this data for several reasons: it can help the search for the genetic basis by comparing catnip-sensitive species with non-sensitive looking for genetic variants peculiar to the former, or if there is no apparent cluster of closely-related species which uniquely have catnip responses, it can test theories about what local environments might cause catnip sensitivity; it can potentially help sharpen estimates of sex/age/country/experimenter effects by 'borrowing strength'; zookeepers can enrich their animals' lives with catnip if they know which species respond; and since the data is already there in the papers, we might as well include it.
+
 To examine cross-species trends, we would like to fit a multilevel model using family/genus/species, since one would expect the catnip response rate to be more similar between, say, African lions & tigers than between snow leopards & hyenas.
 Since each species might have different gender effects and population bottlenecks, we would ideally nest in each species the sex/country/breed/year covariates.
 We would also like independent random-effects for each study to allow for the heterogeneity we observed before (which could be independent of the family/genus/species hierarchy, in which case it would model things like different experimental procedures - eg catnip leaves vs extract, or the experimenter being good or bad with animals - or it could be species-specific too).
