@@ -592,6 +592,7 @@ Abdullah Almashwali  M    31   Area51/DarkApollo   seller    Alphabay           
 Chaudhry A. Farooq   M    24   Area51/DarkApollo   seller    Alphabay                          USA         New York       heroin, cocaine                                  2016-08-02 2016-08-12
 Zhe Wang             M    20                       buyer                                       USA         New York       MDMA, Xanax                                 TRUE 2015-10-29 2016-09-05
 Kevin Szura          M                             buyer                                       USA         New York       MDMA, Xanax                                 TRUE 2015-10-29 2016-09-05
+Reiner B.            M    41                       seller                                      Germany     Berlin         gun                                         TRUE            2016-09-20
 
 # Confirmed
 ## Agora
@@ -1351,6 +1352,9 @@ In November 2015, it was announced that [9 men 19-24yo from Forcheim, Bamberg an
 In July 2016, [3 German men were charged](http://www.foxnews.com/world/2016/07/05/germany-3-charged-for-illegally-making-selling-firearms.html "Germany: 3 charged for illegally making, selling firearms") with converting/modifying/selling guns "on Darknet sites", selling pistols & rifles.
 These conversions may be connected to the [2016 Munich shooting](!Wikipedia) by 18yo Ali Sonboly, the Glock handgun for which [is reportedly](http://www.spiegel.de/panorama/justiz/amokschuetze-von-muenchen-tatwaffe-aus-dem-darknet-a-1104461.html "Amokschütze plante die Tat seit einem Jahr: Der 18-jährige David S., der in München neun Menschen erschoss, hatte die Tat ein Jahr lang vorbereitet. Laut Ermittlern soll er dazu ein eigenes Manifest geschrieben haben.") a 'reactivated theater weapon' (for which the firing pin had been removed or receiver cut?) which BitMessage chatlogs indicate had been purchased over the ['darknet'](http://www.reuters.com/article/us-germany-cyber-idUSKCN1071KW "After mass shooting, German police focus on "dark net" crime") in some fashion; however, chatlogs are not usually employed in purchasing off a DNM like AlphaBay, and [later coverage](http://www.wsj.com/articles/germany-arrests-suspected-gun-dealer-in-munich-rampage-case-1471372591 "Germany Arrests Suspected Gun Dealer in Munich Rampage Case: Man accused of selling gun to teenager who killed nine people in shooting spree last month")  indicates a different 31yo man had met Sonboly in person for the gun & ammo sales.
 
+A 41yo Berlin man was [sentenced to 4 years in September 2016](http://www.bz-berlin.de/tatort/menschen-vor-gericht/berliner-darknet-dealer-muss-vier-jahre-ins-gefaengnis "Berliner Darknet-Dealer muss vier Jahre ins Gefängnis") for selling handguns & ammunition; a misdelivered package was intercepted, apparently prompting some undercover purchases backtraced to him, followed up by bugging/surveillance.
+It's unspecified if he was one of the 3 charged in July 2016 or if he operated on a DNM.
+
 ### India
 
 2 men were arrested as part of a Bitcoin carding ring in [July 2016](http://www.hindustantimes.com/punjab/financial-fraud-punjab-cops-brush-with-darknet-bitcoins/story-w4YDmUJFDgkV12scPzWWxO.html "Financial fraud: Punjab cops' brush with Darknet, Bitcoins").
@@ -1667,6 +1671,7 @@ The [Drugs Global Incident Map](http://drugs.globalincidentmap.com/) features ma
     - WhiteDragon: ["Kokain und Heroin im Darknet angeboten: Polizei nimmt vier mutmaßliche Drogenhändler fest"](http://www.allgemeine-zeitung.de/lokales/polizei/kokain-und-heroin-im-darknet-angeboten-polizei-nimmt-vier-mutmassliche-drogenhaendler-fest_17194751.htm); ["Limburgerhof - Polizei: Schlag gegen Drogenhandel im Darknet Festnahme von 4 Verdächtigen und Durchsuchungen"](http://www.focus.de/regional/rheinland-pfalz/limburgerhof-polizei-schlag-gegen-drogenhandel-im-darknet-festnahme-von-4-verdaechtigen-und-durchsuchungen_id_5825124.html)
     - ["Davis Pair Arrested After Cops Intercept 3,000 Suspected Ecstasy Pills In Mail, Serve Search Warrant"](http://patch.com/california/davis/davis-pair-arrested-after-cops-intercept-3-000-suspected-ecstasy-pills-mail-serve)
     - ["Customs officials find 750 grams of MDMA ecstasy, leading to the arrest of a Norwalk man"](http://fox61.com/2016/08/19/customs-officials-find-750-grams-of-mdma-ecstasy-arrest-norwalk-man/)
+    - ["Alaskan Man Arrested After $15,000 Ecstasy Package Intercepted"](https://www.deepdotweb.com/2016/09/21/alaskan-man-arrested-after-15000-ecstasy-package-intercepted/)
 
 Most are likely unrelated to the black-markets (part of regular drug smuggling or importing from fly-by-night chemical labs in China) and some rumors are wrong or flatly made up (for example, a seller may be covering up an exit scam with a fake story about being busted, or one seller may be trying to hurt another's sales eg [the TedDanzig incident](https://www.reddit.com/r/SilkRoad/comments/1xq97t/teddanzig_arrested/) or the 4lb PureFireMeds FUD), but of course, some will turn out to be real.
 
