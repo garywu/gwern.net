@@ -105,23 +105,32 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 - Clapperton et al 1994, ["Development and Testing of Attractants for Feral Cats, _Felis catus_ L."](https://www.researchgate.net/profile/David_Morgan36/publication/262958697_Development_and_Testing_of_Attractants_for_Feral_Cats_Felis_Catus_L/links/54f51b3a0cf2f28c13632fc2.pdf)
 
     Catnip & silvervine were tested as cat lures for trapping; simultaneous testing over multiple environments showed that catnip, silvervine, and urine all garnered substantial attention from cats. Clapperton notes that 4/4 domestics and 8/20 feral cats responded (pg7). (Sex not specified, but breeds were clearly mixed as feral cats are never single breeds.)
+- McDaniel et al 2000, ["Efficacy of lures and hair snares to detect lynx"](http://www.fs.fed.us/rm/pubs_journals/2000/rmrs_2000_mcdaniel_g001.pdf)
+
+    Used catnip and other commercial products in scent stations to look for activity of wild lynx. Todd 1963 had already found responses in lynx/puma/bobcats, so unsurprisingly McDaniel does too, but with wild lynx, it is impossible to know how many total lynx were exposed and how many reacted.
 - Wells & Egli 2004, ["The influence of olfactory enrichment on the behaviour of captive black-footed cats, _Felis nigripes_"](/docs/catnip/2004-wells.pdf):
 
     6 [black-footed cats](!Wikipedia) (_Felis nigripes_), catnip did interest them and cause increases in activity, but paper doesn't break down by cat. Not useful unless want to contact authors.
 - Ellis 2007, ["Sensory enrichment for cats (Felis silvestris catus) housed in an animal rescue shelter"](http://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.486142); apparently republished as Ellis & Wells 2009, ["The influence of olfactory stimulation on the behaviour of cats housed in a rescue shelter"](https://www.researchgate.net/profile/Sarah_Ellis6/publication/248336419_The_influence_of_olfactory_stimulation_on_the_behaviour_of_cats_housed_in_a_rescue_shelter/links/00463529c654680937000000.pdf)
 
     Shelter animals were given catnip-infused clothes to play with; Ellis notes that the catnip toys were played with more than other scents on average in the catnip group, but made no effort to ascertain how many were catnip responders.
+- Massoco et al 1995, ["Behavioral effects of acute and long-term administration of catnip (Nepeta cataria) in mice"](http://europepmc.org/abstract/med/8588288); Bernardi et al 2010, ["Antidepressant-like effects of an apolar extract and chow enriched with Nepeta cataria (catnip) in mice"](http://psycnet.apa.org/journals/pne/3/2/251.html)
+
+
+   There is apparently a vein of studies trying catnip in humans for antidepressant effects (rather than the more traditional painkiller and psychedelic effects), leading to this experiment in chronic feeding catnip to mice (ironic as that might sound), finding one antidepressant-like effect. These can't be considered a catnip response, though
 - Resende et al 2011, ["Influence of Cinnamon and Catnip on the Stereotypical Pacing of Oncilla Cats (_Leopardus tigrinus_) in Captivity"](/docs/catnip/2011-resende.pdf)
 
     8 oncilla cats' activity were measured over several days after each dose was introduced into their enclosures. While the doses were small (1g), the cinnamon produced statistically-significant overall average difference while catnip did not, suggesting none of the oncilla cats responded to the catnip. Nevertheless, like Wells & Egli 2004, cannot be meta-analyzed.
 
+Potentially relevant but currently unavailable:
+
+- Hart, B.L., 1977. "Olfaction and feline behavior". _Feline Practice_ 7(5): 8-10 ([requested](https://www.reddit.com/r/Scholar/comments/501shm/article_olfaction_and_feline_behaviour_feline/))
+- Harney JW, Leary JD, Barofsky IB. "Behavioral activity of catnip and its constituents: nepetalic acid and nepetalactone", _Federation Proceedings_ 1974; 33: 481 ([requested](https://www.reddit.com/r/Scholar/comments/53r704/article_behavioral_activity_of_catnip_and_its/))
+- "Behavioral and toxicological studies of cyclopentanoid monoterpenes from Nepeta cataria", Harney, J W ; Barofsky, I M ; Leary, J D, _Lloydia_, 1978, Vol.41(4), pp.367-74 ([requested](https://www.reddit.com/r/Scholar/comments/53ugi5/article_behavioral_and_toxicological_studies_of/))
+
 Overall, study quality is low and at high risk of bias.
 Key variables like sex/age/breed is almost always never reported and sometimes even _n_ or species is not reported; placebo controls are not used; the experimenters are never blind to the substance being used; important studies are not available in English; the catnip used is not standardized; and the animals are not necessarily familiarized & comfortable with the experimenter despite the need for them to be relaxed and willing to play in order to gauge the presence or absence of a response.
 Probably any estimate is something of a lower bound as most of these biases would tend to mask a catnip response (like using old catnip or an animal feeling stressed), and it will be difficult to prove or disprove any sex or breed effects.
-
----
-
-- Hart, B.L., 1977. "Olfaction and feline behavior". _Feline Practice_ 7(5): 8-10. TODO: https://www.reddit.com/r/Scholar/comments/501shm/article_olfaction_and_feline_behaviour_feline/
 
 ## Data
 
@@ -426,7 +435,7 @@ summary(b); ranef(b)
 
     - Valerian officinalis https://en.wikipedia.org/wiki/Valerian_%28herb%29#Effect_on_other_organisms : active ingredient actinidine
     - Valeriana celtica https://en.wikipedia.org/wiki/Valeriana_celtica : active ingredients nepetalactone ([Bicchi et al 1983](/docs/catnip/1983-bicchi.pdf "Studies on the Essential Oil of _Valeriana celtica_ L."))
-- Actinidia Polygama (Japanese Catnip or Matatabi or Silvervine or silver vine or cat powder) https://en.wikipedia.org/wiki/Actinidia_polygama#Pets : active ingredient Actinidine and dihydroactinidiolide
+- Actinidia Polygama (Japanese Catnip or Matatabi or Silvervine or silver vine or cat powder) https://en.wikipedia.org/wiki/Actinidia_polygama#Pets and Actinidia macrosperma : active ingredient Actinidine and dihydroactinidiolide
 
 
     - [Hayashi 1968](/docs/catnip/1968-hayashi.pdf "Pseudo-Affective Reflexes of Cats produced by Extracts from the Plant _Actinidia polygama_") claims to have found no responses in an unspecified but probably >4 number of cats when testing nepetalactone (catnip) and actinidine solutions, aside from two actinidine reactions: salivation when poured into one cat's mouth and vomiting after an injection. Oddly, Hayashi claims in the conclusion section "Our experiments do not support the claim that _Actinidia palygama_ produces behavioural changes in cats" and then immediately following that in the summary section that "The actinidine reflexes, called forth by the odour of the fluid, were observed in cats but not in mice, rabbits or guinea pigs.", so I am left confused about what Hayashi's results were.
