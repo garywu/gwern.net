@@ -1,21 +1,28 @@
 #!/usr/bin/env runhaskell
 -- dependencies: libghc-pandoc-dev
 
--- usage: 'link-extract.hs [file]'; prints out a newline-delimited list of hyperlinks found in targeted files when parsed
--- as Pandoc markdown. Hyperlinks are not necessarily to the WWW but can be internal or interwiki hyperlinks (eg '/local/file.pdf' or '!Wikipedia').
+-- usage: 'link-extract.hs [file]'; prints out a newline-delimited list of hyperlinks found in targeted Pandoc Markdown files when parsed. To print out the filename for each hyperlink as well, add the option "--print-filenames", which can be helpful in searching many files.
+-- Hyperlinks are not necessarily to the WWW but can be internal or interwiki hyperlinks (eg '/local/file.pdf' or '!Wikipedia').
 
 import System.Environment (getArgs)
 import Text.Pandoc (bottomUpM, def, readMarkdown, Inline(Link), Pandoc)
+import Control.Monad
 
 main :: IO ()
-main = getArgs >>= mapM readFile >>= mapM_ analyzePage
+main = do args <- getArgs
+          let verbose = "--print-filenames" == args!!0
+          let args' = if verbose then tail args else args
+          files <- mapM readFile args'
+          zipWithM_ (analyzePage verbose) args' files
+          return ()
 
-analyzePage :: String -> IO Pandoc
-analyzePage x = bottomUpM printLinks (readMarkdown def (unlines . drop 1 . lines $ x))
+analyzePage :: Bool -> String -> String -> IO Pandoc
+analyzePage prt filename contents = do let parsed = readMarkdown def (unlines . drop 1 . lines $ contents)
+                                       bottomUpM (printLinks filename prt) parsed
 
-printLinks :: Inline -> IO Inline
-printLinks (Link _ (x, _)) = putStrLn x >> return undefined
-printLinks x                   = return x
+printLinks :: String -> Bool -> Inline -> IO Inline
+printLinks f p y@(Link _ (x, _)) = if p then putStrLn (f++": "++x) >> return y else putStrLn x >> return y
+printLinks _ _ y                   = return y
 
 {- draft attempt at separation of concerns:
 
