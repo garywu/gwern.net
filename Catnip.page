@@ -10,7 +10,7 @@ belief: likely
 > Not all cats respond to the catnip stimulant; the rate of responders is generally estimated at ~70% of cats. A meta-analysis of catnip response experiments since the 1940s indicates the true value is ~62%. The low quality of studies and the reporting of their data makes examination of possible moderators like age and gender difficult, but one possible moderator is that Japanese cats may have a response rate closer to 90%. Catnip responses have been recorded for a number of species both inside and outside the _Felidae_ family; of them, there is evidence for a catnip response in the Felidae, and, more uncertainly, the Paradoxurinae, and Herpestinae.
 
 [Catnip](!Wikipedia) is a plant which causes stimulated and excitable behavior in many domestic cats, which is fun to play with.
-It is the best known of at least a dozen plants with psychoactive effects on cats, and far more popular, cheaper, and easily purchased than alternatives like [tatarian honeysuckle](!Wikipedia "Lonicera tatarica"), [silvervine](!Wikipedia "Actinidia polygama"), or [cat thyme](!Wikipedia "Teucrium miarum").
+It is the best known of at least a dozen plants with psychoactive effects on cats, and far more popular, cheaper, and easily purchased than alternatives like [Tatarian honeysuckle](!Wikipedia "Lonicera tatarica"), [silvervine](!Wikipedia "Actinidia polygama"), or [cat thyme](!Wikipedia "Teucrium miarum").
 However, a large fraction of cats do not respond (non-response may be a genetic trait given Todd 1962's pedigree chart) but may respond to one of the alternatives.
 For example, of my family's two cats, neither responds to catnip but one responds to valerian, one to honeysuckle, and both to silvervine.
 
@@ -480,6 +480,7 @@ Specifically, I'll look at the most common and easy to come by stimulants, since
 - Tatarian honeysuckle (one of the most frequently mentioned alternatives)
 - Valerian (not as commonly mentioned, but very cheap due to its popularity as a herbal supplement for sleep & anxiety)
 - Silvervine (rarer & more expensive but still accessible, and reputedly quite effective)
+- Cat thyme
 - Olive oil/wood (cats' reacting to olive-related things is an obscure & anecdotal claim; but both are easy to get and included for the sake of comprehensiveness)
 
 ## Purchasing
@@ -540,9 +541,18 @@ Description of effects:
 
 Collecting data by hand is very slow unless I make a major effort like getting permission from a local pound to spend a day or two testing all their cats.
 But surveying cat owners could be a shortcut to getting a lot of data. (Only a few percent of respondents will have gone beyond catnip, but that's still a bigger sample than I have now.)
-Survey: Mechanical Turk & SurveyMonkey on gwern.net?
 
-MT calculator: https://morninj.github.io/Mechanical-Turk-Cost-Calculator/ 1000 responses at \$0.10 reward = \$120
+Survey: Mechanical Turk & gwern.net? and https://www.reddit.com/r/SampleSize https://www.reddit.com/r/cats/
+can do MT by sending Turkers out to a copy of the Google Docs survey and giving them a completion code at the end
+survey checklist: http://dholakia.web.rice.edu/Survey%20Quality%20Control%20CheckList.pdf
+
+sample sizes: need >33 catnip respondents per country for detecting possible Japan effect
+limit MT to Australia/China/Taiwan/Korea/Japan (so 5*>33 = >165 total from MT)
+cat-owner 'qualification'?
+avoid overpaying by the <10 HIT strategy https://docs.google.com/presentation/d/1Y_lvecsOefCfkXkkrdFtW1GH-NkoZidKzKXqFVJaLH4/edit#slide=id.ga3bec7adb_1_6 so at least 19 HITs
+MT calculator: https://morninj.github.io/Mechanical-Turk-Cost-Calculator/ 165 responses at \$0.50 reward (for high quality responses) + MT's 20% commission = \$108
+
+draft: https://docs.google.com/forms/d/1nRsktuUN19PMWG6ir2RbzJ_C-wlgInTl_7Wrq2iyx8s/edit
 
 demographics:
 
@@ -565,9 +575,11 @@ For _n_ cats, ask:
 
 Catnip:
 
-- has the person ever consumed catnip in the form of: tea / leaves or an herb / roots / smoked / juice, tincture, infusion or poultice
-- if so, what was the purpose? relaxation / stimulation / euphoria or intoxication / hallucination or visual distortion / dreams / insomnia / stomach aches / mosquito repellent/ insomnia / headaches / colds or flu or fever / hives / arthritis / increasing urination / treatment of worms / hemorrhoids / other
+- has the person ever consumed catnip in the form of: tea / leaves or an herb / roots / smoked / poultice
+- if so, what was the purpose? relaxation / stimulation / euphoria or intoxication / hallucination or visual distortion / dreams / insomnia / stomach aches / mosquito repellent / headaches / colds or flu or fever / hives / arthritis / increasing urination / treatment of worms / hemorrhoids / other
 - efficacy: 1-5
+
+preview: https://docs.google.com/forms/d/e/1FAIpQLSeT3GIg-pSwzDFAfNaqE-MzfJEtD0HghN_Vma68OZJtz1Pztg/viewform
 
 https://www.erowid.org/herbs/catnip/
 
