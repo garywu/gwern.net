@@ -1,6 +1,6 @@
 ---
 title: Catnip immunity and alternatives
-description: Prevalence of cat reactions to catnip and catnip substitutes
+description: Frequency of cat reactions to catnip and catnip substitutes
 tags: statistics, psychology, meta-analysis
 created: 7 Nov 2015
 status: in progress
@@ -465,6 +465,58 @@ b <- bglmer(cbind(Responders, N) ~ (1|Species/Genus/Family) + (1|Study) + Year, 
 summary(b); ranef(b)
 ~~~
 
+# Survey
+
+Collecting data by hand is very slow unless I make a major effort like getting permission from a local pound to spend a day or two testing all their cats.
+But surveying cat owners could be a shortcut to getting a lot of data. (Only a few percent of respondents will have gone beyond catnip, but that's still a bigger sample than I have now.)
+
+Prizes: 2 \$50 Amazon gift cards
+Survey: Mechanical Turk & gwern.net? and https://www.reddit.com/r/SampleSize https://www.reddit.com/r/cats/ Cats and Kittens listserv (http://pets.groups.yahoo.com/group/catsandkittens)
+can do MT by sending Turkers out to a copy of the Google Docs survey and giving them a completion code at the end
+
+sample sizes: need >33 catnip respondents per country for detecting possible Japan effect
+limit MT to Australia/China/Taiwan/Korea/Japan (so 5*>33 = >165 total from MT)
+cat-owner 'qualification'?
+avoid overpaying by the <10 HIT strategy https://docs.google.com/presentation/d/1Y_lvecsOefCfkXkkrdFtW1GH-NkoZidKzKXqFVJaLH4/edit#slide=id.ga3bec7adb_1_6 so at least 19 HITs
+MT calculator: https://morninj.github.io/Mechanical-Turk-Cost-Calculator/ 165 responses at \$0.50 reward (for high quality responses) + MT's 20% commission = \$108
+
+preview: https://docs.google.com/forms/d/e/1FAIpQLSeT3GIg-pSwzDFAfNaqE-MzfJEtD0HghN_Vma68OZJtz1Pztg/viewform
+
+demographics:
+
+- gender
+- age
+- country
+
+For 5 cats, ask:
+
+- sex (M/F)
+- spayed/neutered
+- breed: various
+- fur color; used cat color list from ["The Relationship Between Coat Color and Aggressive Behaviors in the Domestic Cat"](http://www.tandfonline.com/doi/pdf/10.1080/10888705.2015.1081820?needAccess=true), Stelow et al 2016:
+
+    - black
+    - black-and-white
+    - calico
+    - color points
+    - gray
+    - gray-and-white
+    - Tabby (black, brown, and gray)
+    - Tabby (orange, cream, and buff)
+    - tortoiseshell
+    - white
+    - Torbie
+    - other
+    - personality 1-5: "The personality and emotional factors were found to be the most important: withdrawn cats react poorly while friendly, outgoing cats react best"
+- age at first administration
+- stimulants, binary: catnip response, valerian response, honeysuckle response, silvervine response, cat thyme
+
+Catnip:
+
+- has the person ever consumed catnip in the form of: tea / leaves or an herb / roots / smoked / poultice
+- if so, what was the purpose? relaxation / stimulation / euphoria or intoxication / hallucination or visual distortion / dreams / insomnia / stomach aches / mosquito repellent / headaches / colds or flu or fever / hives / arthritis / increasing urination / treatment of worms / hemorrhoids / other
+- efficacy: 1-5
+
 # Known cat stimulants
 
 ["Catnip, Valerian, Honeysuckle and other cat-attractant plants"](http://messybeast.com/catnip-valerian.htm), Hartwell 2008
@@ -506,6 +558,7 @@ summary(b); ranef(b)
 Speculative:
 
 - there are anecdotal reports that some cats are attracted to olive products: olive wood, olive oil, and olive fruits themselves
+
 
 # Local cat experiments
 
@@ -576,58 +629,6 @@ Description of effects:
     2. On Percy, likewise a general stimulating effect but far more effective than the honeysuckle in inducing chase play, with him even trying out jumps when coaxed appropriately; he may be less effective, like Oolong, but he plays chase so little that it's impossible for me to make any comparisons with his 'normal' chase behavior.
     3. Sassy: similar. More time on back while playing chase than usual.
 - Olive oil/wood: all cats showed brief interest in smell, then ignored entirely.
-
-# Survey
-
-Collecting data by hand is very slow unless I make a major effort like getting permission from a local pound to spend a day or two testing all their cats.
-But surveying cat owners could be a shortcut to getting a lot of data. (Only a few percent of respondents will have gone beyond catnip, but that's still a bigger sample than I have now.)
-
-Survey: Mechanical Turk & gwern.net? and https://www.reddit.com/r/SampleSize https://www.reddit.com/r/cats/
-can do MT by sending Turkers out to a copy of the Google Docs survey and giving them a completion code at the end
-survey checklist: http://dholakia.web.rice.edu/Survey%20Quality%20Control%20CheckList.pdf
-
-sample sizes: need >33 catnip respondents per country for detecting possible Japan effect
-limit MT to Australia/China/Taiwan/Korea/Japan (so 5*>33 = >165 total from MT)
-cat-owner 'qualification'?
-avoid overpaying by the <10 HIT strategy https://docs.google.com/presentation/d/1Y_lvecsOefCfkXkkrdFtW1GH-NkoZidKzKXqFVJaLH4/edit#slide=id.ga3bec7adb_1_6 so at least 19 HITs
-MT calculator: https://morninj.github.io/Mechanical-Turk-Cost-Calculator/ 165 responses at \$0.50 reward (for high quality responses) + MT's 20% commission = \$108
-
-draft: https://docs.google.com/forms/d/1nRsktuUN19PMWG6ir2RbzJ_C-wlgInTl_7Wrq2iyx8s/edit
-
-demographics:
-
-- gender
-- age
-- country
-
-For _n_ cats, ask:
-
-- specify should be at least >6 months old
-- sex (M/F)
-- spayed/neutered
-- breed: free response? maybe ask long vs short haired, mutt vs purebred... definitely ask about Japanese bobtails
-- fur color
-- general activity level (1-5)
-- personality: "The personality and emotional factors were found to be the most important: withdrawn cats react poorly while friendly, outgoing cats react best"
-- stimulants: catnip response (0/1), valerian response (0/1), honeysuckle response (0/1), silvervine response (0/1) Zinziba (trap option)
-- age at administration of each?
-- form: home-grown, leaf, liquid extract
-
-Catnip:
-
-- has the person ever consumed catnip in the form of: tea / leaves or an herb / roots / smoked / poultice
-- if so, what was the purpose? relaxation / stimulation / euphoria or intoxication / hallucination or visual distortion / dreams / insomnia / stomach aches / mosquito repellent / headaches / colds or flu or fever / hives / arthritis / increasing urination / treatment of worms / hemorrhoids / other
-- efficacy: 1-5
-
-preview: https://docs.google.com/forms/d/e/1FAIpQLSeT3GIg-pSwzDFAfNaqE-MzfJEtD0HghN_Vma68OZJtz1Pztg/viewform
-
-https://www.erowid.org/herbs/catnip/
-
-Valerian:
-
-- has the person ever consumed valerian in the form of: roots / extract
-- if so, what was the purpose? relaxation / dreams / stomach aches / depression / Restlessness / Menstrual disorders / Convulsions / tremors / epilepsy / ADHD / Chronic fatigue syndrome  / Muscle and joint pain / Headache / Menopausal symptoms
-- efficacy: 1-5
 
 # Appendix
 ## Does initial data support one-and-only one response per cat?
