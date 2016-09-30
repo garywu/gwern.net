@@ -2,7 +2,7 @@
 title: September 2016 news
 created: 18 August 2016
 tags: newsletter
-status: in progress
+status: finished
 belief: log
 ...
 
@@ -13,8 +13,8 @@ If you have not been receiving issues, please check your email account's spam fo
 
 # Writings
 
-- genetic correlations WP article
-- catnip meta-analysis
+- [frequency of catnip response in cats: a meta-analysis](http://www.gwern.net/Catnip)
+- launched [catnip survey](https://docs.google.com/forms/d/e/1FAIpQLSeT3GIg-pSwzDFAfNaqE-MzfJEtD0HghN_Vma68OZJtz1Pztg/viewform)
 
 # Media
 ## Links
@@ -30,6 +30,10 @@ Everything is heritable:
 Politics/religion:
 
 - ["'Superbug' scourge spreads as U.S. fails to track rising human toll"](http://www.reuters.com/investigates/special-report/usa-uncounted-surveillance/) (The weakness of US public health statistics on the spread of antibiotic resistance.)
+- ["The Iron Law Of Evaluation And Other Metallic Rules"](http://www.gwern.net/docs/1987-rossi), Rossi 1987
+- ["The Terrorism Delusion: America's Overwrought Response to September 11"](http://politicalscience.osu.edu/faculty/jmueller//absisfin.pdf), Mueller & Stewart 2012
+- ["The Disappeared: How the fatwa changed a writer's life"](http://www.newyorker.com/magazine/2012/09/17/the-disappeared)
+- [Malcolm X's life of crime](http://econlog.econlib.org/archives/2012/09/the_autobiograp.html)
 
 AI:
 
@@ -37,6 +41,7 @@ AI:
 - ["Target-driven Visual Navigation in Indoor Scenes using Deep Reinforcement Learning"](https://arxiv.org/abs/1609.05143), Zhu et al 2016 ([video](https://www.youtube.com/watch?v=SmBxMDiOrvs))
 - ["Deep Neural Networks for YouTube Recommendations"](https://research.google.com/pubs/archive/45530.pdf), Covington et al 2016
 - ["Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"](https://arxiv.org/abs/1609.04802), Ledig et al 2016
+- ["Hyper Networks"](https://arxiv.org/pdf/1609.09106v1.pdf), Ha et al 2016 ([blog](http://blog.otoro.net/2016/09/28/hyper-networks/))
 - ["Generative Visual Manipulation on the Natural Image Manifold"](https://people.eecs.berkeley.edu/~junyanz/projects/gvm/), Zhu et al 2016b
 - ["Challenges for Brain Emulation: Why Is It So Difficult?"](http://cnsl.kaist.ac.kr/ni-inns/V01N03/NI_Vol1I3_SS2012_17.pdf), Cattell & Parker 2012
 - [NN architectures depicted graphically](http://www.asimovinstitute.org/neural-network-zoo/)
@@ -44,8 +49,11 @@ AI:
 Statistics/meta-science/mathematics:
 
 - ["Saving Science: Science isn't self-correcting, it's self-destructing. To save the enterprise, scientists must come out of the lab and into the real world."](http://www.thenewatlantis.com/publications/saving-science)
+- ["Probing the Improbable: Methodological Challenges for Risks with Low Probabilities and High Stakes"](https://arxiv.org/abs/0810.5515), Ord et al 2008
 - ["Predicting Experimental Results: Who Knows What?"](http://eml.berkeley.edu/~sdellavi/wp/expertsJul16.pdf), DellaVigna & Pope 2016
 - ["The Solution of the _n_-body Problem"](http://www.math.uvic.ca/faculty/diacu/diacuNbody.pdf), Diacu 1996
+- ["If you went outside and lay down on your back with your mouth open, how long would you have to wait until a bird pooped in it?"](http://what-if.xkcd.com/11/)
+- [/r/estimation](https://www.reddit.com/r/estimation/top/?sort=top&t=all)
 
 Psychology/biology:
 
@@ -56,6 +64,7 @@ Psychology/biology:
 - ["Failing Your Goals with Beeminder"](http://blog.beeminder.com/habits/)
 - ["Evidence That Computer Science Grades Are Not Bimodal"](http://www.cs.toronto.edu/~sme/papers/2016/icer_2016_bimodal.pdf), Patitsas et al 2016
 - ["Thomas Jefferson Defends America With a Moose"](http://www.slate.com/articles/health_and_science/science/2012/09/thomas_jefferson_s_moose_how_the_founding_fathers_debunked_count_buffon_s_offensive_theory_of_new_world_degeneracy_.single.html)
+- ["Syphilis in Renaissance Europe: rapid evolution of an introduced sexually transmitted disease?"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1810019/pdf/15252975.pdf), Knell 2004
 - ["How to confuse a moral compass: Survey 'magic trick' causes attitude reversal"](http://www.nature.com/news/how-to-confuse-a-moral-compass-1.11447)
 - ["Melatonin Treatment Effects on Adolescent Students' Sleep Timing and Sleepiness in a Placebo-Controlled Crossover Study"](http://www.gwern.net/docs/melatonin/2012-eckerberg.pdf), Eckerberg et al 2012
 
@@ -63,7 +72,9 @@ Technology:
 
 - ["Capacity-approaching DNA storage"](http://biorxiv.org/content/early/2016/09/09/074237.2), Erlich & Zielinski 2016 (If DNA storage gets real-world usage, it might help accelerate the DNA synthesis cost-curve, and we could get whole genome synthesis years before I project!)
 - ["Breakthrough silicon scanning discovers backdoor in military chip"](https://www.cl.cam.ac.uk/~sps32/ches2012-backdoor.pdf), Skorobogatov & Woods 2012
+- ["Fully Countering Trusting Trust through Diverse Double-Compiling"](http://www.dwheeler.com/trusting-trust/dissertation/html/wheeler-trusting-trust-ddc.html#0.Abstract), Wheeler 2009
 - ["Turning 8-Bit Sprites into Printable 3D Models"](https://0fps.net/2012/09/18/turning-8-bit-sprites-into-printable-3d-models/)
+- ["Magic: the Gathering is Turing Complete"](http://www.toothycat.net/~hologram/Turing/)
 
 Economics:
 
@@ -71,15 +82,25 @@ Economics:
 - ["When It Rains It Pours: The Long-run Economic Impacts of Salt Iodization in the United States"](http://static1.1.sqspcdn.com/static/f/884336/27221040/1472677302137/MortonSalt_aug2016.pdf), Adhvaryu et al 2016
 - ["Signaling and Productivity in the Private Financial Returns to Schooling"](http://www.parthen-impact.com/parthen-uploads/78/2015/add_1_258968_6jxqYCJ7tK.pdf), Bingley et al 2015 (As I've mentioned before, even if you aren't all that interested in heritability or genetic correlations, twins and family studies are still vital for causal inference in economics/medicine/sociology because they control for so many things.)
 - ["China's Gold Rush in the Hills of Appalachia: Buyers in Hong Kong and Beijing are paying top dollar for wild American ginseng, fueling a digging frenzy that could decimate the revered root for good"](https://foreignpolicy.com/2016/09/07/the-thrill-of-the-hunt-ginseng-smuggling-poaching-boone-north-carolina-china/)
+- ["Good Policy or Good Luck? Country growth performance and temporary shocks"](http://www.williameasterly.org/s/goodluck.pdf), Easterly et al 1993
 - [Experience curve effects](https://en.wikipedia.org/wiki/Experience_curve_effects)
+- ["Ramit Sethi and Patrick McKenzie on Getting Your First Consulting Client"](http://www.kalzumeus.com/2012/09/17/ramit-sethi-and-patrick-mckenzie-on-getting-your-first-consulting-client/)
+- ["Lehman Brothers, We Heard You Were Dead"](http://www.nytimes.com/2012/09/16/magazine/lehman-brothers-we-heard-you-were-dead.html)
 
 Philosophy:
 
 - ["Logical Induction"](https://intelligence.org/2016/09/12/new-paper-logical-induction/), Garrabrant et al 2016
+- ["Not By Empathy Alone"](http://lesswrong.com/lw/7xr/not_by_empathy_alone/)
+- ["The Wisest Steel Man"](http://squid314.livejournal.com/327646.html)
 
 Fiction:
 
-<!-- Back to 20 Sep 2012 -->
+- Ted Chiang:
+
+    - ["Exhalation"](http://www.nightshadebooks.com/Downloads/Exhalation%20-%20Ted%20Chiang.html)
+    - ["The Merchant and the Alchemist's Gate"](http://attach3.bdwm.net/attach/boards/ScienceFiction/M.1209705460.A/Ted_Chiang.pdf)
+
+<!-- Back to 8 Sep 2012 -->
 
 ## Books
 
@@ -93,21 +114,7 @@ Fiction:
 
 ## Film/TV
 
-Live-action:
-
 Anime:
 
 - [_Chirin no Suzu_/_Ringing Bell_](https://en.wikipedia.org/wiki/Ringing_Bell) ([review](https://myanimelist.net/reviews.php?id=230095))
 - [_Soul Eater_](https://en.wikipedia.org/wiki/Soul_Eater_(manga)) ([review](https://myanimelist.net/reviews.php?id=228595))
-
-## Games
-
-## Music
-
-Touhou:
-
-Vocaloid:
-
-Doujin:
-
-A cappella:
