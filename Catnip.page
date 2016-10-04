@@ -85,6 +85,9 @@ Catnip is frequently discussed in the popular & secondary literature without cit
 - Hill et al 1976, ["Species-characteristic Responses to Catnip by Undomesticated Felids"](/docs/catnip/1976-hill.pdf); Tucker & Tucker summary (apparently based on counting the descriptions in Table 3 or Table 4):
 
     > Hill et al. (1976) found that lions (5 positive responders, 6 partial responders, 1 negative responder) and jaguars (3 positive responders) are extremely sensitive to catnip, while tigers (5 negative responders), pumas (4 negative responders), leopards (4 partial responders, 4 negative responders), and bobcats (2 negative responders) gave little or no response. They also found that both males and females of the same species test alike, while reproductive-age adults are more sensitive than either aged or immature animals.
+- Harney et al 1978, ["Behavioral and toxicological studies of cyclopentanoid monoterpenes from _Nepeta cataria_"](/docs/catnip/1978-harney.pdf)
+
+    Considers only injections of catnip oil into mice/rats.
 - Sakurai et al 1988, ["Both (4a_S_, 7_S_, 7a_R_) –(+)-Nepetalactone and Its Antipode Are Powerful Attractants for Cats"](http://ci.nii.ac.jp/els/110006324016.pdf?id=ART0008331313&type=pdf&lang=en&host=cinii&order_no=&ppv_type=0&lang_sw=&no=1473185422&cp=)
 
     Another investigation of which isomers/enantiomers of nepetalactone are active, the isolated versions were tested in 9 cats with vials of the liquid; 7 responded (while the two 6-month olds didn't and Sakurai et al 1988 attributes the non-response to their being 'immature', 6 months sounds old enough for reactions to have developed). The cat breeds are specified as 4 Japanese, 3 Abyssinian, and 2 American short-hairs, but not sexes (although Sakurai used a mix, given their comments that "the females showed more emotional behavior than the males...the females were quite reactive, while the males were not...both of them [isomers] were extremely attractive to mature cats, especially to females"). Possibly contradicting Bates & Siegel 1963's results where only 1 isomer worked, Sakurai finds both isomers work equally well.
@@ -166,7 +169,6 @@ Potentially relevant but currently unavailable:
 
 - Hart, B.L., 1977. "Olfaction and feline behavior". _Feline Practice_ 7(5): 8-10 ([requested](https://www.reddit.com/r/Scholar/comments/501shm/article_olfaction_and_feline_behaviour_feline/))
 - Harney JW, Leary JD, Barofsky IB. "Behavioral activity of catnip and its constituents: nepetalic acid and nepetalactone", _Federation Proceedings_ 1974; 33: 481 ([requested](https://www.reddit.com/r/Scholar/comments/53r704/article_behavioral_activity_of_catnip_and_its/))
-- "Behavioral and toxicological studies of cyclopentanoid monoterpenes from Nepeta cataria", Harney, J W ; Barofsky, I M ; Leary, J D, _Lloydia_, 1978, Vol.41(4), pp.367-74 ([requested](https://www.reddit.com/r/Scholar/comments/53ugi5/article_behavioral_and_toxicological_studies_of/))
 
 Overall, study quality is low and at high risk of bias.
 Key variables like sex/age/breed is almost always never reported and sometimes even _n_ or species is not reported; placebo controls are not used; the experimenters are never blind to the substance being used; important studies are not available in English; the catnip used is not standardized; and the animals are not necessarily familiarized & comfortable with the experimenter despite the need for them to be relaxed and willing to play in order to gauge the presence or absence of a response.
@@ -532,6 +534,13 @@ Post-launch edits:
 - removed free response from gender question in demographic section due to abuse
 - added age constraints to the human and cat age questions due to abuse
 - edited introduction to rephrase it as "cat non-responses" & began advertising as a "catnip non-response" survey: the first 49 respondents claimed that 45 of 47 cats (cat #1 responses) responded to catnip, which is grossly discrepant from the 62% estimate - it's imprecise, but there's no way the true catnip rate is 96%! Further, the catnip non-response rate goes up in the additional cat entries. All this indicates either a bias in respondent recollections (they only remember the cats which do respond, or they provide a responding cat's data first and then don't include all the rest they know of) or a response bias to experimenter demand (inferring that I want to hear only about cats which do respond). The response rates for the other substances like silvervine are more reasonable thus far (although with far smaller sample sizes) and the small sample size is what I expected because those substances are much rarer, so this may not be a general acquiescence bias (because you would expect many more people to be claiming their cat respond to all of catnip/silvervine/valerian/thyme). If it's a recollection bias, I don't know of anyway to correct that afterwards or change the survey to eliminate it, so surveys on this topic might be futile.
+
+<!--
+21:22:34 <efm> prime some with 'do all cats like catnip?" and some with "Do you remember a time when you saw a cat that didn't like catnip?
+21:27:26 <gwern> you think this would count as 'availability bias'?
+21:33:58 <gwern> add a question 'do you remember ever seeing any cats not liking catnip', add an instruction to go in chronological order backwards in time to try to foster systematicity,
+                 ask for estimates of non-response rate... probably other solutions in the literature
+-->
 
 <!--
 Survey closes 1 January 2016; to finish it:
