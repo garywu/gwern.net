@@ -1,6 +1,6 @@
 ---
 title: Creatine Meta-analysis
-description: Does creatine increase IQ?
+description: Does creatine increase cognitive performance?
 created: 6 Sep 2013
 tags: psychology, meta-analysis
 status: notes
@@ -57,11 +57,17 @@ The searches & alerts yielded the following potentially useful studies:
 - [Gastner et al 2007](http://www.google.com/patents/DE102007030495A1 "Use of creatine containing preparation e.g. for improving memory, retentivity, long-term memory and for preventing mental fatigue condition, comprising e.g. Ginkgo biloba, ginseng and niacin")
 - [Rawson et al 2008](/docs/creatine/2008-rawson.pdf "Creatine supplementation does not improve cognitive function in young adults")
 - [Ling et al 2009](http://jtoomim.org/files/Ling_2009-Cognitive_effects_of_creatine_ethyl_ester_supplementation.pdf "Cognitive effects of creatine ethyl ester supplementation")
-- [Hammett et al 2010](http://www.researchgate.net/publication/44694983_Dietary_supplementation_of_creatine_monohydrate_reduces_the_human_fMRI_BOLD_signal/file/9fcfd50bb2b9e2fba1.pdf "Dietary supplementation of creatine monohydrate reduces the human fMRI BOLD signal")
+- [Hammett et al 2010](/docs/creatine/2010-hammett.pdf "Dietary supplementation of creatine monohydrate reduces the human fMRI BOLD signal")
 - [Benton & Donohoe 2011](http://img2.timg.co.il/forums/1_161120651.pdf "The influence of creatine supplementation on the cognitive functioning of vegetarians and omnivores")
-- [Alves et al 2013](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0076301 "Creatine Supplementation Associated or Not with Strength Training upon Emotional and Cognitive Measures in Older Women: A Randomized Double-Blind Study")
+- [Alves et al 2013a](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0076301 "Creatine Supplementation Associated or Not with Strength Training upon Emotional and Cognitive Measures in Older Women: A Randomized Double-Blind Study")
+- [Alves et al 2013b](http://onlinelibrary.wiley.com/doi/10.1002/acr.22020/full "Creatine supplementation in fibromyalgia: a randomized, double-blind, placebo-controlled trial")
 
-These use a variety of psychological measures:
+- [Turner et al 2015](http://www.jneurosci.org/content/35/4/1773.full.html "Creatine Supplementation Enhances Corticomotor Excitability and Cognitive Performance during Oxygen Deprivation") ([supplement](https://cdn.auckland.ac.nz/assets/es/about/our-research/documents/Turner%20et%20al%202015%20supplement.pdf); while creatine was apparently beneficial, not useful because only pre-supplementation baseline cognitive performance and hypoxia+supplementation cognitive performance was collected, according to the flowchart and supplement, with no supplementation+normal-breathing condition)
+- [Merege-Filho et al 2016](/docs/creatine/2016-meregefilho.pdf "Does brain creatine content rely on exogenous creatine in healthy youth? A proof-of-principle study")
+
+We are looking for studies of the effects of creatine on cognitive performance in normal healthy populations under normal conditions (ie no diseases, no genetic disorders, no exotic conditions like hypoxia).
+
+Usable studies turn out to employ a wide variety of psychological measures:
 
 Study                      Test
 -------------------------  ---------------------
@@ -76,8 +82,9 @@ Ling et al 2009            Raven's Advanced Progressive Matrices; Memory Scannin
 Hammett et al 2010         Raven's Advanced Progressive Matrices; Backward Digit Span
 Benton & Donohoe 2011      Word recall; reaction-time; vigilance rapid information processing task; Controlled Oral Word Association Test
 Alves et al 2013           Forward Digit Span; Backward Digit Span; Mini-Mental State Examination; Stroop Test; Trail Making Test; Delay Recall Test
+Merege-Filho et al 2016    Stroop Test; Rey Auditory Verbal Learning Test; Raven Progressive Matrices; Trail Making Test
 
-In total, these studies use <=31 distinct measures of cognitive functioning; this heterogeneity renders any summary very difficult as most measures were used in one and only one experiment.
+In total, these studies use ~32 distinct measures of cognitive functioning; this heterogeneity renders any summary difficult as most measures were used in only one experiment, and encourages selective reporting.
 The Hemmings mood state inventory, random number generation task, forward verbal recall, & Uchida-Kraepelin serial calculation test are used in 2 experiments each, but the backward digit span is used in 4 experiments, and the RAPM is used in 4 experiments - so it would be best to analyze those two.
 
 # RAPM
@@ -102,42 +109,62 @@ I decided to code multiple relevant variables:
 
     [Creatine monohydrate](!Wikipedia) (CM) is the most common, but also used in a study is [creatine ethyl ester](!Wikipedia) (CEE). While CEE was developed to allow smaller doses than CM, [Katseres et al 2009](/docs/creatine/2009-katseres.pdf "Non-enzymatic hydrolysis of creatine ethyl ester") suggests it breaks down far too fast to be effective and so CEE doses may not be 1:1 equivalent with CM.
 
-year study         n.e   mean.e    sd.e   n.c   mean.c  sd.c   type        dose total  dose average age      diet
----- ------------- ---   -----     ----   ---   -----   ----   ----------- ----------- ------------ -------- -----
-2003 Rae           25    13.7      4.1    25     9.7    3.8    Monohydrate 210         5            25.59    1
-2009 Ling          17    120.3     5.945  17     116.1  9.086  Ethyl ester 75          5            21       0
-2010 Hammett       11    13.45     2.25   11     11.45  3.8    Monohydrate 110         15.7         27.59    0
+year study         n.e   mean.e sd.e   n.c   mean.c  sd.c   type        dose total  dose average age      diet  sleep
+---- ------------- ---   -----  ----   ---   -----   ----   ----------- ----------- ------------ -------- ----- -----
+2003 Rae           25    13.7   4.1    25    9.7     3.8    monohydrate 210         5            25.59    1     0
+2009 Ling          17    120.3  5.945  17    116.1   9.086  ethyl ester 75          5            21       0     0
+2010 Hammett       11    13.45  2.25   11    11.45   3.8    monohydrate 110         15.7         27.59    0     0
+2016 Merege-Filho  35    30.4   4.6    32    31.8    3.8    monohydrate 13.74       1.96         11.5     0     0
+
 
 ## Results
 
-The 3 studies turn in the expected statistically-significant positive result in the random-effects meta-analysis, due largely to Rae 2003:
+The 4 studies do not turn in a statistically-significant positive result in the random-effects meta-analysis:
 
 ~~~{.R}
+Random-Effects Model (k = 4; tau^2 estimator: REML)
+
+tau^2 (estimated amount of total heterogeneity): 0.2731 (SE = 0.3128)
+tau (square root of estimated tau^2 value):      0.5226
+I^2 (total heterogeneity / total variability):   72.62%
+H^2 (total variability / sampling variability):  3.65
+
 Test for Heterogeneity:
-Q(df = 2) = 1.1471, p-val = 0.5635
+Q(df = 3) = 12.8147, p-val = 0.0051
 
 Model Results:
 
 estimate       se     zval     pval    ci.lb    ci.ub
-  0.7606   0.2017   3.7709   0.0002   0.3653   1.1559
+  0.4259   0.3095   1.3761   0.1688  -0.1807   1.0325
 ~~~
 
-![A forest plot of the 3 studies](/images/creatine/forest.png)
+![A forest plot of the 4 studies](/images/creatine/forest.png)
 
-When vegetarianism is used as a covariate (this applies only to Rae 2003), the pooled Ling & Hammett estimate is then just barely statistically-significant:
+When vegetarianism is used as a covariate (this applies only to Rae 2003), it is not statistically-significant either but does lower the estimate further (given that Rae 2003 was also the largest effect):
 
 ~~~{.R}
+Mixed-Effects Model (k = 4; tau^2 estimator: REML)
+
+tau^2 (estimated amount of residual heterogeneity):     0.2034 (SE = 0.3213)
+tau (square root of estimated tau^2 value):             0.4510
+I^2 (residual heterogeneity / unaccounted variability): 64.29%
+H^2 (unaccounted variability / sampling variability):   2.80
+R^2 (amount of heterogeneity accounted for):            25.52%
+
+Test for Residual Heterogeneity:
+QE(df = 2) = 5.9274, p-val = 0.0516
+
 Test of Moderators (coefficient(s) 2):
-QM(df = 1) = 1.1256, p-val = 0.2887
+QM(df = 1) = 1.5477, p-val = 0.2135
 
 Model Results:
 
          estimate      se    zval    pval    ci.lb   ci.ub
-intrcpt    0.5661  0.2726  2.0767  0.0378   0.0318  1.1003
-diet       0.4299  0.4052  1.0609  0.2887  -0.3643  1.2242
+intrcpt    0.2095  0.3261  0.6423  0.5207  -0.4297  0.8487
+diet       0.7865  0.6322  1.2441  0.2135  -0.4526  2.0257
 ~~~
 
-Unfortunately, with 3 studies I can't investigate dose meaningfully
+Unfortunately, with so few studies I can't investigate dose meaningfully
 
 <!-- library(pwr); pwr.t.test(n = sum(creatine$n.e), d = 0.57) -->
 
@@ -164,7 +191,7 @@ year study         n.e   mean.e    sd.e   n.c   mean.c  sd.c   type        dose 
 set.seed(7777) # for reproducible numbers
 # TODO: factor out common parts of `png` (& make less square), and `rma` calls
 library(XML)
-creatine <- readHTMLTable(colClasses = c("integer", "character", rep("numeric", 11)),
+creatine <- readHTMLTable(colClasses = c("integer", "factor", rep("numeric", 6), "factor", rep("numeric", 5)),
                           "http://www.gwern.net/Creatine")[[2]]
 # install.packages("metafor") # if not installed
 library(metafor)
@@ -270,8 +297,7 @@ On 23 September 2013, I attempted to reach Gastner via the [Alzchem contact form
 3 months later on 14 December 2013, I mailed a physical letter to the Trostberg, Germany address listed in _Creatine and Creatine Kinase_ ("Degussa AG, Dr. Albert-Frank-Straße 32, D-83308 Trostberg, Germany").
 As of 8 January 2015, I have received no responses to any of my attempts.
 
-<!-- TODO: if no response via contact form, try mailing a physical letter to Germany: "Degussa AG, Dr. Albert-Frank-Straße 32, D-83308 Trostberg, Germany"; from _Creatine and Creatine Kinase_
-If still no reply after a few months... are RAPM standard deviations sufficiently homogeneous to allow borrowing them from somewhere else...? -->
+<!-- TODO: If still no reply after a few months... are RAPM standard deviations sufficiently homogeneous to allow borrowing them from somewhere else...? -->
 
 ## Ling 2009
 
@@ -293,7 +319,7 @@ This may invalidate the apparent improvement.
 Using the [spreadsheet of data Ling provided me](/docs/creatine/2009-ling-data.xls):
 
 ~~~{.R}
-R> ling <- read.csv(stdin(),header=TRUE)
+# ling <- read.csv(stdin(),header=TRUE)
 Creatine,IQ
 1,120
 1,118
@@ -329,33 +355,32 @@ Creatine,IQ
 2,125
 2,105
 2,131
-R> summary(ling)
-    Creatine         IQ
- Min.   :1.0   Min.   :105
- 1st Qu.:1.0   1st Qu.:112
- Median :1.5   Median :118
- Mean   :1.5   Mean   :118
- 3rd Qu.:2.0   3rd Qu.:124
- Max.   :2.0   Max.   :133
-R> i <- ling[ling$Creatine==1,]$IQ; mean(i); sd(i)
-[1] 120.3
-[1] 5.945
-R> i <- ling[ling$Creatine==2,]$IQ; mean(i); sd(i)
-[1] 116.1
-[1] 9.086
-R> # we use a _t_-test rather than a Wilcoxon to replicate Ling's probable analysis
-R> t.test(IQ ~ Creatine, data=ling)
-
-    Welch Two Sample t-test
-
-data:  IQ by Creatine
-t = 1.608, df = 27.58, p-value = 0.1192
-alternative hypothesis: true difference in means is not equal to 0
-95% confidence interval:
- -1.163  9.634
-sample estimates:
-mean in group 1 mean in group 2
-          120.3           116.1
+summary(ling)
+#     Creatine         IQ
+#  Min.   :1.0   Min.   :105
+#  1st Qu.:1.0   1st Qu.:112
+#  Median :1.5   Median :118
+#  Mean   :1.5   Mean   :118
+#  3rd Qu.:2.0   3rd Qu.:124
+#  Max.   :2.0   Max.   :133
+i <- ling[ling$Creatine==1,]$IQ; mean(i); sd(i)
+# [1] 120.3
+# [1] 5.945
+i <- ling[ling$Creatine==2,]$IQ; mean(i); sd(i)
+# [1] 116.1
+# [1] 9.086
+# we use a _t_-test rather than a Wilcoxon to replicate Ling's probable analysis
+t.test(IQ ~ Creatine, data=ling)
+#     Welch Two Sample t-test
+#
+# data:  IQ by Creatine
+# t = 1.608, df = 27.58, p-value = 0.1192
+# alternative hypothesis: true difference in means is not equal to 0
+# 95% confidence interval:
+#  -1.163  9.634
+# sample estimates:
+# mean in group 1 mean in group 2
+#           120.3           116.1
 ~~~
 
 ## Hammett 2010
