@@ -13,24 +13,62 @@ If you have not been receiving issues, please check your email account's spam fo
 
 # Writings
 
-- genetic correlations WP article
+- genetic correlations WP article?
 
 # Media
 ## Links
 
 Everything is heritable:
 
+- ["Going global by adapting local: A review of recent human adaptation"](http://www.gwern.net/docs/genetics/2016-fan.pdf), Fan et al 2016
+- ["Association between polygenic risk scores for attention-deficit hyperactivity disorder and educational and cognitive outcomes in the general population"](http://ije.oxfordjournals.org/content/early/2016/09/28/ije.dyw216.full), Stergiakouli et al 2016
+- ["Educational attainment and personality are genetically intertwined"](http://biorxiv.org/content/early/2016/09/28/078014), Mottus et al 2016
+- ["Ultra-rare disruptive and damaging mutations influence educational attainment in the general population"](http://www.gwern.net/docs/genetics/2016-ganna.pdf), Ganna et al 2016
+- ["Personality Polygenes, Positive Affect, and Life Satisfaction"](https://www.cambridge.org/core/journals/twin-research-and-human-genetics/article/personality-polygenes-positive-affect-and-life-satisfaction/4DB2BE673BF122FB9A0AF2147EED80C0/core-reader), Weiss et al 2016
+
 Politics/religion:
+
+- ["Men's status and reproductive success in 33 nonindustrial societies: Effects of subsistence, marriage system, and reproductive strategy"](http://www.gwern.net/docs/2016-vonrueden.pdf), von Rueden & Jaeggi 2016:
 
 AI:
 
+- ["Hybrid computing using a neural network with dynamic external memory"](http://www.gwern.net/docs/2016-graves.pdf), Graves et al 2016 ([blog](https://deepmind.com/blog/differentiable-neural-computers/))
+- ["Video Pixel Networks"](https://arxiv.org/abs/1610.00527), Kalchbrenner et al 2016
+- ["Deep Reinforcement Learning for Robotic Manipulation"](https://arxiv.org/abs/1610.00633), Gu et al 2016 ([video](https://sites.google.com/site/deeproboticmanipulation/); [blog](https://research.googleblog.com/2016/10/how-robots-can-acquire-new-skills-from.html "How Robots Can Acquire New Skills from Their Shared Experience")):
+- ["Uncertainty in Deep Learning"](http://mlg.eng.cam.ac.uk/yarin/blog_2248.html), Gal 2016 (using dropout to turn NNs into ensembles of Bayesian NNs, allowing extraction of posterior distributions and thus uncertainty of outputs, which helps active learning & reinforcement learning)
+
 Statistics/meta-science/mathematics:
+
+- ["Active Learning Literature Survey"](http://burrsettles.com/pub/settles.activelearning.pdf), Settles 2010
+
+    You can see this as a way to most economically increase your dataset size by only labeling the most valuable instances; it can also be used to improve dataset quality by targeting instead the errors a model makes on a noisy corpus for examination by the oracle; and finally, it can be seen as a demonstration of the advantages of reinforcement learning over simple supervised learning over heaps of data - given the curse of dimensionality, most data is useless for training a model because it is so redundant and already a solved problem, and the data the model needs to improve its performance is a needle in a haystack. So by giving a model RL capabilities, you improve its supervised/inference performance! The way I put this: "tool AIs want to be agent AIs".
+- [A brief history by Andrew Gelman of the replication crisis in psychology, from the 1960s to now](http://andrewgelman.com/2016/09/21/what-has-happened-down-here-is-the-winds-have-changed/ "What has happened down here is the winds have changed")
+- ["We Gave Four Good Pollsters the Same Raw Data. They Had Four Different Results"](http://www.nytimes.com/interactive/2016/09/20/upshot/the-error-the-polling-world-rarely-talks-about.html) (random error vs systematic error)
+- ["Close but no Nobel: the scientists who never won; Archives reveal the most-nominated researchers who missed out on a Nobel Prize"](http://www.nature.com/news/close-but-no-nobel-the-scientists-who-never-won-1.20781) (Nobels have considerable measurement error)
+- ["Do scholars follow Betteridge's Law? The use of questions in journal article titles"](http://www.gwern.net/docs/2016-cook.pdf), Cook & Plourde 2016
+- [scatterplots work much better than several other forms of visualizing data for understanding correlations](https://idl.cs.washington.edu/files/2015-BeyondWebersLaw-InfoVis.pdf "Beyond Weber's Law: A Second Look at Ranking Visualizations of Correlation"), Kay & Heer 2015 (also a nice demonstration of fitting progressively more complex & realistic Bayesian models)
 
 Psychology/biology:
 
+- ["Safe landing strategies during a fall: Systemic review and meta-analysis"](http://www.gwern.net/docs/2016-moon.pdf), Moon & Sosnoff 2016
+- [Some early rapamycin anti-aging results from the dog people: improvement in dog heart health after 10 weeks of use.](http://edition.cnn.com/2016/10/06/health/rapamycin-dog-live-longer/index.html)
+- ["Does brain creatine content rely on exogenous creatine in healthy youth? A proof-of-principle study"](http://www.gwern.net/docs/creatine/2016-meregefilho.pdf), Merege-Filho et al 2016 (null)
+- ["Functional MRI in awake dogs predicts suitability for assistance work"](http://biorxiv.org/content/early/2016/10/12/080325), Berns et al 2016
+
 Technology:
 
+- ["Sam Altman's Manifest Destiny: Is the head of Y Combinator fixing the world, or trying to take over Silicon Valley?"](http://www.newyorker.com/magazine/2016/10/10/sam-altmans-manifest-destiny)
+- ["Uber's Ad-Toting Drones Are Heckling Drivers Stuck in Traffic: Forget billboards-motorists now have ads buzzing a few feet above their windshields"](https://www.technologyreview.com/s/602662/ubers-ad-toting-drones-are-heckling-drivers-stuck-in-traffic/) (possibly the most cyberpunk thing I've seen since VR headsets)
+- ["Keystroke Recognition Using WiFi Signals"](https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf), Ali et al 2015
+- ["APEX: Automatic Programming Assignment Error Explanation"](http://researcher.watson.ibm.com/researcher/files/us-liup/apex.pdf), Kim et al 2016
+
 Economics:
+
+- [Abuse of 'arbitration' clauses in international trade treaties to escape criminal liability](https://www.buzzfeed.com/chrishamby/super-court)
+- ["The Dizzying Grandeur of 21st-Century Agriculture"](http://www.nytimes.com/interactive/2016/10/09/magazine/big-food-photo-essay.html)
+- ["My First Gulfstream"](http://www.vanityfair.com/news/1998/10/gulfstream-199810)
+- ["Everything you need to know about whether money makes you happy"](https://80000hours.org/articles/money-and-happiness/)
+- ["Young Rural Women in India Chase Big-City Dreams: Experiments like one in Bangalore, luring migrants to fill factory jobs, collide with an old way of life that keeps women and girls in seclusion until an arranged marriage"](http://www.nytimes.com/2016/09/25/world/asia/bangalore-india-women-factories.html) (3500 years of female slavery attacked by industrialization and smartphones; "all fixed, fast-frozen relations, with their train of ancient and venerable prejudices and opinions, are swept away, all new-formed ones become antiquated before they can ossify. All that is solid melts into air, all that is holy is profaned...")
 
 Philosophy:
 
@@ -42,7 +80,12 @@ Fiction:
 
 Nonfiction:
 
+- _Montaillou_
+- _Confessions of an English Opium-Eater_, by Thomas De Quincey
+
 Fiction:
+
+- _The Tales of Ise_, Anonymous
 
 ## Film/TV
 
