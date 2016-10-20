@@ -10,7 +10,7 @@ belief: unlikely
 > The supplement Spirulina has been suggested to help allergy symptoms. A randomized self-experiment is run by sceaduwe April - August 2014. Analysis suggests no effect of the spirulina.
 
 [Spirulina](!Wikipedia "Spirulina (dietary supplement)") is a photosynthetic algae which can be grown for food (dried spirulina is high in protein); it is also used by some as a supplement due to various other substances in it.
-There is [a little human research](!Wikipedia "Spirulina (dietary supplement)#Human research") ([Mao et al 2005](http://www.researchgate.net/publication/7881298_Effects_of_a_Spirulina-based_dietary_supplement_on_cytokine_production_from_allergic_rhinitis_patients/file/9fcfd509835e043160.pdf "Effects of a Spirulina-based dietary supplement on cytokine production from allergic rhinitis patients"), [Cingi et al 2008](/docs/nootropics/2008-cingi.pdf "The effects of Spirulina on allergic rhinitis")) suggesting it may help allergy problems like hay fever, but nothing conclusive.
+There is [a little human research](!Wikipedia "Spirulina (dietary supplement)#Human research") ([Mao et al 2005](/docs/nootropics/2005-mao.pdf "Effects of a Spirulina-based dietary supplement on cytokine production from allergic rhinitis patients"), [Cingi et al 2008](/docs/nootropics/2008-cingi.pdf "The effects of Spirulina on allergic rhinitis")) suggesting it may help allergy problems like hay fever, but nothing conclusive.
 
 # Background
 
@@ -47,7 +47,7 @@ Descriptive:
 
 ~~~{.R}
 spirulina <- read.csv("http://www.gwern.net/docs/nootropics/2014-sceaduwe-spirulina.csv",
-                      colClasses=c("Date", "logical", "integer", "integer", "logical", "logical", "integer", "factor"))
+    colClasses=c("Date", "logical", "integer", "integer", "logical", "logical", "integer", "factor"))
 summary(spirulina)
 ##      Date            Pollen.season   Allergy.rating      Spirulina        Spirulina.random
 ## Min.   :2014-02-28   Mode :logical   Min.   :2.00000   Min.   :0.000000   Mode :logical
@@ -79,7 +79,8 @@ qplot(Date, Allergy.rating, color=as.ordered(Spirulina), data=spirulina) +
 At a first stab, I load up the data and regress on #2-6:
 
 ~~~{.R}
-l <- lm(Allergy.rating ~ Pollen.season + Creatine + Location + Allergy.medicine + Spirulina, data=spirulina[spirulina$Spirulina.random,])
+l <- lm(Allergy.rating ~ Pollen.season + Creatine + Location + Allergy.medicine + Spirulina,
+        data=spirulina[spirulina$Spirulina.random,])
 summary(l)
 ##
 ## ...Coefficients:
@@ -96,7 +97,8 @@ summary(l)
 ## F-statistic: 3.73827 on 5 and 56 DF,  p-value: 0.00544645
 
 library(MASS)
-pl <- polr(as.ordered(Allergy.rating) ~ Pollen.season + Creatine + Location + Allergy.medicine + Spirulina, data=spirulina[spirulina$Spirulina.random,])
+pl <- polr(as.ordered(Allergy.rating) ~ Pollen.season + Creatine + Location + Allergy.medicine + Spirulina,
+           data=spirulina[spirulina$Spirulina.random,])
 summary(pl)
 ## ...Coefficients:
 ##                            Value Std. Error    t value
