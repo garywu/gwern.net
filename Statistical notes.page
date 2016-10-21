@@ -3205,3 +3205,199 @@ So the probability of one person not being named Scott is 1-0.0029054906 or 0.99
 The crossover point is ~239.
 
 So an American social group cannot exceed _n_=51 before first names begin to break down, and it is all Scott's fault at _n_=239.
+
+# WiFi router improvement
+
+My old WiFi router (a Belkin wireless router F6D4230-4 v1 which is at least 6 years old I believe was provided by a local ISP originally) on a weekly basis causes me problems where it will mysteriously freeze and no longer connect to the Internet nor allow IPs to be connected to it and only forcibly power-cycling the Belkin router will fix it (rebooting or reconnecting my laptop does nothing), a problem which also affected some relatives who visited & attempted to connect their iPads or smartphones.
+My initial suspicion fell on the almost equally old WiFi repeater/range-extender which I used to connect from my house to the Belkin router (some cheap model bought from Walmart whose brand & model number I didn't record at the time), but replacing it in February 2015 with a [TP-LINK TL-WA860RE](http://www.amazon.com/gp/product/B00PEW7V7E/ "$41.52") improved the situation only somewhat.
+Finally fed up after yet another outage in early October 2016, I went looking for a replacement since apparently that model is notorious for freezes.
+WiFi router reviews are hard to parse since even the best routers have a large complaint section, which I suspect may be people blaming the router for things beyond its control, so I wound up going with a model that was well-reviewed on [The Wirecutter](http://thewirecutter.com/reviews/best-wi-fi-router/ "The Best Wi-Fi Router (for Most People)") and one of the best-selling units on Newegg (reasoning that if I can't be sure of buying a *good* router, I can at least try to buy a *popular* one which will help when debugging): the [TP-LINK Archer C7 AC1750 Wireless Dual Band Gigabit Router](https://www.amazon.com/TP-LINK-Archer-C7-Wireless-Gigabit/dp/B00BUSDVBQ/ "$85.99").
+I installed it on 21 October 2016.
+
+When I had Verizon DSL 2011-2014, the download/upload/latency bandwidth tests were usually ~0.9/0.4Mbps & 100ms; this was upgraded to a Metrocast cable modem in late July 2014, and the bandwidth performance improved substantially to ~3/1Mbps.
+The only computers on the local network are usually my laptop and my Netatmo weather station which needs WiFi to upload its data to the website, and there are no other WiFi networks close enough to connect to or (usually) detect, so interference is not the cause for the slow performance but probably my remote rural location.
+My assumption was that the TP-LINK router would fix the bugs and general flakiness, but otherwise not make a noticeable difference, since as far as I knew, even the most ancient WiFi routers supported bandwidths like 50Mbps which are an order of magnitude higher than the ~3Mbps I was getting to the Internet, so the WiFi router should not have represented any kind of bottleneck or affected my bandwidth.
+
+Still, it's worth checking that it doesn't make my connection speeds worse.
+Before installation, I benchmarked my previous setup using 2 different bandwidth testing tools (for robustness), the Google bandwidth testing tool & the [Ookla speedtest.net v3.0.7](http://www.speedtest.net/) bandwidth testing tool: with my Firefox browser v44.0+build3-0ubuntu0.15.04.1 open with its usual tab overload, BitTorrent & IRC & my usual daemons running (since I am interested in performance under normal conditions with many programs & connections active), but while not actively browsing any webpages, I ran 20 bandwidth tests using each tool and alternating between them.
+After installation and checking that all websites loaded, BitTorrent was back up to its usual (throttled) upload speed, settings were finalized (I left almost all defaults alone, primarily changing the SSID & password to match the old one) etc, I re-ran the 40 tests as before.
+(This is not, strictly speaking, a randomized experiment since it is before/after and confounded by time - possibly my network speeded up a great deal over the half hour or so it took to set up - but since I've never noticed such time differences and it would be a huge pain to repeatedly turn off and switch between routers, I'm going to ignore that.)
+
+This gives a 2x2 experimental design (new/old vs Google/Ookla) on 3 measurement types (download in Mbps, upload in Mbps, and latency in ms):
+
+~~~{.R}
+# (down/up mbps, latency ms)
+bandwidth <- read.csv(stdin(), header=TRUE, colClasses=c("logical", "factor", "numeric", "numeric", "integer"))
+New,Tester,Download,Upload,Latency
+FALSE,Google,1.33, 2.44, 109
+FALSE,Google,4.90, 2.20, 217
+FALSE,Google,2.29, 2.35, 99
+FALSE,Google,3.55, 2.28, 58
+FALSE,Google,1.71, 2.15, 75
+FALSE,Google,3.23, 2.67, 42
+FALSE,Google,2.27, 2.60, 58
+FALSE,Google,2.21, 2.71, 96
+FALSE,Google,3.22, 2.10, 45
+FALSE,Google,2.96, 2.22, 44
+FALSE,Google,4.88, 3.15, 42
+FALSE,Google,4.18, 1.69, 46
+FALSE,Google,2.38, 2.25, 82
+FALSE,Google,1.07, 1.75, 102
+FALSE,Google,5.08, 2.19, 72
+FALSE,Google,0.64, 2.66, 259
+FALSE,Google,0.35, 2.35, 539
+FALSE,Google,6.40, 2.85, 200
+FALSE,Google,2.67, 1.77, 52
+FALSE,Google,1.19, 2.01, 105
+FALSE,Ookla,8.68, 2.45, 18
+FALSE,Ookla,9.27, 2.38, 23
+FALSE,Ookla,9.89, 2.79, 16
+FALSE,Ookla,8.00, 2.63, 18
+FALSE,Ookla,8.93, 2.62, 18
+FALSE,Ookla,8.93, 2.70, 20
+FALSE,Ookla,8.15, 2.75, 18
+FALSE,Ookla,8.16, 2.76, 22
+FALSE,Ookla,7.66, 2.88, 18
+FALSE,Ookla,7.40, 1.83, 15
+FALSE,Ookla,8.51, 2.61, 13
+FALSE,Ookla,9.00, 2.78, 19
+FALSE,Ookla,7.48, 2.75, 17
+FALSE,Ookla,8.44, 1.62, 20
+FALSE,Ookla,8.35, 2.80, 19
+FALSE,Ookla,8.21, 2.24, 18
+FALSE,Ookla,6.28, 2.16, 19
+FALSE,Ookla,8.01, 2.73, 18
+FALSE,Ookla,7.89, 1.77, 20
+FALSE,Ookla,7.68, 2.38, 20
+TRUE,Google,7.50, 2.81, 41
+TRUE,Google,13.60, 3.11, 298
+TRUE,Google,16.40, 2.96, 119
+TRUE,Google,15.60, 2.90, 241
+TRUE,Google,14.20, 2.93, 212
+TRUE,Google,14.40, 2.86, 295
+TRUE,Google,14.10, 2.77, 266
+TRUE,Google,11.60, 2.78, 224
+TRUE,Google,13.20, 2.68, 296
+TRUE,Google,13.00, 2.71, 314
+TRUE,Google,14.50, 2.96, 298
+TRUE,Google,12.20, 2.77, 398
+TRUE,Google,14.00, 2.75, 292
+TRUE,Google,8.99, 2.85, 37
+TRUE,Google,9.01, 2.90, 41
+TRUE,Google,13.80, 2.93, 223
+TRUE,Google,14.80, 3.06, 271
+TRUE,Google,14.60, 2.96, 256
+TRUE,Google,13.70, 2.77, 235
+TRUE,Google,12.90, 2.39, 210
+TRUE,Ookla,12.50, 3.18, 33
+TRUE,Ookla,12.80, 3.18, 40
+TRUE,Ookla,14.68, 3.39, 38
+TRUE,Ookla,13.42, 3.39, 40
+TRUE,Ookla,13.91, 3.31, 39
+TRUE,Ookla,11.80, 3.31, 41
+TRUE,Ookla,11.82, 3.19, 34
+TRUE,Ookla,12.74, 3.37, 35
+TRUE,Ookla,13.18, 3.47, 35
+TRUE,Ookla,13.27, 3.09, 38
+TRUE,Ookla,13.95, 3.54, 38
+TRUE,Ookla,15.59, 3.23, 26
+TRUE,Ookla,13.34, 3.27, 39
+TRUE,Ookla,13.77, 3.20, 39
+TRUE,Ookla,13.63, 3.25, 30
+TRUE,Ookla,13.43, 3.13, 39
+TRUE,Ookla,10.82, 3.09, 36
+TRUE,Ookla,13.06, 3.11, 41
+TRUE,Ookla,13.57, 3.08, 38
+TRUE,Ookla,9.36, 3.42, 35
+
+
+summary(bandwidth)
+#     New             Tester      Download             Upload            Latency
+#  Mode :logical   Google:40   Min.   : 0.350000   Min.   :1.620000   Min.   : 13.00
+#  FALSE:40        Ookla :40   1st Qu.: 6.370000   1st Qu.:2.387500   1st Qu.: 25.25
+#  TRUE :40                    Median : 9.005000   Median :2.770000   Median : 41.00
+#  NA's :0                     Mean   : 9.302125   Mean   :2.725875   Mean   :100.15
+#                              3rd Qu.:13.422500   3rd Qu.:3.090000   3rd Qu.:139.25
+#                              Max.   :16.400000   Max.   :3.540000   Max.   :539.00
+with(bandwidth, aggregate(cbind(Download, Upload, Latency), list(New, Tester), mean))
+#   Group.1 Group.2 Download Upload Latency
+# 1   FALSE  Google   2.8255 2.3195  117.10
+# 2    TRUE  Google  13.1050 2.8425  228.35
+# 3   FALSE   Ookla   8.2460 2.4815   18.45
+# 4    TRUE   Ookla  13.0320 3.2600   36.70
+
+wilcox.test(Download ~ New, conf.int=TRUE, data=bandwidth)
+#   Wilcoxon rank sum test with continuity correction
+# data:  Download by New
+# W = 23, p-value = 7.903394e-14
+# alternative hypothesis: true location shift is not equal to 0
+# 95 percent confidence interval:
+#  -8.859984325 -5.789940523
+# sample estimates:
+# difference in location
+#           -6.920002136
+wilcox.test(Upload ~ New, conf.int=TRUE, data=bandwidth)
+#   Wilcoxon rank sum test with continuity correction
+# data:  Upload by New
+# W = 95.5, p-value = 1.242035e-11
+# alternative hypothesis: true location shift is not equal to 0
+# 95 percent confidence interval:
+#  -0.7699368972 -0.4800376233
+# sample estimates:
+# difference in location
+#          -0.6199699307
+wilcox.test(Latency ~ New, conf.int=TRUE, data=bandwidth)
+#   Wilcoxon rank sum test with continuity correction
+# data:  Latency by New
+# W = 489, p-value = 0.002792694
+# alternative hypothesis: true location shift is not equal to 0
+# 95 percent confidence interval:
+#  -99.00004305 -15.99999615
+# sample estimates:
+# difference in location
+#           -20.99997024
+summary(lm(cbind(Download, Upload, Latency) ~ Tester * New, data=bandwidth))
+# Response Download :
+# ...Coefficients:
+#                       Estimate Std. Error  t value   Pr(>|t|)
+# (Intercept)          2.8255000  0.3577683  7.89757 1.7287e-11
+# TesterOokla          5.4205000  0.5059608 10.71328 < 2.22e-16
+# NewTRUE             10.2795000  0.5059608 20.31679 < 2.22e-16
+# TesterOokla:NewTRUE -5.4935000  0.7155366 -7.67745 4.5521e-11
+#
+# Residual standard error: 1.599988 on 76 degrees of freedom
+# Multiple R-squared:  0.8801453,   Adjusted R-squared:  0.8754142
+# F-statistic: 186.0337 on 3 and 76 DF,  p-value: < 2.2204e-16
+#
+# Response Upload :
+# ...Coefficients:
+#                       Estimate Std. Error  t value   Pr(>|t|)
+# (Intercept)         2.31950000 0.06387346 36.31399 < 2.22e-16
+# TesterOokla         0.16200000 0.09033072  1.79341   0.076885
+# NewTRUE             0.52300000 0.09033072  5.78984 1.4969e-07
+# TesterOokla:NewTRUE 0.25550000 0.12774692  2.00005   0.049068
+#
+# Residual standard error: 0.2856508 on 76 degrees of freedom
+# Multiple R-squared:  0.6281363,   Adjusted R-squared:  0.6134575
+# F-statistic: 42.79199 on 3 and 76 DF,  p-value: 2.651345e-16
+#
+# Response Latency :
+# ...Coefficients:
+#                      Estimate Std. Error  t value   Pr(>|t|)
+# (Intercept)         117.10000   17.05698  6.86523 1.5739e-09
+# TesterOokla         -98.65000   24.12221 -4.08959 0.00010643
+# NewTRUE             111.25000   24.12221  4.61193 1.5845e-05
+# TesterOokla:NewTRUE -93.00000   34.11395 -2.72616 0.00795090
+#
+# Residual standard error: 76.28112 on 76 degrees of freedom
+# Multiple R-squared:  0.5536174,   Adjusted R-squared:  0.5359971
+# F-statistic: 31.41918 on 3 and 76 DF,  p-value: 2.579272e-13
+~~~
+
+As the differences are so large, there's not much need for any kind of modeling, Bayesian or frequentist, but anyway:
+the non-parametric test strongly suggests that the median download and upload bandwidths increased by 6.9mbps and 0.61mbps respectively (good), but median latency increased 21ms (bad);
+the linear model largely agrees but with more precision since we can more easily control for the differences between testing service (Google and Ookla have different means for all 3 measurement types, and so respond differently) - higher bandwidth but worse latency.
+
+Since this is a mid-tier brand new router which should be much faster than a cheap 6yo+ router, the latency is probably fixable with some setting tweaks
+
+Does the new TP-LINK router work? YouTube videos seem to load much better, but I am not sure about how much the greater bandwidth helps regular web browsing or work, and it's too soon to tell if the freezes have gone away.
