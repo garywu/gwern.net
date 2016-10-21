@@ -83,7 +83,7 @@ One could continue in this vein, devising ever more powerful & robust storage me
      2. John Robb's [Global Guerrillas](http://globalguerrillas.typepad.com/) lead to his [_Brave New War: The Next Stage of Terrorism and the End of Globalization_](http://www.amazon.com/exec/obidos/ASIN/0471780790/)
      3. [Kevin Kelly](!Wikipedia)'s [Technium](http://www.kk.org/thetechnium/) was turned into [_What Technology Wants_](http://www.amazon.com/What-Technology-Wants-Kevin-Kelly/dp/0670022152/).
 
-     An example of how *not* to do it would be [Robin Hanson](!Wikipedia)'s [Overcoming Bias](http://www.overcomingbias.com/) blog; it is stuffed with fascinating citations & sketches of ideas, but they never go anywhere. Just his posts on [medicine](http://www.overcomingbias.com/tag/medicine) would make a fascinating essay or just list - but he has never made one. (["Showing That You Care: The Evolution of Health Altruism"](http://www.researchgate.net/profile/Robin_Hanson2/publication/5922407_Showing_that_you_care_the_evolution_of_health_altruism/links/0046351fac48b3333f000000.pdf) would be a natural home for many of his posts' contents, but will never be updated.)
+     An example of how *not* to do it would be [Robin Hanson](!Wikipedia)'s [Overcoming Bias](http://www.overcomingbias.com/) blog; it is stuffed with fascinating citations & sketches of ideas, but they never go anywhere with the exception of his mind emulation economy posts which were eventually published in 2016 as _The Age of Em_. Just his posts on [medicine](http://www.overcomingbias.com/tag/medicine) would make a fascinating essay or just list - but he has never made one. (["Showing That You Care: The Evolution of Health Altruism"](/docs/2007-hanson.pdf) would be a natural home for many of his posts' contents, but will never be updated.)
 [^Kelly]: ["Kevin Kelly Answers Your Questions"](http://interviews.slashdot.org/story/11/09/06/1458254/Kevin-Kelly-Answers-Your-Questions), 6 September 2011:
 
     > [Question:] "One purpose of the [Long Now Clock](!Wikipedia) is to encourage long-term thinking. Aside from the Clock, though, what do you think people can do in their everyday lives to adopt or promote long-term thinking?"
@@ -658,7 +658,8 @@ Activity graph[^darcs-to-git] for this period (3 January 2014 - 2 July 2014):
     start <- as.Date("2014-01-02")
     end <- as.Date("2014-07-02")
 
-    patches <- as.Date(system(paste0("git log --after=", start, " --before=", end, " --format='%ad' --date=short master"), intern=TRUE))
+    patches <- as.Date(system(paste0("git log --after=", start, " --before=", end, " --format='%ad' --date=short master"),
+                       intern=TRUE))
     patchFrame <- aggregate( patches , by = list(patches) , length )
 
     days <- seq(start, end, "day")
@@ -668,7 +669,8 @@ Activity graph[^darcs-to-git] for this period (3 January 2014 - 2 July 2014):
 
     all <- aggregate(bar$x, by=list(bar$Group.1), FUN=function (x) { sum(as.vector(x));})
 
-    plot(x ~ Group.1, data=all, xlab="Date (Jan - July 2014)", ylab="gwern.net daily patches"); library(splines); lines(predict(interpSpline(days, all$x)))
+    plot(x ~ Group.1, data=all, xlab="Date (Jan - July 2014)", ylab="gwern.net daily patches")
+    library(splines); lines(predict(interpSpline(days, all$x)))
     ~~~
 
 ![Plot of patch creations (y-axis) versus date (x-axis): January to July 2014](/images/traffic/2014-july-git-history.png)
@@ -864,7 +866,7 @@ Page rankings:
 3. [DNM archives 2011-2015](/Black-market archives): 44,164
 4. [Surprisingly Turing-complete systems](/Turing-complete): 23,879
 5. LSD microdosing: 22,078
-6. [`char-rnn` for mimicking CSS](//AB testing):  20,581
+6. [`char-rnn` for mimicking CSS](/AB testing):  20,581
 7. Black-market arrests: 18,524
 8. Nootropics: 15,709
 9. Terrorism is not about Terror: 15,223
@@ -875,7 +877,7 @@ Page rankings:
 The new entry here, "DNM archives", is the culmination of my DNM work: mirrors/scrapes of dozens of markets, along with all sorts of archives and datasets related to the DNMs, covering years of market activity (1.2tb in total, to give an idea of scope).
 The other 2 surprises were a tutorial on how to set up `char-rnn` on an Amazon EC2 instance and train it to generate remarkably valid CSS (suggesting that it may be possible to train a reinforcement-learning deep neural network to design the visual appearance of websites and optimize the appearance based on visitor experiments), and an old little compilation I made of things exhibiting Turing-completeness which I found bizarre or surprising or disturbing (which naturally led to a lot of nitpicking and debate over definitions).
 
-[My Patreon profile](https://www.patreon.com/gwern), set up after I was forced out of Gratipay, has been a smashing success, with generally ~$300/month in donations.
+[My Patreon profile](https://www.patreon.com/gwern), set up after I was forced out of Gratipay, has been a smashing success, with generally ~\$300/month in donations.
 
 #### Promotion
 
