@@ -13,7 +13,7 @@ If you have not been receiving issues, please check your email account's spam fo
 
 # Writings
 
-- genetic correlations WP article?
+- [genetic correlation WP article](https://en.wikipedia.org/wiki/Genetic_correlation)
 
 # Media
 ## Links
@@ -24,6 +24,7 @@ Everything is heritable:
 - ["Association between polygenic risk scores for attention-deficit hyperactivity disorder and educational and cognitive outcomes in the general population"](http://ije.oxfordjournals.org/content/early/2016/09/28/ije.dyw216.full), Stergiakouli et al 2016
 - ["Educational attainment and personality are genetically intertwined"](http://biorxiv.org/content/early/2016/09/28/078014), Mottus et al 2016
 - ["Ultra-rare disruptive and damaging mutations influence educational attainment in the general population"](http://www.gwern.net/docs/genetics/2016-ganna.pdf), Ganna et al 2016
+- ["Genome-wide analyses of empathy and systemizing: heritability and correlates with sex, education, and psychiatric risk"](http://biorxiv.org/content/early/2016/04/29/050682), Warrier et al 2016a; ["Genome-wide meta-analysis of cognitive empathy: heritability, and correlates with sex, neuropsychiatric conditions and brain anatomy"](http://biorxiv.org/content/early/2016/10/19/081844), Warrier et al 2016b
 - ["Personality Polygenes, Positive Affect, and Life Satisfaction"](https://www.cambridge.org/core/journals/twin-research-and-human-genetics/article/personality-polygenes-positive-affect-and-life-satisfaction/4DB2BE673BF122FB9A0AF2147EED80C0/core-reader), Weiss et al 2016
 
 Politics/religion:
@@ -33,9 +34,15 @@ Politics/religion:
 AI:
 
 - ["Hybrid computing using a neural network with dynamic external memory"](http://www.gwern.net/docs/2016-graves.pdf), Graves et al 2016 ([blog](https://deepmind.com/blog/differentiable-neural-computers/))
+- ["Achieving Human Parity in Conversational Speech Recognition"](https://arxiv.org/abs/1610.05256), Xiong et al 2016
 - ["Video Pixel Networks"](https://arxiv.org/abs/1610.00527), Kalchbrenner et al 2016
+- ["Asynchronous Methods for Deep Reinforcement Learning (A3C)"](https://arxiv.org/abs/1602.01783), Mnih et al 2016
 - ["Deep Reinforcement Learning for Robotic Manipulation"](https://arxiv.org/abs/1610.00633), Gu et al 2016 ([video](https://sites.google.com/site/deeproboticmanipulation/); [blog](https://research.googleblog.com/2016/10/how-robots-can-acquire-new-skills-from.html "How Robots Can Acquire New Skills from Their Shared Experience")):
 - ["Uncertainty in Deep Learning"](http://mlg.eng.cam.ac.uk/yarin/blog_2248.html), Gal 2016 (using dropout to turn NNs into ensembles of Bayesian NNs, allowing extraction of posterior distributions and thus uncertainty of outputs, which helps active learning & reinforcement learning)
+- ["Sim-to-Real Robot Learning from Pixels with Progressive Nets"](https://arxiv.org/abs/1610.04286), Rusu et al 2016
+- [Training A3C to solve Atari Pong in <4 minutes on a supercomputer through brute parallelism](http://www.allinea.com/blog/201610/deep-learning-episode-4-supercomputer-vs-pong-ii)
+- ["Image Synthesis from Yahoo's open_nsfw"](https://open_nsfw.gitlab.io/) (hilarious)
+- [Active learning demo: interactively drag and drop photos to train a CNN+random forest to binary classify along some trait](http://blog.mldb.ai/blog/posts/2016/10/deepteach/)
 
 Statistics/meta-science/mathematics:
 
@@ -51,13 +58,18 @@ Statistics/meta-science/mathematics:
 Psychology/biology:
 
 - ["Safe landing strategies during a fall: Systemic review and meta-analysis"](http://www.gwern.net/docs/2016-moon.pdf), Moon & Sosnoff 2016
+- ["The negative Flynn Effect: A systematic literature review"](http://www.gwern.net/docs/iq/2016-dutton.pdf), Dutton et al 2016:
 - [Some early rapamycin anti-aging results from the dog people: improvement in dog heart health after 10 weeks of use.](http://edition.cnn.com/2016/10/06/health/rapamycin-dog-live-longer/index.html)
+- ["Stereotype (In)Accuracy in Perceptions of Groups and Individuals"](http://andrewgelman.com/wp-content/uploads/2015/12/Current-Directions-in-Psychological-Science-2015-Jussim-490-7.pdf), Jussim et al 2015
+- ["CMV Is a Greater Threat to Infants Than Zika, but Far Less Often Discussed"](http://www.nytimes.com/2016/10/25/health/cmv-cytomegalovirus-pregnancy.html) (it would not surprise me if CMV was responsible for my own hearing-impairment)
 - ["Does brain creatine content rely on exogenous creatine in healthy youth? A proof-of-principle study"](http://www.gwern.net/docs/creatine/2016-meregefilho.pdf), Merege-Filho et al 2016 (null)
 - ["Functional MRI in awake dogs predicts suitability for assistance work"](http://biorxiv.org/content/early/2016/10/12/080325), Berns et al 2016
+- [Home steam distillation of 99% pure nepetalactone from catnip leaves](http://www.instructables.com/id/DIY-Kitty-Crack%3a--ultra-potent-catnip-extract/?ALLSTEPS) (0.03% yield compared to theoretical max of 0.3%, so can convert 0.45kg of leaves to 143mg﻿ nepetalactone)
 
 Technology:
 
 - ["Sam Altman's Manifest Destiny: Is the head of Y Combinator fixing the world, or trying to take over Silicon Valley?"](http://www.newyorker.com/magazine/2016/10/10/sam-altmans-manifest-destiny)
+- ["The Joinery": animated explanations of traditional nail-less Japanese woodworking joints](https://twitter.com/TheJoinery_jp) ([background](http://www.spoon-tamago.com/2016/10/04/animated-gifs-illustrating-the-art-of-japanese-wood-joinery/))
 - ["Uber's Ad-Toting Drones Are Heckling Drivers Stuck in Traffic: Forget billboards-motorists now have ads buzzing a few feet above their windshields"](https://www.technologyreview.com/s/602662/ubers-ad-toting-drones-are-heckling-drivers-stuck-in-traffic/) (possibly the most cyberpunk thing I've seen since VR headsets)
 - ["Keystroke Recognition Using WiFi Signals"](https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf), Ali et al 2015
 - ["APEX: Automatic Programming Assignment Error Explanation"](http://researcher.watson.ibm.com/researcher/files/us-liup/apex.pdf), Kim et al 2016
@@ -81,7 +93,8 @@ Fiction:
 Nonfiction:
 
 - _Montaillou_
-- _Confessions of an English Opium-Eater_, by Thomas De Quincey
+- _The Riddle of the Labyrinth_, Fox ([review](https://www.goodreads.com/review/show/1792478509))
+- _[Confessions of an English Opium-Eater](https://en.wikipedia.org/wiki/Confessions_of_an_English_Opium-Eater)_, by Thomas De Quincey ([review](https://www.goodreads.com/review/show/1778421809))
 
 Fiction:
 
@@ -99,8 +112,14 @@ Anime:
 
 Touhou:
 
+- ["Children on their Birthdays"](https://www.youtube.com/watch?v=Nlqg8l6VNqM) (Asahi feat. Emaru; _Lucky 7_ {R13}) [acoustic]
+
 Vocaloid:
 
 Doujin:
+
+- ["Spring ephemeral"](https://www.youtube.com/watch?v=XZRbh3_hibo) (Morrigan feat. Lily; _Spring ephemeral_ {M3 33}) [acoustic]
+- ["てぃんさぐぬ花"](https://www.youtube.com/watch?v=sNMy2UHpnEI) (Togo Project feat. Junko Wada(BE THE VOICE); _AD:HOUSE 5_ {C90}) [folk/house/acoustic]
+- ["Epilogue"](https://www.dropbox.com/s/co1x45wjnmfod2h/nbuna-walkingonthemoon-epilogue.ogg) (n-buna; _Walking on the Moon_ {2016}) [classical]
 
 A cappella:

@@ -57,9 +57,9 @@ Statistics/meta-science/mathematics:
 
 Psychology/biology:
 
-- ["Morphometricity as a measure of the neuroanatomical signature of a trait"](http://www.pnas.org/content/early/2016/09/07/1604378113.long), Sabuncu et al 2016 (Heritability/variance component estimation generalized to brain volume/thickness: demonstrates that brain structure can predict a large fraction of variance among Alzheimers & aging (~1), IQ (0.95), etc, and so those traits have causal relationships (of some sort) with brain volume/thickness. While the causal relationships may not turn out to be interesting (we already knew brain volumes and thicknesses are catastrophically affected by aging and Alzheimer's), it does at least imply that as brain imaging datasets get larger, they will get ever better at predicting whether a subject has Alzheimers or how intelligent a person is. Hopefully we'll see variance components taken seriously outside of genetics. If power analysis tells you whether you have enough light to find the needle in the haystack, variance components can tell you whether there are even any needles to look for.)
+- ["Morphometricity as a measure of the neuroanatomical signature of a trait"](http://www.pnas.org/content/early/2016/09/07/1604378113.long), Sabuncu et al 2016 (Heritability/variance component estimation generalized to brain volume/thickness: demonstrates that brain structure can predict a large fraction of variance among Alzheimers & aging (~1), IQ (0.95), etc, and so those traits have causal relationships (of some sort) with brain volume/thickness. While the causal relationships may not turn out to be interesting (we already knew brain volumes and thicknesses are catastrophically affected by aging and Alzheimer's), it does at least imply that as brain imaging datasets get larger, they will get ever better at predicting whether a subject has Alzheimers or how intelligent a person is. Hopefully we'll see variance components taken seriously outside of genetics. If power analysis tells you whether you have enough light to find the needles in the haystack, variance components can tell you whether there are even any needles to look for.)
 - ["Treatment of Psychopathy: A Review of Empirical Findings"](http://www.gwern.net/docs/algernon/2006-harris.pdf), Harris & Rice 2006
-- ["How to Raise a Genius: Lessons from a 45-Year Study of Supersmart Children"](http://www.scientificamerican.com/article/how-to-raise-a-genius-lessons-from-a-45-year-study-of-supersmart-children/)
+- ["How to Raise a Genius: Lessons from a 45-Year Study of Super-smart Children"](http://www.scientificamerican.com/article/how-to-raise-a-genius-lessons-from-a-45-year-study-of-supersmart-children/)
 - ["Does Reading a Single Passage of Literary Fiction Really Improve Theory of Mind? An Attempt at Replication"](http://www.gwern.net/docs/2016-panero.pdf), Panero et al 2016
 - ["Failing Your Goals with Beeminder"](http://blog.beeminder.com/habits/)
 - ["Evidence That Computer Science Grades Are Not Bimodal"](http://www.cs.toronto.edu/~sme/papers/2016/icer_2016_bimodal.pdf), Patitsas et al 2016
@@ -117,4 +117,4 @@ Fiction:
 Anime:
 
 - [_Chirin no Suzu_/_Ringing Bell_](https://en.wikipedia.org/wiki/Ringing_Bell) ([review](https://myanimelist.net/reviews.php?id=230095))
-- [_Soul Eater_](https://en.wikipedia.org/wiki/Soul_Eater_(manga)) ([review](https://myanimelist.net/reviews.php?id=228595))
+- [_Soul Eater_](https://en.wikipedia.org/wiki/Soul_Eater_(manga\)) ([review](https://myanimelist.net/reviews.php?id=228595))
