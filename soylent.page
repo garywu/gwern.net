@@ -31,7 +31,7 @@ http://diy.soylent.me/recipes/my-take-on-hacker-school-soylent-recipe
 I do not usually pay much attention to nutrition concerns. The field of nutrition has discredited itself by its allegiance to non-randomized designs despite decades of failure, and its recommendations are often harmful or not worth the cost, so for my own diet, I focus on ease of preparation, inexpensiveness, and to a lesser degree, being tasty.
 So there's nothing special about it but to give an idea of what I am comparing Soylent to, I will describe typical meals.
 
-For breakfast, I typically have 3 poached or fried eggs, a scoop of brown rice, a scoop of a frozen vegetable (carrots, spinach, green beans), some spoons of kimchi to go with the eggs' whites, and tea. Possibly a banana if any are left from my monthly grocery shopping, and if I have any bacon or scrapple, I will cook 2-3 slices.
+For breakfast, I typically have 3 eggs poached or fried or as a cheese omelette, a scoop of brown rice, a scoop of a frozen vegetable (carrots, spinach, green beans), some spoons of kimchi to go with the eggs' whites, and tea. Possibly a banana if any are left from my monthly grocery shopping, and if I have any bacon or scrapple, I will cook 2-3 slices.
 If not that, I might have some fresh sourdough I've baked myself in my oven the previous day or in my bread machine that morning using the timer (I like sourdough bread a lot, and it's nice to wake up to the aroma of freshly-baked bread); bread recipes I use range from normal white sourdough to rye sourdough to Parmesan-onion or pesto or French peppercorn bread.
 If not that, I might have a big bowl of oatmeal flavored with sugar-free jam.
 Once in a great while, I will make pancakes with my sourdough starter or Bisquick.
@@ -57,6 +57,19 @@ Time comparison of my regular food & Soylent 1.0, inclusive of total shopping, m
 - 26 Sep 2015: breakfast, 21m
 - 27 Sep 2015: breakfast, 28m; lunch, 10m
 - 28 Sep 2015: breakfast, 18m
+
+Soylent orders:
+
+- 7 bags of 1.5; 28 September 2015 (1 bag = 1 day)
+- 7 bags of 1.5; 23 October 2015
+- 7 bags of 1.5; 30 December 2015
+- 7 bags of 1.5; 3 February 2016
+- 7 bags of 1.5; 3 March 2016
+- 7 bags of 1.5; 1 April 2016
+- 7 bags of 1.5; 5 May 2016
+- 7 bags of 1.5; 4 June 2016
+- 7 bags of 1.6; 8 October 2016
+- 24 bottles of 2.0; 8 October 2016 (5 bottles = 1 day)
 
 Soylent usage:
 
@@ -87,11 +100,15 @@ Soylent usage:
 - 6 June: 1
 - 7 June: 1
 
-Overall verdict: somewhat negative.
-I appreciate the shelf life of Soylent 1.0 & how I worry less about food going bad and having to plan my shopping trip, it does seem to save time in preparation & cleanup even comparing to the amortized soup time, and it's nice knowing it's not grossly deficient in any macronutrient; but it still costs more than my usual food per day, the constant farting took months of irregular use before it went away, I still feel hungry at the end of the day, the blandness of Soylent turns out to be oppressive. Flavoring it with cocoa powder, one of the usual suggests, didn't solve it but made it taste more like brownie mix.
+Overall verdict on 1.5: somewhat negative.
+I appreciate the shelf life of Soylent 1.5 & how I worry less about food going bad and having to plan my shopping trip, it does seem to save time in preparation & cleanup even comparing to the amortized soup time, and it's nice knowing it's not grossly deficient in any macronutrient; but it still costs more than my usual food per day, the constant farting took months of irregular use before it went away, I still feel hungry at the end of the day, the blandness of Soylent turns out to be oppressive. Flavoring it with cocoa powder, one of the usual suggests, didn't solve it but made it taste more like brownie mix.
 Even ordinary food like some fried eggs are far more satisfying, and a day eating Soylent leaves me feeling both hungry and punished, reminded of how a highly effective punishment in prisons is to take away the regular food (wretched & unhealthy as it is) & feed inmates 'nutraloaf'.
 And as a backup food, I can replace it with a big container of frozen soup.
-Aside from its use in self-experimentation, I don't see myself using Soylent for anything.
+Aside from its use in self-experimentation for controlling variability/noise, I don't see myself using Soylent for anything.
+
+Initial notes on 2.0: the shipment is extremely heavy and I'm not a fan of it taking 5 bottles a day nor of the price. Texture-wise and flavor-wise, it tastes exactly like any soy milk with a bit of vanilla flavoring and a slightly metallic aftertaste. It is somewhat better tasting cold than room temperature. Unlike 1.5, I could imagine eating this fairly regularly.
+
+Initial notes on 1.6:
 
 <!-- variance component estimation for gut bacteria? https://www.reddit.com/r/Microbiome/comments/44j6zg/do_we_know_how_important_gut_microbiome/ using American Gut Project data http://nbviewer.jupyter.org/github/biocore/American-Gut/blob/master/ipynb/index.ipynb ; maybe also http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4255478/ or http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3787266/ ? -->
 
@@ -100,6 +117,10 @@ Aside from its use in self-experimentation, I don't see myself using Soylent for
 
 One of my hobbies is gathering data & [running experiments](/tags/experiments) on myself.
 For the most part, I can take the usual experimental approaches of measure data on relevant variables such as my usual mood/productivity MP self-rating, randomize an intervention, and regress to get the mean treatment effect.
+
+Soylent, it occurred to me, could be useful in two ways.
+
+### Estimating importance of daily diet differences
 
 One set of data I *don't* collect is data about my diet and the food I eat: this is tedious, difficult to do right (weighing portions and calculating calories or nutritional value), cannot be automated, and I don't want to do it unless I absolutely have to - say, because diet turns out to be a large influence on my daily energy levels and explain a lot of currently unexplained variation.
 I could try to estimate how big the influence is by simply collecting the data and regressing on it but that would incur a lot of work for possibly little benefit.
@@ -113,6 +134,76 @@ Days on which all 3 meals were one of the identical meals would be similar to id
 Do this for a month or two, then plug daily data on mood/energy/work into one's favorite R library along with the meal similarity for each day (which would be possible to record as compared to my exact diet), and see if the reduction in variance is something meaningful like >10%.
 If it's large, then I've learned I may not want to neglect recording data on my diet, since apparently day-to-day differences
 (I suggested this [some time ago](https://www.reddit.com/r/HPMOR/comments/2i1mb6/hpmor_progress_report_oct_2014/ckzlqk3) and have been looking into it in more detail since.)
+
+### Improving statistical power of self-experiments
+
+In experiments, our [statistical power](!Wikipedia) or ability to detect & estimate the effects of any intervention is heavily dependent on how noisy our [measurements](!Wikipedia "measurement error") are.
+It is easier to measure the effects of a diet on weight when someone is standing still & nude on a scale in a quiet doctor's office than when they are sitting fully clothed on a roller coaster; in the former scenario, if we gain 1 kilogram, that's easy to see against a medical scale's inherent precision & daily weight changes of a few hundred grams, while that's hard to see against the wild swings of scores of kilograms on a roller coaster, and we express this easiness in terms of '[effect sizes](!Wikipedia)' which compare the absolute effect (eg +1kg) against the noise (0.5kg or 20kg) and give the relative effect (_d_=2 or _d_=0.05).
+The more noise/variance, the more data we will require for any desired level of precision.
+This is the fundamental three-way tradeoff in power analysis: effect sizes vs sample sizes vs precision.
+A large effect size can be estimated imprecisely with a small sample size, or estimated precisely with a large sample size; or a small effect can be estimated very imprecisely with a small sample size; or...
+
+So given this trilemma, when designing an experiment, to get the most out of it, we have a few options:
+
+1. we can bite the bullet and increase the sample size; this will be expensive, sometimes impossible
+2. we can bite the other bullet and accept imprecise estimates; this often defeats the point of running an experiment
+3. or, we can increase the effect size, thereby either letting us decrease the sample size or getting a more precise measurement; this can be done several ways
+
+    - we can directly increase the magnitude of the effect and *increase* the *numerator* of the effect size: we can increase the dose of a drug, for example, or we can exercise an additional day per week. The increase doesn't have to be sustainable - maybe we don't have the free time to exercise 3 times a week and we're interested in estimating the effect of exercise twice a week, but if we exercise 3 times a week, we can finish our experiment faster and extrapolate to the smaller 2 times a week. This strategy is often not possible: an intervention may be discrete, or may already be at the optimal dose (U-shaped curves are common with drugs).
+    - we can *decrease* the *denominator* of the effect size: in other words, reduce the noise and thereby make the same effect more visible, creating a larger effect size.
+
+        Here we again have many options. The noise in an experiment comes from many sources: we are typically measuring traits using imperfect measurements while measuring them on different days at different times in different places on different people who have different lives and genetics and all sorts of things.
+
+        We can start decreasing variance by tackling these problems: doing multiple measurements on the same equipment, at the same time of day, in the same room, using the same personnel and removing extraneous factors like clothes. If we weigh people 3 times on a scale, that will be more accurate than weighing them just once; if we weigh people 3 times a day repeatedly on multiple days, that will be even more accurate (weight can change from day to day due to factors like water retention or eating a big meal the day before); if we make sure they are nude before weighing and remove clothes, then the measurement will be better still since now different fashions, or different clothes from day to day, won't be affecting the measurement; when doing our analysis, we can match participants up and randomize pairs of people who are as similar as possible - instead of comparing a tall black man and a short Asian girl in our study of diets (who vary a great deal in weight and height and genetics and sex), we compare two white women of the same age who are 180cm tall and are within a kilogram of each other.
+
+        Or better yet, we compare two identical twins - or better still, avoiding between-subject comparisons entirely, which are noisy for all the previously listed reasons, and switching to a within-subject experiment where we compare the *same* person randomized to the experiment in different time periods. Ideally, we would do any experiment by comparing each person with themselves rather than other people, although this is not always possible, like with permanent interventions.
+
+Bad measurements and unnecessary variability can greatly reduce statistical power and require far larger samples. One noteworthy example is [a large Scottish between-subject experiment](/Statistical%20notes#the-power-of-twins-revisiting-students-scottish-milk-experiment-example "The Power of Twins: Revisiting Student's Scottish Milk Experiment Example") into the benefits of pasteurized milk on the growth of children, which employed a large mass of ordinary children as the sample; this couldn't be done as a within-subject design, but it was still unnecessarily noisy & sample-inefficient - had this experiment been done with the available identical twins instead of ordinary children, the increase in statistical power would have been so dramatic that they could have reduced the sample size by *95%*.
+So, it is worth giving some thought to sources of variance and whether they can be eliminated.
+
+Should differences in daily diet composition & amount turn out to cause a noticeable percentage of variance, then using Soylent would eliminate that variance and make the effects of interventions easier to detect.
+
+What sort of benefit might we expect? Hypothetically, on my 1-5 daily self-ratings with a variance of ~1, if diet is a possible 20% of variance, then for a moderate effect of +0.5, it would go from an effect size of $d=\frac{0.5}{\sqrt{1}}=0.5$ to $d=\frac{0.5}{\sqrt{1-0.2}}=0.56$, or for a _t_-test powered at 80%, saving _n_=24 days (total _n_=126 vs 102, respectively)[^hypothetical-power]; for the (highly unlikely) scenario where diet causes 50% of variance, I would save _n_=60, and so on.
+(For comparison, Soylent 1.6 cost me in October 2016 \$48.60 for 7 days, or ~\$7/day, and I estimate my regular food expenses at ~\$3/day, so 102 days of Soylent would have a marginal cost of \$4 a day or \$306. So in the 20% variance scenario, I would in effect be paying \$13 to accelerate it each day, and \$5 in the 50% of variance scenario.)
+
+[^hypothetical-power]: Power for the two scenarios and time savings:
+
+    ~~~{.R}
+    power.t.test(d=0.5, power=0.80)
+    #      Two-sample t test power calculation
+    #
+    #               n = 63.76576371
+    #           delta = 0.5
+    #              sd = 1
+    #       sig.level = 0.05
+    #           power = 0.8
+    #     alternative = two.sided
+    #
+    # NOTE: n is number in *each* group
+    power.t.test(d=0.5/sqrt(1-0.2), power=0.80)
+    #      Two-sample t test power calculation
+    #
+    #               n = 51.21112033
+    #           delta = 0.5590169944
+    #              sd = 1
+    #       sig.level = 0.05
+    #           power = 0.8
+    #     alternative = two.sided
+    # NOTE: n is number in *each* group
+    63*2 - 51*2
+    # [1] 24
+    power.t.test(d=0.5/sqrt(1-0.5), power=0.80)
+    #      Two-sample t test power calculation
+    #
+    #               n = 32.38447774
+    #           delta = 0.7071067812
+    #              sd = 1
+    #       sig.level = 0.05
+    #           power = 0.8
+    #     alternative = two.sided
+    #
+    # NOTE: n is number in *each* group
+    ~~~
 
 ## Design
 
@@ -313,5 +404,15 @@ I began 7 July 2016 with 35 Soylent 1.5 bags available I had ordered over the pr
 - 11 September: 0
 - 12 September: 3
 - 13 September: 0
-- 14 September: 3?
-- 15 September: 0?
+- 14 September: 3
+- 15 September: 0
+- 19 September: 0
+- 20 September: 3
+- 24 September: 0
+- 25 September: 3
+- 26 September: 3
+- 27 September: 1
+- 28 September: 3
+- 29 September: 0
+- 12 October: 3
+- 13 October: 0?
