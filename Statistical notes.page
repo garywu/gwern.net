@@ -3207,6 +3207,9 @@ So an American social group cannot exceed _n_=51 before first names begin to bre
 
 # WiFi router improvement
 
+I connect to the Internet over Wifi, from the main room in my apartment to the WiFi provided by a cable modem subscription in a neighboring house, which is ~23 meters away but the house is large and the computer room with the cable & modem is itself another ~10 meters away on the far opposite side of the house in the worst possible location, and so to connect, I have placed a WiFi repeater in between.
+This works, but not well.
+
 My old WiFi router (a Belkin wireless router F6D4230-4 v1 which is at least 6 years old I believe was provided by a local ISP originally) on a weekly basis causes me problems where it will mysteriously freeze and no longer connect to the Internet nor allow IPs to be connected to it and only forcibly power-cycling the Belkin router will fix it (rebooting or reconnecting my laptop does nothing), a problem which also affected some relatives who visited & attempted to connect their iPads or smartphones.
 My initial suspicion fell on the almost equally old WiFi repeater/range-extender which I used to connect from my house to the Belkin router (some cheap model bought from Walmart whose brand & model number I didn't record at the time), but replacing it in February 2015 with a [TP-LINK TL-WA860RE](http://www.amazon.com/gp/product/B00PEW7V7E/ "$41.52") improved the situation only somewhat.
 Finally fed up after yet another outage in early October 2016, I went looking for a replacement since apparently that model is notorious for freezes.
@@ -3400,3 +3403,41 @@ the linear model largely agrees but with more precision since we can more easily
 Since this is a mid-tier brand new router which should be much faster than a cheap 6yo+ router, the latency is probably fixable with some setting tweaks
 
 Does the new TP-LINK router work? YouTube videos seem to load much better, but I am not sure about how much the greater bandwidth helps regular web browsing or work, and it's too soon to tell if the freezes have gone away.
+
+<!--
+Unfortunately, the freezes returned within days. I thought it might be the USB WiFi dongle, and so I upgraded Ubuntu from 15.04 to 15.10 (I had been putting it off for fear of things breaking), which gave me access to the laptop WiFi card; this turned out to be inferior in reception to the dongle, perhaps because the dongle has an ~11cm-long antenna.
+Next, I investigated the repeater frequency: it was on 2.4GHz, which should have better range than the 5GHz setting, so that was not an issue.
+The location of the repeater might not be optimal, so I placed it in various alternative spots and also tried placing it up in the attic for vertical distance, and all alternative replacements led to lower or no signal strength.
+Walking around with a WiFi signal strength app on an old spare smartphone, it became clear that the location was fine, but the signal strength just did not reach through the 23 meters + two sets of walls.
+This left me with only a few options:
+
+- status quo: simply live with the occasional disconnections and low bandwidth, fixing them with manual reboots
+- get a more expensive, closer to the top of the line, hopefully stronger WiFi repeater like [The Wire Cutter's July 2016](http://thewirecutter.com/reviews/best-wi-fi-extender/) recommended extender, the [TP-Link RE450](https://www.amazon.com/dp/B010S6SG3S/ "$98.98"); likely but not guaranteed to solve the problem, more expensive (\$100+), psychologically painful since I bought the first repeater not terribly long ago
+- get my own cable modem subscription and run it into the apartment; guaranteed solution, but *much* more expensive, additional paperwork, major hassle in getting such a connection, and looking at the wiring of the buildings, I'm not 100% sure it is possible as some of the cable runs may've been cut since the last time cable was active in this apartment was at least a decade and a half ago
+- run ~60m of Ethernet cable out and around to the other house, buried in the ground to avoid cars & lawn mowers & weather, going out and in through windows or walls; guaranteed solution, not terribly expensive (shouldn't require more than ~\$30 of cabling), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require damaging the buildings to get the cabling in, which the owners would not go for, and be a good deal of work digging & burying the cables
+- directional antenna for either laptop or router, to boost signal reception / focus (as I understand it, sending/receiving are symmetrical for a directional antenna like this: the signals from the router to the laptop is made stronger by focusing the same amount of radio into the smaller directional beam, and the weak omnidirectional signals from the laptop back to the router are receivable thanks to the same focusing of the antenna dish); highly likely to solve the problem as directional antennas can reportedly maintain fast connections over scores of miles under ideal circumstances, relatively inexpensive (\$20-50), easily installed onto either the USB dongle or the router which both have removable/extensible antennas, at the cost of an additional bulky object somewhere and the solution not being mobile. Directional antennas are also not something I have any experience with and so would be fun to play with.
+
+The directional antenna option is clearly best, and I find that many people in my situation also use directional antennas.
+I somewhat casually chose on 27 October 2016 to buy the [TP-Link TL-ANT2424B Directional Grid Parabolic Antenna, 2.4GHz 24dBi](https://www.amazon.com/TP-Link-Directional-Parabolic-Connector-TL-ANT2424B/dp/B003CFATOW/ "$44.77"), reasoning that another TP-Link product is a bit more likely to be compatible with other TP-Link products like the dongle or router.
+
+Since both the dongle and router are listed by TP-Link as having removable antennas (which I also checked physically) but the two stubby antennas on the repeater are hardwired, I have two options for where to place the directional antenna.
+Ideally, I will be able to place it onto the router, aim it at my laptop, and have high speeds with the laptop WiFi card, letting me scrap the repeater and USB dongle, and getting an overall simpler, more reliable, and faster system.
+If the router doesn't work, I can put it onto the USB dongle and at least cut out the repeater.
+The antenna should come with a 'pigtail' cord that adapts the router/dongle socket to the antenna socket, so installation should be as simple as unscrewing the original antenna, screwing on the pigtail, and pointing the dish in the right direction, perhaps assisted by some duct tape.
+
+
+For additional testing, I am using the automated commandline speedtest.net interface: [`speedtest-cli`](https://github.com/sivel/speedtest-cli/) in a cron job:
+every day, at the start of each hour noon to 10PM (primary timerange for my Internet use and similar to first set of tests), flip a coin (to avoid hammering the speedtest.net servers too often), and if heads, record time & speedtest results at a random minute during that hour:
+
+~~~{.Bash}
+0 12-22 * * * if [ "$((RANDOM % 2 < 1))" -eq 1 ]; then
+        sleep "$((RANDOM \% 60))"m
+        echo `date` >> ~/doc-misc/statistics/speed.txt
+        speedtest-cli --simple >> ~/doc-misc/statistics/speed.txt
+    fi
+~~~
+
+TODO:
+- before the directional antenna installation, connect laptop directly to router with an Ethernet cord to measure the upper bound on Internet performance
+- Statistical analysis: much as before, but random effects for each day, additional coding of dongle, Ethernet, repeater, router, antenna, test type
+-->
