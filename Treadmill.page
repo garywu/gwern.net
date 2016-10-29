@@ -56,13 +56,22 @@ June 2012
 1 Jan: 1.66mi
 15 Jan: 1.66mi
 27 Jan: 1.66mi
+08 March: 1.03mi
+09 March: 1.53mi
+20 March: 1.66mi
+4 June: 0.82mi
+15 June: 1.66mi
+16 June: 1.66mi
+9 November: 1.39mi
+total: ~88 uses, ~130 miles
 -->
 
 # Sleep
 
 In June 2012, early in the experiment, my neighbors threw out a treadmill that turned out to be easily repaired and so I set up an improvised [treadmill desk](!Wikipedia) with my laptop and a spare board. I had read about them before, had since seen a number of negative reports about being sedentary or sitting, and my physical fitness had declined markedly since leaving university (with ready access to the gym, fencing club, and Taekwondo class), so it seemed like a good thing to do. The lowest setting on the treadmill (no incline, 1MPH) was initially fairly exhausting but I improved. I started with one mile a day and moved up in a few days to 3-4 miles a day (putting me at the high end of my daily steps as recorded by my pedometer, which annoyingly I lost just 2 days before finding the treadmill); for some reason, this seemed to affect my weight, which went from 218 pounds to 214 a week later and 213 the next day. I finetuned the treadmill desk for typing on my laptop by increasing the height of the board with book supports. My productivity suffered drastically the first days, and I was concerned it would rendered typing difficult, but my scores in my typing practice program ([Amphetype](https://code.google.com/p/amphetype/)) did not seem to change very much when I tested them on all subsequent days that I used the treadmill. I suspect that my average WPM went down somewhat, though my statistical analysis indicated it fell slightly (see the [typing section](#typing)). The gear on the treadmill itself began to loosen, which led to the rubber band slipping off the motor or the gear, and I had to stop for a few days while I figured out solutions. (The epoxy was a mistake as it required a 'hardener' I didn't have; a thin nail couldn't be hammered between the gear and treadmill bar as a shim; and I had to let the Gorilla Glue harden for a day before it performed admirably during the test run.) A few days later, the mat began slipping and just stopping, and I discovered that the gear was rotating freely on the treadmill bar - the friction and glue had apparently lost! I lost several days hoping it would dry. It did and seemed to work again, but to help deal with it, I lubricated the underside of the mat with WD-40. It seemed to work
 
-My expectations are that the treadmill will increase how much I sleep, decrease sleep latency, and possibly have a small negative effect on productivity (which may be offset by an improvement in mood and less need to get a daily walk). Subjectively, whenever I use the treadmill, it feels like I can't work on hard material like programming or statistics, and I need to sit down and be still to really focus; I wonder if it is because my head bobbles slightly as I walk, and if a VR solution like an [Oculus Rift](!Wikipedia) might fix the jiggling issue? (If the walking were intense aerobic fitness, I might expect an increase in cognitive abilities or various sorts, but it's not, so I don't expect any effect on Mnemosyne scores.)
+My expectations are that the treadmill will increase how much I sleep, decrease sleep latency, and possibly have a small negative effect on productivity (which may be offset by an improvement in mood and less need to get a daily walk). Subjectively, whenever I use the treadmill, it feels like I can't work on hard material like programming or statistics, and I need to sit down and be still to really focus; I wonder if it is because my head bobbles slightly as I walk, and if a VR solution like an [Oculus Rift](!Wikipedia) might fix the jiggling issue, inasmuch as they are mounted on one's head and use precision head-tracking technologies and future VR headsets are expected to include eyetracking for foveated rendering.
+(If the walking were intense aerobic fitness, I might expect an increase in cognitive abilities or various sorts, but it's not, so I don't expect any effect on Mnemosyne scores.)
 
 # Typing
 
@@ -453,7 +462,7 @@ summary(Mnemo.fit)
 ##     Grade.future      0.277
 ~~~
 
-In each of the 3 approaches, the estimated effect of treadmill usage on my Mnemosyne scores that day was negative but after incorporating the negative effect of poorer recall  that day, there did not seem to be additional damage above and beyond that.
+In each of the 3 approaches, the estimated effect of treadmill usage on my Mnemosyne scores that day was negative but after incorporating the negative effect of poorer recall that day, there did not seem to be additional damage above and beyond that.
 
 ## Conclusion
 
@@ -461,6 +470,8 @@ While the result seems highly likely to be true for me, I don't know how well it
 For example, perhaps more fit people can use a treadmill without harm and the negative effect is due to the treadmill usage tiring & distracting me; I try to walk 2 miles a day, but that's not much compared to some people.
 
 Given this harmful impact, I will avoid doing spaced repetition on my treadmill in the future, and given this & the typing result, will relegate any computer+treadmill usage to non-intellectually-demanding work like watching movies.
+This turned out to not be a niche use I cared about and I hardly ever used my treadmill afterwards, so in October 2016 I sold my treadmill for \$70.
+I might investigate standing desks next for providing some exercise beyond sitting but without the distracting movement of walking on a treadmill.
 
 <!--
 # Appendix: time-varying spaced repetition performance
