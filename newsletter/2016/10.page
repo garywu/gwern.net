@@ -2,7 +2,7 @@
 title: October 2016 news
 created: 25 September 2016
 tags: newsletter
-status: in progress
+status: finished
 belief: log
 ...
 
@@ -13,7 +13,7 @@ If you have not been receiving issues, please check your email account's spam fo
 
 # Writings
 
-- [genetic correlation WP article](https://en.wikipedia.org/wiki/Genetic_correlation)
+- [genetic correlation Wikipedia article](https://en.wikipedia.org/wiki/Genetic_correlation)
 
 # Media
 ## Links
@@ -29,13 +29,13 @@ Everything is heritable:
 
 Politics/religion:
 
-- ["The Long-Term Effects of Cash Assistance"](https://web.stanford.edu/~djprice/papers/djprice_jmp.pdf), Price & Song 2016 (A very unusually long-term followup to one of the old American basic income experiments. No large harmful effects... but no obvious benefits either, nothing remotely like we observe in the Third World BI experiments. And if money helps with social outcomes, it should've helped more in the 1970s than it does now, so I feel more pessimistic about Give Directly/YC's USA BI experiment.﻿)
+- ["The Long-Term Effects of Cash Assistance"](https://web.stanford.edu/~djprice/papers/djprice_jmp.pdf), Price & Song 2016 (A very unusually long-term followup to one of the old American basic income experiments. No large harmful effects... but no large benefits either, nothing remotely like we observe in the Third World BI/transfer experiments. And if money helps with social outcomes, it should've helped more in the 1970s than it does now, so I feel more pessimistic about Give Directly/YC's USA BI experiment.)
 - ["Men's status and reproductive success in 33 nonindustrial societies: Effects of subsistence, marriage system, and reproductive strategy"](http://www.gwern.net/docs/2016-vonrueden.pdf), von Rueden & Jaeggi 2016
 - ["The illusion of the perfect alibi: Establishing the base rate of non-offenders' alibis"](http://onlinelibrary.wiley.com/doi/10.1002/jip.1470/full), Nieuwkamp et al 2016
 
 AI:
 
-- ["Hybrid computing using a neural network with dynamic external memory"](http://www.gwern.net/docs/2016-graves.pdf), Graves et al 2016 ([blog](https://deepmind.com/blog/differentiable-neural-computers/))
+- ["Hybrid computing using a neural network with dynamic external memory"](http://www.gwern.net/docs/2016-graves.pdf), Graves et al 2016 ([blog](https://deepmind.com/blog/differentiable-neural-computers/)); scaling to extremely large external memories: ["Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"](https://arxiv.org/abs/1610.09027), Rae et al 2016
 - ["Achieving Human Parity in Conversational Speech Recognition"](https://arxiv.org/abs/1610.05256), Xiong et al 2016
 - ["Video Pixel Networks"](https://arxiv.org/abs/1610.00527), Kalchbrenner et al 2016
 - ["Asynchronous Methods for Deep Reinforcement Learning (A3C)"](https://arxiv.org/abs/1602.01783), Mnih et al 2016
@@ -67,7 +67,7 @@ Psychology/biology:
 - ["CMV Is a Greater Threat to Infants Than Zika, but Far Less Often Discussed"](http://www.nytimes.com/2016/10/25/health/cmv-cytomegalovirus-pregnancy.html) (it would not surprise me if CMV was responsible for my own hearing-impairment)
 - ["Does brain creatine content rely on exogenous creatine in healthy youth? A proof-of-principle study"](http://www.gwern.net/docs/creatine/2016-meregefilho.pdf), Merege-Filho et al 2016 (null)
 - ["Functional MRI in awake dogs predicts suitability for assistance work"](http://biorxiv.org/content/early/2016/10/12/080325), Berns et al 2016
-- [Home steam distillation of 99% pure nepetalactone from catnip leaves](http://www.instructables.com/id/DIY-Kitty-Crack%3a--ultra-potent-catnip-extract/?ALLSTEPS) (0.03% yield compared to theoretical max of 0.3%, so can convert 0.45kg of leaves to 143mg﻿ nepetalactone)
+- [Home steam distillation of 99% pure nepetalactone from catnip leaves](http://www.instructables.com/id/DIY-Kitty-Crack%3a--ultra-potent-catnip-extract/?ALLSTEPS) (0.03% yield compared to theoretical max of 0.3%, so can convert 0.45kg of leaves to 143mg nepetalactone)
 
 Technology:
 
@@ -85,7 +85,7 @@ Economics:
 - ["Adam Smith, Watch Prices, and the Industrial Revolution"](http://www.gwern.net/docs/2016-kelly.pdf), Kelly & Grada 2016 ([commentary](http://econlog.econlib.org/archives/2016/10/what_do_crimina.html))
 - ["My First Gulfstream"](http://www.vanityfair.com/news/1998/10/gulfstream-199810)
 - ["Everything you need to know about whether money makes you happy"](https://80000hours.org/articles/money-and-happiness/)
-- ["Young Rural Women in India Chase Big-City Dreams: Experiments like one in Bangalore, luring migrants to fill factory jobs, collide with an old way of life that keeps women and girls in seclusion until an arranged marriage"](http://www.nytimes.com/2016/09/25/world/asia/bangalore-india-women-factories.html) (3500 years of female slavery shrinking under industrialization and smartphones; "all fixed, fast-frozen relations, with their train of ancient and venerable prejudices and opinions, are swept away, all new-formed ones become antiquated before they can ossify. All that is solid melts into air, all that is holy is profaned...")
+- ["Young Rural Women in India Chase Big-City Dreams: Experiments like one in Bangalore, luring migrants to fill factory jobs, collide with an old way of life that keeps women and girls in seclusion until an arranged marriage"](http://www.nytimes.com/2016/09/25/world/asia/bangalore-india-women-factories.html) (3500 years of female slavery shrinking under industrialization and smartphones: "all fixed, fast-frozen relations, with their train of ancient and venerable prejudices and opinions, are swept away, all new-formed ones become antiquated before they can ossify. All that is solid melts into air, all that is holy is profaned...")
 
 <!-- Back to 08 Sep 2012 -->
 
@@ -93,21 +93,13 @@ Economics:
 
 Nonfiction:
 
-- [_Montaillou_](https://en.wikipedia.org/wiki/Montaillou_\(book\)), [Le Roy Ladurie](https://en.wikipedia.org/wiki/Emmanuel_Le_Roy_Ladurie) 1975
+- [_Montaillou: The Promised Land of Error_](https://en.wikipedia.org/wiki/Montaillou_\(book\)), [Le Roy Ladurie](https://en.wikipedia.org/wiki/Emmanuel_Le_Roy_Ladurie) 1975
 - [_The Riddle of the Labyrinth: The Quest to Crack an Ancient Code_](https://www.amazon.com/Riddle-Labyrinth-Quest-Crack-Ancient/dp/0062228862), Fox ([review](https://www.goodreads.com/review/show/1792478509))
 - _[Confessions of an English Opium-Eater](https://en.wikipedia.org/wiki/Confessions_of_an_English_Opium-Eater)_, by Thomas De Quincey ([review](https://www.goodreads.com/review/show/1778421809))
 
 Fiction:
 
-- [_The Tales of Ise_](https://en.wikipedia.org/wiki/The_Tales_of_Ise), Anonymous
-
-## Film/TV
-
-Live-action:
-
-Anime:
-
-## Games
+- [_The Tales of Ise_](https://en.wikipedia.org/wiki/The_Tales_of_Ise), Anonymous ([review](https://www.goodreads.com/review/show/1752790103))
 
 ## Music
 
@@ -116,12 +108,15 @@ Touhou:
 - ["Children on their Birthdays"](https://www.youtube.com/watch?v=Nlqg8l6VNqM) (Asahi feat. Emaru; _Lucky 7_ {R13}) [acoustic]
 - ["breathless"](https://www.youtube.com/watch?v=KHaCE3SEIVo) (NAGI☆ feat. 美歌; _Parallel Cross_ {C90}) [vocal]
 
-Vocaloid:
-
 Doujin:
 
 - ["Spring ephemeral"](https://www.youtube.com/watch?v=XZRbh3_hibo) (Morrigan feat. Lily; _Spring ephemeral_ {M3 33}) [acoustic]
+- ["Heure bleue"](https://www.dropbox.com/s/up6dmutwl4h94re/rando-radialdiversesystemfifteenthanniversary-heurebleue.ogg) (RANDO:; _RADIAL DIVERSE SYSTEM FIFTEENTH ANNIVERSARY_ {C90}) [electronic]
+- ["Hall of Mirrors"](https://www.dropbox.com/s/q8nfgj7yxkbaa3j/sta-radialdiversesystemfifteenthanniversary-hallofmirrors.ogg) (sta; _RADIAL DIVERSE SYSTEM FIFTEENTH ANNIVERSARY_ {C90}) [rock]
+- ["Parabola"](https://www.dropbox.com/s/aicai14gdz14p6i/tigerlily-radialdiversesystemfifteenthanniversary-parabola.ogg) (tigerlily; _RADIAL DIVERSE SYSTEM FIFTEENTH ANNIVERSARY_ {C90}) [post-rock]
+- ["16777215"](https://www.dropbox.com/s/fslrukxwwz3gapc/b-radialdiversesystemfifteenthanniversary-16777215.ogg?) (b; _RADIAL DIVERSE SYSTEM FIFTEENTH ANNIVERSARY_ {C90}) [electronic]
 - ["てぃんさぐぬ花"](https://www.youtube.com/watch?v=sNMy2UHpnEI) (Togo Project feat. Junko Wada(BE THE VOICE); _AD:HOUSE 5_ {C90}) [folk/house/acoustic]
 - ["Starlight,tonight"](https://www.youtube.com/watch?v=DPFXk4zJZ1g) (Hommarju feat. Yukacco; _Another Wor1d_ {C90}) [vocal]
+- ["Weigh the anchor"](https://www.youtube.com/watch?v=ShjSplbL3FQ) (Harito; 'Sun Flowers' {C90}) [house/electronic]
 - ["Epilogue"](https://www.dropbox.com/s/co1x45wjnmfod2h/nbuna-walkingonthemoon-epilogue.ogg) (n-buna; _Walking on the Moon_ {2016}) [classical]
 - ["それは、本当に救済なのか"](https://www.dropbox.com/s/v5uq5nwuppewy5o/morrigan-from080723discedition-%E3%81%9D%E3%82%8C%E3%81%AF%E6%9C%AC%E5%BD%93%E3%81%AB%E6%95%91%E6%B8%88%E3%81%AA%E3%81%AE%E3%81%8B.ogg) (Morrigan; _from080723 DISC EDITION_ {C90}) [electronic/ambient/vocal]
