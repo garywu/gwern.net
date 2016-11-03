@@ -488,20 +488,412 @@ What is the direct [value](Zeo#value-of-information-voi) of learning about IQ? S
 
 So, I try not to spend too much time thinking about this issue: the results will come in regardless of my opinion, and unlike other issues here, does not materially affect my worldview or suggest action.  Given this, there's no reason to invest your life in the topic! It has no practical ramifications for you, discussing the issue can only lead to negative consequences - and on the intellectual level, no matter how much you read, you'll always have nagging doubts, so you won't get any satisfaction. You might as well just wait patiently for the inevitable final answer.
 
-### Further reading
+### Genetics links
+#### Complex traits
 
-For people who are *not* content to wait and see who was right after all, here are some random online entry points into the IQ wars:
+- ["Meta-analysis of the heritability of human traits based on fifty years of twin studies"](http://www.gwern.net/docs/genetics/2015-polderman.pdf), Polderman et al 2015 (supplements: [1](http://www.gwern.net/docs/genetics/2015-polderman-supplement-1.pdf), [2](http://www.gwern.net/docs/genetics/2015-polderman-supplement-2.xlsx))
+- ["Phenome-wide Heritability Analysis of the UK Biobank"](http://biorxiv.org/content/early/2016/08/18/070177), Ge et al 2016
+- ["The Closest of Strangers"](http://www.nytimes.com/2014/05/25/opinion/sunday/the-closest-of-strangers.html)
+- ["Genetic and environmental influences on height from infancy to early adulthood: An individual-based pooled analysis of 45 twin cohorts"](http://www.nature.com/articles/srep28496), Jelenkovic et al 2016
+- ["Heritability in the genomics era - concepts and misconceptions"](http://medicine.tums.ac.ir:803/Users/Javad_TavakoliBazzaz/Medical%20Genetics-2/Heritability%20in%20the%20genomics%20era.pdf), Visscher et al 2008; ["Human Complex Trait Genetics in the 21st Century"](http://www.genetics.org/content/202/2/377), Visscher 2016
+- ["Understanding and using quantitative genetic variation"](http://rstb.royalsocietypublishing.org/content/365/1537/73.full), Hill 2009
+- ["Assumption-Free Estimation of Heritability from Genome-Wide Identity-by-Descent Sharing between Full Siblings"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.0020041), Visscher et al 2006
+- ["A novel sibling-based design to quantify genetic and shared environmental effects: application to drug abuse, alcohol use disorder and criminal behavior"](http://emilkirkegaard.dk/en/wp-content/uploads/kendler2016.pdf), Kendler et al 2016
+- ["The continuing value of twin studies in the -omics era"](https://www.genepi.qimr.edu.au/contents/publications/staff/VanDongen_etal_NatRevGen_640-Aug012.pdf), van Dongen et al 2012
+- ["Using Extended Genealogy to Estimate Components of Heritability for 23 Quantitative and Dichotomous Traits"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003520), Zaitlen et al 2013
+- [GCTA: trait estimates](https://en.wikipedia.org/wiki/Genome-wide_complex_trait_analysis#Traits)
+- ["Estimate of disease heritability using 4.7 million familial relationships inferred from electronic health records"](http://biorxiv.org/content/early/2016/07/28/066068), Polubriaginof et al 2016
+- ["Genetic variance estimation with imputed variants finds negligible missing heritability for human height and body mass index"](http://www.gwern.net/docs/genetics/2015-yang.pdf), Yang et al 2015; see also ["Haplotypes of common SNPs can explain missing heritability of complex diseases"](http://biorxiv.org/content/early/2015/07/12/022418), Bhatia et al 2015
 
-- Jensen's original 1969 ["How Much Can We Boost IQ and Scholastic Achievement?"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.138.980&rep=rep1&type=pdf); for comparison, note carefully what [Nisbett et al 2012](http://scottbarrykaufman.com/wp-content/uploads/2012/01/Nisbett-et-al.-2012.pdf "Intelligence: New Findings and Theoretical Developments") review actually says compared to what many laymen believe, and consider also whether its description of DNB would be recognizable to a thorough reader of my [DNB FAQ]()/[meta-analysis](DNB meta-analysis).
-- the [consensus reply to _The Bell Curve_](http://www.udel.edu/educ/gottfredson/reprints/1997mainstream.pdf), the [Mainstream Science on Intelligence](!Wikipedia) statement
-- ["Why _g_ Matters: The Complexity of Everyday Life"](http://www.udel.edu/educ/gottfredson/reprints/1997whygmatters.pdf), Gottfredson 1997
-- Cosma Shalizi on how [the 'heredity' metric doesn't mean what you naively think it does](http://vserver1.cscs.lsa.umich.edu/~crshalizi/weblog/520.html "Yet More on the Heritability and Malleability of IQ") (but note that Shalizi seems to spend more time trying to [come up with holes](http://vserver1.cscs.lsa.umich.edu/~crshalizi/weblog/495.html "Those Voices Again") allowing for the possibility of IQ being meaningless or entirely causally unrelated to genetics due to the weakness of correlational/observational methods - criticisms which fall into a general category of critiques which [Glymour 1998](http://www.hss.cmu.edu/philosophy/glymour/glymour1998.pdf "What Went Wrong? Reflections on Science by Observation and the Bell Curve") points out applies to almost all results in social science. On the other hand, Shalizi's essay ["_g_, a Statistical Myth"](http://vserver1.cscs.lsa.umich.edu/~crshalizi/weblog/523.html) seems, as far as I understand it, to be essentially irrelevant since the point of _g_ is that positive correlations exist at all, not that tests with a factor can be devised; see ["Is psychometric _g_ a myth?"](http://humanvarieties.org/2013/04/03/is-psychometric-g-a-myth/)).
-- ["The facts that need to be explained"](https://web.archive.org/web/20150404205305/https://occidentalascent.wordpress.com/2012/06/10/the-facts-that-need-to-be-explained/)
-- [collection of black-white gap datapoints](http://humanvarieties.org/2013/01/15/100-years-of-testing-negro-intelligence/) ([graphed over time](http://humanvarieties.org/2013/01/15/secular-changes-in-the-black-white-cognitive-ability-gap/))
-- ["Epistemic learned helplessness"](http://web.archive.org/web/20130114194332/http://squid314.livejournal.com/350090.html)
-- ["The Biodeterminist's Guide to Parenting"](http://squid314.livejournal.com/346391.html)
+- [Obesity and genetics](https://jaymans.wordpress.com/obesity-facts/) (see also [GCTAs for anthropometric traits](https://en.wikipedia.org/wiki/Genome-wide_complex_trait_analysis#Anthropometric) )
+- ["Sweet Taste Perception is Associated with Body Mass Index at the Phenotypic and Genotypic Level"](http://www.gwern.net/docs/genetics/correlation/2016-hwang.pdf), Hwang et al 2016
+- ["Heritability and causal reasoning"](http://www.gwern.net/docs/genetics/2016-lynch.pdf), Lynch 2016
+- ["Human genetics shape the gut microbiome"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4255478/), Goodrich et al 2014
+- ["Variants near CHRNA3/5 and APOE have age- and sex-related effects on human lifespan"](http://www.nature.com/ncomms/2016/160331/ncomms11174/pdf/ncomms11174.pdf), Joshi et al 2016
+
+##### Psychology
+
+- ["The Evolutionary Genetics of Personality"](http://www.unm.edu/~gfmiller/newpapers_sept6/penke%202007%20targetarticle.pdf), Penke et al 2007
+- ["The Evolutionary Genetics of Personality Revisited"](http://www.larspenke.eu/pdfs/Penke_&_Jokela_in_press_-_Evolutionary_Genetics_of_Personality_Revisited.pdf), Penke & Jokela 2016
+- ["Correlation and Causation in the Study of Personality"](http://causality.cs.ucla.edu/blog/wp-content/uploads/2012/08/lee2012.pdf), Lee 2012
+- ["Genome-wide analysis of over 106,000 individuals identifies 9 neuroticism-associated loci"](http://www.gwern.net/docs/genetics/2016-smith.pdf), Smith et al 2016
+- ["Genome-wide analyses of empathy and systemizing: heritability and correlates with sex, education, and psychiatric risk"](http://biorxiv.org/content/early/2016/04/29/050682), Warrier et al 2016a; ["Genome-wide meta-analysis of cognitive empathy: heritability, and correlates with sex, neuropsychiatric conditions and brain anatomy"](http://biorxiv.org/content/early/2016/10/19/081844), Warrier et al 2016b
+- ["Personality Polygenes, Positive Affect, and Life Satisfaction"](https://www.cambridge.org/core/journals/twin-research-and-human-genetics/article/personality-polygenes-positive-affect-and-life-satisfaction/4DB2BE673BF122FB9A0AF2147EED80C0/core-reader), Weiss et al 2016
+- ["Genetic Relations Among Procrastination, Impulsivity, and Goal-Management Ability: Implications for the Evolutionary Origin of Procrastination"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4185275/), Gustavson et al 2014
+- ["The genetics of investment biases"](https://www.researchgate.net/profile/Stephan_Siegel/publication/261954146_The_Genetics_of_Investment_Biases/links/5416c5080cf2788c4b35e5b2.pdf), Cronqvist & Siegal 2014
+- ["GWAS of 89,283 individuals identifies genetic variants associated with self-reporting of being a morning person"](http://www.nature.com/ncomms/2016/160202/ncomms10448/full/ncomms10448.html), Hu et al 2016
+- ["Genetics and the placebo effect: the placebome"](http://www.gwern.net/docs/nootropics/2015-hall.pdf), Hall et al 2015
+
+- ["Prevalence of Congenital Amusia"](http://biorxiv.org/content/early/2016/08/22/070961), Peretz & Vuvan 2016
+
+- ["The Importance of Heritability in Psychological Research: The Case of Attitudes"](http://www2.psych.ubc.ca/~schaller/528Readings/Tesser1993.pdf), Tesser 1993
+- ["Genetic Influence on Human Psychological Traits: A Survey"](http://humancond.org/_media/papers/bouchard04_genetic_influence_psychological_traits.pdf), Bouchard 2004
+- ["Are Political Orientations Genetically Transmitted?"](http://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1006&context=poliscifacpub), Alford et al 2005
+- ["Not by Twins Alone: Using the Extended Family Design to Investigate Genetic Influence on Political Beliefs"](http://www.matthewckeller.com/16.Hatemi.et.al.2010.Nuc.fam.ajps.pdf), Hatemi et al 2010
+- ["A Genome-Wide Analysis of Liberal and Conservative Political Attitudes"](https://genepi.qimr.edu.au/contents/publications/staff/hatemi_2011_JrnlPolitics_271-285.pdf), Hatemi et al 2011
+- ["The Etiology of Stability and Change in Religious Values and Religious Attendance"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3045647/), Button et al 2011
+- ["Political Attitudes Develop Independently of Personality Traits"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0118106), Hatemi & Verhulst 2015
+
+- ["Genome-wide meta-analysis identifies six novel loci associated with habitual coffee consumption"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4388784/), The Coffee and Caffeine Genetics Consortium et al 2014
+- [How harmful is smoking during pregnancy - *after* controlling for the sort of people who would do that?](https://plus.google.com/103530621949492999968/posts/6wRgbC7xp2b) ; see also ["Critical need for family-based, quasi-experimental designs in integrating genetic and social science research"](http://people.virginia.edu/~ent3c/papers2/d%27onofrioAJPH.pdf), D'Onofrio et al 2013; [Smoking is heritable but not through shared environment](https://plus.google.com/103530621949492999968/posts/gjPVcLWQLAt)
+- ["A Genetically Informed Study of the Association Between Harsh Punishment and Offspring Behavioral Problems"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2964497/), Lynch et al 2006
+
+- ["Genes Take Charge, and Diets Fall by the Wayside"](http://www.nytimes.com/2007/05/08/health/08fat.html?pagewanted=all)
+- ["Evidence that low socioeconomic position accentuates genetic susceptibility to obesity"](http://biorxiv.org/content/early/2016/09/13/074054), Tyrrell et al 2016
+- on the benefits of exercise:
+
+    - ["Modifiable Risk Factors as Predictors of All-Cause Mortality: The Roles of Genetics and Childhood Environment"](http://aje.oxfordjournals.org/content/156/11/985.full), Kujala et al 2002
+    - ["Physical activity in adulthood: genes and mortality"](http://www.nature.com/articles/srep18259), Karvinen et al 2015
+    - ["Physical Activity, Fitness, Glucose Homeostasis, and Brain Morphology in Twins"](http://www.gwern.net/docs/genetics/2015-rottensteiner.pdf), Rottensteiner et al 2015
+
+##### Intelligence
+
+- ["A general intelligence factor in [border collie] dogs"](http://www.sciencedirect.com/science/article/pii/S016028961630023X), Arden & Adams 2016
+- ["Chimpanzee Intelligence Is Heritable"](http://www.sciencedirect.com/science/article/pii/S0960982214006770), Hopkins et al 2014
+- ["Heritability of Neuroanatomical Shape"](http://biorxiv.org/content/early/2015/12/01/033407), Ge et al 2015
+- ["Genomic architecture of human neuroanatomical diversity"](http://www.fondation-fondamental.org/upload/editeur/files/ToroMolPsy2014.pdf), Toro et al 2014
+- ["Common genetic variants influence human subcortical brain structures"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4393366/), Hibar et al 2015
+- ["Most Reported [Candidate-Gene] Genetic Associations with General Intelligence Are Probably False Positives"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3498585/), Chabris et al 2012
+- ["Genome-wide association studies establish that human intelligence is highly heritable and polygenic"](http://www.nature.com/mp/journal/v16/n10/full/mp201185a.html), Davies et al 2011
+- ["Genetic contributions to stability and change in intelligence from childhood to old age"](http://www.researchgate.net/profile/David_Dave_Liewald/publication/221760226_Genetic_contributions_to_stability_and_change_in_intelligence_from_childhood_to_old_age/links/02e7e52ca9a723a8fa000000.pdf), Deary et al 2012
+- ["Common DNA Markers Can Account for More Than Half of the Genetic Influence on Cognitive Abilities"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3652710/), Plomin et al 2013
+- ["The genetic architecture of pediatric cognitive abilities in the Philadelphia Neurodevelopmental Cohort"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4294962/), Robinson et al 2015
+- ["Intelligence indexes generalist genes for cognitive abilities"](http://www.sciencedirect.com/science/article/pii/S0160289613001049), Trzaskowski et al 2013
+- ["DNA Evidence for Strong Genome-Wide Pleiotropy of Cognitive and Learning Abilities"](https://link.springer.com/article/10.1007/s10519-013-9594-x/fulltext.html), Trzaskowski et al 2013
+- ["Substantial SNP-based heritability estimates for working memory performance"](http://www.nature.com/tp/journal/v4/n9/full/tp201481a.html), Vogler et al 2014
+- ["Results of a 'GWAS Plus': General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0112390#close), Kirkpatrick et al 2014
+-  ["Childhood intelligence is heritable, highly polygenic and associated with FNBP1L"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2014
+- ["DNA evidence for strong genetic stability and increasing heritability of intelligence from age 7 to 12"](http://www.researchgate.net/profile/Maciej_Trzaskowski/publication/235379639_DNA_evidence_for_strong_genetic_stability_and_increasing_heritability_of_intelligence_from_age_7_to_12/links/004635162d9aa8ba50000000.pdf), Trzaskowski et al 2014a
+- ["GWAS of 126,559 Individuals Identifies Genetic Variants Associated with Educational Attainment"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3751588/), Rietveld et al 2013 ([supplement](http://www.gwern.net/docs/iq/2013-rietveld-supplementary-revision2.pdf))
+- ["Common genetic variants associated with cognitive performance identified using the proxy-phenotype method"](http://www.pnas.org/content/111/38/13790.full.pdf#page=2&view=FitH), Rietveld et al 2014 ([supplement](http://www.pnas.org/content/suppl/2014/09/06/1404623111.DCSupplemental/pnas.1404623111.sapp.pdf))
+- ["Genetic Variation Associated with Differential Educational Attainment in Adults Has Anticipated Associations with School Performance in Children"](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0100248#close), Ward et al 2014
+- ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (_n_=53949)"](http://www.nature.com/mp/journal/vaop/ncurrent/pdf/mp2014188a.pdf), Davies et al 2015
+- ["The genetic architecture of pediatric cognitive abilities in the Philadelphia Neurodevelopmental Cohort"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4294962/), Robinson et al 2015
+- ["Thinking positively: The genetics of high intelligence"](http://www.sciencedirect.com/science/article/pii/S0160289614001676), Shakeshaft et al 2014
+- ["A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html), Spain et al 2015
+- ["Genome-wide association study of cognitive functions and educational attainment in UK Biobank (_n_=112151)"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp201645a.html), Davies et al 2016
+- ["GWAS for executive function and processing speed suggests involvement of the CADM2 gene"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4722802/), Ibrahim-Verbaas et al 2016
+- ["Genome-wide association study identifies 74 [162] loci associated with educational attainment"](http://www.gwern.net/docs/iq/2016-okbay-2.pdf), Okbay et al 2016b ([supplement](http://www.nature.com/nature/journal/v533/n7604/extref/nature17671-s1.pdf))
+- ["Predicting educational achievement from DNA"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016107a.html), Selzam et al 2016
+
+- ["Molecular genetic contributions to socioeconomic status and intelligence"](http://www.sciencedirect.com/science/article/pii/S0160289614000178), Marioni et al 2014
+- ["Assortative mating on educational attainment leads to genetic spousal resemblance for causal alleles"](http://www.gwern.net/docs/iq/2016-hughjones.pdf), Hugh-Jones et al 2016
+- ["Ultra-rare disruptive and damaging mutations influence educational attainment in the general population"](http://www.gwern.net/docs/genetics/2016-ganna.pdf), Ganna et al 2016
+
+- ["A closer look at the role of parenting-related influences on verbal intelligence over the life course: Results from an adoption-based research design"](https://www.researchgate.net/profile/Joseph_Schwartz4/publication/263663859_A_closer_look_at_the_role_of_parenting-related_influences_on_verbal_intelligence_over_the_life_course_Results_from_an_adoption-based_research_design/links/56081d3b08aea25fce3b814e.pdf), Beaver et al 2014
+- ["What Twin Studies Tell Us About the Heritability of Brain Development, Morphology, and Function: A Review"](https://link.springer.com/article/10.1007/s11065-015-9278-9/fulltext.html), Jansen et al 2015
+
+- ["Genes, Evolution and Intelligence"](http://emilkirkegaard.dk/en/wp-content/uploads/Genes-Evolution-and-Intelligence.pdf), Bouchard 2014
+- ["Genetics and intelligence differences: five special findings"](http://www.nature.com/mp/journal/v20/n1/full/mp2014105a.html), Plomin & Deary 2015
+- ["Classical and Molecular Genetic Research on General Cognitive Ability"](http://onlinelibrary.wiley.com/enhanced/doi/10.1002/hast.495), McGrue & Gottesman 2015
+
+- ["Is Psychometric g a Myth?"](http://humanvarieties.org/2013/04/03/is-psychometric-g-a-myth/)
+- ["Suppressing Intelligence Research: Hurting Those We Intend to Help"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.138.3468&rep=rep1&type=pdf), Gottfredson 2005
+- ["Large Cross-National Differences in Gene × Socioeconomic Status Interaction on Intelligence"](http://www.gwern.net/docs/iq/2015-tucker-drob.pdf), Tucker-Drob & Bates 2015
+- ["Family environment and the malleability of cognitive ability: A Swedish national home-reared and adopted-away cosibling control study"](http://www.pnas.org/content/112/15/4612.full), Kendler et al 2015
+- ["How Much Can We Boost IQ and Scholastic Achievement?"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.138.980&rep=rep1&type=pdf), Jensen 1969; for comparison, note carefully what [Nisbett et al 2012](http://scottbarrykaufman.com/wp-content/uploads/2012/01/Nisbett-et-al.-2012.pdf "Intelligence: New Findings and Theoretical Developments") review actually says compared to what many laymen believe, and consider also whether its description of DNB would be recognizable to a thorough reader of my [DNB FAQ]()/[meta-analysis](DNB meta-analysis) or whether the encouraging research would pass the critiques of the replicability crisis.
+
+##### Social outcomes
+
+- [_The Nurture Assumption_](https://dl.dropboxusercontent.com/u/85192141/2009-harris-thenurtureassumption.epub), Harris 2009
+
+    - ["Do Parents Matter?"](http://gladwell.com/do-parents-matter/), Gladwell
+    - ["The Dark Side Of Divorce"](http://slatestarcodex.com/2014/11/14/the-dark-side-of-divorce/)
+    - ["Nature Is Not A Slate. It's A Series Of Levers."](http://slatestarcodex.com/2013/06/25/nature-is-not-a-slate-its-a-series-of-levers/)
+    - ["Non-Shared Environment Doesn't Just Mean Schools And Peers"](http://slatestarcodex.com/2016/03/16/non-shared-environment-doesnt-just-mean-schools-and-peers/)
+    - ["The Biodeterminist's Guide to Parenting"](http://squid314.livejournal.com/346391.html)
+    - ["Environmental Hereditarianism"](https://jaymans.wordpress.com/2014/03/04/environmental-hereditarianism/)
+    - ["Why Parenting May Not Matter and Why Most Social Science Research is Probably Wrong"](http://quillette.com/2015/12/01/why-parenting-may-not-matter-and-why-most-social-science-research-is-probably-wrong/); - ["What Went Wrong? Reflections on Science by Observation and the Bell Curve"](http://www.hss.cmu.edu/philosophy/glymour/glymour1998.pdf), Glymour 1998
+- crime and aggression:
+
+    - ["Genome-wide association study of antisocial personality disorder"](http://www.nature.com/tp/journal/v6/n9/full/tp2016155a.html), Rautiainen et al 2016
+    - ["The VNTR 2 repeat in MAOA and delinquent behavior in adolescence and young adulthood: associations and MAOA promoter activity"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2922855/), Guo et al 2012
+    - ["Genetics of Aggression"](http://www.gwern.net/docs/genetics/2012-anholt.pdf), Anholt & Mackay 2012
+    - ["Exploring the association between the 2-repeat allele of the MAOA gene promoter polymorphism and psychopathic personality traits, arrests, incarceration, and lifetime antisocial behavior"](https://www.researchgate.net/profile/Brian_Boutwell/publication/255700756_Exploring_the_association_between_the_2-repeat_allele_of_the_MAOA_gene_promoter_polymorphism_and_psychopathic_personality_traits_arrests_incarceration_and_lifetime_antisocial_behavior/links/0deec520393e5c8ee7000000.pdf), Beaver et al 2013
+    - ["Violent crime runs in families: a total population study of 12.5 million individuals"](http://www.sakkyndig.com/psykologi/artvit/frisell2010.pdf), Frisell et al 2011
+    - ["Heritability, assortative mating and gender differences in violent crime: results from a total population sample using twin, adoption, and sibling models"](http://emilkirkegaard.dk/en/wp-content/uploads/Heritability-Assortative-Mating-and-Gender-Differences-in-Violent-Crime-Results-from-a-Total-Population-Sample-Using-Twin-Adoption-and-Sibling-Models.pdf), Frisell et al 2012
+    - ["The Role of Parenting in the Prediction of Criminal Involvement: Findings From a Nationally Representative Sample of Youth and a Sample of Adopted Youth"](http://digitalcommons.unomaha.edu/cgi/viewcontent.cgi?article=1018&context=criminaljusticefacpub), Beaver et al 2015
+    - ["Paternal Antisocial Behavior and Sons' Cognitive Ability: A Population-Based Quasiexperimental Study"](http://www.unav.edu/matrimonioyfamilia/observatorio/uploads/32708_Latvala-etal_PS2014_Paternal.pdf), Latvala et al 2014
+    - ["Genetic and environmental determinants of violence risk in psychotic disorders: a multivariate quantitative genetic study of 1.8 million Swedish twins and siblings"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015184a.html), Sariaslan et al 2015
+    - ["The impact of neighbourhood deprivation on adolescent violent criminality and substance misuse: A longitudinal, quasi-experimental study of the total Swedish population "](http://ije.oxfordjournals.org/content/42/4/1057.full.pdf+html), Sariaslan et al 2013
+    - ["Genetic and Familial Environmental Influences on the Risk for Drug Abuse: A National Swedish Adoption Study"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3556483/), Kendler et al 2013
+    - ["Childhood family income, adolescent violent criminality and substance misuse: quasi-experimental total population study"](http://www.gwern.net/docs/genetics/2014-sariaslan-1.pdf), Sariaslan et al 2014
+    -["A genome-wide approach to children's aggressive behavior: The EAGLE consortium"](http://onlinelibrary.wiley.com/doi/10.1002/ajmg.b.32333/pdf), Pappa et al 2015
+    - ["Sexual offending runs in families: A 37-year nationwide study"](http://ije.oxfordjournals.org/content/44/2/713.full), Langstrom et al 2015
+    - ["Criminal offending as part of an alternative reproductive strategy: Investigating evolutionary hypotheses using Swedish total population data"](https://www.researchgate.net/profile/Niklas_Langstroem/publication/263281358_Criminal_offending_as_part_of_an_alternative_reproductive_strategy_Investigating_evolutionary_hypotheses_using_Swedish_total_population_data/links/559ff75908ae032ef0544da6.pdf), Yao et al 2014
+    - Burt debate:
+
+        - Burt et al 2014, ["Pulling back the curtain on heritability studies: Biosocial criminology in the postgenomic era"](https://www.homeworkmarket.com/sites/default/files/qx/16/01/26/06/burt_callie_h.pdf)
+        - Barnes et al 2014, ["Demonstrating the validity of twin research in criminology"](https://www.researchgate.net/publication/267158254_Demonstrating_the_validity_of_twin_research_in_criminology)
+        - Burt et al 2015, ["Heritability studies in the postgenomic era: The fatal flaw is conceptual"](http://www.gwern.net/docs/genetics/2015-burt.pdf)
+        - Wright et al 2015, ["Mathematical proof is not minutiae and irreducible complexity is not a theory: a final response to Burt and Simons and a call to criminologists"](https://www.researchgate.net/profile/Brian_Boutwell/publication/272564103_Mathematical_proof_is_not_minutiae_and_irreducible_complexity_is_not_a_theory_Final_response_to_Burt_and_Simons_and_a_call_to_criminologists/links/54e8c43f0cf27a6de10f7fdc.pdf)
+- ["Does Population Density and Neighborhood Deprivation Predict Schizophrenia? A Nationwide Swedish Family-Based Study of 2.4 Million Individuals"](http://www.gwern.net/docs/genetics/2014-sariaslan-2.pdf), Sariaslan et al 2014
+- ["Schizophrenia and subsequent neighborhood deprivation: revisiting the social drift hypothesis using population, twin and molecular genetic data"](http://www.nature.com/tp/journal/v6/n5/full/tp201662a.html), Sariaslan et al 2016
+- ["Polygenic Risk Score, Parental Socioeconomic Status, Family History of Psychiatric Disorders, and the Risk for Schizophrenia: A Danish Population-Based Study and Meta-analysis"](http://www.gwern.net/docs/genetics/2015-agerbo.pdf), Agerbo et al 2015
+- ["Associations between Polygenic Risk for Psychiatric Disorders and Substance Involvement"](http://journal.frontiersin.org/article/10.3389/fgene.2016.00149/full), Carey et al 2016
+- ["Heritability, SNP- and Gene-Based Analyses of Cannabis Use Initiation and Age at Onset"](https://link.springer.com/article/10.1007/s10519-015-9723-9), Minica et al 2015
+- ["Genetic predisposition to schizophrenia associated with increased use of cannabis"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4382963/), Power et al 2014
+
+- [Friends are as genetically similar as fourth cousins](http://www.pnas.org/content/111/Supplement_3/10796.long "'Friendship and natural selection', Christakis & Fowler 2014") ([media](https://www.washingtonpost.com/national/health-science/research-human-friendships-based-on-genetic-similarities-beyond-the-superficial/2014/07/14/8aea04fe-0ab5-11e4-8c9a-923ecc0c7d23_story.html "Research: Human friendships based on genetic similarities beyond the superficial"))
+
+- ["Poverty and Behavior: Are Environmental Measures Nature and Nurture?"](http://emilkirkegaard.dk/en/wp-content/uploads/Poverty-and-Behavior-Are-Environmental-Measures-Nature-and-Nurture.pdf), Rowe & Rodgers 1997
+- ["Signaling and Productivity in the Private Financial Returns to Schooling"](http://paulbingley.com/papers/signals-manuscript.pdf), Bingley et al 2015
+- ["Do Jobs Run in Families?"](https://research.facebook.com/blog/do-jobs-run-in-families-/)
+- ["Intelligence: Is it the epidemiologists' elusive 'fundamental cause' of social class inequalities in health?"](https://pingpong.ki.se/public/pp/public_courses/course07397/published/1294674331157/resourceId/4002438/content/infoweb/node-2627050/Gottfredson_artikel.pdf), Gottfredson 2004; ["Why _g_ Matters: The Complexity of Everyday Life"](http://www.udel.edu/educ/gottfredson/reprints/1997whygmatters.pdf), Gottfredson 1997
+
+- ["Genome-Wide Estimates of Heritability for Social Demographic Outcomes"](http://www.gwern.net/docs/genetics/2016-domingue.pdf), Domingue et al 2016
+- ["Association between stressful life events and psychotic experiences in adolescence: evidence for gene-environment correlations"](http://bjp.rcpsych.org/content/early/2016/03/17/bjp.bp.114.159079.abstract), Shakoor et al 2016
+- ["Physical and neurobehavioral determinants of reproductive onset and success"](http://www.gwern.net/docs/genetics/correlation/2016-day.pdf), Day et al 2016 (variants associated with early puberty have causal impact on  lower educational attainment, risk taking, earlier sex, teen pregnancy)
+- ["Shared genetic aetiology of puberty timing between sexes and with health-related outcomes"](http://www.nature.com/articles/ncomms9842), Day et al 2015 (Most correlations are bad, as predicted by life cycle theory.)
+- ["Genomic analyses for age at menarche identify 389 independent signals and indicate BMI-independent effects of puberty timing on cancer susceptibility"](http://biorxiv.org/content/early/2016/09/23/076794), Day et al 2016b
+
+- ["Polygenic Influence on Educational Attainment: New Evidence From the National Longitudinal Study of Adolescent to Adult Health"](http://ero.sagepub.com/content/1/3/2332858415599972), Domingue et al 2015
+- ["Genetic influence on family socioeconomic status and children's intelligence"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907681/), Trzaskowski et al 2014
+- ["Genetic link between family socioeconomic status and children's educational achievement estimated from genome-wide SNPs"](http://www.nature.com/mp/journal/v21/n3/full/mp20152a.html), Krapohl & Plomin 2016
+- ["Association between polygenic risk scores for attention-deficit hyperactivity disorder and educational and cognitive outcomes in the general population"](http://ije.oxfordjournals.org/content/early/2016/09/28/ije.dyw216.full), Stergiakouli et al 2016
+- ["Molecular genetic contributions to socioeconomic status and intelligence"](http://www.sciencedirect.com/science/article/pii/S0160289614000178), Marioni et al 2014
+- ["Molecular genetic contributions to social deprivation and household income in UK Biobank (_n_=112,151)"](http://biorxiv.org/content/early/2016/03/09/043000), Hill et al 2016 ([correlation graph](https://pbs.twimg.com/media/CdMobKRXEAEMkmi.jpg\:large))
+- ["Height, body mass index, and socioeconomic status: Mendelian randomisation study in UK Biobank"](http://www.bmj.com/content/352/bmj.i582), Tyrrell et al 2016
+- ["The Causal Effects of Education on Health, Mortality, Cognition, Well-being, and Income in the UK Biobank"](http://biorxiv.org/content/early/2016/09/13/074815), Davies et al 2016
+- ["The Genetics of Success: How Single-Nucleotide Polymorphisms Associated With Educational Attainment Relate to Life-Course Development"](http://www.gwern.net/docs/genetics/2016-belsky.pdf), Belsky et al 2016
+
+#### Pleiotropy/inter-correlation/phenome
+
+- [Genetic correlations](https://en.wikipedia.org/wiki/Genetic_correlation) vs [Mendelian randomization](https://en.wikipedia.org/wiki/Mendelian_randomization)
+- ["Molecular genetic contributions to self-rated health"](http://biorxiv.org/content/biorxiv/early/2016/04/12/029504.full.pdf), Harris et al 2016
+- ["The MC1R Gene and Youthful Looks"](http://www.gwern.net/docs/genetics/2016-liu.pdf), Liu et al 2016
+- ["Genetic Prediction of Male Pattern Baldness"](http://biorxiv.org/content/early/2016/08/31/072306), Hagenaars et al 2016
+- ["Genome-Wide Association Study Reveals Multiple Loci Influencing Normal Human Facial Morphology"](http://journals.plos.org/plosgenetics/article?id=10.1371%2Fjournal.pgen.1006149), Shaffer et al 2016; see also ["Heritability and genomics of facial characteristics"](http://blogs.discovermagazine.com/gnxp/2011/06/heritability-and-genomics-of-facial-characteristics/) & ["How Craig Venter is fighting ageing with genome sequencing"](http://www.wired.co.uk/article/craig-venter-human-longevity-genome-diseases-ageing)
+- ["The Genetic Architecture & Natural History of Pigmentation"](http://www.unz.com/gnxp/the-genetic-architecture-natural-history-of-pigmentation/)
+- ["Detecting Genome-wide Variants of Eurasian Facial Shape Differentiation: DNA based Face Prediction Tested in Forensic Scenario"](http://biorxiv.org/content/early/2016/07/25/062950), Qiao et al 2016
+- genetics of breast size:
+
+    - ["Body mass index and breast size in women: same or different genes?"](https://www.researchgate.net/profile/Tracey_Wade2/publication/46576952_Body_Mass_Index_and_Breast_Size_in_Women_Same_or_Different_Genes/links/00b7d52fbf89094b60000000.pdf), Wade et al 2010
+    - ["Genetic variants associated with breast size also influence breast cancer risk"](http://bmcmedgenet.biomedcentral.com/articles/10.1186/1471-2350-13-53), Eriksson et al 2012
+    - ["Large-scale genotyping identifies a new locus at 22q13.2 associated with female breast size"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4159740/), Li et al 2013
+
+- ["Phenome-wide analysis of genome-wide polygenic scores"](http://www.researchgate.net/publication/281241266_Phenome-wide_analysis_of_genome-wide_polygenic_scores), Krapohl et al 2015
+- ["An Atlas of Genetic Correlations across Human Diseases and Traits"](http://biorxiv.org/content/early/2015/04/06/014498), Bulik-Sullivan et al 2015
+- ["Contrasting the genetic architecture of 30 complex traits from summary association data"](http://biorxiv.org/content/early/2016/01/04/035907), Shi et al 2016
+- ["Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (_n_=112151) and 24 GWAS consortia"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html ), Hagenaars et al 2016
+- ["Detection and interpretation of shared genetic influences on 42 human traits"](http://www.gwern.net/docs/genetics/correlation/2016-pickrell.pdf), Pickrell et al 2016
+- ["LD Hub: a centralized database and web interface to perform LD score regression that maximizes the potential of summary level GWAS data for SNP heritability and genetic correlation analysis"](http://biorxiv.org/content/biorxiv/early/2016/05/03/051094.full.pdf), Zheng et al 2016 (Web interface to scores of GWAS results, allowing combined inference over them all: [LD Hub](http://ldsc.broadinstitute.org/about/). Gets around privacy & scaling problems by using, not GCTA, but [LD regression](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4495769/ "'LD Score regression distinguishes confounding from polygenicity in genome-wide association studies', Bulik-Sullivan et al 2015") which only needs summary statistics. LD score regression is definitely the wave of the future. GCTA was king for a few years, but the inability to use summary data is killing it; in the modern context of a thousand different funding sources, 'medical ethics', & empire building driving countless genetic silos, a method must be able to work on just summary statistics if it's to have any real uptake and get _n_ into the hundreds of thousands.)
+- ["Genetic contributions to self-reported tiredness"](http://biorxiv.org/content/early/2016/04/05/047290), Deary et al 2016
+- ["Genetically low vitamin D concentrations and increased mortality: Mendelian randomisation analysis in three large cohorts"](http://www.bmj.com/content/349/bmj.g6330.long), Afzal et al 2014
+
+- ["The high heritability of educational achievement reflects many genetically influenced traits, not just intelligence"](http://www.pnas.org/content/early/2014/10/02/1408777111.full.pdf), Krapohl et al 2014
+- ["Pleiotropy across academic subjects at the end of compulsory education"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4512149/), Rimfeld et al 2015
+- ["Genetics affects choice of academic subjects as well as achievement"](http://www.nature.com/articles/srep26373), Rimfeld et al 2016
+- ["Genetically-Mediated Associations Between Measures of Childhood Character and Academic Achievement"](http://www.gwern.net/docs/genetics/correlation/2016-tucker-drob.pdf), Tucker-Drob et al 2016
+- ["Educational attainment and personality are genetically intertwined"](http://biorxiv.org/content/early/2016/09/28/078014), Mottus et al 2016
+- ["The association between intelligence and lifespan is mostly genetic"](http://ije.oxfordjournals.org/content/early/2015/07/24/ije.dyv112.full.pdf), Arden et al 2015
+
+- ["Analysis of shared heritability in common disorders of the brain"](http://biorxiv.org/content/biorxiv/early/2016/04/16/048991.full.pdf), Anttila et al 2016
+- ["Genetic relationship between 5 psychiatric disorders estimated from genome-wide SNPs"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3800159/), Psychiatric Genomics Consortium 2013
+- ["Identification of 15 genetic loci associated with risk of major depression in individuals of European descent"](http://www.gwern.net/docs/genetics/correlation/2016-hyde.pdf), Hyde et al 2016
+- ["Different neurodevelopmental symptoms have a common genetic etiology"](https://www.researchgate.net/profile/Erik_Pettersson/publication/257837215_Different_neurodevelopmental_symptoms_have_a_common_genetic_etiology/links/53ee23030cf23733e80b2ea3.pdf), Pettersson et al 2013
+- ["Risk of Psychiatric and Neurodevelopmental Disorders Among Siblings of Probands With Autism Spectrum Disorders"](http://archpsyc.jamanetwork.com/article.aspx?articleid=2519364), Jokiranta-Olkoniemi et al 2016
+- ["Analysis of Intellectual Disability Copy Number Variants for Association With Schizophrenia"](http://www.gwern.net/docs/genetics/correlation/2016-rees.pdf), Rees et al 2016
+- ["Uncovering the Hidden Risk Architecture of the Schizophrenias: Confirmation in Three Independent Genome-Wide Association Studies"](https://www.researchgate.net/profile/Gabriel_De_Erausquin/publication/265647929_Uncovering_the_Hidden_Risk_Architecture_of_the_Schizophrenias_Confirmation_in_Three_Independent_Genome-Wide_Association_Studies/links/541a0ec30cf2218008bfa62f.pdf), Arnedo et al 2014 ([press release](https://web.archive.org/web/20140924070551/https://news.wustl.edu/news/Pages/27358.aspx "Schizophrenia not a single disease but multiple genetically distinct disorders")); see also ["Biological insights from 108 schizophrenia-associated genetic loci"](http://www.nature.com/nature/journal/v511/n7510/full/nature13595.html), PGC 2014
+- ["Patterns of Nonrandom Mating Within and Across 11 Major Psychiatric Disorders"](http://archpsyc.jamanetwork.com/article.aspx?articleid=2494707), Nordsletten 2016
+- ["Contrasting regional architectures of schizophrenia and other complex diseases using fast variance components analysis"](http://biorxiv.org/content/early/2015/06/05/016527), Loh et al 2015
+- ["Genetic variants associated with subjective well-being, depressive symptoms, and neuroticism identified through genome-wide analyses"](http://www.gwern.net/docs/genetics/2016-okbay.pdf), Okbay et al 2016a
+- ["Genetic risk for autism spectrum disorders and neuropsychiatric variation in the general population"](http://pubman.mpdl.mpg.de/pubman/item/escidoc:2224058/component/escidoc:2224057/027771.1.full.pdf), Robinson et al 2016
+- ["Diagnoses in Siblings of Probands With Autism Spectrum Disorders"](http://archpsyc.jamanetwork.com/article.aspx?articleid=2519364), Jokiranta-Olkoniemi et al 2016 (see also ["Different neurodevelopmental symptoms have a common genetic etiology"](https://www.researchgate.net/profile/Erik_Pettersson/publication/257837215_Different_neurodevelopmental_symptoms_have_a_common_genetic_etiology/links/53ee23030cf23733e80b2ea3.pdf), Pettersson et al 2013)
+- ["Systems genetics identifies a convergent gene network for cognition and neurodevelopmental disease"](http://www.gwern.net/docs/iq/2015-johnson.pdf), Johnson et al 2015 ([media](http://www3.imperial.ac.uk/newsandeventspggrp/imperialcollege/newssummary/news_22-12-2015-10-13-44 "Intelligence 'networks' discovered in brain for the first time"))
+- ["Large-scale genomics unveils the genetic architecture of psychiatric disorders"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4112149/), Gratten et al 2014
+- ["Polygenic risk scores for schizophrenia and bipolar disorder predict creativity"](http://www.gwern.net/docs/genetics/correlation/2015-power.pdf), Power et al 2015
+- ["Genome-wide meta-analysis of cognitive empathy: heritability, and correlates with sex, neuropsychiatric conditions and brain anatomy"](http://biorxiv.org/content/early/2016/10/19/081844), Warrier et al 2016
+
+#### Rare genetics
+
+- [_The Sports Gene_](https://dl.dropboxusercontent.com/u/85192141/2014-epstein-thesportsgene.pdf), Epstein 2014; see also ["How Athletes Get Great
+Just train for 10,000 hours, right? Not quite."](http://www.outsideonline.com/outdoor-adventure/media/books/How-Athletes-Get-Great.html?page=all); ["Man and Superman: In athletic competitions, what qualifies as a sporting chance?"](http://www.newyorker.com/magazine/2013/09/09/man-and-superman); ["Practice Doesn't Make Perfect"](http://www.newyorker.com/science/maria-konnikova/practice-doesnt-make-perfect)
+- ["The Superhero Genes: One scientist is on a quest to find the genetic mutations that make athletes elite - which may lead to new treatments for the rest of us"](https://story.californiasunday.com/superhero-gene-euan-ashley-stanford)
+- ["The Genetic Basis of Mendelian Phenotypes: Discoveries, Challenges, and Opportunities"](http://www.cell.com/ajhg/abstract/S0002-9297\(15\)00245-1), Chong et al 2015
+- ["The contribution of de novo coding mutations to autism spectrum disorder"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4313871/), Iossifov et al 2014 (media: [1](http://www.spring.org.uk/2014/11/autism-new-studies-identify-dozens-more-associated-genes.php), [2](http://www.npr.org/blogs/health/2014/10/29/359818102/scientists-implicate-more-than-100-genes-in-causing-autism))
+- ["How Craig Venter is fighting ageing with genome sequencing"](http://www.wired.co.uk/article/craig-venter-human-longevity-genome-diseases-ageing)
+- ["One of a Kind: What do you do if your child has a condition that is new to science?"](http://www.newyorker.com/magazine/2014/07/21/one-of-a-kind-2)
+- ["The Muscular Dystrophy Patient and Olympic Medalist with the Same Genetic Disorder"](https://www.propublica.org/article/muscular-dystrophy-patient-olympic-medalist-same-genetic-mutation)
+- ["DIY Diagnosis: How an Extreme Athlete Uncovered Her Genetic Flaw"](https://psmag.com/diy-diagnosis-how-an-extreme-athlete-uncovered-her-genetic-flaw-d3111a5dd376)
+- ["A Prospective Study of Sudden Cardiac Death among Children and Young Adults"](http://www.gwern.net/docs/genetics/2016-bagnall.pdf), Bagnall et al 2016
+- ["Genetic enhancement of cognition in a kindred with cone-rod dystrophy due to RIMS1 mutation"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2740882/), Sisodiya et al 2007
+- ["A Gene That Makes You Need Less Sleep?"](http://www.newyorker.com/science/maria-konnikova/a-gene-makes-you-need-less-sleep) (see ["Heritability of Performance Deficit Accumulation During Acute Sleep Deprivation in Twins"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3413799/ "Kuna et al 2012"), ["The Transcriptional Repressor DEC2 Regulates Sleep Length in Mammals"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2884988/ "He et al 2010"), & ["A Novel BHLHE41 Variant is Associated with Short Sleep and Resistance to Sleep Deprivation in Humans"](https://go.aastweb.org/Resources/journalclub/journalcluboctober2014.pdf "Pellegrino et al 2014"))
+
+#### Evolution
+
+- ["Thoroughbreds Are Running as Fast as They Can"](https://fivethirtyeight.com/features/thoroughbreds-are-running-as-fast-as-they-can/) (after centuries of intense selection)
+- ["The USSR's Moose Domestication Projects Yield Mixed Results"](http://www.slate.com/blogs/atlas_obscura/2013/06/21/the_ussr_s_moose_domestication_projects_yield_mixed_results.html)
+- ["Nice Rats, Nasty Rats: Maybe It's All in the Genes"](http://www.nytimes.com/2006/07/25/health/25rats.html?pagewanted=all); ["Tameness is in the genes"](https://www.sciencenews.org/article/tameness-genes?mode=magazine&context=190312)
+- [on the genetic basis of rat and mink tameness](http://www.unz.com/gnxp/through-the-wormhole-are-we-here-for-a-reason-premier-may-13th/)
+- [domesticated foxes](https://en.wikipedia.org/wiki/Russian_Domesticated_Red_Fox)
+- ["A Simple Genetic Architecture Underlies Morphological Variation in Dogs"](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000451), Boyko et al 2010
+- ["Comparative analysis of the domestic cat genome reveals genetic signatures underlying feline biology and domestication"](http://www.researchgate.net/profile/Razib_Khan/publication/269094600_Comparative_analysis_of_the_domestic_cat_genome_reveals_genetic_signatures_underlying_feline_biology_and_domestication/links/54816dd80cf263ee1adfb8ce.pdf), Montague et al 2014
+- ["Rabbit genome analysis reveals a polygenic basis for phenotypic change during domestication"](http://www.sciencepubs.org/content/345/6200/1074.full.pdf), Carneiro et al 2014 (the power of selection - complex behaviors influenced by many small changes)
+- ["Genetic Architecture of Domestication-Related Traits in Maize"](http://www.genetics.org/content/early/2016/07/11/genetics.116.191106), Xue et al 2016
+- ["Whole-genome resequencing reveals loci under selection during chicken domestication"](http://www.nature.com/nature/journal/v464/n7288/full/nature08832.html), Rubin et al 2010
+- ["When local means local: Polygenic signatures of local adaptation within whitebark pine (_Pinus albicaulis Engelm_.) across the Lake Tahoe Basin, USA"](http://biorxiv.org/content/early/2016/05/31/056317), Lind et al 2016
+- ["The Rat Paths of New York"](http://www.nytimes.com/2015/04/26/magazine/the-rat-paths-of-new-york.html)
+- ["Geneticists Evolve Fruit Flies With the Ability to Count"](http://www.wired.com/2012/07/flies-learn-math/)
+- ["Rapid evolutionary response to a transmissible cancer in Tasmanian devils"](http://www.nature.com/ncomms/2016/160830/ncomms12684/full/ncomms12684.html), Epstein et al 2016
+- ["Evolution Is Happening Faster Than We Thought"](http://www.nytimes.com/2016/07/24/opinion/sunday/evolution-is-happening-faster-than-we-thought.html)
+- ["Artificial Selection on Relative Brain Size in the Guppy Reveals Costs and Benefits of Evolving a Larger Brain"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.659.8433&rep=rep1&type=pdf), Kotrschal et al 2013
+
+Human evolution:
+
+- ["Constructing genomic maps of positive selection in humans: Where do we go from here?"](http://genome.cshlp.org/content/19/5/711.long), Akey 2009
+- ["Measuring selection in contemporary human populations"](https://www.researchgate.net/profile/Douglas_Ewbank/publication/45462159_Measuring_selection_in_contemporary_human_populations/links/0c960516c1c8b5ef7d000000.pdf), Stearns et al 2010
+- ["Divergent Ah receptor ligand selectivity during hominin evolution"](http://www.gwern.net/docs/genetics/2016-hubbard.pdf), Hubbard et al 2016 ([media](http://www.nytimes.com/2016/08/09/science/fire-smoke-evolution-tuberculosis.html))
+- ["Exceptional Evolutionary Divergence of Human Muscle and Brain Metabolomes Parallels Human Cognitive and Physical Uniqueness"](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001871), Bozek et al 2014
+- ["The phenotypic legacy of admixture between modern humans and Neandertals"](http://www.gwern.net/docs/genetics/2016-simonti.pdf), Simonti et al 2016
+- ["The Genetic Cost of Neanderthal Introgression"](http://www.genetics.org/content/203/2/881), Harris & Nielsen 2016
+- ["Genetic Markers of Human Evolution Are Enriched in Schizophrenia"](http://www.biologicalpsychiatryjournal.com/article/S0006-3223%2815%2900855-0/pdf), Srinivasan et al 2016 (schizophrenia variants tend to be in genes which have also been under natural selection; is human evolution for intelligence & sociality incomplete and schizophrenia due to lingering mistakes which haven't yet been purged?)
+- ["Genome-wide patterns of selection in 230 ancient Eurasians"](http://www.gwern.net/docs/genetics/2015-mathieson.pdf), Mathieson et al 2015 ([media](http://www.nytimes.com/2015/11/24/science/agriculture-linked-to-dna-changes-in-ancient-europe.html "Agriculture Linked to DNA Changes in Ancient Europe"))
+- ["Eight thousand years of [human] natural selection in Europe"](http://biorxiv.org/content/early/2015/03/13/016477.full.pdf), Mathieson et al 2015 ([Khan](http://www.unz.com/gnxp/selection-in-europeans-but-it-still-sweeps/)); see also [EDAR](https://en.wikipedia.org/wiki/Ectodysplasin_A_receptor#Derived_EDAR_allele)
+- ["Detection of human adaptation during the past 2,000 years"](http://biorxiv.org/content/early/2016/05/07/052084.full.pdf), Field et al 2016
+- ["Population structure of UK Biobank and ancient Eurasians reveals adaptation at genes influencing blood pressure"](http://biorxiv.org/content/early/2016/05/27/055855), Galinsky et al 2016
+- ["Greenlandic Inuit show genetic signatures of diet and climate adaptation"](http://www.gwern.net/docs/genetics/2015-fumagalli.pdf), Fumagalli et al 2015; ["Extreme distribution of deleterious variation in a historically small and isolated population-insights from the Greenlandic Inuit"](http://biorxiv.org/content/early/2016/06/30/061440), Pedersen et al 2016
+- ["Genetic Adaptation to Levels of Dietary Selenium in Recent Human History"](http://mbe.oxfordjournals.org/content/32/6/1507.full), White et al 2015; see also ["Human Adaptation to Arsenic-Rich Environments"](http://mbe.oxfordjournals.org/content/32/6/1544.full), Schlebusch et al 2015
+- ["The genetics of Mexico recapitulates Native American substructure and affects biomedical traits"](http://science.sciencemag.org/content/344/6189/1280), Moreno-Estrada et al 2016
+- ["Humans Never Stopped Evolving: The emergence of blood abnormalities, an adult ability to digest milk, and changes in our physical appearance point to the continued evolution of the human race"](http://www.the-scientist.com/?articles.view/articleNo/46651/title/Humans-Never-Stopped-Evolving/)
+- ["Going global by adapting local: A review of recent human adaptation"](http://www.gwern.net/docs/genetics/2016-fan.pdf), Fan et al 2016
+- ["Metabolic costs and evolutionary implications of human brain development"](http://www.pnas.org/content/111/36/13010.long), Kuzawa et al 2014
+- ["Infectious causation of disease: an evolutionary perspective"](http://www.isteve.com/infectious_causation_of_disease.pdf), Cochran et al 2000; see also [_Toxoplasma gondii_](https://en.wikipedia.org/wiki/Toxoplasma_gondii)
+- ["Rising Plague"](https://entitledtoanopinion.wordpress.com/2013/02/11/rising-plague/)
+- ["The Rhythm of the Tide: When I heard data from an island had proven humans are still evolving, I had to visit"](http://nautil.us/issue/29/scaling/the-rhythm-of-the-tide-rp)
+- ["The Indicted and the Wealthy: Surnames, Reproductive Success, Genetic Selection and Social Class in Pre-Industrial England"](http://www.econ.ucdavis.edu/faculty/gclark/Farewell%20to%20Alms/Clark%20-Surnames.pdf), Clark 2009
+- ["Evidence for evolution in response to natural selection in a contemporary human population"](http://www.pnas.org/content/108/41/17040.long), Milot et al 2011
+- ["Quantitative Genetics in the Postmodern Family of the Donor Sibling Registry"](https://www.donorsiblingregistry.com/sites/default/files/files/dissertation%281%29.pdf), Lee 2013
+- ["What women want in their sperm donor: a study of more than 1000 women's sperm donor selections"](http://www.gwern.net/docs/genetics/2016-whyte.pdf), Whyte et al 2016
+- ["Genetic Associations Between Personality Traits and Lifetime Reproductive Success in Humans"](http://www.gwern.net/docs/genetics/2016-berg.pdf), Berg et al 2016
+- ["Categorization of humans in biomedical research: genes, race and disease"](http://genomebiology.biomedcentral.com/articles/10.1186/gb-2002-3-7-comment2007), Risch et al 2002
+- ["Genetic Mapping in Human Disease"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2694957/), Altshuler et al 2008
+- [Race and health](https://en.wikipedia.org/wiki/Race_and_health)/[pharmacogenomics](https://en.wikipedia.org/wiki/Pharmacogenomics): ["Not a black and white question: Medical research is starting to take account of people's race"](http://www.economist.com/node/6795348)
+- ["Brazil's Cancer Curse"](http://mosaicscience.com/story/brazils-cancer-curse)
+- ["A Natural Fix for A.D.H.D."](http://www.nytimes.com/2014/11/02/opinion/sunday/a-natural-fix-for-adhd.html)
+- ["Genetic Origins of Economic Development"](https://growthecon.wordpress.com/2015/03/16/genetic-origins-of-economic-development/)
+- ["Human Genetic Diversity: Lewontin's Fallacy"](https://en.wikipedia.org/wiki/Human_Genetic_Diversity:_Lewontin%27s_Fallacy)
+- ["Consistent Association of Type 2 Diabetes Risk Variants Found in Europeans in Diverse Racial and Ethnic Groups"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001078), Waters et al 2010
+- ["Additive Genetic Variation in Schizophrenia Risk Is Shared by Populations of African and European Descent"](http://www.sciencedirect.com/science/article/pii/S000292971300325X), de Candia et al 2013
+- ["Generalization and Dilution of Association Results from European GWAS in Populations of Non-European Ancestry: The PAGE Study"](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001661), Carlson et al 2013
+- ["Consistency of genome-wide associations across major ancestral groups"](http://www.gwern.net/docs/genetics/2012-ntzani.pdf), Ntzani et al 2012
+- ["Transethnic Genetic-Correlation Estimates from Summary Statistics"](http://www.sciencedirect.com/science/article/pii/S0002929716301355), Brown et al 2016
+- ["Population genetic differentiation of height and body mass index across Europe"](http://www.gwern.net/docs/genetics/2015-robinson.pdf), Robinson et al 2015 (to quote [Yvain](http://slatestarcodex.com/2015/09/28/links-915-linkua-franca/): "Genetic differences explain 24% of between-national-populations differences in height and 8% of between-national-populations in BMI across Europe. Now that the only two massively polygenic traits that might vary among national populations have been successfully studied, I look forward to never having to read any further research of this sort ever again.")
+- ["The fine-scale genetic structure of the British population"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4632200/), Leslie et al 2015
+- ["Pygmies' small stature evolved many times"](http://www.sciencemag.org/news/2014/08/pygmies-small-stature-evolved-many-times); ["Adaptive, convergent origins of the pygmy phenotype in African rainforest hunter-gatherers"](http://www.pnas.org/content/111/35/E3596.full), Perry et al 2014
+- ["National Happiness and Genetic Distance: A Cautious Exploration"](http://www.gwern.net/docs/genetics/2015-proto.pdf), Proto & Oswald 2015
+- ["Gene Flow by Selective Emigration as a Possible Cause for Personality Differences Between Small Islands and Mainland Populations"](http://www.gwern.net/docs/genetics/2011-ciani.pdf), Ciani & Cialuppi 2011
+- ["Demography is Destiny"](https://jaymans.wordpress.com/2015/07/04/demography-is-destiny/)
+- ["Some Uses of Models of Quantitative Genetic Selection in Social Science"](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/S002193201600002X), Weight & Harpending 2016; ["Western Europe, state formation, and genetic pacification"](http://evp.sagepub.com/content/13/1/147470491501300114.full.pdf+html), Frost & Harpending 2015
+- ["Cryptic Admixture, Mixed-Race Siblings, & Social Outcomes"](http://humanvarieties.org/2013/03/29/cryptic-admixture-mixed-race-siblings-social-outcomes/)
+- ["...intelligence GWAS hits: Their relationship to country IQ..."](http://emilkirkegaard.dk/en/wp-content/uploads/PifferIntelligence2015.pdf), Piffer 2015
+- ["The facts that need to be explained"](https://web.archive.org/web/20150404205305/https://occidentalascent.wordpress.com/2012/06/10/the-facts-that-need-to-be-explained/); ["Is there no population genetic 'support' for a racial hereditarian hypothesis?"](http://humanvarieties.org/2014/10/03/is-there-no-population-genetic-support-for-a-racial-hereditarian-hypothesis/); [collection of black-white gap datapoints](http://humanvarieties.org/2013/01/15/100-years-of-testing-negro-intelligence/) ([graphed over time](http://humanvarieties.org/2013/01/15/secular-changes-in-the-black-white-cognitive-ability-gap/))
+
+##### Dysgenics
+
+- ["Sexual Selection as a Justification for Sex"](http://www.unz.com/gnxp/sexual-selection-as-a-justification-for-sex/)
+- ["Rates and Fitness Consequences of New Mutations in Humans"](http://www.genetics.org/content/190/2/295.full), Keightley 2012
+- ["Parent-of-origin-specific signatures of de novo mutations"](http://www.nature.com/ng/journal/vaop/ncurrent/full/ng.3597.html), Goldmann et al 2016
+- ["Older fathers' children have lower evolutionary fitness across four centuries and in four populations"](http://biorxiv.org/content/early/2016/03/08/042788), Arslan et al 2016 (from ["The cost of inbreeding in terms of health"](http://www.unz.com/gnxp/the-cost-of-inbreeding-in-terms-of-health/))
+- ["Childhood Autism and Assortative Mating"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.422.4232&rep=rep1&type=pdf), Golden 2013
+- ["Heritability, Autism, & Fear of Breeding"](http://www.unz.com/gnxp/heritability-autism-fear-of-breeding/)
+- ["Estimating the Inbreeding Depression on Cognitive Behavior: A Population Based Study of Child Cohort"](http://www.plosone.org/article/info:doi/10.1371/journal.pone.0109585); see also ["Genetic diversity and intellectual disability"](http://blogs.discovermagazine.com/gnxp/2013/07/genetic-diversity-and-intellectual-disability/)
+- ["Mutation and Human Exceptionalism: Our Future Genetic Load"](http://www.genetics.org/content/202/3/869), Lynch 2016
+- ["The Biodemography of Fertility: A Review and Future Research Frontiers"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4577548/), Mills & Tropf 2015
+- [Fertility and intelligence](https://en.wikipedia.org/wiki/Fertility_and_intelligence)
+- ["Genetic evidence for natural selection in humans in the contemporary United States"](http://biorxiv.org/content/early/2016/05/05/037929), Beauchamp 2016
+- ["Assortative mating and differential fertility by phenotype and genotype across the 20th century"](http://www.pnas.org/content/early/2016/05/25/1523592113.full), Conley et al 2016a (Dysgenics found in the USA, 1920-1955: education/intelligence polygenic scores decrease over time, inversely correlate with offspring - education/intelligence polygenic score is dropping 0.0029 SDs per year, or 0.087SD over the 30 years covered, implying that the USA genetic potential has dropped 0.28SD since 1920 or <4 IQ points. [Appendix](http://www.pnas.org/content/suppl/2016/05/25/1523592113.DCSupplemental/pnas.1523592113.sapp.pdf)) see also ["Changing Polygenic Penetrance on Phenotypes in the 20th Century Among Adults in the US Population"](http://www.nature.com/articles/srep30348), Conley et al 2016b
+- ["Genome-wide analysis identifies 12 loci influencing human reproductive behavior"](http://www.gwern.net/docs/genetics/correlation/2016-barban.pdf), Barban et al 2016 ([supplement](http://www.nature.com/ng/journal/vaop/ncurrent/extref/ng.3698-S2.xls); genetic correlations with fewer later offspring: _r~g~_ = -0.236 and 0.712 respectively. Cross-sectional confirmation of Conley et al 2016.)
+- ["How cognitive genetic factors influence fertility outcomes: A mediational SEM analysis"](http://biorxiv.org/content/early/2016/08/18/070128), Woodley et al 2016
+- ["Assortative Mating, Class, and Caste"](http://www.gwern.net/docs/genetics/2015-harpending.pdf), Harpending & Cochran 2015
+
+##### Genetic engineering
+
+- ["Critically endangered species successfully reproduced using frozen sperm from ferret dead for 20 years: Genetic diversity of the species significantly increased providing fresh hope for the future survival of this near-extinct species"](https://www.sciencedaily.com/releases/2015/08/150813130242.htm)
+- ["Breeding a better crop seed, trait by trait"](http://www.washingtonpost.com/local/scientists-breed-a-better-seed-trait-by-trait/2014/04/16/ec8ce8c8-9a4b-11e3-80ac-63a8ba7f7942_story.html) using [molecular breeding](https://en.wikipedia.org/wiki/Molecular_breeding); see also ["Monsanto Is Going Organic in a Quest for the Perfect Veggie"](http://www.wired.com/wiredscience/2014/01/new-monsanto-vegetables/)
+- ["Genome-wide association study of leaf architecture in the maize nested association mapping population"](https://www.researchgate.net/profile/James_Holland5/publication/49739509_Tian_F_Bradbury_PJ_Brown_PJ_Hung_H_Sun_Q_Flint-Garcia_S_et_al.._Genome-wide_association_study_of_leaf_architecture_in_the_maize_nested_association_mapping_population._Nat_Genet_43_159-162/links/0912f50f409b45bcf1000000.pdf), Tian et al 2011
+- ["Growth, efficiency, and yield of commercial broilers from 1957, 1978, and 2005"](http://ps.oxfordjournals.org/content/93/12/2970.full), Zuidhof et al 2014 ([media](http://www.vox.com/xpress/2014/10/2/6875031/chickens-breeding-farming-boilers-giant "Chickens have gotten ridiculously large since the 1950s"))
+- ["Understanding genomic selection in poultry breeding"](http://emilkirkegaard.dk/en/wp-content/uploads/Understanding-genomic-selection-in-poultry-breeding.pdf), Wolc 2014
+- ["The Genetic 'SUPER COW' - Myth vs Reality"](http://www.thebullvine.com/genomics/genetic-super-cow-myth-reality/); ["Cloning Cows From Steaks (and Other Ways of Building Better Cattle)"](http://news.nationalgeographic.com/news/2014/10/141015-better-beef-genetics-science-agriculture-environment-ngfood/); ["Frontiers in cattle genomics"](http://infoproc.blogspot.com/2015/07/frontiers-in-cattle-genomics.html) ["It's all in the gene: cows"](https://infoproc.blogspot.com/2014/08/its-all-in-gene-cows.html)
+- ["The Ride of Their Lives: Children prepare for the world's most dangerous organized sport"](http://www.newyorker.com/magazine/2014/12/08/ride-lives)
+- ["Tolman and Tyron: Early Research on the Inheritance of the Ability to Learn"](http://emilkirkegaard.dk/en/wp-content/uploads/Tolman-and-Tryon-Early-research-on-the-inheritance-of-the-ability-to-learn.pdf), Innis 1992
+- ["A short critical history of the application of genomics to animal breeding"](http://www.researchgate.net/profile/Miguel_Toro/publication/264559629_A_short_critical_history_of_the_application_of_genomics_to_animal_breeding/links/540daeb), Blasco & Toro 2014
+- ["One Hundred Years of Statistical Developments in Animal Breeding"](http://www.annualreviews.org/eprint/AEMMACidWrxGtS8eBFrT/full/10.1146/annurev-animal-022114-110733), Gianola & Rosa 2015
+- ["Understanding the Genetics of Intelligence: Can Height Help? Can Corn Oil?"](http://apsychoserver.psych.arizona.edu/JJBAReprints/PSYC621/Johnson%20Current%20Directions%20Psych%20Science%202010%20%28G%20and%20E%20in%20IQ%29.pdf), Johnson 2010
+- ["Data and Theory Point to Mainly Additive Genetic Variance for Complex Traits"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1000008), Hill et al 2008; ["On epistasis: why it is unimportant in polygenic directional selection"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2871814/), Crow 2010
+- ["On the genetic architecture of intelligence and other quantitative traits"](http://arxiv.org/abs/1408.3421), Hsu 2014
+- ["U.S. Research Lab Lets Livestock Suffer in Quest for Profit: Animal Welfare at Risk in Experiments for Meat Industry"](http://www.nytimes.com/2015/01/20/dining/animal-welfare-at-risk-in-experiments-for-meat-industry.html)
+- ["Korea's Sooam Biotech Is the World's First Animal Cloning Factory"](http://www.businessweek.com/articles/2014-10-22/koreas-sooam-biotech-is-the-worlds-first-animal-cloning-factory)
+- ["Healthy ageing of cloned sheep"](http://www.nature.com/ncomms/2016/160726/ncomms12359/full/ncomms12359.html), Sinclair et al 2016
+- ["Monkey kingdom: China is positioning itself as a world leader in primate research"](http://www.nature.com/news/monkey-kingdom-1.19762)
+
+- ["The Gene Hackers: A powerful new technology enables us to manipulate our DNA more easily than ever before"](http://www.newyorker.com/magazine/2015/11/16/the-gene-hackers)
+- ["Improved CRISPR-Cas9: Safe and Effective?"](http://infoproc.blogspot.com/2016/01/improved-crisprcas9-safe-and-effective.html): ["High-fidelity CRISPR-Cas9 nucleases with no detectable genome-wide off-target effects"](http://www.gwern.net/docs/genetics/2016-kleinstiver.pdf "Kleinstiver et al 2016")/["Rationally engineered Cas9 nucleases with improved specificity"](http://www.gwern.net/docs/genetics/2016-slaymaker.pdf "Slaymaker et al 2016")
+- ["Chinese scientists to pioneer first human CRISPR trial: Gene-editing technique to treat lung cancer is due to be tested in people in August"](http://www.nature.com/news/chinese-scientists-to-pioneer-first-human-crispr-trial-1.20302)
+- ["Welcome to the CRISPR Zoo"](http://www.nature.com/news/welcome-to-the-crispr-zoo-1.19537 "Birds and bees are just the beginning for a burgeoning technology"); ["Editing Out Pesticides"](http://www.pbs.org/wgbh/nova/next/nature/crispr-grapes/)
+
+- ["The reversal test: eliminating status quo bias in applied ethics"](https://ethicslab.georgetown.edu/phil553/wordpress/wp-content/uploads/2015/01/Ord-and-Bostrom-Eliminating-Status-Quo-Bias-in-Applied-Ethics-.pdf), Bostrom & Ord 2006
+- ["Society Is Fixed, Biology Is Mutable"](http://slatestarcodex.com/2014/09/10/society-is-fixed-biology-is-mutable/)
+- ["The Disease That Turned Us Into Genetic-Information Junkies"](http://nautil.us/blog/the-disease-that-turned-us-into-genetic_information-junkies)
+- [Wrongful birth](https://en.wikipedia.org/wiki/Wrongful_birth)
+- ["Father, Son, and the Double Helix"](http://www.openthemagazine.com/article/living/father-son-and-the-double-helix#all)
+- ["This couple says everything they were told about their sperm donor was a lie"](https://www.washingtonpost.com/news/morning-mix/wp/2016/04/15/this-couple-says-everything-they-were-told-about-their-sperm-donor-was-a-lie/)
+- ["Preimplantation genetic diagnosis guided by single-cell genomics"](http://www.gwern.net/docs/genetics/2013-aa.pdf), Aa et al 2013
+- ["Embryo Selection for Cognitive Enhancement: Curiosity or Game-changer?"](http://www.nickbostrom.com/papers/embryo.pdf), Shulman & Bostrom 2013
+- ["The Rise of the Smart Sperm Shopper: How the Repository for Germinal Choice accidentally revolutionized sperm banking"](http://www.slate.com/articles/life/seed/2001/04/the_rise_of_the_smart_sperm_shopper.single.html) / ["The 'Genius Babies' Grow Up: What happened to 15 children from the Nobel Prize sperm bank?"](http://www.slate.com/articles/life/seed/2001/05/the_genius_babies_grow_up.html); [_The Genius Factory_](https://dl.dropboxusercontent.com/u/182368464/2005-plotz-geniusfactory.epub), Plotz 2005
+- ["In vitro eugenics"](http://jme.bmj.com/content/early/2013/02/13/medethics-2012-101200.full), Sparrow 2013
+- ["In vitro gametogenesis: just another way to have a baby?"](https://jlb.oxfordjournals.org/content/3/1/87), Suter 2016
+- ["Introducing precise genetic modifications into human 3PN embryos by CRISPR/Cas-mediated genome editing"](http://www.gwern.net/docs/genetics/2016-kang.pdf), Kang et al 2016 (see also Liang et al 2015; both describe the CRISPR state of the art as of early 2014)
+- ["CRISPR/Cas9-mediated gene editing in human tripronuclear zygotes"](http://link.springer.com/content/pdf/10.1007%2Fs13238-015-0153-5.pdf), Liang et al 2015
+- ["Evolution of the Human Brain: From Matter to Mind"](http://www.gwern.net/docs/iq/2015-hofman.pdf), Hofman 2015
+- ["Engineering the Perfect Baby"](https://www.technologyreview.com/s/535661/engineering-the-perfect-baby/ "Scientists are developing ways to edit the DNA of tomorrow's children. Should they stop before it's too late?")
+- ["Eugenics, Ready or Not"](https://quadrant.org.au/magazine/2015/05/eugenics-ready/), Salter
+- ["The Genome Project-Write"](http://science.sciencemag.org/content/early/2016/06/01/science.aaf6850.full), Boeke et al 2016 ([media](http://www.nytimes.com/2016/06/03/science/human-genome-project-write-synthetic-dna.html "Scientists Announce HGP-Write, Project to Synthesize the Human Genome"))
+
+#### Reception
+
 - ["What You Can't Say"](http://www.paulgraham.com/say.html), Paul Graham
-- ["Meta-analysis of the heritability of human traits based on fifty years of twin studies"](/docs/genetics/2015-polderman.pdf), Polderman et al 2015 (supplements: [1](/docs/genetics/2015-polderman-supplement-1.pdf), [2](docs/genetics/2015-polderman-supplement-2.xlsx))
+- ["Political Diversity Will Improve Social Psychological Science"](http://journals.cambridge.org/images/fileUpload/documents/Duarte-Haidt_BBS-D-14-00108_preprint.pdf), Duarte et al 2014
+- ["The Social and Political Views of American Professors"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.147.6141&rep=rep1&type=pdf), Gross & Simmons 2007
+- ["Whither the Blank Slate? A Report on the Reception of Evolutionary Biological Ideas among Sociological Theorists"](http://www.gwern.net/docs/genetics/2014-horowitz.pdf), Horowitz et al 2014 ([media](http://www.washingtonpost.com/blogs/wonkblog/wp/2014/10/28/liberals-deny-science-too/))
+- ["Evolution is Not Relevant to Sex Differences in Humans Because I Want it That Way! Evidence for the Politicization of Human Evolutionary Psychology"](http://www.evostudies.org/pdf/GeherVol2Iss1.pdf), Geher & Gambacorta 2010
+- ["How Napoleon Chagnon Became Our Most Controversial Anthropologist"](http://www.nytimes.com/2013/02/17/magazine/napoleon-chagnon-americas-most-controversial-anthropologist.html?pagewanted=all)
+- ["Contrarians, Crackpots, and Consensus"](http://slatestarcodex.com/2015/08/09/contrarians-crackpots-and-consensus/)
+- ["Darwin, Galton and the Statistical Enlightenment"](http://www.gwern.net/docs/statistics/2010-stigler.pdf), Stigler 2010
+- ["Measure for Measure: The strange science of Francis Galton"](http://www.newyorker.com/magazine/2005/01/24/measure-for-measure-5?currentPage=all)
+- ["The IQ Controversy, the Media and Public Policy"](http://emilkirkegaard.dk/en/wp-content/uploads/The-I.-Q.-Controversy-The-Media-and-Public-Policy-Stanley-Rothman-323p_0887381510.pdf) ([WP](https://en.wikipedia.org/wiki/The_IQ_Controversy,_the_Media_and_Public_Policy_\(book\)))
+- ["Mainstream Science on Intelligence"](https://en.wikipedia.org/wiki/Mainstream_Science_on_Intelligence)
+- ["2013 survey of expert opinion on intelligence"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.695.3163&rep=rep1&type=pdf), Rindermann et al 2013; ["Survey of Expert Opinion on Intelligence: Causes of International Differences in Cognitive Ability Tests"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4804158/), Rindermann et al 2016
+- ["Ethics: Taboo genetics"](http://www.nature.com/news/ethics-taboo-genetics-1.13858)
+- ["Science Is Not Always 'Self-Correcting': Fact-Value Conflation and the Study of Intelligence"](http://www.gwern.net/docs/iq/2015-cofnas.pdf), Cofnas 2015
+- ["U.S. Public Wary of Biomedical Technologies to 'Enhance' Human Abilities"](http://www.pewinternet.org/2016/07/26/u-s-public-wary-of-biomedical-technologies-to-enhance-human-abilities/)
+- [Cochran on publishing the Ashkenazi intelligence hypothesis](http://boards.straightdope.com/sdmb/showpost.php?p=13724510&postcount=133)
+- ["We can't ignore the evidence: genes affect social mobility"](http://www.prospectmagazine.co.uk/magazine/we-cant-ignore-the-evidence-genes-affect-social-mobility)
+- [The end of environmental inequality means the rise of genetic inequality](http://blogs.discovermagazine.com/gnxp/2011/08/the-end-of-environmental-inequality-means-the-rise-of-genetic-inequality/)
+- ["2007 Interview of Linda S. Gottfredson, by Howard Wainer & Daniel Robinson"](http://www.udel.edu/educ/gottfredson/reprints/2007gottfredsoninterview.pdf)
+- ["Why can't we talk about IQ?"](http://www.politico.com/story/2013/08/opinion-jason-richwine-95353_Page2.html)
+- ["Dalton Conley Answers Your 'Parentology' Questions"](http://freakonomics.com/2014/03/26/dalton-conley-answers-your-parentology-questions/)
+- ["Tutankhamen's Blood"](https://medium.com/matter/tutankhamuns-blood-9fb62a68597b)
+- ["Eske Willerslev Is Rewriting History With DNA"](http://www.nytimes.com/2016/05/17/science/eske-willerslev-ancient-dna-scientist.html)
+- ["Book Review: _A Troublesome Inheritance_ by Nicholas Wade"](http://www.wsj.com/news/articles/SB10001424052702303380004579521482247869874)
+- ["Is crime genetic? Scientists don't know because they're afraid to ask"](https://www.bostonglobe.com/ideas/2016/03/06/crime-genetic-scientists-don-know-because-they-afraid-ask/3lhGUVuNsfdJXjvhtaxPHN/story.html)
+- ["R. A. Fisher on Race and Human Genetic Variation"](http://www.unz.com/gnxp/r-a-fisher-on-race-and-human-genetic-variation/)
+- ["Cosmic Horror: In which we confront the terrible racism of H. P. Lovecraft"](http://radishmag.wordpress.com/2014/04/21/cosmic-horror/)
+
+#### Implications
+
+- ["Three Laws of Behavior Genetics and What They Mean"](http://people.virginia.edu/~ent3c/papers2/three_laws.pdf), Turkheimer 2000
+- ["The Fourth Law of Behavior Genetics"](http://www.unz.com/gnxp/the-fourth-law-of-behavior-genetics/)
+- ["Epidemiology, genetics and the 'Gloomy Prospect': embracing randomness in population health research and practice"](http://ije.oxfordjournals.org/content/40/3/537.full), Smith 2011
+- ["G = E: What GWAS Can Tell Us about the Environment"](http://journals.plos.org/plosgenetics/article/asset?id=10.1371/journal.pgen.1005765.PDF), Gage et al 2016
+- ["Do People Make Environments or Do Environments Make People?"](http://www.gwern.net/docs/genetics/2001-rowe.pdf), Rowe 2001
+- ["Top 10 Replicated Findings From Behavioral Genetics"](http://www.gwern.net/docs/genetics/2016-plomin.pdf), Plomin et al 2016
+- ["Why Behavioral Genetics Matters: Comment on Plomin et al (2016)"](http://www.gwern.net/docs/genetics/2016-lee-2.pdf), Lee & McGue 2016
+- ["The Iron Law Of Evaluation And Other Metallic Rules"](http://www.gwern.net/docs/1987-rossi), Rossi 1987
+- [_Behavioral Genetics_](http://www.gwern.net/docs/genetics/2012-plomin-behavioralgenetics.pdf), Plomin et al 2012
+- ["What 2,500 Sequenced Genomes Say About Humanity's Future"](http://www.wired.com/2015/09/power-1000-genomes/)
+- ["My Genome, My Self"](http://www.nytimes.com/2009/01/11/magazine/11Genome-t.html?_r=2&pagewanted=all)
+- ["Why We're Different: A Conversation with Robert Plomin"](https://www.edge.org/conversation/robert_plomin-why-were-different)
 
 # See also
 
