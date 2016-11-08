@@ -3207,234 +3207,61 @@ So an American social group cannot exceed _n_=51 before first names begin to bre
 
 # WiFi router improvement
 
-I connect to the Internet over Wifi, from the main room in my apartment to the WiFi provided by a cable modem subscription in a neighboring house, which is ~23 meters away but the house is large and the computer room with the cable & modem is itself another ~10 meters away on the far opposite side of the house in the worst possible location, and so to connect, I have placed a WiFi repeater in between.
+> My laptop in my apartment receives Internet via a WiFi repeater to another house, yielding slow speeds and frequent glitches. I replaced the obsolete WiFi router and increased connection speeds somewhat but still inadequate. For a better solution, I used a directional antenna to connect directly to the new WiFi router, which, contrary to my expectations, yielded a ~6x increase in speed. Extensive benchmarking of all possible arrangements of laptops/dongles/repeaters/antennas/routers/positions shows that the antenna+router is inexpensive and near optimal speed, and that the only possible improvement would be a hardwired Ethernet line, which would be much more expensive and offer a small increase in performance.
+
+## Background
+### WiFi problems
+
+I connect to the Internet over [WiFi](!Wikipedia), from the main room in my apartment to the WiFi provided by a cable modem subscription in a neighboring house.
+The house is ~23 meters away, but the house is large with cement foundations, and the computer room with the cable & modem is itself another ~10 meters away on the far opposite side of the house in the worst possible location.
+The WiFi router is totally invisible to my laptop's WiFi card, and so to connect, I placed in 2011 a WiFi [repeater](!Wikipedia "Wireless repeater") in between.
 This works, but not well.
 
-My old WiFi router (a Belkin wireless router F6D4230-4 v1 which is at least 6 years old I believe was provided by a local ISP originally) on a weekly basis causes me problems where it will mysteriously freeze and no longer connect to the Internet nor allow IPs to be connected to it and only forcibly power-cycling the Belkin router will fix it (rebooting or reconnecting my laptop does nothing), a problem which also affected some relatives who visited & attempted to connect their iPads or smartphones.
+My old WiFi router (a Belkin wireless router model #F6D4230-4 v1 which is at least 6 years old & was provided by a local ISP originally) on a weekly basis causes me problems where it will mysteriously freeze and no longer connect to the Internet nor allow IPs to be connected to it and only forcibly power-cycling the Belkin router will fix it (rebooting or reconnecting my laptop does nothing), a problem which also affected some relatives who visited & attempted to connect their iPads or smartphones.
 As WiFi is black magic compared to reliable predictable wired Ethernet connections, I was baffled how to fix this.
+After putting it off for too long, I sat down to deal with this problem.
 
 My initial suspicion fell on the almost equally old WiFi repeater/range-extender which I used to connect from my house to the Belkin router (some cheap model bought from Walmart whose brand & model number I didn't record at the time), but replacing it in February 2015 with a [TP-LINK TL-WA860RE](http://www.amazon.com/gp/product/B00PEW7V7E/ "$41.52") improved the situation only somewhat.
-Finally fed up after yet another outage in early October 2016, I went looking for a replacement since apparently that model is notorious for freezes.
-WiFi router reviews are hard to parse since even the best routers have a large complaint section, which I suspect may be people blaming the router for things beyond its control, so I wound up going with a model that was well-reviewed on [The Wirecutter](http://thewirecutter.com/reviews/best-wi-fi-router/ "The Best Wi-Fi Router (for Most People)") and one of the best-selling units on Newegg (reasoning that if I can't be sure of buying a *good* router, I can at least try to buy a *popular* one which will help when debugging): the [TP-LINK Archer C7 AC1750 Wireless Dual Band Gigabit Router](https://www.amazon.com/TP-LINK-Archer-C7-Wireless-Gigabit/dp/B00BUSDVBQ/ "$85.99").
+Fed up after yet another outage in early October 2016, I went looking for a replacement since apparently that model is notorious for freezes.
+WiFi router reviews are hard to parse since even the best routers have a large complaint section, which I suspect may be people blaming the router for things beyond its control, so I wound up going with a model that was well-reviewed on [The Wirecutter](http://thewirecutter.com/reviews/best-wi-fi-router/ "The Best Wi-Fi Router (for Most People)") and one of the best-selling units on Newegg (reasoning that if I can't be sure of buying a *good* router, I can at least try to buy a *popular* one which will help when debugging): the [TP-LINK Archer C7 AC1750 Wireless Dual Band Gigabit Router](https://www.amazon.com/TP-LINK-Archer-C7-Wireless-Gigabit/dp/B00BUSDVBQ/) (\$85.99).
 I installed it on 21 October 2016.
 
-When I had Verizon DSL 2011-2014, the download/upload/latency bandwidth tests were usually ~0.9/0.4Mbps & 100ms; this was upgraded to a Metrocast cable modem in late July 2014, and the bandwidth performance improved substantially to ~3/1Mbps.
-The only computers on the local network are usually my laptop and my Netatmo weather station which needs WiFi to upload its data to the website, and there are no other WiFi networks close enough to connect to or (usually) detect, so interference is not the cause for the slow performance but probably my remote rural location.
+When I had Verizon DSL 2011-2014, the download/upload/latency bandwidth tests were usually ~0.9/0.4Mbps & 50ms; this was upgraded to a Metrocast cable modem in late July 2014, and the bandwidth performance improved substantially to ~3/1Mbps.
+The only computers on the local network are usually my laptop and my [Netatmo](!Wikipedia) air quality monitor (which needs WiFi to upload its data to the website), and there are no other WiFi networks close enough to connect to or (usually) detect, so interference is not the cause for the slow performance but probably my remote rural location.
 My assumption was that the TP-LINK router would fix the bugs and general flakiness, but otherwise not make a noticeable difference, since as far as I knew, even the most ancient WiFi routers supported bandwidths like 50Mbps which are an order of magnitude higher than the ~3Mbps I was getting to the Internet, so the WiFi router should not have represented any kind of bottleneck or affected my bandwidth.
 
-Still, it's worth checking that it doesn't make my connection speeds worse.
-Before installation, I benchmarked my previous setup using 2 different bandwidth testing tools (for robustness), the Google bandwidth testing tool & the [Ookla speedtest.net v3.0.7](http://www.speedtest.net/) bandwidth testing tool: with my Firefox browser v44.0+build3-0ubuntu0.15.04.1 open with its usual tab overload, BitTorrent & IRC & my usual daemons running (since I am interested in performance under normal conditions with many programs & connections active), but while not actively browsing any webpages, I ran 20 bandwidth tests using each tool and alternating between them.
-After installation and checking that all websites loaded, BitTorrent was back up to its usual (throttled) upload speed, settings were finalized (I left almost all defaults alone, primarily changing the SSID & password to match the old one) etc, I re-ran the 40 tests as before.
-(This is not, strictly speaking, a randomized experiment since it is before/after and confounded by time - possibly my network speeded up a great deal over the half hour or so it took to set up - but since I've never noticed such time differences and it would be a huge pain to repeatedly turn off and switch between routers, I'm going to ignore that.)
-
-This gives a 2x2 experimental design (new/old vs Google/Ookla) on 3 measurement types (download in Mbps, upload in Mbps, and latency in ms):
-
-~~~{.R}
-# (down/up mbps, latency ms)
-bandwidth <- read.csv(stdin(), header=TRUE, colClasses=c("logical", "factor", "numeric", "numeric", "integer"))
-New,Tester,Download,Upload,Latency
-FALSE,Google,1.33, 2.44, 109
-FALSE,Google,4.90, 2.20, 217
-FALSE,Google,2.29, 2.35, 99
-FALSE,Google,3.55, 2.28, 58
-FALSE,Google,1.71, 2.15, 75
-FALSE,Google,3.23, 2.67, 42
-FALSE,Google,2.27, 2.60, 58
-FALSE,Google,2.21, 2.71, 96
-FALSE,Google,3.22, 2.10, 45
-FALSE,Google,2.96, 2.22, 44
-FALSE,Google,4.88, 3.15, 42
-FALSE,Google,4.18, 1.69, 46
-FALSE,Google,2.38, 2.25, 82
-FALSE,Google,1.07, 1.75, 102
-FALSE,Google,5.08, 2.19, 72
-FALSE,Google,0.64, 2.66, 259
-FALSE,Google,0.35, 2.35, 539
-FALSE,Google,6.40, 2.85, 200
-FALSE,Google,2.67, 1.77, 52
-FALSE,Google,1.19, 2.01, 105
-FALSE,Ookla,8.68, 2.45, 18
-FALSE,Ookla,9.27, 2.38, 23
-FALSE,Ookla,9.89, 2.79, 16
-FALSE,Ookla,8.00, 2.63, 18
-FALSE,Ookla,8.93, 2.62, 18
-FALSE,Ookla,8.93, 2.70, 20
-FALSE,Ookla,8.15, 2.75, 18
-FALSE,Ookla,8.16, 2.76, 22
-FALSE,Ookla,7.66, 2.88, 18
-FALSE,Ookla,7.40, 1.83, 15
-FALSE,Ookla,8.51, 2.61, 13
-FALSE,Ookla,9.00, 2.78, 19
-FALSE,Ookla,7.48, 2.75, 17
-FALSE,Ookla,8.44, 1.62, 20
-FALSE,Ookla,8.35, 2.80, 19
-FALSE,Ookla,8.21, 2.24, 18
-FALSE,Ookla,6.28, 2.16, 19
-FALSE,Ookla,8.01, 2.73, 18
-FALSE,Ookla,7.89, 1.77, 20
-FALSE,Ookla,7.68, 2.38, 20
-TRUE,Google,7.50, 2.81, 41
-TRUE,Google,13.60, 3.11, 298
-TRUE,Google,16.40, 2.96, 119
-TRUE,Google,15.60, 2.90, 241
-TRUE,Google,14.20, 2.93, 212
-TRUE,Google,14.40, 2.86, 295
-TRUE,Google,14.10, 2.77, 266
-TRUE,Google,11.60, 2.78, 224
-TRUE,Google,13.20, 2.68, 296
-TRUE,Google,13.00, 2.71, 314
-TRUE,Google,14.50, 2.96, 298
-TRUE,Google,12.20, 2.77, 398
-TRUE,Google,14.00, 2.75, 292
-TRUE,Google,8.99, 2.85, 37
-TRUE,Google,9.01, 2.90, 41
-TRUE,Google,13.80, 2.93, 223
-TRUE,Google,14.80, 3.06, 271
-TRUE,Google,14.60, 2.96, 256
-TRUE,Google,13.70, 2.77, 235
-TRUE,Google,12.90, 2.39, 210
-TRUE,Ookla,12.50, 3.18, 33
-TRUE,Ookla,12.80, 3.18, 40
-TRUE,Ookla,14.68, 3.39, 38
-TRUE,Ookla,13.42, 3.39, 40
-TRUE,Ookla,13.91, 3.31, 39
-TRUE,Ookla,11.80, 3.31, 41
-TRUE,Ookla,11.82, 3.19, 34
-TRUE,Ookla,12.74, 3.37, 35
-TRUE,Ookla,13.18, 3.47, 35
-TRUE,Ookla,13.27, 3.09, 38
-TRUE,Ookla,13.95, 3.54, 38
-TRUE,Ookla,15.59, 3.23, 26
-TRUE,Ookla,13.34, 3.27, 39
-TRUE,Ookla,13.77, 3.20, 39
-TRUE,Ookla,13.63, 3.25, 30
-TRUE,Ookla,13.43, 3.13, 39
-TRUE,Ookla,10.82, 3.09, 36
-TRUE,Ookla,13.06, 3.11, 41
-TRUE,Ookla,13.57, 3.08, 38
-TRUE,Ookla,9.36, 3.42, 35
-
-
-summary(bandwidth)
-#     New             Tester      Download             Upload            Latency
-#  Mode :logical   Google:40   Min.   : 0.350000   Min.   :1.620000   Min.   : 13.00
-#  FALSE:40        Ookla :40   1st Qu.: 6.370000   1st Qu.:2.387500   1st Qu.: 25.25
-#  TRUE :40                    Median : 9.005000   Median :2.770000   Median : 41.00
-#  NA's :0                     Mean   : 9.302125   Mean   :2.725875   Mean   :100.15
-#                              3rd Qu.:13.422500   3rd Qu.:3.090000   3rd Qu.:139.25
-#                              Max.   :16.400000   Max.   :3.540000   Max.   :539.00
-with(bandwidth, aggregate(cbind(Download, Upload, Latency), list(New, Tester), mean))
-#   Group.1 Group.2 Download Upload Latency
-# 1   FALSE  Google   2.8255 2.3195  117.10
-# 2    TRUE  Google  13.1050 2.8425  228.35
-# 3   FALSE   Ookla   8.2460 2.4815   18.45
-# 4    TRUE   Ookla  13.0320 3.2600   36.70
-
-wilcox.test(Download ~ New, conf.int=TRUE, data=bandwidth)
-#   Wilcoxon rank sum test with continuity correction
-# data:  Download by New
-# W = 23, p-value = 7.903394e-14
-# alternative hypothesis: true location shift is not equal to 0
-# 95 percent confidence interval:
-#  -8.859984325 -5.789940523
-# sample estimates:
-# difference in location
-#           -6.920002136
-wilcox.test(Upload ~ New, conf.int=TRUE, data=bandwidth)
-#   Wilcoxon rank sum test with continuity correction
-# data:  Upload by New
-# W = 95.5, p-value = 1.242035e-11
-# alternative hypothesis: true location shift is not equal to 0
-# 95 percent confidence interval:
-#  -0.7699368972 -0.4800376233
-# sample estimates:
-# difference in location
-#          -0.6199699307
-wilcox.test(Latency ~ New, conf.int=TRUE, data=bandwidth)
-#   Wilcoxon rank sum test with continuity correction
-# data:  Latency by New
-# W = 489, p-value = 0.002792694
-# alternative hypothesis: true location shift is not equal to 0
-# 95 percent confidence interval:
-#  -99.00004305 -15.99999615
-# sample estimates:
-# difference in location
-#           -20.99997024
-summary(lm(cbind(Download, Upload, Latency) ~ Tester * New, data=bandwidth))
-# Response Download :
-# ...Coefficients:
-#                       Estimate Std. Error  t value   Pr(>|t|)
-# (Intercept)          2.8255000  0.3577683  7.89757 1.7287e-11
-# TesterOokla          5.4205000  0.5059608 10.71328 < 2.22e-16
-# NewTRUE             10.2795000  0.5059608 20.31679 < 2.22e-16
-# TesterOokla:NewTRUE -5.4935000  0.7155366 -7.67745 4.5521e-11
-#
-# Residual standard error: 1.599988 on 76 degrees of freedom
-# Multiple R-squared:  0.8801453,   Adjusted R-squared:  0.8754142
-# F-statistic: 186.0337 on 3 and 76 DF,  p-value: < 2.2204e-16
-#
-# Response Upload :
-# ...Coefficients:
-#                       Estimate Std. Error  t value   Pr(>|t|)
-# (Intercept)         2.31950000 0.06387346 36.31399 < 2.22e-16
-# TesterOokla         0.16200000 0.09033072  1.79341   0.076885
-# NewTRUE             0.52300000 0.09033072  5.78984 1.4969e-07
-# TesterOokla:NewTRUE 0.25550000 0.12774692  2.00005   0.049068
-#
-# Residual standard error: 0.2856508 on 76 degrees of freedom
-# Multiple R-squared:  0.6281363,   Adjusted R-squared:  0.6134575
-# F-statistic: 42.79199 on 3 and 76 DF,  p-value: 2.651345e-16
-#
-# Response Latency :
-# ...Coefficients:
-#                      Estimate Std. Error  t value   Pr(>|t|)
-# (Intercept)         117.10000   17.05698  6.86523 1.5739e-09
-# TesterOokla         -98.65000   24.12221 -4.08959 0.00010643
-# NewTRUE             111.25000   24.12221  4.61193 1.5845e-05
-# TesterOokla:NewTRUE -93.00000   34.11395 -2.72616 0.00795090
-#
-# Residual standard error: 76.28112 on 76 degrees of freedom
-# Multiple R-squared:  0.5536174,   Adjusted R-squared:  0.5359971
-# F-statistic: 31.41918 on 3 and 76 DF,  p-value: 2.579272e-13
-~~~
-
-As the differences are so large, there's not much need for any kind of modeling, Bayesian or frequentist, but anyway:
-the non-parametric test strongly suggests that the median download and upload bandwidths increased by 6.9mbps and 0.61mbps respectively (good), but median latency increased 21ms (bad);
-the linear model largely agrees but with more precision since we can more easily control for the differences between testing service (Google and Ookla have different means for all 3 measurement types, and so respond differently) - higher bandwidth but worse latency.
-
-Since this is a mid-tier brand new router which should be much faster than a cheap 6yo+ router, the latency is probably fixable with some setting tweaks
-
-Does the new TP-LINK router work? YouTube videos seem to load much better, but I am not sure about how much the greater bandwidth helps regular web browsing or work, and it's too soon to tell if the freezes have gone away.
-
-<!--
-Unfortunately, the freezes returned within days. I thought it might be the USB WiFi dongle, and so I upgraded Ubuntu from 15.04 to 15.10 (I had been putting it off for fear of things breaking), which gave me access to the laptop WiFi card; this turned out to be inferior in reception to the dongle, perhaps because the dongle has an ~11cm-long antenna.
+Did the new TP-LINK router work? YouTube videos seem to load much better, but I am not sure about how much the greater bandwidth helps regular web browsing or work, and it's too soon to tell if the freezes have gone away. Unfortunately, the freezes returned within days.
+I thought it might be the USB WiFi dongle, and so I upgraded Ubuntu from 15.04 to 15.10 (I had been putting it off for fear of things breaking), which gave me access to the laptop WiFi card; this turned out to be inferior in reception to the dongle, perhaps because the dongle has an ~11cm-long antenna.
 Next, I investigated the repeater frequency: it was on 2.4GHz, which should have better range than the 5GHz setting, so that was not an issue.
 The location of the repeater might not be optimal, so I placed it in various alternative spots and also tried placing it up in the attic for vertical distance, and all alternative replacements led to lower or no signal strength.
 Walking around with a WiFi signal strength app on an old spare smartphone, it became clear that the location was fine, but the signal strength just did not reach through the 23 meters + two sets of walls.
+
+### Possible solutions
+
 This left me with only a few options:
 
-- status quo: simply live with the occasional disconnections and low bandwidth, fixing them with manual reboots
+- status quo: simply live with the low bandwidth and occasional disconnections, fixing them with manual reboots
 - get a more expensive, closer to the top of the line, hopefully stronger WiFi repeater like [The Wire Cutter's July 2016](http://thewirecutter.com/reviews/best-wi-fi-extender/) recommended extender, the [TP-Link RE450](https://www.amazon.com/dp/B010S6SG3S/ "$98.98"); likely but not guaranteed to solve the problem, more expensive (\$100+), psychologically painful since I bought the first repeater not terribly long ago
+- look into [power-line communication](!Wikipedia) to connect to the router (not possible as far as I knew due to independent electrical systems)
 - get my own cable modem subscription and run it into the apartment; guaranteed solution, but *much* more expensive, additional paperwork, major hassle in getting such a connection, and looking at the wiring of the buildings, I'm not 100% sure it is possible as some of the cable runs may've been cut since the last time cable was active in this apartment was at least a decade and a half ago
-- run ~60m of Ethernet cable out and around to the other house, buried in the ground in PVC pipes to avoid cars & lawn mowers & weather, going out and in through windows or walls; guaranteed solution, not terribly expensive (shouldn't require more than ~\$30 of cabling and a similar amount for piping), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require damaging the buildings to get the cabling in, which the owners would not go for, and be a good deal of work digging & burying the cables
+- run ~60m of Ethernet cable out and around to the other house, buried in the ground in PVC pipes to avoid cars & lawn mowers & weather, going out and in through windows or walls; guaranteed solution, not terribly expensive (shouldn't require much more than ~\$30 of cabling and a similar amount for piping), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require work on the buildings to get the cabling in, which the owners would not be happy about, and be a good deal of work digging & burying the cables
 - a high-gain [parabolic](!Wikipedia "Parabolic antenna") or [Yagi](!Wikipedia "Yagi–Uda antenna") [directional antenna](!Wikipedia) for either laptop or router, to boost signal reception / focus^[As I understand how it would work here, sending/receiving are symmetrical for a directional antenna like this: the signals from the router to the laptop is made stronger by focusing the same amount of radio into the smaller directional beam, and the weak omnidirectional signals from the laptop back to the router are receivable thanks to the same focusing of the antenna dish.]; highly likely to solve the problem as directional antennas can reportedly maintain fast connections over scores of miles under ideal circumstances, relatively inexpensive (\$20-50), easily installed onto either the USB dongle or the router which both have removable/extensible antennas, at the cost of an additional bulky object somewhere and the solution not being mobile. Directional antennas are also not something I have any experience with and so would be fun to play with.
 
+## Directional antenna
+
 The directional antenna option is clearly best, and I find that many people in my situation also use directional antennas.
-I somewhat casually chose on 27 October 2016 to buy the [TP-Link TL-ANT2424B Directional Grid Parabolic Antenna, 2.4GHz 24dBi](https://www.amazon.com/TP-Link-Directional-Parabolic-Connector-TL-ANT2424B/dp/B003CFATOW/ "$44.77"), reasoning that another TP-Link product is a bit more likely to be compatible with other TP-Link products like the dongle or router.
+I somewhat casually chose on 27 October 2016 to buy the [TP-Link TL-ANT2424B Directional Grid Parabolic Antenna, 2.4GHz 24dBi](https://www.amazon.com/TP-Link-Directional-Parabolic-Connector-TL-ANT2424B/dp/B003CFATOW/) (\$44.77), reasoning that another TP-Link product is a bit more likely to be compatible with other TP-Link products like the dongle or router.
+The TL-ANT2424B is large and almost 1m length-wise, making placement awkward, but it boosts signal reception considerably: the repeater signal increases from ~40% to ~75%, and the WiFi router signal goes from not seen (0%?) to ~50% when positioned carefully.
+The directional antenna is not by default compatible with the antenna sockets on either the dongle or router, and I needed a N male connector to RP-SMA cable; a [1m-long cable](https://www.amazon.com/uxcell-Connector-RP-SMA-Antenna-Pigtail/dp/B006Z8MJ6Y/ "uxcell N Male Connector to RP-SMA Male Antenna Pigtail Cable 1M") cost \$7.36 (total cost: \$52.13).
 
-router/dongle:  RP-SMA
-antenna: n-female
-uxcell N Male Connector to RP-SMA Male Antenna Pigtail Cable 1M $7.36 https://www.amazon.com/uxcell-Connector-RP-SMA-Antenna-Pigtail/dp/B006Z8MJ6Y/
-total cost: $52.13
-
-Since both the dongle and router are listed by TP-Link as having removable antennas (which I also checked physically) but the two stubby antennas on the repeater are hardwired, I have two options for where to place the directional antenna.
+Since both the dongle and router are listed by TP-Link as having removable antennas (which I also checked physically) but the two stubby antennas on the repeater are hardwired, I have only two options for where to place & aim the directional antenna.
 Ideally, I will be able to place it onto the router, aim it at my laptop, and have high speeds with the laptop WiFi card, letting me scrap the repeater and USB dongle, and getting an overall simpler, more reliable, and faster system.
-If the router doesn't work, I can put it onto the USB dongle and at least cut out the repeater.
-The antenna should come with a 'pigtail' cord that adapts the router/dongle socket to the antenna socket, so installation should be as simple as unscrewing the original antenna, screwing on the pigtail, and pointing the dish in the right direction, perhaps assisted by some duct tape.
+If the router placement doesn't work (because the connection doesn't work, the antenna is too big to put in the room, or the laptop WiFi card is still too weak to connect), I can put it onto the USB dongle and at least cut out the repeater.
 
+## Testing
 
-For additional testing, I am using the automated commandline speedtest.net interface: [`speedtest-cli`](https://github.com/sivel/speedtest-cli/) in a cron job:
-every day, at the start of each hour noon to 10PM (primary timerange for my Internet use and similar to first set of tests), record time & speedtest results at a random minute during that hour:
+For initial testing, I am using the automated commandline `speedtest.net` interface: [`speedtest-cli`](https://github.com/sivel/speedtest-cli/) in a cron job:
+every day, at the start of each hour noon to 10PM (primary time-range for my Internet use and similar to first set of tests), record time & test results at a random minute during that hour:
 
 ~~~{.Bash}
 0 12-22 * * * sleep "$((RANDOM \% 60))"m
@@ -3442,13 +3269,15 @@ every day, at the start of each hour noon to 10PM (primary timerange for my Inte
         speedtest-cli --simple >> ~/doc-misc/statistics/speed.txt
 ~~~
 
-For additional testing, I ran benchmarks for every possible arrangement.
+For additional testing, I ran groups of benchmarks for every possible arrangement.
 Possible arrangements would be apartment + dongle + repeater + new/old router; apartment + dongle + repeater + antenna (located in apartment) + new/old router; house + repeater + new/old router; house + Ethernet cord into new/old router; house + Ethernet cord + no router & plugged directly into cable modem; house + dongle/WiFi card + new/old router; etc.
 Many arrangements are not possible: the old router does not have a removable antenna so the directional antenna cannot be plugged into it and other combinations tested; the repeater is likewise not removable so I can test laptop+antenna connecting to the repeater or new router+antenna connecting to the repeater, the reverses are not possible; the laptop WiFi card can't be used with either the repeater or the new/old router boosted with the antenna because it lacks the range for connecting at all unless it is physically near them inside the house; plugging an Ethernet cable from the laptop directly into the cable modem tests the upper bound of possible performance but can only be done inside the house (because I do not have the very long Ethernet cable necessary for temporary testing); the cable modem does not have any kind of wireless functionality so it can be tested on its own in only one way; etc.
 
-Of the ~8 possible variables (house vs apartment, wireless vs wired, dongle vs laptop WiFi card, remote vs local directional antenna, cable mode, vs a router, old vs new router) giving ~256 possible arrangements, ~17 will work.
-I tested those 17 with batches of ~_n_=30 over several days.
+Of the ~8 possible variables (house vs apartment, wireless vs wired, dongle vs laptop WiFi card, remote vs local directional antenna, cable mode, vs a router, old vs new router) giving 2^8^=256 possible total arrangements, ~17 arrangements will work.
+I tested those 17 with groups of ~_n_=30 over several days.
 (The remaining possible arrangements could be 'measured', but I already know what the result would be: 0Mb/s up/down, ∞ms latency.)
+
+## Analysis
 
 All valid arrangements were measured; since the invalid arrangements have a known performance, we can include that knowledge in our models, although expressing all those constraints/priors would be difficult and so to avoid that, I add pseudo-measurements - I add _n_=30 measurements for each invalid arrangement with 0 up/down and 1000ms latency.
 With all arrangements measured by data, we can do a full factorial design estimating all 256 levels.
@@ -3460,12 +3289,11 @@ So in sum, we do a linear model regression on the performance latent factor of u
 
 From this linear model, we want to find the arrangements which maximize performance, and figure out which one is most acceptable (we can predict in advance that plugging directly into the cable modem will yield the best possible performance by cutting out all middlemen and using high-performance wires rather than radio waves, but this is not a feasible arrangement for me to use on a regular basis), how much performance is lost by it, and whether the directional antenna & new router were worth the money.
 
-
-I was surprised how big a difference arrangements made. My belief was that networking speed was set by the bottleneck, which is usually the ISP's Internet connection, and that since Metrocast was not providing any more than 5MB/s, it couldn't matter what sort of WiFi card or router or antenna was in use - *anything* could keep up with such a slow bottleneck, and the benefits of a new router or directional antenna should be minuscule. But my original dongle+repeater+old-router setup turns out to be a lot worse than the dongle+directional-antenna+new-router setup. The repeater and old router lowered bandwidth and increased latency.
-I was also surprised how sensitive the directional antenna was to positioning. Even a small shift could cause the signal strength percentage to drop by 5-10%. This is probably why placing the directional antenna in the house connected to the router (pointing to the laptop) worked much worse than placing the directional antenna at the apartment connected to the laptop (pointing at the router): it is harder to aim accurately since it is located inside & elevated.
+Data preparation:
 
 ~~~{.R}
-wifi <- read.csv("~/doc-misc/statistics/speed.txt", colClasses=c("character", "numeric", "numeric", "numeric", "factor", rep("integer", 8)))
+wifi <- read.csv("~/doc-misc/statistics/speed.txt", colClasses=c("character", "numeric", "numeric", "numeric",
+                                                                 "factor", rep("integer", 8)))
 wifi$Timestamp <- as.POSIXct(wifi$Timestamp, format="%a %b %e %H:%M:%S %Y")
 wifi$Date <- as.Date(wifi$Timestamp)
 wifi$Latency.log <- log(wifi$Latency)
@@ -3515,9 +3343,14 @@ for (i in 1:nrow(possibleConditions)) {
 }
 
 write.csv(wifiTmp, file="2016-11-07-wifi-benchmarking.csv", row.names=FALSE)
+~~~~
 
-wifi <- read.csv("2016-11-07-wifi-benchmarking.csv", colClasses=c("character", "numeric", "numeric", "numeric", "factor",
-                 rep("integer", 8), "Date", "numeric", "numeric"))
+Data analysis:
+
+~~~{.R}
+wifi <- read.csv("http://www.gwern.net/docs/personal/2016-11-07-wifi-benchmarking.csv",
+                 colClasses=c("character", "numeric", "numeric", "numeric", "factor",
+                              rep("integer", 8), "Date", "numeric", "numeric"))
 library(blme)
 b <- blmer(Performance.factor ~ Tester + (1|Date) + Apartment*Wireless*Cable.modem*Dongle*Repeater*Antenna.local*Antenna.remote*Router.new,
            data=wifi)
@@ -3528,33 +3361,33 @@ wifi2 <- unique(subset(wifi, select=c("Apartment", "Wireless", "Cable.modem", "D
 wifi2 <- wifi2[order(wifi2$Performance.factor.predicted),]
 
 wifi2[(nrow(wifi2)-25) : (nrow(wifi2)),]
-#     Apartment Wireless Cable.modem Dongle Repeater Antenna.local Antenna.remote Router.new Performance.factor.predicted
-# 318         1        1           0      1        1             0              1          1                -1.4789390956
-# 81          1        1           0      1        1             0              0          1                -1.4745957740
-# 1           1        1           0      1        1             0              0          0                -1.2964198935
-# 109         1        1           0      1        1             0              0          1                -1.2224065394
-# 118         1        1           0      1        1             0              0          1                -1.1922059252
-# 21          1        1           0      1        1             0              0          0                -1.0889168389
-# 99          1        1           0      1        1             0              0          1                -1.0352904765
-# 84          1        1           0      1        1             0              0          1                -1.0238596584
-# 88          1        1           0      1        1             0              0          1                -0.9822727227
-# 41          1        1           0      1        1             0              0          1                -0.7474618842
-# 61          1        1           0      1        1             0              0          1                -0.5399588297
-# 265         1        1           0      1        1             1              0          1                -0.4809197642
-# 126         1        1           0      1        1             1              0          1                -0.3594128408
-# 666         1        1           0      1        0             1              0          1                 0.2164881665
-# 203         1        1           0      1        0             1              0          0                 0.2708317438
-# 427         0        1           0      1        0             0              0          0                 0.3994099844
-# 198         1        1           0      1        0             1              0          1                 0.5058886019
-# 189         1        1           0      1        0             1              0          1                 0.5071800787
-# 157         1        1           0      1        0             1              0          1                 0.6273955254
-# 636         1        1           0      1        0             1              0          1                 0.6315593615
-# 397         0        1           0      1        0             0              0          1                 0.8836568528
-# 457         0        0           0      0        0             0              0          0                 0.8955495517
-# 517         0        1           0      0        0             0              0          0                 1.0305579425
-# 547         0        1           0      0        0             0              0          1                 1.0407949467
-# 366         0        0           0      0        0             0              0          1                 1.0502499269
-# 487         0        0           1      0        0             0              0          0                 1.0968340716
+# Apartment Wireless Cable.modem Dongle Repeater Antenna.local Antenna.remote Router.new Performance.factor.predicted
+#         1        1           0      1        1             0              1          1                -1.4789390956
+#         1        1           0      1        1             0              0          1                -1.4745957740
+#         1        1           0      1        1             0              0          0                -1.2964198935
+#         1        1           0      1        1             0              0          1                -1.2224065394
+#         1        1           0      1        1             0              0          1                -1.1922059252
+#         1        1           0      1        1             0              0          0                -1.0889168389
+#         1        1           0      1        1             0              0          1                -1.0352904765
+#         1        1           0      1        1             0              0          1                -1.0238596584
+#         1        1           0      1        1             0              0          1                -0.9822727227
+#         1        1           0      1        1             0              0          1                -0.7474618842
+#         1        1           0      1        1             0              0          1                -0.5399588297
+#         1        1           0      1        1             1              0          1                -0.4809197642
+#         1        1           0      1        1             1              0          1                -0.3594128408
+#         1        1           0      1        0             1              0          1                 0.2164881665
+#         1        1           0      1        0             1              0          0                 0.2708317438
+#         0        1           0      1        0             0              0          0                 0.3994099844
+#         1        1           0      1        0             1              0          1                 0.5058886019
+#         1        1           0      1        0             1              0          1                 0.5071800787
+#         1        1           0      1        0             1              0          1                 0.6273955254
+#         1        1           0      1        0             1              0          1                 0.6315593615
+#         0        1           0      1        0             0              0          1                 0.8836568528
+#         0        0           0      0        0             0              0          0                 0.8955495517
+#         0        1           0      0        0             0              0          0                 1.0305579425
+#         0        1           0      0        0             0              0          1                 1.0407949467
+#         0        0           0      0        0             0              0          1                 1.0502499269
+#         0        0           1      0        0             0              0          0                 1.0968340716
 
 unscale <- function(score, df) { with(df[df$Latency!=1000,], c((1 * mean(Download)+sd(Download)*score),
     (0.76 * mean(Upload)+sd(Upload)*score),
@@ -3568,11 +3401,20 @@ unscale(1.09, wifi); unscale(1.05, wifi); unscale(0.63, wifi); unscale(0.27, wif
 # [1]  0.53797198723  0.07751240815 36.88525255659
 ~~~
 
-The results generally make sense: the best possible arrangement is to plug directly into the cable modem (performance score 1.09; 4.53MB/0.48MB/17.5ms); the next best possible is to plug into the new router which is plugged into the modem (performance score 1.05; 4.46MB/0.47MB/17.9ms); the next best to sit next to the new router and use the built-in WiFi chip to connect to it; and so on.
-For those arrangements feasible outside the house/in the apartment, the best arrangement is to use the dongle + directional antenna to connect to the new router (performance score 0.63; 3.76MB/0.40MB/20.2ms).
-Omitting the directional antenna, the speed of dongle + repeater + new router is not great (performance score: -1.09; 0.87MB/0.11MB/34.64ms).
-Using the directional antenna but not the new router is better (performance score: 0.27; 3.15MB/0.34MB/22.6ms)
-And the original arrangement of dongle + repeater + old router is one of the worst feasible arrangements (performance score -1.29; 0.54MB/0.87MB/36.9ms).
+## Results
+
+The results generally make sense:
+
+- the best possible arrangement is to plug directly into the cable modem (performance score 1.09; 4.53MB/0.48MB/17.5ms)
+- the next best possible is to plug into the new router which is plugged into the modem (performance score 1.05; 4.46MB/0.47MB/17.9ms)
+- the next best to sit next to the new router and use the built-in WiFi chip to connect to it; and so on.
+
+For those arrangements feasible outside the house/in the apartment, the best arrangement is to:
+
+- use the dongle + directional antenna to connect to the new router (performance score 0.63; 3.76MB/0.40MB/20.2ms).
+- Omitting the directional antenna, the speed of dongle + repeater + new router is not great (performance score: -1.09; 0.87MB/0.11MB/34.64ms).
+- Using the directional antenna but not the new router is better (performance score: 0.27; 3.15MB/0.34MB/22.6ms)
+- And the original arrangement of dongle + repeater + old router is one of the worst feasible arrangements (performance score -1.29; 0.54MB/0.87MB/36.9ms).
 
 This is useful for evaluation.
 The new router on its own was helpful, as it increased download bandwidth from 0.54MB/s to 0.87MB/s, an improvement of ~40%.
@@ -3583,12 +3425,22 @@ And installing an Ethernet cable to avoid WiFi entirely would boost my connectio
 So most of the marginal gain came from the directional antenna bypassing the repeater, and only some of it comes from the new router.
 Indeed, the antenna+new router is near-optimal, with only ~16% download bandwidth lost to WiFi+overhead.
 
+I was surprised how big a difference arrangements made.
+My belief was that networking speed was set by the bottleneck, which is usually the ISP's Internet connection, and that since Metrocast was not providing any more than 5MB/s, it couldn't matter what sort of WiFi card or router or antenna was in use - *anything* could keep up with such a slow bottleneck, and the benefits of a new router or directional antenna should be minuscule.
+But my original dongle+repeater+old-router setup turns out to be a lot worse than the dongle+directional-antenna+new-router setup.
+The repeater and old router severely lowered bandwidth and increased latency.
+(Apparently it's well-known that a WiFi repeater will cut throughput in half due to the repeating of transmissions; this was a surprise to me.)
+I was also surprised how sensitive the directional antenna was to positioning. Even a small shift could cause the signal strength percentage to drop by 5-10%.
+This is probably why placing the directional antenna in the house connected to the router (pointing to the laptop) worked much worse than placing the directional antenna at the apartment connected to the laptop (pointing at the router): it is harder to aim accurately since it is located inside & elevated.
+
+### Cost-benefit
+
 How much are these improvements worth?
 Directly valuing bandwidth/latency improvements is hard; I can say that the router & antenna *feel* like they were the cost.
-The new router cost \$85.99 and the directional antenna cost \$52.13, totaling \$138.12.
-The hypothetical Ethernet dig would cost somewhere around \$100+ for materials and at least as much for labor, so let's call it \$200.
 
 To help valuing, we could look at the implied cost.
+The new router cost \$85.99 and the directional antenna cost \$52.13, totaling \$138.12.
+The hypothetical Ethernet dig would cost somewhere around \$100+ for materials and at least as much for labor, so let's call it \$200.
 
 WiFi routers rarely break (the old Belkin one looked like it was about a decade old), and the directional antenna is heavy coated metal intended for outdoor use so I expect it to survive at least as long.
 At my usual discount rate of 5% and the router/antenna never breaking and discounting out indefinitely, the annual loss corresponding to the NPV of -\$138 would be -\$6/year or -\$0.5/month;
@@ -3597,4 +3449,5 @@ This seems like a trivial cost for improving my Internet connection by ~6x.
 
 The buried Ethernet is much more dubious.
 The router & antenna are sunk costs inasmuch as they would be difficult to return and I would need to do so soon, and so the marginal benefit of the Ethernet over the router+antenna would be 16% or less, for a marginal equivalent annual cost of -\$47 on top of the -\$32 for -\$79.
-Still not much monthly but is <16% worth even that much? I am doubtful.
+Still not much monthly but is <16% worth even that much?
+I am doubtful and will leave matters as they stand with the antenna+router.
