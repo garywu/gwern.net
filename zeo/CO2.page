@@ -1,0 +1,479 @@
+---
+title: CO2/ventilation sleep experiment
+description: Self-experiment on whether changes in bedroom CO2 levels affect sleep quality
+created: 5 June 2016
+tags: experiments, biology, statistics, Zeo
+status: in progress
+belief: likely
+...
+
+> Some psychology studies find that CO2 impairs cognition, and some sleep studies find that better ventilation may improve sleep quality. Use of a Netatmo air quality sensor reveals that closing my bedroom tightly to reduce morning light also causes CO2 levels to spike overnight to 7x daytime levels. To investigate the possible harmful effects, I run a self-experiment randomizing an open bedroom door and a bedroom box fan (2x2) and analyze the data using a structural equation model of air quality effects on a latent sleep factor with measurement error.
+
+[Paul Christiano asked](http://lesswrong.com/r/discussion/lw/nk0/what_is_up_with_carbon_dioxide_and_cognition_an/) about some curious psychology results suggesting that ambient levels of CO2 considered safe and having no effects on cognition may actually have substantial harmful effects, particularly [Satish et al 2012](http://ehp.niehs.nih.gov/1104789/ "Is CO2 an Indoor Pollutant? Direct Effects of Low-to-Moderate CO2 Concentrations on Human Decision-Making Performance")
+I looked into the research literature for related papers, but I had a hard time believing the effect: it's hard to believe that CO2, which makes up <1% of normal air, could have such effects, especially since such effects would mean we should see large correlations with weather, altitude, test location etc.
+
+But after looking at [consumer air quality sensors](https://forum.quantifiedself.com/t/indoor-air-quality-monitoring-health/799/40), I decided to get a [Netatmo](!Wikipedia) weather station device.
+It cost ~\$140 and records air temperature, humidity, CO2, & barometric pressure.
+
+Several trends showed up quickly on my Netatmo in the first week May-June 2016:
+
+- the box fans I use for ventilation are consistently noisy, pushing the ambient noise level to ~60dB
+
+    This doesn't bother me since I'm hearing-impaired.
+- the ambient noise level exhibits a regular half-hour trend in the morning where it regularly spikes up to 52dB before falling to the floor of 37dB
+
+    Given its regularity and that the only two things that should be running at this time are my hot water heater, refrigerator, laptop, or external drive, and finding a chart online indicating that normal refrigerator fan noises are ~50dB, my guess is that it is the refrigerator periodically turning on to cool itself down.
+- humidity levels spike quickly into the 70-80%s when the dehumidifier fills up, to the point where I've sometimes learned of it by checking the charts.
+
+    The peaks were not new to me because my previous temperature/humidity data logger had indicated as much, but I didn't realize just how fast the humidity could increase.
+- CO2 levels are generally acceptable, ~500PPM
+- each morning, CO2 levels spiked to several times the normal level (820/1934/1521/1439/1518PPM) and then decline within an hour or so, eventually reaching the normal ~400PPM afternoon-evening levels
+
+The last observation interested me the most.
+
+I keep my bedroom tightly sealed to block light and to reduce how much hot/cold air infiltrates during summer/winter.
+In the summer, I don't want the AC on while I sleep because the moving air bothers me; in winter, cold air isn't so bad, but it's hard to get the heaters to keep the room consistently warm.
+
+So it wouldn't be surprising if CO2 built up in the bedroom while I slept and then when I opened it in the morning and the air mixed with the rest of the apartment, the average CO2 level increased.
+But if one room can mix with and increase the Netatmo's room all the way up to 1934PPM, what must the original concentration have been like?
+It would have had to have been at least twice as high (~3000PPM) in which case the bedroom CO2 levels could easily have been >7x the normal levels and is starting to near levels which are considered unacceptable (5000PPM). I don't know if CO2 has any effect on my sleep, but if it does, differences like 7x are enough that the effect could be noticeable.
+
+High levels CO2 could potentially worsen sleep, similar to [hypercapnia](!Wikipedia), where the panic/arousal impedes sleep.
+Existing sleep research mostly investigates [sleep apnea](!Wikipedia), infants, and [SIDS](!Wikipedia).
+
+- Ayas, N.T., Brown, R., & Shea, S.A. (2000). ["Hypercapnia can induce arousal from sleep in the absence of altered respiratory mechanoreception"](http://www.atsjournals.org/doi/full/10.1164/ajrccm.162.3.9908040)
+- Berry, R.B., Mahutte, C.K., & Light, R.W. (1993) "Effect of hypercapnia on the arousal response to airway occlusion during sleep in normal subjects". Journal of Applied Physiology, 74(5), 2269-2275
+- Berthon-Jones, M., & Sullivan, C.E. (1984). "Ventilation and arousal responses to hypercapnia in normal sleeping humans". Journal of Applied Physiology, 57(1), 59-67
+- Frey, M. A., Sulzman, F. M., Oser, H.,& Ruyters, G. (1998). "Joint NASA-ESA-DARA study, part one: the effects of moderately elevated ambient carbon dioxide levels on human physiology and performance". Aviation, Space, and Environmental Medicine, 69(3), 282-284
+- Gundel, A., Drescher, J., & Weihrauch, M. R. (1998a). "Joint NASA-ESA-DARA Study, part three: cardiorespiratory response to elevated CO2 levels during sleep". Aviation, Space, and Environmental Medicine, 69(5), 496-500
+- Samel, A., Vejvoda,M., Wittiber, K., & Wenzel, J. (1998). "Joint NASA-ESA-DARA study. Part three: circadian rhythms and activity-rest cycle under different CO2 concentrations". Aviation, Space, and Environmental Medicine, 69(5), 501-505.
+- [Laverge & Janssens 2011](https://biblio.ugent.be/publication/1980430/file/1980463.pdf "Analysis of the influence of ventilation rate on sleep pattern"); 6 students over 1 month with 2-week periods of open/closed windows, comparing peaks of 1000-2500PPM to 3000-4500PPM. Some evidence for improvement.
+- [Strøm-Tejsen et al 2014a](http://orbit.dtu.dk/fedora/objects/orbit:132689/datastreams/file_0cb18381-8733-467b-b88b-07289c080b3c/content "The effect of air quality on sleep"); within-subject comparison of 14 students sleeping in 660PPM vs 2585PPM conditions:
+
+    > ...occupants of 14 identical single-occupancy dormitory rooms were exposed to two conditions - open/closed window, each for one week, resulting in night-time average CO2 levels of 660 and 2585 ppm. Sleep was assessed from movement data Roomvent 2014 recorded on wristwatch-type actigraphs and from online morning questionnaires including the Groningen Sleep Quality scale, questions about the sleep environment, next-day well-being and SBS symptoms, and two tests of mental performance. Although no significant effects on the sleep quality scale or on next-day performance could be shown, there were significant and positive effects of an open window on the actigraph-measured sleep latency and on the subjects' assessment of the freshness of the air, their ability to fall asleep and nasal dryness. There was a negative effect on reported lip dryness
+- [Strøm-Tejsen et al 2014b](http://orbit.dtu.dk/fedora/objects/orbit:134384/datastreams/file_a24346bd-b582-483e-b3f4-2efbc42682aa/content "The effect of CO2 controlled bedroom ventilation on sleep and next-day performance"); within-subject comparison of 16 students sleeping in 835PPM vs 2395PPM conditions (as controlled by a fan with a CO2 sensor; very quiet but blinding may not've succeeded):
+
+    > The subjects' sleep quality and next-day performance were assessed from subjective responses that were obtained by using visual analogue scales and the Groningen Sleep Quality scale, from one test of logical thinking, one diagnostic test of cue-utilisation, and in terms of movement data recorded on wristwatch-type actigraphs. The results show positive effects of a higher ventilation rate on the subjectively assessed freshness of the air, on the subjects' mental state and their feeling of being rested. There was also a significant and positive effect on the sleep efficiency measured by the actigraphs and the expected significant and positive effect on performance. [Tsai-Partington Numbers Test, Baddeley's Reasoning Test] However, there were some negative effects of the higher ventilation rate on the rated intensity of mouth dryness and skin dryness.
+
+First, to get an idea of normal CO2 levels during sleep, I moved the Netatmo to my bedroom for one night and turned everything off & shut the room like usual. CO2 climbed gradually to 2832PPM at 5:51AM and remained elevated until I woke up and opened the door.
+The second night, I did the same but left the door open. CO2 peaked at 1619PPM at 5:46AM and likewise only fell when the fans/AC/dehumidifier turned on in the morning.
+For the third night, door open, but one fan turned on slightly facing the door. CO2 peaked at 1405PPM at 4:58AM.
+The fourth night reverted to closed, first peaking at 2775PPM at 5:21AM and then peaking at 2912PPM at 9:55AM.
+Fifth night was open with fan: 1407PPM at 5:57AM.
+When the door is closed and the fan is on, there is a small but not useful reduction in CO2 (peaking one night at 2452PPM), which could be due either to a more even distribution within the room or possibly from accelerating air infiltration from the outside.
+The next 5 nights yielded similar numbers: closed leads to steady increases peaking 2900-3000PPM, open with no fan or with fan tends to not be more than ~1400PPM and possibly less.
+
+To model sleep effects, I want to take into account bedroom temperature, humidity, CO2, sound, and measure sleep.
+The Netatmo measures temperature/humidity/CO2/sound.
+My Kongin temperature/humidity logger, which I have used since October 2014, will be useful for examining temperature/humidity effects stretching back much further than the Netatmo's measurements and can be used to double-check the Netatmo measurements.
+For sleep, I have the Zeo.
+
+The door and fan cannot be blinded since I do not have access to a super-quiet fan which could possibly turn on at random while I'm asleep, so this would be a non-blind randomized experiment.
+Since the windows are sealed, and the door and fan can either be on or not, that leads to 4 possible conditions: door closed fan off, door closed fan on, door open fan off, door open fan on.
+So randomization can be done in blocks of 4, covering each possible combination, and recorded as binary variables.
+I don't want to omit the fan-only condition since that helps check for possible harm to my sleep from the fan's noise/air-movement.
+
+Power/sample size is unclear since I haven't been able to get most of the papers reporting on CO2/sleep data, but the most recent paper, Strøm-Tejsen et al 2014b, while not reporting any real effect sizes, claims a number of statistically-significant effects with 16 subjects with what seems to be less than a month of data each (and possibly as little as 8 days total); 3 months is probably adequate.
+
+Changing CO2 levels may have direct effects on sleep, but it may also be that the change in temperature/humidity is responsible, or that having the door open or the fan running are themselves directly responsible and any 'effect' of CO2 is merely because opening the door does multiple things. This sounds like a mediation model, in which we want to see if the intervention has an effect on sleep quality only when mediated through an intermediate variable, in this case, CO2. So writing it down in Lavaan syntax, something like:
+
+~~~{.R}
+     SLEEP       =~ ZQ + Total.Z + Time.to.Z.log + Time.in.Wake + Time.in.REM + Time.in.Light + Time.in.Deep + Awakenings + Morning.Feel
+     HUMIDITY    =~ Humidity.Netatmo    + Humidity.Kongin
+     TEMPERATURE =~ Temperature.Netatmo + Temperature.Kongin
+
+     CO2   ~ Door.r + Fan.r
+     HUMIDITY ~ Door.r + Fan.r + Door.r*Fan.r
+     TEMPERATURE ~ Door.r + Fan.r + Door.r*Fan.r
+     SLEEP ~ HUMIDITY + TEMPERATURE + Noise + CO2 + Door.r + Fan.r + Door.r*Fan.r
+~~~
+
+The regression `CO2 ~ Door.r + Fan.r + Door.r*Fan.r` will confirm that the randomized intervention reduced CO2 levels by a certain amount (at least 1000PPM in our case); the exact reduction will vary for each night, while the intervention is exactly the same, so which is a better predictor will indicate which is more important causally and help distinguish between scenarios.
+(For example, it could be that the intervention of leaving the door open and running a fan has bad effects in moving air around enough to disturb me, but the lower CO2 the better; in that case, the coefficients of `CO2 ~ Door.r + Fan.r + Door.r*Fan.r` will be highly negative, `Sleep ~ CO2` highly positive, and `Sleep ~ Door.r + Fan.r + Door.r*Fan.r` will be highly negative. Whether I would want to start leaving the door open would then depend on whether `CO2 ~ Door.r + Fan.r + Door.r*Fan.r` * `Sleep ~ CO2` > `Sleep ~ Door.r + Fan.r + Door.r*Fan.r` - that is, the net improvement on sleep through the indirect path of reduced CO2 and CO2 to sleep is better than the worsening through the direct path of intervention to sleep. We could also skip the CO2 variable entirely and model it as a simple two-group comparison of means, `Sleep ~ Door.r + Fan.r + Door.r*Fan.r`, but then we wouldn't know what role CO2 played: if CO2 really does worsen sleep but the fan destroys the benefits, then we can think about alternatives ways to reduce CO2 without using a fan, like removing window coverings so I can open windows at night.)
+
+The inclusion of average nightly humidity & temperature may not be useful; my regressions beforehand did not turn up any linear or quadratic relationship between humidity/temperature and the sleep latent variable, `ZQ`, `Total.Z`, or `Morning.Feel`, and plotting did not show any obvious relationship.
+
+Netatmo accuracy
+- indoor heat: Accuracy: ± 0.3°C  / ± 0.54°F
+- indoor humidity:  Accuracy: ± 3%
+- indoor CO2: Accuracy: ± 50 ppm or ± 5%
+
+~~~{.R}
+sd(netatmo$Temperature.F)
+# [1] 2.681167487
+cor(netatmo$Temperature.F, netatmo$Temperature.F + rnorm(n=5252, sd=0.54))
+# [1] 0.9799087796
+sd(netatmo$Humidity)
+# [1] 4.783974398
+cor(netatmo$Humidity, netatmo$Humidity + rnorm(n=5252, sd=0.03))
+# [1] 0.9999804101
+sd(netatmo$CO2, na.rm=TRUE)
+# [1] 609.4594152
+cor(netatmo$CO2, netatmo$CO2 + rnorm(n=5252, sd=50), use="complete.obs")
+# [1] 0.9968306783
+~~~
+
+Netatmo usage started: 28 May 2016
+
+- 2-3 June: 0 0 closed; 2832PPM peak
+- 3-4 June: 0 1 open; 1619PPM
+- 4-5 June: 1 1 open+fan; 1405PPM
+- 5-6 June: 0 0 closed; 2912PPM
+- 6-7 June: 1 1 open+fan; 1407PPM
+- 7-8 June: 0 1 open; 1368PPM
+- 8-9 June: NA
+- 9-10 June: 1 1 open+fan; 1159PPM
+- 10-12 June: NA
+- 11-12 June: 0 0 closed; 3029PPM
+- 12-13 June: 0 1 open; 915PPM
+- 13-14 June: NA
+- 14-15: 1 0
+- 15-16: 0 0
+- 16-17: 1 0
+- 17-18: 0 1
+- 18-19: 1 1
+- 19-20: NA
+- 20-21: 1 0
+- 21-22: 0 0
+- 22-23: 0 1
+- 23-24: 1 1
+
+~~~{.R}
+zeo <- read.csv("~/wiki/docs/zeo/gwern-zeodata.csv")
+zeo$Date <- as.Date(sapply(strsplit(as.character(zeo$Rise.Time), " "), function(x) { x[1] }), format="%m/%d/%Y")
+zeo$Rise.Time <- sapply(strsplit(as.character(zeo$Rise.Time), " "), function(x) { x[2] })
+zeo$Start.of.Night <- sapply(strsplit(as.character(zeo$Start.of.Night), " "), function(x) { x[2] })
+interval <- function(x) { if (!is.na(x)) { if (grepl(" s",x)) as.integer(sub(" s","",x))
+                                           else { y <- unlist(strsplit(x, ":")); as.integer(y[[1]])*60 + as.integer(y[[2]]); }
+                                         }
+                          else NA
+                        }
+zeo$Rise.Time <- sapply(zeo$Rise.Time, interval)
+zeo$Start.of.Night <- sapply(zeo$Start.of.Night, interval)
+zeo <- zeo[!is.na(zeo$Date),]
+zeo[(zeo$Date >= as.Date("2013-03-11")),]$Rise.Time  <- (zeo[(zeo$Date >= as.Date("2013-03-11")),]$Rise.Time + 226) %% (24*60)
+zeo[(zeo$Date >= as.Date("2013-03-11")),]$Start.of.Night  <- (zeo[(zeo$Date >= as.Date("2013-03-11")),]$Start.of.Night + 226+680)
+zeo$Start.of.Night <- ifelse(zeo$Start.of.Night<500, zeo$Start.of.Night + 1440, zeo$Start.of.Night) # undo wrapping around to 0
+zeo$Time.to.Z.log <- log1p(zeo$Time.to.Z) # reduce skew
+zeo <- subset(zeo, select=c("Date", "ZQ", "Total.Z", "Time.to.Z.log", "Time.in.Wake", "Time.in.REM", "Time.in.Light", "Time.in.Deep", "Awakenings", "Morning.Feel"))
+
+## NOTE: need to create a fresh `humidity-all.csv` and `netatmo/all.csv` using existing R routines *before* running this:
+kongin <- read.csv("~/selfexperiment/humidity/humidity-all.csv", colClasses=c("POSIXct", "numeric", "numeric"))
+kongin$Date <- as.Date(kongin$Timestamp, tz="EST")
+## only interested in midnight-to-10AM:
+kongin <- kongin[as.integer(strftime(kongin$Timestamp, format="%H")) < 10,]
+## aggregate data both by average and by maximum; peak temperatures/humidity may damage sleep as much or more than high averages
+konginDailyMean <- aggregate(cbind(Humidity, Temperature.C) ~ Date, mean, data=kongin)
+colnames(konginDailyMean) <- c("Date", "Humidity.K.mean", "Temperature.K.mean")
+konginDailyMax <- aggregate(cbind(Humidity, Temperature.C) ~ Date, max, data=kongin)
+colnames(konginDailyMax) <- c("Date", "Humidity.K.max", "Temperature.K.max")
+konginDaily <- merge(konginDailyMean, konginDailyMax, all=TRUE)
+summary(konginDaily)
+
+netatmo <- read.csv("~/selfexperiment/netatmo/all.csv")
+netatmo$Date <- as.Date(netatmo$Date)
+netatmo <- netatmo[as.integer(strftime(netatmo$Timestamp, format="%H")) < 10,]
+netatmo <- netatmo[netatmo$Date >= as.Date("2016-06-02"),] # include only experiment data from when Netatmo was in bedroom at night
+netatmoDailyMean <- aggregate(cbind(Humidity, Temperature, CO2, Noise) ~ Date, mean, data=netatmo)
+colnames(netatmoDailyMean) <- c("Date", "Humidity.N.mean", "Temperature.N.mean", "CO2.N.mean", "Noise.N.mean")
+netatmoDailyMax <- aggregate(cbind(Humidity, Temperature, CO2, Noise) ~ Date, max, data=netatmo)
+colnames(netatmoDailyMax) <- c("Date", "Humidity.N.max", "Temperature.N.max", "CO2.N.max", "Noise.N.max")
+netatmoDaily <- merge(netatmoDailyMean, netatmoDailyMax, all=TRUE)
+
+airNight <- merge(konginDaily, netatmoDaily, all=TRUE)
+
+door <- read.csv(stdin(), header=TRUE, colClasses=c("Date","integer","integer"))
+Date,Fan.r,Door.r
+2016-06-03,0,0
+2016-06-04,0,1
+2016-06-05,1,1
+2016-06-06,0,0
+2016-06-07,1,1
+2016-06-08,0,1
+2016-06-09,NA,NA
+2016-06-10,1,1
+2016-06-11,NA,NA
+2016-06-12,0,0
+2016-06-13,0,1
+2016-06-14,NA,NA
+2016-06-15,1,0
+2016-06-16,0,0
+2016-06-17,1,0
+2016-06-18,0,1
+2016-06-19,1,1
+2016-06-20,NA,NA
+2016-06-21,1,0
+2016-06-22,0,0
+2016-06-23,0,1
+2016-06-24,1,1
+2016-06-25,1,1
+2016-06-26,0,0
+2016-06-27,0,0
+2016-06-28,1,0
+2016-06-29,0,1
+2016-06-30,1,1
+2016-07-01,1,0
+2016-07-02,0,1
+2016-07-03,0,0
+2016-07-04,0,0
+2016-07-05,1,1
+2016-07-06,1,0
+2016-07-07,0,1
+2016-07-08,1,0
+2016-07-09,0,1
+2016-07-10,1,1
+2016-07-11,0,0
+2016-07-12,1,1
+2016-07-13,0,0
+2016-07-14,1,0
+2016-07-15,0,1
+2016-07-16,0,1
+2016-07-17,0,0
+2016-07-18,1,1
+2016-07-19,1,0
+2016-07-20,NA,NA
+2016-07-21,1,0
+2016-07-22,1,1
+2016-07-23,0,0
+2016-07-24,0,1
+2016-07-25,1,1
+2016-07-26,1,0
+2016-07-27,0,1
+2016-07-28,0,0
+2016-07-29,NA,NA
+2016-07-30,0,0
+2016-07-31,1,0
+2016-08-01,1,1
+2016-08-02,0,1
+2016-08-03,0,1
+2016-08-04,1,0
+2016-08-05,0,0
+2016-08-06,1,1
+2016-08-07,0,1
+2016-08-08,1,1
+2016-08-09,1,0
+2016-08-10,0,0
+2016-08-11,1,0
+2016-08-12,0,1
+2016-08-13,0,0
+2016-08-14,1,1
+2016-08-15,0,0
+2016-08-16,1,1
+2016-08-17,1,0
+2016-08-18,0,1
+2016-08-19,0,1
+2016-08-20,1,0
+2016-08-21,1,1
+2016-08-22,0,0
+2016-08-23,0,0
+2016-08-24,1,0
+2016-08-25,0,1
+2016-08-26,1,1
+2016-08-27,0,1
+2016-08-28,1,0
+2016-08-29,1,1
+2016-08-30,0,0
+2016-08-31,0,0
+2016-09-01,1,1
+2016-09-02,0,1
+2016-09-03,1,0
+2016-09-04,0,1
+2016-09-05,1,1
+2016-09-06,1,0
+2016-09-07,0,0
+2016-09-08,0,1
+2016-09-09,1,1
+2016-09-10,1,0
+2016-09-11,0,0
+2016-09-12,0,1
+2016-09-13,1,1
+2016-09-14,0,0
+2016-09-15,1,0
+2016-09-16,1,0
+2016-09-17,NA,NA
+2016-09-18,0,0
+2016-09-19,1,1
+2016-09-20,0,0
+2016-09-21,0,1
+2016-09-22,1,1
+2016-09-23,0,0
+2016-09-24,0,1
+2016-09-25,1,0
+2016-09-26,0,1
+2016-09-27,0,0
+2016-09-28,0,1
+2016-09-29,1,0
+2016-09-30,1,1
+2016-10-01,0,0
+2016-10-02,1,1
+2016-10-03,0,1
+2016-10-04,1,1
+2016-10-05,0,1
+2016-10-06,0,1
+2016-10-07,1,0
+2016-10-08,0,0
+2016-10-09,1,1
+2016-10-10,1,0
+2016-10-11,0,0
+2016-10-12,0,1
+2016-10-13,1,1
+2016-10-14,0,0
+2016-10-15,1,1
+2016-10-16,0,1
+2016-10-17,1,0
+2016-10-18,1,1
+2016-10-19,1,0
+2016-10-20,0,1
+2016-10-21,1,1
+2016-10-22,0,0
+2016-10-23,0,0
+2016-10-24,0,1
+2016-10-25,1,1
+2016-10-26,1,0
+2016-10-27,0,1
+2016-10-28,1,1
+2016-10-29,1,0
+2016-10-30,0,0
+2016-10-31,0,0
+2016-11-01,1,0
+
+
+## I want an interaction effect on `Fan*Door`, since they may have different effects
+## in the presence of each other. lavaan/blavaan do not support interaction effects.
+## One work around, like with quadratic terms, is to create an interaction variable `Fan.r.Door.r`
+## in the dataset which can be used directly in the SEM.
+library(semTools)
+door <- indProd(data=door, var1=2, var2=3)
+
+mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
+
+## Mnemosyne is a measure of cognitive performance; but taking the mean 'grade' per day doesn't work well
+## since harder cards will tend to come up more often and a low daily grade may simply mean some hard cards
+## came up, not that one's memory/energy is worse or better. Grades are nested within each card, but also nested
+## within each day as random effects. So we do a multilevel model inferred daily random effects on grade, using
+## as covariates Mnemosyne's own estimate of each card's current difficulty and how long since the last review/grade
+## of each card. Then the daily random effects represent how much better than predicted based on card characteristics
+## I performed each day, and hopefully a measure of how well I was thinking that day.
+library(sqldf)
+target <- "~/.local/share/mnemosyne/default.db"
+mnemosyneGrades <- sqldf("SELECT timestamp,object_id,grade,easiness,actual_interval FROM log WHERE event_type==9;",
+                dbname=target,
+                method = c("integer", "factor","integer","numeric","integer"))
+mnemosyneGrades$timestamp <- as.POSIXct(mnemosyneGrades$timestamp, origin = "1970-01-01", tz = "EST")
+colnames(mnemosyneGrades) <- c("Timestamp", "ID", "Grade", "Easiness", "Interval.length")
+mnemosyneGrades$Interval.length.log <- log1p(mnemosyneGrades$Interval.length)
+mnemosyneGrades$Date    <- as.Date(mnemosyneGrades$Timestamp)
+library(blme)
+b <- blmer(Grade ~ (1|Date) + (1|ID) + Easiness + Interval.length.log, data=mnemosyneGrades); summary(b)
+dailyscores <- ranef(b)$Date
+mnemosynePerformance <- data.frame(Date=as.Date(rownames(dailyscores)), Mnemosyne.score= dailyscores$"(Intercept)")
+
+night <- merge(mnemosynePerformance, merge(mp, merge(door, merge(zeo, airNight, all=TRUE), all=TRUE), all=TRUE), all=TRUE)
+night[night$Date<as.Date("2016-06-02") & is.na(night$Door.r),]$Door.r <- 0 # I have always slept with door shut/fan off, so impute any missing data to 0/shut
+night[night$Date<as.Date("2016-06-02") & is.na(night$Fan.r),]$Fan.r <- 0
+
+# write.csv(night, file="~/wiki/docs/zeo/2016-11-02-co2.csv", row.names=FALSE)
+# night <- read.csv("~/wiki/docs/zeo/2016-11-02-co2.csv", colClasses=c("Date", rep("numeric", 26)))
+
+night$Total.Z.2 <- night$Total.Z^2
+night$CO2.N.mean.root <- sqrt(night$CO2.N.mean)
+night$Time.in.Wake.log <- log1p(night$Time.in.Wake)
+night$ZQ.2 <- night$ZQ^2
+night$Time.in.REM.2 <- night$Time.in.REM^2
+night$Time.in.Light.2 <- night$Time.in.Light^2
+
+## plot all variables to look for skew:
+# library(reshape2)
+# library(ggplot2)
+# d <- melt(night[-1])
+# ggplot(d,aes(x = value)) + facet_wrap(~variable,scales = "free") +  geom_histogram()
+
+Example for single-indicator measurement error:
+
+x <- rnorm(500000)
+x_measured <- x + rnorm(500000, sd=0.2)
+cor(x, x_measured)
+# [1] 0.9801406332
+cov(x, x_measured)
+# [1] 0.9942188471
+## standardized, so residual variance is just 1-0.98 or ~0.02
+y <- x_measured + rnorm(50000, sd=0.5)
+library(lavaan)
+model <- 'y ~ X
+          X =~ x
+          x ~~ 0.0207738304*x'
+summary(sem(model, data=data.frame(x=x_measured, y=y)))
+
+
+library(blavaan)
+model1 <- '
+    # single-indicator measurement error model for each sleep variable assuming decent reliability:
+    ZQ.2_latent =~ 1*ZQ.2
+    ZQ.2 ~~ 0.7*ZQ.2
+    Total.Z.2_latent =~ 1*Total.Z.2
+    Total.Z.2 ~~ 0.7*Total.Z.2
+    Time.in.REM.2_latent =~ 1*Time.in.REM.2
+    Time.in.REM.2 ~~ 0.7*Time.in.REM.2
+    Time.in.Light.2_latent =~ 1*Time.in.Light.2
+    Time.in.Light.2 ~~ 0.7*Time.in.Light.2
+    Time.in.Deep_latent =~ 1*Time.in.Deep
+    Time.in.Deep ~~ 0.7*Time.in.Deep
+    Time.to.Z.log_latent =~ 1*Time.to.Z.log
+    Time.to.Z.log ~~ 0.7*Time.to.Z.log
+    Time.in.Wake.log_latent =~ 1*Time.in.Wake.log
+    Time.in.Wake.log ~~ 0.7*Time.in.Wake.log
+    Awakenings_latent =~ 1*Awakenings
+    Awakenings ~~ 0.7*Awakenings
+
+    SLEEP       =~ ZQ.2_latent + Total.Z.2_latent + Time.in.REM.2_latent + Time.in.Light.2_latent + Time.in.Deep_latent + Time.to.Z.log_latent + Time.in.Wake.log_latent + Awakenings_latent + Morning.Feel
+
+    HUMIDITY    =~ Humidity.K.mean + Humidity.K.max           + Humidity.N.mean + Humidity.N.max
+    TEMPERATURE =~ Temperature.K.mean + Temperature.K.max + Temperature.N.mean + Temperature.N.max
+    CO2         =~ CO2.N.mean.root + CO2.N.max
+    NOISE       =~ Noise.N.mean    + Noise.N.max
+
+    CO2         ~ Fan.r + Door.r + Fan.r.Door.r
+    HUMIDITY    ~ Fan.r + Door.r + Fan.r.Door.r
+    TEMPERATURE ~ Fan.r + Door.r + Fan.r.Door.r
+
+    SLEEP ~ CO2 + HUMIDITY + TEMPERATURE + NOISE + CO2 + Fan.r + Door.r + Fan.r.Door.r + Pillows.new + Mattress.r
+    MP ~ CO2 + SLEEP + Pillows.new + Mattress.r
+    Mnemosyne.score ~ CO2 + SLEEP
+    '
+# library(lavaan)
+# s1 <- sem(model1, missing="FIML", data=scale(night[-1])); summary(s1)
+
+system.time(s1 <- bsem(model1, test="none", n.chains=8, burnin=20000, sample=6000, dp = dpriors(nu = "dnorm(0,1)", alpha = "dnorm(0,1)", beta = "dnorm(0,200)"), jagcontrol=list(method="rjparallel"), fixed.x=FALSE, data=scale(night[-1]))); summary(s1)
+~~~
+
+# Mattress
+
+As part of upgrading and cleaning out my stuff for winter, I bought a body pillow and head pillow.
+I am a side sleeper and I have been waking up for a long time with sore necks, so I thought they might help.
+They helped a lot, especially the body pillow.
+
+but now it felt like the discomfort shifted to pressure on my arm while laying on my side, and so I wondered if my very firm mattress was also part of the problem and I decided to get a memory foam mattress.
+Foam mattresses can be sold online now as well as in mattress stores because they compress well enough to be shipped without heroic measures, and a number of models are available on Amazon & elsewhere.
+One seller that came to mind was [Tuft & Needle](http://tuftandneedle.com/) - I had heard of T&N from HN discussions of its launch and one of my acquaintances online is now an employee.
+The Amazon & other reviews and [Sleep like the Dead](http://www.sleeplikethedead.com/mattress-reviews-tuftneedle.html) page say that the T&N mattress is relatively firm, and it is somewhat more expensive than some of the other highly-rated soft/plush foam mattresses on Amazon, so I was in serious doubt about whether to buy it or whether I should try to test out mattresses at local mattress stores (as unrepresentative as laying down on a mattress in a store is), but I was convinced by the offered return policy of 100 days (which is far better than that offered by the competitors): that is enough to meaningfully test a mattress by randomizing nights, and people say the return policy is honest and T&N won't put me through misery trying to get a refund.
+Hopefully it won't be necessary, but [refunds are apparently usually done](https://www.tuftandneedle.com/faq/#category:3) by contacting them with proof of a donation of the mattress to a local charity or picked up by some unspecified third party, which is reasonable.
+So I decided to take the risk.
+The twin mattress cost \$371.00, and arrived quickly in a big box on 29 October 2016. (Even knowing that foam mattresses can be squeezed down and re-expand to large volumes, I was surprised how big it became.)
+It struck me as solid and very firm.
+I liked the first night and there was no substantial heat problem, but also was too firm.
+Of course, it might get softer with use, but I wondered if it would work out in the long run compared to a softer foam mattress.
+
+The experimental design is pairs of days on the old and new mattress, somewhere ~_n_=50 for each night.
+To switch, I move the new mattress on and off the old one.
+I reinforced the bed with an additional plank of wood to handle the additional ~23kg weight.
+For analysis, I will piggyback pillow and mattress variables on the CO2 experiment.
+The sample size is not fantastic, but I am looking for a large improvement otherwise I am better off returning the mattress & trying softer ones, so it should be adequate.
+
+October 2016
+28: 0
+29: 1
+30: 1
+31: 0
+November
+01: 1
+02: 0?
