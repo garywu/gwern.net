@@ -3244,7 +3244,7 @@ This left me with only a few options:
 - get a more expensive, closer to the top of the line, hopefully stronger WiFi repeater like [The Wire Cutter's July 2016](http://thewirecutter.com/reviews/best-wi-fi-extender/) recommended extender, the [TP-Link RE450](https://www.amazon.com/dp/B010S6SG3S/ "$98.98"); likely but not guaranteed to solve the problem, more expensive (\$100+), psychologically painful since I bought the first repeater not terribly long ago
 - look into [power-line communication](!Wikipedia) to connect to the router (not possible as far as I knew due to independent electrical systems)
 - get my own cable modem subscription and run it into the apartment; guaranteed solution, but *much* more expensive, additional paperwork, major hassle in getting such a connection, and looking at the wiring of the buildings, I'm not 100% sure it is possible as some of the cable runs may've been cut since the last time cable was active in this apartment was at least a decade and a half ago
-- run ~60m of Ethernet cable out and around to the other house, buried in the ground in PVC pipes to avoid cars & lawn mowers & weather, going out and in through windows or walls; guaranteed solution, not terribly expensive (shouldn't require much more than ~\$30 of cabling and a similar amount for piping), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require work on the buildings to get the cabling in, which the owners would not be happy about, and be a good deal of work digging & burying the cables
+- run ~60m of Cat6 Ethernet cable out and around to the other house, either armored or burial grade cable or buried in the ground in PVC pipes to avoid cars & lawn mowers & weather, going out and in through windows or walls; guaranteed solution, not terribly expensive (shouldn't require much more than ~\$30 of cabling and a similar amount for piping), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require work on the buildings to get the cabling in, which the owners would not be happy about, and be a good deal of work digging & burying the cables
 - a high-gain [parabolic](!Wikipedia "Parabolic antenna") or [Yagi](!Wikipedia "Yagi–Uda antenna") [directional antenna](!Wikipedia) for either laptop or router, to boost signal reception / focus^[As I understand how it would work here, sending/receiving are symmetrical for a directional antenna like this: the signals from the router to the laptop is made stronger by focusing the same amount of radio into the smaller directional beam, and the weak omnidirectional signals from the laptop back to the router are receivable thanks to the same focusing of the antenna dish.]; highly likely to solve the problem as directional antennas can reportedly maintain fast connections over scores of miles under ideal circumstances, relatively inexpensive (\$20-50), easily installed onto either the USB dongle or the router which both have removable/extensible antennas, at the cost of an additional bulky object somewhere and the solution not being mobile. Directional antennas are also not something I have any experience with and so would be fun to play with.
 
 ## Directional antenna
@@ -3270,7 +3270,7 @@ every day, at the start of each hour noon to 10PM (primary time-range for my Int
 ~~~
 
 For additional testing, I ran groups of benchmarks for every possible arrangement.
-Possible arrangements would be apartment + dongle + repeater + new/old router; apartment + dongle + repeater + antenna (located in apartment) + new/old router; house + repeater + new/old router; house + Ethernet cord into new/old router; house + Ethernet cord + no router & plugged directly into cable modem; house + dongle/WiFi card + new/old router; etc.
+Possible arrangements would be apartment + dongle + repeater + new/old router; apartment + dongle + repeater + antenna (located in apartment) + new/old router; house + repeater + new/old router; house + Cat5e Ethernet cord into new/old router; house + Ethernet cord + no router & plugged directly into cable modem; house + dongle/WiFi card + new/old router; etc.
 Many arrangements are not possible: the old router does not have a removable antenna so the directional antenna cannot be plugged into it and other combinations tested; the repeater is likewise not removable so I can test laptop+antenna connecting to the repeater or new router+antenna connecting to the repeater, the reverses are not possible; the laptop WiFi card can't be used with either the repeater or the new/old router boosted with the antenna because it lacks the range for connecting at all unless it is physically near them inside the house; plugging an Ethernet cable from the laptop directly into the cable modem tests the upper bound of possible performance but can only be done inside the house (because I do not have the very long Ethernet cable necessary for temporary testing); the cable modem does not have any kind of wireless functionality so it can be tested on its own in only one way; etc.
 
 Of the ~8 possible variables (house vs apartment, wireless vs wired, dongle vs laptop WiFi card, remote vs local directional antenna, cable mode, vs a router, old vs new router) giving 2^8^=256 possible total arrangements, ~17 arrangements will work.
@@ -3444,10 +3444,88 @@ The hypothetical Ethernet dig would cost somewhere around \$100+ for materials a
 
 WiFi routers rarely break (the old Belkin one looked like it was about a decade old), and the directional antenna is heavy coated metal intended for outdoor use so I expect it to survive at least as long.
 At my usual discount rate of 5% and the router/antenna never breaking and discounting out indefinitely, the annual loss corresponding to the NPV of -\$138 would be -\$6/year or -\$0.5/month;
-assuming that they will break or need replacing or my circumstances will change within 5 years, the [equivalent annual cost](!Wikipedia) would be -\$32/year (`138 / ((1 - (1/(1+0.05)^5))/0.05)`) or -\$2.6/month.
+assuming that they will break or need replacing or my circumstances will change within 5 years (eg by moving to somewhere where the directional antenna is unnecessary), the [equivalent annual cost](!Wikipedia) would be -\$32/year (`138 / ((1 - (1/(1+0.05)^5))/0.05)`) or -\$2.6/month.
 This seems like a trivial cost for improving my Internet connection by ~6x.
 
-The buried Ethernet is much more dubious.
+The buried Ethernet is more dubious.
 The router & antenna are sunk costs inasmuch as they would be difficult to return and I would need to do so soon, and so the marginal benefit of the Ethernet over the router+antenna would be 16% or less, for a marginal equivalent annual cost of -\$47 on top of the -\$32 for -\$79.
+(The buried Ethernet cable would be even less likely to break than the router or antenna, but is also impossible to take with me.)
 Still not much monthly but is <16% worth even that much?
 I am doubtful and will leave matters as they stand with the antenna+router.
+
+# Detecting fake (human) Markov chain bots
+
+Some popular Twitter and Tumblr accounts using [Markov chains](!Wikipedia) trained on two unrelated corpuses to create amusing mashups: programming documentation and [H.P. Lovecraft's horror/SF fiction](http://thedoomthatcametopuppet.tumblr.com/) or the [King James Bible](http://kingjamesprogramming.tumblr.com/) or [the works of Karl Marx](https://marxistprogramming.tumblr.com/), or [Kim Kardashian and Kierkegaard](https://twitter.com/kimkierkegaard).
+The humor comes from the fact that the Markov chains have no understanding and are merely programs producing gibberish that occasionally present striking juxtapositions or insights.
+Much of their humor derives in large part from the fact that while humans curate them, they don't write them.
+
+Markov chains are trained on a specific corpus and are a probabilistic generative model which encode the probability that a word _X_ follows another word _Y_ for all the words in that corpus (and similarly if they are operating on letters or on [_n_-grams](!Wikipedia "n-gram")); there is no state or memory or 'look back' or ability to model recursion.
+To generate text, one simply picks a random word _Y_, looks up the probabilities of all the words _A_..._Z_ from _Y_, and picks a word at random weighted by those probabilities; then repeat indefinitely.
+Conversely, one could also use it to calculate the [likelihood](!Wikipedia) of a given text by multiplying the probability of each word in the text conditional on the previous one.
+
+Of course, there's always the temptation to edit them or write them wholesale, perhaps because the Markov chains aren't cooperating in producing any comedy gold to tweet that day, which is dishonest.
+This poses an inverse Turing test: how would you detect a fake Markov chain account, that is, one where a human is pretending to be a computer and writing some of the text?
+
+A few possible attacks come to mind:
+
+- observation of malformed syntax or lack of long-range dependencies
+- vocabulary or output outside an independently trained Markov chain's domain
+- unusually low likelihood for an independently trained Markov chain to generate known samples
+- unusually low likelihood for an independently trained Markov chain to generate known samples compared to newly generated samples filtered at a 1-in-100s quality level
+- unusually high quality of known samples compared to newly generated samples from independently trained Markov chain filtered at a 1-in-100s quality level, tested nonparametrically or parametrically as a mixture model
+
+Markov chains produce realistic-looking output and are efficient to create & run, but, compared to RNNs, they notoriously model recursive syntax poorly, such as nested parentheses (since they have no way of remembering whether a parenthetical comment had been started), and cannot extrapolate - for example, a word-level Markov chain can't create new words, and would require _n_-grams to have available fragments of words which could be recombined.
+The memory-less nature of Markov chains also means that, lacking any memory which could model the 'long-range correlations' found in natural English text like systematic use of particular names/topics/vocabulary, larger samples quickly veer off-topic and become gibberish and lack any coherency possibly even inside a single sentence.
+(RNNs also have this problem, but somewhat less.)
+
+With the limits of a Markov chain in mind, it would be easy to detect faked Markov chain output with large samples: it is just difficult for a human to deliberately generate long text which is as nonsensical and syntactically invalid as a Markov chain creates, for the same reason an unpracticed human is a remarkably bad random number generator.
+However, for this same reason the selected Markov samples tend to be very short, usually no more than a sentence.
+It *might* be possible to measure this on the samples as a whole and observe higher entropy or memorylessness (eg by measuring compression performance or efficiency of a Markov chain in modeling the samples), but I would guess that usually the samples are not long enough or large enough for this to have reasonable [statistical power](!Wikipedia) as a test.
+This eliminates the easiest test.
+
+Since the corpus is known in many of these cases, we can assume access to a Markov chain model which is similar (if not identical) to the one which supposedly wrote all the tweets.
+This gives us several possibilities.
+
+We could exploit the lack of creativity of Markov chains and look for anything in the tweets which is not present in the original corpus.
+For example, if a word like "cromulent" appears neither in the Puppet documentation nor (having been coined in 1996, 59 years after he died) in H.P. Lovecraft's fiction, then it would have a probability of 0 of being generated by any Puppet/Lovecraft Markov chain (as no word will have any transition probability to it).
+Such extra-corporal vocabulary immediately proves human authorship.
+
+Continuing this same logic, we could take the corpus, train our own Markov chain (which will at least be similar), and use it to calculate the likelihood of all the tweets.
+A human-written tweet may be *possible* for the Markov chain to have written, but it will be far more unlikely than most of the ones the Markov chain actually wrote & were selected.
+So we would see that most of the tweets have reasonable log likelihoods, but that our suspicious ones will be far more extreme.
+(If the Markov chains are word-level, this test subsumes the impossible-word test: any tweet with a word not in the corpus, and hence not represented in the Markov chain, will have a meaningless likelihood.)
+
+This likelihood test might not help if they are all equally extreme, in which case one could use our Markov chain in another manner, as a generative model, to try to estimate the likelihood of getting as great a tweet.
+For this, one samples several thousand samples from our Markov chain, and screens them for good ones.
+This creates an empirical distribution of the likelihoods of good tweets conditional on the null hypothesis of a Markov chain author; in this case, the null hypothesis is known to be true by construction.
+Then to test, one compares the known-Markov-chain tweets with the likelihoods of the suspect tweets (perhaps with a permutation test).
+They should be similar.
+
+Alternately, if one doesn't want to use likelihoods as a measure of improbability, one could instead use some human measure of funniness like having rating the originals and the samples on a scale 1-5, and comparing them.
+The original poster is probably not screening more than a few hundred generated tweets for each selected tweet, so given a similar level of stringency, one's generated tweets should be equally good; if the originals turn out to be extremely better than yours, to a level where you would have to screen thousands of random samples, that is highly suspicious and suggests the originals were 'too good to be true'.
+
+With ratings or likelihoods, one could try to assume a decreasing distribution like an exponential: most samples will be incoherent and totally unfunny, many will be slightly funny, a few will be funny, and a very few will be very funny.
+The ratings on samples generated from our Markov chain will probably follow a smooth distribution.
+However, if a human is authoring some in an attempt to spice things up, they will be above the average of the Markov chain (otherwise why bother with cheating?), and if there is a substantial number of them, this will create an anomaly in the ratings of the originals - a 'bump' indicating that the tweets are coming from two different populations.
+In this case, it can be modeled as a [mixture model](!Wikipedia) with either _k_=1 or _k_=2, and the _p_-value or Bayesian posterior probability calculated for 1 vs 2.
+
+17:11:42 < glass|> gwern: I was wondering if you could do it without the corpus but with a list of outputs (tweets) by assuming the markov chain had length N, looking for output strings
+                   whose N-symbol subsequences contain outliers wrt the rest of the data.
+
+17:12:34 <@gwern> glass|: I dunno. you could try to fit a markov chain to the tweets, but that's circular. if the tweets are exceptional, then the markov chain will of course emit those as
+                  normal output
+17:13:23 <@gwern> glass|: if you knew exactly which subset was suspicious, you could try to fit a markov chain to the known-good ones and see how strange the suspicious subset was, but
+                  this is also double use of the data - you selected the subset for a reason
+
+17:17:59 <@gwern> glass|: it's the same issue with gambling sites. one guy came to me with his gambling records - he'd lost a ton and reasonably suspected that the bitcoin site had
+                  defrauded him. but I couldn't come up with an answer to the fundamental question of double-use of data: he'd already run an analysis on his data by noting he had lost an
+                  unusual amount
+
+17:19:56 < glass|> gwern: but if you had all the gambling records that wouldn't be a problem
+
+17:20:37 <@gwern> glass|: right. but I didn't. whether you're calculating a p-value or using a bayesian model, this sort of data selection is a problem. in bayesian terms, the data
+                  generating process is not 'ignorable' (while a random sampling process would be) so you have to model it... but what's the model?
+17:22:05 <@gwern> glass|: eg imagine that the top 1% of losers get angry and start looking into whether they were cheated. they go to a statistician who duly computes that based on the
+                  game they played, there is a p=0.01 that they would lose as much or more as they did...
+17:23:42 <@gwern> glass|: so to make the analogy explicit, you are the gambler who gets suspicious about a particular subset (out of the powerset of tweets) looking 'too' good. so you
+                  calculate p-values somehow and yes, the weird-looking subset is weird-looking! what have you learned?
