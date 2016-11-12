@@ -3455,7 +3455,7 @@ I am doubtful and will leave matters as they stand with the antenna+router.
 
 # Detecting fake (human) Markov chain bots
 
-Some popular Twitter and Tumblr accounts using [Markov chains](!Wikipedia) trained on two unrelated corpuses to create amusing mashups: programming documentation and [H.P. Lovecraft's horror/SF fiction](http://thedoomthatcametopuppet.tumblr.com/) or the [King James Bible](http://kingjamesprogramming.tumblr.com/) or [the works of Karl Marx](https://marxistprogramming.tumblr.com/), or [Kim Kardashian and Kierkegaard](https://twitter.com/kimkierkegaard).
+Some popular Twitter and Tumblr accounts using [Markov chains](!Wikipedia) trained on two unrelated corpuses to create amusing mashups: programming documentation and [H.P. Lovecraft's horror/SF fiction](http://thedoomthatcametopuppet.tumblr.com/ "The Doom That Came to Puppet") or the [King James Bible](http://kingjamesprogramming.tumblr.com/ "King James Programming") or [the works of Karl Marx](https://marxistprogramming.tumblr.com/ "Marxist Programming"), or [Kim Kardashian and Kierkegaard](https://twitter.com/kimkierkegaard " Kim Kierkegaardashian").
 The humor comes from the fact that the Markov chains have no understanding and are merely programs producing gibberish that occasionally present striking juxtapositions or insights.
 Much of their humor derives in large part from the fact that while humans curate them, they don't write them.
 
@@ -3465,6 +3465,12 @@ Conversely, one could also use it to calculate the [likelihood](!Wikipedia) of a
 
 Of course, there's always the temptation to edit them or write them wholesale, perhaps because the Markov chains aren't cooperating in producing any comedy gold to tweet that day, which is dishonest.
 This poses an inverse Turing test: how would you detect a fake Markov chain account, that is, one where a human is pretending to be a computer and writing some of the text?
+
+One difficulty is the potential for double-use of data: the first pass through a Markov chain account is already applying to the data a highly flexible Bayesian neural network with billions of parameters (one's brain).
+If one spots an 'anomalous' dataset and subsequent analysis confirms it, what does this mean?
+I am reminded of one past incident: someone had lost a great deal of money on a Bitcoin gambling website, and suspected the site had defrauded him.
+But he had contacted me only *because* he had had unusual losses. What does an analysis mean? Imagine that the top 1% of losers get angry and start looking into whether they were cheated; they go to a statistician who duly computes that based on the number of games played, there is a _p_=0.01 that they would lose as much or more as they did...
+If one had *all* the gambling records, one could look at the overall patterns and see if there are more losers than there should be given the rules of the game and a supposedly fair random number generator, but what does one do with 1 self-selected player? The data generation process is certainly neither random nor 'ignorable' nor modelable without dubious assumptions.
 
 A few possible attacks come to mind:
 
@@ -3480,14 +3486,14 @@ The memory-less nature of Markov chains also means that, lacking any memory whic
 
 With the limits of a Markov chain in mind, it would be easy to detect faked Markov chain output with large samples: it is just difficult for a human to deliberately generate long text which is as nonsensical and syntactically invalid as a Markov chain creates, for the same reason an unpracticed human is a remarkably bad random number generator.
 However, for this same reason the selected Markov samples tend to be very short, usually no more than a sentence.
-It *might* be possible to measure this on the samples as a whole and observe higher entropy or memorylessness (eg by measuring compression performance or efficiency of a Markov chain in modeling the samples), but I would guess that usually the samples are not long enough or large enough for this to have reasonable [statistical power](!Wikipedia) as a test.
+It *might* be possible to measure this on the samples as a whole and observe higher entropy or memoryless-ness (eg by measuring compression performance or efficiency of a Markov chain in modeling the samples), but I would guess that usually the samples are not long enough or large enough for this to have reasonable [statistical power](!Wikipedia) as a test.
 This eliminates the easiest test.
 
 Since the corpus is known in many of these cases, we can assume access to a Markov chain model which is similar (if not identical) to the one which supposedly wrote all the tweets.
 This gives us several possibilities.
 
 We could exploit the lack of creativity of Markov chains and look for anything in the tweets which is not present in the original corpus.
-For example, if a word like "cromulent" appears neither in the Puppet documentation nor (having been coined in 1996, 59 years after he died) in H.P. Lovecraft's fiction, then it would have a probability of 0 of being generated by any Puppet/Lovecraft Markov chain (as no word will have any transition probability to it).
+For example, if a word like "[cromulent](!Wikipedia)" appears neither in the Puppet documentation nor (having been coined in 1996, 59 years after he died) in H.P. Lovecraft's fiction, then it would have a probability of 0 of being generated by any Puppet/Lovecraft Markov chain (as no word will have any transition probability to it).
 Such extra-corporal vocabulary immediately proves human authorship.
 
 Continuing this same logic, we could take the corpus, train our own Markov chain (which will at least be similar), and use it to calculate the likelihood of all the tweets.
@@ -3498,7 +3504,7 @@ So we would see that most of the tweets have reasonable log likelihoods, but tha
 This likelihood test might not help if they are all equally extreme, in which case one could use our Markov chain in another manner, as a generative model, to try to estimate the likelihood of getting as great a tweet.
 For this, one samples several thousand samples from our Markov chain, and screens them for good ones.
 This creates an empirical distribution of the likelihoods of good tweets conditional on the null hypothesis of a Markov chain author; in this case, the null hypothesis is known to be true by construction.
-Then to test, one compares the known-Markov-chain tweets with the likelihoods of the suspect tweets (perhaps with a permutation test).
+Then to test, one compares the known-Markov-chain tweets with the likelihoods of the suspect tweets (perhaps with a [permutation test](!Wikipedia)).
 They should be similar.
 
 Alternately, if one doesn't want to use likelihoods as a measure of improbability, one could instead use some human measure of funniness like having rating the originals and the samples on a scale 1-5, and comparing them.
@@ -3508,24 +3514,3 @@ With ratings or likelihoods, one could try to assume a decreasing distribution l
 The ratings on samples generated from our Markov chain will probably follow a smooth distribution.
 However, if a human is authoring some in an attempt to spice things up, they will be above the average of the Markov chain (otherwise why bother with cheating?), and if there is a substantial number of them, this will create an anomaly in the ratings of the originals - a 'bump' indicating that the tweets are coming from two different populations.
 In this case, it can be modeled as a [mixture model](!Wikipedia) with either _k_=1 or _k_=2, and the _p_-value or Bayesian posterior probability calculated for 1 vs 2.
-
-17:11:42 < glass|> gwern: I was wondering if you could do it without the corpus but with a list of outputs (tweets) by assuming the markov chain had length N, looking for output strings
-                   whose N-symbol subsequences contain outliers wrt the rest of the data.
-
-17:12:34 <@gwern> glass|: I dunno. you could try to fit a markov chain to the tweets, but that's circular. if the tweets are exceptional, then the markov chain will of course emit those as
-                  normal output
-17:13:23 <@gwern> glass|: if you knew exactly which subset was suspicious, you could try to fit a markov chain to the known-good ones and see how strange the suspicious subset was, but
-                  this is also double use of the data - you selected the subset for a reason
-
-17:17:59 <@gwern> glass|: it's the same issue with gambling sites. one guy came to me with his gambling records - he'd lost a ton and reasonably suspected that the bitcoin site had
-                  defrauded him. but I couldn't come up with an answer to the fundamental question of double-use of data: he'd already run an analysis on his data by noting he had lost an
-                  unusual amount
-
-17:19:56 < glass|> gwern: but if you had all the gambling records that wouldn't be a problem
-
-17:20:37 <@gwern> glass|: right. but I didn't. whether you're calculating a p-value or using a bayesian model, this sort of data selection is a problem. in bayesian terms, the data
-                  generating process is not 'ignorable' (while a random sampling process would be) so you have to model it... but what's the model?
-17:22:05 <@gwern> glass|: eg imagine that the top 1% of losers get angry and start looking into whether they were cheated. they go to a statistician who duly computes that based on the
-                  game they played, there is a p=0.01 that they would lose as much or more as they did...
-17:23:42 <@gwern> glass|: so to make the analogy explicit, you are the gambler who gets suspicious about a particular subset (out of the powerset of tweets) looking 'too' good. so you
-                  calculate p-values somehow and yes, the weird-looking subset is weird-looking! what have you learned?
