@@ -2391,6 +2391,67 @@ This also applies to programmers tempted to automate or script stuff on their co
 Complexity and automation create a technical debt in the form of the fallout from future unreliability.
 "The price of reliability is the pursuit of the utmost simplicity. It is a price which the very rich find most hard to pay."
 
+# Rationality Heuristic: Updating Towards the Net Weight of Evidence
+
+A friend of yours tells you he's worried he saw a snake on his driveway yesterday which he thinks may be a poisonous coral snake rather than a harmless snake; he gives it 50-50 chance - it looked a lot like a coral snake, but he didn't think this state had any poisonous snakes.
+You see him the next day and ask him about the snake.
+"Terrible news!" he says. "I looked it up on Wikipedia, and turns out, this state *does* have poisonous snakes, coral snakes even."
+How unfortunate. So what probability does he think it is a coral snake? His probability must have gone up, after all.
+"Oh, 50-50."
+What? Is he sure about that?
+"Sure I'm sure. I still wonder if it was a coral snake or not..."
+Your friend is fond of gambling, so you know he has not misspoken; he knows what a probability is.
+You politely end the conversation and conclude that while you have little idea if it was a coral snake or not, you do know your friend is fundamentally not thinking straight on the issue of snakes: he understood that he found net evidence for the snake being a coral snake, but somehow did not update his beliefs in the right direction.
+Whatever his thinking process, it is non-rational; perhaps he has herpetophobia and is in denial, or has some reason to lie about this.
+
+It can be hard to decide whether someone's conclusions are irrational because they could have different priors, have different causal models, have been exposed to different evidence, have different preferences, and so on.
+But there are a few hard rules for bare minimums of rationality: no contradictions; conjunctions are equally or less likely than any of their conjuncts; disjunctions are equally or more likely than any disjuncts; 0 and 1 are not degrees of belief; and - net evidence for a claim increases the probability of that claim.
+(Or to put it another, per Bayes rule $P(A|B)\propto P(A) \cdot P(B|A)$, for arbitrary $P(A)$ and $P()$, if $P(B|A) > 1$ then $P(A|B) > P(A)$; $(P(A|B) \le P(A)) \land (P(A) \gt 1)$ is a contradiction.)
+And what applies to coral snakes applies to everything else - if your friend agrees evidence suggests his pool was a bad buy, he should be less optimistic about it than he was when he bought it, and so on.
+Your friend might have totally different priors or causal models or life experiences or political affiliations, but whatever they are, he still must make his net evidence and update direction jive.
+Updating is not sufficient for rationality (one can still have wrong models which indicate something is net evidence which shouldn't be, or update too much, or be irrational on other matters) and updating doesn't itself show notable rationality (perhaps one was just profoundly ignorant about a topic), but it is necessary.
+
+We can broaden it further beyond individuals.
+If someone fails to update their earlier estimate towards their claimed weight of evidence, then they are wrong. What about everyone else?
+If you surveyed your neighbors and your friend, they would agree that however much one should believe it was a coral snake, upon learning that coral snakes do in fact live around here, it is terrible news and evidence for the snake being a coral snake.
+They might not agree with a starting 50% probability, and might argue about whether the Wikipedia article should matter a lot or a little ("whenever I check a WP article, it's always vandalized"), but they would agree that the evidence is in favor of a coral snake and that the correct increase is definitely not 0% or -5%, and anyone who changes their belief that way is just wrong.
+Hence, for your neighborhood as a whole, each person is wrong if they don't change their earlier probability upwards.
+
+Can we broaden it further?
+If (for some reason, perhaps because we too suffer from herpetophobia) we have surveys of your neighbors about the risk of snakes on their part of this mortal plane going back decades, then we can employ the same trick: ask them what they think the weight of evidence about coral snakes is, and their current probability, and compare to their old probability.
+
+Can we broaden it further?
+What applies to your neighborhood should also *generally* apply more broadly to populations over time.
+Now we ask everyone what they think, or they think the general population thinks, the net weight of evidence has been. (Somewhat like [Bayesian truth serum](http://nel.mit.edu/bayesian-truth-serum).)
+If there is some issue which 100 years ago split the population 50-50 on, and everyone agrees that events/data/research since then have generally favored one side of the issue, and everyone is also meeting bare minimums of rationality, we should see that weight of evidence reflected in proportions shifting towards the winning side.
+We definitely do not expect to see surveys reporting the split remains exactly 50-50.
+If it does, it suggests that the population is not dealing with the issue rationally but for other reasons like personal advantage or politics or cognitive biases.^[Or possibly we messed up somehow. For example, we've misunderstood the survey questions: terminology or popular understanding could have changed to the point where the position of one side has become different to its position now, in the same way that American political party platforms of 2000 bear scarcely any resemblance to those of 1900 of the same name, or how the Christianity of 500 AD differed drastically from 100 AD.]
+
+These directions do not need to be the exactly same over all time periods or for all issues.
+For example, consider the question of whether there is alien life on other planets in the Solar system or in other solar systems in the universe from the period 1500 to 1900, 1900 to 2016, and 1500 to 2016.
+Isaac Newton and other natural philosophers speculated about life on other planets and throughout the universe, and I think the net weight of evidence as astronomy and biology progressed was heavily on the possibility of life with an ever-expanding universe to generate life somewhere, and so the direction of belief would have been increasing towards 1900 for life in the Solar system and universe; but then, as progress continued further, there was a drastic reversal of fortune - the canals on Mars were debunked, spectroscopy showed no signatures of life, the launch of space probes showed that Venus was not a garden planet but a sulfuric-rain molten-lead hellhole while Mars was a freeze-dried husk of sand sans life; and after the abrupt extinguishing of hopes for Solar life, Enrico Fermi famously asked 'where are they' with no hints of radio activity or stellar engineering after billions of years even as development of rocketry and space technology demonstrated that advanced alien civilizations could colonize the entire galaxy in merely millions of years.
+And who knows, perhaps some clear signal of life will yet be discovered and the weight of evidence will abruptly swing back in favor of life in the universe.
+So depending on the time period and exact question, the update might be up or down.
+
+An example of an application of the net evidence heuristic might be [cryonics](!Wikipedia).
+Many objections were raised to cryonics at the start: religious and dualist objections; cell lysosomes would 'explode' immediately after death, erasing all information before vitrification; personality and memories were encoded in the brain not as stable chemical or biological structures but as complex electrical dynamics which would be erased immediately upon death; cryonics organizations would disappear or would routinely fail to keep corpses at liquid nitrogen temperatures; scanning technology would never be able to scan even a small fraction of a brain and Moore's law would halt long before coming anywhere near the equivalent of a brain, rendering upload permanently impossible; nuclear war would obviate the issue along with Western civilization, or if not that, then the long-anticipated hyperinflation of the US dollar would bankrupt cryonics organizations; laws would be passed forbidding the practice; angry mobs of religious fanatics would destroy the facilities; the expense would be far too much for anyone but millionaires to afford; and so on.
+Given all this, it is unsurprising that cryonics was not super cool and few people believed in it or did it.
+I don't know of any surveys, but as a proxy, the number of memberships of early cryonics groups and later [ALCOR](!Wikipedia) suggest that cryonics could count perhaps a few hundred or perhaps thousand out of the US population of 180m in the 1960s or so.
+In the half-century since then, cryonics has survived all the objections mentioned: materialism is the order of the day; lysosomes do *not* explode; personality and memory are *not* encoded as anything fragile but as durable properties of the brain; cryonics organizations using the nonprofit model have done well at surviving and keeping all corpses stored without ever thawing; scanning technology has advanced massively and it is now conventional wisdom that at some point it may be possible to scan a brain; Moore's law has continued the whole time; there have been no serious legal danger to cryonics in the USA, nor have there ever been any riots or lynch mobs; median American household real income has increased ~3x from 1960 to 2016; cryonics has demonstrated ever larger proofs of concept such as reviving a vitrified kidney and demonstrating that _C. elegans_ memories are preserved upon revival; and in general neuroscience has moved strongly towards an information-theoretic point of view.
+I would say that the net weight of evidence for cryonics is massively positive. Cryonics has never looked more possible.
+So half a century later with this massive weight of evidence and a much wealthier US population of ~324m people, what membership numbers do we find for ALCOR and CI? We find... [1,101 members in September 2016](http://www.alcor.org/AboutAlcor/membershipstats.html) and [1446](http://www.cryonics.org/ci-landing/member-statistics/) respectively.
+In other words, far from increasing, it may actually have fallen per capita.
+
+What can we conclude from the size of weight of evidence and observed shifts or lack thereof?
+If we survey people asking for net weight of evidence, they will be probabilistically unsophisticated and it's unlikely anyone, even experts, can easily assert that the claim "democracy is the best form of government" is exactly 2x as likely as in 1667; we might ask for a rating on a scale 1-5.
+We can look for surveys on a range of popular issues such as global warming, whether AI is possible, or atheism, and use the longest time-series we can for each issue to calculate a shift in belief odds.
+Then we can survey contemporary people and ask for their estimate of the weight of evidence.
+Finally, we can divide the rating by the odds shift to rank issues by how much changes in evidence correlates with shifts in belief.
+This ranking, a sort of "rationality quotient", might be interesting and correlate with our intuitive expectations about in what areas are beliefs most non-rational.
+(My guess at some of the results: the durability of religious belief will likely contradict the weight of evidence, while AI and global warming will show more updating.)
+
+If this works out, it offers something valuable: an objective, easy, widely-applicable test of long-run population rationality, which controls for individual differences in priors and causal models and knowledge.
+
 # Advanced Chess obituary
 
 As automation and AI advance in any field, it will first find a task impossible, then gradually become capable of doing it at all, then eventually capable of better than many or most humans who try to do something, and then better than the best human.
