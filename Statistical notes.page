@@ -3244,7 +3244,8 @@ This left me with only a few options:
 - get a more expensive, closer to the top of the line, hopefully stronger WiFi repeater like [The Wire Cutter's July 2016](http://thewirecutter.com/reviews/best-wi-fi-extender/) recommended extender, the [TP-Link RE450](https://www.amazon.com/dp/B010S6SG3S/ "$98.98"); likely but not guaranteed to solve the problem, more expensive (\$100+), psychologically painful since I bought the first repeater not terribly long ago
 - look into [power-line communication](!Wikipedia) to connect to the router (not possible as far as I knew due to independent electrical systems)
 - get my own cable modem subscription and run it into the apartment; guaranteed solution, but *much* more expensive, additional paperwork, major hassle in getting such a connection, and looking at the wiring of the buildings, I'm not 100% sure it is possible as some of the cable runs may've been cut since the last time cable was active in this apartment was at least a decade and a half ago
-- run ~60m of Cat6 Ethernet cable out and around to the other house, either armored or burial grade cable or buried in the ground in PVC pipes to avoid cars & lawn mowers & weather, going out and in through windows or walls; guaranteed solution, not terribly expensive (shouldn't require much more than ~\$30 of cabling and a similar amount for piping), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require work on the buildings to get the cabling in, which the owners would not be happy about, and be a good deal of work digging & burying the cables
+- [mobile broadband](!Wikipedia): as there is a cellphone tower nearby with good reception, I could get a [mobile broadband modem](!Wikipedia) & data subscription to replace the cable modem connection with a 3G wireless connection. Data subscriptions are expensive, however (Verizon advertises 8GB/\$50 a month) and I assume I use a lot of bandwidth for browsing, IRC, BitTorrent, [archiving](/Archiving URLs), media and dataset downloads, software updates, publishing etc. It's also unclear if I would get a noticeable speedup: [3G](!Wikipedia) reportedly peaks at ~28Mbit/s or 3.5MB/s, which is not great. <!-- TODO: `vnstat` bandwidth consumption statistics -->
+- run ~51m of Cat6 Ethernet cable outside and across the lawn to the crawlspace of the other house and then up through the floor; using either armored or burial grade cable or buried in the ground in PVC pipes to avoid cars & lawn mowers & weather; guaranteed solution, not terribly expensive (shouldn't require much more than ~\$80 of Ethernet cable and a similar amount for piping), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require work on the buildings to get the cabling in, which the owners would not be happy about, and be a good deal of work digging & burying the cables <!-- measured at 167 feet, allowing 6 feet in the apartment and 6 feet in the house -->
 - a high-gain [parabolic](!Wikipedia "Parabolic antenna") or [Yagi](!Wikipedia "Yagi–Uda antenna") [directional antenna](!Wikipedia) for either laptop or router, to boost signal reception / focus^[As I understand how it would work here, sending/receiving are symmetrical for a directional antenna like this: the signals from the router to the laptop is made stronger by focusing the same amount of radio into the smaller directional beam, and the weak omnidirectional signals from the laptop back to the router are receivable thanks to the same focusing of the antenna dish.]; highly likely to solve the problem as directional antennas can reportedly maintain fast connections over scores of miles under ideal circumstances, relatively inexpensive (\$20-50), easily installed onto either the USB dongle or the router which both have removable/extensible antennas, at the cost of an additional bulky object somewhere and the solution not being mobile. Directional antennas are also not something I have any experience with and so would be fun to play with.
 
 ## Directional antenna
@@ -3514,3 +3515,212 @@ With ratings or likelihoods, one could try to assume a decreasing distribution l
 The ratings on samples generated from our Markov chain will probably follow a smooth distribution.
 However, if a human is authoring some in an attempt to spice things up, they will be above the average of the Markov chain (otherwise why bother with cheating?), and if there is a substantial number of them, this will create an anomaly in the ratings of the originals - a 'bump' indicating that the tweets are coming from two different populations.
 In this case, it can be modeled as a [mixture model](!Wikipedia) with either _k_=1 or _k_=2, and the _p_-value or Bayesian posterior probability calculated for 1 vs 2.
+
+# Optimal Existential Risk Reduction Investment
+
+An existential risk is any risk which destroys or permanently cripples human civilization, such as an asteroid strike or pandemic.
+Since humanity might otherwise continue for millions of years, creating untold trillions of humans and colonizing the galaxy, human extinction represents the loss of literally [astronomical amounts of utility](http://www.nickbostrom.com/astronomical/waste.html "'Astronomical Waste: The Opportunity Cost of Delayed Technological Development', Bostrom 2003").
+The loss is greater than any disaster up to extinction levels, as humanity can always recover from lesser disasters; but there is no recovery from a total destruction.
+Thus, the expected value of even a slight reduction in an exotic risk ought to itself be astronomical, or at least extremely large; under plausible values for well-characterized x-risks like asteroid strikes or nuclear war or pandemic, preventing them may be the charitable spending with the highest expected value and they should be receiving all charitable expenditures.
+
+This strikes people as odd and dangerous reasoning.
+Is it really true that we should be spending almost unlimited amounts of money on these things and not otherwise extremely compelling charities like distributing malaria nets in Africa to save millions of lives or vaccine distribution or funding research into ending aging?
+And if we should, how do we choose what fraction to spend on global warming rather than artificial intelligence?
+What if someone discovers an entirely new x-risk not previously considered, like nearby supernovas or vacuum collapses or nanotechnology 'grey goo'?
+
+Thinking historically, it's clear in retrospect that someone concerned about x-risk would be better off not going after the terminal goal of x-risk reduction but instead spending their money on instrumental goals such as science/technology or economic growth.
+
+Imagine someone in England in 1500 who reasons the same way about x-risk: humanity might be destroyed, so preventing that is the most important task possible.
+He then spends the rest of his life researching the Devil and the Apocalypse.
+Such research is, unfortunately, of no value whatsoever unless it produces arguments for atheism demonstrating that that entire line of enquiry is useless and should not be pursued further.
+But as the Industrial and Scientific Revolutions were just beginning, with exponential increases in global wealth and science and technology and population, ultimately leading to vaccine technology, rockets and space programs, and enough wealth to fund all manner of investments in x-risk reduction, he could instead had made a perhaps small but real contribution by contributing to economic growth by work & investment or making scientific discoveries.
+
+For example, Isaac Newton's discoveries in astronomy and the laws of motion helped inaugurate threads of work that led directly to space satellites which can watch for asteroids with Earth-crossing orbits.
+Isaac Newton himself was concerned with x-risk, as he feared that Halley's Comet would, centuries hence, plunge into the Sun and cause expansion destroying the Earth and humanity.
+What could Newton have done to directly reduce this x-risk at the time?
+Absolutely nothing.
+There were no feasible counter-measures nor any foreseeable technologies which could forestall a comet or protect humanity from the Sun engulfing the Earth; there was not and still is not a mine or bomb shelter deep enough for that.
+What he *could* have done is close to what he did do: make fundamental advances in science which posterity could build on and one day be rich and wise enough to do something about the x-risk.
+As it happens, Newton was not quite right about Halley's Comet (comets are not a meaningful fraction of the Sun's mass) but there was an x-risk he was unaware of: giant asteroid impacts.
+And the solutions to a giant comet - observe all comets carefully to project their future orbits, destroy it, redirect its orbit, evacuate human colonists to safety to unaffected planets (Newton suggested the satellites of the gas giants) - are much the same as for a giant asteroid impact, and all benefit from economic growth & greater science/technology (someone has to pay for, and design those satellites and spacecraft, after all).
+
+Economic wealth & science/technology are all-purpose goods: they are useful for compound growth, and can also be spent on x-risk reduction.
+They are the ultimate instrumental goods.
+If one is badly ignorant, or poor, or unable to meaningfully reduce an x-risk, one is better off accepting the x-risk and instead spending resources on fixing the former problems.
+One would prefer to get rid of the x-risk as soon as possible, of course, but given one's starting position, there may simply be no better strategy and the risk must be accepted.
+
+This raises the question: what is the optimal distribution of resources to economic growth vs x-risk reduction over time which maximizes expected utility?
+
+Intuitively, we might expect something like early on investing nothing at all in x-risk reduction as there's not much money available to be spent, and money spent now costs a lot of money down the line in lost compound growth; and then as the economy reaches modern levels and the opportunity cost of x-risk becomes dire, money is increasingly diverted to x-risk reduction.
+One might analogize it to insurance - poor people skimp on insurance because they need the money for other things which hopefully will pay off later like education or starting a business, while rich people want to buy lots of insurance because they already have enough and they fear the risks.
+If this were an investment question, a good strategy would be something like the [Kelly criterion](!Wikipedia) or [probability matching](!Wikipedia) strategies like [Thompson sampling](!Wikipedia): even if the expected value of x-risk reduction is higher than other investments, it only pays off very rarely and so receives a very small fraction of one's investments.
+However, it's not clear that the Kelly criterion or Thompson sampling are optimal or even relevant: because while Kelly avoids bankruptcy in the form of [gambler's ruin](!Wikipedia) but does so only by making arbitrarily small bets to avoid going bankrupt & refusing to ever risk one's entire wealth; with x-risks, the 'bankruptcy' (extinction) can't be avoided so easily, as the risk is there whether you like it or not, and one cannot turn it to 0. (This comes up often in discussion of why the Kelly criterion is relevant to decision-making under risk; see also [Peters 2011](http://rsta.royalsocietypublishing.org/content/369/1956/4913 "The time resolution of the St Petersburg paradox") and the niche area of "evolutionary finance" like [Evstigneev et al 2008](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1155014 "Evolutionary finance")/[Lensberg & Schenk-Hoppé 2006](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=951242 "On the Evolution of Investment Strategies and the Kelly Rule - A Darwinian Approach") which draws connections between the Kelly criterion, probability matching, long-term survival & evolutionary fitness.)
+In economics, similar questions are often dealt with in terms of the [life-cycle hypothesis](!Wikipedia) in which economic agents strive to maximize their utility over a career/lifetime while [avoiding inefficient intertemporal allocation of wealth](!Wikipedia "Consumption smoothing") (as Mark Twain put it, "when in youth a dollar would bring a hundred pleasures, you can't have it. When you are old, you get it & there is nothing worth buying with it then. It's an epitome of life. The first half of it consists of the capacity to enjoy without the chance; the last half consists of the chance without the capacity."); in the life-cycle, one tries to build wealth as quickly as possible while young, even going into debt for investments like a college education, then begins saving up, consuming some, until retirement, at which point one consumes it all until one dies.
+But as far as I've seen any results, life-cycle models tend to not include any mechanism for spending in order to reduce mortality/aging and accept the risk of death as a given.
+
+We could create a simple Markov decision process model.
+An agent (humanity), each time period (year), has a certain amount of wealth and an x-risk probability _P_.
+In this period, it can choose to allocate that wealth between economic growth, in which case it receives that investment plus a return, and it can buy a permanent percentage reduction in the x-risk for a fixed sum.
+For the reward, the x-risk is binary sampled with probability _P_; if the sample is true, then the reward is 0 and the decision process terminates, else the reward is the wealth and the process continues.
+Let's imagine that this process can run up to 10,000 time periods, with a starting wealth of \$248 billion (Angus Deaton's estimate of PPP world GDP in 1500 https://en.wikipedia.org/wiki/List_of_regions_by_past_GDP_%28PPP%29 ), the economic growth rate is 2% (the long-run real growth rate of the global economy), the existential risk probability is 0.1% per year (arbitrarily chosen), and one can buy a reduction of 1% for a billion dollars. (We'll work in trillions units to help numeric stability.)
+What strategy maximizes the cumulative rewards?
+A few simple ones come to mind:
+
+1. the agent could simply ignore the x-risk and reinvests all wealth, which to a first approximation, is the strategy which has been followed throughout human history and is primarily followed now (lumping together NASA's Spaceguard program, biowarfare and pandemic research, AI risk research etc probably doesn't come to more than \$1-2b a year in 2016). This maximizes economic growth rate but may backfire as the x-risk never gets reduced.
+2. the agent could spend the full gain in its wealth from economic growth (2%) on x-risk reduction. The wealth doesn't grow and the returns from x-risk reduction do diminish, but the x-risk is at least reduced greatly over time.
+3. the agent could implement a sort of probability matching: it spends on x-risk reduction a fraction of its wealth equal to the current _P_. This reduces how much is spent on extremely small x-risk reductions, but it might be suboptimal because it'll pay the largest fraction of its economy in the first time period, then second-largest in the second time period and so on, losing out on the potential compounding.
+4. a more complicated hybrid strategy might work: it maximizes wealth like #1 for the first _n_ time periods (eg _n_=516), and then it switches to #2 for the remaining time period
+5. like #4, but switching from #1 to #3 for the remaining time periods.
+
+~~~{.R}
+constantInvestmentAgent <- function (t, w, xrp) { return(c(w, 0)) }
+constantReductionAgent  <- function (t, w, xrp) { drawdown <- 0.9803921573; return(c(drawdown*w, (1-drawdown)*w)) }
+probabilityMatchAgent   <- function (t, w, xrp) { return(c(w*(1-xrp), w*xrp)) }
+investThenReduceAgent   <- function (t, w, xrp, n=516) { if (t<n) { return(constantInvestmentAgent(t, w, xrp)) } else { return(constantReductionAgent(t, w, xrp)) } }
+investThenMatchAgent    <- function (t, w, xrp, n=516) { if (t<n) { return(constantInvestmentAgent(t, w, xrp)) } else { return(probabilityMatchAgent(t, w, xrp)) } }
+
+simulateWorld <- function(agent, t=10000) {
+    initialW <- 0.248
+    initialP <- 0.001
+    df <- data.frame(T=0, Wealth=initialW, XriskP=initialP)
+
+    for (i in 1:t) {
+        last <- tail(df, n=1)
+        xrisk <- rbinom(1,1, p=last$XriskP)
+        if (xrisk) { break; } else {
+          choices <- agent(last$T, last$Wealth, last$XriskP)
+          newXriskP <- last$XriskP * (1 - 0.01)^(choices[2] / 0.001)
+          newWealth <- choices[1] * 1.02
+          df <- rbind(df, data.frame(T=i, Wealth=newWealth, XriskP=newXriskP))
+          }
+         }
+   df$Reward <- cumsum(df$Wealth)
+   return(df)
+   }
+
+library(parallel); library(plyr)
+simulateWorlds <- function(agent, iters=1000) {
+    mean(ldply(mclapply(1:iters, function(i) { tail(simulateWorld(agent), n=1)$Reward }))$V1)  }
+
+simulateWorlds(constantReductionAgent)
+# [1] 2423.308636
+simulateWorlds(investThenReduceAgent)
+# [1] 10127204.73
+simulateWorlds(constantInvestmentAgent)
+# [1] 1.154991741e+76
+simulateWorlds(investThenMatchAgent)
+# [1] 7.53514145e+86
+## Optimize the switch point:
+which.max(sapply(seq(1, 10000, by=100), function(N) { simulateWorlds(function(t,w,xrp) { investThenMatchAgent(t, w, xrp, n=N) }, iters=100)}))
+# [1] 3
+simulateWorlds(function(t,w,xrp) { investThenMatchAgent(t, w, xrp, n=300) })
+# [1] 9.331170221e+86
+simulateWorlds(probabilityMatchAgent)
+# [1] 1.006834082e+87
+~~~
+
+So of our 5 strategies, the constant reduction agent performs the worst (probably because with economic growth choked off, it can only buy small x-risk reductions), followed by the invest-then-reduce agent; then the 'get rich before you get old' constant investment agent manages to often attain very high growth rates when it's lucky enough that x-risks don't strike early on; but far better than any of them, by orders of magnitude, are the partial and full probability matching agents.
+The partial probability matching agent turns out to have a suboptimal switch point _t_=516, and a more careful search of switch points finds that _t_~=300 is the best switch point and it exceeds the pure probability matcher which matches from the start.
+
+What's going on there? I suspect it's something similar to the difference in multi-armed bandit problems between the asymptotically optimal solution and the optimal solution for a fixed horizon found using dynamic programming: in the former scenario, there's an indefinite amount of time to do any exploration or investment in information, but in the latter, there's only a finite time left and exploration/growth must be done up front and then the optimal decision increasingly shifts to exploitation rather than growth.
+
+Why does probability matching in general work so well?
+It may simply be because it's the only baseline strategy which adjusts its xrisk investment over time.
+
+This doesn't demonstrate that probability matching is optimal, just that it beats the other baseline strategies.
+Other strategies could be used to decrease xrisk investment over time - instead of being proportional to xrisk P, it could shrink linearly over time, or by square root, or logarithmically, or...
+
+What reinforcement learning techniques might we use to solve this?
+
+This problem represents a large Markov Decision Process with 1 discrete state variable (time, _t_=0-10000), 2 continuous state variables (wealth, and risk probability), and 1 continuous action (fraction of growth to allocate to the economy vs existential risk reduction).
+The continuous action can be discretized into 11 actions without probably losing anything (allocate 100%/90%..10%/0%), but the 2 state variables can't be discretized easily because they can span many orders of magnitude.
+
+- dynamic programming a decision tree with backwards induction: optimal, but requires discrete actions and state variables, and even if discretized, 10000 time steps would be infeasibly large.
+- standard tabular learning: Q-learning, SARSA, temporal differences: requires discrete actions and state variables
+
+    - Deep Q-Networks: requires discrete actions, but not state variables
+- MDP solvers: value iteration etc: optimal, but requires discrete actions and state variables
+- hybrid MDP solvers: optimal, and can handle a limited amount of continuous state variables (but not continuous actions), which would work here; but high quality software implementations are rarely available.
+
+    One such hybrid MDP solver is [`hmpd`](https://github.com/beniz/hmdp), which solves problems specified in the [PDDL](!Wikipedia "Planning Domain Definition Language") Lisp-like DSL (judging from the examples, a version with probabilistic effects, so PPDDL 1.0?). After trying to write down a PPDDL model corresponding to this scenario, it seems that PPDDL is unable to represent probabilities or rewards which change with time and so cannot represent the increase in wealth or decrease in x-risk probability.
+- policy gradients: can handle continuous state variables & actions but are highly complex and unstable; high quality software implementations are unavailable
+
+Of the possible options, a DQN agent seems like the best choice: a small neural network should be able to handle the problem and DQN only requires the actions to be discretized.
+[`reinforce.js`](https://cs.stanford.edu/people/karpathy/reinforcejs/) provides a DQN implementation in JS which [I've used before](/docs/rl/armstrong-controlproblem/index.html), so I start there by rewriting the problem in JS
+
+~~~{.Javascript}
+var script = document.createElement("script");
+script.src = "http://www.gwern.net/docs/rl/armstrong-controlproblem/2016-02-02-karpathy-rl.js";
+document.body.appendChild(script);
+
+// environment: t, w, xrp
+function simulate(environment, w_weight, xrp_weight) {
+    var xrisk = Math.random() < environment.xrp
+    if (xrisk) {
+    return {reward: -100, alive: false, t: environment.t, w: environment.w, xrp: environment.xrp};
+    } else {
+    return {reward: Math.log(environment.w), alive: true, t: environment.t+1,
+            w: environment.w*w_weight*1.02, xrp: environment.xrp * (Math.pow((1 - 0.01), (xrp_weight / 0.001))) }
+ }
+}
+var defaultState = {t: 0, w: 0.248, xrp: 0.01}
+// simulate(defaultState, 0.99, 0.01)
+// simulate(defaultState, 0.99, 0.01)
+
+
+var env = {};
+env.getNumStates = function() { return 3; }; // there are only 3 state variables: t/w/xrp
+env.getMaxNumActions = function() { return 11; }; // we'll specify 10 possible allocations: 1/0, 0.998/0.002 .. 0.98/0.02
+var spec = {
+  num_hidden_units: 200,
+  experience_add_every: 20,
+  learning_steps_per_iteration: 1,
+  experience_size: 1000000,
+  alpha: 0.01,
+  epsilon: 1.0,
+  gamma: 0.99 // minimal discounting
+};
+var agent = new RL.DQNAgent(env, spec);
+
+var total_reward = 0;
+state = defaultState;
+spec.epsilon = 1.0; // reset epsilon if we've been running the loop multiple times
+
+for(var i=0; i < 10000*3000; i++) {
+   var action = agent.act(state)
+   state = simulate(state, 1-(action/500), 0+(action/500) );
+   agent.learn(state.reward);
+
+   total_reward = total_reward + state.reward;
+   if (Number.isInteger(Math.log(i) / Math.log(10)) ) { spec.epsilon = spec.epsilon / 1.5; } // decrease exploration
+
+   if (!state.alive || state.t >= 10000) { // if killed by x-risk or horizon reached
+     console.log(state.t, state.w, state.xrp, total_reward);
+     total_reward = 0;
+     state = defaultState;
+     }
+}
+
+//exercise the trained agent to see how it thinks
+total_reward=0
+state=defaultState;
+spec.epsilon = 0;
+for (var t=0; t < 10000; t++) {
+    action = agent.act(state)
+    state = simulate(state, 1-(action/500), 0+(action/500) );
+    total_reward = total_reward + state.reward
+    console.log(action, state, total_reward);
+    }
+~~~
+
+After a day of training, the DQN agent had learned to get up to 5e41, which was disappointingly inferior to the constant investment & probability matching agents (1e87).
+The NN looks big enough for this problem and the experience replay buffer was more than adequate; NNs in RL are known to have issues with the reward, though, and typically 'clamp' the reward to a narrow range, so I suspected that rewards going up to 5e41 (interpreting wealth on each turn as the reward) might be playing havoc with convergence, and switched the reward to log wealth instead.
+This did not make a noticeable difference overnight (aside from the DQN agent now achieving 9.5e41).
+I wondered if the risk was too rare for easy learning and 100 neurons was not enough to approximate the curve over time, so I fixed a bug I noticed where the simulation did not terminate at t=10000, doub# led the neuron count, increased the initial x-risk to 1%, and began a fresh run.
+After 1 day, it reached 9.4e41 total reward (unlogged).
+
+Cumulative log score for DQN after tweaks and ~2h of training: regularly reaches ~470k when it doesn't die immediately (which happens ~1/20 of the time).
+In comparison, probability-matching agent averages a cumulative log score of 866k.
+After 2 days of training, the DQN had improved only slightly; the on-policy strategy appears mostly random aside from having driven the xrisk probability down to what appears to be the smallest float JS supports, so it still had not learned a meaningful compromise between xrisk reduction and investment.
+
+TODO: revisit with MCTS at some point?
