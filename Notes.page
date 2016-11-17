@@ -2391,7 +2391,9 @@ This also applies to programmers tempted to automate or script stuff on their co
 Complexity and automation create a technical debt in the form of the fallout from future unreliability.
 "The price of reliability is the pursuit of the utmost simplicity. It is a price which the very rich find most hard to pay."
 
-# Rationality Heuristic: Updating Towards the Net Weight of Evidence
+# Rationality Heuristic for Bias Detection: Updating Towards the Net Weight of Evidence
+
+> Bias tests look for violations of basic universal properties of rational belief such as subadditivity of probabilities or anchoring on randomly-generated numbers. I propose a new one for the temporal consistency of beliefs: agents who believe that the net evidence for a claim _c_ from _t~1~_ to _t~2~_ is positive or negative must then satisfy the inequalities that _P(c, t~1~)_<_P(c, t~2~)_ & _P(c, t~1~)_>_P(c, t~2~)_, respectively. A failure to update in the direction of the believed net evidence indicates that nonrational reasons are influencing the belief in _c_; the larger the net evidence without directional updates, the more that nonrational reasons are influencing _c_. Extended to a population level, this suggests that a heuristic measurement of the nonrational grounds for belief can be conducted using long-term public opinion surveys of important issues combined with contemporary surveys of estimated net evidence since the start of the opinion surveys to compare historical shifts in public opinion on issues with the net evidence on those issues.
 
 A friend of yours tells you he's worried he saw a snake on his driveway yesterday which he thinks may be a poisonous coral snake rather than a harmless snake; he gives it 50-50 chance - it looked a lot like a coral snake, but he didn't think this state had any poisonous snakes.
 You see him the next day and ask him about the snake.
@@ -2406,7 +2408,7 @@ Whatever his thinking process, it is non-rational; perhaps he has herpetophobia 
 
 It can be hard to decide whether someone's conclusions are irrational because they could have different priors, have different causal models, have been exposed to different evidence, have different preferences, and so on.
 But there are a few hard rules for bare minimums of rationality: no contradictions; conjunctions are equally or less likely than any of their conjuncts; disjunctions are equally or more likely than any disjuncts; probabilities of exhaustive sets of claims sum to 1; 0 and 1 are not degrees of belief; and - net evidence for a claim increases the posterior probability of that claim.
-(Or to put it another, per Bayes rule $P(A|B) \propto P(A) \cdot P(B|A)$, for arbitrary $P(A)$ and $P()$, if $P(B|A) > 1$ then $P(A|B) > P(A)$; $(P(A|B) \le P(A)) \land (P(A) \gt 1)$ is a contradiction.)
+(Or to put it another, per Bayes rule $P(A|B) \propto P(A) \cdot P(B|A)$, for arbitrary _P(A)_ and _P()_, if _P(B|A) > 1_ then _P(A|B) > P(A)_; $(P(A|B) \le P(A)) \land (P(A) \gt 1)$ is a contradiction.)
 And what applies to coral snakes applies to everything else - if your friend agrees evidence suggests his pool was a bad buy, he should be less optimistic about it than he was when he bought it, and so on.
 Your friend might have totally different priors or causal models or life experiences or political affiliations, but whatever they are, he still must make his net evidence and update direction jive.
 Updating is not sufficient for rationality (one can still have wrong models which indicate something is net evidence which shouldn't be, or update too much, or be irrational on other matters) and updating doesn't itself show notable rationality (perhaps one was just profoundly ignorant about a topic), but it is necessary.
