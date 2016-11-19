@@ -34,7 +34,7 @@ belief: possible
 - sexual openness result undermined by ceiling effect http://mindhacks.com/2015/04/28/when-society-isnt-judging-womens-sex-drive-rivals-mens/#comment-362749
 - music study claiming WM interaction: possible ceiling effect? see FB PM
 - attempt to measure effect of Nazi anti-schizophrenia eugenics program failed to use breeder's equation to estimate possible size of effect, which is too small to detect with available data and hence attempt is foredoomed: https://www.reddit.com/r/eugenics/comments/3hqdll/between_73_and_100_of_all_individuals_with/cul2nzw
-- claim high IQ types almost 100% failure rates due to inappropriate model assumption of normal distribution with very narrow standard deviation: http://polymatharchives.blogspot.com/2015/01/the-inappropriately-excluded.html?showComment=1441741719623#c1407914596750199739
+- claim high IQ types almost 100% failure rates due to inappropriate model assumption of normal distribution + narrow standard deviation: http://polymatharchives.blogspot.com/2015/01/the-inappropriately-excluded.html?showComment=1441741719623#c1407914596750199739
 - implausible claims about success rate of facial recognition applied to St Petersburg population: https://news.ycombinator.com/item?id=11491264 (see also ["Facial recognition systems stumble when confronted with million-face database"](https://techcrunch.com/2016/06/23/facial-recognition-systems-stumble-when-confronted-with-million-face-database/))
 - human _Toxoplasma gondii_ study is not well-powered as authors claim due to incorrect power analysis, and results are evidence for harm: http://blogs.discovermagazine.com/neuroskeptic/2016/02/20/myth-mind-altering-parasite-toxoplasma-gondii/#comment-2755778490
 
@@ -3724,3 +3724,275 @@ In comparison, probability-matching agent averages a cumulative log score of 866
 After 2 days of training, the DQN had improved only slightly; the on-policy strategy appears mostly random aside from having driven the xrisk probability down to what appears to be the smallest float JS supports, so it still had not learned a meaningful compromise between xrisk reduction and investment.
 
 TODO: revisit with MCTS at some point?
+
+<!--
+Geocities Forever: http://www.geocitiesforever.com/
+by Aanand https://twitter.com/aanand https://news.ycombinator.com/item?id=11646822
+ 'RNN was 512-node, 3-layer' https://twitter.com/aanand/status/728738421758414849
+
+
+Geocities:
+
+https://thepiratebay.org/torrent/6353395/Geocities_-_The_PATCHED_Torrent
+
+    cd geocities.archiveteam.torrent
+    for ARCHIVE in `find LOWERCASE/ UPPERCASE/ -type f -name "*.7z*" | shuf`; do nice 7z x -so $ARCHIVE | tar x --wildcards "*.html" --to-stdout | iconv -c -tascii; done > geocities-corpus.txt
+
+9.8GB, only need like 10MB for validation/test
+0.000001
+
+expected loss?
+
+    wc --chars data/geocities-corpus.txt
+    984248725
+    du data/geocities-corpus.txt
+    961188 geocities-corpus.txt
+
+LZMA baseline:
+    cat data/geocities-corpus.txt  | xz -9 --stdout | wc --bytes
+    146915476
+
+    (146915476*8) / 984248725
+    1.194132924
+xz manages 1.194bpc; in terms of a negative log loss, xz managed a loss of 0.69:
+    R> 1 - exp(-1.194132924)
+    [1] 0.6970334647
+RNNs can model very nonlinear and complicated phenomena, but they also have very tiny hidden-state/memories and so suffer in comparison to a compression utility which can store long literals in RAM.
+If the RNN can reach 0.69, that would be acceptable.
+
+Another way to put it: how many lines are repeated? A comparison of `wc --lines` and `sort --unique | wc --lines` shows that only ~TODO% of lines are unique, suggesting even more repetition in the HTML parts than I expected.
+
+    python scripts/preprocess.py --val_frac 0.000001 --test_frac 0.000001 --input_txt /media/gwern/My\ Book/torrent/geocities.archiveteam.torrent/geocities-corpus.txt   --output_h5 /media/gwern/My\ Book/torrent/geocities.archiveteam.torrent/geocities-corpus.h5  --output_json geocities-corpus.json
+    Total vocabulary size: 128
+    Total tokens in file: 11781712578
+    Training size: 11781689016
+    Val size: 11781
+    Test size: 11781
+    ...Killed
+
+OOM (does it all in-memory) with 11GB+, try 5GB instead
+
+    python scripts/preprocess.py --val_frac 0.000006 --test_frac 0.000006 --input_txt geocities-corpus.txt --output_h5 geocities-corpus.h5 --output_json geocities-corpus.json
+    Total vocabulary size: 128
+    Total tokens in file: 5000000000
+    Training size: 4999980000
+    Val size: 10000
+    Test size: 10000
+    Using dtype  <type 'numpy.uint8'>
+
+still problems, reinstall, also now we seem to be system RAM limited by the size of the Geocities corpus?
+
+parameters:
+- checkpointing: 1s per minibatch, want to checkpoint every few hours, so 60*60*3 = 10800
+- batch size: 1, to reduce VRAM use as much as possible (RNN training will be less stable with such tiny batches but will still work)
+- layers: 3 for comparability with the original
+- neuron count: as large as will fit, which turns out to be ~5x or 3000
+- dropout: since we have a lot of data to fit overfitting, dropout does not need to be high; 0.1
+- BPTT sequence length: 30 (reduced from default 50 to again reduce VRAM use at some cost to final model quality in terms of modeling long-term dependencies)
+- learning rate, batchnorm, decay, wordvec size, clipping: torch-rnn defaults
+
+    nice th train.lua -input_h5 geocities-corpus.h5 -input_json geocities-corpus.json -checkpoint_name cv/geocities -checkpoint_every 1000 -batch_size 1 -seq_length 30 -rnn_size 3000 -num_layers 3 ; alert
+
+peaks around 70% of my 16GB system RAM, steady state 34%
+
+    nice th train.lua -input_h5 geocities-corpus.h5 -input_json geocities-corpus.json -checkpoint_name cv/geocities -checkpoint_every 10800 -batch_size 1 -seq_length 35 -rnn_size 3000 -num_layers 3 -dropout 0.1 ; alert
+
+    nice th train.lua -input_h5 geocities-corpus.h5 -input_json geocities-corpus.json -checkpoint_name cv/geocities -checkpoint_every 20000 -batch_size 2 -seq_length 20 -rnn_size 2600 -num_layers 3 -learning_rate 2e-3 -dropout 0.2 -batchnorm 1 -init_from `ls -t ./cv/*.t7|head -1` ; alert
+
+training loss ~3.5, validation loss after 2 days: 4.6159437721775,4.6916360489784,4.4985305705378
+not good! is 3 layers too unstable? a minibatch size of 2 too unstable? (which requires decreasing size because there's nothing less to cut) not enough BPTT? let's try switching to 2 layers, which frees up a ton of memory for the minibatch & BPTT
+
+    nice th train.lua -input_h5 geocities-corpus.h5 -input_json geocities-corpus.json -checkpoint_name cv/geocities -checkpoint_every 20000 -batch_size 5 -seq_length 90 -rnn_size 3300 -num_layers 2 -learning_rate 2e-3 -dropout 0.2 -batchnorm 1 ; alert
+
+trains within 1000 batches to ~0.6 training loss, often with training loss below the xz bound of 0.06, but validation loss explodes!
+there's also odd training loss behavior: it seems to bounce from the low training loss regime past 1 to as high as the 3s for long periods.
+
+If not overfitting in general, could be non-stationarity of input and overfitting on specific parts; preprocess.py doesn't do any shuffling AFAIK
+can force shuffling by preprocessing the corpus further:
+
+    split -l 1000 geocities-corpus.txt foo
+    cat $(ls foo* | shuf) > geocities-corpus-snuffled.txt
+    rm foo*
+    python scripts/preprocess.py --val_frac 0.000012 --test_frac 0.000012 --input_txt geocities-corpus.txt --output_h5 geocities-corpus.h5 --output_json geocities-corpus.json
+
+And by increasing BPTT & dropout:
+
+    nice th train.lua -input_h5 geocities-corpus.h5 -input_json geocities-corpus.json -checkpoint_name cv/geocities -checkpoint_every 15000 -batch_size 5 -seq_length 100 -rnn_size 3300 -num_layers 2 -learning_rate 2e-3 -dropout 0.5 -batchnorm 1 -init_from cv/geocities_60000.t7
+
+Still we see the same 'bounce' from better-than-xz predictive performance to 2-3 training loss. It is still acting like it's overfitting. Why?
+Took a closer look at the data: it's not just the HTML boilerplate that's repeated, but many parts of the content as well (eg searching for the word 'rude' turns up the same complaint repeated hundreds of times).
+Is the excellent xz compression and occasional excellent RNN training loss, and then the 'bounce' due to content being repeated many times, leading to severe overfitting and then extremely high error when it finally runs into some of the unrepeated content?
+
+possible ways for repetition: the original find command ran on all 7z archives including multipart ones, so possibly some archives got decompressed multiple times? if so, then rerunning it but writing all files to disk will make the duplicates go away (the duplicates will simply get decompressed & overwritten repeatedly). if the repetition is due to multiple identical files with different names/paths, then there will still be a lot of duplications, but a file-level duplication tool should detect them.
+
+for duplicate checking:
+
+    for ARCHIVE in `find LOWERCASE/ UPPERCASE/ -type f -name "*.7z*" | shuf`; do nice 7z x -so $ARCHIVE | tar x --verbose --wildcards "*.html"; done
+    fdupes . --recurse --omitfirst --sameline --size --summarize --delete --noprompt
+
+find . -type f -name "*.html" -print0 | shuf --zero-terminated | xargs --null cat | iconv -c -tascii | fold --spaces --width=150 | head --bytes=1GB > ~/src/torch-rnn/data/geocities-corpus.txt
+cd ~/src/torch-rnn/
+nice python scripts/preprocess.py --val_frac 0.002 --test_frac 0.002 --input_txt data/geocities-corpus.txt --output_h5 data/geocities-corpus.h5 --output_json data/geocities-corpus.json
+cat data/geocities-corpus.txt  | xz -9 --stdout | wc --bytes
+cat data/geocities-corpus.txt  | sort -u | wc
+alert
+
+nice th train.lua -input_h5 data/geocities-corpus.h5 -input_json data/geocities-corpus.json -checkpoint_name cv/geocities -checkpoint_every 50 -batch_size 5 -seq_length 100 -rnn_size 3300 -num_layers 2 -learning_rate 2e-3 -dropout 0.5 -batchnorm 1; alert
+
+after 20k minibatches, training loss steady in the 2-3 range, validation loss continues to explode, and I cannot even sample because the output is so ill-behaved (the multinomial probability problem)
+
+drop RNN size to 1600 and increase minibatch
+first try replicating his 512x3:
+
+    nice th train.lua -input_h5 data/geocities-corpus.h5 -input_json data/geocities-corpus.json -checkpoint_name cv/geocities -checkpoint_every 10000 -batch_size 130 -seq_length 225 -rnn_size 512 -num_layers 3 -learning_rate 2e-3 -dropout 0.5 -batchnorm 1 ; alert
+
+after ~9 hours, validation loss of 1.05 and generated output looks pretty good; bounced over night and output became garbage!
+
+fdupes finished, so nuked the old data, added a fold call, and restarted
+still bounced!
+
+went back looking for that weird 'rude' page which appears thousands of times; an ag search indicates that it shows up like 31k times in the subdirectory ./geocities/YAHOOIDS/m/i/mitzrah_cl/ (5.2GB, 334595 HTML files)
+./geocities/YAHOOIDS/T/o/Tokyo/6140/myself/sailormars/karen/site_features/hints_n_tips/site_features/www_stuff/www_resources.html (0.527GB, 33715 files)
+
+looking at basenames, also many possibly duplicated pages:
+
+    find . -type f -name "*.html" | parallel basename | sort | uniq --count | sort --numeric-sort | tac | less
+ 612978 index.html
+ 114691 sb.html
+  72080 links.html
+  37688 awards.html
+  36558 pics.html
+  34700 music.html
+  32987 geobook.html
+  32010 myaward.html
+  31216 hints.html
+  31053 sailormoon_rei.html
+  30953 www_resources.html
+  30670 myself.html
+  30522 intro.html
+  30184 banner_xchange.html
+  30126 tutorial_intro.html
+  13885 main.html
+  11642 disclaimer.html
+  10051 index2.html
+   7732 live.html
+   7490 tmmb.html
+   7472 everclear.html
+   7325 sublime.html
+   7264 sugarray.html
+   7065 gallery.html
+   6637 news.html
+   6566 menu.html
+   6344 home.html
+   5924 page2.html
+   5426 me.html
+   5224 friends.html
+   4986 pictures.html
+   4435 page3.html
+   4186 pictures2.html
+   4105 addbook.html
+   4076 contact.html
+   4008 profile.html
+   3935 bio.html
+   3822 history.html
+   3778 about.html
+   3769 Links.html
+   3728 photos.html
+   3682 page4.html
+   3549 webrings.html
+   3468 index1.html
+   3378 family.html
+   3297 chat.html
+   3136 link.html
+   3058 aboutme.html
+   3021 page5.html
+   2980 baking.html
+   2937 info.html
+   2855 film.html
+   2816 talents.html
+   2800 balloon.html
+   2793 quotes.html
+
+I *could* delete everything except one random 'bio.html' or 'myaward.html' etc, but first I'm going to try nuking `mitzrah` and `myself`.
+This makes the filenames look much more diverse; spot checks of "sb.html" and "everclear.html" suggest non-repeated content.
+
+ 612967 index.html
+ 114691 sb.html
+  40122 links.html
+  32986 geobook.html
+  13885 main.html
+  11642 disclaimer.html
+  10051 index2.html
+   7732 live.html
+   7490 tmmb.html
+   7472 everclear.html
+   7325 sublime.html
+   7264 sugarray.html
+   7065 gallery.html
+   6637 news.html
+   6605 awards.html
+   6566 menu.html
+   6344 home.html
+   5924 page2.html
+   5426 me.html
+   5224 friends.html
+   4986 pictures.html
+   4605 music.html
+   4598 pics.html
+   4435 page3.html
+   4186 pictures2.html
+   4105 addbook.html
+   4074 contact.html
+   4008 profile.html
+   3935 bio.html
+   3822 history.html
+   3778 about.html
+   3769 Links.html
+   3728 photos.html
+   3682 page4.html
+   3549 webrings.html
+   3467 index1.html
+   3378 family.html
+   3297 chat.html
+   3136 link.html
+   3058 aboutme.html
+   3021 page5.html
+   2980 baking.html
+   2937 info.html
+   2855 film.html
+   2816 talents.html
+   2800 balloon.html
+   2793 quotes.html
+   2681 intro.html
+   2621 lyrics.html
+   2597 top.html
+   2587 banjo.html
+   2577 webmaster.html
+   2529 roleplay.html
+   2494 garden.html
+   2474 index3.html
+
+Skimming the final corpus also doesn't show any blatant repetition.
+
+restarted training from the last checkpoint, same settings. So far so good...
+For 1GB and 3x512 RNN, 1 epoch takes somewhat over 1 day
+if this doesn't work, could reduce the learning rate. Maybe the bounce is just due to the learning rate being too high; can change it from `-learning_rate 2e-3` to `-learning_rate 4e-3` or something.
+
+after 100,000 minibatches/4 epoches, still sampling fails and validation loss is in the 100s!
+restart with higher dropout
+
+    nice th train.lua -input_h5 data/geocities-corpus.h5 -input_json data/geocities-corpus.json -checkpoint_name cv/geocities -checkpoint_every 5000 -batch_size 130 -seq_length 225 -rnn_size 512 -num_layers 3 -learning_rate 2e-3 -dropout 0.8 -batchnorm 1 -init_from cv/geocities_100000.t7 ; alert
+
+0.8 dropout didn't work after 10000 minibatches. try no dropout at all.
+
+after 50,000 minibatches, validation loss of 55! 0 dropout didn't help, I think it may simply lack model capacity and anan's one worked because he used a small corpus which was not too diverse. let's go back to a big RNN.
+try something intermediate between 512x3 and 3000x1, 2000x1
+
+nice th train.lua -input_h5 data/geocities-corpus.h5 -input_json data/geocities-corpus.json -checkpoint_name cv/geocities -checkpoint_every 5000 -batch_size 95 -seq_length 250 -rnn_size 2000 -num_layers 1 -learning_rate 2e-3 -dropout 0.1 -batchnorm 1  ; alert
+
+after 30k minibatches / 0.7 epoches, validation loss is ~0.98 and generated samples look good. So the larger flatter RNN is handling it better than the smaller deeper one.
+some bounce around epoch 0.84, generated samples much worse. bigger RNN? lower learning rate?
+
+after 65k minibatches, very high quality samples but then bounced in training at a different place in the dataset - epoch 0.04 (after a restart due to crash). In previous training, the data 4% into the dataset is perfectly well behaved and easily modeled. So it's overfitting and learning rate too high.
+increased learning rate to 4x smaller, 8e-3. Still bounced, but we'll see how it recovers.
+-->
