@@ -3740,9 +3740,9 @@ So the loop is very similar, but fully automated.
 If we consider the kinds of models which are being critiqued, and what is critiquing, this gives us 4 possible combinations:
 
           simple                                  complex
-simple    model fit indexes+linear model        statistician+linear model
-complex   model fit indexes+NN                    GANs
-
+--------- ------------------------------          -------------------------
+simple    model fit indexes+linear model          statistician+linear model
+complex   model fit indexes+ML                    ML+ML (eg GANs)
 
 Simple/simple is useful for cases like linear regression where classic methods like examining residuals or R^2s or Cook indexes can often flag problems with the model.
 Simple/complex is also useful, as the human statistician can spot additional problems.
@@ -3751,7 +3751,7 @@ Complex/complex can be very useful in machine learning, but in different ways fr
 
 So is quadrant 2 fully populated by human statisticians?
 We wouldn't necessarily want to use GANs for everything we use statisticians for now, because neural networks can be *too* powerful and what we want from our models is often some sort of clear answer like "does X predict Y?" and simplicity.
-But we could replace the statistician with some other powerful critic - like a NN, SVM, random forest, or other ensemble.
+But we could replace the statistician with some other powerful critic from machine learning - like a NN, SVM, random forest, or other ensemble.
 So instead of having two NNs fighting each other as in a GAN, we simply have one specified model, and a NN which tries to find flaws in it, which can then be reported to the user.
 The loop then becomes: write down and fit a model to the real data; generative posterior predictive samples from the distribution; train a small NN on real data vs predictive data; the classification performance measures the plausibility of the predictive samples (perhaps something like a KL divergence), giving a measure of the model quality, and flags data points which are particularly easily distinguished as real; the human statistician now knows exactly which data points are not captured by the model and can modify the model; repeat until the NN's performance declines to chance.
 
@@ -3770,8 +3770,8 @@ a <- rnorm(n)
 b <- rnorm(n)
 c <- rnorm(n)
 y <- 0 + 0.5*a + 0.5*b + 0.5*c^2 + rnorm(n)
-y_prime <- ifelse(y>=3, 3, y)
-df <- data.frame(Y=y_prime, A=round(a, digits=1), B=round(b, digits=1), C=round(c, digits=1))
+y_censored <- ifelse(y>=3, 3, y)
+df <- data.frame(Y=y_censored, A=round(a, digits=1), B=round(b, digits=1), C=round(c, digits=1))
 
 l <- lm(Y ~ A + B + C, data=df)
 summary(l)
@@ -3786,12 +3786,23 @@ plot(df$Y, predict(l2, df))
 The censoring shows up immediately on the diagnostics as an excess of actual points at 3, but the quadraticity is subtler, and I'm not sure I can see the rounding at all.
 
 ~~~{.R}
-modelPredictions <- data.frame(Y=c(df$Y, predict(l, df)), Real=c(rep(1, n), rep(0, n)), A=c(df$A, df$A), B=c(df$B, df$B), C=c(df$C, df$C))
-# library("neuralnet")
-# net.critic <- neuralnet(Real ~ Y + A + B + C, modelPredictions, hidden=rep(50, 3), threshold=0.1, lifesign="full")
-# net.critic2 <- neuralnet(as.ordered(Real) ~ Y + A + B + C, modelPredictions, hidden=rep(50, 3), threshold=0.1, lifesign="full")
-
 library(randomForest)
+
+## First, random forest performance under the null hypothesis
+
+modelNull <- data.frame(Y=c(df$Y, df$Y), Real=c(rep(1, n), rep(0, n)), A=c(df$A, df$A), B=c(df$B, df$B), C=c(df$C, df$C))
+r_n <- randomForest(as.ordered(Real) ~ Y + A + B + C, modelNull); r_n
+#                Type of random forest: classification
+#                      Number of trees: 500
+# No. of variables tried at each split: 2
+#
+#         OOB estimate of  error rate: 100%
+# Confusion matrix:
+#       0     1 class.error
+# 0     0 10000           1
+# 1 10000     0           1
+
+modelPredictions <- data.frame(Y=c(df$Y, predict(l, df)), Real=c(rep(1, n), rep(0, n)), A=c(df$A, df$A), B=c(df$B, df$B), C=c(df$C, df$C))
 r <- randomForest(as.ordered(Real) ~ Y + A + B + C, modelPredictions); r
 #                Type of random forest: classification
 #                      Number of trees: 500
@@ -3821,47 +3832,141 @@ Note we need to be careful about collecting the posterior predictive samples: if
 
 ~~~{.R}
 library(runjags)
-model_string <- 'model {
- for (i in 1:n) {
-     mu[i] <- betaA*A[i] + betaB*B[i] + betaC*C[i]
-     Y[i] ~ dnorm(mu[i], tau)
-     }
-
- sd   ~ dgamma(0.01, 0.01)
- tau     <- 1/sqrt(sd)
-
- betaA ~ dnorm(0, 100)
- betaB ~ dnorm(0, 100)
- betaC ~ dnorm(0, 100)
-}'
-# model <- run.jags(model_string, data = with(df, list(Y=Y, A=A, B=B, C=C, n=nrow(df))), monitor=c("Y"), n.chains = 4, method="rjparallel", sample=100)
-~~~
-
-~~~{.R}
-model_censor <- 'model {
+model <- 'model {
  for (i in 1:n) {
      mean[i] <- mu + betaA*A[i] + betaB*B[i] + betaC*C[i]
      Y[i] ~ dnorm(mean[i], tau)
-     is.censored[i] ~ dinterval(Y[i], c[i])
-
-     y.pred[i] ~ dnorm(mean[i], tau)
-     is.censored.pred[i] ~ dinterval(y.pred[i], c[i])
      }
 
  sd   ~ dgamma(0.01, 0.01)
- tau     <- 1/sqrt(sd)
+ tau  <- 1/sqrt(sd)
 
  mu ~ dnorm(0, 100)
  betaA ~ dnorm(0, 100)
  betaB ~ dnorm(0, 100)
  betaC ~ dnorm(0, 100)
 }'
-model_c <- run.jags(model_censor, data = with(df, list(Y=Y, A=A, B=B, C=C, n=nrow(df), is.censored=as.integer(Y==3), is.censored.pred=as.integer(Y==3), c=rep(3, nrow(df)))), inits=list(mu=0.37, sd=1, betaA=0.42, betaB=0.40, betaC=0), monitor=c("y.pred"), n.chains = 1, method="rjparallel", adapt=0, burnin=500, sample=1)
-plot(df$Y, model_c$mcmc[[1]][1,])
+model <- run.jags(model, data = with(df, list(Y=c(Y, rep(NA, nrow(df))), A=c(A,A), B=c(B,B), C=c(C,C), n=2*nrow(df))), inits=list(mu=0.45, sd=0.94, betaA=0.47, betaB=0.46, betaC=0), monitor=c("Y"), n.chains = 1, sample=1)
 
-modelPredictions_c <- data.frame(Y=c(df$Y, model_c$mcmc[[1]][1,]), Real=c(rep(1, n), rep(0, n)), A=c(df$A, df$A), B=c(df$B, df$B), C=c(df$C, df$C))
-r_c <- randomForest(as.ordered(Real) ~ Y + A + B + C, modelPredictions_c); r_c
+posterior_predictive <- tail(n=10000, model$mcmc[[1]][1,])
+plot(df$Y, posterior_predictive)
+
+modelPredictions_r <- data.frame(Y=c(df$Y, posterior_predictive), Real=c(rep(1, n), rep(0, n)), A=c(df$A, df$A), B=c(df$B, df$B), C=c(df$C, df$C))
+r <- randomForest(as.ordered(Real) ~ Y + A + B + C, modelPredictions_r); r
+#         OOB estimate of  error rate: 49.11%
+# Confusion matrix:
+#      0    1 class.error
+# 0 4953 5047      0.5047
+# 1 4776 5224      0.4776
+
 ~~~
+
+~~~{.R}
+model_rounded <- 'model {
+ for (i in 1:n) {
+     roundA[i] ~ dround(A[i], 3)
+     roundB[i] ~ dround(B[i], 3)
+     roundC[i] ~ dround(C[i], 3)
+     mean[i] <- mu + betaA*roundA[i] + betaB*roundB[i] + betaC*roundC[i]
+     Y[i] ~ dnorm(mean[i], tau)
+     }
+
+ sd   ~ dgamma(0.01, 0.01)
+ tau  <- 1/sqrt(sd)
+
+ mu ~ dnorm(0, 100)
+ betaA ~ dnorm(0, 100)
+ betaB ~ dnorm(0, 100)
+ betaC ~ dnorm(0, 100)
+}'
+model_r <- run.jags(model_rounded, data = with(df, list(Y=c(Y, rep(NA, nrow(df))), A=c(A,A), B=c(B,B), C=c(C,C), n=2*nrow(df))), inits=list(mu=0.45, sd=0.94, betaA=0.47, betaB=0.46, betaC=0), monitor=c("Y"), n.chains = 1, sample=1)
+
+posterior_samples <- tail(n=10000, model_r$mcmc[[1]][1,])
+posterior_predictive <- ifelse(posterior_samples>=3, 3, posterior_samples)
+plot(df$Y, posterior_predictive)
+
+modelPredictions_r <- data.frame(Y=c(df$Y, posterior_predictive), Real=c(rep(1, n), rep(0, n)), A=c(df$A, df$A), B=c(df$B, df$B), C=c(df$C, df$C))
+r_r <- randomForest(as.ordered(Real) ~ Y + A + B + C, modelPredictions_r); r_r
+#         OOB estimate of  error rate: 50.48%
+# Confusion matrix:
+#      0    1 class.error
+# 0 4814 5186      0.5186
+# 1 4909 5091      0.4909
+~~~
+
+
+~~~{.R}
+model_rounded_censor <- 'model {
+ for (i in 1:n) {
+     roundA[i] ~ dround(A[i], 3)
+     roundB[i] ~ dround(B[i], 3)
+     roundC[i] ~ dround(C[i], 3)
+     mean[i] <- mu + betaA*roundA[i] + betaB*roundB[i] + betaC*roundC[i]
+     Y[i] ~ dnorm(mean[i], tau)
+     is.censored[i] ~ dinterval(Y[i], c)
+     }
+
+ sd   ~ dgamma(0.01, 0.01)
+ tau  <- 1/sqrt(sd)
+
+ mu ~ dnorm(0, 100)
+ betaA ~ dnorm(0, 100)
+ betaB ~ dnorm(0, 100)
+ betaC ~ dnorm(0, 100)
+}'
+model_r_c <- run.jags(model_rounded_censor, data = with(df, list(Y=c(Y, rep(NA, nrow(df))), A=c(A,A), B=c(B,B), C=c(C,C), n=2*nrow(df), is.censored=c(as.integer(Y==3), as.integer(Y==3)), c=3)), inits=list(mu=0.37, sd=1, betaA=0.42, betaB=0.40, betaC=0), monitor=c("Y"), n.chains = 1, adapt=0, burnin=500, sample=1)
+
+posterior_samples <- tail(n=10000, model_r_c$mcmc[[1]][1,])
+posterior_predictive <- ifelse(posterior_samples>=3, 3, posterior_samples)
+
+
+modelPredictions_r_c <- data.frame(Y=c(df$Y, posterior_predictive), Real=c(rep(1, n), rep(0, n)), A=c(df$A, df$A), B=c(df$B, df$B), C=c(df$C, df$C))
+r_r_c <- randomForest(as.ordered(Real) ~ Y + A + B + C, modelPredictions_r_c); r_r_c
+#         OOB estimate of  error rate: 53.67%
+# Confusion matrix:
+#      0    1 class.error
+# 0 4490 5510      0.5510
+# 1 5224 4776      0.5224
+~~~
+
+
+~~~{.R}
+model_rounded_censor_quadratic <- 'model {
+ for (i in 1:n) {
+     roundA[i] ~ dround(A[i], 3)
+     roundB[i] ~ dround(B[i], 3)
+     roundC[i] ~ dround(C[i], 3)
+     mean[i] <- mu + betaA*roundA[i] + betaB*roundB[i] + betaC*roundC[i]^2
+     Y[i] ~ dnorm(mean[i], tau)
+     is.censored[i] ~ dinterval(Y[i], c)
+     }
+
+ sd   ~ dgamma(0.01, 0.01)
+ tau  <- 1/sqrt(sd)
+
+ mu ~ dnorm(0, 100)
+ betaA ~ dnorm(0, 100)
+ betaB ~ dnorm(0, 100)
+ betaC ~ dnorm(0, 100)
+}'
+
+model_r_c_q <- run.jags(model_rounded_censor_quadratic, data = with(df, list(Y=c(Y, rep(NA, nrow(df))), A=c(A,A), B=c(B,B), C=c(C,C), n=2*nrow(df), is.censored=c(as.integer(Y==3), as.integer(Y==3)), c=3)), inits=list(mu=0.37, sd=1, betaA=0.42, betaB=0.40, betaC=0), monitor=c("Y"), n.chains = 1, adapt=0, burnin=500, sample=1)
+
+posterior_samples <- tail(n=10000, model_r_c_q$mcmc[[1]][1,])
+posterior_predictive <- ifelse(posterior_samples>=3, 3, posterior_samples)
+
+modelPredictions_r_c_q <- data.frame(Y=c(df$Y, posterior_predictive), Real=c(rep(1, n), rep(0, n)), A=c(df$A, df$A), B=c(df$B, df$B), C=c(df$C, df$C))
+r_r_c_q <- randomForest(as.ordered(Real) ~ Y + A + B + C, modelPredictions_r_c_q); r_r_c_q
+#         OOB estimate of  error rate: 61.02%
+# Confusion matrix:
+#      0    1 class.error
+# 0 3924 6076      0.6076
+# 1 6127 3873      0.6127
+
+trueNegatives <- modelPredictions_r_c_q[predict(r_r_c_q) == 0 & modelPredictions_r_c_q$Real == 0,]
+~~~
+
+
 
 
 <!--
