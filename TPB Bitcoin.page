@@ -199,6 +199,7 @@ cat missing.txt | tac | parallel --max-chars=40 --ungroup --jobs 1 -- nice pytho
     gwern> there are an amazing number of 404s on tpb. I wonder why
     gwern> why would they ever delete a page?
     gwern> short of CP
+    X> They delete spam, viruses, fake uploads, uploads with wrong names. There is tons of that on TPB actually (and usually uploaded in bulk, that's why the 404s usually form "blocks"). Not that much CP.
 
 ## Processing
 
@@ -242,6 +243,8 @@ $ find . -type f -name "description.txt" -exec grep --only-matching --extended-r
 1Fw4sRdZYFwULfeE7oQ91GLYKy8j5EcuFW
 34eae2b9725eb15e7a58fd6bf6e2fedb2c
 ~~~
+
+maybe use R? http://beautifuldata.net/2015/01/querying-the-bitcoin-blockchain-with-r/
 
 $ nice find tpb/ -type f -print0 | sort --zero-terminated --key=6,5 --field-separator="/" | tar --no-recursion --null --files-from - -c | nice xz -9e --check=sha256 --stdout > ~/tpb.tar.xz; alert
 

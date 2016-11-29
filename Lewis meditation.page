@@ -197,7 +197,7 @@ Both agree that there is definitely a practice effect, it's probably statistical
 So, that's the practice effect verified. What else? Roberts suggested "time-of-day effect (are tests later in the day faster?)" and "day-of-week effect". First we'll convert the times to hours and regress on that:
 
 ~~~{.R}
-x <- NULL
+rm(x)
 for (i in 1:nrow(mdtt)) { y <- strsplit(mdtt$TimeOfDay[i], ":")[[1]];
                           x[i] <- as.integer(y[[1]])*60 + as.integer(y[[2]]); }
 mdtt$Hours <- (x/60)

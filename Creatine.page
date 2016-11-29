@@ -192,7 +192,7 @@ set.seed(7777) # for reproducible numbers
 # TODO: factor out common parts of `png` (& make less square), and `rma` calls
 library(XML)
 creatine <- readHTMLTable(colClasses = c("integer", "factor", rep("numeric", 6), "factor", rep("numeric", 5)),
-                          "http://www.gwern.net/Creatine")[[2]]
+                          "https://www.gwern.net/Creatine")[[2]]
 # install.packages("metafor") # if not installed
 library(metafor)
 

@@ -212,7 +212,7 @@
         <outline title="LessWrong Help Desk - free paper downloads and more (2014) - Less Wrong Discussion" text="LessWrong Help Desk - free paper downloads and more (2014) - Less Wrong Discussion" description="LessWrong Help Desk - free paper downloads and more (2014) - Less Wrong Discussion" type="rss" xmlUrl="http://lesswrong.com/r/discussion/lw/ji3/lesswrong_help_desk_free_paper_downloads_and_more/.rss" htmlUrl="http://lesswrong.com/r/discussion/"/>
       </outline>
       <outline title="wiki" text="wiki" description="wiki" type="folder">
-        <outline title="Joining Clouds" text="Joining Clouds" description="Joining Clouds" type="atom" xmlUrl="http://www.gwern.net/atom.xml" htmlUrl=""/>
+        <outline title="Joining Clouds" text="Joining Clouds" description="Joining Clouds" type="atom" xmlUrl="https://www.gwern.net/atom.xml" htmlUrl=""/>
         <outline title="Lesswrongwiki  - Recent changes [en]" text="Lesswrongwiki  - Recent changes [en]" description="Lesswrongwiki  - Recent changes [en]" type="atom" xmlUrl="http://wiki.lesswrong.com/mediawiki/index.php?title=Special:RecentChanges&amp;feed=atom" htmlUrl="https://wiki.lesswrong.com/wiki/Special:RecentChanges"/>
       </outline>
     </outline>

@@ -435,8 +435,8 @@ Dividing the two averages shows that the average clicks in this period were ~17.
 [^R-analysis]: It's actually closer to _p_=0.00000000000000022. Assuming one has cleaned up the two CSVs by removing the initial summary data and the final total line, the statistical analysis goes like this:
 
     ~~~{.R}
-    before <- read.table("http://www.gwern.net/docs/2012-gwern-dnb-wikipedia-before.csv", header=TRUE,sep=",")
-    after  <- read.table("http://www.gwern.net/docs/2012-gwern-dnb-wikipedia-after.csv", header=TRUE, sep=",")
+    before <- read.table("https://www.gwern.net/docs/2012-gwern-dnb-wikipedia-before.csv", header=TRUE,sep=",")
+    after  <- read.table("https://www.gwern.net/docs/2012-gwern-dnb-wikipedia-after.csv", header=TRUE, sep=",")
     before$Pageviews
       [1]  1  0  2  3 12  3  9  3  3  2  3  0  3  1  9 11  5  6  7  7  7  5  5  7  0
      [26]  1  9 21  3  6  6 12  5  9  7 13 11 11 11 10 12  5 12 16 13  4 14 14  9  3

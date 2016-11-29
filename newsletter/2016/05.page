@@ -6,27 +6,27 @@ status: finished
 belief: log
 ...
 
-This is the May 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [April 2016](http://www.gwern.net/newsletter/2016/04).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the May 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [April 2016](https://www.gwern.net/newsletter/2016/04).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
 - Wikipedia article on [Genome-wide complex trait analysis](https://en.wikipedia.org/wiki/Genome-wide_complex_trait_analysis) (GCTA)
-- [Candy Japan new packaging decision analysis](http://www.gwern.net/Candy%20Japan "Bayesian decision-theoretic analysis of effect of fancier packaging on subscription cancellations")
+- [Candy Japan new packaging decision analysis](https://www.gwern.net/Candy%20Japan "Bayesian decision-theoretic analysis of effect of fancier packaging on subscription cancellations")
 
 # Media
 ## Links
 
 Everything is heritable:
 
-- ["Genome-wide association study identifies 74 [162] loci associated with educational attainment"](http://www.gwern.net/docs/iq/2016-okbay-2.pdf), Okbay et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/PPzawWP2Cta))
+- ["Genome-wide association study identifies 74 [162] loci associated with educational attainment"](https://www.gwern.net/docs/iq/2016-okbay-2.pdf), Okbay et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/PPzawWP2Cta))
 - Human evolution:
 
     - ["Detection of human adaptation during the past 2,000 years"](http://biorxiv.org/content/early/2016/05/07/052084.full.pdf), Field et al 2016 ([commentary](https://plus.google.com/103530621949492999968/posts/3DmLLdDfR61))
     - ["Population structure of UK Biobank and ancient Eurasians reveals adaptation at genes influencing blood pressure"](http://biorxiv.org/content/early/2016/05/27/055855), Galinsky et al 2016 (Biobank - the gift that keeps on giving. The genetic revolution continues.﻿)
     - ["Quantitative Genetics in the Postmodern Family of the Donor Sibling Registry"](https://www.donorsiblingregistry.com/sites/default/files/files/dissertation%281%29.pdf), Lee 2013 (maternal selection of sperm donors for height increases offspring height as much as predicted by heritability estimates+breeder's equation)
     - ["Genetic evidence for natural selection in humans in the contemporary United States"](http://biorxiv.org/content/early/2016/05/05/037929), Beauchamp 2016
-    - ["Gene Flow by Selective Emigration as a Possible Cause for Personality Differences Between Small Islands and Mainland Populations"](http://www.gwern.net/docs/genetics/2011-ciani.pdf), Ciani & Cialuppi 2011 ([excerpts](https://plus.google.com/103530621949492999968/posts/fbZrM41hdSf))
+    - ["Gene Flow by Selective Emigration as a Possible Cause for Personality Differences Between Small Islands and Mainland Populations"](https://www.gwern.net/docs/genetics/2011-ciani.pdf), Ciani & Cialuppi 2011 ([excerpts](https://plus.google.com/103530621949492999968/posts/fbZrM41hdSf))
 - pleiotropy:
 
     - ["Genetic link between family socioeconomic status and children's educational achievement estimated from genome-wide SNPs"](http://www.nature.com/mp/journal/v21/n3/full/mp20152a.html), Krapohl & Plomin 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/ZKrtSaMjVmx))
@@ -35,8 +35,8 @@ Everything is heritable:
     - ["An Atlas of Genetic Correlations across Human Diseases and Traits"](http://biorxiv.org/content/early/2015/04/06/014498), Bulik-Sullivan et al 2015
     - ["Genetic contributions to self-reported tiredness"](http://biorxiv.org/content/early/2016/04/05/047290), Deary et al 2016 (GCTA estimate is not too impressive, but the pleiotropy is interesting. What do you get when you sum a lot of weakly correlated variables? A giant difference.﻿)
 c- ["Schizophrenia and subsequent neighborhood deprivation: revisiting the social drift hypothesis using population, twin and molecular genetic data"](http://www.nature.com/tp/journal/v6/n5/full/tp201662a.html), Sariaslan et al 2016 (good use of polygenic scores for confirmation)
-- ["The phenotypic legacy of admixture between modern humans and Neandertals"](http://www.gwern.net/docs/genetics/2016-simonti.pdf), Simonti et al 2016
-- ["The MC1R Gene and Youthful Looks"](http://www.gwern.net/docs/genetics/2016-liu.pdf), Liu et al 2016
+- ["The phenotypic legacy of admixture between modern humans and Neandertals"](https://www.gwern.net/docs/genetics/2016-simonti.pdf), Simonti et al 2016
+- ["The MC1R Gene and Youthful Looks"](https://www.gwern.net/docs/genetics/2016-liu.pdf), Liu et al 2016
 - ["Molecular genetic contributions to self-rated health"](http://biorxiv.org/content/biorxiv/early/2016/04/12/029504.full.pdf), Harris et al 2016 (I love how you can ask people something as super-vague as 'do you think you're in good health' and you *still* get noticeable heritabilities and disease-related hits with a big enough dataset like Biobank.﻿)
 
 Politics/religion:
@@ -60,11 +60,11 @@ Statistics/meta-science:
 
 Psychology/biology:
 
-- ["When Lightning Strikes Twice: Profoundly Gifted, Profoundly Accomplished"](http://www.gwern.net/docs/iq/2016-makel.pdf), Makel et al 2016 (Intelligence increases success as high as it can be measured; diminishing returns!=zero returns... This replicates the SMPY results in a separate TIP sample.)
+- ["When Lightning Strikes Twice: Profoundly Gifted, Profoundly Accomplished"](https://www.gwern.net/docs/iq/2016-makel.pdf), Makel et al 2016 (Intelligence increases success as high as it can be measured; diminishing returns!=zero returns... This replicates the SMPY results in a separate TIP sample.)
 - ["Dogs Test Drug [rapamycin] Aimed at Humans' Biggest Killer: Age"](http://www.nytimes.com/2016/05/17/us/aging-research-disease-dogs.html)
-- ["Effect of Calorie Restriction on Mood, Quality of Life, Sleep, and Sexual Function in Healthy Nonobese Adults: The CALERIE 2 Randomized Clinical Trial"](http://www.gwern.net/docs/2016-martin.pdf), Martin et al 2016
+- ["Effect of Calorie Restriction on Mood, Quality of Life, Sleep, and Sexual Function in Healthy Nonobese Adults: The CALERIE 2 Randomized Clinical Trial"](https://www.gwern.net/docs/2016-martin.pdf), Martin et al 2016
 - ["Could a neuroscientist understand a microprocessor?"](http://biorxiv.org/content/biorxiv/early/2016/05/26/055624.full.pdf), Jonas & Kording 2016 (Very amusing followup to ["Can a biologist fix a radio?"](https://www.researchgate.net/profile/Yuri_Lazebnik/publication/11149043_Can_a_biologist_fix_a_radioOr_what_I_learned_while_studying_apoptosis/links/545441390cf26d5090a55992.pdf))
-- ["Continuous evolution of _Bacillus thuringiensis_ toxins overcomes insect resistance"](http://www.gwern.net/docs/genetics/2016-badran.pdf), Badran et al 2016
+- ["Continuous evolution of _Bacillus thuringiensis_ toxins overcomes insect resistance"](https://www.gwern.net/docs/genetics/2016-badran.pdf), Badran et al 2016
 - ["Physical Activity, Sleep, and Nutrition Do Not Predict Cognitive Performance in Young and Middle-Aged Adults"](http://journal.frontiersin.org/article/10.3389/fpsyg.2016.00642/full), Gijselaers et al 2016
 - ["A Second Year of Spaced Repetition Software in the Classroom"](http://lesswrong.com/r/discussion/lw/nkz/a_second_year_of_spaced_repetition_software_in/)
 
@@ -78,7 +78,7 @@ Technology:
 Economics:
 
 - ["Going for the Gold: The Economics of the Olympics"](http://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.30.2.201), Baade & Matheson 2016 (The case against the Olympics. Too late for Brazil, though, but others can learn from that debacle.﻿)
-- ["Results of an international drug testing service for cryptomarket users"](http://www.gwern.net/docs/sr/2016-caudevilla-2.pdf), Caudevilla et al 2016 ([excerpts](https://www.reddit.com/r/DarkNetMarkets/comments/4iqc0u/energy_control_drug_purity_results/))
+- ["Results of an international drug testing service for cryptomarket users"](https://www.gwern.net/docs/sr/2016-caudevilla-2.pdf), Caudevilla et al 2016 ([excerpts](https://www.reddit.com/r/DarkNetMarkets/comments/4iqc0u/energy_control_drug_purity_results/))
 - ["Railway Paradise: How a Fine-Dining Empire Made the Southwest Palatable to Outsiders"](http://www.collectorsweekly.com/articles/railway-paradise/) (statistical discrimination vs taste discrimination: profiting from sexism)
 
 Fiction:

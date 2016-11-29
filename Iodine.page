@@ -446,7 +446,7 @@ set.seed(7777) # for reproducible numbers
 # install.packages("XML") # if not installed
 library(XML)
 iodine <- readHTMLTable(colClasses = c("character", "integer", rep("numeric", 8)),
-                     "http://www.gwern.net/Iodine#data")[[1]]
+                     "https://www.gwern.net/Iodine#data")[[1]]
 # install.packages("metafor") # if not installed
 library(metafor)
 

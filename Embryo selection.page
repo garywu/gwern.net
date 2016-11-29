@@ -449,7 +449,7 @@ Past polygenic scores for intelligence:
 5. Upcoming in 2016 is another SSGAC paper with ~8x hits using _n_=305,000 but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score. (The polygenic score will be much better than the Rietveld et al 2013 polygenic score, and I intend to rerun the numbers when it comes out and becomes the new public state of the art.) In a [March 2016 roundtable](https://www.youtube.com/watch?v=v5ANweXCptM "Steven Pinker, Stephen Hsu and Dalton Conley: Can Genius Be Genetically Engineered?"), a mention was made of an upcoming polygenic score explaining "about 8-10% of IQ".
 5. in 2016, a consortium combined the SSGAC dataset with UK Biobank, expanding the combined dataset to >300,000 and yielding a total of 162 education hits; the results were reported in two papers, the latter giving the polygenic scores:
 
-    - ["Genome-wide association study identifies 74 [162] loci associated with educational attainment"](http://www.gwern.net/docs/iq/2016-okbay-2.pdf), Okbay et al 2016
+    - ["Genome-wide association study identifies 74 [162] loci associated with educational attainment"](https://www.gwern.net/docs/iq/2016-okbay-2.pdf), Okbay et al 2016
     - ["Predicting educational achievement from DNA"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016107a.html), Selzam et al 2016 ([supplement](http://www.nature.com/mp/journal/vaop/ncurrent/extref/mp2016107x1.pdf))
 
     The polygenic score predicts 3.5% of intelligence, 7% of family SES, and 9% of education in a heldout sample.

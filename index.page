@@ -12,7 +12,7 @@ belief: log
 # Statistics
 
 - [Why Correlation Usually ≠ Causation](Causality "Correlations are oft interpreted as evidence for causation; this is oft falsified; do causal graphs explain why this is so common?")
-- [When Does The Mail Come? A decision-theoretic analysis](http://gwern.net/Mail%20delivery)
+- [When Does The Mail Come? A decision-theoretic analysis](https://gwern.net/Mail%20delivery)
 - [Predicting Google service closures](Google shutdowns "Analyzing predictors of Google abandoning products; predicting future shutdowns")
 - [Predicting & Prediction Markets](Prediction markets "My betting track record")
 - [Existential Risks & Math Errors](The Existential Risk of Mathematical Error "Mathematical mistake or error-rates limit our understanding of rare risks")

@@ -6,8 +6,8 @@ status: finished
 belief: log
 ...
 
-This is the April 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [March 2016](http://www.gwern.net/newsletter/2016/03).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the April 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [March 2016](https://www.gwern.net/newsletter/2016/03).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
@@ -22,12 +22,12 @@ Everything is heritable:
 - Continuation of the recent phenome theme of inter-correlations of negative traits and inter-correlation of positive traits:
 
     - ["Analysis of shared heritability in common disorders of the brain"](http://biorxiv.org/content/biorxiv/early/2016/04/16/048991.full.pdf), Anttila et al 2016
-    - ["Genetic variants associated with subjective well-being, depressive symptoms, and neuroticism identified through genome-wide analyses"](http://www.gwern.net/docs/genetics/2016-okbay.pdf), Okbay et al 2016
-    - ["Physical and neurobehavioral determinants of reproductive onset and success"](http://www.gwern.net/docs/genetics/2016-day.pdf), Day et al 2016
+    - ["Genetic variants associated with subjective well-being, depressive symptoms, and neuroticism identified through genome-wide analyses"](https://www.gwern.net/docs/genetics/2016-okbay.pdf), Okbay et al 2016
+    - ["Physical and neurobehavioral determinants of reproductive onset and success"](https://www.gwern.net/docs/genetics/2016-day.pdf), Day et al 2016
     - ["Association between stressful life events and psychotic experiences in adolescence: evidence for gene–environment correlations"](http://bjp.rcpsych.org/content/early/2016/03/17/bjp.bp.114.159079.abstract), Shakoor et al 2016
-- ["Introducing precise genetic modifications into human 3PN embryos by CRISPR/Cas-mediated genome editing"](http://www.gwern.net/docs/genetics/2016-kang.pdf), Kang et al 2016 (see also Liang et al 2015; both describe the CRISPR state of the art as of early 2014, 2+ years ago)
+- ["Introducing precise genetic modifications into human 3PN embryos by CRISPR/Cas-mediated genome editing"](https://www.gwern.net/docs/genetics/2016-kang.pdf), Kang et al 2016 (see also Liang et al 2015; both describe the CRISPR state of the art as of early 2014, 2+ years ago)
 - ["Variants near CHRNA3/5 and APOE have age- and sex-related effects on human lifespan"](http://www.nature.com/ncomms/2016/160331/ncomms11174/pdf/ncomms11174.pdf), Joshi et al 2016
-- ["National Happiness and Genetic Distance: A Cautious Exploration"](http://www.gwern.net/docs/genetics/2015-proto.pdf), Proto & Oswald 2015
+- ["National Happiness and Genetic Distance: A Cautious Exploration"](https://www.gwern.net/docs/genetics/2015-proto.pdf), Proto & Oswald 2015
 - [Friends are as genetically similar as fourth cousins](http://www.pnas.org/content/111/Supplement_3/10796.long "'Friendship and natural selection', Christakis & Fowler 2014") ([media](https://www.washingtonpost.com/national/health-science/research-human-friendships-based-on-genetic-similarities-beyond-the-superficial/2014/07/14/8aea04fe-0ab5-11e4-8c9a-923ecc0c7d23_story.html "Research: Human friendships based on genetic similarities beyond the superficial"))
 - ["Monkey kingdom: China is positioning itself as a world leader in primate research"](http://www.nature.com/news/monkey-kingdom-1.19762)
 
@@ -56,9 +56,9 @@ Statistics/meta-science:
 Psychology/biology:
 
 - ["The Production of Human Capital in Developed Countries: Evidence from 196 Randomized Field Experiments"](http://scholar.harvard.edu/files/fryer/files/handbook_fryer_03.25.2016.pdf), Fryer 2016 (education; lots of small effects):
-- ["A Meta-Analysis of Blood Glucose Effects on Human Decision Making"](http://www.gwern.net/docs/2016-orquin.pdf), Orquin & Kurzban 2016
+- ["A Meta-Analysis of Blood Glucose Effects on Human Decision Making"](https://www.gwern.net/docs/2016-orquin.pdf), Orquin & Kurzban 2016
 - ["Is Ego-Depletion a Replicable Effect? A Forensic Meta-Analysis of 165 Ego Depletion Articles"](https://replicationindex.wordpress.com/2016/04/18/is-ego-depletion-a-replicable-effect-a-forensic-meta-analysis-of-165-ego-depletion-articles/)
-- ["Indoor air quality and academic performance"](http://www.gwern.net/docs/2015-stafford.pdf), Stafford 2015 (apropos of [harms of CO2 discussion](http://lesswrong.com/r/discussion/lw/nk0/what_is_up_with_carbon_dioxide_and_cognition_an/ "What is up with carbon dioxide and cognition? An offer"))
+- ["Indoor air quality and academic performance"](https://www.gwern.net/docs/2015-stafford.pdf), Stafford 2015 (apropos of [harms of CO2 discussion](http://lesswrong.com/r/discussion/lw/nk0/what_is_up_with_carbon_dioxide_and_cognition_an/ "What is up with carbon dioxide and cognition? An offer"))
 - ["Seven Pervasive Statistical Flaws in Cognitive Training Interventions"](http://journal.frontiersin.org/article/10.3389/fnhum.2016.00153/full), Moreau et al 2016
 - ["The Voyeur's Motel"](http://www.newyorker.com/magazine/2016/04/11/gay-talese-the-voyeurs-motel)
 

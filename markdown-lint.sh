@@ -1,5 +1,5 @@
 #!/bin/bash
-# see http://www.gwern.net/About#markdown-checker
+# see https://www.gwern.net/About#markdown-checker
 
 fgp () { fgrep --color=always "$@"; }
 egp () { egrep --color=always "$@"; }
@@ -8,9 +8,8 @@ for PAGE in "$@"
 do
     if [[ $PAGE == *.page ]]; then
 
-
         # warn if not text, perhaps due to bad copy-paste
-        cat "$PAGE" | file - | fgp -v "text";
+        file "$PAGE" | fgp -v "text";
 
         # find bad URLS, unacceptable/unreliable domains, malformed syntax, unmatched apostrophes
         fgp -e "http://dl.dropbox" -e "http://news.ycombinator.com" -e "http://github.com" \

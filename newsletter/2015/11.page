@@ -6,8 +6,8 @@ status: finished
 belief: log
 ...
 
-This is the November 2015 edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous, [October 2015](http://www.gwern.net/newsletter/2015/10).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the November 2015 edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous, [October 2015](https://www.gwern.net/newsletter/2015/10).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
@@ -18,7 +18,7 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 
 Everything is heritable:
 
-- ["Genome-wide patterns of selection in 230 ancient Eurasians"](http://www.gwern.net/docs/genetics/2015-mathieson.pdf), Mathieson et al 2015 ([media](http://www.nytimes.com/2015/11/24/science/agriculture-linked-to-dna-changes-in-ancient-europe.html "Agriculture Linked to DNA Changes in Ancient Europe"))
+- ["Genome-wide patterns of selection in 230 ancient Eurasians"](https://www.gwern.net/docs/genetics/2015-mathieson.pdf), Mathieson et al 2015 ([media](http://www.nytimes.com/2015/11/24/science/agriculture-linked-to-dna-changes-in-ancient-europe.html "Agriculture Linked to DNA Changes in Ancient Europe"))
 - [pervasive cross-correlations of polygenic scores for various traits](http://drjamesthompson.blogspot.com/2015/11/genetic-story-jumps-ahead.html): particularly [Krapohl et al 2015](http://www.researchgate.net/publication/281241266_Phenome-wide_analysis_of_genome-wide_polygenic_scores "Phenome-wide analysis of genome-wide polygenic scores")
 - ["Genome-wide analysis of over 106,000 individuals identifies 9 neuroticism-associated loci"](/docs/genetics/2016-smith.pdf), Smith et al 2016
 - ["Signaling and Productivity in the Private Financial Returns to Schooling"](http://paulbingley.com/papers/signals-manuscript.pdf), Bingley et al 2015 (highly unusual design)
@@ -44,7 +44,7 @@ Psychology/biology:
 - ["Insecticide Resistance and Malaria Control"](http://blog.givewell.org/2012/11/09/insecticide-resistance-and-malaria-control/)
 - ["Cochrane findings that will help you"](http://highqualityevidence.blogspot.com/2012/10/cochrane-findings-that-will-help-you.html)
 - [Rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
-- ["Species-characteristic Responses to Catnip by Undomesticated Felids"](http://www.gwern.net/docs/catnip/1976-hill.pdf) , Hill et al 1976
+- ["Species-characteristic Responses to Catnip by Undomesticated Felids"](https://www.gwern.net/docs/catnip/1976-hill.pdf) , Hill et al 1976
 - ["Meditation and Its Regulatory Role on Sleep"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3328970/), Nagendra et al 2012
 
 Technology:
@@ -79,7 +79,7 @@ Fiction:
 
 Nonfiction:
 
-- [_Do No Harm_](http://www.amazon.com/Do-No-Harm-Stories-Surgery/dp/125006581X), Marsh (elegantly written and moving neurosurgeon memoir on the theme of iatrogenics; [I did disagree](http://www.gwern.net/Statistical%20notes#operating-on-an-aneurysm) with his comments on the cost-benefit of operating in one case, though)
+- [_Do No Harm_](http://www.amazon.com/Do-No-Harm-Stories-Surgery/dp/125006581X), Marsh (elegantly written and moving neurosurgeon memoir on the theme of iatrogenics; [I did disagree](https://www.gwern.net/Statistical%20notes#operating-on-an-aneurysm) with his comments on the cost-benefit of operating in one case, though)
 - [_Digital Gold: Bitcoin and the Inside Story of the Misfits and Millionaires Trying to Reinvent Money_](http://www.amazon.com/Digital-Gold-Bitcoin-Millionaires-Reinvent/dp/0062362496), Popper ([review](https://www.goodreads.com/review/show/1262675076))
 - [_The Party: The Secret World of China's Communist Rulers_](https://en.wikipedia.org/wiki/The_Party:_The_Secret_World_of_China\'s_Communist_Rulers), MacGregor
 - [_Drop Dead Healthy_](http://ajjacobs.com/books/drop-dead-healthy/), Jacob ([review](https://www.goodreads.com/review/show/1438354031))

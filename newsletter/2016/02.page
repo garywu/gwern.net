@@ -6,13 +6,13 @@ status: finished
 belief: log
 ...
 
-This is the February 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [January 2016](http://www.gwern.net/newsletter/2016/01).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the February 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [January 2016](https://www.gwern.net/newsletter/2016/01).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
-- [Embryo selection for intelligence cost-benefit analysis](http://www.gwern.net/Embryo%20selection "A cost-benefit analysis of IVF-based embryo selection for intelligence with 2015-2016 state-of-the-art")
-- [Armstrong's control problem: Reinforce.js demo](http://www.gwern.net/docs/rl/armstrong-controlproblem/index.html)
+- [Embryo selection for intelligence cost-benefit analysis](https://www.gwern.net/Embryo%20selection "A cost-benefit analysis of IVF-based embryo selection for intelligence with 2015-2016 state-of-the-art")
+- [Armstrong's control problem: Reinforce.js demo](https://www.gwern.net/docs/rl/armstrong-controlproblem/index.html)
 
 # Media
 ## Links
@@ -33,7 +33,7 @@ Statistics/AI/meta-science:
 
 - ["PlaNet - Photo Geolocation with Convolutional Neural Networks"](http://arxiv.org/pdf/1602.05314v1.pdf), Weyand et al 2016
 - ["When Quality Beats Quantity: Decision Theory, Drug Discovery, and the Reproducibility Crisis"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0147215), Scannell & Bosley 2016
-- ["Deming, data and observational studies: A process out of control and needing fixing"](http://www.gwern.net/docs/statistics/2011-young.pdf)
+- ["Deming, data and observational studies: A process out of control and needing fixing"](https://www.gwern.net/docs/statistics/2011-young.pdf)
 - ["Online Controlled Experiments: Introduction, Learnings, and Humbling Statistics"](http://www.exp-platform.com/Documents/2012-09%20ACMRecSysNR.pdf)
 - ["My published negative result..."](http://www.scilogs.com/the_gene_gym/my-published-negative-result/)
 - [Gambler's ruin](https://en.wikipedia.org/wiki/Gambler%27s_ruin)
@@ -57,7 +57,7 @@ Psychology/biology:
 Technology:
 
 - ["Gravitational Waves Exist: The Inside Story of How Scientists Finally Found Them"](http://www.newyorker.com/tech/elements/gravitational-waves-exist-heres-how-scientists-finally-found-them)
-- ["How Did Software Get So Reliable Without Proof?"](http://www.gwern.net/docs/1996-hoare.pdf), Hoare 1996 ([comments](http://blog.regehr.org/archives/820))
+- ["How Did Software Get So Reliable Without Proof?"](https://www.gwern.net/docs/1996-hoare.pdf), Hoare 1996 ([comments](http://blog.regehr.org/archives/820))
 - ["Stargate Physics 101"](https://archiveofourown.org/works/3673335) ("Testing is sufficient to show the presence of bugs, but not the absence.")
 - [Merkle's Puzzles](https://en.wikipedia.org/wiki/Merkle%27s_Puzzles)
 - [On Ray Kurzweil](http://blogs.discovermagazine.com/gnxp/2012/10/singularity-summit-2012-the-lion-doesnt-sleep-tonight/)
@@ -67,7 +67,7 @@ Technology:
 Economics:
 
 - ["The life of American workers in 1915"](http://www.bls.gov/opub/mlr/2016/article/the-life-of-american-workers-in-1915.htm)
-- ["Patents and innovation in economic history"](http://www.gwern.net/docs/2016-moser.pdf), Moser 2016
+- ["Patents and innovation in economic history"](https://www.gwern.net/docs/2016-moser.pdf), Moser 2016
 - ["Elephants and Mammoths: Can Ice Ivory Save Blood Ivory?"](https://www.aeaweb.org/aea/2016conference/program/retrieve.php?pdfid=127), Farah & Boyce 2015
 
 Philosophy:

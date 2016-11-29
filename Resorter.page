@@ -22,7 +22,7 @@ $ ./resorter --help
 usage: resorter [--help] [--verbose] [--no-scale] [--no-progress] [--opts OPTS] [--input INPUT] [--output OUTPUT] [--queries QUERIES]
                 [--levels LEVELS] [--quantiles QUANTILES]
 
-sort a list using comparative rankings under the Bradley-Terry statistical model; see http://www.gwern.net/Resorter
+sort a list using comparative rankings under the Bradley-Terry statistical model; see https://www.gwern.net/Resorter
 
 
 flags:
@@ -159,7 +159,7 @@ if (!loaded) { write("warning: R library 'argparser' unavailable; attempting to 
               loadedAfterInstall <- library(argparser, quietly=TRUE, logical.return=TRUE)
               if(!loadedAfterInstall) { write("error: 'argparser' unavailable and cannot be installed. Aborting.", stderr()); quit() }
 }
-p <- arg_parser("sort a list using comparative rankings under the Bradley-Terry statistical model; see http://www.gwern.net/Resorter", name="resorter")
+p <- arg_parser("sort a list using comparative rankings under the Bradley-Terry statistical model; see https://www.gwern.net/Resorter", name="resorter")
 p <- add_argument(p, "--input", short="-i",
                   "input file - a CSV file of items to sort: one per line, with up to two columns. (eg both 'Akira\\n' and 'Akira, 10\\n' are valid).", type="character")
 p <- add_argument(p, "--output", "output file: a file to write the final results to. Default: printing to stdout.")

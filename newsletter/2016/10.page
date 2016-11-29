@@ -6,8 +6,8 @@ status: finished
 belief: log
 ...
 
-This is the October 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [September 2016](http://www.gwern.net/newsletter/2016/09).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the October 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [September 2016](https://www.gwern.net/newsletter/2016/09).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 If you have not been receiving issues, please check your email account's spam folder. (Gmail in particular has been flagging as spam.)
 
@@ -20,22 +20,22 @@ If you have not been receiving issues, please check your email account's spam fo
 
 Everything is heritable:
 
-- ["Going global by adapting local: A review of recent human adaptation"](http://www.gwern.net/docs/genetics/2016-fan.pdf), Fan et al 2016
+- ["Going global by adapting local: A review of recent human adaptation"](https://www.gwern.net/docs/genetics/2016-fan.pdf), Fan et al 2016
 - ["Association between polygenic risk scores for attention-deficit hyperactivity disorder and educational and cognitive outcomes in the general population"](http://ije.oxfordjournals.org/content/early/2016/09/28/ije.dyw216.full), Stergiakouli et al 2016
 - ["Educational attainment and personality are genetically intertwined"](http://biorxiv.org/content/early/2016/09/28/078014), Mottus et al 2016
-- ["Ultra-rare disruptive and damaging mutations influence educational attainment in the general population"](http://www.gwern.net/docs/genetics/2016-ganna.pdf), Ganna et al 2016
+- ["Ultra-rare disruptive and damaging mutations influence educational attainment in the general population"](https://www.gwern.net/docs/genetics/2016-ganna.pdf), Ganna et al 2016
 - ["Genome-wide analyses of empathy and systemizing: heritability and correlates with sex, education, and psychiatric risk"](http://biorxiv.org/content/early/2016/04/29/050682), Warrier et al 2016a; ["Genome-wide meta-analysis of cognitive empathy: heritability, and correlates with sex, neuropsychiatric conditions and brain anatomy"](http://biorxiv.org/content/early/2016/10/19/081844), Warrier et al 2016b
 - ["Personality Polygenes, Positive Affect, and Life Satisfaction"](https://www.cambridge.org/core/journals/twin-research-and-human-genetics/article/personality-polygenes-positive-affect-and-life-satisfaction/4DB2BE673BF122FB9A0AF2147EED80C0/core-reader), Weiss et al 2016
 
 Politics/religion:
 
 - ["The Long-Term Effects of Cash Assistance"](https://web.stanford.edu/~djprice/papers/djprice_jmp.pdf), Price & Song 2016 (A very unusually long-term followup to one of the old American basic income experiments. No large harmful effects... but no large benefits either, nothing remotely like we observe in the Third World BI/transfer experiments. And if money helps with social outcomes, it should've helped more in the 1970s than it does now, so I feel more pessimistic about Give Directly/YC's USA BI experiment.)
-- ["Men's status and reproductive success in 33 nonindustrial societies: Effects of subsistence, marriage system, and reproductive strategy"](http://www.gwern.net/docs/2016-vonrueden.pdf), von Rueden & Jaeggi 2016
+- ["Men's status and reproductive success in 33 nonindustrial societies: Effects of subsistence, marriage system, and reproductive strategy"](https://www.gwern.net/docs/2016-vonrueden.pdf), von Rueden & Jaeggi 2016
 - ["The illusion of the perfect alibi: Establishing the base rate of non-offenders' alibis"](http://onlinelibrary.wiley.com/doi/10.1002/jip.1470/full), Nieuwkamp et al 2016
 
 AI:
 
-- ["Hybrid computing using a neural network with dynamic external memory"](http://www.gwern.net/docs/2016-graves.pdf), Graves et al 2016 ([blog](https://deepmind.com/blog/differentiable-neural-computers/)); scaling to extremely large external memories: ["Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"](https://arxiv.org/abs/1610.09027), Rae et al 2016
+- ["Hybrid computing using a neural network with dynamic external memory"](https://www.gwern.net/docs/2016-graves.pdf), Graves et al 2016 ([blog](https://deepmind.com/blog/differentiable-neural-computers/)); scaling to extremely large external memories: ["Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"](https://arxiv.org/abs/1610.09027), Rae et al 2016
 - ["Achieving Human Parity in Conversational Speech Recognition"](https://arxiv.org/abs/1610.05256), Xiong et al 2016
 - ["Video Pixel Networks"](https://arxiv.org/abs/1610.00527), Kalchbrenner et al 2016
 - ["Asynchronous Methods for Deep Reinforcement Learning (A3C)"](https://arxiv.org/abs/1602.01783), Mnih et al 2016
@@ -54,18 +54,18 @@ Statistics/meta-science/mathematics:
 - [A brief history by Andrew Gelman of the replication crisis in psychology, from the 1960s to now](http://andrewgelman.com/2016/09/21/what-has-happened-down-here-is-the-winds-have-changed/ "What has happened down here is the winds have changed")
 - ["We Gave Four Good Pollsters the Same Raw Data. They Had Four Different Results"](http://www.nytimes.com/interactive/2016/09/20/upshot/the-error-the-polling-world-rarely-talks-about.html) (random error vs systematic error)
 - ["Close but no Nobel: the scientists who never won; Archives reveal the most-nominated researchers who missed out on a Nobel Prize"](http://www.nature.com/news/close-but-no-nobel-the-scientists-who-never-won-1.20781) (Nobels have considerable measurement error)
-- ["Do scholars follow Betteridge's Law? The use of questions in journal article titles"](http://www.gwern.net/docs/2016-cook.pdf), Cook & Plourde 2016
+- ["Do scholars follow Betteridge's Law? The use of questions in journal article titles"](https://www.gwern.net/docs/2016-cook.pdf), Cook & Plourde 2016
 - [scatterplots work much better than several other forms of visualizing data for understanding correlations](https://idl.cs.washington.edu/files/2015-BeyondWebersLaw-InfoVis.pdf "Beyond Weber's Law: A Second Look at Ranking Visualizations of Correlation"), Kay & Heer 2015 (also a nice demonstration of fitting progressively more complex & realistic Bayesian models)
 
 Psychology/biology:
 
-- ["The negative Flynn Effect: A systematic literature review"](http://www.gwern.net/docs/iq/2016-dutton.pdf), Dutton et al 2016
-- ["Safe landing strategies during a fall: systemic review and meta-analysis"](http://www.gwern.net/docs/2016-moon.pdf), Moon & Sosnoff 2016
+- ["The negative Flynn Effect: A systematic literature review"](https://www.gwern.net/docs/iq/2016-dutton.pdf), Dutton et al 2016
+- ["Safe landing strategies during a fall: systemic review and meta-analysis"](https://www.gwern.net/docs/2016-moon.pdf), Moon & Sosnoff 2016
 - ["From Terman to Today: A Century of Findings on Intellectual Precocity"](http://emilkirkegaard.dk/en/wp-content/uploads/From-Terman-to-Today-A-Century-of-Findings-on-Intellectual-Precocity.pdf), Lubinski 2016
 - [Some early rapamycin anti-aging results from the dog people: improvement in dog heart health after 10 weeks of use.](http://edition.cnn.com/2016/10/06/health/rapamycin-dog-live-longer/index.html)
 - ["Stereotype (In)Accuracy in Perceptions of Groups and Individuals"](http://andrewgelman.com/wp-content/uploads/2015/12/Current-Directions-in-Psychological-Science-2015-Jussim-490-7.pdf), Jussim et al 2015
 - ["CMV Is a Greater Threat to Infants Than Zika, but Far Less Often Discussed"](http://www.nytimes.com/2016/10/25/health/cmv-cytomegalovirus-pregnancy.html) (it would not surprise me if CMV was responsible for my own hearing-impairment)
-- ["Does brain creatine content rely on exogenous creatine in healthy youth? A proof-of-principle study"](http://www.gwern.net/docs/creatine/2016-meregefilho.pdf), Merege-Filho et al 2016 (null)
+- ["Does brain creatine content rely on exogenous creatine in healthy youth? A proof-of-principle study"](https://www.gwern.net/docs/creatine/2016-meregefilho.pdf), Merege-Filho et al 2016 (null)
 - ["Functional MRI in awake dogs predicts suitability for assistance work"](http://biorxiv.org/content/early/2016/10/12/080325), Berns et al 2016
 - [Home steam distillation of 99% pure nepetalactone from catnip leaves](http://www.instructables.com/id/DIY-Kitty-Crack%3a--ultra-potent-catnip-extract/?ALLSTEPS) (0.03% yield compared to theoretical max of 0.3%, so can convert 0.45kg of leaves to 143mg nepetalactone)
 
@@ -82,7 +82,7 @@ Economics:
 - [Abuse of 'arbitration' clauses in international trade treaties to escape criminal liability](https://www.buzzfeed.com/chrishamby/super-court)
 - ["The View from Above: Applications of Satellite Data in Economics"](http://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.30.4.171), Donaldson & Storeygard 2016
 - ["The Dizzying Grandeur of 21st-Century Agriculture"](http://www.nytimes.com/interactive/2016/10/09/magazine/big-food-photo-essay.html)
-- ["Adam Smith, Watch Prices, and the Industrial Revolution"](http://www.gwern.net/docs/2016-kelly.pdf), Kelly & Grada 2016 ([commentary](http://econlog.econlib.org/archives/2016/10/what_do_crimina.html))
+- ["Adam Smith, Watch Prices, and the Industrial Revolution"](https://www.gwern.net/docs/2016-kelly.pdf), Kelly & Grada 2016 ([commentary](http://econlog.econlib.org/archives/2016/10/what_do_crimina.html))
 - ["My First Gulfstream"](http://www.vanityfair.com/news/1998/10/gulfstream-199810)
 - ["Everything you need to know about whether money makes you happy"](https://80000hours.org/articles/money-and-happiness/)
 - ["Young Rural Women in India Chase Big-City Dreams: Experiments like one in Bangalore, luring migrants to fill factory jobs, collide with an old way of life that keeps women and girls in seclusion until an arranged marriage"](http://www.nytimes.com/2016/09/25/world/asia/bangalore-india-women-factories.html) (3500 years of female slavery shrinking under industrialization and smartphones: "all fixed, fast-frozen relations, with their train of ancient and venerable prejudices and opinions, are swept away, all new-formed ones become antiquated before they can ossify. All that is solid melts into air, all that is holy is profaned...")

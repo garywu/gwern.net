@@ -73,7 +73,7 @@ A two-sample test agrees:[^frequentist-potassium] _p_=0.0002168. (There is no ne
 [^BEST-potassium]: The previously described composite measure and BEST test:
 
     ~~~{.R}
-    # for interventions with dates, see http://www.gwern.net/docs/zeo/2012-2013-potassium.csv
+    # for interventions with dates, see https://www.gwern.net/docs/zeo/2012-2013-potassium.csv
     # all the non-potassium days
     offlatency <- c(11,15,16,16,17,18,20,21,21,24,24,26,29,33,36,42,40,19,32,28,37,36,19,25,
                     30,22,11,20,33,33,42,31)

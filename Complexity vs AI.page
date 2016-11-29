@@ -109,7 +109,7 @@ Hence, the exact difficulty of integer factoring or the existence of one-way fun
 
 Premise 3 ignores that complexity classes by design try to abstract away from the 'constant factors' which is the computation time determined not by input size but by the details of computer architectures, implementations, and available computing hardware.
 
-But with carefully optimized code, [proper](!Wikipedia "Cache-oblivious algorithm") use of the [cache hierarchy](!Wikipedia "Memory hierarchy"), and specialized hardware (eg GPUs, ASICs), it is possible to see [performance gains of multiple orders of magnitude](http://www.gwern.net/Aria\'s%20past,%20present,%20and%20future#fn3), which implies that one can increase the input size several times before hitting the scaling way that another agent might who paid less attention to constant factors.
+But with carefully optimized code, [proper](!Wikipedia "Cache-oblivious algorithm") use of the [cache hierarchy](!Wikipedia "Memory hierarchy"), and specialized hardware (eg GPUs, ASICs), it is possible to see [performance gains of multiple orders of magnitude](https://www.gwern.net/Aria\'s%20past,%20present,%20and%20future#fn3), which implies that one can increase the input size several times before hitting the scaling way that another agent might who paid less attention to constant factors.
 (Computational chemistry may be intractable, even with approximations, on classical hardware - but what about if one has a [quantum computer](!Wikipedia) with a few hundred qubits, enough that one can do [quantum simulation](!Wikipedia)?) The importance of constant factors is one of the major traps in practical use of complexity classes: a fancy algorithm with a superior complexity class may easily be defeated by a simpler algorithm with worse complexity but faster implementation.[^galactic-algorithms] (One reason that programmers are exhorted to benchmark, benchmark, benchmark!)
 
 This doesn't disprove the complexity class, which is about asymptotic scaling and will still kick in at some point, but if it's possible to double or dectuple or more the input, this is enough of an increase that it's hard to dismiss the difference between best and worst agents' problem sizes as being only 'slight'.
@@ -283,6 +283,7 @@ If one wants to put limits on the ability of an AI by way of computational resou
 
 - ["Modeling intelligence as a project-specific factor of production"](http://modelingtheworld.benjaminrosshoffman.com/intelligence-project-specific-factor-production)
 - ["What if you turned the world's hardware into AI minds?"](http://aiimpacts.org/what-if-you-turned-the-worlds-hardware-into-ai-minds/)
+- ["How Feasible Is the Rapid Development of Artificial Superintelligence?"](https://foundational-research.org/how-feasible-is-rapid-development-artificial-superintelligence)
 - Discussion:
 
     - Reddit: [1](https://www.reddit.com/r/ControlProblem/comments/4upo7r/complexity_no_bar_to_ai/), [2](https://www.reddit.com/r/slatestarcodex/comments/4up89b/complexity_no_bar_to_ai_gwernnet/)

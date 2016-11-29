@@ -8,7 +8,7 @@ belief: log
 
 Welcome to the January edition of the `gwern.net` mailing list; the previous edition was [December](http://eepurl.com/LG6OT). If you do not want to receive these monthly emails, there is an unsubscribe link at the bottom.
 
-The purpose of this mailing list is to be a summarized version of the site RSS feed (which lists every patch, no matter how small), overlapping with my [Changelog page](http://gwern.net/Changelog), but in a push/notification medium rather than pull. It also includes material from [my Google+](https://plus.google.com/103530621949492999968) & the [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/).
+The purpose of this mailing list is to be a summarized version of the site RSS feed (which lists every patch, no matter how small), overlapping with my [Changelog page](https://gwern.net/Changelog), but in a push/notification medium rather than pull. It also includes material from [my Google+](https://plus.google.com/103530621949492999968) & the [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/).
 
 # Writings
 
@@ -18,15 +18,15 @@ Black-markets:
 
 General:
 
-- Haskell Summer of Code: [2013 review](http://www.gwern.net/Haskell%20Summer%20of%20Code#section-7)
+- Haskell Summer of Code: [2013 review](https://www.gwern.net/Haskell%20Summer%20of%20Code#section-7)
 
 Statistical:
 
-- [font/number size & table of contents background AB test](http://www.gwern.net/AB%20testing#font-size-toc-background) finished, with consideration of value of interactions
+- [font/number size & table of contents background AB test](https://www.gwern.net/AB%20testing#font-size-toc-background) finished, with consideration of value of interactions
 
 _Radiance_:
 
-- [diff of](http://www.gwern.net/docs/2002-radiance#diff) "Radiance" and part I of _Radiance_
+- [diff of](https://www.gwern.net/docs/2002-radiance#diff) "Radiance" and part I of _Radiance_
 
 Site:
 

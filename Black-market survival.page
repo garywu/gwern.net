@@ -413,7 +413,7 @@ Solve with multi-state models? http://cran.r-project.org/web/packages/msm/vignet
 # Generate predictions of shutdown in next 6 / 12 months for the still-running marketplaces:
 
 # You are not expected to understand this ugly hack. I don't either. But it *seems* to work...
-# for background, see http://gwern.net/Google%20shutdowns & http://www.gwern.net/Silk%20Road#the-bet-bmr-or-sheep-to-die-in-a-year-by-oct-2014
+# for background, see https://gwern.net/Google%20shutdowns & https://www.gwern.net/Silk%20Road#the-bet-bmr-or-sheep-to-die-in-a-year-by-oct-2014
 library(rms)
 conditionalProbability <- function (d, followupUnits, cmodel) {
     chances <- rep(NA, nrow(d)) # stash results

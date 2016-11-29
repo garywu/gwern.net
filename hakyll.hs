@@ -107,7 +107,7 @@ woptions = defaultHakyllWriterOptions{ writerSectionDivs = True,
 
 
 rssConfig :: FeedConfig
-rssConfig = FeedConfig { fcTitle = "Gwern", fcBaseUrl  = "http://www.gwern.net", fcFeedDays = 30 }
+rssConfig = FeedConfig { fcTitle = "Gwern", fcBaseUrl  = "https://www.gwern.net", fcFeedDays = 30 }
 
 postList :: Tags -> Pattern -> ([Item String] -> Compiler [Item String]) -> Compiler String
 postList tags pattern preprocess' = do
@@ -234,7 +234,7 @@ convertInterwikiLinks (Link ref (interwiki, article)) =
                                   "" -> Link ref (url `interwikiurl` inlinesToString ref, summary $ unEscapeString $ inlinesToString ref)
                                   _  -> Link ref (url `interwikiurl` article, summary article)
                 Nothing -> Link ref (interwiki, article)
-            where -- 'http://starwars.wikia.com/wiki/Emperor_Palpatine'
+            where -- 'https://starwars.wikia.com/wiki/Emperor_Palpatine'
                   interwikiurl u a = u ++ urlEncode (deunicode a)
                   deunicode = map (\x -> if x == '’' then '\'' else x)
                   -- 'Wookieepedia: Emperor Palpatine'
@@ -246,9 +246,9 @@ convertInterwikiLinks x = x
 interwikiMap :: M.Map String String
 interwikiMap = M.fromList $ wpInterwikiMap ++ customInterwikiMap
 wpInterwikiMap, customInterwikiMap :: [(String, String)]
-customInterwikiMap = [("Hackage", "http://hackage.haskell.org/package/"),
-                      ("Hawiki", "http://haskell.org/haskellwiki/"),
-                      ("Hoogle", "http://www.haskell.org/hoogle/?hoogle=")]
-wpInterwikiMap = [("Wikipedia", "http://en.wikipedia.org/wiki/"),
-                  ("Wikiquote", "http://en.wikiquote.org/wiki/"),
-                  ("Wiktionary", "http://en.wiktionary.org/wiki/")]
+customInterwikiMap = [("Hackage", "https://hackage.haskell.org/package/"),
+                      ("Hawiki", "https://haskell.org/haskellwiki/"),
+                      ("Hoogle", "https://www.haskell.org/hoogle/?hoogle=")]
+wpInterwikiMap = [("Wikipedia", "https://en.wikipedia.org/wiki/"),
+                  ("Wikiquote", "https://en.wikiquote.org/wiki/"),
+                  ("Wiktionary", "https://en.wiktionary.org/wiki/")]

@@ -69,7 +69,7 @@ The community-related survey variables have changed from year to year, though, a
     - `Sequences`:
 
         > About how much of the Sequences - the collection of Eliezer Yudkowsky's original posts - have you read? You can find a list of them at http://wiki.lesswrong.com/wiki/Sequences
-- `TimeinCommunity`: this variable turns out to be unusable, as reading through responses, the data is too dirty and inconsistent to be used at all without massive editing (everyone formatted their response differently, some didn't understand the units, etc. Reminder to anyone running a survey: *free response is the devil!*)
+- `TimeinCommunity`: this variable turns out to be unusable, as reading through responses, the data is too dirty and inconsistent to be used at all without massive editing (everyone formatted their response differently, some didn't understand the units, etc. Reminder to anyone running a survey: free response is the devil.)
 - `TimeonLW`=`Time.per.day`: consistent, phrasing:
     - `Time.per.day`:
 
@@ -143,7 +143,7 @@ all$Sequences <- as.integer(unlist({Sequences[sapply(Sequences, length)==0] <- N
 all[!grepl("^I", all$LessWrongUse),]$LessWrongUse <- NA
 all$LessWrongUse <- sub(",", "", all$LessWrongUse)
 
-## PCryonics is supposed to be a percentage written down as a naked number, but some people include "%" as well or other text;
+## PCryonics is *supposed* to be a percentage written down as a naked number, but some people include "%" as well or other text;
 ## so remove '%', convert to numeric, and then convert to decimal probability, rounding >100 down to 100 & <0 to 0
 probabilityRange <- function(x) { if (is.na(x)) { return(NA);} else {if (x>100) { return(100); } else { if (x<0) { return(0); } else {return(x)}}}}
 all$PCryonics <- sapply(as.numeric(sub("%", "", as.character(all$PCryonics))), probabilityRange) / 100

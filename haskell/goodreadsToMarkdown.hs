@@ -1,6 +1,6 @@
-#! /usr/bin/env runhaskell
+x#! /usr/bin/env runhaskell
 -- $ cabal install cassava stringsearch
--- $ wget http://www.gwern.net/docs/gwern-goodreads.csv
+-- $ wget https://www.gwern.net/docs/gwern-goodreads.csv
 -- # Demonstration usage:
 -- $ cd ~/wiki/ && ./haskell/goodreadsToMarkdown.hs docs/gwern-goodreads.csv > book-reviews.page
 
@@ -12,7 +12,7 @@ Book Id,Title,Author,Author l-f,Additional Authors,ISBN,ISBN13,My Rating,Average
 Example CSV line:
 8535464,"The Geeks Shall Inherit the Earth: Popularity, Quirk Theory and Why Outsiders Thrive After High School","Alexandra Robbins","Robbins, Alexandra","",="1401302025",="9781401302023",2,"3.62","Hyperion","Hardcover","448",2009,2009,2011/10/15,2012/07/16,"","","read","Found it only OK. Basically extended anecdotes, with some light science mixed in to buttress her manifesto (and used for support, not illumination).","","","","","",0,,,,,
 -}
--- Background on Amazon: Generic ISBN search looks like this: http://www.amazon.com/gp/search/ref=sr_adv_b/?search-alias=stripbooks&unfiltered=1&field-isbn=9781401302023
+-- Background on Amazon: Generic ISBN search looks like this: https://www.amazon.com/gp/search/ref=sr_adv_b/?search-alias=stripbooks&unfiltered=1&field-isbn=9781401302023
 
 {-# LANGUAGE OverloadedStrings #-}
 import Control.Applicative ((<*>), (<$>))
@@ -111,7 +111,7 @@ titleOrIsbnToLink ttle i10 i13 = let url = case i of
                       -- Nothing, the case expression above will handle it
                       i = if isJust i10 then i10 else i13
                       getAmazonPage :: String -> String
-                      getAmazonPage ibn = "http://www.amazon.com/s?ie=UTF8&field-isbn=" ++ transformISBN ibn ++ "&page=1&rh=i:stripbooks"
+                      getAmazonPage ibn = "https://www.amazon.com/s?ie=UTF8&field-isbn=" ++ transformISBN ibn ++ "&page=1&rh=i:stripbooks"
                       -- chop "="1401302025"" into "1401302025" by dropping first 2 characters & last character
                       transformISBN ib = reverse (drop 1 (reverse (drop 2 ib)))
 
@@ -167,7 +167,7 @@ urlDB = M.fromList [
      ("Sodom and Gomorrah, Texas", "http://www.gutenberg.org/ebooks/23161"),
      ("The Authoritarians", "http://members.shaw.ca/jeanaltemeyer/drbob/TheAuthoritarians.pdf"),
      ("The Constant Gardener", "https://en.wikipedia.org/wiki/The_Constant_Gardener"),
-     ("The Fall of Rome", "http://www.amazon.com/The-fall-Rome-R-Lafferty/dp/B0006CALC4"),
+     ("The Fall of Rome", "https://www.amazon.com/The-fall-Rome-R-Lafferty/dp/B0006CALC4"),
      ("The Fall of the House of Usher", "https://en.wikipedia.org/wiki/The_Fall_of_the_House_of_Usher"),
      ("The Grand Inquisitor", "https://en.wikipedia.org/wiki/The_Grand_Inquisitor"),
      ("The Last Ringbearer", "https://en.wikipedia.org/wiki/The_Last_Ringbearer"),

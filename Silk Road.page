@@ -1652,16 +1652,16 @@ Reactions were generally extremely negative, accusing me of scamming, being LE, 
 > near-future. If you think I am wrong, just try to take my money and prove me
 > wrong! Otherwise, spare us your cheap talk.
 
-Hi! I'm [Gwern Branwen](http://www.gwern.net/Links). You may remember me from
+Hi! I'm [Gwern Branwen](https://www.gwern.net/Links). You may remember me from
 such black-market webpages as
-[Silk Road: Theory & Practice](http://www.gwern.net/Silk%20Road), and
+[Silk Road: Theory & Practice](https://www.gwern.net/Silk%20Road), and
 [/r/silkroad](http://www.reddit.com/r/SilkRoad/search?q=author%3Agwern&restrict_sr=on).
 Today I'm here to talk to you about BlackMarket Reloaded &
 Sheep Marketplace.
 
 (A signed version of this 30 October 2013 post will be posted as a comment,
 because I wish to use Markdown formatting; my PGP key is
-[available](http://www.gwern.net/Links#contact).)
+[available](https://www.gwern.net/Links#contact).)
 
 #### Background
 
@@ -1737,7 +1737,7 @@ from fun party times in the party-van.
 I am uninterested in seeing Sheep/BMR busted and lots of newbies caught because
 they can't appreciate the patterns here. People don't take mere criticism
 seriously, and even if I lay it all out like here, and I mention that I have an
-[excellent track record of predictions](http://www.gwern.net/Prediction%20markets),
+[excellent track record of predictions](https://www.gwern.net/Prediction%20markets),
 they still won't because anyone can doom-monger and issue warnings, it won't get
 through to them. I want to get through to them - I want them to understand the
 risks they're taking, I want them to reflexively use PGP, and I want them to
@@ -1904,7 +1904,7 @@ R> 1.24 * 0.199
 R> plot(surv)
 # http://i.imgur.com/76lzyI2.png
 
-still looks very similar: http://i.imgur.com/76lzyI2.png vs http://www.gwern.net/images/silkroad/survival-blackmarketsonly.png
+still looks very similar: http://i.imgur.com/76lzyI2.png vs https://www.gwern.net/images/silkroad/survival-blackmarketsonly.png
 
 R> (1-(1.24 * 0.199))^3
 [1] 0.4274

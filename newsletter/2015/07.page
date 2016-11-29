@@ -6,14 +6,14 @@ status: finished
 belief: log
 ...
 
-This is the July 2015 edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous, [June 2015](http://www.gwern.net/newsletter/2015/06).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the July 2015 edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous, [June 2015](https://www.gwern.net/newsletter/2015/06).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
-- [Dark Net Market archives, 2011-2015](http://www.gwern.net/Black-market%20archives "Mirrors of Tor-Bitcoin black-markets & forums 2013-2015, and other material")
-- A/B tests: finished [metadata test](http://www.gwern.net/AB%20testing#moving-sidebars-metadata-into-page); [proposal towards](http://www.gwern.net/AB%20testing#deep-reinforcement-learning) recurrent neural network for reinforcement learning of CSS
-- [Air conditioner upgrade](http://www.gwern.net/Statistical%20notes#air-conditioner-replacement) cost-benefit analysis
+- [Dark Net Market archives, 2011-2015](https://www.gwern.net/Black-market%20archives "Mirrors of Tor-Bitcoin black-markets & forums 2013-2015, and other material")
+- A/B tests: finished [metadata test](https://www.gwern.net/AB%20testing#moving-sidebars-metadata-into-page); [proposal towards](https://www.gwern.net/AB%20testing#deep-reinforcement-learning) recurrent neural network for reinforcement learning of CSS
+- [Air conditioner upgrade](https://www.gwern.net/Statistical%20notes#air-conditioner-replacement) cost-benefit analysis
 - `gwern.net`:
 
     - switched to Patreon for donations
@@ -42,7 +42,7 @@ Psychology/biology:
 - ["Physics of Wound Healing I: Energy Considerations"](http://arxiv.org/abs/1212.3778), Apell 2012
 - ["The Biodeterminist's Guide to Parenting"](http://squid314.livejournal.com/346391.html)
 - ["A Year of Spaced Repetition Software in the Classroom"](http://lesswrong.com/r/discussion/lw/mfm/a_year_of_spaced_repetition_software_in_the/)
-- ["Whole-personality emulation"](http://www.gwern.net/docs/2012-bainbridge.pdf), Bainbridge 2012
+- ["Whole-personality emulation"](https://www.gwern.net/docs/2012-bainbridge.pdf), Bainbridge 2012
 - ["Does it pay to know your MBTI type?"](http://www.washingtonpost.com/national/on-leadership/myers-briggs-does-it-pay-to-know-your-type/2012/12/14/eaed51ae-3fcc-11e2-bca3-aadc9b7e29c5_print.html)
 - ["Burn-in, bias, and the rationality of anchoring"](http://papers.nips.cc/paper/4719-burn-in-bias-and-the-rationality-of-anchoring.pdf), Lieder et al 2012
 

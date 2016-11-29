@@ -2183,9 +2183,9 @@ Power considerations suggest I could probably terminate after 4 months
 10. 27 July - 24 August: 1
 
     25 August - 21 September: 0
-11. 22 September - 22? October: ?
+11. 22 September - 16 October: ?
 
-    23? October - 23? November: ?
+    17 October - 23? November: ?
 
 #### Analysis
 #### Conclusion
@@ -2751,7 +2751,7 @@ All things considered, I will probably continue using nicotine gum sparingly.
 
 Running low on gum (even using it weekly or less, it still runs out), I decided to try patches. Reading through various discussions, I couldn't find any clear verdict on what patch brands might be safer (in terms of nicotine evaporation through a cut or edge) than others, so I went with the cheapest Habitrol I could find as a first try of patches (["Nicotine Transdermal System Patch, Stop Smoking Aid, 21 mg, Step 1, 14 patches"](http://www.amazon.com/gp/product/B000GU6ENQ/ "$25.95")) in May 2013. I am curious to what extent nicotine might improve a long time period like several hours or a whole day, compared to the shorter-acting nicotine gum which feels like it helps for an hour at most and then tapers off (which is very useful in its own right for kicking me into starting something I have been procrastinating on). I have not decided whether to try another self-experiment.
 
-Using the 21mg patches, I cut them into quarters. What I would do is I would cut out 1 quarter, and then seal the two edges with scotch tape, and put the pacman back into its sleeve. Then the next time I would cut another quarter, seal the new edge, and so on. I thought that 5.25mg might be too much since I initially found 4mg gum to be too much, but it's delivered over a long time and it wound up feeling much more like 1mg gum used regularly. I don't know if the tape worked, but I did not notice any loss of potency. I didn't like them as much as the gum because I would sometimes forget to take off a patch at the end of the day and it would interfere with sleep, and because the onset is much slower and I find I need stimulants more for getting started than for ongoing stimulation so it is better to have gum which can be taken precisely when needed and start acting quickly. When I finally ran out of patches in June 2016 (using them sparingly), I ordered gum instead.
+Using the 21mg patches, I cut them into quarters. What I would do is I would cut out 1 quarter, and then seal the two edges with scotch tape, and put the Pac-Man back into its sleeve. Then the next time I would cut another quarter, seal the new edge, and so on. I thought that 5.25mg might be too much since I initially found 4mg gum to be too much, but it's delivered over a long time and it wound up feeling much more like 1mg gum used regularly. I don't know if the tape worked, but I did not notice any loss of potency. I didn't like them as much as the gum because I would sometimes forget to take off a patch at the end of the day and it would interfere with sleep, and because the onset is much slower and I find I need stimulants more for getting started than for ongoing stimulation so it is better to have gum which can be taken precisely when needed and start acting quickly. (One case where the patches were definitely better than the gum was long car trips where slow onset is fine, since you're most alert at the start.) When I finally ran out of patches in June 2016 (using them sparingly), I ordered gum instead.
 
 # Noopept
 
@@ -2788,7 +2788,7 @@ Or in other words, since the standard deviation of my previous self-ratings is 0
 
 ### Data
 
-Available as a [CSV](http://www.gwern.net/docs/nootropics/2013-gwern-noopept.csv) spanning 15 May - 9 July 2013, with magnesium l-threonate consumption as a covariate (see the [magnesium](#l-threonate) section).
+Available as a [CSV](https://www.gwern.net/docs/nootropics/2013-gwern-noopept.csv) spanning 15 May - 9 July 2013, with magnesium l-threonate consumption as a covariate (see the [magnesium](#l-threonate) section).
 
 ### Analysis
 
@@ -3751,10 +3751,10 @@ On the other metric, suppose we removed the creatine? Dropping 4 grams of materi
 <!-- Nicotine: 03, 07 June 2013: 4mg gum; 22 June 2013: 2mg gum; 24 June 2013: 2mg gum; 1 July: 2mg gum; 9 July, 2mg gum; 20 July, 2mg gum; 20 August, 3mg gum; 5, 6 September, 1mg gum; 20 Sept, 1mg gum; 2 October: 2mg; 16 October: 1mg; 22 October: 1mg; 29 Oct: 1mg; 6 Nov: 1mg; 8 Nov: 2mg; 14 Nov: 1mg; 15: 3mg; 21 Nov: 2mg; 30 Nov: 1mg; 30 Dec: 2mg;
 2014: January: 05: 4mg gum; 20 February: 1mg gum; 18 March: 1mg gum; 9 May: 4mg gum; 21 July: 1mg gum; 21 December: 4mg gum; 30 December: 2mg gum;
 2015: 18 February, 1mg gum; 21 February, 1mg gum; 23 February, 1mg gum; 25 February, 1mg gum; 23 April, 1mg gum; 4 May, 1mg gum, 5 May, 1mg gum; 1mg gum, 14, 15, 16, 19, 21, 23, 25, 26 May end nicotine gum, ran out on 26th; nicotine patch 5.25mg (quarter) 27, 28 (half; turns out to be way too much even after some leakage), 30 (quarter), 31 (quarter) May, 2 quarters 5, 1 quarter 7, 1 quarter 9, 1 quarter 13, 1 quarter 16, 1 quarter 18, 1 quarter 19, 1 quarter 28 June, 1 quarter 6, 1 quarter 29 July; 1 quarter 12, 21 August; 1 quarter 5, 2 quarters 18, 1 quarter 25, 2 quarters 30 September; 1 patch, 18 October; 1 half, 4 November; 1 quarter 21 November, 1 quarter 23 November; 1 half 5, 31 December;
-2016: 1 half, 14 January; 1 half, 8 February; 1 half, 7 April; 1 half, 6 May; 1 half 10, 1 half 25 June. ED out of patches -->
+2016: 1 half, 14 January; 1 half, 8 February; 1 half, 7 April; 1 half, 6 May; 1 half 10, 1 half 25 June. ED out of patches. 2mg gum, 14 October. 2mg gum, 2; 4mg, 4; 2mg 9; 2mg 11, 2mg 13 November -->
 <!-- Bacopa (Bacognize): start first block (1x) 26 September 2014, last day 19 December 2014; +90 days off-bacopa to 19 March 2015; bacopa (1x) 20 March - 5 June; on, until 22 January 2016 (omit wedding and Christmas blocks) -->
 <!-- Fluoride: last day 9 February 2014 -->
-<!-- kettlebell exercise: 9, 10, 17, 22, 23, 26, 28 March, 1, 10, 11, 12, 13, 15, 16, 18, 19, 20, 22, 24, 25 (began protein powder), 26, 28, 29 April 2015; 1, 3, 6, 9, 12, 14, 15, 16, 19 May 2015 --> <!-- protein powder: Apr 25, 2015 - 9 May / 15 days or 8 workouts? resumed on 25 May; ran out 16 June; resumed 24 June 2015 -->
+<!-- kettlebell exercise: protein powder: Apr 25, 2015 - 9 May / 15 days or 8 workouts? resumed on 25 May; ran out 16 June; resumed 24 June 2015 -->
 
 <!-- # Phenibut
 
@@ -3806,8 +3806,14 @@ forewarned is forearmed
 2/7 2 scoops
 2/11 2 scoops
 9/4 100mg
+9/26 245mg
+10/6 300mg
+10/11 403mg
+10/14 400mg
+10/26 200mg
+11/3 463mg
 
-things to investigate: HRV (set up heart-rate belt), and sleep quality
+things to investigate: sleep quality
 -->
 
 <!--
@@ -3959,7 +3965,24 @@ oral dosage typically 3x12.5mg=37.5mg daily
 04 September: 1x
 07 September: 2x
 20 September: 1x
-21 September: 2x?
+21 September: 2x
+24 September: 2x
+25 September: 2x
+26 September: 2x
+28 September: 2x
+29 September: 2x
+5 October: 2x
+6 October: 1x
+19 October: 1x
+20 October: 1x
+27 October: 1x
+4 November: 1x
+5 November: 1x
+8 November: 1x
+9 November: 2x
+10 November: 1x
+11 November: 1x
+12 November: 2x?
 -->
 
 <!-- # Insulin

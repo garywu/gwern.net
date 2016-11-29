@@ -273,7 +273,7 @@ $ find "/home/gwern/torrent/Touhou lossy music collection/" -type f -name "*.mp3
 #           -Title -Year -Album -Artist -Duration -Genre -Track -Directory -FileName -FileSize -AudioBitrate
 #           ~/torrent/Touhou\\ lossy\\ music\\ collection/*/* > ~/touhou.json")
 library(rjson)
-# download from http://www.gwern.net/docs/touhou/2013-torrent.json.xz and decompress with xz
+# download from https://www.gwern.net/docs/touhou/2013-torrent.json.xz and decompress with xz
 json_data <- fromJSON(paste(readLines("2013-gwern-touhoutorrent.json"), collapse=""))
 touhou <- data.frame(matrix(unlist(json_data), ncol=12, byrow=TRUE))
 colnames(touhou) <- c("SourceFile", "Title", "Year", "Album", "Artist", "Length", "Genre",
@@ -393,7 +393,7 @@ A loose group of [4chan](!Wikipedia) users on the [/jp/](https://boards.4chan.or
 # ~/c83/touhou/ ~/c83/touhou/*/** ~/c83/touhou/*/*/** ~/c83/touhou/*/*/*/** > ~/2013-c83-downloads.json
 
 library(rjson)
-# download from http://www.gwern.net/docs/touhou/2013-torrent.json.xz and decompress with xz
+# download from https://www.gwern.net/docs/touhou/2013-torrent.json.xz and decompress with xz
 json_data <- fromJSON(paste(readLines("2013-c83-downloads.json"), collapse=""))
 touhou <- data.frame(matrix(unlist(json_data), ncol=13, byrow=TRUE))
 colnames(touhou) <- c("SourceFile", "Title", "Year", "Album", "Artist", "Length", "Genre",

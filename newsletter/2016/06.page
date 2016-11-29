@@ -6,14 +6,14 @@ status: finished
 belief: log
 ...
 
-This is the June 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [May 2016](http://www.gwern.net/newsletter/2016/05).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the June 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [May 2016](https://www.gwern.net/newsletter/2016/05).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
-- [_Genius Revisited_: Critiquing the Value of High IQ Elementary Schools](http://www.gwern.net/Statistical%20notes#genius-revisited-on-the-value-of-high-iq-elementary-schools)
-- [Inferring mean ethnic IQs from very high IQ samples like TIP/SMPY](http://www.gwern.net/Statistical%20notes#inferring-mean-iqs-from-smpytip-elite-samples)
-- [Newton's comet apocalypse system](http://www.gwern.net/Notes#newtons-system-of-the-world-and-comets)
+- [_Genius Revisited_: Critiquing the Value of High IQ Elementary Schools](https://www.gwern.net/Statistical%20notes#genius-revisited-on-the-value-of-high-iq-elementary-schools)
+- [Inferring mean ethnic IQs from very high IQ samples like TIP/SMPY](https://www.gwern.net/Statistical%20notes#inferring-mean-iqs-from-smpytip-elite-samples)
+- [Newton's comet apocalypse system](https://www.gwern.net/Notes#newtons-system-of-the-world-and-comets)
 
 # Media
 ## Links
@@ -21,14 +21,14 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 Everything is heritable:
 
 - ["Assortative mating and differential fertility by phenotype and genotype across the 20th century"](http://www.pnas.org/content/early/2016/05/25/1523592113.full), Conley et al 2016 (Dysgenics found in the USA, 1920-1955: education/intelligence polygenic scores decrease over time, inversely correlate with offspring - education/intelligence polygenic score is dropping 0.0029 SDs per year, or 0.087SD over the 30 years covered, implying that the USA genetic potential has dropped 0.28SD since 1920 or <4 IQ points. [Appendix](http://www.pnas.org/content/suppl/2016/05/25/1523592113.DCSupplemental/pnas.1523592113.sapp.pdf))
-- ["The Genetics of Success: How Single-Nucleotide Polymorphisms Associated With Educational Attainment Relate to Life-Course Development"](http://www.gwern.net/docs/genetics/2016-belsky.pdf), Belsky et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/c8oDW58RJxw))
+- ["The Genetics of Success: How Single-Nucleotide Polymorphisms Associated With Educational Attainment Relate to Life-Course Development"](https://www.gwern.net/docs/genetics/2016-belsky.pdf), Belsky et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/c8oDW58RJxw))
 - ["The Genome Project-Write"](http://science.sciencemag.org/content/early/2016/06/01/science.aaf6850.full), Boeke et al 2016 ([media](http://www.nytimes.com/2016/06/03/science/human-genome-project-write-synthetic-dna.html "Scientists Announce HGP-Write, Project to Synthesize the Human Genome"); [commentary](https://plus.google.com/103530621949492999968/posts/GH6LoxL8PG1))
 - ["Why We're Different: A Conversation with Robert Plomin"](https://www.edge.org/conversation/robert_plomin-why-were-different) (Plomin takes a victory lap: "It might be hard for people to believe this, but forty years ago it was dangerous to talk about genetic influence in psychology.")
 - ["Demonstrating the validity of twin research in criminology"](https://www.researchgate.net/publication/267158254_Demonstrating_the_validity_of_twin_research_in_criminology), Barnes et al 2014
 - ["Pleiotropy across academic subjects at the end of compulsory education"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4512149/), Rimfeld et al 2015
 - ["Genetics affects choice of academic subjects as well as achievement"](http://www.nature.com/articles/srep26373), Rimfeld et al 2016
 - ["The Genetic Basis of Mendelian Phenotypes: Discoveries, Challenges, and Opportunities"](http://www.cell.com/ajhg/abstract/S0002-9297\(15\)00245-1), Chong et al 2015 (But enough about common variants & complex traits - how have we been doing in finding the causes of genetic diseases like severe Mendelian diseases? Very well.)
-- ["A Prospective Study of Sudden Cardiac Death among Children and Young Adults"](http://www.gwern.net/docs/genetics/2016-bagnall.pdf), Bagnall et al 2016 (Rare genetic mutations implicated in >13% of unexplained cardiac deaths. Makes one wonder how much of the long tail of deaths are due to rare variants, and how much of a benefit there would be to erasing the ~80k mutations everyone carries... (Population genetics rule: rare variants are more harmful than common variants; and 1 harmful mutation, 1 reproductive death to purge it from the population.) Very cool application of genetics.)
+- ["A Prospective Study of Sudden Cardiac Death among Children and Young Adults"](https://www.gwern.net/docs/genetics/2016-bagnall.pdf), Bagnall et al 2016 (Rare genetic mutations implicated in >13% of unexplained cardiac deaths. Makes one wonder how much of the long tail of deaths are due to rare variants, and how much of a benefit there would be to erasing the ~80k mutations everyone carries... (Population genetics rule: rare variants are more harmful than common variants; and 1 harmful mutation, 1 reproductive death to purge it from the population.) Very cool application of genetics.)
 - genetics of breast size ([commentary](https://plus.google.com/103530621949492999968/posts/HohQAcuhtLe)):
 
     - ["Body mass index and breast size in women: same or different genes?"](https://www.researchgate.net/profile/Tracey_Wade2/publication/46576952_Body_Mass_Index_and_Breast_Size_in_Women_Same_or_Different_Genes/links/00b7d52fbf89094b60000000.pdf), Wade et al 2010
@@ -103,7 +103,7 @@ Fiction:
 Nonfiction:
 
 - [_The Sports Gene_](http://thesportsgene.com/), Epstein
-- [_Genius Revisited: High IQ Children Grown Up_](http://www.gwern.net/docs/iq/1993-subotnik-geniusrevisited.pdf), Subotnik et al 1993 ([review](http://www.gwern.net/Statistical%20notes#genius-revisited-on-the-value-of-high-iq-elementary-schools))
+- [_Genius Revisited: High IQ Children Grown Up_](https://www.gwern.net/docs/iq/1993-subotnik-geniusrevisited.pdf), Subotnik et al 1993 ([review](https://www.gwern.net/Statistical%20notes#genius-revisited-on-the-value-of-high-iq-elementary-schools))
 
 ## Film/TV
 

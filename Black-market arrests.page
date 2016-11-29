@@ -1508,7 +1508,7 @@ The original [Operation Onymous press release](http://www.eurojust.europa.eu/pre
      - Ireland: 2
      - 14 known arrests; 3 are missing, but at least 2 must be German arrests, and hypothetically the last could be from any combination of the mentioned participating countries unrepresented in the above list ("...Bulgaria, the Czech Republic, Finland, France, Germany, Ireland, Latvia, Lithuania, Luxembourg, the Netherlands, ... Romania, Sweden") but is probably German as well
 
-On 6 January 2015, the [Princeton student Julian Edgren was arrested](http://planetprinceton.com/2015/01/07/princeton-university-student-arrested-for-drug-possession/ "Princeton University Student Arrested for Drug Possession") & later [pled guilty](http://www.centraljersey.com/news/princeton-former-university-student-pleads-guilty-on-drug-charges/article_9635a3a8-23fb-11e5-9217-8b73683508f0.html "PRINCETON: Former university student pleads guilty on drug charges") after a CD package of MDMA, and was sentenced [to 5 years in September 2015](http://www.centraljersey.com/news/princeton-former-university-student-sentenced-to-five-years-in-prison/article_5ec200ac-6617-11e5-aca4-2be1c379d706.html "PRINCETON: Former university student sentenced to five years in prison for selling drugs"); warrants also turned up mushrooms/psilocybin, marijuana, LSD, hashish, and Adderall.
+On 6 January 2015, the [Princeton student Julian Edgren was arrested](http://planetprinceton.com/2015/01/07/princeton-university-student-arrested-for-drug-possession/ "Princeton University Student Arrested for Drug Possession") & later [pled guilty](http://www.centraljersey.com/news/princeton-former-university-student-pleads-guilty-on-drug-charges/article_9635a3a8-23fb-11e5-9217-8b73683508f0.html "PRINCETON: Former university student pleads guilty on drug charges") after a CD package of MDMA, and was sentenced [to 5 years in September 2015](http://www.centraljersey.com/news/princeton-former-university-student-sentenced-to-five-years-in-prison/article_5ec200ac-6617-11e5-aca4-2be1c379d706.html "PRINCETON: Former university student sentenced to five years in prison for selling drugs") of which [he served 0.33 years](http://dailyprincetonian.com/news/2016/10/former-u-student-convicted-of-drug-possession-released-early-not-re-enrolled/ "Former U. student convicted of drug possession released early, not re-enrolled"); warrants also turned up mushrooms/psilocybin, marijuana, LSD, hashish, and Adderall.
 It is known Edgren had been a The Marketplace customer, but TMP had closed down months before January 2015 after Operation Onymous, so he could not have been using TMP for that order.
 (The pricing [might suggest a Canadian source](https://www.reddit.com/r/DarkNetMarkets/comments/2robda/possibly_dnm_related_buyer_arrest/cnif309).)
 
@@ -1866,7 +1866,7 @@ In aggregate, I would guess that the completeness of the table is highly unlikel
 
 ~~~{.R}
 library(XML)
-# http://www.gwern.net/Black-market%20arrests
+# https://www.gwern.net/Black-market%20arrests
 arrests <- readHTMLTable("http://www.gwern.net/Black-market%20arrests",
     colClasses = c("character", "factor", "integer", "character", "factor", "factor", "character", "factor",
                    "factor", "character", "logical", as.Date, as.Date, "character"))[[1]]

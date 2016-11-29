@@ -3167,7 +3167,7 @@ Now we can begin working on what we care about.
 
 #### CSS
 
-First, to generate a decent sized CSS corpus; between all the HTML documentation installed by Ubuntu and my [own WWW crawls](http://www.gwern.net/Archiving%20URLs), I have something like 1GB of CSS hanging around my drive. Let's grab 20MB of it (enough to not take forever to train on, but not so little as to be trivial):
+First, to generate a decent sized CSS corpus; between all the HTML documentation installed by Ubuntu and my [own WWW crawls](https://www.gwern.net/Archiving%20URLs), I have something like 1GB of CSS hanging around my drive. Let's grab 20MB of it (enough to not take forever to train on, but not so little as to be trivial):
 
 ~~~{.Bash}
 cd ~/src/char-rnn/

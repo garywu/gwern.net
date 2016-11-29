@@ -449,7 +449,7 @@ West Virginia 42.8
 Wisconsin 52.5
 Wyoming 32
 
-Win percentage: http://www.gwern.net/docs/2012-election-linzer-statewinprob.csv
+Win percentage: https://www.gwern.net/docs/2012-election-linzer-statewinprob.csv
 Alabama 0
 Alaska 0.008666667
 Arizona 0

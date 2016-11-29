@@ -6,28 +6,28 @@ status: finished
 belief: log
 ...
 
-This is the September edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous was [August](http://www.gwern.net/newsletter/2014/08).
+This is the September edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous was [August](https://www.gwern.net/newsletter/2014/08).
 
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & including material from [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/). Thanks to my donors on [Gratipay](https://gratipay.com/gwern/).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & including material from [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/). Thanks to my donors on [Gratipay](https://gratipay.com/gwern/).
 
 # Writings
 
 QS:
 
-- [Noopept experiment](http://gwern.net/Nootropics#noopept-followup-experiment) (no benefits)
-- [Treadmill spaced repetition experiment](http://www.gwern.net/Treadmill#treadmill-effect-on-spaced-repetition-performance-randomized-experiment): expanded analysis to cover treadmill's impact on successive reviews with SEM (no additional damage to recall beyond that implied by the original damage)
+- [Noopept experiment](https://gwern.net/Nootropics#noopept-followup-experiment) (no benefits)
+- [Treadmill spaced repetition experiment](https://www.gwern.net/Treadmill#treadmill-effect-on-spaced-repetition-performance-randomized-experiment): expanded analysis to cover treadmill's impact on successive reviews with SEM (no additional damage to recall beyond that implied by the original damage)
 
 Stats:
 
-- anthology on how ["everything is correlated"](http://www.gwern.net/Causality#everything-correlates-with-everything)
-- probability/gerontology problem: can one visit 566 centenarians before any die? [No.](http://www.gwern.net/Notes#the-traveling-gerontologist-problem)
+- anthology on how ["everything is correlated"](https://www.gwern.net/Causality#everything-correlates-with-everything)
+- probability/gerontology problem: can one visit 566 centenarians before any die? [No.](https://www.gwern.net/Notes#the-traveling-gerontologist-problem)
 
 Technology:
 
 - ["Effective Use of arbtt"](http://arbtt.nomeata.de/doc/users_guide/effective-use.html):
 
     My window tracker/time-logger of choice is [arbtt](http://arbtt.nomeata.de/) which records X window info for later classification and analysis; but one of the challenges is you don't know how to set up arbtt or improve your environment or write classifications rules. So I wrote a tutorial.
-- [Time-lock crypto](http://www.gwern.net/Self-decrypting%20files): wrote a Bash implementation of serial hashing time-lock crypto, link to all known implementations of hash time-lock crypto
+- [Time-lock crypto](https://www.gwern.net/Self-decrypting%20files): wrote a Bash implementation of serial hashing time-lock crypto, link to all known implementations of hash time-lock crypto
 
 # Media
 ## Links

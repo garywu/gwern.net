@@ -6,13 +6,13 @@ status: finished
 belief: log
 ...
 
-This is the December 2015 edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous, [November 2015](http://www.gwern.net/newsletter/2015/11).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the December 2015 edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous, [November 2015](https://www.gwern.net/newsletter/2015/11).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
-- [metformin for life-extension: cost-benefit analysis](http://www.gwern.net/Longevity#metformin)
-- [shell scripts for easy cryptographic timestamping](http://www.gwern.net/Timestamping)
+- [metformin for life-extension: cost-benefit analysis](https://www.gwern.net/Longevity#metformin)
+- [shell scripts for easy cryptographic timestamping](https://www.gwern.net/Timestamping)
 
 # Media
 ## Links
@@ -20,12 +20,12 @@ This is a summary of the revision-history RSS feed, overlapping with [Changelog]
 Everything is heritable:
 
 - ["Genetic and environmental determinants of violence risk in psychotic disorders: a multivariate quantitative genetic study of 1.8 million Swedish twins and siblings"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015184a.html), Sariaslan et al 2015 (Genetic [pleiotropy](https://en.wikipedia.org/wiki/Pleiotropy)/confounding in schizophrenia & drug abuse, rather than causation or reverse causation?)
-- ["Systems genetics identifies a convergent gene network for cognition and neurodevelopmental disease"](http://www.gwern.net/docs/iq/2015-johnson.pdf), Johnson et al 2015 ([media](http://www3.imperial.ac.uk/newsandeventspggrp/imperialcollege/newssummary/news_22-12-2015-10-13-44 "Intelligence 'networks' discovered in brain for the first time"))
+- ["Systems genetics identifies a convergent gene network for cognition and neurodevelopmental disease"](https://www.gwern.net/docs/iq/2015-johnson.pdf), Johnson et al 2015 ([media](http://www3.imperial.ac.uk/newsandeventspggrp/imperialcollege/newssummary/news_22-12-2015-10-13-44 "Intelligence 'networks' discovered in brain for the first time"))
 - on the benefits of exercise:
 
     - ["Modifiable Risk Factors as Predictors of All-Cause Mortality: The Roles of Genetics and Childhood Environment"](http://aje.oxfordjournals.org/content/156/11/985.full), Kujala et al 2002
     - ["Physical activity in adulthood: genes and mortality"](http://www.nature.com/articles/srep18259), Karvinen et al 2015
-    - ["Physical Activity, Fitness, Glucose Homeostasis, and Brain Morphology in Twins"](http://www.gwern.net/docs/genetics/2015-rottensteiner.pdf), Rottensteiner et al 2015 ([commentary](https://plus.google.com/103530621949492999968/posts/jUFyJirpKpJ))
+    - ["Physical Activity, Fitness, Glucose Homeostasis, and Brain Morphology in Twins"](https://www.gwern.net/docs/genetics/2015-rottensteiner.pdf), Rottensteiner et al 2015 ([commentary](https://plus.google.com/103530621949492999968/posts/jUFyJirpKpJ))
 -  ["How Much Can We Boost IQ and Scholastic Achievement?"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.138.980&rep=rep1&type=pdf), Jensen 1969
 
 Politics/religion:
@@ -39,8 +39,8 @@ Statistics/AI/meta-science:
 - ["What my deep model doesn't know..."](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html) (Something of a tour de force: isomorphism between [Gaussian processes](https://en.wikipedia.org/wiki/Gaussian_process) and deep neural networks showing [dropout](https://en.wikipedia.org/wiki/Dropout_%28neural_networks%29) is equivalent to using 1 NN to average over a whole family of similar models (explaining why dropout improves results, since we all know the advantages of ensembles) and showing how variation in NN output when wiggled by dropout gives an indication of uncertainty in predictions and from there yields useful results and stuff like usable [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) (!) in the famous [deep Q reinforcement-learner](https://en.wikipedia.org/wiki/Deep_learning#Deep_Q-Networks) for optimizing exploration and learning faster. Phew.)
 - ["On Learning to Think: Algorithmic Information Theory for Novel Combinations of Reinforcement Learning Controllers and Recurrent Neural World Models"](http://arxiv.org/abs/1511.09249) ([AIT](https://en.wikipedia.org/wiki/Algorithmic_information_theory) is usually too hopelessly abstract and general to apply to anything, but Schmidhuber gets inspiration for some interesting architectures from it.)
 
-- ["The Endogeneity Problem in Developmental Studies"](http://www.gwern.net/docs/statistics/2004-duncan.pdf), Duncan et al 2004 (How often does correlation=causation? More examples.)
-- ["...a list of thirty four Nobel Laureates whose awarded work was rejected by peer review."](http://www.gwern.net/docs/dnb/2008-gonzalezalvarez.pdf "'Science in the 21st century: social, political, and economic issues', Gonzalez-Alvarez 2008")
+- ["The Endogeneity Problem in Developmental Studies"](https://www.gwern.net/docs/statistics/2004-duncan.pdf), Duncan et al 2004 (How often does correlation=causation? More examples.)
+- ["...a list of thirty four Nobel Laureates whose awarded work was rejected by peer review."](https://www.gwern.net/docs/dnb/2008-gonzalezalvarez.pdf "'Science in the 21st century: social, political, and economic issues', Gonzalez-Alvarez 2008")
 - ["The Use and Abuse of Transcranial Magnetic Stimulation to Modulate Corticospinal Excitability in Humans"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144151), Heroux et al 2014
 
 Psychology/biology:
@@ -63,7 +63,7 @@ Economics:
 
 Fiction:
 
-- ["The Argentine Writer and Tradition"](http://www.gwern.net/docs/1951-borges-argentinewriter.pdf), Borges 1951
+- ["The Argentine Writer and Tradition"](https://www.gwern.net/docs/1951-borges-argentinewriter.pdf), Borges 1951
 - ["Axe Handles"](http://www.poetryfoundation.org/poem/248068), Gary Snyder
 - ["Back from yet another globetrotting adventure, Indiana Jones checks his mail and discovers that his bid for tenure has been denied"](http://www.mcsweeneys.net/articles/back-from-yet-another-globetrotting-adventure-indiana-jones-checks-his-mail-and-discovers-that-his-bid-for-tenure-has-been-denied)
 

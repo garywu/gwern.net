@@ -6,16 +6,16 @@ status: finished
 belief: log
 ...
 
-This is the September 2015 edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous, [August 2015](http://www.gwern.net/newsletter/2015/07).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the September 2015 edition of [the `gwern.net` newsletter](http://eepurl.com/Kc155); previous, [August 2015](https://www.gwern.net/newsletter/2015/07).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
 - [modafinil user survey](https://docs.google.com/forms/d/1ZNyGHl6vnHD62spZyHIqyvNM_Ts_82GvZQVdAr2LrGs/viewform) (running 26 September - 26 October 2015)
-- [`resorter` tool for statistically re-ranking a set of ratings](http://gwern.net/Resorter)
-- [Bitter Melon experimental & cost-benefit analysis](http://gwern.net/Melon)
-- [noisy polls: modeling potentially falsified poll data](http://www.gwern.net/Statistical%20notes#dealing-with-all-or-nothing-unreliability-of-data)
-- [Value of Information for suicide](http://www.gwern.net/Statistical%20notes#value-of-information-clinical-prediction-instruments-for-suicide) (example cost-benefit analysis of weakly predicting suicide)
+- [`resorter` tool for statistically re-ranking a set of ratings](https://gwern.net/Resorter)
+- [Bitter Melon experimental & cost-benefit analysis](https://gwern.net/Melon)
+- [noisy polls: modeling potentially falsified poll data](https://www.gwern.net/Statistical%20notes#dealing-with-all-or-nothing-unreliability-of-data)
+- [Value of Information for suicide](https://www.gwern.net/Statistical%20notes#value-of-information-clinical-prediction-instruments-for-suicide) (example cost-benefit analysis of weakly predicting suicide)
 
 # Media
 ## Links
@@ -24,7 +24,7 @@ Everything is heritable:
 
 - ["74 SNP hits on cognitive ability from 300k individuals"](http://infoproc.blogspot.com/2015/09/snp-hits-on-cognitive-ability-from-300k.html)
 - ["...intelligence GWAS hits: Their relationship to country IQ..."](http://emilkirkegaard.dk/en/wp-content/uploads/PifferIntelligence2015.pdf), Piffer 2015
-- ["Population genetic differentiation of height and body mass index across Europe"](http://www.gwern.net/docs/genetics/2015-robinson.pdf), Robinson et al 2015 (to quote [Yvain](http://slatestarcodex.com/2015/09/28/links-915-linkua-franca/): "Genetic differences explain 24% of between-national-populations differences in height and 8% of between-national-populations in BMI across Europe. Now that the only two massively polygenic traits that might vary among national populations have been successfully studied, I look forward to never having to read any further research of this sort ever again."; [excerpts](https://plus.google.com/103530621949492999968/posts/HAPgyYW7ACU))
+- ["Population genetic differentiation of height and body mass index across Europe"](https://www.gwern.net/docs/genetics/2015-robinson.pdf), Robinson et al 2015 (to quote [Yvain](http://slatestarcodex.com/2015/09/28/links-915-linkua-franca/): "Genetic differences explain 24% of between-national-populations differences in height and 8% of between-national-populations in BMI across Europe. Now that the only two massively polygenic traits that might vary among national populations have been successfully studied, I look forward to never having to read any further research of this sort ever again."; [excerpts](https://plus.google.com/103530621949492999968/posts/HAPgyYW7ACU))
 - ["The Evolutionary Genetics of Personality"](http://www.unm.edu/~gfmiller/newpapers_sept6/penke%202007%20targetarticle.pdf), Penke et al 2007 (holds up well after the GWASes for IQ & OCEAN; although prediction that OCEAN hits will be more plentiful than IQ seems to have fallen victim to personality being somewhat more polygenic than expected & non-additive; see the authors' own evaluation, ["The Evolutionary Genetics of Personality Revisited", Penke & Jokela 2016](http://www.larspenke.eu/pdfs/Penke_&_Jokela_in_press_-_Evolutionary_Genetics_of_Personality_Revisited.pdf))
 - ["Eugenics, Ready or Not"](https://quadrant.org.au/magazine/2015/05/eugenics-ready/), Salter
 

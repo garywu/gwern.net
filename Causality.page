@@ -80,7 +80,7 @@ cholesterol http://www.nytimes.com/2016/04/04/health/dashing-hopes-study-shows-c
 -->
 <!-- http://www.newyorker.com/magazine/2015/12/07/bacteria-on-the-brain -->
 
-I've read about [those problems at length](http://www.gwern.net/DNB%20FAQ#flaws-in-mainstream-science-and-psychology), and despite knowing about all that, there still seems to be a problem: I don't think those issues explain away all the correlations which turn out to be confounds - correlation *too often* ≠ causation.
+I've read about [those problems at length](https://www.gwern.net/DNB%20FAQ#flaws-in-mainstream-science-and-psychology), and despite knowing about all that, there still seems to be a problem: I don't think those issues explain away all the correlations which turn out to be confounds - correlation *too often* ≠ causation.
 
 One of the constant problems I face in my reading is that I constantly want to know about *causal* relationships but I only have *correlational* data, and as we all know, that is an unreliable guide at best.
 
@@ -183,7 +183,7 @@ Thousands of treatments get tried before one works.
 How do you deal with poverty?
 Most programs are not even wrong.
 Or how do you fix societal woes in general?
-Most attempts fail miserably and the higher-quality your studies, the worse attempts look (leading to [Rossi's Metallic Rules](http://www.gwern.net/docs/1987-rossi)).
+Most attempts fail miserably and the higher-quality your studies, the worse attempts look (leading to [Rossi's Metallic Rules](https://www.gwern.net/docs/1987-rossi)).
 This even explains why ['everything correlates with everything'](#everything-correlates-with-everything) and Andrew Gelman's dictum about how coefficients are never zero: the reason large datasets find most of their variables to have non-zero correlations (often reaching statistical-significance) is because the data is being drawn from large complicated causal networks in which almost everything *really is* correlated with everything else.
 
 And thus I was enlightened.
@@ -262,7 +262,7 @@ The initiative will cost nearly $5 billion through 2019, a hefty sum considering
 
 In statistical folklore, there is an idea which circulates under a number of expressions such as: "everything is correlated", "everything is related to everything else", "crud factor", "the null hypothesis is always false", the [Anna Karenina principle](!Wikipedia), & "coefficients are never zero".
 
-The core idea here is that in any real-world dataset, it is exceptionally unlikely that any particular relationship will be exactly 0 for reasons of arithmetic (eg it may be impossible for a binary variable to be an equal percentage in 2 unbalanced groups); prior probability (0 is only one number out of the infinite reals); and because real-world properties & traits are linked by a myriad of causal networks, dynamics, & latent variables which mutually affect each other which will produce genuine correlations between apparently-independent variables and these correlations may be of surprisingly large & important size.
+The core idea here is that in any real-world dataset, it is exceptionally unlikely that any particular relationship will be exactly 0 for reasons of arithmetic (eg it may be impossible for a binary variable to be an equal percentage in 2 unbalanced groups); prior probability (0 is only one number out of the infinite reals); and because real-world properties & traits are linked by a myriad of causal networks, dynamics, & latent variables (eg the [genetic correlation](!Wikipedia)s which affect a wide variety of important human traits) which mutually affect each other which will produce genuine correlations between apparently-independent variables, and these correlations may be of surprisingly large & important size.
 These reasons are unaffected by sample size and are not simply due to 'small _n_'.
 The claim is generally backed up by personal experience and reasoning, although in a few instances like Meehl large datasets are mentioned in which almost all variables are correlated at very high levels of statistical-significance.
 

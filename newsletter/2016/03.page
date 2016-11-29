@@ -6,12 +6,12 @@ status: finished
 belief: log
 ...
 
-This is the March 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [February 2016](http://www.gwern.net/newsletter/2016/02).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the March 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [February 2016](https://www.gwern.net/newsletter/2016/02).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
-- [Adding metadata to an RNN for mimicking individual author style](http://www.gwern.net/RNN%20metadata)
+- [Adding metadata to an RNN for mimicking individual author style](https://www.gwern.net/RNN%20metadata)
 
 # Media
 ## Links
@@ -26,7 +26,7 @@ Everything is heritable:
 - ["Older fathers' children have lower evolutionary fitness across four centuries and in four populations"](http://biorxiv.org/content/early/2016/03/08/042788), Arslan et al 2016 (from ["The cost of inbreeding in terms of health"](http://www.unz.com/gnxp/the-cost-of-inbreeding-in-terms-of-health/))
 - ["Engineering the Perfect Baby"](https://www.technologyreview.com/s/535661/engineering-the-perfect-baby/ "Scientists are developing ways to edit the DNA of tomorrow's children. Should they stop before it's too late?")
 - ["Welcome to the CRISPR Zoo"](http://www.nature.com/news/welcome-to-the-crispr-zoo-1.19537 "Birds and bees are just the beginning for a burgeoning technology") (roundup of recent & planned CRISPR applications in animals)
-- ["Genetic variance estimation with imputed variants finds negligible missing heritability for human height and body mass index"](http://www.gwern.net/docs/genetics/2015-yang.pdf), Yang et al 2015
+- ["Genetic variance estimation with imputed variants finds negligible missing heritability for human height and body mass index"](https://www.gwern.net/docs/genetics/2015-yang.pdf), Yang et al 2015
 
 Politics/religion:
 
@@ -44,18 +44,18 @@ AI:
 
 Statistics/meta-science:
 
-- ["Underreporting in Psychology Experiments: Evidence From a Study Registry"](http://www.gwern.net/docs/statistics/2015-franco.pdf), Franco et al 2015 (previously: [Franco et al 2014](http://www.law.nyu.edu/sites/default/files/upload_documents/September%209%20Neil%20Malhotra.pdf "Publication Bias in the Social Sciences: Unlocking the File Drawer"))
-- ["Is there a publication bias in behavioral intranasal oxytocin research on humans? Opening the file drawer of one lab"](http://www.gwern.net/docs/statistics/2016-lane.pdf), Lane 2016
+- ["Underreporting in Psychology Experiments: Evidence From a Study Registry"](https://www.gwern.net/docs/statistics/2015-franco.pdf), Franco et al 2015 (previously: [Franco et al 2014](http://www.law.nyu.edu/sites/default/files/upload_documents/September%209%20Neil%20Malhotra.pdf "Publication Bias in the Social Sciences: Unlocking the File Drawer"))
+- ["Is there a publication bias in behavioral intranasal oxytocin research on humans? Opening the file drawer of one lab"](https://www.gwern.net/docs/statistics/2016-lane.pdf), Lane 2016
 - how often does correlation=causation?
 
-    - ["Comparison of Evidence of Treatment Effects in Randomized and Nonrandomized Studies"](http://www.gwern.net/docs/statistics/2001-ioannidis.pdf), Ioannidis et al 2001
+    - ["Comparison of Evidence of Treatment Effects in Randomized and Nonrandomized Studies"](https://www.gwern.net/docs/statistics/2001-ioannidis.pdf), Ioannidis et al 2001
     - ["Comparison of Effects in Randomized Controlled Trials With Observational Studies in Digestive Surgery"](https://www.researchgate.net/profile/Nakayama_Takeo/publication/6734844_Comparison_of_Effects_in_Randomized_Controlled_Trials_With_Observational_Studies_in_Digestive_Surgery/links/004635224d119253c9000000.pdf), Shikata et al 2006
 - ["The Scientific Impact of Positive and Negative Phase 3 Cancer Clinical Trials"](http://oncology.jamanetwork.com/article.aspx?articleid=2499777), Unger et al 2016
 - ["The Stress Test: Rivalries, intrigue, and fraud in the world of stem-cell research"](http://www.newyorker.com/magazine/2016/02/29/the-stem-cell-scandal)
 
 Psychology/biology:
 
-- ["Evolution of the Human Brain: From Matter to Mind"](http://www.gwern.net/docs/iq/2015-hofman.pdf), Hofman 2015 (plenty of room at the top; [excerpts](https://plus.google.com/103530621949492999968/posts/6YaN95XGnEv))
+- ["Evolution of the Human Brain: From Matter to Mind"](https://www.gwern.net/docs/iq/2015-hofman.pdf), Hofman 2015 (plenty of room at the top; [excerpts](https://plus.google.com/103530621949492999968/posts/6YaN95XGnEv))
 - ["What sparked the Cambrian explosion?"](http://www.nature.com/news/what-sparked-the-cambrian-explosion-1.19379 "An evolutionary burst 540 million years ago filled the seas with an astonishing diversity of animals. The trigger behind that revolution is finally coming into focus.")
 - ["'High' Achievers? Cannabis Access and Academic Performance"](http://ftp.iza.org/dp8900.pdf), Marie & Zölitz 2015 (Dutch natural experiment in selective marijuana ban in a university town)
 - ["Correlation and Causation in the Study of Personality"](http://causality.cs.ucla.edu/blog/wp-content/uploads/2012/08/lee2012.pdf), Lee 2012
@@ -71,7 +71,7 @@ Technology:
 
 Economics:
 
-- ["Typhoid Fever, Water Quality, and Human Capital Formation"](http://www.gwern.net/docs/2016-beach.pdf), Beach et al 2016
+- ["Typhoid Fever, Water Quality, and Human Capital Formation"](https://www.gwern.net/docs/2016-beach.pdf), Beach et al 2016
 
 Fiction:
 

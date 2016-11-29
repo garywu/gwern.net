@@ -225,7 +225,7 @@ In general, these looked good. Most of them will be widely useful -- especially 
     The LLVM backend is still on track to become the default GHC backend^[A development that surprises me, since I had been under the impression that most GHC work ultimately winds up being scrapped or abandoned like [Liskell](http://web.archive.org/web/20120609122549/http://www.liskell.org/) or [Mobile Haskell](http://www.haskell.org/haskellwiki/Research_papers/Parallelism_and_concurrency#Mobile_Haskell).], suggesting that it's popular in GHC HQ (and the [DDC](http://disciple.ouroborus.net/) dialect), and it seems to also be popular among [Haskell bloggers](http://www.reddit.com/r/haskell/search?q=LLVM&restrict_sr=on). The scope is restricted to taking a working backend and optimizing it. In general, it seems like a decent SoC proposal, and better than the next one:
 - [Implementing the Immix Garbage Collection Algorithm](http://www2.dcc.ufmg.br/laboratorios/llp/wiki/doku.php?id=marco_soc); Marco Túlio Gontijo e Silva, mentored by Simon Marlow
 
-    **Unsuccessful**. The GHC repository history, as of 4 February, contains no patches adding Immix GC. Silva writes in his blog's [SoC summary](http://marcotmarcot.wordpress.com/2010/08/20/immix-on-ghc-summer-of-code-final-report/) that "Although the implementation is not mature enough to be included in the repository, I'm happy with the state it is now. I think it's a good start, and I plan to keep working on it." (His [new blog](https://web.archive.org/web/20140623203436/http://marcot.eti.br/blog/), begun in August 2010, contains no mention of Immix work.) The [GHC wiki](http://hackage.haskell.org/trac/ghc/wiki/Commentary/Rts/Storage/GC/Immix) says that "it's functional, doesn't have known bugs and gets better results than the default GC in the nofib suite. On the other hand, it gets worse results than the default GC for the nofib/gc suite." Marco said in a [Disqus comment](http://www.gwern.net/Haskell%20Summer%20of%20Code#comment-143756091) on this page:
+    **Unsuccessful**. The GHC repository history, as of 4 February, contains no patches adding Immix GC. Silva writes in his blog's [SoC summary](http://marcotmarcot.wordpress.com/2010/08/20/immix-on-ghc-summer-of-code-final-report/) that "Although the implementation is not mature enough to be included in the repository, I'm happy with the state it is now. I think it's a good start, and I plan to keep working on it." (His [new blog](https://web.archive.org/web/20140623203436/http://marcot.eti.br/blog/), begun in August 2010, contains no mention of Immix work.) The [GHC wiki](http://hackage.haskell.org/trac/ghc/wiki/Commentary/Rts/Storage/GC/Immix) says that "it's functional, doesn't have known bugs and gets better results than the default GC in the nofib suite. On the other hand, it gets worse results than the default GC for the nofib/gc suite." Marco said in a [Disqus comment](https://www.gwern.net/Haskell%20Summer%20of%20Code#comment-143756091) on this page:
 
     > Hi. I wondered about continuing my work on the Immix GC collector, but Simon Marlow, my mentor, thought it was not a good idea to invest more effort on Immix. So I dropped it, and started working on other things. Greetings.
 - ["Improving Darcs Performance"](http://darcs.net/GSoC/2010-Cache); Adolfo Builes, mentored by Eric Kow
@@ -648,7 +648,7 @@ There are 2 major collections of ideas for future SoC projects, aside from the g
 - the [Haskell Summer of Code](http://hackage.haskell.org/trac/summer-of-code/report/1) [trac](!Wikipedia)
 - Johann Tibell:
 
-    - [2011 suggestions](http://blog.johantibell.com/2011/03/summer-of-code-project-suggestions.html)
+    - [2011 suggestions](http://blog.johantibell.com/2011/03/summer-of-code-project-suggestions.html); [2011 acceptances](http://blog.johantibell.com/2011/04/this-years-haskellorg-gsoc-projects.html)
     - [2013](http://blog.johantibell.com/2013/04/haskellorg-gsoc-ideas.html)
     - [2014](http://blog.johantibell.com/2014/03/google-summer-of-code-projects.html)
 
@@ -669,7 +669,7 @@ Let's look at the first 12 and see whether they're good ideas, bad ideas, or ind
 
 [^kamatsu]: Liam O'Connor [begs to](http://www.reddit.com/r/haskell/comments/fid5w/haskell_summers_of_code_retrospective_updated_for/c1gutlo) [differ](http://www.reddit.com/r/haskell/comments/1v80ld/summer_of_code_2013_retrospective/cepod0s) on the value of a DPH or CUDA SoC, arguing they are definitely unnecessary and even a "terrible" idea.
 
-# See Also
+# See also
 
 It's difficult to quantify how 'useful' a package is; it's easier to punt and ask instead how 'popular' it is. There are a few different sources we can appeal to:
 

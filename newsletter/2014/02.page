@@ -8,15 +8,15 @@ belief: log
 
 Welcome to the February edition of the `gwern.net` ML; the previous was [January](http://eepurl.com/NzHiD).
 
-The purpose of this mailing list is to be a summarized version of the site RSS feed (which lists every patch), overlapping with my [Changelog page](http://gwern.net/Changelog), but in a push/notification medium rather than pull. It includes material from [my Google+](https://plus.google.com/103530621949492999968) & the [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/).
+The purpose of this mailing list is to be a summarized version of the site RSS feed (which lists every patch), overlapping with my [Changelog page](https://gwern.net/Changelog), but in a push/notification medium rather than pull. It includes material from [my Google+](https://plus.google.com/103530621949492999968) & the [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/).
 
 # Writings
 
 - _Radiance_: finished.
 - [Public release of the Mnemosyne spaced repetition dataset](https://groups.google.com/d/msg/mnemosyne-proj-users/tPHlkTFVX_4/oF61BF44iQkJ) (18GB of 121.2m flashcard reviews, collected ~2004-2014)
 - [nootropics survey analysis](http://slatestarcodex.com/2014/02/16/nootropics-survey-results-and-analysis/#comment-41413)
-- verse: obituary [for my dog](http://www.gwern.net/fiction/Poems#winter); a poem apropos the [end of _Genshiken Nidaime_](http://www.gwern.net/fiction/Genshiken)
-- A/B testing: [header capitalization](http://www.gwern.net/AB%20testing#section-header-capitalization) finished (result: upcase title & all section headers); began [table of contents placement](http://www.gwern.net/AB%20testing#toc-formatting)
+- verse: obituary [for my dog](https://www.gwern.net/fiction/Poems#winter); a poem apropos the [end of _Genshiken Nidaime_](https://www.gwern.net/fiction/Genshiken)
+- A/B testing: [header capitalization](https://www.gwern.net/AB%20testing#section-header-capitalization) finished (result: upcase title & all section headers); began [table of contents placement](https://www.gwern.net/AB%20testing#toc-formatting)
 
 # Media
 ## Links
@@ -78,7 +78,7 @@ Science/technology:
 
 - ["A Star in a Bottle: An audacious plan to create a new energy source could save the planet from catastrophe. But time is running out."](http://www.newyorker.com/reporting/2014/03/03/140303fa_fact_khatchadourian?currentPage=all) (ITER fusion research update; some shades of _Radiance_/NIF in there...)﻿
 - ["Geoengineering research"](http://blog.givewell.org/2013/10/16/geoengineering-research/) (Givewell)
-- ["On the Statistics of Individual Variations of Productivity in Research Laboratories"](http://www.gwern.net/docs/1957-shockley.pdf), Shockley 1957 ([discussion](http://dynamicecology.wordpress.com/2014/01/23/william-shockley-on-what-makes-a-person-write-a-lot-of-papers-and-the-superstar-researcher-system/ "William Shockley on what makes a person who publishes a lot of papers (and the superstar researcher system)"); see also ["Age and Outstanding Achievement: What Do We Know After a Century of Research?"](http://resources.emartin.net/blog/docs/AgeAchievement.pdf), Simonton 1988)
+- ["On the Statistics of Individual Variations of Productivity in Research Laboratories"](https://www.gwern.net/docs/1957-shockley.pdf), Shockley 1957 ([discussion](http://dynamicecology.wordpress.com/2014/01/23/william-shockley-on-what-makes-a-person-write-a-lot-of-papers-and-the-superstar-researcher-system/ "William Shockley on what makes a person who publishes a lot of papers (and the superstar researcher system)"); see also ["Age and Outstanding Achievement: What Do We Know After a Century of Research?"](http://resources.emartin.net/blog/docs/AgeAchievement.pdf), Simonton 1988)
 - [Fully Decentralized Bitcoin Prediction Markets](http://www.reddit.com/r/Bitcoin/comments/1ycjdi/whitepaper_decentralized_bitcoin_prediction/):
 
      On-blockchain transactions. The key idea is how judgment of a prediction market is carried out: holders of 'truthcoins' submit encrypted votes 1/0 on every outstanding market, and rather than a simple majority vote, they're weighted by how well they mirror the overall consensus and paid out a share of trading fees based on that weight. This punishes deviation from the majority and reminds me of Bayesian truth serum. Very clever. I haven't been too impressed with the Bitcoin betting sites I've seen too far (some of them like Bets of Bitcoin are just atrocious), but this seems like a fully decentralized design. The problem is it's so complex that I don't see anyone implementing it anytime soon.
@@ -98,7 +98,7 @@ Misc:
 Fiction:
 
 - _Absolute [Sandman](https://en.wikipedia.org/wiki/The_Sandman_%28Vertigo%29)_, vol III-IV
-- [_Radiance_](http://www.gwern.net/docs/2002-radiance) ([review](https://www.goodreads.com/review/show/370154318))
+- [_Radiance_](https://www.gwern.net/docs/2002-radiance) ([review](https://www.goodreads.com/review/show/370154318))
 - Brosh 2013's _Hyperbole and a Half_ ([review](https://www.goodreads.com/review/show/859555507))
 
 ## Film/TV

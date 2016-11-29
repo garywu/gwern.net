@@ -6,12 +6,12 @@ status: finished
 belief: log
 ...
 
-This is the July 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [June 2016](http://www.gwern.net/newsletter/2016/06).
-This is a summary of the revision-history RSS feed, overlapping with [Changelog](http://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
+This is the July 2016 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [June 2016](https://www.gwern.net/newsletter/2016/06).
+This is a summary of the revision-history RSS feed, overlapping with [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968) & [LW media threads](http://lesswrong.com/r/discussion/tag/media_thread/); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
-- [Computational Complexity vs the Singularity](http://www.gwern.net/Complexity%20vs%20AI "Complexity no Bar to AI: Critics of AI risk suggest diminishing returns to computing means AI will be weak; I argue argument breaks if any premises rejected")
+- [Computational Complexity vs the Singularity](https://www.gwern.net/Complexity%20vs%20AI "Complexity no Bar to AI: Critics of AI risk suggest diminishing returns to computing means AI will be weak; I argue argument breaks if any premises rejected")
 
 # Media
 ## Links
@@ -48,9 +48,9 @@ AI:
 
 Statistics/meta-science:
 
-- ["Preventing future offending of delinquents and offenders: what have we learned from experiments and meta-analyses?"](http://www.gwern.net/docs/2015-mackenzie.pdf), Mackenzie & Farrington 2015
+- ["Preventing future offending of delinquents and offenders: what have we learned from experiments and meta-analyses?"](https://www.gwern.net/docs/2015-mackenzie.pdf), Mackenzie & Farrington 2015
 - ["Why It Took Social Science Years to Correct a Simple Error About 'Psychoticism'"](http://nymag.com/scienceofus/2016/07/why-it-took-social-science-years-to-correct-a-simple-error-about-psychoticism.html)
-- ["Can Results-Free Review Reduce Publication Bias? The Results and Implications of a Pilot Study"](http://www.gwern.net/docs/statistics/peerreview/2016-findley.pdf), Findley et al 2016 (on [result-blind peer review](https://en.wikipedia.org/wiki/Scholarly_peer_review#Result-blind_peer_review))
+- ["Can Results-Free Review Reduce Publication Bias? The Results and Implications of a Pilot Study"](https://www.gwern.net/docs/statistics/peerreview/2016-findley.pdf), Findley et al 2016 (on [result-blind peer review](https://en.wikipedia.org/wiki/Scholarly_peer_review#Result-blind_peer_review))
 - ["Laplace the Bayesianista and the Mass of Saturn"](http://perfdynamics.blogspot.com/2013/09/laplace-bayesianista-and-mass-of-saturn.html)
 - ["Our Fathers of Old"](http://www.bartleby.com/364/319.html), Rudyard Kipling
 
@@ -60,7 +60,7 @@ Psychology/biology:
 - ["The Medical Mystery Behind the Itch"](http://www.newyorker.com/magazine/2008/06/30/the-itch)
 - ["United States of Paranoia: They See Gangs of Stalkers"](http://www.nytimes.com/2016/06/11/health/gang-stalking-targeted-individuals.html)
 - ["New Drug Development: Estimating entry from human clinical trials"](https://www.ftc.gov/reports/new-drug-development-estimating-entry-human-clinical-trials), Adams & Brantner 2003
-- ["The Efficacy of Psychological, Educational, and Behavioral Treatment: Confirmation From Meta-Analysis"](http://www.gwern.net/docs/1993-lipsey.pdf), Lipsey & Wilson 1993 (incidentally, published studies yield mean effects 0.14 SDs larger than unpublished studies.)
+- ["The Efficacy of Psychological, Educational, and Behavioral Treatment: Confirmation From Meta-Analysis"](https://www.gwern.net/docs/1993-lipsey.pdf), Lipsey & Wilson 1993 (incidentally, published studies yield mean effects 0.14 SDs larger than unpublished studies.)
 - ["Could Women Be Trusted With Their Own Pregnancy Tests?"](http://www.nytimes.com/2016/07/31/opinion/sunday/could-women-be-trusted-with-their-own-pregnancy-tests.html)
 - ["Breast-feeding the microbiome"](http://www.newyorker.com/tech/elements/breast-feeding-the-microbiome)
 - ["Dengue fever cases drop 91% in neighbourhood of Piracicaba, Brazil, where Oxitec's Friendly _Aedes_ were released"](http://www.oxitec.com/dengue-fever-cases-drop-91-percent-neighbourhood-piracicaba-brazil-oxitecs-friendly-aedes-released/)

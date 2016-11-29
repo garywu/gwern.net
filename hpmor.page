@@ -438,7 +438,7 @@ runhaskell mor.hs
 ~~~
 
 ~~~{.R}
-data <- read.table("http://www.gwern.net/docs/2012-uc-reviews.csv",header=TRUE, sep=",",quote="")
+data <- read.table("https://www.gwern.net/docs/2012-uc-reviews.csv",header=TRUE, sep=",",quote="")
 # Convert the date strings to R dates
 data=data.frame(Chapter=data$Chapter, Date=as.Date(data$Date,"%m/%d/%Y"), User=data$User)
 data
