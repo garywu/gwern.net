@@ -1618,6 +1618,76 @@ mean(replicate(10000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix,
 So with current polygenic scores, we could expect a gain of ~\$70k out of 10 embryos (at least, before the inevitable losses of the IVF process), which is indeed around as much more as expected than IQ on its own (which was \$49k).
 We could also take a look at the expected gain if we could have perfect polygenic scores equal to the SNP heritabilities; then we would get as much as \$146k.
 
+## Embryo selection versus alternative breeding methods
+
+[Genomic selection](!Wikipedia "Marker-assisted selection") is increasingly used in animal and plant breeding because it can be used before phenotypes are measurable for faster breeding, and polygenic scores can also correct phenotypic measurements for measurement error & environment.
+This mention of measurement error understates the value - in the case of a binary or dichotomous or threshold trait, there is only a weak population-wide measurable correlation between genetic liability and whether the trait actually manifests.
+And the rarer the trait, the worse this is.
+Returning to schizophrenia as an example, only 1% of the population will develop it, even though it is hugely influenced by genetics; this is because there is a large reservoir of bad variants lurking in the population, and only once in a blue moon do enough bad variants cluster in a single person exposed to the wrong nonshared environment and develops full-blown schizophrenia.
+Any sort of selection based on schizophrenia status will be slow, and will get slower as schizophrenia becomes rarer & cases appear less.
+However, if one knew all the variants responsible, one could look directly at the whole population and rank by liability score and select based on that.
+What sort of gain might we expect?
+
+First, we could consider the change in liability scores from simple embryo selection on schizophrenia with the Ripke et al 2014 polygenic score of 18.4%:
+
+~~~{.R}
+mean(simulateIVFCBs(3, 4.6, 0.184, 0.5, 0.96, 0.24, 0, 0, 0)$Trait.SD)
+# [1] 0.06622272431
+~~~
+
+So if embryo selection on schizophrenia were applied to the whole population, we could expect to decrease the liability score by ~0.6SDs the first generation, which would take us from 1% to ~0.8% population prevalence, for a 20% reduction:
+
+~~~{.R}
+0.01 + liabilityThresholdValue(0.01, -0.066, 1)
+# [1] 0.008370483248
+~~~
+
+An alternative to embryo selection would be "[truncation selection](!Wikipedia)": selecting all members of a population which pass a certain phenotypic threshold and breeding from them (eg letting only people over 110IQ reproduce, or in the other direction, not letting any schizophrenics reproduce).
+This is one of the most easily implemented breeding methods, and is reasonably efficient.
+
+For a continuous trait, truncation selection's effect is easily to calculate via the breeder's equation: the increase is given by the selection intensity times the heritability, where the selection intensity of a particular truncation threshold _t_ is given by `dnorm(qnorm(t))/(1-t)`.
+So if, for example, only the upper third of a population by IQ was allowed to reproduce, this truncation selection would yield an increase of ~12 IQ points:
+
+~~~{.R}
+t=0.66; (dnorm(qnorm(t))/(1-t)) * 0.8 * 15
+# [1] 12.93212934
+~~~
+
+This is noticeably larger than we would get with current polygenic scores for education/intelligence, and shows that for highly heritable continuous traits, it's hard to beat selection on phenotypes.
+
+The effect of a generation of truncation selection on a binary trait following the liability-threshold model is more complicated but follows a similar spirit.
+A discussion & formula is on pg6 of ["Chapter 14: Short-term Changes in the Mean: 2. Truncation and Threshold Selection"](http://nitro.biosci.arizona.edu/zbook/NewVolume_2/pdf/WLChapter14.pdf); I've attempted to implement it in R:
+
+~~~{.R}
+threshold_select <- function(fraction_0, heritability) {
+    library(VGAM) ## for 'probit'
+    fraction_probit_0 = probit(fraction_0)
+    ## threshold for not manifesting schizophrenia:
+    s_0 = dnorm(fraction_probit_0) / fraction_0
+    ## new rate of schizophrenia after one selection where 100% of schizophrenics never reproduce:
+    fraction_probit_1 = fraction_probit_0 + heritability * s_0
+    fraction_1 = pnorm(fraction_probit_1)
+    ## how much did we reduce schizophrenia in percentage terms?
+    print(paste0("Start: population fraction: ", fraction_0, "; liability threshold: ", fraction_probit_0, "; Selection intensity: ", s_0))
+    print(paste0("End: liability threshold: ", fraction_probit_1, "; population fraction: ", fraction_1, "; Total population reduction: ",
+                 fraction_0 - fraction_1, "; Percentage reduction: ", (1-((1-fraction_1) / (1-fraction_0)))*100))
+}
+~~~
+
+Assuming 1% prevalence & 80% heritability, 1 generation of truncation selection would yield ~5% decrease in schizophrenia:
+
+~~~{.R}
+threshold_select(0.99, 0.80)
+# [1] "Start: population fraction: 0.99; liability threshold: 2.32634787404084; Selection intensity: 0.0269213557610688"
+# [1] "End: liability threshold: 2.3478849586497; population fraction: 0.99055982415415; Total population reduction: -0.000559824154150346; Percentage reduction: 5.59824154150346"
+~~~
+
+(This ignores that schizophrenics already reproduce less and there should be ongoing selection against schizophrenia, and in a sense, truncation selection is already being done, so the ~5% is a bit of an overestimate.)
+
+Thus, for rare binary traits, genomic selection methods can do *much* better than phenotypic selection methods.
+Which one works better will depend on the details of how rare a trait is, the heritability, available polygenic scores, available embryos etc.
+Of course, there's no reason that they can't both be used, and both methods can be improved by taking into account other information like family histories.
+
 # Iterated embryo selection
 
 Aside from regular embryo selection, Shulman & Bostrom note the possibility of "iterated embryo selection", where after the selection step, the highest-scoring embryo's cells are regressed back to stem cells, to be turned into fresh embryos which can again be sequenced & selected on, and so on for as many cycles as feasible.

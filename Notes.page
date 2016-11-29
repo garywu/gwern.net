@@ -2391,7 +2391,9 @@ This also applies to programmers tempted to automate or script stuff on their co
 Complexity and automation create a technical debt in the form of the fallout from future unreliability.
 "The price of reliability is the pursuit of the utmost simplicity. It is a price which the very rich find most hard to pay."
 
-# Rationality Heuristic: Updating Towards the Net Weight of Evidence
+# Rationality Heuristic for Bias Detection: Updating Towards the Net Weight of Evidence
+
+> Bias tests look for violations of basic universal properties of rational belief such as subadditivity of probabilities or anchoring on randomly-generated numbers. I propose a new one for the temporal consistency of beliefs: agents who believe that the net evidence for a claim _c_ from _t~1~_ to _t~2~_ is positive or negative must then satisfy the inequalities that _P(c, t~1~)_<_P(c, t~2~)_ & _P(c, t~1~)_>_P(c, t~2~)_, respectively. A failure to update in the direction of the believed net evidence indicates that nonrational reasons are influencing the belief in _c_; the larger the net evidence without directional updates, the more that nonrational reasons are influencing _c_. Extended to a population level, this suggests that a heuristic measurement of the nonrational grounds for belief can be conducted using long-term public opinion surveys of important issues combined with contemporary surveys of estimated net evidence since the start of the opinion surveys to compare historical shifts in public opinion on issues with the net evidence on those issues.
 
 A friend of yours tells you he's worried he saw a snake on his driveway yesterday which he thinks may be a poisonous coral snake rather than a harmless snake; he gives it 50-50 chance - it looked a lot like a coral snake, but he didn't think this state had any poisonous snakes.
 You see him the next day and ask him about the snake.
@@ -2406,7 +2408,11 @@ Whatever his thinking process, it is non-rational; perhaps he has herpetophobia 
 
 It can be hard to decide whether someone's conclusions are irrational because they could have different priors, have different causal models, have been exposed to different evidence, have different preferences, and so on.
 But there are a few hard rules for bare minimums of rationality: no contradictions; conjunctions are equally or less likely than any of their conjuncts; disjunctions are equally or more likely than any disjuncts; probabilities of exhaustive sets of claims sum to 1; 0 and 1 are not degrees of belief; and - net evidence for a claim increases the posterior probability of that claim.
+<<<<<<< HEAD
 (Or to put it another, per Bayes rule $P(A|B) \propto P(A) \cdot P(B|A)$, for arbitrary $P(A)$ and $P()$, if $P(B|A) > 1$ then $P(A|B) > P(A)$; $(P(A|B) \le P(A)) \land (P(A) \gt 1)$ is a contradiction.)
+=======
+(Or to put it another, per Bayes rule $P(A|B) \propto P(A) \cdot P(B|A)$, for arbitrary _P(A)_ and _P()_, if _P(B|A) > 1_ then _P(A|B) > P(A)_; $(P(A|B) \le P(A)) \land (P(A) \gt 1)$ is a contradiction.)
+>>>>>>> d1e7f967cd278c9eedf9a2544fd3b048f842d7e3
 And what applies to coral snakes applies to everything else - if your friend agrees evidence suggests his pool was a bad buy, he should be less optimistic about it than he was when he bought it, and so on.
 Your friend might have totally different priors or causal models or life experiences or political affiliations, but whatever they are, he still must make his net evidence and update direction jive.
 Updating is not sufficient for rationality (one can still have wrong models which indicate something is net evidence which shouldn't be, or update too much, or be irrational on other matters) and updating doesn't itself show notable rationality (perhaps one was just profoundly ignorant about a topic), but it is necessary.
@@ -2431,7 +2437,12 @@ These directions do not need to be the exactly same over all time periods or for
 For example, consider the question of whether there is alien life on other planets in the Solar system or in other solar systems in the universe from the period 1500 to 1900, 1900 to 2016, and 1500 to 2016.
 Isaac Newton and other natural philosophers speculated about life on other planets and throughout the universe, and I think the net weight of evidence as astronomy and biology progressed was heavily on the possibility of life with an ever-expanding universe to generate life somewhere, and so the direction of belief would have been increasing towards 1900 for life in the Solar system and universe; but then, as progress continued further, there was a drastic reversal of fortune - the canals on Mars were debunked, spectroscopy showed no signatures of life, the launch of space probes showed that Venus was not a garden planet but a sulfuric-rain molten-lead hellhole while Mars was a freeze-dried husk of sand sans life; and after the abrupt extinguishing of hopes for Solar life, Enrico Fermi famously asked 'where are they' with no hints of radio activity or stellar engineering after billions of years even as development of rocketry and space technology demonstrated that advanced alien civilizations could colonize the entire galaxy in merely millions of years.
 And who knows, perhaps some clear signal of life will yet be discovered and the weight of evidence will abruptly swing back in favor of life in the universe.
+<<<<<<< HEAD
 So depending on the time period and exact question, the update might be up or down - but as long as it's consistent, that's fine.
+=======
+Another example might be behavioral genetics and intelligence tests, for which there is an extraordinary disparity between expert beliefs and the general public's beliefs, and for which an equally extraordinary amount of evidence has been published in the past decade on the role of genetics in individual differences in everything from human evolution over the past few thousand years to the presence of dysgenics to the genetic bases of intelligence/personality/income/violence/health/longevity; surveyed experts would doubtless indicate strong weights of evidence against the long-dominant blank slatism and show accordingly changed beliefs, and a survey of the general public might show little or no weights of evidence and belief shifts - but that is not evidence for strongly nonrational public beliefs because it might simply reflect considerable ignorance about the scientific research, which have been minimally reported on and when reported on, the meaning & implications minimized.
+So depending on the time period, question, and group the update might be up or down - but as long as it's *consistent*, that's fine.
+>>>>>>> d1e7f967cd278c9eedf9a2544fd3b048f842d7e3
 
 An example of an application of the net evidence heuristic might be [cryonics](!Wikipedia).
 Many objections were raised to cryonics at the start: religious and dualist objections; cell lysosomes would 'explode' immediately after death, erasing all information before vitrification; personality and memories were encoded in the brain not as stable chemical or biological structures but as complex electrical dynamics which would be erased immediately upon death; cryonics organizations would disappear or would routinely fail to keep corpses at liquid nitrogen temperatures; scanning technology would never be able to scan even a small fraction of a brain and Moore's law would halt long before coming anywhere near the equivalent of a brain, rendering upload permanently impossible; nuclear war would obviate the issue along with Western civilization, or if not that, then the long-anticipated hyperinflation of the US dollar would bankrupt cryonics organizations; laws would be passed forbidding the practice; angry mobs of religious fanatics would destroy the facilities; the expense would be far too much for anyone but millionaires to afford; and so on.
@@ -2449,6 +2460,13 @@ Then we can survey contemporary people and ask for their estimate of the weight 
 Finally, we can divide the rating by the odds shift to rank issues by how much changes in evidence correlates with shifts in belief.
 This ranking, a sort of "rationality quotient", might be interesting and correlate with our intuitive expectations about in what areas are beliefs most non-rational.
 (My guess at some of the results: the durability of religious belief will likely contradict the weight of evidence, while AI and global warming will show more updating.)
+
+Why might this method work?
+It might seem a bit akin to asking "do you think you are wrong about something?" to ask questions about weight of evidence and opinion changes, as the normative requirement here is so basic and guessable.
+Why would it help to split apart Bayesian updating and ask about such a specific part rather than focus on something more important like what the priors were or what the posterior probability is?
+But I think the method might work precisely because it splits apart absolute levels of belief from changes in beliefs: someone holding a particular belief like theism feels like it is a harmless question and can safely admit that the last few centuries haven't been too great for theism, because it doesn't threaten whether their belief is >50% in the way that a blunter question like "do you agree that theism has been debunked?" might - it would be socially undesirable to admit that one's belief has fallen a large amount, but it is safe to admit that it has slipped an unspecified amount.
+This is similar to how Bayesian truth serum avoids self-serving biases by asking about *other* people ("do you use drugs?" "oh gosh no, *I* am a good person and not an addict" "how many people in your community use drugs?" "all of them").
+The questions can also be split between respondents, limiting their ability to infer what test is being done and what normative standard responses are being compared against and adjust their responses.
 
 If this works out, it offers something valuable: an objective, easy, widely-applicable test of long-run population rationality, which controls for individual differences in priors and causal models and knowledge.
 
@@ -2740,6 +2758,7 @@ or comparing to the 2014 InfiniChess: 52 Elo difference between centaurs and eng
 > Nick Carlin: 60-40 is my guess, I suspect that the centaur advantage will come especially in the end game, where human assistance can avoid losses and win games that engines might draw. An example is in some rook endings where the engine will push a pawn to the seventh rank and obtain a draw in a won position.  The missed win is coming through leaving the pawn on the sixth rank and bringing the King up to support its coronation.
 >
 > Eros Riccio: the advantage(s) of the combination Human(s) + engine(s) is obvious: In general, an engine alone is "stupid". It plays random openings, wastes precious time on forced moves, stubbornly wants to play for the win, sometimes forcing the position and losing, when a draw would have been enough to qualify... so, relying on an automatic engine may be quite risky... a human instead, may control all those things which an engine can't. The only advantage of automatic engine I can see, is with little time left in difficult positions, as there is no risk of mouse slips and losing on time.
+<<<<<<< HEAD
 
 # Optimal Existential Risk Reduction Investment
 
@@ -2949,3 +2968,5 @@ In comparison, probability-matching agent averages a cumulative log score of 866
 After 2 days of training, the DQN had improved only slightly; the on-policy strategy appears mostly random aside from having driven the xrisk probability down to what appears to be the smallest float JS supports, so it still had not learned a meaningful compromise between xrisk reduction and investment.
 
 TODO: revisit with MCTS at some point?
+=======
+>>>>>>> d1e7f967cd278c9eedf9a2544fd3b048f842d7e3

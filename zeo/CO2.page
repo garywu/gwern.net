@@ -182,160 +182,177 @@ netatmoDaily <- merge(netatmoDailyMean, netatmoDailyMax, all=TRUE)
 
 airNight <- merge(konginDaily, netatmoDaily, all=TRUE)
 
-door <- read.csv(stdin(), header=TRUE, colClasses=c("Date","integer","integer"))
-Date,Fan.r,Door.r
-2016-06-03,0,0
-2016-06-04,0,1
-2016-06-05,1,1
-2016-06-06,0,0
-2016-06-07,1,1
-2016-06-08,0,1
-2016-06-09,NA,NA
-2016-06-10,1,1
-2016-06-11,NA,NA
-2016-06-12,0,0
-2016-06-13,0,1
-2016-06-14,NA,NA
-2016-06-15,1,0
-2016-06-16,0,0
-2016-06-17,1,0
-2016-06-18,0,1
-2016-06-19,1,1
-2016-06-20,NA,NA
-2016-06-21,1,0
-2016-06-22,0,0
-2016-06-23,0,1
-2016-06-24,1,1
-2016-06-25,1,1
-2016-06-26,0,0
-2016-06-27,0,0
-2016-06-28,1,0
-2016-06-29,0,1
-2016-06-30,1,1
-2016-07-01,1,0
-2016-07-02,0,1
-2016-07-03,0,0
-2016-07-04,0,0
-2016-07-05,1,1
-2016-07-06,1,0
-2016-07-07,0,1
-2016-07-08,1,0
-2016-07-09,0,1
-2016-07-10,1,1
-2016-07-11,0,0
-2016-07-12,1,1
-2016-07-13,0,0
-2016-07-14,1,0
-2016-07-15,0,1
-2016-07-16,0,1
-2016-07-17,0,0
-2016-07-18,1,1
-2016-07-19,1,0
-2016-07-20,NA,NA
-2016-07-21,1,0
-2016-07-22,1,1
-2016-07-23,0,0
-2016-07-24,0,1
-2016-07-25,1,1
-2016-07-26,1,0
-2016-07-27,0,1
-2016-07-28,0,0
-2016-07-29,NA,NA
-2016-07-30,0,0
-2016-07-31,1,0
-2016-08-01,1,1
-2016-08-02,0,1
-2016-08-03,0,1
-2016-08-04,1,0
-2016-08-05,0,0
-2016-08-06,1,1
-2016-08-07,0,1
-2016-08-08,1,1
-2016-08-09,1,0
-2016-08-10,0,0
-2016-08-11,1,0
-2016-08-12,0,1
-2016-08-13,0,0
-2016-08-14,1,1
-2016-08-15,0,0
-2016-08-16,1,1
-2016-08-17,1,0
-2016-08-18,0,1
-2016-08-19,0,1
-2016-08-20,1,0
-2016-08-21,1,1
-2016-08-22,0,0
-2016-08-23,0,0
-2016-08-24,1,0
-2016-08-25,0,1
-2016-08-26,1,1
-2016-08-27,0,1
-2016-08-28,1,0
-2016-08-29,1,1
-2016-08-30,0,0
-2016-08-31,0,0
-2016-09-01,1,1
-2016-09-02,0,1
-2016-09-03,1,0
-2016-09-04,0,1
-2016-09-05,1,1
-2016-09-06,1,0
-2016-09-07,0,0
-2016-09-08,0,1
-2016-09-09,1,1
-2016-09-10,1,0
-2016-09-11,0,0
-2016-09-12,0,1
-2016-09-13,1,1
-2016-09-14,0,0
-2016-09-15,1,0
-2016-09-16,1,0
-2016-09-17,NA,NA
-2016-09-18,0,0
-2016-09-19,1,1
-2016-09-20,0,0
-2016-09-21,0,1
-2016-09-22,1,1
-2016-09-23,0,0
-2016-09-24,0,1
-2016-09-25,1,0
-2016-09-26,0,1
-2016-09-27,0,0
-2016-09-28,0,1
-2016-09-29,1,0
-2016-09-30,1,1
-2016-10-01,0,0
-2016-10-02,1,1
-2016-10-03,0,1
-2016-10-04,1,1
-2016-10-05,0,1
-2016-10-06,0,1
-2016-10-07,1,0
-2016-10-08,0,0
-2016-10-09,1,1
-2016-10-10,1,0
-2016-10-11,0,0
-2016-10-12,0,1
-2016-10-13,1,1
-2016-10-14,0,0
-2016-10-15,1,1
-2016-10-16,0,1
-2016-10-17,1,0
-2016-10-18,1,1
-2016-10-19,1,0
-2016-10-20,0,1
-2016-10-21,1,1
-2016-10-22,0,0
-2016-10-23,0,0
-2016-10-24,0,1
-2016-10-25,1,1
-2016-10-26,1,0
-2016-10-27,0,1
-2016-10-28,1,1
-2016-10-29,1,0
-2016-10-30,0,0
-2016-10-31,0,0
-2016-11-01,1,0
+door <- read.csv(stdin(), header=TRUE, colClasses=c("Date","integer","integer", "integer"))
+Date,Fan.r,Door.r,Mattress.r
+2016-06-03,0,0,NA
+2016-06-04,0,1,NA
+2016-06-05,1,1,NA
+2016-06-06,0,0,NA
+2016-06-07,1,1,NA
+2016-06-08,0,1,NA
+2016-06-09,NA,NA,NA
+2016-06-10,1,1,NA
+2016-06-11,NA,NA,NA
+2016-06-12,0,0,NA
+2016-06-13,0,1,NA
+2016-06-14,NA,NA,NA
+2016-06-15,1,0,NA
+2016-06-16,0,0,NA
+2016-06-17,1,0,NA
+2016-06-18,0,1,NA
+2016-06-19,1,1,NA
+2016-06-20,NA,NA,NA
+2016-06-21,1,0,NA
+2016-06-22,0,0,NA
+2016-06-23,0,1,NA
+2016-06-24,1,1,NA
+2016-06-25,1,1,NA
+2016-06-26,0,0,NA
+2016-06-27,0,0,NA
+2016-06-28,1,0,NA
+2016-06-29,0,1,NA
+2016-06-30,1,1,NA
+2016-07-01,1,0,NA
+2016-07-02,0,1,NA
+2016-07-03,0,0,NA
+2016-07-04,0,0,NA
+2016-07-05,1,1,NA
+2016-07-06,1,0,NA
+2016-07-07,0,1,NA
+2016-07-08,1,0,NA
+2016-07-09,0,1,NA
+2016-07-10,1,1,NA
+2016-07-11,0,0,NA
+2016-07-12,1,1,NA
+2016-07-13,0,0,NA
+2016-07-14,1,0,NA
+2016-07-15,0,1,NA
+2016-07-16,0,1,NA
+2016-07-17,0,0,NA
+2016-07-18,1,1,NA
+2016-07-19,1,0,NA
+2016-07-20,NA,NA,NA
+2016-07-21,1,0,NA
+2016-07-22,1,1,NA
+2016-07-23,0,0,NA
+2016-07-24,0,1,NA
+2016-07-25,1,1,NA
+2016-07-26,1,0,NA
+2016-07-27,0,1,NA
+2016-07-28,0,0,NA
+2016-07-29,NA,NA,NA
+2016-07-30,0,0,NA
+2016-07-31,1,0,NA
+2016-08-01,1,1,NA
+2016-08-02,0,1,NA
+2016-08-03,0,1,NA
+2016-08-04,1,0,NA
+2016-08-05,0,0,NA
+2016-08-06,1,1,NA
+2016-08-07,0,1,NA
+2016-08-08,1,1,NA
+2016-08-09,1,0,NA
+2016-08-10,0,0,NA
+2016-08-11,1,0,NA
+2016-08-12,0,1,NA
+2016-08-13,0,0,NA
+2016-08-14,1,1,NA
+2016-08-15,0,0,NA
+2016-08-16,1,1,NA
+2016-08-17,1,0,NA
+2016-08-18,0,1,NA
+2016-08-19,0,1,NA
+2016-08-20,1,0,NA
+2016-08-21,1,1,NA
+2016-08-22,0,0,NA
+2016-08-23,0,0,NA
+2016-08-24,1,0,NA
+2016-08-25,0,1,NA
+2016-08-26,1,1,NA
+2016-08-27,0,1,NA
+2016-08-28,1,0,NA
+2016-08-29,1,1,NA
+2016-08-30,0,0,NA
+2016-08-31,0,0,NA
+2016-09-01,1,1,NA
+2016-09-02,0,1,NA
+2016-09-03,1,0,NA
+2016-09-04,0,1,NA
+2016-09-05,1,1,NA
+2016-09-06,1,0,NA
+2016-09-07,0,0,NA
+2016-09-08,0,1,NA
+2016-09-09,1,1,NA
+2016-09-10,1,0,NA
+2016-09-11,0,0,NA
+2016-09-12,0,1,NA
+2016-09-13,1,1,NA
+2016-09-14,0,0,NA
+2016-09-15,1,0,NA
+2016-09-16,1,0,NA
+2016-09-17,NA,NA,NA
+2016-09-18,0,0,NA
+2016-09-19,1,1,NA
+2016-09-20,0,0,NA
+2016-09-21,0,1,NA
+2016-09-22,1,1,NA
+2016-09-23,0,0,NA
+2016-09-24,0,1,NA
+2016-09-25,1,0,NA
+2016-09-26,0,1,NA
+2016-09-27,0,0,NA
+2016-09-28,0,1,NA
+2016-09-29,1,0,NA
+2016-09-30,1,1,NA
+2016-10-01,0,0,NA
+2016-10-02,1,1,NA
+2016-10-03,0,1,NA
+2016-10-04,1,1,NA
+2016-10-05,0,1,NA
+2016-10-06,0,1,NA
+2016-10-07,1,0,NA
+2016-10-08,0,0,NA
+2016-10-09,1,1,NA
+2016-10-10,1,0,NA
+2016-10-11,0,0,NA
+2016-10-12,0,1,NA
+2016-10-13,1,1,NA
+2016-10-14,0,0,NA
+2016-10-15,1,1,NA
+2016-10-16,0,1,NA
+2016-10-17,1,0,NA
+2016-10-18,1,1,NA
+2016-10-19,1,0,NA
+2016-10-20,0,1,NA
+2016-10-21,1,1,NA
+2016-10-22,0,0,NA
+2016-10-23,0,0,NA
+2016-10-24,0,1,NA
+2016-10-25,1,1,NA
+2016-10-26,1,0,NA
+2016-10-27,0,1,NA
+2016-10-28,1,1,0
+2016-10-29,1,0,1
+2016-10-30,0,0,1
+2016-10-31,0,0,0
+2016-11-01,1,0,1
+2016-11-02,0,1,0
+2016-11-03,1,1,0
+2016-11-04,0,1,1
+2016-11-05,1,1,1
+2016-11-06,0,0,0
+2016-11-07,1,0,1
+2016-11-08,1,0,0
+2016-11-09,0,1,0
+2016-11-10,1,0,1
+2016-11-11,NA,NA,0
+2016-11-12,0,0,1
+2016-11-13,1,0,0
+2016-11-14,1,1,1
+2016-11-15,0,1,1
+2016-11-16,1,0,0
+2016-11-17,1,0,1
+2016-11-18,0,1,0
 
 
 ## I want an interaction effect on `Fan*Door`, since they may have different effects
@@ -344,6 +361,7 @@ Date,Fan.r,Door.r
 ## in the dataset which can be used directly in the SEM.
 library(semTools)
 door <- indProd(data=door, var1=2, var2=3)
+
 
 mp <- read.csv("~/selfexperiment/mp.csv", colClasses=c("Date", "integer"))
 
@@ -372,8 +390,11 @@ night <- merge(mnemosynePerformance, merge(mp, merge(door, merge(zeo, airNight, 
 night[night$Date<as.Date("2016-06-02") & is.na(night$Door.r),]$Door.r <- 0 # I have always slept with door shut/fan off, so impute any missing data to 0/shut
 night[night$Date<as.Date("2016-06-02") & is.na(night$Fan.r),]$Fan.r <- 0
 
-# write.csv(night, file="~/wiki/docs/zeo/2016-11-02-co2.csv", row.names=FALSE)
-# night <- read.csv("~/wiki/docs/zeo/2016-11-02-co2.csv", colClasses=c("Date", rep("numeric", 26)))
+night[night$Date<as.Date("2016-11-17") & is.na(night$Mattress.topper),]$Mattress.topper <- 0
+night[night$Date>=as.Date("2016-11-17") & is.na(night$Mattress.topper),]$Mattress.topper <- 1
+
+night[night$Date<as.Date("2016-10-13") & is.na(night$Pillow.new),]$Pillow.new <- 0
+night[night$Date>=as.Date("2016-10-13") & is.na(night$Pillow.new),]$Pillow.new <- 1
 
 night$Total.Z.2 <- night$Total.Z^2
 night$CO2.N.mean.root <- sqrt(night$CO2.N.mean)
@@ -387,6 +408,11 @@ night$Time.in.Light.2 <- night$Time.in.Light^2
 # library(ggplot2)
 # d <- melt(night[-1])
 # ggplot(d,aes(x = value)) + facet_wrap(~variable,scales = "free") +  geom_histogram()
+
+
+# write.csv(night, file="~/wiki/docs/zeo/2016-11-02-co2.csv", row.names=FALSE)
+# night <- read.csv("~/wiki/docs/zeo/2016-11-02-co2.csv", colClasses=c("Date", rep("numeric", 26)))
+
 
 Example for single-indicator measurement error:
 
@@ -436,8 +462,8 @@ model1 <- '
     HUMIDITY    ~ Fan.r + Door.r + Fan.r.Door.r
     TEMPERATURE ~ Fan.r + Door.r + Fan.r.Door.r
 
-    SLEEP ~ CO2 + HUMIDITY + TEMPERATURE + NOISE + CO2 + Fan.r + Door.r + Fan.r.Door.r + Pillows.new + Mattress.r
-    MP ~ CO2 + SLEEP + Pillows.new + Mattress.r
+    SLEEP ~ CO2 + HUMIDITY + TEMPERATURE + NOISE + CO2 + Fan.r + Door.r + Fan.r.Door.r + Pillow.new + Mattress.topper + Mattress.r
+    MP ~ CO2 + SLEEP + Pillow.new + Mattress.topper + Mattress.r
     Mnemosyne.score ~ CO2 + SLEEP
     '
 # library(lavaan)
@@ -462,18 +488,13 @@ The twin mattress cost \$371.00, and arrived quickly in a big box on 29 October 
 It struck me as solid and very firm.
 I liked the first night and there was no substantial heat problem, but also was too firm.
 Of course, it might get softer with use, but I wondered if it would work out in the long run compared to a softer foam mattress.
+In a followup survey, I mentioned that it was a good mattress but I was unsure if it would work out for me as a side sleeper because it was relatively firm; a customer service representative emailed me and offered a free "mattress topper", which would add an additional 5-10cm of foam.
+The topper arrived 16 November 2016 and I began using it. It definitely improves the old mattress, and I think improves the new mattress as well (it's a little tricky because without an additional mattress cover, it moves around).
+
 
 The experimental design is pairs of days on the old and new mattress, somewhere ~_n_=50 for each night.
 To switch, I move the new mattress on and off the old one.
-I reinforced the bed with an additional plank of wood to handle the additional ~23kg weight.
+(I reinforced the bed with an additional plank of wood to handle the additional ~23kg weight.)
+How does the mattress topper enter in? The purpose here is to decide between the choices of keeping the new mattress, keeping the old mattress & returning the new mattress for a refund, and returning the new mattress for a refund & looking for a third mattress; since T&N gave me the topper, I do not have to return it and I'm no better off for returning it, and my initial experience is that the topper is dominant over not using the topper, so I should not randomize the topper but simply start using it for all nights.
 For analysis, I will piggyback pillow and mattress variables on the CO2 experiment.
 The sample size is not fantastic, but I am looking for a large improvement otherwise I am better off returning the mattress & trying softer ones, so it should be adequate.
-
-October 2016
-28: 0
-29: 1
-30: 1
-31: 0
-November
-01: 1
-02: 0?
