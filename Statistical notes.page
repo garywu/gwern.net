@@ -3246,7 +3246,7 @@ This left me with only a few options:
 - get my own cable modem subscription and run it into the apartment; guaranteed solution, but *much* more expensive, additional paperwork, major hassle in getting such a connection, and looking at the wiring of the buildings, I'm not 100% sure it is possible as some of the cable runs may've been cut since the last time cable was active in this apartment was at least a decade and a half ago
 - [mobile broadband](!Wikipedia): as there is a cellphone tower nearby with good reception, I could get a [mobile broadband modem](!Wikipedia) & data subscription to replace the cable modem connection with a 3G wireless connection. Data subscriptions are expensive, however (Verizon advertises 8GB/\$50 a month) and I assume I use a lot of bandwidth for browsing, IRC, BitTorrent, [archiving](/Archiving URLs), media and dataset downloads, software updates, publishing etc. It's also unclear if I would get a noticeable speedup: [3G](!Wikipedia) reportedly peaks at ~28Mbit/s or 3.5MB/s, which is not great. <!-- TODO: `vnstat` bandwidth consumption statistics -->
 - run ~51m of Cat6 Ethernet cable outside and across the lawn to the crawlspace of the other house and then up through the floor; using either armored or burial grade cable or buried in the ground in PVC pipes to avoid cars & lawn mowers & weather; guaranteed solution, not terribly expensive (shouldn't require much more than ~\$80 of Ethernet cable and a similar amount for piping), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require work on the buildings to get the cabling in, which the owners would not be happy about, and be a good deal of work digging & burying the cables <!-- measured at 167 feet, allowing 6 feet in the apartment and 6 feet in the house -->
-- a high-gain [parabolic](!Wikipedia "Parabolic antenna") or [Yagi](!Wikipedia "Yagi–Uda antenna") [directional antenna](!Wikipedia) for either laptop or router, to boost signal reception / focus^[As I understand how it would work here, sending/receiving are symmetrical for a directional antenna like this: the signals from the router to the laptop is made stronger by focusing the same amount of radio into the smaller directional beam, and the weak omnidirectional signals from the laptop back to the router are receivable thanks to the same focusing of the antenna dish.]; highly likely to solve the problem as directional antennas can reportedly maintain fast connections over scores of miles under ideal circumstances, relatively inexpensive (\$20-50), easily installed onto either the USB dongle or the router which both have removable/extensible antennas, at the cost of an additional bulky object somewhere and the solution not being mobile. Directional antennas are also not something I have any experience with and so would be fun to play with.
+- a high-gain [parabolic](!Wikipedia "Parabolic antenna") or [Yagi](!Wikipedia "Yagi-Uda antenna") [directional antenna](!Wikipedia) for either laptop or router, to boost signal reception / focus^[As I understand how it would work here, sending/receiving are symmetrical for a directional antenna like this: the signals from the router to the laptop is made stronger by focusing the same amount of radio into the smaller directional beam, and the weak omnidirectional signals from the laptop back to the router are receivable thanks to the same focusing of the antenna dish.]; highly likely to solve the problem as directional antennas can reportedly maintain fast connections over scores of miles under ideal circumstances, relatively inexpensive (\$20-50), easily installed onto either the USB dongle or the router which both have removable/extensible antennas, at the cost of an additional bulky object somewhere and the solution not being mobile. Directional antennas are also not something I have any experience with and so would be fun to play with.
 
 ## Directional antenna
 
@@ -3716,7 +3716,7 @@ for (var t=0; t < 10000; t++) {
 After a day of training, the DQN agent had learned to get up to 5e41, which was disappointingly inferior to the constant investment & probability matching agents (1e87).
 The NN looks big enough for this problem and the experience replay buffer was more than adequate; NNs in RL are known to have issues with the reward, though, and typically 'clamp' the reward to a narrow range, so I suspected that rewards going up to 5e41 (interpreting wealth on each turn as the reward) might be playing havoc with convergence, and switched the reward to log wealth instead.
 This did not make a noticeable difference overnight (aside from the DQN agent now achieving 9.5e41).
-I wondered if the risk was too rare for easy learning and 100 neurons was not enough to approximate the curve over time, so I fixed a bug I noticed where the simulation did not terminate at t=10000, doub# led the neuron count, increased the initial x-risk to 1%, and began a fresh run.
+I wondered if the risk was too rare for easy learning and 100 neurons was not enough to approximate the curve over time, so I fixed a bug I noticed where the simulation did not terminate at t=10000, doubled led the neuron count, increased the initial x-risk to 1%, and began a fresh run.
 After 1 day, it reached 9.4e41 total reward (unlogged).
 
 Cumulative log score for DQN after tweaks and ~2h of training: regularly reaches ~470k when it doesn't die immediately (which happens ~1/20 of the time).
@@ -3727,7 +3727,19 @@ TODO: revisit with MCTS at some point?
 
 # Model Criticism via Machine Learning
 
-http://andrewgelman.com/2016/11/21/deep-learning-model-checking-ai-no-homunculus-principle-unitary-nature-consciousness/
+In ["Deep learning, model checking, AI, the no-homunculus principle, and the unitary nature of consciousness"](http://andrewgelman.com/2016/11/21/deep-learning-model-checking-ai-no-homunculus-principle-unitary-nature-consciousness/), Andrew Gelman writes
+
+> Here's how we put it on the very first page of [our book](http://www.stat.columbia.edu/~gelman/book/ "_Bayesian Data Analysis_, by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin"):
+>
+>> The process of Bayesian data analysis can be idealized by dividing it into the following three steps:
+>>
+>> 1. Setting up a full probability model-a joint probability distribution for all observable and unobservable quantities in a problem. The model should be consistent with knowledge about the underlying scientific problem and the data collection process.
+>> 2. Conditioning on observed data: calculating and interpreting the appropriate posterior distribution-the conditional probability distribution of the unobserved quantities of ultimate interest, given the observed data.
+>> 3. Evaluating the fit of the model and the implications of the resulting posterior distribution: how well does the model fit the data, are the substantive conclusions reasonable, and how sensitive are the results to the modeling assumptions in step 1? In response, one can alter or expand the model and repeat the three steps.
+>
+> How does this fit in with goals of performing statistical analysis using artificial intelligence?
+>
+> 3\. The third step-identifying model misfit and, in response, figuring out how to improve the model-seems like the toughest part to automate. We often learn of model problems through open-ended exploratory data analysis, where we look at data to find unexpected patterns and compare inferences to our vast stores of statistical experience and subject-matter knowledge. Indeed, one of my main pieces of advice to statisticians is to integrate that knowledge into statistical analysis, both in the form of formal prior distributions and in a willingness to carefully interrogate the implications of fitted models.
 
 One way of looking at step #3 is to treat the human statistician as another model: specifically, he is a large neural network with trillions of parameters, who has been trained to look for anomalies & model misspecification, and to fix them when he finds them, retraining the model, until he can no longer easily distinguish the original data from the model's predictions or samples.
 As he is such a large model with the ability to represent and infer a large class of nonlinearities, he can usually easily spot flaws where the current model's distribution differs from the true distribution.
@@ -3966,8 +3978,10 @@ r_r_c_q <- randomForest(as.ordered(Real) ~ Y + A + B + C, modelPredictions_r_c_q
 trueNegatives <- modelPredictions_r_c_q[predict(r_r_c_q) == 0 & modelPredictions_r_c_q$Real == 0,]
 ~~~
 
-
-
+Where can we go with this?
+The ML techniques can be used to rank existing Bayesian models in an effective if unprincipled way.
+Techniques which quantify uncertainty like Bayesian neural networks could give more effective feedback by highlighting the points the Bayesian NN is most certain are fake, guiding the analyst towards the worst-modeled datapoints and providing hints for improvement.
+More inspiration could be borrowed from the GAN literature, such as "minibatch discrimination" - as demonstrated above, the random forests only see one data point at a time, but in training GANs, it has proven useful to instead examine multiple datapoints at a time to encourage the generator to learn how to generate a wide variety of datapoints rather than modeling a few datapoints extremely well; a ML model which can predict multiple outputs simultaneously based on multiple inputs would be analogous (that is, instead of `X ~ A + B + C`, it would look more like `X1 + X2 + X3 ... ~ A1 + B1 + C1 + A2 + B2 + C2 + ...`) and might be an even more effective model critic.
 
 <!--
 Geocities Forever: http://www.geocitiesforever.com/
