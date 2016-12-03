@@ -16,37 +16,79 @@ If you prefer to subscribe as an RSS feed, you may be interested in the new serv
 
 - genetics bibliography
 - WiFi bandwidth benchmarking
+- statistical model criticism with machine learning
+- [laptop data loss postmortem](https://plus.google.com/103530621949492999968/posts/Xba6usohMFR)
 - detecting fake Markov chain bots
+- switched `gwern.net` to HTTPS
 
 # Media
 ## Links
 
 Everything is heritable:
 
-- Dysgenics/human evolution: ["Genome-wide analysis identifies 12 loci influencing human reproductive behavior"](https://www.gwern.net/docs/genetics/correlation/2016-barban.pdf), Barban et al 2016 ([supplement](http://www.nature.com/ng/journal/vaop/ncurrent/extref/ng.3698-S2.xls); genetic correlations with fewer later offspring: _r~g~_ = -0.236 and 0.712 respectively. Cross-sectional confirmation of Conley et al 2016's discovery of longitudinal dysgenics.)
+- recent human evolution:
 
-Politics/religion:
+    - dysgenics: ["Genome-wide analysis identifies 12 loci influencing human reproductive behavior"](https://www.gwern.net/docs/genetics/correlation/2016-barban.pdf), Barban et al 2016 ([supplement](http://www.nature.com/ng/journal/vaop/ncurrent/extref/ng.3698-S2.xls); genetic correlations with fewer later offspring: _r~g~_ = -0.236 and 0.712 respectively. Cross-sectional confirmation of Conley et al 2016's discovery of longitudinal dysgenics.)
+    - ["A time transect of exomes from a Native American population before and after European contact"](http://www.nature.com/articles/ncomms13175), Lindo et al 2016 (Rapid soft selection sweeps on immune-system genes post-colonization. Presumably ancient genomes would show even more dramatic population collapses & selection in South/Central America.)
+    - ["Kinship, Fractionalization and Corruption"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2847222), Akbari et al 2016
+- ["CRISPR gene-editing tested in a person for the first time"](http://www.nature.com/news/crispr-gene-editing-tested-in-a-person-for-the-first-time-1.20988 "The move by Chinese scientists could spark a biomedical duel between China and the United States")
+- ["Polygenic transmission disequilibrium confirms that common and rare variation act additively to create risk for autism spectrum disorders"](http://biorxiv.org/content/early/2016/11/23/089342), Weiner et al 2016:
+- ["Genome-Wide Association Study Reveals First Locus for Anorexia Nervosa and Metabolic Correlations"](http://biorxiv.org/content/early/2016/11/25/088815), Duncan et al 2016 (see also ["The Thin Gene"](http://www.nytimes.com/2016/11/25/opinion/sunday/the-thin-gene.html))
+- ["Lung cancer, genetic predisposition and smoking: the Nordic Twin Study of Cancer"](https://www.gwern.net/docs/genetics/2016-hjelmborg.pdf), Hjelmborg et al 2016 (R.A. Fisher would be pleased to see that someone's finally checked.)
 
 AI:
 
 - ["Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"](https://arxiv.org/abs/1610.09027), Rae et al 2016
-- ["Neural architecture search with reinforcement learning"](http://openreview.net/pdf?id=r1Ue8Hcxg), Zoph & Le 2016
-- ["LipNet: Sentence-level Lipreading"](http://openreview.net/forum?id=BkjLkSqxg), Assael et al 2016 ([video](https://www.youtube.com/watch?v=fa5QGremQf8); human-level lipreading + MSR's transcription + Google's WaveNet could have major implications for the deaf & hard-of-hearing and the role of sign language)
-- "Tracking the World State with Recurrent Entity Networks", Henaff et al 2016 http://openreview.net/forum?id=rJTKKKqeg
+- ["Neural architecture search with reinforcement learning"](http://openreview.net/pdf?id=r1Ue8Hcxg), Zoph & Le 2016 (800 GPUs)
+["Designing Neural Network Architectures using Reinforcement Learning"](https://arxiv.org/abs/1611.02167), Baker et al 2016
+
+- ["Learning to reinforcement learn"](https://arxiv.org/abs/1611.05763), Wang et al 2016
+- human-level lipreading (human-level lipreading + MSR's transcription + Google's WaveNet could have major implications for the deaf & hard-of-hearing and the role of sign language):
+
+    - ["Lip Reading Sentences in the Wild"](https://arxiv.org/pdf/1611.05358v1.pdf), Chung et al 2016 ([vide](https://www.youtube.com/watch?v=5aogzAUPilE))
+    - ["LipNet: Sentence-level Lipreading"](http://openreview.net/forum?id=BkjLkSqxg), Assael et al 2016 ([video](https://www.youtube.com/watch?v=fa5QGremQf8))
+- ["Tracking the World State with Recurrent Entity Networks"](http://openreview.net/forum?id=rJTKKKqeg), Henaff et al 2016
+- ["DeepCoder: Learning to Write Programs"](https://arxiv.org/abs/1611.01989), Balog et al 2016; ["Learning to superoptimize programs"](https://openreview.net/pdf?id=r1rz6U5lg), Bunel et al 2016 (Continuing the AlphaGo theme of tree search+NN heuristics.)
+- ["Reinforcement Learning with Unsupervised Auxiliary Tasks"](https://arxiv.org/abs/1611.05397), Jaderberg et al 2016
+- ["Outrageously large neural networks: the sparsely-gated mixture-of-experts layer"](http://openreview.net/pdf?id=B1ckMDqlg), Shazeer et al 2016 (This is cool. The main net is a little NN which chooses a couple out of a few thousand other NNs to do the real computation. Because only a couple subnets are activated at any time and the others are silent, they are effectively small specialized NNs, which accordingly fit in the GPU and are very fast forwards/backwards. Instead of using an external memory, huge datasets can effectively be sharded and memorized by individual specialized sub NNs.)
+- ["Google's Multilingual Neural Machine Translation System: Enabling Zero-Shot Translation"](https://arxiv.org/abs/1611.04558), Johnson et al 2016; ["Found in translation: More accurate, fluent sentences in Google Translate"](https://blog.google/products/translate/found-translation-more-accurate-fluent-sentences-google-translate/) (translation RNNs finally rolled out to the masses)
+- ["Convolutional Neural Fabrics"](https://arxiv.org/abs/1606.02492), Saxena & Verbeek 2016
+- ["Image-to-Image Translation with Conditional Adversarial Nets"](https://phillipi.github.io/pix2pix/), Isola et al 2016 (as has often been noted, mapping images to images is a very common type)
+- ["DeepMind and Blizzard to release StarCraft II as an AI research environment"](https://deepmind.com/blog/deepmind-and-blizzard-release-starcraft-ii-ai-research-environment/)
+- ["Decoding The Thought Vector"](https://gabgoh.github.io/ThoughtVectors/)
+- ["miles-deep: Deep Learning Porn Video Classifier/Editor with Caffe"](https://github.com/ryanjay0/miles-deep)
 
 Statistics/meta-science/mathematics:
 
+- ["Why a pro/con list is 75% as good as your fancy machine learning algorithm"](https://www.chrisstucchio.com/blog/2014/equal_weights.html)
+
+Politics/religion:
+
+- ["History is Written by the Losers"](https://scholars-stage.blogspot.co.uk/2016/11/history-is-written-by-losers.html)
+
 Psychology/biology:
 
-- ["The paradoxical psychological effects of lysergic acid diethylamide (LSD)"](https://www.researchgate.net/profile/Mendel_Kaelen/publication/293169090_The_paradoxical_psychological_effects_of_lysergic_acid_diethylamide_LSD/links/56bb178808ae023560266ae5.pdf), Carhart-Harris et al 2016
+- Psychedelics and psychological well-being ([media](https://www.theatlantic.com/health/archive/2016/12/the-life-changing-magic-of-mushrooms/509246/ "The Life-Changing Magic of Mushrooms: A single dose of magic mushrooms can make people with severe anxiety and depression better for months, according to a landmark pair of new studies.")):
+
+    - ["The paradoxical psychological effects of lysergic acid diethylamide (LSD)"](https://www.researchgate.net/profile/Mendel_Kaelen/publication/293169090_The_paradoxical_psychological_effects_of_lysergic_acid_diethylamide_LSD/links/56bb178808ae023560266ae5.pdf), Carhart-Harris et al 2016
+    - ["Psilocybin for anxiety and depression in cancer care? Lessons from the past and prospects for the future"](https://www.gwern.net/docs/2016-nutt.pdf), Nutt 2016
+    - ["Psilocybin produces substantial and sustained decreases in depression and anxiety in patients with life-threatening cancer: A randomized double-blind trial"](https://www.gwern.net/docs/2016-griffiths.pdf), Griffiths et al 2016
+    - ["Rapid and sustained symptom reduction following psilocybin treatment for anxiety and depression in patients with life-threatening cancer: a randomized controlled trial"](https://www.gwern.net/docs/2016-ross.pdf), Ross et al 2016
+    - ["Survey study of challenging experiences after ingesting psilocybin mushrooms: Acute and enduring positive and negative consequences"](https://www.gwern.net/docs/2016-carbonaro.pdf), Carbonaro et al 2016
+    - ["The Challenging Experience Questionnaire: Characterization of challenging experiences with psilocybin mushrooms"](https://www.gwern.net/docs/2016-barrett.pdf), Barrett et al 2016
+- ["Neural correlates of specific musical anhedonia"](https://www.gwern.net/docs/2016-martnezmolina.pdf), Martínez-Molina et al 2016
 
 Technology:
+
+- ["'It smelled like death': An oral history of the _Double Dare_ obstacle course"](http://www.avclub.com/article/it-smelled-death-oral-history-double-dare-obstacle-245939)
 
 Economics:
 
 Philosophy:
 
 Fiction:
+
+- ["Design"](https://www.poets.org/poetsorg/poem/design), Robert Frost
 
 <!-- Back to 08 Sep 2012 -->
 
@@ -61,10 +103,7 @@ Fiction:
 Live-action:
 
 - [_Doctor Strange_](https://en.wikipedia.org/wiki/Doctor_Strange_\(film\))
-
-Anime:
-
-## Games
+- [_Arrival_](https://en.wikipedia.org/wiki/Arrival_\(film\))
 
 ## Music
 
