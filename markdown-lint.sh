@@ -48,6 +48,6 @@ do
                            -e ' _ ' -e '[^' -e '^]' -e '/* ' -e ' */' -e '<!--' -e '-->' -e '<-- ' -e '<—' -e '—>' \
                            -e '$title$' -e '<del>' \
                            -e '$description$' -e '$author$' -e '$tags$' -e '$category$' \
-            -e '(!Wikipedia' -e '(!Hoogle'; # ))
+            -e '(!Wikipedia' -e '(!Hoogle' -e 'http://www.gwern.net' -e 'http://gwern.net' ; # ))
     fi
 done
