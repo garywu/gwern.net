@@ -68,14 +68,15 @@ main = hakyll $ do
              let static = route idRoute >> compile copyFileCompiler
              mapM_ (`match` static) [ -- WARNING: match everything *except* Markdown
                                       -- since rules are mutually-exclusive!
-                                     complement "docs/**.page" .&&. "docs/**",
+                                     complement "docs/**.page" &&."docs/**",
                                      "haskell/**.hs",
                                      "images/**",
                                      "**.hs",
                                      "**.sh",
                                      "static/*",
                                      "static/img/**",
-                                     "static/js/**"]
+                                     "static/js/**",
+                                     "index"]
              match "**.css" $ route idRoute >> compile compressCssCompiler
              match "static/templates/*.html" $ compile templateCompiler
 
