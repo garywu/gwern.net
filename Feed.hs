@@ -21,8 +21,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 module Feed (FeedConfig(..), filestoreToXmlFeed) where
 
-import Data.Time (UTCTime, formatTime, getCurrentTime, addUTCTime)
-import System.Locale (defaultTimeLocale)
+import Data.Time (UTCTime, formatTime, getCurrentTime, addUTCTime, defaultTimeLocale)
 import Data.Foldable as F (concatMap)
 import Data.List (intercalate, sortBy, nub)
 import Data.Ord (comparing)
@@ -115,6 +114,6 @@ extract x = dePage $ case x of {Modified n -> n; Deleted n -> n; Added n -> n}
 {-
 diff :: String -> String -> Revision -> Link
 diff home path' Revision{revId = rid} =
-                        let n = nullLink (home ++ "_diff/" ++ escape path' ++ "?to=" ++ rid) -- ++ fromrev)
+                        let n = nullLink (home ++ "_diff/" ++ escape path' ++ "?to=" ++ rid) -- ++ fromrev
                         in n {linkRel = Just (Left "alternate")}
 -}

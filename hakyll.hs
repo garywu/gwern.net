@@ -55,7 +55,7 @@ import Hakyll ((.&&.), applyTemplateList, buildTags, compile, complement, compre
                tagsField, tagsRules, templateCompiler, Compiler, Context, Item, Pattern, Tags)
 import System.Exit (ExitCode(ExitFailure))
 import Text.HTML.TagSoup (renderTagsOptions,parseTags,renderOptions, optMinimize, Tag(TagOpen))
-import Text.Pandoc (bottomUp, Extension(Ext_markdown_in_html_blocks), HTMLMathMethod(MathML), Inline(..),
+import Text.Pandoc (bottomUp, nullAttr, Extension(Ext_markdown_in_html_blocks), HTMLMathMethod(MathML), Inline(..),
                     ObfuscationMethod(NoObfuscation), Pandoc(..), ReaderOptions(..), WriterOptions(..))
 
 main :: IO ()
@@ -68,7 +68,7 @@ main = hakyll $ do
              let static = route idRoute >> compile copyFileCompiler
              mapM_ (`match` static) [ -- WARNING: match everything *except* Markdown
                                       -- since rules are mutually-exclusive!
-                                     complement "docs/**.page" &&."docs/**",
+                                     complement "docs/**.page" .&&. "docs/**",
                                      "haskell/**.hs",
                                      "images/**",
                                      "**.hs",
@@ -155,15 +155,15 @@ pandocTransform = bottomUp (map (convertInterwikiLinks . convertHakyllLinks . ad
 --
 -- For non-Amazon links, we just return them unchanged.
 addAmazonAffiliate :: Inline -> Inline
-addAmazonAffiliate x@(Link r (l, t)) = if (("amazon.com/" `isInfixOf` l) && not ("tag=gwernnet-20" `isInfixOf` l)) then
-                                        if ("?" `isInfixOf` l) then Link r (l++"&tag=gwernnet-20", t) else Link r (l++"?tag=gwernnet-20", t)
+addAmazonAffiliate x@(Link _ r (l, t)) = if (("amazon.com/" `isInfixOf` l) && not ("tag=gwernnet-20" `isInfixOf` l)) then
+                                        if ("?" `isInfixOf` l) then Link nullAttr r (l++"&tag=gwernnet-20", t) else Link nullAttr r (l++"?tag=gwernnet-20", t)
                                        else x
 addAmazonAffiliate x = x
 
 -- GITIT -> HAKYLL LINKS PLUGIN
 -- | Convert links with no URL to wikilinks.
 convertHakyllLinks :: Inline -> Inline
-convertHakyllLinks (Link ref ("", "")) = let ref' = inlinesToURL ref in Link ref (ref', "Go to wiki page: " ++ ref')
+convertHakyllLinks (Link _ ref ("", "")) = let ref' = inlinesToURL ref in Link nullAttr ref (ref', "Go to wiki page: " ++ ref')
 convertHakyllLinks x = x
 
 -- FASTER HTML RENDERING BY STATICLY SPECIFYING ALL IMAGE DIMENSIONS
@@ -227,20 +227,20 @@ inlinesToString = concatMap go
                Code _ s -> s
                _        -> " "
 convertInterwikiLinks :: Inline -> Inline
-convertInterwikiLinks (Link ref (interwiki, article)) =
+convertInterwikiLinks (Link _ ref (interwiki, article)) =
   case interwiki of
     ('!':interwiki') ->
         case M.lookup interwiki' interwikiMap of
                 Just url  -> case article of
-                                  "" -> Link ref (url `interwikiurl` inlinesToString ref, summary $ unEscapeString $ inlinesToString ref)
-                                  _  -> Link ref (url `interwikiurl` article, summary article)
-                Nothing -> Link ref (interwiki, article)
+                                  "" -> Link nullAttr ref (url `interwikiurl` inlinesToString ref, summary $ unEscapeString $ inlinesToString ref)
+                                  _  -> Link nullAttr ref (url `interwikiurl` article, summary article)
+                Nothing -> Link nullAttr ref (interwiki, article)
             where -- 'https://starwars.wikia.com/wiki/Emperor_Palpatine'
                   interwikiurl u a = u ++ urlEncode (deunicode a)
                   deunicode = map (\x -> if x == '’' then '\'' else x)
                   -- 'Wookieepedia: Emperor Palpatine'
                   summary a = interwiki' ++ ": " ++ a
-    _ -> Link ref (interwiki, article)
+    _ -> Link nullAttr ref (interwiki, article)
 convertInterwikiLinks x = x
 -- | Large table of constants; this is a mapping from shortcuts to a URL. The URL can be used by
 --   appending to it the article name (suitably URL-escaped, of course).
