@@ -3207,7 +3207,7 @@ So an American social group cannot exceed _n_=51 before first names begin to bre
 
 # WiFi router improvement
 
-> My laptop in my apartment receives Internet via a WiFi repeater to another house, yielding slow speeds and frequent glitches. I replaced the obsolete WiFi router and increased connection speeds somewhat but still inadequate. For a better solution, I used a directional antenna to connect directly to the new WiFi router, which, contrary to my expectations, yielded a ~6x increase in speed. Extensive benchmarking of all possible arrangements of laptops/dongles/repeaters/antennas/routers/positions shows that the antenna+router is inexpensive and near optimal speed, and that the only possible improvement would be a hardwired Ethernet line, which would be much more expensive and offer a small increase in performance.
+> My laptop in my apartment receives Internet via a WiFi repeater to another house, yielding slow speeds and frequent glitches. I replaced the obsolete WiFi router and increased connection speeds somewhat but still inadequate. For a better solution, I used a directional antenna to connect directly to the new WiFi router, which, contrary to my expectations, yielded a ~6x increase in speed. Extensive benchmarking of all possible arrangements of laptops/dongles/repeaters/antennas/routers/positions shows that the antenna+router is inexpensive and near optimal speed, and that the only possible improvement would be a hardwired Ethernet line, which I installed a few weeks later after learning it was not as difficult as I thought it would be.
 
 ## Background
 ### WiFi problems
@@ -3245,8 +3245,10 @@ This left me with only a few options:
 - look into [power-line communication](!Wikipedia) to connect to the router (not possible as far as I knew due to independent electrical systems)
 - get my own cable modem subscription and run it into the apartment; guaranteed solution, but *much* more expensive, additional paperwork, major hassle in getting such a connection, and looking at the wiring of the buildings, I'm not 100% sure it is possible as some of the cable runs may've been cut since the last time cable was active in this apartment was at least a decade and a half ago
 - [mobile broadband](!Wikipedia): as there is a cellphone tower nearby with good reception, I could get a [mobile broadband modem](!Wikipedia) & data subscription to replace the cable modem connection with a 3G wireless connection. Data subscriptions are expensive, however (Verizon advertises 8GB/\$50 a month) and I assume I use a lot of bandwidth for browsing, IRC, BitTorrent, [archiving](/Archiving URLs), media and dataset downloads, software updates, publishing etc. It's also unclear if I would get a noticeable speedup: [3G](!Wikipedia) reportedly peaks at ~28Mbit/s or 3.5MB/s, which is not great. <!-- TODO: `vnstat` bandwidth consumption statistics -->
-- run ~51m of Cat6 Ethernet cable outside and across the lawn to the crawlspace of the other house and then up through the floor; using either armored or burial grade cable or buried in the ground in PVC pipes to avoid cars & lawn mowers & weather; guaranteed solution, not terribly expensive (shouldn't require much more than ~\$80 of Ethernet cable and a similar amount for piping), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require work on the buildings to get the cabling in, which the owners would not be happy about, and be a good deal of work digging & burying the cables <!-- measured at 167 feet, allowing 6 feet in the apartment and 6 feet in the house -->
 - a high-gain [parabolic](!Wikipedia "Parabolic antenna") or [Yagi](!Wikipedia "Yagi-Uda antenna") [directional antenna](!Wikipedia) for either laptop or router, to boost signal reception / focus^[As I understand how it would work here, sending/receiving are symmetrical for a directional antenna like this: the signals from the router to the laptop is made stronger by focusing the same amount of radio into the smaller directional beam, and the weak omnidirectional signals from the laptop back to the router are receivable thanks to the same focusing of the antenna dish.]; highly likely to solve the problem as directional antennas can reportedly maintain fast connections over scores of miles under ideal circumstances, relatively inexpensive (\$20-50), easily installed onto either the USB dongle or the router which both have removable/extensible antennas, at the cost of an additional bulky object somewhere and the solution not being mobile. Directional antennas are also not something I have any experience with and so would be fun to play with.
+- run ~51m of Cat6 Ethernet cable outside and across the lawn to the crawlspace of the other house and then up through the floor; using either armored or burial grade cable or buried in the ground in PVC pipes to avoid cars & lawn mowers & weather; guaranteed solution, not terribly expensive (shouldn't require much more than ~\$80 of Ethernet cable and a similar amount for piping if I feel that's necessary), more secure from eavesdropping, potentially solves future device connectivity problems by allowing me to set up a local WiFi router, but would require work on the buildings to get the cabling in, which the owners would not be happy about, and be a good deal of work digging & burying the cables.
+
+    I measured the total distance at ~51m, allowing for 2m in the apartment and 2m in the house, which is comfortably covered by a regular [60m burial-grade Ethernet cable](https://www.amazon.com/Outdoor-Ethernet-Healing-Connectors-Installed/dp/B00ONA7UMY "200 FT Cat6 Outdoor Dry Gel Filled Direct Burial Ethernet (Self Healing) (Connectors Installed)") (\$90). The cable can be protected coming out of the ground by a short PVC pipe from Lowe's (\$1.94).
 
 ## Directional antenna
 
@@ -3275,7 +3277,7 @@ Possible arrangements would be apartment + dongle + repeater + new/old router; a
 Many arrangements are not possible: the old router does not have a removable antenna so the directional antenna cannot be plugged into it and other combinations tested; the repeater is likewise not removable so I can test laptop+antenna connecting to the repeater or new router+antenna connecting to the repeater, the reverses are not possible; the laptop WiFi card can't be used with either the repeater or the new/old router boosted with the antenna because it lacks the range for connecting at all unless it is physically near them inside the house; plugging an Ethernet cable from the laptop directly into the cable modem tests the upper bound of possible performance but can only be done inside the house (because I do not have the very long Ethernet cable necessary for temporary testing); the cable modem does not have any kind of wireless functionality so it can be tested on its own in only one way; etc.
 
 Of the ~8 possible variables (house vs apartment, wireless vs wired, dongle vs laptop WiFi card, remote vs local directional antenna, cable mode, vs a router, old vs new router) giving 2^8^=256 possible total arrangements, ~17 arrangements will work.
-I tested those 17 with groups of ~_n_=30 over several days.
+I tested those 17 with groups of ~_n_=30 over several days in November, and then after installing Ethernet cable out to the apartment, measured that over additional days November-December as well.
 (The remaining possible arrangements could be 'measured', but I already know what the result would be: 0Mb/s up/down, ∞ms latency.)
 
 ## Analysis
@@ -3308,13 +3310,13 @@ f
 # Call: fa(r = wifi[, c(2, 3, 15)], nfactors = 1)
 # Standardized loadings (pattern matrix) based upon correlation matrix
 #               MR1   h2    u2 com
-# Download     1.00 1.00 0.005   1
-# Upload       0.76 0.58 0.419   1
-# Latency.log -0.58 0.34 0.665   1
+# Download     0.99 0.98 0.016   1
+# Upload       0.71 0.50 0.503   1
+# Latency.log -0.56 0.31 0.687   1
 #
 #                 MR1
-# SS loadings    1.91
-# Proportion Var 0.64
+# SS loadings    1.79
+# Proportion Var 0.60
 # ...
 wifi$Performance.factor <- f$scores[,1]
 
@@ -3343,18 +3345,17 @@ for (i in 1:nrow(possibleConditions)) {
   }
 }
 
-write.csv(wifiTmp, file="2016-11-07-wifi-benchmarking.csv", row.names=FALSE)
+write.csv(wifiTmp, file="2016-12-05-wifi-benchmarking.csv", row.names=FALSE)
 ~~~~
 
 Data analysis:
 
 ~~~{.R}
-wifi <- read.csv("http://www.gwern.net/docs/personal/2016-11-07-wifi-benchmarking.csv",
+wifi <- read.csv("http://www.gwern.net/docs/personal/2016-12-05-wifi-benchmarking.csv",
                  colClasses=c("character", "numeric", "numeric", "numeric", "factor",
                               rep("integer", 8), "Date", "numeric", "numeric"))
 library(blme)
-b <- blmer(Performance.factor ~ Tester + (1|Date) + Apartment*Wireless*Cable.modem*Dongle*Repeater*Antenna.local*Antenna.remote*Router.new,
-           data=wifi)
+b <- blmer(Performance.factor ~ Tester + (1|Date) + Apartment*Wireless*Cable.modem*Dongle*Repeater*Antenna.local*Antenna.remote*Router.new,           data=wifi)
 
 wifi$Performance.factor.predicted <- predict(b)
 wifi2 <- unique(subset(wifi, select=c("Apartment", "Wireless", "Cable.modem", "Dongle", "Repeater", "Antenna.local",
@@ -3363,65 +3364,78 @@ wifi2 <- wifi2[order(wifi2$Performance.factor.predicted),]
 
 wifi2[(nrow(wifi2)-25) : (nrow(wifi2)),]
 # Apartment Wireless Cable.modem Dongle Repeater Antenna.local Antenna.remote Router.new Performance.factor.predicted
-#         1        1           0      1        1             0              1          1                -1.4789390956
-#         1        1           0      1        1             0              0          1                -1.4745957740
-#         1        1           0      1        1             0              0          0                -1.2964198935
-#         1        1           0      1        1             0              0          1                -1.2224065394
-#         1        1           0      1        1             0              0          1                -1.1922059252
-#         1        1           0      1        1             0              0          0                -1.0889168389
-#         1        1           0      1        1             0              0          1                -1.0352904765
-#         1        1           0      1        1             0              0          1                -1.0238596584
-#         1        1           0      1        1             0              0          1                -0.9822727227
-#         1        1           0      1        1             0              0          1                -0.7474618842
-#         1        1           0      1        1             0              0          1                -0.5399588297
-#         1        1           0      1        1             1              0          1                -0.4809197642
-#         1        1           0      1        1             1              0          1                -0.3594128408
-#         1        1           0      1        0             1              0          1                 0.2164881665
-#         1        1           0      1        0             1              0          0                 0.2708317438
-#         0        1           0      1        0             0              0          0                 0.3994099844
-#         1        1           0      1        0             1              0          1                 0.5058886019
-#         1        1           0      1        0             1              0          1                 0.5071800787
-#         1        1           0      1        0             1              0          1                 0.6273955254
-#         1        1           0      1        0             1              0          1                 0.6315593615
-#         0        1           0      1        0             0              0          1                 0.8836568528
-#         0        0           0      0        0             0              0          0                 0.8955495517
-#         0        1           0      0        0             0              0          0                 1.0305579425
-#         0        1           0      0        0             0              0          1                 1.0407949467
-#         0        0           0      0        0             0              0          1                 1.0502499269
-#         0        0           1      0        0             0              0          0                 1.0968340716
+#          1        1           0      1        1             0              0          0               -1.259569392
+#          1        1           0      1        1             0              0          1               -0.72119574503
+#          1        0           0      0        0             0              0          1               -0.55532865920
+#          1        1           0      1        1             0              0          1               -0.48863426987
+#          1        1           0      1        1             1              0          1               -0.42905113275
+#          1        1           0      1        0             1              0          1               -0.38039763263
+#          1        1           0      1        1             1              0          1               -0.31311384678
+#          1        0           0      0        0             0              0          1               -0.02846361963
+#          1        0           0      0        0             0              0          1                0.17432667112
+#          1        0           0      0        0             0              0          1                0.18380111280
+#          1        1           0      1        0             1              0          1                0.26076450043
+#          1        1           0      1        0             1              0          0                0.32029090139
+#          1        1           0      1        0             1              0          1                0.34233590425
+#          0        1           0      1        0             0              0          0                0.44654280736
+#          1        1           0      1        0             1              0          1                0.49208086460
+#          1        1           0      1        0             1              0          1                0.54389931129
+#          1        1           0      1        0             1              0          1                0.54412097665
+#          1        1           0      1        0             1              0          1                0.54430342547
+#          1        0           0      0        0             0              0          1                0.62352638317
+#          1        1           0      1        0             1              0          1                0.66024071144
+#          1        1           0      1        0             1              0          1                0.67584165776
+#          0        1           0      1        0             0              0          1                0.92555806876
+#          0        0           0      0        0             0              0          0                0.93680347163
+#          0        1           0      0        0             0              0          0                1.06661288167
+#          0        1           0      0        0             0              0          1                1.07367892346
+#          0        0           0      0        0             0              0          1                1.08849478260
+#          0        0           1      0        0             0              0          0                1.13465298407
 
-unscale <- function(score, df) { with(df[df$Latency!=1000,], c((1 * mean(Download)+sd(Download)*score),
-    (0.76 * mean(Upload)+sd(Upload)*score),
-    exp(mean(Latency.log)-0.58*sd(Latency.log)*score))) }
-unscale(1.09, wifi); unscale(1.05, wifi); unscale(0.63, wifi); unscale(0.27, wifi); unscale(-1.09, wifi); unscale(-1.29, wifi)
-# [1]  4.5304934851  0.4789160255 17.4772971921
-# [1]  4.4633922835  0.4721697462 17.6980741595
-# [1]  3.7588296662  0.4013338138 20.1915320914
-# [1]  3.1549188514  0.3406173002 22.6065832149
-# [1]  0.8734779955  0.1112438046 34.6412906820
-# [1]  0.53797198723  0.07751240815 36.88525255659
+unscale <- function(score, df=wifi) { with(df[df$Latency!=1000,], c((0.99 * mean(Download)+sd(Download)*score),
+    (0.71 * mean(Upload)+sd(Upload)*score),
+    exp(mean(Latency.log)-0.56*sd(Latency.log)*score))) }
+### in house:
+## Ethernet+cable modem:
+unscale(1.13)
+# [1]  4.4999315639  0.4549223657 17.6341326098
+## cable modem+new router
+unscale(1.08)
+# [1]  4.4160822152  0.4468745345 17.9182474426
+## new router+laptop WiFi
+unscale(1.07)
+# [1]  4.3993123455  0.4452649683 17.9756173728
+### in apartment:
+## dongle+directional antenna
+unscale(0.67)
+# [1]  3.7285175563  0.3808823185 20.4275006797
+## dongle+repeater+no-antenna+new router
+unscale(-0.48)
+# [1]  1.7999825373  0.1957822004 29.5031278789
+## dongle+repeater+old router+no antenna
+unscale(-1.25)
+# [1]  0.50870256814  0.07184559966 37.73688446630
 ~~~
 
 ## Results
 
 The results generally make sense:
 
-- the best possible arrangement is to plug directly into the cable modem (performance score 1.09; 4.53MB/0.48MB/17.5ms)
-- the next best possible is to plug into the new router which is plugged into the modem (performance score 1.05; 4.46MB/0.47MB/17.9ms)
+- the best possible arrangement is to use Ethernet to plug directly into the cable modem (performance score 1.13; 4.40MB/0.45MB/17.6ms)
+- the next best possible is to plug into the new router which is plugged into the modem (performance score 1.05; 4.42MB/0.45MB/17.9ms)
 - the next best to sit next to the new router and use the built-in WiFi chip to connect to it; and so on.
 
 For those arrangements feasible outside the house/in the apartment, the best arrangement is to:
 
-- use the dongle + directional antenna to connect to the new router (performance score 0.63; 3.76MB/0.40MB/20.2ms).
-- Omitting the directional antenna, the speed of dongle + repeater + new router is not great (performance score: -1.09; 0.87MB/0.11MB/34.64ms).
-- Using the directional antenna but not the new router is better (performance score: 0.27; 3.15MB/0.34MB/22.6ms)
-- And the original arrangement of dongle + repeater + old router is one of the worst feasible arrangements (performance score -1.29; 0.54MB/0.87MB/36.9ms).
+- use the dongle + directional antenna to connect to the new router (performance score 0.67; 3.73MB/0.38MB/20.4ms).
+- Omitting the directional antenna, the speed of dongle + repeater + new router + no antenna is not great (performance score: -0.48; 1.80MB/0.20MB/29.5ms).
+- And the original arrangement of dongle + repeater + old router + no antenna is one of the worst possible (performance score -1.25; 0.51MB/0.07MB/37.7ms).
 
 This is useful for evaluation.
-The new router on its own was helpful, as it increased download bandwidth from 0.54MB/s to 0.87MB/s, an improvement of ~40%.
-The directional antenna on its own was also helpful, as it increased from 0.54 to 3.15, or 580%.
-The directional antenna + new router increased download bandwidth still further from 0.54MB/s to 3.76MB/s, an improvement of ~650%, or ~432% over the new router alone.
-And installing an Ethernet cable to avoid WiFi entirely would boost my connection from 3.76MB/S download bandwidth to 4.46MB/s, an improvement of 16%.
+The new router on its own was helpful, as it increased download bandwidth from 0.51MB/s to 1.8MB/s.
+The directional antenna on its own was also helpful.
+The directional antenna + new router increased download bandwidth still further from 0.51MB/s to 3.73MB/s, an improvement of ~731%.
+And installing an Ethernet cable to avoid WiFi entirely would boost my connection download bandwidth to 4.40MB/s, an total improvement of 870%.
 
 So most of the marginal gain came from the directional antenna bypassing the repeater, and only some of it comes from the new router.
 Indeed, the antenna+new router is near-optimal, with only ~16% download bandwidth lost to WiFi+overhead.
@@ -3448,11 +3462,20 @@ At my usual discount rate of 5% and the router/antenna never breaking and discou
 assuming that they will break or need replacing or my circumstances will change within 5 years (eg by moving to somewhere where the directional antenna is unnecessary), the [equivalent annual cost](!Wikipedia) would be -\$32/year (`138 / ((1 - (1/(1+0.05)^5))/0.05)`) or -\$2.6/month.
 This seems like a trivial cost for improving my Internet connection by ~6x.
 
+## Buried Ethernet
+
+
 The buried Ethernet is more dubious.
 The router & antenna are sunk costs inasmuch as they would be difficult to return and I would need to do so soon, and so the marginal benefit of the Ethernet over the router+antenna would be 16% or less, for a marginal equivalent annual cost of -\$47 on top of the -\$32 for -\$79.
 (The buried Ethernet cable would be even less likely to break than the router or antenna, but is also impossible to take with me.)
 Still not much monthly but is <16% worth even that much?
-I am doubtful and will leave matters as they stand with the antenna+router.
+
+After discussing it with my uncles who do a lot of handyman work, it turned out to be easy to get the Ethernet cable into the house as the cable can be run through the crawlspace underneath the whole house and then the floor can be drilled through with a ordinary drill, and it was unnecessary to pipe the cable across the lawn.
+After thinking it over and thinking about the reliability improvements and how nice it would be to not have to mess around with a giant directional antenna or WiFi flakiness & drivers, I decided to do it.
+
+Installation proved straightforward (aside from a sweaty hour going back and forth between the room & crawlspace trying to get the hole to be *just* large enough for the cable to be pushed through) and the trench-digging not as tedious as I feared when I did it over the course of a week.
+The installation was fully completed on 25 November 2016.
+
 
 # Detecting fake (human) Markov chain bots
 
@@ -3985,7 +4008,7 @@ More inspiration could be borrowed from the GAN literature, such as "minibatch d
 
 # Geocities char-RNN
 
-> [Geocities](!Wikipedia) (1994-2009) was an Internet service for hosting personal webpages which featured a wide range of idiosyncratic and unusual content. [Geocities Forever](http://www.geocitiesforever.com/) is a website created by [Aanand](https://twitter.com/aanand) which features text generated by a small [CPU-trained 3x512 char-RNN](https://twitter.com/aanand/status/728738421758414849) on a small sample of the raw HTML from the [ArchiveTeam Geocities corpus](https://thepiratebay.org/torrent/6353395/Geocities_-_The_PATCHED_Torrent). The generated HTML [is amusing](https://news.ycombinator.com/item?id=11646822) but also shows some weaknesses in generating interleaved English/HTML , which I thought was connected to undertraining on a small corpus - based on my earlier experiments with [char-RNN models of CSS](/AB%20testing#training-a-neural-net-to-generate-css) and [multiple English authors](/RNN metadata), I know that char-RNNs are capable of switching languages smoothly. During October-November 2016, I attempted to train a larger 2x3000 RNN with a 1GB+ sample using [torch-rnn](https://github.com/jcjohnson/torch-rnn), and ran into issues:
+> [Geocities](!Wikipedia) (1994-2009) was an Internet service for hosting personal webpages which featured a wide range of idiosyncratic and unusual content. [Geocities Forever](http://www.geocitiesforever.com/) is a website created by [Aanand](https://twitter.com/aanand) which features text generated by a small [CPU-trained 3x512 char-RNN](https://twitter.com/aanand/status/728738421758414849) on a small 50MB sample of the raw HTML from the [ArchiveTeam Geocities corpus](https://thepiratebay.org/torrent/6353395/Geocities_-_The_PATCHED_Torrent). The generated HTML [is amusing](https://news.ycombinator.com/item?id=11646822) but also shows some weaknesses in generating interleaved English/HTML, which I thought was connected to undertraining on a small corpus - based on my earlier experiments with [char-RNN models of CSS](/AB%20testing#training-a-neural-net-to-generate-css) and [multiple English authors](/RNN metadata), I know that char-RNNs are capable of switching languages smoothly. During October-November 2016, I attempted to train a larger 2x3000 RNN with a 1GB+ sample using [torch-rnn](https://github.com/jcjohnson/torch-rnn), and ran into issues:
 >
 > - the larger corpus had quality issues related to some files being present many times, including 1 file which was present in several thousand copies
 > - training repeatedly "bounced" in that after quickly reaching low training & validation losses and generating high-quality text samples, error would skyrocket & text samples plummet in quality (or not be generated at all due to malformed probabilities)
@@ -4106,7 +4129,7 @@ nice th train.lua -input_h5 data/geocities-corpus.h5 -input_json data/geocities-
                   -dropout 0.5 -batchnorm 1
 ~~~
 
-After ~9 hours, it had reached a validation loss of 1.05 and generated output looks pretty good but then it bounced over night and output became garbage again.
+After ~9 hours, it had reached a validation loss of 1.05 and generated output looks pretty good^[I couldn't compare the quality to Aanand's original 3x512 because he didn't provide the final validation score of his or the exact 50MB corpus to retrain on.] but then it bounced over night and output became garbage again.
 (For 1GB and 3x512 RNN, 1 epoch takes somewhat over 1 day.)
 It is still acting like it's overfitting. Why?
 
@@ -4289,4 +4312,4 @@ The lower learning rate RNN still bounced, but not quite as badly as usual, with
 Unfortunately, further progress by the RNN or the performance in restarting from scratch with a much smaller learning rate is unknown, as on 26 November my Acer laptop died (apparent motherboard failure, I suspect possibly due to the stress of all the months of GPU training various char-RNN and other deep learning models) and due to problems with my backups, I lost data back to 14 November, including the training records & latest checkpoints.
 
 Since the Geocities char-RNN wasn't going anywhere & I worried may've contributed to my laptop failure, I stopped there.
-My guess is that good results could be obtained with a smaller corpus (perhaps 500MB) and a large char-RNN like 2x3000 trained with very low learning rates, but it would require at least GPU-weeks on a top-end GPU and isn't sufficiently amusing as to be worthwhile.
+My guess is that good results could be obtained with a smaller corpus (perhaps 500MB) and a large char-RNN like 2x3000 trained with very low learning rates, but it would require at least GPU-weeks on a top-end GPU with more than 4GB RAM (to allow larger minibatches) and isn't sufficiently amusing as to be worthwhile.
