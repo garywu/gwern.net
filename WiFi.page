@@ -60,7 +60,15 @@ Since both the dongle and router are listed by TP-Link as having removable anten
 Ideally, I will be able to place it onto the router, aim it at my laptop, and have high speeds with the laptop WiFi card, letting me scrap the repeater and USB dongle, and getting an overall simpler, more reliable, and faster system.
 If the router placement doesn't work (because the connection doesn't work, the antenna is too big to put in the room, or the laptop WiFi card is still too weak to connect), I can put it onto the USB dongle and at least cut out the repeater.
 
-### Testing
+## Buried Ethernet
+
+After discussing it with my uncles who do a lot of handyman work, it turned out to be easy to get the Ethernet cable into the house as the cable can be run through the crawlspace underneath the whole house and then the floor can be drilled through with a ordinary drill, and it was unnecessary to pipe the cable across the lawn.
+After thinking it over and thinking about the reliability improvements and how nice it would be to not have to mess around with a giant directional antenna or WiFi flakiness & drivers, I decided to do it.
+
+Installation proved straightforward (aside from a sweaty hour going back and forth between the room & crawlspace trying to get the hole to be *just* large enough for the cable to be pushed through) and the trench-digging not as tedious as I feared when I did it over the course of a week.
+The installation was fully completed on 25 November 2016 and I was able to connect at similar speeds as estimated & begin benchmarking.
+
+# Testing
 
 For initial testing, I am using the automated commandline `speedtest.net` interface: [`speedtest-cli`](https://github.com/sivel/speedtest-cli/) in a cron job:
 every day, at the start of each hour noon to 10PM (primary time-range for my Internet use and similar to first set of tests), record time & test results at a random minute during that hour:
@@ -261,15 +269,11 @@ At my usual discount rate of 5% and the router/antenna never breaking and discou
 assuming that they will break or need replacing or my circumstances will change within 5 years (eg by moving to somewhere where the directional antenna is unnecessary), the [equivalent annual cost](!Wikipedia) would be -\$32/year (`138 / ((1 - (1/(1+0.05)^5))/0.05)`) or -\$2.6/month.
 This seems like a trivial cost for improving my Internet connection by ~6x.
 
-## Buried Ethernet
-
 The buried Ethernet is more dubious.
 The router & antenna are sunk costs inasmuch as they would be difficult to return and I would need to do so soon, and so the marginal benefit of the Ethernet over the router+antenna would be 16% or less, for a marginal equivalent annual cost of -\$47 on top of the -\$32 for -\$79.
 (The buried Ethernet cable would be even less likely to break than the router or antenna, but is also impossible to take with me.)
 Still not much monthly but is <16% worth even that much?
 
-After discussing it with my uncles who do a lot of handyman work, it turned out to be easy to get the Ethernet cable into the house as the cable can be run through the crawlspace underneath the whole house and then the floor can be drilled through with a ordinary drill, and it was unnecessary to pipe the cable across the lawn.
-After thinking it over and thinking about the reliability improvements and how nice it would be to not have to mess around with a giant directional antenna or WiFi flakiness & drivers, I decided to do it.
-
-Installation proved straightforward (aside from a sweaty hour going back and forth between the room & crawlspace trying to get the hole to be *just* large enough for the cable to be pushed through) and the trench-digging not as tedious as I feared when I did it over the course of a week.
-The installation was fully completed on 25 November 2016.
+I'm not sure even after having installed the cable, but we'll see if the extra reliability prove to be worthwhile or if the cable breaks in a year or something.
+I am holding onto the dongle & directional antenna just in case.
+If the Ethernet is still working in a year with no problems, then I will look into selling the directional antenna locally to recover of the ~\$50 I spent.
