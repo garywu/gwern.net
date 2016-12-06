@@ -98,10 +98,9 @@ main = hakyll $ do
 
 woptions :: WriterOptions
 woptions = defaultHakyllWriterOptions{ writerSectionDivs = True,
-                                       writerStandalone = True,
                                        writerTableOfContents = True,
                                        writerColumns = 120,
-                                       writerTemplate = "<div id=\"TOC\">$toc$</div>\n$body$",
+                                       writerTemplate = Just "<div id=\"TOC\">$toc$</div>\n<div id=\"markdownBody\">$body$</div>",
                                        writerHtml5 = True,
                                        writerHtmlQTags = True,
                                        writerHTMLMathMethod = Text.Pandoc.MathML Nothing,
