@@ -103,6 +103,7 @@ woptions = defaultHakyllWriterOptions{ writerSectionDivs = True,
                                        writerColumns = 120,
                                        writerTemplate = "<div id=\"TOC\">$toc$</div>\n$body$",
                                        writerHtml5 = True,
+                                       writerHtmlQTags = True,
                                        writerHTMLMathMethod = Text.Pandoc.MathML Nothing,
                                        writerEmailObfuscation = NoObfuscation }
 
