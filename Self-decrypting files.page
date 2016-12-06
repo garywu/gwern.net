@@ -1,6 +1,6 @@
 ---
 title: Time-lock encryption
-description: How do you encrypt a file such that it can be broken after a date but not before?
+description: How do you encrypt a file such that it can be decrypted after a date, but not before?
 created: 24 May 2011
 tags: computer science, cryptography, Bitcoin
 status: finished
@@ -76,13 +76,15 @@ Rivest et al then points out that the most obvious approach - encrypt the file t
 
 Rivest et al propose a scheme in which one encrypts the file with a very strong key as usual, but then one encrypts the key in such a way that one must calculate $\text{encryptedKey}^{2^t} \text{mod}(n)$ where _t_ is the adjustable difficulty factor. With the original numbers, one can easily avoid doing the [successive squarings](http://mathworld.wolfram.com/SuccessiveSquareMethod.html). This has the nice property that the puzzle constructor invests only $O(log(n))$ computing power, but the solver has to spend $O(n^2)$ computing power. (This scheme works in the random oracle model, but [Barak & Mahmoody-Ghidary 2009](https://eprint.iacr.org/2008/032.pdf "Merkle puzzles are optimal—an o (n 2)-query attack on any key exchange from a random oracle") proves that is the best you can do.)
 
-Rivest [has actually used](http://people.csail.mit.edu/rivest/lcs35-puzzle-description.txt) this scheme for a time capsule commemorating the [MIT Computer Science and Artificial Intelligence Laboratory](!Wikipedia); he expects his puzzle to take ~35 years. As of 14 years later, [minimal progress](http://crypto.stackexchange.com/questions/5831/what-is-the-progress-on-the-mit-lcs35-time-capsule-crypto-puzzle "What is the progress on the MIT LCS35 Time Capsule Crypto-Puzzle?") seems to have been made; if anything, the breakdown of CPU clockspeeds seems to imply that it will take far more than 35 years[^Rivest-projection] Rivest offers some advice for anyone attempting to unlock this time-lock puzzle (may or may not be related to Mao's 2000 paper ["Time-Lock Puzzle with Examinable Evidence of Unlocking Time"](/docs/2000-mao.pdf)):
+Rivest [has actually used](http://people.csail.mit.edu/rivest/lcs35-puzzle-description.txt) this scheme for a 1999 time capsule commemorating the [MIT Computer Science and Artificial Intelligence Laboratory](!Wikipedia); he expects his puzzle to take ~35 years.
+As of 14 years later, [minimal progress](http://crypto.stackexchange.com/questions/5831/what-is-the-progress-on-the-mit-lcs35-time-capsule-crypto-puzzle "What is the progress on the MIT LCS35 Time Capsule Crypto-Puzzle?") seems to have been made; if anything, the breakdown of CPU clockspeeds seems to imply that it will take far more than 35 years.[^Rivest-projection]
+Rivest offers some advice for anyone attempting to unlock this time-lock puzzle (may or may not be related to Mao's 2000 paper ["Time-Lock Puzzle with Examinable Evidence of Unlocking Time"](/docs/2000-mao.pdf)):
 
-> An interesting question is how to protect such a computation from errors. If you have an error in year 3 that goes undetected, you may waste the next 32 years of computing. Adi Shamir has proposed a slick means of checking your computation as you go, as follows. Pick a small (50-bit) prime _c_, and perform the computation modulo _cn_ rather than just modulo _n_. You can check the result modulo _c_ whenever you like; this should be a extremely effective check on the computation modulo _n_ as well.
+> An interesting question is how to protect such a computation from errors. If you have an error in year 3 that goes undetected, you may waste the next 32 years of computing. Adi Shamir has proposed a slick means of checking your computation as you go, as follows. Pick a small (50-bit) prime _c_, and perform the computation modulo $c \cdot n$ rather than just modulo _n_. You can check the result modulo _c_ whenever you like; this should be a extremely effective check on the computation modulo _n_ as well.
 
 [^Rivest-projection]: As of 2013, the highest-frequency consumer CPU available, the AMD FX-9000, tops out at 5GHz with few prospects for substantial increases in frequency; Rivest projected 10GHz and increasing:
 
-    > Based on the SEMATECH National Technology Roadmap for Semiconductors (1997 edition), we can expect internal chip speeds to increase by a factor of approximately 13 overall up to 2012, when the clock rates reach about 10GHz.  After that improvements seem more difficult, but we estimate that another factor of five might be achievable by 2034. Thus, the overall rate of computation should go through approximately six doublings by 2034.
+    > Based on the SEMATECH National Technology Roadmap for Semiconductors (1997 edition), we can expect internal chip speeds to increase by a factor of approximately 13 overall up to 2012, when the clock rates reach about 10GHz. After that improvements seem more difficult, but we estimate that another factor of five might be achievable by 2034. Thus, the overall rate of computation should go through approximately six doublings by 2034.
 
     Moore's law, in the original formulation of transistors per dollar, may have continued post-1997, but the gains increasingly came by parallelism, which is not useful for repeated squaring.
 
@@ -146,27 +148,25 @@ timelock () {
 
  while [ $I -gt 0 ]
  do
-     HASH_SEED=$(echo $HASH_SEED | sha512sum | cut --delimiter=' ' --fields=1)
-     I=$[$I - 1]
+  HASH_SEED=$(echo $HASH_SEED | sha512sum | cut --delimiter=' ' --fields=1)
+  I=$[$I - 1]
  done
 
- echo $HASH_SEED
-}
+ echo $HASH_SEED }
 
 timelock_encrypt () {
-    local KEY=$(timelock $1 $2)
-    local PlAINTEXT_FILE="$3"
-    echo "$KEY" | gpg --passphrase-fd 0 --symmetric --output $PlAINTEXT_FILE.gpg $PlAINTEXT_FILE
-    }
+  local KEY=$(timelock $1 $2)
+  local PlAINTEXT_FILE="$3"
+  echo "$KEY" | gpg --passphrase-fd 0 --symmetric --output $PlAINTEXT_FILE.gpg $PlAINTEXT_FILE
+}
 # same as timelock_encrypt except the GPG command changes to do decryption
 timelock_decrypt () {
-    local KEY=$(timelock $1 $2)
-    local ENCRYPTED_FILE="$3"
-    echo "$KEY" | gpg --passphrase-fd 0 --decrypt $ENCRYPTED_FILE
-    }
+  local KEY=$(timelock $1 $2)
+  local ENCRYPTED_FILE="$3"
+  echo "$KEY" | gpg --passphrase-fd 0 --decrypt $ENCRYPTED_FILE
+}
 
 # Example usage:
-#
 # $ rm foo.*
 # $ echo "this is a test" > foo.txt
 # $ timelock_encrypt 100 random_seed foo.txt

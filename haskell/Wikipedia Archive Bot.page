@@ -1,5 +1,5 @@
 ---
-description: Haskell: archive Wikipedia with TagSoup and WebCite
+description: "Haskell: writing a daemon to archive links in Wikipedia articles with TagSoup and WebCite"
 status: finished
 created: 26 Sep 2008
 belief: likely
