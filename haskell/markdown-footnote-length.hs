@@ -13,7 +13,10 @@ main = do (file:_) <- getArgs
 
 -- 'drop 3' to avoid the near-infinite loop when files start with Hakyll metadata
 processLint :: FilePath -> String -> IO Pandoc
-processLint f x = bottomUpM (footNoteCheck f) (readMarkdown def (drop 3 x))
+processLint f x = do let parsed = readMarkdown def (drop 3 x)
+                     case parsed of
+                      Right x' -> bottomUpM (footNoteCheck f) x'
+                      Left _ -> error ("Could not parse: "++f)
 
 footNoteCheck :: FilePath -> Inline -> IO Inline
 footNoteCheck f x@(Note cntnts) = do let md = writeMarkdown def (Pandoc nullMeta cntnts)

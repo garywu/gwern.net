@@ -11,7 +11,10 @@ main = do (file:_) <- getArgs
 
 -- 'drop 3' to avoid the near-infinite loop when files start with Hakyll metadata
 processLint :: FilePath -> String -> IO Pandoc
-processLint f x = bottomUpM (lineCheck f) (readMarkdown def (drop 3 x))
+processLint f x = do let parsed = readMarkdown def (drop 3 x)
+                     case parsed of
+                      Right x' -> bottomUpM (lineCheck f) x'
+                      Left _ -> error ("Could not parse: "++f)
 
 lineCheck :: FilePath -> Block -> IO Block
 lineCheck f x@(CodeBlock _ cntnts) = do mapM_ (\a -> when (length a >= 110)

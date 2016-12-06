@@ -17,11 +17,11 @@ main = do args <- getArgs
           return ()
 
 analyzePage :: Bool -> String -> String -> IO Pandoc
-analyzePage prt filename contents = do let parsed = readMarkdown def (unlines . drop 1 . lines $ contents)
+analyzePage prt filename contents = do let (Right parsed) = readMarkdown def (unlines . drop 1 . lines $ contents)
                                        bottomUpM (printLinks filename prt) parsed
 
 printLinks :: String -> Bool -> Inline -> IO Inline
-printLinks f p y@(Link _ (x, _)) = if p then putStrLn (f++": "++x) >> return y else putStrLn x >> return y
+printLinks f p y@(Link _ _ (x, _)) = if p then putStrLn (f++": "++x) >> return y else putStrLn x >> return y
 printLinks _ _ y                   = return y
 
 {- draft attempt at separation of concerns:
