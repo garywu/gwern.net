@@ -156,8 +156,8 @@ timelock () {
 
 timelock_encrypt () {
   local KEY=$(timelock $1 $2)
-  local PlAINTEXT_FILE="$3"
-  echo "$KEY" | gpg --passphrase-fd 0 --symmetric --output $PlAINTEXT_FILE.gpg $PlAINTEXT_FILE
+  local PLAINTEXT_FILE="$3"
+  echo "$KEY" | gpg --passphrase-fd 0 --symmetric --output $PLAINTEXT_FILE.gpg $PLAINTEXT_FILE
 }
 # same as timelock_encrypt except the GPG command changes to do decryption
 timelock_decrypt () {
