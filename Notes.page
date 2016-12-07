@@ -1703,6 +1703,7 @@ Overall, an interesting experience. The next cicada emergence I am near, I'll tr
 - Single-paradigm languages are admirable for pushing until it breaks - or doesn't!; cf Einstein & Brownian motion; Columbus & 'spherical Earth'
 - "I think there is a world market for maybe five computers - Google, Amazon, Facebook, Microsoft, and Baidu."
 - The summer garbages - / the sole remnant of many / bright engineers' dreams
+- Like in security, the worst possible state for a power cord or USB cable is *half* working.
 
 #### Languages
 
@@ -1744,13 +1745,21 @@ Overall, an interesting experience. The next cicada emergence I am near, I'll tr
 - Surprising linear models work at all, when they are the worst functional language ever: only operator \*, _n_ variables, _n_ steps, & output=sum.
 - "Often, I must calculate otherwise than I think. That is called diplomacy."
 - When critiquing a paper, go for the jugular: any part with the words "presumably", "obviously", "past research", or "studies show".
+- Tip: try to read the appendixes of research papers as well. Surprisingly often big results, not just caveats & flaws, will be buried in them
+- "Remember, citizens, fulltext is our first line of defense against science journalism!"
+
+    - We can sleep soundly because rough men stand ready with blogs willing to do violence to papers on our behalf.
 - Every normal man must be tempted now & then to sharpen knives, hoist a black flag, and run amok, shouting "No causation without randomization!"
 - The use of confidence intervals rather than _p_-values is a clear improvement; it makes our difficulties vanish like smoke in a fog.
+- _p_-value testing is pretty weird, but with multiple correction, it gets even weirder: the more you measure & model, the less you know.
 - Every time I think maybe the FDA and big blind clinical trials are unnecessary, I just go read Longecity threads until the feeling passes.
 - Power analysis: if there is enough light to find the needles in the haystack; variance component analysis: if there are any needles at all.
+- Some ask if behavioral genetics has made me nihilistic and feeling all is futile. But I have to believe in free will - my whole family does.
 - Not doing power analysis with informative priors is searching a haystack of unknown size for a needle which probably isn't there.
+- It'd be nice if people cared about systematic vs sampling error, Bayesian methods, informative priors & design more than once every 4 years.
 - Remember: _p_-values are not posterior probabilities are not effect sizes are not utilities are not profits are not decisions.
 - All analyses are ultimately decision analyses. We can ignore that for convenience, but we must never forget that.
+- When does measurement error matter? If you can't write "X correlates Y" as "X correlates with scribbled survey asking about Y" without qualm.
 
 ## Misc
 
@@ -1783,6 +1792,8 @@ General:
 - Remember! Most strings are incompressible, most reals uncomputable, most theorems unprovable, most programs undecidable.
 - Should languages support the writer's convenience or the reader's understanding? Frame it as a status debate, and all becomes clear.
 - Fear not known but unknown propaganda; I have the utmost respect for _Pravda_s - how else will you know what to not believe?
+- Writing down your ideas takes 90% of the time; debugging code takes another 90% of the time; rewriting takes the third 90% of the time...
+- A day with nothing unusual is an unusual day. Fiction writers & GANs must include the improbable to be probable. Spend shrewdly surprisal.
 
 <!-- TODO: when I reach 100, split out to an Epigrams.page -->
 
@@ -2751,3 +2762,4 @@ or comparing to the 2014 InfiniChess: 52 Elo difference between centaurs and eng
 > Nick Carlin: 60-40 is my guess, I suspect that the centaur advantage will come especially in the end game, where human assistance can avoid losses and win games that engines might draw. An example is in some rook endings where the engine will push a pawn to the seventh rank and obtain a draw in a won position.  The missed win is coming through leaving the pawn on the sixth rank and bringing the King up to support its coronation.
 >
 > Eros Riccio: the advantage(s) of the combination Human(s) + engine(s) is obvious: In general, an engine alone is "stupid". It plays random openings, wastes precious time on forced moves, stubbornly wants to play for the win, sometimes forcing the position and losing, when a draw would have been enough to qualify... so, relying on an automatic engine may be quite risky... a human instead, may control all those things which an engine can't. The only advantage of automatic engine I can see, is with little time left in difficult positions, as there is no risk of mouse slips and losing on time.
+s
