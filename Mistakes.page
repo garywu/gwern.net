@@ -491,7 +491,7 @@ So, I try not to spend too much time thinking about this issue: the results will
 ### Genetics links
 #### Complex traits
 
-- ["Meta-analysis of the heritability of human traits based on fifty years of twin studies"](https://www.gwern.net/docs/genetics/2015-polderman.pdf), Polderman et al 2015 (supplements: [1](https://www.gwern.net/docs/genetics/2015-polderman-supplement-1.pdf), [2](http://www.gwern.net/docs/genetics/2015-polderman-supplement-2.xlsx))
+- ["Meta-analysis of the heritability of human traits based on fifty years of twin studies"](https://www.gwern.net/docs/genetics/2015-polderman.pdf), Polderman et al 2015 (supplements: [1](https://www.gwern.net/docs/genetics/2015-polderman-supplement-1.pdf), [2](https://www.gwern.net/docs/genetics/2015-polderman-supplement-2.xlsx))
 - ["Phenome-wide Heritability Analysis of the UK Biobank"](http://biorxiv.org/content/early/2016/08/18/070177), Ge et al 2016
 - ["The Closest of Strangers"](http://www.nytimes.com/2014/05/25/opinion/sunday/the-closest-of-strangers.html)
 - ["Genetic and environmental influences on height from infancy to early adulthood: An individual-based pooled analysis of 45 twin cohorts"](http://www.nature.com/articles/srep28496), Jelenkovic et al 2016
@@ -579,6 +579,7 @@ So, I try not to spend too much time thinking about this issue: the results will
 - ["Molecular genetic contributions to socioeconomic status and intelligence"](http://www.sciencedirect.com/science/article/pii/S0160289614000178), Marioni et al 2014
 - ["Assortative mating on educational attainment leads to genetic spousal resemblance for causal alleles"](https://www.gwern.net/docs/iq/2016-hughjones.pdf), Hugh-Jones et al 2016
 - ["Ultra-rare disruptive and damaging mutations influence educational attainment in the general population"](https://www.gwern.net/docs/genetics/2016-ganna.pdf), Ganna et al 2016
+- ["Cognitive Performance Among Carriers of Pathogenic Copy Number Variants: Analysis of 152,000 UK Biobank Subjects"](https://www.gwern.net/docs/genetics/2016-kendall.pdf), Kendall et al 2016
 
 - ["A closer look at the role of parenting-related influences on verbal intelligence over the life course: Results from an adoption-based research design"](https://www.researchgate.net/profile/Joseph_Schwartz4/publication/263663859_A_closer_look_at_the_role_of_parenting-related_influences_on_verbal_intelligence_over_the_life_course_Results_from_an_adoption-based_research_design/links/56081d3b08aea25fce3b814e.pdf), Beaver et al 2014
 - ["Large Cross-National Differences in Gene × Socioeconomic Status Interaction on Intelligence"](https://www.gwern.net/docs/iq/2015-tucker-drob.pdf), Tucker-Drob & Bates 2015
@@ -607,7 +608,7 @@ So, I try not to spend too much time thinking about this issue: the results will
 - crime and aggression:
 
     - ["Genome-wide association study of antisocial personality disorder"](http://www.nature.com/tp/journal/v6/n9/full/tp2016155a.html), Rautiainen et al 2016
-    - ["The VNTR 2 repeat in MAOA and delinquent behavior in adolescence and young adulthood: associations and MAOA promoter activity"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2922855/), Guo et al 2012
+    - ["The VNTR 2 repeat in MAOA and delinquent behavior in adolescence and young adulthood: associations and MAOA promoter activity"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2922855/), Guo et al 2008
     - ["Genetics of Aggression"](https://www.gwern.net/docs/genetics/2012-anholt.pdf), Anholt & Mackay 2012
     - ["Exploring the association between the 2-repeat allele of the MAOA gene promoter polymorphism and psychopathic personality traits, arrests, incarceration, and lifetime antisocial behavior"](https://www.researchgate.net/profile/Brian_Boutwell/publication/255700756_Exploring_the_association_between_the_2-repeat_allele_of_the_MAOA_gene_promoter_polymorphism_and_psychopathic_personality_traits_arrests_incarceration_and_lifetime_antisocial_behavior/links/0deec520393e5c8ee7000000.pdf), Beaver et al 2013
     - ["Violent crime runs in families: a total population study of 12.5 million individuals"](http://www.sakkyndig.com/psykologi/artvit/frisell2010.pdf), Frisell et al 2011
@@ -712,6 +713,7 @@ Just train for 10,000 hours, right? Not quite."](http://www.outsideonline.com/ou
 - ["The Superhero Genes: One scientist is on a quest to find the genetic mutations that make athletes elite - which may lead to new treatments for the rest of us"](https://story.californiasunday.com/superhero-gene-euan-ashley-stanford)
 - ["The Genetic Basis of Mendelian Phenotypes: Discoveries, Challenges, and Opportunities"](http://www.cell.com/ajhg/abstract/S0002-9297\(15\)00245-1), Chong et al 2015
 - ["The contribution of de novo coding mutations to autism spectrum disorder"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4313871/), Iossifov et al 2014 (media: [1](http://www.spring.org.uk/2014/11/autism-new-studies-identify-dozens-more-associated-genes.php), [2](http://www.npr.org/blogs/health/2014/10/29/359818102/scientists-implicate-more-than-100-genes-in-causing-autism))
+- ["Polygenic transmission disequilibrium confirms that common and rare variation act additively to create risk for autism spectrum disorders"](http://biorxiv.org/content/early/2016/11/23/089342), Weiner et al 2016
 - ["How Craig Venter is fighting ageing with genome sequencing"](http://www.wired.co.uk/article/craig-venter-human-longevity-genome-diseases-ageing)
 - ["One of a Kind: What do you do if your child has a condition that is new to science?"](http://www.newyorker.com/magazine/2014/07/21/one-of-a-kind-2)
 - ["The Muscular Dystrophy Patient and Olympic Medalist with the Same Genetic Disorder"](https://www.propublica.org/article/muscular-dystrophy-patient-olympic-medalist-same-genetic-mutation)
@@ -748,6 +750,7 @@ Human evolution:
 - ["The phenotypic legacy of admixture between modern humans and Neandertals"](https://www.gwern.net/docs/genetics/2016-simonti.pdf), Simonti et al 2016
 - ["The Genetic Cost of Neanderthal Introgression"](http://www.genetics.org/content/203/2/881), Harris & Nielsen 2016
 - ["Genetic Markers of Human Evolution Are Enriched in Schizophrenia"](http://www.biologicalpsychiatryjournal.com/article/S0006-3223%2815%2900855-0/pdf), Srinivasan et al 2016 (schizophrenia variants tend to be in genes which have also been under natural selection; is human evolution for intelligence & sociality incomplete and schizophrenia due to lingering mistakes which haven't yet been purged?)
+- ["Parallel Adaptive Divergence among Geographically Diverse Human Populations"](http://journals.plos.org/plosgenetics/article?id=10.1371%2Fjournal.pgen.1002127), Tennessen & Akey 2011
 - ["Genome-wide patterns of selection in 230 ancient Eurasians"](https://www.gwern.net/docs/genetics/2015-mathieson.pdf), Mathieson et al 2015 ([media](http://www.nytimes.com/2015/11/24/science/agriculture-linked-to-dna-changes-in-ancient-europe.html "Agriculture Linked to DNA Changes in Ancient Europe"))
 - ["Eight thousand years of [human] natural selection in Europe"](http://biorxiv.org/content/early/2015/03/13/016477.full.pdf), Mathieson et al 2015 ([Khan](http://www.unz.com/gnxp/selection-in-europeans-but-it-still-sweeps/)); see also [EDAR](https://en.wikipedia.org/wiki/Ectodysplasin_A_receptor#Derived_EDAR_allele)
 - ["Detection of human adaptation during the past 2,000 years"](http://biorxiv.org/content/early/2016/05/07/052084.full.pdf), Field et al 2016
@@ -757,6 +760,7 @@ Human evolution:
 - ["The genetics of Mexico recapitulates Native American substructure and affects biomedical traits"](http://science.sciencemag.org/content/344/6189/1280), Moreno-Estrada et al 2016
 - ["Humans Never Stopped Evolving: The emergence of blood abnormalities, an adult ability to digest milk, and changes in our physical appearance point to the continued evolution of the human race"](http://www.the-scientist.com/?articles.view/articleNo/46651/title/Humans-Never-Stopped-Evolving/)
 - ["Going global by adapting local: A review of recent human adaptation"](https://www.gwern.net/docs/genetics/2016-fan.pdf), Fan et al 2016
+- ["A time transect of exomes from a Native American population before and after European contact"](http://www.nature.com/articles/ncomms13175), Lindo et al 2016
 - ["Metabolic costs and evolutionary implications of human brain development"](http://www.pnas.org/content/111/36/13010.long), Kuzawa et al 2014
 - ["Infectious causation of disease: an evolutionary perspective"](http://www.isteve.com/infectious_causation_of_disease.pdf), Cochran et al 2000; see also [_Toxoplasma gondii_](https://en.wikipedia.org/wiki/Toxoplasma_gondii)
 - ["Rising Plague"](https://entitledtoanopinion.wordpress.com/2013/02/11/rising-plague/)

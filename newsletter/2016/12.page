@@ -13,24 +13,55 @@ If you have not been receiving issues, please check your email account's spam fo
 
 # Writings
 
+- [WiFi bandwidth benchmarking](https://www.gwern.net/WiFi)
+- [statistical model criticism with machine learning](https://www.gwern.net/Statistical%20notes#model-criticism-via-machine-learning)
+- `gwern.net` CSS, logo, and index page redesigns
+
 # Media
 ## Links
 
 Everything is heritable:
 
+- ["Genome-wide analyses for personality traits identify six genomic loci and show correlations with psychiatric disorders"](https://www.gwern.net/docs/genetics/2016-lo.pdf), Lo et al 2016
+- ["Cognitive Performance Among Carriers of Pathogenic Copy Number Variants: Analysis of 152,000 UK Biobank Subjects"](https://www.gwern.net/docs/genetics/2016-kendall.pdf), Kendall et al 2016
+- ["Schizophrenia risk alleles and neurodevelopmental outcomes in childhood: a population-based cohort study"](https://www.gwern.net/docs/genetics/2016-riglin.pdf), Riglin et al 2016
 - recent human evolution:
 
 AI:
+
+- ["Overcoming catastrophic forgetting in neural networks"](https://arxiv.org/abs/1612.00796), Kirkpatrick et al 2016
+- ["Delivering real-time AI in the palm of your hand"](https://code.facebook.com/posts/196146247499076/delivering-real-time-ai-in-the-palm-of-your-hand/) (Style transfer was invented hardly a year ago or so, but it's gone from requiring hours to now being doable in realtime on an ordinary smartphone at higher quality. Progress in deep learning is fast, and this also illustrates the optimization potential of neural networks: they start off grossly overparameterized, but can be specialized down to much more powerful faster systems...)
+- ["PILCO: A Model-Based and Data-Efficient Approach to Policy Search"](http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Deisenroth_323.pdf), Deisenroth & Rasmussen 2011 (One of the most impressive RL algorithms around, this demonstrates the power of forward model-based planning for optimization & learning - a paradigm which thus far has been weirdly absent from deep reinforcement learning.)
+- ["Convolutional Neural Fabrics"](https://arxiv.org/abs/1606.02492), Saxena & Verbeek 2016
+- [AI risk reading list](http://humancompatible.ai/bibliography "Annotated bibliography of recommended materials")
+
 
 Statistics/meta-science/mathematics:
 
 Politics/religion:
 
+- [Specific corruption accusations in the Park/Choi Soon-il scandal](https://askakorean.blogspot.com/2016/12/the-ultimate-choi-soon-sil-gate.html)
+
 Psychology/biology:
+
+- Psychedelics & psychological well-being ([media](https://www.theatlantic.com/health/archive/2016/12/the-life-changing-magic-of-mushrooms/509246/ "The Life-Changing Magic of Mushrooms: A single dose of magic mushrooms can make people with severe anxiety and depression better for months, according to a landmark pair of new studies.")):
+
+    - ["The paradoxical psychological effects of lysergic acid diethylamide (LSD)"](https://www.researchgate.net/profile/Mendel_Kaelen/publication/293169090_The_paradoxical_psychological_effects_of_lysergic_acid_diethylamide_LSD/links/56bb178808ae023560266ae5.pdf), Carhart-Harris et al 2016
+    - ["Psilocybin for anxiety and depression in cancer care? Lessons from the past and prospects for the future"](https://www.gwern.net/docs/2016-nutt.pdf), Nutt 2016
+    - ["Psilocybin produces substantial and sustained decreases in depression and anxiety in patients with life-threatening cancer: A randomized double-blind trial"](https://www.gwern.net/docs/2016-griffiths.pdf), Griffiths et al 2016
+    - ["Rapid and sustained symptom reduction following psilocybin treatment for anxiety and depression in patients with life-threatening cancer: a randomized controlled trial"](https://www.gwern.net/docs/2016-ross.pdf), Ross et al 2016
+    - ["Survey study of challenging experiences after ingesting psilocybin mushrooms: Acute and enduring positive and negative consequences"](https://www.gwern.net/docs/2016-carbonaro.pdf), Carbonaro et al 2016
+    - ["The Challenging Experience Questionnaire: Characterization of challenging experiences with psilocybin mushrooms"](https://www.gwern.net/docs/2016-barrett.pdf), Barrett et al 2016
+- ["When the music's over. Does music skill transfer to children's and young adolescents' cognitive and academic skills? A Meta-Analysis"](https://www.gwern.net/docs/iq/2016-sala.pdf), Sala & Gobet 2016 (no)
 
 Technology:
 
+- ["The Distribution of Users’ Computer Skills: Worse Than You Think"](https://www.nngroup.com/articles/computer-skill-levels/)
+- ["\[0day\] \[exploit\] Compromising a Linux desktop using... 6502 processor opcodes on the NES?!"](https://scarybeastsecurity.blogspot.com/2016/11/0day-exploit-compromising-linux-desktop.html)
+
 Economics:
+
+- ["Competition in the Robotaxi world"](http://www.templetons.com/brad/robocars/compete.html)
 
 Philosophy:
 
