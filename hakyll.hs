@@ -1,5 +1,5 @@
 #!/usr/bin/env runhaskell
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE FlexibleContexts, OverloadedStrings #-}
 
 {- Debian dependencies:
 $ sudo apt-get install libghc-hakyll-dev libghc-pandoc-dev libghc-filestore-dev libghc-feed-dev libghc-tagsoup-dev imagemagick s3cmd git
@@ -57,6 +57,8 @@ import System.Exit (ExitCode(ExitFailure))
 import Text.HTML.TagSoup (renderTagsOptions,parseTags,renderOptions, optMinimize, Tag(TagOpen))
 import Text.Pandoc (bottomUp, nullAttr, Extension(Ext_markdown_in_html_blocks), HTMLMathMethod(MathML), Inline(..),
                     ObfuscationMethod(NoObfuscation), Pandoc(..), ReaderOptions(..), WriterOptions(..))
+
+import Text.Pandoc.SideNote (usingSideNotes)
 
 main :: IO ()
 main = hakyll $ do
@@ -144,7 +146,7 @@ postCtx tags =
     constField "description" "N/A"
 
 pandocTransform :: Pandoc -> Pandoc
-pandocTransform = bottomUp (map (convertInterwikiLinks . convertHakyllLinks . addAmazonAffiliate))
+pandocTransform = usingSideNotes . bottomUp (map (convertInterwikiLinks . convertHakyllLinks . addAmazonAffiliate))
 
 -- For Amazon links, there are two scenarios: there are parameters (denoted by a
 -- '?' in the URL), or there are not. In the former, we need to append the tag as
