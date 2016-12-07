@@ -3207,16 +3207,17 @@ So an American social group cannot exceed _n_=51 before first names begin to bre
 
 # Detecting fake (human) Markov chain bots
 
-Some popular Twitter and Tumblr accounts using [Markov chains](!Wikipedia) trained on two unrelated corpuses to create amusing mashups: programming documentation and [H.P. Lovecraft's horror/SF fiction](http://thedoomthatcametopuppet.tumblr.com/ "The Doom That Came to Puppet") or the [King James Bible](http://kingjamesprogramming.tumblr.com/ "King James Programming") or [the works of Karl Marx](https://marxistprogramming.tumblr.com/ "Marxist Programming"), or [Kim Kardashian and Kierkegaard](https://twitter.com/kimkierkegaard " Kim Kierkegaardashian").
+Some popular Twitter and Tumblr accounts use [Markov chains](!Wikipedia) trained on a corpus of writing such as [Markov James Mitchens](https://twitter.com/MarkovMickens) or two unrelated corpuses to create amusing mashups: programming documentation and [H.P. Lovecraft's horror/SF fiction](http://thedoomthatcametopuppet.tumblr.com/ "The Doom That Came to Puppet") or the [King James Bible](http://kingjamesprogramming.tumblr.com/ "King James Programming") or [the works of Karl Marx](https://marxistprogramming.tumblr.com/ "Marxist Programming"), or [Kim Kardashian and Kierkegaard](https://twitter.com/kimkierkegaard "Kim Kierkegaardashian").
 The humor comes from the fact that the Markov chains have no understanding and are merely programs producing gibberish that occasionally present striking juxtapositions or insights.
-Much of their humor derives in large part from the fact that while humans curate them, they don't write them.
+Much of their appeal derives in large part from the fact that while humans *curate* them, humans don't *write* them.
+They depend on this authenticity to be striking.
+
+Of course, there's always the temptation to edit them or write them wholesale, perhaps because the Markov chains aren't cooperating in producing any comedy gold to tweet that day, which deceives the reader.
+This poses an inverse Turing test: how would you detect a fake Markov chain account, that is, one where a human is pretending to be a computer and writing some of the text?
 
 Markov chains are trained on a specific corpus and are a probabilistic generative model which encode the probability that a word _X_ follows another word _Y_ for all the words in that corpus (and similarly if they are operating on letters or on [_n_-grams](!Wikipedia "n-gram")); there is no state or memory or 'look back' or ability to model recursion.
 To generate text, one simply picks a random word _Y_, looks up the probabilities of all the words _A_..._Z_ from _Y_, and picks a word at random weighted by those probabilities; then repeat indefinitely.
 Conversely, one could also use it to calculate the [likelihood](!Wikipedia) of a given text by multiplying the probability of each word in the text conditional on the previous one.
-
-Of course, there's always the temptation to edit them or write them wholesale, perhaps because the Markov chains aren't cooperating in producing any comedy gold to tweet that day, which is dishonest.
-This poses an inverse Turing test: how would you detect a fake Markov chain account, that is, one where a human is pretending to be a computer and writing some of the text?
 
 One difficulty is the potential for double-use of data: the first pass through a Markov chain account is already applying to the data a highly flexible Bayesian neural network with billions of parameters (one's brain).
 If one spots an 'anomalous' dataset and subsequent analysis confirms it, what does this mean?
