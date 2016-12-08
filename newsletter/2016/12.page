@@ -15,6 +15,7 @@ If you have not been receiving issues, please check your email account's spam fo
 
 - [WiFi bandwidth benchmarking](https://www.gwern.net/WiFi)
 - [statistical model criticism with machine learning](https://www.gwern.net/Statistical%20notes#model-criticism-via-machine-learning)
+- compiled [my epigrams](https://www.gwern.net/Epigrams)
 - `gwern.net` CSS, logo, and index page redesigns
 
 # Media
@@ -34,7 +35,6 @@ AI:
 - ["PILCO: A Model-Based and Data-Efficient Approach to Policy Search"](http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Deisenroth_323.pdf), Deisenroth & Rasmussen 2011 (One of the most impressive RL algorithms around, this demonstrates the power of forward model-based planning for optimization & learning - a paradigm which thus far has been weirdly absent from deep reinforcement learning.)
 - ["Convolutional Neural Fabrics"](https://arxiv.org/abs/1606.02492), Saxena & Verbeek 2016
 - [AI risk reading list](http://humancompatible.ai/bibliography "Annotated bibliography of recommended materials")
-
 
 Statistics/meta-science/mathematics:
 
