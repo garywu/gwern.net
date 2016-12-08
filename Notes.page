@@ -2347,6 +2347,157 @@ The questions can also be split between respondents, limiting their ability to i
 
 If this works out, it offers something valuable: an objective, easy, widely-applicable test of long-run population rationality, which controls for individual differences in priors and causal models and knowledge.
 
+# November 2016 data loss postmortem
+
+> In late November 2016, my Acer laptop broke and also corrupted the encrypted filesystem on the SSD, which apparently due to design decisions is very easily broken. Because I had been changing my backup strategy to use an new encryption key and had been lax about my manual backups, this made the most recent encrypted backups undecryptable as well, causing data loss back at least 2 weeks. I review how all this came to pass despite my careful backups, and my countermeasures: a new higher quality laptop, making backups of encrypted filesystem headers as well as the contents, and buying faster external drive enclosures.
+>
+> Key lesson: *if you use LUKS-encrypted Linux filesystems, know that they are super-fragile!* You should backup a copy of the LUKS header (by running a command like `sudo cryptsetup luksHeaderBackup /dev/sda5 --header-backup-file luks-header.bin.crypt`) to avoid the header becoming corrupted & all data destroyed.
+
+![Investigating my cascade of laptop and backup problems.](https://imgs.xkcd.com/comics/tv_problems.png "XKCD #1760: 'TV Problems'")
+
+On 26 November 2016, I woke to find my [Acer](!Wikipedia) laptop cold and dead.
+The power had not gone out overnight, according to the microwave and the UPS, and the power indicator on the laptop was not on.
+I swapped the power cord for a generic replacement power cord I'd gotten from Best Buy when the _first_ laptop power cord had died on me back in May; this made no
+Attempts to drain the battery and reset the laptop (this laptop had a hardwired battery) did nothing, and the laptop, then and later, remained totally unresponsive and gave no activity.
+It was well and truly dead. My best guess is that the motherboard broke/was fried.
+This is an unusual way for a (non-Apple) laptop to die, and has never happened to me before (my problems have always been with the screen or keyboard or hard drive or battery/power supply).
+My best guess for why the motherboard died is that the stress of doing deep learning on the GPU finally caught up with it; I thought it was handling it fine because the CPU only occasionally had to be throttled, but the cumulative months of running `char-rnn`/`torch-rnn` for projects like [RNN metadata]() may've been too much and it shorted out or something.
+
+The laptop in question was a [Acer Aspire V17 Nitro Black Edition VN7-791G-792A Gaming Laptop 4th Generation Intel Core i7 4720HQ (2.60GHz) 16GB Memory 1TB HDD 256GB SSD NVIDIA GeForce GTX 960M 4 GB GDDR5 17.3-inch Windows 8.1 64-Bit](http://www.newegg.com/Product/Product.aspx?Item=N82E16834314853) I had bought in 24 July 2015 from Newegg for \$1,215.21; it had a 1 year warranty on it, which had expired.
+In any case, even had the laptop still been under warranty, I would've had to buy a new laptop simply because I am leaving on a long trip to England on 10 December, and there was no way I could ship a laptop to an Acer repair center, the entire motherboard replaced (which would probably cost easily \$500+), be shipped back to me, and all my data recopied & OS set up in time for me to leave.
+So I had to buy a new
+To replace the Acer laptop, I decided to go with a brand known for reliability, good laptop keyboards, power, and Linux support: a [Lenovo ThinkPad P70](https://www.amazon.com/Lenovo-ThinkPad-20ER002KUS-i7-6700HQ-Windows/dp/B0178JBBMG/).
+[ThinkPad](!Wikipedia) P70s have the 17-inch screens I love, and I added 32GB [ECC RAM](!Wikipedia) because [Rowhammer](!Wikipedia) is frightening and I like the idea of more reliability, and expedited shipping.
+Perhaps because I was buying the day after Black Friday, it cost a lot less than I expected: \$1886.59.
+It shipped on 30 November 2016, and UPS soon said it was in Anchorage Alaska, so it should definitely make it by 10 December, and indeed arrived on the evening of 1 December, well ahead of my expectations.
+(This suggests that paying \$20 for expedited shipping might not have been *that* necessary, but I think it was the right choice - I didn't want to risk it.)
+Had it not arrived in time, my backup plan was to drive to Best Buy, buy a regular laptop, and simply return it afterwards.
+
+I pulled out the 1TB Samsung SSD I'd put in and inserted it into the old half-broken Dell Studio 17 laptop I keep as my backup laptop.
+(It's half-broken because about a third of the keyboard is missing or about to break, there is a permanent line of LEDs lit up on the screen, and it's ancient - 4GB RAM, only 2 USB ports etc.)
+The drive failed to boot with FS corruption, and then [LUKS](!Wikipedia) decryption with the passphrase failed despite at least 30 tries on my part.
+The SSD had been corrupted by the motherboard in its death throes, apparently.
+Even though the entire partition was there and even most of the LUKS header was there and could be seen using `cryptsetup luksDump /dev/sda5`, the key was not available.
+Reading up, I learned that LUKS-encrypted hard drives have *no* redundancy or protection from any kind of corruption, and this is by design/laziness, claimed to be in the interests of security, to quote the `cryptsetup` man page (emphasis added):
+
+> LUKS header: If the header of a LUKS volume gets damaged, all data is permanently lost unless you have a header-backup. If a key-slot is damaged, it can only be restored from a header-backup or if another active key-slot with known passphrase is undamaged. _Damaging the LUKS header is something people manage to do with surprising frequency_. This risk is the result of a trade-off between security and safety, as LUKS is designed for fast and secure wiping by just overwriting header and key-slot area.
+
+("Did you just tell me to go fuck myself?" "I believe I did, Bob.")
+
+This is BS because the security rationale makes no sense (how many milliseconds would it take to erase a second header stored elsewhere on the partition? has anyone ever in the history of the world been saved from law enforcement or hackers because there was only *one* header rather than two?); I suspect the real reason is that the maintainer admits in bug reports that the current LUKS format doesn't allow for multiple copies ([1](https://gitlab.com/cryptsetup/cryptsetup/issues/19), [2](https://gitlab.com/cryptsetup/cryptsetup/issues/77)), and this is just them engaging in sour grapes about how It's Actually A Good Thing.
+I can safely say I had no idea whatsoever that Linux encrypted drives were _this_ fragile and permanent data loss so trivial, or that we are expected to do things like `sudo cryptsetup luksHeaderBackup /dev/sda5 --header-backup-file luks-header.bin.crypt` if we want to avoid it.
+Such fragility is itself deeply counter to security as it strongly encourages users to not use encryption at all: they have to choose whether to be mugged by bitflips or by the FBI. What a choice.
+
+A lesson is learned but the damage is irreversible.
+This was unfortunate, but OK, I have a good backup situation.
+It was well-timed, if anything, as I had been busy on 15 November 2016 improving my backup situation by creating a fresh un-passphrased PGP key X for unattended backups and setting up a [Backblaze](!Wikipedia) B2 account for a remote off-site backup (Backblaze storage is ~10x cheaper than [Amazon S3](!Wikipedia)).
+So I had available for recovery of my data:
+
+1. 3 passphrased LUKS-encrypted external [USB-2](!Wikipedia) drives, which I [rsync](!Wikipedia) manually to periodically irregularly at my whim (partially because they are so slow), rotating among them; stored in ziplock bags in a locked fire safe in a separate room. These had full backups as of 1 November, 5 November, and 14 November. Useful but outdated.
+2. an incomplete Backblaze full backup, using [duplicity](!Wikipedia "Duplicity (software)") backups encrypted to key X. It was going to take a week or two to do the first full upload, so unsurprisingly it had been interrupted by my Acer laptop's untimely demise, and was of no use; oh well.
+2. a plugged-in [USB-3](!Wikipedia) 4TB external drive that I had a cron job which did daily duplicity backups encrypted to X; I could see the new duplicity archives created at midnight, so the incrementals were all there. (This external drive is not passphrased LUKS-encrypted since it's a RAID and I didn't want to risk breaking it and quickly filled it up to the point where I couldn't reformat it for lack of anywhere to copy the contents, so I left it as a NTFS FS and simply made sure that all duplicity archives backed up to it were encrypted; same thing in the end.) Very useful - I could pull my data off it quickly and I would lose nothing more than some background activity since midnight. All I needed was key X to decrypt it.
+
+At this point horror dawned.
+My most recent immediately accessible backup was the manual backup drive done on 1*4* November, but I had created key X on 1*5* November.
+Copies of key X existed on the SSD - whose master key had been corrupted and could not be decrypted - and on the USB-3 external drive - all of which was encrypted to key X - and on Backblaze - also encrypted to key X - _and nowhere else_.
+
+What happened was that I had simply assumed that my regular backup procedures would migrate key X onto the manual external drives, and then in any disaster, I would simply copy over all the data from one of them, and grab incrementals from Backblaze or the USB-3 external drive.
+This was _almost_ right and off only by a day.
+But so much of my time was used up with Thanksgiving festivities and writing and [digging in a new Ethernet cable](/WiFi) and shopping that my usual manual backup routine of syncing every 5 days or so fell into abeyance.
+
+So I'd lost 16 days of data.
+
+The timing was really remarkably bad.
+
+The previous night, I had wondered mentally if I spent too much on backups. That morning, staring at my bricked laptop+16 days data loss, I knew I spent too little.
+
+> "What is despair? I have known it - hear my song." --[James Mickens, "The Night Watch"](https://www.usenix.org/system/files/1311_05-08_mickens.pdf)
+
+The 5 stages of backup & data loss grieving:
+
+1. Denial: it'll work if I hold the power button; I must've mistyped the password, LUKS isn't broken; I have incremental backups!
+2. Anger: no header file copies at all?! Curse you LUKS devs! If only I had made even one backup more recently!
+3. Bargaining: even one backup would be enough, I can survive missing a few days, one of the other drives...
+4. Depression: gone, all gone, 14 days of data... I don't even remember what I've lost, why I write things down in order to forget them
+5. Acceptance: "vanity of vanities, all is vanity". "Look upon my works ye mighty and despair." _Shoganai_. At least I didn't lose as much as [Shōtetsu](!Wikipedia). Let's draw up a list of what's been lost and figuring out how to recreate them.
+
+Thus began my short stay in computing hell...
+
+The data loss was bad enough but the rest added insult to injury.
+I wasted almost 2 days in the Ubuntu LiveCD trying to copy the `/dev/sda5` partition off the SSD before I realized that creating a [bzip2](!Wikipedia)-compressed disk image of an encrypted partition was, besides being very slow between the ancient laptop CPU & USB-2 connection, pointless and a huge waste of my time.
+Then I tried to install Ubuntu 16.10 on the Dell Studio 17 only to encounter a baffling array of glitches, crashes, reboots, and extremely slow hard drive write speeds, which went away when I reinstalled 15.04, so apparently the Dell Studio 17 either is having internal hardware issues or has become so old that standard Linux distros are incompatible out of the box (which is just peachy) or the Ubuntu release is broken.
+15.04 at least works, but the keyboard remained a PITA to use for anything, and I also had to fight issues with the old software in 15.04 (eg my [Xmonad](!Wikipedia) configuration doesn't work, the versions of Xmonad shipped are that ancient; and the Chromium is too old for the Ledger extension, so I can't use my bitcoins without finding someone who's backported Chromium 50 to 15.04...).
+And I can't avoid using the broken laptop by plugging in a USB keyboard unless I want to also be unable to plug in any of the USB drives because it only has 2 USB ports and one is used by the Logitech trackball.
+Further, Acer's website and support are notoriously bad, and they didn't help at all (after waiting 40 minutes in chat with a thorough description of my problem to get a price quote on a repair, they simply disconnected me).
+
+Data recovery proved tricky.
+I wrote down everything I could possibly think of which I had done in those 16 days, got copies of IRC logs for hints as to my activities, synced with the Github mirror of `gwern.net` to recover (most) of my writing during that period, and tried to match up with my offline activities.
+I definitely lost 2 weeks of data on some of my self-experiments and other metrics, along with some new music I'd downloaded from [What.cd](!Wikipedia) and whose name I've forgotten, and some Geocities-related `char-RNN` training logs + checkpoints, all of which is sad but not a huge deal.
+In retrospect, the data loss doesn't _seem_ to be that bad (although I've spent several days working through it) in part, ironically, for the same reasons that I had slackened on manual backups.
+Of course, this assumes I haven't forgotten that I've forgotten having done something important...
+
+So, [post-mortem](!Wikipedia "Root cause analysis") time - one always prepares to fight the last war.
+What was the primary cause for this huge waste of time, money, and effort; what other causes worsened it; and how might all be prevented in the future?
+
+1.
+
+    - *Cause*: the proximate cause of data loss was the Acer laptop bricking. This could be due to Acer's build quality (not always sterling) or due to the stress of GPU neural network training.
+    - *Solution*: I have bought a higher quality brand & model (Lenovo ThinkPad) and will avoid extensive laptop GPU training in the future (either build a deep learning desktop or use the new Amazon GPU instances, which are far better than the previous ones).
+2.
+
+    - *Cause*: the next-proximate cause of data loss was the LUKS header being corrupted.
+    - *Solution*: in future OS installations, dump a copy of the LUKS header using 'cryptsetup' and archive it in the local FS (where it can be recovered from backups) and online. I've added this to my OS installation checklist, done so for the new ThinkPad, and also for the 3 external drives with encrypted FSes.
+3.
+
+    - *Cause*: the penultimate cause of data loss was key mismanagement and key X's secret key only being available in key-X-encrypted backups, creating a vicious circle.
+    - *Solution*: whenever creating new keys for backups, export the secret key to a passphrase-protected file and upload that to the Internet.
+4.
+
+    - *Cause*: another penultimate cause of data loss was writings which could've been public (eg my ongoing chocolate reviews) on `gwern.net` and, thus, retrievable from Github, were instead kept private. For example, my ['model criticism' demonstration](http://andrewgelman.com/2016/11/21/deep-learning-model-checking-ai-no-homunculus-principle-unitary-nature-consciousness/#comment-351228) wasn't really done after I started it on 21 November, but on a whim I committed it, and so I don't have to rewrite the whole damn thing.
+    - *Solution*: I am going to review my drafts to see what can be added.
+5.
+
+    - *Cause*: the ultimate cause of data loss was manual backups being irregular because they were too slow/painful.
+    - *Solution*: I am upgrading the 3 manual drives' USB-2 enclosures to newer faster USB-3 enclosures ([2 2.5-inch](https://www.amazon.com/Upgraded-Sabrent-2-5-Inch-Enclosure-EC-UK30/dp/B00LS31KQG/ "[Upgraded Version Support UASP] Sabrent Ultra Slim USB 3.0 to 2.5-Inch SATA External Aluminum Hard Drive Enclosure [Black] (EC-UK30) , $10") and 1 [3.5-inch enclosure](https://www.amazon.com/dp/B01M2BNYZV/ "ORICO Tool Free 3.5-inch USB 3.0 to SATA III External Hard Enclosure Case for 3.5'' HDD [UASP and 8TB Supported] , $25"))  and schedule regular reminders to do a manual backup so it can't slip from mind so easily. Another source of friction is the varying sizes of the HDDs: I have to be careful about the 500GB one to use rsync rather than duplicity otherwise it'll run out of space quickly. So I'm replacing that with a [2TB one](https://www.amazon.com/Seagate-Barracuda-2-5-Inch-Internal-ST2000LM015/dp/B01LX13P71 "Seagate 2TB Barracuda SATA 6GB/s 128MB Cache 2.5-Inch, $101"), and after finishing upgrading everything, I'll switch the rsyncs to rdiff-backup, so everything will be consistent: either encrypted duplicity, or rdiff-backup to encrypted drive. (Total cost: \$155.)
+6.
+
+    - *Cause*: I wasted most of a day and was much slower in restoration because of the Dell Studio 17 laptop incompatibility with a reasonably recent Ubuntu, USB-2 enclosures, and a shortage of USB ports in the Dell laptop.
+    - *Solution*: the speed is partially addressed by the USB-3 enclosure upgrade (at least, for restoring to a different laptop, one with USB-3 ports); the USB port shortage I am addressing by buying a [USB hub](https://www.amazon.com/Anker-Ultra-Slim-4-Port-Data/dp/B00XMD7KPU/ "Anker Ultra Slim 4-Port USB 3.0 Data Hub, $10")^[yes, I know they have lower bandwidth because they plug into a single port, but the USB trackball & keyboard will use up hardly any and the USB drives can run at near-full speed]; and the incompatibility is a little more difficult. I am concerned about the glitches, but I'm not sure I want to scrap the Dell laptop entirely and look for some cheap regular \$600 laptop on sale after Christmas to use as my backup laptop. Is that going too far? Maybe. Building a desktop would help inasmuch as then the ThinkPad would count as the backup computer, but building a proper desktop is a commitment I'm not sure I want to make after spending \$1800 on a laptop...
+
+Hopefully all this should prevent any recurrence or make dealing with it far less difficult. Nevertheless, it's cost me a ton of time, money, and stress. A lesson is learned but the damage is irreversible.
+
+---
+
+The ThinkPad arrived fortunately quickly on 1 December 2016.
+I immediately began installing & copying over.
+Despite the [certification of ThinkPad P70s with Ubuntu 14.04](https://certification.ubuntu.com/certification/hardware/201512-20417/), the install was not super-smooth.
+I pulled out the default HDD with Windows on it (which did work when I booted it up to test) and put in my 1TB Samsung SSD, and toggled the graphics in the BIOS to "discrete" rather than "hybrid".
+The Ubuntu 16.10 LiveCD wouldn't even boot (I tested the laptop thoroughly with the builtin BIOS tools and the optical disk drive was fine, just like everything else), so I've chucked it (it's now betrayed me twice, with the Dell _and_ ThinkPad so I think the CD is just broken) and I later burned another.
+
+Installing with 15.04... initially went well but on rebooting gave me problems: it would freeze after [GNU GRUB](!Wikipedia) loaded Ubuntu.
+After much puzzling, I learned there was a bootloader graphics problem - I could work around it by either using 'rescue' mode to bypass the GRUB splashscreen stuff and simply tell rescue mode to boot as normal, or I could type in the FS encryption password blind and then it would work!
+After this, things went much smoother albeit with a ton of waiting on the USB-2 enclosures to sync with the SSD (the new enclosures not yet having arrived).
+The audio required an upgrade of the kernel module `snd_hda_intel`, and I experienced problems when I tried to change the `ext4` filesystem mount options (apparently it no longer allows you to change options like `journal=writeback` in `/etc/fstab` as it will throw an error and dump you into a read-only root filesystem on boot...?).
+Ubuntu 15.04 turns out to no longer be supported by Ubuntu, where "supported" means "won't even let you upgrade to the next OS version", so I had considerable difficulties figuring out how to tweak `apt` to get it to upgrade to 15.10 so it could then upgrade to 16.10, but eventually that worked out.
+Then I began taking advantage of the 32GB of RAM by putting `/tmp/` & Firefox's cache into it.
+Very nice.
+
+I then established that Internet, Firefox, IRC, syncing `gwern.net`, torrents (using `rtorrent`), audio, video, [Mnemosyne](!Wikipedia "Mnemosyne (software)") (for [spaced repetition](/Spaced repetition)), backups to external drives & Backblaze, the trackball, email, and some other things are all working without any noticeable problems.
+The WiFi works out of the box, surprisingly, not even requiring an `apt-get` installation of a proprietary driver.
+Display brightness appears to not be supported based on `dmesg` errors, and I haven't checked laptop suspend yet.
+The boot thing is still an issue but not a major one.
+
+Hardware-wise, I am enjoying the ThinkPad so far.
+The keyboard is decent with an acceptable layout, the screen is at least as good as (and may be somewhat larger than) the Acer was, the battery & SSD were easy to install and the hardware was not hostile at all with everything labeled, the BIOS is nicely featured, the 32GB RAM is very nice to have, the 4 USB ports save me from port starvation, I appreciate that the Ethernet port is in the _back_ of the laptop, the laptop feels sturdy, the lid overhangs slightly so it's easy to open which is a nice touch, my cat Oolong walking on the touchpad hasn't crashed X yet...
+So far so good.
+
+## External links
+
+- discussion:
+
+    - [Google+](https://plus.google.com/103530621949492999968/posts/Xba6usohMFR)
+    - [Twitter](https://twitter.com/gwern/status/802590832532529155)
+
 # Advanced Chess obituary
 
 As automation and AI advance in any field, it will first find a task impossible, then gradually become capable of doing it at all, then eventually capable of better than many or most humans who try to do something, and then better than the best human.
@@ -2545,7 +2696,7 @@ another way to put it is that Regan says that perfect play may be ~3600 ELO. Kom
 
 http://www.nybooks.com/articles/2010/02/11/the-chess-master-and-the-computer/ 2010
 
-> My hopes for a return match with Deep Blue were dashed, unfortunately. IBM had the publicity it wanted and quickly shut down the project. Other chess computing projects around the world also lost their sponsorship. Though I would have liked my chances in a rematch in 1998 if I were better prepared, it was clear then that computer superiority over humans in chess had always been just a matter of time. Today, for $50 you can buy a home PC program that will crush most grandmasters. In 2003, I played serious matches against two of these programs running on commercially available multiprocessor servers-and, of course, I was playing just one game at a time-and in both cases the score ended in a tie with a win apiece and several draws.
+> My hopes for a return match with Deep Blue were dashed, unfortunately. IBM had the publicity it wanted and quickly shut down the project. Other chess computing projects around the world also lost their sponsorship. Though I would have liked my chances in a rematch in 1998 if I were better prepared, it was clear then that computer superiority over humans in chess had always been just a matter of time. Today, for \$50 you can buy a home PC program that will crush most grandmasters. In 2003, I played serious matches against two of these programs running on commercially available multiprocessor servers-and, of course, I was playing just one game at a time-and in both cases the score ended in a tie with a win apiece and several draws.
 > ...There have been many unintended consequences, both positive and negative, of the rapid proliferation of powerful chess software. Kids love computers and take to them naturally, so it's no surprise that the same is true of the combination of chess and computers. With the introduction of super-powerful software it became possible for a youngster to have a top- level opponent at home instead of needing a professional trainer from an early age. Countries with little by way of chess tradition and few available coaches can now produce prodigies. I am in fact coaching one of them this year, nineteen-year-old Magnus Carlsen, from Norway, where relatively little chess is played.
 >
 > The heavy use of computer analysis has pushed the game itself in new directions. The machine doesn't care about style or patterns or hundreds of years of established theory. It counts up the values of the chess pieces, analyzes a few billion moves, and counts them up again. (A computer translates each piece and each positional factor into a value in order to reduce the game to numbers it can crunch.) It is entirely free of prejudice and doctrine and this has contributed to the development of players who are almost as free of dogma as the machines with which they train. Increasingly, a move isn't good or bad because it looks that way or because it hasn't been done that way before. It's simply good if it works and bad if it doesn't. Although we still require a strong measure of intuition and logic to play well, humans today are starting to play more like computers.
@@ -2560,7 +2711,7 @@ http://www.nybooks.com/articles/2010/02/11/the-chess-master-and-the-computer/ 20
 >
 > The surprise came at the conclusion of the event. The winner was revealed to be not a grandmaster with a state-of-the-art PC but a pair of amateur American chess players using three computers at the same time. Their skill at manipulating and "coaching" their computers to look very deeply into positions effectively counteracted the superior chess understanding of their grandmaster opponents and the greater computational power of other participants. Weak human + machine + better process was superior to a strong computer alone and, more remarkably, superior to a strong human + machine + inferior process.
 
-https://en.chessbase.com/post/freestyle-tournament-advice-from-an-expert "Free survival tips for the $16,000 Freestyle Tournament" Arno Nickel March 2005
+https://en.chessbase.com/post/freestyle-tournament-advice-from-an-expert "Free survival tips for the \$16,000 Freestyle Tournament" Arno Nickel March 2005
 
 > Gary Kasparov, the spiritual father of Advanced Chess, which he proposed in 1998, saw his views confirmed by the 1st Freestyle Tournament. He wrote about this in his New In Chess column (NiC Magazine 5/2005, p. 96f). "At first the results [of the PAL/CSS Freestyle tournament] seemed quite predictable. Even the strongest computers were eliminated by IMs and GMs using relatively weak machines to avoid blunders."
 >
