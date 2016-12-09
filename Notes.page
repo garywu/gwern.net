@@ -2353,7 +2353,7 @@ If this works out, it offers something valuable: an objective, easy, widely-appl
 >
 > Key lesson: *if you use LUKS-encrypted Linux filesystems, know that they are super-fragile!* You should backup a copy of the LUKS header (by running a command like `sudo cryptsetup luksHeaderBackup /dev/sda5 --header-backup-file luks-header.bin.crypt`) to avoid the header becoming corrupted & all data destroyed.
 
-![Investigating my cascade of laptop and backup problems.](https://imgs.xkcd.com/comics/tv_problems.png "XKCD #1760: 'TV Problems'")
+![Investigating my cascade of laptop and backup problems.](http://imgs.xkcd.com/comics/tv_problems.png "XKCD #1760: 'TV Problems'")
 
 On 26 November 2016, I woke to find my [Acer](!Wikipedia) laptop cold and dead.
 The power had not gone out overnight, according to the microwave and the UPS, and the power indicator on the laptop was not on.
@@ -2416,7 +2416,7 @@ The previous night, I had wondered mentally if I spent too much on backups. That
 The 5 stages of backup & data loss grieving:
 
 1. Denial: it'll work if I hold the power button; I must've mistyped the password, LUKS isn't broken; I have incremental backups!
-2. Anger: no header file copies at all?! Curse you LUKS devs! If only I had made even one backup more recently!
+2. Anger: no header file copies at all?! Curse you LUKS developers! If only I had made even one backup more recently!
 3. Bargaining: even one backup would be enough, I can survive missing a few days, one of the other drives...
 4. Depression: gone, all gone, 14 days of data... I don't even remember what I've lost, why I write things down in order to forget them
 5. Acceptance: "vanity of vanities, all is vanity". "Look upon my works ye mighty and despair." _Shoganai_. At least I didn't lose as much as [Shōtetsu](!Wikipedia). Let's draw up a list of what's been lost and figuring out how to recreate them.
