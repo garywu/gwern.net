@@ -10,6 +10,13 @@ Following my writing can be a little difficult: while I provide [an RSS feed of 
 So periodically I write up interesting changes in a human-readable format and [send it out to the mailing list](http://eepurl.com/Kc155).
 
 # 2016
+# November
+
+- [compiled modern genetics bibliography](https://www.gwern.net/Mistakes#genetics-links)
+- [laptop data loss postmortem](https://www.gwern.net/Notes#november-2016-data-loss-postmortem)
+- [detecting fake Markov chain bots](https://www.gwern.net/Statistical%20notes#detecting-fake-human-markov-chain-bots)
+- switched `gwern.net` to HTTPS
+
 ## October
 
 - [genetic correlation Wikipedia article](https://en.wikipedia.org/wiki/Genetic_correlation)

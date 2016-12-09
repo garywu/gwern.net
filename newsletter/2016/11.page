@@ -2,7 +2,7 @@
 title: November 2016 news
 created: 30 October 2016
 tags: newsletter
-status: in progress
+status: finished
 belief: log
 ...
 
@@ -12,10 +12,12 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 If you have not been receiving issues, please check your email account's spam folder. (Gmail in particular has been flagging as spam.)
 If you prefer to subscribe as an RSS feed, you may be interested in the new service ["Kill the newsletter"](https://www.kill-the-newsletter.com/).
 
+The December issue will likely be late as I am traveling most of that month: I will be in Oxford, England 11-22 December for the Cambridge Conference on Catastrophic Risk (12-14 December) and FHI workshop on AI Safety and Blockchain (16-17 December), and in London 24-25 December.
+
 # Writings
 
 - [compiled modern genetics bibliography](https://www.gwern.net/Mistakes#genetics-links)
-- [laptop data loss postmortem](https://plus.google.com/103530621949492999968/posts/Xba6usohMFR)
+- [laptop data loss postmortem](https://www.gwern.net/Notes#november-2016-data-loss-postmortem)
 - [detecting fake Markov chain bots](https://www.gwern.net/Statistical%20notes#detecting-fake-human-markov-chain-bots)
 - switched `gwern.net` to HTTPS
 
@@ -37,7 +39,7 @@ Everything is heritable:
 AI:
 
 - ["Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"](https://arxiv.org/abs/1610.09027), Rae et al 2016
-- ["Neural architecture search with reinforcement learning"](http://openreview.net/pdf?id=r1Ue8Hcxg), Zoph & Le 2016 (800 GPUs)
+- ["Neural architecture search with reinforcement learning"](http://openreview.net/pdf?id=r1Ue8Hcxg), Zoph & Le 2016 (800 GPUs!)
 - ["Designing Neural Network Architectures using Reinforcement Learning"](https://arxiv.org/abs/1611.02167), Baker et al 2016
 - ["Learning to reinforcement learn"](https://arxiv.org/abs/1611.05763), Wang et al 2016
 - human-level lipreading (human-level lipreading + MSR's transcription + Google's WaveNet could have major implications for the deaf & hard-of-hearing and the role of sign language):
@@ -45,7 +47,7 @@ AI:
     - ["Lip Reading Sentences in the Wild"](https://arxiv.org/pdf/1611.05358v1.pdf), Chung et al 2016 ([vide](https://www.youtube.com/watch?v=5aogzAUPilE))
     - ["LipNet: Sentence-level Lipreading"](http://openreview.net/forum?id=BkjLkSqxg), Assael et al 2016 ([video](https://www.youtube.com/watch?v=fa5QGremQf8))
 - ["Tracking the World State with Recurrent Entity Networks"](http://openreview.net/forum?id=rJTKKKqeg), Henaff et al 2016
-- ["DeepCoder: Learning to Write Programs"](https://arxiv.org/abs/1611.01989), Balog et al 2016; ["Learning to superoptimize programs"](https://openreview.net/pdf?id=r1rz6U5lg), Bunel et al 2016; DeepMath/["HolStep: A Machine Learning Dataset for Higher-order Logic Theorem Proving"](http://cl-informatik.uibk.ac.at/cek/holstep/ckfccs-holstep-submitted.pdf), Kaliszyk et al 2016 (continuing the AlphaGo theme of tree search+NN heuristics.)
+- ["DeepCoder: Learning to Write Programs"](https://arxiv.org/abs/1611.01989), Balog et al 2016; ["Learning to superoptimize programs"](https://openreview.net/pdf?id=r1rz6U5lg), Bunel et al 2016; DeepMath/["HolStep: A Machine Learning Dataset for Higher-order Logic Theorem Proving"](http://cl-informatik.uibk.ac.at/cek/holstep/ckfccs-holstep-submitted.pdf), Kaliszyk et al 2016 (continuing the AlphaGo theme of tree search+NN heuristics; see also ["Deep Learning for Real-Time Atari Game Play Using Offline Monte-Carlo Tree Search Planning"](http://papers.nips.cc/paper/5421-deep-learning-for-real-time-atari-game-play-using-offline-monte-carlo-tree-search-planning.pdf), Guo et al 2014)
 - ["Reinforcement Learning with Unsupervised Auxiliary Tasks"](https://arxiv.org/abs/1611.05397), Jaderberg et al 2016
 - ["Outrageously large neural networks: the sparsely-gated mixture-of-experts layer"](http://openreview.net/pdf?id=B1ckMDqlg), Shazeer et al 2016 (This is cool. The main net is a little NN which chooses a couple out of a few thousand other NNs to do the real computation. Because only a couple subnets are activated at any time and the others are silent, they are effectively small specialized NNs - which accordingly fit in the GPU and are very fast forwards/backwards. Instead of the complications of learning to use an external memory, huge datasets can effectively be sharded & memorized by individual specialized sub NNs.)
 - ["Google's Multilingual Neural Machine Translation System: Enabling Zero-Shot Translation"](https://arxiv.org/abs/1611.04558), Johnson et al 2016; ["Found in translation: More accurate, fluent sentences in Google Translate"](https://blog.google/products/translate/found-translation-more-accurate-fluent-sentences-google-translate/) (the long-awaited high quality translation RNNs finally get rolled out to the masses)
@@ -80,8 +82,8 @@ Fiction:
 
 Live-action:
 
-- [_Doctor Strange_](https://en.wikipedia.org/wiki/Doctor_Strange_\(film\))
-- [_Arrival_](https://en.wikipedia.org/wiki/Arrival_\(film\))
+- [_Doctor Strange_](https://en.wikipedia.org/wiki/Doctor_Strange_\(film\)) (Marvel action movie featuring Benedict Cumberbatch. Cumberbatch is always great fun to watch be superior to other people. Much of the plot is fairly perfunctory like the standard kung-fu-training-in-Tibet + Hollywood Buddhism trope, and the real fun is not the awkward martial arts but the space-warping mechanic employed in most of the fighting: it is a fascinating special effect, used much more extensively than the 'city warping' in _Inception_, and I really enjoyed watching those scenes. The finale offers an equally memorable use of a time-rewinding effect and a nice if somewhat simple resolution using time loops. Oddly, _Arrival_ also relies on time loops for its resolution, so both movies I watched in November used that plot device. _Doctor Strange_ doesn't take time manipulation to nearly the heights of _Braid_ or _Primer_, and only stands out in memory for the cityscape warping, but I was able to enjoy the movie for what it was.)
+- [_Arrival_](https://en.wikipedia.org/wiki/Arrival_\(film\)) (see my review of [_Stories of Your Life and Others_](https://www.goodreads.com/review/show/369923171))
 
 ## Music
 
