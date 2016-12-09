@@ -365,6 +365,15 @@ Date,Fan.r,Door.r,Mattress.r
 2016-11-28,0,1,1
 2016-11-29,0,1,0
 2016-11-30,1,1,0
+2016-12-01,0,0,1
+2016-12-02,1,1,1
+2016-12-03,0,0,0
+2016-12-04,0,1,0
+2016-12-05,1,1,1
+2016-12-06,1,0,1
+2016-12-07,0,1,0
+2016-12-08,0,0,1
+2016-12-09,1,1,0
 
 ## I want an interaction effect on `Fan*Door`, since they may have different effects
 ## in the presence of each other. lavaan/blavaan do not support interaction effects.
