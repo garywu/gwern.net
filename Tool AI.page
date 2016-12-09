@@ -11,40 +11,26 @@ two problems:
 
 economic point of AI is to replace humans and be autonomous
 humans in the loop increasingly cause errors and slow things down
-amdahl's law: gains limited by the unimprovable human
+Amdahl's law: gains limited by the unimprovable human
 example: advanced chess - in 1998, grandmasters used to decide the strategy & pick most of the moves, using the chess AIs to check for tactical errors, by 2006, grandmasters routinely beaten by amateurs with better intuitive understanding of AI and letting it run on its own, by 2016, advanced chess players seem largely reduced to opening book refinement & finding novelties before the game and otherwise hold back the chess AIs especially with 'misclicks'
 little point to keeping human in loop often: uninterpretable
 competitive pressure: Knight Capital
 drone warfare, difficult to keep crewed, manpower demands would make swarms impossible
 
-autonomous systems are what we *want*; everything else is a surrogate or irrelevant loss function. We don't want low log-loss error on ImageNet, we want our personal photos classified correctly.
+autonomous systems are what we *want*; everything else is a surrogate or irrelevant loss function. We don't want low log-loss error on ImageNet, we want to refind a particular personal photo.
 
-https://www.buzzfeed.com/sarahatopol/how-to-save-mankind-from-the-new-breed-of-killer-robots?utm_term=.dbw2V84x2#.mcEZapNvZ
+https://www.buzzfeed.com/sarahatopol/how-to-save-mankind-from-the-new-breed-of-killer-robots
 
-14:19 <@gwern> 'By 2005, RPAs were logging 40,000 flight hours per year. Last year those total flight hours hit over 368,000, according to the Pentagon, with some of the Air Force’s active-
-duty RPA pilots flying upwards of 900 hours—meanwhile, fighter pilots in manned aircraft typically max out at 300 hours per year. That extra RPA effort has kept the Air Force’s five dozen P
-redators and Reapers in...
-14:19 <@gwern> ...the sky almost continuously, but at great cost to retention and morale. RPAs can stay aloft for days at a time; when they land, refueling, rearming, and routine maintenanc
-e take less than an hour to complete. In short, the machines are reliable but the humans are breaking down—and this has helped fuel the program's difficulty retaining team members. "Look, t
-he RPA community has been...
-14:19 <@gwern> ...abused for about eight years now," General Mark Welsh III, Air Force chief of staff, told Holloman airmen at an assembly last year in response to an audience question abou
-t RPA operator stress and turnover. "We’ve got to the get the training pipelines right. If we don’t get past training fewer people than we lose here, the math just doesn’t work." Last summe
-r, to alleviate the strain...
+14:19 <@gwern> 'By 2005, RPAs were logging 40,000 flight hours per year. Last year those total flight hours hit over 368,000, according to the Pentagon, with some of the Air Force’s active-duty RPA pilots flying upwards of 900 hours—meanwhile, fighter pilots in manned aircraft typically max out at 300 hours per year. That extra RPA effort has kept the Air Force’s five dozen Predators and Reapers in...
+14:19 <@gwern> ...the sky almost continuously, but at great cost to retention and morale. RPAs can stay aloft for days at a time; when they land, refueling, rearming, and routine maintenance take less than an hour to complete. In short, the machines are reliable but the humans are breaking down—and this has helped fuel the program's difficulty retaining team members. "Look, the RPA community has been...
+14:19 <@gwern> ...abused for about eight years now," General Mark Welsh III, Air Force chief of staff, told Holloman airmen at an assembly last year in response to an audience question about RPA operator stress and turnover. "We’ve got to the get the training pipelines right. If we don’t get past training fewer people than we lose here, the math just doesn’t work." Last summer, to alleviate the strain...
 14:19 <@gwern> ...on chronically overworked pilots and sensors, the Air Force began offering annual bonuses of up to $15,000.'  https://www.fastcompany.com/3054521/meet-the-new-mavericks-an-inside-look-at-americas-drone-training-program <-- tool AIs want to become agent AIs
 
-
-14:51 <@gwern> http://www.guardian.co.uk/world/2012/aug/04/future-drones  I think it's a pity that we're not focusing on what we could do to test the tool vs general AI distinction. For exa
-mple, here's one near-future test: how do we humans deal with drones?  Drones are exploding in [popularity](http://www.guardian.co.uk/world/2012/aug/04/future-drones), are increasing their
-capabilities constantly, and are coveted by countless security agencies and private ...
-14:51 <@gwern> ... groups for their tremendous use in all sorts of roles both benign and disturbing. Just like AIs would be. The tool vs general AI distinction maps very nicely onto drones
-as well: a tool AI corresponds to a drone being manually flown by a human pilot somewhere, while a general AI would correspond to an autonomous drone which is carrying out some mission (bla
-st insurgents?).  So, here is a near-future test of the question 'are people likely to let ...
+14:51 <@gwern> http://www.guardian.co.uk/world/2012/aug/04/future-drones  I think it's a pity that we're not focusing on what we could do to test the tool vs general AI distinction. For example, here's one near-future test: how do we humans deal with drones?  Drones are exploding in [popularity](http://www.guardian.co.uk/world/2012/aug/04/future-drones), are increasing theircapabilities constantly, and are coveted by countless security agencies and private ...
+14:51 <@gwern> ... groups for their tremendous use in all sorts of roles both benign and disturbing. Just like AIs would be. The tool vs general AI distinction maps very nicely onto drones as well: a tool AI corresponds to a drone being manually flown by a human pilot somewhere, while a general AI would correspond to an autonomous drone which is carrying out some mission (blast insurgents?).  So, here is a near-future test of the question 'are people likely to let ...
 14:51 <@gwern> ... tool AIs 'drive themselves' for greater efficiency?' simply ask whether in, say, a decade there are autonomous drones carrying tasks that now would only be carried out by piloted drones.  If in a decade we learn that autonomous drones are killing people, then we have an answer to our tool AI question: it doesn't matter because given a tool AI, people will turn it into a general AI.
-14:51 < pookie> title: Future is assured for death-dealing, life-saving drones | World news | The Guardian
 
-15:07:47 <@gwern> 'As everyone filed out, Chris Lynch, a former Microsoft executive who heads Carter’s digital division, told Altman, “It would have been good to talk about OpenAI.” Altman
-                  nodded noncommittally. The 2017 U.S. military budget allocates three billion dollars for human-machine collaborations known as Centaur Warfighting, and a long-range
-                  missile that will make autonomous targeting decisions...
+15:07:47 <@gwern> 'As everyone filed out, Chris Lynch, a former Microsoft executive who heads Carter’s digital division, told Altman, “It would have been good to talk about OpenAI.” Altman nodded noncommittally. The 2017 U.S. military budget allocates three billion dollars for human-machine collaborations known as Centaur Warfighting, and a long-range missile that will make autonomous targeting decisions...
 15:07:47 <@gwern> ...is in the pipeline for the following year. Lynch later told me that an OpenAI system would be a natural fit.'
                   http://www.newyorker.com/magazine/2016/10/10/sam-altmans-manifest-destiny
 
@@ -65,24 +51,28 @@ Inference and learning can be *much* more efficient if the AI can choose how to 
 1. actions internal to a computation:
 
 - inputs:
-prioritizing particular parts of the problem: LSTMs, attention mechanisms http://distill.pub/2016/augmented-rnns/ ["Foveation-based Mechanisms Alleviate Adversarial Examples"](http://arxiv.org/abs/1511.06292), Luo et al 2016
+prioritizing particular parts of the problem: LSTMs, attention mechanisms http://distill.pub/2016/augmented-rnns/ ["Foveation-based Mechanisms Alleviate Adversarial Examples"](http://arxiv.org/abs/1511.06292), Luo et al 2016; "Modeling Human Reading with Neural Attention" Hahn & Keller 2016 https://arxiv.org/pdf/1608.05604.pdf
 "Hierarchical Object Detection with Deep Reinforcement Learning" Bellver et al 2016 https://imatge-upc.github.io/detection-2016-nipsws/
 - computation on intermediates
 REINFORCE neural Turing machine "Hybrid computing using a neural network with dynamic external memory", Graves et al 2016 https://www.gwern.net/docs/2016-graves.pdf https://deepmind.com/blog/differentiable-neural-computers/ ; ["Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"](https://arxiv.org/abs/1610.09027), Rae et al 2016
-adaptive computation: not just choosing which parts of data to process multiple times but how many times to process - spend more computation on hard parts of problem https://arxiv.org/abs/1603.08983
+database queries "Improving Information Extraction by Acquiring External Evidence with Reinforcement Learning" Narasimhan et al 2016 https://arxiv.org/pdf/1603.07954.pdf
+adaptive computation: not just choosing which parts of data to process multiple times but how many times to process - spend more computation on hard parts of problem "Adaptive Computation Time for Recurrent Neural Networks" Graves 2016 https://arxiv.org/abs/1603.08983 "Spatially Adaptive Computation Time for Residual Networks", Figurnov et al 2016 https://arxiv.org/pdf/1612.02297v1.pdf
 - quality of output like global constraints, finetuning supervised learning results, more user-relevant reward functions than the usual loss functions
-["Mastering the game of Go with deep neural networks and tree search"](https://www.researchgate.net/profile/Timothy_Lillicrap/publication/292074166_Mastering_the_game_of_Go_with_deep_neural_networks_and_tree_search/links/56a90f7d08ae7f592f0d5d0c.pdf), Silver et al 2016
+AlphaGo ["Mastering the game of Go with deep neural networks and tree search"](https://www.researchgate.net/profile/Timothy_Lillicrap/publication/292074166_Mastering_the_game_of_Go_with_deep_neural_networks_and_tree_search/links/56a90f7d08ae7f592f0d5d0c.pdf), Silver et al 2016 ; "Deep Reinforcement Learning for Dialogue Generation", Li et al 2016 https://arxiv.org/pdf/1606.01541.pdf
 "Reward Augmented Maximum Likelihood for Neural Structured Prediction", Norouzi et al 2016 http://papers.nips.cc/paper/6547-reward-augmented-maximum-likelihood-for-neural-structured-prediction
 "Tuning Recurrent Neural Networks with Reinforcement Learning [Note-RNN]", Jaques et al 2016 https://openreview.net/pdf?id=BJ8fyHceg
+"Sequence level training with recurrent neural networks", Ranzato et al 2016 https://arxiv.org/abs/1511.06732
+"Deep Reinforcement Learning for Mention-Ranking Coreference Models", Clark & Manning 2016 https://arxiv.org/pdf/1609.08667.pdf
+compression "Language as a Latent Variable: Discrete Generative Models for Sentence Compression" Miao & Blunsom 2016 https://arxiv.org/pdf/1609.07317.pdf
 
 loss/training functions: GANs and training very large networks: actor-critic RL methods - ["Decoupled Neural Interfaces using Synthetic Gradients"](https://arxiv.org/abs/1608.05343) http://cnichkawde.github.io/SyntheticGradients.html
 
-20:55 <@gwern> cnns with focus will perform better than cnns without focus, cnns with focus over their entire dataset will learn ebtter than cnns which only get fed random images, cnns which can ask for specific kinds of images will do better than those querying their dataset, cnns which can trawl through google images and locate the most informative one will do better still, etc etc
+20:55 <@gwern> CNNs with focus will perform better than CNNs without focus, CNNs with focus over their entire dataset will learn better than CNNs which only get fed random images, CNNs which can ask for specific kinds of images will do better than those querying their dataset, CNNs which can trawl through google images and locate the most informative one will do better still, etc etc
 20:56 <@gwern> to get better performance on a variety of tasks, handing it more actions and options will often be found to be helpful as it can go after the data which will be most useful
 20:58 <@gwern> that's my point. optimizing explorations can often lead to prediction/classification/inference gains
 20:58 <@gwern> there's no hard and fast separation from RL stuff and supervised learning. agents benefit from better inference, but inference also benefits from agentiness
 20:59 <@gwern> think about just the simplest multi-armed bandit model. by letting the algorithm decide where to sample, you can get better inference about which is the optimal arm and what its payoff is, entirely separate from issues of maximizing reward
-21:02 <@gwern> nshepperd: or you could just do a fixed-sample trial and leave any action step outside of the algorithm. the mab will still inferentially outperform the fixed-sample trial
+21:02 <@gwern> nshepperd: or you could just do a fixed-sample trial and leave any action step outside of the algorithm. the MAB will still inferentially outperform the fixed-sample trial
 
 2. internal to training:
 
@@ -118,9 +108,9 @@ curse of dimensionality: most points are not near the decision boundary and cont
 random Go boards
 random actions in a robot arm
 sparse rewards
-exponentially difficult to reach rewards with actions
+exponentially difficult to reach rewards with actions ("39. Re graphics: A picture is worth 10K words - but only those to describe the picture. Hardly any sets of 10K words can be adequately described with pictures.")
 == rewards not observed in a dataset
-Montezuma's Revenge: epsilon-greedy vs density-estimation
+_Montezuma's Revenge_: epsilon-greedy vs density-estimation ("Unifying Count-Based Exploration and Intrinsic Motivation", Bellemare et al 2016 https://arxiv.org/pdf/1606.01868.pdf )
 
 supervised/unsupervised ML algorithm which computes a function but takes no actions
 contrast to reinforcement learning and automated systems
