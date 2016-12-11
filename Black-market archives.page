@@ -808,6 +808,10 @@ A custom crawler could have simplified the blacklist part and allowed some other
 
 # Other datasets
 
+One publicly available dataset is:
+
+- Sarah Jamie Lewis 2016, ["Dark Web Data Dumps"](https://polecat.mascherari.press/onionscan/dark-web-data-dumps) (Valhalla Marketplace scrapes, as of 11 December 2016)
+
 A number of other datasets are known to exist but are unavailable, including:
 
 - law enforcement scrapes (see [the Force briefing](https://www.reddit.com/r/DarkNetMarkets/comments/336p83/the_force_briefing_le_dnm_investigative_methods/)), seized server images
