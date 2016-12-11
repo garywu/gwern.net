@@ -1,15 +1,26 @@
 ---
+title: Tool AIs Want to Be Agent AIs
+description: AIs limited purely to supervised learning will be less intelligence, efficient, and economically valuable than agent RL AIs
 created: 7 Sep 2016
+tags: statistics, NN, computer science, transhumanism
 ...
 
-# Tool AIs Want to Be Agent AIs
+One proposed solution to AI risk is to suggest that AIs could be limited purely to supervised/unsupervised learning, and not given access to any sort of capability that can directly affect the outside world such as robotic arms.
+In this framework, AIs are treated purely as mathematical functions mapping data to an output such as a classification probability, similar to a logistic or linear model but far more complex; most deep learning neural networks like ImageNet image classification convolutional neural networks (CNN)s would qualify.
+The gains from AI then come from training the AI and then asking it many questions which humans then review & implement in the real world as desired.
+So an AI might be trained on a large dataset of chemical structures labeled by whether they turned out to be a useful drug in humans and asked to classify new chemical structures as useful or non-useful; then doctors would run the actual medical trials on the drug candidates and decide whether to use them in patients etc.
+Or an AI might look like Google Maps: it answers your questions about how best to drive places better than any human could, but it does not control any traffic lights country-wide to optimize traffic flows nor will it run a self-driving car to get you there.
+This theoretically avoids any possible runaway of AIs into malignant or uncaring actors who harm humanity by satisfying dangerous utility functions and developing instrumental drives.
+After all, if they can't take any actions, how can they do anything that humans do not approve of?
 
-https://wiki.lesswrong.com/wiki/Tool_AI https://wiki.lesswrong.com/wiki/Oracle_AI
-previously proposed as oracle AIs - AIs whose only reward is answering questions and can be boxed
+Two variations on this limiting or boxing theme are
 
-two problems:
+- https://wiki.lesswrong.com/wiki/Tool_AI
+- https://wiki.lesswrong.com/wiki/Oracle_AI
 
-## Economic
+The first approach, 'tool AI', has two basic problems.
+
+# Economic
 
 economic point of AI is to replace humans and be autonomous
 humans in the loop increasingly cause errors and slow things down
@@ -28,7 +39,7 @@ https://www.buzzfeed.com/sarahatopol/how-to-save-mankind-from-the-new-breed-of-k
 14:19 <@gwern> ...abused for about eight years now," General Mark Welsh III, Air Force chief of staff, told Holloman airmen at an assembly last year in response to an audience question about RPA operator stress and turnover. "We’ve got to the get the training pipelines right. If we don’t get past training fewer people than we lose here, the math just doesn’t work." Last summer, to alleviate the strain...
 14:19 <@gwern> ...on chronically overworked pilots and sensors, the Air Force began offering annual bonuses of up to $15,000.'  https://www.fastcompany.com/3054521/meet-the-new-mavericks-an-inside-look-at-americas-drone-training-program <-- tool AIs want to become agent AIs
 
-14:51 <@gwern> http://www.guardian.co.uk/world/2012/aug/04/future-drones  I think it's a pity that we're not focusing on what we could do to test the tool vs general AI distinction. For example, here's one near-future test: how do we humans deal with drones?  Drones are exploding in [popularity](http://www.guardian.co.uk/world/2012/aug/04/future-drones), are increasing theircapabilities constantly, and are coveted by countless security agencies and private ...
+14:51 <@gwern> http://www.guardian.co.uk/world/2012/aug/04/future-drones  I think it's a pity that we're not focusing on what we could do to test the tool vs general AI distinction. For example, here's one near-future test: how do we humans deal with drones?  Drones are exploding in [popularity](http://www.guardian.co.uk/world/2012/aug/04/future-drones), are increasing their capabilities constantly, and are coveted by countless security agencies and private ...
 14:51 <@gwern> ... groups for their tremendous use in all sorts of roles both benign and disturbing. Just like AIs would be. The tool vs general AI distinction maps very nicely onto drones as well: a tool AI corresponds to a drone being manually flown by a human pilot somewhere, while a general AI would correspond to an autonomous drone which is carrying out some mission (blast insurgents?).  So, here is a near-future test of the question 'are people likely to let ...
 14:51 <@gwern> ... tool AIs 'drive themselves' for greater efficiency?' simply ask whether in, say, a decade there are autonomous drones carrying tasks that now would only be carried out by piloted drones.  If in a decade we learn that autonomous drones are killing people, then we have an answer to our tool AI question: it doesn't matter because given a tool AI, people will turn it into a general AI.
 
@@ -43,12 +54,20 @@ http://ideas.4brad.com/what-if-city-ran-waze-and-you-had-obey-it-could-cure-cong
 
 ## Intelligence
 
-Tool AIs, aside from not being what anyone wants and something that will be severely penalized by free markets, also suffer from the problem that any tool AI's performance/intelligence will be equal or worse than an agent AI.
+Tool AIs (aside from not being what anyone wants and something that will be severely penalized by free markets or simply there being multiple agents choosing whether to use a tool AI or an agent AI in any kind of competitive scenario), also suffer from the problem that *the best tool AI's performance/intelligence will be equal to or worse than the best agent AI.*
 
-Trivial proof: agent AIs are supersets of tool AIs - an agent AI, by not taking any actions besides communication, can reduce itself to a tool AI, so in cases where actions are unhelpful, it performs the same as the tool AI, and when actions can help, it can perform much better; hence, an agent AI can always match or exceed a tool AI.
+An agent AI has the potential, often realized in practice, to outperform any tool AI: it can get better results with less computation, less data, less manual design, less post-processing of its outputs, on harder domains
+
+(Trivial proof: agent AIs are supersets of tool AIs - an agent AI, by not taking any actions besides communication, can reduce itself to a tool AI; so in cases where actions are unhelpful, it performs the same as the tool AI, and when actions can help, it can perform better; hence, an agent AI can always match or exceed a tool AI.)
 
 More seriously, not all data is created equal.
-Inference and learning can be *much* more efficient if the AI can choose how to compute on what data with which actions. This is a highly general point which can be applied on many levels.
+Not all data points are equally valuable to learn from, require equal amounts of computation, should be treated identically, should inspire identical followup data sampling, or actions.
+Inference and learning can be *much* more efficient if the algorithm can choose how to compute on what data with which actions.
+
+This is a highly general point which can be applied on many levels.
+This point often arises in classical statistics/experimental-design/decision-theory where adaptive techniques can greatly outperform fixed-sample techniques for both inference and actions/losses: an adaptive trial testing a hypothesis can often terminate after a fraction of the equivalent fixed-sample trial's sample size (and/or loss); a multi-armed bandit will have much lower regret than any non-adaptive solution, but it will also be inferentially better at estimating which arm is best and what the performance of that arm is, and an adaptive optimal-design can minimize total variance by focusing on unexpectedly difficult-to-estimate arms (while a fixed-sample trial can be seen as ideal for when one values precise estimates of all arms equally and they have equal variance, which is usually not the case); even a Latin square or blocking or rerandomization design as compared to simple randomization can be seen as reflecting this benefit (avoiding the potential for imbalance in allocation across arms by deciding in advance the sequence of 'actions' taken in collecting samples).
+
+but arises even more often with recent work in deep learning:
 
 1. actions internal to a computation:
 
@@ -63,18 +82,13 @@ adaptive computation: not just choosing which parts of data to process multiple 
 AlphaGo ["Mastering the game of Go with deep neural networks and tree search"](https://www.researchgate.net/profile/Timothy_Lillicrap/publication/292074166_Mastering_the_game_of_Go_with_deep_neural_networks_and_tree_search/links/56a90f7d08ae7f592f0d5d0c.pdf), Silver et al 2016 ; "Deep Reinforcement Learning for Dialogue Generation", Li et al 2016 https://arxiv.org/pdf/1606.01541.pdf
 "Reward Augmented Maximum Likelihood for Neural Structured Prediction", Norouzi et al 2016 http://papers.nips.cc/paper/6547-reward-augmented-maximum-likelihood-for-neural-structured-prediction
 "Tuning Recurrent Neural Networks with Reinforcement Learning [Note-RNN]", Jaques et al 2016 https://openreview.net/pdf?id=BJ8fyHceg
+"Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation", Wu et al 2016 https://arxiv.org/abs/1609.08144 https://research.googleblog.com/2016/09/a-neural-network-for-machine.html
 "Sequence level training with recurrent neural networks", Ranzato et al 2016 https://arxiv.org/abs/1511.06732
 "Deep Reinforcement Learning for Mention-Ranking Coreference Models", Clark & Manning 2016 https://arxiv.org/pdf/1609.08667.pdf
 compression "Language as a Latent Variable: Discrete Generative Models for Sentence Compression" Miao & Blunsom 2016 https://arxiv.org/pdf/1609.07317.pdf
 
 loss/training functions: GANs and training very large networks: actor-critic RL methods - ["Decoupled Neural Interfaces using Synthetic Gradients"](https://arxiv.org/abs/1608.05343) http://cnichkawde.github.io/SyntheticGradients.html
 
-20:55 <@gwern> CNNs with focus will perform better than CNNs without focus, CNNs with focus over their entire dataset will learn better than CNNs which only get fed random images, CNNs which can ask for specific kinds of images will do better than those querying their dataset, CNNs which can trawl through google images and locate the most informative one will do better still, etc etc
-20:56 <@gwern> to get better performance on a variety of tasks, handing it more actions and options will often be found to be helpful as it can go after the data which will be most useful
-20:58 <@gwern> that's my point. optimizing explorations can often lead to prediction/classification/inference gains
-20:58 <@gwern> there's no hard and fast separation from RL stuff and supervised learning. agents benefit from better inference, but inference also benefits from agentiness
-20:59 <@gwern> think about just the simplest multi-armed bandit model. by letting the algorithm decide where to sample, you can get better inference about which is the optimal arm and what its payoff is, entirely separate from issues of maximizing reward
-21:02 <@gwern> nshepperd: or you could just do a fixed-sample trial and leave any action step outside of the algorithm. the MAB will still inferentially outperform the fixed-sample trial
 
 2. internal to training:
 
@@ -106,7 +120,33 @@ adaptive experiments
 MABs
 RL
 
-curse of dimensionality: most points are not near the decision boundary and contribute little information
+So to put it concretely: CNNs with adaptive computations will be faster than fixed-iteration CNNs, CNNs with focus perform better than CNNs without focus, CNNs with focus over their entire dataset will learn better than CNNs which only get fed random images, CNNs which can ask for specific kinds of images do better than those querying their dataset, CNNs which can trawl through Google Images and locate the most informative one will do better still, CNNs which access rewards from their user about whether the result was useful will deliver more relevant results, CNNs whose hyperparameters are automatically optimized by an RL algorithm will perform better than CNNs with handwritten hyperparameters, CNNs whose architecture as well as standard hyperparameters are designed by RL agents will perform better than handwritten CNNs... and so on.
+(It's actions all the way down.)
+
+
+20:56 <@gwern> to get better performance on a variety of tasks, handing it more actions and options will often be found to be helpful as it can go after the data which will be most useful
+20:58 <@gwern> that's my point. optimizing explorations can often lead to prediction/classification/inference gains
+20:58 <@gwern> there's no hard and fast separation from RL stuff and supervised learning. agents benefit from better inference, but inference also benefits from agentiness
+20:59 <@gwern> think about just the simplest multi-armed bandit model. by letting the algorithm decide where to sample, you can get better inference about which is the optimal arm and what its payoff is, entirely separate from issues of maximizing reward
+21:02 <@gwern> nshepperd: or you could just do a fixed-sample trial and leave any action step outside of the algorithm. the MAB will still inferentially outperform the fixed-sample trial
+
+
+Why does treating all these levels as decision or reinforcement learning problems help so much?
+
+One answer is that most points are not near any decision boundary, or are highly predictable and contribute little information.
+These points need not be computed extensively, nor trained on much, nor collected further.
+If a particular combination of variables is already being predicted with high accuracy (perhaps because it's common), adding even an infinite number of additional samples will do little; one sample from an unsampled region far away from the previous samples may be dramatically informative.
+You need the *right* data, not more data.
+
+Another answer is the "curse of dimensionality": in many environments, the tree of possible actions and subsequent rewards grows exponentially, so any sequence of actions over more than a few timesteps is increasingly unlikely to ever be sampled.
+A dataset of randomly-generated sequences of robot arm movements intended to grip an object would likely include no rewards (successful grips) at all, because it requires a long sequence of finely calibrated arm movements; with no successes, how could the tool AI learn to manipulate an arm?
+It must be able to make progress by testing its best arm movement sequence candidate, then learn from that and test the better arm movement, and so on, until it succeeds.
+Or imagine training a Go program by creating a large dataset of randomly-generated Go boards, then evaluating each possible move's value by playing out a game between random agents from it; this would not work nearly as well as training on actual human-generated board positions which target the vanishingly small set of high-quality games & moves.
+The exploration homes in on the exponentially shrinking optimal area of the movement tree based on its current knowledge, discarding the enormous space of bad possible moves.
+In contrast, a tool AI cannot lift itself up by its bootstraps. It merely gives its best guess on the static current dataset, and that's that. If you don't like the results, you can gather more data, but it probably won't help that much because you'll give it more of what it already has.
+
+
+
 random Go boards
 random actions in a robot arm
 sparse rewards
@@ -124,5 +164,3 @@ turn around Karnofsky's example: Google Maps + Waze: Waze is used to tell driver
 actions can serve as a form of supervision - in DQN what would you 'label' each Atari screen as...?
 
 17:16 <@gwern> 'One question I remember came from Tieleman. He asked the panelists about their opinions on active learning/exploration as an option for efficient unsupervised learning. Schmidhuber and Murphy responded, and before I reveal their response, I really liked it. In short (or as much as I'm certain about my memory,) active exploration will happen naturally as the consequence of rewarding better explanation of the world. Knowledge of the surrounding world and its accumulation should be rewarded, and to maximize this reward, an agent or an algorithm will active explore the surrounding area (even without supervision.) According to Murphy, this may reflect how babies learn so quickly without much supervising signal or even without much unsupervised signal (their way of active exploration compensates the lack of unsupervised examples by allowing a baby to collect high quality unsupervised examples.)' http://www.kyunghyuncho.me/home/blog/briefsummaryofthepaneldiscussionatdlworkshopicml2015 so they think tool AIs will inevitably segue into agent AIs...
-
-RL can also provide better loss functions which more closely optimize for desired performance: https://arxiv.org/abs/1609.08144 https://research.googleblog.com/2016/09/a-neural-network-for-machine.html
