@@ -48,7 +48,6 @@
         <outline title="Saturday Morning Breakfast Cereal (updated daily)" text="Saturday Morning Breakfast Cereal (updated daily)" description="Saturday Morning Breakfast Cereal (updated daily)" type="rss" xmlUrl="http://www.smbc-comics.com/rss.php" htmlUrl="http://www.smbc-comics.com/"/>
         <outline title="SPACE AVALANCHE" text="SPACE AVALANCHE" description="SPACE AVALANCHE" type="rss" xmlUrl="http://feeds.feedburner.com/SpaceAvalanche1" htmlUrl="http://www.spaceavalanche.com"/>
         <outline title="The Abominable Charles Christopher" text="The Abominable Charles Christopher" description="The Abominable Charles Christopher" type="rss" xmlUrl="http://feeds.feedburner.com/abominable" htmlUrl="http://abominable.cc/"/>
-        <outline title="The Adventures of Dr. McNinja" text="The Adventures of Dr. McNinja" description="The Adventures of Dr. McNinja" type="rss" xmlUrl="http://drmcninja.com/feed" htmlUrl="http://drmcninja.com"/>
         <outline title="The Non-Adventures of Wonderella" text="The Non-Adventures of Wonderella" description="The Non-Adventures of Wonderella" type="rss" xmlUrl="http://nonadventures.com/feed/" htmlUrl="http://nonadventures.com"/>
         <outline title="The Perry Bible Fellowship" text="The Perry Bible Fellowship" description="The Perry Bible Fellowship" type="atom" xmlUrl="http://pbfcomics.com/feed/feed.xml" htmlUrl=""/>
         <outline title="Wondermark" text="Wondermark" description="Wondermark" type="rss" xmlUrl="http://feeds.feedburner.com/wondermark" htmlUrl="http://wondermark.com"/>
@@ -68,6 +67,7 @@
         <outline title="Marginal Revolution" text="Marginal Revolution" description="Marginal Revolution" type="rss" xmlUrl="http://feeds.feedburner.com/marginalrevolution/feed" htmlUrl="http://marginalrevolution.com"/>
         <outline title="TheMoneyIllusion" text="TheMoneyIllusion" description="TheMoneyIllusion" type="rss" xmlUrl="http://feeds.feedburner.com/Themoneyillusion" htmlUrl="http://www.themoneyillusion.com"/>
         <outline title="Unenumerated" text="Unenumerated" description="Unenumerated" type="atom" xmlUrl="http://unenumerated.blogspot.com/feeds/posts/default" htmlUrl="http://unenumerated.blogspot.com/"/>
+        <outline title="Matt Levine" text="Matt Levine" description="Matt Levine" type="rss" xmlUrl="https://www.bloomberg.com/view/rss/contributors/matt-levine.rss" htmlUrl="https://www.bloomberg.com/view/"/>
       </outline>
       <outline title="literature" text="literature" description="literature" type="folder">
         <outline title="Continued on Next Rock" text="Continued on Next Rock" description="Continued on Next Rock" type="rss" xmlUrl="http://ralafferty.tumblr.com/rss" htmlUrl="http://ralafferty.tumblr.com/"/>
@@ -124,7 +124,7 @@
       <outline title="science" text="science" description="science" type="folder">
         <outline title="Good Math/Bad Math" text="Good Math/Bad Math" description="Good Math/Bad Math" type="rss" xmlUrl="http://www.goodmath.org/blog/?feed=rss2" htmlUrl="http://www.goodmath.org/blog"/>
         <outline title="Mind the Brain" text="Mind the Brain" description="Mind the Brain" type="rss" xmlUrl="http://blogs.plos.org/mindthebrain/feed/" htmlUrl="http://blogs.plos.org/mindthebrain"/>
-        <outline title="Razib Khan" text="Razib Khan" description="Razib Khan" type="rss" xmlUrl="http://www.unz.com/gnxp/feed/" htmlUrl="http://www.unz.com"/>
+        <outline title="Razib Khan" text="Razib Khan" description="Razib Khan" type="rss" xmlUrl="http://feeds.feedburner.com/RazibKhansTotalFeed" htmlUrl="http://www.razib.com/wordpress"/>
         <outline title="Chris - Even Better" text="Chris - Even Better" description="Chris - Even Better" type="atom" xmlUrl="http://evenbetterchris.blogspot.com/feeds/posts/default" htmlUrl="http://evenbetterchris.blogspot.com/"/>
         <outline title="G&#xF6;del's Lost Letter and P=NP" text="G&#xF6;del's Lost Letter and P=NP" description="G&#xF6;del's Lost Letter and P=NP" type="rss" xmlUrl="https://rjlipton.wordpress.com/feed/" htmlUrl="https://rjlipton.wordpress.com"/>
         <outline title="In the Pipeline" text="In the Pipeline" description="In the Pipeline" type="rss" xmlUrl="http://blogs.sciencemag.org/pipeline/feed" htmlUrl="http://blogs.sciencemag.org/pipeline"/>
@@ -159,7 +159,7 @@
         <outline title="colah's blog" text="colah's blog" description="colah's blog" type="rss" xmlUrl="https://colah.github.io/rss.xml" htmlUrl="http://colah.github.io/"/>
         <outline title="JayMan's Blog" text="JayMan's Blog" description="JayMan's Blog" type="rss" xmlUrl="https://jaymans.wordpress.com/feed/" htmlUrl="https://jaymans.wordpress.com"/>
         <outline title="Andrej Karpathy blog" text="Andrej Karpathy blog" description="Andrej Karpathy blog" type="rss" xmlUrl="https://karpathy.github.io/feed.xml" htmlUrl="http://karpathy.github.io/"/>
-        <outline title="Deep Learning" text="Deep Learning" description="Deep Learning" type="rss" xmlUrl="https://timdettmers.wordpress.com/feed/" htmlUrl="http://timdettmers.com"/>
+        <outline title="Deep Learning" text="Deep Learning" description="Deep Learning" type="rss" xmlUrl="http://timdettmers.com/feed/" htmlUrl="http://timdettmers.com"/>
         <outline title="Blog &#x2013; Machine Intelligence Research Institute" text="Blog &#x2013; Machine Intelligence Research Institute" description="Blog &#x2013; Machine Intelligence Research Institute" type="rss" xmlUrl="http://feeds.feedburner.com/miriblog" htmlUrl="https://intelligence.org"/>
         <outline title="Google Research Blog" text="Google Research Blog" description="Google Research Blog" type="atom" xmlUrl="http://googleresearch.blogspot.com/atom.xml" htmlUrl="http://research.googleblog.com/"/>
       </outline>
