@@ -2113,6 +2113,13 @@ Another few weeks after that, it no longer seemed to be working right as motors 
 After dealing with the holidays, I was playing with it some more (was the battery dead? were individual motors not working, perhaps because the wiring had come loose? was it not turning on right?) since I had spent a fair bit of money on it, when I noticed that doing a vertical rotation seemed to trigger all the motors - so perhaps somehow the *calibration* had gone wrong.
 I re-calibrated, and that fixed the problem. So I began using it again.
 
+## Conclusion
+
+After some further on/off periods, I decided to stop use and sold it in October 2016 to someone else to try.
+The buyer noted that most of the motors didn't seem to be working, and the wires/motors looked badly corroded (perhaps I sweated too much?); he bought 10-wire cable with IDC clips, shrink tubing, & pager motors, and was able to get the North Paw working again - it was only a wire/motor problem and the circuit box/battery were still working.
+
+Ultimately, the North Paw was a failure for me. I felt little sense of mental rewiring or intuitive sense of direction, and nothing worth the money. Oh well.
+
 <!-- North Skirt:
 http://steampunkworkshop.com/north-skirt
 http://makezine.com/video/north-finding-led-skirt-craft-video/ -->
