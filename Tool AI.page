@@ -96,7 +96,8 @@ This is a highly general point which can be applied on many levels.
 This point often arises in classical statistics/[experimental design](!Wikipedia)/decision theory where adaptive techniques can greatly outperform fixed-sample techniques for both inference and actions/losses: an [sequential analysis](!Wikipedia) trial testing a hypothesis can often terminate after a fraction of the equivalent fixed-sample trial's sample size (and/or loss) while [exploring multiple questions](!Wikipedia "Response surface methodology"); an [adaptive](!Wikipedia "Adaptive clinical trial") [multi-armed bandit](!Wikipedia) will have much lower regret than any non-adaptive solution, but it will also be inferentially better at estimating which arm is best and what the performance of that arm is (see the 'best-arm problem': [Bubeck et al 2009](https://arxiv.org/pdf/0802.2655.pdf "Pure exploration in multi-armed bandits problems"), [Audibert et al 2010](https://hal.inria.fr/file/index/docid/654404/filename/COLT10.pdf "Best Arm Identification in Multi-Armed Bandits"), [Gabillon et al 2011](https://papers.nips.cc/paper/4478-multi-bandit-best-arm-identification.pdf "Multi-Bandit Best Arm Identification"), [Mellor 2014](https://www.escholar.manchester.ac.uk/api/datastream?publicationPid=uk-ac-man-scw:227658&datastreamId=FULL-TEXT.PDF "Decision Making Using Thompson Sampling"), [Jamieson & Nowak 2014](http://nowak.ece.wisc.edu/bestArmSurvey.pdf "Best-arm Identification Algorithms for Multi-Armed Bandits in the Fixed Confidence Setting"), [Kaufmann et al 2014](http://arxiv.org/pdf/1407.4443v1.pdf "On the Complexity of Best Arm Identification in Multi-Armed Bandit Models")), and an adaptive [optimal design](!Wikipedia) can constant-factor (gains of 50% or more are possible compared to naive designs like even allocation; [McClelland 1997](http://www2.psych.ubc.ca/~schaller/528Readings/McClelland1997.pdf "Optimal design in psychological research")) minimize total [variance](!Wikipedia) by focusing on unexpectedly difficult-to-estimate arms (while a fixed-sample trial can be seen as ideal for when one values precise estimates of all arms equally and they have equal variance, which is usually not the case); even a [Latin square](!Wikipedia) or [blocking](!Wikipedia "Randomized block design") or [rerandomization](https://arxiv.org/pdf/1207.5625.pdf "'Rerandomization to improve covariate balance in experiments', Morgan & Rubin 2012") design rather than simple randomization can be seen as reflecting this benefit (avoiding the potential for imbalance in allocation across arms by deciding in advance the sequence of 'actions' taken in collecting samples).
 
 The wide variety of uses of action is a major theme in recent work in  AI (specifically, [deep learning](!Wikipedia)/neural networks) research and increasingly key to achieving the best performance on inferential tasks as well as reinforcement learning/optimization/agent-y tasks.
-Roughly, we can try to categorize them by the 'level' of the NN they work on.
+Because of the power and wide variety of tasks NNs get applied to, and sophisticated architectures, we can see the pervasive advantage of agentiness much more clearly than in narrower contexts like biostatistics.
+Roughly, we can try to categorize the different kinds of agentiness by the 'level' of the NN they work on.
 
 There are:
 
@@ -125,10 +126,6 @@ There are:
 5. internal to interaction with environment
 
     - adaptive experiment / multi-armed bandit / exploration for reinforcement learning
-
-So to put it concretely: CNNs with adaptive computations will be computationally faster for a given accuracy rate than fixed-iteration CNNs, CNNs with attention classify better than CNNs without attention, CNNs with focus over their entire dataset will learn better than CNNs which only get fed random images, CNNs which can ask for specific kinds of images do better than those querying their dataset, CNNs which can trawl through Google Images and locate the most informative one will do better still, CNNs which access rewards from their user about whether the result was useful will deliver more relevant results, CNNs whose hyperparameters are automatically optimized by an RL algorithm will perform better than CNNs with handwritten hyperparameters, CNNs whose architecture as well as standard hyperparameters are designed by RL agents will perform better than handwritten CNNs... and so on.
-(It's actions all the way down.)
-The drawback to all this is the implementation difficulty is higher, the sample efficiency can be better or worse (individual parts will have greater sample-efficiency but data will be used up training the additional flexibility of other parts), and the computation requirements for training can be much higher; but the ultimate performance is better, and the gap probably grows as GPUs & datasets get bigger and tasks get more difficult & valuable in the real world.
 
 ## Actions internal to a computation
 
@@ -168,54 +165,57 @@ So... what if we used powerful algorithms (viz. neural networks) to design neura
 
 The logical extension of these "neural networks all the way down" papers is that an actor like Google/Baidu/Facebook/MS could effectively turn NNs into a black box: a user/developer uploads through an API a dataset of input/output pairs of a specified [type](!Wikipedia "Type system") and a monetary loss function, and a top-level NN running on a large GPU cluster starts autonomously optimizing over architectures & hyperparameters for the NN design which balances GPU cost and the monetary loss, interleaved with further optimization over the thousands of previous submitted tasks, sharing its learning across all of the datasets/loss functions/architectures/hyperparameters, and the original user simply submits future data through the API for processing by the best NN so far.
 
-## Actions internal to data selection:
+## Actions internal to data selection
 
-class imbalance
-active learning: babies ask parents for only a few labels to finetune unsupervised learning but still learn language
-["Active Learning Literature Survey"](http://burrsettles.com/pub/settles.activelearning.pdf) (Settles 2010) discusses the practical advantages to machine learning algorithms of careful choice of data points to learn from or 'label', and gives some of the known theoretical results on how large the benefits are - on a toy problem, an error rate _e_ decreasing in sample count from $\mathcal{O}(\frac{1}{\epsilon})$ to $\mathcal{O}(log(\frac{1}{\epsilon}))$, or in a Bayesian setting, a decrease of $\mathcal{O}(\frac{d}{\epsilon})$ to $\mathcal{O}(d \cdot log(\frac{1}{\epsilon}))$.
+We have previously looked at sampling from existing datasets: training on hard samples, and so on.
+One problem with existing datasets is that they can be inefficient - perhaps they have class imbalance problems where some kinds of data are overrepresented and what is really needed for improved performance is more of the other kinds of data.
+An image classification CNN doesn't need 99 dog photos & 1 cat photos, it wants 50 dog photos & 50 cat photos.
+(Quite aside from the fact that there's not enough information to classify other cat photos based on just 1 exemplar, the CNN will simply learn to always classify photos as 'dog'.)
+One can try to fix this by [choosing predominately from the minority classes](!Wikipedia "Oversampling and undersampling in data analysis"), or by changing the loss function to make classifying the minority class correctly much more valuable than classifying the majority class.
 
-"Active Learning for High Dimensional Inputs using Bayesian Convolutional Neural Networks", Islam 2016 https://github.com/Riashat/Active-Learning-Bayesian-Convolutional-Neural-Networks/raw/master/Presentations/Thesis/Islam%20Riashat%20MPhil%20MLSALT%20Thesis.pdf ; "Uncertainty in Deep Learning", Gal 2016 / http://mlg.eng.cam.ac.uk/yarin/thesis/thesis.pdf "Bayesian Active Learning for Classification and Preference Learning", Houlsby et al 2011  https://arxiv.org/abs/1112.5745
-optimal experiment
+Even better is if the NN can somehow ask for new data. This leads us to [active learning](!Wikipedia "Active learning (machine learning)"): given possible additional datapoints (such as a large pool of unlabeled datapoints), the NN can ask for the datapoint which it will learn the most from ([Houlsby et al 2011](https://arxiv.org/abs/1112.5745 "Bayesian Active Learning for Classification and Preference Learning"), [Islam 2016](https://github.com/Riashat/Active-Learning-Bayesian-Convolutional-Neural-Networks/raw/master/Presentations/Thesis/Islam%20Riashat%20MPhil%20MLSALT%20Thesis.pdf "Active Learning for High Dimensional Inputs using Bayesian Convolutional Neural Networks"), [Gal 2016](http://mlg.eng.cam.ac.uk/yarin/thesis/thesis.pdf "Uncertainty in Deep Learning")).
+We can think of it as a little analogous to how kids[^Schmidhuber] ask parents not random questions, but ones they're most unsure about, with the most implications one way or another.
+[Settles 2010](http://burrsettles.com/pub/settles.activelearning.pdf "Active Learning Literature Survey") discusses the practical advantages to machine learning algorithms of careful choice of data points to learn from or 'label', and gives some of the known theoretical results on how large the benefits can be - on a toy problem, an error rate _e_ decreasing in sample count from $\mathcal{O}(\frac{1}{\epsilon})$ to $\mathcal{O}(log(\frac{1}{\epsilon}))$, or in a Bayesian setting, a decrease of $\mathcal{O}(\frac{d}{\epsilon})$ to $\mathcal{O}(d \cdot log(\frac{1}{\epsilon}))$.
+Active learning also connects back, from a machine learning perspective, to some of the statistical areas covering the benefits of adaptive/sequential trials - optimal experiments query the most uncertain aspects, which the most can be learned from.
 
-4. external actions
+[^Schmidhuber]: [Kyunghyun Cho, 2015](http://www.kyunghyuncho.me/home/blog/briefsummaryofthepaneldiscussionatdlworkshopicml2015 "Brief Summary of the Panel Discussion at DL Workshop @ICML 2015"):
 
-adaptive experiments
-MABs
-RL
+    > One question I remember came from Tieleman. He asked the panelists about their opinions on active learning/exploration as an option for efficient unsupervised learning. Schmidhuber and Murphy responded, and before I reveal their response, I really liked it. In short (or as much as I'm certain about my memory,) active exploration will happen naturally as the consequence of rewarding better explanation of the world. Knowledge of the surrounding world and its accumulation should be rewarded, and to maximize this reward, an agent or an algorithm will active explore the surrounding area (even without supervision.) According to Murphy, this may reflect how babies learn so quickly without much supervising signal or even without much unsupervised signal (their way of active exploration compensates the lack of unsupervised examples by allowing a baby to collect high quality unsupervised examples.)
 
-20:56 <@gwern> to get better performance on a variety of tasks, handing it more actions and options will often be found to be helpful as it can go after the data which will be most useful
-20:58 <@gwern> that's my point. optimizing explorations can often lead to prediction/classification/inference gains
-20:58 <@gwern> there's no hard and fast separation from RL stuff and supervised learning. agents benefit from better inference, but inference also benefits from agentiness
-20:59 <@gwern> think about just the simplest multi-armed bandit model. by letting the algorithm decide where to sample, you can get better inference about which is the optimal arm and what its payoff is, entirely separate from issues of maximizing reward
-21:02 <@gwern> nshepperd: or you could just do a fixed-sample trial and leave any action step outside of the algorithm. the MAB will still inferentially outperform the fixed-sample trial
+## Actions external to the agent
 
+Finally, we come to actions in environments which aren't purely virtual.
+Adaptive experiments, multi-armed bandits, reinforcement learning etc will outperform any purely supervised learning.
+For example, [AlphaGo](!Wikipedia) trained as a pure supervised-learning Tool AI, predicting next moves of human Go games in a [KGS](!Wikipedia "KGS Go Server") dataset, but that was only a prelude to the self-play, which boosted it from professional player to superhuman level; aside from replacing loss functions (a classification loss like log loss vs victory), the AlphaGo NNs were able to explore tactics and positions that never appeared in the original human dataset.
+The rewards can also help turn an unsupervised problem (what is the structure or label of each frame of a video game?) into more of a [semi-supervised](!Wikipedia "Semi-supervised learning") problem by providing some sort of meaningful summary: the reward.
+A DQN Atari Learning Environment (ALE) agent will, without any explicit image classification, learn to recognize & predict objects in a game which are relevant to achieving a high score.
+
+## Overall
+
+So to put it concretely: CNNs with adaptive computations will be computationally faster for a given accuracy rate than fixed-iteration CNNs, CNNs with attention classify better than CNNs without attention, CNNs with focus over their entire dataset will learn better than CNNs which only get fed random images, CNNs which can ask for specific kinds of images do better than those querying their dataset, CNNs which can trawl through Google Images and locate the most informative one will do better still, CNNs which access rewards from their user about whether the result was useful will deliver more relevant results, CNNs whose hyperparameters are automatically optimized by an RL algorithm will perform better than CNNs with handwritten hyperparameters, CNNs whose architecture as well as standard hyperparameters are designed by RL agents will perform better than handwritten CNNs... and so on.
+(It's actions all the way down.)
+
+The drawback to all this is the implementation difficulty is higher, the sample efficiency can be better or worse (individual parts will have greater sample-efficiency but data will be used up training the additional flexibility of other parts), and the computation requirements for training can be much higher; but the ultimate performance is better, and the gap probably grows as GPUs & datasets get bigger and tasks get more difficult & valuable in the real world.
+
+# The benefits of being an agent rather than a tool
 
 Why does treating all these levels as decision or reinforcement learning problems help so much?
 
 One answer is that most points are not near any decision boundary, or are highly predictable and contribute little information.
+Optimizing explorations can often lead to prediction/classification/inference gains.
 These points need not be computed extensively, nor trained on much, nor collected further.
 If a particular combination of variables is already being predicted with high accuracy (perhaps because it's common), adding even an infinite number of additional samples will do little; one sample from an unsampled region far away from the previous samples may be dramatically informative.
 You need the *right* data, not more data.
+("39. Re graphics: A picture is worth 10K words - but only those to describe the picture. Hardly any sets of 10K words can be adequately described with pictures.")
 
-Another answer is the "curse of dimensionality": in many environments, the tree of possible actions and subsequent rewards grows exponentially, so any sequence of actions over more than a few timesteps is increasingly unlikely to ever be sampled.
+Another answer is the "curse of dimensionality": in many environments, the tree of possible actions and subsequent rewards grows exponentially, so any sequence of actions over more than a few timesteps is increasingly unlikely to ever be sampled, and sparse rewards will be increasingly likely to be observed.
+Even if an important trajectory is executed at random and a reward obtained, it will be equally unlikely to ever be executed again - whereas some sort of RL agent, whose beliefs affect its choice of actions, can sample the important trajectory repeatedly, and rapidly converge on an estimate of its high value and continue exploring more deeply.
+
 A dataset of randomly-generated sequences of robot arm movements intended to grip an object would likely include no rewards (successful grips) at all, because it requires a long sequence of finely calibrated arm movements; with no successes, how could the tool AI learn to manipulate an arm?
 It must be able to make progress by testing its best arm movement sequence candidate, then learn from that and test the better arm movement, and so on, until it succeeds.
+Without any rewards or ability to hone in good actions, only the initial states will be observed and progress will be extremely slow compared to an agent who can take actions and explore novel parts of the environment
+(eg the problem of [_Montezuma's Revenge_](!Wikipedia "Montezuma's Revenge (video game)") in the Atari Learning Environment: because of reward sparsity, an epsilon-greedy might as well not be an agent compared to some better method of exploring like density-estimation in [Bellemare et al 2016](https://arxiv.org/pdf/1606.01868.pdf "Unifying Count-Based Exploration and Intrinsic Motivation").)
+
 Or imagine training a Go program by creating a large dataset of randomly-generated Go boards, then evaluating each possible move's value by playing out a game between random agents from it; this would not work nearly as well as training on actual human-generated board positions which target the vanishingly small set of high-quality games & moves.
 The exploration homes in on the exponentially shrinking optimal area of the movement tree based on its current knowledge, discarding the enormous space of bad possible moves.
 In contrast, a tool AI cannot lift itself up by its bootstraps. It merely gives its best guess on the static current dataset, and that's that. If you don't like the results, you can gather more data, but it probably won't help that much because you'll give it more of what it already has.
-
-
-
-random Go boards
-random actions in a robot arm
-sparse rewards
-exponentially difficult to reach rewards with actions ("39. Re graphics: A picture is worth 10K words - but only those to describe the picture. Hardly any sets of 10K words can be adequately described with pictures.")
-== rewards not observed in a dataset
-_Montezuma's Revenge_: epsilon-greedy vs density-estimation ("Unifying Count-Based Exploration and Intrinsic Motivation", Bellemare et al 2016 https://arxiv.org/pdf/1606.01868.pdf )
-
-supervised/unsupervised ML algorithm which computes a function but takes no actions
-contrast to reinforcement learning and automated systems
-
-actions can serve as a form of supervision - in DQN what would you 'label' each Atari screen as...?
-
-17:16 <@gwern> 'One question I remember came from Tieleman. He asked the panelists about their opinions on active learning/exploration as an option for efficient unsupervised learning. Schmidhuber and Murphy responded, and before I reveal their response, I really liked it. In short (or as much as I'm certain about my memory,) active exploration will happen naturally as the consequence of rewarding better explanation of the world. Knowledge of the surrounding world and its accumulation should be rewarded, and to maximize this reward, an agent or an algorithm will active explore the surrounding area (even without supervision.) According to Murphy, this may reflect how babies learn so quickly without much supervising signal or even without much unsupervised signal (their way of active exploration compensates the lack of unsupervised examples by allowing a baby to collect high quality unsupervised examples.)' http://www.kyunghyuncho.me/home/blog/briefsummaryofthepaneldiscussionatdlworkshopicml2015 so they think tool AIs will inevitably segue into agent AIs...
