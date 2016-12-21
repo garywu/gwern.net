@@ -2,7 +2,8 @@
 title: Tool AIs Want to Be Agent AIs
 description: Tool AIs limited purely to inferential tasks will be less intelligent, efficient, and economically valuable than reinforcement-learning AIs learning actions over computation/data/training/architecture/hyperparameters/external-resource use.
 created: 7 Sep 2016
-status: in progress
+status: finished
+belief: likely
 tags: decision theory, statistics, NN, computer science, transhumanism
 ...
 
@@ -219,3 +220,9 @@ Without any rewards or ability to hone in good actions, only the initial states 
 Or imagine training a Go program by creating a large dataset of randomly-generated Go boards, then evaluating each possible move's value by playing out a game between random agents from it; this would not work nearly as well as training on actual human-generated board positions which target the vanishingly small set of high-quality games & moves.
 The exploration homes in on the exponentially shrinking optimal area of the movement tree based on its current knowledge, discarding the enormous space of bad possible moves.
 In contrast, a tool AI cannot lift itself up by its bootstraps. It merely gives its best guess on the static current dataset, and that's that. If you don't like the results, you can gather more data, but it probably won't help that much because you'll give it more of what it already has.
+
+Hence, being an agent is much better than being a tool.
+
+# See also
+
+- [Complexity no Bar to AI](/Complexity vs AI "Critics of AI risk suggest diminishing returns to computing means AI will be weak; I argue that this argument breaks if any premises rejected")
