@@ -76,6 +76,7 @@
           <ul>
             <li><a href="Haskell%20Summer%20of%20Code" title="A retrospective of 5 years of SoC, w/lessons learned">Haskell Summer of Code</a></li>
             <li><a href="./Complexity%20vs%20AI" title="Critics of AI risk suggest diminishing returns to computing means AI will be weak; I argue argument breaks if any premises rejected">Complexity no Bar to AI</a></li>
+            <li><a href="./Tool%20AI" title="Tool AIs limited purely to inferential tasks will be less intelligent, efficient, and economically valuable than independent reinforcement-learning AIs learning actions over computation/data/training/architecture/hyperparameters/external-resource use.">Tool AIs Want To Be Agent AIs</a></li>
             <li><a href="Simulation%20inferences" title="How big must be the computer simulating the universe? Not very.">Simulation inferences</a></li>
             <li><a href="Archiving%20URLs" title="Archiving the Web, because nothing lasts forever - pulling together all the previous archive tools.">Archiving URLs</a></li>
             <li><a href="./RNN%20metadata">RNN mimicking multiple authors</a></li>
