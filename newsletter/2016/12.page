@@ -13,10 +13,12 @@ If you have not been receiving issues, please check your email account's spam fo
 
 # Writings
 
+- [Why Tool AIs Want To Be Agent AIs](https://www.gwern.net/Tool%20AI "Tool AIs limited purely to inferential tasks will be less intelligent, efficient, and economically valuable than independent reinforcement-learning AIs learning actions over computation/data/training/architecture/hyperparameters/external-resource use.")
 - [WiFi bandwidth benchmarking](https://www.gwern.net/WiFi)
 - [statistical model criticism with machine learning](https://www.gwern.net/Statistical%20notes#model-criticism-via-machine-learning)
 - compiled [my epigrams](https://www.gwern.net/Epigrams)
-- `gwern.net` CSS, logo, and index page redesigns
+- [why aren't there powerful general languages?](https://www.gwern.net/Notes#powerful-natural-languages)
+- `gwern.net`: CSS, logo, and index page redesigns; scripts & YAML updates for upstream Pandoc/Hakyll changes
 
 # Media
 ## Links
@@ -26,24 +28,30 @@ Everything is heritable:
 - ["Genome-wide analyses for personality traits identify six genomic loci and show correlations with psychiatric disorders"](https://www.gwern.net/docs/genetics/2016-lo.pdf), Lo et al 2016
 - ["Cognitive Performance Among Carriers of Pathogenic Copy Number Variants: Analysis of 152,000 UK Biobank Subjects"](https://www.gwern.net/docs/genetics/2016-kendall.pdf), Kendall et al 2016
 - ["Schizophrenia risk alleles and neurodevelopmental outcomes in childhood: a population-based cohort study"](https://www.gwern.net/docs/genetics/2016-riglin.pdf), Riglin et al 2016
-- recent human evolution:
 
 AI:
 
 - ["Overcoming catastrophic forgetting in neural networks"](https://arxiv.org/abs/1612.00796), Kirkpatrick et al 2016
 - ["Delivering real-time AI in the palm of your hand"](https://code.facebook.com/posts/196146247499076/delivering-real-time-ai-in-the-palm-of-your-hand/) (Style transfer was invented hardly a year ago or so, but it's gone from requiring hours to now being doable in realtime on an ordinary smartphone at higher quality. Progress in deep learning is fast, and this also illustrates the optimization potential of neural networks: they start off grossly overparameterized, but can be specialized down to much more powerful faster systems...)
 - ["PILCO: A Model-Based and Data-Efficient Approach to Policy Search"](http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Deisenroth_323.pdf), Deisenroth & Rasmussen 2011 (One of the most impressive RL algorithms around, this demonstrates the power of forward model-based planning for optimization & learning - a paradigm which thus far has been weirdly absent from deep reinforcement learning.)
+- ["Value Iteration Networks"](https://arxiv.org/abs/1602.02867), Tamar et al 2016 ([MCTS](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search) and NNs are going together like chocolate & peanut butter right now, because NNs can't effectively plan. What might a explicit planning over future paths for NNs look like? This is one step.)
 - ["Convolutional Neural Fabrics"](https://arxiv.org/abs/1606.02492), Saxena & Verbeek 2016
+- ["StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks"](https://arxiv.org/abs/1612.03242), Zhang et al 2016 (Another nice improvement to DCGANs: a pair of GANs (one for prototyping, a second for upscaling) generating sharp images at 256px. I hope they release source code - I'd like to try it out with my anime dataset from Danbooru, which earlier DCGANs couldn't cope with); ["Stacked Generative Adversarial Networks"](https://arxiv.org/pdf/1612.04357v1.pdf), Huang et al 2016
 - [AI risk reading list](http://humancompatible.ai/bibliography "Annotated bibliography of recommended materials")
 
 Statistics/meta-science/mathematics:
 
+- The [Schiehallion experiment](https://en.wikipedia.org/wiki/Schiehallion_experiment) (weighing the earth with a mountain's gravity)
+
 Politics/religion:
 
+- ["The Strategic Consequences of Chinese Racism: A Strategic Asymmetry for the United States"](http://www.dod.mil/pubs/foi/Reading_Room/Other/Litigation%20Release%20-%20The%20Strategic%20Consequences%20of%20Chinese%20Racism%20%20201301.pdf), Anonymous & Anonymous 2013
 - [Specific corruption accusations in the Park/Choi Soon-il scandal](https://askakorean.blogspot.com/2016/12/the-ultimate-choi-soon-sil-gate.html)
+- ["The American Leader in the Islamic State"](https://www.theatlantic.com/magazine/archive/2017/03/the-american-leader-in-the-islamic-state/510872/ "John Georgelas was a military brat, a drug enthusiast, a precocious underachiever born in Texas. Now he is a prominent figure within the Islamic State. Here's the never-before-reported story of his long and troubling journey.")
 
 Psychology/biology:
 
+- ["Childhood forecasting of a small segment of the population with large economic burden"](http://www.nature.com/articles/s41562-016-0005), Caspi et al 2016 (for the genetic version, see [Belsky et al 2016](https://www.gwern.net/docs/genetics/2016-belsky.pdf "The Genetics of Success: How Single-Nucleotide Polymorphisms Associated With Educational Attainment Relate to Life-Course Development"))
 - Psychedelics & psychological well-being ([media](https://www.theatlantic.com/health/archive/2016/12/the-life-changing-magic-of-mushrooms/509246/ "The Life-Changing Magic of Mushrooms: A single dose of magic mushrooms can make people with severe anxiety and depression better for months, according to a landmark pair of new studies.")):
 
     - ["The paradoxical psychological effects of lysergic acid diethylamide (LSD)"](https://www.researchgate.net/profile/Mendel_Kaelen/publication/293169090_The_paradoxical_psychological_effects_of_lysergic_acid_diethylamide_LSD/links/56bb178808ae023560266ae5.pdf), Carhart-Harris et al 2016
@@ -53,19 +61,27 @@ Psychology/biology:
     - ["Survey study of challenging experiences after ingesting psilocybin mushrooms: Acute and enduring positive and negative consequences"](https://www.gwern.net/docs/2016-carbonaro.pdf), Carbonaro et al 2016
     - ["The Challenging Experience Questionnaire: Characterization of challenging experiences with psilocybin mushrooms"](https://www.gwern.net/docs/2016-barrett.pdf), Barrett et al 2016
 - ["When the music's over. Does music skill transfer to children's and young adolescents' cognitive and academic skills? A Meta-Analysis"](https://www.gwern.net/docs/iq/2016-sala.pdf), Sala & Gobet 2016 (no)
+- ["Effects of dietary restriction on adipose mass and biomarkers of healthy aging in human"](http://www.aging-us.com/article/YmhYbE6ipoL6ykpfz/text), Lettieri-Barbato et al 2016 (Not keen on how they lump together CR with IF etc, or casually dump a few correlational trials in with the randomized ones... I'd rather see it split by intervention type, the correlation trials excluded entirely, and maybe redone as a network meta-analysis or better yet, a network SEM, since there are multiple measures of body fat and inflammation under consideration.)
 
 Technology:
 
-- ["The Distribution of Users’ Computer Skills: Worse Than You Think"](https://www.nngroup.com/articles/computer-skill-levels/)
+- ["The Distribution of Users' Computer Skills: Worse Than You Think"](https://www.nngroup.com/articles/computer-skill-levels/)
+- ["Liquid Haskell: Haskell as a Theorem Prover"](http://goto.ucsd.edu/~nvazou/thesis/main.pdf), Vazou 2016 (One encouraging aspect of programming language theory is how [SMT](https://en.wikipedia.org/wiki/Satisfiability_modulo_theories) solvers and [dependent typing](https://en.wikipedia.org/wiki/Dependent_type) are gradually making progress and enabling languages of the future to express and prove many invariants and properties about code. It's true that maybe you don't want to do full-blown theorem proving on a random script or IO processing program, but it's good for everyone that libraries and infrastructure can be easily locked down and rendered extremely reliable. The larger our systems get, the more important it is that the foundations not be buggy.)
 - ["\[0day\] \[exploit\] Compromising a Linux desktop using... 6502 processor opcodes on the NES?!"](https://scarybeastsecurity.blogspot.com/2016/11/0day-exploit-compromising-linux-desktop.html)
+- ["Furiosa's Cat Feeder: The trick is to be smarter than the animal with a brain the size of a walnut"](http://quinndunki.com/blondihacks/?p=3023) (Difficulties in engineering a cat-proof feeder - trial-and-error learning is extremely powerful.)
 
 Economics:
 
+- ["Governing kidnap for ransom: Lloyd's as a 'private regime'"](https://www.gwern.net/docs/2016-shortland.pdf), Shortland 2016 ([media](https://www.washingtonpost.com/news/monkey-cage/wp/2016/12/13/kidnapping-for-ransom-works-like-a-market-how-it-is-organized-is-surprising/ "Kidnapping for ransom works like a market. How it is organized is surprising."))
 - ["Competition in the Robotaxi world"](http://www.templetons.com/brad/robocars/compete.html)
 
 Philosophy:
 
+- ["Time Travel and Computing"](http://www.frc.ri.cmu.edu/~hpm/project.archive/general.articles/1991/TempComp.html), Moravec 1991
+
 Fiction:
+
+- ["A Ghost, a Real Ghost"](https://plus.google.com/103530621949492999968/posts/dvGJYKT7sek), Randall Jarrell
 
 <!-- Back to 08 Sep 2012 -->
 
@@ -79,7 +95,11 @@ Fiction:
 
 Live-action:
 
-Anime:
+- [_Florence Foster Jenkins_](https://en.wikipedia.org/wiki/Florence_Foster_Jenkins_\(film\))
+
+Animated:
+
+- [_Finding Dory_](https://en.wikipedia.org/wiki/Finding_Dory)
 
 ## Games
 
