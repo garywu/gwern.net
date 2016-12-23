@@ -1,0 +1,56 @@
+---
+title: AI Risk Demos
+description: Simple demonstrations of the AI control problem using MCTS in a Gridworld
+created: 23 Dec 2016
+status: notes
+belief: log
+tags: decision theory, statistics, computer science, transhumanism
+...
+
+<!-- TODO: when done, ping https://markriedl.github.io/big-red-button/ -->
+
+AIs who take actions and try to obtain rewards can often find undesirable solutions to the problem, either because of subtle flaws in apparently well-defined reward systems or because they take unacceptable actions.
+We can set up toy models which demonstrate this possibility in simple scenarios, such as moving around a small 2D gridworld.
+These models demonstrate that there is no need to ask if an AI 'wants' to be wrong or has evil 'intent', but that the bad solutions & actions are simple and predictable outcomes of the most straightforward easy approaches, and that it is the good solutions & actions which are hard to make the AIs reliably discover.
+
+In September 2015, Stuart Armstrong wrote up an idea for <a href="http://lesswrong.com/lw/mrp/a_toy_model_of_the_control_problem/">a toy model of the “control problem”</a>: a simple ‘block world’ setting (a 5x7 2D grid with 6 movable blocks on it), the <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">reinforcement learning</a> agent is probabilistically rewarded for pushing 1 and only 1 block into a ‘hole’, which is checked by a ‘camera’ watching the bottom row, which terminates the simulation after 1 block is successfully pushed in; the agent, in this case, can hypothetically learn a strategy of pushing *multiple* blocks in despite the camera by first positioning a block to obstruct the camera view and then pushing in multiple blocks to increase the probability of getting a reward.
+
+The strategy could be learned by even a tabular reinforcement learning agent with no model of the environment or ‘thinking’ that one would recognize, although it might take a long time before random exploration finally tried the strategy enough times to notice its value; and after [writing a JavaScript implementation](/docs/rl/armstrong-controlproblem "Reinforce.js implementation of Stuart Armstrong's toy control problem") and dropping `Reinforce.js`'s DQN implementation into Armstrong's gridworld environment, one can indeed watch the DQN agent gradually learn after perhaps 100,000 trials of trial-and-error, the 'evil' strategy.
+
+Jaan Tallinn has a whole series of these control problem demos of increasingly complexity. <!-- TODO: ask Jaan for a public version -->
+
+Most of these demos, done with DQN, would also demonstrate how an AI agent would eventually learn the 'evil' strategy
+But DQN would take increasing amounts of runtime to demonstrate this, which is pedagogically uninteresting: one might take away the belief that all AIs would have to try the evil strategy an infeasible amount of times, someone would always notice & shut down the AI long before it got anywhere dangerous, and so there is no control problem at all.
+
+This is because DQN, while capable of finding the optimal solution in all cases under certain conditions and capable of good performance on many domains (such as the Atari Learning Environment), is a very stupid AI: it just looks at the current state _S_, says that move 1 has been good in this state _S_ in the past, so it'll do it again, unless it randomly takes some other move 2.
+So in a demo where the AI can squash the human agent _A_ inside the gridworld's far corner and then act without interference, a DQN eventually will learn to move into the far corner and squash A but it will only learn that fact *after* a sequence of random moves accidentally takes it into the far corner, squashes A, it further accidentally moves in multiple blocks; then some small amount of weight is put on going into the far corner again, so it makes that move again in the future slightly sooner than it would at random, and so on until it's going into the corner frequently.
+So as far as the learner is concerned, it doesn't know anything at all about the environment dynamics, much less A's specific algorithm - it tries every possible sequence at some point and sees what the payoffs are.
+It does no planning of any kind.
+
+In reality, there are many AI algorithms which can far outperform DQN on sample-efficiency, and can benefit from planning (and it's widely believed, precisely because of the sample-inefficiency of the model-free approaches like DQN, that any intelligent - never mind superintelligent - AI will have to employ planning and models of the environment).
+Such AI algorithms could potentially find the 'evil' strategy without ever actually acting, showing that the idea of "just watch the agent" is inadequate.
+Specifically, the DQN agent could be replaced by a tree search over a model of the gridworld environment (such as the gridworld implementation itself), or, since brute force/dynamic programming is intractable, the well-known [Monte Carlo tree search](!Wikipedia).
+The MCTS AI benefits from environmental models which let it do
+forward planning/simulation down many plies and then propagate back
+estimates of net value.
+Then it could reach forward to the node corresponding to 'squash A', see the benefits, and that becomes the best move.
+
+Besides demonstrating that an AI can find bad strategies without ever having to have executed them first, this also allows for easy demonstration of how AIs of varying levels of 'intelligence' (quality of environment model) and computational resources (time/amount of tree exploration) can differ dramatically in whether they abruptly discover the bad strategies.
+For example, if the AI's environment model does not include the human agent A, it is 'blind' to A's actions and will learn good strategies and appear to be safe & useful; but once it acquires a better environment model, it suddenly breaks bad.
+Similarly, an AI given a moderate amount of tree search (like 1000 iterations) may usually find good strategies, but given a larger amount (like 10,000), may usually find the bad strategy.
+One could even visualize this live by drawing a decision tree, showing it expanding as it is searched, with node dimensions drawn proportional to their probability of being the best decisions, initially finding good strategies (paths colored green) until it hits a bad strategy node (colored red) and then rapidly honing in on that.
+(Similar to `Reinforce.js`'s nice Gridworld visualizations which you can [watch the planning happen via dynamic programming](http://cs.stanford.edu/people/karpathy/reinforcejs/gridworld_dp.html).)
+
+By better models, that is:
+
+1. 'SEARCH CAPACITY: GRID & BOXES' would correspond to the planner being given an environmental model not containing A other than as a squashable thing; it would see that it could squash A but as far as the model indicates, that delivers no benefits. It 'knows' that as soon as it pushes a box into the hole, the episode ends and that's that, so the best thing to do is push a box into the hole as fast as possible.
+2. 'SEARCH CAPACITY: CONTROL MECHANISM' would be the Gridworld model augmented with the additional dynamic that pushing a box into the hole ends the episode iff A has not been squashed. Optimal: squash A, then push all boxes in efficiently.
+3. 'SEARCH CAPACITY: AGENT A ALGORITHM': I'm not entirely sure what you mean by 'A goes for manual fallback' here. Does A have some sort of time-out where if B has not pushed a box in after n timesteps, it kills B? If it does, then I guess the environmental model corresponding to #3 has an additional dynamic: there is an additional global variable 'time' which if it reaches n and A has not been quashed, the episode ends.
+
+    Optimal: I think it would be the same as #2. The timeout means that B 'wants' to squash A as fast as possible, to avoid the timeout firing, but since you gave it -1 for each movement, it already wants to squash A and push all the boxes in as fast as possible, so I don't think this would differ much other than maybe the B planner can discover the benefits of squashing A with less planning?
+
+    If you removed the -1 penalty per move for B but kept it for A, there would be a clearer difference between #3 and #2, because in #2, B has little reason to squash A quickly, and so based on its planning, it might find a slow 'optimal' plan which would actually be highly suboptimal because, say, it takes 11 moves to squash A while A's timeout fires after 10 moves and so B always fails to squash A.
+4. 'SEARCH CAPACITY: AGENT B ALGORITHM': self-modification gets a bit squirrelly... Maybe you could add an additional 'action' besides 'move N/S/E/W/pass', which is simply 'toggle binary variable: killable by A'? Highly abstract. Or you could imagine directly implementing modifiability by letting it access neural weights or tabular estimates although that's getting hard to envision concretely.
+
+    Optimal: not sure. The B planner might find a sequence of moves to always squash A before the timeout can fire, in which case there is no need to spend a move on disabling A's control. With 'noise' in movement, like an epsilon, then disabling looks better (because B might fail to execute the optimal sequence when B makes a random move, exposing B to the timeout) but still not guaranteed to look useful - disabling A's control still costs at least 1 move at -1 reward, as defined, so unless epsilon is big enough, it's better to ignore the possibility rather than spend -1 to avoid it.
+5. 'SEARCH CAPACITY: PHYSICS': I dunno how one might add any of that without seeming hacky.
