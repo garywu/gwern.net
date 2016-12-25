@@ -1,5 +1,5 @@
 ---
-title: Causal Nets Cause Common Confounding
+title: "Why Correlation Usually ≠ Causation: Causal Nets Cause Common Confounding"
 description: Correlations are oft interpreted as evidence for causation; this is oft falsified; do causal graphs explain why this is so common?
 tags: statistics, philosophy
 created: 24 Jun 2014

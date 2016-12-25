@@ -1,6 +1,6 @@
 ---
 title: Candy Japan's new box A/B test
-description: Bayesian decision-theoretic analysis of the effect of fancier packaging on subscription cancellations
+description: Bayesian decision-theoretic analysis of the effect of fancier packaging on subscription cancellations & optimal experiment design
 tags: statistics, decision theory
 created: 6 May 2016
 status: finished

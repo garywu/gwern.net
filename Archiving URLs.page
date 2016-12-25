@@ -1,5 +1,5 @@
 ---
-description: Archiving the Web, because nothing lasts forever - pulling together all the previous archive tools.
+description: "Archiving the Web, because nothing lasts forever: statistics, online archive services, extracting URLs automatically from browsers, and creating a daemon to regularly back up URLs to multiple sources."
 tags: Haskell, archiving, Bitcoin
 created: 10 Mar 2011
 status: finished

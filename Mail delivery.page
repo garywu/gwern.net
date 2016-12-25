@@ -1,6 +1,6 @@
 ---
 title: When Should I Check The Mail?
-description: Bayesian decision-theoretic analysis of local mail delivery times
+description: "Bayesian decision-theoretic analysis of local mail delivery times: modeling deliveries as survival analysis, model comparison, optimizing check times with a loss function, and optimal data collection."
 tags: statistics, decision theory
 created: 21 June 2015
 status: finished
