@@ -28,12 +28,16 @@ Everything is heritable:
 - ["Genome-wide analyses for personality traits identify six genomic loci and show correlations with psychiatric disorders"](https://www.gwern.net/docs/genetics/2016-lo.pdf), Lo et al 2016
 - ["Cognitive Performance Among Carriers of Pathogenic Copy Number Variants: Analysis of 152,000 UK Biobank Subjects"](https://www.gwern.net/docs/genetics/2016-kendall.pdf), Kendall et al 2016
 - ["Schizophrenia risk alleles and neurodevelopmental outcomes in childhood: a population-based cohort study"](https://www.gwern.net/docs/genetics/2016-riglin.pdf), Riglin et al 2016
+- ["The genetic architecture of type 2 diabetes"](http://www.nature.com/nature/journal/v536/n7614/abs/nature18642.html), Fuchsberger et al 2016 (rare variants continue to disappoint those who don't want the missing heritability to just be the common variants)
+- ["Associations of coffee genetic risk scores with coffee, tea and other beverages in the UK Biobank"](http://biorxiv.org/content/early/2016/12/22/096214), Taylor & Munafo 2016
+- recent human evolution: ["Archaic adaptive introgression in TBX15/WARS2"](http://mbe.oxfordjournals.org/content/early/2016/12/20/molbev.msw283.full.pdf+html), Racimo et al 2016 ([media](http://www.nytimes.com/2016/12/23/science/inuit-greenland-denisovans.html "Cold Tolerance Among Inuit May Come From Extinct Human Relatives"))
 
 AI:
 
 - ["Overcoming catastrophic forgetting in neural networks"](https://arxiv.org/abs/1612.00796), Kirkpatrick et al 2016
 - ["Delivering real-time AI in the palm of your hand"](https://code.facebook.com/posts/196146247499076/delivering-real-time-ai-in-the-palm-of-your-hand/) (Style transfer was invented hardly a year ago or so, but it's gone from requiring hours to now being doable in realtime on an ordinary smartphone at higher quality. Progress in deep learning is fast, and this also illustrates the optimization potential of neural networks: they start off grossly overparameterized, but can be specialized down to much more powerful faster systems...)
 - ["PILCO: A Model-Based and Data-Efficient Approach to Policy Search"](http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Deisenroth_323.pdf), Deisenroth & Rasmussen 2011 (One of the most impressive RL algorithms around, this demonstrates the power of forward model-based planning for optimization & learning - a paradigm which thus far has been weirdly absent from deep reinforcement learning.)
+- ["The Predictron: End-To-End Learning and Planning"](https://arxiv.org/abs/1612.08810), Silver et al 2016
 - ["Value Iteration Networks"](https://arxiv.org/abs/1602.02867), Tamar et al 2016 ([MCTS](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search) and NNs are going together like chocolate & peanut butter right now, because NNs can't effectively plan. What might a explicit planning over future paths for NNs look like? This is one step.)
 - ["Convolutional Neural Fabrics"](https://arxiv.org/abs/1606.02492), Saxena & Verbeek 2016
 - ["StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks"](https://arxiv.org/abs/1612.03242), Zhang et al 2016 (Another nice improvement to DCGANs: a pair of GANs (one for prototyping, a second for upscaling) generating sharp images at 256px. I hope they release source code - I'd like to try it out with my anime dataset from Danbooru, which earlier DCGANs couldn't cope with); ["Stacked Generative Adversarial Networks"](https://arxiv.org/pdf/1612.04357v1.pdf), Huang et al 2016
@@ -41,13 +45,17 @@ AI:
 
 Statistics/meta-science/mathematics:
 
+- ["The price of being wrong: Newborn screening saves babies, but lives can be shattered when state labs ignore science and common sense"](http://projects.jsonline.com/news/2016/12/11/the-price-of-being-wrong.html) (When cutoffs are set for decision-making without explicit consideration of costs and benefits.﻿)
 - The [Schiehallion experiment](https://en.wikipedia.org/wiki/Schiehallion_experiment) (weighing the earth with a mountain's gravity)
 
 Politics/religion:
 
-- ["The Strategic Consequences of Chinese Racism: A Strategic Asymmetry for the United States"](http://www.dod.mil/pubs/foi/Reading_Room/Other/Litigation%20Release%20-%20The%20Strategic%20Consequences%20of%20Chinese%20Racism%20%20201301.pdf), Anonymous & Anonymous 2013
+- ["The Strategic Consequences of Chinese Racism: A Strategic Asymmetry for the United States"](https://www.gwern.net/docs/2013-anonymous-strategicconsequencesofchineseracism.pdf), Anonymous & Anonymous 2013
+- ["A Bigger Problem Than ISIS? The Mosul Dam is failing. A breach would cause a colossal wave that could kill as many as a million and a half people"](http://www.newyorker.com/magazine/2017/01/02/a-bigger-problem-than-isis)
 - [Specific corruption accusations in the Park/Choi Soon-il scandal](https://askakorean.blogspot.com/2016/12/the-ultimate-choi-soon-sil-gate.html)
 - ["The American Leader in the Islamic State"](https://www.theatlantic.com/magazine/archive/2017/03/the-american-leader-in-the-islamic-state/510872/ "John Georgelas was a military brat, a drug enthusiast, a precocious underachiever born in Texas. Now he is a prominent figure within the Islamic State. Here's the never-before-reported story of his long and troubling journey.")
+- ["The movie that doesn’t exist and the Redditors who think it does"](http://www.newstatesman.com/science-tech/internet/2016/12/movie-doesn-t-exist-and-redditors-who-think-it-does)
+- ["The Untold Story of Napoleon Hill, the Greatest Self-Help Scammer of All Time"](https://paleofuture.gizmodo.com/the-untold-story-of-napoleon-hill-the-greatest-self-he-1789385645)
 
 Psychology/biology:
 
@@ -62,10 +70,12 @@ Psychology/biology:
     - ["The Challenging Experience Questionnaire: Characterization of challenging experiences with psilocybin mushrooms"](https://www.gwern.net/docs/2016-barrett.pdf), Barrett et al 2016
 - ["When the music's over. Does music skill transfer to children's and young adolescents' cognitive and academic skills? A Meta-Analysis"](https://www.gwern.net/docs/iq/2016-sala.pdf), Sala & Gobet 2016 (no)
 - ["Effects of dietary restriction on adipose mass and biomarkers of healthy aging in human"](http://www.aging-us.com/article/YmhYbE6ipoL6ykpfz/text), Lettieri-Barbato et al 2016 (Not keen on how they lump together CR with IF etc, or casually dump a few correlational trials in with the randomized ones... I'd rather see it split by intervention type, the correlation trials excluded entirely, and maybe redone as a network meta-analysis or better yet, a network SEM, since there are multiple measures of body fat and inflammation under consideration.)
+- ["Men's preferences for women's breast size and shape in four cultures"](https://www.gwern.net/docs/2016-havlicek.pdf), Havlíček et al 2016
 
 Technology:
 
 - ["The Distribution of Users' Computer Skills: Worse Than You Think"](https://www.nngroup.com/articles/computer-skill-levels/)
+- ["Wikipedia usage survey results"](http://lesswrong.com/r/discussion/lw/odb/wikipedia_usage_survey_results/)
 - ["Liquid Haskell: Haskell as a Theorem Prover"](http://goto.ucsd.edu/~nvazou/thesis/main.pdf), Vazou 2016 (One encouraging aspect of programming language theory is how [SMT](https://en.wikipedia.org/wiki/Satisfiability_modulo_theories) solvers and [dependent typing](https://en.wikipedia.org/wiki/Dependent_type) are gradually making progress and enabling languages of the future to express and prove many invariants and properties about code. It's true that maybe you don't want to do full-blown theorem proving on a random script or IO processing program, but it's good for everyone that libraries and infrastructure can be easily locked down and rendered extremely reliable. The larger our systems get, the more important it is that the foundations not be buggy.)
 - ["\[0day\] \[exploit\] Compromising a Linux desktop using... 6502 processor opcodes on the NES?!"](https://scarybeastsecurity.blogspot.com/2016/11/0day-exploit-compromising-linux-desktop.html)
 - ["Furiosa's Cat Feeder: The trick is to be smarter than the animal with a brain the size of a walnut"](http://quinndunki.com/blondihacks/?p=3023) (Difficulties in engineering a cat-proof feeder - trial-and-error learning is extremely powerful.)
@@ -95,7 +105,11 @@ Fiction:
 
 Live-action:
 
+- [_A Beautiful Planet_](https://en.wikipedia.org/wiki/A_Beautiful_Planet)
 - [_Florence Foster Jenkins_](https://en.wikipedia.org/wiki/Florence_Foster_Jenkins_\(film\))
+- [_The Sound of Music_](https://en.wikipedia.org/wiki/The_Sound_of_Music_\(film\))
+- [_Fantastic Beasts and Where to Find Them_](https://en.wikipedia.org/wiki/Fantastic_Beasts_and_Where_to_Find_Them_\(film\))
+- [_Going Clear_](https://en.wikipedia.org/wiki/Going_Clear_\(film\))
 
 Animated:
 
@@ -107,6 +121,11 @@ Animated:
 
 Touhou:
 
+- ["promise flower"](https://www.youtube.com/watch?v=yjl2tiGRqWU) (Kirin feat. ahiru; _Still Moment_ {R10}) [electronic]
+
 Vocaloid:
+
+- ["God-Tier Tune"](https://www.youtube.com/watch?v=_BuWULqeAFM) (Miku; おにゅうP; _初音ミク-Project DIVA-F Complete Collection_ {2013}) [Jpop]
+- ["ぼくも屑だから"](https://www.dropbox.com/s/xi9cczafrsbr9bl/pinocchiop-itsmatsuriheycomeon-%E3%81%BC%E3%81%8F%E3%82%82%E5%B1%91%E3%81%A0%E3%81%8B%E3%82%89.ogg) (Miku+PinocchioP; PinocchioP; _It's Matsuri, Hey Come On!_ {2015}) [electronic] ([original](https://www.youtube.com/watch?v=oypERR3HKOU))
 
 Doujin:
