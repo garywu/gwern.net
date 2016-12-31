@@ -54,6 +54,7 @@ import Hakyll ((.&&.), applyTemplateList, buildTags, compile, complement, compre
                pandocCompilerWithTransform, preprocess, relativizeUrls, route, setExtension,
                tagsField, tagsRules, templateCompiler, Compiler, Context, Item, Pattern, Tags)
 import System.Exit (ExitCode(ExitFailure))
+import System.FilePath (dropFileName)
 import Text.HTML.TagSoup (renderTagsOptions,parseTags,renderOptions, optMinimize, Tag(TagOpen))
 import Text.Pandoc (bottomUp, nullAttr, Extension(Ext_markdown_in_html_blocks), HTMLMathMethod(MathML), Inline(..),
                     ObfuscationMethod(NoObfuscation), Pandoc(..), ReaderOptions(..), WriterOptions(..))
@@ -253,3 +254,23 @@ customInterwikiMap = [("Hackage", "https://hackage.haskell.org/package/"),
 wpInterwikiMap = [("Wikipedia", "https://en.wikipedia.org/wiki/"),
                   ("Wikiquote", "https://en.wikiquote.org/wiki/"),
                   ("Wiktionary", "https://en.wiktionary.org/wiki/")]
+
+brokenLinks :: [(String,String)]
+brokenLinks = [
+  ("/silk%20road", "/Silk%20Road"),
+  ("/silk%20road?revision=20121015013418-f7719-c2d41233ee27eacdb0252a7c6b6f975a30bb220b", "/Silk%20Road"),
+  ("/spaced%20repetition", "/Spaced%20repetition"),
+  ("/2docs/dnb/1978-zimmer.pdf", "/docs/music-distraction/1978-zimmer.pdf"),
+  ("/About.html", "/About"),
+  ("/2015-10-27-modafinilsurvey-feedback.csv", "/docs/modafinil/survey/2015-10-27-modafinilsurvey-feedback.csv")
+  ]
+
+createRedirects :: FilePath -> [(String,String)] -> IO()
+createRedirects target db = mapM_ (\(broken,working) -> writeRedirect target broken (createRedirect working)) db
+
+writeRedirect :: String -> String -> String -> IO ()
+writeRedirect prefix fileName html = do createDirectoryIfMissing True (prefix ++ dropFileName fileName)
+                                        writeFile (prefix ++ fileName) html
+
+createRedirect :: String -> String
+createRedirect working = "<html><head><meta http-equiv=\"refresh\" content=\"0; url=" ++ working ++ "\"><link rel=\"canonical\" href=\"" ++ working ++ "\"></head><body><p>The page has moved to: <a href=\"" ++ working ++ "\">this page</a></p></body></html>"
