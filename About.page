@@ -69,7 +69,7 @@ Keeping the site running that long is a challenge, and leads to the recommendati
 
 Preserving the content is another challenge. Keeping the content in a [DVCS](!Wikipedia) like [git](!Wikipedia "Git (software)") protects against file corruption and makes it easier to mirror the content; regular backups^[Such as burning the occasional copy onto read-only media like DVDs.] help. I have taken additional measures: [WebCitation](!Wikipedia) has archived most pages and almost all external links; the [Internet Archive](!Wikipedia) is also archiving pages & external links^[One can't be sure; the IA is fed by [Alexa](!Wikipedia), and Alexa doesn't guarantee pages will be [spidered](!Wikipedia "Web crawler") & preserved if one goes through their request form.]. (For details, read [Archiving URLs]().)
 
-One could continue in this vein, devising ever more powerful & robust storage methods (perhaps combine the DVCS with [forward error correction](!Wikipedia) through [PAR2](!Wikipedia), a la [bup](http://lwn.net/Articles/380983/)), but what is one fill the storage with?
+One could continue in this vein, devising ever more powerful & robust storage methods (perhaps combine the DVCS with [forward error correction](!Wikipedia) through [PAR2](!Wikipedia), a la [bup](http://lwn.net/Articles/380983/)), but what is one to fill the storage with?
 
 ## Long Content
 
@@ -944,6 +944,54 @@ As before, I did minimal active promotion of my content.
 
 My monthly mailing list has reached 1053 subscribers.
 
+### July 2016 - January 2017
+
+> "With the people of the past / How I wish I could share the beauty / Of these cherry blossoms. / Have each of us across the years / Left behind this very thought?"^[Fujiwara no Teika, from "Shogaku Hyakushu", 1181 AD (translated by Bundy 1990)]
+
+Activity graph for this period (4 July 2016 - 3 January 2017):
+
+![Plot of patch creations (y-axis) versus date (x-axis): July 2016 - January 2017](/images/traffic/2017-january-git-history.png)
+
+#### Traffic
+
+[Analytics traffic](/docs/traffic/20160704-20170103-gwern.net-analytics.pdf) records 339,529 page-views by 172,203 unique visitors over the 184 days, or 184 page-views per day for a daily increase of 230 compared to the previous six months. (Lifetime total: 5,376,333 page-views by 2,499,949 unique visitors.)
+
+![Plot of page-views (y-axis) versus date (x-axis), late 2016](/images/traffic/20160704-20170103-traffic-history.png)
+
+Page rankings:
+
+1. Nootropics: 43,266
+2. index/main page: 39,161
+3. Spaced repetition: 26,965
+4. Modafinil: 26,849
+5. Black-market arrests: 16,279
+6. LSD microdosing: 12,943
+7. DNB FAQ: 10,501
+8. [Why Tool AIs Want to Be Agent AIs](/Tool AI): 8,026
+9. In Defense of Inclusionism: 7,037
+10. Links: 6,677
+
+[My Patreon profile](https://www.patreon.com/gwern) has largely leveled off at a constant \$310.
+
+#### Promotion
+
+As before, I did minimal active promotion of my content.
+
+1. HN: 42,341
+
+    Traffic was driven primarily by a few big HN submissions by other people.
+2. Reddit: 16,151
+3. Twitter: 4,915
+4. Facebook: 4,702
+5. `rs.io`: 1,585
+6. Longecity: 1,175
+7. `thethirdwave.co`: 1,171
+8. DuckDuckGo search: 990
+9. `brainworkshop.sourceforge.net`: 912
+10. Wikipedia: 794
+
+My monthly mailing list has reached 1212 subscribers, up ~200.
+
 ## Colophon
 ### Hosting
 
@@ -953,8 +1001,9 @@ From October 2010 to June 2012, the site was hosted on [NearlyFreeSpeech.net](ht
 
 The switch to Amazon S3 hosting is complicated by my simultaneous addition of CloudFlare as a CDN; my total June 2012 Amazon bill is \$1.62, with \$0.19 for storage. CloudFlare claims it covered 17.5GB of 24.9GB total bandwidth, so the \$1.41 represents 30% of my total bandwidth; multiply 1.41 by 3 is 4.30, and my hypothetical non-CloudFlare S3 bill is ~\$4.5. Even at \$10, this was well below the \$21 monthly cost at NFSN. (The traffic graph indicates that June 2012 was a relatively quiet period, but I don't think this eliminates the factor of 5.) From July 2012 to June 2013, my Amazon bills totaled \$60, which is reasonable except for the steady increase (\$1.62/\$3.27/\$2.43/\$2.45/\$2.88/\$3.43/\$4.12/\$5.36/\$5.65/\$5.49/\$4.88/\$8.48/\$9.26), being primarily driven by out-bound bandwidth (in June 2013, the \$9.26 was largely due to the 75GB transferred - and that was *after* CloudFlare dealt with 82GB); \$9.26 is much higher than I would prefer since that would be >\$110 annually. This was probably due to all the graphics I included in the "Google shutdowns" analysis, since it returned to a more reasonable \$5.14 on 42GB of traffic in August. September, October, November and December 2013 saw high levels maintained at \$7.63/\$12.11/\$5.49/\$8.75, so it's probably a new normal.
 2014 entailed new costs related to EC2 instances & S3 bandwidth spikes due to hosting a multi-gigabyte scientific dataset, so bills ran \$8.51/\$7.40/\$7.32/\$9.15/\$26.63/\$14.75/\$7.79/\$7.98/\$8.98/\$7.71/\$7/\$5.94.
+2015 & 2016 were similar: \$5.94/\$7.30/\$8.21/\$9.00/\$8.00/\$8.30/\$10.00/\$9.68/\$14.74/\$7.10/\$7.39/\$8.03/\$8.20/\$8.31/\$8.25/\$9.04/\$7.60/\$7.93/\$7.96/\$9.98/\$9.22/\$11.80/\$9.01/\$8.87.
 
-<!-- hledger reg 'hosting' -p 'monthly' -->
+<!-- ledger reg 'hosting:S3' -p 'monthly' -->
 
 ### Source
 
@@ -962,9 +1011,9 @@ The revision history is kept in git, and synced [to Github](https://github.com/g
 
 #### Size
 
-As of 3 January 2016, the source of `gwern.net` is composed of >235 text files with >2,430,589 words or 18MB<!-- du -ch *.page */*.page */*/*.page -->; this includes my writings & documents I have transcribed into Markdown, but excludes images, PDFs, archives, infrastructure, and the revision history. <!-- find . -type f -name "*.page" -exec cat "{}" \; | wc -w -->
-With those included and everything compiled to the static^[I like the static site approach to things; it tends to be harder to use and more restrictive, but in exchange it yields [better performance](http://inessential.com/2011/03/16/a_plea_for_baked_weblogs) & leads to fewer [hassles or runtime issues](http://www.aaronsw.com/weblog/000404).] HTML, the site is >1.56GB<!-- s3cmd du s3://www.gwern.net/ -->.
-The source repository contains >9,539 patches<!-- git rev-list HEAD - - count --> (this is an under-count as the creation of the repository in 26 September 2008 included already-written material).
+As of 4 January 2017, the source of `gwern.net` is composed of >265 text files with >2,611,745 words or 19MB<!-- du -ch *.page */*.page */*/*.page -->; this includes my writings & documents I have transcribed into Markdown, but excludes images, PDFs, archives, infrastructure, and the revision history. <!-- find . -type f -name "*.page" -exec cat "{}" \; | wc -w -->
+With those included and everything compiled to the static^[I like the static site approach to things; it tends to be harder to use and more restrictive, but in exchange it yields [better performance](http://inessential.com/2011/03/16/a_plea_for_baked_weblogs) & leads to fewer [hassles or runtime issues](http://www.aaronsw.com/weblog/000404).] HTML, the site is >2.44GB<!-- s3cmd du s3://www.gwern.net/ -->.
+The source repository contains >10,262 patches<!-- git rev-list HEAD - - count --> (this is an under-count as the creation of the repository in 26 September 2008 included already-written material).
 
 ##### Benford's law
 
@@ -1028,7 +1077,7 @@ Software tools & libraries used in the site as a whole:
     - the MathML is rendered using [MathJax](!Wikipedia)
     - analytics are handled by [Google Analytics](!Wikipedia)
     - [A/B testing](!Wikipedia) is done using [ABalytics](https://github.com/danmaz74/ABalytics) (hooks into Google Analytics; see current [testing notes](AB testing))
-    <!-- - ads are served by Google [AdSense](!Wikipedia) -->
+    - ads are served by Google [AdSense](!Wikipedia)
 - Book affiliate links are through an [Amazon Affiliates](!Wikipedia) tag appended in the `hakyll.hs`
 
 These tools encourage a minimalist site; I believe that [minimalism](!Wikipedia) helps one focus on the content. Anything besides the content is [distraction and not design](http://www.jwz.org/gruntle/design.html). 'Attention!', as [Ikkyu](!Wikipedia) would say[^attention].
