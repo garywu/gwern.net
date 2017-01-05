@@ -10,7 +10,16 @@ Following my writing can be a little difficult: while I provide [an RSS feed of 
 So periodically I write up interesting changes in a human-readable format and [send it out to the mailing list](http://eepurl.com/Kc155).
 
 # 2016
-# November
+## December
+
+- [Why Tool AIs Want To Be Agent AIs](/Tool%20AI "Tool AIs limited purely to inferential tasks will be less intelligent, efficient, and economically valuable than independent reinforcement-learning AIs learning actions over computation/data/training/architecture/hyperparameters/external-resource use.")
+- [WiFi bandwidth benchmarking](/WiFi)
+- [why aren't there powerful general languages?](/Notes#powerful-natural-languages)
+- [statistical model criticism with machine learning](/Statistical%20notes#model-criticism-via-machine-learning)
+- compiled [my epigrams](/Epigrams)
+- `gwern.net`: CSS, logo, and index page redesigns; redirects for broken incoming URLs; scripts & YAML updates for upstream Pandoc/Hakyll changes
+
+## November
 
 - [compiled modern genetics bibliography](https://www.gwern.net/Mistakes#genetics-links)
 - [laptop data loss postmortem](https://www.gwern.net/Notes#november-2016-data-loss-postmortem)

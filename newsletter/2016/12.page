@@ -2,7 +2,7 @@
 title: December 2016 news
 created: 3 December 2016
 tags: newsletter
-status: in progress
+status: finished
 belief: log
 ...
 
@@ -15,9 +15,9 @@ If you have not been receiving issues, please check your email account's spam fo
 
 - [Why Tool AIs Want To Be Agent AIs](https://www.gwern.net/Tool%20AI "Tool AIs limited purely to inferential tasks will be less intelligent, efficient, and economically valuable than independent reinforcement-learning AIs learning actions over computation/data/training/architecture/hyperparameters/external-resource use.")
 - [WiFi bandwidth benchmarking](https://www.gwern.net/WiFi)
+- [why aren't there powerful general languages?](https://www.gwern.net/Notes#powerful-natural-languages)
 - [statistical model criticism with machine learning](https://www.gwern.net/Statistical%20notes#model-criticism-via-machine-learning)
 - compiled [my epigrams](https://www.gwern.net/Epigrams)
-- [why aren't there powerful general languages?](https://www.gwern.net/Notes#powerful-natural-languages)
 - `gwern.net`: CSS, logo, and index page redesigns; redirects for broken incoming URLs; scripts & YAML updates for upstream Pandoc/Hakyll changes
 
 # Media
@@ -36,10 +36,10 @@ AI:
 
 - ["Overcoming catastrophic forgetting in neural networks"](https://arxiv.org/abs/1612.00796), Kirkpatrick et al 2016
 - ["Delivering real-time AI in the palm of your hand"](https://code.facebook.com/posts/196146247499076/delivering-real-time-ai-in-the-palm-of-your-hand/) (Style transfer was invented hardly a year ago or so, but it's gone from requiring hours to now being doable in realtime on an ordinary smartphone at higher quality. Progress in deep learning is fast, and this also illustrates the optimization potential of neural networks: they start off grossly overparameterized, but can be specialized down to much more powerful faster systems...)
-- ["PILCO: A Model-Based and Data-Efficient Approach to Policy Search"](http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Deisenroth_323.pdf), Deisenroth & Rasmussen 2011 (One of the most impressive RL algorithms around, this demonstrates the power of forward model-based planning for optimization & learning - a paradigm which thus far has been weirdly absent from deep reinforcement learning.)
 - ["Value Iteration Networks"](https://arxiv.org/abs/1602.02867), Tamar et al 2016; ["The Predictron: End-To-End Learning and Planning"](https://arxiv.org/abs/1612.08810), Silver et al 2016 ([MCTS](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search) and NNs are going together like chocolate & peanut butter right now, because NNs can't effectively plan. What might a explicit planning over future paths for NNs look like? This is one step.)
 - ["Convolutional Neural Fabrics"](https://arxiv.org/abs/1606.02492), Saxena & Verbeek 2016
 - ["StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks"](https://arxiv.org/abs/1612.03242), Zhang et al 2016 (Another nice improvement to DCGANs: a pair of GANs (one for prototyping, a second for upscaling) generating sharp images at 256px. I hope they release source code - I'd like to try it out with my anime dataset from Danbooru, which earlier DCGANs couldn't cope with); ["Stacked Generative Adversarial Networks"](https://arxiv.org/pdf/1612.04357v1.pdf), Huang et al 2016
+- ["PILCO: A Model-Based and Data-Efficient Approach to Policy Search"](http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Deisenroth_323.pdf), Deisenroth & Rasmussen 2011 (One of the most impressive RL algorithms around, this demonstrates the power of forward model-based planning for optimization & learning - a paradigm which thus far has been weirdly absent from deep reinforcement learning.)
 - [AI risk reading list](http://humancompatible.ai/bibliography "Annotated bibliography of recommended materials")
 
 Statistics/meta-science/mathematics:
@@ -76,7 +76,7 @@ Technology:
 - ["The Distribution of Users' Computer Skills: Worse Than You Think"](https://www.nngroup.com/articles/computer-skill-levels/)
 - ["Wikipedia usage survey results"](http://lesswrong.com/r/discussion/lw/odb/wikipedia_usage_survey_results/)
 - ["Liquid Haskell: Haskell as a Theorem Prover"](http://goto.ucsd.edu/~nvazou/thesis/main.pdf), Vazou 2016 (One encouraging aspect of programming language theory is how [SMT](https://en.wikipedia.org/wiki/Satisfiability_modulo_theories) solvers and [dependent typing](https://en.wikipedia.org/wiki/Dependent_type) are gradually making progress and enabling languages of the future to express and prove many invariants and properties about code. It's true that maybe you don't want to do full-blown theorem proving on a random script or IO processing program, but it's good for everyone that libraries and infrastructure can be easily locked down and rendered extremely reliable. The larger our systems get, the more important it is that the foundations not be buggy.)
-- ["\[0day\] \[exploit\] Compromising a Linux desktop using... 6502 processor opcodes on the NES?!"](https://scarybeastsecurity.blogspot.com/2016/11/0day-exploit-compromising-linux-desktop.html)
+- ["\[0day\] \[exploit\] Compromising a Linux desktop using... 6502 processor opcodes on the NES‽"](https://scarybeastsecurity.blogspot.com/2016/11/0day-exploit-compromising-linux-desktop.html)
 - ["Furiosa's Cat Feeder: The trick is to be smarter than the animal with a brain the size of a walnut"](http://quinndunki.com/blondihacks/?p=3023) (Difficulties in engineering a cat-proof feeder - trial-and-error learning is extremely powerful.)
 
 Economics:
@@ -98,11 +98,11 @@ Fiction:
 
 Live-action:
 
-- [_A Beautiful Planet_](https://en.wikipedia.org/wiki/A_Beautiful_Planet)
-- [_Florence Foster Jenkins_](https://en.wikipedia.org/wiki/Florence_Foster_Jenkins_\(film\))
+- [_A Beautiful Planet_](https://en.wikipedia.org/wiki/A_Beautiful_Planet) (saw in the Smithsonian Air & Space Museum: glorious long shots panning over the Earth from the ISS presented in IMAX 3D. Wallpapers cannot compare, and 3D for once serves its purpose of creating presence & making one feel like one is in the cramped submarine-like confines of the ISS. The ISS unavoidably feels fake in normal photos and videos, but taking a 3D camera-rig's perspective and floating slowly through the ISS modules or on spacewalks, I finally felt like it was a real place. The biggest flaw is the narration by Jennifer Lawrence, who in attempting gravitas, comes off as almost histrionic & incomprehensible due to sheer levels of obnoxious [vocal fry](https://en.wikipedia.org/wiki/Vocal_fry_register).)
+- [_Florence Foster Jenkins_](https://en.wikipedia.org/wiki/Florence_Foster_Jenkins_\(film\)) (A very improbable-sounding plot, but it works and is moving, offering rewards beyond cringe-humor and the usual watching Hollywood recreate the 1940s. I checked WP on [the original person](https://en.wikipedia.org/wiki/Florence_Foster_Jenkins), and was amazed how close the film hews to history and how few & reasonable liberties it took with events.)
 - [_The Sound of Music_](https://en.wikipedia.org/wiki/The_Sound_of_Music_\(film\))
 - [_Fantastic Beasts and Where to Find Them_](https://en.wikipedia.org/wiki/Fantastic_Beasts_and_Where_to_Find_Them_\(film\))
-- [_Going Clear_](https://en.wikipedia.org/wiki/Going_Clear_\(film\))
+- [_Going Clear_](https://en.wikipedia.org/wiki/Going_Clear_\(film\)) (Scientology expose; one can learn much more about Scientology online reading articles like ["The Apostate: Paul Haggis vs. the Church of Scientology"](http://www.newyorker.com/magazine/2011/02/14/the-apostate-lawrence-wright), and this documentary is no substitute for them or for books like _Bare-Faced Messiah: A Biography of L. Ron Hubbard_, but benefits from the use of archival footage - it definitely adds something to see footage of Hubbard himself and especially David Miscavige, to put faces & voices to the quotes & facts)
 
 Animated:
 
