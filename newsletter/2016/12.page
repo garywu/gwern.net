@@ -18,7 +18,7 @@ If you have not been receiving issues, please check your email account's spam fo
 - [statistical model criticism with machine learning](https://www.gwern.net/Statistical%20notes#model-criticism-via-machine-learning)
 - compiled [my epigrams](https://www.gwern.net/Epigrams)
 - [why aren't there powerful general languages?](https://www.gwern.net/Notes#powerful-natural-languages)
-- `gwern.net`: CSS, logo, and index page redesigns; scripts & YAML updates for upstream Pandoc/Hakyll changes
+- `gwern.net`: CSS, logo, and index page redesigns; redirects for broken incoming URLs; scripts & YAML updates for upstream Pandoc/Hakyll changes
 
 # Media
 ## Links
@@ -37,15 +37,14 @@ AI:
 - ["Overcoming catastrophic forgetting in neural networks"](https://arxiv.org/abs/1612.00796), Kirkpatrick et al 2016
 - ["Delivering real-time AI in the palm of your hand"](https://code.facebook.com/posts/196146247499076/delivering-real-time-ai-in-the-palm-of-your-hand/) (Style transfer was invented hardly a year ago or so, but it's gone from requiring hours to now being doable in realtime on an ordinary smartphone at higher quality. Progress in deep learning is fast, and this also illustrates the optimization potential of neural networks: they start off grossly overparameterized, but can be specialized down to much more powerful faster systems...)
 - ["PILCO: A Model-Based and Data-Efficient Approach to Policy Search"](http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Deisenroth_323.pdf), Deisenroth & Rasmussen 2011 (One of the most impressive RL algorithms around, this demonstrates the power of forward model-based planning for optimization & learning - a paradigm which thus far has been weirdly absent from deep reinforcement learning.)
-- ["The Predictron: End-To-End Learning and Planning"](https://arxiv.org/abs/1612.08810), Silver et al 2016
-- ["Value Iteration Networks"](https://arxiv.org/abs/1602.02867), Tamar et al 2016 ([MCTS](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search) and NNs are going together like chocolate & peanut butter right now, because NNs can't effectively plan. What might a explicit planning over future paths for NNs look like? This is one step.)
+- ["Value Iteration Networks"](https://arxiv.org/abs/1602.02867), Tamar et al 2016; ["The Predictron: End-To-End Learning and Planning"](https://arxiv.org/abs/1612.08810), Silver et al 2016 ([MCTS](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search) and NNs are going together like chocolate & peanut butter right now, because NNs can't effectively plan. What might a explicit planning over future paths for NNs look like? This is one step.)
 - ["Convolutional Neural Fabrics"](https://arxiv.org/abs/1606.02492), Saxena & Verbeek 2016
 - ["StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks"](https://arxiv.org/abs/1612.03242), Zhang et al 2016 (Another nice improvement to DCGANs: a pair of GANs (one for prototyping, a second for upscaling) generating sharp images at 256px. I hope they release source code - I'd like to try it out with my anime dataset from Danbooru, which earlier DCGANs couldn't cope with); ["Stacked Generative Adversarial Networks"](https://arxiv.org/pdf/1612.04357v1.pdf), Huang et al 2016
 - [AI risk reading list](http://humancompatible.ai/bibliography "Annotated bibliography of recommended materials")
 
 Statistics/meta-science/mathematics:
 
-- ["The price of being wrong: Newborn screening saves babies, but lives can be shattered when state labs ignore science and common sense"](http://projects.jsonline.com/news/2016/12/11/the-price-of-being-wrong.html) (When cutoffs are set for decision-making without explicit consideration of costs and benefits.﻿)
+- ["The price of being wrong: Newborn screening saves babies, but lives can be shattered when state labs ignore science and common sense"](http://projects.jsonline.com/news/2016/12/11/the-price-of-being-wrong.html) (When cutoffs are set for decision-making without explicit consideration of costs and benefits.)
 - The [Schiehallion experiment](https://en.wikipedia.org/wiki/Schiehallion_experiment) (weighing the earth with a mountain's gravity)
 
 Politics/religion:
@@ -54,7 +53,7 @@ Politics/religion:
 - ["A Bigger Problem Than ISIS? The Mosul Dam is failing. A breach would cause a colossal wave that could kill as many as a million and a half people"](http://www.newyorker.com/magazine/2017/01/02/a-bigger-problem-than-isis)
 - [Specific corruption accusations in the Park/Choi Soon-il scandal](https://askakorean.blogspot.com/2016/12/the-ultimate-choi-soon-sil-gate.html)
 - ["The American Leader in the Islamic State"](https://www.theatlantic.com/magazine/archive/2017/03/the-american-leader-in-the-islamic-state/510872/ "John Georgelas was a military brat, a drug enthusiast, a precocious underachiever born in Texas. Now he is a prominent figure within the Islamic State. Here's the never-before-reported story of his long and troubling journey.")
-- ["The movie that doesn’t exist and the Redditors who think it does"](http://www.newstatesman.com/science-tech/internet/2016/12/movie-doesn-t-exist-and-redditors-who-think-it-does)
+- ["The movie that doesn't exist and the Redditors who think it does"](http://www.newstatesman.com/science-tech/internet/2016/12/movie-doesn-t-exist-and-redditors-who-think-it-does)
 - ["The Untold Story of Napoleon Hill, the Greatest Self-Help Scammer of All Time"](https://paleofuture.gizmodo.com/the-untold-story-of-napoleon-hill-the-greatest-self-he-1789385645)
 
 Psychology/biology:
@@ -95,12 +94,6 @@ Fiction:
 
 <!-- Back to 08 Sep 2012 -->
 
-## Books
-
-Nonfiction:
-
-Fiction:
-
 ## Film/TV
 
 Live-action:
@@ -115,8 +108,6 @@ Animated:
 
 - [_Finding Dory_](https://en.wikipedia.org/wiki/Finding_Dory)
 
-## Games
-
 ## Music
 
 Touhou:
@@ -127,5 +118,3 @@ Vocaloid:
 
 - ["God-Tier Tune"](https://www.youtube.com/watch?v=_BuWULqeAFM) (Miku; おにゅうP; _初音ミク-Project DIVA-F Complete Collection_ {2013}) [Jpop]
 - ["ぼくも屑だから"](https://www.dropbox.com/s/xi9cczafrsbr9bl/pinocchiop-itsmatsuriheycomeon-%E3%81%BC%E3%81%8F%E3%82%82%E5%B1%91%E3%81%A0%E3%81%8B%E3%82%89.ogg) (Miku+PinocchioP; PinocchioP; _It's Matsuri, Hey Come On!_ {2015}) [electronic] ([original](https://www.youtube.com/watch?v=oypERR3HKOU))
-
-Doujin:
