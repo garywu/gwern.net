@@ -1,12 +1,11 @@
 ---
-title:
-description:
-tags: statistics, decision theory
+title: The Explore-Exploit Dilemma in Media Consumption
+description: How much should we rewatch our favorite movies (media) vs keep trying new movies? Most spend most viewing time on new movies, which is unlikely to be good. I suggest an explicit Bayesian model of imprecise ratings + enjoyment recovering over time for Thompson sampling over movie watch choices.
+tags: statistics, decision theory, psychology
 created: 24 Dec 2016
 status: notes
 belief: possible
 ...
-
 
 When you decide to watch a movie, it can be tough to pick.
 Do you pick a new movie or a classic you watched before & liked?
@@ -16,19 +15,49 @@ I tend to default to a new movie, reasoning that I might really like it and disc
 Once in a while, I rewatch some movie I really liked, and I like it almost as much as the first time, and I think to myself, "why did I wait 15 years to rewatch this, why didn't I watch this last week instead of movie _X_ which was mediocre, or _Y_ before that which was crap? I'd forgotten most of the details, and it wasn't boring at all! I should rewatch movies more often."
 (Then of course I don't because I think "I should watch _Z_ to see if I like it...")
 Maybe many other people do this too, judging from how often I see people mentioning watching a new movie and how rare it is for someone to mention rewatching a movie; it seems like people predominantly (maybe 80%+ of the time) watch new movies rather than rewatch a favorite.
+(Some, like [Pauline Kael](http://www.newyorker.com/culture/culture-desk/the-film-that-yields-nothing-on-a-second-viewing-or-a-first "The Film That Yields Nothing on a Second Viewing—or a First"), refuse to ever rewatch movies, and people who rewatch a film more than 2 or 3 times come off as eccentric or true fans.)
+In other areas of media, we do seem to balance exploration and exploitation more - people often reread a favorite novel like a _Harry Potter_ novel and everyone relistens their favorite music countless times (perhaps too many times) - so perhaps there is something about movies & TV series which biases us away from rewatches which we ought to counteract with a more mindful approach to our choices.
+In general, I'm not confident I come near the optimal balance, whether it be exploring movies or music or anime or tea.
 
-The tricky thing is that each watch of a movie decreases the value of another watch (diminishing marginal value), but in a time-dependent way: 1 day is usually much too short and the value may even be negative, but 1 decade may be too long - the movie's entertainment value 'recovers' slowly and smoothly over time.
+The tricky thing is that each watch of a movie decreases the value of another watch (diminishing marginal value), but in a time-dependent way: 1 day is usually much too short and the value may even be negative, but 1 decade may be too long - the movie's entertainment value 'recovers' slowly and smoothly over time, like an exponential curve.
 
 This sounds like a classic reinforcement learning (RL) exploration-exploitation tradeoff problem: we don't want to watch only new movies, because the average new movie is mediocre, but if we watch only known-good movies, then we miss out on all the good movies we haven't seen and fatigue may make watching the known-good ones downright unpleasant.
 
 One could imagine some simple heuristics, such as setting a cutoff for 'good' movies and then alternate between watching whatever new movie sounds the best (and adding it to the good list if it is better than the cutoff) and watching the oldest unwatched good movie.
 This seems suboptimal because in a typical RL problem, exploration will decrease over time as most of the good decisions become known and it becomes more important to benefit from them than to keep trying new options, hoping to find better ones; one might explore using 100% of one's decisions at the beginning but steadily decrease the exploration rate down to a fraction of a percent towards the end - in few problems is it optimal to keep eternally exploring on, say, 80% of one's decisions.
 Eternally exploring on the majority of decisions would only make sense in an extremely unstable environment where the best decision constantly rapidly changes; this, however, doesn't seem like the movie-watching problem, where typically if one really enjoyed a movie 1 year ago, one will almost always enjoy it now too.
+At the extreme, one might explore a negligible amount: if someone has accumulated a library of, say, 5000 great movies they enjoy, and they watch one movie every other night, then it would take them 27 years to cycle through their library once, and of course, after 27 years and 4999 other engrossing movies, they will have forgotten almost everything about the first movie...
 
 Better RL algorithms exist, assuming one has a good model of the problem/environment, such as Thompson sampling.
-This minimizes our regret in the long run, by estimating the probability of being able to find an improvement and decreasing exploration as the probability of improvements decreases.
-The real question is the exact model.
+This minimizes our regret in the long run, by estimating the probability of being able to find an improvement, and decreasing its exploration as the probability of improvements decreases because the data increasingly nails down the shape of the recovery curve, the true ratings of top movies, and enough top movies have been accumulated
+The real question is the modelling of ratings over time.
 
+The basic framework here is a longitudinal growth model.
+Movies are 'individuals' who are measured at various times on ratings variables (our personal rating, and perhaps additional ratings from sources like IMDB) and are impacted by events (viewings), and we would like to infer the posterior distributions for each movie of a hypothetical event today (to decide what to watch); movies which have been watched already can be predicted quite precisely based on their rating + recovery curve, but new movies are highly uncertain (and not affected by a recovery curve yet).
 I would start here with movie ratings. A movie gets rated 1-10, and we want to maximize the sum of ratings over time; we can't do this simply by picking the highest-ever rated movie, because once we watch it, it suddenly stops being so enjoyable; so we need to model some sort of drop.
 A simple parametric model would to treat it as something like an exponential curve over time: gradually increasing and approaching the original rating but never reaching it (the magic of the first viewing can never be recaptured).
-So each viewing might drop the rating by a certain number _v_ and then the exponential curve increases by _r_ units per day - intuitively, I would say that on a 10-point scale, a viewing drops an immediate rewatch by at least 2 points, and then it takes ~5 years to almost fully recover within +-0.10 points, so we would initially assign priors centered on _v_=2 and _r_= `(2-0.10) / (365*5) ~= 0.001` and then our model should finetune those rough estimates based on the data (I would guess it takes less than 5 years to recover rather than more, so this estimate would bias towards new movies/exploration).
+(Why an exponential exactly, instead of a spline or something else? Well, there could be a hyperbolic aspect to the recovery where over the first few hours/days/weeks enjoyment resets faster than later on; but if the recovery curve is monotonic and smooth, then an exponential is going to fit it pretty well regardless of the exact shape of the spline or hyperbola, and one would probably require data from hundreds of people or rewatches to fit a more complex curve which can outpredict an exponential.
+Indeed, to the extent that enjoyment rests on memory, we might further predict that the recovery curve would be the inverse of [the forgetting curve](/Spaced repetition), and our movie selection problem becomes, in part, "anti-spaced repetition" - selecting datapoints to review to maximize forgetting.)
+So each viewing might drop the rating by a certain number _v_ and then the exponential curve increases by _r_ units per day - intuitively, I would say that on a 10-point scale, a viewing drops an immediate rewatch by at least 2 points, and then it takes ~5 years to almost fully recover within +-0.10 points (I would guess it takes less than 5 years to recover rather than more, so this estimate would bias towards new movies/exploration), so we would initially assign priors centered on _v_=2 and _r_= `(2-0.10) / (365*5) ~= 0.001`
+
+x(t) = 1+1 ^ (t/r)
+x(365*5) = 0.10
+
+and then our model should finetune those rough estimates based on the data.
+
+- not standard SEM latent growth curve model - varying measurement times
+- not Hidden Markov - categorical, stateless
+- not simple Kalman filter, equivalent to AR(1)
+- state-space model of some sort - dynamic linear model? AR(2)? `dlm`, TMB, Biips?
+
+
+"State Space Models in R"
+https://arxiv.org/pdf/1412.3779v1.pdf
+https://en.wikipedia.org/wiki/Radioactive_decay#Half-life
+https://en.wikipedia.org/wiki/Kalman_filter
+
+TODO:
+
+- write a simple demo of the 5k films example ignoring uncertainty to see what the exploit pattern looks like
+- use [the rating resorter](/Resorter) to convert my MAL ratings into a more informative uniform distribution
+- MAL average ratings for unwatched anime should be standardized based on MAL mean/SD (in part because the averages aren't discretized, and in part because they are not comparable with my uniformized ratings)
