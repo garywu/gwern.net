@@ -48,7 +48,7 @@ So the argument (filling in the gaps and omitting the various graphs showing hyp
 7. if each AI has only small long-term consequences, all AIs together will have a small total long-term consequence
 8. thus, AIs becoming intelligent agents will have only small total long-term consequences
 
-This argument is valid as far as it goes and can probably be formalized successfully. But is the argument sound?
+This argument is valid as far as it goes and can probably be formalized. But is the argument sound?
 
 ## Complexity caveats
 
@@ -108,6 +108,10 @@ Hence, the exact difficulty of integer factoring or the existence of one-way fun
 ### Are all implementations equally fast?
 
 Premise 3 ignores that complexity classes by design try to abstract away from the 'constant factors' which is the computation time determined not by input size but by the details of computer architectures, implementations, and available computing hardware.
+AIs and humans can be equally bound by asymptotic complexity, but still differ on performance.
+[Scott Aaronson](http://www.scottaaronson.com/papers/pnp.pdf "'P?=NP', Aaronson 2016"):
+
+> ...while P?=NP has tremendous relevance to artificial intelligence, it says nothing about the *differences*, or lack thereof, between humans and machines.  Indeed, P≠NP would represent a limitation on *all* classical digital computation, one that might plausibly apply to human brains just as well as to electronic computers.  Nor does P≠NP rule out the possibility of robots taking over the world. To defeat humanity, presumably the robots wouldn't need to solve arbitrary NP problems in polynomial time: they'd merely need to be smarter than *us*, and to have imperfect heuristics better than the imperfect heuristics that *we* picked up from a billion years of evolution! Conversely, while a proof of P=NP might hasten a robot uprising, it wouldn't guarantee one.
 
 But with carefully optimized code, [proper](!Wikipedia "Cache-oblivious algorithm") use of the [cache hierarchy](!Wikipedia "Memory hierarchy"), and specialized hardware (eg GPUs, ASICs), it is possible to see [performance gains of multiple orders of magnitude](https://www.gwern.net/Aria\'s%20past,%20present,%20and%20future#fn3), which implies that one can increase the input size several times before hitting the scaling way that another agent might who paid less attention to constant factors.
 (Computational chemistry may be intractable, even with approximations, on classical hardware - but what about if one has a [quantum computer](!Wikipedia) with a few hundred qubits, enough that one can do [quantum simulation](!Wikipedia)?) The importance of constant factors is one of the major traps in practical use of complexity classes: a fancy algorithm with a superior complexity class may easily be defeated by a simpler algorithm with worse complexity but faster implementation.[^galactic-algorithms] (One reason that programmers are exhorted to benchmark, benchmark, benchmark!)
