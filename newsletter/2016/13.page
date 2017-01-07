@@ -2,11 +2,11 @@
 title: 2016 news
 created: 31 December 2016
 tags: newsletter
-status: in process
+status: finished
 belief: log
 ...
 
-This is the 2016 summary edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355) ([archives](https://www.gwern.net/tags/newsletter)), summarizing the best of the monthly 2016 newsletters:
+This is the 2016 summary edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355), summarizing the best of the monthly 2016 newsletters:
 
 1. [January](https://www.gwern.net/newsletter/2016/01)
 2. [February](https://www.gwern.net/newsletter/2016/02)
@@ -21,40 +21,242 @@ This is the 2016 summary edition of [the `gwern.net` newsletter](https://gwern.u
 11. [November](https://www.gwern.net/newsletter/2016/11)
 12. [December](https://www.gwern.net/newsletter/2016/12)
 
+Previously: [2015](https://www.gwern.net/newsletter/2015/13).
+
 # Writings
+
+Despite taking two long trips and some personal troubles (plumbing, an epic laptop failure, & additional trouble with law enforcement), 2016 was a much better year for my statistics & writing than 2015:
+
+1. [Embryo selection for intelligence cost-benefit analysis](https://www.gwern.net/Embryo%20selection "A cost-benefit analysis of IVF-based embryo selection for intelligence with 2015-2016 state-of-the-art")
+2. [Computational Complexity vs the Singularity](https://www.gwern.net/Complexity%20vs%20AI "Complexity no Bar to AI: Critics of AI risk suggest diminishing returns to computing means AI will be weak; I argue argument breaks if any premises rejected")
+3. [Why Tool AIs Want To Be Agent AIs](https://www.gwern.net/Tool%20AI "Tool AIs limited purely to inferential tasks will be less intelligent, efficient, and economically valuable than independent reinforcement-learning AIs learning actions over computation/data/training/architecture/hyperparameters/external-resource use.")
+4. [Candy Japan new packaging decision analysis](https://www.gwern.net/Candy%20Japan "Bayesian decision-theoretic analysis of effect of fancier packaging on subscription cancellations")
+5. [Adding metadata to an RNN for mimicking individual author style](https://www.gwern.net/RNN%20metadata)
+6. Wikipedia articles on [Genome-wide complex trait analysis (GCTA)](https://en.wikipedia.org/wiki/Genome-wide_complex_trait_analysis) & [genetic correlations](https://en.wikipedia.org/wiki/Genetic_correlation)
+7. [Armstrong's control problem: `Reinforce.js` demo](https://www.gwern.net/docs/rl/armstrong-controlproblem/index.html)
+8. [WiFi bandwidth benchmarking](https://www.gwern.net/WiFi)
+9. ["The Power of Twins: Revisiting Student's Scottish Milk Experiment Example"](https://www.gwern.net/Statistical%20notes#the-power-of-twins-revisiting-students-scottish-milk-experiment-example)
+10. [_Genius Revisited_: Critiquing the Value of High IQ Elementary Schools](https://www.gwern.net/Statistical%20notes#genius-revisited-on-the-value-of-high-iq-elementary-schools)
 
 # Media
 ## Links
 
+Continuing the 2015 trend, 2016 was a banner year for genetics and AI.
 
-Everything is heritable:
+Demonstrating the potential for rapid advance in AI, AlphaGo went from low professional level as of October 2015 to world champion level, crushing Lee Sedol 4-1 with substantial margin, and just when everyone had forgotten, then a refined (presumably pure self-play) version of AlphaGo went 60-0 in blitz matches online with many of the top Go players (including Ke Jie).
+The translation RNNs finally made their long-awaited appearance in commercial production with Google Translate, making for the largest jump in translation quality in decades, bringing many translation pairs up to surprisingly high quality (even Japanese<->English translations are now semi-comprehensible, as opposed to the status quo total gibberish); combined with the rapid progress in voice transcription and the surprising results of human-level lipreading, one can now imagine a NN-powered Babelfish (which, combined with HUDs, could be revolutionary for the deaf & hearing-impaired).
+Generative adversarial networks (GANs) remained a central topic of AI research, with better theoretical understanding (linking them to reinforcement learning), and many tweaks and incremental refinements increasing the size of feasible generated images (eg StackGAN's large bird/flower image generation capability); however, GANs currently have not delivered any meaningful increases on any applied tasks & remain a solution in search of a problem, so that is something to hope for in 2017 - demonstration that the unsupervised or generative aspects of GANs can be usefully employed for planning or something.
+Perhaps the most exciting work in 2016 was the long-term work on architecture in providing large-scale memory mechanisms (in the form of efficient external memory or encoded into the weights of large expanding or sharded NNs), in learning to train large-scale NNs (synthetic gradients), and in a particularly surprising set of papers, demonstrating that NNs+reinforcement-learning can efficiently learn how to design NN architectures & units. (This was not something anyone doubted could be done, but previous RL work suggested that no one could manage it without whole GPU farms; but as far as Google was concerned... "You see, I told you it couldn’t be done without turning the whole country into a factory. You have done just that.")
+Aside from the important work in "NNs all the way down" vein, reinforcement learning grew in importance and it is increasingly common to use RL methods to control memory or network components, interact with an environment (often broadly interpreted, as anything which can be turned into a tree, which goes far beyond games like Go or chess & includes theorem proving or program optimization), or learn to optimize a non-differentiable reward/loss function, and I am excited to see planning re-emerge as a theme after the dominance of model-free methods over the past 3 years; we will see more of that in 2017, doubtless, especially as some of the architectural tweaks from 2016 (some of which claim as much as an order of magnitude improvement on ALE sample-efficiency) get tried out & reused.
+
+In genetics, the growth of UK Biobank and the introduction of LD score regression & other summary-statistic-only methods continued driving large-scale results; the study of human [genetic correlations](https://en.wikipedia.org/wiki/Genetic_correlation) made an absurd amount of progress in 2016, demonstrating shared genetic influences on countless phenotypic traits and pervasive intercorrelations of good traits and disease traits, respectively.
+Detecting recent human evolution has been difficult due to lack of ancient DNA to compare with, but the supply of that has grown steadily, permitting some specific examples to be nailed down, and a new method based on contemporary whole genomes may blow the area wide open as whole genomes have recently crossed the \$1000 mark and in coming years, scientific projects & medical biobanks will shift over to whole genomes.
+Another possible field explosion is the topic of genome synthesis - I was astonished to learn that it is now feasible to synthesize from scratch entire chromosomes of arbitrary design, and that a human genome could potentially be synthesized for somewhere around \$1 billion, which would render totally obsolete any considerations of embryo selection/CRISPR/iterated embryo selection, with an active advocacy effort for a genome synthesis project to be launched.
+2017 will bring further discoveries of how humans have adapted to local environments and their societies over the past centuries & millennia.
+Honorable mentions should also go to the continuously growing GWASes: as predicted, the education/intelligence hits have increased drastically as sample size increased, and the historically difficult targets of personality & depression have finally yielded some more hits.
+One particularly intriguing GWAS focused on violence & criminal behavior with good results, so that trait will yield as well to further study.
+Past GWASes continued to be applied; the results of Belsky et al 2016 will come as no surprise, but will frustrate the critics who insist that all non-disease results are methodological artifacts or merely reflect population structure.
+CRISPR progress continues as expected, with the first uses in humans in 2016.
+
+Genetics:
+
+- Everything is heritable:
+
+    1. ["Top 10 Replicated Findings From Behavioral Genetics"](https://www.gwern.net/docs/genetics/2016-plomin.pdf), Plomin et al 2016
+    2. ["The Genetics of Success: How Single-Nucleotide Polymorphisms Associated With Educational Attainment Relate to Life-Course Development"](https://www.gwern.net/docs/genetics/2016-belsky.pdf), Belsky et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/c8oDW58RJxw)); ["Genome-wide association study of cognitive functions and educational attainment in UK Biobank (_n_=112151)"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp201645a.html), Davies et al 2016; ["Genome-wide association study identifies 74 [162] loci associated with educational attainment"](https://www.gwern.net/docs/iq/2016-okbay-2.pdf), Okbay et al 2016b ([excerpts](https://plus.google.com/103530621949492999968/posts/PPzawWP2Cta)); ["Predicting educational achievement from DNA"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016107a.html), Selzam et al 2016 ([supplement](http://www.nature.com/mp/journal/vaop/ncurrent/extref/mp2016107x1.pdf); polygenic scores now predict 3.5% of intelligence, 7% of family SES, and 9% of education)
+    3. ["Molecular genetic contributions to social deprivation and household income in UK Biobank (_n_=112,151)"](http://biorxiv.org/content/early/2016/03/09/043000), Hill et al 2016 ([correlation graph](https://pbs.twimg.com/media/CdMobKRXEAEMkmi.jpg)); ["Genetic link between family socioeconomic status and children's educational achievement estimated from genome-wide SNPs"](http://www.nature.com/mp/journal/v21/n3/full/mp20152a.html), Krapohl & Plomin 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/ZKrtSaMjVmx))
+    4. ["Genome-wide association study of antisocial personality disorder"](http://www.nature.com/tp/journal/v6/n9/full/tp2016155a.html), Rautiainen et al 2016 (GWAS hits on crime)
+    5. ["Genetic risk for autism spectrum disorders and neuropsychiatric variation in the general population"](http://pubman.mpdl.mpg.de/pubman/item/escidoc:2224058/component/escidoc:2224057/027771.1.full.pdf), Robinson et al 2016
+    6. ["Schizophrenia and subsequent neighborhood deprivation: revisiting the social drift hypothesis using population, twin and molecular genetic data"](http://www.nature.com/tp/journal/v6/n5/full/tp201662a.html), Sariaslan et al 2016 (good use of polygenic scores for confirmation)
+    7. ["Ultra-rare disruptive and damaging mutations influence educational attainment in the general population"](https://www.gwern.net/docs/genetics/2016-ganna.pdf), Ganna et al 2016; ["Cognitive Performance Among Carriers of Pathogenic Copy Number Variants: Analysis of 152,000 UK Biobank Subjects"](https://www.gwern.net/docs/genetics/2016-kendall.pdf), Kendall et al 2016
+    8. ["Older fathers' children have lower evolutionary fitness across four centuries and in four populations"](http://biorxiv.org/content/early/2016/03/08/042788), Arslan et al 2016
+- Recent human evolution:
+
+    1. ["Detection of human adaptation during the past 2,000 years"](http://biorxiv.org/content/early/2016/05/07/052084.full.pdf), Field et al 2016 ([commentary](https://plus.google.com/103530621949492999968/posts/3DmLLdDfR61))
+    2. ["Population structure of UK Biobank and ancient Eurasians reveals adaptation at genes influencing blood pressure"](http://biorxiv.org/content/early/2016/05/27/055855), Galinsky et al 2016
+    3. ["Going global by adapting local: A review of recent human adaptation"](https://www.gwern.net/docs/genetics/2016-fan.pdf), Fan et al 2016
+    4. ["Genetic evidence for natural selection in humans in the contemporary United States"](http://biorxiv.org/content/early/2016/05/05/037929), Beauchamp 2016
+- CRISPR:
+
+    1. ["Improved CRISPR–Cas9: Safe and Effective?"](http://infoproc.blogspot.com/2016/01/improved-crisprcas9-safe-and-effective.html): ["High-fidelity CRISPR–Cas9 nucleases with no detectable genome-wide off-target effects"](https://www.gwern.net/docs/genetics/2016-kleinstiver.pdf "Kleinstiver et al 2016")/["Rationally engineered Cas9 nucleases with improved specificity"](https://www.gwern.net/docs/genetics/2016-slaymaker.pdf "Slaymaker et al 2016")
+    2. ["Introducing precise genetic modifications into human 3PN embryos by CRISPR/Cas-mediated genome editing"](https://www.gwern.net/docs/genetics/2016-kang.pdf), Kang et al 2016 (see also Liang et al 2015)
+    3. ["The Genome Project-Write"](http://science.sciencemag.org/content/early/2016/06/01/science.aaf6850.full), Boeke et al 2016 ([media](http://www.nytimes.com/2016/06/03/science/human-genome-project-write-synthetic-dna.html "Scientists Announce HGP-Write, Project to Synthesize the Human Genome"); [commentary](https://plus.google.com/103530621949492999968/posts/GH6LoxL8PG1))
+    4. ["CRISPR gene-editing tested in a person for the first time"](http://www.nature.com/news/crispr-gene-editing-tested-in-a-person-for-the-first-time-1.20988 "The move by Chinese scientists could spark a biomedical duel between China and the United States")
+    5. ["Engineering the Perfect Baby"](https://www.technologyreview.com/s/535661/engineering-the-perfect-baby/ "Scientists are developing ways to edit the DNA of tomorrow's children. Should they stop before it's too late?")
+- Pleiotropy
+
+    1. ["Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (_n_=112151) and 24 GWAS consortia"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html ), Hagenaars et al 2016; ["Detection and interpretation of shared genetic influences on 42 human traits"](https://www.gwern.net/docs/genetics/correlation/2016-pickrell.pdf), Pickrell et al 2016; ["An Atlas of Genetic Correlations across Human Diseases and Traits"](http://biorxiv.org/content/early/2015/04/06/014498), Bulik-Sullivan et al 2015; ["Phenome-wide Heritability Analysis of the UK Biobank"](http://biorxiv.org/content/early/2016/08/18/070177), Ge et al 2016
+    2. ["Genetic relationship between five psychiatric disorders estimated from genome-wide SNPs"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3800159/), Psychiatric Genomics Consortium 2013; ["Analysis of shared heritability in common disorders of the brain"](http://biorxiv.org/content/biorxiv/early/2016/04/16/048991.full.pdf), Anttila et al 2016; ["Genome-wide analyses for personality traits identify six genomic loci and show correlations with psychiatric disorders"](https://www.gwern.net/docs/genetics/2016-lo.pdf), Lo et al 2016; ["Genetic variants associated with subjective well-being, depressive symptoms, and neuroticism identified through genome-wide analyses"](https://www.gwern.net/docs/genetics/2016-okbay.pdf), Okbay et al 2016a; ["Association between stressful life events and psychotic experiences in adolescence: evidence for gene–environment correlations"](http://bjp.rcpsych.org/content/early/2016/03/17/bjp.bp.114.159079.abstract), Shakoor et al 2016; ["Associations between Polygenic Risk for Psychiatric Disorders and Substance Involvement"](http://journal.frontiersin.org/article/10.3389/fgene.2016.00149/full), Carey et al 2016
+    3. ["Shared genetic aetiology of puberty timing between sexes and with health-related outcomes"](http://www.nature.com/articles/ncomms9842), Day et al 2015; ["Physical and neurobehavioral determinants of reproductive onset and success"](https://www.gwern.net/docs/genetics/2016-day.pdf), Day et al 2016
+    4. ["LD Hub: a centralized database and web interface to perform LD score regression that maximizes the potential of summary level GWAS data for SNP heritability and genetic correlation analysis"](http://biorxiv.org/content/biorxiv/early/2016/05/03/051094.full.pdf), Zheng et al 2016
+    5. ["The Causal Effects of Education on Health, Mortality, Cognition, Well-being, and Income in the UK Biobank"](http://biorxiv.org/content/early/2016/09/13/074815), Davies et al 2016
+    6. ["Association between polygenic risk scores for attention-deficit hyperactivity disorder and educational and cognitive outcomes in the general population"](http://ije.oxfordjournals.org/content/early/2016/09/28/ije.dyw216.full), Stergiakouli et al 2016
+    7. ["Educational attainment and personality are genetically intertwined"](http://biorxiv.org/content/early/2016/09/28/078014), Mottus et al 2016
 
 AI:
 
+1. ["Hybrid computing using a neural network with dynamic external memory"](https://www.gwern.net/docs/2016-graves.pdf), Graves et al 2016 ([blog](https://deepmind.com/blog/differentiable-neural-computers/)); scaling to extremely large external memories: ["Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"](https://arxiv.org/abs/1610.09027), Rae et al 2016
+2. ["Progressive Neural Networks"](https://arxiv.org/abs/1606.04671), Rusu et al 2016a; ["Sim-to-Real Robot Learning from Pixels with Progressive Nets"](https://arxiv.org/abs/1610.04286), Rusu et al 2016b; ["Overcoming catastrophic forgetting in neural networks"](https://arxiv.org/abs/1612.00796), Kirkpatrick et al 2016;  (see also ["Actor-Mimic: Deep Multitask and Transfer Reinforcement Learning"](https://arxiv.org/abs/1511.06342), Parisotto et al 2015)
+3. ["Decoupled Neural Interfaces using Synthetic Gradients"](https://arxiv.org/abs/1608.05343), Jaderberg et al 2016 ([DeepMind explainer](https://deepmind.com/blog#decoupled-neural-interfaces-using-synthetic-gradients); potentially allows for extreme parallelization of neural nets across GPUs)
+4. ["Google's Multilingual Neural Machine Translation System: Enabling Zero-Shot Translation"](https://arxiv.org/abs/1611.04558), Johnson et al 2016; ["Found in translation: More accurate, fluent sentences in Google Translate"](https://blog.google/products/translate/found-translation-more-accurate-fluent-sentences-google-translate/)
+5. ["Outrageously large neural networks: the sparsely-gated mixture-of-experts layer"](http://openreview.net/pdf?id=B1ckMDqlg), Shazeer et al 2016
+6. ["One-shot Learning with Memory-Augmented Neural Networks"](https://arxiv.org/pdf/1605.06065v1.pdf), Santoro et al 2016
+7. ["Programming with a Differentiable Forth Interpreter"](https://arxiv.org/abs/1605.06640), Riedel et al 2016; ["DeepCoder: Learning to Write Programs"](https://arxiv.org/abs/1611.01989), Balog et al 2016; ["Learning to superoptimize programs"](https://openreview.net/pdf?id=r1rz6U5lg), Bunel et al 2016; DeepMath/["HolStep: A Machine Learning Dataset for Higher-order Logic Theorem Proving"](http://cl-informatik.uibk.ac.at/cek/holstep/ckfccs-holstep-submitted.pdf), Kaliszyk et al 2016 (continuing the AlphaGo theme of tree search+NN heuristics; see also ["Deep Learning for Real-Time Atari Game Play Using Offline Monte-Carlo Tree Search Planning"](http://papers.nips.cc/paper/5421-deep-learning-for-real-time-atari-game-play-using-offline-monte-carlo-tree-search-planning.pdf), Guo et al 2014)
+8. ["WaveNet: A Generative Model for Raw Audio"](https://deepmind.com/blog/wavenet-generative-model-raw-audio/)
+9. ["Achieving Human Parity in Conversational Speech Recognition"](https://arxiv.org/abs/1610.05256), Xiong et al 2016
+10. ["Lip Reading Sentences in the Wild"](https://arxiv.org/pdf/1611.05358v1.pdf), Chung et al 2016 ([video](https://www.youtube.com/watch?v=5aogzAUPilE)); ["LipNet: Sentence-level Lipreading"](http://openreview.net/forum?id=BkjLkSqxg), Assael et al 2016 ([video](https://www.youtube.com/watch?v=fa5QGremQf8))
+11. reinforcement learning:
+
+    1. ["Mastering the game of Go with deep neural networks and tree search"](https://www.researchgate.net/profile/Timothy_Lillicrap/publication/292074166_Mastering_the_game_of_Go_with_deep_neural_networks_and_tree_search/links/56a90f7d08ae7f592f0d5d0c.pdf), Silver et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/5X8nWvUXhf9))
+    2. ["Neural architecture search with reinforcement learning"](http://openreview.net/pdf?id=r1Ue8Hcxg), Zoph & Le 2016; ["Designing Neural Network Architectures using Reinforcement Learning"](https://arxiv.org/abs/1611.02167), Baker et al 2016; ["Learning to reinforcement learn"](https://arxiv.org/abs/1611.05763), Wang et al 2016
+    3. ["Value Iteration Networks"](https://arxiv.org/abs/1602.02867), Tamar et al 2016; ["The Predictron: End-To-End Learning and Planning"](https://arxiv.org/abs/1612.08810), Silver et al 2016
+    4. ["Unifying Count-Based Exploration and Intrinsic Motivation"](https://arxiv.org/abs/1606.01868), Bellemare et al 2016 ([Video](https://www.youtube.com/watch?v=0yI2wJ6F8r0))
+    5. ["Asynchronous Methods for Deep Reinforcement Learning (A3C)"](https://arxiv.org/abs/1602.01783), Mnih et al 2016
+    5. ["Reinforcement Learning with Unsupervised Auxiliary Tasks"](https://arxiv.org/abs/1611.05397), Jaderberg et al 2016; ["Loss is Its Own Reward: Self-supervision for Reinforcement Learning"](https://arxiv.org/pdf/1612.07307.pdf), Shelhamer et al 2016
+    6. ["Uncertainty in Deep Learning"](http://mlg.eng.cam.ac.uk/yarin/blog_2248.html), Gal 2016
+    7. ["Learning Hand-Eye Coordination for Robotic Grasping with Deep Learning and Large-Scale Data Collection"](http://arxiv.org/pdf/1603.02199v1.pdf), Levine et al 2016 ([video](https://www.youtube.com/watch?v=cXaic_k80uM)); ["Deep Reinforcement Learning for Robotic Manipulation"](https://arxiv.org/abs/1610.00633), Gu et al 2016 ([video](https://sites.google.com/site/deeproboticmanipulation/); [blog](https://research.googleblog.com/2016/10/how-robots-can-acquire-new-skills-from.html "How Robots Can Acquire New Skills from Their Shared Experience"))
+
 Statistics/meta-science:
 
-Psychology/biology:
+1. ["When Quality Beats Quantity: Decision Theory, Drug Discovery, and the Reproducibility Crisis"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0147215), Scannell & Bosley 2016
+2. ["Online Controlled Experiments: Introduction, Learnings, and Humbling Statistics"](http://www.exp-platform.com/Documents/2012-09%20ACMRecSysNR.pdf)
+3. ["Underreporting in Psychology Experiments: Evidence From a Study Registry"](https://www.gwern.net/docs/statistics/2015-franco.pdf), Franco et al 2015 (previously: [Franco et al 2014](http://www.law.nyu.edu/sites/default/files/upload_documents/September%209%20Neil%20Malhotra.pdf "Publication Bias in the Social Sciences: Unlocking the File Drawer"))
+4. how often does correlation=causation?
+
+    - ["Comparison of Evidence of Treatment Effects in Randomized and Nonrandomized Studies"](https://www.gwern.net/docs/statistics/2001-ioannidis.pdf), Ioannidis et al 2001
+    - ["Comparison of Effects in Randomized Controlled Trials With Observational Studies in Digestive Surgery"](https://www.researchgate.net/profile/Nakayama_Takeo/publication/6734844_Comparison_of_Effects_in_Randomized_Controlled_Trials_With_Observational_Studies_in_Digestive_Surgery/links/004635224d119253c9000000.pdf), Shikata et al 2006
+    - ["A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook"](http://www.kellogg.northwestern.edu/faculty/gordon_b/files/kellogg_fb_whitepaper.pdf), Gordon et al 2016
+5. ["Peer review: Troubled from the start"](http://www.nature.com/news/peer-review-troubled-from-the-start-1.19763)
+6. ["The Bitter Fight Over the Benefits of Bilingualism"](http://www.theatlantic.com/science/archive/2016/02/the-battle-over-bilingualism/462114/)
+7. ["How Kalman Filters Work, Part 1"](http://www.anuncommonlab.com/articles/how-kalman-filters-work/)
+8. ["Generalized Network Psychometrics: Combining Network and Latent Variable Models"](https://arxiv.org/abs/1605.09288), Epskamp et al 2016
+- ["Statistically Controlling for Confounding Constructs Is Harder than You Think"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152719), Westfall & Yarkoni 2016
+9. ["Preventing future offending of delinquents and offenders: what have we learned from experiments and meta-analyses?"](https://www.gwern.net/docs/2015-mackenzie.pdf), Mackenzie & Farrington 2015
+10. ["Saving Science: Science isn't self-correcting, it's self-destructing. To save the enterprise, scientists must come out of the lab and into the real world."](http://www.thenewatlantis.com/publications/saving-science)
+
+Psychology:
+
+1. ["When Lightning Strikes Twice: Profoundly Gifted, Profoundly Accomplished"](https://www.gwern.net/docs/iq/2016-makel.pdf), Makel et al 2016; ["Ann Roe's scientists: original published papers"](https://infoproc.blogspot.com/2016/06/roes-scientists-original-published.html); ["From Terman to Today: A Century of Findings on Intellectual Precocity"](http://emilkirkegaard.dk/en/wp-content/uploads/From-Terman-to-Today-A-Century-of-Findings-on-Intellectual-Precocity.pdf), Lubinski 2016
+2. ["Heads or tails: the impact of a coin toss on major life decisions and subsequent happiness"](https://www.gwern.net/docs/2016-levitt.pdf), Levitt 2016
+3. ["A Meta-Analysis of Blood Glucose Effects on Human Decision Making"](https://www.gwern.net/docs/2016-orquin.pdf), Orquin & Kurzban 2016; ["Is Ego-Depletion a Replicable Effect? A Forensic Meta-Analysis of 165 Ego Depletion Articles"](https://replicationindex.wordpress.com/2016/04/18/is-ego-depletion-a-replicable-effect-a-forensic-meta-analysis-of-165-ego-depletion-articles/)
+4. [Do _Portia_ spiders have a mind?](http://www.dichotomistic.com/mind_readings_spider%20minds.html) ([commentary](http://www.rifters.com/real/2009/01/iterating-towards-bethlehem.html))
+5. ["Childhood forecasting of a small segment of the population with large economic burden"](http://www.nature.com/articles/s41562-016-0005), Caspi et al 2016 (for the genetic version, see [Belsky et al 2016](https://www.gwern.net/docs/genetics/2016-belsky.pdf "The Genetics of Success: How Single-Nucleotide Polymorphisms Associated With Educational Attainment Relate to Life-Course Development"))
+6. Psychedelics & psychological well-being ([media](https://www.theatlantic.com/health/archive/2016/12/the-life-changing-magic-of-mushrooms/509246/ "The Life-Changing Magic of Mushrooms: A single dose of magic mushrooms can make people with severe anxiety and depression better for months, according to a landmark pair of new studies.")):
+
+    - ["The paradoxical psychological effects of lysergic acid diethylamide (LSD)"](https://www.researchgate.net/profile/Mendel_Kaelen/publication/293169090_The_paradoxical_psychological_effects_of_lysergic_acid_diethylamide_LSD/links/56bb178808ae023560266ae5.pdf), Carhart-Harris et al 2016
+    - ["Psilocybin for anxiety and depression in cancer care? Lessons from the past and prospects for the future"](https://www.gwern.net/docs/2016-nutt.pdf), Nutt 2016
+    - ["Psilocybin produces substantial and sustained decreases in depression and anxiety in patients with life-threatening cancer: A randomized double-blind trial"](https://www.gwern.net/docs/2016-griffiths.pdf), Griffiths et al 2016
+    - ["Rapid and sustained symptom reduction following psilocybin treatment for anxiety and depression in patients with life-threatening cancer: a randomized controlled trial"](https://www.gwern.net/docs/2016-ross.pdf), Ross et al 2016
+    - ["Survey study of challenging experiences after ingesting psilocybin mushrooms: Acute and enduring positive and negative consequences"](https://www.gwern.net/docs/2016-carbonaro.pdf), Carbonaro et al 2016
+
+Biology:
+
+1.  ["Aldehyde-stabilized cryopreservation", McIntyre & Fahy 2015](http://www.sciencedirect.com/science/article/pii/S001122401500245X) wins the [Small Mammal Brain Preservation Prize](http://www.brainpreservation.org/small-mammal-announcement/) by passing [their evaluation](http://www.brainpreservation.org/asc_rabbit_fulleval/) ([commentary](http://lesswrong.com/lw/na3/the_brain_preservation_foundations_small/))
+2. ["Effects of Initiating Moderate Alcohol Intake on Cardiometabolic Risk in Adults With Type 2 Diabetes: A 2-Year Randomized, Controlled Trial"](https://www.researchgate.net/profile/Yftach_Gepner/publication/282813162_Effects_of_Initiating_Moderate_Alcohol_Intake_on_Cardiometabolic_Risk_in_Adults_With_Type_2_Diabetes_A_2-Year_Randomized_Controlled_Trial/links/56d9f74a08aebe4638bb9d76.pdf), Gepner et al 2015
+3. ["Long-Term Outcomes Associated with Traumatic Brain Injury in Childhood and Adolescence: A Nationwide Swedish Cohort Study of a Wide Range of Medical and Social Outcomes"](http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002103), Sariaslan et al 2016
+4. ["Effect of Calorie Restriction on Mood, Quality of Life, Sleep, and Sexual Function in Healthy Nonobese Adults: The CALERIE 2 Randomized Clinical Trial"](https://www.gwern.net/docs/2016-martin.pdf), Martin et al 2016
+5. ["Evolution of the Human Brain: From Matter to Mind"](https://www.gwern.net/docs/iq/2015-hofman.pdf), Hofman 2015 (plenty of room at the top; [excerpts](https://plus.google.com/103530621949492999968/posts/6YaN95XGnEv))
+6. ["What sparked the Cambrian explosion?"](http://www.nature.com/news/what-sparked-the-cambrian-explosion-1.19379 "An evolutionary burst 540 million years ago filled the seas with an astonishing diversity of animals. The trigger behind that revolution is finally coming into focus.")
 
 Politics/religion:
 
+1. ["The Iron Law Of Evaluation And Other Metallic Rules"](https://www.gwern.net/docs/1987-rossi), Rossi 1987
+2. ["The Strategic Consequences of Chinese Racism: A Strategic Asymmetry for the United States"](https://www.gwern.net/docs/2013-anonymous-strategicconsequencesofchineseracism.pdf), Anonymous & Anonymous 2013
+3. ["A Bigger Problem Than ISIS? The Mosul Dam is failing. A breach would cause a colossal wave that could kill as many as a million and a half people"](http://www.newyorker.com/magazine/2017/01/02/a-bigger-problem-than-isis)
+4. ["Okhrana: The Paris Operations of the Russian Imperial Police"](https://www.cia.gov/library/center-for-the-study-of-intelligence/csi-publications/books-and-monographs/okhrana-the-paris-operations-of-the-russian-imperial-police/5474-1.html)
+5. ["Once Upon a Jihad"](http://reprints.longform.org/perry-once-upon-a-jihad) / ["Experiencing Ecstasy: How Bad It Is to Be 20 Years Old"](https://web.archive.org/web/20161021040940/http://www.matthewklam.com/nonfiction/ecstasy.html) / ["My Year in San Francisco's \$2 Million Secret Society Startup"](https://motherboard.vice.com/read/my-year-in-san-franciscos-2-million-secret-society-startup)
+6. ["Introduction to the Economics of Religion"](http://www.colorado.edu/Economics/morey/4999Ethics/Religion/Iannaccone1998_Edward.pdf), Iannaccone 1998
+7. ["How a detachment of U.S. Army soldiers smoked out the original Ku Klux Klan"](http://www.slate.com/articles/news_and_politics/history/2016/03/how_a_detachment_of_u_s_army_soldiers_smoked_out_the_original_ku_klux_klan.single.html)
+8. ["The Unbelievable Tale of Jesus's Wife"](http://www.theatlantic.com/magazine/archive/2016/07/the-unbelievable-tale-of-jesus-wife/485573/), [King's response](http://www.theatlantic.com/politics/archive/2016/06/karen-king-responds-to-the-unbelievable-tale-of-jesus-wife/487484/)
+9. ["Wealth, Health, and Child Development: Evidence from Administrative Data on Swedish Lottery Players"](http://qje.oxfordjournals.org/content/131/2/687.full), Cesarini et al 2016
+10. ["At Tampa Bay farm-to-table restaurants, you're being fed fiction"](http://www.tampabay.com/projects/2016/food/farm-to-fable/restaurants/) (_Qui vult decipi decipiatur._)
+
 Technology:
+
+1. ["The Mastermind"](https://mastermind.atavist.com/)
+2. ["The Moral Character of Cryptographic Work"](http://web.cs.ucdavis.edu/~rogaway/papers/moral-fn.pdf), Rogaway 2015
+3. ["Stargate Physics 101"](https://archiveofourown.org/works/3673335)
+4. ["Lessons from 30 Years of MINIX"](http://cacm.acm.org/magazines/2016/3/198874-lessons-learned-from-30-years-of-minix/fulltext)
+5. ["The Slow Winter"](https://www.usenix.org/system/files/1309_14-17_mickens.pdf), Mickens
+6. ["Strategy Letter V"](http://www.joelonsoftware.com/articles/StrategyLetterV.html)
+7. ["DDoSCoin: Cryptocurrency with a Malicious Proof-of-Work"](https://www.usenix.org/system/files/conference/woot16/woot16-paper-wustrow.pdf), Wustrow & VanderSloot 2016
+8. ["Beaver: A Decentralized Anonymous Marketplace with Secure Reputation"](https://eprint.iacr.org/2016/464.pdf), Soska et al 2016 ([discussion](https://www.reddit.com/r/DarkNetMarkets/comments/4ju0b1/beaver_a_decentralized_anonymous_marketplace_with/))
+9. ["Sam Altman's Manifest Destiny: Is the head of Y Combinator fixing the world, or trying to take over Silicon Valley?"](http://www.newyorker.com/magazine/2016/10/10/sam-altmans-manifest-destiny)
+10. ["The Distribution of Users' Computer Skills: Worse Than You Think"](https://www.nngroup.com/articles/computer-skill-levels/)
 
 Economics:
 
+1. ["The life of American workers in 1915"](http://www.bls.gov/opub/mlr/2016/article/the-life-of-american-workers-in-1915.htm)
+2. ["Typhoid Fever, Water Quality, and Human Capital Formation"](https://www.gwern.net/docs/2016-beach.pdf), Beach et al 2016; ["When It Rains It Pours: The Long-run Economic Impacts of Salt Iodization in the United States"](http://static1.1.sqspcdn.com/static/f/884336/27221040/1472677302137/MortonSalt_aug2016.pdf), Adhvaryu et al 2016; ["The Production of Human Capital in Developed Countries: Evidence from 196 Randomized Field Experiments"](http://scholar.harvard.edu/files/fryer/files/handbook_fryer_03.25.2016.pdf), Fryer 2016
+3. ["Going for the Gold: The Economics of the Olympics"](http://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.30.2.201), Baade & Matheson 2016
+4. ["The Long-Term Effects of Cash Assistance"](https://web.stanford.edu/~djprice/papers/djprice_jmp.pdf), Price & Song 2016
+5. [Abuse of 'arbitration' clauses in international trade treaties to escape criminal liability](https://www.buzzfeed.com/chrishamby/super-court)
+6. ["The View from Above: Applications of Satellite Data in Economics"](http://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.30.4.171), Donaldson & Storeygard 2016
+7. ["Adam Smith, Watch Prices, and the Industrial Revolution"](https://www.gwern.net/docs/2016-kelly.pdf), Kelly & Grada 2016 ([commentary](http://econlog.econlib.org/archives/2016/10/what_do_crimina.html))
+8. ["Patents and innovation in economic history"](https://www.gwern.net/docs/2016-moser.pdf), Moser 2016
+9. ["Elephants and Mammoths: Can Ice Ivory Save Blood Ivory?"](https://www.aeaweb.org/aea/2016conference/program/retrieve.php?pdfid=127), Farah & Boyce 2015
+10. ["The Case Against Everyone's Favorite Tax Break: The Mortgage Interest Deduction"](https://priceonomics.com/the-case-against-everyones-favorite-tax-break-the/)
+
 Philosophy:
 
+1. ["Logical Induction"](https://intelligence.org/2016/09/12/new-paper-logical-induction/), Garrabrant et al 2016
+2. ["Time Travel and Computing"](http://www.frc.ri.cmu.edu/~hpm/project.archive/general.articles/1991/TempComp.html), Moravec 1991
+3. ["Towards an integration of deep learning and neuroscience"](http://biorxiv.org/content/biorxiv/early/2016/06/13/058545.full.pdf), Marblestone et al 2016
+4. ["Probing the Improbable: Methodological Challenges for Risks with Low Probabilities and High Stakes"](https://arxiv.org/abs/0810.5515), Ord et al 2008
+5. ["Not By Empathy Alone"](http://lesswrong.com/lw/7xr/not_by_empathy_alone/)
+6. ["Technology will destroy human nature"](http://kajsotala.fi/2012/10/technology-will-destroy-human-nature/)
+7. ["Trying to See Through: A Unified Theory of Nerddom"](http://theviewfromhell.blogspot.com/2012/09/trying-to-see-through-unified-theory-of.html)
+
 Fiction:
+
+1. Ted Chiang:
+
+    1. ["Exhalation"](http://www.nightshadebooks.com/Downloads/Exhalation%20-%20Ted%20Chiang.html)
+    2. ["Seventy-Two Letters"](http://web.archive.org/web/20010802144026/http://www.tor.com/72ltrs.html)
+    3. ["Hell is the Absence of God"](https://web.archive.org/web/20161021035119/http://www.ibooksonline.com/88/Text/hell.html)
+    4. ["The Merchant and the Alchemist's Gate"](http://attach3.bdwm.net/attach/boards/ScienceFiction/M.1209705460.A/Ted_Chiang.pdf)
+5. [_There Is No Anti-Memetics Division_](http://www.scp-wiki.net/qntm-s-author-page#toc2), by Sam Hughes
+6. ["Spring and Fall"](http://www.poetryfoundation.org/poems-and-poets/poems/detail/44400), by [Gerard Manley Hopkins](https://en.wikipedia.org/wiki/Gerard_Manley_Hopkins)
+7. ["Suminoe Beach"](https://plus.google.com/103530621949492999968/posts/3ihosigiw8Z), by Kuramochi Chitose
+8. ["Poverty"](https://jaypsong.wordpress.com/2011/11/15/poverty-by-moon-byung-ran/), by Moon Byung-ran
+9. [Sanderson's First Law](http://brandonsanderson.com/sandersons-first-law/)
+10. ["Design"](https://www.poets.org/poetsorg/poem/design), Robert Frost
 
 ## Books
 
+Nonfiction:
+
+1. [Lucretius's _On the Nature of Things_](https://en.wikipedia.org/wiki/De_rerum_natura)
+2. [_Don't Sleep, There Are Snakes: Life and Language in the Amazonian Jungle_](http://www.amazon.com/Dont-Sleep-There-Are-Snakes/dp/0307386120), [Everett](https://en.wikipedia.org/wiki/Daniel_Everett) 2009 (on the [Pirahã people](https://en.wikipedia.org/wiki/Pirah%C3%A3_people); [review](https://www.goodreads.com/review/show/1593642509))
+3. [_A Life of Sir Francis Galton_](http://www.amazon.com/Life-Sir-Francis-Galton-Exploration/dp/0195143655) ([review](https://www.goodreads.com/review/show/1605393134))
+4. [_The Sports Gene_](http://thesportsgene.com/), Epstein
+5. [_Fortune's Formula_](https://www.amazon.com/Fortunes-Formula-Scientific-Betting-Casinos/dp/0809045990), Poundstone 2005 ([review](https://www.goodreads.com/review/show/1734782652))
+6. [_Montaillou: The Promised Land of Error_](https://en.wikipedia.org/wiki/Montaillou_\(book\)), [Le Roy Ladurie](https://en.wikipedia.org/wiki/Emmanuel_Le_Roy_Ladurie) 1975
+7. [_The Theory of Special Operations_](http://calhoun.nps.edu/handle/10945/14838), [McRaven](https://en.wikipedia.org/wiki/William_H._McRaven) 1992 ([review](https://www.goodreads.com/review/show/1702133540))
+8. [_Titan: The Life of John D. Rockefeller, Sr._](http://www.amazon.com/Titan-Life-John-Rockefeller-Sr/dp/1400077303), Chernow ([review](https://www.goodreads.com/review/show/1624479337))
+9. [_The Genius Factory_](https://www.amazon.com/Genius-Factory-Curious-History-Nobel/dp/0812970527), Plotz 2005
+10. [_The Riddle of the Labyrinth_](https://www.amazon.com/Riddle-Labyrinth-Quest-Crack-Ancient/dp/0062228862), Fox
+
 Fiction:
 
-Nonfiction:
+1. [_Poems of Gerard Manley Hopkins_](https://www.gutenberg.org/ebooks/22403), by Gerard Manley Hopkins ([review](https://www.goodreads.com/review/show/1643077424))
 
 ## TV/movies
 
 Nonfiction movies:
 
+1. [_A Beautiful Planet_](https://en.wikipedia.org/wiki/A_Beautiful_Planet)
+2. [_The Kingdom of Dreams and Madness_](https://en.wikipedia.org/wiki/The_Kingdom_of_Dreams_and_Madness)
+
 Fiction:
 
+1. [_Florence Foster Jenkins_](https://en.wikipedia.org/wiki/Florence_Foster_Jenkins_\(film\))
+
 Anime:
+
+1. [_The Tale of Princess Kaguya_](https://en.wikipedia.org/wiki/The_Tale_of_the_Princess_Kaguya)
+2. [_Short Peace_](https://en.wikipedia.org/wiki/Short_Peace)
+3. [_The Wind Rises_](https://en.wikipedia.org/wiki/The_Wind_Rises)
+4. [_Death Parade_](https://en.wikipedia.org/wiki/Death_Parade)
+5. [_Basilisk_](https://en.wikipedia.org/wiki/Basilisk_(manga)) ([review](http://myanimelist.net/reviews.php?id=221630))
+6. [_Chirin no Suzu_/_Ringing Bell_](https://en.wikipedia.org/wiki/Ringing_Bell) ([review](https://myanimelist.net/reviews.php?id=230095))

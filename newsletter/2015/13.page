@@ -21,6 +21,8 @@ This is the 2015 summary edition of [the `gwern.net` newsletter](https://gwern.u
 11. [November](https://www.gwern.net/newsletter/2015/11)
 12. [December](https://www.gwern.net/newsletter/2015/12)
 
+Previously: [2015](https://www.gwern.net/newsletter/2014/13).
+
 # Writings
 
 1. [Dark Net Market (DNM) archives, 2011-2015](https://www.gwern.net/Black-market%20archives "Mirrors of Tor-Bitcoin black-markets & forums 2013-2015, and other material")
@@ -45,13 +47,13 @@ Everything is heritable:
 2. Soft selection sweeps/group differences:
 
     - ["Genome-wide patterns of selection in 230 ancient Eurasians"](https://www.gwern.net/docs/genetics/2015-mathieson.pdf), Mathieson et al 2015 ([media](http://www.nytimes.com/2015/11/24/science/agriculture-linked-to-dna-changes-in-ancient-europe.html "Agriculture Linked to DNA Changes in Ancient Europe"))
-    - ["Population genetic differentiation of height and body mass index across Europe"](https://www.gwern.net/docs/genetics/2015-robinson.pdf), Robinson et al 2015 (to quote [Yvain](http://slatestarcodex.com/2015/09/28/links-915-linkua-franca/): "Genetic differences explain 24% of between-national-populations differences in height and 8% of between-national-populations in BMI across Europe. Now that the only two massively polygenic traits that might vary among national populations have been successfully studied, I look forward to never having to read any further research of this sort ever again."; [excerpts](https://plus.google.com/103530621949492999968/posts/HAPgyYW7ACU))
+    - ["Population genetic differentiation of height and body mass index across Europe"](https://www.gwern.net/docs/genetics/2015-robinson.pdf), Robinson et al 2015
     - ["Rabbit genome analysis reveals a polygenic basis for phenotypic change during domestication"](http://www.sciencepubs.org/content/345/6200/1074.full.pdf), Carneiro et al 2014 (the power of selection - complex behaviors influenced by many small changes; [excerpts](https://plus.google.com/103530621949492999968/posts/BeGb4SiLZtV))
     - ["Comparative analysis of the domestic cat genome reveals genetic signatures underlying feline biology and domestication"](http://www.researchgate.net/profile/Razib_Khan/publication/269094600_Comparative_analysis_of_the_domestic_cat_genome_reveals_genetic_signatures_underlying_feline_biology_and_domestication/links/54816dd80cf263ee1adfb8ce.pdf), Montague et al 2014 ([commentary](http://www.unz.com/gnxp/a-feline-genome-in-full/))
 3. intelligence:
 
     - ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (_n_=53949)"](http://www.nature.com/mp/journal/vaop/ncurrent/pdf/mp2014188a.pdf), Davies et al 2015 ([excerpts](https://plus.google.com/103530621949492999968/posts/hesK7wrL5WB))
-    - ["Polygenic Influence on Educational Attainment: New Evidence From the National Longitudinal Study of Adolescent to Adult Health"](http://ero.sagepub.com/content/1/3/2332858415599972), Domingue et al 2015 (rarely are the analyst's choices so much more informative than the results)
+    - ["Polygenic Influence on Educational Attainment: New Evidence From the National Longitudinal Study of Adolescent to Adult Health"](http://ero.sagepub.com/content/1/3/2332858415599972), Domingue et al 2015
     - ["Thinking positively: The genetics of high intelligence"](http://www.sciencedirect.com/science/article/pii/S0160289614001676) ([commentary](https://plus.google.com/103530621949492999968/posts/fDJFgJJ95pE))
     - [pervasive cross-correlations of polygenic scores for various traits](http://drjamesthompson.blogspot.com/2015/11/genetic-story-jumps-ahead.html): particularly [Krapohl et al 2015](http://www.researchgate.net/publication/281241266_Phenome-wide_analysis_of_genome-wide_polygenic_scores "Phenome-wide analysis of genome-wide polygenic scores")
     - ["Systems genetics identifies a convergent gene network for cognition and neurodevelopmental disease"](https://www.gwern.net/docs/iq/2015-johnson.pdf), Johnson et al 2015 ([media](http://www3.imperial.ac.uk/newsandeventspggrp/imperialcollege/newssummary/news_22-12-2015-10-13-44 "Intelligence 'networks' discovered in brain for the first time"))
@@ -62,8 +64,8 @@ AI:
 
 1. ["Deep Residual Learning for Image Recognition"](http://arxiv.org/abs/1512.03385), He et al 2015
 2. ["End-to-End Training of Deep Visuomotor Policies"](http://arxiv.org/pdf/1504.00702 ), Levine et al 2015 ([demo](https://www.youtube.com/watch?v=JeVppkoloXs); [talk](https://www.youtube.com/watch?v=EtMyH_--vnU))
-3. ["On Learning to Think: Algorithmic Information Theory for Novel Combinations of Reinforcement Learning Controllers and Recurrent Neural World Models"](http://arxiv.org/abs/1511.09249) ([AIT](https://en.wikipedia.org/wiki/Algorithmic_information_theory) is usually too hopelessly abstract and general to apply to anything, but Schmidhuber gets inspiration for some interesting architectures from it.)
-4. ["What my deep model doesn't know..."](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html) (A tour de force: isomorphism between [Gaussian processes](https://en.wikipedia.org/wiki/Gaussian_process) and deep neural networks showing [dropout](https://en.wikipedia.org/wiki/Dropout_%28neural_networks%29) is equivalent to using 1 NN to average over a whole family of similar models (explaining why dropout improves results, since we all know the advantages of ensembles) and showing how variation in NN output when wiggled by dropout gives an indication of uncertainty in predictions and from there yields useful results and stuff like usable [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) (!) in the famous [deep Q reinforcement-learner](https://en.wikipedia.org/wiki/Deep_learning#Deep_q-networks) for optimizing exploration and learning faster. Phew.)
+3. ["On Learning to Think: Algorithmic Information Theory for Novel Combinations of Reinforcement Learning Controllers and Recurrent Neural World Models"](http://arxiv.org/abs/1511.09249)
+4. ["What my deep model doesn't know..."](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html)
 5. ["Actor-Mimic: Deep Multitask and Transfer Reinforcement Learning"](http://arxiv.org/abs/1511.06342), Parisotta et al 2015
 6. ["End-To-End Memory Networks"](http://arxiv.org/pdf/1503.08895v5.pdf), Sukhbaatar et al 2015
 7. ["Generating Images from Captions With Attention"](http://arxiv.org/pdf/1511.02793v1.pdf), Mansimov et al 2015
@@ -73,8 +75,8 @@ AI:
 
 Statistics/meta-science:
 
-1. ["The Bayesian Reproducibility Project"](http://alexanderetz.com/2015/08/30/the-bayesian-reproducibility-project/) (interpreting the psychology reproducibility projects' results not by uninterpretable _p_-values but by a direct Bayesian examination of whether the replications support or contradict the originals)
-2. ["Compliance with Results Reporting at ClinicalTrials.gov"](http://www.nejm.org/doi/full/10.1056/NEJMsa1409364), Anderson et al 2015 (incentives matter)
+1. ["The Bayesian Reproducibility Project"](http://alexanderetz.com/2015/08/30/the-bayesian-reproducibility-project/)
+2. ["Compliance with Results Reporting at ClinicalTrials.gov"](http://www.nejm.org/doi/full/10.1056/NEJMsa1409364), Anderson et al 2015
 3. ["A survey of Bayesian predictive methods for model assessment, selection and comparison"](http://projecteuclid.org/DPubS/Repository/1.0/Disseminate?view=body&id=pdfview_1&handle=euclid.ssu/1356628931), Vehtari & Ojanen
 4. ["How One Man Poisoned a City's Water Supply (and Saved Millions of Children's Lives in the Process)"](http://web.archive.org/web/20150223044449/http://www.howwegettonext.com/Article/VNyy5ScAACQA9Jr6/how-one-man-poisoned-a-citys-water-supply-and-saved-millions-of-childrens-lives-in-the-process) (on [John L. Leal](https://en.wikipedia.org/wiki/John_L._Leal) & [water chlorination](https://en.wikipedia.org/wiki/Water_chlorination))
 5. ["Correlation, Causation, and Confusion"](http://www.thenewatlantis.com/publications/correlation-causation-and-confusion)
@@ -88,11 +90,11 @@ Psychology/biology:
 
 1. ["CRISPR/Cas9-mediated gene editing in human tripronuclear zygotes"](http://link.springer.com/content/pdf/10.1007%2Fs13238-015-0153-5.pdf), Liang et al 2015; can be considered a followup to ["Clinical outcome of preimplantation genetic diagnosis and screening using next generation sequencing"](http://www.gigasciencejournal.com/content/pdf/2047-217X-3-30.pdf), Tan et al 2014 ([excerpts](https://plus.google.com/103530621949492999968/posts/XNtP87bmyVT))
 2. ["Persistence of Long-Term Memory in Vitrified and Revived _C. elegans_"](http://online.liebertpub.com/doi/pdf/10.1089/rej.2014.1636), Vita-More & Barranco 2015 ([excerpts](https://plus.google.com/103530621949492999968/posts/5JC68h6GTSQ))
-3. ["Reconstruction and Simulation of Neocortical Microcircuitry"](http://www.cell.com/cell/abstract/S0092-8674%2815%2901191-5), Markram et al 2015 ([media](http://www.theguardian.com/science/2015/oct/08/complex-living-brain-simulation-replicates-sensory-rat-behaviour "Complex living brain simulation replicates sensory rat behaviour: Blue Brain Project supercomputer recreates part of rodent’s brain with 30,000 neurons connected by 40m synapses to show patterns of behaviour triggered, for example, when whiskers are touched"))
+3. ["Reconstruction and Simulation of Neocortical Microcircuitry"](http://www.cell.com/cell/abstract/S0092-8674%2815%2901191-5), Markram et al 2015 ([media](http://www.theguardian.com/science/2015/oct/08/complex-living-brain-simulation-replicates-sensory-rat-behaviour "Complex living brain simulation replicates sensory rat behaviour: Blue Brain Project supercomputer recreates part of rodent's brain with 30,000 neurons connected by 40m synapses to show patterns of behaviour triggered, for example, when whiskers are touched"))
 4. ["A 2-Year Randomized Controlled Trial of Human Caloric Restriction: Feasibility and Effects on Predictors of Health Span and Longevity"](http://biomedgerontology.oxfordjournals.org/content/70/9/1097.full) (the CALERIE study), Ravussin et al 2015 ([excerpts](https://plus.google.com/103530621949492999968/posts/GUowvMgm3Ki))
 5. ["A Novel BHLHE41 Variant is Associated with Short Sleep and Resistance to Sleep Deprivation in Humans"](http://www.journalsleep.org/ViewAbstract.aspx?pid=29575), Pellegrino et al 2014
 6. ["The myopia boom: Short-sightedness is reaching epidemic proportions. Some scientists think they have found a reason why"](http://www.nature.com/news/the-myopia-boom-1.17120)
-7. ["Artificial Selection on Relative Brain Size in the Guppy Reveals Costs and Benefits of Evolving a Larger Brain"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.659.8433&rep=rep1&type=pdf), Kotrschal et al 2013 ([excerpts](https://plus.google.com/103530621949492999968/posts/fCRtr4qRex2); fascinating little experiment - it's odd the males showed no intelligence gain, and selecting on volume isn't exactly what you want to select on, but I'd love to see what a larger experiment ran for more generations showed.)
+7. ["Artificial Selection on Relative Brain Size in the Guppy Reveals Costs and Benefits of Evolving a Larger Brain"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.659.8433&rep=rep1&type=pdf), Kotrschal et al 2013 ([excerpts](https://plus.google.com/103530621949492999968/posts/fCRtr4qRex2))
 8. ["Synchronizing education to adolescent biology: 'let teens sleep, start school later'"](http://www.researchgate.net/profile/Paul_Kelley5/publication/271991912_Synchronizing_education_to_adolescent_biology_let_teens_sleep_start_school_later/links/5527fc7a0cf2779ab78b5e8f.pdf), Kelley et al 2014:
 9. ["Evolution of the human brain: when bigger is better"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3973910/), Hofman 2014
 10. ["The Trip Treatment: Research into psychedelics, shut down for decades, is now yielding exciting results"](http://www.newyorker.com/magazine/2015/02/09/trip-treatment?mbid=social_twitter)
@@ -100,13 +102,13 @@ Psychology/biology:
 Politics/religion:
 
 1. ["A Cold War Conundrum: The 1983 Soviet War Scare"](https://www.cia.gov/library/center-for-the-study-of-intelligence/csi-publications/books-and-monographs/a-cold-war-conundrum/source.htm)
-2. ["The Credibility Paradox: Violence as a Double-Edged Sword in International Politics"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.661.618&rep=rep1&type=pdf), Abrahms 2013 ([excerpts](https://plus.google.com/103530621949492999968/posts/AhxM7ov61fe); Why does terrorism so rarely succeed in policy goals compared to guerrilla warfare, and trigger backfire effects? Because use of terrorist tactics triggers the horns effect; given the same hypothetical, they are perceived as fundamentally hateful, unable to keep negotiated commitments, & intrinsically preferring violence.)
+2. ["The Credibility Paradox: Violence as a Double-Edged Sword in International Politics"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.661.618&rep=rep1&type=pdf), Abrahms 2013 ([excerpts](https://plus.google.com/103530621949492999968/posts/AhxM7ov61fe))
 3. ["What Politicians Believe About Their Constituents: Asymmetric Misperceptions and Prospects for Constituency Control"](http://www.vanderbilt.edu/csdi/miller-stokes/08_MillerStokes_BroockmanSkovron.pdf) ([excerpts](https://plus.google.com/103530621949492999968/posts/6cT8DwqGqm8))
 4. ["How Napoleon Chagnon Became Our Most Controversial Anthropologist"](http://www.nytimes.com/2013/02/17/magazine/napoleon-chagnon-americas-most-controversial-anthropologist.html?pagewanted=all)
-5. ["Before you study public opinion, you wonder why policy isn't far better. After you study public opinion, you wonder why policy isn't far worse."﻿](http://econlog.econlib.org/archives/2011/04/top_40_things_i.html "40 Things I Learned in My First 40 Years")
+5. ["Before you study public opinion, you wonder why policy isn't far better. After you study public opinion, you wonder why policy isn't far worse."](http://econlog.econlib.org/archives/2011/04/top_40_things_i.html "40 Things I Learned in My First 40 Years")
 6. ["The Irish Slave Trade - The Forgotten 'White' Slaves; The Slaves That Time Forgot"](https://web.archive.org/web/20160216200334/http://www.globalresearch.ca/the-irish-slave-trade-the-forgotten-white-slaves/31076)
 7. ["Misperceiving Inequality"](http://www.econstor.eu/bitstream/10419/113975/1/dp9100.pdf), Gimpelson & Treisman 2015 ([excerpts](http://econlog.econlib.org/archives/2015/05/systematically_3.html "'Systematically Biased Beliefs About Inequality', Bryan Caplan"))
-8. ["Land without Plea Bargaining: How the Germans Do It"](http://digitalcommons.law.yale.edu/cgi/viewcontent.cgi?article=1532&context=fss_papers), Langbein 1979 (how the German legal system avoids our own reliance on plea-bargaining to send most defendants to jail without trial)
+8. ["Land without Plea Bargaining: How the Germans Do It"](http://digitalcommons.law.yale.edu/cgi/viewcontent.cgi?article=1532&context=fss_papers), Langbein 1979
 9. ["The Really Big One: An earthquake will destroy a sizable portion of the coastal Northwest. The question is when."](http://www.newyorker.com/magazine/2015/07/20/the-really-big-one)
 10. ["Proving communal warfare among hunter-gatherers: The quasi-Rousseau-an error"](http://onlinelibrary.wiley.com/enhanced/doi/10.1002/evan.21446/), Gat 2015
 
@@ -121,7 +123,7 @@ Technology:
 7. ["How Much of the Web Is Archived?"](http://arxiv.org/abs/1212.6177)
 8. ["Crush Point: When large crowds assemble, is there a way to keep them safe?"](http://www.newyorker.com/magazine/2011/02/07/crush-point)
 9. ["1 to 10 billion earth-like planets in the Milky Way Galaxy"](http://nextbigfuture.com/2015/08/1-to-10-billion-earthlike-planets-in.html)
-10. ["Carnegie Mellon Denies FBI Paid for Tor-Breaking Research"](http://www.wired.com/2015/11/carnegie-mellon-denies-fbi-paid-for-tor-breaking-research/) (If the FBI is harvesting any de-anonymizing data security researchers collect using subpoenas, this seems like a serious attack on academic freedom and research integrity.)
+10. ["Carnegie Mellon Denies FBI Paid for Tor-Breaking Research"](http://www.wired.com/2015/11/carnegie-mellon-denies-fbi-paid-for-tor-breaking-research/)
 
 Economics:
 
@@ -129,11 +131,11 @@ Economics:
 2. ["Costs and benefits of iodine supplementation for pregnant women in a mildly to moderately iodine-deficient population: a modelling analysis"](https://www.gwern.net/docs/iodine/2015-monahan.pdf) ([excerpts](http://lesswrong.com/lw/7e1/rationality_quotes_september_2011/cntj))
 3. ["Measuring the Longitudinal Evolution of the Online Anonymous Marketplace Ecosystem"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.696.2199&rep=rep1&type=pdf), Soska & Christin 2015 ([excerpts](https://www.reddit.com/r/DarkNetMarkets/comments/3gqlqu/dnm_sales_20132015_measuring_the_longitudinal/))
 4. ["Overkill: An avalanche of unnecessary medical care is harming patients physically and financially. What can we do about it?"](http://www.newyorker.com/magazine/2015/05/11/overkill-atul-gawande)
-5. ["A colorful history of progress"](http://www.spiked-online.com/newsite/article/a-colourful-history-of-progress/16212) (the Industrial Revolution, synthetic dyes, and the environment)
+5. ["A colorful history of progress"](http://www.spiked-online.com/newsite/article/a-colourful-history-of-progress/16212)
 6. ["The financing of jihadi terrorist cells in Europe"](http://www.ffi.no/no/Rapporter/14-02234.pdf), Oftedal 2015
 7. ["The Bonsai Kid"](http://craftsmanship.net/the-bonsai-kid/ "A young Oregonian believes that he can create a uniquely American form of the Japanese bonsai tree. And he is literally betting the farm on the idea that if he builds it, they will come.")
 8. ["Brickyard Blues: Numbed by cold, pelted by rain, enduring smashed fingers and toes, poorly paid brick salvagers keep coming back for more"](http://www.chicagoreader.com/chicago/brickyard-blues/Content?oid=898211)
-9. [Children are net losses to parents, even in peasant or hunter-gatherer societies.﻿](http://www.econ.ucsb.edu/%7Etedb/Family/famwaypdf.pdf "'Economics in a Family Way', Bergstrom 1999")
+9. [Children are net losses to parents, even in peasant or hunter-gatherer societies.](http://www.econ.ucsb.edu/%7Etedb/Family/famwaypdf.pdf "'Economics in a Family Way', Bergstrom 1999")
 10. [Arab slave trade](https://en.wikipedia.org/wiki/Arab_slave_trade#Scope_of_the_trade)
 
 Philosophy:
@@ -142,7 +144,7 @@ Philosophy:
 2. ["Do Artificial Reinforcement-Learning Agents Matter Morally?"](http://arxiv.org/abs/1410.8233), Tomasik 2014
 3. ["What is Wrong with Our Thoughts? A Neo-Positivist Credo"](http://web.maths.unsw.edu.au/~jim/wrongthoughts.html)
 4. ["The Reversal Test and Status Quo Bias"](http://philosophicaldisquisitions.blogspot.com/2012/11/the-reversal-test-and-status-quo-bias.html)
-5. ["'Ethics' is advertising"](https://meaningness.wordpress.com/2015/10/05/buddhist-ethics-is-advertising/), ["The Strange Case of Anna Stubblefield"](http://www.nytimes.com/2015/10/25/magazine/the-strange-case-of-anna-stubblefield.html "She told the family of a severely disabled man that she could help him to communicate with the outside world. The relationship that followed would lead to a criminal trial.") ("Woe to you, teachers of the law and Pharisees...", "organisms are adaptation-executers, not fitness-maximizers")
+5. ["'Ethics' is advertising"](https://meaningness.wordpress.com/2015/10/05/buddhist-ethics-is-advertising/), ["The Strange Case of Anna Stubblefield"](http://www.nytimes.com/2015/10/25/magazine/the-strange-case-of-anna-stubblefield.html "She told the family of a severely disabled man that she could help him to communicate with the outside world. The relationship that followed would lead to a criminal trial.")
 6. ["The Great Filter - Are We Almost Past It?"](http://mason.gmu.edu/~rhanson/greatfilter.html), Hanson 1998
 7. ["The time resolution of the St Petersburg paradox"](http://rsta.royalsocietypublishing.org/content/369/1956/4913.full.pdf), Peters 2011
 8. ["The Copenhagen Interpretation of Ethics"](http://blog.jaibot.com/the-copenhagen-interpretation-of-ethics/)
@@ -182,8 +184,7 @@ Nonfiction:
 5. [_Epic Measures: One Doctor. Seven Billion Patients._](http://www.amazon.com/Epic-Measures-Doctor-Billion-Patients/dp/0062237500), on [Christopher Murray's](https://en.wikipedia.org/wiki/Christopher_J.L._Murray) [Global Burden of Disease](https://en.wikipedia.org/wiki/Global_burden_of_disease)
 6. [_Do No Harm_](http://www.amazon.com/Do-No-Harm-Stories-Surgery/dp/125006581X), Marsh (elegantly written and moving neurosurgeon memoir on the theme of iatrogenics; [I did disagree](https://www.gwern.net/Statistical%20notes#operating-on-an-aneurysm) with his comments on the cost-benefit of operating in one case, though)
 7. [_Digital Gold: Bitcoin and the Inside Story of the Misfits and Millionaires Trying to Reinvent Money_](http://www.amazon.com/Digital-Gold-Bitcoin-Millionaires-Reinvent/dp/0062362496), Popper ([review](https://www.goodreads.com/review/show/1262675076))
-8. [_Practical Criticism_](https://archive.org/details/practicalcritici030142mbp), [I.A. Richards](https://en.wikipedia.org/wiki/I._A._Richards) (an amusing demonstration of the incompetence of most readers in showing the bizarre incomprehension of the plain meaning of many poems and the extreme inconsistency of their critical evaluations thereof, and Richards makes that point at length; still, I remain totally unconvinced by his claim that the "tinkles" poem is of any merit!)
-
+8. [_Practical Criticism_](https://archive.org/details/practicalcritici030142mbp), [I.A. Richards](https://en.wikipedia.org/wiki/I._A._Richards)
 
 ## TV/movies
 
