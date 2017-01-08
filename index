@@ -15,8 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="./static/img/favicon.ico"/>
     <style type="text/css">
       /* make the sections reflow; better than fixed-width tables */
-      div#content section { display:inline-block;
-                            vertical-align:top; }
+      div#content section { display:inline-block; vertical-align:top; }
       /* leave enough horizontal room to show multiple sections simultaneously, table-like */
       body { max-width: 2000px; }
       /* align the section headers nicely with the lists of pages */
@@ -44,6 +43,45 @@
         </div>
       </div>
       <div id="content">
+
+        <div id="markdownBody"><p>This is the website of Gwern Branwen, writer &amp; independent researcher. I am best known for my work on the darknet markets &amp; Bitcoin, blinded self-experiments &amp; Quantified Self analyses, dual n-back &amp; spaced repetition, and modafinil.</p>
+        <p>For information about my site’s philosophy, method, traffic statistics, and implementation, see <a href="/About">the About page</a>; for information about myself, my use of other websites, and contact information, see <a href="/Links">the Links page</a>; for information about recently added pages, see <a href="/Changelog">the Changelog</a>; to be notified of updates, <a href="https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&amp;id=91b4d51355">subscribe to my newsletter</a> or <a href="/atom.xml" title="Site-wide global ATOM/RSS Feed (all edits)">RSS</a>.</p></div>
+
+        <section><h1 id="most-popular">Most popular</h1>
+        <ul>
+          <li><a href="/Silk%20Road" title="Visiting, ordering, and using the anonymous drug market Silk Road 1">Silk Road 1: Theory &amp; Practice</a></li>
+          <li><a href="/Black-market%20archives" title="Mirrors of ~89 Tor-Bitcoin darknet markets &amp; forums 2011-2015, and related material">Darknet Market Archives (2013-2015)</a></li>
+          <li><a href="/Black-market%20arrests" title="A listing of all known arrests and prosecutions connected to the Tor-Bitcoin drug black-markets">Darknet Market Arrests (2011-2015)</a></li>
+          <li><a href="/Modafinil" title="Effects, health concerns, suppliers, prices &amp; rational ordering">Modafinil</a></li>
+          <li><a href="/LSD%20microdosing" title="Self-experiment with sub-psychedelic doses of LSD; no benefit">LSD microdosing self-experiment</a></li>
+          <li><a href="/Zeo" title="EEG recordings of sleep and my experiments with things affecting sleep quality or durations: melatonin, potassium, vitamin D etc">Zeo sleep self-experiments</a></li>
+          <li><a href="/DNB%20FAQ">Dual N-Back FAQ</a></li>
+          <li><a href="/Spaced%20repetition" title="Efficient memorization using the spacing effect: literature review of widespread applicability, tips on use &amp; what it&#39;s good for.">Spaced repetition</a></li>
+          <li><a href="/Death%20Note%20Anonymity" title="Using information theory to quantify the magnitude of Light Yagami&#39;s mistakes in _Death Note_ and considering fixes"><em>Death Note</em>: L, Anonymity &amp; Eluding Entropy</a></li>
+          <li><a href="/Google%20shutdowns" title="Analyzing predictors of Google abandoning products; predicting future shutdowns">Google web services survival analysis</a></li>
+          <li><a href="/Self-decrypting%20files" title="How do you encrypt a file such that it can be decrypted after a date, but not before? Use serial computations for proof-of-work using successive squaring, chained hashes, or witness encryption on blockchains.">Time-lock cryptography</a></li>
+          <li><a href="/Archiving%20URLs" title="Archiving the Web, because nothing lasts forever: statistics, online archive services, extracting URLs automatically from browsers, and creating a daemon to regularly back up URLs to multiple sources.">Archiving URLs</a></li>
+          <li><a href="/Terrorism%20is%20not%20about%20Terror" title="Terrorists act irrationally from a rational activism perspective, and groups act in ways most consistent with terrorism being about social status and belonging">Terrorism is not about Terror</a></li>
+          <li><a href="/The%20Melancholy%20of%20Subculture%20Society" title="Internet links small groups, helping dissolve big groups; good, bad? But a bit sad.">The Melancholy of Subculture Society</a></li>
+        </ul></section>
+        <section><h1 id="notable">Notable</h1>
+        <ul>
+          <li><a href="/Causality" title="Causal Nets Cause Common Confounding: Correlations are oft interpreted as evidence for causation; this is oft falsified; do causal graphs explain why this is so common?">Why Correlation Usually ≠ Causation</a></li>
+          <li><a href="/Embryo%20selection" title="A cost-benefit analysis of IVF-based embryo selection for intelligence with 2015-2016 state-of-the-art">Embryo selection for intelligence</a></li>
+          <li><a href="/Mail%20delivery" title="Bayesian decision-theoretic analysis of local mail delivery times: modeling deliveries as survival analysis, model comparison, optimizing check times with a loss function, and optimal data collection.">When Should I Check The Mail?</a></li>
+          <li><a href="/Tool%20AI" title="AIs limited to purely computational inferential tasks (Tool AIs) supporting humans will be less intelligent, efficient, and economically valuable than more autonomous reinforcement-learning AIs (Agent AIs) who learn to take actions over computation/data/training/architecture/hyperparameters/external-resource use.">Why Tool AIs Want to Be Agent AIs</a></li>
+          <li><a href="/Complexity%20vs%20AI" title="Critics of AI risk suggest diminishing returns to computing (formalized asymptotically) means AI will be weak; this argument relies on a large number of questionable premises and ignoring additional resources, constant factors, and nonlinear returns to small intelligence advantages, and is highly unlikely.">Complexity no Bar to AI</a></li>
+          <li><a href="/Death%20Note%20script" title="Internal, external, stylometric evidence point to the 2009 leaked live-action script being real"><em>Death Note</em> script authenticity</a></li>
+          <li><a href="/The%20Existential%20Risk%20of%20Mathematical%20Error" title="Mathematical mistake/error-rates limit our understanding of rare risks and ability to defend against them">The Existential Risk of Mathematical Error</a></li>
+          <li><a href="/Iodine" title="Iodine improves IQ in fetuses; adults as well? A meta-analysis of relevant studies says no.">Iodine and Adult IQ meta-analysis</a></li>
+          <li><a href="/The%20Melancholy%20of%20Kyon" title="Literary analysis of the light novel/anime series &#39;The Melancholy of Haruhi Suzumiya&#39;: Haruhi is not God, Kyon is"><em>The Melancholy of Kyon</em></a></li>
+          <li><a href="/In%20Defense%20of%20Inclusionism" title="Iron Law of Bureaucracy: the downwards deletionism spiral discourages contribution and is how Wikipedia will die.">In Defense of Inclusionism on Wikipedia</a></li>
+          <li><a href="/Bitcoin%20is%20Worse%20is%20Better" title="Bitcoin&#39;s long gestation and early opposition indicates it is an example of the &#39;Worse is Better&#39; paradigm in which an ugly complex design with few attractive theoretical properties compared to purer competitors nevertheless successfully takes over a niche, survives, and becomes gradually refined.">Bitcoin is Worse is Better</a></li>
+          <li><a href="/Sunk%20cost" title="Human and animal sunk costs often aren&#39;t, and sunk cost bias may be useful on an individual level to encourage learning. Convincing examples of sunk cost bias typically operate on organizational levels and are probably driven by non-psychological causes like competition.">Are Sunk Costs Fallacies?</a></li>
+        </ul></section>
+
+        <p>By topic:</p>
+
         <section id="statistics" class="level1">
           <h1>Statistics</h1>
           <ul>
@@ -77,20 +115,20 @@
             <li><a href="Haskell%20Summer%20of%20Code" title="A retrospective of 5 years of SoC, w/lessons learned">Haskell Summer of Code</a></li>
             <li><a href="./Complexity%20vs%20AI" title="Critics of AI risk suggest diminishing returns to computing means AI will be weak; I argue argument breaks if any premises rejected">Complexity no Bar to AI</a></li>
             <li><a href="./Tool%20AI" title="Tool AIs limited purely to inferential tasks will be less intelligent, efficient, and economically valuable than independent reinforcement-learning AIs learning actions over computation/data/training/architecture/hyperparameters/external-resource use.">Tool AIs Want To Be Agent AIs</a></li>
-            <li><a href="Simulation%20inferences" title="How big must be the computer simulating the universe? Not very.">Simulation inferences</a></li>
             <li><a href="Archiving%20URLs" title="Archiving the Web, because nothing lasts forever - pulling together all the previous archive tools.">Archiving URLs</a></li>
             <li><a href="./RNN%20metadata">RNN mimicking multiple authors</a></li>
-            <li><a href="Evolutionary%20Licenses" title="Game theory on BSD vs. GPL: partnership">Evolutionary Licenses</a></li>
             <li><a href="The%203%20Grenades" title="CMU game connected to error coding theory">The 3 Grenades</a></li>
             <li><a href="./Turing-complete" title="A catalogue of constructs which are unexpectedly Turing-complete; implications for security">Surprisingly Turing-Complete</a></li>
             <li><a href="haskell/Archiving%20GitHub" title="Scraping &amp; downloading Haskell-related repositories from GitHub">Archiving GitHub</a></li>
             <li><a href="hpmor#analysis" title="Statistically modeling posted online reviews for an ongoing story with Haskell and R">Modeling fiction readers’ review rates</a></li>
+            <li><a href="Simulation%20inferences" title="How big must be the computer simulating the universe? Not very.">Simulation inferences</a></li>
             <li><a href="Choosing%20Software" title="Criteria making software useful long-term &amp; worth learning in detail">Choosing Software</a></li>
             <li><a href="haskell/Run%20Length%20Encoding" title="Haskell: step by step refactoring to concision">Run Length Encoding</a></li>
             <li><a href="haskell/Wikipedia%20Archive%20Bot" title="Haskell: archive Wikipedia with TagSoup and WebCite">Wikipedia Archive Bot</a></li>
             <li><a href="haskell/Wikipedia%20RSS%20Archive%20Bot" title="Archiving using Wikipedia Recent Changes RSS feed">WP RSS bot</a></li>
             <li><a href="haskell/Redirect-bot.hs" title="Generating all possible capitalization permutations of Wikipedia titles; used with Pywikipedia">WP redirect generator</a></li>
             <li><a href="Resilient%20Haskell%20Software" title="Lessons learned about bitrot in Haskell software">Resilient Haskell Software</a></li>
+            <li><a href="Evolutionary%20Licenses" title="Game theory on BSD vs. GPL: partnership">Evolutionary Licenses</a></li>
             <li><em>SICP</em> <a href="sicp/Introduction" title="Links to various resources for SICP studying">Introduction</a> (<a href="sicp/Chapter%201.1">ch1.1</a>, <a href="sicp/Chapter%201.2">1.2</a>, <a href="sicp/Chapter%201.3">1.3</a>)</li>
           </ul>
         </section>
@@ -222,7 +260,7 @@
             <li><a href="./docs/statistics/1994-falk" title="Changing beliefs with failure in searching a set of possibilities; Falk et al 1994">“The Ups and Downs of the Hope Function In a Fruitless Search”</a> (Falk et al)</li>
             <li><a href="./docs/2002-gibson" title="Essay on minimalism, otaku, and hikikomori">“Shiny balls of Mud: William Gibson Looks at Japanese Pursuits of Perfection”</a></li>
             <li><a href="./docs/2007-wolfe" title="Gene Wolfe on the depth and ending of novel series">“Nor the Summers as Golden: Writing Multivolume Works”</a> (Wolfe)</li>
-            <li><a href="./docs/1963-asimov-sword-of-achilles" title="Interest in science fiction predicts future scientific merit?">Asimov’s “The Sword of Achilles”</a></li>
+            <li><a href="./docs/1963-asimov-sword-of-achilles" title="Interest in science fiction predicts future scientific merit?">“The Sword of Achilles”</a> (Isaac Asimov)</li>
             <li><a href="./docs/sr/2013-power" title="May 2013 overview of Silk Road's rise, powered by Tor &amp; Bitcoin"><em>Drugs 2.0</em>: “Your Crack’s in the Post”</a> (Mike Power)</li>
           </ul>
         </section>
@@ -234,8 +272,8 @@
             <li><a href="./docs/eva/2010-crc" title="Translated interviews about making 'Evangelion 2.0' w/Anno, Higuchi, Enokido, &amp; Tsurumaki"><em>NGE 2.0 Complete Records Collection</em></a> (Anno etc)</li>
             <li><a href="./docs/eva/1996-animerica-conscience-otaking" title="Interview of former Gainax president Toshio Okada on Gainax's history, Wings of Honneamise, Aoki Uru, etc.">“Conscience of the Otaking”</a> (Okada)</li>
             <li><a href="./docs/eva/2011-house" title="On working for Gainax, Eva translations and censorship">“Interviewing Gainax translator Michael House”</a></li>
-            <li><a href="./docs/eva/1996-newtype-anno-interview" title="English translation of French translation of controversial NewType interview at the end of the TV broadcast">1996 Anno interview</a></li>
-            <li><a href="./docs/eva/1997-animeland-may-hideakianno-interview-english" title="English translation of a French anime journalist's interview on anime and Evangelion">1997 Anno interview</a></li>
+            <li><a href="./docs/eva/1996-newtype-anno-interview" title="English translation of French translation of controversial NewType interview at the end of the TV broadcast">1996 Hideaki Anno interview</a></li>
+            <li><a href="./docs/eva/1997-animeland-may-hideakianno-interview-english" title="English translation of a French anime journalist's interview on anime and Evangelion">1997 Hideaki Anno interview</a></li>
             <li><a href="./docs/eva/2003-oshii-izubuchi" title="Oshii criticizes RahXephon and compares to Evangelion">“Talk About RahXephon: In Search of Fantasy &amp; Details”</a> (Oshii)</li>
             <li><a href="./docs/eva/2003-rahxephoncomplete-anno-izubuchi" title="Discussion by Izubuchi and Anno of classic mecha anime">“Special Talk: Yutaka Izubuchi x Hideaki Anno”</a></li>
             <li><a href="./docs/eva/2004-okada" title="Definition of otaku, mania, moe, dame, anime, and generations">“Otaku Talk”</a> (Okada, Morikawa etc)</li>
