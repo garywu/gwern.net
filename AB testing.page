@@ -344,46 +344,43 @@ The sample size for each font is 20k higher than I projected due to the enormous
 Picking the most extreme difference, between Trebuchet and Georgia, the difference is close to the usual definition of statistical-significance:
 
 ~~~{.R}
-R> prop.test(c(0.1381*35473,0.1331*35833),c(35473,35833))
-
-    2-sample test for equality of proportions with continuity correction
-
-data:  c(0.1381 * 35473, 0.1331 * 35833) out of c(35473, 35833)
-X-squared = 3.76, df = 1, p-value = 0.0525
-alternative hypothesis: two.sided
-95% confidence interval:
- -5.394e-05  1.005e-02
-sample estimates:
-prop 1 prop 2
-0.1381 0.1331
+prop.test(c(0.1381*35473,0.1331*35833),c(35473,35833))
+#     2-sample test for equality of proportions with continuity correction
+#
+# data:  c(0.1381 * 35473, 0.1331 * 35833) out of c(35473, 35833)
+# X-squared = 3.76, df = 1, p-value = 0.0525
+# alternative hypothesis: two.sided
+# 95% confidence interval:
+#  -5.394e-05  1.005e-02
+# sample estimates:
+# prop 1 prop 2
+# 0.1381 0.1331
 ~~~
 
 Which naturally implies that the much smaller difference between Trebuchet and Baskerville is not statistically-significant:
 
 ~~~{.R}
-R> prop.test(c(0.1381*35473,0.1373*36021), c(35473,36021))
-
-    2-sample test for equality of proportions with continuity correction
-
-data:  c(0.1381 * 35473, 0.1373 * 36021) out of c(35473, 36021)
-X-squared = 0.0897, df = 1, p-value = 0.7645
-alternative hypothesis: two.sided
-95% confidence interval:
- -0.00428  0.00588
+prop.test(c(0.1381*35473,0.1373*36021), c(35473,36021))
+#     2-sample test for equality of proportions with continuity correction
+#
+# data:  c(0.1381 * 35473, 0.1373 * 36021) out of c(35473, 36021)
+# X-squared = 0.0897, df = 1, p-value = 0.7645
+# alternative hypothesis: two.sided
+# 95% confidence interval:
+#  -0.00428  0.00588
 ~~~
 
 Since there's only small differences between individual fonts, I wondered if there might be a difference between the two sans-serifs and the two serifs. If we lump the 4 fonts into those 2 categories and look at the small difference in mean conversion rate:
 
 ~~~{.R}
-R> prop.test(c(0.1362*71129,0.1352*71854), c(71129,71854))
-
-    2-sample test for equality of proportions with continuity correction
-
-data:  c(0.1362 * 71129, 0.1352 * 71854) out of c(71129, 71854)
-X-squared = 0.2963, df = 1, p-value = 0.5862
-alternative hypothesis: two.sided
-95% confidence interval:
- -0.002564  0.004564
+prop.test(c(0.1362*71129,0.1352*71854), c(71129,71854))
+#     2-sample test for equality of proportions with continuity correction
+#
+# data:  c(0.1362 * 71129, 0.1352 * 71854) out of c(71129, 71854)
+# X-squared = 0.2963, df = 1, p-value = 0.5862
+# alternative hypothesis: two.sided
+# 95% confidence interval:
+#  -0.002564  0.004564
 ~~~
 
 Nothing doing there either. More generally:
@@ -402,12 +399,12 @@ rates$Successes <- round(rates$Successes,0)
 rates$Failures <-rates$N - rates$Successes
 
 g <- glm(cbind(Successes,Failures) ~ Font, data=rates, family="binomial"); summary(g)
-...Coefficients:
-              Estimate Std. Error z value Pr(>|z|)
-(Intercept)   -1.83745    0.03744  -49.08   <2e-16
-FontGeorgia   -0.03692    0.05374   -0.69     0.49
-FontHelvetica -0.02591    0.04053   -0.64     0.52
-FontTrebuchet  0.00634    0.04048    0.16     0.88
+# ...Coefficients:
+#               Estimate Std. Error z value Pr(>|z|)
+# (Intercept)   -1.83745    0.03744  -49.08   <2e-16
+# FontGeorgia   -0.03692    0.05374   -0.69     0.49
+# FontHelvetica -0.02591    0.04053   -0.64     0.52
+# FontTrebuchet  0.00634    0.04048    0.16     0.88
 ~~~
 
 With essentially no meaningful differences between conversion rates, this suggests that however fonts matter, they don't matter for reading duration. So I feel free to pick the font that appeals to me visually, which is Baskerville.
@@ -473,16 +470,16 @@ Just from looking at the miserably small difference between the most extreme per
 
 ~~~{.R}
 x1 <- 18124; x2 <- 17927; prop.test(c(x1*0.1524, x2*0.1476), c(x1,x2))
-
-    2-sample test for equality of proportions with continuity correction
-
-data:  c(x1 * 0.1524, x2 * 0.1476) out of c(x1, x2)
-X-squared = 1.591, df = 1, p-value = 0.2072
+#     2-sample test for equality of proportions with continuity correction
+#
+# data:  c(x1 * 0.1524, x2 * 0.1476) out of c(x1, x2)
+# X-squared = 1.591, df = 1, p-value = 0.2072
 ~~~
 
-I changed the 150% to 130% for the heck of it, even though the difference between 130 and 150 was trivially small.
+I changed the 150% to 130% for the heck of it, even though the difference between 130 and 150 was trivially small:
 
-<!-- rates <- read.csv(stdin(),header=TRUE)
+~~~{.R}
+rates <- read.csv(stdin(),header=TRUE)
 Width,N,Rate
 130,18124,0.1526
 150,17459,0.1522
@@ -496,13 +493,13 @@ rates$Failures <-rates$N - rates$Successes
 
 rates$Width <- as.factor(rates$Width)
 g <- glm(cbind(Successes,Failures) ~ Width, data=rates, family="binomial")
-...Coefficients:
-             Estimate Std. Error z value Pr(>|z|)
-(Intercept) -1.74e+00   2.11e-02  -82.69   <2e-16
-Width130     2.65e-02   2.95e-02    0.90     0.37
-Width140     9.17e-06   2.97e-02    0.00     1.00
-Width150     2.32e-02   2.98e-02    0.78     0.44
--->
+# ...Coefficients:
+#              Estimate Std. Error z value Pr(>|z|)
+# (Intercept) -1.74e+00   2.11e-02  -82.69   <2e-16
+# Width130     2.65e-02   2.95e-02    0.90     0.37
+# Width140     9.17e-06   2.97e-02    0.00     1.00
+# Width150     2.32e-02   2.98e-02    0.78     0.44
+~~~
 
 ## Null test
 
@@ -559,15 +556,14 @@ null1  7,488  15.89%
 Ah, but can we reject the null hypothesis that ""==""? In a rare victory for null-hypothesis-significance-testing, we do not commit a Type I error:
 
 ~~~{.R}
-R> x1 <- 7359; x2 <- 7488; prop.test(c(x1*0.1623, x2*0.1589), c(x1,x2))
-
-    2-sample test for equality of proportions with continuity correction
-
-data:  c(x1 * 0.1623, x2 * 0.1589) out of c(x1, x2)
-X-squared = 0.2936, df = 1, p-value = 0.5879
-alternative hypothesis: two.sided
-95% confidence interval:
- -0.008547  0.015347
+x1 <- 7359; x2 <- 7488; prop.test(c(x1*0.1623, x2*0.1589), c(x1,x2))
+#     2-sample test for equality of proportions with continuity correction
+#
+# data:  c(x1 * 0.1623, x2 * 0.1589) out of c(x1, x2)
+# X-squared = 0.2936, df = 1, p-value = 0.5879
+# alternative hypothesis: two.sided
+# 95% confidence interval:
+#  -0.008547  0.015347
 ~~~
 
 But seriously, it is nice to see that ABalytics does not seem to be broken & favoring either option and any results driven by placement in the array of options.
@@ -651,19 +647,18 @@ rates$Failures <-rates$N - rates$Successes
 
 g <- glm(cbind(Successes,Failures) ~ Black * White, data=rates, family="binomial")
 summary(g)
-...
-Coefficients:
-                    Estimate Std. Error z value Pr(>|z|)
-(Intercept)          -1.9350     0.0125 -154.93   <2e-16
-BlackTRUE            -0.0128     0.0177   -0.72     0.47
-WhiteTRUE            -0.0164     0.0178   -0.92     0.36
-BlackTRUE:WhiteTRUE   0.0545     0.0250    2.17     0.03
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance:  6.8625e+00  on 3  degrees of freedom
-Residual deviance: -1.1758e-11  on 0  degrees of freedom
-AIC: 50.4
+# ...Coefficients:
+#                     Estimate Std. Error z value Pr(>|z|)
+# (Intercept)          -1.9350     0.0125 -154.93   <2e-16
+# BlackTRUE            -0.0128     0.0177   -0.72     0.47
+# WhiteTRUE            -0.0164     0.0178   -0.92     0.36
+# BlackTRUE:WhiteTRUE   0.0545     0.0250    2.17     0.03
+#
+# (Dispersion parameter for binomial family taken to be 1)
+#
+#     Null deviance:  6.8625e+00  on 3  degrees of freedom
+# Residual deviance: -1.1758e-11  on 0  degrees of freedom
+# AIC: 50.4
 summary(step(g))
 # same thing
 ~~~
@@ -699,20 +694,19 @@ rates$Failures <-rates$N - rates$Successes
 
 g <- glm(cbind(Successes,Failures) ~ Black * White + Type, data=rates, family="binomial")
 summary(g)
-
-Coefficients:
-                     Estimate Std. Error z value Pr(>|z|)
-(Intercept)         -2.134459   0.013770 -155.01   <2e-16
-BlackTRUE           -0.009219   0.017813   -0.52     0.60
-WhiteTRUE            0.000837   0.017798    0.05     0.96
-BlackTRUE:WhiteTRUE  0.034362   0.025092    1.37     0.17
-Typeold              0.448004   0.012603   35.55   <2e-16
+# Coefficients:
+#                      Estimate Std. Error z value Pr(>|z|)
+# (Intercept)         -2.134459   0.013770 -155.01   <2e-16
+# BlackTRUE           -0.009219   0.017813   -0.52     0.60
+# WhiteTRUE            0.000837   0.017798    0.05     0.96
+# BlackTRUE:WhiteTRUE  0.034362   0.025092    1.37     0.17
+# Typeold              0.448004   0.012603   35.55   <2e-16
 ~~~
 
-1. B/W: (-0.009219) + 0.000837 + 0.034362 = 0.02598
-2. 0 + 0 + 0 = 0
-3. B: (-0.009219) + 0 + 0 = -0.009219
-4. W: 0 + 0.000837 + 0 = 0.000837
+1. B/W: $(-0.009219) + 0.000837 + 0.034362 = 0.02598$
+2. $0 + 0 + 0 = 0$
+3. B: $(-0.009219) + 0 + 0 = -0.009219$
+4. W: $0 + 0.000837 + 0 = 0.000837$
 
 And again, 0.02598 > 0.000837. So as one hopes, thank to randomization, adding a missing covariate doesn't change our conclusion.
 
@@ -896,47 +890,37 @@ rates$Successes <- round(rates$Successes,0)
 rates$Failures <-rates$N - rates$Successes
 
 g <- glm(cbind(Successes,Failures) ~ Ul * Size + Type, data=rates, family="binomial"); summary(g)
-
-...
-Coefficients:
-             Estimate Std. Error z value Pr(>|z|)
-(Intercept) -1.389310   0.270903   -5.13  2.9e-07
-Uld         -0.103201   0.386550   -0.27    0.789
-Uls          0.055036   0.389109    0.14    0.888
-Size        -0.004397   0.002458   -1.79    0.074
-Uld:Size     0.000842   0.003509    0.24    0.810
-Uls:Size    -0.000741   0.003533   -0.21    0.834
-Typeold      0.317126   0.020507   15.46  < 2e-16
-
+# ...Coefficients:
+#              Estimate Std. Error z value Pr(>|z|)
+# (Intercept) -1.389310   0.270903   -5.13  2.9e-07
+# Uld         -0.103201   0.386550   -0.27    0.789
+# Uls          0.055036   0.389109    0.14    0.888
+# Size        -0.004397   0.002458   -1.79    0.074
+# Uld:Size     0.000842   0.003509    0.24    0.810
+# Uls:Size    -0.000741   0.003533   -0.21    0.834
+# Typeold      0.317126   0.020507   15.46  < 2e-16
 summary(step(g))
+# ...Coefficients:
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept) -1.40555    0.15921   -8.83   <2e-16
+# Size        -0.00436    0.00144   -3.02   0.0025
+# Typeold      0.31725    0.02051   15.47   <2e-16
 
-...
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept) -1.40555    0.15921   -8.83   <2e-16
-Size        -0.00436    0.00144   -3.02   0.0025
-Typeold      0.31725    0.02051   15.47   <2e-16
-
-# examine just the list type alone, since the Size result is clear.
+## examine just the list type alone, since the Size result is clear.
 summary(glm(cbind(Successes,Failures) ~ Ul + Type, data=rates, family="binomial"))
-
-...
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)  -1.8725     0.0208  -89.91   <2e-16
-Uld          -0.0106     0.0248   -0.43     0.67
-Uls          -0.0265     0.0249   -1.07     0.29
-Typeold       0.3163     0.0205   15.43   <2e-16
-
+# ...Coefficients:
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)  -1.8725     0.0208  -89.91   <2e-16
+# Uld          -0.0106     0.0248   -0.43     0.67
+# Uls          -0.0265     0.0249   -1.07     0.29
+# Typeold       0.3163     0.0205   15.43   <2e-16
 summary(glm(cbind(Successes,Failures) ~ Ul + Type, data=rates[rates$Size==100,], family="binomial"))
-
-...
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)  -1.8425     0.0465  -39.61  < 2e-16
-Uld          -0.0141     0.0552   -0.26     0.80
-Uls           0.0353     0.0551    0.64     0.52
-Typeold       0.3534     0.0454    7.78  7.3e-15
+# ...Coefficients:
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)  -1.8425     0.0465  -39.61  < 2e-16
+# Uld          -0.0141     0.0552   -0.26     0.80
+# Uls           0.0353     0.0551    0.64     0.52
+# Typeold       0.3534     0.0454    7.78  7.3e-15
 ~~~
 
 The results are a little confusing in factorial form: it seems pretty clear that `Size` is bad and that 100% performs best, but what's going on with the list icon type? Do we have too little data or is it interacting with the font size somehow? I find it a lot clearer when plotted:
@@ -1146,22 +1130,19 @@ rates$Successes <- round(rates$Successes,0)
 rates$Failures <-rates$N - rates$Successes
 
 g <- glm(cbind(Successes,Failures) ~ Readability * Zebra + Type, data=rates, family="binomial"); summary(g)
-
-...Coefficients:
-                          Estimate Std. Error z value Pr(>|z|)
-(Intercept)                -1.5095     0.0255  -59.09   <2e-16
-ReadabilityTRUE            -0.0277     0.0340   -0.81     0.42
-ZebraTRUE                   0.0327     0.0331    0.99     0.32
-ReadabilityTRUE:ZebraTRUE   0.0609     0.0472    1.29     0.20
-Typeold                     0.1788     0.0239    7.47    8e-14
-
+# ...Coefficients:
+#                           Estimate Std. Error z value Pr(>|z|)
+# (Intercept)                -1.5095     0.0255  -59.09   <2e-16
+# ReadabilityTRUE            -0.0277     0.0340   -0.81     0.42
+# ZebraTRUE                   0.0327     0.0331    0.99     0.32
+# ReadabilityTRUE:ZebraTRUE   0.0609     0.0472    1.29     0.20
+# Typeold                     0.1788     0.0239    7.47    8e-14
 summary(step(g))
-...
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)  -1.5227     0.0197  -77.20  < 2e-16
-ZebraTRUE     0.0627     0.0236    2.66   0.0079
-Typeold       0.1782     0.0239    7.45  9.7e-14
+# ...Coefficients:
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)  -1.5227     0.0197  -77.20  < 2e-16
+# ZebraTRUE     0.0627     0.0236    2.66   0.0079
+# Typeold       0.1782     0.0239    7.45  9.7e-14
 ~~~
 
 The top-performing variant is the status quo (no Readability-style quote, zebra-striped blocks). So we keep it.
@@ -1415,37 +1396,33 @@ rates$Successes <- round(rates$Successes,0)
 rates$Failures <-rates$N - rates$Successes
 
 g <- glm(cbind(Successes,Failures) ~ NumSize * FontSize * TocBg + Type, data=rates, family="binomial"); summary(g)
-
-...
-Coefficients:
-                         Estimate Std. Error z value Pr(>|z|)
-(Intercept)              0.124770   3.020334    0.04     0.97
-NumSize                 -0.022262   0.032293   -0.69     0.49
-FontSize                -0.012775   0.032283   -0.40     0.69
-TocBgf                   4.042812   4.287006    0.94     0.35
-TocBgr                   5.356794   4.250778    1.26     0.21
-NumSize:FontSize         0.000166   0.000345    0.48     0.63
-NumSize:TocBgf          -0.040645   0.045855   -0.89     0.38
-NumSize:TocBgr          -0.054164   0.045501   -1.19     0.23
-FontSize:TocBgf         -0.052406   0.045854   -1.14     0.25
-FontSize:TocBgr         -0.065503   0.045482   -1.44     0.15
-NumSize:FontSize:TocBgf  0.000531   0.000490    1.08     0.28
-NumSize:FontSize:TocBgr  0.000669   0.000487    1.37     0.17
-Typeold                  0.492688   0.015978   30.84   <2e-16
-
+# ...Coefficients:
+#                          Estimate Std. Error z value Pr(>|z|)
+# (Intercept)              0.124770   3.020334    0.04     0.97
+# NumSize                 -0.022262   0.032293   -0.69     0.49
+# FontSize                -0.012775   0.032283   -0.40     0.69
+# TocBgf                   4.042812   4.287006    0.94     0.35
+# TocBgr                   5.356794   4.250778    1.26     0.21
+# NumSize:FontSize         0.000166   0.000345    0.48     0.63
+# NumSize:TocBgf          -0.040645   0.045855   -0.89     0.38
+# NumSize:TocBgr          -0.054164   0.045501   -1.19     0.23
+# FontSize:TocBgf         -0.052406   0.045854   -1.14     0.25
+# FontSize:TocBgr         -0.065503   0.045482   -1.44     0.15
+# NumSize:FontSize:TocBgf  0.000531   0.000490    1.08     0.28
+# NumSize:FontSize:TocBgr  0.000669   0.000487    1.37     0.17
+# Typeold                  0.492688   0.015978   30.84   <2e-16
 summary(step(g))
-
-...
-                  Estimate Std. Error z value Pr(>|z|)
-(Intercept)       3.808438   1.750144    2.18   0.0295
-NumSize          -0.059730   0.018731   -3.19   0.0014
-FontSize         -0.052262   0.018640   -2.80   0.0051
-TocBgf           -0.844664   0.285387   -2.96   0.0031
-TocBgr           -0.747451   0.283304   -2.64   0.0083
-NumSize:FontSize  0.000568   0.000199    2.85   0.0044
-NumSize:TocBgf    0.008853   0.003052    2.90   0.0037
-NumSize:TocBgr    0.008139   0.003030    2.69   0.0072
-Typeold           0.492598   0.015975   30.83   <2e-16
+# ...Coefficients:
+#                   Estimate Std. Error z value Pr(>|z|)
+# (Intercept)       3.808438   1.750144    2.18   0.0295
+# NumSize          -0.059730   0.018731   -3.19   0.0014
+# FontSize         -0.052262   0.018640   -2.80   0.0051
+# TocBgf           -0.844664   0.285387   -2.96   0.0031
+# TocBgr           -0.747451   0.283304   -2.64   0.0083
+# NumSize:FontSize  0.000568   0.000199    2.85   0.0044
+# NumSize:TocBgf    0.008853   0.003052    2.90   0.0037
+# NumSize:TocBgr    0.008139   0.003030    2.69   0.0072
+# Typeold           0.492598   0.015975   30.83   <2e-16
 ~~~
 
 The two size tweaks turn out to be unambiguously negative compared to the status quo (with an almost negligible interaction term probably reflecting reader preference for consistency in sizes of letters and numbers - as one gets smaller, the other does better if it's smaller too). The Table of Contents backgrounds also survive (thanks to the new vs old visitor type covariate adding power): there were 3 background types, `e`/`f`/`r`[gb], and `f`/`r` turn out to have negative coefficients, implying that `e` is best - but `e` is also the status quo, so no change is recommended.
@@ -1698,27 +1675,24 @@ rates$Successes <- round(rates$Successes,0)
 rates$Failures <-rates$N - rates$Successes
 
 g <- glm(cbind(Successes,Failures) ~ Sections * Title + Old, data=rates, family="binomial"); summary(g)
-...
-Coefficients:
-(Intercept)       -1.4552     0.0422  -34.50   <2e-16
-Sectionsn          0.0111     0.0581    0.19    0.848
-Sectionsu          0.0163     0.0579    0.28    0.779
-Titlen            -0.0153     0.0579   -0.26    0.791
-Titleu            -0.0318     0.0587   -0.54    0.588
-OldTRUE            0.2909     0.0283   10.29   <2e-16
-Sectionsn:Titlen   0.0429     0.0824    0.52    0.603
-Sectionsu:Titlen   0.0419     0.0829    0.51    0.613
-Sectionsn:Titleu   0.0732     0.0825    0.89    0.375
-Sectionsu:Titleu   0.1553     0.0820    1.89    0.058
-
+# ...Coefficients:
+# (Intercept)       -1.4552     0.0422  -34.50   <2e-16
+# Sectionsn          0.0111     0.0581    0.19    0.848
+# Sectionsu          0.0163     0.0579    0.28    0.779
+# Titlen            -0.0153     0.0579   -0.26    0.791
+# Titleu            -0.0318     0.0587   -0.54    0.588
+# OldTRUE            0.2909     0.0283   10.29   <2e-16
+# Sectionsn:Titlen   0.0429     0.0824    0.52    0.603
+# Sectionsu:Titlen   0.0419     0.0829    0.51    0.613
+# Sectionsn:Titleu   0.0732     0.0825    0.89    0.375
+# Sectionsu:Titleu   0.1553     0.0820    1.89    0.058
 summary(step(g))
-...
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)  -1.4710     0.0263  -55.95   <2e-16
-Sectionsn     0.0497     0.0337    1.47    0.140
-Sectionsu     0.0833     0.0337    2.47    0.013
-OldTRUE       0.2920     0.0283   10.33   <2e-16
+# ...Coefficients:
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)  -1.4710     0.0263  -55.95   <2e-16
+# Sectionsn     0.0497     0.0337    1.47    0.140
+# Sectionsu     0.0833     0.0337    2.47    0.013
+# OldTRUE       0.2920     0.0283   10.33   <2e-16
 ~~~
 
 Uppercase and 'none' beat 'capitalize' in both page titles & section headers (interaction does not survive). So I toss in a CSS declaration to uppercase section headers as well as the status quo of the title.
@@ -1867,13 +1841,13 @@ rates$Successes <- round(rates$Successes,0)
 rates$Failures <-rates$N - rates$Successes
 
 g <- glm(cbind(Successes,Failures) ~ Alignment * Width + Old, data=rates, family="binomial"); summary(g)
-Coefficients:
-                 Estimate Std. Error z value Pr(>|z|)
-(Intercept)      -1.43309    0.10583  -13.54   <2e-16
-Alignmentr       -0.17726    0.15065   -1.18     0.24
-Width            -0.00253    0.00403   -0.63     0.53
-OldTRUE           0.40092    0.04184    9.58   <2e-16
-Alignmentr:Width  0.00450    0.00580    0.78     0.44
+# Coefficients:
+#                  Estimate Std. Error z value Pr(>|z|)
+# (Intercept)      -1.43309    0.10583  -13.54   <2e-16
+# Alignmentr       -0.17726    0.15065   -1.18     0.24
+# Width            -0.00253    0.00403   -0.63     0.53
+# OldTRUE           0.40092    0.04184    9.58   <2e-16
+# Alignmentr:Width  0.00450    0.00580    0.78     0.44
 ~~~
 
 So, as I expected, putting the ToC on the right performed worse; the larger ToC widths don't seem to be better but it's unclear what's going on there. A visual inspection of the Width data (`library(ggplot2); qplot(Width,Rate,color=Alignment,data=rates)`) suggests that 20% width was the best variant, so might as well go with that.
@@ -2962,25 +2936,77 @@ The problem is that the CSE search input takes up space in the sidebar, and is m
 So on 17 July 2015, I took a look to evaluate whether it was worth keeping.
 
 There had been 8974 searches since I installed it 785 days previously or ~11.4 searches per day; at least 119 were searches for "e", which I assume were user mistakes where they didn't intend to search and probably annoyed them.
-(The next most popular searches are "Graeber"/26, "chunking"/22, and "nootropics"/10, with CSE refusing to provide any further queries due to low volume. This suggests a long tail of search queries - but also that they're not very important since it's easy to find the DNB FAQ & my nootropics page, and it can hardly be very useful if the top search is an error.)
+(The next most popular searches are "Graeber"/26, "chunking"/22, and "nootropics"/10, with CSE refusing to provide any further queries due to low volume. This suggests a long tail of search queries - but also that they're not very important since it's easy to find the DNB FAQ & my nootropics page, and it can hardly be useful if the top search is an error.)
 
 To put these 8855 searches in perspective, in that same exact time period, there were 891,790 unique users with 2,010,829 page views.
 So only 0.44% of page-views involve a use of the CSE, or a ratio of 1:227
 Is it net-beneficial to make 227 page-views incur the JS run & loading for the sake of 1 CSE search?
 
 This might seem like a time to A/B test the presence/absence of the CSE div. (I can't simply hide it using CSS like usual because it will still affect page loads.)
-Except consider the power issues: if that 1 CSE search converts, then to be profitable, it needs to damage the 227 other page-views conversion rate by <1/227. Or to put it the other way, the current conversion rate is ~17% of page-views and CSE search represents 0.44% of page-views, so if the CSE makes that one page-view 100% guaranteed to convert and otherwise converts normally, then over 1000 page-views, we have 0.17*995 + 1.0*5 =174 vs 0.17*995 + 0.17*5=170, or 17.4% vs 17.0%
+Except consider the power issues: if that 1 CSE search converts, then to be profitable, it needs to damage the 227 other page-views conversion rate by <1/227.
+Or to put it the other way, the current conversion rate is ~17% of page-views and CSE search represents 0.44% of page-views, so if the CSE makes that one page-view 100% guaranteed to convert and otherwise converts normally, then over 1000 page-views, we have $0.17 \cdot 995 + 1.0 \cdot 5 = 174$ vs $0.17 \cdot 995 + 0.17 \cdot5 = 170$, or 17.4% vs 17.0%.
 
 ~~~{.R}
 power.prop.test(p1=0.174, p2=0.170, power=0.80, sig.level=0.05)
-##     Two-sample comparison of proportions power calculation
-##              n = 139724.5781
+#     Two-sample comparison of proportions power calculation
+#              n = 139724.5781
 ~~
 
 Even with the most optimistic possible assumptions (perfect conversion, no negative effect), it takes 279,449 page-views to get decent power.
 This is ridiculous from a cost-benefit perspective, and worse given that my priors are against it due to the extra JS & CSS it entails.
 
 So I simply removed it. It was a bit of an experiment, and <8.9k searches does not seem worth it.
+
+## Google AdSense
+
+One aspect of `gwern.net` I prize, especially in comparison to the rest of the Internet, is the fast page loads & renders.
+Benchmarking loads, the total time is dominated by Google AdSense (for the banner advertisement) and Disqus comments.
+While I want comments so the Disqus is not optional, Google AdSense I keep only because, well, it makes me some money (~\$30 a month or ~\$360 a year; it would be more but ~60% of visitors have adblock on).
+
+This isn't a *huge* amount and might be offset by the effects on load/render time and people not liking advertisement.
+If I am reducing my traffic & influence by 10% because people don't want to browse or link pages with ads, then it's definitely not worthwhile.
+In this case, I am interested less in time-on-page than in total traffic per day, as the latter will measure effects like resharing on social media (especially, given my traffic history, Hacker News, which always generates a long lag of additional traffic from Twitter & aggregators).
+
+So my usual ABalytics setup isn't appropriate here: I don't want to randomize individual visitors & measure time on page, I want to randomize individual days or weeks and measure total traffic.
+This suggests a simple A/B test implementation in JS: in the invocation of the AdSense JS, simply throw in a conditional which predictably randomizes based on the current day (something like the day-of-year (1-366) modulo 2, or hashing the day), and then after a few months, extract daily traffic numbers from Google Analytics and match up with randomization and do a test.
+Since there might be spillover effects due to lags in propagating through social media and emails etc, daily randomization might be too fast, and 2 days more appropriate.
+
+Setting this up in JS turned out to be a little tricky since there is no built-in function for getting day-of-year or for hashing numbers/strings; so rather than spend another 10 lines copy-pasting some hash functions, I copied some day-of-year code and then simply generated in R 366 binary variables for randomizing double-days and put them in a JS array for doing the randomization:
+
+~~~{.Html}
++        <!-- A/B test of ad effects on site traffic: randomize 2-days based on day-of-year & pre-generated randomness;
+              offset by 8 because started on 8 January 2016 -->
+         <script>
+-          (adsbygoogle = window.adsbygoogle || []).push({});
++          var now = new Date(); var start = new Date(now.getFullYear(), 0, 0); var diff = now - start;
+           var oneDay = 1000 * 60 * 60 * 24; var day = Math.floor(diff / oneDay);
+           +          randomness = [1,0,0,0,1,1,0,0,1,1,0,0,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,
+           1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,0,0,1,1,0,0,1,1,1,1,0,0,1,1,0,0,0,
+           0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,0,0,1,1,0,0,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,
+           0,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,1,0,0,0,
+           0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,0,0,1,1,1,1,0,0,0,0,1,1,1,
+           1,1,1,1,1,0,0,0,0,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,
+           0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,
+           1,1,1,0,0,1,1,0,0,0,0,1,1,0,0];
++
++          if (randomness[day - 8]) {
++              (adsbygoogle = window.adsbygoogle || []).push({});
++          }
+~~~
+
+From a decision theory perspective, this is a good place to apply sequential testing ideas as the experiment has an easily quantified cost: each day randomized 'off' costs ~\$1, so a long experiment over 200 days would cost ~\$100 in ad revenue etc.
+There is also the risk of making the wrong decision and choosing to disable ads when they are harmless, in which case the cost as NPV (at my usual 5% discount rate, and assuming ad revenue never changes and I never experiment further, which are reasonable assumptions given how fortunately stable my traffic is and the unlikelihood of me revisiting a conclusive result from doing a valid experiment) would be $\frac{360}{log(1.05)} = \$7378$, which is substantial.
+
+On the other side of the equation, the ads could be doing substantial damage to site traffic; with ~40% of traffic seeing ads and total page-views of 635123 in 2016 (1740/day), a discouraging effect of 5% off that would mean a loss of `635123*0.40*0.05=12702`, the equivalent of 1 week of traffic.
+My website is important to me because it is what I have accomplished & is my livelihood, and if people are not reading it, that is bad.
+How bad? In lieu of advertising it's hard to directly quantify the value of a page-view, so I can instead ask myself hypothetically, would I trade ~1 week of traffic for \$360 (~\$0.02/view, or to put it the other way, \$18720/year)?
+Probably; that's about the right number - with my current parlous income, I cannot casually throw away hundreds or thousands of dollars for some additional traffic and so I feel comfortable valuing page-views at ~\$0.02 or a bit less.
+
+Then the loss function of the traffic reduction parameter _t_ is $\frac{360 - 635123 \cdot 0.40 \cdot t \cdot 0.02}{log(1.05)}$,
+So the long-run consequence of permanently turning advertising on would be, for a _t_ decrease of 1%, 1% = +\$4775; 5% = +\$2171; 10% = -\$3035; 20% = -\$13449; etc.
+
+Thus, the decision question boils down to whether the decrease for the ad-affected 40% of traffic is >7%; or for traffic as a whole, if the decrease is >2.8%.
+If it is, then I am better off removing AdSense and increasing traffic; otherwise, the money is better.
 
 # Deep reinforcement learning
 
@@ -3061,6 +3087,7 @@ Something to think about.
 - ["Chapter 10; Sequence Modeling: Recurrent and Recursive Nets"](http://www.iro.umontreal.ca/~bengioy/dlbook/rnn.html), _Deep Learning_ (Bengio et al draft)
 
 recurrent Q-learning:
+
 - Lin & Mitchell 1992 "Memory approaches to reinforcement learning in non-Markovian domains"
 - Meeden, McGraw & Blank 1993 "Emergent control and planning in an autonomous vehicle"
 - Schmidhuber 1991b "Reinforcement learning in Markovian and non-Markovian environments"
@@ -3204,7 +3231,7 @@ With 19.999M characters, our RNN can afford only <20M parameters; how big can I 
   -print_every               how many steps/minibatches between printing out the loss [1]
   -eval_val_every            every how many iterations should we evaluate on validation data? [1000]
   -checkpoint_dir            output directory where checkpoints get written [cv]
-  -savefile                  filename to autosave the checkpont to. Will be inside checkpoint_dir/ [lstm]
+  -savefile                  filename to autosave the checkpoint to. Will be inside checkpoint_dir/ [lstm]
   -gpuid                     which gpu to use. -1 = use CPU [0]
   -opencl                    use OpenCL (instead of CUDA) [0]
 ~~~
