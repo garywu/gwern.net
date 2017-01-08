@@ -1,6 +1,6 @@
 ---
 title: Complexity no Bar to AI
-description: Critics of AI risk suggest diminishing returns to computing means AI will be weak; I argue that this argument breaks if any premises rejected
+description: Critics of AI risk suggest diminishing returns to computing (formalized asymptotically) means AI will be weak; this argument relies on a large number of questionable premises and ignoring additional resources, constant factors, and nonlinear returns to small intelligence advantages, and is highly unlikely.
 tags: computer science, transhumanism
 created: 1 June 2014
 status: finished
