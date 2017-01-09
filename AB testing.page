@@ -2967,8 +2967,8 @@ This isn't a *huge* amount and might be offset by the effects on load/render tim
 If I am reducing my traffic & influence by 10% because people don't want to browse or link pages with ads, then it's definitely not worthwhile.
 In this case, I am interested less in time-on-page than in total traffic per day, as the latter will measure effects like resharing on social media (especially, given my traffic history, Hacker News, which always generates a long lag of additional traffic from Twitter & aggregators).
 
-So my usual ABalytics setup isn't appropriate here: I don't want to randomize individual visitors & measure time on page, I want to randomize individual days or weeks and measure total traffic.
-This suggests a simple A/B test implementation in JS: in the invocation of the AdSense JS, simply throw in a conditional which predictably randomizes based on the current day (something like the day-of-year (1-366) modulo 2, or hashing the day), and then after a few months, extract daily traffic numbers from Google Analytics and match up with randomization and do a test.
+So my usual ABalytics setup isn't appropriate here: I don't want to randomize individual visitors & measure time on page, I want to randomize individual days or weeks and measure total traffic, giving a Poisson log-linear regression problem.
+This daily randomization suggests a simple A/B test implementation in JS: in the invocation of the AdSense JS, simply throw in a conditional which predictably randomizes based on the current day (something like the day-of-year (1-366) modulo 2, or hashing the day), and then after a few months, extract daily traffic numbers from Google Analytics and match up with randomization and do a test.
 Since there might be spillover effects due to lags in propagating through social media and emails etc, daily randomization might be too fast, and 2 days more appropriate.
 
 Setting this up in JS turned out to be a little tricky since there is no built-in function for getting day-of-year or for hashing numbers/strings; so rather than spend another 10 lines copy-pasting some hash functions, I copied some day-of-year code and then simply generated in R 366 binary variables for randomizing double-days and put them in a JS array for doing the randomization:
@@ -2994,7 +2994,7 @@ Setting this up in JS turned out to be a little tricky since there is no built-i
 +          }
 ~~~
 
-From a decision theory perspective, this is a good place to apply sequential testing ideas as the experiment has an easily quantified cost: each day randomized 'off' costs ~\$1, so a long experiment over 200 days would cost ~\$100 in ad revenue etc.
+From a decision theory perspective, this is a good place to apply sequential testing ideas as we face a similar problem as with [the Candy Japan A/B test](/Candy Japan) and the experiment has an easily quantified cost: each day randomized 'off' costs ~\$1, so a long experiment over 200 days would cost ~\$100 in ad revenue etc.
 There is also the risk of making the wrong decision and choosing to disable ads when they are harmless, in which case the cost as NPV (at my usual 5% discount rate, and assuming ad revenue never changes and I never experiment further, which are reasonable assumptions given how fortunately stable my traffic is and the unlikelihood of me revisiting a conclusive result from doing a valid experiment) would be $\frac{360}{log(1.05)} = \$7378$, which is substantial.
 
 On the other side of the equation, the ads could be doing substantial damage to site traffic; with ~40% of traffic seeing ads and total page-views of 635123 in 2016 (1740/day), a discouraging effect of 5% off that would mean a loss of `635123*0.40*0.05=12702`, the equivalent of 1 week of traffic.
@@ -3007,6 +3007,213 @@ So the long-run consequence of permanently turning advertising on would be, for 
 
 Thus, the decision question boils down to whether the decrease for the ad-affected 40% of traffic is >7%; or for traffic as a whole, if the decrease is >2.8%.
 If it is, then I am better off removing AdSense and increasing traffic; otherwise, the money is better.
+
+<!--
+~~~~{.R}
+ads <- read.csv(stdin(),header=TRUE)
+Ads,Hits
+0,1111
+0,1176
+0,1111
+0,1418
+1,1578
+1,1285
+0,1413
+0,1314
+0,991
+0,1331
+1,1519
+1,1528
+0,1736
+0,1745
+0,1231
+0,1080
+1,1677
+1,1816
+0,1419
+0,1403
+0,1436
+0,1038
+1,1024
+1,1060
+1,1176
+1,1179
+1,1123
+1,990
+0,1005
+0,889
+0,1149
+0,1334
+1,1168
+1,1059
+0,1198
+0,1309
+1,1039
+1,994
+0,1261
+0,1258
+0,1101
+0,1113
+0,995
+0,881
+0,876
+0,1098
+0,1234
+0,1151
+0,1261
+0,1236
+1,916
+1,1001
+1,1097
+1,1373
+0,1197
+0,1052
+0,988
+0,941
+0,947
+0,1168
+1,1505
+0,3505
+0,1451
+0,1227
+0,983
+0,1016
+0,1175
+0,1159
+0,1035
+0,954
+0,898
+0,889
+0,858
+0,1010
+0,940
+0,984
+1,996
+1,1091
+1,947
+1,1073
+0,975
+0,1053
+0,1056
+0,920
+1,802
+1,776
+1,834
+1,1218
+1,1144
+1,1264
+1,1021
+0,879
+0,818
+1,968
+1,706
+0,720
+0,1169
+1,921
+1,714
+0,627
+0,743
+0,683
+0,649
+1,862
+1,927
+0,880
+0,866
+0,859
+0,760
+1,784
+1,733
+0,851
+0,838
+1,808
+1,649
+1,693
+1,646
+1,939
+1,1077
+1,1191
+1,1258
+0,1252
+0,1122
+0,703
+0,639
+1,821
+1,1011
+1,794
+1,778
+0,899
+0,721
+0,1207
+0,928
+0,828
+0,816
+1,892
+1,784
+1,5857
+0,2662
+0,981
+0,671
+0,639
+0,709
+0,747
+0,766
+0,843
+0,806
+1,624
+
+
+ads[ads$Ads==1,]$Hits <- round(ads[ads$Ads==1,]$Hits * 0.95)
+
+require(rjags)
+y <- ads$Hits
+x <- ads$Ads
+model_string <- "model {
+  for (i in 1:length(y)) {
+   y[i] ~ dpois(lambda[i])
+   log(lambda[i]) <- alpha0 - alpha1 * x[i]
+
+  }
+  alpha0 ~ dunif(0,10)
+  alpha1 ~ dgamma(50, 6)
+}"
+model <- jags.model(textConnection(model_string), data = list(x = x, y = y),
+                    n.chains = getOption("mc.cores"))
+samples <- coda.samples(model, c("alpha0", "alpha1"), n.iter=10000)
+summary(samples)
+# 1. Empirical mean and standard deviation for each variable,
+#    plus standard error of the mean:
+#
+#              Mean          SD     Naive SE Time-series SE
+# alpha0 6.98054476 0.003205046 1.133155e-05   2.123554e-05
+# alpha1 0.06470139 0.005319866 1.880857e-05   3.490445e-05
+#
+# 2. Quantiles for each variable:
+#
+#              2.5%        25%        50%        75%      97.5%
+# alpha0 6.97426621 6.97836982 6.98055144 6.98273011 6.98677827
+# alpha1 0.05430508 0.06110893 0.06469162 0.06828215 0.07518853
+alpha0 <- samples[[1]][,1]; alpha1 <- samples[[1]][,2]
+posteriorTrafficReduction <- exp(alpha0) - exp(alpha0-alpha1)
+
+generalLoss <- function(annualAdRevenue, trafficLoss,  hitValue, discountRate) {
+  (annualAdRevenue - (trafficLoss * hitValue * 365.25)) / log(1 + discountRate) }
+loss <- function(tr) { generalLoss(360, tr, 0.02, 0.05) }
+posteriorLoss <- sapply(posteriorTrafficReduction, loss)
+summary(posteriorLoss)
+#       Min.    1st Qu.     Median       Mean    3rd Qu.       Max.
+# -5743.5690 -3267.4390 -2719.6300 -2715.3870 -2165.6350   317.7016
+~~~
+
+Expected loss of turning on ads: -$2715. Current decision: keep ads off to avoid that loss.
+The expected average gain in the case where the correct decision is turning ads on:
+
+~~~{.R}
+mean(ifelse(posteriorLoss>0, posteriorLoss, 0))
+# [1] 0.06868814833
+~~~
+
+so EVPI is \$0.07. This doesn't pay for any additional days of sampling, so there's no need to calculate an EVSI.
+-->
 
 # Deep reinforcement learning
 
