@@ -2,7 +2,7 @@
 title: A/B testing long-form readability
 description: a log of experiments done on the site design, intended to render pages more readable
 created: 16 Jun 2012
-tags: experiments, statistics, computer science, meta
+tags: experiments, statistics, computer science, meta, decision theory
 status: in progress
 belief: possible
 ...
@@ -3213,6 +3213,118 @@ mean(ifelse(posteriorLoss>0, posteriorLoss, 0))
 ~~~
 
 so EVPI is \$0.07. This doesn't pay for any additional days of sampling, so there's no need to calculate an EVSI.
+
+full ARIMA time-series?
+
+`pacf` suggests need lags up to 8...
+
+library(forecast)
+auto.arima(ts(data=log(traffic$Pageviews), frequency=7, start=c(2010, 10, 4)), d=0, D=0, seasonal=TRUE, stepwise=FALSE, parallel=TRUE, num.cores=8)
+yields
+
+Series: ts(data = log(traffic$Pageviews), frequency = 365, start = c(2010,      10))
+ARIMA(5,0,0) with non-zero mean
+
+Coefficients:
+            ar1        ar2        ar3        ar4        ar5  intercept
+      0.6020500  0.0733963  0.1512864  0.0171276  0.1359860  7.2161884
+s.e.  0.0206958  0.0242435  0.0240959  0.0242732  0.0207541  0.3964673
+
+sigma^2 estimated as 0.1584876:  log likelihood=-1138.11
+AIC=2290.23   AICc=2290.28   BIC=2330.38
+
+another frequent specification found by `auto.arima` is
+ARIMA(1,0,4) with non-zero mean
+R> auto.arima(ts(data=log(traffic$Pageviews), frequency=7, start=c(2010, 10, 4)), seasonal=TRUE, trace=TRUE, stepwise=FALSE, parallel=TRUE, num.cores=8)
+ARIMA(4,1,1)
+
+Coefficients:
+            ar1         ar2        ar3         ar4         ma1
+      0.3975665  -0.0211804  0.0508422  -0.0722201  -0.8584098
+s.e.  0.0291630   0.0244111  0.0239864   0.0232653   0.0211797
+
+sigma^2 estimated as 0.1498294:  log likelihood=-1072.8
+AIC=2157.6   AICc=2157.64   BIC=2192.01
+auto.arima(ts(data=diff(log(traffic$Pageviews), differences=1), frequency=7, start=c(2010, 10, 4)), seasonal=TRUE, trace=TRUE, stepwise=FALSE, parallel=TRUE, num.cores=8)
+ARIMA(4,0,1) with zero mean
+
+Coefficients:
+            ar1         ar2        ar3         ar4         ma1
+      0.3975665  -0.0211804  0.0508422  -0.0722201  -0.8584098
+s.e.  0.0291630   0.0244111  0.0239864   0.0232653   0.0211797
+
+sigma^2 estimated as 0.1498293:  log likelihood=-1072.8
+AIC=2157.6   AICc=2157.64   BIC=2192.01
+
+so generally lower-order models 1-5 differenced once
+
+R> hist(ifelse(traffic$Pageviews>6000, 6000, traffic$Pageviews))
+
+
+mixture model: 2 components for traffic
+library(flexmix)
+R> stepFlexmix(traffic$Pageviews ~ 1, model = FLXMRglmfix(family = "poisson"), k=1:10, nrep=20)
+R> fit <- flexmix(traffic$Pageviews ~ 1, model = FLXMRglmfix(family = "poisson"), k=2)
+R> summary(fit)
+       prior size post>0 ratio
+Comp.1 0.196  448    449 0.998
+Comp.2 0.804 1841   1842 0.999
+
+'log Lik.' -1073191.871 (df=3)
+AIC: 2146389.743   BIC: 2146406.95
+R> summary(refit(fit))
+$Comp.1
+                 Estimate    Std. Error   z value   Pr(>|z|)
+(Intercept) 8.64943378382 0.00079660747 10857.837 < 2.22e-16
+
+$Comp.2
+                 Estimate    Std. Error   z value   Pr(>|z|)
+(Intercept) 7.33703564817 0.00067256175 10909.088 < 2.22e-16
+
+> An ARMA(2,0) model is an autoregressive model of order 2, or AR(2) model. This model can be written as: X_t - mu = (Beta1 * (X_t-1 - mu)) + (Beta2 * (Xt-2 - mu)) + Z_t, where X_t is the stationary time series we are studying (the time series of volcanic dust veil index), mu is the mean of time series X_t, Beta1 and Beta2 are parameters to be estimated, and Z_t is white noise with mean zero and constant variance.
+
+http://radhakrishna.typepad.com/ar2-parameter-estimation-in-winbugs-and-jags.pdf
+
+model {
+    psi[2]  ~ dunif(-1, 1)
+    u       <- abs(1 - psi[2])
+    l       <- -u
+    psi[1]  ~ dunif(l, u)
+    mu[1]   <- 0
+    mu[2]   <- (psi[1]/(1-psi[2]))*x[1]
+    tau1    <- ((1+psi[2])/(1-psi[2]))*((1-psi[2])*(1-psi[2]) - psi[1]*psi[1])*tau
+    tau2    <- tau*(1 - psi[2]*psi[2])
+    tau     ~ dgamma(0.001, 0.001)
+    x[1]    ~ dnorm(mu[1], tau1)
+    x[2]    ~ dnorm(mu[2], tau2)
+
+    for(i in 3:n){
+        x[i]  ~ dnorm(mu[i],tau)
+        mu[i] <- psi[1]*x[i-1] + psi[2]*x[i-2]
+    }
+    sigma   <- 1/sqrt(tau)
+}
+
+Complex initialization but the core look straightforward for a ARIMA(4,0,1)...
+
+ARIMA(1,1,1) http://www.zinkov.com/posts/2012-06-27-why-prob-programming-matters/
+
+model {
+  y[1] ~ dnorm(0,1e-5)
+  eps[1] <- 0
+
+  for (i in 2:T) {
+     y[i] ~ dnorm(mu[i],tau)
+     mu[i] <- w0 + w1*y[i-1] + x[i] + eps[i-1]
+     eps[i] <- y[i] - mu[i]
+  }
+
+  w0 ~ dnorm(0, .0001)
+  w1 ~ dnorm(0, .0001)
+  tau <- pow(sigma, -2)
+  sigma ~ dunif(0, 100)
+}
+
 -->
 
 # Deep reinforcement learning
