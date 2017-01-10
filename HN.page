@@ -762,8 +762,7 @@ basic analysis:
 upvoted <- c(3,27,2,19,60,2,69,2,14,6,72,9,2,2,2,57,2,3,31,2,2,32,2,3,2,2,33,2,8,2,2,2,8,4,2,2,8,4,55,2,10,7,327,35,58,70,6,14,3,2,2,79,3,2,100,2,5,4,7,72,2,2,158,2,3,2,73,59,54,2,76,7,141,2,424,11,2,6,2,3,3,3,2,2,2,2,3,126,3,2,2,3,2,3,2,7,4,2,6,2,2,42,2,2,2,3,2,5,77,2,5,5,13,85,19,2,2,2,6,6,2,2,30,72,2,2,6,2,2,4,17,2) - 1
 ignored <- c(1,1,1,2,1,2,2,1,1,2,1,2,5,154,1,1,8,2,1,2,1,2,1,1,7,1,1,1,2,329,5,1,1,94,2,1,1,2,1,3,1,1,3,132,1,2,1,2,1,2,2,1,3,2,1,3,1,3,2,5,3,14,62,3,1,1,2,12,112,1,1,2,6,3,2,1,1,1,1,14,1,1,1,2,1,39,4,3,1,1,1,1,9,3,1,1,84,1,5,4,5,1,1,4,270,1,1,1,1,1,5,1,1,1,1,1,3,1,30,5,244,1,1,45,7,4,1,5,1,1,2,1,2,4,1,1,11,61,1,1,1,82,1,2,8,68,7,2,4,89,5,62,25,2,2,2,1,124,179,1,2)
 wilcox.test(upvoted, ignored)
-...W = 11758, p-value = 0.09914
-
+# ...W = 11758, p-value = 0.09914
 hn <- data.frame(Scores = c(upvoted, ignored), FrontPage = c(upvoted>10, ignored>10), Upvoted = c(rep(TRUE, length(upvoted)), rep(FALSE, length(ignored))))
 library(ggplot2)
 qplot(1:length(Scores), sort(Scores), color= hn[order(hn$Scores, decreasing=FALSE),]$Upvoted, data=hn)
@@ -771,80 +770,69 @@ library(plotrix)
 histStack(hn$Scores, hn$Upvoted, breaks=25)
 
 g1 <- glm(FrontPage ~ Upvoted, family="binomial", data = hn); summary(g1)
-...Coefficients:
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)   -1.742      0.221   -7.87  3.5e-15
-UpvotedTRUE    0.723      0.296    2.44    0.015
+# ...Coefficients:
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)   -1.742      0.221   -7.87  3.5e-15
+# UpvotedTRUE    0.723      0.296    2.44    0.015
+exp(coef(g1))
+# (Intercept) UpvotedTRUE
+#      0.1752      2.0597
+exp(confint(g1))
+#              2.5 % 97.5 %
+# (Intercept) 0.1108 0.2649
+# UpvotedTRUE 1.1579 3.7167
+Reduce(`*`, exp(coef(g1)), 1)
+# [1] 0.3608
 
-R> exp(coef(g1))
-(Intercept) UpvotedTRUE
-     0.1752      2.0597
-
-R> exp(confint(g1))
-             2.5 % 97.5 %
-(Intercept) 0.1108 0.2649
-UpvotedTRUE 1.1579 3.7167
-
-R> Reduce(`*`, exp(coef(g1)), 1)
-[1] 0.3608
-
-# a single upvote on /newest is currently estimated as increasing the odds of making the front page by 2.25x (from 16% to 36%)
-# or to put it another way, from a mean score of +16 to a mean score of +22
+## a single upvote on /newest is currently estimated as increasing the odds of making the front page by 2.25x (from 16% to 36%)
+## or to put it another way, from a mean score of +16 to a mean score of +22
 g2 <- glm(Scores ~ Upvoted, family="poisson", data = hn); summary(g2)
-...Coefficients:
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)   2.7907     0.0195   142.9   <2e-16
-UpvotedTRUE   0.2914     0.0270    10.8   <2e-16
-
-R> exp(coef(g2))
-(Intercept) UpvotedTRUE
-     16.292       1.338
-R> exp(Reduce(`+`, coef(g2), 0))
-[1] 21.28
-R> library(flexmix)
+# ...Coefficients:
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)   2.7907     0.0195   142.9   <2e-16
+# UpvotedTRUE   0.2914     0.0270    10.8   <2e-16
+exp(coef(g2))
+# (Intercept) UpvotedTRUE
+#      16.292       1.338
+exp(Reduce(`+`, coef(g2), 0))
+# [1] 21.28
+library(flexmix)
 fit4 <- (stepFlexmix(Scores ~ Upvoted, data=hn, model = FLXMRglmfix(family = "poisson"), k=4, nrep=20))
-summary(fit4)
-4 : * * * * * * * * * * * * * * * * * * * *
-
-Call:
-stepFlexmix(Scores ~ Upvoted, data = hn, model = FLXMRglmfix(family = "poisson"),
-    k = 4, nrep = 20)
-
-        prior size post>0 ratio
-Comp.1 0.0643   19     28 0.679
-Comp.2 0.4506  133    140 0.950
-Comp.3 0.1126   32     90 0.356
-Comp.4 0.3725  109    114 0.956
-
-'log Lik.' -1154 (df=11)
-AIC: 2330   BIC: 2371
-
+# summary(fit4)
+#         prior size post>0 ratio
+# Comp.1 0.0643   19     28 0.679
+# Comp.2 0.4506  133    140 0.950
+# Comp.3 0.1126   32     90 0.356
+# Comp.4 0.3725  109    114 0.956
+#
+# 'log Lik.' -1154 (df=11)
+# AIC: 2330   BIC: 2371
 summary(refit(fit4))
-$Comp.1
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)    2.485      0.120    20.7   <2e-16
-UpvotedTRUE    1.892      0.123    15.4   <2e-16
+# $Comp.1
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)    2.485      0.120    20.7   <2e-16
+# UpvotedTRUE    1.892      0.123    15.4   <2e-16
+#
+# $Comp.2
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)   0.6002     0.0734    8.18  2.9e-16
+# UpvotedTRUE   5.3254     0.0820   64.95  < 2e-16
+#
+# $Comp.3
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)   4.3955     0.0309   142.4   <2e-16
+# UpvotedTRUE  -3.5918     0.0794   -45.3   <2e-16
+#
+# $Comp.4
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)   5.4605     0.0292   187.1   <2e-16
+# UpvotedTRUE  -2.3164     0.0712   -32.5   <2e-16
 
-$Comp.2
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)   0.6002     0.0734    8.18  2.9e-16
-UpvotedTRUE   5.3254     0.0820   64.95  < 2e-16
-
-$Comp.3
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)   4.3955     0.0309   142.4   <2e-16
-UpvotedTRUE  -3.5918     0.0794   -45.3   <2e-16
-
-$Comp.4
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept)   5.4605     0.0292   187.1   <2e-16
-UpvotedTRUE  -2.3164     0.0712   -32.5   <2e-16
-
-R> exp(0.6002); exp(2.485); exp(4.3955); exp(5.4605)
-[1] 1.822
-[1] 12
-[1] 81.09
-[1] 235.2
+exp(0.6002); exp(2.485); exp(4.3955); exp(5.4605)
+# [1] 1.822
+# [1] 12
+# [1] 81.09
+# [1] 235.2
 ~~~
 
 Note that the submissions were chosen to maximize the impact of an upvote by upvoting the first 5 links on /newest and hence the most recently submitted: a submission at the very bottom, like #30, will benefit least from an upvote since its time is up and it's almost vanished.
