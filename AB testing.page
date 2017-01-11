@@ -3376,7 +3376,7 @@ arima411 <- "model {
   eps[4] <- 0
 
   for (i in 5:length(y)) {
-     y[i] ~ dnorm(mu[i], tauOfClust[clust[i]])
+     y[i] ~ dt(mu[i], tauOfClust[clust[i]], nuOfClust[clust[i]])
      mu[i] <- muOfClust[clust[i]] + w1*y[i-1] + w2*y[i-2] + w3*y[i-3] + w4*y[i-4] + m1*eps[i-1]
      eps[i] <- y[i] - mu[i]
 
@@ -3387,6 +3387,8 @@ arima411 <- "model {
       muOfClust[clustIdx] ~ dnorm(10000, 1.0E-09)
       sigmaOfClust[clustIdx] ~ dnorm(1000, 1e-06)
       tauOfClust[clustIdx] <- pow(sigmaOfClust[clustIdx], -2)
+      nuMinusOneOfClust[clustIdx] ~ dexp(1/29)
+      nuOfClust[clustIdx] <- nuMinusOneOfClust[clustIdx] + 1
   }
   pClust[1:Nclust] ~ ddirch(onesRepNclust)
 
@@ -3402,9 +3404,9 @@ Nclust = 2
 clust = rep(NA,length(y))
 clust[which(y<1800)] <- 1 # seed labels for cluster 1, normal traffic
 clust[which(y>4000)] <- 2 # seed labels for cluster 2, spikes
-model <- autorun.jags(arima411, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(0.9, 0.1) ), monitor=c("pClust", "muOfClust", "sigmaOfClust", "w0", "w1", "w2", "w3", "w4"), inits=list(m1=-0.94, w0=0.17, w1=1.44, w2=-0.46, w3=0.11, w4=-0.07), n.chains = getOption("mc.cores"), method="rjparallel"); summary(model)
+model <- autorun.jags(arima411, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(0.9, 0.1) ), monitor=c("pClust", "muOfClust", "sigmaOfClust", "w0", "w1", "w2", "w3", "w4", "nu"), inits=list(m1=-0.94, w0=0.17, w1=1.44, w2=-0.46, w3=0.11, w4=-0.07), n.chains = getOption("mc.cores"), method="rjparallel"); summary(model)
 
-
+model <- run.jags(arima411, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(0.9, 0.1) ), monitor=c("pClust", "muOfClust", "sigmaOfClust", "nuOfClust", "w0", "w1", "w2", "w3", "w4"), inits=list(m1=-0.94, w0=0.17, w1=1.44, w2=-0.46, w3=0.11, w4=-0.07), n.chains = getOption("mc.cores"), method="rjparallel"); summary(model)
 -->
 
 # Deep reinforcement learning
