@@ -3407,6 +3407,80 @@ clust[which(y>4000)] <- 2 # seed labels for cluster 2, spikes
 model <- autorun.jags(arima411, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(0.9, 0.1) ), monitor=c("pClust", "muOfClust", "sigmaOfClust", "w0", "w1", "w2", "w3", "w4", "nu"), inits=list(m1=-0.94, w0=0.17, w1=1.44, w2=-0.46, w3=0.11, w4=-0.07), n.chains = getOption("mc.cores"), method="rjparallel"); summary(model)
 
 model <- run.jags(arima411, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(0.9, 0.1) ), monitor=c("pClust", "muOfClust", "sigmaOfClust", "nuOfClust", "w0", "w1", "w2", "w3", "w4"), inits=list(m1=-0.94, w0=0.17, w1=1.44, w2=-0.46, w3=0.11, w4=-0.07), n.chains = getOption("mc.cores"), method="rjparallel"); summary(model)
+
+power analysis:
+
+ads <- traffic
+ads$Ads <- rbinom(nrow(ads), size=1, p=0.5)
+ads[ads$Pageviews>3000,]$Pageviews <- 3000
+ads[ads$Ads==1,]$Pageviews <- round(ads[ads$Ads==1,]$Pageviews * 0.97)
+R> wilcox.test(Pageviews ~ Ads, data=ads)
+
+    Wilcoxon rank sum test with continuity correction
+
+data:  Pageviews by Ads
+W = 741433, p-value = 4.305608e-08
+alternative hypothesis: true location shift is not equal to 0
+
+R> t.test(Pageviews ~ Ads, data=ads)
+
+    Welch Two Sample t-test
+
+data:  Pageviews by Ads
+t = 3.8051734, df = 2285.9819, p-value = 0.0001454257
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  68.07492956 212.85009342
+sample estimates:
+mean in group 0 mean in group 1
+    1864.467770     1724.005259
+
+So it *is* possible but only if we truncate the outliers.
+
+[block bootstrap](!Wikipedia "Bootstrapping (statistics)#Block bootstrap"): for each hypothetical sample size _n_, split the traffic history into as many non-overlapping _n_-sized chunks _m_ as possible, select-with-replacement from them _m_, and run the analysis.
+
+library(boot)
+simulateTS <- function (df, effect=0.03, truncate=TRUE, threshold=3000) {
+    df$Ads <- rbinom(nrow(df), size=1, p=0.5)
+    df[df$Ads==1,]$Pageviews <- round(df[df$Ads==1,]$Pageviews * (1-effect))
+    if(truncate) { df[df$Pageviews>threshold,]$Pageviews <- threshold }
+    p <- wilcox.test(Pageviews ~ Ads, data=df)$p.value
+    p
+    }
+ns <- seq(10, 2000, by=10)
+power <- vector(mode="numeric", length=length(ns))
+i <- 1
+for (n in ns) {
+    tsb <- tsboot(ads, simulateTS, 5000, l=n, sim="fixed", parallel="multicore", ncpus=getOption("mc.cores"))
+    print(mean(tsb$t < 0.05))
+    power[i] <- mean(tsb$t < 0.05); i<-i+1 }
+power
+library(ggplot2)
+qplot(ns, power) + stat_smooth()
+
+
+library(boot)
+library(lmtest)
+simulateTSA <- function (df, effect=0.03, truncate=TRUE, threshold=3000) {
+    df$Ads <- rbinom(nrow(df), size=1, p=0.5)
+    df[df$Ads==1,]$Pageviews <- round(df[df$Ads==1,]$Pageviews * (1-effect))
+    if(truncate) { df[df$Pageviews>threshold,]$Pageviews <- threshold }
+    p <- coeftest(arima(df$Pageviews, xreg=df$Ads, order=c(4,1,1)))[,4][["df$Ads"]]
+    p
+    }
+ns <- seq(5, 200, by=1)
+power <- vector(mode="numeric", length=length(ns))
+i <- 1
+for (n in ns) {
+    tsb <- tsboot(ads, simulateTSA, 5000, l=n, sim="fixed", parallel="multicore", ncpus=getOption("mc.cores"))
+    print(mean(tsb$t < 0.05))
+    power[i] <- mean(tsb$t < 0.05); i<-i+1 }
+power
+library(ggplot2)
+qplot(ns, power) + stat_smooth()
+
+
+
 -->
 
 # Deep reinforcement learning
