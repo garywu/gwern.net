@@ -3365,48 +3365,45 @@ model <- jags.model(textConnection(model_string), data = list(y = y), n.chains =
 
 traffic <- read.csv("~/Analytics www.gwern.net Audience Overview 20090101-20170109.csv")
 library(runjags)
-arima411 <- "model {
-  y[1] ~ dnorm(0,1e-3)
-  y[2] ~ dnorm(0,1e-3)
-  y[3] ~ dnorm(0,1e-3)
-  y[4] ~ dnorm(0,1e-3)
+arima311 <- "model {
+  y[1] ~ dnorm(0,1)
+  y[2] ~ dnorm(0,1)
+  y[3] ~ dnorm(0,1)
   eps[1] <- 0
   eps[2] <- 0
   eps[3] <- 0
-  eps[4] <- 0
 
-  for (i in 5:length(y)) {
+  for (i in 4:length(y)) {
      y[i] ~ dt(mu[i], tauOfClust[clust[i]], nuOfClust[clust[i]])
-     mu[i] <- muOfClust[clust[i]] + w1*y[i-1] + w2*y[i-2] + w3*y[i-3] + w4*y[i-4] + m1*eps[i-1]
+     mu[i] <- muOfClust[clust[i]] + w1*y[i-1] + w2*y[i-2] + w3*y[i-3] + m1*eps[i-1]
      eps[i] <- y[i] - mu[i]
 
      clust[i] ~ dcat(pClust[1:Nclust])
   }
 
   for (clustIdx in 1:Nclust) {
-      muOfClust[clustIdx] ~ dnorm(10000, 1.0E-09)
-      sigmaOfClust[clustIdx] ~ dnorm(1000, 1e-06)
+      muOfClust[clustIdx] ~ dnorm(100, 1.0E-06)
+      sigmaOfClust[clustIdx] ~ dnorm(500, 1e-06)
       tauOfClust[clustIdx] <- pow(sigmaOfClust[clustIdx], -2)
-      nuMinusOneOfClust[clustIdx] ~ dexp(1/29)
+      nuMinusOneOfClust[clustIdx] ~ dexp(5)
       nuOfClust[clustIdx] <- nuMinusOneOfClust[clustIdx] + 1
   }
   pClust[1:Nclust] ~ ddirch(onesRepNclust)
 
   m1 ~ dnorm(0, 4)
-  w0 ~ dnorm(0, 4)
-  w1 ~ dnorm(0, 4)
+  w0 ~ dnorm(0, 6)
+  w1 ~ dnorm(0, 5)
   w2 ~ dnorm(0, 4)
-  w3 ~ dnorm(0, 4)
-  w4 ~ dnorm(0, 4)
+  w3 ~ dnorm(0, 3)
   }"
 y <- traffic$Pageviews
 Nclust = 2
 clust = rep(NA,length(y))
 clust[which(y<1800)] <- 1 # seed labels for cluster 1, normal traffic
 clust[which(y>4000)] <- 2 # seed labels for cluster 2, spikes
-model <- autorun.jags(arima411, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(0.9, 0.1) ), monitor=c("pClust", "muOfClust", "sigmaOfClust", "w0", "w1", "w2", "w3", "w4", "nu"), inits=list(m1=-0.94, w0=0.17, w1=1.44, w2=-0.46, w3=0.11, w4=-0.07), n.chains = getOption("mc.cores"), method="rjparallel"); summary(model)
 
-model <- run.jags(arima411, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(0.9, 0.1) ), monitor=c("pClust", "muOfClust", "sigmaOfClust", "nuOfClust", "w0", "w1", "w2", "w3", "w4"), inits=list(m1=-0.94, w0=0.17, w1=1.44, w2=-0.46, w3=0.11, w4=-0.07), n.chains = getOption("mc.cores"), method="rjparallel"); summary(model)
+model <- run.jags(arima311, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(1,1) ), monitor=c("pClust", "muOfClust", "sigmaOfClust", "nuOfClust", "w0", "w1", "w2", "w3", "m1"), inits=list(m1=0.5, w0=-0.01, w1=0.001, w2=0.84, w3=-0.03, pClust=c(0.81, 0.19), muOfClust=c(121, 180), sigmaOfClust=c(172, 991), nuMinusOneOfClust=c(2.5-1, 1.1-1)), n.chains = getOption("mc.cores"), method="rjparallel", sample=500); summary(model)
+
 
 power analysis:
 
