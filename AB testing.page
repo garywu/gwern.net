@@ -3362,24 +3362,33 @@ model_string <- "model {
 }"
 model <- jags.model(textConnection(model_string), data = list(y = y), n.chains = getOption("mc.cores")); samples <- coda.samples(model, c("w0", "w1"), n.iter=1000); summary(samples)
 
-library(runjags)
+
 traffic <- read.csv("~/Analytics www.gwern.net Audience Overview 20090101-20170109.csv")
-y <- traffic$Pageviews
+library(runjags)
 arima411 <- "model {
-  y[1] ~ dnorm(0,1e-5)
-  y[2] ~ dnorm(0,1e-5)
-  y[3] ~ dnorm(0,1e-5)
-  y[4] ~ dnorm(0,1e-5)
+  y[1] ~ dnorm(0,1e-3)
+  y[2] ~ dnorm(0,1e-3)
+  y[3] ~ dnorm(0,1e-3)
+  y[4] ~ dnorm(0,1e-3)
   eps[1] <- 0
   eps[2] <- 0
   eps[3] <- 0
   eps[4] <- 0
 
   for (i in 5:length(y)) {
-     y[i] ~ dnorm(mu[i],tau)
-     mu[i] <- w0 + w1*y[i-1] + w2*y[i-2] + w3*y[i-3] + w4*y[i-4] + m1*eps[i-1]
+     y[i] ~ dnorm(mu[i], tauOfClust[clust[i]])
+     mu[i] <- muOfClust[clust[i]] + w1*y[i-1] + w2*y[i-2] + w3*y[i-3] + w4*y[i-4] + m1*eps[i-1]
      eps[i] <- y[i] - mu[i]
+
+     clust[i] ~ dcat(pClust[1:Nclust])
   }
+
+  for (clustIdx in 1:Nclust) {
+      muOfClust[clustIdx] ~ dnorm(10000, 1.0E-09)
+      sigmaOfClust[clustIdx] ~ dnorm(1000, 1e-06)
+      tauOfClust[clustIdx] <- pow(sigmaOfClust[clustIdx], -2)
+  }
+  pClust[1:Nclust] ~ ddirch(onesRepNclust)
 
   m1 ~ dnorm(0, 4)
   w0 ~ dnorm(0, 4)
@@ -3387,13 +3396,13 @@ arima411 <- "model {
   w2 ~ dnorm(0, 4)
   w3 ~ dnorm(0, 4)
   w4 ~ dnorm(0, 4)
-  tau <- pow(sigma, -2)
-  sigma ~ dnorm(700, 1e-06)
   }"
-model <- autorun.jags(arima411, data = list(y=y), monitor=c("m1", "w0", "w1", "w2", "w3", "w4", "sigma"), inits=list(m1=-0.94, w0=0.17, w1=1.44, w2=-0.46, w3=0.11, w4=-0.07, sigma=2232), n.chains = getOption("mc.cores"), method="rjparallel"); summary(model)
-
-model <- jags.model(textConnection(model_string2), data = list(y = y), n.chains = getOption("mc.cores")); samples <- coda.samples(model, c("m1", "w0", "w1", "w2", "w3", "w4", "sigma"), n.iter=1000); summary(samples)
-
+y <- traffic$Pageviews
+Nclust = 2
+clust = rep(NA,length(y))
+clust[which(y<1800)] <- 1 # seed labels for cluster 1, normal traffic
+clust[which(y>4000)] <- 2 # seed labels for cluster 2, spikes
+model <- autorun.jags(arima411, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(0.9, 0.1) ), monitor=c("pClust", "muOfClust", "sigmaOfClust", "w0", "w1", "w2", "w3", "w4"), inits=list(m1=-0.94, w0=0.17, w1=1.44, w2=-0.46, w3=0.11, w4=-0.07), n.chains = getOption("mc.cores"), method="rjparallel"); summary(model)
 
 
 -->
