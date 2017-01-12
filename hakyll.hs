@@ -364,7 +364,7 @@ brokenLinks = [
  ("Yawgoog", "/Yawgoog%20injustice"),
  ("Zeo%5B1%5D", "/Zeo"),
  ("ZeoCached", "/Zeo"),
- ("atom.xml%22", "/atom.xml"),
+ ("atom.xml\"", "/atom.xml"),
  ("bitcoin is worse is better", "/Bitcoin%20is%Worse%20is%20Better"),
  ("changelog", "/Changelog"),
  ("choosing software", "/Choosing%20Software"),
@@ -603,5 +603,17 @@ brokenLinks = [
  ("spaced repetition", "/Spaced%20repetition"),
  ("subscribe", "https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355"),
  ("docs/statistics/1957-bellman-dynamicprogramming.djvu", "/docs/statistics/1957-bellman-dynamicprogrammer.djvu"),
- ("docs/2007-abrahms-2.pdf", "/docs/terrorism/2007-abrahms-2.PDF")
+ ("docs/2007-abrahms-2.pdf", "/docs/terrorism/2007-abrahms-2.PDF"),
+ ("N-back FAQ", "DNB%20FAQ"),
+ ("modafinil-f512e0b9272f66030ad26824cacffc44.pdf", "/Modafinil"),
+ ("docs/nicotine/1994-hei", "/docs/nicotine/1994-heishman.pdf"),
+ ("Google%2520shutdowns", "/Google%20shutdowns"),
+ ("dnb f", "/DNB%20FAQ"),
+ ("Mo", "/Modafinil"),
+ ("Spirulina", "/2014%20spirulina"),
+ ("haskell/hakyll.hs", "/hakyll.hs"),
+ ("docs/conscientiousness/2013-", "/docs/conscientiousness/2013-fariba.pdf"),
+ ("docs/2015-gauk", "/docs/2015-gaukler.pdf"),
+ ("In Defense of Inclusionism", "/In%20Defense%20Of%20Inclusionism"),
+ ("docs/1955-nash.page", "/docs/1955-nash")
  ]
