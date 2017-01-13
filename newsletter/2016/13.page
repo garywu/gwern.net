@@ -38,8 +38,10 @@ Despite taking two long trips and some personal troubles (plumbing, an epic lapt
 9. ["The Power of Twins: Revisiting Student's Scottish Milk Experiment Example"](https://www.gwern.net/Statistical%20notes#the-power-of-twins-revisiting-students-scottish-milk-experiment-example)
 10. [_Genius Revisited_: Critiquing the Value of High IQ Elementary Schools](https://www.gwern.net/Statistical%20notes#genius-revisited-on-the-value-of-high-iq-elementary-schools)
 
+[Site traffic](https://www.gwern.net/About#january-2016---july-2016) was healthy: 635,123 pageviews by 312,659 users.
+
 # Media
-## Links
+## Overview
 
 Continuing the 2015 trend, 2016 was a banner year for genetics and AI.
 
@@ -53,10 +55,20 @@ In genetics, the growth of UK Biobank and the introduction of LD score regressio
 Detecting recent human evolution has been difficult due to lack of ancient DNA to compare with, but the supply of that has grown steadily, permitting some specific examples to be nailed down, and a new method based on contemporary whole genomes may blow the area wide open as whole genomes have recently crossed the \$1000 mark and in coming years, scientific projects & medical biobanks will shift over to whole genomes.
 Another possible field explosion is the topic of genome synthesis - I was astonished to learn that it is now feasible to synthesize from scratch entire chromosomes of arbitrary design, and that a human genome could potentially be synthesized for somewhere around \$1 billion, which would render totally obsolete any considerations of embryo selection/CRISPR/iterated embryo selection, with an active advocacy effort for a genome synthesis project to be launched.
 2017 will bring further discoveries of how humans have adapted to local environments and their societies over the past centuries & millennia.
-Honorable mentions should also go to the continuously growing GWASes: as predicted, the education/intelligence hits have increased drastically as sample size increased, and the historically difficult targets of personality & depression have finally yielded some more hits.
+Honorable mentions should also go to the steady (and disquieting) progress towards iterated embryo selection, and a scattering of results from the continuously-growing-sample-sizes GWASes: as predicted, the education/intelligence hits have increased drastically as sample size increased, and the historically difficult targets of personality & depression have finally yielded some more hits.
 One particularly intriguing GWAS focused on violence & criminal behavior with good results, so that trait will yield as well to further study.
 Past GWASes continued to be applied; the results of Belsky et al 2016 will come as no surprise, but will frustrate the critics who insist that all non-disease results are methodological artifacts or merely reflect population structure.
 CRISPR progress continues as expected, with the first uses in humans in 2016.
+
+Less cosmically, one of the big tech stories of 2016 was the rollout of consumer VR - successful but not epochal, clearly the (or at least, a) future of gaming but no killer app.
+Oculus had a rocky launch caused by its decision to launch prematurely, without motion controls, which the launch of HTC/Valve's Vive made clear is not an optional feature for truly compelling VR (and my own brief experience with an Oculus Rift at a Best Buy demo left me longing, after just 20 seconds in _The Climb_, for hand tracking), but the lack of motion controls & compelling content made for a slow launch.
+The Vive had a better launch with excellent motion controls & tracking, the comparable Oculus Touch controls only really shipping half a year later in December, demonstrating why Oculus launched when it did - it was either bite the bullet of a bad launch, or let Vive rule unopposed.
+Somewhat to my surprise, Sony's quiet Project Morpheus launched to big success as PlayStation VR, making for *three* high-quality competing VR headsets/ecosystems. (Sony had not seemed serious about the whole VR thing so I doubted it would launch in 2016 or at all.)
+While most gamers, much less people, do not feel a burning need for getting into VR at the moment (myself included, as I think the screen resolutions need improvement), what is notable is what *didn't* happen: we did not see widespread reports of vomiting, of people swearing off VR forever, of VR being discarded as a 3D-TV-like gimmick, of developers flooding in & getting burned, of sales plummeting and being well below the million-mark, of the initial trickle of games sputtering out... In short, of any of the things that the naysayers predicted would doom consumer VR.
+The worst that the early adopters, critics, and regular people have to say is that there are not enough good games (decreasingly true by the end of 2016), that the headsets and GPUs cost too much (true but will predictably be fixed as time passes), that the Oculus Rift lacked motion controls (fixed as of December 2016), and the resolution is too low (likely improved substantially in the second generation, possibly fixed entirely by the third or fourth) - nothing fatal or important, in other words.
+So it looks like VR is here to stay! It's nice that at least one part of my childhood's future has finally happened.
+
+## Links
 
 Genetics:
 
