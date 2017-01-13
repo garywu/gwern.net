@@ -3454,51 +3454,56 @@ clust = rep(NA,length(y))
 clust[which(y<1800)] <- 1 # seed labels for cluster 1, normal traffic
 clust[which(y>4000)] <- 2 # seed labels for cluster 2, spikes
 
-model <- run.jags(arima311, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(1,1) ), monitor=c("w1", "w2", "w3", "m1", "pClust", "muOfClust", "sigmaOfClust", "nuOfClust"), inits=list(w1=0.57, w2=0.35, w3=0, m1=0.44, pClust=c(0.805, 0.195), muOfClust=c(86, 806), sigmaOfClust=c(156, 773), nuMinusOneOfClust=c(2.4-1, 1.04-1)), n.chains = getOption("mc.cores"), method="rjparallel", sample=500); summary(model)
+model <- run.jags(arima311, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(1,1) ), monitor=c("w1", "w2", "w3", "m1", "pClust", "muOfClust", "sigmaOfClust", "nuOfClust"), inits=list(w1=0.55, w2=0.37, w3=-0.01, m1=0.45, pClust=c(0.805, 0.195), muOfClust=c(86.5, 781), sigmaOfClust=c(156, 763), nuMinusOneOfClust=c(2.4-1, 1.04-1)), n.chains = getOption("mc.cores"), method="rjparallel", sample=500); summary(model)
 
 
 JAGS is painfully slow: 4h+ for 500 samples. Sharper priors, removing the 4th-order ARIMA lag, and better initialization didn't help. Too much correlation? Try switching to STAN.
 
 traffic <- read.csv("~/Analytics www.gwern.net Audience Overview 20090101-20170109.csv")
 library(rstan)
-arma311s <- "
+arma411s <- "
     data {
         int<lower=1> T; // num observations
-        real y[T]; // observed outputs
+        real<lower=0> y[T]; // observed outputs
     }
     parameters {
-        real mu; // mean coeff
-        real phi1; // autoregression coeff
-        real phi2; // autoregression coeff
-        real phi3; // autoregression coeff
+        real<lower=0> mu; // mean coeff
+        real phi1; // autoregression coeffs
+        real phi2;
+        real phi3;
+        real phi4;
         real theta; // moving avg coeff
         real<lower=0> sigma; // noise scale
+        real<lower=0> nuT;
     }
     model {
         vector[T] nu; // prediction for time t
         vector[T] err; // error for time t
-        // initialize the first 3 days for the lags
+        // initialize the first 4 days for the lags
         nu[1] = mu + phi1 * mu; // assume err[0] == 0
         nu[2] = mu + phi2 * mu;
         nu[3] = mu + phi3 * mu;
+        nu[4] = mu + phi4 * mu;
         err[1] = y[1] - nu[1];
         err[2] = y[2] - nu[2];
         err[3] = y[3] - nu[3];
-        for (t in 4:T) {
-            nu[t] = mu + phi1 * y[t-1] + phi2 * y[t-2] + phi3 * y[t-3] + theta * err[t-1];
+        err[4] = y[4] - nu[4];
+        for (t in 5:T) {
+            nu[t] = mu + phi1 * y[t-1] + phi2 * y[t-2] + phi3 * y[t-3] + phi4 * y[t-4] + theta * err[t-1];
             err[t] = y[t] - nu[t];
     }
-    phi1 ~ normal(0, 0.5);
+    phi1 ~ normal(0, 0.6);
     phi2 ~ normal(0, 0.5);
-    phi3 ~ normal(0, 0.5);
+    phi3 ~ normal(0, 0.4);
+    phi4 ~ normal(0, 0.3);
     theta ~ normal(0, 0.5);
     sigma ~ cauchy(0, 500);
     mu ~ normal(100, 1000);
-    err ~ normal(0, sigma); // likelihood
+    nuT ~ exponential(5);
+    err ~ student_t(nuT, 0, sigma); // likelihood
     }"
-inits <- list(mu=76, phi1=1.3, phi2=-0.39, phi3=0.06, theta=-0.81, sigma=2228, lp=-18791)
-model <- stan(model_code=arma311s, data=list(T=nrow(traffic), y=traffic$Pageviews), init=list(inits, inits, inits, inits)); print(model)
-
+inits <- list(mu=3.27, phi1=1.75, phi2=-0.84, phi3=0.10, phi4=-0.01, theta=-0.94, sigma=166, nuT=1.05)
+model <- stan(model_code=arma411s, data=list(T=nrow(traffic), y=traffic$Pageviews), chains=getOption("mc.cores")-1, init=list(inits, inits, inits, inits, inits, inits, inits, inits)); print(model)
 
 -->
 
