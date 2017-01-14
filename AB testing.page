@@ -2950,7 +2950,7 @@ Or to put it the other way, the current conversion rate is ~17% of page-views an
 power.prop.test(p1=0.174, p2=0.170, power=0.80, sig.level=0.05)
 #     Two-sample comparison of proportions power calculation
 #              n = 139724.5781
-~~
+~~~
 
 Even with the most optimistic possible assumptions (perfect conversion, no negative effect), it takes 279,449 page-views to get decent power.
 This is ridiculous from a cost-benefit perspective, and worse given that my priors are against it due to the extra JS & CSS it entails.
@@ -3464,7 +3464,7 @@ library(rstan)
 arma411s <- "
     data {
         int<lower=1> T; // num observations
-        real<lower=0> y[T]; // observed outputs
+        int<lower=0> y[T]; // observed outputs
     }
     parameters {
         real<lower=0> mu; // mean coeff
@@ -3473,8 +3473,8 @@ arma411s <- "
         real phi3;
         real phi4;
         real theta; // moving avg coeff
-        real<lower=0> sigma; // noise scale
-        real<lower=0> nuT;
+        real<lower=0.001, upper=50000> sigma; // noise scale
+        real<lower=0.001, upper=50> nuT;
     }
     model {
         vector[T] nu; // prediction for time t
@@ -3498,13 +3498,12 @@ arma411s <- "
     phi4 ~ normal(0, 0.3);
     theta ~ normal(0, 0.5);
     sigma ~ cauchy(0, 500);
-    mu ~ normal(100, 1000);
+    mu ~ normal(10, 1000);
     nuT ~ exponential(5);
     err ~ student_t(nuT, 0, sigma); // likelihood
     }"
-inits <- list(mu=3.27, phi1=1.75, phi2=-0.84, phi3=0.10, phi4=-0.01, theta=-0.94, sigma=166, nuT=1.05)
-model <- stan(model_code=arma411s, data=list(T=nrow(traffic), y=traffic$Pageviews), chains=getOption("mc.cores")-1, init=list(inits, inits, inits, inits, inits, inits, inits, inits)); print(model)
-
+inits <- list(mu=3.23, phi1=1.75, phi2=-0.84, phi3=0.10, phi4=-0.01, theta=-0.94, sigma=166, nuT=1.05)
+model <- stan(model_code=arma411s, data=list(T=nrow(traffic), y=traffic$Pageviews), control = list(adapt_delta = 0.85), chains=getOption("mc.cores")-1, init=list(inits, inits, inits, inits, inits, inits, inits, inits)); print(model)
 -->
 
 # Deep reinforcement learning
