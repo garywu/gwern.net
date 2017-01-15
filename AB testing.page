@@ -3009,159 +3009,229 @@ Thus, the decision question boils down to whether the decrease for the ad-affect
 If it is, then I am better off removing AdSense and increasing traffic; otherwise, the money is better.
 
 <!--
-~~~~{.R}
-ads <- read.csv(stdin(),header=TRUE)
-Ads,Hits
-0,1111
-0,1176
-0,1111
-0,1418
-1,1578
-1,1285
-0,1413
-0,1314
-0,991
-0,1331
-1,1519
-1,1528
-0,1736
-0,1745
-0,1231
-0,1080
-1,1677
-1,1816
-0,1419
-0,1403
-0,1436
-0,1038
-1,1024
-1,1060
-1,1176
-1,1179
-1,1123
-1,990
-0,1005
-0,889
-0,1149
-0,1334
-1,1168
-1,1059
-0,1198
-0,1309
-1,1039
-1,994
-0,1261
-0,1258
-0,1101
-0,1113
-0,995
-0,881
-0,876
-0,1098
-0,1234
-0,1151
-0,1261
-0,1236
-1,916
-1,1001
-1,1097
-1,1373
-0,1197
-0,1052
-0,988
-0,941
-0,947
-0,1168
-1,1505
-0,3505
-0,1451
-0,1227
-0,983
-0,1016
-0,1175
-0,1159
-0,1035
-0,954
-0,898
-0,889
-0,858
-0,1010
-0,940
-0,984
-1,996
-1,1091
-1,947
-1,1073
-0,975
-0,1053
-0,1056
-0,920
-1,802
-1,776
-1,834
-1,1218
-1,1144
-1,1264
-1,1021
-0,879
-0,818
-1,968
-1,706
-0,720
-0,1169
-1,921
-1,714
-0,627
-0,743
-0,683
-0,649
-1,862
-1,927
-0,880
-0,866
-0,859
-0,760
-1,784
-1,733
-0,851
-0,838
-1,808
-1,649
-1,693
-1,646
-1,939
-1,1077
-1,1191
-1,1258
-0,1252
-0,1122
-0,703
-0,639
-1,821
-1,1011
-1,794
-1,778
-0,899
-0,721
-0,1207
-0,928
-0,828
-0,816
-1,892
-1,784
-1,5857
-0,2662
-0,981
-0,671
-0,639
-0,709
-0,747
-0,766
-0,843
-0,806
-1,624
+
+How do we analyze this? In the ABalytics approach, it was simple: we defined a threshold and did a binomial regression. But by switching to trying to increase overall total traffic, I have opened up a can of worms.
+Let's look at the traffic data:
+
+~~~{.R}
+traffic <- read.csv("~/wiki/docs/traffic/20170108-traffic.csv", colClasses=c("Date", "integer"))
+summary(traffic)
+summary(traffic)
+#    Date               Pageviews
+#  Min.   :2010-10-04   Min.   :    1
+#  1st Qu.:2012-04-28   1st Qu.: 1348
+#  Median :2013-11-21   Median : 1794
+#  Mean   :2013-11-21   Mean   : 2352
+#  3rd Qu.:2015-06-16   3rd Qu.: 2639
+#  Max.   :2017-01-08   Max.   :53517
+nrow(traffic)
+# [1] 2289
+library(ggplot2)
+qplot(Date, Pageviews, data=traffic)
+qplot(Date, log(Pageviews), data=traffic)
+~~~
+
+![Daily pageviews/traffic to `gwern.net`, 2010-2017](/images/traffic/20102017-traffic.png)
+![Daily pageviews/traffic to `gwern.net`, 2010-2017; log-transformed](/images/traffic/20102017-traffic-log.png)
+
+Two things jump out.
+The distribution of traffic is weird, with enormous spikes; doing a log-transform to tame the spikes, it is also clearly a non-stationary time-series with heavy autocorrelation as traffic consistently grows and declines.
+These are not surprising, as social media traffic from sites like Hacker News or Reddit are notorious for creating spikes in site traffic (and sometimes bringing them down under the load), and I would hope that as I keep writing things, traffic would gradually increase!
+Nevertheless, both of these will make the traffic data difficult to analyze despite having over 6 years of it.
+
+We can demonstrate with a quick power analysis: if we pick a random subset of days and force a decrease of 2.8% (the value on the decision boundary), can we detect that?
+
+~~~{.R}
+ads <- traffic
+ads$Ads <- rbinom(nrow(ads), size=1, p=0.5)
+ads[ads$Ads==1,]$Pageviews <- round(ads[ads$Ads==1,]$Pageviews * (1-0.028))
+wilcox.test(Pageviews ~ Ads, data=ads)
+# W = 665105.5, p-value = 0.5202686
+t.test(Pageviews ~ Ads, data=ads)
+# t = 0.27315631, df = 2285.9151, p-value = 0.7847577
+# alternative hypothesis: true difference in means is not equal to 0
+# 95 percent confidence interval:
+#  -203.7123550  269.6488393
+# sample estimates:
+# mean in group 0 mean in group 1
+#     2335.331004     2302.362762
+wilcox.test(log(Pageviews) ~ Ads, data=ads)
+# W = 665105.5, p-value = 0.5202686
+t.test(log(Pageviews) ~ Ads, data=ads)
+# t = 0.36685265, df = 2286.8348, p-value = 0.7137629
+sd(ads$Pageviews)
+# [1] 2880.044636
+~~~
+
+The answer is no. We are *nowhere* near being able to detect it with either a _t_-test or the nonparametric _u_-test (which one might expect to handle the strange distribution better), and the log transform doesn't help.
+We can hardly even see a hint of the decrease in the _t_-test - the decrease in the mean is ~30 pageviews but the standard deviations are ~2900 and actually bigger than the mean.
+So the spikes in the traffic are crippling the tests and this cannot be fixed by waiting a few more months since it's inherent to the data.
+
+If our trusty friend the log-transform can't help, what can we do?
+In this case, we know that the reality here is literally a [mixture model](!Wikipedia) as the spikes are being driven by qualitatively distinct phenomenon like a `gwern.net` link appearing on the HN front page, as compared to normal daily traffic from existing links & search traffic[^ads-mixture-model]; but mixture models tend to be hard to use.
+One ad hoc approach to taming the spikes would be to effectively throw them out by trimming everything above a certain point (since the daily traffic average is ~1700, perhaps twice that, 3000):
+
+~~~{.R}
+ads <- traffic
+ads$Ads <- rbinom(nrow(ads), size=1, p=0.5)
+ads[ads$Ads==1,]$Pageviews <- round(ads[ads$Ads==1,]$Pageviews * (1-0.028))
+ads[ads$Pageviews>3000,]$Pageviews <- 3000
+sd(ads$Pageviews)
+# [1] 896.8798131
+wilcox.test(Pageviews ~ Ads, data=ads)
+# W = 679859, p-value = 0.1131403
+t.test(Pageviews ~ Ads, data=ads)
+# t = 1.3954503, df = 2285.3958, p-value = 0.1630157
+# alternative hypothesis: true difference in means is not equal to 0
+# 95 percent confidence interval:
+#  -21.2013943 125.8265361
+# sample estimates:
+# mean in group 0 mean in group 1
+#     1830.496049     1778.183478
+~~~
+
+[^ads-mixture-model]: This mixture model would have two distributions/components in it; 3 or higher does not appear to fit the data at all:
+
+    ~~~{.R}
+    library(flexmix)
+    stepFlexmix(traffic$Pageviews ~ 1, model = FLXMRglmfix(family = "poisson"), k=1:10, nrep=20)
+    ## errors out k>2
+    fit <- flexmix(traffic$Pageviews ~ 1, model = FLXMRglmfix(family = "poisson"), k=2)
+    summary(fit)
+    #        prior size post>0 ratio
+    # Comp.1 0.196  448    449 0.998
+    # Comp.2 0.804 1841   1842 0.999
+    #
+    # 'log Lik.' -1073191.871 (df=3)
+    # AIC: 2146389.743   BIC: 2146406.95
+    summary(refit(fit))
+    # $Comp.1
+    #                  Estimate    Std. Error   z value   Pr(>|z|)
+    # (Intercept) 8.64943378382 0.00079660747 10857.837 < 2.22e-16
+    #
+    # $Comp.2
+    #                  Estimate    Std. Error   z value   Pr(>|z|)
+    # (Intercept) 7.33703564817 0.00067256175 10909.088 < 2.22e-16
+    ~~~
+
+Better but still inadequate. Even with the spikes tamed, we continue to have problems; the logged graph suggests that we can't afford to ignore the time-series aspect.
+A check of autocorrelation indicates substantial autocorrelation out to lags as high as 8 days:
+
+~~~{.R}
+pacf(traffic$Pageviews, main="gwern.net traffic time-series autocorrelation")
+~~~
+
+![Autocorrelation in `gwern.net` daily traffic: previous daily traffic is predictive of current traffic up to _t_=8 days ago](/images/traffic/20102017-traffic-autocorrelation.png)
+
+The usual regression framework for time-series is the [ARIMA](!Wikipedia) time-series model, in which the current daily value would be regressed on by each of the previous day's values (with an estimated coefficient for each lag, as day 8 ought to be less predictive than day 7 and so on) and possibly a difference and a moving average (also with varying distances in time). The models are usually denoted as "ARIMA(days back to use as lags, days back to difference, days back for moving average)".
+So the `pacf` suggests that an `ARIMA(8,0,0)` might work - lags back 8 days but agnostic on differencing and moving averages, respectively.
+R's `forecast` library helpfully includes both an `arima` regression function and also an `auto.arima` to do model comparison.
+To cut to the chase, `auto.arima` generally finds that a much simpler model than `ARIMA(8,0,0)` works best, preferring models like `ARIMA(4,1,1)` (presumably the differencing and moving-average steal enough of the distant lags' predictive power that they no longer look better to AIC).
+Such an ARIMA model works well and now we actually can detect convincingly our simulated effect:
+
+~~~{.R}
+library(forecast)
+library(lmtest)
+l <- lm(Pageviews ~ Ads, data=ads); summary(l)
+# Residuals:
+#       Min        1Q    Median        3Q       Max
+# -2352.275  -995.275  -557.275   294.725 51239.783
+#
+# Coefficients:
+#               Estimate Std. Error  t value Pr(>|t|)
+# (Intercept) 2277.21747   86.86295 26.21621  < 2e-16
+# Ads           76.05732  120.47141  0.63133  0.52789
+#
+# Residual standard error: 2879.608 on 2287 degrees of freedom
+# Multiple R-squared:  0.0001742498,    Adjusted R-squared:  -0.0002629281
+# F-statistic: 0.3985787 on 1 and 2287 DF,  p-value: 0.5278873
+a <- arima(ads$Pageviews, xreg=ads$Ads, order=c(4,1,1))
+summary(a); coeftest(a)
+# Coefficients:
+#             ar1         ar2         ar3         ar4         ma1      ads$Ads
+#       0.5424117  -0.0803198  -0.0310823  -0.0094242  -0.8906085  -52.4148244
+# s.e.  0.0281538   0.0245621   0.0245500   0.0240701   0.0189952   10.5735098
+#
+# sigma^2 estimated as 89067.31:  log likelihood = -16285.31,  aic = 32584.63
+#
+# Training set error measures:
+#                       ME        RMSE         MAE          MPE        MAPE         MASE             ACF1
+# Training set 3.088924008 298.3762646 188.5442545 -6.839735685 31.17041388 0.9755280945 -0.0002804416646
+#
+# z test of coefficients:
+#
+#               Estimate     Std. Error   z value   Pr(>|z|)
+# ar1       0.5424116948   0.0281538043  19.26602 < 2.22e-16
+# ar2      -0.0803197830   0.0245621012  -3.27007  0.0010752
+# ar3      -0.0310822966   0.0245499783  -1.26608  0.2054836
+# ar4      -0.0094242194   0.0240700967  -0.39153  0.6954038
+# ma1      -0.8906085375   0.0189952434 -46.88587 < 2.22e-16
+# Ads     -52.4148243747  10.5735097735  -4.95718 7.1523e-07
+~~~
+
+One might reasonably ask, what is doing the real work, the truncation/trimming or the `ARIMA(4,1,1)`?
+The answer is both; if we go back and regenerate the `ads` dataset *without* the truncation/trimming and we look again at the estimated effect of `Ads`, we find it changes to
+
+~~~{.R}
+#               Estimate     Std. Error   z value   Pr(>|z|)
+# ...
+# Ads      26.3244086579 81.2278521231    0.32408 0.74587666
+~~~
+
+For the simple linear model with no time-series or truncation, the standard error on the ads effect is 121; for the time-series with no truncation, the standard error is 81; and for the time series plus truncation, the standard error is 11.
+My conclusion is that we can't leave either one out if we are to reach correct conclusions in any feasible sample size - we *must* deal with the spikes, and we *must* deal with the time-series aspect.
+
+So having settled on a specific ARIMA model with truncation, I can do a power analysis.
+For a time-series, the simple bootstrap is inappropriate as it ignores the autocorrelation; the right bootstrap is the [block bootstrap](!Wikipedia "Bootstrapping (statistics)#Block bootstrap"): for each hypothetical sample size _n_, split the traffic history into as many non-overlapping _n_-sized chunks _m_ as possible, select-with-replacement from them _m_, and run the analysis.
+This is implemented in the R `boot` library.
+
+~~~{.R}
+library(boot)
+library(lmtest)
+
+## fit models & report p-value/test statistic
+ut <- function(df) { wilcox.test(Pageviews ~ Ads, data=df)$p.value }
+at <- function(df) { coeftest(arima(df$Pageviews, xreg=df$Ads, order=c(4,1,1)))[,4][["df$Ads"]] }
+
+## create the hypothetical effect, truncate, and test
+simulate <- function (df, testFunction, effect=0.03, truncate=TRUE, threshold=3000) {
+    df$Ads <- rbinom(nrow(df), size=1, p=0.5)
+    df[df$Ads==1,]$Pageviews <- round(df[df$Ads==1,]$Pageviews * (1-effect))
+    if(truncate) { df[df$Pageviews>threshold,]$Pageviews <- threshold }
+    return(testFunction(df))
+    }
+power <- function(ns, df, test, effect, alpha=0.05, iters=2000) {
+    powerEstimates <- vector(mode="numeric", length=length(ns))
+    i <- 1
+    for (n in ns) {
+        tsb <- tsboot(df, function(d){simulate(d, test, effect=effect)}, iters, l=n,
+                          sim="fixed", parallel="multicore", ncpus=getOption("mc.cores"))
+        powerEstimates[i] <- mean(tsb$t < alpha)
+        i <- i+1 }
+    return(powerEstimates) }
+
+ns <- seq(10, 1500, by=5)
+## test the critical value but also 0 effect to check whether alpha is respected
+powerUtestNull <- power(ns, traffic, ut, 0)
+powerUtest     <- power(ns, traffic, ut, 0.028)
+powerArimaNull <- power(ns, traffic, at, 0)
+powerArima     <- power(ns, traffic, at, 0.028)
+p1 <- qplot(ns, powerUtestNull) + stat_smooth() + coord_cartesian(ylim = c(0, 1))
+p2 <- qplot(ns, powerUtest) + stat_smooth() + coord_cartesian(ylim = c(0, 1))
+p3 <- qplot(ns, powerArimaNull) + stat_smooth() + coord_cartesian(ylim = c(0, 1))
+p4 <- qplot(ns, powerArima) + stat_smooth() + coord_cartesian(ylim = c(0, 1))
+
+library(grid)
+library(gridExtra)
+grid.arrange(p1, p2, p3, p4, ncol = 2, name = "Power analysis of detecting null effect/2.8% reduction using u-test and ARIMA regression")
+~~~
+
+So the false-positive rate is preserved for both, the ARIMA requires a reasonable-looking _n_<100 to be well-powered, but the _u_-test power is bizarre - the power is never great, never going >35% or so, and actually *decreasing* after a certain point (which is not something you usually see in a power graph).
+My speculation about that is that it is because as the time-series window increases, more of the spikes come into view of the _u_-test, making the distribution dramatically wider & this more than overwhelms the gain in detectability; with some more years of data, the spikes would stop coming as a surprise and the gradual hypothetical damage of the ads will then become more visible with increasing sample size as expected
 
 
+
+~~~
 ads[ads$Ads==1,]$Hits <- round(ads[ads$Ads==1,]$Hits * 0.95)
 
 require(rjags)
@@ -3214,214 +3284,22 @@ mean(ifelse(posteriorLoss>0, posteriorLoss, 0))
 
 so EVPI is \$0.07. This doesn't pay for any additional days of sampling, so there's no need to calculate an EVSI.
 
-full ARIMA time-series?
 
-`pacf` suggests need lags up to 8...
+> An  model is an autoregressive model of order 2, or AR(2) model. This model can be written as: X_t - mu = (Beta1 * (X_t-1 - mu)) + (Beta2 * (Xt-2 - mu)) + Z_t, where X_t is the stationary time series we are studying (the time series of volcanic dust veil index), mu is the mean of time series X_t, Beta1 and Beta2 are parameters to be estimated, and Z_t is white noise with mean zero and constant variance.
 
-library(forecast)
-auto.arima(ts(data=log(traffic$Pageviews), frequency=7, start=c(2010, 10, 4)), d=0, D=0, seasonal=TRUE, stepwise=FALSE, parallel=TRUE, num.cores=8)
-yields
-
-Series: ts(data = log(traffic$Pageviews), frequency = 365, start = c(2010,      10))
-ARIMA(5,0,0) with non-zero mean
-
-Coefficients:
-            ar1        ar2        ar3        ar4        ar5  intercept
-      0.6020500  0.0733963  0.1512864  0.0171276  0.1359860  7.2161884
-s.e.  0.0206958  0.0242435  0.0240959  0.0242732  0.0207541  0.3964673
-
-sigma^2 estimated as 0.1584876:  log likelihood=-1138.11
-AIC=2290.23   AICc=2290.28   BIC=2330.38
-
-another frequent specification found by `auto.arima` is
-ARIMA(1,0,4) with non-zero mean
-R> auto.arima(ts(data=log(traffic$Pageviews), frequency=7, start=c(2010, 10, 4)), seasonal=TRUE, trace=TRUE, stepwise=FALSE, parallel=TRUE, num.cores=8)
-ARIMA(4,1,1)
-
-Coefficients:
-            ar1         ar2        ar3         ar4         ma1
-      0.3975665  -0.0211804  0.0508422  -0.0722201  -0.8584098
-s.e.  0.0291630   0.0244111  0.0239864   0.0232653   0.0211797
-
-sigma^2 estimated as 0.1498294:  log likelihood=-1072.8
-AIC=2157.6   AICc=2157.64   BIC=2192.01
-auto.arima(ts(data=diff(log(traffic$Pageviews), differences=1), frequency=7, start=c(2010, 10, 4)), seasonal=TRUE, trace=TRUE, stepwise=FALSE, parallel=TRUE, num.cores=8)
-ARIMA(4,0,1) with zero mean
-
-Coefficients:
-            ar1         ar2        ar3         ar4         ma1
-      0.3975665  -0.0211804  0.0508422  -0.0722201  -0.8584098
-s.e.  0.0291630   0.0244111  0.0239864   0.0232653   0.0211797
-
-sigma^2 estimated as 0.1498293:  log likelihood=-1072.8
-AIC=2157.6   AICc=2157.64   BIC=2192.01
-
-so generally lower-order models 1-5 differenced once
-
-R> hist(ifelse(traffic$Pageviews>6000, 6000, traffic$Pageviews))
-
-
-mixture model: 2 components for traffic
-library(flexmix)
-R> stepFlexmix(traffic$Pageviews ~ 1, model = FLXMRglmfix(family = "poisson"), k=1:10, nrep=20)
-R> fit <- flexmix(traffic$Pageviews ~ 1, model = FLXMRglmfix(family = "poisson"), k=2)
-R> summary(fit)
-       prior size post>0 ratio
-Comp.1 0.196  448    449 0.998
-Comp.2 0.804 1841   1842 0.999
-
-'log Lik.' -1073191.871 (df=3)
-AIC: 2146389.743   BIC: 2146406.95
-R> summary(refit(fit))
-$Comp.1
-                 Estimate    Std. Error   z value   Pr(>|z|)
-(Intercept) 8.64943378382 0.00079660747 10857.837 < 2.22e-16
-
-$Comp.2
-                 Estimate    Std. Error   z value   Pr(>|z|)
-(Intercept) 7.33703564817 0.00067256175 10909.088 < 2.22e-16
-
-> An ARMA(2,0) model is an autoregressive model of order 2, or AR(2) model. This model can be written as: X_t - mu = (Beta1 * (X_t-1 - mu)) + (Beta2 * (Xt-2 - mu)) + Z_t, where X_t is the stationary time series we are studying (the time series of volcanic dust veil index), mu is the mean of time series X_t, Beta1 and Beta2 are parameters to be estimated, and Z_t is white noise with mean zero and constant variance.
-
-http://radhakrishna.typepad.com/ar2-parameter-estimation-in-winbugs-and-jags.pdf
-
-model {
-    psi[2]  ~ dunif(-1, 1)
-    u       <- abs(1 - psi[2])
-    l       <- -u
-    psi[1]  ~ dunif(l, u)
-    mu[1]   <- 0
-    mu[2]   <- (psi[1]/(1-psi[2]))*x[1]
-    tau1    <- ((1+psi[2])/(1-psi[2]))*((1-psi[2])*(1-psi[2]) - psi[1]*psi[1])*tau
-    tau2    <- tau*(1 - psi[2]*psi[2])
-    tau     ~ dgamma(0.001, 0.001)
-    x[1]    ~ dnorm(mu[1], tau1)
-    x[2]    ~ dnorm(mu[2], tau2)
-
-    for(i in 3:n){
-        x[i]  ~ dnorm(mu[i],tau)
-        mu[i] <- psi[1]*x[i-1] + psi[2]*x[i-2]
-    }
-    sigma   <- 1/sqrt(tau)
-}
-
-Complex initialization but the core look straightforward for a ARIMA(4,0,1)...
-
+AR(1): https://doingbayesiandataanalysis.blogspot.com/2012/10/bayesian-estimation-of-trend-with-auto.html
+ARMA(2,0): http://radhakrishna.typepad.com/ar2-parameter-estimation-in-winbugs-and-jags.pdf
 ARIMA(1,1,1) http://www.zinkov.com/posts/2012-06-27-why-prob-programming-matters/
 
-model_string2 <- "model {
-  y[1] ~ dnorm(0,1e-5)
-  eps[1] <- 0
+JAGS:
 
-  for (i in 2:length(y)) {
-     y[i] ~ dnorm(mu[i],tau)
-     mu[i] <- w0 + w1*y[i-1] + eps[i-1]
-     eps[i] <- y[i] - mu[i]
-  }
-
-  w0 ~ dnorm(0, .0001)
-  w1 ~ dnorm(0, .0001)
-  tau <- pow(sigma, -2)
-  sigma ~ dunif(0, 100)
-}"
-
-https://doingbayesiandataanalysis.blogspot.com/2012/10/bayesian-estimation-of-trend-with-auto.html
-AR(1):
-model {
-    trend[1] <- beta0 + beta1 * x[1]
-    for( i in 2 : Ndata ) {
-      y[i] ~ dt( mu[i] , tau , nu )
-      mu[i] <- trend[i] + ar1 * ( y[i-1] - trend[i-1] )
-      trend[i] <- beta0 + beta1 * x[i]
-    }
-    ar1 ~ dunif(-1.1,1.1) # or dunif(-0.01,0.01)
-    beta0 ~ dnorm( 0 , 1.0E-12 )
-    beta1 ~ dnorm( 0 , 1.0E-12 )
-
-    tau ~ dgamma( 0.001 , 0.001 )
-    nu <- nuMinusOne + 1
-    nuMinusOne ~ dexp(1/29)
-}
-
-power analysis:
-
-ads <- traffic
-ads$Ads <- rbinom(nrow(ads), size=1, p=0.5)
-ads[ads$Pageviews>3000,]$Pageviews <- 3000
-ads[ads$Ads==1,]$Pageviews <- round(ads[ads$Ads==1,]$Pageviews * 0.97)
-R> wilcox.test(Pageviews ~ Ads, data=ads)
-
-    Wilcoxon rank sum test with continuity correction
-
-data:  Pageviews by Ads
-W = 741433, p-value = 4.305608e-08
-alternative hypothesis: true location shift is not equal to 0
-
-R> t.test(Pageviews ~ Ads, data=ads)
-
-    Welch Two Sample t-test
-
-data:  Pageviews by Ads
-t = 3.8051734, df = 2285.9819, p-value = 0.0001454257
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
-  68.07492956 212.85009342
-sample estimates:
-mean in group 0 mean in group 1
-    1864.467770     1724.005259
-
-So it *is* possible but only if we truncate the outliers.
-
-[block bootstrap](!Wikipedia "Bootstrapping (statistics)#Block bootstrap"): for each hypothetical sample size _n_, split the traffic history into as many non-overlapping _n_-sized chunks _m_ as possible, select-with-replacement from them _m_, and run the analysis.
-
-library(boot)
-simulateTS <- function (df, effect=0.03, truncate=TRUE, threshold=3000) {
-    df$Ads <- rbinom(nrow(df), size=1, p=0.5)
-    df[df$Ads==1,]$Pageviews <- round(df[df$Ads==1,]$Pageviews * (1-effect))
-    if(truncate) { df[df$Pageviews>threshold,]$Pageviews <- threshold }
-    p <- wilcox.test(Pageviews ~ Ads, data=df)$p.value
-    p
-    }
-ns <- seq(10, 2000, by=10)
-power <- vector(mode="numeric", length=length(ns))
-i <- 1
-for (n in ns) {
-    tsb <- tsboot(ads, simulateTS, 5000, l=n, sim="fixed", parallel="multicore", ncpus=getOption("mc.cores"))
-    print(mean(tsb$t < 0.05))
-    power[i] <- mean(tsb$t < 0.05); i<-i+1 }
-power
-library(ggplot2)
-qplot(ns, power) + stat_smooth()
-
-
-library(boot)
-library(lmtest)
-simulateTSA <- function (df, effect=0.03, truncate=TRUE, threshold=3000) {
-    df$Ads <- rbinom(nrow(df), size=1, p=0.5)
-    df[df$Ads==1,]$Pageviews <- round(df[df$Ads==1,]$Pageviews * (1-effect))
-    if(truncate) { df[df$Pageviews>threshold,]$Pageviews <- threshold }
-    p <- coeftest(arima(df$Pageviews, xreg=df$Ads, order=c(4,1,1)))[,4][["df$Ads"]]
-    p
-    }
-ns <- seq(5, 200, by=1)
-power <- vector(mode="numeric", length=length(ns))
-i <- 1
-for (n in ns) {
-    tsb <- tsboot(ads, simulateTSA, 5000, l=n, sim="fixed", parallel="multicore", ncpus=getOption("mc.cores"))
-    print(mean(tsb$t < 0.05))
-    power[i] <- mean(tsb$t < 0.05); i<-i+1 }
-power
-library(ggplot2)
-qplot(ns, power) + stat_smooth()
-
-
-traffic <- read.csv("~/Analytics www.gwern.net Audience Overview 20090101-20170109.csv")
+~~~{.R}
 library(runjags)
 arima311 <- "model {
   # initialize the first 3 days, which we need to fit the 3 lags/moving-averages for day 4:
-  y[1] ~ dnorm(10,1)
-  y[2] ~ dnorm(10,1)
-  y[3] ~ dnorm(10,1)
+  y[1] <- 50
+  y[2] <- 50
+  y[3] <- 50
   eps[1] <- 0
   eps[2] <- 0
   eps[3] <- 0
@@ -3453,57 +3331,69 @@ Nclust = 2
 clust = rep(NA,length(y))
 clust[which(y<1800)] <- 1 # seed labels for cluster 1, normal traffic
 clust[which(y>4000)] <- 2 # seed labels for cluster 2, spikes
-
-model <- run.jags(arima311, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(1,1) ), monitor=c("w1", "w2", "w3", "m1", "pClust", "muOfClust", "sigmaOfClust", "nuOfClust"), inits=list(w1=0.55, w2=0.37, w3=-0.01, m1=0.45, pClust=c(0.805, 0.195), muOfClust=c(86.5, 781), sigmaOfClust=c(156, 763), nuMinusOneOfClust=c(2.4-1, 1.04-1)), n.chains = getOption("mc.cores"), method="rjparallel", sample=500); summary(model)
-
+model <- run.jags(arima311, data = list(y=y, Nclust = Nclust, clust=clust, onesRepNclust = c(1,1) ),
+    monitor=c("w1", "w2", "w3", "m1", "pClust", "muOfClust", "sigmaOfClust", "nuOfClust"),
+    inits=list(w1=0.55, w2=0.37, w3=-0.01, m1=0.45, pClust=c(0.805, 0.195), muOfClust=c(86.5, 781), sigmaOfClust=c(156, 763), nuMinusOneOfClust=c(2.4-1, 1.04-1)),
+    n.chains = getOption("mc.cores"), method="rjparallel", sample=500)
+summary(model)
+~~~
 
 JAGS is painfully slow: 4h+ for 500 samples. Sharper priors, removing the 4th-order ARIMA lag, and better initialization didn't help. Too much correlation? Try switching to STAN.
 
-traffic <- read.csv("~/Analytics www.gwern.net Audience Overview 20090101-20170109.csv")
+~~~{.R}
+traffic <- read.csv("~/wiki/docs/traffic/20170108-traffic.csv", colClasses=c("Date", "integer"))
 library(rstan)
-arma411s <- "
-    data {
-        int<lower=1> T; // num observations
-        int<lower=0> y[T]; // observed outputs
+m <- "data {
+        int<lower=1> K; // number of mixture components
+        int<lower=1> T; // number of data points
+        int<lower=0> y[T]; // observations
     }
     parameters {
-        real<lower=0> mu; // mean coeff
+        simplex[K] theta; // mixing proportions
+        real<lower=0> muM[K]; // locations of mixture components
+        real<lower=0> sigmaM[K]; // scales of mixture components
+        real<lower=0> nuM[K];
+
         real phi1; // autoregression coeffs
         real phi2;
         real phi3;
         real phi4;
-        real theta; // moving avg coeff
-        real<lower=0.001, upper=50000> sigma; // noise scale
-        real<lower=0.001, upper=50> nuT;
+        real ma; // moving avg coeff
+
     }
     model {
-        vector[T] nu; // prediction for time t
-        vector[T] err; // error for time t
+
+        real mu[T, K]; // prediction for time t
+        // vector[T] err; // error for time t
+        real ps[K]; // temp for log component densities
         // initialize the first 4 days for the lags
-        nu[1] = mu + phi1 * mu; // assume err[0] == 0
-        nu[2] = mu + phi2 * mu;
-        nu[3] = mu + phi3 * mu;
-        nu[4] = mu + phi4 * mu;
-        err[1] = y[1] - nu[1];
-        err[2] = y[2] - nu[2];
-        err[3] = y[3] - nu[3];
-        err[4] = y[4] - nu[4];
+        mu[1][1] = 10; // assume err[0] == 0
+        mu[2][1] = 10;
+        mu[3][1] = 10;
+        mu[4][1] = 10;
+        // err[1] = y[1] - mu[1][1];
+        // err[2] = y[2] - mu[2][1];
+        // err[3] = y[3] - mu[3][1];
+        // err[4] = y[4] - mu[4][1];
+
+
+        muM ~ normal(500, 10);
+        sigmaM ~ cauchy(0, 2.5);
+        nuM ~ exponential(5);
+
         for (t in 5:T) {
-            nu[t] = mu + phi1 * y[t-1] + phi2 * y[t-2] + phi3 * y[t-3] + phi4 * y[t-4] + theta * err[t-1];
-            err[t] = y[t] - nu[t];
-    }
-    phi1 ~ normal(0, 0.6);
-    phi2 ~ normal(0, 0.5);
-    phi3 ~ normal(0, 0.4);
-    phi4 ~ normal(0, 0.3);
-    theta ~ normal(0, 0.5);
-    sigma ~ cauchy(0, 500);
-    mu ~ normal(10, 1000);
-    nuT ~ exponential(5);
-    err ~ student_t(nuT, 0, sigma); // likelihood
+            for (k in 1:K) {
+                mu[t][k] = muM[k] + phi1 * y[t-1] + phi2 * y[t-2] + phi3 * y[t-3] + phi4 * y[t-4]; // + ma * err[t-1];
+                // err[t] = y[t] - mu[t][k];
+
+                ps[k] = log(theta[k]) + student_t_lpdf(y[t] | nuM[k], mu[t][k], sigmaM[k]);
+            }
+        target += log_sum_exp(ps);
+        }
     }"
-inits <- list(mu=3.23, phi1=1.75, phi2=-0.84, phi3=0.10, phi4=-0.01, theta=-0.94, sigma=166, nuT=1.05)
-model <- stan(model_code=arma411s, data=list(T=nrow(traffic), y=traffic$Pageviews), control = list(adapt_delta = 0.85), chains=getOption("mc.cores")-1, init=list(inits, inits, inits, inits, inits, inits, inits, inits)); print(model)
+# inits <- list(mu=3.23, phi1=1.75, phi2=-0.84, phi3=0.10, phi4=-0.01, theta=-0.94, sigma=166, nuT=1.05)
+model <- stan(model_code=m, data=list(T=nrow(traffic), y=traffic$Pageviews, K=2), chains=getOption("mc.cores")-1); print(model)
+~~~
 -->
 
 # Deep reinforcement learning
