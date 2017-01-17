@@ -294,3 +294,39 @@ If one wants to put limits on the ability of an AI by way of computational resou
     - [LW](http://lesswrong.com/r/discussion/lw/nsm/open_thread_jul_25_jul_31_2016/ddja)
     - Facebook: [1](https://www.facebook.com/yudkowsky/posts/10154413180579228), [2](https://www.facebook.com/MachineIntelligenceResearchInstitute/posts/1084181481619235)
     - [HN](https://news.ycombinator.com/item?id=12354097)
+
+<!--
+
+Some people seem to get caught up in discussions about how 'big' an AI agent must be and whether there will be one or millions; this is not an important issue as it is merely an internal organizational one. What is important are the inputs and outputs: how capable is the system as a whole and what resources does it require? No one cares if Google is implemented using 50,000 mainframes, 5 million servers, or 50 million embedded/mobile processors, or [a mix of any of the above](https://herbsutter.com/welcome-to-the-jungle/) exploiting a wide variety of chips from custom 'tensor processing units' to custom on-die silicon to FPGAs to GPUs to CPUs to still exotic hardware - as long as it is competitive with other tech corporations and can deliver its services at a reasonable cost. Similarly, any AI system might be implemented as a single giant neural network, or as a sharded NN running asynchronously, or as a heterogeneous set of micro-services, or as a 'society of mind' etc - but it doesn't especially matter, from a complexity or risk perspective, how exactly it's organized internally as long as it works. The system can be seen on many levels, each equally invalid but useful for different purposes.
+
+
+Here is an example of the irrelevance of the internal structure: on your desk or in your pocket, how many computers do you currently have? How many computers are in your "computer"? Just one? Let's take a closer look.
+It goes far beyond just the CPU, for a variety of reasons: transistors and processor cores are so cheap now that it often makes sense to use a separate core for realtime or higher performance, for security guarantees, to avoid having to burden the main OS with a task, for compatibility with an older architecture or existing software package, because a DSP or core can be programmed faster than a more specialized ASIC can be created, or because it was just the simplest possible solution.
+Thus:
+
+A common Intel CPU probably has 1-2 billion transistors, devoted to a huge number of tasks, of course.
+Each of the 2 or 4 main CPU cores can run independently, shutting on or off as necessary, and has its own private cache (bigger than most computers' RAM up to even recently), and must be regarded as individuals.
+The CPU as a whole is reprogrammable through microcode, such as to work around errors in the chip design, and sport increasingly opaque features like the Intel SGX
+any floating point unit can probably be considered Turing-complete through encoding into floating-point operations in the spirit of Fractran
+management chip with network access and backdoors
+the [MMU](!Wikipedia "Memory management unit") can be programmed (just one of [many things which are, weirdly, Turing-complete](/Turing-complete))
+DSP units, custom silicon: ASICs for video formats like h.264 probably are not Turing-complete but example Apple's A9 https://en.wikipedia.org/wiki/Apple_A9 mobile system-on-a-chip goes far beyond simply a dual-core ARM CPU and GPU as it includes the secure enclave (a [physically separate dedicated CPU core](http://www.arm.com/products/security-on-arm/trustzone)), an image processor, a motion/voice-recognition coprocessor (partially to support Siri), and apparently a few other cores.
+similar Motorola system-on-a-chip (Motorola X8 Mobile Computing System)
+with little sign that the trend towards ASICs for many tasks
+http://www.geek.com/chips/you-can-wake-up-an-intel-skylake-powered-pc-by-talking-to-it-1631530/
+GPU several hundred cores
+controllers for hard drives, flash drives: on-disk firmware with embedded processor for remapping sectors
+network chip independent processing DMA
+(This sort of independence is why features like Wake-on-LAN or netboot work.)
+cellphone: in addition to all the other units, there is an independent baseband processor running a proprietary realtime OS for handling radio communications with the cellular towers/GPS/other things, or possibly more than one virtualized using something like L4 http://boston.conman.org/2013/01/22.2
+[SIM cards](!Wikipedia "Subscriber identity module") for smartphones are much more than simple memory cards recording your subscription information, as they are [smart cards](!Wikipedia) which can independently run [Java Card](!Wikipedia) applications (apparently NFC chips may also be like this as well)
+USB devices: processor on device for negotiation, may be heavy duty with additional processors themselves like WiFi adapters or keyboards or mice
+monitor embedded CPU (part of a traditional going back to smart teletypes)
+random weird chips like the Macbook Touch bar running https://en.wikipedia.org/wiki/WatchOS
+motherboard bios
+
+
+None of this is unusual historically, as even the earliest mainframes tended to be multiple computers, with the main computer doing batch processing while additional smaller computers took care of high-speed I/O operations that would otherwise choke the main computers with interrupts.
+
+In practice, aside from the computer security community (as all these computers are insecure and thus useful hidey-holes for the NSA & VXers), users don't care that our computers, under the hood, are insanely complex and more accurately seen as a motley menagerie of hundreds of computers yoked awkwardly together (was it "the network is the computer" or "the computer is the network"...?); he perceives and uses it as a single computer.
+-->
