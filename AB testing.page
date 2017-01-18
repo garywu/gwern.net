@@ -3010,6 +3010,8 @@ If it is, then I am better off removing AdSense and increasing traffic; otherwis
 
 <!--
 
+### Design
+
 How do we analyze this? In the ABalytics approach, it was simple: we defined a threshold and did a binomial regression. But by switching to trying to increase overall total traffic, I have opened up a can of worms.
 Let's look at the traffic data:
 
@@ -3038,6 +3040,8 @@ Two things jump out.
 The distribution of traffic is weird, with enormous spikes; doing a log-transform to tame the spikes, it is also clearly a non-stationary time-series with heavy autocorrelation as traffic consistently grows and declines.
 These are not surprising, as social media traffic from sites like Hacker News or Reddit are notorious for creating spikes in site traffic (and sometimes bringing them down under the load), and I would hope that as I keep writing things, traffic would gradually increase!
 Nevertheless, both of these will make the traffic data difficult to analyze despite having over 6 years of it.
+
+#### Power analysis
 
 We can demonstrate with a quick power analysis: if we pick a random subset of days and force a decrease of 2.8% (the value on the decision boundary), can we detect that?
 
@@ -3210,7 +3214,7 @@ power <- function(ns, df, test, effect, alpha=0.05, iters=2000) {
         i <- i+1 }
     return(powerEstimates) }
 
-ns <- seq(10, 1500, by=5)
+ns <- seq(10, 2000, by=5)
 ## test the critical value but also 0 effect to check whether alpha is respected
 powerUtestNull <- power(ns, traffic, ut, 0)
 powerUtest     <- power(ns, traffic, ut, 0.028)
@@ -3223,66 +3227,16 @@ p4 <- qplot(ns, powerArima) + stat_smooth() + coord_cartesian(ylim = c(0, 1))
 
 library(grid)
 library(gridExtra)
-grid.arrange(p1, p2, p3, p4, ncol = 2, name = "Power analysis of detecting null effect/2.8% reduction using u-test and ARIMA regression")
+grid.arrange(p1, p3, p2, p4, ncol = 2, name = "Power analysis of detecting null effect/2.8% reduction using u-test and ARIMA regression")
 ~~~
 
-So the false-positive rate is preserved for both, the ARIMA requires a reasonable-looking _n_<100 to be well-powered, but the _u_-test power is bizarre - the power is never great, never going >35% or so, and actually *decreasing* after a certain point (which is not something you usually see in a power graph).
-My speculation about that is that it is because as the time-series window increases, more of the spikes come into view of the _u_-test, making the distribution dramatically wider & this more than overwhelms the gain in detectability; with some more years of data, the spikes would stop coming as a surprise and the gradual hypothetical damage of the ads will then become more visible with increasing sample size as expected
+![Block-bootstrap power analysis of ability to detect 2.8% traffic reduction using _u_-test & ARIMA time-series model](/images/traffic/2017-arima-power.png)
+
+So the false-positive rate is preserved for both, the ARIMA requires a reasonable-looking _n_<70 to be well-powered, but the _u_-test power is bizarre - the power is never great, never going >31.6%, and actually *decreasing* after a certain point, which is not something you usually see in a power graph.
+(The ARIMA power curve is also odd but at least it doesn't get worse with more data!)
+My speculation about that is that it is because as the time-series window increases, more of the spikes come into view of the _u_-test, making the distribution dramatically wider & this more than overwhelms the gain in detectability; hypothetically, with even more years of data, the spikes would stop coming as a surprise and the gradual hypothetical damage of the ads will then become more visible with increasing sample size as expected.
 
 
-
-~~~
-ads[ads$Ads==1,]$Hits <- round(ads[ads$Ads==1,]$Hits * 0.95)
-
-require(rjags)
-y <- ads$Hits
-x <- ads$Ads
-model_string <- "model {
-  for (i in 1:length(y)) {
-   y[i] ~ dpois(lambda[i])
-   log(lambda[i]) <- alpha0 - alpha1 * x[i]
-
-  }
-  alpha0 ~ dunif(0,10)
-  alpha1 ~ dgamma(50, 6)
-}"
-model <- jags.model(textConnection(model_string), data = list(x = x, y = y),
-                    n.chains = getOption("mc.cores"))
-samples <- coda.samples(model, c("alpha0", "alpha1"), n.iter=10000)
-summary(samples)
-# 1. Empirical mean and standard deviation for each variable,
-#    plus standard error of the mean:
-#
-#              Mean          SD     Naive SE Time-series SE
-# alpha0 6.98054476 0.003205046 1.133155e-05   2.123554e-05
-# alpha1 0.06470139 0.005319866 1.880857e-05   3.490445e-05
-#
-# 2. Quantiles for each variable:
-#
-#              2.5%        25%        50%        75%      97.5%
-# alpha0 6.97426621 6.97836982 6.98055144 6.98273011 6.98677827
-# alpha1 0.05430508 0.06110893 0.06469162 0.06828215 0.07518853
-alpha0 <- samples[[1]][,1]; alpha1 <- samples[[1]][,2]
-posteriorTrafficReduction <- exp(alpha0) - exp(alpha0-alpha1)
-
-generalLoss <- function(annualAdRevenue, trafficLoss,  hitValue, discountRate) {
-  (annualAdRevenue - (trafficLoss * hitValue * 365.25)) / log(1 + discountRate) }
-loss <- function(tr) { generalLoss(360, tr, 0.02, 0.05) }
-posteriorLoss <- sapply(posteriorTrafficReduction, loss)
-summary(posteriorLoss)
-#       Min.    1st Qu.     Median       Mean    3rd Qu.       Max.
-# -5743.5690 -3267.4390 -2719.6300 -2715.3870 -2165.6350   317.7016
-~~~
-
-Expected loss of turning on ads: -$2715. Current decision: keep ads off to avoid that loss.
-The expected average gain in the case where the correct decision is turning ads on:
-
-~~~{.R}
-mean(ifelse(posteriorLoss>0, posteriorLoss, 0))
-# [1] 0.06868814833
-~~~
-
-so EVPI is \$0.07. This doesn't pay for any additional days of sampling, so there's no need to calculate an EVSI.
 
 
 > An  model is an autoregressive model of order 2, or AR(2) model. This model can be written as: X_t - mu = (Beta1 * (X_t-1 - mu)) + (Beta2 * (Xt-2 - mu)) + Z_t, where X_t is the stationary time series we are studying (the time series of volcanic dust veil index), mu is the mean of time series X_t, Beta1 and Beta2 are parameters to be estimated, and Z_t is white noise with mean zero and constant variance.
@@ -3338,7 +3292,7 @@ model <- run.jags(arima311, data = list(y=y, Nclust = Nclust, clust=clust, onesR
 summary(model)
 ~~~
 
-JAGS is painfully slow: 4h+ for 500 samples. Sharper priors, removing the 4th-order ARIMA lag, and better initialization didn't help. Too much correlation? Try switching to STAN.
+JAGS is painfully slow: 5h+ for 500 samples. Sharper priors, removing the 4th-order ARIMA lag, and better initialization didn't help. Too much correlation? Try switching to STAN.
 
 ~~~{.R}
 traffic <- read.csv("~/wiki/docs/traffic/20170108-traffic.csv", colClasses=c("Date", "integer"))
@@ -3350,50 +3304,107 @@ m <- "data {
     }
     parameters {
         simplex[K] theta; // mixing proportions
-        real<lower=0> muM[K]; // locations of mixture components
-        real<lower=0> sigmaM[K]; // scales of mixture components
-        real<lower=0> nuM[K];
+        real<lower=0, upper=50000> muM[K]; // locations of mixture components
+        real<lower=0.01, upper=50000> sigmaM[K]; // scales of mixture components
+        real<lower=0.01, upper=10> nuM[K];
 
         real phi1; // autoregression coeffs
         real phi2;
         real phi3;
         real phi4;
         real ma; // moving avg coeff
-
     }
     model {
 
         real mu[T, K]; // prediction for time t
-        // vector[T] err; // error for time t
+        vector[T] err; // error for time t
         real ps[K]; // temp for log component densities
         // initialize the first 4 days for the lags
-        mu[1][1] = 10; // assume err[0] == 0
-        mu[2][1] = 10;
-        mu[3][1] = 10;
-        mu[4][1] = 10;
-        // err[1] = y[1] - mu[1][1];
-        // err[2] = y[2] - mu[2][1];
-        // err[3] = y[3] - mu[3][1];
-        // err[4] = y[4] - mu[4][1];
+        mu[1][1] = 0; // assume err[0] == 0
+        mu[2][1] = 0;
+        mu[3][1] = 0;
+        mu[4][1] = 0;
+        err[1] = y[1] - mu[1][1];
+        err[2] = y[2] - mu[2][1];
+        err[3] = y[3] - mu[3][1];
+        err[4] = y[4] - mu[4][1];
 
 
-        muM ~ normal(500, 10);
+        muM ~ normal(50, 100);
         sigmaM ~ cauchy(0, 2.5);
         nuM ~ exponential(5);
+        ma ~ normal(0, 0.5);
 
         for (t in 5:T) {
             for (k in 1:K) {
-                mu[t][k] = muM[k] + phi1 * y[t-1] + phi2 * y[t-2] + phi3 * y[t-3] + phi4 * y[t-4]; // + ma * err[t-1];
-                // err[t] = y[t] - mu[t][k];
+                mu[t][k] = muM[k] + phi1 * y[t-1] + phi2 * y[t-2] + phi3 * y[t-3] + phi4 * y[t-4] + ma * err[t-1];
+                err[t] = y[t] - mu[t][k];
 
                 ps[k] = log(theta[k]) + student_t_lpdf(y[t] | nuM[k], mu[t][k], sigmaM[k]);
             }
         target += log_sum_exp(ps);
         }
     }"
-# inits <- list(mu=3.23, phi1=1.75, phi2=-0.84, phi3=0.10, phi4=-0.01, theta=-0.94, sigma=166, nuT=1.05)
-model <- stan(model_code=m, data=list(T=nrow(traffic), y=traffic$Pageviews, K=2), chains=getOption("mc.cores")-1); print(model)
+inits <- list(theta=c(0.92, 0.08), muM=c(56.2, 0.1), sigmaM=c(189.5, 5.6), nuM=c(1.1, 0.61), phi1=1.72, phi2=-0.8, phi3=0.08, phi4=0, ma=-0.91)
+model <- stan(model_code=m, data=list(T=nrow(traffic), y=traffic$Pageviews, K=2), init=list(inits, inits, inits, inits, inits, inits, inits), chains=getOption("mc.cores")-1, sample=20000); print(model)
 ~~~
+-->
+
+<!--
+EVSI
+
+~~~
+ads[ads$Ads==1,]$Hits <- round(ads[ads$Ads==1,]$Hits * 0.95)
+
+require(rjags)
+y <- ads$Hits
+x <- ads$Ads
+model_string <- "model {
+  for (i in 1:length(y)) {
+   y[i] ~ dpois(lambda[i])
+   log(lambda[i]) <- alpha0 - alpha1 * x[i]
+
+  }
+  alpha0 ~ dunif(0,10)
+  alpha1 ~ dgamma(50, 6)
+}"
+model <- jags.model(textConnection(model_string), data = list(x = x, y = y),
+                    n.chains = getOption("mc.cores"))
+samples <- coda.samples(model, c("alpha0", "alpha1"), n.iter=10000)
+summary(samples)
+# 1. Empirical mean and standard deviation for each variable,
+#    plus standard error of the mean:
+#
+#              Mean          SD     Naive SE Time-series SE
+# alpha0 6.98054476 0.003205046 1.133155e-05   2.123554e-05
+# alpha1 0.06470139 0.005319866 1.880857e-05   3.490445e-05
+#
+# 2. Quantiles for each variable:
+#
+#              2.5%        25%        50%        75%      97.5%
+# alpha0 6.97426621 6.97836982 6.98055144 6.98273011 6.98677827
+# alpha1 0.05430508 0.06110893 0.06469162 0.06828215 0.07518853
+alpha0 <- samples[[1]][,1]; alpha1 <- samples[[1]][,2]
+posteriorTrafficReduction <- exp(alpha0) - exp(alpha0-alpha1)
+
+generalLoss <- function(annualAdRevenue, trafficLoss,  hitValue, discountRate) {
+  (annualAdRevenue - (trafficLoss * hitValue * 365.25)) / log(1 + discountRate) }
+loss <- function(tr) { generalLoss(360, tr, 0.02, 0.05) }
+posteriorLoss <- sapply(posteriorTrafficReduction, loss)
+summary(posteriorLoss)
+#       Min.    1st Qu.     Median       Mean    3rd Qu.       Max.
+# -5743.5690 -3267.4390 -2719.6300 -2715.3870 -2165.6350   317.7016
+~~~
+
+Expected loss of turning on ads: -$2715. Current decision: keep ads off to avoid that loss.
+The expected average gain in the case where the correct decision is turning ads on:
+
+~~~{.R}
+mean(ifelse(posteriorLoss>0, posteriorLoss, 0))
+# [1] 0.06868814833
+~~~
+
+so EVPI is \$0.07. This doesn't pay for any additional days of sampling, so there's no need to calculate an EVSI.
 -->
 
 # Deep reinforcement learning
