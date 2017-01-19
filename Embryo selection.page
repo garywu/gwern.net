@@ -199,6 +199,9 @@ I was able to find in total the following GCTA estimates:
 12. ["The genetic architecture of pediatric cognitive abilities in the Philadelphia Neurodevelopmental Cohort"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4294962/), Robinson et al 2015
 
     _n_=3689, 0.360(0.108) for the principal factor extracted from their battery of tests, non-twins mean age 13.7
+13. ["GWAS meta-analysis reveals novel loci and genetic correlates for general cognitive function: a report from the COGENT consortium"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016244a.html), Trampush et al 2017:
+
+    _n_=35298, 0.215(0.0001); mot GCTA but LD score regression, with overlap with CHARGE (cohorts: CHS, FHS, HBCS, LBC1936 and NCNG); non twin, mean age of 45.6
 
 The earlier estimates tend to be smaller samples and higher, and as heritability increases with age, it's not surprising that the GCTA estimates of SNP contribution also increases with age.
 
@@ -428,34 +431,36 @@ Past polygenic scores for intelligence:
 3. ["Childhood intelligence is heritable, highly polygenic and associated with _FNBP1L_"](http://www.researchgate.net/profile/Beben_Benyamin/publication/235379638_Childhood_intelligence_is_heritable_highly_polygenic_and_associated_with_FNBP1L/links/5458a9090cf2bccc491183f0.pdf), Benyamin et al 2014:
 
     0.5%, 1.2%, 3.5%.
-6. ["Results of a "GWAS Plus:" General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014:
+4. ["Results of a "GWAS Plus:" General Cognitive Ability Is Substantially Heritable and Massively Polygenic"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112390), Kirkpatrick et al 2014:
 
     0.55% (maximum in sub-samples: 0.7%)
-3. ["Common genetic variants associated with cognitive performance identified using the proxy-phenotype method"](http://www.pnas.org/content/early/2014/09/05/1404623111.full.pdf), Rietveld et al 2014 ([supplementary](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4183313/bin/pnas.1404623111.sapp.pdf))
+5. ["Common genetic variants associated with cognitive performance identified using the proxy-phenotype method"](http://www.pnas.org/content/early/2014/09/05/1404623111.full.pdf), Rietveld et al 2014 ([supplementary](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4183313/bin/pnas.1404623111.sapp.pdf))
 
     Predicts "0.2% to 0.4%" of variance in cognitive performance using a small polygenic score of 69 SNPs. (For other very small polygenic score uses, see also [Domingue et al 2015](http://ero.sagepub.com/content/1/3/2332858415599972?full "Polygenic Influence on Educational Attainment") & [Zhu et al 2015](https://www.researchgate.net/profile/Chuansheng_Chen/publication/265855103_Educational_attainment-related_loci_identified_by_GWAS_are_associated_with_select_personality_traits_and_mathematics_and_language_abilities/links/542af5720cf27e39fa917a84.pdf "Educational attainment-related loci identified by GWAS are associated with select personality traits and mathematics and language abilities)").)
 4. ["Genetic contributions to variation in general cognitive function: a meta-analysis of genome-wide association studies in the CHARGE consortium (N=53 949)"](http://www.nature.com/mp/journal/v20/n2/full/mp2014188a.html), Davies et al 2015:
 
     1.2%
-5. ["Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (N=112 151) and 24 GWAS consortia"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html), Hagenaars et al 2016 ([supplementary data](http://www.nature.com/mp/journal/vaop/ncurrent/extref/mp2015225x1.doc)):
+6. ["Shared genetic aetiology between cognitive functions and physical and mental health in UK Biobank (N=112 151) and 24 GWAS consortia"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015225a.html), Hagenaars et al 2016 ([supplementary data](http://www.nature.com/mp/journal/vaop/ncurrent/extref/mp2015225x1.doc)):
 
     Supplementary Table 4d reports predictive validity of the educational attainment polygenic score for childhood-cognitive-ability/college-degree/years-of-education in its other samples, yielding R^2^=0.0042/0.0214/0.0223 or 0.42%/2.14%/2.23% respectively. Particularly intriguing given its investigation of pleiotropy is Supplementary Table 5, which uses polygenic scores constructed for all the diseases in its data (eg type 2 diabetes, ADHD, schizophrenia, coronary artery disease), where all the disease scores & covariates are entered into the model and then the cognitive polygenic scores are able to predict even higher, as high as R^2^=0.063/0.046/0.064.
-6. ["Genome-wide association study of cognitive functions and educational attainment in UK Biobank (_N_=112151)"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp201645a.html), Davies et al 2016:
+7. ["Genome-wide association study of cognitive functions and educational attainment in UK Biobank (_N_=112151)"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp201645a.html), Davies et al 2016:
 
     The Biobank polygenic score constructed for "verbal-numerical reasoning" predicted 0.98%/1.32% of _g_/_gf_ scores in Generation Scotland, and 2.79% in Lothian Birth Cohort 1936 ([Figure 2](http://www.nature.com/mp/journal/vaop/ncurrent/fig_tab/mp201645f2.html#figure-title)).
-6. ["GWAS for executive function and processing speed suggests involvement of the CADM2 gene"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4722802/), Ibrahim-Verbaas et al 2016
+8. ["GWAS for executive function and processing speed suggests involvement of the CADM2 gene"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4722802/), Ibrahim-Verbaas et al 2016
 
     Does not report a polygenic score.
-5. Upcoming in 2016 is another SSGAC paper with ~8x hits using _n_=305,000 but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score. (The polygenic score will be much better than the Rietveld et al 2013 polygenic score, and I intend to rerun the numbers when it comes out and becomes the new public state of the art.) In a [March 2016 roundtable](https://www.youtube.com/watch?v=v5ANweXCptM "Steven Pinker, Stephen Hsu and Dalton Conley: Can Genius Be Genetically Engineered?"), a mention was made of an upcoming polygenic score explaining "about 8-10% of IQ".
-5. in 2016, a consortium combined the SSGAC dataset with UK Biobank, expanding the combined dataset to >300,000 and yielding a total of 162 education hits; the results were reported in two papers, the latter giving the polygenic scores:
+9. Upcoming in 2016 is another SSGAC paper with ~8x hits using _n_=305,000 but [neither](http://drjamesthompson.blogspot.com/2015/09/scholar-in-86-snps.html) [talk's](http://infoproc.blogspot.com/2015/06/more-gwas-hits-on-cognitive-ability.html) summary gives the polygenic score. (The polygenic score will be much better than the Rietveld et al 2013 polygenic score, and I intend to rerun the numbers when it comes out and becomes the new public state of the art.) In a [March 2016 roundtable](https://www.youtube.com/watch?v=v5ANweXCptM "Steven Pinker, Stephen Hsu and Dalton Conley: Can Genius Be Genetically Engineered?"), a mention was made of an upcoming polygenic score explaining "about 8-10% of IQ".
+10. in 2016, a consortium combined the SSGAC dataset with UK Biobank, expanding the combined dataset to >300,000 and yielding a total of 162 education hits; the results were reported in two papers, the latter giving the polygenic scores:
 
     - ["Genome-wide association study identifies 74 [162] loci associated with educational attainment"](https://www.gwern.net/docs/iq/2016-okbay-2.pdf), Okbay et al 2016
     - ["Predicting educational achievement from DNA"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016107a.html), Selzam et al 2016 ([supplement](http://www.nature.com/mp/journal/vaop/ncurrent/extref/mp2016107x1.pdf))
 
     The polygenic score predicts 3.5% of intelligence, 7% of family SES, and 9% of education in a heldout sample.
+11. ["GWAS meta-analysis reveals novel loci and genetic correlates for general cognitive function: a report from the COGENT consortium"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016244a.html), Trampush et al 2017: no polygenic score reported
 
 Since these scores overlap and are not, like GCTA estimates, repeated measurements of a variable in any sense, there is little point in meta-analyzing them other than to estimate growth over time (even using them as an ensemble wouldn't be worth the complexity, and in any case, most studies do not provide the full list of beta values making up the polygenic score); for our purpose, the largest polygenic score is the important number.
-([Emil Kirkegaard](http://emilkirkegaard.dk/en/?p=5813) notes that the polygenic scores are also inefficient: polygenic scores are not always published, not always based on individual patient data, and generally use maximum-likelihood estimation neglecting our strong priors on the number of hits & distribution of effect sizes. But these published scores are what we have as of January 2016, so we must make do.)
+([Emil Kirkegaard](http://emilkirkegaard.dk/en/?p=5813) notes that the polygenic scores are also inefficient: polygenic scores are not always published, not always based on individual patient data, and generally use maximum-likelihood estimation neglecting our strong priors on the number of hits & distribution of effect sizes.
+But these published scores are what we have as of January 2016, so we must make do.)
 
 Selzam et al 2016's reported polygenic score for cognitive performance was 3.5%.
 Thus:
