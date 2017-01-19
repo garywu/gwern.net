@@ -16,6 +16,11 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 Everything is heritable:
 
+- dysgenics:
+
+    - in Iceland: decrease in the education polygenic score 1910-1990, ["Selection against variants in the genome associated with educational attainment"](https://www.gwern.net/docs/genetics/2017-kong.pdf), Kong et al 2017 ([media](https://www.theguardian.com/science/2017/jan/16/natural-selection-making-education-genes-rarer-says-icelandic-study "Natural selection making 'education genes' rarer, says Icelandic study: Researchers say that while the effect corresponds to a small drop in IQ per decade, over centuries the impact could be profound")):
+    - in the US: decrease in the education polygenic score 1920-1960, ["Mortality Selection in a Genetic Sample and Implications for Association Studies"](http://biorxiv.org/content/early/2016/04/21/049635), Domingue et al 2016
+- ["GWAS meta-analysis reveals novel loci and genetic correlates for general cognitive function: a report from the COGENT consortium"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016244a.html), Trampush et al 2017
 - ["Apolipoprotein E4 is associated with improved cognitive function in Amazonian forager-horticulturalists with a high parasite burden"](https://www.gwern.bet/docs/genetics/2016-trumble.pdf), Trumble et al 2016 ([media](https://www.theatlantic.com/science/archive/2017/01/why-does-a-gene-that-increases-alzheimers-risk-still-exist/512396/ "Why Do Humans Still Have a Gene That Increases the Risk of Alzheimer's?"); of course, different regions, and hence different groups, differ in parasite load.)
 
 AI:
@@ -26,6 +31,7 @@ Statistics/meta-science/mathematics:
 - ["A Conceptual Introduction to Hamiltonian Monte Carlo"](https://arxiv.org/pdf/1701.02434.pdf), Betancourt 2017 (HMC is critical to Bayesian neural networks & Stan)
 - ["What Does Any of This Have To Do with Physics?"](http://nautil.us/issue/43/heroes/what-does-any-of-this-have-to-do-with-physics) (brutal memoir of contemporary graduate work in theoretical physics)
 - ["The Statistical Crisis in Science: The Cult Of _P_"](http://lib.ugent.be/fulltxt/RUG01/002/304/385/RUG01-002304385_2016_0001_AC.pdf), Debrouwere 2016 (a readable overview of the problems with _p_-values/NHST)
+- ["A First Look at Reproducibility in Cancer Biology"](http://blogs.sciencemag.org/pipeline/archives/2017/01/19/a-first-look-at-reproducibility-in-cancer-biology)
 - ["Meta-knowledge: Crowds aren't as smart as we thought, since some people know more than others. A simple trick can find the ones you want"](https://aeon.co/essays/a-mathematical-bs-detector-can-boost-the-wisdom-of-crowds)
 
 Politics/religion:
@@ -38,6 +44,8 @@ Psychology/biology:
 - ["A Systematic Review of Personality Trait Change Through Intervention"](https://www.researchgate.net/profile/Brent_Roberts/publication/312105742_A_Systematic_Review_of_Personality_Trait_Change_Through_Intervention/links/5870f1f308ae329d621714aa.pdf), Roberts et al 2016 (Messy - noticeable levels of publication bias, high heterogeneity -  but results look plausible: 8-week+ interventions can improve emotional-stability/Neuroticism, change Openness and Extraversion somewhat, but leave Conscientiousness largely unaffected.﻿)
 
 Technology:
+
+- ["Epigrams on Programming"](https://www.gwern.net/docs/1982-perlis.pdf), Perlis 1982
 
 Economics:
 
@@ -54,15 +62,22 @@ Fiction:
 
 Nonfiction:
 
+- [_Clever Hans_](https://www.gutenberg.org/files/33936/33936-h/33936-h.htm), [Oskar Pfungst](https://en.wikipedia.org/wiki/Oskar_Pfungst) (on the famous [Clever Hans](https://en.wikipedia.org/wiki/Clever_Hans))
+
 Fiction:
+
+- [_The Anubis Gates_](https://en.wikipedia.org/wiki/The_Anubis_Gates), Tim Powers
 
 ## Film/TV
 
 Live-action:
 
+- [_This Is Spinal Tap_](https://en.wikipedia.org/wiki/This_Is_Spinal_Tap)
+
 Animated:
 
 - [_Kubo and the Two Strings_](https://en.wikipedia.org/wiki/Kubo_and_the_Two_Strings) (ostentatiously gorgeous clay stop-animation film. Even knowing that backgrounds and other parts are CGI, I still have trouble believing it was stop-motion - it is simply too luxuriously animated and beautiful on my new 4K monitor. Takes the format of a Japanese fairy tale very loosely drawing on the moon aspect of "The Tale of the Bamboo Cutter" with miscellaneous influence from jidaigeki for the instrument and Korea for the horse-hair hats of two characters.)
+- [_One-Punch Man_](https://en.wikipedia.org/wiki/One-Punch_Man)
 
 ## Games
 
