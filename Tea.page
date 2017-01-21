@@ -585,6 +585,23 @@ Select Dragon Well Lung Ching 4
 
     For gyokuro, this is excellently priced, and while I did not have any of Upton's more expensive regular gyokuro at hand to compare side by side, I *think* the quality was only somewhat less. Sadly, hardly halfway through the tin, I realized I had made a major mistake in not transferring the bulk of it into a sealed container & using a smaller amount in a small container to protect against the extremely humid section of my kitchen where I store my teas, as I noticed that a mold had started to grow in one corner and the bottom half had compacted into a single mass & discolored. (This is similar to what happened with my Tao of Tea Handrolled Jasmine Pearls Green Tea balls.) I had to throw out the rest. I immediately transferred the Capital Tea Himalayan Golden Monkey, which was in a similar tin, into separate containers with some desiccant bags - but tragically it was too late for the gyokuro.
 - Clipper Ship Tea Company: Imperial Green (★★★☆☆)
+- [Pi Lo Chun](http://uptontea.com/store/item.asp?itemID=ZG59 "$2, 15g") (★★☆☆☆/★★★☆☆)
+
+    > This Pi Lo Chun selection has beautifully crafted leaves with silver downy buds. The pale gold infusion has a light floral fragrance. The satisfying cup is sweet and smooth with fruity notes and gentle floral hints.
+
+    smoky aftertaste?
+- [China Green Sencha](http://uptontea.com/store/item.asp?itemID=ZG41 "$1, 10g") (★★★☆☆)
+
+    > A good green tea for everyday consumption. In the style of Japanese Sencha, this China tea represents an affordable alternative to the more costly Japanese varieties.
+- [Organic Green Ceylon OP](http://uptontea.com/store/item.asp?itemID=TC81 "$1.50, 10g") (★★☆☆☆)
+
+    > This green tea offering has large, well-twisted leaves that produce a light golden liquor with a delicate floral aroma. The smooth cup is well-balanced with a full, buttery mouth feel and gentle pungency. The flavor has sweet tropical fruit notes and light citrus hints. A suggestion of spice may be found in the clean, lingering finish.
+bleh
+- [Organic Gyokuro](https://secure.uptontea.com/store/item.asp?itemID=TJ81 "$5, 15g") (★★★★☆/★★★★★)
+
+    > Limited lots of organic Gyokuro tea are produced each year. This lot has smooth umami notes, a rich cup and a clean, sweet finish. It was grown in Miyazaki prefecture using the Yabukita cultivar. We are happy to offer this tea while our current supply lasts.
+
+    Tastes as good as the other gyokuro.
 
 ### Ku-ki
 
@@ -871,6 +888,9 @@ green:
  ZG95: Hunan Green Needles Imperial https://secure.uptontea.com/store/item.asp?itemID=ZG95
  ZGP4: Pre-Chingming Pi Lo Chun Grade 1 https://secure.uptontea.com/store/item.asp?itemID=ZGP4
  TJ01: Competition Temomicha Organic https://secure.uptontea.com/store/item.asp?itemID=TJ01
+ ZO82: Floral Tie-Guan-Yin Oolong https://secure.uptontea.com/store/item.asp?itemID=ZO82
+ BF71: Cinnamon Plum Fruit Tea https://secure.uptontea.com/store/item.asp?itemID=BF71
+ TG42: Green Tea Mango Indica https://secure.uptontea.com/store/item.asp?itemID=TG42
  -->
 <!--
 http://www.uptontea.com/shopcart/Item.asp?UTid=2712-12-26567301&afterCart=/shopcart/index.asp&home=Item&itemID=ZO99
@@ -1460,8 +1480,6 @@ In this case, it seems that the variables are precise enough (measurement-errors
  http://uptontea.com/store/item.asp?itemID=TV35 : Vietnam Green Mao Feng Organic $2, 15g
    Reminiscent of a Yunnan green tea, this organic offering from Vietnam has bold, olive-green leaves with a crepe-y appearance. A fruity note is present in both the aroma and the cup. The bright golden liquor has a note of sweet uncured tobacco with peach hints in the finish.
 
-http://uptontea.com/store/item.asp?itemID=ZG59 : Pi Lo Chun $2, 15g
-   This Pi Lo Chun selection has beautifully crafted leaves with silver downy buds. The pale gold infusion has a light floral fragrance. The satisfying cup is sweet and smooth with fruity notes and gentle floral hints.
 
  http://uptontea.com/store/item.asp?itemID=ZW84 : China Silver Needle $1.5, 7g
     In this elegant white tea selection, beautiful silver-sage buds yield a rose-gold infusion with a sweet, gentle character. The cup has a fresh herbaceous aroma with a suggestion of honey. Delicate notes of honey and melon as well as orange nuances are notable in the silky smooth liquor.
@@ -1469,11 +1487,7 @@ http://uptontea.com/store/item.asp?itemID=ZG59 : Pi Lo Chun $2, 15g
  http://uptontea.com/store/item.asp?itemID=ZM48 : Jasmine Oolong $2.50, 12g
     The base tea of this offering is a quality Tie-Guan-Yin Oolong with light oxidation, expertly scented with jasmine blossoms. Most of the blossoms are removed after scenting, which results in a smoother cup. The liquor is a fine marriage of orchid, jasmine, and other floral notes.
 
- http://uptontea.com/store/item.asp?itemID=ZG41 : China Green Sencha $1, 10g
-    A good green tea for everyday consumption. In the style of Japanese Sencha, this China tea represents an affordable alternative to the more costly Japanese varieties.
 
- http://uptontea.com/store/item.asp?itemID=TC81 : Organic Green Ceylon OP $1.50, 10g
-    This green tea offering has large, well-twisted leaves that produce a light golden liquor with a delicate floral aroma. The smooth cup is well-balanced with a full, buttery mouth feel and gentle pungency. The flavor has sweet tropical fruit notes and light citrus hints. A suggestion of spice may be found in the clean, lingering finish.
 
  http://uptontea.com/store/item.asp?itemID=ZW88 : Shai Zhen Zhu Silver Needle Pearl $5.8, 8g
     Downy silver tea buds are carefully crafted into large pearl shapes, which produce a pale straw-colored infusion with a delicate, honeyed fragrance. The sweet cup has a clean character, with hints of melon and flowers. Each pearl weighs approximately 5 grams, which will yield about 2 cups of tea.
@@ -1487,8 +1501,6 @@ http://uptontea.com/store/item.asp?itemID=ZG59 : Pi Lo Chun $2, 15g
  http://uptontea.com/store/item.asp?itemID=ZW95 : Jinggu Spring Buds $3.8, 6g
     From Jinggu County in Yunnan province, these exquisite downy white tea buds yield a pale straw-colored infusion, notable for a nutty/toasty aroma with hints of honey. A sweet hay nuance complements the savory cup, which finishes with a gentle spice hint.
 
-https://secure.uptontea.com/store/item.asp?itemID=TJ81 TJ81: Organic Gyokuro $5, 15g
-   Limited lots of organic Gyokuro tea are produced each year. This lot has smooth umami notes, a rich cup and a clean, sweet finish. It was grown in Miyazaki prefecture using the Yabukita cultivar. We are happy to offer this tea while our current supply lasts.
 -->
 <!--
 Harney & Sons December order
@@ -1547,7 +1559,7 @@ Caffeine Level  Caffeine Free
 Body    Medium.
 Flavors     Sweet liquorice.
 
-Soba Tea – Roasted Buckwheat https://www.harney.com/products/soba-tea-roasted-buckwheat $3g 7g
+Soba Tea - Roasted Buckwheat https://www.harney.com/products/soba-tea-roasted-buckwheat $3g 7g
 Soba - roasted buckwheat - is a traditional Japanese specialty that is prepared as you would an herbal tisane. It is naturally caffeine free, with a delightful toasty flavor and nutty undertones. It was always Brigitte Harney's favorite on our visits to the former Takashimaya on Fifth Avenue, where we supplied tea for their renowned tea room over many years. We've since found a fine source, and are pleased to continue offering it.
 Details     Takashimaya was the best tea shop in New York for many years. They did a great job with teas from Japan and around the world (which we supplied.) One of Brigitte Harney's favorite drinks was Soba, so when we found a good source, we bought it.
 Dry Leaves  Small brown grains.
@@ -1558,7 +1570,7 @@ Body    A light body.
 Flavors     Similar to the aroma, this caffeine-free herbal tastes very toasty, with some nutty undertones.
 
 Tilleul (Linden Leaves) https://www.harney.com/products/tilleul-linden-tea $2 7g
-From Provence, France comes Tilleul, a light and lively blend of the linden tree's fragrant flowers and leaves. The naturally caffeine free herbal is prized for its subtle floral quality as well as its mild digestive and sleep benefits. The flowers and tender leaves produce a light, woodsy brew  as beautiful as its taste  in a mingling of forest-like green and yellow that's all part of the charm.
+From Provence, France comes Tilleul, a light and lively blend of the linden tree's fragrant flowers and leaves. The naturally caffeine free herbal is prized for its subtle floral quality as well as its mild digestive and sleep benefits. The flowers and tender leaves produce a light, woodsy brew - as beautiful as its taste - in a mingling of forest-like green and yellow that's all part of the charm.
 Details  Because Brigitte Harney is French, we are always on the lookout for traditional French beverages. And one does not get more French or more traditional than Tilleul. This is what Proust remembered along with some nice Madeleine cookies, so create some fond memories.
 Dry Leaves  Large tilleul (linden tree) leaves and flowers.
 Liquor  A very clean, clear, light green.
@@ -1657,7 +1669,7 @@ Body    Genmaicha is a light-bodied green tea.
 Flavors     Above a baseline vegetal flavor of spring grass, there is the strong roasted flavor from the toasted rice. It is evocative of popcorn.
 
 Gyokuro https://www.harney.com/products/gyokuro $4.00 7g
-Produced in the most famous area in Japan, we present Uji's most famous tea  Gyokuro. Japanese aristocrats have been sipping this highly regarded shade-grown emerald green tea for centuries.
+Produced in the most famous area in Japan, we present Uji's most famous tea - Gyokuro. Japanese aristocrats have been sipping this highly regarded shade-grown emerald green tea for centuries.
 Details     Most Gyokuro is grown in Uji, half an hour south the former Imperial capital of Kyoto. To service the demands of the Emperor and other members of the aristocracy, there were large tea fields and many tea factories built around Kyoto. It was in the twilight of the Edo era that shade grown teas were commercialized.
 Dry Leaves  These leaves are shiny emerald green spindles. The dark green comes from the fact that tea is grown in increasing shade. The plant compensates by making extra chlorophyll. They are shiny spindles because they are processed in hot machines that straighten out the leaves, then the heat buffs the leaves.
 Liquor  A lovely pale green, caused by the extra chlorophyll.
@@ -1677,7 +1689,7 @@ Body    As a very early season tea, it is loaded with amino acids. So this tea h
 Flavors     The style of this Sencha is bracing and lemony at the start with the mellowness of cooked spinach at the finish. It is among the most assertive of Senchas that we offer. The guttiness and astringency come from the deep-steamed production method.
 
 Japanese Sencha https://www.harney.com/products/japanese-sencha $3.00 7g
-We call this tea Japanese Sencha because not all Sencha on the market is from Japan. Our Sencha is a very fine one from the central Shizuoka province, and can be found in many homes in Tokyo. It is a pleasant and approachable green tea  a fine choice for everyday, in the way our founder John Harney always began his mornings with this cup. Kosher.
+We call this tea Japanese Sencha because not all Sencha on the market is from Japan. Our Sencha is a very fine one from the central Shizuoka province, and can be found in many homes in Tokyo. It is a pleasant and approachable green tea - a fine choice for everyday, in the way our founder John Harney always began his mornings with this cup. Kosher.
 Details     The Kaburagi family has sold to Americans for over 110 years. They are well known in Tokyo and throughout Japan as a pre-eminent supplier of tea. They supply this pleasant Sencha from central Shizuoka. To keep the price somewhat reasonable, we choose teas from the middle of the season. John Harney drank this tea everyday for over 10 years. He valued the pleasant flavor and the antioxidants.
 Dry Leaves  The leaves from this tea are a medium lime green color. Since this is a traditional sencha (futsumushi) the leaves are more identifiable than in the deep steamed (fukamushi).
 Liquor  The liquor is a medium green, not as intense as the Ichiban. The green is a truer green than the Bancha, which tends more towards yellow.
@@ -1717,7 +1729,7 @@ Body    A medium bodied tea that is still mouth-filling and brothy. This comes f
 Flavors     If you like the vegetal flavors of Japanese green teas, you are in for a treat! It opens with vegetal flavors that seem like sautéed chard and finish with roasted Nori. The tea's pale sweetness is balanced by a slight bitterness on the back of the tongue. The sweetness endures and evolves long after you've sipped the tea.
 
 Organic Sencha https://www.harney.com/products/organic-sencha $4.00
-In the past, we have avoided "Organic Sencha." Our feeling was maybe it was organic, and maybe it was a Japanese Sencha, but the tea did not meet our taste expectations. However, Mike met our current supplier a few years ago and was quite impressed by this Sencha. This one is certified organic  and it is certainly from Japan  and most importantly, it tastes like a good Sencha.
+In the past, we have avoided "Organic Sencha." Our feeling was maybe it was organic, and maybe it was a Japanese Sencha, but the tea did not meet our taste expectations. However, Mike met our current supplier a few years ago and was quite impressed by this Sencha. This one is certified organic - and it is certainly from Japan - and most importantly, it tastes like a good Sencha.
 Details     The Organic Sencha is the "real deal." We were happy to find a nice tasting green tea that was truly Organic and truly a Sencha. We are big fans of Matsuda and his Sencha. When we learned that this tea was the from the same valley: Watsuka, we were very excited. Organic teas are very important to some, however, sometimes it is hard to find these teas made in Japan. The tea makers often feel that they can not make good tea without the addition of Nitrogen. This element is found in every amino acid (even those in your body) and amino acids give Sencha there body or umami, also they add sweetness to the brew. However this teamaker gets by with natural fertilizers. Yes, the tea is a bit weaker than other Senchas, but is still very nice.
 Dry Leaves  The leaves are medium green, and shorter in length than other Senchas. This tea comes from the same valley as Matsuda's Sencha, so the microclimate (or terroir) and the traditions make it possible to make good Sencha.
 Liquor  The liquor is a light, clear green because the tea is regular steamed (in contrast to deep-steamed.)
@@ -1846,7 +1858,7 @@ Body    Medium bodied from heavy roasting.
 Flavors     The flavor of leeks that have been left on the grill for a very long time.
 
 Dragon Pearl Jasmine https://www.harney.com/products/dragon-pearl-jasmine $4.00 7g
-Delight in Dragon Pearl Jasmine tea  a masterpiece from Fuan, China  comprised of little hand rolled tea 'pearls' gently infused with floral essences from jasmine flowers. The tea is a beautiful to look at, and the light colored brew is full of floral and sweet aromas. Kosher.
+Delight in Dragon Pearl Jasmine tea - a masterpiece from Fuan, China - comprised of little hand rolled tea 'pearls' gently infused with floral essences from jasmine flowers. The tea is a beautiful to look at, and the light colored brew is full of floral and sweet aromas. Kosher.
 Details     There was a time, and it was not too long ago, that there was no Dragon Pearl Jasmine. Now the world is a better place. These are hand rolled by ladies in Fuan in northern Fujian Province. When Mike met the lady that originated this lovely tea, he thanked her on behalf of all tea drinkers.
 Dry Leaves  Small rolled "pearls" of faded green and white leaves. They are very pretty.
 Liquor  A light and clear liquor that is tinged a pale yellow.
@@ -1906,7 +1918,7 @@ Body    Light in body.
 Flavors     Light and sweet with subtle fruit flavors.
 
 Lung Ching https://www.harney.com/products/lung-ching $4.00 7g
-Lung Chings are famous worldwide as some of the best Chinese green teas. Our Lung Ching is made by a respected producer two hours beyond the traditional area. The small green leaves make for a brew that has a mild and sweet  almost nut-like  flavor. Since Lung Ching teas remain in consistently high demand, the price is dictated by the market.
+Lung Chings are famous worldwide as some of the best Chinese green teas. Our Lung Ching is made by a respected producer two hours beyond the traditional area. The small green leaves make for a brew that has a mild and sweet - almost nut-like - flavor. Since Lung Ching teas remain in consistently high demand, the price is dictated by the market.
 Details     This is an ancient tea that has come back to life.
 Dry Leaves  The flat, narrow leaf is stiff and smooth with a spear-like shape, about an inch long. Though it looks like a single flat needle, the unit actually comprises two leaves and a bud joined at a stem.
 Liquor  Pale yellow.
@@ -1945,8 +1957,8 @@ Body    As mentioned, the leaves are very small and there are many tips, so the 
 Flavors     The mixture of light vegetal flavors of steamed green beans or artichokes is accented by the definite roast flavors from the final charcoal firing.
 
 Wild Mountain Green https://www.harney.com/products/wild-mountain-green $3.00 7g
-A very rare, light and sweet green tea made from wild tea plants growing in Chinas Jiangxi Province.
-Details     An unexpected but delightful part of our recent trip to China was the excursion to Yangjiaping village high in the mountains of Jiangxi Province. As we rolled up the mountain and into a small village, we were told that we were the first western tea buyers to visit this tiny village that is devoted to tea. They certainly did treat us like royalty. We took a walk up to the top of the mountain to see the tea gardens. On the way down, our friends pointed out some wild tea bushes. After a great meal made by the bosss family, we were shown some the teas made from wild tea bushes. We were very pleased with them and now you can be pleased with them too!
+A very rare, light and sweet green tea made from wild tea plants growing in China's Jiangxi Province.
+Details     An unexpected but delightful part of our recent trip to China was the excursion to Yangjiaping village high in the mountains of Jiangxi Province. As we rolled up the mountain and into a small village, we were told that we were the first western tea buyers to visit this tiny village that is devoted to tea. They certainly did treat us like royalty. We took a walk up to the top of the mountain to see the tea gardens. On the way down, our friends pointed out some wild tea bushes. After a great meal made by the boss's family, we were shown some the teas made from wild tea bushes. We were very pleased with them and now you can be pleased with them too!
 Dry Leaves  Long twisted dull green leaves w/ silver tips
 Liquor  Light olive
 Aroma   Light vegetables
@@ -1967,7 +1979,7 @@ Flavors     BaoZhong tastes of nothing but honeyed flowers.
 
 Li Shan https://www.harney.com/products/li-shan $3 7g
 $3.00
- Li Shan, considered to be among the best oolong teas in the world, comes from one of Taiwans highest mountain areas. The tea plants must battle cold (sometimes even snow) and frequent mists. This makes a rare and haunting brew, with echoes of honey and cream.
+ Li Shan, considered to be among the best oolong teas in the world, comes from one of Taiwan's highest mountain areas. The tea plants must battle cold (sometimes even snow) and frequent mists. This makes a rare and haunting brew, with echoes of honey and cream.
 Details     Li Shan is one of the most recent High Mountain (Gao Shan) tea growing areas. It is located in the middle of Taiwan's central mountain region. The tea is rolled into balls using special machines. In the old days, they used the feet of strong teamen to bend the leaf. This is considered one of the best oolongs in the world.
 Dry Leaves  Green leaves tightly rolled into little pieces.
 Liquor  A very light clear green-yellow.
@@ -1977,7 +1989,7 @@ Body    A medium bodied oolong. This tea may be brewed multiple times.
 Flavors     Creamy, like lemon and pear with underlying vegetal notes.
 
 Fenghuang Shuixian https://www.harney.com/products/fenghuang-shuixian $6 7g
-Fenghuang Shuixian, a delicious and rare oolong tea, is widely regarded for its intense peach and spice flavor. A high point of Mikes trips to China is visiting the artisans high above the city of Fenghuang. He enjoys seeing how they transform the big leaves into twists of brown oolong, with hints of russet. Even more, he loves drinking it!
+Fenghuang Shuixian, a delicious and rare oolong tea, is widely regarded for its intense peach and spice flavor. A high point of Mike's trips to China is visiting the artisans high above the city of Fenghuang. He enjoys seeing how they transform the big leaves into twists of brown oolong, with hints of russet. Even more, he loves drinking it!
  Details    This is made in one of the most southern tea regions in China. It is the pride of Guangdong Province. Made high in the Fenghuang Mountains above the ancient temple city of Chaozhou, it is this tea that the tiny clay tea pots are used with in the Chaozhou tea brewing style.
 Dry Leaves  These leaves are dark brown and twisted into long thin pieces.
 Liquor  Pale orange.
@@ -1987,7 +1999,7 @@ Body    This a medium bodied oolong.
 Flavors     The flavors of the Milan variety of this tea are of fresh peach nectar and it almost fizzes like a Bellini.
 
 Da Hong Pao https://www.harney.com/products/da-hong-pao-tea $5.00 7g
-Da Hong Pao is a wonderful oolong tea, produced from plants grown from three famous tea plants. The large leaves are about 40% oxidized and have a warm, toasty flavor  like peach compote with a bit of dark molasses. The leaves can be brewed several times.
+Da Hong Pao is a wonderful oolong tea, produced from plants grown from three famous tea plants. The large leaves are about 40% oxidized and have a warm, toasty flavor - like peach compote with a bit of dark molasses. The leaves can be brewed several times.
 Details     A tea with a history. This tea is located near a monastery located in the Wuyisan area of NW Fujian Province. Like most oolongs in this Wuyisan area, Da Hong Pao is twisted (not rolled into a ball) and it is finished in the traditional manner by charcoal firing. The legend is that tea provided support to an imperial official and he put his red coat on the tea plants that helped him.
 Dry Leaves  These leaves are long and twisted, the color is dark brown.
 Liquor  Dark, clear caramel.
@@ -2016,7 +2028,7 @@ Body    Medium.
 Flavors     Apricots & Peaches.
 
 Ti Quan Yin Spring Floral https://www.harney.com/products/ti-quan-yin-spring-floral $3.00 7g
-Ti Quan Yin Spring Floral is delicious  and a great value. We searched through all of Anxi to find a Chinese oolong tea that captures the high floral notes and has nice body, yet isn't too expensive. Its tiny greenish balls can be re-brewed several times.
+Ti Quan Yin Spring Floral is delicious - and a great value. We searched through all of Anxi to find a Chinese oolong tea that captures the high floral notes and has nice body, yet isn't too expensive. Its tiny greenish balls can be re-brewed several times.
 Details     Ti Quan Yins are some of China's most famous teas. They are from Southern Fujian Province, and it was in these hills that teas were first rolled into small balls. That allowed the teas to slowly oxidize and slowly develop these great flavors. Each tea leaf goes through complex changes as it gradually dies.
 Dry Leaves  Light and dark green rolled leaves.
 Liquor  This tea brews very light, a green-yellow color that is very clear.
@@ -2026,7 +2038,7 @@ Body    Ti Quan Yin is medium bodied and may be brewed a few times.
 Flavors     A lovely oolong with enduring flavors of honey, butter, and almonds.
 
 Top Ti Quan Yin https://www.harney.com/products/top-ti-quan-yin $5.00
-Top Ti Quan Yin is the best tea out of northern Fujian Province. The finest aroma and body is what we aim for, and this years version has it. It is an intense mixture of butter and honey, even honeysuckle flowers, reminiscent of great Burgundy white wine.
+Top Ti Quan Yin is the best tea out of northern Fujian Province. The finest aroma and body is what we aim for, and this year's version has it. It is an intense mixture of butter and honey, even honeysuckle flowers, reminiscent of great Burgundy white wine.
 Details     One of the best jobs of the year is to decide upon this tea. Each sample is great, so it is a joy to drink. However which is the best of the best?
 Dry Leaves  Dark green rolled leaves with bright green flecks.
 Liquor  This tea brews very light, a green-yellow color that is very clear.
@@ -2056,7 +2068,7 @@ Body    Medium body.
 Flavors     A lovely tasting oolong that is light and refreshing with strong flavors of pomegranate.
 
 Fanciest Formosa Oolong https://www.harney.com/products/fanciest-formosa-oolong $4 7g
-Fanciest Formosa is another great oolong  absolutely delicious and widely sought after. It also has an interesting storyThe tea plant protects itself from attack by creating a compound that has a wonderful peachy aroma, perhaps better than any other oolong. Mike saw the plants on the defensive on his last trip to Taiwan; he found it fascinating to observe this remarkable botanical process.
+Fanciest Formosa is another great oolong - absolutely delicious and widely sought after. It also has an interesting storyThe tea plant protects itself from attack by creating a compound that has a wonderful peachy aroma, perhaps better than any other oolong. Mike saw the plants on the defensive on his last trip to Taiwan; he found it fascinating to observe this remarkable botanical process.
 Details     This tea is made in northern Taiwan and is twisted (as opposed to the balled style.) It is done around June, later than other oolongs. The growers allow a leaf hopper (Jacobiasca formosana) to attack the tea leaves. The plants release a compound in self-defense that we find deliciously similar in flavor to peaches.
 Dry Leaves  Light brown and green leaves.
 Liquor  Copper.
@@ -2066,7 +2078,7 @@ Body    This can be quite a light bodied oolong.
 Flavors     Subtle flavors of spring honey, fresh white peaches, and buttered toast.
 
 Formosa Oolong https://www.harney.com/products/formosa-oolong $2.00 7g
-Formosa Oolong is the style of brown oolong that generations of Americans have loved, especially for its toasty flavor. Dont worry about the stems; the tea is traditionally made this way in Taiwan.
+Formosa Oolong is the style of brown oolong that generations of Americans have loved, especially for its toasty flavor. Don't worry about the stems; the tea is traditionally made this way in Taiwan.
 Details     This tea was quite popular in the US for several decades. A British entrepreneur named John Dodd developed it in the middle of the nineteenth century. It is oxidized to about 75%, so it is darker than most other oolongs.
 Dry Leaves  This tea is made up of dark brown leaves and stems.
 Liquor  Copper.
@@ -2074,4 +2086,36 @@ Aroma   The aroma has nutty and toasty notes with subdued peach flavors undernea
 Caffeine Level  Caffeinated
 Body    The oolong is medium bodied.
 Flavors     Subtle sweet notes of peaches and roasted carrots covered by toasted walnuts.
+-->
+
+<!--
+Water for tea experiment:
+tap water reportedly differs a ton in taste between cities/states. This is plausible since tea tastes so much worse when microwaved, which is speculated to be due to the oxygenation, so why not the mineral/chlorine content as well?
+
+I can compare my well water to distilled water and commercial spring waters in a blind randomized self-experiment to see if water can make a difference.
+Shades of Fisher's 'lady tasting tea' experiment.
+
+so the idea would be put two identical mugs on the lazy susan with identical amounts of distilled vs tap water, marked on the
+bottom which is which; slowly spin the lazy susan with eyes closed for a few rotations; select the nearest one, put in tea
+kettle, boil to normal green tea temperature, put in exactly 2g of tea using my mg scale, steep 1m with a timer, rate, do so 10
+or so times...
+since it's not a pairwise comparison, it wouldn't be very good. I could borrow an additional electric tea kettle but that one has no temperature
+setting so it would just go straight to full boil. I could use instead one or two of the oolong samples. I'd use them up,
+but this would double as my tasting reviews of those samples, so not a problem.
+
+Well water & distilled water already on hand, so I need good commercial spring water (half a gallon or less each).
+I can probably get from Walmart:
+
+- Poland Spring
+- Aquafina
+
+(added them to shopping list)
+
+Design:
+
+4 kinds of water, but tasting 4 kinds of tea at once is a bit hard on the physical logistics & tasting the tea.
+So will do the classic pairwise design, all possible pairs at least once, see /Resorter Bradley-Terry model (is there a nonparametric test for this? this isn't the same as Fisher's exact test...)
+
+Power analysis:
+good question. Is this a decision analysis again? I guess it depends on how much the mineral waters cost per cup and how much of an improvement one wants to detect vs the tediousness of experimenting.
 -->
