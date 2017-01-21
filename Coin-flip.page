@@ -1,7 +1,18 @@
+---
+title: The Kelly Coin-Flipping Game
+description: Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion.
+tags: statistics, decision theory
+created: 19 Jan 2017
+status: finished
+belief: likely
+...
+
+>
+
 # Background
 ## Set up
 
-The paper ["Rational Decision-Making Under Uncertainty: Observed Betting Patterns on a Biased Coin"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2856963), by Haghani and Dewey 2016 runs an experiment on optimal betting using a simple coin-flipping game:
+The paper ["Rational Decision-Making Under Uncertainty: Observed Betting Patterns on a Biased Coin"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2856963), by Haghani & Dewey 2016 runs an experiment on optimal betting using a simple coin-flipping game:
 
 > What would you do if you were invited to play a game where you were given \$25 and allowed to place bets for 30 minutes on a coin that you were told was biased to come up heads 60% of the time? This is exactly what we did, gathering 61 young, quantitatively trained men and women to play this game. The results, in a nutshell, were that the majority of these 61 players didn't place their bets very well, displaying a broad panoply of behavioral and cognitive biases. About 30% of the subjects actually went bust, losing their full \$25 stake. We also discuss optimal betting strategies, valuation of the opportunity to play the game and its similarities to investing in the stock market. The main implication of our study is that people need to be better educated and trained in how to approach decision making under uncertainty. If these quantitatively trained players, playing the simplest game we can think of involving uncertainty and favourable odds, didn't play well, what hope is there for the rest of us when it comes to playing the biggest and most important game of all: investing our savings? In the words of Ed Thorp, who gave us helpful feedback on our research: "This is a great experiment for many reasons. It ought to become part of the basic education of anyone interested in finance or gambling."
 
@@ -121,7 +132,7 @@ game <- function(strategy, wealth, betsLeft) {
     winnings <- 2*bet*flip
     wealth <- min(wealth+winnings, 250)
     return(game(strategy, wealth, betsLeft-1)) } else { return(wealth); } }
-simulateGame <- function(s, w=25, b=7) { mean(replicate(1000, game(s, w, b))) }
+simulateGame <- function(s, w=25, b=300) { mean(replicate(1000, game(s, w, b))) }
 
 ## Example run demonstrating that while Kelly performs well, it is still outperformed by the decision-tree:
 R> simulateGame(maximizer)
@@ -136,5 +147,8 @@ R> simulateGame(mVPplan)
 R> mV(25, 7)
 [1] 54.58752
 
-sapply(0:300, function(bets) { print(paste(bets, mV(25, bets), simulateGame(mVPplan, b=bets))) })
+sapply(1:300, function(bets) { ky <- simulateGame(kelly, b=bets); dt <- simulateGame(mVPplan, b=bets); gain <- dt-ky; print(paste(bets, mV(25, bets), dt, ky, gain)) })
 ~~~
+
+
+http://lpaste.net/351480#a351481
