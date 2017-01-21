@@ -1,0 +1,140 @@
+# Background
+## Set up
+
+The paper ["Rational Decision-Making Under Uncertainty: Observed Betting Patterns on a Biased Coin"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2856963), by Haghani and Dewey 2016 runs an experiment on optimal betting using a simple coin-flipping game:
+
+> What would you do if you were invited to play a game where you were given \$25 and allowed to place bets for 30 minutes on a coin that you were told was biased to come up heads 60% of the time? This is exactly what we did, gathering 61 young, quantitatively trained men and women to play this game. The results, in a nutshell, were that the majority of these 61 players didn't place their bets very well, displaying a broad panoply of behavioral and cognitive biases. About 30% of the subjects actually went bust, losing their full \$25 stake. We also discuss optimal betting strategies, valuation of the opportunity to play the game and its similarities to investing in the stock market. The main implication of our study is that people need to be better educated and trained in how to approach decision making under uncertainty. If these quantitatively trained players, playing the simplest game we can think of involving uncertainty and favourable odds, didn't play well, what hope is there for the rest of us when it comes to playing the biggest and most important game of all: investing our savings? In the words of Ed Thorp, who gave us helpful feedback on our research: "This is a great experiment for many reasons. It ought to become part of the basic education of anyone interested in finance or gambling."
+
+More specifically:
+
+> ...Prior to starting the game, participants read a detailed description of the game, which included a clear statement, in bold, indicating that the simulated coin had a 60% chance of coming up heads and a 40% chance of coming up tails. Participants were given \$25 of starting capital and it was explained in text and verbally that they would be paid, by check, the amount of their ending balance subject to a maximum payout. The maximum payout would be revealed if and when subjects placed a bet that if successful would make their balance greater than or equal to the cap. We set the cap at \$250......Participants were told that they could play the game for 30 minutes, and if they accepted the \$25 stake, they had to remain in the room for that amount of time.^5^ Participants could place a wager of any amount in their account, in increments of \$0.01, and they could bet on heads or tails...Assuming a player with agile fingers can put down a bet every 6 seconds, that would allow 300 bets in the 30 minutes of play.
+
+## Near-optimal play
+
+The authors make a specific suggestion about what near-optimal play in this game would be, based on the [Kelly criterion](!Wikipedia) which would yield bets each round of 20% of capital:
+
+> The basic idea of the Kelly formula is that a player who wants to maximize the rate of growth of his wealth should bet a constant fraction of his wealth on each flip of the coin, defined by the function $2\cdot(p-1)$, where $p$ is the probability of winning. The formula implicitly assumes the gambler has log utility. It's intuitive that there should be an optimal fraction to bet; if the player bets a very high fraction, he risks losing so much money on a bad run that he would not be able to recover, and if he bet too little, he would not be making the most of what is a finite opportunity to place bets at favorable odds...We present the Kelly criterion as a useful heuristic a subject could gainfully employ. It may not be the optimal approach for playing the game we presented for several reasons. The Kelly criterion is consistent with the bettor having log-utility of wealth, which is a more tolerant level of risk aversion than most people exhibit. On the other hand, the subjects of our experiment likely did not view \$25 (or even \$250) as the totality of their capital, and so they ought to be less risk averse in their approach to maximizing their harvest from the game. The fact that there is some cap on the amount the subject can win should also modify the optimal strategy...In our game, the Kelly criterion would tell the subject to bet 20% ($2 \cdot(0.6-1)$) of his account on heads on each flip. So, the first bet would be \$5 (20% of \$25) on heads, and if he won, then he'd bet \$6 on heads (20% of \$30), but if he lost, he'd bet \$4 on heads (20% of \$20), and so on.
+>
+> ...If the subject rightly assumed we wouldn't be offering a cap of more than \$1,000 per player, then a reasonable heuristic would be to bet a constant proportion of one's bank using a fraction less than the Kelly criterion, and if and when the cap is discovered, reducing the betting fraction further depending on betting time remaining to glide in safely to the maximum payout. For example, betting 10% or 15% of one's account may have been a sound starting strategy. We ran simulations on the probability of hitting the cap if the subject bet a fixed proportion of wealth of 10%, 15% and 20%, and stopping when the cap was exceeded with a successful bet. We found there to be a 95% probability that the subjects would reach the \$250 cap following any of those constant proportion betting strategies, and so the expected value of the game as it was presented (with the \$250 cap) would be just under \$240. However, if they bet 5% or 40% of their bank on each flip, the probability of exceeding the cap goes down to about 70%.
+
+## Subjects' performance
+
+Despite the Kelly criterion being well-known and fairly intuitive, and the game being very generous, participants did not perform well:
+
+> The sample was largely comprised of college age students in economics and finance and young professionals at finance firms. We had 14 analyst and associate level employees at two leading asset management firms. The sample consisted of 49 males and 12 females. Our prior was that these participants should have been well prepared to play a simple game with a defined positive expected value...Only 21% of participants reached the maximum payout of \$250,^7^ well below the 95% that should have reached it given a simple constant percentage betting strategy of anywhere from 10% to 20%.^8^ We were surprised that one third of the participants wound up with less money in their account than they started with. More astounding still is the fact that 28% of participants went bust and received no payout. That a game of flipping coins with an ex-ante 60/40 winning probability produced so many subjects that lost everything is startling. The average ending bankroll of those who did not reach the maximum and who also did not go bust, which represented 51% of the sample, was \$75. While this was a tripling of their initial \$25 stake, it still represents a very sub-optimal outcome given the opportunity presented. The average payout across all subjects was \$91, letting the authors off the hook relative to the \$250 per person they'd have had to pay out had all the subjects played well.
+
+This is troubling because the problem is so well-defined and favorable to the players, and can be seen as a microcosm of the difficulties people experience in rational betting.
+However, if anything, the authors understate the underperformance, because as they correctly note, the Kelly criterion is not guaranteed to be optimal in this problem due to the potential for different utility functions (what if we simply want to maximize expected wealth, not log wealth?), the fixed number of bets & the ceiling, as the Kelly criterion tends to assume that wealth can increase without limit & there is an indefinite time horizon.
+
+# Optimality in the coin-flipping MDP
+
+Indeed, we can see with a simple example that KC is suboptimal in terms of maximizing expected value: what if we are given only 1 bet (_b_=1) to use our \$25 on?
+If we bet 20% (or less) per the KC, then
+
+$$0.6 \cdot (25+5) + 0.4 \cdot (25-5)= 26$$
+
+But if we bet everything:
+
+$$0.6 \cdot (25+25) + 0.4 \cdot (25-25) = 30$$
+
+It's true that 40% of the time, we go bankrupt and so we couldn't play again... but there are no more plays in _b_=1 so avoiding bankruptcy boots nothing.
+
+We can treat this coin-flipping game as a [Markov decision process](!Wikipedia).
+For more possible bets, the value of a bet of a particular amount given a wealth _w_ and bets remaining _b_-1 will recursively depend on the best strategy for the two possible outcomes (weighted by probability), giving us a Bellman value equation to solve like:
+
+$$V(w,b) = \max_{x \in [0,w]}[0.6 \cdot V(\min(w+x, 250), b-1) + 0.4 \cdot V(w-x, b-1) ]$$
+
+To solve this equation, we can explore all possible sequences of bets and outcomes to a termination condition and reward, and then work use backwards induction, defining a decision tree which can be (reasonably) efficiently computed using memoization/[dynamic programming](!Wikipedia).
+
+Given the problem setup, we can note a few things about the optimal strategy:
+
+1. if the wealth ever reaches \$0, the game has effectively ended regardless of how many bets remain, because betting \$0 is the only possibility and it always returns \$0
+2. similarly, if the wealth ever reaches the upper bound of \$250, the optimal strategy will effectively end the game by always betting \$0 after that regardless of how many bets remain, since it can't do better than \$250 and can only do worse.
+
+    These two shortcuts will make the tree *much* easier to evaluate because many possible sequences of bet amounts & outcomes will quickly hit \$0 or \$250 and require no further exploration.
+3. a state with more bets is always of equal or better value than fewer
+3. a state with more wealth is always equal or better value than less
+3. the value of 0 bets is the current wealth
+4. the value of 1 bet depends on the ceiling and current wealth: whether \$250 is >2x current wealth. If the ceiling more than twice current wealth, the optimal strategy with 1 bet left is to bet everything, since that has highest EV and there's no more bets to worry about going bankrupt & missing out on.
+
+    If there were no ceiling, one could argue that the whole problem is trivial: the choice of units becomes arbitrary, so one can convert our problem of estimating $V(w, b)$ to units where _w_=1 (so $x \cdot V(1,b)$); then one solves $V(1,b)$ to find the fixed bet amount _x_; with no ceiling to deal with, the previous logic about betting 100% applies, the fraction to bet is 1, and since this is true whatever our original _w_ or _b_... Or to put it another way: for the first bet, the highest EV bet to bet everything; the second bet can be transformed back into the first bet, so it's highest EV to bet everything there too; by induction, you always bet everything. The limited number of bets sets a limit on the earnings, but doesn't affect the strategy.
+
+    But since there is a ceiling and one may be near or far from it given one's remaining bets, the betting has to take this into account: as the number of bets increase, the potential to hit the ceiling increases. With only a few bets, the maximum strategy doesn't risk this, but 4 bets it is possible to exceed \$250 (betting everything & winning each time).
+
+## Decision tree
+
+Value function:
+
+~~~{.R}
+## requires too long to evaluate beyond b=3 unless we use
+## memoization/dynamic programming to cache all the repeated evaluations
+# devtools::install_github("hadley/memoise")
+library(memoise)
+
+f <- function(x, w, b) { 0.6*mV(min(w+x,250), b-1) + 0.4*mV(w-x, b-1)}
+mf <- memoise(f)
+V <- function(w,b) {
+    returns <- if (b>0 && w>0 && w<250) { sapply(seq(0, w, by=0.1), function(x) { mf(x,w,b); }) } else { w; }
+    max(returns) }
+mV <- memoise(V)
+
+## expected value of optimal betting for # of bets from 0 to 300
+## (rough maximum possible according to paper) starting with $25'
+## of course, even with memoization, it's still difficult to compute
+## the value of the optimal strategy past b=5 because the exponentially
+## increasing number of strategies still need to be computed at least once.
+sapply(0:300, function(b) { v <- mV(25, b); print(v); v })
+~~~
+
+Optimal next action:
+
+~~~{.R}
+## Of course, I am also curious what the optimal strategy *is*, not just how much we can make with the optimal strategy given a particular starting point. As defined, I can't see how to make `V` return the optimal choices along the way, since it has to explore all choices and can't know what is optimal until it has popped all the way back to the root, and state can't be threaded in because that defeats the memoization...
+
+## But then it occurred to me: given the (memoized) value function for each state, we can then plan relatively straightforwardly by simply redoing `V` as a greedy planning algorithm by asking for the value of each possible action (which is memoized, so it's fast), printing out the max, and then recursing with one fewer bet and making an assumption about what the outcome was; in this case, I'm curious about what the optimal strategy looks like in the optimistic cases:
+
+
+VPplan <- function(w, b) {
+    if (b==0) { return (0); } else {
+    returns <- sapply(seq(0, w), function(wp) { mf(wp, w, b); })
+      return (which.max(returns)-1); }
+ }
+mVPplan <- memoise(VPplan)
+mVPplan(250, 0)
+mVPplan(250, 1)
+mVPplan(25, 3)
+~~~
+
+Performance in a simulation compared to Kelly etc:
+
+~~~{.R}
+kelly <- function(w, b) { (2*0.6-1) * w }
+smarterKsapply(0:300, function(b) { v <- mV(25, b); print(v); v })
+maximizer <- function(w, b) { w; }
+maximizerCeiling <- function(w, b) { if(w>=250) { 0 } else {w}; }
+
+game <- function(strategy, wealth, betsLeft) {
+    if (betsLeft>0) {
+    bet <- strategy(wealth, betsLeft)
+    wealth <- wealth - bet
+    flip <- rbinom(1,1,p=0.6)
+    winnings <- 2*bet*flip
+    wealth <- min(wealth+winnings, 250)
+    return(game(strategy, wealth, betsLeft-1)) } else { return(wealth); } }
+simulateGame <- function(s, w=25, b=7) { mean(replicate(1000, game(s, w, b))) }
+
+## Example run demonstrating that while Kelly performs well, it is still outperformed by the decision-tree:
+R> simulateGame(maximizer)
+[1] 7.5
+R> simulateGame(maximizerCeiling)
+[1] 32.525
+R> simulateGame(kelly)
+[1] 32.90408141
+R> simulateGame(mVPplan)
+[1] 54.1529
+## does the actual performance reach what the estimated optimal performance would be? yes:
+R> mV(25, 7)
+[1] 54.58752
+
+sapply(0:300, function(bets) { print(paste(bets, mV(25, bets), simulateGame(mVPplan, b=bets))) })
+~~~
