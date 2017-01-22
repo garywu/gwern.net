@@ -292,7 +292,7 @@ remAgeTQ <- rma(yi=HSNP, sei=SE, mods = ~ I(Age.mean^2) + Twin, data=gcta); remA
 ## does fit better but enough?
 ~~~
 
-![Forest plot for meta-analysis of GCTA estimates of total additive SNPs' effect on intelligence/cognitive-ability](/images/iq-gcta-forest.png)
+![Forest plot for meta-analysis of GCTA estimates of total additive SNPs' effect on intelligence/cognitive-ability](/images/genetics/iq-gcta-forest.png)
 
 The regression results, residuals, and funnel plots are generally sensible.
 The overall estimate of ~0.30 is about what one would have predicted based on prior research: [Polderman et al 2015](/docs/genetics/2015-polderman.pdf "Meta-analysis of the heritability of human traits based on fifty years of twin studies"), meta-analyzing thousands of twin studies on hundreds of measurements, finds wide dispersal among traits but an overall grand mean of 0.49, of which most is additive genetic effects, so combined with the usually greater measurement error of GCTA studies compared to twin registries (which can do detailed testing over many years) and the limitation of SNP arrays in measuring a subset of genetic variants, one would guess at a GCTA grand mean of about half that or ~0.25; more directly, [Ge et al 2016](http://biorxiv.org/content/early/2016/08/18/070177 "Phenome-wide Heritability Analysis of the UK Biobank") runs a GCTA-like SNP heritability algorithm on 551 traits available in the UK Biobank with a grand mean of 16% ([supplementary 'All Tables'](http://biorxiv.org/highwire/filestream/19425/field_highwire_adjunct_files/0/070177-1.xlsx), worksheet 3 'Supp Table 1') and education/fluid-intelligence/numeric-memory/pairs-matching/prospective-memory/reaction-time at 29%/23%/15%/6%/11%/7% respectively.[^Ge2016-grand-mean]
@@ -1241,7 +1241,7 @@ max(gainByEggcount) / which.max(gainByEggcount)
 # [1] 94.86516619
 ~~~
 
-![Net profit vs average number of eggs](/images/iq-selection-eggcurve.png)
+![Net profit vs average number of eggs](/images/genetics/iq-selection-eggcurve.png)
 
 The maxima is ~281, yielding 0.18SD/~2.7 points & a net profit ~\$26k, indicating that with that many eggs, the cost of the additional SNPing exceeds the marginal IQ gain from having 1 more egg available which could turn into an embryo & be selected amongst.
 With \$26k profit vs 281 eggs, we could say that the gain from unlimited eggs compared to the normal yield of ~9 eggs is ~\$20k (\$26k vs the best current scenario of \$6l), and that the average profit from adding each egg was \$73, giving an idea of the sort of per-egg costs one would need from an egg stem cell technology (small).
@@ -1819,7 +1819,7 @@ with(benyamin[benyamin$EFFECT_A1>0,], sum(EFFECT_A1*FREQ_A1)) + with(benyamin[be
 hist(abs(benyamin$EFFECT_A1), xlab="SNP intelligence estimates (SDs)", main="Benyamin et al 2014 polygenic score")
 ~~~
 
-![The betas/effect-sizes of the Benyamin et al 2014 polygenic score for intelligence, illustrating the many thousands of variants available for selection on.](/images/iq-selection-benyamin2014-polygenicscore-betas.png)
+![The betas/effect-sizes of the Benyamin et al 2014 polygenic score for intelligence, illustrating the many thousands of variants available for selection on.](/images/genetics/iq-selection-benyamin2014-polygenicscore-betas.png)
 
 One might wonder about what if we were to start with the genome of someone extremely intelligent, such as a John von Neumann, perhaps cloning cells obtained from grave-robbing the Princeton Cemetary?
 Would selection or editing *then* be ineffective because one is starting with such an excellent baseline?

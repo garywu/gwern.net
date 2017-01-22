@@ -11,6 +11,8 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
+- [The Kelly Coin-Flipping Problem: Exact Solutions via Dynamic Programming](https://www.gwern.net/Coin-flip "Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.")
+
 # Media
 ## Links
 
@@ -18,8 +20,8 @@ Everything is heritable:
 
 - dysgenics:
 
-    - in Iceland: decrease in the education polygenic score 1910-1990, ["Selection against variants in the genome associated with educational attainment"](https://www.gwern.net/docs/genetics/2017-kong.pdf), Kong et al 2017 ([media](https://www.theguardian.com/science/2017/jan/16/natural-selection-making-education-genes-rarer-says-icelandic-study "Natural selection making 'education genes' rarer, says Icelandic study: Researchers say that while the effect corresponds to a small drop in IQ per decade, over centuries the impact could be profound")):
-    - in the US: decrease in the education polygenic score 1920-1960, ["Mortality Selection in a Genetic Sample and Implications for Association Studies"](http://biorxiv.org/content/early/2016/04/21/049635), Domingue et al 2016
+    - in Iceland: decrease in the education polygenic score 1910-1990, ["Selection against variants in the genome associated with educational attainment"](https://www.gwern.net/docs/genetics/2017-kong.pdf), Kong et al 2017 ([graph](https://www.gwern.net/images/genetics/2017-kong-iceland-education-dysgenics.png); [media](https://www.theguardian.com/science/2017/jan/16/natural-selection-making-education-genes-rarer-says-icelandic-study "Natural selection making 'education genes' rarer, says Icelandic study: Researchers say that while the effect corresponds to a small drop in IQ per decade, over centuries the impact could be profound")):
+    - in the US: decrease in the education polygenic score 1920-1960, ["Mortality Selection in a Genetic Sample and Implications for Association Studies"](http://biorxiv.org/content/early/2016/04/21/049635), Domingue et al 2016 ([graph](https://www.gwern.net/images/genetics/2016-domingue-usa-education-dysgenics.png))
 - ["GWAS meta-analysis reveals novel loci and genetic correlates for general cognitive function: a report from the COGENT consortium"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016244a.html), Trampush et al 2017
 - ["Apolipoprotein E4 is associated with improved cognitive function in Amazonian forager-horticulturalists with a high parasite burden"](https://www.gwern.bet/docs/genetics/2016-trumble.pdf), Trumble et al 2016 ([media](https://www.theatlantic.com/science/archive/2017/01/why-does-a-gene-that-increases-alzheimers-risk-still-exist/512396/ "Why Do Humans Still Have a Gene That Increases the Risk of Alzheimer's?"); of course, different regions, and hence different groups, differ in parasite load.)
 
@@ -36,18 +38,21 @@ Statistics/meta-science/mathematics:
 
 Politics/religion:
 
-- ["Non-Communication at GE: The Impacted Philosophers"](https://www.gwern.net/docs/1959-brooks-businessadventures-ch7-noncommunicationge.pdf), pg111-124, ch7 of _Business Adventures: Twelve Classic Tales from the World of Wall Street_, Brooks 1959﻿ (the GE price-fixing scandal: emergent conspiracies from plausible denialability)
-- the [iPredict prediction market has closed](https://en.wikipedia.org/wiki/IPredict#Closure) (This is why we can't have nice things: because even crippled prediction markets are "money laundering".﻿)
+- ["Non-Communication at GE: The Impacted Philosophers"](https://www.gwern.net/docs/1959-brooks-businessadventures-ch7-noncommunicationge.pdf), pg111-124, ch7 of _Business Adventures: Twelve Classic Tales from the World of Wall Street_, Brooks 1959 (the GE price-fixing scandal: emergent conspiracies from plausible denialability)
+- the [iPredict prediction market has closed](https://en.wikipedia.org/wiki/IPredict#Closure) (This is why we can't have nice things: because even crippled prediction markets are "money laundering".)
+- ["Blue Lies Matter: How Video Proved Cops Lie"](https://www.buzzfeed.com/albertsamaha/blue-lies-matter "BuzzFeed News reviewed 62 incidents of video footage contradicting an officer's statement in a police report or testimony. From traffic stops to fatal force, these cases reveal how cops are incentivized to lie - and why they get away with it.")
 
 Psychology/biology:
 
-- ["A Systematic Review of Personality Trait Change Through Intervention"](https://www.researchgate.net/profile/Brent_Roberts/publication/312105742_A_Systematic_Review_of_Personality_Trait_Change_Through_Intervention/links/5870f1f308ae329d621714aa.pdf), Roberts et al 2016 (Messy - noticeable levels of publication bias, high heterogeneity -  but results look plausible: 8-week+ interventions can improve emotional-stability/Neuroticism, change Openness and Extraversion somewhat, but leave Conscientiousness largely unaffected.﻿)
+- ["A Systematic Review of Personality Trait Change Through Intervention"](https://www.researchgate.net/profile/Brent_Roberts/publication/312105742_A_Systematic_Review_of_Personality_Trait_Change_Through_Intervention/links/5870f1f308ae329d621714aa.pdf), Roberts et al 2016 (Messy - noticeable levels of publication bias, high heterogeneity -  but results look plausible: 8-week+ interventions can improve emotional-stability/Neuroticism, change Openness and Extraversion somewhat, but leave Conscientiousness largely unaffected.)
 
 Technology:
 
 - ["Epigrams on Programming"](https://www.gwern.net/docs/1982-perlis.pdf), Perlis 1982
 
 Economics:
+
+- ["The Cat's-Meat Man"](http://messybeast.com/cats-meat-man.htm) (how cats & dogs were fed before modern processed pet food: regular deliveries of low-grade meat, usually horse-meat from the surplus of millions per year; focusing on industrial districts where cats were heavily employed)
 
 Philosophy:
 
@@ -62,11 +67,12 @@ Fiction:
 
 Nonfiction:
 
-- [_Clever Hans_](https://www.gutenberg.org/files/33936/33936-h/33936-h.htm), [Oskar Pfungst](https://en.wikipedia.org/wiki/Oskar_Pfungst) (on the famous [Clever Hans](https://en.wikipedia.org/wiki/Clever_Hans))
+- [_Clever Hans_](https://www.gutenberg.org/files/33936/33936-h/33936-h.htm), [Oskar Pfungst](https://en.wikipedia.org/wiki/Oskar_Pfungst) (on the famous [Clever Hans](https://en.wikipedia.org/wiki/Clever_Hans); [review](https://www.goodreads.com/review/show/1798234899))
 
 Fiction:
 
-- [_The Anubis Gates_](https://en.wikipedia.org/wiki/The_Anubis_Gates), Tim Powers
+- [_The Anubis Gates_](https://en.wikipedia.org/wiki/The_Anubis_Gates), Tim Powers (a delicious time-travel adventure, full of London color; ultimately, the elements don't come together in as deep a package as _Declare_ and I am a little disappointed that Powers doesn't pull off nearly as subtle a 'secret history' as he does in that - while I hoped that things like the Dancing Monkeys or Ashbless were historically real, it turns out that Powers had to make them up. But still a fun read.)
+- _The Complete Poems_, Randall Jarrell ([review](https://www.goodreads.com/review/show/1825100933))
 
 ## Film/TV
 
@@ -77,7 +83,7 @@ Live-action:
 Animated:
 
 - [_Kubo and the Two Strings_](https://en.wikipedia.org/wiki/Kubo_and_the_Two_Strings) (ostentatiously gorgeous clay stop-animation film. Even knowing that backgrounds and other parts are CGI, I still have trouble believing it was stop-motion - it is simply too luxuriously animated and beautiful on my new 4K monitor. Takes the format of a Japanese fairy tale very loosely drawing on the moon aspect of "The Tale of the Bamboo Cutter" with miscellaneous influence from jidaigeki for the instrument and Korea for the horse-hair hats of two characters.)
-- [_One-Punch Man_](https://en.wikipedia.org/wiki/One-Punch_Man)
+- [_One-Punch Man_](https://en.wikipedia.org/wiki/One-Punch_Man) (One of the most popular anime of that season. After marathoning it in a day, I had to conclude that it's seriously overrated. The premise, in the hands of any decent author, offers plenty of scope, but goes criminally underused each episode in the service of a nearly non-existent plot; sold as a comedic show, it's actually... not... that... funny. At all. The music and characters are likewise forgettable, leaving as _One-Punch Man_'s only selling point its kinetic animation during fights. This one should probably be left to sakuga fans.)
 
 ## Games
 

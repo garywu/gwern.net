@@ -1979,7 +1979,7 @@ powers <- aggregate(Power ~ N, mean, data=powerExponential); powers
 qplot(N, Power, data=powers)  + stat_smooth()
 ~~~
 
-![Power for a two-group comparison of old and new SNP datasets for testing a hypothesis of dysgenics](/images/dysgenics-snps-exponential-optimal.png)
+![Power for a two-group comparison of old and new SNP datasets for testing a hypothesis of dysgenics](/images/genetics/dysgenics-snps-exponential-optimal.png)
 
 So for a well-powered two-group comparison of 1950 & 2015 SNP datasets using 86 SNPs, we would want ~4000 in each group for a total _n_=8000; we do have nontrivial power even at a total _n_=1000 (500 in each group means 21% power) but a non-statistically-significant result will be difficult to interpret and if one wanted to do that, reporting a Bayes factor from a Bayesian hypothesis test would make much more sense to express clearly whether the (non-definitive) data is evidence for or against dysgenics.
 
@@ -2037,7 +2037,7 @@ powers <- aggregate(Power ~ N, mean, data=powerExponentialDistributed); powers
 qplot(N, Power, data=powers)  + stat_smooth()
 ~~~
 
-![Power to detect dysgenics effect with SNP samples spread over time](/images/dysgenics-snps-exponential-realistic.png)
+![Power to detect dysgenics effect with SNP samples spread over time](/images/genetics/dysgenics-snps-exponential-realistic.png)
 
 In this case, the power simulation suggestions the need for triple rather than double the data, and so a total of _n_=30,000 to be well-powered.
 
@@ -3060,7 +3060,7 @@ semPaths(s, "Standardized", "Estimates", style="lisrel", curve=0.8, nCharNodes=0
     residuals=FALSE, fixedStyle=1, freeStyle=1, exoVar=FALSE, sizeMan=10, sizeLat=24, label.cex=3, edge.label.cex = 2.2)
 ~~~
 
-![Path model relating childhood IQ measured at age 5, final adult IQ, and SNP heritability](/images/iq-hces-childhoodiq.png)
+![Path model relating childhood IQ measured at age 5, final adult IQ, and SNP heritability](/images/genetics/iq-hces-childhoodiq.png)
 
 Then using an ideal SNP genetic score and a 5yo IQ test, one could expect to predict `0.5 + (1-0.25)*0.5 = 0.875` or 87% of variance, giving a prediction/adult IQ of `sqrt(0.875) = 0.93`; with this sort of predictive power, the reversion to mediocrity is minimal and Hunter Elementary kids would then have adult IQs of `110 + (157-110) * 0.93 = 153`.
 
@@ -3476,6 +3476,23 @@ In comparison, probability-matching agent averages a cumulative log score of 866
 After 2 days of training, the DQN had improved only slightly; the on-policy strategy appears mostly random aside from having driven the xrisk probability down to what appears to be the smallest float JS supports, so it still had not learned a meaningful compromise between xrisk reduction and investment.
 
 TODO: revisit with MCTS at some point?
+
+<!--
+V <- function(wealth, xriskp, alive, iters) {
+    sim <- function(w, xr) { (1-xr)*w*V(w, xr, 1, iters-1) +
+                              xr*V(0, 0, 0, iters-1) }
+
+    if (!alive) { return(0) } else { if (iters==0) { return(wealth) } else {
+    returns <- c( V(wealth*1.02, xriskp*1, alive, iters-1),
+                  V(wealth*1.01, xriskp*0.99, alive, iters-1),
+                  V(wealth*1.00, xriskp*0.98, alive, iters-1))
+    return(max(returns) + wealth)
+    }}
+    }
+Vm <- memoise(V)
+Vm(10, 0.01, 1, 10)
+sapply(1:20, function(i) { print(Vm(10, 0.01, 1, i)) })
+-->
 
 # Model Criticism via Machine Learning
 
