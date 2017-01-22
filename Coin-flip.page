@@ -35,6 +35,8 @@ Despite the Kelly criterion being well-known and fairly intuitive, and the game 
 > The sample was largely comprised of college age students in economics and finance and young professionals at finance firms. We had 14 analyst and associate level employees at two leading asset management firms. The sample consisted of 49 males and 12 females. Our prior was that these participants should have been well prepared to play a simple game with a defined positive expected value...Only 21% of participants reached the maximum payout of \$250,^7^ well below the 95% that should have reached it given a simple constant percentage betting strategy of anywhere from 10% to 20%.^8^ We were surprised that one third of the participants wound up with less money in their account than they started with. More astounding still is the fact that 28% of participants went bust and received no payout. That a game of flipping coins with an ex-ante 60/40 winning probability produced so many subjects that lost everything is startling. The average ending bankroll of those who did not reach the maximum and who also did not go bust, which represented 51% of the sample, was \$75. While this was a tripling of their initial \$25 stake, it still represents a very sub-optimal outcome given the opportunity presented. The average payout across all subjects was \$91, letting the authors off the hook relative to the \$250 per person they'd have had to pay out had all the subjects played well.
 
 This is troubling because the problem is so well-defined and favorable to the players, and can be seen as a microcosm of the difficulties people experience in rational betting.
+
+Instead of expected earnings of ~\$240, the players earned $\91 - forfeiting \$149.
 However, if anything, the authors understate the underperformance, because as they correctly note, the Kelly criterion is not guaranteed to be optimal in this problem due to the potential for different utility functions (what if we simply want to maximize expected wealth, not log wealth?), the fixed number of bets & the ceiling, as the Kelly criterion tends to assume that wealth can increase without limit & there is an indefinite time horizon.
 
 # Optimality in the coin-flipping MDP
@@ -103,23 +105,23 @@ mV(0, 300)
 ~~~
 
 Given our memoized value function `mV` we can now take a look at expected value of optimal betting for bets _b_ from 0 to 300 with the fixed starting payroll of \$25.
-Memoization is no panacea, and R/[`memoise`](https://cran.r-project.org/web/packages/memoise/index.html) is slow enough that I am forced to make one change to the betting: instead of allowing bets in penny/\$0.01 increments, I only allow bets in \$1 increments.
-(Some comparisons with decipenny and penny trees suggests that this makes little difference.)
+Memoization is no panacea, and R/[`memoise`](https://cran.r-project.org/web/packages/memoise/index.html) is slow enough that I am forced to make one change to the betting: instead of allowing bets in penny/\$0.01 increments, I only allow bets in \$1 increments, to reduce the branching factor to a maximum of 250 possible choices each turn rather than 25000 choices.
+(Some comparisons with decipenny and penny trees suggests that this makes little difference since early on the bet amounts are identical and later on being able to make <\$1 adjustments to bets yield small gains relative to total wealth; see the Haskell implementation.)
 
 Of course, even with memoization and reducing the branching factor, it's still difficult to compute the value of the optimal strategy all the way to _b_=300 because the exponentially increasing number of strategies still need to be computed at least once.
-With this R implementation, trees for up to _b_=144 can be computed with 4GB RAM & ~16h.
+With this R implementation, trees for up to _b_=150 can be computed with 4GB RAM & ~16h.
 
 The value function for increasing bets:
 
 ~~~{.R}
-vs <- sapply(1:150, function(b) { round(mV(25, b), digits=1) })
+vs <- sapply(1:150, function(b) { round(mV(25, b), digits=1) }); vs
 #   [1]  30.0  36.0  43.2  45.4  48.0  53.7  54.6  57.6  61.8  62.6  66.8  68.2  70.6  74.1  75.0  79.1  79.7  82.5  84.7  86.2  89.8  90.3  93.8
 #  [24]  94.5  97.0  98.8 100.3 103.2 103.9 107.2 107.6 110.3 111.4 113.3 115.2 116.4 119.0 119.6 122.4 122.9 125.3 126.2 128.1 129.5 130.8 132.8
 #  [47] 133.6 136.0 136.5 138.8 139.4 141.4 142.3 143.8 145.2 146.3 148.0 148.8 150.6 151.3 153.1 153.8 155.5 156.3 157.7 158.8 159.9 161.2 162.1
 #  [70] 163.6 164.2 165.8 166.4 167.9 168.5 169.9 170.7 171.8 172.8 173.7 174.8 175.6 176.8 177.5 178.7 179.3 180.5 181.1 182.3 182.9 184.0 184.7
 #  [93] 185.6 186.4 187.2 188.1 188.8 189.8 190.3 191.3 191.9 192.8 193.4 194.3 194.9 195.7 196.3 197.1 197.8 198.4 199.1 199.7 200.5 201.0 201.8
 # [116] 202.3 203.0 203.5 204.3 204.8 205.4 206.0 206.6 207.1 207.7 208.3 208.8 209.4 209.9 210.5 210.9 211.5 211.9 212.5 213.0 213.5 213.9 214.5
-# [139] 214.9 215.4 215.8 216.3 216.8 217.2
+# [139] 214.9 215.4 215.8 216.3 216.8 217.2 217.6 218.0 218.5 218.9 219.3 219.7
 ~~~
 
 So as the number of bets escalates, our expected payoff increases fairly quickly and we can get very close to the ceiling of \$250 with canny betting.
@@ -151,11 +153,11 @@ mVPplan(25, 3)
 It's interesting that when _b_ is very small, we want to bet everything on our first bet, because there's not enough time to bother with recovering from losses; but as we increase _b_, the first bet will shrink & become more conservative:
 
 ~~~{.R}
-actions <- sapply(1:150, function(b) { mVPplan(25, b) })
+firstAction <- sapply(1:150, function(b) { mVPplan(25, b) }); firstAction
 #   [1] 25 25 25 10 10 18 17 18 14 14 14  9 10 11  7 11  7 10 10 10  9  6  9  7  9  8  9  8  7  8  7  8  7  8  7  8  7  7  7  7  7  6  7  6  7  6  7
 #  [48]  6  6  6  6  6  6  6  6  6  6  6  6  5  6  5  6  5  6  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  4  5  4  5  4  5  4
 #  [95]  5  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  3
-# [142]  4  3  4
+# [142]  4  3  4  3  4  3  3  3  3
 ~~~
 
 ### Simulation Performance
@@ -172,7 +174,7 @@ game <- function(strategy, wealth, betsLeft) {
     winnings <- 2*bet*flip
     wealth <- min(wealth+winnings, 250)
     return(game(strategy, wealth, betsLeft-1)) } else { return(wealth); } }
-simulateGame <- function(s, w=25, b=300) { mean(replicate(5000, game(s, w, b))) }
+simulateGame <- function(s, w=25, b=300) { replicate(5000, game(s, w, b)) }
 
 kelly <- function(w, b) { 0.20 * w }
 smarterKelly <- function(w, b) { if(w==(250*0.8)) {0} else { (2*0.6-1) * w } }
@@ -180,12 +182,152 @@ smarterKelly <- function(w, b) { if(w==(250*0.8)) {0} else { (2*0.6-1) * w } }
 maximizer <- function(w, b) { w; }
 smarterMaximizer <- function(w, b) { if(w>=250) { 0 } else {w}; }
 
+# mean(simulateGame(smarterKelly, b=300) == 250)
+# mean(simulateGame(mVPplan, b=300) == 250)
 
-sapply(1:150, function(bets) { ky <- simulateGame(smarterKelly, b=bets);
-    dt <- simulateGame(mVPplan, b=bets);
+sapply(1:300, function(bets) {
+    ky <- round(mean(simulateGame(smarterKelly, b=bets)), digits=1)
+    dt <- round(mean(simulateGame(mVPplan, b=bets)), digits=1)
     gain <- dt-ky;
     print(paste(bets, mV(25, bets), dt, ky, gain)) })
 ~~~
 
+### Optimizing
 
-http://lpaste.net/351480#a351481
+The foregoing is interesting but the R implementation is too slow to examine the case of most importance: _b_=300.
+The issue is not so much the intrinsic difficulty of the problem - since the R implementation's RAM usage is moderate even at _b_=150, indicating that the boundary conditions do indeed tame the exponential growth & turn it into something more like quadratic growth - but the slowness of computing.
+Profiling suggests that most of the time is spent inside `memoise`:
+
+~~~{.R}
+# redefine to clear out any existing caching:
+forget(mV)
+Rprof(memory.profiling=TRUE, gc.profiling=TRUE, line.profiling=TRUE)
+mV(w=25, b=9)
+Rprof(NULL)
+summaryRprof()
+~~~
+
+Most of the time is spent in functions which appear nowhere in our R code, like `lapply` or `deparse`, which points to the behind-the-scenes `memoise`.
+Memoization *should* be fast because the decision tree can be represented as nothing but a multidimensional array in which one does lookups for each combination of _w_/_b_ for a stored value _V_, and array lookups ought to be near-instantaneous.
+But apparently there is enough overhead to dominate our decision tree's computation.
+
+We can switch to a compiled language with fast arrays.
+Implementations in Haskell have been written by Gurkenglas & nshepperd using [`array-memoize`](https://hackage.haskell.org/package/array-memoize) & [`Data.Vector`](https://hackage.haskell.org/package/vector) (respectively):
+
+~~~{.Haskell}
+import System.Environment
+import Data.Function
+import Data.Function.ArrayMemoize
+
+type Wealth = Int
+type EV = Double
+
+cap :: Wealth
+cap = 250
+
+value :: [Wealth -> EV]
+value = iterate f fromIntegral where
+  f next = arrayMemo (0, cap) $ \x -> maximum [go w | w <- [0..min (cap - x) x]] where
+    go w = 0.6 * next (min cap (x+w)) + 0.4 * next (x-w)
+
+main :: IO ()
+main = do [x, b] <- map read <$> getArgs
+          print $ value !! b $ x
+~~~
+
+
+~~~{.Haskell}
+import System.Environment
+import Data.Function
+import Data.Function.Memoize
+import Data.Vector (Vector)
+import qualified Data.Vector as V
+import Data.Ratio
+
+type Wealth = Int
+type Bets = Int
+type EV = Double
+
+cap :: Wealth
+cap = 250
+
+value :: (Wealth -> Bets -> EV) -> Wealth -> Bets -> EV
+value next 0 b = 0
+value next w 0 = fromIntegral w
+value next w b = maximum [go x | x <- [0..min (cap - w) w]]
+  where
+    go x = 0.6 * next (min cap (w+x)) (b-1) + 0.4 * next (w-x) (b-1)
+
+-- Direct recursion.
+direct :: Wealth -> Bets -> EV
+direct = fix value
+
+-- Memoised recursion.
+memo :: Wealth -> Bets -> EV
+memo w b = cached_value w b
+  where
+    cached_value w b = table V.! b V.! w
+    table :: Vector (Vector EV)
+    table = V.generate (b + 1)
+            (\b -> V.generate (cap + 1)
+              (\w -> value cached_value w b))
+
+-- Memoised recursion using 'memoize' library; slower.
+memo2 :: Wealth -> Bets -> EV
+memo2 = memoFix2 value
+
+main :: IO ()
+main = do [w, b] <- map read <$> getArgs
+          print (memo w b)
+~~~
+
+The second one, more low-level, is the fastest and is able to evaluate `memo 25 300` in <12s: the value turns out to be \$246.
+(If we assume that all games either end in \$250 or \$0, then this implies that $\frac{246}{250} = 0.984$ or >98.4% of decision-tree games hit the max, as compared to Haghani & Dewey's estimate that ~95% of KC players would.)
+The memoization is done internally, so to access all values we do more logic within the lexical scope.
+We can obtain all values with a function like
+
+~~~{.Haskell}
+memo3 :: [Wealth] -> [Bets] -> [EV]
+memo3 ws bs = zipWith cached_value ws bs
+  where
+    cached_value w b = table V.! b V.! w
+    table :: Vector (Vector EV)
+    table = V.generate (maximum bs + 1)
+            (\b -> V.generate (cap + 1)
+              (\w -> value cached_value w b))
+~~~
+
+and evaluate:
+
+~~~{.Haskell}
+λ> map round $ memo3 (repeat 25) [1..300]
+-- [30,36,43,45,48,54,55,58,62,63,67,68,71,74,75,79,80,82,85,86,90,90,94,94,97,99,100,
+-- 103,104,107,108,110,111,113,115,116,119,120,122,123,125,126,128,130,131,133,134,
+-- 136,136,139,139,141,142,144,145,146,148,149,151,151,153,154,155,156,158,159,160,
+-- 161,162,164,164,166,166,168,169,170,171,172,173,174,175,176,177,177,179,179,181,
+-- 181,182,183,184,185,186,186,187,188,189,190,190,191,192,193,193,194,195,196,196,
+-- 197,198,198,199,200,200,201,202,202,203,204,204,205,205,206,207,207,208,208,209,
+-- 209,210,210,211,212,212,213,213,214,214,214,215,215,216,216,217,217,218,218,219,
+-- 219,219,220,220,221,221,221,222,222,222,223,223,224,224,224,225,225,225,226,226,
+-- 226,227,227,227,228,228,228,228,229,229,229,230,230,230,230,231,231,231,231,232,
+-- 232,232,232,233,233,233,233,234,234,234,234,234,235,235,235,235,236,236,236,236,
+-- 236,236,237,237,237,237,237,238,238,238,238,238,238,239,239,239,239,239,239,239,
+-- 240,240,240,240,240,240,240,241,241,241,241,241,241,241,241,242,242,242,242,242,
+-- 242,242,242,242,243,243,243,243,243,243,243,243,243,243,244,244,244,244,244,244,
+-- 244,244,244,244,244,244,245,245,245,245,245,245,245,245,245,245,245,245,245,245,
+-- 246,246,246,246,246,246,246,246,246,246,246,246,246]
+~~~
+
+We could go even further with `zip [1..3000] $ memo3 (repeat 25) [1..3000]` (which takes ~118s).
+Interestingly, the value stops increasing around _b_=2150 (_V_=249.99009946798637) and simply repeats from there; it does not actually reach 250.
+
+This is probably because with a stake of \$25 it is possible to go bankrupt even betting the minimal fixed amount of \$1.
+(The original Haskell code is modeled after the R, which discretized this way for tractability).
+However, we can go back and model the problem exactly as it was in the paper by simply multiply everything by 100 & interpreting in pennies:
+
+~~~{.Haskell}
+cap = 25000 -- 250*100
+-- ...
+λ> zip [1..3000] $ memo3 (repeat (25*100)) [1..3000]
+-- [(1,3000.0),(2,3600.0),(3,4320.0),(4,4536.000000000002),(5,
+~~~~
