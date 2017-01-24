@@ -1,5 +1,5 @@
 ---
-title: The Kelly Coin-Flipping Game
+title: The Kelly Coin-Flipping Game: Exact Solutions via Dynamic Programming
 description: Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by \$6.6 over a modified KC.
 tags: statistics, decision theory, Haskell
 created: 19 Jan 2017
@@ -35,6 +35,7 @@ Despite the Kelly criterion being well-known and fairly intuitive, and the game 
 > The sample was largely comprised of college age students in economics and finance and young professionals at finance firms. We had 14 analyst and associate level employees at two leading asset management firms. The sample consisted of 49 males and 12 females. Our prior was that these participants should have been well prepared to play a simple game with a defined positive expected value...Only 21% of participants reached the maximum payout of \$250,^7^ well below the 95% that should have reached it given a simple constant percentage betting strategy of anywhere from 10% to 20%.^8^ We were surprised that one third of the participants wound up with less money in their account than they started with. More astounding still is the fact that 28% of participants went bust and received no payout. That a game of flipping coins with an ex-ante 60/40 winning probability produced so many subjects that lost everything is startling. The average ending bankroll of those who did not reach the maximum and who also did not go bust, which represented 51% of the sample, was \$75. While this was a tripling of their initial \$25 stake, it still represents a very sub-optimal outcome given the opportunity presented. The average payout across all subjects was \$91, letting the authors off the hook relative to the \$250 per person they'd have had to pay out had all the subjects played well.
 
 This is troubling because the problem is so well-defined and favorable to the players, and can be seen as a microcosm of the difficulties people experience in rational betting.
+(While it's true that human subjects typically perform badly initially in games like the iterated prisoner's dilemma and need time to learn, it's also true that humans only have one life to learn stock market investment during, and these subjects all should've been well-prepared to play.)
 
 Instead of expected earnings of ~\$240, the players earned $\91 - forfeiting \$149.
 However, if anything, the authors understate the underperformance, because as they correctly note, the Kelly criterion is not guaranteed to be optimal in this problem due to the potential for different utility functions (what if we simply want to maximize expected wealth, not log wealth?), the fixed number of bets & the ceiling, as the Kelly criterion tends to assume that wealth can increase without limit & there is an indefinite time horizon.
@@ -81,7 +82,7 @@ This mutual recursion bottoms out at the termination conditions.
 As defined, this is grossly inefficient as every node in the decision tree will be recalculated many times despite yielding identical deterministic, referentially transparent results.
 So we need to memoize results if we want to evaluate much beyond _b_=5.
 
-### Value function
+### Approximate Value function
 
 Implemented in R:
 
@@ -105,7 +106,7 @@ mV(0, 300)
 ~~~
 
 Given our memoized value function `mV` we can now take a look at expected value of optimal betting for bets _b_ from 0 to 300 with the fixed starting payroll of \$25.
-Memoization is no panacea, and R/[`memoise`](https://cran.r-project.org/web/packages/memoise/index.html) is slow enough that I am forced to make one change to the betting: instead of allowing bets in penny/\$0.01 increments, I only allow bets in \$1 increments, to reduce the branching factor to a maximum of 250 possible choices each turn rather than 25000 choices.
+Memoization is no panacea, and R/[`memoise`](https://cran.r-project.org/web/packages/memoise/index.html) is slow enough that I am forced to make one change to the betting: instead of allowing bets in penny/\$0.01 increments, I approximate by only allowing bets in \$1 increments, to reduce the branching factor to a maximum of 250 possible choices each turn rather than 25000 choices.
 (Some comparisons with decipenny and penny trees suggests that this makes little difference since early on the bet amounts are identical and later on being able to make <\$1 adjustments to bets yield small gains relative to total wealth; see the Haskell implementation.)
 
 Of course, even with memoization and reducing the branching factor, it's still difficult to compute the value of the optimal strategy all the way to _b_=300 because the exponentially increasing number of strategies still need to be computed at least once.
@@ -222,6 +223,111 @@ sapply(1:300, function(bets) {
 # [1] "30 107.174887230813 107.1 69.5 37.6"
 # [1] "31 107.591476375961 110 72.6 37.4"
 # [1] "32 110.306331782942 108.4 73.8 34.6"
+# [1] "33 111.364071068843 112.2 74.2 38"
+# [1] "34 113.291137173098 115.1 76.4 38.7"
+# [1] "35 115.18603026538 113.7 78.6 35.1"
+# [1] "36 116.393338891007 116.4 79.9 36.5"
+# [1] "37 118.958126679847 118.7 81 37.7"
+# [1] "38 119.595734910696 120 82.9 37.1"
+# [1] "39 122.373631028947 122.2 83.8 38.4"
+# [1] "40 122.868903994981 124.2 84.7 39.5"
+# [1] "41 125.313911495719 126.9 84.8 42.1"
+# [1] "42 126.188161205277 126.2 86.5 39.7"
+# [1] "43 128.052213724493 127.6 87.1 40.5"
+# [1] "44 129.528984874852 129.7 91.5 38.2"
+# [1] "45 130.809560245159 130.1 92.6 37.5"
+# [1] "46 132.829610284383 133.3 91.3 42"
+# [1] "47 133.627232405131 135.3 93.4 41.9"
+# [1] "48 135.954820828214 133.5 94.9 38.6"
+# [1] "49 136.491477313108 139.7 95.8 43.9"
+# [1] "50 138.78838922428 140.6 97.6 43"
+# [1] "51 139.385048897764 141 99.2 41.8"
+# [1] "52 141.369663251598 143.1 98.1 45"
+# [1] "53 142.288401852145 143 100.7 42.3"
+# [1] "54 143.83572425945 140.6 100.7 39.9"
+# [1] "55 145.166648432423 143.4 103.9 39.5"
+# [1] "56 146.29020723799 143.5 103.5 40"
+# [1] "57 147.96514380167 148.6 106.1 42.5"
+# [1] "58 148.769191880868 148.9 107.3 41.6"
+# [1] "59 150.624832041202 150.9 107.9 43"
+# [1] "60 151.271752873964 152.4 107.5 44.9"
+# [1] "61 153.11651319205 152.9 110.6 42.3"
+# [1] "62 153.786065432182 155.2 110 45.2"
+# [1] "63 155.456910374596 154.3 111.7 42.6"
+# [1] "64 156.299722913478 156.5 113 43.5"
+# [1] "65 157.695449871744 155.4 114 41.4"
+# [1] "66 158.790607536292 154.9 116.4 38.5"
+# [1] "67 159.887684442714 161.1 115.2 45.9"
+# [1] "68 161.225450543295 160.8 116.5 44.3"
+# [1] "69 162.06023751337 163.4 118.2 45.2"
+# [1] "70 163.56713597525 167.3 117.8 49.5"
+# [1] "71 164.226994014538 168 120.4 47.6"
+# [1] "72 165.791389797547 164.7 119.4 45.3"
+# [1] "73 166.390385785777 167 121.3 45.7"
+# [1] "74 167.897283254261 166.8 121.2 45.6"
+# [1] "75 168.547304242229 167.3 123.2 44.1"
+# [1] "76 169.906733155737 170.4 123.6 46.8"
+# [1] "77 170.68664646264 168.9 125.2 43.7"
+# [1] "78 171.847364270914 171.6 125.9 45.7"
+# [1] "79 172.79017224444 172.5 124.6 47.9"
+# [1] "80 173.742939786333 170.9 125.3 45.6"
+# [1] "81 174.838600850521 176 129.3 46.7"
+# [1] "82 175.610588354396 175.2 128.6 46.6"
+# [1] "83 176.815379110305 178.1 128.8 49.3"
+# [1] "84 177.462911167847 176 129.8 46.2"
+# [1] "85 178.711599014751 180.3 128.3 52"
+# [1] "86 179.302320243395 177.3 130 47.3"
+# [1] "87 180.528025121038 180.2 130.8 49.4"
+# [1] "88 181.1292789946 180 131 49"
+# [1] "89 182.272185591958 183.3 133.2 50.1"
+# [1] "90 182.936970887781 183.9 134.5 49.4"
+# [1] "91 183.955996588401 184.8 133.2 51.6"
+# [1] "92 184.712945446502 183.5 138.9 44.6"
+# [1] "93 185.59211640418 187.7 136.7 51"
+# [1] "94 186.446553783715 186 138.9 47.1"
+# [1] "95 187.192978371388 188.3 138.4 49.9"
+# [1] "96 188.129134357052 189 138.5 50.5"
+# [1] "97 188.767797645908 188.7 140.5 48.2"
+# [1] "98 189.754997706012 191.3 138.4 52.9"
+# [1] "99 190.324345881518 190.4 138.8 51.6"
+# [1] "100 191.322117926215 191 140.7 50.3"
+# [1] "101 191.861799533876 196.2 139.3 56.9"
+# [1] "102 192.832040659037 194 142.6 51.4"
+# [1] "103 193.378954969471 193.4 144.3 49.1"
+# [1] "104 194.289254855311 194 145.6 48.4"
+# [1] "105 194.870985515173 196.2 144.5 51.7"
+# [1] "106 195.700093491102 194.4 145.3 49.1"
+# [1] "107 196.333693095267 196.6 145.8 50.8"
+# [1] "108 197.071345163371 198 145.2 52.8"
+# [1] "109 197.760628011314 199.5 147.6 51.9"
+# [1] "110 198.410407288096 199.2 147.2 52"
+# [1] "111 199.147338764714 199.3 148.3 51"
+# [1] "112 199.722873427241 201.7 146.3 55.4"
+# [1] "113 200.491283831353 198.2 150.9 47.3"
+# [1] "114 201.01282000981 203 149 54"
+# [1] "115 201.791908090659 200.2 150.9 49.3"
+# [1] "116 202.284431237116 203 151.5 51.5"
+# [1] "117 203.049997767406 203.5 151.3 52.2"
+# [1] "118 203.536740965539 203.4 151.8 51.6"
+# [1] "119 204.267769354554 205.4 153.5 51.9"
+# [1] "120 204.765509267253 204.7 152.6 52.1"
+# [1] "121 205.4485532138 205.6 153.7 51.9"
+# [1] "122 205.967576289195 205.7 155.1 50.6"
+# [1] "123 206.596039109649 206.9 153.1 53.8"
+# [1] "124 207.14055668989 208.6 155.1 53.5"
+# [1] "125 207.713851174434 206.4 154.6 51.8"
+# [1] "126 208.28225523043 206.2 153.9 52.3"
+# [1] "127 208.805183362864 207.1 154.2 52.9"
+# [1] "128 209.391325457937 210.8 157.4 53.4"
+# [1] "129 209.872631389946 208.9 154.5 54.4"
+# [1] "130 210.467439410815 211 158.3 52.7"
+# [1] "131 210.918576770617 210.1 155.9 54.2"
+# [1] "132 211.511250602184 210.9 157.9 53"
+# [1] "133 211.944180716757 213.4 157.2 56.2"
+# [1] "134 212.524040614443 212 159 53"
+# [1] "135 212.950049532397 214.3 157.2 57.1"
+# [1] "136 213.507238153557 214.8 159.2 55.6"
+# [1] "137 213.934910465079 214.3 158.5 55.8"
 # ...
 ~~~
 
@@ -249,6 +355,9 @@ Memoization *should* be fast because the decision tree can be represented as not
 But apparently there is enough overhead to dominate our decision tree's computation.
 
 We can switch to a compiled language with fast arrays.
+
+#### Haskell
+
 Implementations in Haskell have been written by Gurkenglas & nshepperd using [`array-memoize`](https://hackage.haskell.org/package/array-memoize) & [`Data.Vector`](https://hackage.haskell.org/package/vector) (respectively):
 
 ~~~{.Haskell}
@@ -336,7 +445,7 @@ memo3 ws bs = zipWith cached_value ws bs
 and evaluate:
 
 ~~~{.Haskell}
-λ> map round $ memo3 (repeat 25) [1..300]
+λ> map round (memo3 (repeat 25) [1..300])
 -- [30,36,43,45,48,54,55,58,62,63,67,68,71,74,75,79,80,82,85,86,90,90,94,94,97,99,100,
 -- 103,104,107,108,110,111,113,115,116,119,120,122,123,125,126,128,130,131,133,134,
 -- 136,136,139,139,141,142,144,145,146,148,149,151,151,153,154,155,156,158,159,160,
@@ -354,17 +463,20 @@ and evaluate:
 -- 246,246,246,246,246,246,246,246,246,246,246,246,246]
 ~~~
 
-We could go even further with `zip [1..3000] $ memo3 (repeat 25) [1..3000]` (which takes ~118s).
+### Exact value function
+
+We could go even further with `zip [1..3000] (memo3 (repeat 25) [1..3000])` (which takes ~118s).
 Interestingly, the value stops increasing around _b_=2150 (_V_=249.99009946798637) and simply repeats from there; it does not actually reach 250.
 
 This is probably because with a stake of \$25 it is possible to go bankrupt ([gambler's ruin](!Wikipedia)) even betting the minimal fixed amount of \$1.
-(The original Haskell code is modeled after the R, which discretized this way for tractability).
-However, since the Haskell code is so fast, this is unnecessary - we can go back and model the problem exactly as it was in the paper by simply multiply everything by 100 & interpreting in pennies:
+(The original Haskell code is modeled after the R, which discretized this way for tractability; however, since the Haskell code is so fast, this is now unnecessary.)
+If this is the case, then being able to bet smaller amounts should allow expected value to converge to \$250 as exactly as can be computed, because the probability of going bankrupt after 2500 bets of \$0.01 each is effectively zero - as far as R and Haskell will compute without special measures, $0.4^{2500}=0$.
+We can go back and model the problem exactly as it was in the paper by simply multiply everything by 100 & interpreting in pennies:
 
 ~~~{.Haskell}
 cap = 25000 -- 250*100
 -- ...
-λ> zip [1..300] $ memo3 (repeat (25*100)) [1..300]
+λ> zip [1..3000] (memo3 (repeat (25*100)) [1..3000])
 [(1,3000.0),(2,3600.0),(3,4320.0),(4,4536.000000000002),(5,4795.200000000003),
  (6,5365.440000000002),(7,5458.752000000004),(8,5757.350400000005),(9,6182.853120000005),(10,6260.488704000007),
  (11,6676.137676800007),(12,6822.331453440009),(13,7060.11133132801),(14,7413.298296422411),(15,7499.673019514893),
@@ -424,7 +536,43 @@ cap = 25000 -- 250*100
  (281,24551.039168217816),(282,24557.136561611253),(283,24564.69504250772),(284,24569.687240115927),(285,24578.005270307505),
  (286,24581.974706479406),(287,24590.97422968356),(288,24593.998352542163),(289,24603.606573136858),(290,24605.75811775705),
  (291,24615.907195034095),(292,24617.254442557904),(293,24627.881197714756),(294,24628.488224763427),(295,24639.274079225856),
- (296,24639.46077884001),(297,24649.128469095107),(298,24650.173797856685),(299,24658.72751316172),(300,24660.629317974468)]
+ (296,24639.46077884001),(297,24649.128469095107),(298,24650.173797856685),(299,24658.72751316172),(300,24660.629317974468)
+ ...
+ (1884,24999.999999999614),(1885,24999.99999999963),(1886,24999.999999999643),(1887,24999.999999999658),(1888,24999.99999999967),
+ (1889,24999.99999999968),(1890,24999.999999999694),(1891,24999.9999999997),(1892,24999.999999999716),(1893,24999.999999999727),
+ (1894,24999.999999999738),(1895,24999.99999999975),(1896,24999.99999999976),(1897,24999.999999999767),(1898,24999.99999999978),
+ (1899,24999.99999999979),(1900,24999.9999999998),(1901,24999.99999999981),(1902,24999.999999999818),(1903,24999.999999999825),
+ (1904,24999.999999999833),(1905,24999.999999999844),(1906,24999.999999999854),(1907,24999.99999999986),(1908,24999.99999999987),
+ (1909,24999.999999999876),(1910,24999.999999999884),(1911,24999.99999999989),(1912,24999.999999999898),(1913,24999.999999999905),
+ (1914,24999.999999999913),(1915,24999.99999999992),(1916,24999.999999999924),(1917,24999.999999999927),(1918,24999.999999999935),
+ (1919,24999.99999999994),(1920,24999.99999999995),(1921,24999.99999999995),(1922,24999.999999999956),(1923,24999.999999999964),
+ (1924,24999.999999999967),(1925,24999.99999999997),(1926,24999.999999999978),(1927,24999.999999999978),(1928,24999.999999999985),
+ (1929,24999.99999999999),(1930,24999.999999999993),(1931,24999.999999999993),(1932,25000.0),(1933,25000.0),
+ (1934,25000.0),(1935,25000.0),(1936,25000.0),(1937,25000.0),(1938,25000.0),
+ (1939,25000.0),(1940,25000.0),(1941,25000.0),(1942,25000.0),(1943,25000.0),
+ (1944,25000.0),(1945,25000.0),(1946,25000.0),(1947,25000.0),(1948,25000.0),
+ (1949,25000) ... ]
 ~~~~
 
 With the exact penny version, the value of _b_=300 is now \$246.6062932 (taking ~3746s compiled), so the approximation costs an expected value of only \$0.61.
+The full run reveals that convergence happens at  _b_=1932 (which can be computed in ~48503s compiled), past which there is no need to compute further.
+
+#### Exact formula
+
+[Arthur B. notes](https://twitter.com/ArthurB/status/823241996244422656) that "you can compute $U(w,b)$ in $O(b)$ if you allow bets to be any fraction of _w_. It's piecewise linear, the cutoff points and slopes follow a very predictable pattern" and provides a formula for calculating the value function without constructing a decision tree:
+
+$$
+250\left(\frac{6}{5}\right)^b \left(\frac{w}{250} - \frac{1}{3}\sum_{k=0}^{b-1}\left(\frac{2}{3}\right)^k\max\!\left(\frac{w}{250}-\frac{1}{2^b}\sum_{j=0}^{k}\binom{b}{j},~0\right)\right)
+$$
+
+(I tried implementing it in R but may not have gotten it right.[^formula])
+
+[^formula]: As:
+
+    ~~~{.R}
+    function(w,b) { (250 * (6/5)^b) *
+        ((w/250) - (1/3)*sum(sapply(0:(b-1), function(k) { (2/3)^k * max((w/250) - (1/(2^b)) *
+            sum(sapply(0:k, function(j) { choose(b, j)})), 0) }))) }
+    ~~~
+
+    But comparing this to the decision-trees, it doesn't quite work, as while it's correct for a number of values, it goes well past the \$250 ceiling. The fault might be in the R implementation of the binomial coefficients, `choose`, not working the same as in Mathematica.
