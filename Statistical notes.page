@@ -3478,20 +3478,61 @@ After 2 days of training, the DQN had improved only slightly; the on-policy stra
 TODO: revisit with MCTS at some point?
 
 <!--
-V <- function(wealth, xriskp, alive, iters) {
-    sim <- function(w, xr) { (1-xr)*w*V(w, xr, 1, iters-1) +
-                              xr*V(0, 0, 0, iters-1) }
+Consider a MDP we might call the "x-risk game": we are trying to maximize rewards over a fixed number of rounds while subject to risk of death.
+In this game, each round is 1 year, and in each round, the economy yields a certain amount of wealth which is our reward for that year, and the economy grows 2% a year, but on the other hand, there is an existential risk probability _p_ which if it fires, ends the game instantly and we can earn no more rewards.
+Fortunately, we can invest in existential risk reduction: if we sacrifice 1% of our wealth, we can permanently reduce _p_ by 1%; if we sacrifice 2%, 2%, and so on.
+(So we can invest everything in growth and grow our wealth by 2% each but leave existential risk identical, or we could use up 2% and not grow at all, or we could shrink the economy but shrink the existential risk even more. For tractability, we'll just consider 4 choices, since even in a world war it's hard to mobilize more of the global economy.)
+For starters, we'll define the starting wealth as 1 (for convenience; the global economy is ~\$70 trillion) and the existential risk as 1% (roughly the estimate for nuclear wars/asteroid impact/pandemic/etc).
 
-    if (!alive) { return(0) } else { if (iters==0) { return(wealth) } else {
-    returns <- c( V(wealth*1.02, xriskp*1, alive, iters-1),
-                  V(wealth*1.01, xriskp*0.99, alive, iters-1),
-                  V(wealth*1.00, xriskp*0.98, alive, iters-1))
+So what is the optimal strategy for this game?
+Investment in risk reduction are good, but they also come at the expense of the exponential growth of the economy, which can be used to buy risk reduction later on; on the other hand, if there are not many rounds, the x-risk hitting doesn't cost that much.
+
+library(memoise)
+f <- function(wealth, xriskp, t) {
+    wealth + xriskp*0 + (1-xriskp)*V(wealth, xriskp, t-1) }
+mf <- memoise(f)
+V <- function(wealth, xriskp, t) {
+
+    if (t==0) { wealth } else {
+    returns <- c( mf(wealth*1.02, xriskp*1, t),
+                  mf(wealth*1.01, xriskp*0.99, t),
+                  mf(wealth*1.00, xriskp*0.98, t),
+                  mf(wealth*0.99, xriskp*0.97, t),
+                  mf(wealth*0.98, xriskp*0.96, t))
     return(max(returns) + wealth)
     }}
-    }
-Vm <- memoise(V)
-Vm(10, 0.01, 1, 10)
-sapply(1:20, function(i) { print(Vm(10, 0.01, 1, i)) })
+mV <- memoise(V)
+sapply(1:50, function(i) { print(mV(1, 0.01, i)) })
+
+
+VPplan <- function(wealth, xriskp, t) {
+    if (t==0) { return(NA); } else {
+    returns <- c( mf(wealth*1.02, xriskp*1, t),
+                  mf(wealth*1.01, xriskp*0.99, t),
+                  mf(wealth*1.00, xriskp*0.98, t),
+                  mf(wealth*0.99, xriskp*0.97, t),
+                  mf(wealth*0.98, xriskp*0.96, t))
+      return (which.max(returns)); }
+ }
+mVPplan <- memoise(VPplan)
+firstAction <- sapply(1:50, function(t) { a <- mVPplan(1, 0.01, t); print(paste(t, a)); a }); firstAction
+
+
+goldenPath <- function (wealth, xriskp, t) {
+    if (t!=0) {
+    choice <- mVPplan(wealth, xriskp, t)
+    print(paste(t, wealth, xriskp, choice))
+    switch(choice,
+        { goldenPath(wealth*1.02, xriskp*1, t-1); },
+        { goldenPath(wealth*1.01, xriskp*0.99, t-1); },
+        { goldenPath(wealth*1.00, xriskp*0.98, t-1); },
+        { goldenPath(wealth*0.99, xriskp*0.97, t-1); },
+        { goldenPath(wealth*0.98, xriskp*0.96, t-1); },
+        )
+        }}
+goldenPath(1, 0.01, 50)
+
+sapply(1:50, function(t) { goldenPath(1, 0.01, t) })
 -->
 
 # Model Criticism via Machine Learning
@@ -3525,10 +3566,10 @@ If we consider the kinds of models which are being critiqued, and what is critiq
 simple    model fit indexes+linear model          statistician+linear model
 complex   model fit indexes+ML                    ML+ML (eg GANs)
 
-Simple/simple is useful for cases like linear regression where classic methods like examining residuals or R^2s or Cook indexes can often flag problems with the model.
-Simple/complex is also useful, as the human statistician can spot additional problems.
-Complex/simple is probably useless, as the NNs may easily have severe problems but will have fit any simple linear structure and fool regular diagnostics.
-Complex/complex can be very useful in machine learning, but in different ways from a good simple model.
+1. Simple/simple is useful for cases like linear regression where classic methods like examining residuals or R^2s or Cook indexes can often flag problems with the model.
+2. Simple/complex is also useful, as the human statistician can spot additional problems.
+3. Complex/simple is probably useless, as the NNs may easily have severe problems but will have fit any simple linear structure and fool regular diagnostics.
+4. Complex/complex can be very useful in machine learning, but in different ways from a good simple model.
 
 So is quadrant 2 fully populated by human statisticians?
 We wouldn't necessarily want to use GANs for everything we use statisticians for now, because neural networks can be *too* powerful and what we want from our models is often some sort of clear answer like "does X predict Y?" and simplicity.
