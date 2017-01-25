@@ -3609,6 +3609,104 @@ main = do let ts = [1..27]
 "21[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
 "22[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
 -->
+<!--
+import Data.List (elemIndices)
+import Data.MemoUgly (memo)
+import Data.Word (Word8, Word16, Word32, Word64)
+
+type Wealth = Word64
+type XriskP = Word16
+type Time = Word8
+type State = (Wealth, XriskP, Time)
+type EV = Word32
+
+gdp2016 :: Wealth
+gdp2016 = 80*1000 -- $80t
+discount :: Float
+discount = 0.03
+xc :: Float
+xc = 10 -- $10b
+annualGrowth :: Float
+annualGrowth = 1.02
+
+f :: State -> EV
+f (w, p, t) = round (fromIntegral w + (1-(unquantize p))*fromIntegral(mvalue (w, p, (t-1))))
+actions :: State -> [EV]
+actions (w, p, t) = [f (round(((fromIntegral w)-(xc*0))*annualGrowth), p, t),
+                     f (round(((fromIntegral w)-(xc*1))*annualGrowth), round(fromIntegral p*0.99), t),
+                     f (round(((fromIntegral w)-(xc*2))*annualGrowth), round(fromIntegral p*0.98), t) ]
+
+value :: State -> EV
+value (w, _, 0) = round(fromIntegral w / log (1+discount))
+value s@(w, _, _) = let returns = actions s in (maximum returns) + fromIntegral w
+mvalue :: State -> EV
+mvalue = memo value
+
+vplan :: State -> Int
+vplan (_, _, 0) = -1
+vplan s         = let returns = actions s in head $ elemIndices (maximum returns) returns
+
+goldenPath :: State -> [Int] -> [Int]
+goldenPath (_, _, 0) _       = []
+goldenPath s@(w, p, t) history = let choice = vplan s in case choice of
+                                                         0 -> 0 : goldenPath (round(((fromIntegral w)-(xc*0))*annualGrowth), p, (t-1)) history
+                                                         1 -> 1 : goldenPath (round(((fromIntegral w)-(xc*1))*annualGrowth), round(fromIntegral p*0.99), (t-1)) history
+                                                         2 -> 2 : goldenPath (round(((fromIntegral w)-(xc*2))*annualGrowth), round(fromIntegral p*0.98), (t-1)) history
+                                                         _ -> []
+
+-- convert a probability to and from a Word16 int for more compact representation as a function argument (it gets expanded inside `f` back to a real probability for the expected-value estimation): note, assumes probability is <=0.01! (We could use an encoding like 'round(p * maxBound::Word16)' but we would wind up not using most of the encodable probabilities eg an xriskp of 0.99 will never appear in any realistic problem.)
+quantize p = round (p / (0.01 / 65535)) -- maxBound::Word16
+unquantize p' = (fromIntegral p') * (0.01 / 65535)
+main :: IO ()
+main = do let ts = [1..43]
+          mapM_ (\t -> print(show t ++ show (goldenPath (gdp2016, quantize 0.01, t) []))) ts
+          return ()
+
+for gdp2016, and xrisk=0.01:
+"1[0]"
+"2[2,0]"
+"3[2,2,0]"
+"4[2,2,2,0]"
+"5[2,2,2,2,0]"
+"6[2,2,2,2,2,0]"
+"7[2,2,2,2,2,2,0]"
+"8[2,2,2,2,2,2,2,0]"
+"9[2,2,2,2,2,2,2,2,0]"
+"10[2,2,2,2,2,2,2,2,2,0]"
+"11[2,2,2,2,2,2,2,2,2,2,0]"
+"12[2,2,2,2,2,2,2,2,2,2,2,0]"
+"13[2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"14[2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"15[2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"16[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"17[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"18[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"19[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"20[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"21[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"22[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"23[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"24[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"25[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"26[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"27[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"28[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"29[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"30[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"31[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"32[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"33[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"34[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"35[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"36[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"37[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"38[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"39[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"40[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"41[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"42[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+"43[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+-->
 
 # Model Criticism via Machine Learning
 
