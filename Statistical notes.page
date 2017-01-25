@@ -3480,6 +3480,7 @@ TODO: revisit with MCTS at some point?
 <!--
 Consider a MDP we might call the "x-risk game": we are trying to maximize rewards over a fixed number of rounds while subject to risk of death.
 In this game, each round is 1 year, and in each round, the economy yields a certain amount of wealth which is our reward for that year, and the economy grows 2% a year, but on the other hand, there is an existential risk probability _p_ which if it fires, ends the game instantly and we can earn no more rewards.
+If we survive to the end, we reach 'posthumanity' where we earn our current wealth indefinitely discounted at 3% annually (ie a single reward of $\frac{w}{log(1+0.03)}$).
 Fortunately, we can invest in existential risk reduction: if we sacrifice 1% of our wealth, we can permanently reduce _p_ by 1%; if we sacrifice 2%, 2%, and so on.
 (So we can invest everything in growth and grow our wealth by 2% each but leave existential risk identical, or we could use up 2% and not grow at all, or we could shrink the economy but shrink the existential risk even more. For tractability, we'll just consider 4 choices, since even in a world war it's hard to mobilize more of the global economy.)
 For starters, we'll define the starting wealth as 1 (for convenience; the global economy is ~\$70 trillion) and the existential risk as 1% (roughly the estimate for nuclear wars/asteroid impact/pandemic/etc).
@@ -3493,7 +3494,7 @@ f <- function(wealth, xriskp, t) {
 mf <- memoise(f)
 V <- function(wealth, xriskp, t) {
 
-    if (t==0) { wealth } else {
+    if (t==0) { wealth/log(1.03) } else {
     returns <- c( mf(wealth*1.02, xriskp*1, t),
                   mf(wealth*1.01, xriskp*0.99, t),
                   mf(wealth*1.00, xriskp*0.98, t),
@@ -3534,6 +3535,80 @@ goldenPath(1, 0.01, 50)
 
 sapply(1:50, function(t) { goldenPath(1, 0.01, t) })
 -->
+<!--
+import Data.List (elemIndices)
+import Data.MemoUgly (memo)
+
+type Wealth = Int
+type XriskP = Float
+type Time = Int
+type State = (Wealth, XriskP, Time)
+type EV = Float
+
+gdp2016 :: Wealth
+gdp2016 = 80*1000
+discount :: Float
+discount = 0.03
+xc :: Float
+xc = 10
+annualGrowth :: Float
+annualGrowth = 1.02
+
+f :: State -> EV
+f (w, p, t) = fromIntegral w + (1-p)*(mvalue (w, p, (t-1)))
+
+actions :: State -> [EV]
+actions (w, p, t) = [f (round(((fromIntegral w)-(xc*0))*annualGrowth), (p*1), t),
+                     f (round(((fromIntegral w)-(xc*1))*annualGrowth), (p*0.99), t),
+                     f (round(((fromIntegral w)-(xc*2))*annualGrowth), (p*0.98), t),
+                     f (round(((fromIntegral w)-(xc*3))*annualGrowth), (p*0.97), t) ]
+
+value :: State -> EV
+value (w, _, 0) = fromIntegral w / log (1+discount)
+value s@(w, _, _) = let returns = actions s in (maximum returns) + fromIntegral w
+mvalue :: State -> EV
+mvalue = memo value
+
+vplan :: State -> Int
+vplan (_, _, 0) = -1
+vplan s         = let returns = actions s in head $ elemIndices (maximum returns) returns
+
+goldenPath :: State -> [Int] -> [Int]
+goldenPath (_, _, 0) _       = []
+goldenPath s@(w, p, t) history = let choice = vplan s in case choice of
+                                                         0 -> 0 : goldenPath (round(((fromIntegral w)-(xc*0))*annualGrowth), (p*1), (t-1)) history
+                                                         1 -> 1 : goldenPath (round(((fromIntegral w)-(xc*1))*annualGrowth), (p*0.99), (t-1)) history
+                                                         2 -> 2 : goldenPath (round(((fromIntegral w)-(xc*2))*annualGrowth), (p*0.98), (t-1)) history
+                                                         3 -> 3 : goldenPath (round(((fromIntegral w)-(xc*3))*annualGrowth), (p*0.97), (t-1)) history
+                                                         _ -> []
+
+main :: IO ()
+main = do let ts = [1..27]
+          mapM_ (\t -> print(show t ++ show (goldenPath (gdp2016, 0.01, t) []))) ts
+          return ()
+"1[0]"
+"2[3,0]"
+"3[3,3,0]"
+"4[3,3,3,0]"
+"5[3,3,3,3,0]"
+"6[3,3,3,3,3,0]"
+"7[3,3,3,3,3,3,0]"
+"8[3,3,3,3,3,3,3,0]"
+"9[3,3,3,3,3,3,3,3,0]"
+"10[3,3,3,3,3,3,3,3,3,0]"
+"11[3,3,3,3,3,3,3,3,3,3,0]"
+"12[3,3,3,3,3,3,3,3,3,3,3,0]"
+"13[3,3,3,3,3,3,3,3,3,3,3,3,0]"
+"14[3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
+"15[3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
+"16[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
+"17[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
+"18[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
+"19[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
+"20[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
+"21[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
+"22[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0]"
+-->
 
 # Model Criticism via Machine Learning
 
@@ -3543,13 +3618,13 @@ In ["Deep learning, model checking, AI, the no-homunculus principle, and the uni
 >
 >> The process of Bayesian data analysis can be idealized by dividing it into the following three steps:
 >>
->> 1. Setting up a full probability model-a joint probability distribution for all observable and unobservable quantities in a problem. The model should be consistent with knowledge about the underlying scientific problem and the data collection process.
->> 2. Conditioning on observed data: calculating and interpreting the appropriate posterior distribution-the conditional probability distribution of the unobserved quantities of ultimate interest, given the observed data.
+>> 1. Setting up a full probability model - a joint probability distribution for all observable and unobservable quantities in a problem. The model should be consistent with knowledge about the underlying scientific problem and the data collection process.
+>> 2. Conditioning on observed data: calculating and interpreting the appropriate posterior distribution - the conditional probability distribution of the unobserved quantities of ultimate interest, given the observed data.
 >> 3. Evaluating the fit of the model and the implications of the resulting posterior distribution: how well does the model fit the data, are the substantive conclusions reasonable, and how sensitive are the results to the modeling assumptions in step 1? In response, one can alter or expand the model and repeat the three steps.
 >
 > How does this fit in with goals of performing statistical analysis using artificial intelligence?
 >
-> 3\. The third step-identifying model misfit and, in response, figuring out how to improve the model-seems like the toughest part to automate. We often learn of model problems through open-ended exploratory data analysis, where we look at data to find unexpected patterns and compare inferences to our vast stores of statistical experience and subject-matter knowledge. Indeed, one of my main pieces of advice to statisticians is to integrate that knowledge into statistical analysis, both in the form of formal prior distributions and in a willingness to carefully interrogate the implications of fitted models.
+> 3\. The third step - identifying model misfit and, in response, figuring out how to improve the model - seems like the toughest part to automate. We often learn of model problems through open-ended exploratory data analysis, where we look at data to find unexpected patterns and compare inferences to our vast stores of statistical experience and subject-matter knowledge. Indeed, one of my main pieces of advice to statisticians is to integrate that knowledge into statistical analysis, both in the form of formal prior distributions and in a willingness to carefully interrogate the implications of fitted models.
 
 One way of looking at step #3 is to treat the human statistician as another model: specifically, he is a large neural network with trillions of parameters, who has been trained to look for anomalies & model misspecification, and to fix them when he finds them, retraining the model, until he can no longer easily distinguish the original data from the model's predictions or samples.
 As he is such a large model with the ability to represent and infer a large class of nonlinearities, he can usually easily spot flaws where the current model's distribution differs from the true distribution.
