@@ -1865,6 +1865,8 @@ Since the polygenic score only becomes uninformative hundreds of SDs beyond wher
 
 The [order statistic](!Wikipedia) expectation of the maximum ($E[Z]$) of a draw of _n_ samples from a normal distribution has no simple formula but it can be given [asymptotes & upper bounds](https://math.stackexchange.com/questions/89030/expectation-of-the-maximum-of-gaussian-random-variables), approximations, and numerical integrations.
 
+### Monte Carlo
+
 Most simply and directly, we can estimate it using a Monte Carlo simulation with hundreds of thousands of iterations:
 
 ~~~{.R}
@@ -1890,18 +1892,53 @@ simGain3 <- function(n=10, sd=1, iters=100000) { mean(rowMaxs(matrix(ncol=n, dat
 We can treat the simulation estimates as exact and use memoization such as provided by the R package [`memoise`](https://cran.r-project.org/web/packages/memoise/) to cache results & never recompute them, but it will still be slow on the first calculation.
 So it would be good to have either an exact algorithm or a very accurate approximation: for analysis, we want to calculate the expectation of the maximum to ±0.01 IQ points, or ±0.0006 SDs (inasmuch as each IQ point is worth at least \$2000, so an underestimate of 0.01 points is an underestimate of >\$20).
 
-The simplest [upper bound](http://math.stackexchange.com/a/89147) is $E[Z] \leq \sigma \cdot \sqrt{2 \cdot log(n)}$ which makes the diminishing returns clear. Implementation:
+### Approximation
+
+To summarize the [CrossValidated discussion](https://stats.stackexchange.com/questions/9001/approximate-order-statistics-for-normal-random-variables): the simplest [upper bound](http://math.stackexchange.com/a/89147) is $E[Z] \leq \sigma \cdot \sqrt{2 \cdot log(n)}$, which makes the diminishing returns clear.
+Implementation:
 
 ~~~{.R}
-upperBoundMax <- function(n sd) { sd * sqrt(2 * log(n)) }
+upperBoundMax <- function(n, sd) { sd * sqrt(2 * log(n)) }
 ~~~
 
 However, it  is hopelessly inaccurate in small samples when we compare to the Monte Carlo simulation.
-A much better approximation comes from [Chen & Tyler 1999](/docs/statistics/1999-chen.pdf "Accurate Approximation to the Extreme Order Statistics of Gaussian Samples"): $\Phi^{-1}(0.5264^{\frac{1}{n}})$.
+Other ones would be $\frac{n-1}{\sqrt{2 \cdot n - 1}} \cdot \sigma$ and $-\Phi^{-1}(\frac{1}{n+1}) \cdot \sigma$:
+
+~~~{.R}
+upperBoundMax2 <- function(n, sd) { ((n-1) / sqrt(2*n - 1)) * sd }
+upperBoundMax3 <- function(n, sd){ -qnorm(1/(n+1), sd=sd) }
+~~~
+
+Blom 1958 (_Statistical estimates and transformed beta-variables_) reportedly provides a general approximation formula, which tweaking for the max is $\Phi^{-1}(\frac{n-\alpha}{n - 2\cdot\alpha + 1 }) \cdot \sigma; \alpha=0.375$, which is better than the upper bounds:
+
+~~~{.R}
+blom1958 <- function(n, sd) { alpha <- 0.375; qnorm((n-alpha)/(n-2*alpha+1)) * sd }
+~~~
+
+[Elfving 1947](/docs/statistics/1947-elfving.pdf "The asymptotical distribution of range in samples from a normal population"), apparently, by way of _Mathematical Statistics_, Wilks 1962, demonstrates that Blom 1958's approximation is imperfect because actually $\alpha=\frac{pi}{8}$, so:
+
+~~~{.R}
+elfving1947 <- function(n, sd) { alpha <- pi/8; qnorm((n-alpha)/(n-2*alpha+1)) * sd }
+~~~
+
+(Blom 1958 appears to be more accurate for _n_<48 and then Elfving's correction dominates.)
+
+[Harter 1961](/docs/statistics/1961-harter.pdf "Expected Values of Normal Order Statistics") elaborated this by giving different values for $\alpha$, and [Royston 1982](/docs/statistics/1982-royston.pdf "Algorithm AS 177: Expected Normal Order Statistics (Exact and Approximate)") provides computer algorithms; I have not attempted to provide an R implementation of these.
+
+[probabilityislogic](https://stats.stackexchange.com/users/2392/probabilityislogic) offers a [derivation via the beta-F compound distribution in 2015](http://stats.stackexchange.com/a/9010/16897) of: $E[x_{i}]\approx \mu+\sigma\Phi^{-1}\left(\frac{i}{N+1}\right)\left[1+\frac{\left(\frac{i}{N+1}\right)\left(1-\frac{i}{N+1}\right)}{2(N+2)\left[\phi\left[\Phi^{-1}\left(\frac{i}{N+1}\right)\right]\right]^{2}}\right]$ and an approximate (but highly accurate) numerical integration as well:
+
+~~~{.R}
+pil2015 <- function(n, sd) { sd * qnorm(n/(n+1)) * { 1 +
+    ((n/(n+1)) * (1 - (n/(n+1)))) /
+    (2*(n+2) * (pnorm(qnorm(n/(n+1))))^2) }}
+pil2015Integrate <- function(n) { mean(qnorm(qbeta(((1:10000) - 0.5 ) / 10000, n, 1))) + 1}
+~~~
+
+Another approximation comes from [Chen & Tyler 1999](/docs/statistics/1999-chen.pdf "Accurate Approximation to the Extreme Order Statistics of Gaussian Samples"): $\Phi^{-1}(0.5264^{\frac{1}{n}})$.
 Unfortunately, while accurate enough for most purposes, it is still off by as much as 1 IQ point and has an average mean error of -0.32 IQ points compared to the simulation:
 
 ~~~{.R}
-chen1999 <- function(n,sd=1){ pnorm(0.5264^(1/n), sd=sd)^-1 }
+chen1999 <- function(n,sd=1){ qnorm(0.5264^(1/n), sd=sd) }
 
 approximationError <- sapply(1:1000, function(n) { (chen1999(n) - simGain(n=n)) * 15 } )
 summary(approximationError)
@@ -1911,6 +1948,8 @@ plot(1:1000, approximationError,  xlab="Number of samples taking the max", ylab=
 ~~~
 
 ![Error in using the Chen & Tyler 1999 approximation to estimate the expected value (gain) from taking the maximum of _n_ normal samples](/images/genetics/iq-selection-chen1999approximation-error.png)
+
+### Exact
 
 The R package [`lmomco`](https://cran.r-project.org/web/packages/lmomco/index.html) ([Asquith 2011](https://ttu-ir.tdl.org/ttu-ir/handle/2346/ETD-TTU-2011-05-1319 "Univariate Distributional Analysis with L-moment Statistics using R")) calculates a wide variety of order statistics using numerical integration & other methods.
 It is quite fast, and unbiased & very close to the Monte Carlo estimates even for small samples, so it does what it claims to and provides what we want: a fast exact estimate of the mean gain from selecting the maximum from _n_ samples from a normal distribution.
