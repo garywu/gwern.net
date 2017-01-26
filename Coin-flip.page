@@ -1,5 +1,5 @@
 ---
-title: The Kelly Coin-Flipping Game: Exact Solutions via Dynamic Programming
+title: "The Kelly Coin-Flipping Game: Exact Solutions via Dynamic Programming"
 description: Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by \$6.6 over a modified KC.
 tags: statistics, decision theory, Haskell
 created: 19 Jan 2017
@@ -161,180 +161,6 @@ firstAction <- sapply(1:150, function(b) { mVPplan(25, b) }); firstAction
 # [142]  4  3  4  3  4  3  3  3  3
 ~~~
 
-### Simulation Performance
-
-The implementations here could be wrong or decision trees not actually optimal like we claimed.
-We can test it by directly comparing the performance in a simulation of the coin-flipping game, comparing the performance of `mVPplan` vs the 20% Kelly criterion and a simple bet-everything strategy:
-
-~~~{.R}
-game <- function(strategy, wealth, betsLeft) {
-    if (betsLeft>0) {
-    bet <- strategy(wealth, betsLeft)
-    wealth <- wealth - bet
-    flip <- rbinom(1,1,p=0.6)
-    winnings <- 2*bet*flip
-    wealth <- min(wealth+winnings, 250)
-    return(game(strategy, wealth, betsLeft-1)) } else { return(wealth); } }
-simulateGame <- function(s, w=25, b=300) { replicate(5000, game(s, w, b)) }
-
-kelly <- function(w, b) { 0.20 * w }
-smarterKelly <- function(w, b) { if(w==(250*0.8)) {0} else { (2*0.6-1) * w } }
-
-maximizer <- function(w, b) { w; }
-smarterMaximizer <- function(w, b) { if(w>=250) { 0 } else {w}; }
-
-# mean(simulateGame(smarterKelly, b=300) == 250)
-# mean(simulateGame(mVPplan, b=300) == 250)
-
-sapply(1:300, function(bets) {
-    ky <- round(mean(simulateGame(smarterKelly, b=bets)), digits=1)
-    dt <- round(mean(simulateGame(mVPplan, b=bets)), digits=1)
-    gain <- dt-ky;
-    print(paste(bets, mV(25, bets), dt, ky, gain)) })
-# [1] "1 30 29.8 26.1 3.7"
-# [1] "2 36 36.1 27 9.1"
-# [1] "3 43.2 42.5 28.1 14.4"
-# [1] "4 45.36 47.9 29.2 18.7"
-# [1] "5 47.952 48.5 30.1 18.4"
-# [1] "6 53.6544 51.7 31.7 20"
-# [1] "7 54.58752 52.8 32.6 20.2"
-# [1] "8 57.573504 57.4 34 23.4"
-# [1] "9 61.8285312 61.5 35.1 26.4"
-# [1] "10 62.6048870400001 59.6 36.8 22.8"
-# [1] "11 66.761376768 66.4 38.5 27.9"
-# [1] "12 68.2233145344 69.2 39.1 30.1"
-# [1] "13 70.6011133132801 72.1 41.1 31"
-# [1] "14 74.132982964224 74.9 43 31.9"
-# [1] "15 74.9966063604204 75.8 44.6 31.2"
-# [1] "16 79.0964893994582 77.4 46.3 31.1"
-# [1] "17 79.745767264184 76.7 47.7 29"
-# [1] "18 82.4937777791066 81.5 49.3 32.2"
-# [1] "19 84.7111727297459 82.9 50.8 32.1"
-# [1] "20 86.2422294497396 85.5 54.1 31.4"
-# [1] "21 89.7571250817201 90.7 55.8 34.9"
-# [1] "22 90.2656030147463 89.9 56.1 33.8"
-# [1] "23 93.7598308377194 92 59.3 32.7"
-# [1] "24 94.4756292069395 94.7 60.4 34.3"
-# [1] "25 96.9586043002355 95.2 61.7 33.5"
-# [1] "26 98.8072243859105 97.7 63.2 34.5"
-# [1] "27 100.342755213062 103.7 65.3 38.4"
-# [1] "28 103.187812527613 104.3 67.5 36.8"
-# [1] "29 103.904006215225 105.8 69.5 36.3"
-# [1] "30 107.174887230813 107.1 69.5 37.6"
-# [1] "31 107.591476375961 110 72.6 37.4"
-# [1] "32 110.306331782942 108.4 73.8 34.6"
-# [1] "33 111.364071068843 112.2 74.2 38"
-# [1] "34 113.291137173098 115.1 76.4 38.7"
-# [1] "35 115.18603026538 113.7 78.6 35.1"
-# [1] "36 116.393338891007 116.4 79.9 36.5"
-# [1] "37 118.958126679847 118.7 81 37.7"
-# [1] "38 119.595734910696 120 82.9 37.1"
-# [1] "39 122.373631028947 122.2 83.8 38.4"
-# [1] "40 122.868903994981 124.2 84.7 39.5"
-# [1] "41 125.313911495719 126.9 84.8 42.1"
-# [1] "42 126.188161205277 126.2 86.5 39.7"
-# [1] "43 128.052213724493 127.6 87.1 40.5"
-# [1] "44 129.528984874852 129.7 91.5 38.2"
-# [1] "45 130.809560245159 130.1 92.6 37.5"
-# [1] "46 132.829610284383 133.3 91.3 42"
-# [1] "47 133.627232405131 135.3 93.4 41.9"
-# [1] "48 135.954820828214 133.5 94.9 38.6"
-# [1] "49 136.491477313108 139.7 95.8 43.9"
-# [1] "50 138.78838922428 140.6 97.6 43"
-# [1] "51 139.385048897764 141 99.2 41.8"
-# [1] "52 141.369663251598 143.1 98.1 45"
-# [1] "53 142.288401852145 143 100.7 42.3"
-# [1] "54 143.83572425945 140.6 100.7 39.9"
-# [1] "55 145.166648432423 143.4 103.9 39.5"
-# [1] "56 146.29020723799 143.5 103.5 40"
-# [1] "57 147.96514380167 148.6 106.1 42.5"
-# [1] "58 148.769191880868 148.9 107.3 41.6"
-# [1] "59 150.624832041202 150.9 107.9 43"
-# [1] "60 151.271752873964 152.4 107.5 44.9"
-# [1] "61 153.11651319205 152.9 110.6 42.3"
-# [1] "62 153.786065432182 155.2 110 45.2"
-# [1] "63 155.456910374596 154.3 111.7 42.6"
-# [1] "64 156.299722913478 156.5 113 43.5"
-# [1] "65 157.695449871744 155.4 114 41.4"
-# [1] "66 158.790607536292 154.9 116.4 38.5"
-# [1] "67 159.887684442714 161.1 115.2 45.9"
-# [1] "68 161.225450543295 160.8 116.5 44.3"
-# [1] "69 162.06023751337 163.4 118.2 45.2"
-# [1] "70 163.56713597525 167.3 117.8 49.5"
-# [1] "71 164.226994014538 168 120.4 47.6"
-# [1] "72 165.791389797547 164.7 119.4 45.3"
-# [1] "73 166.390385785777 167 121.3 45.7"
-# [1] "74 167.897283254261 166.8 121.2 45.6"
-# [1] "75 168.547304242229 167.3 123.2 44.1"
-# [1] "76 169.906733155737 170.4 123.6 46.8"
-# [1] "77 170.68664646264 168.9 125.2 43.7"
-# [1] "78 171.847364270914 171.6 125.9 45.7"
-# [1] "79 172.79017224444 172.5 124.6 47.9"
-# [1] "80 173.742939786333 170.9 125.3 45.6"
-# [1] "81 174.838600850521 176 129.3 46.7"
-# [1] "82 175.610588354396 175.2 128.6 46.6"
-# [1] "83 176.815379110305 178.1 128.8 49.3"
-# [1] "84 177.462911167847 176 129.8 46.2"
-# [1] "85 178.711599014751 180.3 128.3 52"
-# [1] "86 179.302320243395 177.3 130 47.3"
-# [1] "87 180.528025121038 180.2 130.8 49.4"
-# [1] "88 181.1292789946 180 131 49"
-# [1] "89 182.272185591958 183.3 133.2 50.1"
-# [1] "90 182.936970887781 183.9 134.5 49.4"
-# [1] "91 183.955996588401 184.8 133.2 51.6"
-# [1] "92 184.712945446502 183.5 138.9 44.6"
-# [1] "93 185.59211640418 187.7 136.7 51"
-# [1] "94 186.446553783715 186 138.9 47.1"
-# [1] "95 187.192978371388 188.3 138.4 49.9"
-# [1] "96 188.129134357052 189 138.5 50.5"
-# [1] "97 188.767797645908 188.7 140.5 48.2"
-# [1] "98 189.754997706012 191.3 138.4 52.9"
-# [1] "99 190.324345881518 190.4 138.8 51.6"
-# [1] "100 191.322117926215 191 140.7 50.3"
-# [1] "101 191.861799533876 196.2 139.3 56.9"
-# [1] "102 192.832040659037 194 142.6 51.4"
-# [1] "103 193.378954969471 193.4 144.3 49.1"
-# [1] "104 194.289254855311 194 145.6 48.4"
-# [1] "105 194.870985515173 196.2 144.5 51.7"
-# [1] "106 195.700093491102 194.4 145.3 49.1"
-# [1] "107 196.333693095267 196.6 145.8 50.8"
-# [1] "108 197.071345163371 198 145.2 52.8"
-# [1] "109 197.760628011314 199.5 147.6 51.9"
-# [1] "110 198.410407288096 199.2 147.2 52"
-# [1] "111 199.147338764714 199.3 148.3 51"
-# [1] "112 199.722873427241 201.7 146.3 55.4"
-# [1] "113 200.491283831353 198.2 150.9 47.3"
-# [1] "114 201.01282000981 203 149 54"
-# [1] "115 201.791908090659 200.2 150.9 49.3"
-# [1] "116 202.284431237116 203 151.5 51.5"
-# [1] "117 203.049997767406 203.5 151.3 52.2"
-# [1] "118 203.536740965539 203.4 151.8 51.6"
-# [1] "119 204.267769354554 205.4 153.5 51.9"
-# [1] "120 204.765509267253 204.7 152.6 52.1"
-# [1] "121 205.4485532138 205.6 153.7 51.9"
-# [1] "122 205.967576289195 205.7 155.1 50.6"
-# [1] "123 206.596039109649 206.9 153.1 53.8"
-# [1] "124 207.14055668989 208.6 155.1 53.5"
-# [1] "125 207.713851174434 206.4 154.6 51.8"
-# [1] "126 208.28225523043 206.2 153.9 52.3"
-# [1] "127 208.805183362864 207.1 154.2 52.9"
-# [1] "128 209.391325457937 210.8 157.4 53.4"
-# [1] "129 209.872631389946 208.9 154.5 54.4"
-# [1] "130 210.467439410815 211 158.3 52.7"
-# [1] "131 210.918576770617 210.1 155.9 54.2"
-# [1] "132 211.511250602184 210.9 157.9 53"
-# [1] "133 211.944180716757 213.4 157.2 56.2"
-# [1] "134 212.524040614443 212 159 53"
-# [1] "135 212.950049532397 214.3 157.2 57.1"
-# [1] "136 213.507238153557 214.8 159.2 55.6"
-# [1] "137 213.934910465079 214.3 158.5 55.8"
-# ...
-~~~
-
-So the decision tree *does* outperform the 20% KC, and not by trivial amounts either for many possible _b_s, either in relative or absolute terms.
-The decision tree doesn't require the full _b_=300 to nearly hit the ceiling, although the KC will.
-However, the performance edge goes down as the horizon gets more distant, and we'll see that as far out as _b_=300, the advantage shrinks to ~\$6 as the ceiling is hit almost all the time by decent strategies (as we know from Haghani & Dewey 2016's analysis that KC hits the ceiling ~95% of the time with _b_=300, although of course it will do so far less often for shorter runs like _b_=50).
-
 ### Optimizing
 
 The foregoing is interesting but the R implementation is too slow to examine the case of most importance: _b_=300.
@@ -381,6 +207,9 @@ main = do [x, b] <- map read <$> getArgs
           print $ value !! b $ x
 ~~~
 
+The second one is more low-level and uses laziness/"tying the knot" to implement the memoization; it is the fastest and is able to evaluate `memo 25 300` in <12s: the value turns out to be \$246.
+(If we assume that all games either end in \$250 or \$0, then this implies that $\frac{246}{250} = 0.984$ or >98.4% of decision-tree games hit the max, as compared to Haghani & Dewey's estimate that ~95% of KC players would.)
+The memoization is done internally, so to access all values we do more logic within the lexical scope.
 
 ~~~{.Haskell}
 import System.Environment (getArgs)
@@ -388,6 +217,7 @@ import Data.Function (fix)
 import Data.Function.Memoize (memoFix2)
 import Data.Vector (Vector)
 import qualified Data.Vector as V (generate, (!))
+import Data.MemoUgly (memo)
 
 type Wealth = Int
 type Bets = Int
@@ -403,11 +233,12 @@ value next w b = maximum [go x | x <- [0..min (cap - w) w]]
   where
     go x = 0.6 * next (min cap (w+x)) (b-1) + 0.4 * next (w-x) (b-1)
 
--- Direct recursion.
+-- There are 4 possible ways aside from 'array-memoize':
+-- 1. Direct recursion.
 direct :: Wealth -> Bets -> EV
 direct = fix value
 
--- Memoised recursion.
+-- 2. Memoised recursion.
 memo :: Wealth -> Bets -> EV
 memo w b = cached_value w b
   where
@@ -417,18 +248,21 @@ memo w b = cached_value w b
             (\b -> V.generate (cap + 1)
               (\w -> value cached_value w b))
 
--- Memoised recursion using 'memoize' library; slower.
+-- 3. Memoised recursion using 'memoize' library; slower.
 memo2 :: Wealth -> Bets -> EV
 memo2 = memoFix2 value
+
+-- 4. Memoize using 'memoize-ugly' library; also slower but global
+memo3 :: Wealth -> Bets -> EV
+memo3 = memo value
 
 main :: IO ()
 main = do [w, b] <- map read <$> getArgs
           print (memo w b)
 ~~~
 
-The second one is more low-level and uses laziness/"tying the knot" to implement the memoization; it is the fastest and is able to evaluate `memo 25 300` in <12s: the value turns out to be \$246.
-(If we assume that all games either end in \$250 or \$0, then this implies that $\frac{246}{250} = 0.984$ or >98.4% of decision-tree games hit the max, as compared to Haghani & Dewey's estimate that ~95% of KC players would.)
-The memoization is done internally, so to access all values we do more logic within the lexical scope.
+<!-- $ -->
+
 We can obtain all values with a function like
 
 ~~~{.Haskell}
@@ -562,17 +396,190 @@ The full run reveals that convergence happens at  _b_=1932 (which can be compute
 [Arthur B. notes](https://twitter.com/ArthurB/status/823241996244422656) that "you can compute $U(w,b)$ in $O(b)$ if you allow bets to be any fraction of _w_. It's piecewise linear, the cutoff points and slopes follow a very predictable pattern" and provides a formula for calculating the value function without constructing a decision tree:
 
 $$
-250\left(\frac{6}{5}\right)^b \left(\frac{w}{250} - \frac{1}{3}\sum_{k=0}^{b-1}\left(\frac{2}{3}\right)^k\max\!\left(\frac{w}{250}-\frac{1}{2^b}\sum_{j=0}^{k}\binom{b}{j},~0\right)\right)
+\left(\frac{6}{5}\right)^b \left(w - \frac{1}{3}\sum_{k=0}^{b-1}\left(\frac{2}{3}\right)^k\max\!\left(w - \frac{250 }{2^b}\sum_{j=0}^{k}\binom{b}{j},~0\right)\right)
 $$
 
-(I tried implementing it in R but may not have gotten it right.[^formula])
+In R:
 
-[^formula]: As:
+~~~{.R}
+V <- function(w, b, m=250) { j <- qbinom(w/m,b,1/2);
+    1.2^b * 1.5^-j * (w+m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2))) }
+~~~
 
-    ~~~{.R}
-    function(w,b) { (250 * (6/5)^b) *
-        ((w/250) - (1/3)*sum(sapply(0:(b-1), function(k) { (2/3)^k * max((w/250) - (1/(2^b)) *
-            sum(sapply(0:k, function(j) { choose(b, j)})), 0) }))) }
-    ~~~
 
-    But comparing this to the decision-trees, it doesn't quite work, as while it's correct for a number of values, it goes well past the \$250 ceiling. The fault might be in the R implementation of the binomial coefficients, `choose`, not working the same as in Mathematica.
+### Simulation Performance
+
+The implementations here could be wrong or decision trees not actually optimal like we claimed.
+We can test it by directly comparing the performance in a simulation of the coin-flipping game, comparing the performance of `mVPplan` vs the 20% Kelly criterion and a simple bet-everything strategy:
+
+~~~{.R}
+game <- function(strategy, wealth, betsLeft) {
+    if (betsLeft>0) {
+    bet <- strategy(wealth, betsLeft)
+    wealth <- wealth - bet
+    flip <- rbinom(1,1,p=0.6)
+    winnings <- 2*bet*flip
+    wealth <- min(wealth+winnings, 250)
+    return(game(strategy, wealth, betsLeft-1)) } else { return(wealth); } }
+simulateGame <- function(s, w=25, b=300, iters=5000) { replicate(iters, game(s, w, b)) }
+
+## Various strategies (the decision tree strategy is already defined as 'VPplan'):
+kelly <- function(w, b) { 0.20 * w }
+smarterKelly <- function(w, b) { if(w==250) {0} else { (2*0.6-1) * w } }
+maximizer <- function(w, b) { w; }
+smarterMaximizer <- function(w, b) { if(w>=250) { 0 } else {w}; }
+
+## What percentage hit the cap?
+mean(simulateGame(smarterKelly, b=300) == 250)
+# [1] 0.9367
+mean(simulateGame(VPplan, b=300) == 250)
+# [1] 0.9784
+
+library(parallel)
+library(plyr)
+## Comparing performance in the finite horizon setting up to b=300:
+bs <- 1:300
+ldply(mclapply(bs, function(bets) {
+    ky <- round(mean(simulateGame(smarterKelly, b=bets)), digits=1)
+    dt <- round(mean(simulateGame(VPplan, b=bets)), digits=1)
+    gain <- dt-ky;
+    print(paste(bets, round(V(25, bets), digits=2), dt, ky, gain)) }
+))
+~~~
+
+Simulating 5,000 games for each _b_:
+
+Total bets Value function Decision tree performance Kelly performance Difference
+---------- -------------- ------------------------- ----------------- ----------
+1          30             30.1                      26                4.1
+2          36             35.5                      27                8.5
+3          43.2           42.4                      28.2              14.2
+4          45.36          46                        29.3              16.7
+5          47.95          49.3                      30.5              18.8
+6          53.65          52.5                      31.5              21
+7          54.59          51.4                      32.7              18.7
+8          57.57          56.1                      34.1              22
+9          1.83           61.4                      35.6              25.8
+10         62.6           63                        36.8              26.2
+11         66.76          68.6                      38.3              30.3
+12         68.22          66.9                      40.2              26.7
+13         70.6           70.7                      41.8              28.9
+14         74.13          71.2                      43.2              28
+15         75             73.8                      44.9              28.9
+16         79.13          79.7                      46.8              32.9
+17         79.75          79.1                      47.8              31.3
+18         82.5           84.1                      50.1              34
+19         84.71          83.7                      52.7              31
+20         86.25          85.6                      54.2              31.4
+21         89.8           88.6                      56.4              32.2
+22         90.28          90.2                      56.5              33.7
+23         93.85          94.8                      58.7              36.1
+24         94.49          93.7                      60.7              33
+25         97             95                        62.2              32.8
+26         98.83          97.1                      65.2              31.9
+27         100.38         98.7                      68.1              30.6
+28         103.23         102.1                     69.4              32.7
+29         103.95         102.5                     73.4              29.1
+30         107.61         107.7                     73.7              34
+31         107.64         107.3                     74.7              32.6
+32         110.4          106.7                     76.1              30.6
+33         111.41         107.9                     79.2              28.7
+34         113.38         115.1                     80.6              34.5
+35         115.24         115.4                     82.2              33.2
+36         116.48         116.1                     84.2              31.9
+37         119.09         118.5                     87.1              31.4
+38         119.69         119.9                     86                33.9
+39         122.94         125.4                     89.6              35.8
+40         122.96         119.7                     92                27.7
+41         125.54         124.2                     95.2              29
+42         126.28         124.4                     96.9              27.5
+43         128.21         128.5                     97.1              31.4
+44         129.63         130.5                     100.3             30.2
+45         130.96         130.1                     100               30.1
+46         132.98         131.9                     100.9             31
+47         133.78         132.4                     104.2             28.2
+48         136.33         134.2                     104.5             29.7
+49         136.64         133.6                     107.7             25.9
+50         139.36         141.2                     110.1             31.1
+51         139.54         139.4                     113.6             25.8
+52         141.68         140                       113               27
+53         142.45         140.7                     113.5             27.2
+54         144.08         141.8                     115.5             26.3
+55         145.36         145                       116.3             28.7
+56         146.52         150.2                     119.7             30.5
+57         148.26         146.4                     119.7             26.7
+58         149            143.9                     120.6             23.3
+59         151.15         151.8                     124.2             27.6
+60         151.5          148.5                     124.4             24.1
+61         154.01         151.9                     125.5             26.4
+62         154.01         150.9                     127.1             23.8
+63         156.05         157.9                     128.4             29.5
+64         156.52         154.3                     129.9             24.4
+65         158.14         155.5                     132.3             23.2
+66         159.03         156.8                     132.1             24.7
+67         160.25         157.4                     133.2             24.2
+68         161.53         159.2                     137.1             22.1
+69         162.39         160.2                     135.9             24.3
+70         164            161                       137.8             23.2
+71         164.54         162.2                     137.8             24.4
+72         166.46         166.7                     138.3             28.4
+73         166.7          165.2                     142.7             22.5
+74         168.81         169                       145               24
+75         168.85         168.3                     143.1             25.2
+76         170.59         169.5                     144.4             25.1
+77         171            165.6                     146.4             19.2
+78         172.39         171.2                     147.5             23.7
+79         173.13         171.3                     150.6             20.7
+80         174.21         170.6                     151.8             18.8
+81         175.24         174                       152.3             21.7
+82         176.04         175.5                     153.8             21.7
+83         177.34         174.9                     151.8             23.1
+84         177.87         177.6                     152.5             25.1
+85         179.4          178.5                     157.3             21.2
+86         179.7          177.1                     156               21.1
+87         181.44         178.9                     158.1             20.8
+88         181.52         179.6                     160.1             19.5
+89         183.15         181.1                     159               22.1
+90         183.33         182.8                     163.3             19.5
+91         184.68         184.2                     162.3             21.9
+92         185.13         183.4                     162.5             20.9
+93         186.21         187.5                     165.1             22.4
+94         186.9          185.3                     160.5             24.8
+95         187.75         188.6                     164.8             23.8
+96         188.66         186.4                     167.1             19.3
+97         189.29         187.6                     168               19.6
+98         190.39         188.9                     167.7             21.2
+99         190.82         187.8                     169.8             18
+100        192.1          190.7                     168.4             22.3
+101        192.34         192.5                     171.8             20.7
+102        193.78         192.6                     170               22.6
+103        193.86         193.2                     170.7             22.5
+104        195.24         194.1                     170               24.1
+105        195.35         192.9                     174.1             18.8
+106        196.52         195.2                     176.8             18.4
+107        196.84         194.5                     173.4             21.1
+108        197.79         194.4                     179.1             15.3
+109        198.3          195.5                     176               19.5
+110        199.07         196.7                     179.1             17.6
+111        199.74         198.7                     181.2             17.5
+112        200.34         201.1                     178.2             22.9
+113        201.17         197.9                     180.9             17
+114        201.6          200.3                     181.2             19.1
+115        202.57         202                       183.2             18.8
+116        202.85         201.6                     181               20.6
+117        203.94         201.7                     181.4             20.3
+118        204.09         201.2                     183.6             17.6
+119        205.29         205.9                     185               20.9
+120        205.32         201.3                     186.8             14.5
+121        206.4          204                       182.2             21.8
+122        206.53         203.7                     186.2             17.5
+123        207.44         205.7                     186.1             19.6
+124        207.72         205.2                     189.5             15.7
+125        208.48         203.9                     191.4             12.5
+126        208.9          209.3                     188               21.3
+
+
+
+So the decision tree *does* outperform the 20% KC, and not by trivial amounts either for many possible _b_s, either in relative or absolute terms.
+The decision tree doesn't require the full _b_=300 to often hit the ceiling, although the KC will.
+However, the performance edge goes down as the horizon gets more distant, and we'll see that as far out as _b_=300, the advantage shrinks to ~\$6 as the ceiling is hit almost all the time by decent strategies (as we know from Haghani & Dewey 2016's analysis that KC hits the ceiling ~95% of the time with _b_=300, although of course it will do so far less often for shorter runs like _b_=50).
