@@ -6,12 +6,13 @@ status: in progress
 belief: log
 ...
 
-This is the January 2017 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [December 2016](https://www.gwern.net/newsletter/2016/12) ([archives](https://www.gwern.net/tags/newsletter)).
+This is the January 2017 edition of [the `gwern.net` newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355); previous, [December 2016](https://www.gwern.net/newsletter/2016/12)/[2016 in review](https://www.gwern.net/newsletter/2016/13) ([archives](https://www.gwern.net/tags/newsletter)).
 This is a summary of the revision-history RSS feed, overlapping with my [Changelog](https://gwern.net/Changelog) & [Google+](https://plus.google.com/103530621949492999968); brought to you by my donors on [Patreon](https://www.patreon.com/gwern).
 
 # Writings
 
 - [The Kelly Coin-Flipping Problem: Exact Solutions via Dynamic Programming](https://www.gwern.net/Coin-flip "Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.")
+- [Efficiently calculating the average maximum sample from a sample of Gaussians](https://www.gwern.net/Embryo%20selection#the-expected-maximum-of-a-gaussian-sample-using-order-statistics)
 
 # Media
 ## Links
@@ -23,7 +24,9 @@ Everything is heritable:
     - in Iceland: decrease in the education polygenic score 1910-1990, ["Selection against variants in the genome associated with educational attainment"](https://www.gwern.net/docs/genetics/2017-kong.pdf), Kong et al 2017 ([graph](https://www.gwern.net/images/genetics/2017-kong-iceland-education-dysgenics.png); [media](https://www.theguardian.com/science/2017/jan/16/natural-selection-making-education-genes-rarer-says-icelandic-study "Natural selection making 'education genes' rarer, says Icelandic study: Researchers say that while the effect corresponds to a small drop in IQ per decade, over centuries the impact could be profound")):
     - in the US: decrease in the education polygenic score 1920-1960, ["Mortality Selection in a Genetic Sample and Implications for Association Studies"](http://biorxiv.org/content/early/2016/04/21/049635), Domingue et al 2016 ([graph](https://www.gwern.net/images/genetics/2016-domingue-usa-education-dysgenics.png))
 - ["GWAS meta-analysis reveals novel loci and genetic correlates for general cognitive function: a report from the COGENT consortium"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016244a.html), Trampush et al 2017
-- ["Apolipoprotein E4 is associated with improved cognitive function in Amazonian forager-horticulturalists with a high parasite burden"](https://www.gwern.bet/docs/genetics/2016-trumble.pdf), Trumble et al 2016 ([media](https://www.theatlantic.com/science/archive/2017/01/why-does-a-gene-that-increases-alzheimers-risk-still-exist/512396/ "Why Do Humans Still Have a Gene That Increases the Risk of Alzheimer's?"); of course, different regions, and hence different groups, differ in parasite load.)
+- ["Prevalence and architecture of de novo mutations in developmental disorders"](https://www.gwern.net/docs/genetics/2017-mcrae.pdf), Deciphering Developmental Disorders Study 2017
+- ["Apolipoprotein E4 is associated with improved cognitive function in Amazonian forager-horticulturalists with a high parasite burden"](https://www.gwern.net/docs/genetics/2016-trumble.pdf), Trumble et al 2016 ([media](https://www.theatlantic.com/science/archive/2017/01/why-does-a-gene-that-increases-alzheimers-risk-still-exist/512396/ "Why Do Humans Still Have a Gene That Increases the Risk of Alzheimer's?"); of course, different regions, and hence different groups, differ in parasite load.)
+- ["Personalized Media: A Genetically Informative Investigation of Individual Differences in Online Media Use"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0168895), Ayorech et al 2017
 
 AI:
 
@@ -34,30 +37,35 @@ Statistics/meta-science/mathematics:
 - ["What Does Any of This Have To Do with Physics?"](http://nautil.us/issue/43/heroes/what-does-any-of-this-have-to-do-with-physics) (brutal memoir of contemporary graduate work in theoretical physics)
 - ["The Statistical Crisis in Science: The Cult Of _P_"](http://lib.ugent.be/fulltxt/RUG01/002/304/385/RUG01-002304385_2016_0001_AC.pdf), Debrouwere 2016 (a readable overview of the problems with _p_-values/NHST)
 - ["A First Look at Reproducibility in Cancer Biology"](http://blogs.sciencemag.org/pipeline/archives/2017/01/19/a-first-look-at-reproducibility-in-cancer-biology)
+- ["The Young Billionaire Behind the War on Bad Science"](https://www.wired.com/2017/01/john-arnold-waging-war-on-bad-science/) ([John D. Arnold](https://en.wikipedia.org/wiki/John_D._Arnold))
 - ["Meta-knowledge: Crowds aren't as smart as we thought, since some people know more than others. A simple trick can find the ones you want"](https://aeon.co/essays/a-mathematical-bs-detector-can-boost-the-wisdom-of-crowds)
 
 Politics/religion:
 
-- ["Non-Communication at GE: The Impacted Philosophers"](https://www.gwern.net/docs/1959-brooks-businessadventures-ch7-noncommunicationge.pdf), pg111-124, ch7 of _Business Adventures: Twelve Classic Tales from the World of Wall Street_, Brooks 1959 (the GE price-fixing scandal: emergent conspiracies from plausible denialability)
+- ["Non-Communication at GE: The Impacted Philosophers"](https://www.gwern.net/docs/1959-brooks-businessadventures-ch7-noncommunicationge.pdf), pg111-124, ch7 of [_Business Adventures: Twelve Classic Tales from the World of Wall Street_](https://www.amazon.com/Business-Adventures-Twelve-Classic-Street/dp/1497644895), Brooks 1959 (the GE price-fixing scandal: emergent conspiracies from plausible denialability)
+- [_Days of Rage: America's Radical Underground, the FBI, and the Forgotten Age of Revolutionary Violence _ review](https://status451.com/2017/01/20/days-of-rage/)
 - the [iPredict prediction market has closed](https://en.wikipedia.org/wiki/IPredict#Closure) (This is why we can't have nice things: because even crippled prediction markets are "money laundering".)
 - ["Blue Lies Matter: How Video Proved Cops Lie"](https://www.buzzfeed.com/albertsamaha/blue-lies-matter "BuzzFeed News reviewed 62 incidents of video footage contradicting an officer's statement in a police report or testimony. From traffic stops to fatal force, these cases reveal how cops are incentivized to lie - and why they get away with it.")
 
 Psychology/biology:
 
 - ["A Systematic Review of Personality Trait Change Through Intervention"](https://www.researchgate.net/profile/Brent_Roberts/publication/312105742_A_Systematic_Review_of_Personality_Trait_Change_Through_Intervention/links/5870f1f308ae329d621714aa.pdf), Roberts et al 2016 (Messy - noticeable levels of publication bias, high heterogeneity -  but results look plausible: 8-week+ interventions can improve emotional-stability/Neuroticism, change Openness and Extraversion somewhat, but leave Conscientiousness largely unaffected.)
+- [Population dynamics in _Puella Magi Madoka Magica_](https://wiki.puella-magi.net/Population_dynamics)
 
 Technology:
 
 - ["Epigrams on Programming"](https://www.gwern.net/docs/1982-perlis.pdf), Perlis 1982
+- ["Some Funny Things Happened on the Way to the Moon"](http://www.eng.buffalo.edu/~psingla/Teaching/CelestialMechanics/Battin.pdf), Battin 2002 (technical & political/management problems in Apollo)
 
 Economics:
 
 - ["The Cat's-Meat Man"](http://messybeast.com/cats-meat-man.htm) (how cats & dogs were fed before modern processed pet food: regular deliveries of low-grade meat, usually horse-meat from the surplus of millions per year; focusing on industrial districts where cats were heavily employed)
+- ["The High-Cost, High-Risk World of Modern Pet Care: A wave of corporatization is hitting the veterinary industry, but does a one-size-fits-all approach work?"](https://www.bloomberg.com/news/features/2017-01-05/when-big-business-happens-to-your-pet) (more importantly: why is this model successful in the most free market possible for healthcare?); ["Killing Animals at the Zoo: At Danish zoos, surplus animals are euthanized—and dissected before the public"](http://www.newyorker.com/magazine/2017/01/16/killing-animals-at-the-zoo)
 
 Philosophy:
 
 - ["How To Be Good: An Oxford philosopher thinks he can distill all morality into a formula. Is he right?"](http://www.newyorker.com/magazine/2011/09/05/how-to-be-good) (in memory of Derek Parfit)
-- ["Underprotection of Unpredictable Statistical Lives Compared to Predictable Ones"](https://www.gwern.net/docs/2016-lipsitch.pdf), Lipsitch et al 2016:
+- ["Underprotection of Unpredictable Statistical Lives Compared to Predictable Ones"](https://www.gwern.net/docs/2016-lipsitch.pdf), Lipsitch et al 2016
 
 Fiction:
 
@@ -71,18 +79,18 @@ Nonfiction:
 
 Fiction:
 
-- [_The Anubis Gates_](https://en.wikipedia.org/wiki/The_Anubis_Gates), Tim Powers (a delicious time-travel adventure, full of London color; ultimately, the elements don't come together in as deep a package as _Declare_ and I am a little disappointed that Powers doesn't pull off nearly as subtle a 'secret history' as he does in that - while I hoped that things like the Dancing Monkeys or Ashbless were historically real, it turns out that Powers had to make them up. But still a fun read.)
-- _The Complete Poems_, Randall Jarrell ([review](https://www.goodreads.com/review/show/1825100933))
+- [_The Anubis Gates_](https://en.wikipedia.org/wiki/The_Anubis_Gates), [Tim Powers](https://en.wikipedia.org/wiki/Tim_Powers) (a delicious time-travel adventure, full of London color drawing on [_London labour and the London poor; a cyclopaedia of the condition and earnings of those that will work, those that cannot work, and those that will not work_, Mayhew et al 1851](https://archive.org/details/cu31924092592751); ultimately, the elements don't come together in as deep a package as [_Declare_](https://en.wikipedia.org/wiki/Declare) and I am a little disappointed that Powers doesn't pull off nearly as subtle a ['secret history'](https://en.wikipedia.org/wiki/Secret_history#Fictional_secret_histories) as he does in that - while I hoped that things like the Dancing Monkeys or Ashbless were historically real, it turns out that Powers had to make them up. But still a fun reread.)
+- [_The Complete Poems_](https://www.amazon.com/Complete-Poems-Randall-Jarrell/dp/0374513058), [Randall Jarrell](https://en.wikipedia.org/wiki/Randall_Jarrell) ([review](https://www.goodreads.com/review/show/1825100933))
 
 ## Film/TV
 
 Live-action:
 
-- [_This Is Spinal Tap_](https://en.wikipedia.org/wiki/This_Is_Spinal_Tap)
+- [_This Is Spinal Tap_](https://en.wikipedia.org/wiki/This_Is_Spinal_Tap) (I had expected, for some reason, a much harder-edged bitter satire on the sex/drugs/rock-and-roll lifestyle, but _This Is Spinal Tap_ turns out to be a much funnier, gentler, absurdist British/Pythonic comedy on the music industry, aging rock stars, and the British tradition of progressive and glam rock, and merits its reputation.)
 
 Animated:
 
-- [_Kubo and the Two Strings_](https://en.wikipedia.org/wiki/Kubo_and_the_Two_Strings) (ostentatiously gorgeous clay stop-animation film. Even knowing that backgrounds and other parts are CGI, I still have trouble believing it was stop-motion - it is simply too luxuriously animated and beautiful on my new 4K monitor. Takes the format of a Japanese fairy tale very loosely drawing on the moon aspect of "The Tale of the Bamboo Cutter" with miscellaneous influence from jidaigeki for the instrument and Korea for the horse-hair hats of two characters.)
+- [_Kubo and the Two Strings_](https://en.wikipedia.org/wiki/Kubo_and_the_Two_Strings) (ostentatiously gorgeous clay stop-animation film. Even knowing that backgrounds and other parts are CGI, I still have trouble believing it was stop-motion - it is simply too luxuriously animated and beautiful on my new 4K monitor. Takes the format of a Japanese fairy tale very loosely drawing on the moon aspect of ["The Tale of the Bamboo Cutter"](https://en.wikipedia.org/wiki/The_Tale_of_the_Bamboo_Cutter) with miscellaneous influence from jidaigeki for the instrument and Korea for the horse-hair hats of two characters.)
 - [_One-Punch Man_](https://en.wikipedia.org/wiki/One-Punch_Man) (One of the most popular anime of that season. After marathoning it in a day, I had to conclude that it's seriously overrated. The premise, in the hands of any decent author, offers plenty of scope, but goes criminally underused each episode in the service of a nearly non-existent plot; sold as a comedic show, it's actually... not... that... funny. At all. The music and characters are likewise forgettable, leaving as _One-Punch Man_'s only selling point its kinetic animation during fights. This one should probably be left to sakuga fans.)
 
 ## Games
