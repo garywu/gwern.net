@@ -1979,15 +1979,74 @@ plot(1:1000, approximationError,  xlab="Number of samples taking the max", ylab=
 
 ![Error in using the Chen & Tyler 1999 approximation to estimate the expected value (gain) from taking the maximum of _n_ normal samples](/images/genetics/iq-selection-chen1999approximation-error.png)
 
+From a less mathematical perspective, any regression or machine learning model could be used to try to develop a cheap but highly accurate approximation by simply predicting the extreme from the relevant range of _n_=2-300 - the goal being less to make good predictions out of sample than to overfit as much as possible in-sample.
+
+Plotting the extremes, they form a smooth *almost* logarithmic curve:
+
+~~~{.R}
+df <- data.frame(N=2:300, Max=sapply(2:300, exactMax))
+l <- lm(Max ~ log(N), data=df); summary(l)
+# Residuals:
+#         Min          1Q      Median          3Q         Max
+# -0.36893483 -0.02058671  0.00244294  0.02747659  0.04238113
+# Coefficients:
+#                Estimate  Std. Error   t value   Pr(>|t|)
+# (Intercept) 0.658802439 0.011885532  55.42894 < 2.22e-16
+# log(N)      0.395762956 0.002464912 160.55866 < 2.22e-16
+#
+# Residual standard error: 0.03947098 on 297 degrees of freedom
+# Multiple R-squared:  0.9886103,   Adjusted R-squared:  0.9885719
+# F-statistic: 25779.08 on 1 and 297 DF,  p-value: < 2.2204e-16
+plot(df); lines(predict(l))
+~~~
+
+This has the merit of utter simplicity (`function(n) {0.658802439 + 0.395762956*log(n)}`), but while the R^2^ is quite high by most standards, the residuals are too large to make a good approximation - the log curve overshoots initially, then undershoots, then overshoots.
+We can try to find a better log curve by using polynomial or spline regression, which broaden the family of possible curves.
+A 4th-order polynomial turns out to fit as beautifully as we could possibly wish, R^2^=0.9999998:
+
+~~~{.R}
+lp <- lm(Max ~ log(N) + I(log(N)^2) + I(log(N)^3) + I(log(N)^4), data=df); summary(lp)
+# Residuals:
+#           Min            1Q        Median            3Q           Max
+# -1.220430e-03 -1.074138e-04 -1.655586e-05  1.125596e-04  9.690842e-04
+#
+# Coefficients:
+#                  Estimate    Std. Error    t value   Pr(>|t|)
+# (Intercept)  1.586366e-02  4.550132e-04   34.86418 < 2.22e-16
+# log(N)       8.652822e-01  6.627358e-04 1305.62159 < 2.22e-16
+# I(log(N)^2) -1.122682e-01  3.256415e-04 -344.76027 < 2.22e-16
+# I(log(N)^3)  1.153201e-02  6.540518e-05  176.31640 < 2.22e-16
+# I(log(N)^4) -5.302189e-04  4.622731e-06 -114.69820 < 2.22e-16
+#
+# Residual standard error: 0.0001756982 on 294 degrees of freedom
+# Multiple R-squared:  0.9999998,   Adjusted R-squared:  0.9999998
+# F-statistic: 3.290056e+08 on 4 and 294 DF,  p-value: < 2.2204e-16
+pa <- function(n) { N <- log(n);
+    1.586366e-02 + 8.652822e-01*N^1 + -1.122682e-01*N^2 + 1.153201e-02*N^3 + -5.302189e-04*N^4 }
+~~~
+
+This has the virtue of speed & simplicity (a few arithmetic operations) and high accuracy, but is not intended to perform well past the largest datapoint of _n_=300 (although if one needed to, one could simply generate the additional datapoints, and refit, adding more polynomials if necessary), but turns out to be a good approximation up to _n_=800 (after which it consistently overestimates by ~0.01):
+
+~~~{.R}
+heldout <- sapply(301:1000, exactMax)
+test <- sapply(301:1000, pa)
+mean((heldout - test)^2)
+# [1] 3.820988144e-05
+plot(301:1000, heldout); lines(test)
+~~~
+
+So this method, while lacking any kind of mathematical pedigree or derivation, provides the best approximation so far.
+
 ### Exact
 
 The R package [`lmomco`](https://cran.r-project.org/web/packages/lmomco/index.html) ([Asquith 2011](https://ttu-ir.tdl.org/ttu-ir/handle/2346/ETD-TTU-2011-05-1319 "Univariate Distributional Analysis with L-moment Statistics using R")) calculates a wide variety of order statistics using numerical integration & other methods.
-It is quite fast, and unbiased & very close to the Monte Carlo estimates even for small samples, so it does what it claims to and provides what we want: a fast exact estimate of the mean gain from selecting the maximum from _n_ samples from a normal distribution.
+It is fast, and unbiased & very close to the Monte Carlo estimates even for small samples, so it does what it claims to and provides what we want: a fast exact estimate of the mean gain from selecting the maximum from _n_ samples from a normal distribution.
 The results can be memoized for a further moderate speedup (eg calculated over _n_=1-1000, 0.45s vs 3.9s for a speedup of ~8.7x):
 
 ~~~{.R}
 library(lmomco)
 exactMax_unmemoized <- function(n, mean=0, sd=1) { expect.max.ostat(n, para=vec2par(c(mean, sd), type="nor"), cdf=cdfnor, pdf=pdfnor) }
+## Comparison to MC:
 # ...         Min.       1st Qu.        Median          Mean       3rd Qu.          Max.
 #    -0.0523499300 -0.0128622900 -0.0003641315 -0.0007935236  0.0108748800  0.0645207000
 
