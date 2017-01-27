@@ -2,12 +2,13 @@
 title: "The Kelly Coin-Flipping Game: Exact Solutions via Dynamic Programming"
 description: Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's 300-round double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by \$6.6 over a modified KC.
 tags: statistics, decision theory, Haskell
+author: Gwern Branwen, Arthur B., nshepperd, FeepingCreature, Gurkenglas
 created: 19 Jan 2017
 status: finished
 belief: likely
 ...
 
-> Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion for playing. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays. We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming in R & Haskell, finding that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6. The relative advantage of the decision tree strategy depends on the number of bets: it is highest when the player can make few bets, and decreases with number of bets as more strategies hit the ceiling.
+> Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion as their strategy. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays. We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming in R, Haskell, and C. We find that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6. The relative advantage of the decision tree strategy depends on the number of bets: it is highest when the player can make few bets, and decreases with number of bets as more strategies hit the ceiling.
 
 # Background
 ## Set up
@@ -217,7 +218,7 @@ import Data.Function (fix)
 import Data.Function.Memoize (memoFix2)
 import Data.Vector (Vector)
 import qualified Data.Vector as V (generate, (!))
-import Data.MemoUgly (memo)
+import qualified Data.MemoUgly as U (memo)
 
 type Wealth = Int
 type Bets = Int
@@ -254,7 +255,7 @@ memo2 = memoFix2 value
 
 -- 4. Memoize using 'memoize-ugly' library; also slower but global
 memo3 :: Wealth -> Bets -> EV
-memo3 = memo value
+memo3 = U.memo  . direct
 
 main :: IO ()
 main = do [w, b] <- map read <$> getArgs
@@ -391,6 +392,149 @@ cap = 25000 -- 250*100
 With the exact penny version, the value of _b_=300 is now \$246.6062932 (taking ~3746s compiled), so the approximation costs an expected value of only \$0.61.
 The full run reveals that convergence happens at  _b_=1932 (which can be computed in ~48503s compiled), past which there is no need to compute further.
 
+#### C
+
+[FeepingCreature](https://github.com/FeepingCreature) provides a memoized C implementation of the exact penny game that runs in a few minutes (benefiting ~13% from profile-guided optimization when compiled with GCC).
+He also notes that dynamic programming is overkill for this problem: because almost all states ultimately get evaluated, the dynamic programming doesn't avoid evaluating many states.
+Since each state depends on an immediate successor and forms a clean tree, it is possible to calculate the tree much more directly by evaluating all the terminal nodes _b_=0, looping over the previous nodes _b_+1, then throwing away the no longer necessary _b_, and evaluating _b_+2, and so on; only two layers of the tree need to be stored at any time, which can potentially fit into on-processor cache.
+Another advantage of this representation is parallelism, as each node in the upper layer can be evaluated independently.
+An implementation using OpenMP for threading can solve _b_=300 in ~30s:
+
+~~~{.R}
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
+
+#define ROUND_LIMIT 300
+#define MONEY_LIMIT 25000
+#define MONEY_START 2500
+#define MONEY_FACTOR 100.0f
+
+// MEMOIZED METHOD
+
+#define UNLIKELY(X) __builtin_expect(!!(X), 0)
+
+typedef struct {
+  bool known;
+  double ev;
+} CacheEntry;
+
+static double decide(CacheEntry * const table, int money, int round) {
+  if (round < 0) return money;
+  if (money == 0 || money == MONEY_LIMIT) return money;
+  int index = round * (MONEY_LIMIT + 1) + money;
+  // int index = money * ROUND_LIMIT + round;
+
+  if (table[index].known) return table[index].ev;
+
+  double best_bet_score = -1;
+  for (int bet = 0; bet <= money; bet++) {
+    double winres = decide(table, (money + bet > MONEY_LIMIT) ? MONEY_LIMIT : (money + bet), round - 1);
+    double loseres = decide(table, money - bet, round - 1);
+    double combined = 0.6 * winres + 0.4 * loseres;
+    best_bet_score = fmax(best_bet_score, combined);
+  }
+  table[index] = (CacheEntry) { true, best_bet_score };
+  return best_bet_score;
+}
+
+void method1() {
+  CacheEntry *table = calloc(sizeof(CacheEntry), ROUND_LIMIT * (MONEY_LIMIT + 1));
+
+  printf("running.\n");
+  int best_bet = 0;
+  double best_bet_score = -1;
+  for (int bet = 0; bet <= MONEY_START; bet++) {
+    double winres = decide(table, MONEY_START + bet, ROUND_LIMIT - 1);
+    double loseres = decide(table, MONEY_START - bet, ROUND_LIMIT - 1);
+    double combined = 0.6 * winres + 0.4 * loseres;
+    if (combined > best_bet_score) {
+      best_bet = bet;
+      best_bet_score = combined;
+    }
+  }
+
+  printf("first round: bet %f for expected total reward of %f\n", best_bet / MONEY_FACTOR, best_bet_score / MONEY_FACTOR);
+  int count_known = 0;
+  for (int i = 0; i < ROUND_LIMIT * (MONEY_LIMIT + 1); i++) {
+    if (table[i].known) count_known ++;
+  }
+  printf("known: %i of %i\n", count_known, ROUND_LIMIT * (MONEY_LIMIT + 1));
+}
+
+// BOTTOM-UP METHOD
+
+// given pass n in "from", compute pass n-1 in "to"
+static void propagate(double *from, double *to) {
+  // for each money state...
+#define THREADS 4
+#pragma omp parallel for num_threads(THREADS)
+  for (int a = 0; a < THREADS; a++) {
+    // distribute workload so that inner loop passes are approximately equal
+    // f(x) = 2x  F(x) = x^2   = a/THREADS x = sqrt(a / THREADS)
+    int low = (int) (MONEY_LIMIT * sqrtf((float)a / THREADS));
+    int high = (int) (MONEY_LIMIT * sqrtf((a + 1.0f) / THREADS));
+    if (a == THREADS - 1) high = MONEY_LIMIT + 1; // precise upper border
+    for (int m = low; m < high; m++) {
+      double max_score = 0.0;
+      // determine the bet that maximizes our expected earnings
+      for (int b = 0; b <= m; b++) {
+        double winval = from[(m + b > MONEY_LIMIT) ? MONEY_LIMIT : (m + b)];
+        double loseval = from[m - b];
+        double combined = 0.6 * winval + 0.4 * loseval;
+        max_score = fmax(max_score, combined);
+      }
+      to[m] = max_score;
+    }
+  }
+}
+
+void method2() {
+  double *buf = malloc(sizeof(double) * (MONEY_LIMIT + 1));
+  double *buf_to = malloc(sizeof(double) * (MONEY_LIMIT + 1));
+  // set up base case: making no bet, we have money of i
+  for (int i = 0; i <= MONEY_LIMIT; i++) buf[i] = i;
+  for (int i = ROUND_LIMIT - 1; i >= 0; i--) {
+    propagate(buf, buf_to);
+    double *temp = buf;
+    buf = buf_to;
+    buf_to = temp;
+  }
+  int best_bet = 0;
+  double best_bet_score = -1;
+  for (int b = 0; b <= MONEY_START; b++) {
+    double winval = buf[MONEY_START + b];
+    double loseval = buf[MONEY_START - b];
+    double combined = 0.6 * winval + 0.4 * loseval;
+    if (combined > best_bet_score) {
+      best_bet_score = combined;
+      best_bet = b;
+    }
+  }
+  printf("first round: bet %f for expected total reward of %f\n", best_bet / MONEY_FACTOR, best_bet_score / MONEY_FACTOR);
+}
+
+int main() {
+  method2();
+  return 0;
+}
+~~~
+
+Some quick benchmarking on my Lenovo ThinkPad P70 laptop with 4 physical cores & 8 virtual cores shows a roughly linear speedup from 1 to 4 cores:
+
+~~~{.Bash}
+for C in `ls coingame-parallel-*.c`; do
+    gcc -Wall -Ofast -fwhole-program -march=native -fopenmp $C -o coingame -lm &&
+    echo "$C" &&
+    (for i in {1..10}; do
+        /usr/bin/time -f '%e' ./coingame; done
+    );
+    done
+~~~
+
+For levels of parallelism on my laptop from 1-7 threads, the average times are: 113s/55s/39s/31s/34s/29s/29s.
+
 #### Exact formula
 
 [Arthur B. notes](https://twitter.com/ArthurB/status/823241996244422656) that "you can compute $U(w,b)$ in $O(b)$ if you allow bets to be any fraction of _w_. It's piecewise linear, the cutoff points and slopes follow a very predictable pattern" and provides a formula for calculating the value function without constructing a decision tree:
@@ -405,7 +549,6 @@ A version in R:
 V <- function(w, b, m=250) { j <- qbinom(w/m,b,1/2);
     1.2^b * 1.5^-j * (w+m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2))) }
 ~~~
-
 
 ### Simulation Performance
 
@@ -645,7 +788,40 @@ Total bets Value function Decision tree performance Kelly performance Difference
 193        233.94         232.1                     216.6             15.5
 195        234.43         231.8                     217.5             14.3
 196        234.47         232.4                     220.6             11.8
+197        234.9          233.5                     218.6             14.9
+198        234.9          233                       219.3             13.7
+199        235.3          233.4                     220.2             13.2
+200        235.33         233.8                     221.1             12.7
+202        235.75         233                       222               11
+201        235.67         235.5                     218.8             16.7
+203        236.05         232.9                     220.4             12.5
+204        236.17         233.9                     220.1             13.8
+205        236.42         234.8                     221               13.8
+206        236.57         234.4                     221.4             13
+207        236.78         234.8                     222.6             12.2
+208        236.96         236.4                     222.5             13.9
+210        237.35         236.6                     222.6             14
+209        237.14         234.6                     223.5             11.1
+211        237.49         235.7                     221.9             13.8
+212        237.73         234.4                     222.4             12
+213        237.83         234.9                     226               8.9
+214        238.1          237.3                     223.9             13.4
+215        238.17         237                       223.6             13.4
+216        238.46         235.7                     225.1             10.6
+217        238.5          236.6                     223.6             13
+218        238.81         237                       226.1             10.9
+219        238.83         236.4                     225               11.4
+220        239.15         237.7                     225.7             12
+221        239.15         236.8                     225.9             10.9
+222        239.43         237.7                     225.9             11.8
+223        239.46         238.6                     224.8             13.8
+224        239.71         237.1                     226.3             10.8
+225        239.77         238.7                     227.4             11.3
+226        239.98         238.7                     225.9             12.8
+227        240.07         238                       226.9             11.1
+228        240.25         240.5                     227.6             12.9
 
 So the decision tree *does* outperform the 20% KC, and not by trivial amounts either for many possible _b_, either in relative or absolute terms.
 The decision tree doesn't require the full _b_=300 to often hit the ceiling, although the KC will.
-However, the performance edge goes down as the horizon gets more distant, and we'll see that as far out as _b_=300, the advantage shrinks to ~\$6 as the ceiling is hit almost all the time by decent strategies (as we know from Haghani & Dewey 2016's analysis that KC hits the ceiling ~95% of the time with _b_=300, although of course it will do so far less often for shorter runs like _b_=50).
+However, the performance edge goes down as the horizon gets more distant, and we'll see that as far out as _b_=300, the advantage shrinks to ~\$6 as the ceiling is hit almost all the time by decent strategies (as we know from Haghani & Dewey 2016's analysis that KC hits the ceiling ~95% of the time with _b_=300, although of course it will do so far les
+s often for shorter runs like _b_=50).
