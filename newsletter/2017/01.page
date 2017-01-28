@@ -12,7 +12,7 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 # Writings
 
 - [The Kelly Coin-Flipping Problem: Exact Solutions via Dynamic Programming](https://www.gwern.net/Coin-flip "Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.")
-- [Efficiently calculating the average maximum sample from a sample of Gaussians](https://www.gwern.net/Embryo%20selection#the-expected-maximum-of-a-gaussian-sample-using-order-statistics)
+- [Efficiently calculating the average maximum sample from a sample of Gaussians](https://www.gwern.net/Order%20statistics)
 
 # Media
 ## Links

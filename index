@@ -95,9 +95,12 @@
             <li><a href="Prediction%20markets" title="My betting track record">Predicting &amp; Prediction Markets</a></li>
             <li><a href="The%20Existential%20Risk%20of%20Mathematical%20Error" title="Mathematical mistake or error-rates limit our understanding of rare risks">Existential Risks &amp; Math Errors</a></li>
             <li><a href="2012%20election%20predictions" title="Compiling academic and media forecaster's 2012 American presidential election predictions and statistically judging correctness; Nate Silver was not the best">Judging the 2012 election forecasters</a></li>
+            <li><a href="./Candy%20Japan" title="Bayesian decision-theoretic analysis of subscription cancellation experiment: whether Candy Japan can profitably use fancier boxes">Candy Japan’s new box A/B test</a></li>
+            <li><a href="./Coin-flip" title="The Kelly Coin-Flipping Game: Exact Solutions via Dynamic Programming; Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's 300-round double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.">The Kelly Coin-Flipping Game: Exact Solutions</a></li>
             <li><a href="Google%20Alerts" title="Does Google Alerts return fewer results each year?">Google Alerts over time</a></li>
             <li><a href="./Resorter" title="Resorting Media Ratings Commandline tool providing interactive Bayesian pairwise ranking and sorting of items">Resorting lists with comparisons</a></li>
-            <li><a href="./Candy%20Japan" title="Bayesian decision-theoretic analysis of subscription cancellation experiment: whether Candy Japan can profitably use fancier boxes">Candy Japan’s new box A/B test</a></li>
+            <li><a href="./Order%20statistics" title="Calculating The Expected Maximum of a Gaussian Sample using Order Statistics: In generating a sample of 'n' datapoints drawn from a normal/Gaussian distribution, how big on average the biggest datapoint is will depend on how large 'n' is. I implement & compare some of the approaches to estimate how big on average.">Expected Maximums of Gaussian Samples</a></li>
+            <li><a href="hpmor#analysis" title="Statistically modeling posted online reviews for an ongoing story with Haskell and R">Modeling fiction readers’ review rates</a></li>
             <li><a href="./Statistical%20notes">Miscellaneous</a></li>
           </ul>
         </section>
@@ -124,7 +127,6 @@
             <li><a href="The%203%20Grenades" title="CMU game connected to error coding theory">The 3 Grenades</a></li>
             <li><a href="./Turing-complete" title="A catalogue of constructs which are unexpectedly Turing-complete; implications for security">Surprisingly Turing-Complete</a></li>
             <li><a href="haskell/Archiving%20GitHub" title="Scraping &amp; downloading Haskell-related repositories from GitHub">Archiving GitHub</a></li>
-            <li><a href="hpmor#analysis" title="Statistically modeling posted online reviews for an ongoing story with Haskell and R">Modeling fiction readers’ review rates</a></li>
             <li><a href="Simulation%20inferences" title="How big must be the computer simulating the universe? Not very.">Simulation inferences</a></li>
             <li><a href="Choosing%20Software" title="Criteria making software useful long-term &amp; worth learning in detail">Choosing Software</a></li>
             <li><a href="haskell/Run%20Length%20Encoding" title="Haskell: step by step refactoring to concision">Run Length Encoding</a></li>
@@ -134,6 +136,7 @@
             <li><a href="Resilient%20Haskell%20Software" title="Lessons learned about bitrot in Haskell software">Resilient Haskell Software</a></li>
             <li><a href="Evolutionary%20Licenses" title="Game theory on BSD vs. GPL: partnership">Evolutionary Licenses</a></li>
             <li><em>SICP</em> <a href="sicp/Introduction" title="Links to various resources for SICP studying">Introduction</a> (<a href="sicp/Chapter%201.1">ch1.1</a>, <a href="sicp/Chapter%201.2">1.2</a>, <a href="sicp/Chapter%201.3">1.3</a>)</li>
+            <li><a href="./WiFi" title="Internet WiFi improvement: After putting up with slow glitchy WiFi Internet for years, I investigate improvements. Upgrading the router, switching to a high-gain antenna, and installing a buried Ethernet cable all offer increasing speeds.">Internet WiFi improvement</a></li>
           </ul>
         </section>
         <section id="psychology" class="level1">

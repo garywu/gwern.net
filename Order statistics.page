@@ -1,0 +1,234 @@
+---
+title: Calculating The Expected Maximum of a Gaussian Sample using Order Statistics
+description: In generating a sample of _n_ datapoints drawn from a normal/Gaussian distribution, how big on average the biggest datapoint is will depend on how large _n_ is. I implement & compare some of the approaches to estimate how big on average.
+tags: statistics, computer science
+created: 22 Jan 2016
+status: finished
+belief: highly likely
+...
+
+> In generating a sample of _n_ datapoints drawn from a normal/Gaussian distribution with a particular mean/SD, how big on average the biggest datapoint is will depend on how large _n_ is.
+> Knowing this average is useful in a number of areas like sports or breeding or manufacturing, as it defines how bad/good the worst/best datapoint will be (eg the score of the winner in a multi-player game).
+> The [order statistic](!Wikipedia) of the mean/average/expectation of the maximum of a draw of _n_ samples from a normal distribution has no simple formula, unfortunately, and is generally not built into any programming language's libraries.
+> I implement & compare some of the approaches to estimating this order statistic.
+> The overall best approach is to calculate the exact order statistics for the _n_ range of interest using numerical integration and cache them in a lookup table, rescaling the mean/SD as necessary for arbitrary normal distributions; next best is a polynomial regression approximation.
+
+# Approximation
+## Monte Carlo
+
+Most simply and directly, we can estimate it using a [Monte Carlo](!Wikipedia "Monte Carlo method") simulation with hundreds of thousands of iterations:
+
+~~~{.R}
+scores  <- function(n, sd) { rnorm(n, mean=0, sd=sd); }
+gain    <- function(n, sd) { scores <- scores(n, sd)
+                             return(max(scores)); }
+simGain <- function(n=10, sd=1, iters=500000) {
+                             mean(replicate(iters, gain(n, sd))); }
+~~~
+
+But in R this can take seconds for small _n_ and gets worse as _n_ increases into the hundreds as we need to calculate over increasingly large samples of random normals (so one could consider this $\mathcal{O}(N)$); this makes use of the simulation difficult when nested in higher-level procedures such as anything involving resampling or simulation.
+In R, calling functions many times is slower than being able to call a function once in a 'vectorized' way where all the values can be processed in a single batch.
+We can try to vectorize this simulation by generating $n \cdot i$ random normals, group it into a large matrix with _n_ columns (each row being one _n_-sized batch of samples), then computing the maximum of the _i_ rows, and the mean of the maximums.
+This is about twice as fast for small _n_; implementing using `rowMaxs` from the R package [`matrixStats`](https://cran.r-project.org/web/packages/matrixStats/index.html), it is anywhere from 25% to 500% faster (at the expense of likely much higher memory usage, as the R interpreter is unlikely to apply any optimizations such as Haskell's stream fusion):
+
+~~~{.R}
+simGain2 <- function(n=10, sd=1, iters=100000) {
+    mean(apply(matrix(ncol=n, data=rnorm(n*iters, mean=0, sd=sd)), 1, max)) }
+
+library(matrixStats)
+simGain3 <- function(n=10, sd=1, iters=100000) {
+    mean(rowMaxs(matrix(ncol=n, data=rnorm(n*iters, mean=0, sd=sd)))) }
+~~~
+
+We can treat the simulation estimates as exact and use [memoization](!Wikipedia) such as provided by the R package [`memoise`](https://cran.r-project.org/web/packages/memoise/) to cache results & never recompute them, but it will still be slow on the first calculation.
+So it would be good to have either an exact algorithm or a very accurate approximation: for one of analyses, I want accuracy to ±0.0006 SDs, which requires very large Monte Carlo samples.
+
+## Upper bounds
+
+To summarize the [Cross Validated discussion](https://stats.stackexchange.com/questions/9001/approximate-order-statistics-for-normal-random-variables): the simplest [upper bound](http://math.stackexchange.com/a/89147) is $E[Z] \leq \sigma \cdot \sqrt{2 \cdot log(n)}$, which makes the diminishing returns clear.
+Implementation:
+
+~~~{.R}
+upperBoundMax <- function(n, sd) { sd * sqrt(2 * log(n)) }
+~~~
+
+Most of the approximations are sufficiently fast as they are effectively $\mathcal{O}(1)$ with small constant factors (if we ignore that functions like $\Phi^{-1}$/`qnorm` themselves may technically be $\mathcal{O}(log(n))$ or $\mathcal{O}(n)$ for very large _n_).
+However, accuracy becomes the problem: this upper bound  is hopelessly inaccurate in small samples when we compare to the Monte Carlo simulation.
+Others (also inaccurate) include $\frac{n-1}{\sqrt{2 \cdot n - 1}} \cdot \sigma$ and $-\Phi^{-1}(\frac{1}{n+1}) \cdot \sigma$:
+
+~~~{.R}
+upperBoundMax2 <- function(n, sd) { ((n-1) / sqrt(2*n - 1)) * sd }
+upperBoundMax3 <- function(n, sd) { -qnorm(1/(n+1), sd=sd) }
+~~~
+
+## Formulas
+
+Blom 1958 (_Statistical estimates and transformed beta-variables_) reportedly provides a general approximation formula, which tweaking for the max is $\Phi^{-1}(\frac{n-\alpha}{n - 2\cdot\alpha + 1 }) \cdot \sigma; \alpha=0.375$, which is better than the upper bounds:
+
+~~~{.R}
+blom1958 <- function(n, sd) { alpha <- 0.375; qnorm((n-alpha)/(n-2*alpha+1)) * sd }
+~~~
+
+[Elfving 1947](/docs/statistics/1947-elfving.pdf "The asymptotical distribution of range in samples from a normal population"), apparently, by way of _Mathematical Statistics_, Wilks 1962, demonstrates that Blom 1958's approximation is imperfect because actually $\alpha=\frac{pi}{8}$, so:
+
+~~~{.R}
+elfving1947 <- function(n, sd) { alpha <- pi/8; qnorm((n-alpha)/(n-2*alpha+1)) * sd }
+~~~
+
+(Blom 1958 appears to be more accurate for _n_<48 and then Elfving's correction dominates.)
+
+[Harter 1961](/docs/statistics/1961-harter.pdf "Expected Values of Normal Order Statistics") elaborated this by giving different values for $\alpha$, and [Royston 1982](/docs/statistics/1982-royston.pdf "Algorithm AS 177: Expected Normal Order Statistics (Exact and Approximate)") provides computer algorithms; I have not attempted to provide an R implementation of these.
+
+[probabilityislogic](https://stats.stackexchange.com/users/2392/probabilityislogic) offers a [2015 derivation via the beta-F compound distribution](http://stats.stackexchange.com/a/9010/16897) of: $E[x_{i}]\approx \mu+\sigma\Phi^{-1}\left(\frac{i}{N+1}\right)\left[1+\frac{\left(\frac{i}{N+1}\right)\left(1-\frac{i}{N+1}\right)}{2(N+2)\left[\phi\left[\Phi^{-1}\left(\frac{i}{N+1}\right)\right]\right]^{2}}\right]$ and an approximate (but highly accurate) numerical integration as well:
+
+~~~{.R}
+pil2015 <- function(n, sd) { sd * qnorm(n/(n+1)) * { 1 +
+    ((n/(n+1)) * (1 - (n/(n+1)))) /
+    (2*(n+2) * (pnorm(qnorm(n/(n+1))))^2) }}
+pil2015Integrate <- function(n) { mean(qnorm(qbeta(((1:10000) - 0.5 ) / 10000, n, 1))) + 1}
+~~~
+
+Another approximation comes from [Chen & Tyler 1999](/docs/statistics/1999-chen.pdf "Accurate Approximation to the Extreme Order Statistics of Gaussian Samples"): $\Phi^{-1}(0.5264^{\frac{1}{n}})$.
+Unfortunately, while accurate enough for most purposes, it is still off by as much as 1 IQ point and has an average mean error of -0.32 IQ points compared to the simulation:
+
+~~~{.R}
+chen1999 <- function(n,sd=1){ qnorm(0.5264^(1/n), sd=sd) }
+
+approximationError <- sapply(1:1000, function(n) { (chen1999(n) - simGain(n=n)) * 15 } )
+summary(approximationError)
+#       Min.    1st Qu.     Median       Mean    3rd Qu.       Max.
+# -0.3801803 -0.3263603 -0.3126665 -0.2999775 -0.2923680  0.9445290
+plot(1:1000, approximationError,  xlab="Number of samples taking the max", ylab="Error in 15*SD (IQ points)")
+~~~
+
+![Error in using the Chen & Tyler 1999 approximation to estimate the expected value (gain) from taking the maximum of _n_ normal samples](/images/genetics/iq-selection-chen1999approximation-error.png)
+
+## Polynomial regression
+
+From a less mathematical perspective, any regression or machine learning model could be used to try to develop a cheap but highly accurate approximation by simply predicting the extreme from the relevant range of _n_=2-300 - the goal being less to make good predictions out of sample than to overfit as much as possible in-sample.
+
+Plotting the extremes, they form a smooth *almost* logarithmic curve:
+
+~~~{.R}
+df <- data.frame(N=2:300, Max=sapply(2:300, exactMax))
+l <- lm(Max ~ log(N), data=df); summary(l)
+# Residuals:
+#         Min          1Q      Median          3Q         Max
+# -0.36893483 -0.02058671  0.00244294  0.02747659  0.04238113
+# Coefficients:
+#                Estimate  Std. Error   t value   Pr(>|t|)
+# (Intercept) 0.658802439 0.011885532  55.42894 < 2.22e-16
+# log(N)      0.395762956 0.002464912 160.55866 < 2.22e-16
+#
+# Residual standard error: 0.03947098 on 297 degrees of freedom
+# Multiple R-squared:  0.9886103,   Adjusted R-squared:  0.9885719
+# F-statistic: 25779.08 on 1 and 297 DF,  p-value: < 2.2204e-16
+plot(df); lines(predict(l))
+~~~
+
+This has the merit of utter simplicity (`function(n) {0.658802439 + 0.395762956*log(n)}`), but while the R^2^ is quite high by most standards, the residuals are too large to make a good approximation - the log curve overshoots initially, then undershoots, then overshoots.
+We can try to find a better log curve by using polynomial or spline regression, which broaden the family of possible curves.
+A 4th-order polynomial turns out to fit as beautifully as we could possibly wish, R^2^=0.9999998:
+
+~~~{.R}
+lp <- lm(Max ~ log(N) + I(log(N)^2) + I(log(N)^3) + I(log(N)^4), data=df); summary(lp)
+# Residuals:
+#           Min            1Q        Median            3Q           Max
+# -1.220430e-03 -1.074138e-04 -1.655586e-05  1.125596e-04  9.690842e-04
+#
+# Coefficients:
+#                  Estimate    Std. Error    t value   Pr(>|t|)
+# (Intercept)  1.586366e-02  4.550132e-04   34.86418 < 2.22e-16
+# log(N)       8.652822e-01  6.627358e-04 1305.62159 < 2.22e-16
+# I(log(N)^2) -1.122682e-01  3.256415e-04 -344.76027 < 2.22e-16
+# I(log(N)^3)  1.153201e-02  6.540518e-05  176.31640 < 2.22e-16
+# I(log(N)^4) -5.302189e-04  4.622731e-06 -114.69820 < 2.22e-16
+#
+# Residual standard error: 0.0001756982 on 294 degrees of freedom
+# Multiple R-squared:  0.9999998,   Adjusted R-squared:  0.9999998
+# F-statistic: 3.290056e+08 on 4 and 294 DF,  p-value: < 2.2204e-16
+pa <- function(n) { N <- log(n);
+    1.586366e-02 + 8.652822e-01*N^1 + -1.122682e-01*N^2 + 1.153201e-02*N^3 + -5.302189e-04*N^4 }
+~~~
+
+This has the virtue of speed & simplicity (a few arithmetic operations) and high accuracy, but is not intended to perform well past the largest datapoint of _n_=300 (although if one needed to, one could simply generate the additional datapoints, and refit, adding more polynomials if necessary), but turns out to be a good approximation up to _n_=800 (after which it consistently overestimates by ~0.01):
+
+~~~{.R}
+heldout <- sapply(301:1000, exactMax)
+test <- sapply(301:1000, pa)
+mean((heldout - test)^2)
+# [1] 3.820988144e-05
+plot(301:1000, heldout); lines(test)
+~~~
+
+So this method, while lacking any kind of mathematical pedigree or derivation, provides the best approximation so far.
+
+# Exact
+
+The R package [`lmomco`](https://cran.r-project.org/web/packages/lmomco/index.html) ([Asquith 2011](https://ttu-ir.tdl.org/ttu-ir/handle/2346/ETD-TTU-2011-05-1319 "Univariate Distributional Analysis with L-moment Statistics using R")) calculates a wide variety of order statistics using numerical integration & other methods.
+It is fast, and unbiased. It is also very close to the Monte Carlo estimates even for the smallest _n_ where the approximations tend to do badly, so it does what it claims to and provides what we want: a fast exact estimate of the mean gain from selecting the maximum from _n_ samples from a normal distribution.
+The results can be memoized for a further moderate speedup (eg calculated over _n_=1-1000, 0.45s vs 3.9s for a speedup of ~8.7x):
+
+~~~{.R}
+library(lmomco)
+exactMax_unmemoized <- function(n, mean=0, sd=1) {
+    expect.max.ostat(n, para=vec2par(c(mean, sd), type="nor"), cdf=cdfnor, pdf=pdfnor) }
+## Comparison to MC:
+# ...         Min.       1st Qu.        Median          Mean       3rd Qu.          Max.
+#    -0.0523499300 -0.0128622900 -0.0003641315 -0.0007935236  0.0108748800  0.0645207000
+
+library(memoise)
+exactMax_memoised <- memoise(exactMax_unmemoized)
+~~~
+
+![Error in using Asquith 2011's L-moment Statistics numerical integration package to estimate the expected value (gain) from taking the maximum of _n_ normal samples](/images/genetics/iq-selection-asquith2011approximation-error.png)
+
+## Rescaling for generality
+
+The memoised function has three arguments, so memoising on the fly would seem to be the best one could do, since one cannot precompute all possible combinations of the _n_/mean/SD.
+But actually, we only need to compute the results for various _n_!
+
+We can default to assuming the standard normal distribution ($\mathcal{N}(0,1)$) without loss of generality because it's easy to rescale any normal to another normal: to scale to a different mean $\mu$, one simply adds $\mu$ to the expected extreme, so one can assume $\mu=0$; and to scale to a different standard deviation, we simply multiply appropriately.
+So if we wanted the extreme for _n_=5 for $\mathcal{N}(10,2)$, we can calculate it simply by taking the estimate for _n_=5 for $\mathcal{N}(0,1)$ and multiplying by $\frac{2}{1}=2$ and then adding $10-0=10$:
+
+~~~{.R}
+(exactMax(5, mean=0, sd=1)*2 + 10) ; exactMax(5, mean=10, sd=2)
+# [1] 12.32592895
+# [1] 12.32592895
+~~~
+
+So in other words, it is unnecessary to memoize all possible combinations of _n_, mean, and SD - in reality, we only need to compute each _n_ and then rescale it as necessary for each caller.
+And in practice, we only care about _n_=2-200, which is few enough that we can define a lookup table using the `lmomco` results and use that instead (with a fallback to memoized `lmomco` for $n>200$):
+
+~~~{.R}
+exactMax <- function (n, mean=0, sd=1) { if(n>200) { exactMax_memoised(n, mean, sd) } else {
+    lookup <- c(0,0,0.5641895835,0.8462843753,1.0293753730,1.1629644736,1.2672063606,1.3521783756,1.4236003060,
+        1.4850131622,1.5387527308,1.5864363519,1.6292276399,1.6679901770,1.7033815541,1.7359134449,1.7659913931,
+        1.7939419809,1.8200318790,1.8444815116,1.8674750598,1.8891679149,1.9096923217,1.9291617116,1.9476740742,
+        1.9653146098,1.9821578398,1.9982693020,2.0137069241,2.0285221460,2.0427608442,2.0564640976,2.0696688279,
+        2.0824083360,2.0947127558,2.1066094396,2.1181232867,2.1292770254,2.1400914552,2.1505856577,2.1607771781,
+        2.1706821847,2.1803156075,2.1896912604,2.1988219487,2.2077195639,2.2163951679,2.2248590675,2.2331208808,
+        2.2411895970,2.2490736293,2.2567808626,2.2643186963,2.2716940833,2.2789135645,2.2859833005,2.2929091006,
+        2.2996964480,2.3063505243,2.3128762306,2.3192782072,2.3255608518,2.3317283357,2.3377846191,2.3437334651,
+        2.3495784520,2.3553229856,2.3609703096,2.3665235160,2.3719855541,2.3773592389,2.3826472594,2.3878521858,
+        2.3929764763,2.3980224835,2.4029924601,2.4078885649,2.4127128675,2.4174673530,2.4221539270,2.4267744193,
+        2.4313305880,2.4358241231,2.4402566500,2.4446297329,2.4489448774,2.4532035335,2.4574070986,2.4615569196,
+        2.4656542955,2.4697004768,2.4736966781,2.4776440650,2.4815437655,2.4853968699,2.4892044318,2.4929674704,
+        2.4966869713,2.5003638885,2.5039991455,2.5075936364,2.5111482275,2.5146637581,2.5181410417,2.5215808672,
+        2.5249839996,2.5283511812,2.5316831323,2.5349805521,2.5382441196,2.5414744943,2.5446723168,2.5478382097,
+        2.5509727783,2.5540766110,2.5571502801,2.5601943423,2.5632093392,2.5661957981,2.5691542321,2.5720851410,
+        2.5749890115,2.5778663175,2.5807175211,2.5835430725,2.5863434103,2.5891189625,2.5918701463,2.5945973686,
+        2.5973010263,2.5999815069,2.6026391883,2.6052744395,2.6078876209,2.6104790841,2.6130491728,2.6155982225,
+        2.6181265612,2.6206345093,2.6231223799,2.6255904791,2.6280391062,2.6304685538,2.6328791081,2.6352710490,
+        2.6376446504,2.6400001801,2.6423379005,2.6446580681,2.6469609341,2.6492467445,2.6515157401,2.6537681566,
+        2.6560042252,2.6582241720,2.6604282187,2.6626165826,2.6647894763,2.6669471086,2.6690896839,2.6712174028,
+        2.6733304616,2.6754290533,2.6775133667,2.6795835873,2.6816398969,2.6836824739,2.6857114935,2.6877271274,
+        2.6897295441,2.6917189092,2.6936953850,2.6956591311,2.6976103040,2.6995490574,2.7014755424,2.7033899072,
+        2.7052922974,2.7071828562,2.7090617242,2.7109290393,2.7127849375,2.7146295520,2.7164630139,2.7182854522,
+        2.7200969934,2.7218977622,2.7236878809,2.7254674700,2.7272366478,2.7289955308,2.7307442335,2.7324828686,
+        2.7342115470,2.7359303775,2.7376394676,2.7393389228,2.7410288469,2.7427093423,2.7443805094,2.7460424475)
+
+  return(mean + sd*lookup[n+1]) }}
+~~~
+
+This gives us exact computation at $\mathcal{O}(1)$ (with an amortized $\mathcal{O}(1)$ when $n>200$) with an extremely small constant factor (a conditional, vector index, multiplication, and addition, which is overall ~10x faster than a memoised lookup), giving us all our desiderata simultaneously & resolving the problem.
