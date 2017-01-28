@@ -41,7 +41,8 @@ do
         markdown-length-checker.hs "$PAGE";
         markdown-footnote-length.hs "$PAGE";
 
-        HTML=$(tail -n +3 -- "$PAGE" | pandoc --mathml --standalone -)
+        HTML=$(tail -n +3 -- "$PAGE" | pandoc --to=html5 --mathml --standalone -)
+        echo "$HTML" | tidy -quiet -errors --doctype html5;
         echo "$HTML" | fgp -e "<""del"">";
         echo "$HTML" | elinks -dump --force-html \
                      | fgp -e '\frac' -e '\times' -e '(http' -e ')http' -e '[http' -e ']http'  \
