@@ -394,13 +394,13 @@ The full run reveals that convergence happens at  _b_=1932 (which can be compute
 
 #### C
 
-[FeepingCreature](https://github.com/FeepingCreature) provides a memoized C implementation of the exact penny game that runs in a few minutes (benefiting ~13% from profile-guided optimization when compiled with GCC).
-He also notes that dynamic programming is overkill for this problem: because almost all states ultimately get evaluated, the dynamic programming doesn't avoid evaluating many states.
-Since each state depends on an immediate successor and forms a clean tree, it is possible to calculate the tree much more directly by evaluating all the terminal nodes _b_=0, looping over the previous nodes _b_+1, then throwing away the no longer necessary _b_, and evaluating _b_+2, and so on; only two layers of the tree need to be stored at any time, which can potentially fit into on-processor cache.
+[FeepingCreature](https://github.com/FeepingCreature) provides a vectorized C implementation of the exact penny game that runs in a few minutes (benefiting ~13% from profile-guided optimization when compiled with GCC).
+He also notes that memoization/dynamic programming is overkill for this problem: because almost all states ultimately get evaluated, the dynamic programming doesn't avoid evaluating many states.
+Since each state depends on an immediate successor and forms a clean tree, it is possible to calculate the tree much more directly by evaluating all the terminal nodes _b_=0, looping over the previous nodes _b_+1, then throwing away the no longer necessary _b_, and evaluating _b_+2, and so on; only two layers of the tree need to be stored at any time, which can potentially fit into on-processor cache & exhibit far better cache locality.
 Another advantage of this representation is parallelism, as each node in the upper layer can be evaluated independently.
-An implementation using OpenMP for threading can solve _b_=300 in ~30s:
+An implementation using OpenMP for threading can solve _b_=300 in ~8s:
 
-~~~{.R}
+~~~{.C}
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -411,16 +411,21 @@ An implementation using OpenMP for threading can solve _b_=300 in ~30s:
 #define MONEY_START 2500
 #define MONEY_FACTOR 100.0f
 
-// MEMOIZED METHOD
+// #define DATATYPE float
+// #define F(X) X ## f
+#define DATATYPE double
+#define F(X) X
 
-#define UNLIKELY(X) __builtin_expect(!!(X), 0)
+#define THREADS 8
+
+// MEMOIZED METHOD
 
 typedef struct {
   bool known;
-  double ev;
+  DATATYPE ev;
 } CacheEntry;
 
-static double decide(CacheEntry * const table, int money, int round) {
+static DATATYPE decide(CacheEntry * const table, int money, int round) {
   if (round < 0) return money;
   if (money == 0 || money == MONEY_LIMIT) return money;
   int index = round * (MONEY_LIMIT + 1) + money;
@@ -428,12 +433,12 @@ static double decide(CacheEntry * const table, int money, int round) {
 
   if (table[index].known) return table[index].ev;
 
-  double best_bet_score = -1;
+  DATATYPE best_bet_score = -1;
   for (int bet = 0; bet <= money; bet++) {
-    double winres = decide(table, (money + bet > MONEY_LIMIT) ? MONEY_LIMIT : (money + bet), round - 1);
-    double loseres = decide(table, money - bet, round - 1);
-    double combined = 0.6 * winres + 0.4 * loseres;
-    best_bet_score = fmax(best_bet_score, combined);
+    DATATYPE winres = decide(table, (money + bet > MONEY_LIMIT) ? MONEY_LIMIT : (money + bet), round - 1);
+    DATATYPE loseres = decide(table, money - bet, round - 1);
+    DATATYPE combined = F(0.6) * winres + F(0.4) * loseres;
+    best_bet_score = F(fmax)(best_bet_score, combined);
   }
   table[index] = (CacheEntry) { true, best_bet_score };
   return best_bet_score;
@@ -444,11 +449,11 @@ void method1() {
 
   printf("running.\n");
   int best_bet = 0;
-  double best_bet_score = -1;
+  DATATYPE best_bet_score = -1;
   for (int bet = 0; bet <= MONEY_START; bet++) {
-    double winres = decide(table, MONEY_START + bet, ROUND_LIMIT - 1);
-    double loseres = decide(table, MONEY_START - bet, ROUND_LIMIT - 1);
-    double combined = 0.6 * winres + 0.4 * loseres;
+    DATATYPE winres = decide(table, MONEY_START + bet, ROUND_LIMIT - 1);
+    DATATYPE loseres = decide(table, MONEY_START - bet, ROUND_LIMIT - 1);
+    DATATYPE combined = F(0.6) * winres + F(0.4) * loseres;
     if (combined > best_bet_score) {
       best_bet = bet;
       best_bet_score = combined;
@@ -466,9 +471,8 @@ void method1() {
 // BOTTOM-UP METHOD
 
 // given pass n in "from", compute pass n-1 in "to"
-static void propagate(double *from, double *to) {
+static void propagate(DATATYPE *from, DATATYPE *to) {
   // for each money state...
-#define THREADS 4
 #pragma omp parallel for num_threads(THREADS)
   for (int a = 0; a < THREADS; a++) {
     // distribute workload so that inner loop passes are approximately equal
@@ -477,13 +481,22 @@ static void propagate(double *from, double *to) {
     int high = (int) (MONEY_LIMIT * sqrtf((a + 1.0f) / THREADS));
     if (a == THREADS - 1) high = MONEY_LIMIT + 1; // precise upper border
     for (int m = low; m < high; m++) {
-      double max_score = 0.0;
+      DATATYPE max_score = 0.0;
       // determine the bet that maximizes our expected earnings
-      for (int b = 0; b <= m; b++) {
-        double winval = from[(m + b > MONEY_LIMIT) ? MONEY_LIMIT : (m + b)];
-        double loseval = from[m - b];
-        double combined = 0.6 * winval + 0.4 * loseval;
-        max_score = fmax(max_score, combined);
+      // to enable vectorization we break the loop into two so that each half only gets one branch of the conditional
+      // DATATYPE winval = from[(m + b > MONEY_LIMIT) ? MONEY_LIMIT : (m + b)];
+      int high_inner = (m + m > MONEY_LIMIT) ? (MONEY_LIMIT - m) : m;
+      for (int b = 0; b <= high_inner; b++) {
+        DATATYPE winval = from[m + b];
+        DATATYPE loseval = from[m - b];
+        DATATYPE combined = F(0.6) * winval + F(0.4) * loseval;
+        max_score = F(fmax)(max_score, combined);
+      }
+      for (int b = high_inner + 1; b <= m; b++) {
+        DATATYPE winval = from[MONEY_LIMIT];
+        DATATYPE loseval = from[m - b];
+        DATATYPE combined = F(0.6) * winval + F(0.4) * loseval;
+        max_score = F(fmax)(max_score, combined);
       }
       to[m] = max_score;
     }
@@ -491,22 +504,22 @@ static void propagate(double *from, double *to) {
 }
 
 void method2() {
-  double *buf = malloc(sizeof(double) * (MONEY_LIMIT + 1));
-  double *buf_to = malloc(sizeof(double) * (MONEY_LIMIT + 1));
+  DATATYPE *buf = malloc(sizeof(DATATYPE) * (MONEY_LIMIT + 1));
+  DATATYPE *buf_to = malloc(sizeof(DATATYPE) * (MONEY_LIMIT + 1));
   // set up base case: making no bet, we have money of i
   for (int i = 0; i <= MONEY_LIMIT; i++) buf[i] = i;
   for (int i = ROUND_LIMIT - 1; i >= 0; i--) {
     propagate(buf, buf_to);
-    double *temp = buf;
+    DATATYPE *temp = buf;
     buf = buf_to;
     buf_to = temp;
   }
   int best_bet = 0;
-  double best_bet_score = -1;
+  DATATYPE best_bet_score = -1;
   for (int b = 0; b <= MONEY_START; b++) {
-    double winval = buf[MONEY_START + b];
-    double loseval = buf[MONEY_START - b];
-    double combined = 0.6 * winval + 0.4 * loseval;
+    DATATYPE winval = buf[MONEY_START + b];
+    DATATYPE loseval = buf[MONEY_START - b];
+    DATATYPE combined = 0.6 * winval + 0.4 * loseval;
     if (combined > best_bet_score) {
       best_bet_score = combined;
       best_bet = b;
@@ -521,19 +534,19 @@ int main() {
 }
 ~~~
 
-Some quick benchmarking on my Lenovo ThinkPad P70 laptop with 4 physical cores & 8 virtual cores shows a roughly linear speedup from 1 to 4 cores:
+Some quick benchmarking on my Lenovo ThinkPad P70 laptop with 4 physical cores & 8 virtual cores shows a roughly linear speedup from 1 to 3 threads and then small gains thereafter to a minimum of 7.2s with 8 threads:
 
 ~~~{.Bash}
-for C in `ls coingame-parallel-*.c`; do
+for C in `ls coingame-*.c`; do
     gcc -Wall -Ofast -fwhole-program -march=native -fopenmp $C -o coingame -lm &&
     echo "$C" &&
     (for i in {1..10}; do
         /usr/bin/time -f '%e' ./coingame; done
     );
-    done
+done
 ~~~
 
-For levels of parallelism on my laptop from 1-7 threads, the average times are: 113s/55s/39s/31s/34s/29s/29s.
+For levels of parallelism on my laptop from 1-8 threads, the average times are: 28.98s/15.44s/10.70s/9.22s/9.10s/8.4s/7.66s/7.20s
 
 #### Exact formula
 
@@ -820,6 +833,56 @@ Total bets Value function Decision tree performance Kelly performance Difference
 226        239.98         238.7                     225.9             12.8
 227        240.07         238                       226.9             11.1
 228        240.25         240.5                     227.6             12.9
+230        240.51         237.9                     225.8             12.1
+229        240.36         238.8                     227.5             11.3
+231        240.65         238.5                     228.2             10.3
+232        240.77         239.3                     226.6             12.7
+233        240.92         238.8                     226.1             12.7
+234        241.03         240.2                     228.8             11.4
+235        241.2          240.4                     227.5             12.9
+236        241.28         240                       227.4             12.6
+237        241.46         239.8                     228               11.8
+238        241.52         240.6                     228.8             11.8
+240        241.76         240.2                     229.2             11
+239        241.72         240.1                     228.7             11.4
+242        242            240.7                     229.3             11.4
+241        241.98         240.3                     229.2             11.1
+244        242.23         239.9                     229.2             10.7
+243        242.22         240.5                     229.7             10.8
+245        242.44         241.2                     230.3             10.9
+246        242.45         240.7                     230.5             10.2
+248        242.68         239.2                     230.4             8.79
+247        242.64         241.3                     231.5             9.8
+249        242.84         241.5                     230.3             11.2
+250        242.89         241.4                     230.6             10.8
+251        243.03         242.2                     230.4             11.8
+252        243.1          241.7                     232.3             9.39
+253        243.22         242.6                     232.2             10.4
+254        243.31         241                       229.7             11.3
+255        243.41         240.7                     231.1             9.59
+256        243.51         242.2                     231               11.2
+257        243.59         241                       232.4             8.59
+258        243.7          242.1                     230.2             11.9
+259        243.77         242                       232.1             9.90
+261        243.95         242.9                     233.6             9.30
+262        244.08         242.6                     233.6             9
+260        243.9          243.2                     230.4             12.8
+263        244.12         243                       231.3             11.7
+264        244.26         242.3                     233.5             8.80
+265        244.29         241.8                     233.8             8
+266        244.44         242.9                     233.1             9.80
+267        244.46         242.6                     233.8             8.79
+268        244.61         242.9                     234               8.90
+269        244.62         244                       234.3             9.69
+270        244.76         243.6                     234.4             9.19
+271        244.77         243.6                     235               8.59
+273        244.93         243.9                     233.2             10.7
+272        244.91         243.2                     234.7             8.5
+274        245.04         243.5                     233.5             10
+275        245.08         243.7                     234.2             9.5
+276        245.18         243.4                     234.8             8.59
+277        245.23         244.2                     234.2             10
+278        245.31         244.8                     234.8             10
 
 So the decision tree *does* outperform the 20% KC, and not by trivial amounts either for many possible _b_, either in relative or absolute terms.
 The decision tree doesn't require the full _b_=300 to often hit the ceiling, although the KC will.
