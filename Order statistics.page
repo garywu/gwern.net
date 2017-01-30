@@ -1,6 +1,6 @@
 ---
 title: Calculating The Expected Maximum of a Gaussian Sample using Order Statistics
-description: In generating a sample of _n_ datapoints drawn from a normal/Gaussian distribution, how big on average the biggest datapoint is will depend on how large _n_ is. I implement & compare some of the approaches to estimate how big on average.
+description: In generating a sample of n datapoints drawn from a normal/Gaussian distribution, how big on average the biggest datapoint is will depend on how large n is. I implement & compare some of the approaches to estimate how big on average.
 tags: statistics, computer science
 created: 22 Jan 2016
 status: finished
@@ -32,12 +32,22 @@ We can try to vectorize this simulation by generating $n \cdot i$ random normals
 This is about twice as fast for small _n_; implementing using `rowMaxs` from the R package [`matrixStats`](https://cran.r-project.org/web/packages/matrixStats/index.html), it is anywhere from 25% to 500% faster (at the expense of likely much higher memory usage, as the R interpreter is unlikely to apply any optimizations such as Haskell's stream fusion):
 
 ~~~{.R}
-simGain2 <- function(n=10, sd=1, iters=100000) {
+simGain2 <- function(n=10, sd=1, iters=500000) {
     mean(apply(matrix(ncol=n, data=rnorm(n*iters, mean=0, sd=sd)), 1, max)) }
 
 library(matrixStats)
-simGain3 <- function(n=10, sd=1, iters=100000) {
+simGain3 <- function(n=10, sd=1, iters=500000) {
     mean(rowMaxs(matrix(ncol=n, data=rnorm(n*iters, mean=0, sd=sd)))) }
+~~~
+
+Each simulate is too small to be worth parallelizing, but there are so many iterations that they can be split up usefully and run with a fraction in a different process; something like
+
+library(parallel)
+library(plyr)
+simGainP <- function(n=10, sd=1, iters=500000, n.parallel=4) {
+   mean(unlist(mclapply(1:n.parallel, function(i) {
+    mean(replicate(iters/n.parallel, gain(n, sd))); })))
+}
 ~~~
 
 We can treat the simulation estimates as exact and use [memoization](!Wikipedia) such as provided by the R package [`memoise`](https://cran.r-project.org/web/packages/memoise/) to cache results & never recompute them, but it will still be slow on the first calculation.
