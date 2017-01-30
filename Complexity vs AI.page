@@ -279,9 +279,10 @@ If one wants to put limits on the ability of an AI by way of computational resou
 
 # See also
 
-- [Embryo selection]()
-- [Simulation inferences]()
+- [Why Tool AIs Want to Be Agent AIs](/Tool AI)
+- [Embryo selection](/Embryo selection)
 - [Algernon's law](/Drug heuristics)
+- [Simulation inferences](/Simulation inferences)
 
 # External links
 
@@ -306,7 +307,7 @@ Thus:
 
 A common Intel CPU probably has 1-2 billion transistors, devoted to a huge number of tasks, of course.
 Each of the 2 or 4 main CPU cores can run independently, shutting on or off as necessary, and has its own private cache (bigger than most computers' RAM up to even recently), and must be regarded as individuals.
-The CPU as a whole is reprogrammable through microcode, such as to work around errors in the chip design, and sport increasingly opaque features like the Intel SGX
+The CPU as a whole is reprogrammable through microcode, such as to work around errors in the chip design, and sport increasingly opaque features like the Intel Management Engine & SGX
 any floating point unit can probably be considered Turing-complete through encoding into floating-point operations in the spirit of Fractran
 management chip with network access and backdoors
 the [MMU](!Wikipedia "Memory management unit") can be programmed (just one of [many things which are, weirdly, Turing-complete](/Turing-complete))
@@ -315,7 +316,7 @@ similar Motorola system-on-a-chip (Motorola X8 Mobile Computing System)
 with little sign that the trend towards ASICs for many tasks
 http://www.geek.com/chips/you-can-wake-up-an-intel-skylake-powered-pc-by-talking-to-it-1631530/
 GPU several hundred cores
-controllers for hard drives, flash drives: on-disk firmware with embedded processor for remapping sectors
+controllers for tape drives, hard drives, flash drives: on-disk firmware with embedded processor for remapping sectors
 network chip independent processing DMA
 (This sort of independence is why features like Wake-on-LAN or netboot work.)
 cellphone: in addition to all the other units, there is an independent baseband processor running a proprietary realtime OS for handling radio communications with the cellular towers/GPS/other things, or possibly more than one virtualized using something like L4 http://boston.conman.org/2013/01/22.2

@@ -662,7 +662,7 @@ print(tmp, "cancel_e", "n_e", "cancel_c", "n_c", "loss", "P", "profit")
 
 So in this scenario, we start with a control box (unsurprisingly, as it's cheaper) but if we get bad feedback, we'll try switching to the new boxes, and if that doesn't work, switch back to controls immediately.
 
-_n_=9 is similar but the tree is unwieldy to show inline; one can view [the tree as a CSV file](//docs/statistics/2016-08-20-candyjapan-decisiontree-n9.csv).
+_n_=9 is similar but the tree is unwieldy to show inline; one can view [the tree as a CSV file](/docs/statistics/2016-08-20-candyjapan-decisiontree-n9.csv).
 
 What about a more realistic example like _n_=800 since the necessary samples for a A/B test might get into the thousands?
 Unfortunately, such brute force planning doesn't scale well.
