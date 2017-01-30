@@ -98,12 +98,7 @@ V <- function(w,b) {
     max(returns) }
 mV <- memoise(V)
 ## sanity checks:
-mV(25, 0)
-# [1] 25
-mV(25, 1)
-# [1] 30
-mV(0, 300)
-# [1] 0
+mV(25, 0) == 25 && mV(25, 1) == 30 && mV(0, 300) == 0
 ~~~
 
 Given our memoized value function `mV` we can now take a look at expected value of optimal betting for bets _b_ from 0 to 300 with the fixed starting payroll of \$25.
@@ -127,6 +122,86 @@ vs <- sapply(1:150, function(b) { round(mV(25, b), digits=1) }); vs
 ~~~
 
 So as the number of bets escalates, our expected payoff increases fairly quickly and we can get very close to the ceiling of \$250 with canny betting.
+
+#### Monte Carlo tree evaluation
+
+If we do not have enough RAM to expand the full decision tree to its terminal nodes, there are many ways to approximate it.
+A simple one is to expand the tree as many levels far down as possible, and then if a terminal node is reached, do exact backwards induction, otherwise, at each pseudo-terminal node, approximate the value function somehow and then do backwards induction as usual.
+The deeper the depth, the closer the approximation becomes to the exact value, while still doing optimal planning within the horizon.
+
+One way to approximate it would be to run a large number of simulations (perhaps 100) taking random actions until a terminal node is hit, and take the mean of the total values as the estimate.
+This would be a Monte Carlo tree evaluation.
+(This forms the conceptual basis of the famous MCTS/[Monte Carlo tree search](!Wikipedia).)
+A random policy is handy because it can be used anywhere, but here we already know a good heuristic which does better than random: the KC. So we can use that instead.
+This gives us as much optimality as we can afford.
+
+Setting up a simulation of the coin-flipping game which can be played with various strategies:
+
+~~~{.R}
+game <- function(strategy, wealth, betsLeft) {
+    if (betsLeft>0) {
+    bet <- strategy(wealth, betsLeft)
+    wealth <- wealth - bet
+    flip <- rbinom(1,1,p=0.6)
+    winnings <- 2*bet*flip
+    wealth <- min(wealth+winnings, 250)
+    return(game(strategy, wealth, betsLeft-1)) } else { return(wealth); } }
+simulateGame <- function(s, w=25, b=300, iters=100) { mean(replicate(iters, game(s, w, b))) }
+
+kelly <- function(w, b) { 0.20 * w }
+smarterKelly <- function(w, b) { if(w==250) {0} else { (2*0.6-1) * w } }
+random <- function(w, b) { sample(seq(0, w, by=0.1), 1) }
+
+evaluate <- function(w,b) { simulateGame(smarterKelly, w, b) }
+mevaluate <- memoise(evaluate)
+
+mevaluate(25, 10)
+# [1] 35.30544906
+mevaluate(25, 100)
+# [1] 159.385275
+mevaluate(25, 300)
+# [1] 231.4763619
+~~~
+
+As expected the KC can do well and is just as fast to compute as a random action, so using it will give much better estimates of the value function for free.
+
+With the Monte Carlo value function set up, the original value function can be slightly modified to include a maximum depth parameter and to evaluate using the MC value function instead once that maximum depth is hit:
+
+~~~{.R}
+f <- function(x, w, b, maxDepth) { 0.6*mV(min(w+x,250), b-1, maxDepth) + 0.4*mV(w-x, b-1, maxDepth)}
+mf <- memoise(f)
+V <- function(w,b, maxDepth) {
+    if (b<=(b-maxDepth)) { mevaluate(w,b) } else {
+    returns <- if (b>0 && w>0 && w<250) { sapply(seq(0, w, by=0.1), function(x) { mf(x,w,b, maxDepth) }) } else { w }
+    max(returns) }}
+mV <- memoise(V)
+
+mV(25, 300, 100); mV(25, 300, 50)
+~~~
+
+<!--
+## Set up a hashtable equivalent using R's 'environments' and 'digest'
+library(digest)
+d <- function (o) { digest(o, algo="xxhash32") }
+lookup <- function(key) { get(d(key), tree) }
+set <- function(key,value) { assign(envir=tree, d(key), value) }
+isSet <- function(key) { exists(d(key), envir=tree) }
+## example:
+tree <- new.env(size=1000000, parent=emptyenv())
+set(c(25,300), 50); lookup(c(25, 300))
+# [1] 50
+
+tree <- new.env(size=1000000, parent=emptyenv())
+f <- function(x, w, b) { 0.6*V(min(w+x,250), b-1) + 0.4*V(w-x, b-1)}
+V <- function(w, b) {
+    if (isSet(c(w,b))) { return(lookup(c(w,b))) } else {
+      returns <- if (b>0 && w>0 && w<250) { sapply(seq(0, w, by=0.1), function(x) { f(x,w,b) }) } else { return(w) }
+      set(c(w,b), max(returns))
+      return(lookup(c(w,b)))
+      }
+    }
+V(25,5)
+-->
 
 ### Optimal next action
 
@@ -534,7 +609,7 @@ int main() {
 }
 ~~~
 
-Some quick benchmarking on my Lenovo ThinkPad P70 laptop with 4 physical cores & 8 virtual cores shows a roughly linear speedup from 1 to 3 threads and then small gains thereafter to a minimum of 7.2s with 8 threads:
+Some quick benchmarking on my 2016 Lenovo ThinkPad P70 laptop with 4 physical cores & 8 virtual cores (Intel Xeon E3-1505M v5 Processor 8MB Cache / up to 3.70GHz) shows a roughly linear speedup from 1 to 3 threads and then small gains thereafter to a minimum of 7.2s with 8 threads:
 
 ~~~{.Bash}
 for C in `ls coingame-*.c`; do
@@ -546,7 +621,11 @@ for C in `ls coingame-*.c`; do
 done
 ~~~
 
-For levels of parallelism on my laptop from 1-8 threads, the average times are: 28.98s/15.44s/10.70s/9.22s/9.10s/8.4s/7.66s/7.20s
+For levels of parallelism on my laptop from 1-8 threads, the average times are: 28.98s/15.44s/10.70s/9.22s/9.10s/8.4s/7.66s/7.20s.
+
+Given the locality of the access patterns, I have to wonder how well a GPU implementation might perform.
+It doesn't seem amenable to being expressed as a large matrix multiplication, but each GPU core could be responsible for evaluating a terminal node and do nearby lookups from there.
+(And the use in finance of GPUs to compute the [lattice model](!Wikipedia "Lattice model (finance)")/[binomial options pricing model](!Wikipedia)/[trinomial tree](!Wikipedia), which are similar, suggests it should be possible.)
 
 #### Exact formula
 
@@ -577,7 +656,7 @@ game <- function(strategy, wealth, betsLeft) {
     winnings <- 2*bet*flip
     wealth <- min(wealth+winnings, 250)
     return(game(strategy, wealth, betsLeft-1)) } else { return(wealth); } }
-simulateGame <- function(s, w=25, b=300, iters=5000) { replicate(iters, game(s, w, b)) }
+simulateGame <- function(s, w=25, b=300, iters=5000) { mean(replicate(iters, game(s, w, b))) }
 
 ## Various strategies (the decision tree strategy is already defined as 'VPplan'):
 kelly <- function(w, b) { 0.20 * w }
@@ -585,22 +664,16 @@ smarterKelly <- function(w, b) { if(w==250) {0} else { (2*0.6-1) * w } }
 maximizer <- function(w, b) { w; }
 smarterMaximizer <- function(w, b) { if(w>=250) { 0 } else {w}; }
 
-## What percentage hit the cap?
-mean(simulateGame(smarterKelly, b=300) == 250)
-# [1] 0.9367
-mean(simulateGame(VPplan, b=300) == 250)
-# [1] 0.9784
-
 library(parallel)
 library(plyr)
 ## Comparing performance in the finite horizon setting up to b=300:
 bs <- 1:300
 ldply(mclapply(bs, function(bets) {
-    ky <- round(mean(simulateGame(smarterKelly, b=bets)), digits=1)
-    dt <- round(mean(simulateGame(VPplan, b=bets)), digits=1)
+    ky <- round(simulateGame(smarterKelly, b=bets)), digits=1)
+    dt <- round(imulateGame(VPplan, b=bets), digits=1)
     gain <- dt-ky;
     print(paste(bets, round(V(25, bets), digits=2), dt, ky, gain)) }
-))
+)
 ~~~
 
 Simulating 5,000 games for each _b_:
