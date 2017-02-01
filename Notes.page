@@ -2472,11 +2472,12 @@ So I had available for recovery of my data:
 
 At this point horror dawned.
 My most recent immediately accessible backup was the manual backup drive done on 1*4* November, but I had created key X on 1*5* November.
-Copies of key X existed on the SSD - whose master key had been corrupted and could not be decrypted - and on the USB-3 external drive - all of which was encrypted to key X - and on Backblaze - also encrypted to key X - _and nowhere else_.
+Copies of key X existed on the SSD - whose master key had been corrupted and could not be decrypted - and on the USB-3 external drive - all of which was encrypted to key X - and on Backblaze - also encrypted to key X - *and nowhere else*.
 
 What happened was that I had simply assumed that my regular backup procedures would migrate key X onto the manual external drives, and then in any disaster, I would simply copy over all the data from one of them, and grab incrementals from Backblaze or the USB-3 external drive.
 This was _almost_ right and off only by a day.
 But so much of my time was used up with Thanksgiving festivities and writing and [digging in a new Ethernet cable](/WiFi) and shopping that my usual manual backup routine of syncing every 5 days or so fell into abeyance.
+This made my backup improvements merely a complex _verschlimmbesserung_.
 
 So I'd lost 16 days of data.
 

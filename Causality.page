@@ -127,7 +127,8 @@ When I look at some dataset with a number of variables and I run a multiple regr
 I have not learned whether A/B/C cause D, or whether I could predict values of D in the future, or anything about how I could intervene and manipulate any of A-D, or anything like that - rather, I have learned a small point about prediction.
 To take a real example: when I learn that moderate alcohol consumption means the actuarial prediction of lifespan for drinkers should be increased slightly, why on earth would I care about this at all *unless* it was causal?
 When epidemiologists emerge from a huge survey reporting triumphantly that steaks but not egg consumption slightly predicts decreased lifespan, why would anyone care aside from perhaps life insurance companies?
-Have you ever been abducted by space aliens and ordered as part of an inscrutable alien blood-sport to take a set of data about Midwest Americans born 1960-1969 with dietary predictors you must combine linearly to create predictors under a squared error loss function to outpredict your fellow abductees from across the galaxy?
+Have you ever been abducted by space aliens and ordered as part of an inscrutable alien blood-sport to take a set of data about Midwest Americans born 1960-1969 with dietary predictors you must combine linearly to create predictors of heart attacks under a squared error loss function to outpredict your fellow abductees from across the galaxy?
+Probably not.
 Why would anyone give them grant money for this, why would they spend their time on this, why would they read each others' papers *unless* they had a "quasi-religious faith"[^Shapiro] that these correlations were more than just some coefficients in a predictive model - that they were *causal*?
 
 [^Shapiro]: I borrow this phrase from the paper ["Looking to the 21st century: have we learned from our mistakes, or are we doomed to compound them?"](/docs/statistics/2004-shapiro.pdf), Shapiro 2004:
