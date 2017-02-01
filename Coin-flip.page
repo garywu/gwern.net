@@ -8,7 +8,7 @@ status: finished
 belief: likely
 ...
 
-> Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion as their strategy. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays. We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming in R, Haskell, and C. We find that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6. The relative advantage of the decision tree strategy depends on the number of bets: it is highest when the player can make few bets, and decreases with number of bets as more strategies hit the ceiling.
+> Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion as their strategy. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays. We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming in R, Haskell, and C. We find that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6. The relative advantage of the decision tree strategy depends on the number of bets: it is highest when the player can make few bets (at _b_=23, with a difference of ~\$36), and decreases with number of bets as more strategies hit the ceiling.
 
 # Background
 ## Set up
@@ -648,6 +648,18 @@ The implementations here could be wrong or decision trees not actually optimal l
 We can test it by directly comparing the performance in a simulation of the coin-flipping game, comparing the performance of `mVPplan` vs the 20% Kelly criterion and a simple bet-everything strategy:
 
 ~~~{.R}
+library(memoise)
+f <- function(x, w, b) { 0.6*V(min(w+x,250), b-1) + 0.4*V(w-x, b-1)}
+mf <- memoise(f)
+V <- function(w, b, m=250) { j <- qbinom(w/m,b,1/2);
+    1.2^b * 1.5^-j * (w+m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2))) }
+VPplan <- function(w, b) {
+    if (b==0) { return (0); } else {
+    returns <- sapply(seq(0, w), function(wp) { mf(wp, w, b); })
+      return (which.max(returns)-1); }
+ }
+mVPplan <- memoise(VPplan)
+
 game <- function(strategy, wealth, betsLeft) {
     if (betsLeft>0) {
     bet <- strategy(wealth, betsLeft)
@@ -658,7 +670,7 @@ game <- function(strategy, wealth, betsLeft) {
     return(game(strategy, wealth, betsLeft-1)) } else { return(wealth); } }
 simulateGame <- function(s, w=25, b=300, iters=5000) { mean(replicate(iters, game(s, w, b))) }
 
-## Various strategies (the decision tree strategy is already defined as 'VPplan'):
+## Various strategies (the decision tree strategy is already defined as 'mVPplan'):
 kelly <- function(w, b) { 0.20 * w }
 smarterKelly <- function(w, b) { if(w==250) {0} else { (2*0.6-1) * w } }
 maximizer <- function(w, b) { w; }
@@ -669,11 +681,11 @@ library(plyr)
 ## Comparing performance in the finite horizon setting up to b=300:
 bs <- 1:300
 ldply(mclapply(bs, function(bets) {
-    ky <- round(simulateGame(smarterKelly, b=bets)), digits=1)
-    dt <- round(imulateGame(VPplan, b=bets), digits=1)
+    ky <- round(simulateGame(smarterKelly, b=bets), digits=1)
+    dt <- round(simulateGame(mVPplan, b=bets), digits=1)
     gain <- dt-ky;
     print(paste(bets, round(V(25, bets), digits=2), dt, ky, gain)) }
-)
+))
 ~~~
 
 Simulating 5,000 games for each _b_:
@@ -870,24 +882,24 @@ Total bets Value function Decision tree performance Kelly performance Difference
 190        233.1          230.4                     217.6             12.8
 191        233.45         231.1                     218.4             12.7
 192        233.56         231.9                     219               12.9
-194        234.02         232                       219.3             12.7
 193        233.94         232.1                     216.6             15.5
+194        234.02         232                       219.3             12.7
 195        234.43         231.8                     217.5             14.3
 196        234.47         232.4                     220.6             11.8
 197        234.9          233.5                     218.6             14.9
 198        234.9          233                       219.3             13.7
 199        235.3          233.4                     220.2             13.2
 200        235.33         233.8                     221.1             12.7
-202        235.75         233                       222               11
 201        235.67         235.5                     218.8             16.7
+202        235.75         233                       222               11
 203        236.05         232.9                     220.4             12.5
 204        236.17         233.9                     220.1             13.8
 205        236.42         234.8                     221               13.8
 206        236.57         234.4                     221.4             13
 207        236.78         234.8                     222.6             12.2
 208        236.96         236.4                     222.5             13.9
-210        237.35         236.6                     222.6             14
 209        237.14         234.6                     223.5             11.1
+210        237.35         236.6                     222.6             14
 211        237.49         235.7                     221.9             13.8
 212        237.73         234.4                     222.4             12
 213        237.83         234.9                     226               8.9
@@ -906,8 +918,8 @@ Total bets Value function Decision tree performance Kelly performance Difference
 226        239.98         238.7                     225.9             12.8
 227        240.07         238                       226.9             11.1
 228        240.25         240.5                     227.6             12.9
-230        240.51         237.9                     225.8             12.1
 229        240.36         238.8                     227.5             11.3
+230        240.51         237.9                     225.8             12.1
 231        240.65         238.5                     228.2             10.3
 232        240.77         239.3                     226.6             12.7
 233        240.92         238.8                     226.1             12.7
@@ -916,16 +928,16 @@ Total bets Value function Decision tree performance Kelly performance Difference
 236        241.28         240                       227.4             12.6
 237        241.46         239.8                     228               11.8
 238        241.52         240.6                     228.8             11.8
-240        241.76         240.2                     229.2             11
 239        241.72         240.1                     228.7             11.4
-242        242            240.7                     229.3             11.4
+240        241.76         240.2                     229.2             11
 241        241.98         240.3                     229.2             11.1
-244        242.23         239.9                     229.2             10.7
+242        242            240.7                     229.3             11.4
 243        242.22         240.5                     229.7             10.8
+244        242.23         239.9                     229.2             10.7
 245        242.44         241.2                     230.3             10.9
 246        242.45         240.7                     230.5             10.2
-248        242.68         239.2                     230.4             8.79
 247        242.64         241.3                     231.5             9.8
+248        242.68         239.2                     230.4             8.79
 249        242.84         241.5                     230.3             11.2
 250        242.89         241.4                     230.6             10.8
 251        243.03         242.2                     230.4             11.8
@@ -937,9 +949,9 @@ Total bets Value function Decision tree performance Kelly performance Difference
 257        243.59         241                       232.4             8.59
 258        243.7          242.1                     230.2             11.9
 259        243.77         242                       232.1             9.90
+260        243.9          243.2                     230.4             12.8
 261        243.95         242.9                     233.6             9.30
 262        244.08         242.6                     233.6             9
-260        243.9          243.2                     230.4             12.8
 263        244.12         243                       231.3             11.7
 264        244.26         242.3                     233.5             8.80
 265        244.29         241.8                     233.8             8
@@ -949,15 +961,47 @@ Total bets Value function Decision tree performance Kelly performance Difference
 269        244.62         244                       234.3             9.69
 270        244.76         243.6                     234.4             9.19
 271        244.77         243.6                     235               8.59
-273        244.93         243.9                     233.2             10.7
 272        244.91         243.2                     234.7             8.5
+273        244.93         243.9                     233.2             10.7
 274        245.04         243.5                     233.5             10
 275        245.08         243.7                     234.2             9.5
 276        245.18         243.4                     234.8             8.59
 277        245.23         244.2                     234.2             10
 278        245.31         244.8                     234.8             10
+279        245.37         244.1                     234.7             9.40
+280        245.44         243.7                     234.1             9.59
+281        245.51         244.1                     234               10.1
+282        245.57         243.6                     235.8             7.79
+283        245.65         243.8                     235.3             8.5
+284        245.7          244                       235               9
+285        245.78         244.3                     236.9             7.40
+286        245.82         243.7                     235               8.69
+287        245.91         244.6                     236.2             8.40
+288        245.94         244.7                     235.4             9.29
+289        246.04         245.2                     237.3             7.89
+290        246.06         244.6                     234.8             9.79
+291        246.16         243.8                     235.6             8.20
+292        246.17         244.8                     236.2             8.60
+293        246.28         244.6                     236.2             8.40
+294        246.29         245.2                     236.9             8.29
+295        246.39         245.2                     237.2             8
+296        246.39         245.2                     236.5             8.69
+297        246.49         245.1                     235.7             9.40
+298        246.5          244.9                     237.4             7.5
+299        246.59         245.4                     237.5             7.90
+300        246.61         246                       236.2             9.80
 
-So the decision tree *does* outperform the 20% KC, and not by trivial amounts either for many possible _b_, either in relative or absolute terms.
+![Performance of modified Kelly criterion versus theoretical optimal performance versus decision-tree performance](/images/coinflip-valuecurves.png)
+
+<!--
+coinflip <- read.table(stdin(), header=FALSE)
+library(reshape2)
+coinflipLong <- melt(coinflip, id="Bet")
+
+ggplot(coinflipLong, aes(coinflipLong$Bet,coinflipLong$value,color=coinflipLong$variable, group=coinflipLong$variable)) + stat_smooth() + ylab("Value in $") + xlab("Total bets left") + theme(legend.position = "none")
+-->
+
+So the decision tree *does* outperform the 20% KC, and not by trivial amounts either for many possible _b_, either in relative or absolute terms: for _b_=23, the estimated gain is \$37.1.
 The decision tree doesn't require the full _b_=300 to often hit the ceiling, although the KC will.
 However, the performance edge goes down as the horizon gets more distant, and we'll see that as far out as _b_=300, the advantage shrinks to ~\$6 as the ceiling is hit almost all the time by decent strategies (as we know from Haghani & Dewey 2016's analysis that KC hits the ceiling ~95% of the time with _b_=300, although of course it will do so far les
 s often for shorter runs like _b_=50).
