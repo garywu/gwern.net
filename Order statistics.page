@@ -176,8 +176,10 @@ So this method, while lacking any kind of mathematical pedigree or derivation, p
 # Exact
 
 The R package [`lmomco`](https://cran.r-project.org/web/packages/lmomco/index.html) ([Asquith 2011](https://ttu-ir.tdl.org/ttu-ir/handle/2346/ETD-TTU-2011-05-1319 "Univariate Distributional Analysis with L-moment Statistics using R")) calculates a wide variety of order statistics using numerical integration & other methods.
-It is fast, and unbiased. It is also very close to the Monte Carlo estimates even for the smallest _n_ where the approximations tend to do badly, so it does what it claims to and provides what we want: a fast exact estimate of the mean gain from selecting the maximum from _n_ samples from a normal distribution.
+It is fast, unbiased, and generally correct[^lmomco-bug] - it is very close to the Monte Carlo estimates even for the smallest _n_ where the approximations tend to do badly, so it does what it claims to and provides what we want (a fast exact estimate of the mean gain from selecting the maximum from _n_ samples from a normal distribution).
 The results can be memoized for a further moderate speedup (eg calculated over _n_=1-1000, 0.45s vs 3.9s for a speedup of ~8.7x):
+
+[^lmomco-bug]: `lmomco` is accurate for all values I checked with Monte Carlo _n_<1000, but appears to have some bugs _n_>2000: there are occasional deviations from the quasi-logarithmic curve, such as _n_=2225-2236 (which are off by 1.02SD compared to the Monte Carlo estimates and the surrounding lmomco estimates), another cluster of errors _n_~=40,000, and then after _n_>60,000, the estimates are totally incorrect. The maintainer has been notified.
 
 ~~~{.R}
 library(lmomco)
