@@ -1,5 +1,5 @@
 ---
-title: "The Kelly Coin-Flipping Game: Exact Solutions via Dynamic Programming"
+title: "The Kelly Coin-Flipping Game: Exact Solutions via Decision Trees"
 description: Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's 300-round double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by \$6.6 over a modified KC.
 tags: statistics, decision theory, Haskell
 author: Gwern Branwen, Arthur B., nshepperd, FeepingCreature, Gurkenglas
