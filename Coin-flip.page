@@ -635,16 +635,18 @@ $$
 \left(\frac{6}{5}\right)^b \left(w - \frac{1}{3}\sum_{k=0}^{b-1}\left(\frac{2}{3}\right)^k\max\!\left(w - \frac{250 }{2^b}\sum_{j=0}^{k}\binom{b}{j},~0\right)\right)
 $$
 
-A version in R:
+A short version in R:
 
 ~~~{.R}
 V <- function(w, b, m=250) { j <- qbinom(w/m,b,1/2);
     1.2^b * 1.5^-j * (w+m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2))) }
 ~~~
 
+(This is sufficiently fast for all values tested that it is not worth memoizing using the relatively slow `memoise`.)
+
 ### Simulation Performance
 
-The implementations here could be wrong or decision trees not actually optimal like we claimed.
+The implementations here could be wrong, or decision trees not actually optimal like claimed.
 We can test it by directly comparing the performance in a simulation of the coin-flipping game, comparing the performance of `mVPplan` vs the 20% Kelly criterion and a simple bet-everything strategy:
 
 ~~~{.R}
@@ -672,7 +674,7 @@ simulateGame <- function(s, w=25, b=300, iters=5000) { mean(replicate(iters, gam
 
 ## Various strategies (the decision tree strategy is already defined as 'mVPplan'):
 kelly <- function(w, b) { 0.20 * w }
-smarterKelly <- function(w, b) { if(w==250) {0} else { (2*0.6-1) * w } }
+smarterKelly <- function(w, b) { if(w==250) {0} else { 0.2 * w } }
 maximizer <- function(w, b) { w; }
 smarterMaximizer <- function(w, b) { if(w>=250) { 0 } else {w}; }
 
@@ -1003,5 +1005,18 @@ ggplot(coinflipLong, aes(coinflipLong$Bet,coinflipLong$value,color=coinflipLong$
 
 So the decision tree *does* outperform the 20% KC, and not by trivial amounts either for many possible _b_, either in relative or absolute terms: for _b_=23, the estimated gain is \$37.1.
 The decision tree doesn't require the full _b_=300 to often hit the ceiling, although the KC will.
-However, the performance edge goes down as the horizon gets more distant, and we'll see that as far out as _b_=300, the advantage shrinks to ~\$6 as the ceiling is hit almost all the time by decent strategies (as we know from Haghani & Dewey 2016's analysis that KC hits the ceiling ~95% of the time with _b_=300, although of course it will do so far les
-s often for shorter runs like _b_=50).
+However, the performance edge goes down as the horizon gets more distant, and we'll see that as far out as _b_=300, the advantage shrinks to ~\$6 as the ceiling is hit almost all the time by decent strategies (as we know from Haghani & Dewey 2016's analysis that KC hits the ceiling ~95% of the time with _b_=300, although of course it will do so far less often for shorter runs like _b_=50).
+
+Since the 20% KC was only suggested as a heuristic, one might wonder if there's a different constant fraction which does slightly better in the _b_=300 case, which there is, 12%:
+
+~~~{.R}
+fraction <- seq(0,1, by=0.01)
+fractionEVs <- ldply(mclapply(fraction, function(f) {
+    k <- function(w,b) { if(w==250) {0} else { f * w } }
+    kev <- simulateGame(k, b=300)
+    return(kev) }
+    ))
+    fraction[which.max(unlist(fractionEVs))]
+# [1] 0.12
+qplot(fraction, fractionEVs)
+~~~
