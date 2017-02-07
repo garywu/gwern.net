@@ -42,6 +42,7 @@ simGain3 <- function(n=10, sd=1, iters=500000) {
 
 Each simulate is too small to be worth parallelizing, but there are so many iterations that they can be split up usefully and run with a fraction in a different process; something like
 
+~~~{.R}
 library(parallel)
 library(plyr)
 simGainP <- function(n=10, sd=1, iters=500000, n.parallel=4) {

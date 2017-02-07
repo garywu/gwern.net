@@ -2,7 +2,7 @@
 title: January 2017 news
 created: 31 December 2016
 tags: newsletter
-status: in progress
+status: finished
 belief: log
 ...
 
@@ -11,7 +11,7 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
-- [The Kelly Coin-Flipping Problem: Exact Solutions via Dynamic Programming](https://www.gwern.net/Coin-flip "Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.")
+- [The Kelly Coin-Flipping Problem: Exact Solutions via Decision Trees](https://www.gwern.net/Coin-flip "Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.")
 - [Efficiently calculating the average maximum sample from a sample of Gaussians](https://www.gwern.net/Order%20statistics)
 
 # Media
@@ -21,14 +21,19 @@ Everything is heritable:
 
 - dysgenics:
 
-    - in Iceland: decrease in the education polygenic score 1910-1990, ["Selection against variants in the genome associated with educational attainment"](https://www.gwern.net/docs/genetics/2017-kong.pdf), Kong et al 2017 ([graph](https://www.gwern.net/images/genetics/2017-kong-iceland-education-dysgenics.png); [media](https://www.theguardian.com/science/2017/jan/16/natural-selection-making-education-genes-rarer-says-icelandic-study "Natural selection making 'education genes' rarer, says Icelandic study: Researchers say that while the effect corresponds to a small drop in IQ per decade, over centuries the impact could be profound")):
+    - in Iceland: decrease in the education polygenic score 1910-1990, ["Selection against variants in the genome associated with educational attainment"](https://www.gwern.net/docs/genetics/2017-kong.pdf), Kong et al 2017 ([graph](https://www.gwern.net/images/genetics/2017-kong-iceland-education-dysgenics.png); [media](https://www.theguardian.com/science/2017/jan/16/natural-selection-making-education-genes-rarer-says-icelandic-study "Natural selection making 'education genes' rarer, says Icelandic study: Researchers say that while the effect corresponds to a small drop in IQ per decade, over centuries the impact could be profound"))
     - in the US: decrease in the education polygenic score 1920-1960, ["Mortality Selection in a Genetic Sample and Implications for Association Studies"](http://biorxiv.org/content/early/2016/04/21/049635), Domingue et al 2016 ([graph](https://www.gwern.net/images/genetics/2016-domingue-usa-education-dysgenics.png))
 - ["GWAS meta-analysis reveals novel loci and genetic correlates for general cognitive function: a report from the COGENT consortium"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016244a.html), Trampush et al 2017
-- ["Prevalence and architecture of de novo mutations in developmental disorders"](https://www.gwern.net/docs/genetics/2017-mcrae.pdf), Deciphering Developmental Disorders Study 2017
+- ["Prevalence and architecture of de novo mutations in developmental disorders"](https://www.gwern.net/docs/genetics/2017-mcrae.pdf), Deciphering Developmental Disorders Study 2017 (Screening for inherited or new/de novo mutations would be a good way to start embryo selection.)
+- ["A chemical genetic roadmap to improved tomato flavor"](https://www.gwern.net/docs/genetics/correlation/2017-tieman.pdf), Tieman et al 2017 ([media](https://www.nytimes.com/2017/01/27/science/better-tasting-tomatoes-genes.html "A Genetic Fix to Put the Taste Back in Tomatoes"); intensive phenotyping using taste panels to create flavor polygenic scores which can be used by commercial growers for molecular breeding)
 - ["Apolipoprotein E4 is associated with improved cognitive function in Amazonian forager-horticulturalists with a high parasite burden"](https://www.gwern.net/docs/genetics/2016-trumble.pdf), Trumble et al 2016 ([media](https://www.theatlantic.com/science/archive/2017/01/why-does-a-gene-that-increases-alzheimers-risk-still-exist/512396/ "Why Do Humans Still Have a Gene That Increases the Risk of Alzheimer's?"); of course, different regions, and hence different groups, differ in parasite load.)
 - ["Personalized Media: A Genetically Informative Investigation of Individual Differences in Online Media Use"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0168895), Ayorech et al 2017
 
 AI:
+
+- ["Deep Reinforcement Learning: An Overview"](https://arxiv.org/abs/1701.07274), Li 2017
+- ["Wasserstein GAN"](http://xxx.lanl.gov/abs/1701.07875), Arjovsky et al 2017 (a surprisingly small tweak fixes both mode collapse & divergence, yielding stable GANs which reliably fit datasets like anime faces in my experiments with [the code](https://github.com/martinarjovsky/WassersteinGAN); underfitting/expressiveness seems to remain an issue, though)
+- ["Universal representations:The missing link between faces, text, planktons, and cat breeds"](https://arxiv.org/abs/1701.07275), Bilen & Vedaldi 2017 (NNs are grossly overparameterized, and you can share and boost learning by training the same NN on multiple tasks because tasks share a lot of information & form highly informative priors for each other.)
 
 Statistics/meta-science/mathematics:
 
@@ -60,14 +65,12 @@ Technology:
 Economics:
 
 - ["The Cat's-Meat Man"](http://messybeast.com/cats-meat-man.htm) (how cats & dogs were fed before modern processed pet food: regular deliveries of low-grade meat, usually horse-meat from the surplus of millions per year; focusing on industrial districts where cats were heavily employed)
-- ["The High-Cost, High-Risk World of Modern Pet Care: A wave of corporatization is hitting the veterinary industry, but does a one-size-fits-all approach work?"](https://www.bloomberg.com/news/features/2017-01-05/when-big-business-happens-to-your-pet) (more importantly: why is this model successful in the most free market possible for healthcare?); ["Killing Animals at the Zoo: At Danish zoos, surplus animals are euthanized—and dissected before the public"](http://www.newyorker.com/magazine/2017/01/16/killing-animals-at-the-zoo)
+- ["The High-Cost, High-Risk World of Modern Pet Care: A wave of corporatization is hitting the veterinary industry, but does a one-size-fits-all approach work?"](https://www.bloomberg.com/news/features/2017-01-05/when-big-business-happens-to-your-pet) (more importantly: why is this model successful in the most free market possible for healthcare?); ["Killing Animals at the Zoo: At Danish zoos, surplus animals are euthanized-and dissected before the public"](http://www.newyorker.com/magazine/2017/01/16/killing-animals-at-the-zoo)
 
 Philosophy:
 
 - ["How To Be Good: An Oxford philosopher thinks he can distill all morality into a formula. Is he right?"](http://www.newyorker.com/magazine/2011/09/05/how-to-be-good) (in memory of Derek Parfit)
 - ["Underprotection of Unpredictable Statistical Lives Compared to Predictable Ones"](https://www.gwern.net/docs/2016-lipsitch.pdf), Lipsitch et al 2016
-
-Fiction:
 
 <!-- Back to 08 Sep 2012 -->
 
@@ -75,6 +78,7 @@ Fiction:
 
 Nonfiction:
 
+- [_Site Reliability Engineering: How Google Runs Production Systems_](https://landing.google.com/sre/book/index.html) (not a book whose principles I ever expect to apply as intended, but it is fascinating to read about the technical problems & capabilities at Google-scale, the clever solutions applying rarefied computer science techniques, and the war stories about how things can go wrong. Inspired a little by it, I added a number of tests to my `gwern.net` sync script.)
 - [_Clever Hans_](https://www.gutenberg.org/files/33936/33936-h/33936-h.htm), [Oskar Pfungst](https://en.wikipedia.org/wiki/Oskar_Pfungst) (on the famous [Clever Hans](https://en.wikipedia.org/wiki/Clever_Hans); [review](https://www.goodreads.com/review/show/1798234899))
 
 Fiction:
@@ -85,21 +89,21 @@ Fiction:
 
     Logically, one would expect him to impact the Moon at some extraordinary velocity as there will be effectively no terminal velocity for his body once out of the earth's atmosphere, but he [will have died long before](https://en.wikipedia.org/wiki/Space_exposure) of thirst, [hypothermia](https://en.wikipedia.org/wiki/Hypothermia), or hypoxia (in increasing order of speed) and probably well before he hits the [Armstrong limit](https://en.wikipedia.org/wiki/Armstrong_limit) of 19000m. At the Armstrong limit, even the water on one's tongue boils. In any case, the magician will be moving so fast that 19000m is trivial and will be reached within ~5.8 minutes, leaving little time for starvation/thirst/hypothermia; by this point, he will have previously lapsed into unconsciousness and be suffering from [cerebral hypoxia](https://en.wikipedia.org/wiki/Cerebral_hypoxia), yielding brain death within 5-10 minutes. So in general, we can safely assume that less than 10 minutes after falling out of the dome, the magician is dead from hypoxia accelerated by hypothermia. But the body will keep on going. How long does it take to reach the Moon? The moon is on average 384400000 meters away, but the body will keep accelerating once it gets past the bulk of the earth's atmosphere; assuming no more terminal velocity after 500 seconds, the body will reach the average distance of the moon after ~9351s or ~2.6h, traveling at something like 86795m/s or 86km/s. (Strictly speaking, he might miss the moon and have to spiral around, or might even never impact, but I can't calculate the orbital mechanics there.) Being a wizened and now desiccated/frozen body, it probably doesn't weigh anywhere over 50kg, but will still pack a major punch with a [kinetic energy](https://en.wikipedia.org/wiki/Kinetic_energy) of `0.2*50*(86795^2)` joules or 7.5 megajoules (for comparison [1 ton of TNT is ~4.2 GJ](https://en.wikipedia.org/wiki/Conversion_of_units_of_energy)).
 
-    (Some crude modeling: `v <- 0 ; d <- 0; terminalVelocity <- 54; positions <- numeric(); for(i in 0:9351) { if(i%%160==0) { terminalVelocity <- terminalVelocity*1.01; } else {if (i>500) { terminalVelocity<- Inf }}; v<-min(v+9.8, terminalVelocity); d<-d+v;  positions[i] <- d; print(v) }; (0.2*50*(86795^2)) / 10e6; 7.5/4.2`))
+    <!-- Some crude modeling: `v <- 0 ; d <- 0; terminalVelocity <- 54; positions <- numeric(); for(i in 0:9351) { if(i%%160==0) { terminalVelocity <- terminalVelocity*1.01; } else {if (i>500) { terminalVelocity<- Inf }}; v<-min(v+9.8, terminalVelocity); d<-d+v;  positions[i] <- d; print(v) }; (0.2*50*(86795^2)) / 10e6; 7.5/4.2`) -->
 - [_The Complete Poems_](https://www.amazon.com/Complete-Poems-Randall-Jarrell/dp/0374513058), [Randall Jarrell](https://en.wikipedia.org/wiki/Randall_Jarrell) ([review](https://www.goodreads.com/review/show/1825100933))
 
 ## Film/TV
 
 Live-action:
 
-- [_This Is Spinal Tap_](https://en.wikipedia.org/wiki/This_Is_Spinal_Tap) (I had expected, for some reason, a much harder-edged bitter satire on the sex/drugs/rock-and-roll lifestyle, but _This Is Spinal Tap_ turns out to be a much funnier, gentler, absurdist British/Pythonic comedy on the music industry, aging rock stars, and the British tradition of progressive and glam rock, and merits its reputation.)
+- [_Hackers_](https://en.wikipedia.org/wiki/Hackers_\(film\)) (1995; so very '90s I felt the munchies for Pop-tarts, wondering where I could get a copy of _Mondo 2000_, and nostalgic for the AOL dial tone. _Hackers_ was probably intended to be relatively serious despite its absurd plot, like one of the other great hacker movies, [_WarGames_](https://en.wikipedia.org/wiki/WarGames), but the glamorization & Hollywood fantasy hacking & '90s tropes like rollerblading & chunky tiny laptops make it hysterical to watch in 2017, and occasionally very uncomfortable - we're a long way from Mentor's Hacker Manifesto. Yet, for all the scenes like someone skateboarding into a mainframe with 3D holograms & giant glass keyboards, _Hackers_ is *also* one of the most realistic hacking depictions around, from blue boxes to social engineering to the color books to literal hacking of Gibsons)
+- [_This Is Spinal Tap_](https://en.wikipedia.org/wiki/This_Is_Spinal_Tap) (1984; I had expected, for some reason, a much harder-edged bitter satire on the sex/drugs/rock-and-roll lifestyle, but _This Is Spinal Tap_ turns out to be a much funnier, gentler, absurdist British/Pythonic comedy on the music industry, aging rock stars, and the British tradition of progressive and glam rock, and merits its reputation.)
 
 Animated:
 
 - [_Kubo and the Two Strings_](https://en.wikipedia.org/wiki/Kubo_and_the_Two_Strings) (ostentatiously gorgeous clay stop-animation film. Even knowing that backgrounds and other parts are CGI, I still have trouble believing it was stop-motion - it is simply too luxuriously animated and beautiful on my new 4K monitor. Takes the format of a Japanese fairy tale very loosely drawing on the moon aspect of ["The Tale of the Bamboo Cutter"](https://en.wikipedia.org/wiki/The_Tale_of_the_Bamboo_Cutter) with miscellaneous influence from jidaigeki for the instrument and Korea for the horse-hair hats of two characters.)
+- [_Haven't You Heard? I'm Sakamoto_](https://en.wikipedia.org/wiki/Haven%27t_You_Heard%3F_I%27m_Sakamoto)
 - [_One-Punch Man_](https://en.wikipedia.org/wiki/One-Punch_Man) (One of the most popular anime of that season. After marathoning it in a day, I had to conclude that it's seriously overrated. The premise, in the hands of any decent author, offers plenty of scope, but goes criminally underused each episode in the service of a nearly non-existent plot; sold as a comedic show, it's actually... not... that... funny. At all. The music and characters are likewise forgettable, leaving as _One-Punch Man_'s only selling point its kinetic animation during fights. This one should probably be left to sakuga fans.)
-
-## Games
 
 ## Music
 
@@ -108,7 +112,3 @@ Touhou:
 - ["Spacerując Ulicami Byłego Piekła"](https://www.youtube.com/watch?v=mwiFl6w5fUE) (Pizuya's Cell feat. Miiharu; {2016}) [vocal]
 - ["Sudden Rain"](https://www.youtube.com/watch?v=kubU4lkI8kE) (鯛の小骨 feat. Mei Ayakura; _Your Song and My Small Love_ {C81}) [vocal]
 - ["Shanghai Teahouse ~ Chinese Tea"](https://www.youtube.com/watch?v=5FyjAH8Zju4) (Coro; _東方流星少女 ~Little Shooting Star~_ {C76}) [classical]
-
-Vocaloid:
-
-Doujin:

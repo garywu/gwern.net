@@ -9,6 +9,12 @@ belief: log
 Following my writing can be a little difficult: while I provide [an RSS feed of the edit history](/atom.xml), it is too fine-grained to know what is an interesting update and what is housekeeping.
 So periodically I write up interesting changes in a human-readable format and [send it out to the mailing list](http://eepurl.com/Kc155).
 
+# 2017
+## January
+
+- [The Kelly Coin-Flipping Problem: Exact Solutions via Decision Trees](/Coin-flip "Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.")
+- [Efficiently calculating the average maximum sample from a sample of Gaussians](/Order%20statistics)
+
 # 2016
 ## December
 
