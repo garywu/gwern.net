@@ -467,7 +467,7 @@ cap = 25000 -- 250*100
 With the exact penny version, the value of _b_=300 is now \$246.6062932 (taking ~3746s compiled), so the approximation costs an expected value of only \$0.61.
 The full run reveals that convergence happens at  _b_=1932 (which can be computed in ~48503s compiled), past which there is no need to compute further.
 
-#### C
+#### C/C++
 
 [FeepingCreature](https://github.com/FeepingCreature) provides a vectorized C implementation of the exact penny game that runs in a few minutes (benefiting ~13% from profile-guided optimization when compiled with GCC).
 He also notes that memoization/dynamic programming is overkill for this problem: because almost all states ultimately get evaluated, the dynamic programming doesn't avoid evaluating many states.
@@ -623,13 +623,106 @@ done
 
 For levels of parallelism on my laptop from 1-8 threads, the average times are: 28.98s/15.44s/10.70s/9.22s/9.10s/8.4s/7.66s/7.20s.
 
+Caio Oliveira provides [a parallel C++ implementation using `std::async`](https://gist.github.com/caioaao/84f174c03b8ab1d804bc3243bb95bdd4); compiled with the same optimizations on (`g++ -Ofast -fwhole-program -march=native -lpthread --std=c++11 kc.cpp -o kc`), it runs in ~1m46s:
+
+~~~{.Cpp}
+#include <iostream>
+#include <vector>
+#include <map>
+#include <set>
+#include <bitset>
+#include <list>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <string>
+#include <sstream>
+#include <algorithm>
+#include <cstdio>
+#include <cstring>
+#include <future>
+
+using namespace std;
+
+const int MAX_ROUND = 300;
+const int MAX_WEALTH = 250*100;
+const int BETS_DELTA = 1;
+
+double memo[MAX_WEALTH + 1][2];
+
+inline double vWin(int wealth, int bet, int roundIdx) {
+    if(wealth + bet < MAX_WEALTH) {
+        return memo[wealth + bet][!roundIdx];
+    }
+    else {
+        return MAX_WEALTH;
+    }
+}
+
+inline double vLose(int wealth, int bet, int roundIdx) {
+    if (wealth - bet == 0) {
+        return 0;
+    }
+    else {
+        return memo[wealth - bet][!roundIdx];
+    }
+}
+
+inline double v(int wealth, int bet, int roundIdx) {
+    return .6 * vWin(wealth, bet, roundIdx) + .4 * vLose(wealth, bet, roundIdx);
+}
+
+template<typename RAIter>
+void calc_round(RAIter beg, RAIter end, int roundIdx){
+    auto len = end - beg;
+
+    if(len < 100) {
+        for(auto p = beg; p != end; ++p) {
+            auto wealth =  p - memo;
+            (*p)[roundIdx] = v(wealth, wealth, roundIdx);
+
+            for (int bet = 0; bet < wealth; bet += BETS_DELTA) {
+                memo[wealth][roundIdx] = max(memo[wealth][roundIdx], v(wealth, bet, roundIdx));
+            }
+        }
+    }
+    else {
+        RAIter mid = beg + len/2;
+        auto handle = async(launch::async, calc_round<RAIter>, mid, end, roundIdx);
+        calc_round(beg, mid, roundIdx);
+    }
+}
+
+void calc_table() {
+    bool roundIdx = 0;
+
+    for(int i = 0; i <= MAX_WEALTH ; ++i) {
+        memo[i][!roundIdx] = i;
+    }
+
+    for(int round = MAX_ROUND - 1; round >= 0; --round) {
+        calc_round(memo, memo + MAX_WEALTH, roundIdx);
+        roundIdx ^= 1;
+    }
+
+    cout << memo[25*100][!roundIdx];
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    calc_table();
+}
+~~~
+
 Given the locality of the access patterns, I have to wonder how well a GPU implementation might perform.
 It doesn't seem amenable to being expressed as a large matrix multiplication, but each GPU core could be responsible for evaluating a terminal node and do nearby lookups from there.
 (And the use in finance of GPUs to compute the [lattice model](!Wikipedia "Lattice model (finance)")/[binomial options pricing model](!Wikipedia)/[trinomial tree](!Wikipedia), which are similar, suggests it should be possible.)
 
 #### Exact formula
 
-[Arthur B. notes](https://twitter.com/ArthurB/status/823241996244422656) that "you can compute $U(w,b)$ in $O(b)$ if you allow bets to be any fraction of _w_. It's piecewise linear, the cutoff points and slopes follow a very predictable pattern" and provides a formula for calculating the value function without constructing a decision tree:
+[Arthur B. notes](https://twitter.com/ArthurB/status/823241996244422656) that "you can compute $U(w,b)$ in $O(b)$ if you allow bets to be any fraction of _w_. It's piecewise linear, the cutoff points and slopes follow a very predictable pattern"^[That is, the value of the actions/bets 0-_w_ seems like it would be bitonic - increasing linearly to the maximum then linearly decreasing. So one ought to be able to do a binary search over actions or something even better.] and provides a formula for calculating the value function without constructing a decision tree:
 
 $$
 \left(\frac{6}{5}\right)^b \left(w - \frac{1}{3}\sum_{k=0}^{b-1}\left(\frac{2}{3}\right)^k\max\!\left(w - \frac{250 }{2^b}\sum_{j=0}^{k}\binom{b}{j},~0\right)\right)
