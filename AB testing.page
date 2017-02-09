@@ -3016,7 +3016,7 @@ How do we analyze this? In the ABalytics approach, it was simple: we defined a t
 Let's look at the traffic data:
 
 ~~~{.R}
-traffic <- read.csv("~/wiki/docs/traffic/20170108-traffic.csv", colClasses=c("Date", "integer"))
+traffic <- read.csv("~/wiki/docs/traffic/20170108-traffic.csv", colClasses=c("Date", "integer", "logical"))
 summary(traffic)
 summary(traffic)
 #    Date               Pageviews
@@ -3295,7 +3295,7 @@ summary(model)
 JAGS is painfully slow: 5h+ for 500 samples. Sharper priors, removing the 4th-order ARIMA lag, and better initialization didn't help. Too much correlation? Try switching to STAN.
 
 ~~~{.R}
-traffic <- read.csv("~/wiki/docs/traffic/20170108-traffic.csv", colClasses=c("Date", "integer"))
+traffic <- read.csv("~/wiki/docs/traffic/20170108-traffic.csv", colClasses=c("Date", "integer", "logical"))
 library(rstan)
 m <- "data {
         int<lower=1> K; // number of mixture components
