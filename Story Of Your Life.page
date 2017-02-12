@@ -1,0 +1,369 @@
+---
+title: "Story Of Your Life" Is Not A Time-Travel Story
+description: Famous Ted Chiang SF short story "Story Of Your Life" is usually misinterpreted as, like the movie version, being about time-travel/precognition; I explain it is instead an exploration of the psychology of timeless physics interpretations.
+tags: philosophy, criticism
+created: 12 Dec 2012
+status: in progress
+belief: likely
+...
+
+<!-- TODO: when done, cut out mini-essay from review & link to this longer version: https://www.goodreads.com/review/show/369923171?book_show_action=true -->
+
+[Ted Chiang](!Wikipedia) is an American SF author of short stories & a novella, noted for both the high quality and fewness of his writings.
+Most are collected in his 2002 anthology _[Stories of Your Life and Others](!Wikipedia)_ ([my review](https://www.goodreads.com/review/show/369923171)).
+
+Chiang's stories can be described as rigorous world-building[^interview], taking seriously premises such as the Kabbalah (["72 Letters"](https://web.archive.org/web/20010802144026/http://www.tor.com/72ltrs.html)) or intelligence enhancement (["Understand"](https://web.archive.org/web/20140527121332/http://www.infinityplus.co.uk/stories/under.htm)) or self-consistent time loops (["The Merchant and the Alchemist's Gate"](https://pkubbs.net/attach/boards/ScienceFiction/M.1209705460.A/Ted_Chiang.pdf)) or a mechanical clockwork universe (["Exhalation"](http://www.nightshadebooks.com/Downloads/Exhalation%20-%20Ted%20Chiang.html)) or the problem of evil in a universe where God exists (["Hell Is the Absence of God"](http://www.ibooksonline.com/88/Text/hell.html)) and extending them logically, written in a lucid streamlined prose that (like Gene Wolfe's) seems simple & easy unless one has tried to write like that oneself, but (unlike, say, Greg Egan) use those worlds & concepts to examine and build up a powerful emotional point.
+Each story has a unique starting point, and feels like a world or novel unto itself despite their short page counts.
+
+[^interview]: ["Ted Chiang on Writing"](https://boingboing.net/2010/07/22/ted-chiang-interview.html), 2010:
+
+> `Q.` Could you give a walk-through of your writing process?
+>
+> `A.` In general, if there's an idea I'm interested in, I usually think about that for a long time and write down my speculations or just ideas about how it could become a story, but I don't actually start writing the story itself until I know how the story ends. Typically the first part of the story that I write is the very ending, either the last paragraph of the story or a paragraph near the end. Once I have the destination in mind then I can build the rest of the story around that or build the rest of the story in such a way as to lead up to that. Usually the second thing I write is the opening of the story and then I write the rest of the story in almost random order. I just keep writing scenes until I've connected the beginning and the end. I write the key scenes or what I think of as the landmark scenes first, and then I just fill in backwards and forwards.
+>
+> `Q.` How do you classify your writing? I feel like it's a kind of philosophical fiction, because it's actually making people think, waking them up and making them wonder about things.
+>
+> `A.` That's one of the things that science fiction is particularly good at, that's one of the reasons I like science fiction. Science fiction is very well suited to asking philosophical questions; questions about the nature of reality, what it means to be human, how do we know the things that we think we know. When philosophers propose thought experiments as a way of analyzing certain questions, their thought experiments often sound a lot like science fiction. I think that there's a very good fit between the two.
+>
+> `Q.` You have very specific views on the difference between magic and science. Can you talk about that?
+>
+> `A.` Sure. Science fiction and fantasy are very closely related genres, and a lot of people say that the genres are so close that there's actually no meaningful distinction to be made between the two. But I think that there does exist an useful distinction to be made between magic and science. One way to look at it is in terms of whether a given phenomenon can be mass-produced. If you posit some impossibility in a story, like turning lead into gold, I think it makes sense to ask how many people in the world of the story are able to do this. Is it just a few people or is it something available to everybody? If it's just a handful of special people who can turn lead into gold, that implies different things than a story in which there are giant factories churning out gold from lead, in which gold is so cheap it can be used for fishing weights or radiation shielding. In either case there's the same basic phenomenon, but these two depictions point to different views of the universe. In a story where only a handful of characters are able to turn lead into gold, there's the implication that there's something special about those individuals. The laws of the universe take into account some special property that only certain individuals have. By contrast, if you have a story in which turning lead into gold is an industrial process, something that can be done on a mass scale and can be done cheaply, then you're implying that the laws of the universe apply equally to everybody; they work the same even for machines in unmanned factories. In one case I'd say the phenomenon is magic, while in the other I'd say it's science. Another way to think about these two depictions is to ask whether the universe of the story recognizes the existence of persons. I think magic is an indication that the universe recognizes certain people as individuals, as having special properties as an individual, whereas a story in which turning lead into gold is an industrial process is describing a completely impersonal universe. That type of impersonal universe is how science views the universe; it's how we currently understand our universe to work. The difference between magic and science is at some level a difference between the universe responding to you in a personal way, and the universe being entirely impersonal.
+>
+> `Q.` ...So it [ecstatic religious experiences] doesn't have any impact on the validity of the experience?
+>
+> `A.` I'm not convinced that it does. For example, I recently heard this ethnobotanist, Dennis McKenna, on the radio, talking about his experience taking a powerful hallucinogen. He could see photosynthesis actually happening; he could see water molecules actually being processed in the chloroplasts of plant cells. He also felt this incredible sense of oneness, a feeling that humanity was part of this planetary organism. I'm sure this was a very profound experience for him, but I don't take it as evidence of the truth of photosynthesis. He himself admitted that he already knew how photosynthesis works, and I think the fact that he knew this contributed to his hallucinatory experience. Other people who don't know about photosynthesis have different hallucinatory experiences, and most of these experiences do not reflect scientific truth. People will have incompatible experiences, and they can't all be true. So I don't think that this powerful ecstatic or hallucinatory experience is an indicator of truth. I think it can accompany an accurate insight about the world, but it doesn't have to. It can accompany someone thinking about the nucleosynthesis of heavy elements in stars, but it could also accompany someone thinking about the need to excoriate one's flesh to make the Lord happy.
+
+...`Q.` Many of your stories play with the implications of knowing the future. What fascinates you about the nature of Time?
+
+`A.` The question of free will. I think free will is what underlies most everything interesting about time travel. And when I say time travel, I'm including receiving information from the future, because that's essentially equivalent to someone traveling from the future. The idea that you can create a paradox assumes that you have free will; even the idea of multiple timelines assumes it, because it assumes that you can make choices. There have always been philosophical arguments about whether we have free will or not, but they're usually kind of abstract. Time travel, or knowing the future, makes the question very concrete. If you know what's going to happen, can you keep it from happening? Even when a story says that you can't, the emotional impact arises from the feeling that you should be able to.
+
+
+
+His most famous short story is the 17500-word 1998 "[Story of Your Life](!Wikipedia)" ([full text](https://web.archive.org/web/20131101142206/http://www.ime.usp.br/~jstern/miscellanea/General/Chiang98.pdf "'Story Of Your Life', Chiang 1998, as published in _Year's Best SF 4_, ed. David G Hartwell 1999")) which won Nebula & Sturgeon Awards, which brought Chiang to global notice when it was made into the movie _[Arrival](!Wikipedia "Arrival (film)")_ in 2016 (8 Oscar nominations) <!-- TODO: update with how many it actually wins at https://en.wikipedia.org/wiki/89th_Academy_Awards -->
+
+# Plot summary
+
+
+# Interpretation
+
+
+
+react to mistakes like https://www.wired.com/2017/02/wired-book-club-story-of-your-life/
+screenplay author didn't get it: http://thetalkhouse.com/how-i-wrote-arrival/
+
+
+# Heptapod bodies and writing
+
+> I'd been shown videotapes, but I still gawked. Its limbs had no distinct joints; anatomists guessed they might be supported by vertebral columns. Whatever their underlying structure, the heptapod's limbs conspired to move it in a disconcertingly fluid manner. Its "torso" rode atop the rippling limbs as smoothly as a hovercraft. Seven lidless eyes ringed the top of the heptapod's body. It walked back to the doorway from which it entered, made a brief sputtering sound, and returned to the center of the room followed by another heptapod; at no point did it ever turn around. Eerie, but logical; with eyes on all sides, any direction might as well be "forward."
+>
+> ...What's wrong?" asked Gary. "Their script isn't word-divided; a sentence is written by joining the logograms for the constituent words. They join the logograms by rotating and modifying them. Take a look." I showed him how the logograms were rotated. "So they can read a word with equal ease no matter how it's rotated," Gary said. He turned to look at the heptapods, impressed. "I wonder if it's a consequence of their bodies' radial symmetry: their bodies' radial symmetry: their bodies have no 'forward' direction, so maybe their writing doesn't either." ... "He began pacing thoughtfully. "Is there anything like this in human writing systems?" "Mathematical equations"...When a Heptapod B sentence grew fairly sizable, its visual impact was remarkable. If I wasn't trying to decipher it, the writing looked like fanciful praying mantids drawn in a cursive style, all clinging to each other to form an Escheresque lattice, each slightly different in its stance. And the biggest sentences had an effect similar to that of psychedelic posters: sometimes eye-watering, sometimes hypnotic...Comparing that initial stroke with the completed sentence, I realized that the stroke participated in several different clauses of the message. It began in the semagram for 'oxygen,' as the determinant that distinguished it from certain other elements; then it slid down to become the morpheme of comparison in the description of the two moons' sizes; and lastly it flared out as the arched backbone of the semagram for 'ocean.' Yet this stroke was a single continuous line, and it was the first one that Flapper wrote. That meant the heptapod had to know how the entire sentence would be laid out before it could write the very first stroke. The other strokes in the sentence also traversed several clauses, making them so interconnected that none could be removed without redesigning the entire sentence. The heptapods didn't write a sentence one semagram at a time; they built it out of strokes irrespective of individual semagrams. I had seen a similarly high degree of integration before in calligraphic designs, particularly those employing the Arabic alphabet. But those designs had required careful planning by expert calligraphers. No one could lay out such an intricate design at the speed needed for holding a conversation. At least, no human could.
+
+## Heptapod Physics
+
+"Good." He picked up a nub of chalk and drew a diagram:
+[]
+"Okay, here's the path a ray of light takes when crossing from air to water. The light ray travels in a
+straight line until it hits the water; the water has a different index of refraction, so the light changes
+direction. You've heard of this before, right?"
+I nodded. "Sure."
+"Now here's an interesting property about the path the light takes. The path is the fastest possible route
+between these two points."
+"Come again?"
+"Imagine, just for grins, that the ray of light traveled along this path." He added a dotted line to his
+diagram:
+[]
+"This hypothetical path is shorter than the path the light actually takes. But light travels more slowly in
+water than it does in air, and a greater percentage of this path is underwater. So it would take longer for
+light to travel along this path than it does along the real path."
+"Okay, I get it."
+"Now imagine if light were to travel along this other path." He drew a second dotted path:
+[]
+"This path reduces the percentage that's underwater, but the total length is larger. It would also take
+longer for light to travel along this path than along the actual one."
+Gary put down the chalk and gestured at the diagram on the chalkboard with white-tipped fingers. "Any
+hypothetical path would require more time to traverse than the one actually taken. In other words, the
+route that the light ray takes is always the fastest possible one. That's Fermat's Principle of Least Time"
+"Humm, interesting. And this is what the heptapods responded to?"
+"Exactly. Moorehead gave an animated presentation of Fermat's Principle at the Illinois looking glass, and
+the heptapods repeated it back. Now he's trying to get a symbolic description." He grinned. "Now is that
+highly neat, or what?"
+"It's neat all right, but how come I haven't heard of Fermat's Principle before?" I picked up a binder and
+waved it at him; it was a primer on the physics topics suggested for use in communication with the
+heptapods. "This thing goes on forever about Planck masses and the spin-flip of atomic hydrogen, and not
+a word about the refraction of light."
+"We guessed wrong about what'd be most useful for you to know," Gary said without embarrassment. "In
+fact, it's curious that Fermat's Principle was the first breakthrough; even though it's easy to explain, you
+need calculus to describe it mathematically. And not ordinary calculus; you need the calculus of variations.
+We thought that some simple theorem of geometry or algebra would be the breakthrough."
+"Curious indeed. You think the heptapods' idea of what's simple doesn't match ours?"
+"Exactly, which is why I'm dying to see what their mathematical description of Fermat's Principle looks like." He paced as he talked. "If their version of the calculus of variations is simpler to them than their
+equivalent of algebra, that might explain why we've had so much trouble talking about physics; their entire
+system of mathematics may be topsy-turvy compared to ours." He pointed to the physics primer. "You can
+be sure that we're going to revise that."
+"So can you build from Fermat's Principle to other areas of physics?"
+"Probably. There are lots of physical principles just like Fermat's."
+"What, like Louise's principle of least closet space? When did physics become so minimalist?"
+"Well, the word 'least' is misleading. You see, Fermat's Principle of Least time is incomplete; in certain
+situations light follows a path that takes more time than any of the other possibilities. It's more accurate to
+say that light always follows an extreme path, either one that minimizes the time taken or one that
+maximizes it. A minimum and a maximum share certain mathematical properties, so both situations can
+be described with one equation. So to be precise, Fermat's Principle isn't a minimal principle; instead it's
+what's known as a 'variational' principle."
+"And there are more of these variational principles?"
+He nodded. "In all branches of physics. Almost every physical law can be restated as a variational
+principle. The only difference between these principles is in which attribute is minimized or maximized." He
+gestured as if the different branches of physics were arrayed before him on a table. "In optics, where
+Fermat's Principle applies, time is the attribute that has to be an extreme. In mechanics, it's a different
+attribute. In electromagnetism, it's something else again. But all these principles are similar
+mathematically."
+"So once you get their mathematical description of Fermat's Principle, you should be able to decode the
+other ones."
+...After the breakthrough with Fermat's Principle, discussions of scientific concepts became more fruitful. It
+wasn't as if all of heptapod physics was suddenly rendered transparent, but progress was suddenly
+steady. According to Gary, the heptapods' formulation of physics was indeed topsy-turvy relative to ours.
+Physical attributes that humans defined using integral calculus were seen as fundamental by the
+heptapods. As an example, Gary described an attribute that, in physics jargon, bore the deceptively
+simple name "action," which represented "the difference between kinetic and potential energy, integrated
+over time," whatever that meant. Calculus for us; elementary to them.
+Conversely, to define attributes that humans thought of as fundamental, like velocity, the heptapods
+employed mathematics that were, Gary assured me, "highly weird." The physicists were ultimately able to
+prove the equivalence of heptapod mathematics and human mathematics; even though their approaches
+were almost the reverse of one another, both were systems of describing the same physical universe.
+I tried following some of the equations that the physicists were coming up with, but it was no use. I couldn't
+really grasp the significance of physical attributes like "action"; I couldn't, with any confidence, ponder the
+significance of treating such an attribute as fundamental. Still, I tried to ponder questions formulated in
+terms more familiar to me: what kind of worldview did the heptapods have, that they would consider
+Fermat's Principle the simplest explanation of light refraction? What kind of perception made a minimum
+or maximum readily apparent to them?
+..."Though I did want to ask you about Fermat's Principle. Something about it
+feels odd to me, but I can't put my finger on it. It just doesn't sound like a law of physics."
+A twinkle appeared in Gary's eyes. "I'll bet I know what you're talking about." He snipped a potsticker in
+half with his chopsticks. "You're used to thinking of refraction in terms of cause and effect: reaching the
+water's surface is the cause, and the change in direction is the effect. But Fermat's Principle sounds weird
+because it describes light's behavior in goal-oriented terms. It sounds like a commandment to a light
+beam: 'Thou shalt minimize or maximize the time taken to reach thy destination.'"
+I considered it. "Go on."
+"It's an old question in the philosophy of physics. People have been talking about it since Fermat first
+formulated it in the 1600s; Planck wrote volumes about it. The thing is, while the common formulation of
+physical laws is causal, a variational principle like Fermat's is purposive, almost teleological."
+"Hmm, that's an interesting way to put it. Let me think about that for a minute." I pulled out a felt-tip pen
+and, on my paper napkin, drew a copy of the diagram that Gary had drawn on my blackboard. "Okay," I
+said, thinking aloud, "so let's say the goal of a ray of light is to take the fastest path. How does the light go
+about doing that?"
+"Well, if I can speak anthropomorphic-projectionally, the light has to examine the possible paths and
+compute how long each one would take." He plucked the last potsticker from the serving dish.
+"And to do that," I continued, "the ray of light has to know just where its destination is. If the destination
+were somewhere else, the fastest path would be different."
+Gary nodded again. "That's right; the notion of a 'fastest path' is meaningless unless there's a destination
+specified. And computing how long a given path takes also requires information about what lies along that
+path, like where the water's surface is."
+I kept staring at the diagram on the napkin. "And the light ray has to know all that ahead of time, before it
+starts moving, right?"
+"So to speak," said Gary. "The light can't start traveling in any old direction and make course corrections
+later on, because the path resulting from such behavior wouldn't be the fastest possible one. The light has
+to do all its computations at the very beginning."
+I thought to myself, The ray of light has to know where it will ultimately end up before it can choose the
+direction to begin moving in. I knew what that reminded me of. I looked up at Gary. "That's what was
+bugging me."
+...That day when Gary first explained Fermat's Principle to me, he had mentioned that almost every physical
+law could be stated as a variational principle. Yet when humans thought about physical laws, they
+preferred to work with them in their causal formulation. I could understand that: the physical attributes that
+humans found intuitive, like kinetic energy or acceleration, were all properties of an object at a given
+moment in time. And these were conductive to a chronological, causal interpretation of events: one
+moment growing out of another, causes and effects created a chain reaction that grew from past to future.
+In contrast, the physical attributes that the heptapods found intuitive, like "action" or those other things
+defined by integrals, were meaningful only over a period of time. And these were conductive to a
+teleological interpretation of events: by viewing events over a period of time, one recognized that there
+was a requirement that had to be satisfied, a goal of minimizing or maximizing. And one had to know the
+initial and final states to meet that goal; one needed knowledge of the effects before the causes could be
+initiated.
+
+# Thinking Like a Heptapod
+
+...More interesting was the fact that Heptapod B was changing the way I thought. For me, thinking typically meant speaking in an internal voice' as we say in the trade, my thoughts were phonologically coded. My internal voice normally spoke in English, but that wasn't a requirement. The summer after my senior year in high school, I attended a total immersion program for learning Russian; by the end of the Summer, I was thinking and even dreaming in Russian. But it was always spoken Russian. Different language, same mode: a voice speaking silently aloud. The idea of thinking in a linguistic yet non-phonological mode always intrigued me. I had a friend born of deaf parents; he grew up using American Sign Language, and he told me that he often thought in ASL instead of English. I used to wonder what it was like to have one's thoughts be manually coded, to reason using an inner pair of hands instead of an inner voice. With Heptapod B, I was experiencing something just as foreign: my thoughts were becoming graphically coded. There were trance-like moments during the day when my thoughts weren't expressed with my internal voice; instead, I saw semagrams with my mind's eye, sprouting like frost on a windowpane.As I grew more fluent, semagraphic designs would appear fully-formed, articulating even complex ideas all at once. My thought processes weren't moving any faster as a result, though. Instead of racing forward, my mind hung balanced on the symmetry underlying the semagrams. The semagrams seemed to be something more than language; they were almost like mandalas. I found myself in a meditative state, contemplating the way in which premises and conclusions were interchangeable. There was no direction inherent in the way propositions were connected, no "train of thought" moving along a particular route; all the components in an act of reasoning were equally powerful, all having identical precedence...Looking at a sentence like this one, I understood why the heptapods had evolved a semasiographic writing system like Heptapod B; it was better suited for a species with a simultaneous mode of consciousness. For them, speech was a bottleneck because it required that one word follow another sequentially. With writing, on the other hand, every mark on a page was visible simultaneously. Why constrain writing with a glottographic straitjacket, demanding that it be just as sequential as speech? It would never occur to them. Semasiographic writing naturally took advantage of the page's two-dimensionality; instead of doling out morphemes one at a time, it offered an entire page full of them all at once.
+
+...The heptapods are neither free nor bound as we understand those concepts; they don't act according to
+their will, nor are they helpless automatons. What distinguishes the heptapods' mode of awareness is not
+just that their actions coincide with history's events; it is also that their motives coincide with history's
+purposes. They act to create the future, to enact chronology.
+Freedom isn't an illusion; it's perfectly real in the context of sequential consciousness. Within the context
+of simultaneous consciousness, freedom is not meaningful, but neither is coercion; it's simply a different
+context, no more or less valid than the other. It's like that famous optical illusion, the drawing of either an
+elegant young woman, face turned away from the viewer, or a wart-nosed crone, chin tucked down on her
+chest. There's no "correct" interpretation; both are equally valid. But you can't see both at the same time.
+Similarly, knowledge of the future was incompatible with free will. What made it possible for me to exercise
+freedom of choice also made it impossible for me to know the future. Conversely, now that I know the future, I would never act contrary to that future, including telling others what I know: those who know the
+future don't talk about it. Those who've read the Book of Ages never admit to it.
+...If I could have described this to someone who didn't already know, she might ask, if the heptapods
+already knew everything that they would ever say or hear, what was the point of their using language at
+all? A reasonable question. But language wasn't only for communication: it was also a form of action.
+According to speech act theory, statements like "You're under arrest," "I christen this vessel," or "I
+promise" were all performative: a speaker could perform the action only by uttering the words. For such
+acts, knowing what would be said didn't change anything. Everyone at a wedding anticipated the words "I
+now pronounce you husband and wife," but until the minister actually said them, the ceremony didn't
+count. With performative language, saying equaled doing.
+For the heptapods, all language was performative. Instead of using language to inform, they used
+language to actualize. Sure, heptapods already knew what would be said in any conversation; but in order
+for their knowledge to be true, the conversation would have to take place
+
+...Was it actually possible to know the future? Not simply to guess at it; was it possible to know what was
+going to happen, with absolute certainty and in specific detail? Gary once told me that the fundamental
+laws of physics were time-symmetric, that there was no physical difference between past and future.
+Given that, some might say, "yes, theoretically." But speaking more concretely, most would answer "no,"
+because of free will...A volume like the Book of Ages is a logical impossibility, for the
+precise reason that its existence would result in the above contradiction. Or, to be generous, some might
+say that the Book of Ages could exist, as long as it wasn't accessible to readers: that volume is housed in
+a special collection, and no one has viewing privileges.
+The existence of free will meant that we couldn't know the future. And we knew free will existed because
+we had direct experience of it. Volition was an intrinsic part of consciousness.
+Or was it? What if the experience of knowing the future changed a person? What if it evoked a sense of
+urgency, a sense of obligation to act precisely as she knew she would?
+
+...Consider the phenomenon of light hitting water at one angle, and traveling through it at a different angle.
+Explain it by saying that a difference in the index of refraction caused the light to change direction, and
+one saw the world as humans saw it. Explain it by saying that light minimized the time needed to travel to
+its destination, and one saw the world as the heptapods saw it. Two very different interpretations.
+The physical universe was a language with a perfectly ambiguous grammar. Every physical event was an
+utterance that could be parsed in two entirely different ways, one casual and the other teleological, both
+valid, neither one disqualifiable no matter how much context was available.
+When the ancestors of humans and heptapods first acquired the spark of consciousness, they both perceived the same physical world, but they parsed their perceptions differently; the world-views that
+ultimately arose were the end result of that divergence. Humans had developed a sequential mode of
+awareness, while heptapods had developed a simultaneous mode of awareness. We experienced events
+in an order, and perceived their relationship as cause and effect. They experienced all events at once, and
+perceived a purpose underlying them all. A minimizing, maximizing purpose.
+...Even though I'm proficient with Heptapod B, I know I don't experience reality the way a heptapod does. My
+mind was cast in the mold of human, sequential languages, and no amount of immersion in an alien
+language can completely reshape it. My world-view is an amalgam of human and heptapod.
+Before I learned how to think in Heptapod B, my memories grew like a column of cigarette ash, laid down
+by the infinitesimal sliver of combustion that was my consciousness, marking the sequential present. After
+I learned Heptapod B, new memories fell into place like gigantic blocks, each one measuring years in
+duration, and though they didn't arrive in order or land contiguously, they soon composed a period of five
+decades. It is the period during which I know Heptapod B well enough to think in it, starting during my
+interviews with Flapper and Raspberry and ending with my death.
+Usually, Heptapod B affects just my memory: my consciousness crawls along as it did before, a glowing sliver crawling forward in time, the difference being that the ash of memory lies ahead as well as behind:
+there is no real combustion. But occasionally I have glimpses when Heptapod B truly reigns, and I
+experience past and future all at once; my consciousness becomes a half century-long ember burning
+outside time. I perceive - during those glimpses - that entire epoch as a simultaneity. It's a period
+encompassing the rest of my life, and the entirety of yours.
+...We never did learn why the heptapods left, any more than we learned what brought them here, or why
+they acted the way they did. My own new awareness didn't provide that type of knowledge; the heptapods'
+behavior was presumably explicable from a sequential point of view, but we never found that explanation.
+I would have liked to experience more of the heptapods' world-view, to feel the way they feel. Then,
+perhaps I could immerse myself fully in the necessity of events, as they must, instead of merely wading in
+its surf for the rest of my life.
+
+
+# Time Travel problems
+
+In the precognitive/time travel interpretation, the Sapir-Whorf hypothesis is taken to the extent of learning Heptapodese granting powers like seeing into the distant future, years (or in the movie, millennia) in advance.
+Louise knew in advance her daughter would die in a car crash (or of a rare disease) but accepted this, married Gary anyway, had her daughter, loved and lost her, and now remembers & grieves, seeing her life as a whole with her powers.
+The message is one of acceptance and taking life as a whole, for both good and ill.
+
+There are many problems with the time-travel interpretation, which require assuming that much of the story is simply irrelevant technobabble, the symbolism is to be ignored, and that Chiang, a master of world building, failed to note the simplest implications which render his world internally incoherent:
+
+- why is it titled "*Story* Of Your Life"? What do stories have to do with time-travel? Why the second-person narrative framing of the daughter being told the story by Louise?
+- why is the story so opaque and coy about the nature of time travel, when "The Merchant" was so clear and straightforward?
+
+    - for that matter, Chiang prefers not to revisit topics, setting each short story in a different world, exploring a different idea; why did he revisit the topic?
+- why is it written in the past tense, after all the events have taken place, when presumably it could have been written from any time after she learned Heptapodese, and arguably would have been more emotionally gripping if the death of her daughter had not yet taken place but Louise knew about it the entire time? (a method the movie uses by setting scenes exclusively in the present and presenting the future as flashforwards)
+- if it is about time-travel, why do *all* of the physics discussions omit all standard physics time-travel topics of wormholes, tachyons, cosmic strings / Tipler cylinders, the Alcubierre drive, FTL travel, positrons, relativistic dilation, the Grandfather paradox, retrocausal effects, and causal loops - and instead spends pages talking about different topics like light refraction in water or the Law of the Maximum? (To quote one _Wired_ editor, "`Dayrit`: I didn't really get the whole maximum-minimum concept. Can someone please explain?") In what sense could the physicists "prove the equivalence of heptapod mathematics and human mathematics; even though their approaches were almost the reverse of one another, both were systems of describing the same physical universe", when human physics currently doesn't admit of any kind of time travel to the past without assuming things which don't seem to exist? Why is the story emphasis on Heptapod physics teaching the human physicists next to nothing, when transmitting information back in time would be a revolution? Why the emphasis on *[perception](!Wikipedia "T-symmetry")*? (And it's interesting that the writing is compared to psychedelic trips, given that perceptions of unity are one of the best known psychological experiences in psychedelic trips - but nevertheless, the universe continues as before, regardless of whether one perceives it as a unity or as many pieces. There are also many reports of depersonalization and seeing one's actions as caused by another & uncaused by oneself.)
+
+    - this is especially striking considering the leanness and precision of Chiang's writing: he does not waste words, much less pages. This is hard to reconcile with an interpretation which requires essentially dismissing and not thinking about a large fraction of the story, claiming that the presence of one of the two main symbolic characters is superfluous (particularly striking in the movie version), and has no explanation for why linguistics marries physics.
+- why is no mechanism provided for how the time travel would work? Chiang knows that none of the discussed topics provide a realistic mechanism, yet he does not define his world with any FTL or novel physics. He also knows that Sapir-Whorf is merely a psychological claim; there has never been any serious prospect that Sapir-Whorf could justify something like precognition or time travel.
+- why make such a point of the heptapods and their writing being symmetrical, when time-travel is asymmetrical? A linear sentence can be read forward and backwards, but still has an ordering.
+- if learning Heptapodese enables time travel and Heptapodese becomes a standard topic of linguistic study across the world which Louise is but one expert of many and prized for her anecdotes^["I tell that story in my introductory course every year. It's almost certainly untrue, and I explain that afterwards, but it's a classic anecdote. Of course, the anecdotes my undergraduates will really want to hear are ones featuring the heptapods; for the rest of my teaching career, that'll be the reason many of them sign up for my courses. So I'll show them the old videotapes of my sessions at the looking glass, and the sessions that the other linguists conducted; the tapes are instructive, and they'll be useful if we're ever visited by aliens again, but they don't generate many good anecdotes."] rather than superpowers, how is it that Chiang's world building omits any discussion of the consequences of universal clairvoyance? (And why would the students ever be indifferent or bored?)
+
+    - if it is possible to learn about the future and take action on it in the present and set up stable time loops, why does she not save her daughter from the car accident, which would require only trivial actions like scheduling a reminder? (Or for the movie version, getting earlier diagnosis or information from the distant future about a cure.)
+
+## No Retro-Causal Events
+
+In Louise's life, events proceed sequentially and consistent with this timeless interpretation
+A close read shows no examples of Louise acting in a way that requires knowledge of the future beyond ordinary cognition.
+
+1. homework help: Louise helps her daughter with game theory terminology. But she learns the term "non-zero gum game" *before* having her daughter, while working with the Heptapods:
+
+    > "Mom, what do you call it when both sides can win?" I'll look up from my computer and the paper I'll be writing. "What, you mean a win-win situation?" ... "I'm sorry, I don't know it either. Why don't you call your dad?"...A representative from the State Department named Hossner had the job of briefing the U.S scientists on our agenda with the heptapods. We sat in the video-conference room, listening to him lecture..."You mean it's a non-zero-sum game?" Gary said in mock incredulity. "Oh my gosh."..."A non-zero-sum game." "What?" You'll reverse course, heading back from your bedroom. "When both sides can win: I just remembered, it's called a non-zero-sum game"
+
+    While the lecture and interaction with her future husband Gary have great significance, this significance is because she is able to recall memories of it, not because of any time-travel.
+2. the Heptapods leaving: in the final exchanges, Louise describes her conversations in terms of already knowing what happens, yet, she doesn't know what the final exchange will be or that it *is* the final exchange, or why the Heptapods leave:
+
+    > We never did learn why the heptapods left, any more than we learned what brought them here, or why they acted the way they did. My own new awareness didn't provide that type of knowledge; the heptapods' behavior was presumably explicable from a sequential point of view, but we never found that explanation.
+3. the morgue/nursery: the repetition of the phrase "Yes, that's her. She's mine." may seem like another retrocausal influence, but again the conclusion doesn't follow, as it's unclear she says it in the nursery and if she did, it is again explainable as memory
+
+    > He and I will drive out together to perform the identification, a long silent car ride. I remember the morgue, all tile and stainless steel, the hum of refrigeration and smell of antiseptic. An orderly will pull the sheet back to reveal your face. Your face will look wrong somehow, but I'll know it's you. "Yes, that's her," I'll say. "She's mine."You'll be twenty-five then. ...I remember what it'll be like watching you when you are a day old. Your father will have gone for a quick visit to the hospital cafeteria, and you'll be lying in your bassinet, and I'll be leaning over you. Yes, that's her. She's mine.
+
+    The phrase binds the beginning and end together... as a story, in retrospect, once the outcome is known.
+3. probably the most convincing detail pointing to true time-travel is how the frame story's 'present' appears to be set at the daughter's conception with a Louise knowing about the car crash, but this is not clear when we join up the beginning and the end and we consider the story as a whole along with what Louise later tells us about thinking in Heptapod:
+
+    > Your father is about to ask me the question. This is the most important moment in our lives, and I want to pay attention, note every detail. Your dad and I have just come back from an evening out, dinner and a show; it's after midnight. We came out onto the patio to look at the full moon; then I told your dad I wanted to dance, so he humors me and now we're slow-dancing, a pair of thirty-somethings swaying back and forth in the moon-light like kids. I don't feel the night chill at all. And then your dad says, "Do you want to make a baby?" Right now your dad and I have been married for about two years, living on Ellis Avenue; when we move out you'll still be too young to remember the house, but we'll show you pictures of it, tell you stories about it. I'd love to tell you the story of this evening, the night you're conceived, but the right time to do that would be when you're ready to have children of your own, and we'll never get that chance. Telling it to you any earlier wouldn't do any good; for most of your life you won't sit still to hear such a romantic - you'd say sappy - story. I remember the scenario of your origin you'll suggest when you're twelve...I know how this story ends; I think about it a lot. I also think a lot about how it began, just a few years ago, when ships appeared in orbit and artifacts appeared in meadows....Eventually, many years from now, I'll be without your father, and without you. All I will have left from this moment is the heptapod language. So I pay close attention, and note every detail. From the beginning I knew my destination, and I chose my route accordingly. But am I working toward an extreme of joy, or of pain? Will I achieve a minimum, or a maximum? These questions are in my mind when your father asks me, "Do you want to make a baby?" And I smile and answer, "Yes," and I unwrap his arms from around me, and we hold hands as we walk inside to make love, to make you.
+
+    The narrator Louise is not narrating the present, but reliving and rehearsing a story about an event she knew was important at the time & paid close attention to, and is rehearsing the story she would've told her daughter if she had lived long enough. Having learned to think like a Heptapod, the elderly Louise can easily think of the past as present and attempts to pin down her true temporal location by looking at the tense ignore that she is a (temporally) unreliable narrator (the level of atemporal thinking increases through the story). As she tells us, during her post-Heptapod life, her thinking in Heptapod grows and over those decades, she becomes able to think of increasing stretches of her life as a single whole which she feels as present:
+
+    > After I learned Heptapod B, new memories fell into place like gigantic blocks, each one measuring years in duration, and though they didn't arrive in order or land contiguously, they soon composed a period of five decades. It is the period during which I know Heptapod B well enough to think in it, starting during my interviews with Flapper and Raspberry and ending with my death. Usually, Heptapod B affects just my memory: my consciousness crawls along as it did before, a glowing sliver crawling forward in time, the difference being that the ash of memory lies ahead as well as behind: there is no real combustion. But occasionally I have glimpses when Heptapod B truly reigns, and I experience past and future all at once; my consciousness becomes a half century-long ember burning outside time. I perceive - during those glimpses - that entire epoch as a simultaneity. It's a period encompassing the rest of my life, and the entirety of yours.
+
+    As events happen, suddenly the past reconfigures itself; events reveal themselves to have meaning that they didn't have until years later - meeting one's first husband, and the conception of a child. With one car crash, a sequence of life events suddenly snaps into place as a story with a beginning, an arc, and an end. Meaning is understood retroactively. The owl flies at dusk.
+
+# Not Controlled But Nor Uncontrolled
+
+[Hyakujo's Fox](!Wikipedia "Wild fox koan"):
+
+> Once when Hyakujo delivered some Zen lectures an old man attended them, unseen by the monks. At the end of each talk when the monks left so did he. But one day he remained after the had gone, and Hyakujo asked him: "Who are you?"
+>
+> The old man replied: "I am not a human being, but I was a human being when the Kashapa Buddha preached in this world. I was a Zen master and lived on this mountain. At that time one of my students asked me whether the enlightened man is subject to the law of causation. I answered him: 'The enlightened man is not subject to the law of causation.' For this answer evidencing a clinging to absoluteness I became a fox for five hundred rebirths, and I am still a fox. Will you save me from this condition with your Zen words and let me get out of a fox's body? Now may I ask you: Is the enlightened man subject to the law of causation?"
+>
+> Hyakujo said: "The enlightened man is one with the law of causation."
+>
+> At the words of Hyakujo the old man was enlightened. "I am emancipated", he said, paying homage with a deep bow. "I am no more a fox, but I have to leave my body in my dwelling place behind this mountain. Please perform my funeral as a monk." The he disappeared. The next day Hyakujo gave an order through the chief monk to prepare to attend the funeral of a monk. "No one was sick in the infirmary", wondered the monks. "What does our teacher mean?" After dinner Hyakujo led the monks out and around the mountain. In a cave, with his staff he poked out the corpse of an old fox and then performed the ceremony of cremation.
+>
+> ...Mumon's comment: "The enlightened man is not subject." How can this answer make the monk a fox?
+>
+> "The enlightened man is at one with the law of causation." How can this answer make the fox emancipated?
+>
+> To understand clearly one has to have just one eye.
+>
+>     Controlled or not controlled?
+>     The same dice shows two faces.
+>     Not controlled or controlled,
+>     Both are a grievous error.
+
+# Timeless Ways of Thinking
+
+> "Everyone is bound by the laws of nature. The enlightened are not restricted by them."
+
+
+https://news.ycombinator.com/item?id=13101650 https://news.ycombinator.com/item?id=13102714
+See also: Lagrangians, the Principle of Least Action,
+Greg Egan's "Infinite Assassins", _Qualia the Purple_, _Man of Two Worlds_
+
+
+Ignoring the fatally flawed interpretation of regular time-travel/precognition which can change the past, one interpretation goes that Louise *does* perceive the entirety of her future, but never exploits the future knowledge or take unexplainable retro-causal actions, because what the discussion about the Book or "performative language" implies is that she is like an actor following a script, engaged in a self-fulfilling prophecy, taking precisely the actions necessary to bring about the future she sees.
+(A fictional example of this would be Paul Atreides in _[Dune Messiah](!Wikipedia)_, whose prescience allows him to take a sequence of actions and see the world around him despite being blinded - but only as long as he executes the actions perfectly, thereby keeping the visions reflective of reality.)
+This is an interesting attempt at reconciling free will and determinism, reminiscent of Leibniz's [pre-established harmony](!Wikipedia), but it still doesn't address many of the problems (how the physics would actually deliver future knowledge when the algorithmic formulation requires no retrocausal influence and is equivalent to the variational formulations, how does it work on a physical neurological basis, how anyone could follow the script while simultaneously engaged in normal thought, why no one ever deviates from the script for any reason and the time-travel is purely epiphenomenal, why Louise doesn't deviate just before the car accident, what this all thematically has to do with stories or perception, etc).
+
+What I take Chiang as suggesting is not that the aliens really are tapping into quantum woo to see the future (this is what inferior SF authors might do, and do in the movie), any more than light rays see into the future in order to take the shortest path ([principle of least action](!Wikipedia); [Lagrangian interpretations](!Wikipedia "Lagrangian_mechanic")), but that Chiang is doing something more like Watts's _[Blindsight](!Wikipedia "Blindsight_(Watts_novel)")_ or his "Understand"/"Exhalation" in trying to explore different kinds of minds (eg [why experience pain?](http://www.rifters.com/crawl/?p=791 "PRISMs, Gom Jabbars, and Consciousness")): that given the reversibility of the laws of physics and the arrow of time, there is no logical or privileged reason to have a conscious experience of the universe as time unfolding sequentially (as a [A-series](!Wikipedia "A-series and B-series")) and computationally according to a program computing 1 Planck-second at a time, rather than as an Einsteinian [4D block universe](!Wikipedia "Eternalism_(philosophy_of_time)") in which the block universe is the solution to an optimization problem/an optimal path between [boundary conditions](!Wikipedia "Boundary value problem") at the beginning & end, and everything unfolds as it must and already has.
+(A fictional example would be Doctor Manhattan in the famous ["Chapter IV: Watchmaker"](https://docs.google.com/file/d/0B5Wtx24BXpfDYkVJbU5kOE5vN00/view) of _[Watchmen_](!Wikipedia)_.^[Doctor Manhattan is not quite the same, though, as he has superpowers and does in fact see much of the future and the universe, requiring Adrian Veidt to obstruct his vision using a tachyon generator - although even there, it's unclear in the story whether his future perception can alter the past/future, as he appears to never take actions to stop a possible future, and Veidt's tachyon generator may simply be an action he was always going to take and always be obscuring Manhattan's vision and so Manhattan would never have been able to change the past/future because the non-tachyon condition would never have occurred. Indeed, given that Doctor Manhattan winds up agreeing with Veidt, the point may have been moot all along.])
+
+This is similar to points Drescher makes in [_Good and Real: Demystifying Paradoxes from Physics to Ethics_ (2006)](https://dl.dropbox.com/u/5317066/good-and-real-drescher.pdf): the laws of physics are generally [time-symmetrical](!Wikipedia "T-symmetry").
+Physical events can run backwards or forwards, there is no inherent [arrow of time](!Wikipedia).
+
+The present tells us about both the past and the future - a brain could try to understand the universe by taking the present and extrapolating forward, but it also can take the present and extrapolate backward.
+When we do the second, we call it 'memories' and remembering: we extrapolate, based on the present state of the universe like some unreliable arrangement of neurons, what the world is like going one direction along the time dimension; often we are mistaken or ignorant, and the more so the further we go.
+And when we do the second and extrapolate along the other direction, we call it 'predicting' and 'planning', by extrapolating, based on the present state of the universe, what the world is like going another direction along the time dimension; often we are mistaken or ignorant, and the more so the further we go.
+But they are the same thing: you can 'remember' the future as easily as the past.
+
+Likewise, in the same way that you control the parts of the future by taking actions, you also control parts of the past.[^Drescher-arm]
+You perceive the past as fixed and your belief about the past world certain, and the future mutable, as you predict, plan, and take actions to change the future; things often do not go as you expect or hope, but that evidence changes your beliefs about the past - but why couldn't you perceive the past as uncertain, your predictions about the future as certain, and mistakes then change what you believed about the future?
+In both cases, planning happens, actions are taken, the system learns, but the subjective experience is radically different: in the second, learning has no qualia, merely a constant sense of unity as one's perception of the purpose changes as more events unfold & the system learns.
+
+[^Drescher-arm]: pg194, Chapter 5, _Good and Real: _:
+
+    > Consider a simple example, presuming that our universe turns out to be deterministic (or consider a similar example set in a deterministic alternative universe). Define the predicate _P_ to be true of the total state of the universe at a given moment if and only if the successor state one billion years thence-that is, the state defined by applying the (correct) laws of physics to the given state to predict the new state one billion years later-shows me with my right hand raised. Suppose, on a whim, I would like the state of the universe one billion years ago to have been such that the predicate _P_ is true of that state. I need only raise my right hand now and voilà, it was so.
+    >
+    > Of course, I did not change what the distant-past state of the universe had been. The past is what it is and can never be changed. Furthermore, I have no causal influence over the past. Nonetheless, physical law (if deterministic) necessitates that if I do in fact raise my right hand, _P_ is in fact true of the state of the universe a billion years ago; or if I do lower it, _P_ is false of that past state. Suppose, despite my wanting _P_ to have been true a billion years ago, I forgo raising my hand due to a belief that it would be futile to act for the sake of something past and inalterable. In that case, as always with fatalist resignation, I would be needlessly forfeiting an opportunity for my goal to be achieved.
+    >
+    > The set of universe-states in which I do raise my hand is necessarily coextensive with the set of universe-states for which, in the state a billion years prior, _P_ was in fact true (in other words, those are two different descriptions of the same set of universe-states). I thus have exactly as much choice about that particular aspect of the past, despite its inalterability, as I have about whether to raise my hand now-despite the inalterability of that too in a deterministic universe. And, as argued in the previous section, that much choice is choice enough.
+
+The aliens could be doing this, and it is as valid a way of cognition as anything else; their conscious introspection does not perceive a fixed past algormithically advancing to an uncertain future but a fixed past and fixed future which are the only way the universe could have happened, with algorithmic planning & perception happening in the unconscious, no more felt consciously than a human feels their top-down Bayesian cognition constantly reconciling perception with priors in the [McGurk effect](!Wikipedia), or their memories altering every time they are recalled & experienced, or unconscious habits being strengthened & weakened, or can see their own visual blind spots or eye saccades.
+
+And then the drama comes from the protagonist slowly adopting this way of thinking herself in order to come to terms with her grief over her daughter's death by adopting a timeless Lagrangian way of thinking, while explaining all this to the reader who is still trapped in the algorithmic perspective.
+This is why it's titled *Story* - of course a life is not actually a story, it's a series of events proceeding logically one by one, but in a good story, key events (something knowable only in retrospect, knowing the ending) are selected, rearranged, and given an overarching meaning from a timeless narrator's perspective.
