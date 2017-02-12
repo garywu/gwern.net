@@ -70,10 +70,11 @@ Posts or articles:
 - ["Darknet Market [Evolution] Basket Analysis"](http://ryancompton.net/2015/03/24/darknet-market-basket-analysis/), Ryan Compton
 - ["Deanonymizing Darknet Data": GPS coordinates in image metadata](http://atechdad.com/Deanonymizing-Darknet-Data/)
 - ["Illuminating the Dark Web: Searching for geotags in dark net markets"](https://medium.com/@roselisker/illuminating-the-dark-web-d088a9c80240) ([WaPo](https://www.washingtonpost.com/news/the-switch/wp/2016/09/15/how-drug-listings-on-the-dark-net-may-have-revealed-sellers-locations/ "How drug listings on the dark net may have revealed sellers' locations"))
-- ["What illegal drugs cost on the dark web"](http://qz.com/466273/what-illegal-drugs-cost-on-the-dark-web/)
-- ["How A Teenager Came Within Hours Of Carrying Out A College Massacre"](http://www.buzzfeed.com/patricksmith/how-one-british-teenager-used-the-digital-black-ma "Liam Lyburd, from Newcastle, was today sentenced to life in prison for buying a gun, gas canisters, and pipe bomb materials from the Dark Web with intent to shoot students at his former college. BuzzFeed News follows the trail and asks whether someone in future might succeed where he failed.")
-- _The Economist_, 16 July 2016, ["Shedding light on the dark web: The drug trade is moving from the street to online cryptomarkets. Forced to compete on price and quality, sellers are upping their game"](http://www.economist.com/news/international/21702176-drug-trade-moving-street-online-cryptomarkets-forced-compete)
-- ["Bachelor of Waffenexport: Der Student, der zum globalen Waffen-Dealer wurde"](https://motherboard.vice.com/de/read/bachelor-of-waffenexport-der-student-der-zum-globalen-waffen-dealer-wurde)
+- ["What illegal drugs cost on the dark web"](http://qz.com/466273/what-illegal-drugs-cost-on-the-dark-web/), _QZ_
+- ["How A Teenager Came Within Hours Of Carrying Out A College Massacre"](http://www.buzzfeed.com/patricksmith/how-one-british-teenager-used-the-digital-black-ma "Liam Lyburd, from Newcastle, was today sentenced to life in prison for buying a gun, gas canisters, and pipe bomb materials from the Dark Web with intent to shoot students at his former college. BuzzFeed News follows the trail and asks whether someone in future might succeed where he failed."), _Buzzfeed_
+- ["Shedding light on the dark web: The drug trade is moving from the street to online cryptomarkets. Forced to compete on price and quality, sellers are upping their game"](http://www.economist.com/news/international/21702176-drug-trade-moving-street-online-cryptomarkets-forced-compete), _The Economist_, 16 July 2016
+- ["Bachelor of Waffenexport: Der Student, der zum globalen Waffen-Dealer wurde"](https://motherboard.vice.com/de/read/bachelor-of-waffenexport-der-student-der-zum-globalen-waffen-dealer-wurde), _Vice_
+- ["Dark net dealers dragged into the light: A security firm boss with police clients and an NHS worker are among those caught up in our investigation"](http://www.thetimes.co.uk/edition/news/dark-net-dealers-dragged-into-the-light-kx05bc3jd), _Sunday Times_, 12 February 2017
 
 ## Citing
 
@@ -119,7 +120,7 @@ Specifically:
     - Agape
     - Agora
     - Alpaca
-    - AlphaBay
+    - AlphaBay <!-- TODO: +forums? -->
     - Amazon Dark
     - Anarchia
     - Andromeda
@@ -824,6 +825,7 @@ A number of other datasets are known to exist but are unavailable, including:
 - Dolliver 2015 (claimed NDA on SR2 crawls)
 - [Hardy & Norgaard 2015](/docs/sr/2015-hardy.pdf "Reputation in the Internet black market: an empirical and theoretical analysis of the Deep Web"): HTTrack-based scrapes of SR2 marijuana listings November 2013 to October 2014
 - [Marin et al 2016](https://arxiv.org/abs/1607.07903 "Product Offerings in Malicious Hacker Markets")
+- [Janetos & Tilly 2017](https://economics.sas.upenn.edu/sites/economics.sas.upenn.edu/files/reputation-dynamics_0.pdf "Reputation Dynamics in a Market for Illicit Drugs")
 
 # External links
 
