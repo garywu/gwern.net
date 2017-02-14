@@ -879,4 +879,5 @@ brokenLinks = [
  , ("spaced repetition", "/Spaced%20repetition")
  , ("spaced%2520repetition", "/Spaced%20repetition")
  , ("subscribe", "https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&id=91b4d51355")
+ , ("favicon.ico", "/static/img/favicon.ico")
  ]
