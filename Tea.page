@@ -2075,11 +2075,12 @@ Body    The oolong is medium bodied.
 Flavors     Subtle sweet notes of peaches and roasted carrots covered by toasted walnuts.
 -->
 
-<!--
+## Water experiment
+
 Water for tea experiment:
 tap water reportedly differs a ton in taste between cities/states. This is plausible since tea tastes so much worse when microwaved, which is speculated to be due to the oxygenation, so why not the mineral/chlorine content as well?
 
-I can compare my well water to distilled water and commercial spring waters in a blind randomized self-experiment to see if water can make a difference.
+I can compare my well water to distilled water and commercial non-sparkling spring waters in a blind randomized self-experiment to see if water can make a difference.
 Shades of Fisher's 'lady tasting tea' experiment.
 
 so the idea would be put two identical mugs on the lazy susan with identical amounts of distilled vs tap water, marked on the
@@ -2091,12 +2092,46 @@ setting so it would just go straight to full boil. I could use instead one or tw
 but this would double as my tasting reviews of those samples, so not a problem.
 
 Well water & distilled water already on hand, so I need good commercial spring water (half a gallon or less each).
-I can probably get from Walmart:
+I obtained 8 kinds of water:
 
-- Poland Spring
-- Aquafina
+- tap water
+- Walmart:
 
-(added them to shopping list)
+    - Great Value distilled water
+    - Nestle Pure Life
+    - Aquafina
+    - Vos
+    - Evian
+    - Fiji Natural Water
+- Amazon:
+
+    - [Poland Spring](https://www.amazon.com/Poland-Spring-Natural-16-9-ounce-Plastic/dp/B011SJLWBC/ "Poland Spring 100% Natural Spring Water, 16.9-ounce Plastic Bottles (6)") (could not find in any local stores)
+
+Price, type, pH, and contents:
+
+Nestle data:
+
+Water brand        Water kind Country  Price (\$/l) Price (\$) Volume (L) pH   Total mg/l Calcium Sodium Potassium Fluoride Magnesium Nitrate Chloride Copper Sulfate Arsenic Lead Bicarbonates Silica
+-----------------  ---------- ------- ------------ ----------- ---------- --   ---------- ------- ------ --------- -------- --------- ------- -------- ------ ------- ------- ---- -----------  ------
+tap water          well       USA     0            0           3.78
+Great Value        distilled  USA     0.23         0.88        3.78
+Nestle Pure Life   distilled  USA     0.26         0.98        3.79       6.95 36         7.6     6.8    1         0.1      3.6       0.4     13.45    0.05   13.5    0.002   0.005
+Voss  Still Water  mineral    Norway  3.43         2.74        0.8        5.5  44         5       6      1         0.1      1         0.4     12       0.05   5       0.002   0.005
+Evian              mineral    France  1.78         1.78        1          7.2  309        80             1                  26                6.8             12.6                  36           15
+Fiji Natural Water mineral    Fiji    1.88         1.88        1          7.7  222        18      18     4.9       0.28     15        0.27    9        0.05   1.3     0.002   0.005 152          93
+Aquafina           osmosis    USA     1            1           1          5    5                                   4                  10      250      1      250     0.010   0.005
+Poland Spring      distilled  USA     3.15         9.45        3          7.2  61         7.5     5.9    0.6       0.115    1.145     0.6     10.05    0.05   3       0.0014  0.005
+
+Notes:
+
+- the pH & mineral content of my tap water is unknown; it is well water untreated with chlorine or fluoride, described as very soft
+- the Great Value/Walmart distilled water doesn't report any data on the label and there don't seem to be any datasheets online (the pH of distilled water can apparently vary widely from the nominal value of 7 and cannot be assumed to be 7, but should the mineral contents should all at least be close to 0)
+- the Nestle Pure Life numbers are not reported on the packaging [but in the current online datasheet (pg4, "2015 Water Analysis Report")](http://www.nestle-watersna.com/asset-library/documents/pl_eng.pdf); I have taken the mean when a range is reported, and the upper bound when that is reported (specifically, "ND"^["MRL - Minimum Reporting Limit. Where available, MRLs reflect the Method Detection Limits (MDLs) set by the U.S. Environmental Protection Agency or the Detection Limits for Purposes of Reporting (DLRs) set by the California Department of Health Services. These values are set by the agencies to reflect the minimum concentration of each substance that can be reliably quantified by applicable testing methods, and are also the minimum reporting thresholds applicable to the Consumer Confidence...ND - Not detected at or above the MRL." --Nestle Pure Life 2015])
+- Voss Still reports some numbers on the bottle, but more details are reported in an undated (metadata indicates 2011) [report on the Voss website](https://www.vosswater.com/files/VOSS-Water-Quality-Report.pdf); for "ND" I reuse the upper bound from Nestle Pure Life
+- the Evian label reports a total of "dissolved solids at 180C: 309ppm (mg/l)".
+- Fiji Water provides a [2014 datasheet](http://fijiwater.com.au/wp-content/uploads/2015/01/FW_Quality-Report-June14.pdf) which is more detailed than the label; "ND" as before
+- Aquafina labels provide no information beyond using reverse osmosis; they provide a [2015 datasheet](http://www.aquafina.com/pdf/bottledWaterInformation_en.pdf), which omits pH and several other minerals; various online tests suggest Aquafina samples have pHs of 4-6, so I class it as 5
+- [Poland Spring 2016 datasheet](https://www.nestle-watersna.com/asset-library/Documents/PS_ENG.pdf); note that the price may be inflated considerably because I had to order it online instead of buying in person from a normal retailer; like Nestle Pure Life, ranges are reported and "ND" taken as ceiling
 
 Design:
 
@@ -2105,4 +2140,3 @@ So will do the classic pairwise design, all possible pairs at least once, see /R
 
 Power analysis:
 good question. Is this a decision analysis again? I guess it depends on how much the mineral waters cost per cup and how much of an improvement one wants to detect vs the tediousness of experimenting.
--->
