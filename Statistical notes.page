@@ -37,6 +37,7 @@ belief: possible
 - claim high IQ types almost 100% failure rates due to inappropriate model assumption of normal distribution + narrow standard deviation: http://polymatharchives.blogspot.com/2015/01/the-inappropriately-excluded.html?showComment=1441741719623#c1407914596750199739
 - implausible claims about success rate of facial recognition applied to St Petersburg population: https://news.ycombinator.com/item?id=11491264 (see also ["Facial recognition systems stumble when confronted with million-face database"](https://techcrunch.com/2016/06/23/facial-recognition-systems-stumble-when-confronted-with-million-face-database/))
 - human _Toxoplasma gondii_ study is not well-powered as authors claim due to incorrect power analysis, and results are evidence for harm: http://blogs.discovermagazine.com/neuroskeptic/2016/02/20/myth-mind-altering-parasite-toxoplasma-gondii/#comment-2755778490
+- attempt at attributing Bitcoin price increases to technology improvements: <https://www.reddit.com/r/Bitcoin/comments/5tbt8f/buzz_factor_or_innovation_potential_what_explains/ddlmzrz/>
 
 # Estimating censored test scores
 
@@ -2119,6 +2120,140 @@ There are a few sources of data, primarily SNP data, which are freely available 
     - Genomes: browsing the [user lists for 'Whole genome datasets'](https://my.pgp-hms.org/users), I estimate a total of ~222; looking at the first and last 22 entries, 34 had ages/birth-years, so ~75% of the whole genomes come with the necessary birth-year data, indicating ~166 usable genomes for the purpose of testing dysgenics. With the most recent one uploaded on 2015-10-12, and the earliest recorded being 2011-09-16, that suggests the available genome number increases by ~0.25/day. 166 is uncomfortably close to the requirement for a well-powered test, and there may not be enough data to account for glitches in the data or allow for more complicated statistical testing, but if we wanted to double the available data, we'd only need to wait around 885 days or 2.5 years (or less, depending on whether the collapse in genome sequencing prices continue and prices drop below even the current \$1k genomes).
     - SNPs: PGP has [~656 23andMe SNP datasets](https://my.pgp-hms.org/public_genetic_data?utf8=%E2%9C%93&data_type=23andMe&commit=Search) (the number of SNP datasets sourced from other providers is quite small so I didn't include them), dated 2015-10-21-2011-01-06, so assuming same birth-date percentage, 0.37 per day. Unfortunately, to get 30k SNP datasets through PGP, we would have to wait (linearly extrapolating) 291 years. (Making matters worse, in October 2015, 23andMe doubled its price and reduced the quality of SNP coverage, which will discourage many users and push other users to purchase whole-genome sequencing instead.)
 
+## Power analysis for racial admixture studies of continuous variables
+
+[Admixture studies](!Wikipedia "Genetic admixture#Mapping") examine racial phenotypic differences in traits such as blood pressure by comparing people with ancestry from multiple groups, and correlating differences in ancestry percentage with differences in the phenotype.
+So, for example, African-Americans have higher blood-pressure than white Americans, and most African-Americans have an average white ancestry of something like 25%; if having 26% white ancestry predicts slightly lower blood pressure while 24% predicts higher, that suggests the difference is (as is currently believed) genetic; and this logic can be used to narrow down to specific chromosome regions, and has contributed to study of [racial differences in disease](!Wikipedia "Race and health").
+
+One application would be to thorny questions like potential group differences in non-medical traits like intelligence.
+The standard admixture design, requiring a few thousand subjects spanning the full range, might not necessarily work here here because of the claimed environmental effects.
+[A proposed resolution](http://humanvarieties.org/2013/03/29/cryptic-admixture-mixed-race-siblings-social-outcomes/ "Cryptic Admixture, Mixed-Race Siblings, & Social Outcomes") to the question is to do an admixture study comparing African-American siblings.
+Siblings are highly genetically related on average (50%) but in a randomized fashion due to recombination; so two siblings, including fraternal twins, born to the same parents in the same family in the same neighborhood going to the same schools, will nevertheless have many different variants, and will differ in how related they are - the average is 50% but it could be as low as 45% or high as 55%.
+So given two siblings, they will differ slightly in their white ancestry, and if indeed white ancestry brings with it more intelligence variants, then the sibling with a higher whiter percentage ought to be slightly more intelligent on average, and this effect will have to be causal, as the inheritance is randomized and all other factors are equal by design.
+(A result using ancestry percentages measured in the general population, outside families, would be able to make far more powerful comparisons by comparing people with ~0% white ancestry to those with anywhere up to 100%, and require small sample sizes, and such analyses have been done with the expected result, but are ambiguous & totally unconvincing, as the correlation of greater whiteness with intelligence could easily be due to greater SES or greater blackness could be a marker for recent immigration or any of a number of confounds that exist.)
+This has historically been difficult or impossible since how does one measure the actual ancestry in siblings?
+But with the rise of cheap genotyping, precise measure of actual (rather than average) ancestry can be done for <\$100, so that is no longer an obstacle.
+
+How many sibling pairs would this require?
+
+- you are trying to regress `IQ_difference ~ Ancestry_difference`
+- the SD of the IQ difference of siblings is known - it's ~13 IQ points (nonshared environment + differences in genetics)
+- of this, a small fraction will be explained by the small difference in ancestry percentage
+- the power will be determined by the ratio of the sibling SD to the IQ-difference-due-to-ancestry-difference SD, giving an effect size, which combined with the usual alpha=0.05 and beta=0.80, uniquely determines the sample size
+- IQ-difference-due-to-ancestry-difference SD will be the advantage of better ancestry times how much ancestry differs
+- if you knew the number of relevant alleles, you could calculate through the binomial the expected SD of sibling ancestor differences. As there are so many alleles, it will be almost exactly normal. So it's not surprising that siblings overall, for all variants, are 50% IBD with a SD of 4%.
+
+If we treated it as simply as possible, [Visscher 2006](http://www.plosgenetics.org/article/info%3Adoi%2F10.1371%2Fjournal.pgen.0020041 "Assumption-Free Estimation of Heritability from Genome-Wide Identity-by-Descent Sharing between Full Siblings") for an analogous height analysis says they measured 588 markers. So a binomial with 588 draws and _p_=0.5 implies that 147 markers are expected to be the same:
+
+~~~{.R}
+588 * 0.5*(1-0.5)
+# [1] 147
+~~~
+
+and the distribution around 147 is 12, which is ~8%:
+
+~~~{.R}
+sqrt((588 * 0.5*(1-0.5)))
+# [1] 12.12435565
+12/147
+# [1] 0.08163265306
+~~~
+
+Visscher does a more complicated analysis taking into account
+closeness of the markers and gets a SD of 3.9%: equation 7; variance = `1/(16*L) - (1/3*L^2)`, where L = 35, so
+
+~~~{.R}
+L=35; sqrt(1/(16*L) - (1/(3*L^2)))
+# [1] 0.03890508247
+~~~
+
+So whatever the mean admixture is, I suppose it'll have a similar SD of 4-8% of itself.
+
+IIRC, African-Americans are ~25% admixed, so with a mean admixture of 25%, we would expect siblings differences to be 25% +- 0.04*0.25=0.01 or 1% difference.
+
+If that 75% missing white ancestry accounts for 9 IQ points or 0.6SDs, then each percentage of white ancestry would be 0.6/75 =0.008 SDs.
+
+So that SD of 1% more white ancestry yields an SD of 0.008 IQ, which is superimposed on the full sibling difference of 0.866, giving a standardized effect size/_d_ of 0.008 / 0.866 = 0.0092
+
+Let me try a power simulation:
+
+~~~{.R}
+n <- 10000
+siblings <- data.frame(
+sibling1AncestryPercentage = rnorm(n, mean=25, sd=1),
+sibling1NonancestryIQ = rnorm(n, mean=0, sd=12),
+
+sibling2AncestryPercentage = rnorm(n, mean=25, sd=1),
+sibling2NonancestryIQ = rnorm(n, mean=0, sd=12))
+
+siblings$sibling1TotalIQ <- with(siblings, sibling1NonancestryIQ + sibling1AncestryPercentage*(0.008*15))
+siblings$sibling2TotalIQ <- with(siblings, sibling2NonancestryIQ + sibling2AncestryPercentage*(0.008*15))
+siblings$siblingAncestryDifference <- with(siblings, sibling1AncestryPercentage - sibling2AncestryPercentage)
+siblings$siblingIQDifference <- with(siblings, sibling1TotalIQ - sibling2TotalIQ )
+
+summary(siblings)
+# ...
+# siblingAncestryDifference siblingIQDifference
+# Min.   :-5.370128122      Min.   :-68.2971343
+# 1st Qu.:-0.932086950      1st Qu.:-11.7903864
+# Median : 0.002384529      Median : -0.2501536
+# Mean   : 0.007831583      Mean   : -0.4166863
+# 3rd Qu.: 0.938513265      3rd Qu.: 11.0720667
+# Max.   : 5.271052675      Max.   : 67.5569825
+summary(lm(siblingIQDifference ~ siblingAncestryDifference, data=siblings))
+# ...Coefficients:
+#                             Estimate Std. Error  t value  Pr(>|t|)
+# (Intercept)               -0.4192761  0.1705125 -2.45892 0.0139525
+# siblingAncestryDifference  0.3306871  0.1220813  2.70874 0.0067653
+#
+# Residual standard error: 17.05098 on 9998 degrees of freedom
+# Multiple R-squared:  0.000733338,    Adjusted R-squared:  0.0006333913
+# F-statistic: 7.337294 on 1 and 9998 DF,  p-value: 0.006765343
+confint(lm(siblingIQDifference ~ siblingAncestryDifference, data=siblings))
+#                                    2.5 %         97.5 %
+# (Intercept)               -0.75351500523 -0.08503724643
+# siblingAncestryDifference  0.09138308561  0.56999105507
+
+admixtureTest <- function(n, alpha=0.05, ancestryEffect=0.008) {
+ siblings <- data.frame(
+     sibling1AncestryPercentage = rnorm(n, mean=25, sd=1),
+     sibling1NonancestryIQ = rnorm(n, mean=0, sd=12),
+
+
+     sibling2AncestryPercentage = rnorm(n, mean=25, sd=1),
+     sibling2NonancestryIQ = rnorm(n, mean=0, sd=12))
+
+ siblings$sibling1TotalIQ <- with(siblings, sibling1NonancestryIQ + sibling1AncestryPercentage*(ancestryEffect*15))
+ siblings$sibling2TotalIQ <- with(siblings, sibling2NonancestryIQ + sibling2AncestryPercentage*(ancestryEffect*15))
+ siblings$siblingAncestryDifference <- with(siblings, sibling1AncestryPercentage - sibling2AncestryPercentage)
+ siblings$siblingIQDifference <- with(siblings, sibling1TotalIQ - sibling2TotalIQ )
+
+ p <- summary(lm(siblingIQDifference ~ siblingAncestryDifference, data=siblings))$coefficients[8]
+ return(p<alpha)
+}
+
+power <- function(n, iters=10000, n.parallel=8) {
+    library(parallel)
+    library(plyr)
+    mean(unlist(mclapply(1:n.parallel, function(i) {
+        replicate(iters/n.parallel, admixtureTest(n)) }))) }
+
+# powers <- sapply(seq(100, 10000, by=10), power)
+power(100)
+# [1] 0.0502
+power(500)
+# [1] 0.0535
+power(1500)
+# [1] 0.0642
+power(15000)
+# [1] 0.2251
+power(50000)
+# [1] 0.6077
+~~~
+
+So the estimated sample size is extremely large, well into the scores of thousands.
+Simplifications aside, it is difficult to see any way to bring this method down into the low thousands range, as that would require siblings to vary tremendously more in ancestry, have much more homogeneous IQs than they do, or ancestry to be vastly more potent than it could possibly be.
+
 # Operating on an aneurysm
 
 In the excellent neurosurgeon memoir [_Do No Harm: Stories of Life, Death, and Brain Surgery_](http://www.amazon.com/Do-No-Harm-Stories-Surgery/dp/125006581X) ([Henry Marsh](!Wikipedia "Henry Marsh (neurosurgeon)") 2014), chapter 2 "[Aneurysm](!Wikipedia)", there is a passage on weighing the costs of action and inaction:
@@ -3706,6 +3841,8 @@ for gdp2016, and xrisk=0.01:
 "41[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
 "42[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
 "43[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]"
+
+http://aleph.se/andart2/statistics/survivorship-curves-and-existential-risk/
 -->
 
 # Model Criticism via Machine Learning
