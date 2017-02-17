@@ -2136,62 +2136,58 @@ Notes:
 Design:
 
 4 kinds of water, but tasting 4 kinds of tea at once is a bit hard on the physical logistics & tasting the tea.
-So will do the classic pairwise design, all possible pairs at least once, see /Resorter Bradley-Terry model (is there a nonparametric test for this? this isn't the same as Fisher's exact test...)
+So will do the classic pairwise design, all possible pairs at least once, see /Resorter
 
-Power analysis:
-good question. Is this a decision analysis again? I guess it depends on how much the mineral waters cost per cup and how much of an improvement one wants to detect vs the tediousness of experimenting.
-
----
-
+~~~{.R}
 water <- read.csv(stdin(), header=TRUE, colClasses=c("character", "character", "integer"))
 "Type1","Type2","Win"
-"Evian","Fiji",0
-"tap water","Great Value",0
-"tap water","Great Value",0
-"tap water","Nestle Pure Life",0
-"tap water","Voss Still Water",0
-"tap water","Evian",0
-"tap water","Fiji Natural Water",0
-"tap water","Aquafina",0
-"tap water","Poland Spring",0
-"Great Value","Nestle Pure Life",0
-"Great Value","Voss Still Water",0
+"Evian","Fiji",1
+"tap water","Great Value",1
+"tap water","Great Value",1
+"tap water","Nestle Pure Life",1
+"tap water","Voss Still Water",1
+"tap water","Evian",1
+"tap water","Fiji Natural Water",1
+"tap water","Aquafina",1
+"tap water","Poland Spring",1
+"Great Value","Nestle Pure Life",1
 "Great Value","Voss Still Water",1
-"Great Value","Voss Still Water",1
-"Great Value","Voss Still Water",1
-"Great Value","Evian",0
-"Great Value","Fiji Natural Water",0
-"Great Value","Aquafina",0
-"Great Value","Poland Spring",0
-"Nestle Pure Life","Voss Still Water",0
-"Nestle Pure Life","Evian",0
-"Nestle Pure Life","Fiji Natural Water",0
-"Nestle Pure Life","Aquafina",0
-"Nestle Pure Life","Poland Spring",0
-"Voss Still Water","Evian",0
-"Voss Still Water","Fiji Natural Water",0
-"Voss Still Water","Aquafina",0
-"Voss Still Water","Poland Spring",0
-"Evian","Fiji Natural Water",0
-"Evian","Aquafina",0
-"Evian","Aquafina",0
-"Evian","Aquafina",0
-"Evian","Aquafina",0
-"Evian","Poland Spring",0
-"Fiji Natural Water","Aquafina",0
-"Fiji Natural Water","Poland Spring",0
-"Aquafina","Poland Spring",1
-"Aquafina","Poland Spring",1
-"Aquafina","Poland Spring",1
-"Aquafina","Poland Spring",1
-"Aquafina","Poland Spring",1
-"Aquafina","Poland Spring",1
-"Poland Spring","Aquafina",1
-"Poland Spring","Aquafina",1
-"Poland Spring","Aquafina",1
-"Poland Spring","Aquafina",1
-"Poland Spring","Aquafina",1
-"Poland Spring","Aquafina",1
+"Great Value","Voss Still Water",3
+"Great Value","Voss Still Water",3
+"Great Value","Voss Still Water",3
+"Great Value","Evian",1
+"Great Value","Fiji Natural Water",1
+"Great Value","Aquafina",1
+"Great Value","Poland Spring",1
+"Nestle Pure Life","Voss Still Water",1
+"Nestle Pure Life","Evian",1
+"Nestle Pure Life","Fiji Natural Water",1
+"Nestle Pure Life","Aquafina",1
+"Nestle Pure Life","Poland Spring",1
+"Voss Still Water","Evian",1
+"Voss Still Water","Fiji Natural Water",1
+"Voss Still Water","Aquafina",1
+"Voss Still Water","Poland Spring",1
+"Evian","Fiji Natural Water",1
+"Evian","Aquafina",1
+"Evian","Aquafina",1
+"Evian","Aquafina",1
+"Evian","Aquafina",1
+"Evian","Poland Spring",1
+"Fiji Natural Water","Aquafina",1
+"Fiji Natural Water","Poland Spring",1
+"Aquafina","Poland Spring",3
+"Aquafina","Poland Spring",3
+"Aquafina","Poland Spring",3
+"Aquafina","Poland Spring",3
+"Aquafina","Poland Spring",3
+"Aquafina","Poland Spring",3
+"Poland Spring","Aquafina",3
+"Poland Spring","Aquafina",3
+"Poland Spring","Aquafina",3
+"Poland Spring","Aquafina",3
+"Poland Spring","Aquafina",3
+"Poland Spring","Aquafina",3
 
 
 types <-  unique(c(water$Type1, water$Type2))
@@ -2200,62 +2196,46 @@ team2 = match(water$Type2, types)
 y = water$Win
 N = nrow(water)
 J = length(types)
-data = list(y = y, N = N, J = J, team1 = team1, team2 = team2)
-data
-# $y
-#  [1] 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
-#
-# $N
-# [1] 47
-#
-# $J
-# [1] 9
-#
-# $team1
-#  [1] 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 4 4 4 4 4 5 5 5 5 1 1 1 1 1 1 6 6 7 7 7 7 7 7 8 8 8 8 8 8
-#
-# $team2
-#  [1] 9 3 3 4 5 1 6 7 8 4 5 5 5 5 1 6 7 8 5 1 6 7 8 1 6 7 8 6 7 7 7 7 8 7 8 8 8 8 8 8 8 7 7 7 7 7 7
+data = list(y = y, N = N, J = J, x = cbind(team1, team2))
 
-model1 <- "model {
-    for (i in 1:N){
-        y[i] ~ dbin (p[i], 1)
-        logit(p[i]) <- a[team1[i]] - a[team2[i]]
+m <- "data {
+    int<lower=0> N; // number of games
+    int<lower=1> J; // number of teams
+    int<lower=1,upper=3> y[N]; // results
+    int x[N,2]; // indices of teams playing
+}
+parameters {
+    vector[J] beta;
+    real<lower=0> cc;
+}
+model {
+    real nu;
+    int y1;
+    int y2;
+    vector[2] d;
+
+    beta ~ normal(0,10);
+    cc ~ normal(0,1);
+
+    for (i in 1:N) {
+        y1 = x[i,1];
+        y2 = x[i,2];
+        nu = beta[y1] - beta[y2];
+        d[1] = -cc;
+        d[2] =  cc;
+        y[i] ~ ordered_logistic(nu,d);
     }
-    for (j in 1:J){
-        a[j] ~ dnorm(0, tau)
-    }
-    tau <- pow(sigma, -2)
-    sigma ~ dgamma(0.01, 0.01)
-}"
-library(runjags)
-j1 <- autorun.jags(model=model1, monitor=c("a"), data=data); j1
-# JAGS model summary statistics from 243090 samples (chains = 2; adapt+burnin = 16000):
-#
-#        Lower95   Median  Upper95     Mean     SD Mode    MCerr MC%ofSD SSeff    AC.10    psrf
-# a[1]   -16.637  -4.6939 0.068351  -6.2914 6.0006   --  0.15714     2.6  1458  0.69029  1.0002
-# a[2]   -10.707  -2.9403  0.97437  -3.7741 3.8279   -- 0.095321     2.5  1613  0.62381  1.0001
-# a[3]   -4.8524 -0.20857   3.9313  -0.3994 2.2722   -- 0.043907     1.9  2678  0.62902  1.0001
-# a[4]   -5.4758 -0.51319   3.6677 -0.71088 2.3607   -- 0.042833     1.8  3037  0.56279  1.0002
-# a[5]   -5.4095 -0.67516   3.4725 -0.88626 2.2995   -- 0.043726     1.9  2766  0.62404  1.0002
-# a[6]   -2.1084    1.552   7.5836     1.93 2.5013   -- 0.045822     1.8  2980  0.47831  1.0091
-# a[7]  -0.25462   3.4664   11.599   4.3504 3.4147   -- 0.098047     2.9  1213  0.86619  1.0192
-# a[8]  -0.26515   3.4549   11.629   4.3445 3.4141   -- 0.098087     2.9  1211  0.86595  1.0183
-# a[9]   -7.5138  0.50957   11.161  0.90003 4.7219   --  0.04161     0.9 12878 0.085691 0.99996
-#
-# Total time taken: 38.3 seconds
+}
+"
+library(rstan)
+model <- stan(model_code=m, data=data, chains=getOption("mc.cores")-1); print(model)
 
-posteriorSamples <- j1$mcmc[1][[1]]
-bestEstimated       <- max(colMeans(posteriorSamples))
-bestEstimatedIndex <- which.max(colMeans(posteriorSamples))
-posteriorSamples[,bestEstimatedIndex] <- -Inf
-bestPosteriorSampled <- which.max(posteriorSamples[1,])
-
-bestEstimatedIndex; bestPosteriorSampled; types[bestEstimatedIndex]; types[bestPosteriorSampled]
-# a[7]
-#    7
-# a[8]
-#    8
-# [1] "Aquafina"
-# [1] "Poland Spring"
+posteriorSampleMeans <- get_posterior_mean(model, pars="beta")
+bestEstimatedArm <- max(posteriorSampleMeans[,1])
+bestEstimatedArmIndex <- which.max(posteriorSampleMeans[,1])
+posteriorSamples <- head(extract(model)$beta, n=1)
+posteriorSamples[,bestEstimatedArmIndex] <- -Inf ## ensure that the best estimated arm is not drawn, as this is pairwise
+bestSampledArm <- max(posteriorSamples)
+bestSampledArmIndex <- which.max(posteriorSamples)
+c(types[bestEstimatedArmIndex], types[bestSampledArmIndex])
 ~~~
