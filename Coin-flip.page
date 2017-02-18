@@ -1,6 +1,6 @@
 ---
 title: "The Kelly Coin-Flipping Game: Exact Solutions via Decision Trees"
-description: Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's 300-round double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by \$6.6 over a modified KC.
+description: Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's 300-round double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.
 tags: statistics, decision theory, Haskell
 author: Gwern Branwen, Arthur B., nshepperd, FeepingCreature, Gurkenglas
 created: 19 Jan 2017
@@ -8,7 +8,7 @@ status: finished
 belief: likely
 ...
 
-> Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion as their strategy. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays. We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming in R, Haskell, and C. We find that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6. The relative advantage of the decision tree strategy depends on the number of bets: it is highest when the player can make few bets (at _b_=23, with a difference of ~\$36), and decreases with number of bets as more strategies hit the ceiling.
+> Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion as their strategy. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays. We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming in R, Haskell, and C. We find that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6. The relative advantage of the decision tree strategy depends on the number of bets: it is highest when the player can make few bets (at _b_=23, with a difference of ~\$36), and decreases with number of bets as more strategies hit the ceiling. In the variant of this game where subjects are not told the exact edge of 60%, a Bayesian decision tree approach shows that performance can closely approach that of the decision tree, with a penalty for 1 plausible prior of only \$1.
 
 # Background
 ## Set up
@@ -1113,3 +1113,228 @@ fractionEVs <- ldply(mclapply(fraction, function(f) {
 # [1] 0.12
 qplot(fraction, fractionEVs)
 ~~~
+
+# Coin-flipping POMDP
+## Bayesian decision tree
+
+A variant on this problem is when the probability of winning is *not* given, if one doesn't know in advance _p_=0.6.
+How do you make decisions as coin flips happen and provide information on _p_?
+Since _p_ is unknown and only partially observed, this turns the coin-flip MDP into a POMDP problem.
+A POMDP can be turned back into a MDP and solved in a decision tree by including the history of observations as more parameters to explore over.
+
+The curse of dimensionality can be tamed here a little by observing that a history of coin-flip sequences is unnecessary - it doesn't matter what order the coin flips happen in, only the number of wins and the number of total coin-flips matter (are the sufficient statistics). So we only need to augment wealth/rounds/bet-amount with wins/_n_.
+And one can compute _p_ from wins/_n_ by Bayesian updates of a prior on the observed coin flip results, treating it as a binomial problem of estimating _p_ distributed according to the [beta distribution](!Wikipedia).
+
+This beta Bayesian update is easy and doesn't require calling out to a library: with a beta uniform prior (`Beta(1,1)`), update on binomial (win/loss) is conjugate with the simple closed form posterior of `Beta(1+win, 1+n-win)`; and the expectation of the beta is `1+win / 1+n`.
+Then our expected values in `f` simply change from 0.6/0.4 to expectation/1-expectation.
+
+Going back to the R implementation, we add in the two additional parameters, the beta estimation, and estimate the hardwired probabilities:
+
+~~~{.R}
+library(memoise)
+f <- function(x, w, b, wins, n) {
+    beta <- c(1+wins, 1+n-wins)
+    expectedWinProb <- beta[1] / (beta[1]+beta[2]) # E[Beta(alpha, beta)] = alpha / (alpha+beta)
+    expectedLoseProb <- 1 - expectedWinProb
+    expectedWinProb*mV(min(w+x,250), b-1, wins+1, n+1) + expectedLoseProb*mV(w-x, b-1, wins, n+1) }
+mf <- memoise(f)
+V <- function(w,b,wins,n) {
+    returns <- if (b>0 && w>0 && w<250) { sapply(seq(0, w, by=0.1), function(x) { mf(x,w,b, wins, n) }) } else { w }
+    max(returns) }
+mV <- memoise(V)
+~~~
+
+What prior should we use?
+
+Ideally we would use the prior of the participants in the experiment, to compare how well they do compared to the Bayesian decision tree, and estimate how much mistaken beliefs cost them.
+Unfortunately they were not surveyed on this and the authors do not give any indication of how much of an edge the subjects expected before starting the game, so for analysis, we'll make up a plausible prior.
+
+We know that they know that 100% is not an option (as that would be boring) and <50% is imposible too since they were promised an edge; but it can't be too high because then everyone would win quickly and nothing would be learned.
+I think a reasonable prior would be something like 70%, but with a lot of room for surprise.
+let's assume a weak prior around 70%, which is equivalent to playing 10 games and winning 7, so `Beta(7, 3)`.
+
+With the additional parameters, the memoized version becomes impossibly slow, so I rewrite it to use R environments as a poor man's hash table:
+
+~~~{.R}
+## crude hash table
+library(digest)
+d <- function (o) { digest(o, algo="xxhash32") }
+lookup <- function(key) { get(d(key), tree) }
+set <- function(key,value) { assign(envir=tree, d(key), value) }
+isSet <- function(key) { exists(d(key), envir=tree) }
+## example:
+tree <- new.env(size=1000000, parent=emptyenv())
+set(c(25,300), 50); lookup(c(25, 300))
+# [1] 50
+
+tree <- new.env(size=1000000, parent=emptyenv())
+f <- function(x, w, b, wins, n) {
+    beta <- c(1+wins, 1+n-wins)
+    expectedWinProb <- beta[1] / (beta[1]+beta[2]) # E[Beta(alpha, beta)] = alpha / (alpha+beta)
+    expectedLoseProb <- 1 - expectedWinProb
+    expectedWinProb*V(min(w+x,250), b-1, wins+1, n+1) + expectedLoseProb*V(w-x, b-1, wins, n+1) }
+V <- function(w, b, wins, n) {
+    if (isSet(c(w,b,wins,n))) { return(lookup(c(w,b,wins,n))) } else {
+      returns <- if (b>0 && w>0 && w<250) { sapply(seq(0, w, by=0.1), function(x) { f(x,w,b,wins,n) }) } else { return(w) }
+      set(c(w,b,wins,n), max(returns))
+      return(lookup(c(w,b,wins,n)))
+      }
+}
+# test expression: $25, 5 bets, suggested 7/10 prior:
+V(25,5,7,10)
+~~~
+
+This prior leads to somewhat more aggressive betting in short games as the EV is higher, but overall performs much like the decision tree.
+
+nshepperd provides a modified version of his code which lets us evaluate up to _b_=300:
+
+~~~{.Haskell}
+{-# LANGUAGE ScopedTypeVariables #-}
+import System.Environment
+import Data.List
+import Data.Foldable
+import Data.Function
+import Data.Function.Memoize
+import Data.Vector (Vector)
+import qualified Data.Vector as V
+import Data.Ord
+import Text.Printf
+import Numeric.Search.Range -- from 'binary-search'
+
+type Wealth = Int
+type BetAmount = Wealth
+type Probability = Double
+type EV = Double
+
+type Round = Int
+type MaxRounds = Round
+type WonRounds = Round
+type Alpha = Int
+type Beta = Int
+
+cap :: Wealth
+cap = 250
+
+data Tree = Done EV
+          | Bet EV Wealth BetAmount Round Probability Tree Tree
+          deriving (Show)
+
+data Dual = Dual {
+  subjectiveEV :: !EV,
+  trueEV :: !EV
+  } deriving (Show)
+
+instance Plan Dual where
+  done w = Dual (fromIntegral w) (fromIntegral w)
+  bet w x b p win loss = Dual {
+    subjectiveEV = p * subjectiveEV win + (1 - p) * subjectiveEV loss,
+    trueEV = 0.6 * trueEV win + (1 - 0.6) * trueEV loss
+    }
+  strategyEV = subjectiveEV
+
+class Plan s where
+  done :: Wealth -> s
+  bet :: Wealth -> BetAmount -> Round -> Double -> s -> s -> s
+  strategyEV :: s -> EV
+
+instance Plan Double where
+  done = fromIntegral
+  bet w x b p win loss = p * win + (1 - p) * loss
+  strategyEV = id
+
+instance Plan Tree where
+  done w = Done (fromIntegral w)
+  strategyEV (Done ev) = ev
+  strategyEV (Bet ev _ _ _ _ _ _) = ev
+  bet 0 _ _ _ _ _ = Done 0
+  bet w x b p win loss = Bet ev w x b p win loss
+    where
+      ev = p * strategyEV win + (1 - p) * strategyEV loss
+
+showTree :: Tree -> String
+showTree (Done ev) = show (Done ev)
+showTree (Bet ev w x b p win loss) = intercalate "\n" [
+  printf "%i (%1.1f): %i/%i at %2.2f" b ev x w p,
+  indent 4 ("+ " ++ showTree win),
+  indent 4 ("- " ++ showTree loss)
+  ]
+  where
+    indent n str = intercalate "\n" $ map (replicate n ' ' ++) $ lines str
+
+-- $ Unordered maximum
+maximumOn :: (Foldable f, Ord b) => (a -> b) -> f a -> a
+maximumOn f = maximumBy (comparing f)
+
+-- Binary search on bitonic function.
+maximumBitonic :: Ord b => (a -> b) -> Vector a -> a
+maximumBitonic f options = case searchFromTo find 0 (V.length options - 2) of
+                             Just i -> options V.! i
+                             Nothing -> options V.! (V.length options - 1)
+  where
+    find i = f (options V.! i) >= f (options V.! (i + 1))
+
+value :: Plan s
+      => Alpha -> Beta -> MaxRounds
+      -> (Round -> WonRounds -> Wealth -> s)
+      -> (Round -> WonRounds -> Wealth -> s)
+value alpha beta lastRound next currentRound wins w
+  | currentRound >= lastRound = done w
+  | w            >= cap       = done w
+  | otherwise = maximumBitonic strategyEV options
+  where
+    new_alpha = alpha + wins
+    new_beta = beta + (currentRound - wins)
+    p = fromIntegral new_alpha / fromIntegral (new_alpha + new_beta)
+    go x = bet w x currentRound p
+           (next (currentRound+1) (wins+1) (w+x))
+           (next (currentRound+1) wins     (w-x))
+    options = V.fromList [go x | x <- [0..min (cap - w) w]]
+
+-- Direct recursion.
+direct :: Plan s
+       => Alpha -> Beta -> MaxRounds
+       -> (Round -> WonRounds -> Wealth -> s)
+direct a b m = fix (value a b m)
+
+-- Memoised recursion.
+memo :: forall s. Plan s
+     => Alpha -> Beta -> MaxRounds
+     -> (Round -> WonRounds -> Wealth -> s)
+memo a b maxRounds = cached_value
+  where
+    cached_value r wins w = table V.! r V.! wins V.! w
+    table :: Vector (Vector (Vector s))
+    table = V.generate (maxRounds + 1)
+            (\r -> V.generate (r + 1)
+              (\wins -> V.generate (cap + 1)
+                (\w -> value a b maxRounds cached_value r wins w)))
+
+-- Memoised recursion using 'memoize' library; slower.
+memo2 :: Plan s
+       => Alpha -> Beta -> MaxRounds
+       -> (Round -> WonRounds -> Wealth -> s)
+memo2 a b r = memoFix3 (value a b r)
+
+run :: Plan s
+    => (alpha -> beta -> maxRounds -> (Round -> WonRounds -> wealth -> s))
+    -> alpha -> beta -> maxRounds -> wealth -> s
+run method alpha beta rounds w = method alpha beta rounds 0 0 w
+
+main :: IO ()
+main = do [a, b, r, w] <- map read <$> getArgs
+          print $ (run memo a b r w :: Dual)
+~~~
+
+One feature offered by this code is reporting two expected-values:
+
+1. the subjective estimate of the agent at the beginning of the game about how much it can profit, given the rules and its priors about _p_
+2. the EV it will actually earn, following its policy, given the true probability _p_=0.6
+
+For our prior, _w_=25, and _b_=300, we can evaluate `run memo (7+1) (3+1) 300 25 :: Dual` and find that the subjective EV is \$207.23843381764925 and the actual EV is \$245.67621435063558.
+
+And since we know from earlier that an agent following the optimal policy believing _p_=0.6 would earn \$246.6062932, it follows that the Bayesian agent, due to its ignorance, loses ~\$1.
+So the regret or price of ignorance in this scenario is surprisingly small.
+
+Why is the Bayesian decision tree able to perform so close to the true decision tree?
+I would hazard a guess that it is because all agents bet small amounts in the early rounds (to avoid gambler's ruin, since they have hundreds of rounds left to reach the ceiling), and this gives them time to update towards _p_=0.6; the agent which knows that _p_=0.6 can bet a little more precisely early on, but it doesn't wind up being much of a help in the long run.
+With so many rounds to bet available, the details don't matter as much, and with only a few bets, the maximizing behavior is to bet a lot, so the regret is likely highest somewhere, like with the KC, in the small-medium area of bets.
