@@ -102,7 +102,7 @@ mV(25, 0) == 25 && mV(25, 1) == 30 && mV(0, 300) == 0
 ~~~
 
 Given our memoized value function `mV` we can now take a look at expected value of optimal betting for bets _b_ from 0 to 300 with the fixed starting payroll of \$25.
-Memoization is no panacea, and R/[`memoise`](https://cran.r-project.org/web/packages/memoise/index.html) is slow enough that I am forced to make one change to the betting: instead of allowing bets in penny/\$0.01 increments, I approximate by only allowing bets in \$1 increments, to reduce the branching factor to a maximum of 250 possible choices each turn rather than 25000 choices.
+Memoization is no panacea, and R/[`memoise`](https://cran.r-project.org/web/packages/memoise/index.html) is slow enough that I am forced to make one change to the betting: instead of allowing bets in penny/\$0.01 increments, I approximate by only allowing bets in \$1 increments, to reduce the branching factor to a maximum of 250 possible choices each round rather than 25000 choices.
 (Some comparisons with decipenny and penny trees suggests that this makes little difference since early on the bet amounts are identical and later on being able to make <\$1 adjustments to bets yield small gains relative to total wealth; see the Haskell implementation.)
 
 Of course, even with memoization and reducing the branching factor, it's still difficult to compute the value of the optimal strategy all the way to _b_=300 because the exponentially increasing number of strategies still need to be computed at least once.
@@ -179,30 +179,6 @@ mV <- memoise(V)
 mV(25, 300, 100); mV(25, 300, 50)
 ~~~
 
-<!--
-## Set up a hashtable equivalent using R's 'environments' and 'digest'
-library(digest)
-d <- function (o) { digest(o, algo="xxhash32") }
-lookup <- function(key) { get(d(key), tree) }
-set <- function(key,value) { assign(envir=tree, d(key), value) }
-isSet <- function(key) { exists(d(key), envir=tree) }
-## example:
-tree <- new.env(size=1000000, parent=emptyenv())
-set(c(25,300), 50); lookup(c(25, 300))
-# [1] 50
-
-tree <- new.env(size=1000000, parent=emptyenv())
-f <- function(x, w, b) { 0.6*V(min(w+x,250), b-1) + 0.4*V(w-x, b-1)}
-V <- function(w, b) {
-    if (isSet(c(w,b))) { return(lookup(c(w,b))) } else {
-      returns <- if (b>0 && w>0 && w<250) { sapply(seq(0, w, by=0.1), function(x) { f(x,w,b) }) } else { return(w) }
-      set(c(w,b), max(returns))
-      return(lookup(c(w,b)))
-      }
-    }
-V(25,5)
--->
-
 ### Optimal next action
 
 One is also curious what the optimal strategy *is*, not just how much we can make with the optimal strategy given a particular starting point.
@@ -256,6 +232,35 @@ Most of the time is spent in functions which appear nowhere in our R code, like 
 Memoization *should* be fast because the decision tree can be represented as nothing but a multidimensional array in which one does lookups for each combination of _w_/_b_ for a stored value _V_, and array lookups ought to be near-instantaneous.
 But apparently there is enough overhead to dominate our decision tree's computation.
 
+R does not provide hash tables, and there don't seem to be any good libraries for this; what one can do is use R's "environments", which use hash tables under the hood, but are restricted to string keys (yes, really) as a poor man's hash table by using `digest` to serialize & hash R objects into string keys/
+The backwards induction remains the same and the hashtable can be updated incrementally without any problem (useful for switching to alternative methods like MCTS), so the rewrite is easy:
+
+~~~{.R}
+## crude hash table
+library(digest)
+d <- function (o) { digest(o, algo="xxhash32") }
+lookup <- function(key) { get(d(key), tree) }
+set <- function(key,value) { assign(envir=tree, d(key), value) }
+isSet <- function(key) { exists(d(key), envir=tree) }
+## example:
+tree <- new.env(size=1000000, parent=emptyenv())
+set(c(25,300), 50); lookup(c(25, 300))
+# [1] 50
+
+tree <- new.env(size=1000000, parent=emptyenv())
+f <- function(x, w, b) {
+    0.6*V(min(w+x,250), b-1) + 0.4*V(w-x, b-1) }
+V <- function(w, b) {
+    if (isSet(c(w,b))) { return(lookup(c(w,b))) } else {
+      returns <- if (b>0 && w>0 && w<250) { sapply(seq(0, w, by=0.1), function(x) { f(x,w,b) }) } else { return(w) }
+      set(c(w,b), max(returns))
+      return(lookup(c(w,b)))
+      }
+}
+V(25,5)
+~~~
+
+While the overhead is not as bad as `memoise`, performance is still not great.
 We can switch to a compiled language with fast arrays.
 
 #### Haskell
@@ -1116,6 +1121,7 @@ qplot(fraction, fractionEVs)
 
 # Coin-flipping POMDP
 ## Bayesian decision tree
+### Unknown coin-flip probability
 
 A variant on this problem is when the probability of winning is *not* given, if one doesn't know in advance _p_=0.6.
 How do you make decisions as coin flips happen and provide information on _p_?
@@ -1156,17 +1162,6 @@ let's assume a weak prior around 70%, which is equivalent to playing 10 games an
 With the additional parameters, the memoized version becomes impossibly slow, so I rewrite it to use R environments as a poor man's hash table:
 
 ~~~{.R}
-## crude hash table
-library(digest)
-d <- function (o) { digest(o, algo="xxhash32") }
-lookup <- function(key) { get(d(key), tree) }
-set <- function(key,value) { assign(envir=tree, d(key), value) }
-isSet <- function(key) { exists(d(key), envir=tree) }
-## example:
-tree <- new.env(size=1000000, parent=emptyenv())
-set(c(25,300), 50); lookup(c(25, 300))
-# [1] 50
-
 tree <- new.env(size=1000000, parent=emptyenv())
 f <- function(x, w, b, wins, n) {
     beta <- c(1+wins, 1+n-wins)
@@ -1330,11 +1325,56 @@ One feature offered by this code is reporting two expected-values:
 1. the subjective estimate of the agent at the beginning of the game about how much it can profit, given the rules and its priors about _p_
 2. the EV it will actually earn, following its policy, given the true probability _p_=0.6
 
-For our prior, _w_=25, and _b_=300, we can evaluate `run memo (7+1) (3+1) 300 25 :: Dual` and find that the subjective EV is \$207.23843381764925 and the actual EV is \$245.67621435063558.
+For our prior, _w_=25, and _b_=300, we can evaluate `run memo (7+1) (3+1) 300 25 :: Dual` and find that the subjective EV is \$207.238 and the actual EV is \$245.676.
 
-And since we know from earlier that an agent following the optimal policy believing _p_=0.6 would earn \$246.6062932, it follows that the Bayesian agent, due to its ignorance, loses ~\$1.
-So the regret or price of ignorance in this scenario is surprisingly small.
+And since we know from earlier that an agent following the optimal policy believing _p_=0.6 would earn \$246.606, it follows that the Bayesian agent, due to its ignorance, loses ~\$1.
+So the price of ignorance ([regret](!Wikipedia "Regret (decision theory)")) in this scenario is surprisingly small.
 
-Why is the Bayesian decision tree able to perform so close to the true decision tree?
-I would hazard a guess that it is because all agents bet small amounts in the early rounds (to avoid gambler's ruin, since they have hundreds of rounds left to reach the ceiling), and this gives them time to update towards _p_=0.6; the agent which knows that _p_=0.6 can bet a little more precisely early on, but it doesn't wind up being much of a help in the long run.
-With so many rounds to bet available, the details don't matter as much, and with only a few bets, the maximizing behavior is to bet a lot, so the regret is likely highest somewhere, like with the KC, in the small-medium area of bets.
+Why is the Bayesian decision tree able to perform so close to the known-probability decision tree?
+I would guess that it is because all agents bet small amounts in the early rounds (to avoid gambler's ruin, since they have hundreds of rounds left to reach the ceiling), and this gives them data for free to update towards _p_=0.6; the agent which knows that _p_=0.6 can bet a little more precisely early on, but this advantage over a few early rounds doesn't wind up being much of a help in the long run.
+
+With _b_=300, there are so many rounds available to bet, that the details don't matter as much; while it there are only a few bets, the maximizing behavior is to bet a lot so the regret for small _b_ is also probably small; the largest regret for not knowing _p_ is probably somewhere, like with the KC vs decision tree, in the small-medium area of _b_.
+
+<!--
+### Unknown stopping time
+
+Another variant would be to make the stopping time uncertain; strictly speaking, the game wasn't fixed at *exactly* 300 rounds, that was just their guess at how many rounds a reasonably fast player might get in before the clock expired.
+From the player's perspective, it is unknown how many rounds they will get to play although they can guess that they won't be allowed to play more than a few hundred, and this might affect the optimal strategy.
+
+One way to calculate this would be to assume that the player doesn't learn anything about the stopping time while playing, and merely has a prior over the stopping time.
+For example, N(300,25).
+What is the value of this game?
+We can approximate it with our pre-existing value function for a known stopping time, sampling from the posterior; for example, we might draw 1000 values from N(300,25), calculate the value of 300, 295, 320, 301, 296... etc, and taking the mean value.
+(This is not as terrible as it sounds computation-wise: since the value function is deterministic, we can cache each value and we only need to run the value function for each unique value, and then take a mean weighted by their count in the posterior sample. So if we draw 10,000 posterior samples, we don't need to do 10,000x the work, but maybe only 100x, depending on how narrow our prior is.)
+
+Another way would be to try to calculate it inside the value function.
+The game stopping can be seen as a third probabilistic response to a player's bet, where each move with some _sp_, if it happens the number of bets left immediately becomes _b_=0 (so they win their current _w_) and they win the net value _V(w,0)_; and if it doesn't happen the value is the usual `0.6*V(w+x*2, b-1) + 0.4*V(w-x, b-1)`.
+Or in longer form, the value of a action/bet _x_ is `(1-sp)*(0.6*V(w+x*2,b-1) + 0.4*V(w-x,b-1)) + sp*V(w,0)`.
+
+What is _sp_ as a distribution?
+Well, one might believe that every round, there is a ~1% chance of the game stopping, in which case _sp_ is the memoryless geometric distribution (not exponential distribution, since this is a discrete setup); in this case, one must discount each additional round _n_ by 1% cumulatively.
+
+This has the difficulty that hypothetically, a game might go on indefinitely long, but since a player must eventually hit \$0 or \$250 and stop playing, it would turn out like the penny simulator - after a few thousand rounds, the probability of having not reached \$250 is so small it can't be handed by most software.
+The problem is more that this expands the states out enough to again make it unevaluable, so it helps to put an upper bound.
+So the problem becomes, playing the game knowing that the game might stop with a certain _sp_ (eg 0.01) each round *or* stops at an upper limit number of rounds (eg _b_=300).
+
+So continuing with the R hash table, it might go like this:
+
+~~~{.R}
+f <- function(x, w, b) {
+    sp <- 0.01
+    (1-sp)*(0.6*V(w+x*2, b-1) + 0.4*V(w-x,b-1)) + sp*V(w,0)
+}
+V <- function(w, b) {
+    if (isSet(c(w,b))) { return(lookup(c(w,b))) } else {
+      returns <- if (b>0 && w>0 && w<250) { sapply(seq(0, w, by=0.1), function(x) { f(x,w,b) }) } else { return(w) }
+      set(c(w,b), max(returns))
+      return(lookup(c(w,b)))
+      }
+}
+~~~
+
+This can be extended to scenarios where we do learn something about the stopping time, similarly to the coin-flip probability, by doing Bayesian updates on _sp_.
+Or if _sp_ changes over rounds.
+If we had a distribution N(300,25) over the stopping time, then the probability of stopping at each round can change inside the value function given an additional argument _n_ for rounds elapsed.
+-->
