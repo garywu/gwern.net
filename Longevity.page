@@ -39,7 +39,7 @@ And when a randomized experiment *is* done in healthy adult humans, the experime
 It would not be surprising if we must intone the ritual ending to all Cochrane Reviews, "there is insufficient evidence for a recommendation".
 
 Fortunately, I do know of a few plausible candidate interventions.
-For example, baby aspirin has been tested in what must be dozens of trials at this point (generally turning in RRs  like 0.90 or 0.95 in the meta-analyses), is almost too cheap to bother including the cost, and has minimal side-effects (rarely, internal bleeding); it would not be surprising if a cost-benefit indicated the best decision is taking baby aspirin.
+For example, baby aspirin has been tested in what must be dozens of trials at this point (generally turning in [relative risk](!Wikipedia)/RRs  like 0.90 or 0.95 in the meta-analyses), is almost too cheap to bother including the cost, and has minimal side-effects (rarely, internal bleeding); it would not be surprising if a cost-benefit indicated the best decision is taking baby aspirin.
 
 Unfortunately, no one has done this sort of thing before, so for my own use, while not an expert on any of the interventions or on health economics in general, I thought I might try to sketch out some such analyses.
 
@@ -767,7 +767,7 @@ To go into some more detail about the dosing issue, ne of the more recent meta-a
 > - 13\. Bjelakovic G, Gluud LL, Nikolova D, et al. "Vitamin D supplementation for prevention of mortality in adults". Cochrane Database Syst Rev 2011; 7: CD007470. [[2014](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD007469.pub2/pdf) update]
 > - 14\. Rejnmark L, Avenell A, Masud T, et al. ["Vitamin D with calcium reduces mortality: patient level pooled analysis of 70,528 patients from eight major vitamin D trials"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3410276/). J Clin Endocrinol Metab 2012; 97: 2670-81.
 
-(1μg=40IU, so 10μg=400IU, 20μg=800IU, and 1250μg=5000IU.)
+(1μg=40IU, so 10μg=400IU, 20μg=800IU, and 125μg=5000IU.)
 
 I'm not sure I agree. The mechanistic theory and correlations do not predict that 400IU is ideal, it doesn't seem enough to get blood serum levels of 25(OH)D particularly higher, and I don't read Rejnmark the same way: the [Figure 3 forest plot](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3410276/figure/F3/), to me, shows that after correcting for Smith's use of D2 rather than D3 (D2 usually performs worse), that there are too few studies using higher doses to make any kind of claim ([Table 1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3410276/table/T1/); almost all the daily studies use <=20μg), and the studies which we do have tend to point to higher being better within this restricted range of dosages.
 
