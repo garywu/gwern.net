@@ -344,7 +344,7 @@ Instead, we'd like some comprehensible probability that each media is assigned t
 Since BF-2 is fundamentally a frequentist library, it will never give us this kind of answer; all it has to offer in this vein are _p_-values - which are answers to questions I've never asked - and standard errors, which are *sort* of indicators of uncertainty & better than nothing but still imperfect.
 Between our interest in a sequential trial approach and our interest in producing meaningful probabilities of errors (and my own preference for Bayesian approaches in general), this motivates looking at Bayesian implementations.
 
-The Bradley-Terry model can be fit easily in Bugs/JAGS; two less and more elaborate examples are in [Jim Albert's implementation](http://bayes.bgsu.edu/webinar.11.2012/R%20output/Rcode.part4.html "Part 4: Introduction to JAGS") & [Shawn E. Hallinan](https://www.wpi.edu/Pubs/ETD/Available/etd-050505-154305/unrestricted/shawnhal.pdf "Paired Comparison Models for Ranking National Soccer Teams").
+The Bradley-Terry model can be fit easily in JAGS/Stan; two less and more elaborate examples are in [Jim Albert's implementation](https://web.archive.org/web/20160102165131/http://bayes.bgsu.edu/webinar.11.2012/R%20output/Rcode.part4.html "Part 4: Introduction to JAGS") & [Shawn E. Hallinan](https://www.wpi.edu/Pubs/ETD/Available/etd-050505-154305/unrestricted/shawnhal.pdf "Paired Comparison Models for Ranking National Soccer Teams"), and [`btstan`](https://github.com/nxskok/btstan/blob/master/R/btstan.R) respectively.
 Although it doesn't implement the extended B-T with ties, Albert's example is easily adapted, and we could try to infer rankings like thus:
 
 ~~~{.R}
@@ -357,11 +357,29 @@ n = comparisons2$win1 + comparisons2$win2
 N = length(y)
 J = length(levels(comparisons$Media.1))
 data = list(y = y, n = n, N = N, J = J, teamA = teamA, teamH = teamH)
+data ## reusing the baseball data for this example:
+# $y
+#  [1] 4 4 4 6 4 6 3 4 4 6 6 4 2 4 2 4 4 6 3 5 2 4 4 6 5 2 3 4 5 6 2 3 3 4 4 2 2 1 1 2 1 3
+#
+# $n
+#  [1] 7 6 7 7 6 6 6 6 7 6 7 7 7 7 6 7 6 6 6 6 7 7 6 7 6 7 6 6 7 6 7 6 7 7 6 6 7 6 7 6 7 7
+#
+# $N
+# [1] 42
+#
+# $J
+# [1] 7
+#
+# $teamA
+#  [1] 4 7 6 2 3 1 5 7 6 2 3 1 5 4 6 2 3 1 5 4 7 2 3 1 5 4 7 6 3 1 5 4 7 6 2 1 5 4 7 6 2 3
+#
+# $teamH
+#  [1] 5 5 5 5 5 5 4 4 4 4 4 4 7 7 7 7 7 7 6 6 6 6 6 6 2 2 2 2 2 2 3 3 3 3 3 3 1 1 1 1 1 1
 
 model1 <- "model {
     for (i in 1:N){
-        y[i] ~ dbin (p[i], n[i])
         logit(p[i]) <- a[teamH[i]] - a[teamA[i]]
+        y[i] ~ dbin (p[i], n[i])
     }
     for (j in 1:J){
         a[j] ~ dnorm(0, tau)
@@ -375,14 +393,20 @@ j1 <- autorun.jags(model=model1, monitor=c("a", "y"), data=data); j1
 
 (This reuses the converting-priors-to-data trick from before.)
 This yields sensible ratings but MCMC unavoidably have overhead compared to a quick iterative maximum-likelihood algorithm which only estimates the parameters - it takes about 1s to run on the example data.
-1s is too long for particularly pleasant interactive use (total time from response to next question should be <0.1s for best UX) but maybe it's worth paying if we can get much better questions?
-There might be speedups available; this is about estimating latent normal/Gaussian variables, which frequently has very fast implementations. For example, it would not surprise me if it turned out that the Bayesian inference could be done outside of MCMC through an analytic solution, or more likely, a Laplacian approximation, such as implemented in [INLA](http://www.r-inla.org/) which supports [latent Gaussians](http://bib.tiera.ru/b/101800#page=111 "'Case Studies in Bayesian Computation using INLA', Martino & Rue 2010").
+Much of that overhead is from JAGS's setup & interpreting the model, and could probably be halved maybe by using Stan instead (since it caches compiled models) but regardless, 0.5s is too long for particularly pleasant interactive use (total time from response to next question should be <0.1s for best UX) but it's worth paying if we can get much better questions?
+There might be speedups available; this is about estimating latent normal/Gaussian variables, which frequently has very fast implementations.
+For example, it would not surprise me if it turned out that the Bayesian inference could be done outside of MCMC through an analytic solution, or more likely, a Laplacian approximation, such as implemented in [INLA](http://www.r-inla.org/) which supports [latent Gaussians](http://bib.tiera.ru/b/101800#page=111 "'Case Studies in Bayesian Computation using INLA', Martino & Rue 2010").
 
 #### Optimal exploration
 
-So moving on, with a MCMC implementation, we can look at how to optimally sample data. In this case, since we're collecting data and the user can stop anytime they feel like, we aren't interesting in loss functions so much as maximizing information gain - figuring out which pair of media yields the highest "expected information gain".
+So moving on, with a MCMC implementation, we can look at how to optimally sample data.
+In this case, since we're collecting data and the user can stop anytime they feel like, we aren't interesting in loss functions so much as maximizing information gain - figuring out which pair of media yields the highest "expected information gain".
 
-EI is not too well documented at an implementation level, but the algorithm seems to go: for each possible action (in this case, each possible pair of media), draw a sample from the posterior as a hypothetical action (from the MCMC object, draw a score estimate for both media and compare which is higher), rerun & update the analysis (add the result of the comparison to the dataset & run the MCMC again on it to yield a new MCMC object), and on these two old and new MCMC objects, calculate the entropy of the distributions (in this case, the sum of all the logs of probability of the higher in each possible pair of media being higher?), and subtract new from old; do that ~10 times for each so the estimated change in entropy is reasonably stable; then find the possible action with the largest change in entropy, and execute that.
+One possible approach would be to repeat our heuristic: estimate the entropy of each media, pick the one with the highest entropy/widest posterior distribution, and pick a random comparison.
+A better one might be to vary this: pick the two media who most overlap (more straightforward with posterior samples of the latent variables than with just confidence intervals, since confidence intervals, after all, do not mean "the true variable is in this range with 95% probability").
+That seems much better but still probably not optimal, as it ignores any downstream effects - we might reduce uncertainty more by sampling in the middle of a big cluster of movies rather than sampling two outliers near each other.
+
+Formal EI is not too well documented at an implementation level, but the most general form of the algorithm seems to go: for each possible action (in this case, each possible pair of media), draw a sample from the posterior as a hypothetical action (from the MCMC object, draw a score estimate for both media and compare which is higher), rerun & update the analysis (add the result of the comparison to the dataset & run the MCMC again on it to yield a new MCMC object), and on these two old and new MCMC objects, calculate the entropy of the distributions (in this case, the sum of all the logs of probability of the higher in each possible pair of media being higher?), and subtract new from old; do that ~10 times for each so the estimated change in entropy is reasonably stable; then find the possible action with the largest change in entropy, and execute that.
 
 ##### Computational requirement
 
