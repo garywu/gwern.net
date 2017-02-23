@@ -73,7 +73,7 @@ That's fine to say in 2008, after many doublings. Would memory be a problem in t
 
 1. disk usage
 
-    - With a smaller hash like SHA1^[SHA-1, as of 2011, has not been cracked [in practice](!Wikipedia "SHA-1#Attacks").], the 80 bytes can be shrunk
+    - With a smaller hash like SHA1^[SHA-1, as of 2011, had not been cracked [in practice](!Wikipedia "SHA-1#Attacks"); it was defeated in 2017.], the 80 bytes can be shrunk
     - 10 minutes is not graven in stone; why not 20 minutes? Right there we have halved the transaction overhead
     - the hash tree can be 'garbage collected' and shrunk^[My understanding is that simply no one has bothered to program this functionality since 400MB is not that much space.]
     - it is only necessary to maintain a full hash tree if one is paranoid.
@@ -300,11 +300,13 @@ My own belief is that #1 is probably an important factor but questionable since 
 - ["Bitcoin: A Little Slice of Future Shock"](http://thomasbarker.com/13/06/bitcoin-little-slice-future-shock)
 - ["Squaring the Triangle: Secure, Decentralized, Human-Readable Names"](http://www.aaronsw.com/weblog/squarezooko)
 - ["Nick Szabo: The Computer Science of Crypto-Currency"](http://bitstein.org/blog/nick-szabo-the-computer-science-of-crypto-currency/)
+- ["Money, blockchains, and social scalability"](https://unenumerated.blogspot.com/2017/02/money-blockchains-and-social-scalability.html)
 
 # Appendix
 ## Irreversible transactions: meta-scams
 
-The irreversibility of Bitcoin transactions makes for some unusual dynamics in exchanges. I learned of an interesting example in May 2013, when a [Reddit post](http://www.reddit.com/r/onions/comments/1euxp4/so_does_this_work_or_is_it_a_scam/ "Throwaway account because I'm embarassed to ask... http://f7tyfzd2bbqi7jaa.onion/ It claims 'double your bitcoins'") introduced me to a Tor hidden site which offers you double your money back if you send it some bitcoins. Obviously a scam, right? Well, it is a scam, but it's not quite the scam it looks like.
+The irreversibility of Bitcoin transactions makes for some unusual dynamics in exchanges, along with the entire altcoin ecosystem (probably the most interesting altcoin scam to me was the [Bytecoin scam+anonymity innovation](https://da-data.blogspot.com/2014/08/minting-money-with-monero-and-cpu.html "Minting Money with Monero ... and CPU vector intrinsics")).
+I learned of an interesting example in May 2013, when a [Reddit post](http://www.reddit.com/r/onions/comments/1euxp4/so_does_this_work_or_is_it_a_scam/ "Throwaway account because I'm embarassed to ask... http://f7tyfzd2bbqi7jaa.onion/ It claims 'double your bitcoins'") introduced me to a Tor hidden site which offers you double your money back if you send it some bitcoins. Obviously a scam, right? Well, it is a scam, but it's not quite the scam it looks like.
 
 To start, there is a comment from someone claiming that they tried it and the way the scam worked was that it doubled your money the first time you sent it some bitcoins, but then kept anything you sent it subsequently; the idea being that the first transaction will be a 'test' by suspicious users, who will then send a 'real' transactions which can be stolen _in toto_. Specifically:
 

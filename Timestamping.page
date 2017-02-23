@@ -92,11 +92,13 @@ Now each commit we make, the [SHA-1](!Wikipedia) hash of the last commit will be
 This approach generalizes to most version control systems built on cryptographic hashes as IDs, where timestamping the ID-hashes is enough to assure the entire tree of content.
 (I'm not sure about other VCSes; perhaps the post-commit hooks could timestamp entire revisions/patches?)
 
-There are concerns that SHA-1 is increasingly weak and it will be possible, within the foreseeable future, for collisions to be generated at feasible costs, in which case timestamps of SHA-1 hashes will not prove as much as they used to.
+There have long been concerns that SHA-1 is increasingly weak; as of 2017, collisions can be generated at feasible costs, so timestamps of SHA-1 hashes no longer prove as much as they used to.
+
 It might be possible to use a tool like [`git-evtag`](https://github.com/cgwalters/git-evtag) for hashing the entire repository history including the changes themselves (rather than just the IDs), and timestamp this master hash instead of the latest-revision hash.
 Alternately, since there are no worries about SHA-256 being broken anytime soon, one could write a post-commit script to directly parse out a list of modified files & timestamp each file; in which case, every version of every file has its own separate SHA-256-based timestamp.
 (The disadvantage here is also an advantage as it enables selective disclosure: if you are timestamping the entire Git repository, then to subsequently prove the timestamp to a third party, you must provide the *entire* repository so they can replay it, see what the final state of the relevant file is, and check that it contains what you claim it contains and that the relevant revision's SHA-1 is correctly timestamped; but if you have timestamped each file separately, you can provide just the relevant version of the relevant file from your repository, rather every version of every file prior.
 The tradeoff here is similar to that of timestamping a hash of a batch vs timestamping individual hashes.
+
 Probably the best approach is to timestamp each file at the beginning, use VCS timestamps subsequently for regular activity, and every once in a long while timestamp all the files again; then for slow-changing files, one will be *probably* be able to reveal a useful timestamp without needing to reveal the whole VCS history as well, while still having backup timestamps of the whole VCS in case very fine-grained timestamps turn out to be necessary.)
 
 ## Timestamping downloaded web pages
