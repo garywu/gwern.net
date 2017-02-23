@@ -40,7 +40,7 @@ Statistics:
 - ["If correlation doesn't imply causation, then what does?"](http://www.michaelnielsen.org/ddi/if-correlation-doesnt-imply-causation-then-what-does/), Nielsen
 - ["Sequence Thinking vs. Cluster Thinking"](http://blog.givewell.org/2014/06/10/sequence-thinking-vs-cluster-thinking/) (False dichotomy - "cluster thinking" is simply "sequence thinking" sans arbitrary restrictions of hypotheses/models, like a cryonics analysis which only uses conjunctions and never disjunctions, so it's unsurprising that sequence thinking is faster & easier but generally less accurate than cluster thinking; but still interesting.)
 - [Using Repeated Measures & LOESS smoothing to Remove Artifacts from Longitudinal Data](http://imdevsoftware.wordpress.com/2014/06/04/using-repeated-measures-to-remove-artifacts-from-longitudinal-data/) (The idea of measures which systematically vary over time terrifies me, but that's a neat approach: occasionally take calibration samples and fit a curve to control for the bias.﻿)
-- ["The Neutral Model of Inquiry (or, What Is the Scientific Literature, Chopped Liver?)"](http://vserver1.cscs.lsa.umich.edu/~crshalizi/weblog/698.html)
+- ["The Neutral Model of Inquiry (or, What Is the Scientific Literature, Chopped Liver?)"](http://bactra.org/weblog/698.html)
 - [Gustav III of Sweden's coffee experiment](https://en.wikipedia.org/wiki/Gustav_III_of_Sweden%27s_coffee_experiment)
 
 Medicine:

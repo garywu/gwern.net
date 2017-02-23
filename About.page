@@ -186,7 +186,7 @@ Occasionally people ask how I manage information and read things.
 
     My workflow for dealing with PDFs, as of late 2014, is:
 
-    1. if necessary, jailbreak the paper using [Libgen](http://libgen.org/) or a university proxy, then upload a copy to [pdf.yt](http://pdf.yt/) & Dropbox, named `$year-$first_author.pdf`
+    1. if necessary, jailbreak the paper using [Libgen](http://libgen.org/) or a university proxy, then upload a copy to Dropbox, named `$year-$first_author.pdf`
     2. read the paper, making excerpts as I go
     3. store the metadata & excerpts in Evernote, possibly copying over to my Google+ account if I think it's good or otherwise interesting
     4. if useful, integrate into `gwern.net` with its title/year/author metadata, adding a local fulltext copy if the paper had to be jailbroken, otherwise rely on my custom archiving setup to preserve the remote URL

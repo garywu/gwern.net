@@ -85,6 +85,14 @@ There are other options but they are not available like Google^[Google Cache is 
 
 (An example would be [`bits.blogs.nytimes.com/2010/12/07/palm-is-far-from-game-over-says-former-chief/`](http://bits.blogs.nytimes.com/2010/12/07/palm-is-far-from-game-over-says-former-chief/ "Palm Is Far From 'Game Over', Says Former Chief") being archived at [`webcitation.org/5ur7ifr12`](http://webcitation.org/5ur7ifr12).)
 
+These archives are also good for archiving your own website:
+
+1. you may be keeping backups of it, but your own website/server backups can be lost (I can speak from personal experience here), so it's good to have external copies
+2. Another benefit is the reduction in 'bus-factor': if you were hit by a bus tomorrow, who would get your archives and be able to maintain the websites and understand the backups etc? While if archived in IA, people already know how to get copies and there are tools to download entire domains.
+3. A focus on backing up only one's website can blind one to the need for archiving the *external links* as well. Many pages are meaningless or less valuable with broken links. A linkchecker script/daemon can also archive all the external links.
+
+So there are several benefits to doing web archiving beyond simple server backups.
+
 My first program in this vein of thought was a bot which fired off WebCite, Internet Archive/Alexa, & Archive.is requests: [Wikipedia Archiving Bot](haskell/Wikipedia Archive Bot), quickly followed up by a [RSS version](haskell/Wikipedia RSS Archive Bot). (Or you could install the [Alexa Toolbar](!Wikipedia) to get automatic submission to the Internet Archive, if you have ceased to care about privacy.)
 
 The core code was quickly adapted into a [gitit](!Hackage) wiki plugin which hooked into the save-page functionality and tried to archive every link in the newly-modified page, [Interwiki.hs](https://github.com/jgm/gitit/blob/master/plugins/Interwiki.hs)

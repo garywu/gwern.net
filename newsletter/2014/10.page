@@ -29,7 +29,7 @@ Everything is heritable:
 
 - ["Common DNA Markers Can Account for More Than Half of the Genetic Influence on Cognitive Abilities"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3652710/), Plomin et al 2013
 - ["The high heritability of educational achievement reflects many genetically influenced traits, not just intelligence"](http://www.pnas.org/content/early/2014/10/02/1408777111.full.pdf), Krapohl et al 2014
-- ["Growth, efficiency, and yield of commercial broilers from 1957, 1978, and 2005"](https://pdf.yt/d/bEVFEdtFm8DFf9r6), Zuidhof et al 2014 ([media](http://www.vox.com/xpress/2014/10/2/6875031/chickens-breeding-farming-boilers-giant "Chickens have gotten ridiculously large since the 1950s"); [excerpts](https://plus.google.com/103530621949492999968/posts/7j4fZFKDS6P))
+- ["Growth, efficiency, and yield of commercial broilers from 1957, 1978, and 2005"](https://academic.oup.com/ps/article/93/12/2970/2730506/Growth-efficiency-and-yield-of-commercial-broilers), Zuidhof et al 2014 ([media](http://www.vox.com/xpress/2014/10/2/6875031/chickens-breeding-farming-boilers-giant "Chickens have gotten ridiculously large since the 1950s"); [excerpts](https://plus.google.com/103530621949492999968/posts/7j4fZFKDS6P))
 - ["Estimating the Inbreeding Depression on Cognitive Behavior: A Population Based Study of Child Cohort"](http://www.plosone.org/article/info:doi/10.1371/journal.pone.0109585)
 - ["Korea's Sooam Biotech Is the World's First Animal Cloning Factory"](http://www.businessweek.com/articles/2014-10-22/koreas-sooam-biotech-is-the-worlds-first-animal-cloning-factory)
 
@@ -61,9 +61,9 @@ Statistics/AI/meta-science:
 How often does correlation=causality?
 
 - ["Randomized versus historical controls for clinical trials"](https://www.dropbox.com/s/cjq0aqkxnrv1ba6/1982-sacks.pdf), Sacks et al 1982 ([excerpts](https://plus.google.com/103530621949492999968/posts/U14TpU2nKju))
-- ["The Adequacy of Comparison Group Designs for Evaluations of Employment-Related Programs"](https://pdf.yt/d/AmuYucmgh2MghBok), Fraker & Maynard 1987 ([excerpts](https://plus.google.com/103530621949492999968/posts/865Xm8yZbqv))
-- ["Choosing between randomised and non-randomised studies: a systematic review"](http://www.journalslibrary.nihr.ac.uk/__data/assets/pdf_file/0009/64827/FullReport-hta2130.pdf), Britton et al 1998 ([excerpts](https://plus.google.com/103530621949492999968/posts/6Y3oecUZPv9))
-- ["A systematic review of comparisons of effect sizes derived from randomised and non-randomised studies"](http://www.journalslibrary.nihr.ac.uk/__data/assets/pdf_file/0010/64828/FullReport-hta4340.pdf), MacLehose et al 2000 ([excerpts](https://plus.google.com/103530621949492999968/posts/ALaZGzXuDSX))
+- ["The Adequacy of Comparison Group Designs for Evaluations of Employment-Related Programs"](/docs/statistics/1987-fraker.pdf), Fraker & Maynard 1987 ([excerpts](https://plus.google.com/103530621949492999968/posts/865Xm8yZbqv))
+- ["Choosing between randomised and non-randomised studies: a systematic review"](/docs/statistics/1998-britton.pdf), Britton et al 1998 ([excerpts](https://plus.google.com/103530621949492999968/posts/6Y3oecUZPv9))
+- ["A systematic review of comparisons of effect sizes derived from randomised and non-randomised studies"](/docs/statistics/2000-maclehose.pdf), MacLehose et al 2000 ([excerpts](https://plus.google.com/103530621949492999968/posts/ALaZGzXuDSX))
 - ["Randomisation to protect against selection bias in healthcare trials (Cochrane Methodology Review)"](https://www.researchgate.net/profile/Gunn_Vist/publication/6384384_Randomisation_to_protect_against_selection_bias_in_healthcare_trials/links/5474990e0cf29afed60f8a01.pdf), Odgaard‐Jensen et al 2011
 - ["A weight of evidence approach to causal inference"](http://www.uc.pt/en/fmuc/phdhs/Courses/Epidemiology/A_weight_of_evidence_approach_to_causal_inference.pdf), Swaen & van Amelsvoort 2009 (circular reasoning & how *not* to do causal inference; [excerpts/discussion](https://plus.google.com/103530621949492999968/posts/UzMMmPgyyaV))
 
@@ -82,7 +82,7 @@ Technology:
 - ["_Spacewar_: Fanatic Life and Symbolic Death Among the Computer Bums"](http://www.wheels.org/spacewar/stone/rolling_stone.html)
 - [Advanced factory manufacturing in America](http://www.theatlantic.com/magazine/archive/2012/01/making-it-in-america/308844/)
 - ["A history of the Amiga, part 8: The demo scene"](http://arstechnica.com/gadgets/2013/04/a-history-of-the-amiga-part-9-the-demo-scene/)
-- ["Why Johnny Can't Encrypt: A Usability Evaluation of PGP 5.0"](http://www.gaudior.net/alma/johnny.pdf)
+- ["Why Johnny Can't Encrypt: A Usability Evaluation of PGP 5.0"](https://www.usenix.org/legacy/events/sec99/full_papers/whitten/whitten.ps)
 - ["Carding Forums, Ponzi Schemes and Law Enforcement: A background on Evolution Marketplace"](https://www.reddit.com/r/DarkNetMarkets/comments/2ips02/carding_forums_ponzi_schemes_and_law_enforcement/), by the\_avid
 - ["Fusion Power by Magnetic Confinement Program Plan"](https://dl.dropboxusercontent.com/u/85192141/1998-dean.pdf), Dean 1998
 - [Text of SXSW2013 closing remarks by Bruce Sterling](http://www.wired.com/2013/04/text-of-sxsw2013-closing-remarks-by-bruce-sterling/)
