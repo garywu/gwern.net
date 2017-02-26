@@ -571,6 +571,279 @@ Some professional groups do much better on forecasting than others. Two of the k
     >
     > ...Just by becoming aware of our tendency to be overconfident or underconfident in our estimates, we can go a long way toward correcting for our most common errors. Doctors, for instance, could provide numerical estimates of probability when making diagnoses and then get data about which ones turned out to be right. As for the rest of us, we could estimate the likelihood of various events in a given week, record our estimates in numerical terms, review them the next week and thus measure our risk intelligence in everyday life. A similar technique is used by many successful gamblers: They keep accurate and detailed records of their earnings and their losses and regularly review their strategies in order to learn from their mistakes.
 
+## Effective Charitable Giving Via Long Bets
+
+[Warren Buffett](!Wikipedia)'s [annual end-of-year letter for 2016](http://berkshirehathaway.com/letters/2016ltr.pdf) includes a long section on [his \$1m long bet that an index will outperform hedge funds](http://longbets.org/362/ "Bet #362: Over a ten-year period commencing on January 1, 2008, and ending on December 31, 2017, the S&P 500 will outperform a portfolio of funds of hedge funds, when performance is measured on a basis net of fees, costs and expenses."); unsurprisingly, he's about to win. This reminded me of [Long Bets](!Wikipedia "Long Now Foundation#Long Bet Project") ([about](http://longbets.org/about/); [FAQ](http://longbets.org/faq/); [rules](http://longbets.org/rules/)/[procedure](http://longbets.org/procedure/)), which never really caught on (in part because their website was effectively unusable for several years), but is still running and still resolving bets and still has any number of [in-progress bets](http://longbets.org/bets/) and [open challenges](http://longbets.org/predictions/).
+
+For a Long Bet, to create a 'prediction' one pays a \$50 fee; then a challenger and you put up the same bet (minimum of \$200) each - even odds is mandatory - and designate a preferred charity, for a bet with duration >=2 years, the bets are invested in a ultra-conservative investment fund (unspecified return, I'd guesstimate 3% optimistically), and the winnings+investment go to the winner's charity.
+
+You can't make money off them directly because of the charity restriction necessary to keep Long Bets legal in the USA (regulation is why we can't have nice things like prediction markets), but you could try to replace your current charitable giving with canny long bets - as it is not a prediction market, after all, the bets can be quite irrational.
+Indeed, some of the existing predictions strike me as quite dumb and easy money (eg bet #312, [“Turkey will join the European Union and become a model for a Democratic Islamic State and lead the way for advancing relations between the Islamic world and "Western World"”, 2007-2018](http://longbets.org/312/), which was unlikely in 2007 and has ~0% probability now).
+You don't have to pay the \$50 fee or worry about no one taking up your challenge, and you double your money, so if you wanted to donate \$1k to AMF you could instead try to find a bet like #312 and offer a bet of \$500 and, almost certainly winning, send ~\$1000 to AMF.
+
+One could also try to argue that the betting will have additional benefits like establishing a track record as a good predictor or getting publicity for one's views, a few bets might be interesting as a learning experience, and taking/making bets could be useful as a companion to any research/essays/books one might write as a form of accountability.
+
+The downsides would be:
+
+- Long Bets invests funds super-conservatively, so the opportunity cost is nontrivial - they definitely don't get the standard 7% stock market returns, so one is forfeiting something like 4-7% annual returns. (Presumably if one thinks that spending one's money in some other way such as donating to a charity right now so the charitable activities can be done right away is better than investing & donating later, one thinks the opportunity cost is >7% and so the LB opportunity cost is even greater than just 4%!)
+
+    - the 'long' aspect exacerbates this, as the longer a bet goes on, the less likely it is that you wind up donating more to your charity than just saving & giving later
+    - 3% is optimistic, as the rules state that half of the 'conservative' return goes to the Long Now Foundation in addition to the \$50 prediction fee:
+
+         > The entire amount goes into a long-term investment portfolio called the Farsight Fund - its assets are in "Endowments", a mutual fund managed by Capital Research and Management Company. Half of the growth of that fund is drawn off to The Long Now Foundation, which maintains the Long Bets service; the other half accrues so that the eventual payment to the winner's preferred charity may be significantly larger than the original bet stakes.
+
+    I have emailed Long Bets asking for information on the actual return to bets.
+- there are not many predictions in general, and only a few are added each year, of which many are clearly unserious despite the registration fee & LB's moderation, limiting possible investments
+- all bets are 1:1, sharply upper bounding how many are worthwhile (eg if someone thinks that a thing is only 60% likely and you think it's 100% likely and they register a prediction *for* it, you can't do anything about it) and how much you can money-pump people for (only 2x)
+- many of the predictions seem to be invalid or outdated; bet #312 hasn't finished yet, but I think it would technically be invalid to make that bet with him now because a bet expiring in 2018 can't be at least 2 years long
+
+    - of the valid ones which would be profitable to take, I would expect most of them to back out or refuse to bet or quibble about technicalities or delay as long as possible; Long Bets requires a \$50 fee but they don't require the \$200 bet to be prepaid and you have to negotiate with each predictor before any bet goes into effect. So you can't bet with most of them. (A major downside of personal betting as compared to prediction markets is the huge friction & transaction costs.)
+- Long Bets could still collapse or embezzle it all or decide flagrantly wrong (that said, the Long Now Foundation has been operating for decades now and the latest Form 990 for 2014 on GuideStar.org for them indicates their financial health looks good, and there have been no complaints about misjudgments)
+- you might be the irrational one and see your bets go to worthless charities (eg Buffett designated Girls Inc as his winner; but that \$1m is going to do far less good than if it was going to the Gates Foundation with the rest of Buffett's money!)
+
+The opportunity cost is the big one.
+Since the minimum is 2 years, and guesstimating 3% return for the fund and using the usual stock market index return of ~7%, you are forfeiting ~4% return for >=2 years, so the minimum opportunity cost is `1.03^2 - 1.07^2` or  ~8.4% of your bet. That is quite a lot.
+
+The question becomes, even if you think you've found a bet you have >50% chance of winning (required to make it +EV given the mandatory 1:1 betting), how much of an edge do you need to just outpace the opportunity cost?
+
+You need to solve for_p_ in a value expression like `p*2*b*1.03^t + (1-p)*0*b > b*1.07^t`. _b_ drops out as a constant, so for _t_=2, you need... _p_=0.54. In general, `2*p*1.03^t > 1.07^t`.
+So even if you assume you are certain to win, _p_=1, you can't bet any further out than ~18.19 years (so in 2017, any bet past 2035 is out of the question).
+
+Or to put it another way, the lost return doubles in 18 years (`1.04^18 = 2`), so since you can never earn more than twice your bet on LB, past 18 years it becomes impossible to earn a return (before, it is merely very difficult).
+
+~~~{.R}
+data.frame(Year=2:19, Minimum.Win.Prob=sapply(2:19, function(t) { optimize(function(p) { abs(1.07^t - 2*p*1.03^t) }, seq(0,1,by=0.001))$minimum }))
+# Year Minimum.Win.Prob
+#    2 0.5395891434
+#    3 0.5605221301
+#    4 0.5822973072
+#    5 0.6049417583
+#    6 0.6284340139
+#    7 0.6527947343
+#    8 0.6781593805
+#    9 0.7045338182
+#   10 0.7318640396
+#   11 0.7602945746
+#   12 0.7898129251
+#   13 0.8204982106
+#   14 0.8523813174
+#   15 0.8854592825
+#   16 0.9198648951
+#   17 0.9555596565
+#   18 0.9926832986
+#   19 0.9999338930
+1.07^10.5
+# [1] 2.034837186
+data.frame(Year=2:11, Minimum.Win.Prob=sapply(2:11, function(t) { optimize(function(p) { abs(1.07^t - 2*p*1.00^t) }, seq(0,1,by=0.001))$minimum }))
+# Year Minimum.Win.Prob
+#    2     0.5724575464
+#    3     0.6124911939
+#    4     0.6553833666
+#    5     0.7012821290
+#    6     0.7503808673
+#    7     0.8028891537
+#    8     0.8591051279
+#    9     0.9192578559
+#   10     0.9836032026
+#   11     0.9999338930
+~~~
+
+In the worst-case of 0% return from the Long Bets investment fund after fees & Long Now taking its half, the upper bound is 11 years (2028).
+
+As of 25 February 2017, LB has 29 registered bets, of which 9 have finished & 20 are outstanding with a total balance (excluding any investment returns) of \$1,041,800 (or \$41,800 excluding the Buffett bet).
+The bets maturing soon:
+
+1. 2017: the Buffett index vs hedge fund bet (\$1000k)
+2. 2018: ["Large Hadron Collider will destroy Earth"](http://longbets.org/382/) (\$1k), ["By 2018 the Euro (€) will not be the legal currency of France, Italy and Germany"](http://longbets.org/363/) (\$2k)
+3. 2019: none
+4. 2020: ["By the end of the year 2020, a professional sports team that is part of either the National Football League, the National Basketball Association, Major League Baseball, the National Hockey League, or Major League Soccer will integrate and have a woman as a team member/player"](http://longbets.org/367/) (\$500); ["By 2020, no one will have won a Nobel Prize for work on superstring theory, membrane theory, or some other unified theory describing all the forces of nature"](http://longbets.org/12/) (\$2k); ["A bioterror or bioerror will lead to one million casualties in a single event within a six month period starting no later than Dec 31 02020"](http://longbets.org/9/) (\$0.4k)
+5. 2021: none
+6. 2022: ["In 2022 the US economy will no longer be held to be the world leader in global environmental degradation"](http://longbets.org/20/) (\$2k)
+7. 2023: none
+8. 2024: ["Driverless cars will be commercially available in Las Vegas, NV by May 27 2024. Trips may be point to point outside of the city center with no requirement for any passenger to take over manual control of the vehicle."](http://longbets.org/712/) (\$0.5k)
+9. 2025: ["The first true interstellar mission, targeted at the closest star to the Sun or even farther, will be launched before or on December 6, 2025 and will be widely supported by the public"](http://longbets.org/395/) (\$1k); ["By 2025, the states will have voted on at least one constitutional amendment to cede US federal power to a global government"](http://longbets.org/156/) (\$8k); ["By 2025 the scientific evidence of a hither-to-unknown large bi-pedal great ape will be sufficient to convince at least 50% of primatologists that a yeti/bigfoot-like creature exists"](http://longbets.org/120/) (\$8k)
+10. 2026: none
+11. 2027: none
+12. 2028: none
+13. 2029: ["By 2029 no computer - or 'machine intelligence' - will have passed the Turing Test"](http://longbets.org/1/) (\$20k)
+14. 2030: ["By 2030, commercial passengers will routinely fly in pilotless planes"](http://longbets.org/4/) (\$2k)
+15. 2031: none
+16. 2032: none
+17. 2033: none
+18. 2034: none
+19. 2035: none
+
+Given the implied 50% probability, I disagree strongly on many of these, but unfortunately there is no additional betting; bets must be done on predictions only.
+
+There are ~207 outstanding predictions but a decent fraction are ill-defined, expired, or expiring too soon to register a bet on.
+Reviewing the ones with due dates before 2035:
+
+Expired, right:
+
+- http://longbets.org/626/
+- http://longbets.org/611/
+- http://longbets.org/480/
+- http://longbets.org/479/
+- http://longbets.org/328/
+- http://longbets.org/243/
+- http://longbets.org/211/
+- http://longbets.org/205/
+- http://longbets.org/97/
+- http://longbets.org/39/
+
+Expired, wrong:
+
+- http://longbets.org/660/
+- http://longbets.org/630/
+- http://longbets.org/628/
+- http://longbets.org/619/
+- http://longbets.org/618/
+- http://longbets.org/597/
+- http://longbets.org/590/
+- http://longbets.org/574/
+- http://longbets.org/488/
+- http://longbets.org/483/
+- http://longbets.org/467/
+- http://longbets.org/440/
+- http://longbets.org/409/
+- http://longbets.org/404/
+- http://longbets.org/354/
+- http://longbets.org/339/
+- http://longbets.org/287/
+- http://longbets.org/266/
+- http://longbets.org/259/
+- http://longbets.org/244/
+- http://longbets.org/240/
+- http://longbets.org/225/
+- http://longbets.org/217/
+- http://longbets.org/204/
+- http://longbets.org/200/
+- http://longbets.org/179/
+- http://longbets.org/177/
+- http://longbets.org/176/
+- http://longbets.org/148/
+- http://longbets.org/127/
+- http://longbets.org/105/
+- http://longbets.org/26/
+- http://longbets.org/14/
+
+Expired:
+
+- http://longbets.org/636/
+- http://longbets.org/607/
+- http://longbets.org/509/
+- http://longbets.org/476/
+- http://longbets.org/437/
+- http://longbets.org/436/
+- http://longbets.org/405/
+- http://longbets.org/388/
+- http://longbets.org/346/
+- http://longbets.org/267/
+- http://longbets.org/252/ (likely has already happened secretly given various sperm bank scandals and freelance donors)
+- http://longbets.org/246/
+- http://longbets.org/223/
+- http://longbets.org/219/
+- http://longbets.org/208/
+- http://longbets.org/175/
+- http://longbets.org/63/
+- http://longbets.org/13/
+
+About to expire: Cannot be bet on and so should be removed, or the prediction needs to be edited, because it matures in <=2 years and the LB rules mandate bets must be >=2 years long:
+
+- http://longbets.org/667/
+- http://longbets.org/641/
+- http://longbets.org/312/
+- http://longbets.org/133/
+
+Should be removed for being ill-defined/unjudgeable/unfalsifiable, vague, emotizing, moronic, spam or just plain awful:
+
+- http://longbets.org/677/
+- http://longbets.org/659/
+- http://longbets.org/630/
+- http://longbets.org/627/
+- http://longbets.org/594/
+- http://longbets.org/432/
+- http://longbets.org/431/
+- http://longbets.org/430/
+- http://longbets.org/429/
+- http://longbets.org/427/
+- http://longbets.org/425/
+- http://longbets.org/310/
+- http://longbets.org/296/
+- http://longbets.org/241/
+- http://longbets.org/217/
+- http://longbets.org/216/
+- http://longbets.org/200/
+- http://longbets.org/196/
+- http://longbets.org/173/
+- http://longbets.org/164/
+- http://longbets.org/163/
+- http://longbets.org/131/
+- http://longbets.org/92/
+- http://longbets.org/88/
+
+I have emailed this list to Long Bets so they can clean up their predictions page.
+(Amusingly, even though predictors presumably are at least 50% confident in their binary predictions, by my count over 3x as many expired predictions were false rather than true, even judging generously and skipping the hardest; so the predictors as a whole are not just badly calibrated but systematically wrong, and one could've made a considerable profit just betting against everyone.)
+
+So this leaves (excluding all the expired ones, but including the well-defined-but-moronic ones, which are winnable should the predictor be sufficiently foolish as to accept bets) as viable candidates, going by year (the main determinant of profitability) / prediction / initial probability estimate:
+
+- 2020: ["My prediction is that artificial life; i.e., life from non-life, will not be created in a laboratory."](http://longbets.org/195/): 50%?
+- 2020: [“By 2020 a completely propellantless (no material particles expelled for propulsion) or "field propulsion-type" aerospace vehicle will land on the Moon.”](http://longbets.org/92/): 0%
+- 2020: [“By 2020, 75% of all incremental new generation will come from renewable/sustainable energy in the U.S.”](http://longbets.org/141/): 50%?
+- 2020: [“By 2020, historians will agree that the start of the 21st century also marked the beginning of the 'Second' or 'New Renaissance'.”](http://longbets.org/295/): 0%
+- 2020: [“By 2020, in real or artificial life, sustainable evolutionary progress in a genetically closed system will not have been demonstrated.”](http://longbets.org/44/): 0%?
+- 2020: [“By the year 2020 solar electricity will be as cheap or cheaper than that produced by fossil fuels.”](http://longbets.org/76/): 50%?
+- 2020: [“By the year 2020 the technology will exist that will allow for the "faxing" (teleportation- sending/receiving) of actual inanimate objects, such as text books, clothing, jewelery and the like.”](http://longbets.org/143/): 0%
+- 2020: [“By the year 2020, the tickets to space travel - at the least to Moon, will be available over the counter.”](http://longbets.org/27/): 0%
+- 2020: [“Self-replicating manufacturing machines will be commonplace by 2020.”](http://longbets.org/345/): 0%
+- 2023: [“Patents will be abolished by at least two leading economies within the next 20 years for all areas except pharmaceuticals.”](http://longbets.org/343/): 0%
+- 2023: [“Roe v. Wade will not celebrate a 50th anniversary.”](http://longbets.org/347/): 33%?
+- 2023: [“advances in personal aviation will cause the cost of land in Big Sur, CA and other remote areas within 250mi of major metropolitan cities to at least triple within the next 15 years - outperforming the S&P 500 over that period.”](http://longbets.org/433/):
+- 2024: [“That by 2024 'artificial' life emerging somewhere out of the soup of human technology will be given a Latin taxonomic name by biologists and others and declared viable for study.”](http://longbets.org/42/): 5%?
+- 2024: [“US accounting and banking regulations will not require that loan portfolios held in the "banking book" be marked to market before 2024.”](http://longbets.org/149/): ?%
+- 2025: [“By 2025 at least 50% of all U.S. citizens residing within the United States will have some form of technology embedded in their bodies for the purpose of tracking and identification.”](http://longbets.org/106/): 1%
+- 2025: [“By 2025, at least 25 of the 30 stocks currently in the Dow Jones Industrial Average will be dropped from the index and replaced with other companies.”](http://longbets.org/112/): ?%
+- 2025: [“By 2025, more than 50% of desktop computers in the world will be running an open-source operating system.”](http://longbets.org/270/): 5%
+- 2025: [“By 2025, the very first human being will be cloned and this event will be accepted by the most people.”](http://longbets.org/284/): 10%?
+- 2025: [“By the end of 2024 there will be a Single Global Currency managed by a Global Central Bank within a Global Monetary Union.(3-G's) This currency will be legal tender in countries which comprise at least 51% of the world's GDP.”](http://longbets.org/226/): 0%
+- 2025: [“Major online internet useage research firms will record that over 3 billion people in 2025 managed their incoming and outgoing digital information using a graphical user interface based on Quadrant Theory - as described in Marshall McLuhan's "Tetrad" model in Laws of Media, Ken Wilber's Holon in Sex, Ecology Spirituality, and R Buckminster Fuller's Tetrahedral structures in Synergetics.”](http://longbets.org/88/): 0%
+- 2025: [“The concept of time as a linear dimension will be replaced by one of time as a polarity between content and context.”](http://longbets.org/173/): 0%
+- 2025: [“By 2025, new astronomical observations and theories will render the Big Bang an untenable explanation for the origin of the Universe.”](http://longbets.org/425/): 1%
+- 2025: [“By 2025, Albert Einstein's theory of relativity will be considered an untenable explanation for light and gravity by a majority of scientists.”](http://longbets.org/427/): 0%
+- 2025: [“By 2025, Quantum field theory will no longer be part of The Standard Model of particle physics.”](http://longbets.org/429/): 0%
+- 2025: [“By 2025, The giant impact hypothesis will no longer be the dominant scientific hypothesis for the formation of the Moon.”](http://longbets.org/430/): 0%
+- 2025: [“By 2025, Stellar nucleosynthesis will no longer be considered as the main source of heat and light of stars by a majority of scientists.”](http://longbets.org/431/): 0%
+- 2025: [“By 2025, The Aether Physics Model will not have replaced quantum physics and the theory of relativity as the standard model.”](http://longbets.org/432/): 0%
+- 2025: [“The nation with the highest (nominal) gdp in the world in 2025 will be China.”](http://longbets.org/491/): 50%?
+- 2030: ["..effective computerized individual citizen profiling, with the full maturation of the nascent, but extremely promising studies of brain, mind and personality as revealed by the many different brain scanning devices now being intensively studied and developed. These scans - and their related psychologic, psychiatric, and sociologic fields interpreting them and giving them function ? will gain great utility as the ultimate lie detectors..."](http://longbets.org/289/): 5%?
+- 2030: ["That the average level of innovation between 2025 and 2035 exceeds the average level of innovation of the past 5 years (2002-2007.)"](http://longbets.org/321/): 35%?
+- 2030: [“By 2030 all surgical anesthesia will be administered and monitored by computers, with no need for professional medical supervision beyond the surgeon.”](http://longbets.org/43/)
+- 2030: [“China will break apart by 2030”](http://longbets.org/297/): 5%?
+- 2030: [“A nuclear explosive weapon will be used in war or terrorism.”](http://longbets.org/521/): 25%?
+- 2035: [“By the year 2035 non-invasive devices will allow us to interface with the internet (including accessing information in a similar sense to recalling memories) using electro-stimulus from neuron signals.”](http://longbets.org/285/): 30%?
+- 2035: [“One or more space agencies will send a manned mission to Mars by 2035.”](http://longbets.org/351/): 40%?
+- 2035: [“There will be a Chernobyl National Park by 2035.”](http://longbets.org/511/): 33%?
+
+Optimal choice of which bets to make and how much to offer is simplified by the upper bound of 18 years, the high probability that most bet offers will be declined, the inability to reinvest gains (since all winnings go immediately to charity), and risk neutrality since it's for a charity.
+As far as I can tell, there's no need for advanced apparatus like [decision trees](!Wikipedia) or the [Kelly criterion](!Wikipedia); one simply takes one's available total investment, estimates the probability of winning to get the expected value, divides by years to get annual return, and offers to bet everything on whatever has the highest implied annual return >0%; then with whatever is left over, one moves onto the next bet, and so on until one runs out of money or bets.
+(So one would start with the nearest ~0% predictions...)
+
+What could the Long Now Foundation do to improve?
+
+- real moderation: many predictions should never have been approved, and even the decent ones often need to be tightened up and made more objective & falsifiable; it's absurd to charge \$50 to submit a prediction and then let through balderdash like "The concept of time as a linear dimension will be replaced by one of time as a polarity between content and context". (How could anyone take such a site seriously?)
+- remove the arbitrary and unnecessary even-odds restriction. There is no legal requirement for this that I am aware of, and it bizarrely limits what bets can be made and also eliminates any meaningful expression of confidence. Two people who think an event might happen with 40% and 60% can make bets, but two people who think 50% and 100% can't!
+- a non-conservative investment fund, and specifically, a global Vanguard stock market index: the 'low risk' investment vehicle is counterproductive, unnecessary, and risky:
+
+     1. counterproductive: the low return makes it irresponsible and unethical to register predictions, particularly for long-dated predictions, discouraging anyone serious about charity & the future from using Long Bets
+     2. unnecessary:
+
+         - legally: as [Long Bets makes clear](http://longbets.org/agreement/ "Bettor's Agreement"), it has no legal obligation to the 'bettors', who are actually donators to the Long Now Foundation, to pay anything to the designated charities, much less at a particular return
+         - morally: donators should be risk-neutral and seek to maximize their eventual impact, so trading off enormous long-term growth for some reduction in volatility reduces the expected value of donating/betting
+         - financially: for short-term bets, most bets are <=\$1k, and the possible loss trivially small either as a fraction of either the Long Now Foundation's assets or annual revenue so it can simply self-insure (or ask one of its wealthy donors to guarantee it); for medium-term bets, fluctuations downward can be compensated for by borrowing from long-term bets; and for long-term bets (which may be centuries away from maturing), that very aspect implies that the final investment will far exceed the nominal bet and converge on the long-term averages of 7% annually (as indeed Long Bets's largest and most prominent bet demonstrates on a much shorter time-scale!)
+     3. risky: conservative 'safe' investments making betting highly unattractive causing lack of use is itself a highly risky investment (where do they go if the Long Now Foundation shuts down Long Bets or itself dissolves?); low growth rates are intrinsically risky as they build up no reserves against random shocks and extraordinary expenses, entire classes of investments being zeroed out by disasters or hyperinflation <!-- TODO: what exactly is it invested in? is it exposed entirely to one currency or one sector like bonds? -->
+- more active promotion by Long Now Foundation members, directors, and prominent donors: looking over the bet dates, many date from a narrow time period in the early 2000s, after which LB appears to've fallen into obscurity and gone dormant; but many of the people on the Long Now board or who have been involved in Long Now are well-off, donate to charity regularly, and remain heavily involved in writing and activism on issues ranging from technological unemployment to nuclear power to the Russian Internet - thus, they could easily route their charitable giving through long bets on topics of current interest, as well as eliminating the worse predictions & enforcing a basic level of sanity and seriousness
+
+
 ## 1001 PredictionBook Nights
 
 > I explain what I've learned from creating and judging thousands of predictions on personal and real-world matters: the challenges of maintenance, the limitations of prediction markets, the interesting applications to my other essays, skepticism about pundits and unreflective persons' opinions, my own biases like optimism & planning fallacy, 3 very useful heuristics/approaches, and the costs of these activities in general. (Plus an extremely geeky parody of _Fate/Stay Night_.)
