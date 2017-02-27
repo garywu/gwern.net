@@ -25,6 +25,7 @@ belief: possible
 - It'd be nice if people cared about systematic vs sampling error, Bayesian methods, informative priors & design more than once every 4 years.
 - Remember: _p_-values are not posterior probabilities are not effect sizes are not utilities are not profits are not decisions.
 - All analyses are ultimately decision analyses. We can ignore that for convenience, but we must never forget that.
+- Our beliefs are continuous, but our actions discrete. This leads to analysis paralysis; can one execute wholeheartedly on +EV actions with _P_=1% just as well as when _P_=99%?
 
 ## Biology
 
