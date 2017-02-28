@@ -2,7 +2,7 @@
 title: February 2017 news
 created: 19 January 2017
 tags: newsletter
-status: in progress
+status: finished
 belief: log
 ...
 
@@ -21,6 +21,7 @@ Everything is heritable:
 - ["Genomic analysis of family data reveals additional genetic effects on intelligence and personality"](http://biorxiv.org/content/early/2017/02/06/106203), Hill et al 2017 (IQ missing heritability resolved with novel GCTA - most/all of the rest is due to semi-rare additive variants, implying that GWASes and future polygenic scores will do much better)
 - ["Clustering of 770,000 genomes reveals post-colonial population structure of North America"](http://www.nature.com/articles/ncomms14238/), Han et al 2017
 - ["Quantitative genetic studies of antisocial behaviour"](http://rstb.royalsocietypublishing.org/content/363/1503/2519), Viding et al 2008 (not the most up to date paper but good background for [Rautiainen et al 2016](http://www.nature.com/tp/journal/v6/n9/full/tp2016155a.html "Genome-wide association study of antisocial personality disorder"))
+- ["Human Gene Editing Receives Science Panel's Support"](https://www.nytimes.com/2017/02/14/health/human-gene-editing-panel.html) ([_Human Genome Editing: Science, Ethics, and Governance_](https://www.nap.edu/read/24623/chapter/1) 2017)
 - recent human evolution:
 
     - ["Holocene selection for variants associated with cognitive ability: Comparing ancient and modern genomes"](http://biorxiv.org/content/early/2017/02/20/109678), Woodley et al 2017
@@ -30,31 +31,37 @@ Everything is heritable:
 AI:
 
 - ["PathNet: Evolution Channels Gradient Descent in Super Neural Networks"](https://arxiv.org/abs/1701.08734), Fernando et al 2017 (scalable efficiently-growing multi-task neural nets which can benefit from transfer learning)
+- ["Deep Voice: Real-time Neural Text-to-Speech"](https://arxiv.org/abs/1702.07825), Arik et al 2017
 
 Statistics/meta-science/mathematics:
 
 - ["Reconstruction of a Train Wreck: How Priming Research Went off the Rails"](https://replicationindex.wordpress.com/2017/02/02/reconstruction-of-a-train-wreck-how-priming-research-went-of-the-rails/)
 - ["Reporting bias inflates the reputation of medical treatments: A comparison of outcomes in clinical trials and online product reviews"](https://www.gwern.net/docs/nootropics/2017-debarra.pdf), de Barra 2017
-- ["A Failure of Intelligence: Prominent physicist Freeman Dyson recalls the time he spent developing analytical methods to help the British Royal Air Force bomb German targets during World War II"](https://www.technologyreview.com/s/406789/a-failure-of-intelligence/)
-- ["Ten Lessons I Wish I Had Been Taught"](http://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html), Rota 1996
+- ["Compressed sensing and single-pixel cameras"](https://terrytao.wordpress.com/2007/04/13/compressed-sensing-and-single-pixel-cameras/)
+- [Interview with Walter Stewart, the "terrorist of the lab"](https://drive.google.com/file/d/0B88DH9qxrie-bjhtXzFkekJaR1k/view)
+- ["Willingness to Share Research Data Is Related to the Strength of the Evidence and the Quality of Reporting of Statistical Results"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026828), Wicherts et al 2011
 
 Politics/religion:
 
+- [GiveDirectly in Kenya](https://www.nytimes.com/2017/02/23/magazine/universal-income-global-inequality.html "The Future of Not Working: As automation reduces the need for human labor, some Silicon Valley executives think a universal income will be the answer - and the beta test is happening in Kenya"); ["The Exposed Nest"](http://www.bartleby.com/119/21.html), Robert Frost
+- ["PPE: the Oxford degree that runs Britain"](https://www.theguardian.com/education/2017/feb/23/ppe-oxford-university-degree-that-rules-britain "Oxford University graduates in philosophy, politics and economics make up an astonishing proportion of Britain's elite. But has it produced an out-of-touch ruling class?")
 - ["The unrecognised simplicities of effective action #2: 'Systems engineering' and 'systems management' - ideas from the Apollo programme for a 'systems politics'"](https://dominiccummings.files.wordpress.com/2017/02/201702-effective-action-2-systems-engineering-to-systems-politics.pdf), Cummings 2017 (what should politics look like in the post-atomic age of existential risk?)
-- ["Propaganda as Literature: A Distant Reading of the Korean Central News Agency's Headlines"](https://xmarquez.github.io/KCNA/Reading_KCNA_headlines.html)
+- ["James Burnham's 'Dante: Politics as Wish'"](http://unqualified-reservations.blogspot.com/2007/08/james-burnhams-dante-politics-as-wish.html)
 
 Psychology/biology:
 
-["A Bitter Ending: Daniel Kahneman, Amos Tversky, and the limits of collaboration"]()
-["We Used Terrible Science to Justify Smoking Bans: Will we look at the new evidence for long enough to at least consider whether we've gone too far?"](http://www.slate.com/articles/health_and_science/medical_examiner/2017/02/secondhand_smoke_isn_t_as_bad_as_we_thought.html)
+- ["We Used Terrible Science to Justify Smoking Bans: Will we look at the new evidence for long enough to at least consider whether we've gone too far?"](http://www.slate.com/articles/health_and_science/medical_examiner/2017/02/secondhand_smoke_isn_t_as_bad_as_we_thought.html)
 - ["Digital Health: Tracking Physiomes and Activity Using Wearable Biosensors Reveals Useful Health-Related Information"](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2001402), Li et al 2017
 - ["Search in patchy media: Exploitation-exploration tradeoff"](https://www.gwern.net/docs/sunkcosts/2017-chupeau.pdf), Chupeau et al 2017
+- ["Millions and Millions Dead in Death Epidemic"](http://www.theonion.com/article/millions-and-millions-dead-721)
+- ["That Which Does Not Kill Me Makes Me Stranger"](http://www.nytimes.com/2006/02/05/sports/playmagazine/that-which-does-not-kill-me-makes-me-stranger.html)
 
 Technology:
 
 - ["The first collision for full SHA-1"](http://shattered.io/static/shattered.pdf), Stevens et al 2017
 - [The Victorian science race to reach absolute zero](https://www.damninteresting.com/absolute-zero-is-0k/ "Absolute Zero is 0K")
 - [History of the IMDb movie discussion forums](https://www.beatworm.co.uk/blog/internet/imdb-boards-no-more)
+- ["An Oral History of Nintendo's Power Glove"](http://mentalfloss.com/article/91939/losing-their-grip-oral-history-nintendos-power-glove)
 - [Finding and ranking all anagrammatical pairs of English words](http://blog.plover.com/lang/anagram-scoring.html "I found the best anagram in English")
 
 Economics:
@@ -62,37 +69,32 @@ Economics:
 - ["The Common Law Corporation: The Power of the Trust in Anglo-American Business History"](https://corpgov.law.harvard.edu/2017/01/31/the-common-law-corporation-the-power-of-the-trust-in-anglo-american-business-history/) (was the limited-liability corporation necessary?)
 - ["Game theory in practice"](http://www.economist.com/node/21527025)
 - ["America's Television Graveyards: How millions of old CRT televisions have wound up abandoned in warehouses all over the country"](https://motherboard.vice.com/en_us/article/americas-television-graveyards)
+- ["Earthly concerns: The Catholic church is as big as any company in America. Bankruptcy cases have shed some light on its finances and their mismanagement"](http://www.economist.com/node/21560536)
+- [Behavioral economics and public policy](http://www.nytimes.com/2012/07/08/business/behavioral-science-can-help-guide-policy-economic-view.html?pagewanted=all)
 
 Misc:
 
-- ["The Great Moon Hoax"](http://hoaxes.org/archive/permalink/the_great_moon_hoax)
+- ["The Great Moon Hoax"](http://hoaxes.org/archive/permalink/the_great_moon_hoax) (early science and Natural Theology predicted life was abundant throughout the solar system and universe; instead, we see a Great Silence)
+- [Astronauts after walking on the moon](https://www.lrb.co.uk/v27/n17/steven-shapin/what-did-you-expect "What did you expect? The banality of moon-talk"); ["This Warrior of a Dead World - Gene Wolfe's literary portrait of Neil Armstrong"](http://silkandhornheresy.blogspot.co.uk/2012/08/this-warrior-of-dead-world-gene-wolfes.html)
+- ["Precision first: In the time of Twitter, concision may be a valid goal in student writing. But clarity and accuracy are often emphasized too little"](https://www.insidehighered.com/views/2011/08/11/precision-first)
+- ["Explainers Shoot High. Aim Low!"](http://lesswrong.com/lw/kh/explainers_shoot_high_aim_low/); ["Guessing the Teacher's Password"](http://lesswrong.com/lw/iq/guessing_the_teachers_password/)
 
 Philosophy:
 
-Fiction:
-
-<!-- Back to 08 Sep 2012 -->
-
-## Books
-
-Nonfiction:
+- [Here is one hand](https://en.wikipedia.org/wiki/Here_is_one_hand)
+- [Mike Darwin on animal research, moral cowardice, and reasoning in an uncaring universe](http://lesswrong.com/r/discussion/lw/e8u/mike_darwin_on_animal_research_moral_cowardice/)
+- ["The Last Temptation of Christ"](http://squid314.livejournal.com/324957.html)
 
 Fiction:
+
+- ["If You Read Closely: Aoi Hiragi's _Whisper of the Heart_ on Page and Screen"](https://wondersinthedark.wordpress.com/2012/09/01/if-you-read-closely-aoi-hiragis-whisper-of-the-heart-on-page-and-screen/)
+- [A history of prog rock](http://www.slate.com/articles/arts/prog_spring/features/2012/prog_rock/history_of_prog_the_nice_emerson_lake_palmer_and_other_bands_of_the_1970s_.html)
+- ["The Poet and the Politician: Fujiwara no Teika and the Compilation of the _Shinchokusenshu_"](https://www.gwern.net/docs/japanese/1998-smits.pdf), Smits 1998
+
+<!-- Back to 20? Aug 2012 -->
 
 ## Film/TV
 
 Live-action:
 
-- _[Once Upon A Time In The West](!Wikipedia)_
-
-Animated:
-
-## Games
-
-## Music
-
-Touhou:
-
-Vocaloid:
-
-Doujin:
+- _[Once Upon A Time In The West](https://en.wikipedia.org/wiki/Once_Upon_a_Time_in_the_West)_ (a strikingly spare Western; the opening scene is a memorable set piece, the atmosphere is closer to that of a film noir in its refusal to explain even to the end, and Henry Fonda makes a remarkable villain with a odd homoerotically sadistic relationship with his railroad patron)

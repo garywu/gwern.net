@@ -10,6 +10,10 @@ Following my writing can be a little difficult: while I provide [an RSS feed of 
 So periodically I write up interesting changes in a human-readable format and [send it out to the mailing list](http://eepurl.com/Kc155).
 
 # 2017
+## February
+
+- ["'Story Of Your Life' Is Not A Time-Travel Story"](/Story%20Of%20Your%20Life "Famous Ted Chiang SF short story 'Story Of Your Life' is usually misinterpreted as, like the movie version, being about time-travel/precognition; I explain it is instead an exploration of the psychology of timeless physics interpretations.")
+
 ## January
 
 - [The Kelly Coin-Flipping Problem: Exact Solutions via Decision Trees](/Coin-flip "Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.")
