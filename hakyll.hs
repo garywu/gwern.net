@@ -992,4 +992,8 @@ brokenLinks = [
  , ("a-b-testing", "/AB%20testing")
  , ("docs/2016-shor…", "/docs/2016-shortland.pdf")
  , ("google shutdowns", "/Google%20shutdowns")
+ , ("docs/2015-henn.pdf", "/docs/genetics/2015-henn.pdf")
+ , ("docs/2014-simons.pdf", "/docs/genetics/2014-simons.pdf")
+ , ("docs/2014-simons-supplementary.pdf", "/docs/genetics/2014-simons-supplementary.pdf")
+ , ("docs/2012-fu.pdf", "/docs/genetics/2012-fu.pdf")
  ]
