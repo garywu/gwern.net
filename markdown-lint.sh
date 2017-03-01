@@ -21,7 +21,7 @@ do
             -e " percent " -e "    Pearson'" -e '~~~{.sh}' -e 'library("' -- "$PAGE";
 
         # look for personal uses of illegitimate statistics & weasel words, but filter out blockquotes
-        fgp -e ' significant ' -e ' significantly ' -e ' obvious' -e 'basically' -- "$PAGE" | egrep -v '[[:space:]]*>';
+        fgp -e ' significant ' -e ' significantly ' -e ' obvious' -e 'basically' -e ' the the ' -- "$PAGE" | egrep -v '[[:space:]]*>';
 
         # check for duplicate footnote IDs (force no highlighting, because the terminal escape codes trigger bracket-matching)
         egrep --only-matching '^\[\^.*\]: ' -- "$PAGE" | sort | uniq --count | \
@@ -41,6 +41,7 @@ do
         markdown-length-checker.hs "$PAGE";
         markdown-footnote-length.hs "$PAGE";
 
+        # look for syntax errors making it to the final HTML output:
         HTML=$(tail -n +3 -- "$PAGE" | pandoc --to=html5 --mathml --standalone -)
         echo "$HTML" | tidy -quiet -errors --doctype html5;
         echo "$HTML" | fgp -e "<""del"">";
