@@ -1,15 +1,15 @@
 ---
-title: Black-market risks
-description: Analysis of lifespans, deaths, and predictive factors
+title: Darknet Market mortality risks
+description: Survival analysis of lifespans, deaths, and predictive factors of Tor-Bitcoin darknet markets
 created: 30 Oct 2013
 tags: statistics, predictions, Bitcoin, Silk Road
 status: in progress
 belief: possible
 ...
 
-> I compile a dataset of 87 public English-language darknet markets 2011-2015 in the vein of the famous [Silk Road](Silk Road), recording their openings/closing and relevant characteristics. A survival analysis indicates the markets follow a Type TODO lifespan, with a median life of TODO months. Risk factors include TODO. With the best model, I generate estimates for the currently-operating markets.
+> I compile a dataset of 87 public English-language darknet markets (DNMs) 2011-2015 in the vein of the famous [Silk Road](Silk Road), recording their openings/closing and relevant characteristics. A survival analysis indicates the markets follow a Type TODO lifespan, with a median life of TODO months. Risk factors include TODO. With the best model, I generate estimates for the currently-operating markets.
 
-I am interested in websites selling drugs over Tor or i2p, using cryptocurrencies like Bitcoin/Litecoin/Dogecoin, allowing multiple sellers other than the site operators, and providing some sort of escrow functionality. This excludes clearnet sites like Topix, single-vendor shops like Modern Culture or Bungee54, carding shops like Tor Carders Market, hosting services like Cryuserv or Bad Wolf, black-market-focused forums like The Hub, and forums for buyers & sellers to deal directly with each other like The Majestic Garden.
+I am interested in websites selling drugs over Tor or i2p, using cryptocurrencies like Bitcoin/Litecoin/Dogecoin, allowing multiple sellers other than the site operators, and providing some sort of escrow functionality. This excludes clearnet sites like Topix, single-vendor shops like Modern Culture or Bungee54, carding shops like Tor Carders Market, hosting services like Cryuserv or Bad Wolf, DNM-focused forums like The Hub, and forums for buyers & sellers to deal directly with each other like The Majestic Garden.
 
 Foreign language markets are excluded because I cannot navigate them[^forex]; DrugMarket, Bigshop & a few others are excluded because they reportedly have always been a scam (similarly for most sites listed on the notoriously wrong Hidden Wiki); the Majestic Garden & Underground Market Board 3.0 are excluded because they are forums & do not do escrow for their users; Grand Trunk never left beta & had actual sales.
 
@@ -55,7 +55,7 @@ Sheep Marketplace        2013-02-28 2013-11-29 FALSE scam      TRUE     `sheep5u
 Deepbay                  2013-06-30 2013-11-04 FALSE scam      FALSE    `deepbay4xr3sw2va.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    unknown    FALSE  FALSE 0     FALSE [Disappeared with funds](http://www.reddit.com/r/Bitcoin/comments/1qaewa/deepbay_marketplace_owner_steals_sites_bitcoins/); based on a [screenshot of categories](http://img.wonderhowto.com/img/91/55/63516483119507/0/with-silk-road-bust-online-black-market-already-has-new-home.w654.jpg), seems to have been almost exclusively drugs.
 Budster                  2013-10-10 2013-10-20 FALSE scam      FALSE    `budsterga5hcdxjn.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    WordPress  FALSE  FALSE 1     TRUE  http://www.reddit.com/r/Budster/comments/1ove9w/has_anyone_made_a_purchase_yet/ccw8srh http://www.reddit.com/r/DarkNetMarkets/comments/1xyixa/psa_cyruserv_is_down_for_good_budster_taf_hosting/ Budster did not seem to use genuine multisig and this enabled the scam: http://www.reddit.com/r/SilkRoad/comments/1opmha/budster_the_worlds_first_p2p_marketplace/
 Project Black Flag       2013-10-14 2013-10-28 FALSE scam      FALSE    `ajd4yqq7ngzmqo3p.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    custom     FALSE  TRUE  1     FALSE http://www.reddit.com/r/DarkNetMarkets/comments/1peguv/pbf_rip/ ; forums: `blackiiw5nozs6i5.onion`; policies stated on forums ("Prohibited: Weapons, counterfeit money, stolen goods, child pornography, posting other users information, attempt to cause harm, spamming.")
-TorMarket                2013-11-07 2013-12-22 FALSE scam      FALSE    `tormarkozaegyvco.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    unknown    FALSE  TRUE  1     FALSE  Part of the TorMarket user list was leaked [by DPR2 on SR2F](/docs/sr/2013-12-13-sr1f-tormarketdump.mht); TM also [admitted other security issues](/docs/sr/2013-12-13-tormarketforums-ddoshack.mht), but further rumors that TorMarket's shut down was precipitated by a hack by "Profesorhouse" have not been substantiated. TM may have used Bitwasp, but it didn't seem to [have Bitwasp error pages](http://bit-wasp.org/index.php/topic,130.0.html) and doesn't really look like the usual Bitwasp black-market.
+TorMarket                2013-11-07 2013-12-22 FALSE scam      FALSE    `tormarkozaegyvco.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    unknown    FALSE  TRUE  1     FALSE  Part of the TorMarket user list was leaked [by DPR2 on SR2F](/docs/sr/2013-12-13-sr1f-tormarketdump.mht); TM also [admitted other security issues](/docs/sr/2013-12-13-tormarketforums-ddoshack.mht), but further rumors that TorMarket's shut down was precipitated by a hack by "Profesorhouse" have not been substantiated. TM may have used Bitwasp, but it didn't seem to [have Bitwasp error pages](http://bit-wasp.org/index.php/topic,130.0.html) and doesn't really look like the usual Bitwasp DNM.
 FloMarket                2013-12-01 2014-01-01 FALSE hacked    FALSE    `fmkt3wixc772jxyj.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    Bitwasp                 2     FALSE  Apparently [hacked 20 December 2013](http://silkroad5v7dywlc.onion/index.php?topic=10489.msg191044#msg191044) (previously [noted to be hackable](http://www.reddit.com/r/DarkNetMarkets/comments/1tm4rf/be_careful_with_flomarket_and_bluesky/)); withdrawals began failing [on 1 January 2014](http://www.deepdotweb.com/2014/01/02/warning-reports-of-flomarket-possible-scam-hack/) & FloMarket announced a [*second*](http://www.reddit.com/r/DarkNetMarkets/comments/1ujjsw/flo_is_down_for_good_another_scam_in_the_books/) hack on 6 January 2014; for the operator's explanation, see [his interview](http://www.deepdotweb.com/2014/01/09/flomarket-admin-im-not-a-scammer-an-exculsive-interview/) <!-- ~5btc hack -->
 Tortuga                  2013-12-16 2014-01-05 FALSE voluntary FALSE    `tortugauwngwecwd.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    Seagull                 0     FALSE  Advertised in the [SR2F](http://silkroad5v7dywlc.onion/index.php?topic=9940.msg179819#msg179819) on 19 Dec 2013; advertised on the [BMR forums](/docs/sr/2013-12-16-bmr-tortugannouncement.mht) on 16 Dec. Up on 1 January 2014, down on 9 January 2014 & afterwards. [No news](http://www.reddit.com/r/DarkNetMarkets/comments/1vhygj/tortuga_gone/) about reasons for its closure. No official rules on listings were posted before it disappeared, probably because it was unpopular enough that content was not an issue.
 BlackBox Market          2013-11-12 2014-02-01 FALSE voluntary FALSE    `77yqlxe7pnxhnxvi.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    unknown    TRUE   TRUE  0     FALSE  Interesting site, but not sure it should be listed here. Start date based on [Reddit](http://www.reddit.com/r/onions/comments/1qhj76/the_blackbox_market_legal_private_encrypted/). Site stopped responding 1 February 2014. On-site escrow did not use multisig ("We do not make use of the Escrow services provided by Bitcoin itself as this associates buyers and sellers.") Policies based on the fact that BBM could not know what was being sold on it and so _de facto_ permitted both categories.
@@ -227,7 +227,7 @@ TODO: <!-- ping Vespco about results -->
 
 ~~~{.R}
 library(XML)
-black <- readHTMLTable("http://www.gwern.net/Black-market%20survival#table", colClasses = c("factor", as.Date, as.Date, "logical", "factor", "logical", "character", "logical", "logical", "logical", "logical", "logical", "logical", "factor", "logical", "logical", "integer", "logical", "character"))[[1]]
+black <- readHTMLTable("http://www.gwern.net/DNM%20survival#table", colClasses = c("factor", as.Date, as.Date, "logical", "factor", "logical", "character", "logical", "logical", "logical", "logical", "logical", "logical", "factor", "logical", "logical", "integer", "logical", "character"))[[1]]
 black[black$Codebase=="",]$Codebase <- "unknown"
 black$Start <- as.Date(black$Start); black$End <- as.Date(black$End)
 black[is.na(black$End),]$End <- Sys.Date() # assuming the table is up to date
@@ -247,7 +247,7 @@ black <- black[order(black$Start),]
 library(survival)
 # plot(survfit(Surv(Age, Alive, type="right") ~ 1, data=black), xlab="Days active", ylab="Fraction of markets still active")
 
-# generate fancy timeline of black-market openings/closing:
+# generate fancy timeline of DNM openings/closing:
 library(ggplot2)
 png(file="~/wiki/images/silkroad/marketlifetimes.png", width = 1500, height = 850)
 ggplot(black, aes(colour=Closure)) +
@@ -316,7 +316,7 @@ plot(sc, lty=1, color=c(3,2))
 # https://i.imgur.com/Tafk9B0.png
 ~~~
 
-Black-markets:
+DNMs:
 
 ~~~{.R}
 library(cmprsk)

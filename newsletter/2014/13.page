@@ -12,7 +12,7 @@ belief: log
 
 Technically, rewriting the site to use Hakyll-4 as a static site generator and converting the repository from Darcs to Git were major pieces of technical debt I needed to pay off. Very painful, but it had to be done. I was also pleased to finish my annotated ebook of _Radiance_: I think it's an unjustly obscure piece of literary scientific fiction which shines even more when the historical context is laid out.
 My [public release of the Mnemosyne spaced repetition dataset](https://groups.google.com/d/msg/mnemosyne-proj-users/tPHlkTFVX_4/oF61BF44iQkJ) is something I'm proud of - the last release was inaccessible despite being a throve of data on flashcards in the real world.
-The sort-key trick ([Spatial locality for better file compression](/Archiving URLs#sort---key-compression-trick)) was originally just a random command-line trick, but in working with the black-market scrapes, I've come to appreciate how it yields major space savings. (I haven't finished any writings on the black-markets lately, but I have been amusing myself inordinately by trying to write some [epigrams on them & technology in general](/Notes#technology-epigrams).)
+The sort-key trick ([Spatial locality for better file compression](/Archiving URLs#sort---key-compression-trick)) was originally just a random command-line trick, but in working with the darknet market scrapes, I've come to appreciate how it yields major space savings. (I haven't finished any writings on the darknet markets lately, but I have been amusing myself inordinately by trying to write some [epigrams on them & technology in general](/Notes#technology-epigrams).)
 My [McCaleb email interview on MtGox](/docs/2014-mccaleb) helped set the record straight on Wikipedia about the history of MtGox. And not a moment too soon, given how toxic the topic is now for anyone previously associated with it.
 - [do causal networks explain why correlation≠causation is so often true?](/Causality)
 - lithium orotate experiment finished: [no effects positive or negative](/Nootropics#lithium-experiment)
@@ -45,7 +45,7 @@ Putting them together was a lot of work, but thus far it seems to be worth it: I
 
 2014 was an eventful year.
 Bitcoin continued evolving towards respectability despite the MtGox disaster (which I think surprised even the more cynical observers), and the technical possibilities continue to be explored (I particularly like sidechains and Truthcoin).
-The black-market scene saw dizzying turnover as markets continued to rise and fall in the post-SR1 vacuum (although in many cases, the fall was no less than merited) with [42 new markets and more closures](https://www.reddit.com/r/DarkNetMarkets/comments/2r58vs/2014_in_dnms_by_the_numbers/), not to mention various prosecutions.
+The darknet market scene saw dizzying turnover as markets continued to rise and fall in the post-SR1 vacuum (although in many cases, the fall was no less than merited) with [42 new markets and more closures](https://www.reddit.com/r/DarkNetMarkets/comments/2r58vs/2014_in_dnms_by_the_numbers/), not to mention various prosecutions.
 Monitoring them all, much less scraping them, has proven to be quite a challenge, but I now have fairly complete archives which I have distributed to a number of academics; with luck, I can do a public release in 2015.
 This all drew some media attention as well; I did interviews in person or over email with Mike Power, the NHK, and Erica Fink.
 

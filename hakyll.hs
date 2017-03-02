@@ -994,4 +994,7 @@ brokenLinks = [
  , ("Yawgoog", "/Yawgoog%20injustice")
  , ("Zeo%5B1%5D", "/Zeo")
  , ("ZeoCached", "/Zeo")
+ , ("Black-market archives", "/DNM%20archives")
+ , ("Black-market arrests", "/DNM%20arrests")
+ , ("Black-market survival", "/DNM%20survival")
  ]

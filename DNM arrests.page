@@ -1,23 +1,23 @@
 ---
-title: Tor black-market-related arrests
-description: A database of all publicly-reported arrests and prosecutions connected to the Tor-Bitcoin drug black-markets 2011-2015, and mistakes made.
+title: Tor DNM-related arrests
+description: A database of all publicly-reported arrests and prosecutions connected to the Tor-Bitcoin drug darknet markets 2011-2015, and mistakes made.
 created: 14 Jul 2012
 tags: Bitcoin, Silk Road
 status: in progress
 belief: highly likely
 ...
 
-> I compile a table and discussion of all known arrests and prosecutions related to English-language Tor-Bitcoin black-markets such as Silk Road 1, primarily 2011-2015, along with discussion of how they came to be arrested.
+> I compile a table and discussion of all known arrests and prosecutions related to English-language Tor-Bitcoin darknet markets (DNMs) such as Silk Road 1, primarily 2011-2015, along with discussion of how they came to be arrested.
 
-Online black-market users have been arrested in a number of countries, for many different reasons, and dating back to not long after the opening of Silk Road 1 in January 2011.
+Online DNM users have been arrested in a number of countries, for many different reasons, and dating back to not long after the opening of Silk Road 1 in January 2011.
 Because of the novelty of such markets and the relatively durable communities, a surprising number of arrests eventually become known.
 While we'll never know all the users who experience imperial entanglements, published reports at least yield a lower bound on their numbers and are enlightening as to law enforcement methods & OPSEC lessons.
 
-For information on the markets themselves (active & past), see [Black-market survival](/Black-market survival); for discussion of the ordering process, economics, cryptography, and politics of the black-markets, see [Silk Road](/Silk Road).
+For information on the markets themselves (active & past), see [DNM survival](/DNM survival); for discussion of the ordering process, economics, cryptography, and politics of the black-, see [Silk Road](/Silk Road).
 
 The sections are split up by market, then by country.
 
-To suggest or correct entries, you can contact me [via email & PGP](/Links#contact) or in the comments section.
+To suggest or correct entries, you can contact me [via email & PGP](/Links#contact), in the comments section, or make [an edit on Github](https://github.com/gwern/gwern.net/blob/master/DNM%20arrests.page).
 
 <!-- Ideas for a future logistic regression:
 - buyer vs seller
@@ -75,7 +75,7 @@ Similarly, if there were >60 buyer arrests (I double because there seem to be mo
 > "Philosophy in any case always comes on the scene too late...When philosophy paints its gloomy picture then a form of life has grown old. It cannot be rejuvenated by the gloomy picture, but only understood. Only when the dusk starts to fall does the owl of Minerva spread its wings and fly."
 
 - Role: buyer, seller, staff, or market founder/operator; each has distinct risks and LE interest and should be distinguished
-- Market: the black-market a person was most affiliated with, last active on, or busted because of
+- Market: the DNM a person was most affiliated with, last active on, or busted because of
 
     For example, a Silk Road 1 employee working at Silk Road 2 would be classified as SR1-related because he had provided DPR1 his dox and was busted as a consequence of SR1, not because he worked at SR2 when he was arrested; oppositely, a seller like California Cannabis, who had sold on SR1 but was busted after being deanonymized by the undercover agent through the SR2 seller portal, would be classified as SR2-related. And a seller who sold on a market but was busted through his own off-market sales will be marked with the relevant market.
 - Product: the main 3-4 drugs they were dealing in or possessed
@@ -622,7 +622,7 @@ An unknown number (<10) of European buyers were arrested for buying guns from th
 
 <!-- Agora, Germany http://lacbzxobeprssrfx.onion/index.php/topic,62888.0.html http://lacbzxobeprssrfx.onion/index.php/topic,62888.msg11909347.html#msg11909347 realexpresshaze/expresshaze/XpressHaze busted mid-2014? andscheinend as well? and at least 4 customers searched? even into 2015 -->
 
-On 29 January 2015, German police searched several locations & [arrested 5](http://motherboard.vice.com/read/then-the-swat-team-rolls-up-the-first-arrest-of-a-german-deepweb-arms-dealer "Then the SWAT Team Rolls Up: Was a Darknet Arms Dealer Arrested on Campus?") [Germans for gun sales](http://www.polizei.bayern.de/lka/news/presse/aktuell/index.html/214987 "Durchsuchungen und Festnahmen wegen illegalem Waffenhandel") (especially for machine gun sales); a [media article](http://www.infranken.de/regional/schweinfurt/SEK-Einsatz-an-FH-Schweinfurt-Die-Vergangenheit-des-Waffennarren;art221,942669 "SEK-Einsatz an FH Schweinfurt: Die Vergangenheit des Waffennarren; Der 25-jährige Student, der in der vergangenen Woche an der Schweinfurter Fachhochschule von einen Sondereinsatzkommando festgenommen wurde, war der Polizei kein Unbekannter") focusing on one of them mentions his appearance in a Vice documentary about Internet sales of guns over presumably the black-markets.
+On 29 January 2015, German police searched several locations & [arrested 5](http://motherboard.vice.com/read/then-the-swat-team-rolls-up-the-first-arrest-of-a-german-deepweb-arms-dealer "Then the SWAT Team Rolls Up: Was a Darknet Arms Dealer Arrested on Campus?") [Germans for gun sales](http://www.polizei.bayern.de/lka/news/presse/aktuell/index.html/214987 "Durchsuchungen und Festnahmen wegen illegalem Waffenhandel") (especially for machine gun sales); a [media article](http://www.infranken.de/regional/schweinfurt/SEK-Einsatz-an-FH-Schweinfurt-Die-Vergangenheit-des-Waffennarren;art221,942669 "SEK-Einsatz an FH Schweinfurt: Die Vergangenheit des Waffennarren; Der 25-jährige Student, der in der vergangenen Woche an der Schweinfurter Fachhochschule von einen Sondereinsatzkommando festgenommen wurde, war der Polizei kein Unbekannter") focusing on one of them mentions his appearance in a Vice documentary about Internet sales of guns over presumably the DNMs.
 (It's unclear if or how the other 4 are involved.)
 The next day the Agora gun (and auto/semi-auto gun) seller Dosensuppe went on vacation, leading to [questions on the Agora forums](http://lacbzxobeprssrfx.onion/index.php/topic,58397.0/ "Dosensuppe BUSTED") about whether he, MaxMustermann or PROJEKTIL was the arrested man.
 Dosensuppe [replied on 11 March 2015](http://lacbzxobeprssrfx.onion/index.php/topic,58397.msg8640671.html#msg8640671) that he had not been arrested but was going on vacation for his personal safety; he did not respond to requests for a PGP signature or posted or sold since.
@@ -684,7 +684,7 @@ I have identified "weaponsguy" as the ATF-controlled account which did undercove
 An [Australian press release](http://www.afp.gov.au/media-centre/news/afp/2015/may/four-australians-charged-in-international-illegal-firearm-sting "Four Australians charged in international illegal firearm sting") writes "In September 2014, the HSI investigation led to the identification of a 33-year-old man in Montana for the operation of the online alias account...In September 2014, HSI agents commenced a covert operation using the online alias account."
 (HSI, NCA, and the Australians have declined to comment on my identification of the seller as weaponsguy.)
 
-In June 2016, the guilty plea of 35yo Kansan Michael Andrew Ryan ("Brad Jones"/"Gunrunner") was made public (case #5:15-cr-40050-DDC-1; [press release](https://www.justice.gov/opa/pr/kansas-man-pleads-guilty-exporting-firearms-overseas-purchasers "Kansas Man Pleads Guilty to Exporting Firearms to Overseas Purchasers"); [indictment](/docs/sr/2016-06-07-ryan-indictment-gov.uscourts.ksd.106175.1.0.pdf); [parole charge](/docs/sr/2016-06-07-ryan-parolecomplaint.pdf); [plea agreement](http://i2.cdn.turner.com/cnn/2016/images/07/05/ryan.plea.pdf); [docket](/docs/sr/2016-06-07-ryan-pacerdocket.mht)), his federal case unsealed on PACER, and sentencing scheduled for September 2016; he pled to charges from June 2015 of using 2 straw buyers, his ex-girlfriend Allison Mitchell and a Marlo Martin, to buy guns, and shipping a number of guns internationally to customers in Ireland, Scotland, & Australia, as well as possession of a firearm while on out release.
+In June 2016, the guilty plea of 35yo Kansan Michael Andrew Ryan ("Brad Jones"/"Gunrunner") was made public (case #5:15-cr-40050-DDC-1; [press release](https://www.justice.gov/opa/pr/kansas-man-pleads-guilty-exporting-firearms-overseas-purchasers "Kansas Man Pleads Guilty to Exporting Firearms to Overseas Purchasers"); [indictment](/docs/sr/2016-06-07-ryan-indictment-gov.uscourts.ksd.106175.1.0.pdf); [parole charge](/docs/sr/2016-06-07-ryan-parolecomplaint.pdf); [plea agreement](http://i2.cdn.turner.com/cnn/2016/images/07/05/ryan.plea.pdf); [docket](/docs/sr/2016-06-07-ryan-pacerdocket.mht)), his federal case unsealed on PACER, and sentencing scheduled for September 2016; he pled to charges from June 2015 of using 2 straw buyers, his ex-girlfriend Allison Mitchell and a Marlo Martin, to buy guns, and shipping a number of guns internationally to customers in Ireland, Scotland, & Australia, as well as possession of a firearm while on out release, and was sentenced to [52 months in January 2017](http://www.kansascity.com/news/local/crime/article129764179.html "Kansas 'Gunrunner' sentenced for illegal overseas gun sales").
 Given his age, Midwest location, business, countries he sold to, and charges dating to after weaponsguy was likely busted, I identify Ryan as weaponsguy, although some aspects do not match up (for example, Ryan's initial pleas and request for jury trial, despite the presence of some sealed files on PACER, is hard to reconcile with him cooperating and turning over his Agora account to be used to entrap buyers).
 The press release & indictment are unspecific about which DNM he used, or how he was caught, and the plea agreement specifies use of BMR without any mention of Agora/weaponsguy, so I could be wrong.
 
@@ -699,7 +699,7 @@ A pro se defense failed and he was convicted of most charges 19 June 2015, and w
 Case unsealed as to Michael Albert Focia pursuant to U. S. Marshal notice of arrest (jct, ) [2:15-mj-00021-SRW] (Entered: 01/30/2015)
 Arrest of Michael Albert Focia (jct, ) [2:15-mj-00021-SRW] (Entered: 01/30/2015)
 
-On 2015-04-02, the Massachusetts man Justin Moreira ("jd497") was arrested for ordering a handgun & silencer from an ATF-controlled seller on a black-market ([press release](http://www.justice.gov/usao-ma/pr/hyannis-man-charged-bitcoin-purchase-firearm-and-silencer-darknet "Hyannis Man Charged With Bitcoin Purchase of Firearm and Silencer on 'Darknet'"); [complaint](/docs/sr/agora-moreira-mad-09506722843.pdf)).
+On 2015-04-02, the Massachusetts man Justin Moreira ("jd497") was arrested for ordering a handgun & silencer from an ATF-controlled seller on a DNM ([press release](http://www.justice.gov/usao-ma/pr/hyannis-man-charged-bitcoin-purchase-firearm-and-silencer-darknet "Hyannis Man Charged With Bitcoin Purchase of Firearm and Silencer on 'Darknet'"); [complaint](/docs/sr/agora-moreira-mad-09506722843.pdf)).
 The complaint does not specify the market or seller, but [some careful searching](https://www.reddit.com/r/DarkNetMarkets/comments/31afi7/psaarticle_hyannis_man_charged_with_bitcoin/cq3ejul) reveals that the market was Agora and the seller was highly likely to be "weaponsguy", who seemed to have been arrested and flipped possibly in November 2014, running a gun sting afterwards with several sales on Agora (but that feedback could have been padded).
 The Australian press release implies that there may have been up to 9 other arrests in the USA, and narrows the date down to September 2014.
 
@@ -755,7 +755,7 @@ See the Utopia section.
 
 ### Israel
 
-On ~8 January 2014, the [Israeli man Amit Sand was arrested for buying a gun](http://posta.co.il/index.php/widgetkit/%D7%9E%D7%93%D7%95%D7%A8%D7%99%D7%9D-2/%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA-%D7%9E%D7%97%D7%A9%D7%91/1604-%D7%90%D7%A7%D7%93%D7%97-%D7%94%D7%93%D7%90%D7%A8%D7%A7%D7%A0%D7%98-%D7%94%D7%A8%D7%90%D7%A9%D7%95%D7%9F "אקדח הדארקנט הראשון: בחבילה שהגיעה לסניף דואר בתל אביב התגלה אקדח מפורק שהוסלק בתוך מגף * מזמין החבילה הודה כי רכש את האקדח ברשת האינטרנט הסודית באמצעות המטבע הדיגיטלי ביטקוין, ובמשטרה תוהים: האם נחשפה דרך חדשה להברחת אמצעי לחימה לישראל?") off a black-market seller for ~\$1550 in bitcoins; the first package of parts (mailed 18 December 2013) was discovered by Customs and allowed to go through, and he was arrested after picking up the final second package.
+On ~8 January 2014, the [Israeli man Amit Sand was arrested for buying a gun](http://posta.co.il/index.php/widgetkit/%D7%9E%D7%93%D7%95%D7%A8%D7%99%D7%9D-2/%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA-%D7%9E%D7%97%D7%A9%D7%91/1604-%D7%90%D7%A7%D7%93%D7%97-%D7%94%D7%93%D7%90%D7%A8%D7%A7%D7%A0%D7%98-%D7%94%D7%A8%D7%90%D7%A9%D7%95%D7%9F "אקדח הדארקנט הראשון: בחבילה שהגיעה לסניף דואר בתל אביב התגלה אקדח מפורק שהוסלק בתוך מגף * מזמין החבילה הודה כי רכש את האקדח ברשת האינטרנט הסודית באמצעות המטבע הדיגיטלי ביטקוין, ובמשטרה תוהים: האם נחשפה דרך חדשה להברחת אמצעי לחימה לישראל?") off a DNM seller for ~\$1550 in bitcoins; the first package of parts (mailed 18 December 2013) was discovered by Customs and allowed to go through, and he was arrested after picking up the final second package.
 I assign this buy to BMR, since while BMR had closed a week or two before the first package was mailed, the deal could have been agreed upon earlier, and no other major market allowed guns at the time; this may be like the Korff case, where the purchase (ricin, in his case) began on BMR but continued off-market after BMR closed.
 
 ### USA
@@ -811,7 +811,7 @@ The police search turned up a handgun & ammo, 7 bombs, and other items; some of 
 The Liverpool man [Mohammed Ammer Ali was arrested 11 February 2015](http://www.dailymail.co.uk/news/article-2957211/British-father-two-bought-ricin-kill-hundreds-delivered-toy-car-caught-online-sting-FBI.html) after he ordered ricin from an undercover FBI account, found guilty in [July 2015](http://www.bbc.com/news/uk-england-33708611), and eventually sentenced to 8 years in [September 2015](http://www.bbc.com/news/uk-england-34288380).
 Initial reports did not specify market, but given the many details consistent with it and the BMR precedent, this was obviously another case in the Evolution FBI sting using the flipped Dark\_Mart account; the use of Evolution was eventually [confirmed during the trial in July 2015](http://www.theguardian.com/uk-news/2015/jul/21/breaking-bad-style-ricin-delivery-dark-web-mohammed-ammer-ali-trial "Man ordered 'Breaking Bad-style' ricin delivery from FBI agent, court hears; Mohammed Ammer Ali denies charge of attempting to possess chemical weapon, arguing he was trying to buy poison for 'peaceful purpose'").
 
-Two Manchester teenagers [were arrested 16 February 2015](http://www.gmp.police.uk/content/SocialTwitterFeed/A391702C29DD7E8D80257E210039C813 "Teenager admits trying to buy deadly toxin") [for](http://www.independent.co.uk/news/uk/crime/teenager-in-court-charged-with-trying-to-acquire-lethal-toxin-abrin-10054864.html) attempting that month to buy abrin off an unspecified black-market for suicide, after the UK police were informed in January about their negotiations for it.
+Two Manchester teenagers [were arrested 16 February 2015](http://www.gmp.police.uk/content/SocialTwitterFeed/A391702C29DD7E8D80257E210039C813 "Teenager admits trying to buy deadly toxin") [for](http://www.independent.co.uk/news/uk/crime/teenager-in-court-charged-with-trying-to-acquire-lethal-toxin-abrin-10054864.html) attempting that month to buy abrin off an unspecified DNM for suicide, after the UK police were informed in January about their negotiations for it.
 The female was released immediately, and the male eventually [received a 12-month referral order](http://www.theguardian.com/uk-news/2015/apr/20/teenager-court-after-abrin-toxin-over-internet "Teenager walks free from court after trying to order lethal toxin over internet: Sixteen-year-old boy from Manchester given 12-month referral order after claiming he attempted to buy abrin to kill himself").
 
 ### USA
@@ -1019,7 +1019,7 @@ Another NZer,  Dylan Terry Richardson, was [sentenced December 2013 for](http://
 
 And a fourth NZer's (Andrew Trevor Harrison) 2 MDMA & NBOMe shipments from Netherlands & Canada were intercepted in September 2013 by Customs, leading to a search of his house & [sentencing in April 2014](http://www.stuff.co.nz/dominion-post/news/wellington/9945908/Psychedelic-tabs-ordered-online "Psychedelic tabs ordered online").
 
-On 11 December 2013, another 3 NZers were arrested over various orders of "small quantities of LSD, Methamphetamine, MDMA (ecstasy), Class C analogue powders and the psychoactive substance NBOMe" from unspecified black-markets "such as 'The Silk Road'". (Inasmuch as Silk Road was busted 2 October 2013, they may have actually been ordering from a replacement such as Sheep MarketPlace.)
+On 11 December 2013, another 3 NZers were arrested over various orders of "small quantities of LSD, Methamphetamine, MDMA (ecstasy), Class C analogue powders and the psychoactive substance NBOMe" from unspecified DNMs "such as 'The Silk Road'". (Inasmuch as Silk Road was busted 2 October 2013, they may have actually been ordering from a replacement such as Sheep MarketPlace.)
 
 In April 2014, the [NZ man  Peter James Grossett was convicted](http://www.stuff.co.nz/national/crime/10232509/Doing-time-for-drugs-bought-online) after 2 packages of methamphetamine from Canada were intercepted in September & November 2013; the search had also turned up LSD and marijuana.
 (The article mentions he bought from another market after SR1 shut down, but not which one - it could have been Sheep or TorMarket or BMR given the broad time range.)
@@ -1371,13 +1371,13 @@ It's unspecified if he was one of the 3 charged in July 2016 or if he operated o
 
 An [Israeli man Weitzman](http://www.ynet.co.il/articles/0,7340,L-4611084,00.html "חשד: הזמין שוקולד עם קוקאין ברשת האפלה :צעיר מכפר סבא חשוד שהזמין קוקאין דרך ה'דארקנט', והסם הגיע ארצה בתוך פרלינים. קו ההגנה שלו: 'בכלל הזמנתי סמי הזיה שאינם אסורים בחוק'") was arrested ~4 January 2015 after a "darknet" package containing cocaine was detected by a sniffer dog at Customs.
 
-An Israeli teen [was arrested ~12 January 2015](http://news.walla.co.il/item/2819632 "חשד: רכש סמים ב'ביטקוין'ומכר אותם בתיכון באשדוד: חבילה שעוררה את חשדם של הבודקים בנתב'ג הכילה מאות גרמים של מריחואנה - והובילה לבן 18 שקיבל יותר מ-10 חבילות של סמים שונים. החשוד למד בשיטוט באינטרנט כיצד לרכוש סמים ברשת 'דארקנט' המוצפנת") ([translation](http://www.deepdotweb.com/2015/01/14/israeli-teen-arrested/)) after a package of marijuana was intercepted by Customs at Ben Gurion Airport; the media coverage specifies he had bought that package & 13 others off the black-markets, but not which one or the seller.
+An Israeli teen [was arrested ~12 January 2015](http://news.walla.co.il/item/2819632 "חשד: רכש סמים ב'ביטקוין'ומכר אותם בתיכון באשדוד: חבילה שעוררה את חשדם של הבודקים בנתב'ג הכילה מאות גרמים של מריחואנה - והובילה לבן 18 שקיבל יותר מ-10 חבילות של סמים שונים. החשוד למד בשיטוט באינטרנט כיצד לרכוש סמים ברשת 'דארקנט' המוצפנת") ([translation](http://www.deepdotweb.com/2015/01/14/israeli-teen-arrested/)) after a package of marijuana was intercepted by Customs at Ben Gurion Airport; the media coverage specifies he had bought that package & 13 others off the DNMs, but not which one or the seller.
 
 ### Netherlands
 
 On 6 February 2015, a [man](https://www.politie.nl/nieuws/2015/februari/6/10-virtuele-dealer-in-echte-wereld-aangehouden.html "Virtuele dealer in echte wereld aangehouden: Kerkrade - De politie hield vrijdag 6 februari een 41-jarige man uit Kerkrade aan op verdenking van handel in drugs op het zogeheten dark web.") was arrested in Kerkrade for selling drugs on "the so-called dark Web", and the search seized drugs & bitcoins.
 
-On 3 March 2015, [2 men & 1 woman were arrested and searched](https://www.politie.nl/nieuws/2015/maart/9/01-onderzoek-naar-verzilveren-440.000-euro-aan-bitcoins.html "Onderzoek naar verzilveren 440.000 euro aan bitcoins: Sneek - De politie heeft afgelopen week drie personen aangehouden in een onderzoek naar hennepteelt en het verzilveren van bitcoins. Er is een hennepkwekerij opgerold en er zijn twee wapens in beslag genomen."), uncovering a marijuana grow operation; they been selling bitcoins for a total of €440,000 (a sum too large to be explained as anything other than black-market sales).
+On 3 March 2015, [2 men & 1 woman were arrested and searched](https://www.politie.nl/nieuws/2015/maart/9/01-onderzoek-naar-verzilveren-440.000-euro-aan-bitcoins.html "Onderzoek naar verzilveren 440.000 euro aan bitcoins: Sneek - De politie heeft afgelopen week drie personen aangehouden in een onderzoek naar hennepteelt en het verzilveren van bitcoins. Er is een hennepkwekerij opgerold en er zijn twee wapens in beslag genomen."), uncovering a marijuana grow operation; they been selling bitcoins for a total of €440,000 (a sum too large to be explained as anything other than DNM sales).
 
 ### New Zealand (NZ)
 
@@ -1478,7 +1478,7 @@ He was sentenced June 2015 to 10 months.
 
 On 25 November 2013, Brandon Howell [was arrested](http://www.wect.com/story/24088516/police-seized-hundreds-of-drugs-in-carolina-beach-bust) after "a month-long investigation" in North Carolina; he & his partner "imported MDMA from China through an online black market...The two then resold the imported drugs using the online currency Bitcoin, according to police." It is not clear which seller they were or what market they sold on, but the media coverage mentions Silk Road 1.
 
-On 20 June 2014, the Boise Idaho buyer Jasen Crisp received a CD of a 100g package of MDMA he had ordered from Canada ([press release](http://www.justice.gov/usao-id/pr/boise-man-admits-importing-ecstasy-united-states), #1:14-cr-00226-EJL) and cooperated; his lawyer's [sentencing filing](/docs/sr/2015-01-29-jasencrisp-defensesentencingletter.pdf) writes that he used an "electronic currency" to use the "uncommon means" of ordering on the Internet from "a secret marketplace", so Crisp clearly ordered off one of the black-markets, but it remains unclear which market and which seller.
+On 20 June 2014, the Boise Idaho buyer Jasen Crisp received a CD of a 100g package of MDMA he had ordered from Canada ([press release](http://www.justice.gov/usao-id/pr/boise-man-admits-importing-ecstasy-united-states), #1:14-cr-00226-EJL) and cooperated; his lawyer's [sentencing filing](/docs/sr/2015-01-29-jasencrisp-defensesentencingletter.pdf) writes that he used an "electronic currency" to use the "uncommon means" of ordering on the Internet from "a secret marketplace", so Crisp clearly ordered off one of the DNMs, but it remains unclear which market and which seller.
 
 On the Bungee54 forums, the customer service account "Santos L. Helperb" [said on 2014-10-20](/docs/sr/bungee54-forums-20141105-4162-deliverytimes.html "Bungee54 Member Assembly → Shipping → Delievery times: (Page 6 of 7); http://bungee54ft2us2fs.onion/viewtopic.php?pid=4162"), in response to customers fretting over claims of CDs on Reddit, that Bungee54 in the past 4 months had had only two buyer incidents: "1 was a controlled delivery in US around July - buyer had been investigated before. None of both orders were above 25g".
 While the drug & timing is similar (MDMA, late June vs "around July"), this US buyer cannot be Jasen Crisp: Bungee54 did not ship from Canada, Crisp did not have a prior record (that I found), and his intercepted MDMA order was >4x larger than this one.
@@ -1516,7 +1516,7 @@ It is known Edgren had been a The Marketplace customer, but TMP had closed down 
 (The pricing [might suggest a Canadian source](https://www.reddit.com/r/DarkNetMarkets/comments/2robda/possibly_dnm_related_buyer_arrest/cnif309).)
 
 On 23 February 2015, the South Carolinian man Joseph Patrick Gelli received a summons for a money-laundering charge related to $30k of Bitcoin he had purchased through Coinbase using cash deposited to his bank account ([indictment](/docs/sr/gelliindictment-3-15-cr-00086-MBS-2-main.pdf); [press release](http://www.justice.gov/usao-sc/pr/lexington-man-pleads-guilty-money-laundering-charge-using-bitcoin "Lexington Man Pleads Guilty to Money Laundering Charge Using Bitcoin")); a search of his home at an unknown point also turned up cash and "marijuana and psychotropic mushrooms" (presumably psilocybin).
-He apparently had been buying off an unspecified black-market for local resale, but given the money-laundering focus, it seems unlikely that he suffered the usual fate of a customer snitching.
+He apparently had been buying off an unspecified DNM for local resale, but given the money-laundering focus, it seems unlikely that he suffered the usual fate of a customer snitching.
 
 On 3 March 2015, the Indiana University student Andrew Thrall was arrested for importing Xanax pills from Canada which [he had bought "online using bit coins"](http://www.idsnews.com/article/2015/03/delta-tau-delta-member-arrested-for-dealing-xanax "Delta Tau Delta member arrested for dealing Xanax") and [resold to his fraternity](http://www.theindychannel.com/news/local-news/iu-student-accused-of-dealing-drugs-from-fraternity-house "IU student accused of dealing drugs from fraternity house"); the investigation apparently began November 2014, but the media articles did not mention what triggered it (a Customs intercept? or related to the local reselling).
 The seller & market are unknown (suggested sellers include [Quantik](https://www.reddit.com/r/QuantikXanax/comments/2y6wtn/indiana_1k_pills_bust_official_response/), Magicman, & Yacht club).
@@ -1524,7 +1524,7 @@ The seller & market are unknown (suggested sellers include [Quantik](https://www
 On 26 March 2015, New Jersey man [Michael Regan was arrested in a CD of LSD ordered from the Netherlands](http://www.nj.com/mercer/index.ssf/2015/03/trenton_man_arrested_on_drug_charges_after_accepti.html "Trenton man arrested on drug charges after accepting package containing LSD").
 
 On the same day, 26 March 2015, Alabama man [Ryan Andrew Backer was also arrested](http://www.foxcarolina.com/story/28631102/teen-arrested-after-allegedly-buying-lsd-online "Teen arrested after allegedly buying LSD online") after a search turned up the LSD he had "ordered...online from a source in the Netherlands".
-While neither order is stated to have been black-market-related, several factors suggest strongly that these two cases are: the simultaneous arrests is unusual but common when a seller has been profiled and multiple packages can be intercepted simultaneously; LSD is particularly difficult to intercept by Customs; both men are young; the quantities are small; Backer's order is explicitly said to have been online rather than through other channels; and German & Dutch sellers have been having particular difficulty 2014-2015.
+While neither order is stated to have been DNM-related, several factors suggest strongly that these two cases are: the simultaneous arrests is unusual but common when a seller has been profiled and multiple packages can be intercepted simultaneously; LSD is particularly difficult to intercept by Customs; both men are young; the quantities are small; Backer's order is explicitly said to have been online rather than through other channels; and German & Dutch sellers have been having particular difficulty 2014-2015.
 (If so, then the specific seller may have been "HollandOnline".)
 
 In January 2016, the fourth arrest of a bust centering around [4 Shelter Island, NY men](http://shelterislandreporter.timesreview.com/2016/01/28/shelter-island-police-make-drug-bust-in-the-bronx/ "Shelter Island Police make drug bust in the Bronx") was made, involving fentanyl, alprazolam, cocaine and oxycodone through the mail & DNMs, although coverage was vague about whether the 4 men were selling from Shelter Island or were buying to resell locally: "According to the police, those arrests last year came out of an investigation centering on powerful prescription and nonprescription drugs sent to the Island through the U.S. Mail. The investigation also uncovered use of black market Internet sites - the so-called "Dark Web," or sites difficult to trace - counterfeit currency and the use of Bitcoin, the digital currency, according to the police...In the case against the three young men, more than 25 packages containing narcotics were sent to the Island through the U.S. Mail, including fentanyl, alprazolam, cocaine and oxycodone, police said. Prescription drugs in tablet form were taken into evidence along with non-prescription narcotics in powder form. Electronic messaging and payments, including money orders and other fund transfers, were used to order and pay for the drugs from distributors off-Island, according to the police."
@@ -1681,7 +1681,7 @@ The [Drugs Global Incident Map](http://drugs.globalincidentmap.com/) features ma
     - ["Customs officials find 750 grams of MDMA ecstasy, leading to the arrest of a Norwalk man"](http://fox61.com/2016/08/19/customs-officials-find-750-grams-of-mdma-ecstasy-arrest-norwalk-man/)
     - ["Alaskan Man Arrested After $15,000 Ecstasy Package Intercepted"](https://www.deepdotweb.com/2016/09/21/alaskan-man-arrested-after-15000-ecstasy-package-intercepted/)
 
-Most are likely unrelated to the black-markets (part of regular drug smuggling or importing from fly-by-night chemical labs in China) and some rumors are wrong or flatly made up (for example, a seller may be covering up an exit scam with a fake story about being busted, or one seller may be trying to hurt another's sales eg [the TedDanzig incident](https://www.reddit.com/r/SilkRoad/comments/1xq97t/teddanzig_arrested/) or the 4lb PureFireMeds FUD), but of course, some will turn out to be real.
+Most are likely unrelated to the DNMs (part of regular drug smuggling or importing from fly-by-night chemical labs in China) and some rumors are wrong or flatly made up (for example, a seller may be covering up an exit scam with a fake story about being busted, or one seller may be trying to hurt another's sales eg [the TedDanzig incident](https://www.reddit.com/r/SilkRoad/comments/1xq97t/teddanzig_arrested/) or the 4lb PureFireMeds FUD), but of course, some will turn out to be real.
 
 ## Australia
 
@@ -1778,7 +1778,7 @@ No verifiable details were provided.
 A Redditor claims to have been arrested in Virginia in April 2014 while [tripping on 25-NBOMe](http://www.reddit.com/r/SilkRoad/comments/23fsf1/got_arrested_25cnbome_not_lsd/).
 
 On 19 March 2014, in Leesburg Virginia, Thomas C. Watson [was arrested after a controlled delivery](http://www.myfoxdc.com/story/25055460/police-man-allegedly-used-mail-to-transport-drug-molly "Police: Man allegedly used mail to transport drug "molly" to himself") of an intercepted package of oxycodone & MDMA; he wrote ["return to sender" on it & denied any connection](http://www.leesburgtoday.com/crime/leesburg-man-denies-involvement-in-mailed-drugs-case/article_e6a17896-b6a4-11e3-b6b2-001a4bcf887a.html "Leesburg Man Denies Involvement In Mailed Drugs Case"), and ultimately [the charges were dropped](http://www.loudountimes.com/news/article/drug_charges_dropped_against_prominent_leesburg_businessman543 "Drug charges dropped against prominent Leesburg businessman").
-Because of his technological savvy ("the founder of Capital Computers and Network, an IT company"; cf CALIGIRL) and return-to-sender gambit (sometimes advised as an anti-CD tactic) and the small quantities (suggesting a personal purchase rather than being set up as a drop), speculation was rife that Watson was a black-market buyer, but no concrete evidence ever surfaced.
+Because of his technological savvy ("the founder of Capital Computers and Network, an IT company"; cf CALIGIRL) and return-to-sender gambit (sometimes advised as an anti-CD tactic) and the small quantities (suggesting a personal purchase rather than being set up as a drop), speculation was rife that Watson was a DNM buyer, but no concrete evidence ever surfaced.
 
 Around April-May 2014, the SR2 Californian methamphetamine sellers AoD and Chaletla ceased sales, leading [to](https://www.reddit.com/r/DarkNetMarkets/comments/23qh7y/warning_chaletlatherealchaletla_has_either_turned/) [speculation](https://www.reddit.com/r/DarkNetMarkets/comments/24p8x9/san_jose_bust_sounds_like_chaletlas_team/) about being busted or linked to a [large Californian bust](http://sanfrancisco.cbslocal.com/2014/04/25/silicon-valley-drug-bust-shows-strong-ties-to-mexican-cartels/ "Silicon Valley Drug Bust Shows Strong Ties To Mexican Cartels") [of cartel dealers](http://www.mercurynews.com/crime-courts/ci_25639176/san-jose-meth-bust-leads-arrest-suspected-key "San Jose: Meth bust leads to arrest of suspected key cartel operative, clandestine lab") in methamphetamine & other drugs.
 
@@ -1813,11 +1813,11 @@ What they found and what arrests they made, if any, remain unknown.
 [A Mid-Western Redditor](https://www.reddit.com/r/DarkNetMarkets/comments/2m4otd/reporting_a_local_bust_following_operation_onymous/) reports on 12 November 2014 (post-Operation Onymous) that an acquaintance had been arrested after picking up a SR2 package; he says that he was a local reseller of LSD & other psychedelics.
 
 On 12 December 2014, the Massachusetts man [Christopher D. Barr was arrested](http://weymouth.wickedlocal.com/article/20150327/NEWS/150326380 "Police: Weymouth man got MDMA shipments from Germany; A 23-year-old Weymouth man faces an assortment of charges after police said they caught him receiving packages from Germany that contained the drugs ecstasy and molly hidden in DVD cases") for importing MDMA & methylone from Germany & China hidden in DVD cases, the police crediting "a tip" for the case.
-While there is no mention of black-markets being involved, DVD cases are a common form of stealth, leading to speculation.
+While there is no mention of DNMs being involved, DVD cases are a common form of stealth, leading to speculation.
 
-In February 2015, UCF student [Peter John Faucella was arrested in Florida](http://www.orlandosentinel.com/news/breaking-news/os-ucf-student-marijuana-arrest-towers-20150216-story.html "UCF student had marijuana shipped to campus apartment, cops say") after an intercepted package of marijuana; previously, a UCF student [may have posted on the black-market subreddits](https://www.reddit.com/r/DarkNetMarkets/comments/2w52bg/communitydiscussionucf_students_busted_for/copb9se) asking for help.
+In February 2015, UCF student [Peter John Faucella was arrested in Florida](http://www.orlandosentinel.com/news/breaking-news/os-ucf-student-marijuana-arrest-towers-20150216-story.html "UCF student had marijuana shipped to campus apartment, cops say") after an intercepted package of marijuana; previously, a UCF student [may have posted on the /r/DNM subreddits](https://www.reddit.com/r/DarkNetMarkets/comments/2w52bg/communitydiscussionucf_students_busted_for/copb9se) asking for help.
 
-On 9 February 2015, [Michael R. Winchester was arrested in Kentucky](http://www.wdrb.com/story/28070729/police-suspect-arrested-for-dealing-drugs-from-home "POLICE: Suspect arrested for dealing drugs from home") after a tip about his local dealing; he was apparently also a [well-known Topix.com](https://www.reddit.com/r/DarkNetMarkets/comments/2vgf1y/psaarticle_topix_sellerirl_dealer_busted_possibly/) seller of benzodiazepines, and may at some point have sold on the black-markets.
+On 9 February 2015, [Michael R. Winchester was arrested in Kentucky](http://www.wdrb.com/story/28070729/police-suspect-arrested-for-dealing-drugs-from-home "POLICE: Suspect arrested for dealing drugs from home") after a tip about his local dealing; he was apparently also a [well-known Topix.com](https://www.reddit.com/r/DarkNetMarkets/comments/2vgf1y/psaarticle_topix_sellerirl_dealer_busted_possibly/) seller of benzodiazepines, and may at some point have sold on the DNMs.
 
 # Analysis
 ## Opsec/security
@@ -1843,9 +1843,9 @@ A few motifs do emerge:
 
 ## Completeness
 
-How complete is this inventory of arrests, that is, what percentage of *all* black-market related cases are listed in the table? There are many reasons to expect the table to be incomplete:
+How complete is this inventory of arrests, that is, what percentage of *all* DNM related cases are listed in the table? There are many reasons to expect the table to be incomplete:
 
-1. anyone arrested will do their best to minimize any connection to drugs in general, or varieties of conspiracy, RICO, money laundering, or interstate charges which might be entailed by admitting to anything related to the black-markets or Bitcoin
+1. anyone arrested will do their best to minimize any connection to drugs in general, or varieties of conspiracy, RICO, money laundering, or interstate charges which might be entailed by admitting to anything related to the DNMs or Bitcoin
 2. if they are arrested and the connection comes out, the case may never become public for many reasons - various legal or privacy regulations may block it, it may simply not hit the media because it was 'just' another local drug case, or it may be deliberately kept secret as part of ongoing investigations (and LE admits as much - in [one article](http://www.baltimoresun.com/news/maryland/baltimore-city/bs-md-ci-inside-silk-road-20131118-story.html) they are paraphrased as saying "Not all of those charges have been made public.", and other tactics include ["sealing documents, eliminating key information from public documents that point to the investigation - for example, the name Silk Road - or filing state charges instead of federal ones to keep a suspect's records out of the more-easily searched federal court [PACER] database."](http://www.wired.com/2013/11/silk-road/ "Headline: How the Feds Took Down the Silk Road Drug Wonderland")).
 3. the information may be public, but media coverage gets it wrong; unsophisticated & overworked journalists routinely confuse the deep web, dark web, forums, etc
 4. the media coverage may be right but is not in English
@@ -1869,8 +1869,8 @@ In aggregate, I would guess that the completeness of the table is highly unlikel
 
 ~~~{.R}
 library(XML)
-# https://www.gwern.net/Black-market%20arrests
-arrests <- readHTMLTable("http://www.gwern.net/Black-market%20arrests",
+# https://www.gwern.net/DNM%20arrests
+arrests <- readHTMLTable("http://www.gwern.net/DNM%20arrests",
     colClasses = c("character", "factor", "integer", "character", "factor", "factor", "character", "factor",
                    "factor", "character", "logical", as.Date, as.Date, "character"))[[1]]
 # replace all empty-fields/""s with NAs
@@ -1909,7 +1909,7 @@ sort(table(arrests$Market), decreasing=TRUE) # associated market:
 intl <- table(arrests[arrests$Role=="buyer",]$INTL); intl[1] / (intl[1]+intl[2]) # estimate of international order risk:
 sort(table(sub("^ ", "", unlist(strsplit(levels(arrests$Product), ",")))), decreasing=TRUE) # drug popularity
 ## fraction site operators/ sites busted:
-black <- readHTMLTable("http://www.gwern.net/Black-market%20survival")[[1]]
+black <- readHTMLTable("http://www.gwern.net/DNM%20survival")[[1]]
 nrow(black)
 sum(arrests$Role=="operator", na.rm=TRUE) / nrow(black)
 

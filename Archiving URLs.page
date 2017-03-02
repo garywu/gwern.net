@@ -528,7 +528,7 @@ Not as impressive as in the next use case, but enough to show this seems like a 
 
 ### Separate mirrors
 
-Top-level domains are not the only thing we might want to sort differently on. To take my mirrors of black-market drug sites such as [Silk Road](/Silk Road): I download a site each time as a separate `wget` run in a timestamped folder. So in my Silk Road 2 folder, I have both `2013-12-25/` & `2014-01-15/`. These share many similar & identical files so they compress together with `xz` down from 1.8GB to 0.3GB.
+Top-level domains are not the only thing we might want to sort differently on. To take my mirrors of darknet market drug sites such as [Silk Road](/Silk Road): I download a site each time as a separate `wget` run in a timestamped folder. So in my Silk Road 2 folder, I have both `2013-12-25/` & `2014-01-15/`. These share many similar & identical files so they compress together with `xz` down from 1.8GB to 0.3GB.
 
 But they *could* compress even better: the similar files may be thousands of files and hundreds of megabytes away by alphabetical or file-inode order, so even with a very large window and a top-notch compressor, it will fail to spot many long-range redundancies. In between `2013-12-25/default.css` and `2014-01-15/default.css` is going to be all sorts of files which have nothing to do with CSS, like `2014-01-16/items/2-grams-of-pure-vanilla-ketamine-powder-dutchdope?vendor_feedback_page=5` and `2014-01-16/items/10-generic-percocet-10-325-plus-1-30mg-morphine`. You see the problem.
 
@@ -568,11 +568,11 @@ find . -type f -print0 | sort --zero-terminated --key=3 --field-separator="/"
 Used on my two Silk Road 2 mirrors which together weigh 1800M, a normal run without the `--key`/`--field-separator` options, as mentioned before, yields a 308M archive. That's not too bad. Certainly much better than hauling around almost 2GB. However - if I switch to the sort-key trick, however, the archive is now 271M, or 37M less. Same compression algorithm, same files, same unpacked results, same speed, just 2 little obscure `sort` options... and I get an archive 87% the size of the original.
 
 Not impressed? Well, I did say that the advantage increases with the number of mirrors to extract redundancy from. With only 2 mirrors, the SR2 results can't be too impressive. How about the Pandora mirrors? 5 of them gives the technique more scope to shine. And as expected, it's even more impressive when I compare the Pandora archives: 71M vs 162M. The sort-keyed archive saves 56% of the regular archive's size.
-The final Pandora archive, [released as part of my DNM archive](/Black-market archives), boasts 105 mirrors from 2013-12-25 to 2014-11-05 of 1,745,778 files (many duplicates due to being present over multiple crawls) taking up 32GB uncompressed.
+The final Pandora archive, [released as part of my DNM archive](/DNM archives), boasts 105 mirrors from 2013-12-25 to 2014-11-05 of 1,745,778 files (many duplicates due to being present over multiple crawls) taking up 32GB uncompressed.
 This archive is 0.58GB (606,203,320 bytes) when sort-keyed; when sorted alphabetically, it is instead 7.5GB (7,466,374,836 bytes) or 12.31x larger, so the sort-keyed archive saves 92%.
 Forum mirrors are even more redundant than market mirrors because all content added to a forum will be present in all subsequent crawls, so each crawl will yield the previous crawl plus some additional posts; hence, the Pandora forums's raw size of 8,894,521,228 bytes shrinks to 283,747,148 bytes when compressed alphabetically but shrinks dramatically to the 31x smaller sort-keyed archive of 9,084,508 bytes, saving 97%!
 
-Clearly in these black-market use-cases, sort-keying has gone from a cute trick to indispensable.
+Clearly in these DNM use-cases, sort-keying has gone from a cute trick to indispensable.
 
 ### Alternatives
 

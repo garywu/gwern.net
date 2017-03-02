@@ -100,7 +100,7 @@ So periodically I write up interesting changes in a human-readable format and [s
 
 ## July
 
-- [Dark Net Market archives, 2011-2015](/Black-market%20archives "Mirrors of Tor-Bitcoin black-markets & forums 2013-2015, and other material")
+- [Dark Net Market archives, 2011-2015](/DNM%20archives "Mirrors of Tor-Bitcoin darknet markets & forums 2013-2015, and other material")
 - A/B tests: finished [metadata test](/AB%20testing#moving-sidebars-metadata-into-page); [proposal towards](/AB%20testing#deep-reinforcement-learning) recurrent neural network for reinforcement learning of CSS
 - [Air conditioner upgrade](/Statistical%20notes#air-conditioner-replacement) cost-benefit analysis
 - `gwern.net`:
@@ -116,7 +116,7 @@ So periodically I write up interesting changes in a human-readable format and [s
 
 ## May
 
-- [black-market arrests compilation](Black-market%20arrests) finished & summaries calculated
+- [DNM arrests compilation](/DNM%20arrests) finished & summaries calculated
 - analysis of [Effective Altruists' donations as reported in the LW survey](EA%20donations)
 
 ## March
@@ -127,7 +127,7 @@ So periodically I write up interesting changes in a human-readable format and [s
 
 ## February
 
-- [Black-market arrests](/Black-market%20arrests "A listing of all known arrests and prosecutions connected to the Tor-Bitcoin drug black-markets"): split out of Silk Road page & began bringing up-to-date with all known incidents across all markets
+- [DNM arrests](/DNM%20arrests "A listing of all known arrests and prosecutions connected to the Tor-Bitcoin drug darknet markets"): split out of Silk Road page & began bringing up-to-date with all known incidents across all markets
 - [electric vs stove kettle boiling-time analysis](/Tea#electric-vs-stove-kettle-fight): collected some simple data on my kettles & demonstrated some statistics tools on the dataset like a Bayesian measurement-error model
 
 ## January
@@ -225,12 +225,12 @@ Site:
 ## May
 
 - [Treadmill/spaced repetition experiment](Treadmill#treadmill-effect-on-spaced-repetition-performance-randomized-experiment)
-- [short interview with Mike Powers](Silk Road#mike-power-questions) on current black-markets
+- [short interview with Mike Powers](Silk Road#mike-power-questions) on current darknet markets
 
 ## April
 
 - [Epigrams on technology](Notes#technology-epigrams)
-- Mistakes: [added a section on how my complacency](Mistakes#centralized-black-markets) about free-market mechanisms lead to no serious archiving
+- Mistakes: [added a section on how my complacency](Mistakes#centralized-darknet-markets) about free-market mechanisms lead to no serious archiving
 - an anonymous user sent in [a fanfiction about Satoshi Nakamoto](Blackmail#fanfiction), which was too good to simply delete
 - I have posted the past issues of the newsletter online:
 
@@ -262,9 +262,9 @@ Tech:
 
 ## January
 
-Black-markets:
+Darknet markets:
 
-- I have begun systematically spidering all operational black-markets.
+- I have begun systematically spidering all operational English darknet markets
 
 General:
 
@@ -286,9 +286,9 @@ Site:
 # 2013
 ## December
 
-Black-markets:
+Darknet markets:
 
-- compiled an updated [table of all known black-markets with lifetimes](Black-market survival)
+- compiled an updated [table of all known darknet markets with lifetimes](DNM survival)
 - wrote up [an essay](Blackmail) on 3 attempts to blackmail/extort/scam
 
 Statistical:
@@ -323,7 +323,7 @@ Another busy month:
 - Silk Road:
 
     - [estimating DPR's net fortune](Silk Road#estimating-dprs-fortune-minus-expenses-exchange-rate) based on the FBI numbers
-    - black market [survival analysis](Silk Road#survival-analysis)
+    - Darknet market [survival analysis](/DNM survival)
     - [publicly betting](Silk Road#the-bet-bmr-or-sheep-to-die-in-a-year-by-oct-2014) Sheep & BMR to shut down soon (which was vindicated even quicker than expected)
     - Mike Power email [interview](Silk Road#mike-power-questions)
     - BBC Radio 5 interview (not yet broadcast)
@@ -341,7 +341,7 @@ Another busy month:
 
 ## October
 
-My focus in October was coping with the fallout from the bust of Silk Road - dealing with the revelations, copying the SR forums, tracking down leads, talking to various people, recording the ensuing arrests, tracking the black markets popping up in its wake... I still have much material to work through, but some things I managed to do included:
+My focus in October was coping with the fallout from the bust of Silk Road - dealing with the revelations, copying the SR forums, tracking down leads, talking to various people, recording the ensuing arrests, tracking the darknet markets popping up in its wake... I still have much material to work through, but some things I managed to do included:
 
 - [_Drugs 2.0_: "Your Crack's in the Post"](/docs/sr/2013-power) (book chapter)
 - rescuing the [vendor public profiles](https://archive.org/details/2013_06_07_SilkRoad_Vendors) and using some in my page
@@ -379,7 +379,7 @@ A/B testing has been active since Hacker News traffic furnished large sample siz
     - [Magnesium citrate](/Nootropics#citrate) on mood/productivity
     - Treadmill desk usage on [spaced repetition scores](/Treadmill#spaced-repetition)
 - [Touhou music growth rate](Touhou#growth-over-time): made a little more progress on Touhou music, with an analysis # of releases vs time: seems like we may've reached peak Touhou in 2009.
-- [Silk Road mirrors](Silk Road#archives-of-sr-pages): I've started hosting public copies of subsets of the black markets; these are backups for particular incidents or timeseries
+- [Silk Road mirrors](Silk Road#archives-of-sr-pages): I've started hosting public copies of subsets of the darknet markets; these are backups for particular incidents or timeseries
 - [Spaced repetition statistics](https://groups.google.com/forum/#!msg/mnemosyne-proj-users/8yZz9BbqKl4/BxAIjo_2WscJ): I've been analyzing my Mnemosyne data and the giant public database for time of day effects. While my results aren't conclusive, my analysis of 48m flashcard reviews from the public database finds that the best time to study your flashcards seem to be noon. A little surprising, you'd think that late at night, before bedtime, would be the best time.
 - My [Sand]() polls aren't done because I got a much lower rate of responses to the polls than I was hoping for and only got enough responses in the final poll the other day.
 

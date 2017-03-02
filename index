@@ -54,8 +54,8 @@
         <section><h1 id="most-popular">Most popular</h1>
         <ul>
           <li><a href="/Silk%20Road" title="Visiting, ordering, and using the anonymous drug market Silk Road 1">Silk Road 1: Theory &amp; Practice</a></li>
-          <li><a href="/Black-market%20archives" title="Mirrors of ~89 Tor-Bitcoin darknet markets &amp; forums 2011-2015, and related material">Darknet Market Archives (2013-2015)</a></li>
-          <li><a href="/Black-market%20arrests" title="A listing of all known arrests and prosecutions connected to the Tor-Bitcoin drug black-markets">Darknet Market Arrests (2011-2015)</a></li>
+          <li><a href="/DNM%20archives" title="Mirrors of ~89 Tor-Bitcoin darknet markets &amp; forums 2011-2015, and related material">Darknet Market Archives (2013-2015)</a></li>
+          <li><a href="/DNM%20arrests" title="A listing of all known arrests and prosecutions connected to the Tor-Bitcoin drug darknet markets">Darknet Market Arrests (2011-2015)</a></li>
           <li><a href="/Modafinil" title="Effects, health concerns, suppliers, prices &amp; rational ordering">Modafinil</a></li>
           <li><a href="/LSD%20microdosing" title="Self-experiment with sub-psychedelic doses of LSD; no benefit">LSD microdosing self-experiment</a></li>
           <li><a href="/Zeo" title="EEG recordings of sleep and my experiments with things affecting sleep quality or durations: melatonin, potassium, vitamin D etc">Zeo sleep self-experiments</a></li>
@@ -110,10 +110,10 @@
             <li><a href="Self-decrypting%20files" title="How do you encrypt a file such that it can be broken after a date but not *before*?">Time-lock encryption</a></li>
             <li><a href="Bitcoin%20is%20Worse%20is%20Better" title="Bitcoin's long gestation indicates it is an example of the 'Worse is Better' paradigm">Bitcoin is Worse is Better</a></li>
             <li><a href="Silk%20Road" title="Visiting, ordering, and using the anonymous drug market Silk Road.">The Silk Road</a></li>
-            <li><a href="./Black-market%20survival" title="Analysis of lifespans, deaths, and predictive factors">Black-markets overview</a></li>
-            <li><a href="./Black-market%20archives" title="Mirrors of Tor-Bitcoin black-markets &amp; forums 2013-2015, and other material">Black-market mirrors</a></li>
-            <li><a href="./Black-market%20arrests" title="A listing of all known arrests and prosecutions connected to the Tor-Bitcoin drug black-markets">Black-market arrests</a></li>
-            <li><a href="./Timestamping" title="Scripts for convenient free secure Bitcoin-based dating of large numbers of files/strings">Bitcoin timestamping scripts</a></li>
+            <li><a href="./DNM%20survival" title="Survival analysis of lifespans, deaths, and predictive factors">DNM census and lifetimes</a></li>
+            <li><a href="./DNM%20archives" title="Mirrors of Tor-Bitcoin darknet markets &amp; forums 2013-2015, and other material">DNM archive (mirrors 2013-2015)</a></li>
+            <li><a href="./DNM%20arrests" title="A listing of all known arrests and prosecutions connected to the Tor-Bitcoin drug darknet markets">DNM arrests, all known (2011-2015)</a></li>
+            <li><a href="./Timestamping" title="Scripts for convenient free secure Bitcoin-based dating of large numbers of files/strings">Cryptographic Bitcoin timestamping scripts</a></li>
           </ul>
         </section>
         <section id="cs" class="level1">

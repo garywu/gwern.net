@@ -133,7 +133,7 @@ From the theoretical point of view, the game was over at that point. The questio
 
 What *should* Light have done? That's easy to answer, but tricky to implement.
 
-One could try to manufacture *dis*information. [Terence Tao](!Wikipedia) rehearses many of the above points about information theory & anonymity, and [goes on to discuss](https://plus.google.com/114134834346472219368/posts/8vmpA9fgRMq) [faking information](!Wikipedia "Disinformation"):
+One could try to manufacture *dis*information. [Terence Tao](!Wikipedia) rehearses many of the above points about information theory & anonymity, and [goes on to loosely discuss](https://plus.google.com/114134834346472219368/posts/8vmpA9fgRMq) the possible benefits of [faking information](!Wikipedia "Disinformation"):
 
 > ...one additional way to gain more anonymity is through deliberate *disinformation*. For instance, suppose that one reveals 100 independent bits of information about oneself. Ordinarily, this would cost 100 bits of anonymity (assuming that each bit was _a priori_ equally likely to be true or false), by cutting the number of possibilities down by a factor of 2^100^; but if 5 of these 100 bits (chosen randomly and not revealed in advance) are deliberately falsified, then the number of possibilities increases again by a factor of (100 `choose` 5) ~ 2^26^, recovering about 26 bits of anonymity. In practice one gains even more anonymity than this, because to dispel the disinformation one needs to solve a [satisfiability](!Wikipedia) problem, which can be notoriously intractable computationally, although this additional protection may dissipate with time as algorithms improve (e.g. by incorporating ideas from [compressed sensing](!Wikipedia)).
 
@@ -157,8 +157,8 @@ Let's remember that all this is predicated on anonymity, and on Light using low-
 
 # See also
 
-- ["Who wrote the _Death Note_ script?"](Death Note script) (statistical analysis of authorship)
-- [List of Tor black-market arrests](Black-market arrests)
+- ["Who wrote the _Death Note_ script?"](/Death Note script) (statistical analysis of authorship)
+- [List of Tor darknet market arrests](/DNM arrests)
 
 # External links
 

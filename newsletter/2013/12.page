@@ -14,9 +14,9 @@ While I was at it, I thought I would include some other material like the [links
 
 # Writings
 
-Black-markets:
+Darknet markets:
 
-- compiled an updated [table of all known black-markets with lifetimes](https://www.gwern.net/Silk%20Road#basic-data)
+- compiled an updated [table of all known darknet markets with lifetimes](https://www.gwern.net/DNM%20survival)
 - wrote up [an essay](https://www.gwern.net/Blackmail) on 3 attempts to blackmail/extort/scam
 
 Statistical:
@@ -47,7 +47,7 @@ Site:
 Technology:
 
 - ["Welcome to the Jungle"](http://herbsutter.com/welcome-to-the-jungle/) (CPU design and Moore's law)
-- [Debian bug report #217243: "`wget`: Possibility to really reject files on recursive downloads"](http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=217243) (serious gotcha everyone needs to know about if they are trying to spider with `wget` a site requiring cookies/login, like, for example, a black-market forum)
+- [Debian bug report #217243: "`wget`: Possibility to really reject files on recursive downloads"](http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=217243) (serious gotcha everyone needs to know about if they are trying to spider with `wget` a site requiring cookies/login, like, for example, a DNM forum)
 - ["Computational Complexity of Air Travel Planning"](https://static.googleusercontent.com/media/www.itasoftware.com/en/us/pdf/ComplexityofArlineTravelPlanning_Carl_Sep-03.pdf) ([excerpts](https://plus.google.com/103530621949492999968/posts/GRbFjgeCrAv))
 - ["RSA Key Extraction via Low-Bandwidth Acoustic Cryptanalysis"](http://www.cs.tau.ac.il/~tromer/acoustic/)
 - ["You advocate a \_\_\_\_\_\_\_\_ approach to calendar reform"](http://qntm.org/calendar) (I always sigh when I have to deal with any date-time programming.)

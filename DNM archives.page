@@ -8,12 +8,12 @@ belief: highly likely
 ...
 
 > Dark Net Markets (DNM) are online markets typically hosted as Tor hidden services providing escrow services between buyers & sellers transacting in Bitcoin or other cryptocoins, usually for drugs or other illegal/regulated goods; the most famous DNM was Silk Road 1, which pioneered the business model in 2011.
-> From 2013-2015, I scraped/mirrored on a weekly or daily basis all existing English-language DNMs as part of my research into their [usage](/Silk Road), [lifetimes/characteristics](/Black-market survival), & [legal riskiness](/Black-market arrests); these scrapes covered vendor pages, feedback, images, etc.
+> From 2013-2015, I scraped/mirrored on a weekly or daily basis all existing English-language DNMs as part of my research into their [usage](/Silk Road), [lifetimes/characteristics](/DNM survival), & [legal riskiness](/DNM arrests); these scrapes covered vendor pages, feedback, images, etc.
 > In addition, I made or obtained copies of as many other datasets & documents related to the DNMs as I could.
 > This uniquely comprehensive collection is now publicly released as a 50GB (~1.6TB uncompressed) collection covering 89 DNMs & 37+ related forums, representing <4,438 mirrors, and is available for any research.
 > This page documents the download, contents, interpretation, and technical methods behind the scrapes.
 
-I have been involved in DNMs since June 2011 when Adrian Chen published his famous _Gawker_ article proving that Silk Road 1 was, contrary to my assumption when it was announced in January/February 2011, not a scam and had become a functional drug black-market; fascinated, I signed up, made my first order, and began documenting how to use SR1 and then a few months later, began documenting the first known SR1-linked arrests.
+I have been involved in DNMs since June 2011 when Adrian Chen published his famous _Gawker_ article proving that Silk Road 1 was, contrary to my assumption when it was announced in January/February 2011, not a scam and had become a functional drug market, a new kind dubbed "dark net markets" (DNM); fascinated, I signed up, made my first order, and began documenting how to use SR1 and then a few months later, began documenting the first known SR1-linked arrests.
 Monitoring DNMs was easy because SR1 was overwhelmingly dominant and BlackMarket Reloaded was a distant second-place market, with a few irrelevancies like Deepbay or Sheep and then the flashy Atlantis.
 
 This idyllic period ended with the raid on SR1 in October 2013, which ushered in a new age of chaos in which centralized markets battled for dominance, the would-be successor Silk Road 2 was crippled by arrests and turned into a ghost-ship carrying scammers, and the multisig breakthrough went begging.
@@ -37,9 +37,9 @@ Here are some suggested uses:
 - providing information on vendors across markets like their PGP key and feedback ratings
 - identifying arrested and flipped sellers (eg the Weaponsguy sting on Agora)
 - individual drug and category popularity
-- total sales per day, with consequent turnover and commission estimates; correlates with Bitcoin or black-market-related search traffic, subreddit traffic, Bitcoin price or volume, etc
+- total sales per day, with consequent turnover and commission estimates; correlates with Bitcoin or DNM-related search traffic, subreddit traffic, Bitcoin price or volume, etc
 - seller lifetimes, ratings, over time and by product sold
-- losses to black-market exit scams, or seller exit scams
+- losses to DNM exit scams, or seller exit scams
 - reactions to exogenous shocks like Operation Onymous
 - survival analysis, and predictors of exit-scams (early finalization volume; site downtime; new vendors; etc)
 - topic modeling of forums
@@ -80,13 +80,13 @@ Posts or articles:
 
 Please cite this resource as:
 
-- Gwern Branwen, Nicolas Christin, David Décary-Hétu, Rasmus Munksgaard Andersen, StExo, El Presidente, Anonymous, Daryl Lau, Sohhlz, Delyan Kratunov, Vince Cakic, Van Buskirk, & Whom. "Dark Net Market archives, 2011-2015", 12 July 2015. Web. [access date] `www.gwern.net/Black-market%20archives`
+- Gwern Branwen, Nicolas Christin, David Décary-Hétu, Rasmus Munksgaard Andersen, StExo, El Presidente, Anonymous, Daryl Lau, Sohhlz, Delyan Kratunov, Vince Cakic, Van Buskirk, & Whom. "Dark Net Market archives, 2011-2015", 12 July 2015. Web. [access date] `https://www.gwern.net/DNM%20archives`
 
 ## Donations
 
 A dataset like this owes its existence to many parties:
 
-- the black-markets could not exist without volunteers and nonprofits spending the money to pay for the bandwidth used by the Tor network; these scrapes collectively represent terabytes of consumed bandwidth. If you would like to donate towards keeping Tor servers running, you can [donate to Torservers.net](https://www.torservers.net/donate.html) or [the Tor Project itself](https://www.torproject.org/donate/donate.html.en)
+- the DNMs could not exist without volunteers and nonprofits spending the money to pay for the bandwidth used by the Tor network; these scrapes collectively represent terabytes of consumed bandwidth. If you would like to donate towards keeping Tor servers running, you can [donate to Torservers.net](https://www.torservers.net/donate.html) or [the Tor Project itself](https://www.torproject.org/donate/donate.html.en)
 - the [Internet Archive](!Wikipedia) hosts countless amazing resources, of which this is only one, and is a unique Internet resource; [they accept Bitcoin](https://archive.org/donate/bitcoin.php)
 - collating and creating these scrapes has absorbed an enormous amount of my time & energy due to the need to solve CAPTCHAs, launch crawls on a daily or weekly basis, debug subtle glitches, work around site defenses, periodically archive scrapes to make disk space available, provide hosting for some scrapes released publicly etc (my [arbtt time-logs](http://arbtt.nomeata.de/#what) suggest >200 hours since 2013); I subsist primarily on donations, and I too accept Bitcoins: `1GWERNi49LgEb5LpvxxGFSuVYo2K3BDRdo`
 
@@ -421,7 +421,7 @@ TRD denied that this was any kind of problem, so I collected order information f
 
 ### Modafinil
 
-As part of my interest in the stimulant [modafinil](/Modafinil), I have been monthly collecting by hand scrapes of all modafinil/armodafinil/adrafinil listings across the black-markets; the modafinil archive contains the saved files in MHT or MAFF format from 2013-05-28 to 2015-07-03. Sampled markets include:
+As part of my interest in the stimulant [modafinil](/Modafinil), I have been monthly collecting by hand scrapes of all modafinil/armodafinil/adrafinil listings across the DNMs; the modafinil archive contains the saved files in MHT or MAFF format from 2013-05-28 to 2015-07-03. Sampled markets include:
 
 - Abraxas
 - Agora
@@ -450,7 +450,7 @@ As part of my interest in the stimulant [modafinil](/Modafinil), I have been mon
 ### Pedofunding
 
 A [crowdfunding](!Wikipedia) site for child pornography, "Pedofunding", [was launched in November 2014](https://www.deepdotweb.com/2014/11/09/as-drug-markets-are-seized-pedophiles-launch-a-crowdfunding-site/).
-It seemed like possibly the birth of a new black-market business model so I set up a logged-out scrape to archive its beginnings (sans any images), collecting 20 scrapes from 2014-11-13 to 2014-12-02, after which it shut down, apparently having found no traction.
+It seemed like possibly the birth of a new DNM business model so I set up a logged-out scrape to archive its beginnings (sans any images), collecting 20 scrapes from 2014-11-13 to 2014-12-02, after which it shut down, apparently having found no traction.
 ([A followup in 2015](https://www.deepdotweb.com/2015/07/16/pedophiles-launch-dash-darkcoin-mining-crowdfunding-platform/) tried to use some sort of [Dash/Darkcoin](!Wikipedia "Dash (cryptocurrency)") mining model; it's unclear why they don't simply use [Darkleaks](https://github.com/darkwallet/darkleaks).)
 
 ### Silk Road 1 (SR41)
@@ -768,7 +768,7 @@ See the [Tor guides](https://www.torproject.org/docs/installguide.html.en).
     - logging of requests and particularly errors is important; `--server-response` prints out headers, and `--append-output` stores them to a log file. Most crawlers do not keep an error log around, but this is necessary to allow investigation of incompleteness and observe where errors in a crawl started (perhaps you missed blacklisting a page); for example, "Evaluating drug trafficking on the Tor Network: Silk Road 2, the sequel", Dolliver 2015, failed to log errors in their few HTTrack crawls of SR2, and so wound up with a grossly incomplete crawl which led to nonsense conclusions like 1-2% of SR2's sales were drugs. (I speculate the HTTrack crawl was stuck in the ebooks section, which was always clogged with spam, and then SR2 went down for an hour or two, leading to HTTrack's default behavior of quickly erroring out and finishing the crawl; but the lack of logging means we may never know what went wrong.)
 7. once the wget crawl is done, then we name it whatever day it terminated on, we store the log inside the mirror, and clean up the probably-now-expired cookies, and perhaps check for any unusual problems.
 
-This method will permit somewhere around 18 simultaneous crawls of different black-market sites or forums before you begin to risk Privoxy throwing errors about "too many connections".
+This method will permit somewhere around 18 simultaneous crawls of different DNMs or forums before you begin to risk Privoxy throwing errors about "too many connections".
 A Privoxy bug may also lead to huge logs being stored on each request.
 Between these two issues, I've found it helpful to have a daily cron job reading `rm -rf /var/log/privoxy/*; /etc/init.d/privoxy restart` so as to keep the logfile mess under control and occasionally start a fresh Privoxy.
 
