@@ -1155,7 +1155,7 @@ What prior should we use?
 Ideally we would use the prior of the participants in the experiment, to compare how well they do compared to the Bayesian decision tree, and estimate how much mistaken beliefs cost them.
 Unfortunately they were not surveyed on this and the authors do not give any indication of how much of an edge the subjects expected before starting the game, so for analysis, we'll make up a plausible prior.
 
-We know that they know that 100% is not an option (as that would be boring) and <50% is imposible too since they were promised an edge; but it can't be too high because then everyone would win quickly and nothing would be learned.
+We know that they know that 100% is not an option (as that would be boring) and <50% is impossible too since they were promised an edge; but it can't be too high because then everyone would win quickly and nothing would be learned.
 I think a reasonable prior would be something like 70%, but with a lot of room for surprise.
 let's assume a weak prior around 70%, which is equivalent to playing 10 games and winning 7, so `Beta(7, 3)`.
 
@@ -1377,4 +1377,67 @@ V <- function(w, b) {
 This can be extended to scenarios where we do learn something about the stopping time, similarly to the coin-flip probability, by doing Bayesian updates on _sp_.
 Or if _sp_ changes over rounds.
 If we had a distribution N(300,25) over the stopping time, then the probability of stopping at each round can change inside the value function given an additional argument _n_ for rounds elapsed.
+-->
+
+<!--
+# ly connect a VNC viewer, such as TurboVNC. Most environments provide a convenient in-browser VNC client: http://localhost:15901/viewer/?password=openai
+
+import gym
+import universe  # register the universe environments
+
+env = gym.make('flashgames.DuskDrive-v0')
+env.configure(remotes=1)  # automatically creates a local docker container
+observation_n = env.reset()
+
+while True:
+  action_n = [[('KeyEvent', 'ArrowUp', True)] for ob in observation_n]  # your agent here
+  observation_n, reward_n, done_n, info = env.step(action_n)
+  env.render()
+
+  ------------
+
+import gym
+from gym import spaces
+from gym.utils import seeding
+
+def flip(edge):
+    return np_random.random() > edge
+
+class KellyCoinflipEnv(gym.Env):
+    """ """
+    def __init__(self, initialWealth=25, edge=0.6, maxWealth=250, maxRounds=300):
+        self.action_space = spaces.Discrete(maxWealth*100) # betting in penny increments
+        self.observation_space = spaces.Tuple((
+            spaces.Discrete(maxWealth), # (w,b)
+            spaces.Discrete(maxRounds)))
+        self.edge = edge
+        self._seed()
+    def _seed(self, seed=None):
+        self.np_random, seed = seeding.np_random(seed)
+        return [seed]
+    def _step(self, action):
+        assert self.action_space.contains(action)
+        if action > self.wealth: # treat attempts to bet more than possess as == betting everything
+          action = self.wealth
+        if self.wealth <= 0:
+            done = True
+            reward = 0
+        else:
+          if self.rounds == 0:
+            done = True
+            reward = self.wealth
+          else:
+            self.rounds = self.rounds - 1
+            coinflip = flip(self.edge)
+            if coinflip:
+              self.wealth = self.wealth + self.action
+            else:
+              self.wealth = self.wealth - self.action
+        return self._get_obs(), reward, done, {}
+    def _get_obs(self):
+        return (self.w, self.rounds)
+    def _reset(self):
+        self.rounds = self.maxRounds
+        self.wealth = self.initialWealth
+        return self._get_obs()
 -->
