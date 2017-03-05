@@ -5,6 +5,7 @@ created: 7 Sep 2015
 tags: computer science, statistics, criticism
 status: finished
 belief: likely
+importance: 3
 ...
 
 > User-created datasets using ordinal scales (such as media ratings) have tendencies to drift or 'clump' towards the extremes and fail to be informative as possible, falling prey to ceiling effects and making it difficult to distinguish between the mediocre and truly excellent.
@@ -169,7 +170,7 @@ p <- add_argument(p, "--queries", short="-n", default=.Machine$integer.max,
 p <- add_argument(p, "--levels", short="-l", default=5, "The highest level; rated items will be discretized into 1-l levels, so l=5 means items are bucketed into 5 levels: [1,2,3,4,5], etc")
 p <- add_argument(p, "--quantiles", short="-q", "What fraction to allocate to each level; space-separated; overrides `--levels`. This allows making one level of ratings narrower (and more precise) than the others, at their expense; for example, one could make 3-star ratings rarer with quantiles like `--quantiles '0 0.25 0.8 1'`. Default: uniform distribution (1-5 ~> '0.0 0.2 0.4 0.6 0.8 1.0').")
 p <- add_argument(p, "--no-scale", short="-ns", flag=TRUE, "Do not discretize/bucket the final estimated latent ratings into 1-l levels/ratings; print out inferred latent scores.")
-p <- add_argument(p, "--no-progress", flag=TRUE, "Do not print out mean standard error of items")
+p <- add_argument(p, "--progress", flag=TRUE, "Print out mean standard error of items")
 argv <- parse_args(p)
 
 # read in the data from either the specified file or stdin:
@@ -227,8 +228,8 @@ for (i in 1:argv$queries) {
  media1 <- targets[1]
  media2 <- targets[2]
 
- if (!(argv$`no-progress`)) { cat(paste0("Mean stderr: ", round(mean(coefficients[,2]))), " | "); }
- cat(paste0("Do you like '", as.character(media1), "' better than '", as.character(media2), "'? "))
+ if (argv$`no_progress`) { cat(paste0("Mean stderr: ", round(mean(coefficients[,2]))), " | "); }
+ cat(paste0("Is '", as.character(media1), "' greater than '", as.character(media2), "'? "))
  rating <- scan("stdin", character(), n=1, quiet=TRUE)
 
 switch(rating,
@@ -255,7 +256,7 @@ ranking2 <- as.data.frame(BTabilities(updatedRankings))
 ranking2$Media <- rownames(ranking2)
 rownames(ranking2) <- NULL
 
-if(!(argv$`no-scale`)) {
+if(!(argv$`no_scale`)) {
 
     # if the user specified a bunch of buckets using `--quantiles`, parse it and use it, otherwise, take `--levels` and make a uniform distribution
     quantiles <- if (!is.na(argv$quantiles)) { (sapply(strsplit(argv$quantiles, " "), as.numeric))[,1]; } else { seq(0, 1, length.out=(argv$levels+1)); }
