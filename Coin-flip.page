@@ -9,6 +9,8 @@ belief: likely
 importance: 8
 ...
 
+<!-- TODO: when finished, email "Victor Haghani" <victor@elmfunds.com> / "Richard Dewey" <rld2126@columbia.edu> -->
+
 > Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion as their strategy. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays. We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming in R, Haskell, and C. We find that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6. The relative advantage of the decision tree strategy depends on the number of bets: it is highest when the player can make few bets (at _b_=23, with a difference of ~\$36), and decreases with number of bets as more strategies hit the ceiling. In the variant of this game where subjects are not told the exact edge of 60%, a Bayesian decision tree approach shows that performance can closely approach that of the decision tree, with a penalty for 1 plausible prior of only \$1.
 
 # Background
@@ -20,7 +22,7 @@ The paper ["Rational Decision-Making Under Uncertainty: Observed Betting Pattern
 
 More specifically:
 
-> ...Prior to starting the game, participants read a detailed description of the game, which included a clear statement, in bold, indicating that the simulated coin had a 60% chance of coming up heads and a 40% chance of coming up tails. Participants were given \$25 of starting capital and it was explained in text and verbally that they would be paid, by check, the amount of their ending balance subject to a maximum payout. The maximum payout would be revealed if and when subjects placed a bet that if successful would make their balance greater than or equal to the cap. We set the cap at \$250......Participants were told that they could play the game for 30 minutes, and if they accepted the \$25 stake, they had to remain in the room for that amount of time.^5^ Participants could place a wager of any amount in their account, in increments of \$0.01, and they could bet on heads or tails...Assuming a player with agile fingers can put down a bet every 6 seconds, that would allow 300 bets in the 30 minutes of play.
+> ...Prior to starting the game, participants read a detailed description of the game, which included a clear statement, in bold, indicating that the simulated coin had a 60% chance of coming up heads and a 40% chance of coming up tails. Participants were given \$25 of starting capital and it was explained in text and verbally that they would be paid, by check, the amount of their ending balance subject to a maximum payout. The maximum payout would be revealed if and when subjects placed a bet that if successful would make their balance greater than or equal to the cap. We set the cap at \$250...Participants were told that they could play the game for 30 minutes, and if they accepted the \$25 stake, they had to remain in the room for that amount of time.^5^ Participants could place a wager of any amount in their account, in increments of \$0.01, and they could bet on heads or tails...Assuming a player with agile fingers can put down a bet every 6 seconds, that would allow 300 bets in the 30 minutes of play.
 
 ## Near-optimal play
 
@@ -1352,8 +1354,8 @@ We can approximate it with our pre-existing value function for a known stopping 
 (This is not as terrible as it sounds computation-wise: since the value function is deterministic, we can cache each value and we only need to run the value function for each unique value, and then take a mean weighted by their count in the posterior sample. So if we draw 10,000 posterior samples, we don't need to do 10,000x the work, but maybe only 100x, depending on how narrow our prior is.)
 
 Another way would be to try to calculate it inside the value function.
-The game stopping can be seen as a third probabilistic response to a player's bet, where each move with some _sp_, if it happens the number of bets left immediately becomes _b_=0 (so they win their current _w_) and they win the net value _V(w,0)_; and if it doesn't happen the value is the usual `0.6*V(w+x*2, b-1) + 0.4*V(w-x, b-1)`.
-Or in longer form, the value of a action/bet _x_ is `(1-sp)*(0.6*V(w+x*2,b-1) + 0.4*V(w-x,b-1)) + sp*V(w,0)`.
+The game stopping can be seen as a third probabilistic response to a player's bet, where each move with some _sp_, if it happens the number of bets left immediately becomes _b_=0 (so they win their current _w_) and they win the net value _V(w,0)_; and if it doesn't happen the value is the usual `0.6*V(w+x, b-1) + 0.4*V(w-x, b-1)`.
+Or in longer form, the value of a action/bet _x_ is `(1-sp)*(0.6*V(w+x,b-1) + 0.4*V(w-x,b-1)) + sp*V(w,0)`.
 
 What is _sp_ as a distribution?
 Well, one might believe that every round, there is a ~1% chance of the game stopping, in which case _sp_ is the memoryless geometric distribution (not exponential distribution, since this is a discrete setup); in this case, one must discount each additional round _n_ by 1% cumulatively.
@@ -1367,7 +1369,7 @@ So continuing with the R hash table, it might go like this:
 ~~~{.R}
 f <- function(x, w, b) {
     sp <- 0.01
-    (1-sp)*(0.6*V(w+x*2, b-1) + 0.4*V(w-x,b-1)) + sp*V(w,0)
+    (1-sp)*(0.6*V(min(250,w+x), b-1) + 0.4*V(w-x,b-1)) + sp*V(w,0)
 }
 V <- function(w, b) {
     if (isSet(c(w,b))) { return(lookup(c(w,b))) } else {
@@ -1382,23 +1384,40 @@ This can be extended to scenarios where we do learn something about the stopping
 Or if _sp_ changes over rounds.
 If we had a distribution N(300,25) over the stopping time, then the probability of stopping at each round can change inside the value function given an additional argument _n_ for rounds elapsed.
 -->
+<!--
+### Unknown maximum wealth cap
+
+Finally, subjects weren't told what the maximum would be:
+
+> The maximum payout would be revealed if and when subjects placed a bet that if successful would make their balance greater than or equal to the cap. We set the cap at \$250.
+
+A convenient distribution for such a cap would be the [Pareto distribution](!Wikipedia), parameterized by a minimum _x~m~_ and a tail parameter, α.
+If _x~m~_ is set to something like 100 (the agent thinks the cap is >\$100), for most rounds, the agent would not be able to update this, but towards the end, as it exceeds \$100, it then updates the posterior - if it is allowed to make a bet of \$50 at \$100, then _x~m~_ becomes 150 while α remains the same, and so on
+The posterior mean of the cap is then $\frac{\alpha \cdot x_m}{\alpha - 1}$.
+A reasonable prior might be α=5 and _x~m~_=200, in which case the mean wealth cap is 250.
+
+~~~{.R}
+f <- function(x, w, b, alpha, x_m) {
+    meanCap        <- (alpha * x_m) / (alpha-1) # mean posterior cap if our bet does not threaten to hit the cap
+    x_m_updated <- max(x_m, x+w)
+    meanCapUpdated <- (alpha * x_m_updated) / (alpha-1) # mean posterior cap if our bet does threaten to hit the cap
+    Pcap <- if ((x+b) < x_m) { 0 } else { 1-((x_m / (x+b))^alpha) } # CDF
+    (1-Pcap)*(0.6*V(min(meanCap,w+x), b-1, alpha, x_m) + 0.4*V(w-x,b-1,alpha,x_m)) +
+        Pcap*(0.6*V(min(meanCapUpdated,w+x), b-1, alpha, x_m_updated) + 0.4*V(w-x,b-1,alpha,x_m_updated))
+}
+V <- function(w, b, alpha=5, x_m=200) {
+    if (isSet(c(w,b,alpha,x_m))) { return(lookup(c(w,b,alpha,x_m))) } else {
+      returns <- if (b>0 && w>0) { sapply(seq(0, w, by=0.1), function(x) { f(x,w,b,alpha,x_m) }) } else { return(w) }
+      set(c(w,b,alpha,x_m), max(returns))
+      return(lookup(c(w,b,alpha,x_m)))
+      }
+}
+~~~
+
+
+-->
 
 <!--
-# ly connect a VNC viewer, such as TurboVNC. Most environments provide a convenient in-browser VNC client: http://localhost:15901/viewer/?password=openai
-
-import gym
-import universe  # register the universe environments
-
-env = gym.make('flashgames.DuskDrive-v0')
-env.configure(remotes=1)  # automatically creates a local docker container
-observation_n = env.reset()
-
-while True:
-  action_n = [[('KeyEvent', 'ArrowUp', True)] for ob in observation_n]  # your agent here
-  observation_n, reward_n, done_n, info = env.step(action_n)
-  env.render()
-
-  ------------
 
 import gym
 from gym import spaces
@@ -1455,7 +1474,7 @@ class KellyCoinflipEnv(gym.Env):
         self.wealth = self.initialWealth
         return self._get_obs()
     def _render(self, mode='human', close=True):
-        print("Current wealth: ", self.wealth, "; Rounds left: ", self.rounds)
+        print("Edge: ", self.edge, "; Max wealth: ", self.maxWealth, "; Max game length: ", self.maxRounds,  "; Current wealth: ", self.wealth, "; Rounds left: ", self.rounds)
 
 
 import gym
