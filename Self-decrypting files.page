@@ -5,6 +5,7 @@ created: 24 May 2011
 tags: computer science, cryptography, Bitcoin
 status: finished
 belief: highly likely
+importance: 9
 ...
 
 > In cryptography, it is easy to adjust encryption of data so that one, some, or all people can decrypt it, or some combination thereof. It is not so easy to achieve adjustable decryptability over *time*, a "time-lock crypto": for some uses (data escrow, leaking, insurance, last-resort Bitcoin backups etc), one wants data which is distributed only after a certain point in time.

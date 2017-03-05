@@ -1,10 +1,11 @@
 ---
 title: Complexity no Bar to AI
 description: Critics of AI risk suggest diminishing returns to computing (formalized asymptotically) means AI will be weak; this argument relies on a large number of questionable premises and ignoring additional resources, constant factors, and nonlinear returns to small intelligence advantages, and is highly unlikely.
-tags: computer science, transhumanism
+tags: computer science, transhumanism, AI
 created: 1 June 2014
 status: finished
 belief: likely
+importance: 10
 ...
 
 > Computational complexity theory describes the steep increase in computing power required for many algorithms to solve larger problems; frequently, the increase is large enough to render problems a few times larger totally intractable. Many of these algorithms are used in AI-relevant contexts. It has been argued that this implies that AIs will fundamentally be limited in accomplishing real-world tasks better than humans because they will run into the same computational complexity limit as humans, and so the consequences of developing AI will be small, as it is impossible for there to be any large fast global changes due to human or superhuman-level AIs. I examine the assumptions of this argument and find it neglects the many conditions under which computational complexity theorems are valid and so the argument doesn't work: problems can be solved more efficiently than complexity classes would imply, large differences in problem solubility between humans and AIs is possible, greater resource consumption is possible, the real-world consequences of small differences on individual tasks can be large on agent impacts, such consequences can compound, and many agents can be created; any of these independent objections being true destroys the argument.
@@ -307,7 +308,7 @@ Thus:
 
 A common Intel CPU probably has 1-2 billion transistors, devoted to a huge number of tasks, of course.
 Each of the 2 or 4 main CPU cores can run independently, shutting on or off as necessary, and has its own private cache (bigger than most computers' RAM up to even recently), and must be regarded as individuals.
-The CPU as a whole is reprogrammable through microcode, such as to work around errors in the chip design, and sport increasingly opaque features like the Intel Management Engine & SGX
+The CPU as a whole is reprogrammable through microcode, such as to work around errors in the chip design, and sport increasingly opaque features like the Intel Management Engine (with a JVM for programmability http://www.slideshare.net/codeblue_jp/igor-skochinsky-enpub "Platform Embedded Security Technology Revealed" Ruan 2014 https://link.springer.com/book/10.1007/978-1-4302-6572-6 ) & SGX, or AMD's Platform Security Processor (PSP).
 any floating point unit can probably be considered Turing-complete through encoding into floating-point operations in the spirit of Fractran
 management chip with network access and backdoors
 the [MMU](!Wikipedia "Memory management unit") can be programmed (just one of [many things which are, weirdly, Turing-complete](/Turing-complete))

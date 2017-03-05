@@ -4,6 +4,7 @@ tags: Haskell, archiving, Wikipedia
 created: 02 Nov 2009
 status: finished
 belief: highly likely
+importance: 3
 ...
 
 We left [Wikipedia Archive Bot]() at the point where it could take its stdin (newline-delimited article names), download the English Wikipedia article, parse the HTML for hyperlinks, and fire off an archive request to [WebCitation.org](!Wikipedia).

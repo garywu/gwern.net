@@ -5,6 +5,7 @@ created: 5 June 2016
 tags: experiments, biology, statistics, Zeo
 status: in progress
 belief: likely
+importance: 7
 ...
 
 > Some psychology studies find that CO2 impairs cognition, and some sleep studies find that better ventilation may improve sleep quality. Use of a Netatmo air quality sensor reveals that closing my bedroom tightly to reduce morning light also causes CO2 levels to spike overnight to 7x daytime levels. To investigate the possible harmful effects, I run a self-experiment randomizing an open bedroom door and a bedroom box fan (2x2) and analyze the data using a structural equation model of air quality effects on a latent sleep factor with measurement error.
@@ -450,6 +451,12 @@ Date,Fan.r,Door.r,Mattress.r
 2017-02-21,0,1,NA
 2017-02-22,1,0,NA
 2017-02-23,1,1,NA
+2017-02-24,0,0,NA
+2017-02-25,0,0,NA
+2017-02-26,1,1,NA
+2017-02-27,NA,NA,NA
+2017-02-28,1,0,NA
+2017-03-01,0,0,NA
 
 
 ## I want an interaction effect on `Fan*Door`, since they may have different effects

@@ -5,6 +5,7 @@ created: 1 July 2013
 tags: statistics
 status: finished
 belief: likely
+importance: 4
 ...
 
 > Has Google Alerts been sending fewer results the past few years? Yes. Responding to rumors of its demise, I investigate the number of results in my personal Google Alerts notifications 2007-2013, and find no overall trend of decline until I look at a transition in [mid-2011](#it-was-mid-2011) where the results fall dramatically. I speculate about [the cause](#panda) and [implications](#conclusion) for Alerts's future.

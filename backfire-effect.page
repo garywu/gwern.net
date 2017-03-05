@@ -5,6 +5,7 @@ created: 19 Oct 2012
 tags: psychology, statistics, politics
 status: notes
 belief: unlikely
+importance: 5
 ...
 
 > The backfire effect is a recently-discovered bias where arguments contrary to a person's belief leads to them believing even more strongly in that belief; this is taken as obviously "irrational". The "rational" update can be statistically modeled as a shift in the estimated mean of a normal distribution where each randomly distributed datapoint is an argument: new datapoints below the mean cause a shift of the inferred mean downward and likewise if above. When this model is changed to include the "censoring" of datapoints, then the valid inference changes and a datapoint below the mean can lead to a shift of the mean upwards. This suggests that providing a person with anything less than the best data contrary to, or decisive refutations of, one of their beliefs may result in them becoming even more certain of that belief. If it is enjoyable or profitable to argue with a person while one does less than one's best, it is bad to hold false beliefs, and this badness is not shared between both parties, then arguing online may constitute a negative externality: an activity whose benefits are gained by one party but whose full costs are not paid by the same party. In many moral systems, negative externalities are considered selfish and immoral; hence, lazy or half-hearted arguing may be immoral because it internalizes any benefits while possibly leaving the other person epistemically worse off.

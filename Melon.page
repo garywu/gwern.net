@@ -5,6 +5,7 @@ tags: statistics, decision theory
 created: 14 Sep 2015
 status: finished
 belief: likely
+importance: 6
 ...
 
 > I re-analyze a bitter-melon/blood-glucose self-experiment, finding a small effect of increasing blood glucose after correcting for temporal trends & daily variation, giving both frequentist & Bayesian analyses.

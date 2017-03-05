@@ -5,6 +5,7 @@ tags: statistics, computer science
 created: 22 Jan 2016
 status: finished
 belief: highly likely
+importance: 5
 ...
 
 > In generating a sample of _n_ datapoints drawn from a normal/Gaussian distribution with a particular mean/SD, how big on average the biggest datapoint is will depend on how large _n_ is.

@@ -2,10 +2,11 @@
 title: Jed McCaleb interview
 author: Jed McCaleb
 description: Email interview with McCaleb on early history of his MtGox
-tags: Bitcoin
+tags: Bitcoin, interview
 created: 16 Feb 2014
 status: finished
 belief: log
+importance: 5
 ...
 
 In February 2014, the Bitcoin exchange site [MtGox](!Wikipedia) began collapsing due to an unclear mix of mismanagement, theft, and hacking. The collapse was widely discussed since MtGox was one of the first & oldest operating Bitcoin exchanges (founded by Jed McCaleb in July 2010), and had once been the leading exchange. Many comments on the matter were gibes at the Bitcoin community for using a "site for trading playing cards", a reference to the site's supposed origins as a _[Magic: The Gathering](!Wikipedia)_ trading card game site: these comments irritated me as they were an irrelevant [genetic fallacy](!Wikipedia) (its origins said nothing about whether it was a secure exchange or not, especially after its sale) and were probably wrong to begin with as I had been unable to find any evidence that MtGox ever sold any _Magic_ cards.

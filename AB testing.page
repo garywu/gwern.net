@@ -5,6 +5,7 @@ created: 16 Jun 2012
 tags: experiments, statistics, computer science, meta, decision theory
 status: in progress
 belief: possible
+importance: 4
 ...
 
 > To gain some statistical & web development experience and to improve my readers' experiences, I have been running a series of CSS A/B tests since June 2012. As expected, most do not show any meaningful difference.
@@ -2968,7 +2969,9 @@ If I am reducing my traffic & influence by 10% because people don't want to brow
 In this case, I am interested less in time-on-page than in total traffic per day, as the latter will measure effects like resharing on social media (especially, given my traffic history, Hacker News, which always generates a long lag of additional traffic from Twitter & aggregators).
 
 So my usual ABalytics setup isn't appropriate here: I don't want to randomize individual visitors & measure time on page, I want to randomize individual days or weeks and measure total traffic, giving a Poisson log-linear regression problem.
-This daily randomization suggests a simple A/B test implementation in JS: in the invocation of the AdSense JS, simply throw in a conditional which predictably randomizes based on the current day (something like the day-of-year (1-366) modulo 2, or hashing the day), and then after a few months, extract daily traffic numbers from Google Analytics and match up with randomization and do a test.
+This could be randomized by uploading a different version of the site every day, but this is tedious, inefficient, and has technical issues: aggressive caching of my webpages means that many visitors may be seeing old versions of the site!
+With that in mind, there is a simple A/B test implementation in JS: in the invocation of the AdSense JS, simply throw in a conditional which predictably randomizes based on the current day (something like the day-of-year (1-366) modulo 2, or hashing the day), and then after a few months, extract daily traffic numbers from Google Analytics and match up with randomization and do a test.
+By using pre-specified randomness, caching is never an issue, and using JS is not a problem since anyone with JS disabled wouldn't be one of the people seeing ads anyway.
 Since there might be spillover effects due to lags in propagating through social media and emails etc, daily randomization might be too fast, and 2 days more appropriate.
 
 Setting this up in JS turned out to be a little tricky since there is no built-in function for getting day-of-year or for hashing numbers/strings; so rather than spend another 10 lines copy-pasting some hash functions, I copied some day-of-year code and then simply generated in R 366 binary variables for randomizing double-days and put them in a JS array for doing the randomization:

@@ -4,6 +4,7 @@ tags: computer science, cryptography, Bitcoin
 created: 27 May 2011
 status: finished
 belief: likely
+importance: 8
 ...
 
 Some wonder who is the real man under the Satoshi Nakamoto mask; a hard question - how many libertarian cryptographers are there? But the interesting thing is, Satoshi could be *anybody*. Bitcoin involves no major intellectual breakthroughs, so Satoshi need have no credentials in cryptography or be anything but a self-taught programmer! Satoshi published the first public version of his white paper on [1 November 2008](https://www.mail-archive.com/cryptography@metzdowd.com/msg09959.html) after earlier private discussions^[`bitcoin.org` was registered 18 August 2008, so presumably Satoshi had been developing the bitcoin idea at least as early as 2008. He refers to working on it earlier than that, but the earliest draft of the Bitcoin whitepaper appears to have been circulated privately sometime before [22 August 2008 when he contacted Wei Dai for comments](/docs/2008-nakamoto).] and the [whitepaper](http://www.bitcoin.org/bitcoin.pdf) was further edited afterwards, but if you look at the cryptography that makes up Bitcoin, they can basically be divided into:

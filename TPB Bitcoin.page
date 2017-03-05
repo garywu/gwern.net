@@ -4,6 +4,7 @@ description: Downloading and parsing TPB metadata to estimate Bitcoin usage and 
 tags: statistics, Bitcoin
 created: 25 Feb 2014
 status: notes
+importance: 2
 ...
 
 # Background

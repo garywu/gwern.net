@@ -5,6 +5,7 @@ created: 7 April 2013
 tags: experiments, biology, statistics, decision theory, Zeo
 status: in progress
 belief: possible
+importance: 5
 ...
 
 > One trick to combat morning sluggishness is to get caffeine extra-early by using caffeine pills shortly before or upon trying to get up. From 2013-2014 I ran a blinded & placebo-controlled randomized experiment measuring the effect of caffeine pills in the morning upon awakening time and daily productivity. The estimated effect is small and the posterior probability relatively low, but a decision analysis suggests that since caffeine pills are so cheap, it would be worthwhile to conduct another experiment.

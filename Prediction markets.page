@@ -4,6 +4,7 @@ tags: psychology, statistics, predictions, politics, Bitcoin
 created: 10 Jan 2009
 status: finished
 belief: highly likely
+importance: 9
 ...
 
 Everything old is new again. Wikipedia is the collaboration of amateur gentlemen, writ in countless epistolary IRC or email or talk page messages. And the American public's [untrammeled betting on elections](http://www.unc.edu/~cigar/papers/PoP_submit4.pdf) and victories has been reborn as [prediction markets](!Wikipedia).
@@ -604,7 +605,7 @@ The downsides would be:
 - many of the predictions seem to be invalid or outdated; bet #312 hasn't finished yet, but I think it would technically be invalid to make that bet with him now because a bet expiring in 2018 can't be at least 2 years long
 
     - of the valid ones which would be profitable to take, I would expect most of them to back out or refuse to bet or quibble about technicalities or delay as long as possible; Long Bets requires a \$50 fee but they don't require the \$200 bet to be prepaid and you have to negotiate with each predictor before any bet goes into effect. So you can't bet with most of them. (A major downside of personal betting as compared to prediction markets is the huge friction & transaction costs.)
-    - Long Bets could still collapse or embezzle it all or decide flagrantly wrong (that said, the Long Now Foundation has been operating since 1996, for 21 years, and the latest Form 990 for 2014^[The Long Now Foundation doesn't provide its Form 990s online, so I have copied them from [CitizenAudit.org](https://www.citizenaudit.org/): [2001](/docs/longnow/form990-longnowfoundation-2001-12.pdf) / [2002](/docs/longnow/form990-longnowfoundation-2002-12.pdf) / [2003](/docs/longnow/form990-longnowfoundation-2003-12.pdf) / [2004](/docs/longnow/form990-longnowfoundation-2004-12.pdf) / [2005](/docs/longnow/form990-longnowfoundation-2005-12.pdf) / [2006](/docs/longnow/form990-longnowfoundation-2006-12.pdf) / [2007](/docs/longnow/form990-longnowfoundation-2007-12.pdf) / [2008](/docs/longnow/form990-longnowfoundation-2008-12.pdf) / [2009](/docs/longnow/form990-longnowfoundation-2009-12.pdf) / [2010](/docs/longnow/form990-longnowfoundation-2010-12.pdf) / [2011](/docs/longnow/form990-longnowfoundation-2011-12.pdf) / [2012](/docs/longnow/form990-longnowfoundation-2012-12.pdf) / [2013](/docs/longnow/form990-longnowfoundation-2013-12.pdf) / [2014](/docs/longnow/form990-longnowfoundation-2014-12.pdf).] indicates their financial health looks good, and there have been no complaints about misjudgments for the handful of expired bets thus far)
+    - Long Bets could still collapse or embezzle it all or decide flagrantly wrong (that said, the Long Now Foundation has been operating since 1996, for 21 years, and the latest Form 990 for 2014^[The Long Now Foundation doesn't provide its Form 990s online, so I have copied them from [CitizenAudit.org](https://www.citizenaudit.org/): [2001](/docs/longnow/form990-longnowfoundation-2001-12.pdf) / [2002](/docs/longnow/form990-longnowfoundation-2002-12.pdf) / [2003](/docs/longnow/form990-longnowfoundation-2003-12.pdf) / [2004](/docs/longnow/form990-longnowfoundation-2004-12.pdf) / [2005](/docs/longnow/form990-longnowfoundation-2005-12.pdf) / [2006](/docs/longnow/form990-longnowfoundation-2006-12.pdf) / [2007](/docs/longnow/form990-longnowfoundation-2007-12.pdf) / [2008](/docs/longnow/form990-longnowfoundation-2008-12.pdf) / [2009](/docs/longnow/form990-longnowfoundation-2009-12.pdf) / [2010](/docs/longnow/form990-longnowfoundation-2010-12.pdf) / [2011](/docs/longnow/form990-longnowfoundation-2011-12.pdf) / [2012](/docs/longnow/form990-longnowfoundation-2012-12.pdf) / [2013](/docs/longnow/form990-longnowfoundation-2013-12.pdf) / [2014](/docs/longnow/form990-longnowfoundation-2014-12.pdf).] indicates their financial health looks good, and at least there have been no complaints about misjudgments for the handful of expired bets, ~9, thus far)
 - you might be the irrational one and see your bets go to worthless charities (eg Buffett designated Girls Inc as his winner; but that \$1m is going to do far less good than if it was going to the Gates Foundation with the rest of Buffett's money!)
 - the publicity benefits are minimal: the Buffett bet has been widely reported on, but because of the amount and it being Warren Buffett, not because Long Bets moderates it (if anything, Long Bets has benefited far more, both financially and publicity-wise); other bets have not received much publicity
 
@@ -737,6 +738,7 @@ Expired, wrong:
 - http://longbets.org/105/
 - http://longbets.org/26/
 - http://longbets.org/14/
+- http://longbets.org/681/
 
 Expired:
 

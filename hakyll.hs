@@ -145,7 +145,8 @@ postCtx tags =
     constField "author" "gwern" <>
     constField "status" "N/A" <>
     constField "belief" "N/A" <>
-    constField "description" "N/A"
+    constField "description" "N/A" <>
+    constField "importance" "0"
 
 pandocTransform :: Pandoc -> Pandoc
 pandocTransform = bottomUp (map (convertInterwikiLinks . convertHakyllLinks . addAmazonAffiliate))

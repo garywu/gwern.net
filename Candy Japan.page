@@ -5,6 +5,7 @@ tags: statistics, decision theory
 created: 6 May 2016
 status: finished
 belief: likely
+importance: 8
 ...
 
 > I analyze an A/B test from a mail-order company of two different kinds of box packaging from a Bayesian decision-theory perspective, balancing posterior probability of improvements & greater profit against the cost of packaging & risk of worse results, finding that as the company's analysis suggested, the new box is unlikely to be sufficiently better than the old. Calculating expected values of information shows that it is not worth experimenting on further, and that such fixed-sample trials are unlikely to ever be cost-effective for packaging improvements. However, adaptive experiments may be worthwhile.

@@ -5,6 +5,7 @@ tags: statistics, decision theory, technology, personal
 created: 20 Oct 2016
 status: finished
 belief: highly likely
+importance: 6
 ...
 
 > My laptop in my apartment receives Internet via a WiFi repeater to another house, yielding slow speeds and frequent glitches. I replaced the obsolete WiFi router and increased connection speeds somewhat but still inadequate. For a better solution, I used a directional antenna to connect directly to the new WiFi router, which, contrary to my expectations, yielded a ~6x increase in speed. Extensive benchmarking of all possible arrangements of laptops/dongles/repeaters/antennas/routers/positions shows that the antenna+router is inexpensive and near optimal speed, and that the only possible improvement would be a hardwired Ethernet line, which I installed a few weeks later after learning it was not as difficult as I thought it would be.

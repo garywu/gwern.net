@@ -5,6 +5,7 @@ created: 10 Jan 2012
 tags: Haskell, philosophy, computer science
 status: notes
 belief: likely
+importance: 1
 ...
 
 Looking at Sam Hughes's [Hypertime model](http://qntm.org/hypertime) is very confusing and hard to keep straight. One wonders how to program it. An infinite stack of infinite universes, which spawn off more copies, none of which cause paradoxes...? I certainly can't visualize it easily:

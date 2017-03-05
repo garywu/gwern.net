@@ -4,6 +4,7 @@ tags: personal, psychology, archiving, statistics, predictions, meta
 created: 01 Oct 2010
 status: finished
 belief: highly likely
+importance: 3
 ...
 
 This page is about `gwern.net`; for information about me, see [Links]().
@@ -220,6 +221,12 @@ The "belief" tag is a little more unusual. I stole the idea from [Muflax's "epis
 8. "impossible"
 
 These are used to express my feeling about how well-supported the essay is, or how likely it is the overall ideas are right. (Of course, an interesting idea may be worth writing about even if very wrong, and even a long shot may be profitable to examine if the potential payoff is large enough.)
+
+## Importance tags
+
+An additional useful bit of metadata would be distinction between things which are trivial and those which are about more important topics which might change your life.
+Using [my interactive sorting tool Resorter](/Resorter), I've ranked pages in deciles from 0-10 on how important the topic is to myself, the intended reader, or the world.
+For example, topics like [embryo selection for traits such as intelligence](/Embryo selection) or [evolutionary pressures towards autonomous AI](/Tool AI) are vastly more important, and be ranked 10, than some poems or a dream or someone's small nootropics self-experiment, which would be ranked 0-1.
 
 ## Writing checklist
 

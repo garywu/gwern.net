@@ -5,6 +5,7 @@ tags: statistics, NN, fiction
 created: 12 Sep 2015
 status: finished
 belief: likely
+importance: 8
 ...
 
 > Char-RNNs are unsupervised generative models which learn to mimic text sequences. I suggest extending char-RNNs with inline metadata such as genre or author prefixed to each line of input, allowing for better & more efficient metadata, and more controllable sampling of generated output by feeding in desired metadata. An experiment using `torch-rnn` on a set of ~30 Project Gutenberg e-books (1 per author) to train a large char-RNN shows that a char-RNN can learn to remember metadata such as authors, learn associated prose styles, and often generate text visibly similar to that of a specified author.
@@ -652,6 +653,10 @@ Further work:
     Given such a clean split, something analogous to the style transfer CNN should be possible. First, figure out which neurons are which; then feed in texts from different genre/authors and extract the hidden state corresponding to each genre/author, eg Bible vs Wheel of Time. To convert a piece of Wheel of Time prose into Biblical prose or vice versa, feed in a desired piece of text to produce the genre/author and semantics+syntax hidden state vectors; now, hardwire the semantics+syntax vector and do gradient ascent on the input text to gradually turn the original genre/author hidden state into the target genre/author hidden state; once the transformed text yields both the target genre/author hidden state but also the same semantics+syntax hidden state, it has been converted. Hypothetically, to the extent that the char-RNN has learned English semantics and prose styles, this would convert text into different styles while preserving the semantics.
 
     This might not work with a char-RNN doing character-level prediction if the learned semantics+syntax turns out to be weak enough that a converted piece of text only bears a faint resemblance to the original. (Perhaps the semantics don't add enough predictive power, or the char-RNN is small enough that it must use all its capacity learning vocabulary etc.) If it doesn't, some other approaches might be to train a classification char-RNN, providing the style metric, and also a sequence-to-sequence autoencoding RNN to provide a semantics encoding; then set the style target to be the desired style, hardwire the autoencoder, and use them jointly as a loss to do gradient descent on. RNNs can also be combined with CNNs, and this may allow a more direct borrowing of the original style transfer algorithm.
+
+# External links
+
+- ["Adventures in Narrated Reality: New forms & interfaces for written language, enabled by machine intelligence"](https://medium.com/artists-and-machine-intelligence/adventures-in-narrated-reality-6516ff395ba3), [II](https://medium.com/artists-and-machine-intelligence/adventures-in-narrated-reality-part-ii-dc585af054cb)
 
 # Appendix
 # Geocities char-RNN

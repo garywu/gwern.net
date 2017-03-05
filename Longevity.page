@@ -5,6 +5,7 @@ tags: statistics, decision theory
 created: 1 June 2015
 status: in progress
 belief: likely
+importance: 10
 ...
 
 We all want to live longer, but I find most discussions of available interventions unsatisfying because they tend to ignore any consideration of whether the intervention is too expensive (as the joke goes about veganism, you may live longer but will you want to?), and be simultaneously too gullible (nutrition research; looking at any health parameter which improves) and too narrow-minded (I don't care if an intervention has _p_>0.05 if that still means a 90% probability of benefit).

@@ -5,6 +5,7 @@ created: 30 Oct 2013
 tags: statistics, predictions, Bitcoin, Silk Road
 status: in progress
 belief: possible
+importance: 7
 ...
 
 > I compile a dataset of 87 public English-language darknet markets (DNMs) 2011-2015 in the vein of the famous [Silk Road](Silk Road), recording their openings/closing and relevant characteristics. A survival analysis indicates the markets follow a Type TODO lifespan, with a median life of TODO months. Risk factors include TODO. With the best model, I generate estimates for the currently-operating markets.

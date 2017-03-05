@@ -5,6 +5,7 @@ tags: cryptography, archiving, Bitcoin
 created: 4 Dec 2015
 status: finished
 belief: highly likely
+importance: 8
 ...
 
 > Local archives are useful for personal purposes, but sometimes, in investigations that may be controversial, you want to be able to prove that the copy you downloaded was not modified and you need to *timestamp* it and prove the exact file existed on or before a certain date.

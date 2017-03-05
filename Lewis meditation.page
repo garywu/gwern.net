@@ -5,6 +5,7 @@ tags: psychology, experiments, statistics
 created: 12 July 2013
 status: in progress
 belief: unlikely
+importance: 4
 ...
 
 > A small group of Quantified Selfers tested themselves daily on arithmetic and engaged in a month of meditation. I analyze their scores with a multilevel model with per-subject grouping, and find the expect result: a small decrease in arithmetic errors which is not statistically-significant, with practice & time-of-day effects (but not day-of-week or weekend effects). This suggests a longer experiment by twice as many experimenters in order to detect this effect.

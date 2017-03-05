@@ -5,6 +5,7 @@ created: 27 Feb 2012
 tags: statistics, experiments, psychology
 status: finished
 belief: unlikely
+importance: 1
 ...
 
 > I do an informal experiment testing whether LessWrong karma scores are susceptible to a form of anchoring based on the first comment posted; a medium-large effect size is found although the data does not fit the assumed normal distribution so there may or may not be any actual anchoring effect.

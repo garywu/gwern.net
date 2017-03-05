@@ -4,6 +4,7 @@ tags: Wikipedia, experiments, predictions, sociology, Haskell, anime
 created: 15 Jan 2009
 status: finished
 belief: highly likely
+importance: 8
 ...
 
 > English Wikipedia is in decline. As a long-time editor & former admin, I was deeply dismayed by the process. Here, I discuss UI principles, changes in Wikipedian culture, the large-scale statistical evidence of decline, run small-scale experiments demonstrating the harm, and conclude with parting thoughts.
@@ -616,6 +617,7 @@ Like the cooling dwarf star left by a supernova - its lost brilliance traveling 
 
     - HN: [1](https://news.ycombinator.com/item?id=8791791)
 - ["The great decline in Wikipedia pageviews (full version)"](http://vipulnaik.com/blog/the-great-decline-in-wikipedia-pageviews-full-version/) (March 2015)
+- ["Geeks, MOPs, and sociopaths in subculture evolution"](https://meaningness.com/metablog/geeks-mops-sociopaths)
 
 # Appendices
 ## Analysis script

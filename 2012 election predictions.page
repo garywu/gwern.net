@@ -5,6 +5,7 @@ description: Compiling academic and media forecaster's 2012 American Presidentia
 tags: statistics, politics
 status: finished
 belief: highly likely
+importance: 6
 ...
 
 > Statistically analyzing in `R` hundreds of predictions compiled for ~10 forecasters of the 2012 American Presidential election, and ranking them by Brier, RMSE, & log scores; the best overall performance seems to be by Drew Linzer and Wang & Holbrook, while Nate Silver appears as somewhat over-rated and the famous Intrade prediction market turning in a disappointing overall performance.

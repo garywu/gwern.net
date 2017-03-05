@@ -5,6 +5,7 @@ created: 3 Nov 2012
 status: finished
 belief: likely
 tags: statistics, predictions, Haskell
+importance: 3
 ...
 
 > The unprecedented gap in [_Methods of Rationality_](http://www.hpmor.com/) updates prompts musing about whether readership is increasing enough & what statistics one would use; I write code to download FF.net reviews, clean it, parse it, load into R, summarize the data & depict it graphically, run linear regression on a subset & all reviews, note the poor fit, develop a quadratic fit instead, and use it to predict future review quantities.

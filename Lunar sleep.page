@@ -5,6 +5,7 @@ created: 26 July 2013
 tags: experiments, biology, psychology, statistics
 status: in progress
 belief: highly likely
+importance: 3
 ...
 
 > I attempt to replicate, using public [Zeo](/Zeo)-recorded sleep datasets, a finding of a monthly circadian rhythm affecting sleep in a small sleep lab. I find only small non-statistically-significant correlations, despite being well-powered.

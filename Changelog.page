@@ -4,6 +4,7 @@ tags: meta
 created: 15 Sep 2013
 status: in progress
 belief: log
+importance: 4
 ...
 
 Following my writing can be a little difficult: while I provide [an RSS feed of the edit history](/atom.xml), it is too fine-grained to know what is an interesting update and what is housekeeping.

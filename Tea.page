@@ -4,6 +4,7 @@ tags: personal, food, statistics
 created: 13 Apr 2011
 status: in progress
 belief: log
+importance: 1
 ...
 
 Tea is one of my favorite drinks: a remarkable variety of flavors, caffeinated but cheaper than coffee and healthier than soda, easily prepared, socially acceptable, with a long & rich history intertwined with geopolitics.
@@ -920,7 +921,12 @@ The second order arrived working, and aside from the garish green-black coloring
 # TODO
 
 - Upton's shopping list:
-    - new:
+
+    - ZG03: Season's Pick Green Fannings Organic https://secure.uptontea.com/store/item.asp?itemID=ZG03
+    - Jasmine White Monkey https://secure.uptontea.com/store/item.asp?itemID=ZJ88
+    - Jasmine Yin Zhen https://secure.uptontea.com/store/item.asp?itemID=ZJ95
+    - Pu-Erh Sheng Cha https://secure.uptontea.com/store/item.asp?itemID=ZH44
+    - China Green Silver Spiral https://secure.uptontea.com/store/item.asp?itemID=ZG74
 - http://www.teabox.com/samples ?
 - try gyokuro & genmai from http://www.hibiki-an.com/ ?
 
@@ -1647,7 +1653,7 @@ Flavors     Lighter vegetal flavors of grass.
 
 Genmaicha https://www.harney.com/products/genmaicha $2.00 7g
 Genmaicha is a different kind of Japanese green tea that many people find intriguing. Brown rice kernels ("genmai") are added while the green Bancha leaves ("cha") are being dried, so the kernels get crispy and some burst open. Genmaicha has a unique appearance and a pleasant roasted flavor. Kosher.
-Details     Bancha is a summer tea made after the Sencha season. Because there is so much of this inexpensive tea, an innovative Kyoto tea merchant thought to combine the the two staples of the Japanese diet, bringing Genmaicha into existence. Once considered a cheap peasant beverage, Genmaicha has recently come into vogue among the Japanese urban elite.
+Details     Bancha is a summer tea made after the Sencha season. Because there is so much of this inexpensive tea, an innovative Kyoto tea merchant thought to combine the two staples of the Japanese diet, bringing Genmaicha into existence. Once considered a cheap peasant beverage, Genmaicha has recently come into vogue among the Japanese urban elite.
 Dry Leaves  Broad yellow-green Bancha tea leaves are mixed with toasted brown rice.
 Liquor  The liquor is vibrant light green tinged slightly khaki brown from the rice.
 Aroma   The predominant aroma is the roasted brown rice with light vegetal undernotes and hints of citrus from the Bancha.
@@ -1697,7 +1703,7 @@ Flavors     Assertive notes of green bell peppers and lemons. There are hints of
 
 Matcha iri Genmaicha https://www.harney.com/products/matcha-iri-genmaicha $2.00 7g
 Matcha is a much beloved green tea in Japan, yet it can seem intense to the uninitiated Westerner. As an alternative, we suggest Matcha iri Genmaicha, the best of both worlds. The bancha ("cha") leaves and brown rice ("genmai") that comprise Genmaicha are coated with Matcha green tea powder, and the result is fantastic!
-Details     Mike's son Emeric popularized this tea for the Harneys years ago. He used to take some of the the Matcha Jobetsugi and dust our Genmaicha with it. It became a big hit at our Millerton shop. So we rolled it out, and people have enjoyed it ever since.
+Details     Mike's son Emeric popularized this tea for the Harneys years ago. He used to take some of the Matcha Jobetsugi and dust our Genmaicha with it. It became a big hit at our Millerton shop. So we rolled it out, and people have enjoyed it ever since.
 Dry Leaves  Genmaicha is coated with matcha. This tea is a blend of large bancha leaves and the brown toasted rice with occasional popped rice dusted with brilliant green tea powder.
 Liquor  The liquor is greener than most teas, except our matchas.
 Aroma   The predominant aroma is that of the roasted brown rice with vegetal undernotes and hints of citrus.
@@ -2137,6 +2143,8 @@ Design:
 
 4 kinds of water, but tasting 4 kinds of tea at once is a bit hard on the physical logistics & tasting the tea.
 So will do the classic pairwise design, all possible pairs at least once, see /Resorter
+
+Modified version of Ken Butler's Stan code for Bradley-Terry models https://github.com/nxskok/btstan/blob/master/R/btstan.R :
 
 ~~~{.R}
 water <- read.csv(stdin(), header=TRUE, colClasses=c("character", "character", "integer"))

@@ -6,6 +6,7 @@ author: Gwern Branwen, Arthur B., nshepperd, FeepingCreature, Gurkenglas
 created: 19 Jan 2017
 status: finished
 belief: likely
+importance: 8
 ...
 
 > Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion as their strategy. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays. We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming in R, Haskell, and C. We find that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6. The relative advantage of the decision tree strategy depends on the number of bets: it is highest when the player can make few bets (at _b_=23, with a difference of ~\$36), and decreases with number of bets as more strategies hit the ceiling. In the variant of this game where subjects are not told the exact edge of 60%, a Bayesian decision tree approach shows that performance can closely approach that of the decision tree, with a penalty for 1 plausible prior of only \$1.

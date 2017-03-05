@@ -5,6 +5,7 @@ created: 9 Dec 2012
 tags: computer science
 status: finished
 belief: highly likely
+importance: 6
 ...
 
 > "Any sufficiently complicated C or Fortran program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of Common Lisp." --[Greenspun's Tenth Law](!Wikipedia)

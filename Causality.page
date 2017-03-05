@@ -4,6 +4,7 @@ description: Correlations are oft interpreted as evidence for causation; this is
 tags: statistics, philosophy
 created: 24 Jun 2014
 status: in progress
+importance: 11
 ...
 
 > It is widely understood that statistical correlation between two variables ≠ causation.
@@ -56,7 +57,7 @@ Financial data-mining offers some fun examples; there's the [Super Bowl/stock-ma
 <!-- http://www.11points.com/News-Politics/11_Strangest_Methods_to_Predict_Presidential_Elections -->
 <!-- http://nerdsonwallstreet.typepad.com/my_weblog/files/dataminejune_2000.pdf -->
 <!-- Diet and genetic confounds: "Greenlandic Inuit show genetic signatures of diet and climate adaptation", Fumagalli et al 2015 /docs/2015-fumagalli.pdf https://en.wikipedia.org/wiki/Human_genetic_variation -->
-<!-- http://www.nytimes.com/2015/11/03/science/book-review-ending-medical-reversal-laments-flip-flopping.html Book Review: 'Ending Medical Reversal' Laments Flip-Flopping
+<!-- https://www.propublica.org/article/when-evidence-says-no-but-doctors-say-yes http://www.nytimes.com/2015/11/03/science/book-review-ending-medical-reversal-laments-flip-flopping.html Book Review: 'Ending Medical Reversal' Laments Flip-Flopping
 
 An old saw has long held that 50 percent of everything a student learns in medical school is wrong. Actual calculations suggest that number is not too far off base - Dr. Prasad and Dr. Cifu extrapolate from past reversals to conclude that about 40 percent of what we consider state-of-the-art health care is likely to turn out to be unhelpful or actually harmful.
 
