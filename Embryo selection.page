@@ -113,7 +113,7 @@ Thus, in a crude estimate, variance is cut by 75 per cent and standard deviation
 
 That is, the full heritability of adult intelligence is ~0.8; a SNP chip records the few hundred thousand most common genetic variants in the population and treating each gene as having a simple additive increase-or-decrease effect on intelligence, Davies et al 2011's GCTA (Genome-wide complex trait analysis) estimates that those SNPs are responsible for 0.51 of variance; since siblings descend from the same two parents, they will share half the variants (just like dizygotic twins) and differ on the rest, so the SNPs can only predict up to 0.25 between siblings and siblings are analogous to multiple embryos being considered for implantation in IVF (but not sperm or eggs[^sperm-selection]); simulate _n_ embryos by drawing from a normal distribution with a SD of 0.7 or 10.5 IQ points and selecting the highest, and with various _n_, you get something like the table.
 
-[^sperm-selection]: Why not sperm or eggs? Why do we have to select on embryos instead? While sperm and eggs do genetically vary, they vary mostly on which of each pair of chromosomes they inherit from the body, so the genetic variance is less than after fertilization; selection only on eggs or only sperms leaves out half the genetic variance, weakening prediction substantially; and finally, as far as I know, all feasible genetic sequencing methods are destructive & require at least 1 cell, which renders it futile. So embryo selection is the only feasible approach.
+[^sperm-selection]: Why not sperm or eggs? Why do we have to select on embryos instead? While sperm and eggs do genetically vary, they vary mostly on which of each pair of chromosomes they inherit from the body, so the genetic variance is less than after fertilization; selection only on eggs or only sperms leaves out half the genetic variance (since the other half is unavailable), weakening prediction substantially compared to selecting in the joint product; and finally, as far as I know, all feasible genetic sequencing methods are destructive & require at least 1 cell, which renders it futile for single-cell sperm & eggs. So embryo selection is the only feasible approach.
 
 GCTA tells us how much the SNPs would explain if we knew all their effects exactly. This represents both an upper bound and a lower bound. It is a lower bound on heritability because:
 
@@ -440,9 +440,12 @@ embryoSelection(n=10) * 15
 # [1] 9.375664711
 embryoSelection(n=10, variance=0.444) * 15
 # [1] 10.87518323
+embryoSelection(n=5, variance=0.444) * 15
+# [1] 8.219287927
 ~~~
 
 So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Shulman & Bostrom's 11.5 because of my lower GCTA estimate, but using better IQ tests like the WAIS, we could go as high as ~11 points.
+With a more realistic number of embryos, we might get 8 points.
 
 For comparison, the full genetic heritability of adult IQ (including SNPs, mutation load & de novo mutations, copy-number variation, etc) is generally estimated ~0.8, which case the upper bound on selection out of 10 embryos would be ~14.5 IQ points:
 
@@ -677,7 +680,7 @@ simulateIVF <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.5,
 
   normal        <- rbinom(1, eggsExtracted, prob=normalityP)
 
-  scores        <- embryoScores(n=normal, variance=polygenicScoreVariance)
+  scores        <- embryoSelection(n=normal, variance=polygenicScoreVariance)
 
   survived      <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, scores)
 
@@ -1037,7 +1040,7 @@ simulateIVFCB <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.
   normal        <- rbinom(1, eggsExtracted, prob=normalityP)
 
   totalCost     <- fixedCost + normal * embryoCost
-  scores        <- embryoScores(n=normal, variance=polygenicScoreVariance)
+  scores        <- embryoSelection(n=normal, variance=polygenicScoreVariance)
 
   survived      <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, scores)
 
@@ -1657,6 +1660,51 @@ mean(replicate(10000, max(rowSums(rmvnorm(10, sigma=cor2cov(rgMatrix,
 So with current polygenic scores, we could expect a gain of ~\$70k out of 10 embryos (at least, before the inevitable losses of the IVF process), which is indeed around as much more as expected than IQ on its own (which was \$49k).
 We could also take a look at the expected gain if we could have perfect polygenic scores equal to the SNP heritabilities; then we would get as much as \$146k.
 
+### Counteracting Dysgenics
+
+Genomics studies have detected widespread natural selection/evolution of humans in the past 10,000 years up to the present.
+One of the most predicted examples of selection, based on extensive observations of a negative correlation in industrialized Western countries between education/intelligence and number of children/age at childbearing, has been [dysgenic selection against education/intelligence](!Wikipedia "Fertility and intelligence") (which would explain the apparent hollowness of [Flynn effect](!Wikipedia) gains and signs of the Flynn effect reversing in the most developed countries; [Dutton et al 2016](https://www.gwern.net/docs/iq/2016-dutton.pdf "The negative Flynn Effect: A systematic literature review")).
+The effect of intelligence on mortality and changing education & fertility patterns as well as unobserved fertility cast doubt on whether and how much genetic potential has decreased, and thus, what level of genetic engineering would be necessary to counter dysgenics.
+
+The creation of polygenic scores for education/intelligence by GWASes such as Rietveld et al 2013 finally allows direct examination of genetic correlations & whether polygenic scores predict lower fertility ([Mills & Tropf 2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4577548/ "The Biodemography of Fertility: A Review and Future Research Frontiers"), [Woodley et al 2016](http://biorxiv.org/content/early/2016/08/18/070128 "How cognitive genetic factors influence fertility outcomes: A mediational SEM analysis"), [Beauchamp 2016](http://biorxiv.org/content/early/2016/05/05/037929 "Genetic evidence for natural selection in humans in the contemporary United States"), [Conley et al 2016a](http://www.pnas.org/content/early/2016/05/25/1523592113.full "Assortative mating and differential fertility by phenotype and genotype across the 20th century"), [Conley et al 2016b](http://www.nature.com/articles/srep30348 "Changing Polygenic Penetrance on Phenotypes in the 20th Century Among Adults in the US Population"), [Barban et al 2016](https://www.gwern.net/docs/genetics/correlation/2016-barban.pdf "Genome-wide analysis identifies 12 loci influencing human reproductive behavior")); they also allow measurement, in cross-sectional  or longitudinal samples, of temporal trends in a likely representative subset of genetic variants; ["Mortality Selection in a Genetic Sample and Implications for Association Studies"](http://biorxiv.org/content/early/2016/04/21/049635), Domingue et al 2016 ([graph](https://www.gwern.net/images/genetics/2016-domingue-usa-education-dysgenics.png)) observes a decline of ~0.15SDs in the polygenic score of white Americans 1919-1955 (or ~0.034SDs per decade), and ["Selection against variants in the genome associated with educational attainment"](/docs/genetics/2017-kong.pdf), Kong et al 2017 observes in a large Icelandic sample 1910-1990 a decrease of 0.01SDs per decade in their polygenic score.
+Because selection pressure is exerted over the entire genome by an organism's reproductive fitness, looking at decreases due to a handful of variants can establish the rate of decline but not the total absolute decrease; keeping this in mind, Kong et al 2017 estimate that the total decline would be 0.3 IQ points per decade & provide a derivation:
+
+> Although there are challenges to getting a precise estimate of the rate of change of the average POLY~EDU~ value due to non-sampling errors that could be difficult to gauge, with the analyses taken together we consider −0.010 SU per decade to be a reasonable estimate for the period from 1910 and 1990 that is more likely to underestimate than overestimate the true decline. Most importantly, POLY~EDU~ is just a fraction of the full genetic component of educational attainment, which we denote by POLY~FULL~. It is the rate of change of POLY~FULL~ that is of ultimate interest. Under an assumption that the part of POLY~FULL~ that is not captured by POLY~EDU~ behaves in a similar fashion in its impact on reproduction, the rate of change is proportional to the square root of the variance explained (SI Text). Thus, if POLY~FULL~ is assumed to account for 30% of the variance of EDU, then its estimated rate of change, by extrapolation, is $-0.010 \cdot (\frac{30}{3.74})^\frac{1}{2} = −0.028$ SUs per decade. To test the validity of this method of extrapolation we computed a separate polygenic score for educational attainment, denoted by POLY~-U.K.B~, which was based on the same GWAS results used to construct POLY~EDU~, except that the contribution from 111,349 UK Biobank samples was removed (Materials and Methods). When we applied POLY~-U.K.B~ to the Icelandic data, it explained 2.52% of the variance of EDU, and the rate of decline estimated based on its effects on reproduction is −0.0085 SU per decade ([*Materials and Methods*](#kong-et-al-2017-polygenic-score-decline-derivation)). Hence, with the polygenic score strengthening from POLY~-U.K.B~ to POLY~EDU~ , the estimated rate of decline increased by a factor of $\frac{0.0104}{0.0085} = 1.22$, nearly identical to $(\frac{3.74}{2.52})^\frac{1}{2} = 1.22$, the square root of the variance explained ratio.
+>
+> ...Based on a sample of 1,577 genotyped Icelanders (653 males and 924 females; yob, mean = 1968 and SD = 13 years) with intelligence quotient (IQ) measurements (mean = 102 and SD = 15), each SU of POLY EDU is estimated to increase IQ by 3.8 points (_p_<10^−20^ ). Given that POLY~EDU~ is estimated to decline at a rate of 0.01 SU per decade, this translates to a decline of 0.038 IQ points per decade. However, under the assumptions that POLY~FULL~ accounts for 30% of the variance of EDU, and the part of POLY~FULL~ that is not captured by POLY~EDU~ behaves in a similar fashion in its impact on both reproduction and IQ, by extrapolation, the decline of POLY~FULL~ would lead to a decline of $0.038 \cdot \frac{30}{3.74} = 0.30$ IQ points per decade. This would be a very substantial effect if the trend persists for centuries.
+
+One common response to dysgenics is to suggest that it can be easily halted and then repaired by embryo selection.
+What sort of embryo selection intervention would be necessary to offset a decline of 0.3 points per decade or 0.03 points per year?
+While that sounds like a trivially small effect, it is difficult to stop a population-wide effect as "demography is destiny" and not obvious that embryo selection is or ever would be strong enough to stop it.
+
+Given that only ~1% of births are IVF (and assuming that all IVF users take advantage of embryo selection), to balance out the overall average annual decline, the average annual gain from embryo selection would have to be 100x the decline, or $0.03 \cdot 100 = 3$.
+Should IVF adoption double to 2% or so, then merely $0.03 \cdot 50 = 1.5$, and so on.
+These requirements are at least plausible given the embryo selection upper bound of ~8 points.
+
+Taking into account the numbers of harvested eggs, losses from vitrification & implantation & pregnancy from the American Hodes-Wertz dataset, if IVF usage doubled, it would require a polygenic score explaining ~5% of variance in intelligence to produce the necessary gain of 1.5 points; should IVF usage remain constant, it would require 18%; and should only half of IVF users adopt embryo selection, requiring a 6 point gain from the rest, it would require a polygenic score of 72%, beyond what is likely ever to be possible (illustrating the diminishing returns from applying a polygenic score to a fixed number of embryos in a leaky pipeline):
+
+~~~{.R}
+mean(simulateIVFs(8.2, 4.6, 0.05, 0.35, 0.96, 0.40)) * 15
+# [1] 1.582970966
+mean(simulateIVFs(8.2, 4.6, 0.18, 0.35, 0.96, 0.40)) * 15
+# [1] 2.993780716
+ mean(simulateIVFs(8.2, 4.6, 0.72, 0.35, 0.96, 0.40)) * 15
+# [1] 6.007618969
+~~~
+
+The diminishing returns implies that perhaps the most important parameter for whether embryo selection is capable of stopping and repairing dysgenics is what fraction of the population will use IVF & embryo selection.
+At 2% of the population, it would be feasible now or in the near future; at 1%, it would require far better polygenic scores; and at 0.5%, it becomes effectively impossible without improvements elsewhere in the pipeline (probably the most feasible being increasing egg count by inducing pluripotency, although this would imply the opening up of iterated embryo selection and rendering the whole paradigm moot).
+
+IVF usage rates will probably increase with the increasing wealth and aging of the US population & escalating education & career demands on women and continued refinement of IVF tech reliability & cost via economies of scale & [experience curve](!Wikipedia) effects, with doubling or greater entirely likely.
+This suggests that dysgenics on intelligence doesn't *have* to be a serious concern as a relatively small fraction of the population adopting near-future embryo selection technology would suffice to neutralize and (in the absence of any additional dysgenic pressures beyond assortative mating/education infertility) perhaps eventually repair it.
+If there is some "point of no return" for industrialized Western countries, there will be plenty of time for people to come to their senses and adopt adequate counter-measures.
+(Which is not to say that the dysgenic trend is not *highly costly*, since even under the optimistic view that the Flynn effect is genuine and has been able to offset the genetic decrease by an environmental increase, that merely converts it to an opportunity cost: it still would be the case that the dysgenic trend is decreasing IQ compared to the counterfactual of no dysgenics plus current high-quality environments, and the estimates of IQ benefits implies that a foregone gain of 0.03 points per year is equivalent to anywhere up to \$7.2k per birth or across the ~4m annual US births, >\$28b.)
+
+A more interesting question would be broader dysgenics trends such as mutation load (eg [Lynch 2016](http://www.genetics.org/content/202/3/869 "Mutation and Human Exceptionalism: Our Future Genetic Load")); as ~70 new mutations are introduced in every individual in every generation, the backlog of harmful mutations is long and may be growing.
+To the extent that these dysgenic trends are due to the genetic correlation with education/intelligence, then embryo selection on education/intelligence would also reverse them, so that is not an issue.
+But there might be independent dysgenic trends, perhaps towards impulsivity & violence, and an increase in mutation load due to medical care blunting natural selection, in which case we are back to the multiple selection scenario; while it would be bad to have to deal with multiple dysgenic trends, the same results apply: the scaling of selection power is sublinear in traits and the likely positive intercorrelations make the task easier, so while more dysgenic trends would increase the necessary fraction of the population, it would not do so proportionately, and the existence of another, say, 2 or 3 trends, would perhaps only increase the 1% to 2%; or if we assume 3 uncorrelated trends of equal strength, polygenic scores of 11% each would be adequate.
+(The exact amount would depend on the genetic correlations and strength of the other trends.)
+
 ## Embryo selection versus alternative breeding methods
 
 [Genomic selection](!Wikipedia "Marker-assisted selection") is increasingly used in animal and plant breeding because it can be used before phenotypes are measurable for faster breeding, and polygenic scores can also correct phenotypic measurements for measurement error & environment.
@@ -2020,3 +2068,68 @@ Excerpts from the _The Genius Factory: The Curious History of the Nobel Prize Sp
 > ...From the beginning, sperm banking had a comic aspect to it. In July 1976, a prankster named Joey Skaggs announced that he would be auctioning rock star sperm from his "Celebrity Sperm Bank" in Greenwich Village. "We'll have sperm from the likes of Mick Jagger, Bob Dylan, John Lennon, Paul McCartney, and vintage sperm from Jimi Hendrix," he declared. On the morning of the auction, Skaggs and his lawyer appeared to announce that the sperm had been kidnapped. They read a ransom note: "Caught you with your pants down. A sperm in the hand is worth a million in a Swiss bank. And that's what it will cost you. More to cum. [signed] Abbie." Hundreds of women called the nonexistent sperm bank asking if they could buy; radio and TV shows reported the aborted auction without realizing it had been a joke. And at the end of the year, Gloria Steinem - presumably unaware that it had been a hoax - appeared on an NBC special to give the Celebrity Sperm Bank an award for bad taste.
 >
 > ...The Repository sustained its popularity during the early and mid-1990s. The waiting list reached eighteen months, because there were never enough donors. Usually, Anita could supply only fifteen women at a time with sperm. California Cryobank, by contrast, could supply hundreds of customers at once. Demand at the Repository remained strong even when Graham started charging for sperm. In the mid-1990s, the bank collected a $3,500 flat fee per client, a lot more than other banks. Ever the economic rationalist, Graham had concluded that customers would value his product more if they had to pay for it...Neff wasn't nostalgic when she recounted the end of the bank. "Sperm banking will be a blip in history," she said. The Nobel sperm bank, she implied, would be a blip on that blip. And in some ways, she is clearly right. The Repository for Germinal Choice pioneered sperm banking but ended up in a fertility cul-de-sac. Other sperm banks took Graham's best ideas - donor choice, donor testing, and high-achieving donors - and did them better. They offered more choice, more testing, more men. And they managed to do so without Graham's peculiar eugenics theories, implicit racism, and distaste for single women and lesbians. The Repository died because no one needed it anymore.
+
+## Kong et al 2017 polygenic score decline derivation
+
+["Selection against variants in the genome associated with educational attainment"](/docs/genetics/2017-kong.pdf), Kong et al 2017, provide a derivation for their estimation:
+
+> Epidemiological and genetic association studies show that genetics play an important role in the attainment of education. Here, we investigate the effect of this genetic component on the reproductive history of 109,120 Icelanders and the consequent impact on the gene pool over time. We show that an educational attainment polygenic score, POLY~EDU~, constructed from results of a recent study is associated with delayed reproduction (_p_< 10^−100^ ) and fewer children overall. The effect is stronger for women and remains highly significant after adjusting for educational attainment. Based on 129,808 Icelanders born between 1910 and 1990, we find that the average POLY~EDU~ has been declining at a rate of ∼0.010 standard units per decade, which is substantial on an evolutionary timescale. Most importantly, because POLY~EDU~ only captures a fraction of the overall underlying genetic component the latter could be declining at a rate that is two to three times faster.
+>
+> ...*Determining the Rate of Change of the Polygenic Score As a Result on Its Impact on Fertility Traits*. To derive the (approximate) relationship between the effects of a polygenic score _X_ on the fertility traits and the change of the average polygenic score over time we assume that the effects are linear and small per generation. Specifically, with _X_ standardized to have mean 0 and variance 1, we assume
+>
+> $$E(NC|X) = a + bX$$
+>
+> and
+>
+> $$E(AACB|X) = c + dX$$
+>
+> [NC="number of children"; "AACB"="average age at child birth"] The main mathematical result we are going to show is that, under these assumptions, to the first order, the rate of change of the mean of _X_ per year is
+>
+> $$\beta = \frac{b}{ac} - \frac{d\log(\frac{a}{2})}{c^2}$$
+>
+> (We note that Eq. 1 might have been explicitly derived in some other publications, although we are not currently aware of it.) In situations where the males and females behave differently, that is, have different values for _a_, _b_, _c_, and _d_, we have β~M~ for males and β~F~ for females, so that (β~M~/2) + (β~F~ /2) would be the estimate of the rate of change. Note that the first term in Eq. 1, $\frac{b}{ac}$, is capturing the contribution of the effect of _X_ on _NC_ to the rate of change, whereas the second term, $- \frac{d\log(\frac{a}{2})}{c^2}$ , is capturing the contribution of the effect of _X_ on AACB. Before showing how to derive the general form (Eq. 1), we think it is helpful to see how the result can be shown for the special case with _d_ = 0. Here, to the first order, we can assume that mating is performed in discrete generations with generation time _c_. Let _X_ be the (random) polygenic score for a female in generation _t_, and scaled to have mean 0 and variance 1. Let _Y_ denote, for a random person in generation _t+1_, what is inherited from the mother. It follows that
+>
+> $$E(Y) = (\frac{1}{2}) \frac{E(wX)}{E(w)}$$
+>
+> where $w = a + bX$. The factor $(\frac{1}{2})$ comes from the fact that only one-half of the genetic material is passed on to the offspring. $\frac{E(wX)}{E(w)}$ corresponds to a weighted average of _X_ with weights proportional to _w_. (The absolute weight is $wt = \frac{w}{E(w)}$ with expectation 1.) It follows from $E(X)=0$ and $var(X)=1$ that $E(wX)=b$ and $E(w)=a$. Thus, $E(Y) = (\frac{1}{2}) \cdot (\frac{b}{a})$. Taking into account that generation time is _c_, the contribution of the females to the change of the mean polygenic score per year is $(\frac{1}{2}) \cdot (\frac{b}{ac})$. The same calculations apply to the fathers. Deriving the general form (Eq. 1) where the polygenic score also has an effect on generation time (AACB) is more complicated. To do that, we start with equation 6.5 in section 6.3 of ref.29:^[Cavalli-Sforza LL, Bodmer WF (1999). [_The Genetics of Human Populations_](https://www.amazon.com/Genetics-Human-Populations-L-Cavalli-Sforza/dp/0486406938) (Dover, Mineola, NY).]
+>
+> $$r = \frac{log(R_0)}{T}$$
+>
+> where _r_ is the intrinsic rate of change, _R_~0~ is the net reproductive rate, and _T_ is the mean generation time. Because only one-half of the genetic material is transmitted from a parent to an offspring, we should think of _R_~0~ as the number of children divided by two. For females, based on the estimated effects of the polygenic score X on number of children and AACB, and assuming linearity, we have
+>
+> $$r(X=x) = \frac{log[\frac{a+bx}{2}]}{c+dx}$$
+>
+> The derivative is
+>
+> $$r'(x) = \frac{b}{(a+bx)(c+dx)} - \frac{d \cdot log[\frac{a+bx}{2}]}{(c+dx)^2}$$
+>
+> Evaluating at $X=0$,
+>
+> $$r'(0) = \frac{b}{ac} - \frac{d \cdot log(\frac{a}{2})}{c^2}$$
+>
+> From equation 6.9 of ref. 29, the relative fitness between two genotypes is
+>
+> $$wt = exp[(r_1 - r_2)\bar{T}]$$
+>
+> where $r_1$ and $r_2$ are the two intrinsic rates of increase and $\bar{T}$ is the average generation time, which can be taken as _c_ here. When the relative difference in fitness is small, the relative fitness of $X = x$ and $X = 0$ is
+>
+> $$wt \approx 1 + c(r(x)-r(0)) \approx 1+cxr'(0)$$
+>
+> Notice that $wt$ is already scaled to have expectation one (approximately). Thus, the weighted average of _X_, with the weight proportional to fitness, is
+>
+> $$E(wtX) \approx E(X+cX^2r'(0)) = cr'(0)$$
+>
+> Because this is the approximate rate of change per generation, the rate of change per year is
+>
+> $$\frac{cr'(0)}{c} = r'(0) = \frac{b}{ac} - \frac{d \cdot log(\frac{a}{2})}{c^2} = \beta$$
+>
+> giving us Eq. 1. Here we have shown how to derive Eq. 1 from equations in ref. 29. We note expression Eq. 1 can also be derived using equations from ref. 28.^[Charlesworth B (1980). [_Evolution in Age-Structured Populations_](https://www.amazon.com/Evolution-Age-Structured-Populations-Cambridge-Mathematical/dp/0521459672) (Cambridge University Press, Cambridge, UK).] With POLY~EDU~ , for females $a = 2.84$, $b = −0.084$, $c = 27.5$, and $d = 0.46$, and for males $a = 2.73$, $b = −0.054$, $c = 30.0$, and $d = 0.37$. Applying these values to the equation, we get
+>
+> $$\beta_F = 0.00108 − 0.00021 =− 0.00129$$
+> $$\beta_M = −0.00066 − 0.00013 = −0.00079$$
+>
+> and
+>
+> $$\frac{\beta_M}{2} + \frac{\beta_F}{2} = -\frac{0.00129}{2} - \frac{0.00079}{2} = -0.00104$$
+>
+> For POLY~-U.K.B~ , for females $b = −0.069$ and $d = 0.39$, and for males $b = −0.043$, and $d = 0.31$. Similar calculations estimate the expected change to be −0.00085 SU per year.
