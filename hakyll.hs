@@ -1021,4 +1021,12 @@ brokenLinks = [
  , ("docs/2011-gwern-yourmorals.org/bigfive_process.html", "/docs/personal/2011-gwern-yourmorals.org/bigfive_process.html")
  , ("docs/2011-gwern-yourmorals.org/systems_feelings_process.html", "/docs/personal/2011-gwern-yourmorals.org/systems_feelings_process.html")
  , ("docs/2011-gwern-yourmorals.org/epbs2_process.html", "/docs/personal/2011-gwern-yourmorals.org/epbs2_process.html")
+ , ("TODO", "/static/404.html")
+ , ("docs/spacedrepetition/2001-maquet.PDF", "/docs/spacedrepetition/2001-maquet.pdf")
+ , ("hafu)", "/hafu")
+ , ("rss.xml", "/atom.xml")
+ , ("neuroscience", "/tags/psychology")
+ , ("Nootropics-", "/Nootropics")
+ , ("docs/2012-election-statewin.csv", "/docs/elections/2012-statewin.csv")
+ , ("Spaced%2520repetition", "/Spaced%20repetition")
  ]
