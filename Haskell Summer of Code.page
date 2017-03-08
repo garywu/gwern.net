@@ -4,7 +4,7 @@ description: A retrospective of 8 years of SoC, and lessons learned
 tags: Haskell, predictions
 created: 11 Feb 2009
 status: finished
-belief: highly likely
+confidence: highly likely
 importance: 6
 ...
 

@@ -4,7 +4,7 @@ description: Proposal to use meal-replacements to partition daily variance in mo
 tags: psychology, experiments, statistics, food
 created: 22 May 2013
 status: notes
-belief: possible
+confidence: possible
 importance: 6
 ...
 
@@ -459,3 +459,5 @@ I began 7 July 2016 with 35 Soylent 1.5 bags available I had ordered over the pr
 - 26 February: 0
 - 27 February: 3
 - 28 February: 0
+- 5 March: 0
+- 6 March: 3

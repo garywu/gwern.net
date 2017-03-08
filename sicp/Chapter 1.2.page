@@ -3,7 +3,7 @@ description: recursion into iteration; primality testing
 tags: Haskell, Scheme, computer science
 created: 09 Apr 2009
 status: finished
-belief: log
+confidence: log
 importance: 3
 ...
 

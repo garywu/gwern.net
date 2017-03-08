@@ -4,7 +4,7 @@ description: How much should we rewatch our favorite movies (media) vs keep tryi
 tags: statistics, decision theory, psychology
 created: 24 Dec 2016
 status: notes
-belief: possible
+confidence: possible
 importance: 5
 ...
 
@@ -62,3 +62,7 @@ TODO:
 - write a simple demo of the 5k films example ignoring uncertainty to see what the exploit pattern looks like
 - use [the rating resorter](/Resorter) to convert my MAL ratings into a more informative uniform distribution
 - MAL average ratings for unwatched anime should be standardized based on MAL mean/SD (in part because the averages aren't discretized, and in part because they are not comparable with my uniformized ratings)
+
+# External links
+
+- ["The 25 Most Rewatchable Movies Of All Time"](https://fivethirtyeight.com/datalab/whats-the-most-rewatchable-movie-of-all-time/)

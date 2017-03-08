@@ -4,7 +4,7 @@ description: Teaching a text-generating RNN to automatically imitate many differ
 tags: statistics, NN, fiction
 created: 12 Sep 2015
 status: finished
-belief: likely
+confidence: likely
 importance: 8
 ...
 

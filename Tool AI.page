@@ -3,7 +3,7 @@ title: Why Tool AIs Want to Be Agent AIs
 description: AIs limited to purely computational inferential tasks (Tool AIs) supporting humans will be less intelligent, efficient, and economically valuable than more autonomous reinforcement-learning AIs (Agent AIs) who act on their own and learn to take actions over choice of computation/data/training/architecture/hyperparameters/external-resource use.
 created: 7 Sep 2016
 status: finished
-belief: likely
+confidence: likely
 tags: decision theory, statistics, NN, computer science, transhumanism, AI
 importance: 10
 ...

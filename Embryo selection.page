@@ -4,7 +4,7 @@ description: A cost-benefit analysis of IVF-based embryo selection for intellige
 tags: decision theory, biology, psychology, statistics, transhumanism
 created: 22 Jan 2016
 status: finished
-belief: likely
+confidence: likely
 importance: 10
 ...
 
@@ -1550,6 +1550,7 @@ Re-estimating with higher=better corrected, the original multiple selection turn
 Adding the real trait heritabilities, we see that the gains to multiple selection remain large compared to single selection (2.9 or 3.3SDs vs 0.6SDs), and that the genetic correlations do *not* substantially reduce gains to multiple selection but in fact benefits multiple selection by adding +0.35SD.
 
 Continuing onward: if multiple selection is helpful, what sort of net benefit to selection would we get after assigning some reasonable costs to each trait & using current polygenic scores?
+(One intriguing possibility I won't cover here: fertility is highly heritable, so one could select for greater fertility; combined with selection on other traits, could this eventually eliminate dysgenic trends at their source?)
 
 Coming up with that information for 34 traits in the same detail as I have for intelligence would be extremely challenging, so I will settle for some quicker and dirtier estimates; in cases where the causal impact is not clear or I cannot find reasonably reliable cost estimates, I will simply drop the trait (which will be conservative and underestimate possible gains from multiple selection).
 The traits:

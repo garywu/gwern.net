@@ -3,7 +3,7 @@ description: Lessons learned about bitrot in Haskell software
 tags: Haskell
 created: 26 Sep 2008
 status: in progress
-belief: likely
+confidence: likely
 importance: 4
 ...
 

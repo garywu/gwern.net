@@ -4,7 +4,7 @@ description: "Why most supplements fail: IQ improvement skepticism, Yudkowsky & 
 created: 23 Mar 2010
 tags: biology, psychology, nootropics, transhumanism
 status: finished
-belief: highly likely
+confidence: highly likely
 importance: 10
 ...
 
@@ -502,6 +502,7 @@ If this theory were correct (it is possible but far from proven), and if MDMA wo
 - ["Humans Can Continuously Optimize Energetic Cost during Walking"](http://www.cell.com/current-biology/abstract/S0960-9822%2815%2900958-6), Selinger et al 2015
 - ["The metabolic cost of neural information"](http://www.nature.com/neuro/journal/v1/n1/full/nn0598_36.html), Laughlin et al 1998
 - ["Evolution of the Human Brain: From Matter to Mind"](/docs/iq/2015-hofman.pdf), Hofman 2015
+- ["Why would an animal lose its brain? Some extremely simple animals may have got rid of their brains because they simply had no need for one. And this could have been key to their success"](http://www.bbc.com/earth/story/20150424-animals-that-lost-their-brains)
 
 <!--
 It's conceivable, but it's not going to be easy or simple. Think of how many billions of humans existed simultaneously with John von Neumann without being anywhere near his level. If we figure that Neumann was mostly due to a stellar combination of alleles, then that implies he got lucky on a very large number of alleles (imagine a bunch of alleles which can be on or off, and Neumann got all of them 'on'; then because he was 1 out of 5 billion or whatever, he got log_2 5,000,000,000 = 32. This is not 1 variation, which is easy to select on, or 2, but 32. The current state of the art, using n=100,000 is around 3 SNPs. (I apologize in advance to the geneticists for my reasoning here.))

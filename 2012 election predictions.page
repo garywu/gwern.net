@@ -4,7 +4,7 @@ created: 5 Nov 2012
 description: Compiling academic and media forecaster's 2012 American Presidential election predictions and statistically judging correctness; Nate Silver was not the best
 tags: statistics, politics
 status: finished
-belief: highly likely
+confidence: highly likely
 importance: 6
 ...
 

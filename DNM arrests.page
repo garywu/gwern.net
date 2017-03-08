@@ -4,7 +4,7 @@ description: A database of all publicly-reported arrests and prosecutions connec
 created: 14 Jul 2012
 tags: Bitcoin, Silk Road
 status: in progress
-belief: highly likely
+confidence: highly likely
 importance: 9
 ...
 
@@ -585,7 +585,6 @@ Aaron James Glende   M    35   IcyEagle            seller    AlphaBay           
                      M                             seller                                      Germany                    gun                                       TRUE   2016-07-05 2016-07-06
                      M                             seller                                      Germany                    gun                                       TRUE   2016-07-05 2016-07-06
                      M                             seller                                      Germany                    gun                                       TRUE   2016-07-05 2016-07-06
-
 David Ryan Burchard  M    38   CaliConnect         seller    AlphaBay                          USA         California     marijuana, cocaine                        FALSE  2016-01-21 2016-04-01
 Moynul Haque         M    21                       buyer                                       UK          Smethwick      gun, amphetamine                          TRUE   2015-04-31 2016-07-02
                      M                             seller                                      USA         Michigan       gun                                       TRUE   2015-04-31 2016-07-02

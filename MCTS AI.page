@@ -3,7 +3,7 @@ title: AI Risk Demos
 description: Simple demonstrations of the AI control problem using MCTS in a Gridworld
 created: 23 Dec 2016
 status: notes
-belief: log
+confidence: log
 tags: decision theory, statistics, computer science, transhumanism
 importance: 7
 ...

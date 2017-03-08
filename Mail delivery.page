@@ -4,7 +4,7 @@ description: "Bayesian decision-theoretic analysis of local mail delivery times:
 tags: statistics, decision theory
 created: 21 June 2015
 status: finished
-belief: likely
+confidence: likely
 importance: 9
 ...
 

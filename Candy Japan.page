@@ -4,7 +4,7 @@ description: Bayesian decision-theoretic analysis of the effect of fancier packa
 tags: statistics, decision theory
 created: 6 May 2016
 status: finished
-belief: likely
+confidence: likely
 importance: 8
 ...
 

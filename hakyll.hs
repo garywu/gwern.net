@@ -144,7 +144,7 @@ postCtx tags =
     modificationTimeField "modified" "%d %b %Y" <>
     constField "author" "gwern" <>
     constField "status" "N/A" <>
-    constField "belief" "N/A" <>
+    constField "confidence" "log" <>
     constField "description" "N/A" <>
     constField "importance" "0"
 

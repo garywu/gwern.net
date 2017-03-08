@@ -4,7 +4,7 @@ description: Collect music metadata and look for patterns
 tags: statistics, sociology, Haskell
 created: 28 Feb 2013
 status: in progress
-belief: possible
+confidence: possible
 importance: 1
 ...
 
