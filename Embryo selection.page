@@ -19,6 +19,7 @@ importance: 10
 > - embryo selection is currently unprofitable (mean: -\$358) in the USA under the lowest estimate of the value of an IQ point, but profitable under the highest (mean: \$6230). The main constraints on selection profitability is the polygenic score; under the highest value, the NPV EVPI of a perfect SNP predictor is \$24b and the EVSI per education/SNP sample is \$71k
 > - under the worst-case estimate, selection can be made profitable with a better polygenic score, which would require _n_>237,300 using education phenotype data (and much less using fluid intelligence measures)
 > - selection can be made more effective by selecting on multiple phenotype traits: considering an example using 7 traits (IQ/height/BMI/diabetes/ADHD/bipolar/schizophrenia), there is a gain of 2.3x over IQ alone (total of \$14653); the outperformance of multiple selection remains after adjusting for genetic correlations & polygenic scores and using a broader set of 16 traits with an estimated gain of 1.4x.
+> - current genomic estimates of dysgenic trends are sufficiently small that they can be offset by plausible use of embryo selection by just 1-5% of the population
 
 # Embryo selection cost-effectiveness
 
@@ -36,7 +37,7 @@ Discussions of this possibility have often led to both overheated prophecies of 
 
 [^genius-sperm-bank]: The [Repository for Germinal Choice](!Wikipedia) sperm bank (1980-1999) was an American sperm bank which advertised use of only men with high IQ, preferably with Nobel prizes or other major accomplishments. Media advertising, including the investigative report _The Genius Factory: The Curious History of the Nobel Prize Sperm Bank_ based on the _Slate_ articles, emphasized the idea that it would create genius kids.
 
-    The problem with this idea of 'manufacturing geniuses' with (just) sperm donation immediately appears: even if you falsely believed that genetics 100% determined winning a Nobel, and used a Nobelist's sperm, the kids would only be ~50% genetically related to them because of the relatively average mother! Any sperm donation procedure will be a disappointment if one expects all the children to be the equal of the donor while ignoring that even a clone of the donor would not be as intelligent nor as accomplished (due to [regression to the mean](!Wikipedia)). A more realistic analysis would be that assuming the mother has an average IQ and the Nobelist has an IQ of ~140 (roughly consistent with Anne Roe's results) and the usual broad-sense heritability of 0.8, then the Nobelist could be expected to have a genetic IQ of 132 (100+40*0.8), and as the offspring are half-related to him, the predicted mean adult IQ of such sperm bank offspring would be IQ 116, implying that perhaps 5% would reach the Nobelist's IQ and of course many fewer would actually win a Nobel or anything like that. The mothers likely are above-average themselves, so while not much changing the marginal benefit, the kids' IQs would be that much higher (eg if mothers averaged 110, 120 instead of 116, etc).
+    The problem with this idea of 'manufacturing geniuses' with (just) sperm donation immediately appears: even if you falsely believed that genetics 100% determined winning a Nobel, and used a Nobelist's sperm, the kids would only be ~50% genetically related to them because of the relatively average mother! Any sperm donation procedure will be a disappointment if one expects all the children to be the equal of the donor while ignoring that even a clone of the donor would not be as intelligent nor as accomplished (due to [regression to the mean](!Wikipedia)). A more realistic analysis would be that assuming the mother has an average IQ and the Nobelist has an IQ of ~140 (roughly consistent with Anne Roe's results) and the usual broad-sense heritability of 0.8, then the Nobelist could be expected to have a genetic IQ of 132 (`100+40*0.8`), and as the offspring are half-related to him, the predicted mean adult IQ of such sperm bank offspring would be IQ 116, implying that perhaps 5% would reach the Nobelist's IQ and of course many fewer would actually win a Nobel or anything like that. The mothers likely are above-average themselves, so while not much changing the marginal benefit, the kids' IQs would be that much higher (eg if mothers averaged 110, 120 instead of 116, etc).
 
     The sperm bank was unable to live up to its advertising of Nobelists for several reasons (criticism of its eugenic policies and the inherent old age & ensuing low sperm quality of actual Nobel laureates being major problems); the donors _Slate_ was able to reach were described as follows:
 
@@ -99,8 +100,8 @@ Given the difficulty of coming up with reliable estimates for 'the' value of an 
 Shulman & Bostrom's upper bound works as follows:
 
 > Standard practice today involves the creation of fewer than ten embryos. Selection among greater numbers than that would require multiple IVF cycles, which is expensive and burdensome. Therefore 1-in-10 selection may represent an upper limit of what would currently be practically feasible ...The standard deviation of IQ in the population is about 15. [Davies et al. (2011)](http://www.nature.com/mp/journal/v16/n10/full/mp201185a.html "Genome-wide association studies establish that human intelligence is highly heritable and polygenic") estimates that common additive variation can account for half of variance in adult fluid intelligence in its sample.
-Siblings share half their genetic material on average (ignoring the known assortative mating for intelligence, which will reduce the visible variance among embryos).
-Thus, in a crude estimate, variance is cut by 75 per cent and standard deviation by 50 per cent. Adjustments for assortative mating, deviation from the Gaussian distribution, and other factors would adjust this estimate, but not drastically. These figures were generated by simulating 10 million couples producing the listed number of embryos and selecting the one with the highest predicted IQ based on the additive variation.
+> Siblings share half their genetic material on average (ignoring the known assortative mating for intelligence, which will reduce the visible variance among embryos).
+> Thus, in a crude estimate, variance is cut by 75 per cent and standard deviation by 50 per cent. Adjustments for assortative mating, deviation from the Gaussian distribution, and other factors would adjust this estimate, but not drastically. These figures were generated by simulating 10 million couples producing the listed number of embryos and selecting the one with the highest predicted IQ based on the additive variation.
 >
 > Table 1. How the maximum amount of IQ gain (assuming a Gaussian distribution of predicted IQs among the embryos with a standard deviation of 7.5 points) might depend on the number of embryos used in selection:
 >
@@ -447,12 +448,13 @@ embryoSelection(n=5, variance=0.444) * 15
 So 1 out of 10 gives a maximal average gain of ~9 IQ points, less than Shulman & Bostrom's 11.5 because of my lower GCTA estimate, but using better IQ tests like the WAIS, we could go as high as ~11 points.
 With a more realistic number of embryos, we might get 8 points.
 
-For comparison, the full genetic heritability of adult IQ (including SNPs, mutation load & de novo mutations, copy-number variation, etc) is generally estimated ~0.8, which case the upper bound on selection out of 10 embryos would be ~14.5 IQ points:
+For comparison, the full genetic heritability of adult IQ (going far beyond just SNPs or additive effects to include mutation load & de novo mutations, copy-number variation, modeling of interactions etc) is generally estimated ~0.8, which case the most possible optimistic upper bound on selection out of 10 embryos would be ~14.5 IQ points:
 
 ~~~{.R}
 embryoSelection(n=10, variance=0.8) * 15
 # [1] 14.59789016
 ~~~
+
 
 ##### Polygenic scores
 
@@ -1734,14 +1736,16 @@ An alternative to embryo selection would be "[truncation selection](!Wikipedia)"
 This is one of the most easily implemented breeding methods, and is reasonably efficient.
 
 For a continuous trait, truncation selection's effect is easily to calculate via the breeder's equation: the increase is given by the selection intensity times the heritability, where the selection intensity of a particular truncation threshold _t_ is given by `dnorm(qnorm(t))/(1-t)`.
-So if, for example, only the upper third of a population by IQ was allowed to reproduce, this truncation selection would yield an increase of ~12 IQ points:
+So if, for example, only the upper third of a population by IQ was allowed to reproduce and using the most optimistic possible additive heritability of <0.8, this truncation selection would yield an increase of <13 IQ points:
 
 ~~~{.R}
-t=0.66; (dnorm(qnorm(t))/(1-t)) * 0.8 * 15
-# [1] 12.93212934
+t=2/3; (dnorm(qnorm(t))/(1-t)) * 0.8 * 15
+# [1] 13.08959189
 ~~~
 
-This is noticeably larger than we would get with current polygenic scores for education/intelligence, and shows that for highly heritable continuous traits, it's hard to beat selection on phenotypes.
+(A more plausible estimate for the additive here, based on [Hill et al 2017](http://biorxiv.org/content/early/2017/02/06/106203 "Genomic analysis of family data reveals additional genetic effects on intelligence and personality"), would be 0.5, yielding 8.18 IQ points.)
+
+This is noticeably larger than we would get with current polygenic scores for education/intelligence, and shows that for highly heritable continuous traits, it's hard to beat selection on phenotypes, and so polygenic scores would supplement rather than replace phenotype when reasonably high-quality continuous phenotype data is available.
 
 The effect of a generation of truncation selection on a binary trait following the liability-threshold model is more complicated but follows a similar spirit.
 A discussion & formula is on pg6 of ["Chapter 14: Short-term Changes in the Mean: 2. Truncation and Threshold Selection"](http://nitro.biosci.arizona.edu/zbook/NewVolume_2/pdf/WLChapter14.pdf); I've attempted to implement it in R:
@@ -1774,7 +1778,7 @@ threshold_select(0.99, 0.80)
 
 Thus, for rare binary traits, genomic selection methods can do *much* better than phenotypic selection methods.
 Which one works better will depend on the details of how rare a trait is, the heritability, available polygenic scores, available embryos etc.
-Of course, there's no reason that they can't both be used, and both methods can be improved by taking into account other information like family histories.
+Of course, there's no reason that they can't both be used, and even phenotype+genotype methods can be improved further by taking into account other information like family histories and environments.
 
 # Iterated embryo selection
 
