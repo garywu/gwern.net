@@ -1341,7 +1341,6 @@ I would guess that it is because all agents bet small amounts in the early round
 
 With _b_=300, there are so many rounds available to bet, that the details don't matter as much; while it there are only a few bets, the maximizing behavior is to bet a lot so the regret for small _b_ is also probably small; the largest regret for not knowing _p_ is probably somewhere, like with the KC vs decision tree, in the small-medium area of _b_.
 
-<!--
 ### Unknown stopping time
 
 Another variant would be to make the stopping time uncertain; strictly speaking, the game wasn't fixed at *exactly* 300 rounds, that was just their guess at how many rounds a reasonably fast player might get in before the clock expired.
@@ -1383,8 +1382,7 @@ V <- function(w, b) {
 This can be extended to scenarios where we do learn something about the stopping time, similarly to the coin-flip probability, by doing Bayesian updates on _sp_.
 Or if _sp_ changes over rounds.
 If we had a distribution N(300,25) over the stopping time, then the probability of stopping at each round can change inside the value function given an additional argument _n_ for rounds elapsed.
--->
-<!--
+
 ### Unknown maximum wealth cap
 
 Finally, subjects weren't told what the maximum would be:
@@ -1413,9 +1411,6 @@ V <- function(w, b, alpha=5, x_m=200) {
       }
 }
 ~~~
-
-
--->
 
 <!--
 
