@@ -11,21 +11,43 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
+- Long Bets analysis?
+- Danbooru proposal?
+
 # Media
 ## Links
 
 Everything is heritable:
 
+- ["CRISPR/Cas9-mediated gene editing in human zygotes using Cas9 protein"](https://www.gwern.net/docs/genetics/2017-tang.pdf), Tang et al 2017 (no off-target mutations and efficiencies of 20/50/100% for various edits. As I predicted, the older papers, Liang et al 2015 / Kang et al 2016 / Komor et al 2016, were not state of the art and would be improved on considerably.0..0)
+- ["Psychiatric Genomics: An Update and an Agenda"](http://biorxiv.org/content/early/2017/03/10/115600), Sullivan et al 2017 ([commentary](https://plus.google.com/103530621949492999968/posts/MCXo4BH6koS))
+- ["Excess of genomic defects in a woolly mammoth on Wrangel island"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006601), Rogers & Slatkin 2017 ([media](https://www.nytimes.com/2017/03/02/science/woolly-mammoth-extinct-genetics.html "The Woolly Mammoth's Last Stand"); consequences of increasing genetic load: [mutational meltdown](https://en.wikipedia.org/wiki/Genetic_load#Deleterious_Mutation). Did this finish off the last population of woolly mammoths?)
 - ["Syphilis in Renaissance Europe: rapid evolution of an introduced sexually transmitted disease?"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1810019/pdf/15252975.pdf), Knell 2003 (still an open question, apparently)
+- ["Welcome to Pleistocene Park: In Arctic Siberia, Russian scientists are trying to stave off catastrophic climate change-by resurrecting an Ice Age biome complete with lab-grown woolly mammoths"](https://www.theatlantic.com/magazine/archive/2017/04/pleistocene-park/517779/)
+- ["Tuberculosis-resistant cows developed for the first time using CRISPR technology"](http://sciencebulletin.org/archives/9946.html)
 
 AI:
 
+- [Nvidia announces 1080tis](https://www.reddit.com/r/MachineLearning/comments/5wt4lt/n_nvidia_1080ti_announced_700_march_5th_11gb/)
+- ["Deep Learning Reinvents the Hearing Aid: Finally, wearers of hearing aids can pick out a voice in a crowded room"](http://spectrum.ieee.org/consumer-electronics/audiovideo/deep-learning-reinvents-the-hearing-aid) (If anything, the audio samples sound too good to be true.)
+- ["Deep Voice: Real-time Neural Text-to-Speech"](https://arxiv.org/abs/1702.07825), Arik et al 2017
+- ["The Shattered Gradients Problem: If resnets are the answer, then what is the question?"](https://arxiv.org/abs/1702.08591), Balduzzi et al 2017 (successfully training 198-layer non-resnet feedforward NNs w/better initialization; apparently residual networks were never necessary - humans just have no idea how to train neural networks...)
+- ["Neural Episodic Control"](https://arxiv.org/pdf/1703.01988.pdf), Pritzel et al 2017
+- ["Evolving Deep Neural Networks"](https://arxiv.org/abs/1703.00548), Miikkulainen et al 2017
+- ["Large-Scale Evolution of Image Classifiers"](https://arxiv.org/abs/1703.01041), Real et al 2017 (grossly inefficient and hobbled in some ways but still cool)
+- ["Network Morphism"](https://arxiv.org/pdf/1603.01670.pdf), Wei et al 2016 (A very nice inspiration from category theory. I wish I saw this out in the wild, because it would speed up architecture and hyperparameter optimization immeasurably if we didn't have to keep starting from scratch with every model.)
+- ["Artist Agent: A Reinforcement Learning Approach to Automatic Stroke Generation in Oriental Ink Painting"](https://arxiv.org/abs/1206.4634), Xie et al 2012 (RL is good for art experiments like this because many artistic criteria tend to be 'global' and non-differentiable or local - RMSE on pixels is not a good criterion.)
+- ["Understanding Synthetic Gradients and Decoupled Neural Interfaces"](https://arxiv.org/abs/1703.00522), Czarnecki et al 2017
+- ["Machine Learning Predicts Laboratory Earthquakes"](https://arxiv.org/abs/1702.05774), Rouet-Leduc et al 2017 ([media](https://www.technologyreview.com/s/603785/machine-learning-algorithm-predicts-laboratory-earthquakes/ "Machine-Learning Algorithm Predicts Laboratory Earthquakes: The breakthrough has astonished geologists and raises the possibility that real earthquake prediction could be next."))
+
 Statistics/meta-science/mathematics:
 
+- ["Empirical assessment of published effect sizes and power in the recent cognitive neuroscience and psychology literature"](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2000797), Szucs & Ioannidis 2017
+- ["When Evidence Says No, But Doctors Say Yes"](https://www.propublica.org/article/when-evidence-says-no-but-doctors-say-yes)
 - ["A Failure of Intelligence: Prominent physicist Freeman Dyson recalls the time he spent developing analytical methods to help the British Royal Air Force bomb German targets during World War II"](https://www.technologyreview.com/s/406789/a-failure-of-intelligence/)
 - ["Ten Lessons I Wish I Had Been Taught"](http://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html), Rota 1996
-- ["Mind-hack: Mental math pseudo-random number generators"](http://blog.yunwilliamyu.net/2011/08/14/mindhack-mental-math-pseudo-random-number-generators/)
 - ["Self-Experimentation and Its Role in Medical Research"](http://pubmedcentralcanada.ca/pmcc/articles/PMC3298919/), Weisse 2012
+- ["Mind-hack: Mental math pseudo-random number generators"](http://blog.yunwilliamyu.net/2011/08/14/mindhack-mental-math-pseudo-random-number-generators/)
 
 Politics/religion:
 
@@ -44,11 +66,16 @@ Psychology/biology:
 - The [Flexner Report](https://en.wikipedia.org/wiki/Flexner_Report)
 - ["Why don't all whales have cancer? A novel hypothesis resolving Peto's paradox"](https://academic.oup.com/icb/article/47/2/317/719209/Why-don-t-all-whales-have-cancer-A-novel), Nagy et al 2007
 - ["The Measured Man"](https://www.theatlantic.com/magazine/archive/2012/07/the-measured-man/309018/?single_page=truein "Larry Smarr, an astrophysicist turned computer scientist, has a new project: charting his every bodily function in minute detail. What he's discovering may be the future of health care.")
+- ["Total recall: the people who never forget: An extremely rare condition may transform our understanding of memory"](https://www.theguardian.com/science/2017/feb/08/total-recall-the-people-who-never-forget) (spaced repetition at work?)
 - ["Lost in Time in the Antarctic Ice Age"](https://scientistatwork.blogs.nytimes.com/2012/09/06/lost-in-time-in-the-antarctic-ice-age/)
+- ["On Being One's Own Rabbit: The Story of a Skirmish in the War on Disease [Tetany]"](http://www.fadedpage.com/books/20160325/html.php#Page_107), J.B.S. Haldane 1927, _Possible Worlds And Other Essays_
 - ["Shorn Scalps and Perceptions of Male Dominance"](https://www.gwern.net/docs/2012-mannes.pdf), Mannes 2012
 
 Technology:
 
+- ["Compromising connectivity: information dynamics between the state and  society in a digitizing North Korea"](http://uskoreainstitute.org/wp-content/uploads/2017/03/Compromising-Connectivity-Final-Report.pdf), Kretchun et al 2017
+
+    The details on NK use of digital censorship is interesting: steady progress in locking down Bluetooth and WiFi by software and then hardware modifications; use of Android security system/DRM to install audit log + regular screenshots to capture foreign media consumption; a whitelist/signed-media system to block foreign media from ever being viewed, with auto-deletion of offending files; watermarking (courtesy of an American university's misguided outreach) of media created on desktops to trace them; network blocking and surveillance; and efforts towards automatic bulk surveillance of text messages for 'South-Korean-style' phrases/words. Stallman's warnings about DRM are quite prophetic in the NK context - the system is secured against the *user*...
 - ["Damn Cool Algorithms: Homomorphic Hashing"](http://blog.notdot.net/2012/08/Damn-Cool-Algorithms-Homomorphic-Hashing)
 - [Computerizing tutoring](http://www.nytimes.com/2012/09/16/magazine/how-computerized-tutors-are-learning-to-teach-humans.html)
 
@@ -64,12 +91,13 @@ Philosophy:
 
 Fiction:
 
-- [_The Birds_](https://en.wikipedia.org/wiki/The_Birds_%28play%29) (Took second place; "One of the greatest of Euripides's surviving works, _The Trojan Women_, won only second prize in a contemporary competition. We know nothing about the play that came in first.")
+- [_The Birds_](https://en.wikipedia.org/wiki/The_Birds_%28play%29) (Took second place; "One of the greatest of Euripides's surviving works, [_The Trojan Women_](https://en.wikipedia.org/wiki/The_Trojan_Women), won only second prize in a contemporary competition. We know nothing about the play that came in first.")
 
 Misc:
 
 - [Lotka's law](https://en.wikipedia.org/wiki/Lotka%27s_law)
 - [Tiger versus lion](https://en.wikipedia.org/wiki/Tiger_versus_lion)
+- [The perils and pleasures of mincemeat pie](http://www.chicagoreader.com/chicago/mince-pie-the-real-american-pie/Content?oid=1267308)
 
 <!-- Back to 20? Aug 2012 -->
 
