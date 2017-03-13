@@ -1,0 +1,228 @@
+---
+title: The Danbooru2017 Dataset
+description: Danbooru2017 is a proposed large-scale anime image database with 2.2m+ images annotated with 48m+ tags; it can be useful for machine learning purposes such as image recognition and generation.
+tags: statistics, NN, anime
+created: 15 Dec 2015
+status: in progress
+confidence: likely
+importance: 7
+...
+
+> Deep learning for computer revision relies on large annotated datasets. Classification/categorization has benefited from the creation of ImageNet, which classifies 1m photos into 1000 categories. But classification/categorization is a coarse description of an image which limits application of classifiers, and there is no comparably large dataset of images with many tags or labels which would allow learning and detecting much richer information about images. Such a dataset would ideally be >1m images with at least 10 descriptive tags each which can be publicly distributed to all interested researchers, hobbyists, and organizations. There are currently no such public datasets, as ImageNet, Birds, Flowers, and MS COCO fall short either on image or tag count. I suggest that the "image -boorus" be used. The image boorus are websites which host large numbers of images which can be 'tagged' or labeled with an arbitrary number of textual descriptions; they were developed for and are most popular among fans of anime, who annotate the images in extreme detail. The best known booru, with a focus on quality, is Danbooru, which contains TODO tb of TODO images with TODO tags (TODO unique). Cleaned with active learning, packaged as a dataset, distributed as a torrent, and updated annually, a Danbooru2017 dataset would democratize rich large-scale classification/tagging, provide an archival backup for the Danbooru community, and serve as a testbed for non-photographic computer vision tasks.
+
+# Image boorus
+
+[Image](http://tvtropes.org/pmwiki/pmwiki.php/Main/ImageBooru) [boorus](https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards) are image hosting websites developed by the anime community.
+Images are uploaded by users who are part of a highly active community, such as [Danbooru](https://danbooru.donmai.us/), and richly annotated with textual ['tags'](https://danbooru.donmai.us/wiki_pages/43043), typically divided into a few major groups:
+
+- copyright (the overall franchise, movie, TV series, manga etc a work is based on; for long-running franchises like _Neon Genesis Evangelion_ or "crossover" images, there can be multiple such tags, or if there is no such associated work, it would be tagged "original")
+- character (often multiple)
+- author
+- [explicitness rating](https://danbooru.donmai.us/wiki_pages/10920 "howto:rate")
+
+    Danbooru does not ban sexually suggestive or pornographic content; instead, images are classified into 3 categories: `safe`, `questionable`, &`explicit`.
+
+    `safe` is for unambiguously SFW content including tasteful swimsuits, while `questionable` would be more appropriate for highly-revealing swimsuit images or moderate nudity or sexually suggestive situations, and `explicit` denotes anything pornographic. (TODO percentages)
+- descriptive tags (eg the top 20 tags are TODO)
+
+    These tags form a "folksonomy" to describe aspects of images; beyond the expected tags like `long_hair` or `looking_at_the_viewer`, there are many strange and unusual tags, including many anime or illustration-specific tags like `seiyuu_connection` (images where the joke is based on knowing the two characters are voiced in different anime by the same voice actor) or `bad_feet` (artists frequently accidentally draw two left feet, or just `bad_anatomy` in general). Tags may also be hierarchical and one tag "imply" another.
+
+Images can have other associated metadata with them, including:
+
+- Danbooru ID, a unique positive integer
+- MD5 hash
+- the uploader username
+- the original URL or the name of the work
+- up/downvotes
+- sibling images (often an image will exist in many forms, such as sketch or black-white versions in addition to a final color image, edited or larger/smaller versions, SFW vs NSFW, or depicting multiple moments in a scene)
+- captions/dialogue (many images will have written Japanese captions/dialogue, which have been translated into English by users and annotated using HTML [image maps](!Wikipedia))
+- author commentary (also often translated)
+- pools (ordered sequences of images from across Danbooru; often used for comics or image groups, or for disparate images with some unifying theme which is [insufficiently objective](https://danbooru.donmai.us/wiki_pages/4920 "tag group:subjective") to be a normal tag)
+
+Image boorus typically support advanced Boolean searches on multiple attributes simultaneously, which in conjunction with the rich tagging, can allow users to discover extremely specific sets of images.
+
+# Uses
+
+Such a dataset would support many possible uses:
+
+- classification & tagging:
+
+    - image categorization (eg of major characteristics such as franchise or character or SFW/NSFW detection)
+    - image multi-label classification (tagging), exploiting the ~TODO tags per image
+
+        - a large-scale testbed for real-world application of active learning / man-machine collaboration
+        - testing the scaling limits of existing tagging approaches and motivating zero-shot & one-shot learning techniques
+        - bootstrapping video summaries/descriptions
+- image generation:
+
+    - text-to-image synthesis (eg StackGAN would benefit greatly from the extremely diverse tags)
+    - unsupervised image generation (eg DCGANs, VAEs, PixelCNNs)
+    - image transformation: upscaling (eg waifu2x), colorizing, inpainting, sketch-to-drawing, artistic style transfer, optimization (eg ["Image Synthesis from Yahoo's `open_nsfw`"](https://open_nsfw.gitlab.io/))
+- image analysis:
+
+    - facial detection & localization for drawn images (on which normal techniques such as OpenCV's Harr filters fail)
+    - image popularity/upvote prediction
+    - image-to-text localization, transcription, and translation of text in images
+- image search:
+
+    - collaborative filtering/recommendation, image similarity search (eg [Flickr](https://code.flickr.net/2017/03/07/introducing-similarity-search-at-flickr/ "Introducing Similarity Search at Flickr")) of images (useful for users looking for images, for discovering tag mistakes, and for various diagnostics like checking GANs are not memorizing)
+    - artist similarity and de-anonymization
+- knowledge graph extraction from tags/tag-implications and images
+
+# Advantages
+## Size and metadata
+
+Image classification has been supercharged by work on ImageNet, but ImageNet itself is limited by its small set of classes, many of which are debatable, and which encompass only a limited set.
+Compounding these limits, tagging/classification datasets are notoriously undiverse & have imbalance problems or are small:
+
+- ImageNet: dog breeds
+- Youtube-BB: [toilets/giraffes](https://twitter.com/karpathy/status/828692612848627713)
+- MS COCO: bathrooms and African savannah animals; 328k images, 80 categories, short 1-sentence descriptions
+- bird/flowers: a few score of each kind (eg no eagles in the birds dataset)
+- [Visual Relationship Detection (VRD) dataset](https://cs.stanford.edu/people/ranjaykrishna/vrd/): 5k images
+- Pascal VOC: 11k images
+- [Visual Genome](http://visualgenome.org/): 108k images
+
+The external validity of classifiers trained on these datasets is somewhat questionable as the learned discriminative models may collapse or simplify in undesirable ways.
+For example, ImageNet classifiers sometimes appear to 'cheat' by relying on textures and simplistic outlines - [recognizing leopards](https://rocknrollnerd.github.io/ml/2015/05/27/leopard-sofa.html "Suddenly, a leopard print sofa appears") only by the color texture of the fur, or believing barbells are extensions of arms.
+The dataset is simply not large enough, or richly annotated enough, to train classifiers or tagger better than that, or, with residual networks reaching human parity, reveal differences between the best algorithms and the merely good.
+As well, the datasets are static, not accepting any additions, better metadata, or corrections.
+Like MNIST before it, ImageNet is verging on 'solved' and further progress may simply be overfitting to idiosyncrasies of the datapoints and errors; even if lowered error rates are not overfitting, the very low error rates compress the differences between algorithm, giving a misleading view of progress and understating the benefits of better architectures, as improvements become comparable in size to simple chance in initializations/training/validation-set choice.
+
+In contrast, the Danbooru dataset is TODOx larger than ImageNet as a whole and TODOx larger than the current largest multi-description dataset, MS COCO, with far richer metadata than the 'subject verb object' sentence summary that is dominant in MS COCO.
+It is unlikely that the performance ceiling will be reached anytime soon, and advanced techniques such as attention will likely be required to get anywhere near the ceiling.
+And Danbooru is constantly expanding and can be easily updated by anyone anywhere, allowing for regular releases of improved annotations.
+
+## Non-photographic
+
+Anime images and illustrations, on the other hand, as compared to photographs, differ in many ways - for example, illustrations are frequently black-and-white line art rather than color photographs, and even color illustrations tend to rely far less on textures and far more on lines (with textures omitted or filled in with standard repetitive patterns), working on a higher level of abstraction; a leopard would not be as trivially recognized by pattern-matching on yellow and black dots.
+Humans can still easily perceive a black-white drawing of a leopard, but can an ImageNet classifier?
+Likewise, the difficulty face detectors encounter on anime images suggests that other detectors like nudity or pornographic detectors may fail; but surely moderation tasks require detection of penises whether they are drawn or photographed?
+Because illustrations are produced by an entirely different process and focus only on salient details while abstracting the rest, they offer a way to test external validity and the extent to which taggers are tapping into higher-level semantic perception.
+
+As well, many ML researchers are anime fans and might enjoy working on such a dataset - training NNs to generate anime images can be amusing.
+
+## Community value
+
+A full dataset is of immediate value to the Danbooru community as an archival snapshot of Danbooru which can be downloaded in lieu of hammering the main site and downloading terabytes of data; backups are occasionally requested on the Danbooru forum but the need is currently not met.
+
+There is much potential for a mutually rewarding symbiosis between the Danbooru community and ML researchers: in a virtuous circle, the community provides curation and expansion of a rich dataset, while ML researchers can contribute back tools from their research on it which help improve the dataset.
+The Danbooru community is relatively large and would likely welcome the development of tools like taggers to support semi-automatic (or eventually, fully automatic) image tagging, as use of a tagger could offer orders of magnitude improvement in speed and accuracy compared to their existing manual methods.
+They are also a pre-existing audience which would be interested in new research results.
+
+# Format
+
+The goal of the dataset is to be as easy as possible to use immediately, avoiding obscure file formats, while allowing simultaneous research & seeding of the torrent, with easy updates.
+
+Since many users are uninterested in downloading, seeing, or analyzing NSFW images, the dataset will be split into a large `safe` dataset and a smaller `questionable`+`explicit` dataset; the categorization can be double-checked for errors using active learning.
+
+Images will be provided in both the full original form (be that JPG, PNG, GIF or otherwise) for reference/archival purposes and in a smaller form more suitable for ML use:
+
+- non-images such as videos will be omitted from the ML dataset for uniformity
+- all images converted to valid JPG
+- all images losslessly optimized with [`jpegoptim`](https://github.com/tjko/jpegoptim) (while this invalidates the MD5, the MD5s are not always valid for Danbooru images anyway and ECC is taken care of by BitTorrent; the advantage is that using `jpegoptim` may cut disk space & IO by 5-10%, which is substantial on a multi-terabyte dataset)
+- downscaled down to 512x512px with black borders (CNNs appear to currently tend to target ~250x250px, but higher resolutions will be feasible with new GPU generations and required for best tagging performance as objects/characters can be very small) using ImageMagick: `convert -resize 512x512^ -gravity center -extent 512x512 -background black foo.jpg bar.jpg`
+
+    (Additional downscaling to 128px or 256px, or various kinds of data augmentation, can be done on the fly by users without impeding training and don't need to be shipped precomputed.)
+- stored as individual files:
+
+    - named with the Danbooru ID
+    - bucketed into ~100 subdirectories of <50k images to avoid slow lookups (eg `1/$ID.jpg`)
+
+Metadata will be provided in the original full SQL export and a slimmed down database of just filename/tags.
+
+# Size
+
+- TODO images
+- TODO unique tags, used TODO times (mean per image: TODO; median: TODO)
+- TODO tb with TODO terapixels
+
+downscaled version likely ~430GB based on size of preliminary download after downscaling:
+
+~~~{.Bash}
+find /media/gwern/My\ Book/danbooru/danbooru/ -type f -name "*.jpg" | wc --lines
+# 76594
+du -ch /media/gwern/My\ Book/danbooru/danbooru/
+# 37G /media/gwern/My Book/danbooru/danbooru/
+find . -type f -exec convert -resize 512x512^ -gravity center -extent 512x512 -background black "{}" ../512px/"{}" \;
+duh ../512px/
+# 9.5G    ../512px/
+~~~
+
+so comparing 76k Danbooru images, the 512px images are ~25%. So for 1.7tb, the 512px archive would be 0.43tb or ~430GB
+
+# Preparation
+
+- download all metadata from the official [daily-updated](https://danbooru.donmai.us/forum_topics/12774 "Topic: BigQuery dataset (queryable dump)") [Danbooru BigQuery metadata database](https://bigquery.cloud.google.com/table/danbooru-data:danbooru.posts) (TODO: is there an easier way than http://stackoverflow.com/a/18497215/329866 ?)
+- download associated images (curl script)
+- train a NSFW classifier on safe/questionable/explicit (*without* tags which make it too easy): check all questionable/explicit images are appropriately labeled and can be segregated
+- train a top 10k tags tagger: active learn as much as feasible
+
+# Scraping
+
+I have registered the accounts `gwern` and `gwern-bot` for use in downloading & participating on Danbooru; it is considered good research ethics to try to offset any use of resources when crawling an online community (eg DNM scrapers try to run Tor nodes to pay back the bandwidth), so I have donated \$20 to Danbooru via an account upgrade.
+
+Danbooru IDs are sequential positive integers, but the images are stored at their MD5 hashes; so downloading the full images can be done by a query to the JSON API for the metadata for an ID, getting the URL for the full upload, and downloading that to the ID plus extension.
+
+The metadata can be downloaded from BigQuery via BigQuery-API-based tools.
+
+# Hosting
+
+1.7tb images, perhaps 0.1tb for downscaled?
+
+Hosting options for 2-3tb typically involve BitTorrent as the best method of distributing very large datasets to many people quickly & allowing for easy updates:
+
+- local torrent: infeasible initially as my local connection maxes out at ~1MB/s and the initial seeding would take unacceptable months
+- Amazon S3: my usual hosting solution, but also infeasible:
+
+    - Amazon S3 torrents do not allow files larger than ~4GB, so the dataset would have to be split into thousands of torrents, defeating most of the point
+    - Amazon S3 disk-space & outgoing bandwidth are notoriously expensive & S3 is avoided by backup services like Backblaze: the [AWS price calculator](https://calculator.s3.amazonaws.com/index.html) estimates that 2tb+occasional-full-downloads would cost >\$1000/month (Amazon Glacier is more reasonably priced but totally unsuited for regular downloads)
+- VPS hosts: typically grossly inadequate disk space
+- seedbox on [Hetzner](!Wikipedia) or other dedicated hosts: dedicated servers range up to 4tb easily along with gigabit uploads for \$50-100/month; I found an auctioned host on Hetzner with adequate disk space can be rented for \$30/month or \$360/year, which is sufficiently low that I can pay for it indefinitely (and should interest take off and the torrent swarm become permanently robust, the seedbox can be abandoned)
+
+The final option appears to be best.
+
+Given the intent, [Academic Torrents](http://academictorrents.com/) is a usable tracker; a backup option would be [Nyaa.se](https://www.nyaa.se/).
+
+# Updating
+
+Should the dataset prove of value to the ML & Danbooru datasets, it can be updated at regular annual intervals (giving Danbooru2017, Danbooru2018, Danbooru2019 etc).
+
+Updates would exploit the ECC capability of BitTorrent by updating the images/metadata and creating a new `.torrent` file; users download the new `.torrent`, overwrite the old `.torrent`, and after rehashing files to discover which ones have changed/are missing, the new ones are downloaded.
+(This method has been successfully used by other very-large periodically-updated torrents, such as the [Touhou Lossless Music Torrent](http://www.tlmc.eu/), at 1.4tb after 18 versions.)
+
+Turnover in BitTorrent swarms means that earlier versions of the torrent will quickly disappear, so for easier reproducibility, the metadata files can be archived into subdirectories (images generally will not change, so reproducibility is less of a concern - to reproduce the subset for an earlier release, one simply filters on upload date or takes the file list from the old metadata).
+
+# Future work
+## Model zoo
+
+If possible, additional models and derived metadata may be supplied as part of a "model zoo".
+Particularly desirable would be:
+
+- a NSFW classifier
+- a top-10,000-tag tagger
+- a text embedding RNN, and pre-computed text embeddings for all images' tags
+
+## Metadata Quality Improvement via Active Learning
+
+How high quality is the Danbooru metadata quality? As with ImageNet, it is critical that the tags are extremely accurate or else this will lowerbound the error rates and impede the learning of taggers, especially on rarer tags where a low error may still cause false negatives to outweigh the true positives.
+
+I would say that the Danbooru tag data is quite high but imbalanced: almost all tags on images are correct, but the absence of a tag is often wrong - that is, many tags are missing on Danbooru (there are so many possible tags that no user could possibly know them all).
+So the absence of a tag isn't as informative as the presence of a tag - eyeballing images and some rarer tags, I would guess that tags are present <10% of the time they should be.
+
+This suggests leveraging an active learning ([Settles 2010](http://burrsettles.com/pub/settles.activelearning.pdf "Active Learning Literature Survey")) form of training: train a tagger, have a human review the errors, update the metadata when it was not an error, and retrain.
+
+More specifically: train the tagger; run the tagger on the entire dataset, recording the outputs and errors; a human examines the errors interactively by comparing the supposed error with the image; and for false negatives, the tag can be added to the Danbooru source using the Danbooru API and added to the local image metadata database, and for false positives, the 'negative tag' can be added to the local database; train a new model (possibly initializing from the last checkpoint).
+Since there will probably be thousands of errors, one would go through them by magnitude of error: for a false positive, start with tagging probabilities of 1.0 and go down, and for false negatives, 0.0 and go up. This would be equivalent to the active learning strategy "uncertainty sampling", which is simple, easy to implement, and effective (albeit not necessarily optimal for active learning as the worst errors will tend to be highly correlated/redundant and the set of corrections overkill).
+Once all errors have been hand-checked, the training weight on absent tags can be increased, as any missing tags should have shown up as false positives.
+
+Over multiple iterations of active learning + retraining, the procedure should be able to ferret out errors in the dataset and boost its quality while also increasing its performance.
+
+Based on my experiences with semi-automatic editing on Wikipedia (using `pywikipediabot` for solving [disambiguation](https://en.wikipedia.org/wiki/Wikipedia:Disambiguation) wikilinks), I would estimate that given an appropriate terminal interface, a human should be able to check at least 1 error per second and so checking ~30,000 errors per day is possible (albeit extremely tedious).
+Fixing the top million errors should offer a noticeable increase in performance.
+
+There are many open questions about how best to optimize tagging performance: is it better to refine tags on the existing set of images or would adding more only-partially-tagged images be more useful?
+
+TODO: possible metadata: tag traffic/queries/search? other indicators of tag quality? tags which are often searched for are likely more reliably tagged across the corpus, and can be given a heavier weight in the loss function, or alternately, used to prioritize active learning for obscurer tags richer in errors
+
+TODO tag architecture idea for the loss function: have positive tags (1), 'negative tags' (-1), and absent tags (0), with a training weight of perhaps 0.1 on absent tags. This avoids over penalizing the CNN for bad tagging, while it doesn't learn a degenerate solution like 'predict every tag is present'.
