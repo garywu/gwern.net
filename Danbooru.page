@@ -13,7 +13,7 @@ importance: 7
 # Image boorus
 
 [Image](http://tvtropes.org/pmwiki/pmwiki.php/Main/ImageBooru) [boorus](https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards) are image hosting websites developed by the anime community.
-Images are uploaded by users who are part of a highly active community, such as [Danbooru](https://danbooru.donmai.us/), and richly annotated with textual ['tags'](https://danbooru.donmai.us/wiki_pages/43043), typically divided into a few major groups:
+Images are uploaded by users who are part of a highly active community, such as [Danbooru](https://danbooru.donmai.us/)^[While Danbooru is not the largest anime image booru in existence - [TBIB](https://tbib.org/index.php?page=about), for example, claims >4.7m images or almost twice as many, by mirroring from multiple boorus - but Danbooru is generally considered to focus on higher-quality images & have better tagging; I suspect >2.4m images is into diminishing returns for sheer bulk and the focus then ought to be on improving the metadata.], and richly annotated with textual ['tags'](https://danbooru.donmai.us/wiki_pages/43043), typically divided into a few major groups:
 
 - copyright (the overall franchise, movie, TV series, manga etc a work is based on; for long-running franchises like _Neon Genesis Evangelion_ or "crossover" images, there can be multiple such tags, or if there is no such associated work, it would be tagged "original")
 - character (often multiple)
@@ -69,6 +69,9 @@ Such a dataset would support many possible uses:
     - artist similarity and de-anonymization
 - knowledge graph extraction from tags/tag-implications and images
 
+    - clustering tags
+    - temporal trends in tags (eg franchise popularity trends)
+
 # Advantages
 ## Size and metadata
 
@@ -118,12 +121,16 @@ Since many users are uninterested in downloading, seeing, or analyzing NSFW imag
 
 Images will be provided in both the full original form (be that JPG, PNG, GIF or otherwise) for reference/archival purposes and in a smaller form more suitable for ML use:
 
-- non-images such as videos will be omitted from the ML dataset for uniformity
+- non-images such as animated GIFs & videos will be omitted from the ML dataset for uniformity
+
+    The short video files hosted on Danbooru require different handling than images; the metadata for video files likely does not apply to each frame individually, so it would be damaging to take a naive approach of turning each one into a static image & copying the metadata for the whole video.
 - all images converted to valid JPG
 - all images losslessly optimized with [`jpegoptim`](https://github.com/tjko/jpegoptim) (while this invalidates the MD5, the MD5s are not always valid for Danbooru images anyway and ECC is taken care of by BitTorrent; the advantage is that using `jpegoptim` may cut disk space & IO by 5-10%, which is substantial on a multi-terabyte dataset)
-- downscaled down to 512x512px with black borders (CNNs appear to currently tend to target ~250x250px, but higher resolutions will be feasible with new GPU generations and required for best tagging performance as objects/characters can be very small) using ImageMagick: `convert -resize 512x512^ -gravity center -extent 512x512 -background black foo.jpg bar.jpg`
+- downscaled down to 512x512px with black borders
 
-    (Additional downscaling to 128px or 256px, or various kinds of data augmentation, can be done on the fly by users without impeding training and don't need to be shipped precomputed.)
+    Why 512px exactly? image sizes are tricky: too small, and key details become impossible to see, but too large and they become difficult to store, transmit, and process. 64px thumbnails obliterate all details; 128px is too small for much but global recognition; CNNs appear to as of 2016 tend to target ~250x250px; but to future-proof the torrent, it needs to be higher than that - higher resolutions will be feasible with new GPU generations and required for best tagging performance as objects/characters can be very small - leading to 512px as the next natural image size. Viewing 512px downscales, it does offer enough resolution for finer details to be plausibly visible to a CNN while still being ~1/5th the bandwidth/disk usage.
+
+    In addition, one should err on the side of the downscales being too large rather than too small: should 512px be too large, additional downscaling to 128px or 256px, or various kinds of data augmentation, is relatively easier than downscaling from the full original images and can be done on the fly by users without impeding training. While if the downscales are too small, users may be stuck between a rock and hard place: accepting suboptimal results or having to create & permanently store an entire downscaled dataset themselves.
 - stored as individual files:
 
     - named with the Danbooru ID
@@ -150,6 +157,12 @@ duh ../512px/
 ~~~
 
 so comparing 76k Danbooru images, the 512px images are ~25%. So for 1.7tb, the 512px archive would be 0.43tb or ~430GB
+
+# Legality
+
+Danbooru is operated & hosted in the USA.
+As a community site, it is impossible to assure that every single image is legal to possess; the most questionable content on Danbooru likely falls under the "lolicon"/"shotacon" heading, which are [legal in the USA & Japan](!Wikipedia "Legal status of drawn pornography depicting minors") but may not be legal in (to quote Wikipedia) "Australia, Canada, the Philippines, South Africa, South Korea and the United Kingdom."
+Downloaders should consider their current jurisdiction and if the legal situation is unclear or unfavorable, avoid downloading the `questionable`+`explicit` subset of images.
 
 # Preparation
 
@@ -183,6 +196,8 @@ Hosting options for 2-3tb typically involve BitTorrent as the best method of dis
 The final option appears to be best.
 
 Given the intent, [Academic Torrents](http://academictorrents.com/) is a usable tracker; a backup option would be [Nyaa.se](https://www.nyaa.se/).
+
+(Can create the .torrent using [`mktorrent`](http://mktorrent.sourceforge.net/))
 
 # Updating
 
