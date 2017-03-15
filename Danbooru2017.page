@@ -98,8 +98,10 @@ And Danbooru is constantly expanding and can be easily updated by anyone anywher
 
 ## Non-photographic
 
-Anime images and illustrations, on the other hand, as compared to photographs, differ in many ways - for example, illustrations are frequently black-and-white line art rather than color photographs, and even color illustrations tend to rely far less on textures and far more on lines (with textures omitted or filled in with standard repetitive patterns), working on a higher level of abstraction; a leopard would not be as trivially recognized by pattern-matching on yellow and black dots.
-Humans can still easily perceive a black-white drawing of a leopard, but can an ImageNet classifier?
+Anime images and illustrations, on the other hand, as compared to photographs, differ in many ways - for example, illustrations are frequently black-and-white rather than color, line art rather than photographs, and even color illustrations tend to rely far less on textures and far more on lines (with textures omitted or filled in with standard repetitive patterns), working on a higher level of abstraction - a leopard would not be as trivially recognized by pattern-matching on yellow and black dots - with irrelevant details that a discriminator might cheaply classify based on typically suppressed in favor of global gestalt, and often heavily stylized (eg frequent use of "[Dutch angle](!Wikipedia)s").
+
+Humans can still easily perceive a black-white line drawing of a leopard, but can a standard ImageNet classifier?
+
 Likewise, the difficulty face detectors encounter on anime images suggests that other detectors like nudity or pornographic detectors may fail; but surely moderation tasks require detection of penises whether they are drawn or photographed?
 Because illustrations are produced by an entirely different process and focus only on salient details while abstracting the rest, they offer a way to test external validity and the extent to which taggers are tapping into higher-level semantic perception.
 
@@ -191,7 +193,7 @@ Hosting options for 2-3tb typically involve BitTorrent as the best method of dis
     - Amazon S3 torrents do not allow files larger than ~4GB, so the dataset would have to be split into thousands of torrents, defeating most of the point
     - Amazon S3 disk-space & outgoing bandwidth are notoriously expensive & S3 is avoided by backup services like Backblaze: the [AWS price calculator](https://calculator.s3.amazonaws.com/index.html) estimates that 2tb+occasional-full-downloads would cost >\$1000/month (Amazon Glacier is more reasonably priced but totally unsuited for regular downloads)
 - VPS hosts: typically grossly inadequate disk space
-- seedbox on [Hetzner](!Wikipedia) or other dedicated hosts: dedicated servers range up to 4tb easily along with gigabit uploads for \$50-100/month; I found an auctioned host on Hetzner with adequate disk space can be rented for \$30/month or \$360/year, which is sufficiently low that I can pay for it indefinitely (and should interest take off and the torrent swarm become permanently robust, the seedbox can be abandoned)
+- seedbox on [Hetzner](!Wikipedia) or other dedicated hosts: dedicated servers range up to 4tb easily along with gigabit uploads for \$50-100/month; I found many servers in [Hetzner's auctions](https://robot.your-server.de/order/market)  with adequate disk space (>=3tb) can be rented for ~\$30/month or ~\$360/year, which is sufficiently low that I can pay for it indefinitely (and should interest take off and the torrent swarm become permanently robust, the seedbox can be abandoned)
 
 The final option appears to be best.
 
@@ -207,6 +209,10 @@ Updates would exploit the ECC capability of BitTorrent by updating the images/me
 (This method has been successfully used by other very-large periodically-updated torrents, such as the [Touhou Lossless Music Torrent](http://www.tlmc.eu/), at 1.4tb after 18 versions.)
 
 Turnover in BitTorrent swarms means that earlier versions of the torrent will quickly disappear, so for easier reproducibility, the metadata files can be archived into subdirectories (images generally will not change, so reproducibility is less of a concern - to reproduce the subset for an earlier release, one simply filters on upload date or takes the file list from the old metadata).
+
+## Notification
+
+To receive notification of future updates to the dataset, please subscribe to the [notification mailing list](http://eepurl.com/cGAN7L "Danbooru Dataset Updates newsletter").
 
 # Future work
 ## Model zoo

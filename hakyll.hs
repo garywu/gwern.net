@@ -1046,4 +1046,5 @@ brokenLinks = [
  , ("Yawgoog", "/Yawgoog%20injustice")
  , ("Zeo%5B1%5D", "/Zeo")
  , ("ZeoCached", "/Zeo")
+ , ("Danbooru", "/Danbooru2017")
  ]
