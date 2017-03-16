@@ -318,6 +318,7 @@ brokenLinks = [
  , ("Culture is not about esthetics", "/Culture%20is%20not%20about%20Esthetics")
  , ("death note anonymity", "/Death%20Note%20anonymity")
  , ("Death Note anonymity", "/Death Note Anonymity")
+ , ("Death+Note+Anonymity", "/Death Note Anonymity")
  , ("Death Note Ending.html", "/Death%20Note%20Ending")
  , ("DNB20FAQbrbrOr", "/DNB%20FAQ")
  , ("DNB%2520FAQ", "/DNB%20FAQ")
@@ -1047,5 +1048,10 @@ brokenLinks = [
  , ("Zeo%5B1%5D", "/Zeo")
  , ("ZeoCached", "/Zeo")
  , ("Danbooru", "/Danbooru2017")
+ , ("d", "/Danbooru2017")
  , ("soylent", "/Soylent")
+ , ("docs/rl/armstrong-controlproblem/indedx.html", "docs/rl/armstrong-controlproblem/index.html")
+ , ("docs/rl/armstrong-controlproblem/null", "docs/rl/armstrong-controlproblem/index.html")
+ , ("docs/spacedrepet", "https://github.com/gwern/gwern.net/tree/master/docs/spacedrepetition")
+ , ("docs/spacedrepetition/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/spacedrepetition")
  ]
