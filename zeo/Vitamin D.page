@@ -139,7 +139,7 @@ Looking at the data averages in the Zeo website, it looked like ZQ & total & REM
 [^vitamin-D-analysis]: The usual session:
 
     ~~~{.R}
-    R> zeo <- read.csv("http://www.gwern.net/docs/zeo/2012-zeo-vitamind.csv")
+    R> zeo <- read.csv("https://www.gwern.net/docs/zeo/2012-zeo-vitamind.csv")
     R> colnames(zeo)[26] <- "Vitamin.D"
     R> l <- lm(cbind(Total.Z, Time.in.REM, Time.in.Deep, Time.in.Wake,
                      Awakenings, Morning.Feel, Time.to.Z)
@@ -272,7 +272,7 @@ Placebo/active coded as 0/1 in `SSCF.1`^[I originally input the data as 'Other D
 As before, we fire up `R` and analyze the spreadsheet with the usual assumptions[^morning-independence] about independence of the daily observations. The interpreter session:
 
 ~~~{.R}
-zeo <- read.csv("http://www.gwern.net/docs/zeo/2012-zeo-vitamind-morning.csv")
+zeo <- read.csv("https://www.gwern.net/docs/zeo/2012-zeo-vitamind-morning.csv")
 
 R> # an example of the many intercorrelations which make simple t-tests misleading
 R> # and motivate the use of multivariate linear regression:
@@ -366,7 +366,7 @@ summary(l)
 [^morning-independence]: Gustavo Lacerda wondered if the two-sample _t_-test (or linear regressions in general) were really justifiable to use - could days be correlated, in which case the _p_-values would be overstated and my results actually weaker than they look? He suggested testing my full Zeo dataset to see whether `Morning Feel` can be predicted from day to day by a (relatively) simple linear [autocorrelation](!Wikipedia) [regression](!Wikipedia "Simple linear regression") looking at all previous recorded days:
 
     ~~~{.R}
-    R> zeo <- read.csv("http://www.gwern.net/docs/zeo/gwern-zeodata.csv")
+    R> zeo <- read.csv("https://www.gwern.net/docs/zeo/gwern-zeodata.csv")
     ## Master Zeo export file is periodically updated; your results may not be identical
     R> n <- length(data$Morning.Feel); n
     [1] 1050
@@ -460,7 +460,7 @@ All the changes are junk, including ones I was fairly sure would change, like 'T
 
     ~~~{.R}
     library(ggplot2)
-    sleep <- read.csv("http://www.gwern.net/docs/zeo/2012-zeo-vitamind-morning.csv")
+    sleep <- read.csv("https://www.gwern.net/docs/zeo/2012-zeo-vitamind-morning.csv")
 
     qplot(as.Date(Sleep.Date,format="%m/%d/%Y"), weight=Mood, data=sleep, geom="bar",
         binwidth=1, fill=factor(sleep$SSCF.1, labels=c("placebo","active")),
@@ -512,7 +512,7 @@ More precisely, the summary statistics indicate that the difference in means & m
 
     ~~~{.R}
     # set up data
-    mydata <- read.csv("http://www.gwern.net/docs/zeo/2012-zeo-vitamind-morning-control.csv")
+    mydata <- read.csv("https://www.gwern.net/docs/zeo/2012-zeo-vitamind-morning-control.csv")
     originalcontrol <- subset(mydata, SSCF.1==0)
     newcontrol <- subset(mydata, SSCF.1==1)
     # clean missing data
@@ -537,7 +537,7 @@ More precisely, the summary statistics indicate that the difference in means & m
 [^vitamin-d-control-frequentist]: As usual:
 
     ~~~{.R}
-    mydata <- read.csv("http://www.gwern.net/docs/zeo/2012-zeo-vitamind-morning-control.csv")
+    mydata <- read.csv("https://www.gwern.net/docs/zeo/2012-zeo-vitamind-morning-control.csv")
     originalcontrol <- subset(mydata, SSCF.1==0)
     newcontrol <- subset(mydata, SSCF.1==1)
 

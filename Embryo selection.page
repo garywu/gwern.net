@@ -310,7 +310,7 @@ Hence, ~0.30 is a plausible result for any trait and for intelligence specifical
     ~~~{.R}
     ## http://biorxiv.org/content/early/2016/08/18/070177
     ## http://biorxiv.org/highwire/filestream/19425/field_highwire_adjunct_files/0/070177-1.xlsx
-    ge <- read.csv("http://www.gwern.net/docs/genetics/2016-ge-ukbiobank-snpheritability.csv")
+    ge <- read.csv("https://www.gwern.net/docs/genetics/2016-ge-ukbiobank-snpheritability.csv")
     subset(ge[ge$Trait.Domain=="Cognitive Function",], select=c("Category.Name", "h2", "SE"))
     #              Category.Name     h2     SE
     # 49 Fluid intelligence test 0.2327 0.0115
@@ -1456,7 +1456,7 @@ Several of the traits are redundant or overlapping: it is scientifically useful 
 So before turning into a correlation matrix, we need to drop those to leave with 34 relevant traits:
 
 ~~~{.R}
-rg <- read.csv("http://www.gwern.net/docs/genetics/correlation/2016-zheng-ldhub-49x49geneticcorrelation.csv")
+rg <- read.csv("https://www.gwern.net/docs/genetics/correlation/2016-zheng-ldhub-49x49geneticcorrelation.csv")
 # delete redundant/overlapping/obsolete ones:
 dupes <- c("BMI 2010", "Childhood Obesity", "Extreme BMI", "Obesity Class 1", "Obesity Class 2",
            "Obesity Class 3", "Overweight", "Waist Circumference", "Waist-Hip Ratio", "Cigarettes per Day",

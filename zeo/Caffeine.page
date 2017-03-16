@@ -31,7 +31,7 @@ First, does morning caffeine affect total sleep or time awake?
 I wouldn't expect so, since it's aimed at reducing morning wakefulness:
 
 ~~~{.R}
-zeo <- read.csv("http://www.gwern.net/docs/zeo/2014-06-28-gwern-zeodata-caffeinecorrelation.csv")
+zeo <- read.csv("https://www.gwern.net/docs/zeo/2014-06-28-gwern-zeodata-caffeinecorrelation.csv")
 zeo$Morning.Caffeine <- as.logical(zeo$Morning.Caffeine)
 
 wilcox.test(Total.Z ~ Morning.Caffeine, data=zeo)
@@ -1126,7 +1126,7 @@ write.csv(file="~/wiki/docs/zeo/2016-05-04-caffeine.csv", nightSubset, row.names
 #### Bayesian analysis
 
 ~~~{.R}
-caffeine <- read.csv("http://www.gwern.net/docs/zeo/2016-05-04-caffeine.csv", colClasses=c("Date", rep("numeric", 9)))
+caffeine <- read.csv("https://www.gwern.net/docs/zeo/2016-05-04-caffeine.csv", colClasses=c("Date", rep("numeric", 9)))
 
 wilcox.test(Rise.Time ~ Morning.Caffeine.r, conf.int=TRUE, data=caffeine)
 #   Wilcoxon rank sum test with continuity correction

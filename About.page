@@ -345,7 +345,7 @@ One thing I wondered is whether feedback was purely a function of traffic (the m
 The hits are heavily skewed by Hacker News & Reddit traffic spikes, and probably should be log transformed. Then I did a logistic regression on hits, log hits, and a simple time index:
 
 ~~~{.R}
-feedback <- read.csv("http://www.gwern.net/docs/traffic/2013-gwernnet-anonymousfeedback.csv",
+feedback <- read.csv("https://www.gwern.net/docs/traffic/2013-gwernnet-anonymousfeedback.csv",
                      colClasses=c("Date","logical","integer"))
 plot(Visits ~ Day, data=feedback)
 feedback$Time <- 1:nrow(feedback)

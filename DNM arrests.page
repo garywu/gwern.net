@@ -1876,7 +1876,7 @@ In aggregate, I would guess that the completeness of the table is highly unlikel
 ~~~{.R}
 library(XML)
 # https://www.gwern.net/DNM%20arrests
-arrests <- readHTMLTable("http://www.gwern.net/DNM%20arrests",
+arrests <- readHTMLTable("https://www.gwern.net/DNM%20arrests",
     colClasses = c("character", "factor", "integer", "character", "factor", "factor", "character", "factor",
                    "factor", "character", "logical", as.Date, as.Date, "character"))[[1]]
 # replace all empty-fields/""s with NAs
@@ -1915,7 +1915,7 @@ sort(table(arrests$Market), decreasing=TRUE) # associated market:
 intl <- table(arrests[arrests$Role=="buyer",]$INTL); intl[1] / (intl[1]+intl[2]) # estimate of international order risk:
 sort(table(sub("^ ", "", unlist(strsplit(levels(arrests$Product), ",")))), decreasing=TRUE) # drug popularity
 ## fraction site operators/ sites busted:
-black <- readHTMLTable("http://www.gwern.net/DNM%20survival")[[1]]
+black <- readHTMLTable("https://www.gwern.net/DNM%20survival")[[1]]
 nrow(black)
 sum(arrests$Role=="operator", na.rm=TRUE) / nrow(black)
 

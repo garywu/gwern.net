@@ -21,7 +21,7 @@ The interpretation of the data from a statistical point of view was not terribly
 The original data was provided by Lewis in an [Excel spreadsheet](http://plewis.info/med_data.xlsx), but formatted in a way I couldn't make use of. I extracted the data, turned it into a 'long' row-by-row format, added IDs for each subject, transformed the dates into R format, and added a variable for each score whether it was on a meditation day. The result was a [CSV](/docs/2013-peterlewis-meditation.csv):
 
 ~~~{.R}
-mdtt <- read.csv("http://www.gwern.net/docs/2013-peterlewis-meditation.csv",
+mdtt <- read.csv("https://www.gwern.net/docs/2013-peterlewis-meditation.csv",
                     colClasses=c("factor","Date","character","integer","numeric","logical"))
     Subject         Date             TimeOfDay           ErrorCount     TestDuration
  00     :173   Min.   :2013-04-11   Length:886         Min.   : 0.00   Min.   :  61.2

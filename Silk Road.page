@@ -1459,7 +1459,7 @@ So I think the exact role KoC played in the fall of SR1 remains uncertain.
 ["Beware the Middleman: Empirical Analysis of Bitcoin-Exchange Risk"](http://lyle.smu.edu/~tylerm/fc13.pdf "Moore & Christin 2013") compiles a list of Bitcoin exchanges and which ones have died or failed to return one's money; I was interested in the average risk per day, but the paper did not include the relevant figure, so I copied the raw data and partially replicated their analysis in R:
 
 ~~~{.R}
-exchange <- read.csv("http://www.gwern.net/docs/2013-moorechristin-bitcoinexchanges.csv")
+exchange <- read.csv("https://www.gwern.net/docs/2013-moorechristin-bitcoinexchanges.csv")
 # log transform busy-ness per paper
 exchange$ActiveDailyVolume <- log1p(exchange$ActiveDailyVolume)
 # calculate lifetime lengths
@@ -1614,7 +1614,7 @@ I grab weighted price for each day between [6 February 2011 & 23 July 2013](http
 ### Analysis
 
 ~~~{.R}
-R> sr <- read.csv("http://www.gwern.net/docs/sr/dpr-exchangerate.csv")
+R> sr <- read.csv("https://www.gwern.net/docs/sr/dpr-exchangerate.csv")
 R> sr$Sales <- c(10, rep(NA, 890), 262959, NA, NA)
 R> # revenue increased by $300 a day:
 R> l <- lm(Sales ~ as.numeric(Date), data=sr); l
@@ -1977,7 +1977,7 @@ Continuing from before:
 ~~~{.R}
 market$Type  <- as.factor("black.market")
 
-exchange <- read.csv("http://www.gwern.net/docs/2013-moorechristin-bitcoinexchanges.csv")
+exchange <- read.csv("https://www.gwern.net/docs/2013-moorechristin-bitcoinexchanges.csv")
 exchange <- with(exchange, data.frame(Marketplace=Exchange, Started=as.Date(Origin), Ended=as.Date(Dates),
                                       Dead=as.logical(Closed), Cause=NA))
 exchange$Days <- as.integer(as.Date(exchange$Ended) - as.Date(exchange$Started))

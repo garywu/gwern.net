@@ -47,7 +47,7 @@ Due to the lapse and including the baseline, that yields 95 days of data.
 Descriptive:
 
 ~~~{.R}
-spirulina <- read.csv("http://www.gwern.net/docs/nootropics/2014-sceaduwe-spirulina.csv",
+spirulina <- read.csv("https://www.gwern.net/docs/nootropics/2014-sceaduwe-spirulina.csv",
     colClasses=c("Date", "logical", "integer", "integer", "logical", "logical", "integer", "factor"))
 summary(spirulina)
 ##      Date            Pollen.season   Allergy.rating      Spirulina        Spirulina.random

@@ -3554,7 +3554,7 @@ Of the possible options, a DQN agent seems like the best choice: a small neural 
 
 ~~~{.Javascript}
 var script = document.createElement("script");
-script.src = "http://www.gwern.net/docs/rl/armstrong-controlproblem/2016-02-02-karpathy-rl.js";
+script.src = "https://www.gwern.net/docs/rl/armstrong-controlproblem/2016-02-02-karpathy-rl.js";
 document.body.appendChild(script);
 
 // environment: t, w, xrp

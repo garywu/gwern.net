@@ -2005,7 +2005,7 @@ More surprising, the nesting turns out to not matter at all, and in fact the wor
 # Pivot table view on custom variable:
 # ("Secondary dimension: User Type"; "Pivot by: Custom Variable (Value 01); Pivot metrics: Sessions | Time reading (Goal 1 Conversion Rate)")
 # then hand-edited to add Color and Date variables
-rates <- read.csv("http://www.gwern.net/docs/2014-06-08-abtesting-blr.csv")
+rates <- read.csv("https://www.gwern.net/docs/2014-06-08-abtesting-blr.csv")
 
 rates$Successes <- rates$N * rates$Rate
 rates$Successes <- round(rates$Successes,0)

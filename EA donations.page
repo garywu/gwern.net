@@ -41,14 +41,14 @@ Data preparation:
 
 ~~~{.R}
 set.seed(2015-05-13)
-survey2013 <- read.csv("http://www.gwern.net/docs/lwsurvey/2013.csv", header=TRUE)
+survey2013 <- read.csv("https://www.gwern.net/docs/lwsurvey/2013.csv", header=TRUE)
 survey2013$EffectiveAltruism2 <- NA
 s2013 <- subset(survey2013, select=c(Charity,Effective.Altruism,EffectiveAltruism2,Work.Status,
                                      Profession,Degree,Age,Income))
 colnames(s2013) <- c("Charity","EffectiveAltruism","EffectiveAltruism2","WorkStatus","Profession",
                      "Degree","Age","Income")
 s2013$Year <- 2013
-survey2014 <- read.csv("http://www.gwern.net/docs/lwsurvey/2014.csv", header=TRUE)
+survey2014 <- read.csv("https://www.gwern.net/docs/lwsurvey/2014.csv", header=TRUE)
 s2014 <- subset(survey2014, PreviousSurveys!="Yes", select=c(Charity,EffectiveAltruism,EffectiveAltruism2,
                                                              WorkStatus,Profession,Degree,Age,Income))
 s2014$Year <- 2014
@@ -115,7 +115,7 @@ write.csv(survey, file="2013-2014-lw-ea.csv", row.names=FALSE)
 Analysis:
 
 ~~~{.R}
-survey <- read.csv("http://www.gwern.net/docs/lwsurvey/2013-2014-lw-ea.csv")
+survey <- read.csv("https://www.gwern.net/docs/lwsurvey/2013-2014-lw-ea.csv")
 # treat year as factor for fixed effect:
 survey$Year <- as.factor(survey$Year)
 

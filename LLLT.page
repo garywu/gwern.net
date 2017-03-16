@@ -56,7 +56,7 @@ Measurements:
 He provided the data prior to his analysis, and I did my own. The basics:
 
 ~~~{.R}
-lllt <- read.csv("http://www.gwern.net/docs/nootropics/2013-nattzor-lllt.csv")
+lllt <- read.csv("https://www.gwern.net/docs/nootropics/2013-nattzor-lllt.csv")
 lllt$LLLT <- as.logical(lllt$LLLT)
 summary(lllt)
     LLLT         Choice.Reaction.Time Visual.Matching    Sorting    Finger.Tapping

@@ -360,7 +360,7 @@ The [Touhou project page](http://vgmdb.net/product/9) turns out to be incomplete
 The VGMdb administrators kindly gave me read-only access to their MySQL databases. I grabbed the entirety of the tables `vgmdb_albums` and `vgmdb_tracks` from the main VGMdb database; I exported them as 2 CSV files with comma separators, renamed `2013-vgmdb-albums.csv` and `2013-vgmdb-tracks.csv`. Before loading the exports, I had to delete all escaped quotes; the default R CSV parsing doesn't handle them. The track rows are 1 track with an album ID, so to turn each track record/row into an equivalent of the torrent rows, I need to fill in based on the album table.
 
 ~~~{.R}
-albums <- read.csv("http://www.gwern.net/docs/touhou/2013-vgmdb.csv")
+albums <- read.csv("https://www.gwern.net/docs/touhou/2013-vgmdb.csv")
 albums <- with(albums,
            data.frame(albumid,reldate,publisher,game,albumtitles))
 albums <- albums[grepl("ouhou", albums$game),]; rm(albums$game)
@@ -446,7 +446,7 @@ exiftool -extension ogg -json -forcePrint -Title -Year -Album -Artist -Duration 
 # Analysis
 
 ~~~{.R}
-touhou <- read.csv("http://www.gwern.net/docs/touhou/2013-torrent.csv",
+touhou <- read.csv("https://www.gwern.net/docs/touhou/2013-torrent.csv",
                    colClasses=c("character", "integer", "factor", "character", "integer", "factor",
                                 "character", "character", "numeric", "integer", "factor", "Date"))
 
@@ -552,7 +552,7 @@ Constant growth model: the first game was released in 1996, no? So that gives 17
 
 Exponential growth mode: a little trickier since we can't force a formula just from the cumulative total and elapsed time. I need more data. So using my 2012 Touhou Lossy Torrent data, I can try to regress an exponential against the annual count... but wait! The amount of music does not seem to be increasing exponentially!
 
-    R> touhou <- read.csv("http://www.gwern.net/docs/touhou/2013-torrent.csv",
+    R> touhou <- read.csv("https://www.gwern.net/docs/touhou/2013-torrent.csv",
     +                    colClasses=c("character", "integer", "factor", "character",
     +                                         "integer", "factor", "character",
     +                                         "character", "numeric", "integer",

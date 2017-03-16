@@ -142,7 +142,7 @@ I stopped it at that point, having reached the 100+ goal and since I saw no poin
 # Analysis
 
 ~~~{.R}
-redshift <- read.csv("http://www.gwern.net/docs/zeo/2012-2013-gwern-zeo-redshift.csv")
+redshift <- read.csv("https://www.gwern.net/docs/zeo/2012-2013-gwern-zeo-redshift.csv")
 redshift$Start.of.Night <- sapply(strsplit(as.character(redshift$Start.of.Night), " "), function(x) { x[2] })
 ## convert "06:45" to 24300
 interval <- function(x) { if (!is.na(x)) { if (grepl(" s",x)) as.integer(sub(" s","",x))

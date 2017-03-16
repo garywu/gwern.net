@@ -501,7 +501,7 @@ Overall, there seems to have been no meaningful effects, and worrisome trends. I
 The full analysis, using a [multivariate linear regression](!Wikipedia) followed by [MANOVA](!Wikipedia):
 
 ~~~{.R}
-R> lsd <- read.csv("http://www.gwern.net/docs/2013-gwern-lsdmicrodose.csv")
+R> lsd <- read.csv("https://www.gwern.net/docs/2013-gwern-lsdmicrodose.csv")
 R> # filter out baseline
 R> lsd <- lsd[!is.na(lsd$LSD),]
 
@@ -850,7 +850,7 @@ None of the data variables except the 'creativity' self-rating were collected ju
 ~~~{.R}
 # install.packages("lme4")
 library(lme4)
-lsd <- read.csv("http://www.gwern.net/docs/2013-gwern-lsdmicrodose.csv")
+lsd <- read.csv("https://www.gwern.net/docs/2013-gwern-lsdmicrodose.csv")
 
 lsd$Phase <- ifelse(is.na(lsd$LSD), TRUE, FALSE)
 

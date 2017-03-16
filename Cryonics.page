@@ -88,14 +88,14 @@ Reading in, merging, cleaning, and writing back out the survey data:
 ~~~{.R}
 # 2009: http://lesswrong.com/lw/fk/survey_results/
 # https://docs.google.com/forms/d/1X-tr2qzvvHzWpRtZNeXHoeBr30uCms7SlMkhbCmuT4Q/viewform?formkey=cF9KNGNtbFJXQ1JKM0RqTkxQNUY3Y3c6MA
-survey2009 <- read.csv("http://www.gwern.net/docs/lwsurvey/2009.csv", header=TRUE)
+survey2009 <- read.csv("https://www.gwern.net/docs/lwsurvey/2009.csv", header=TRUE)
 s2009 <- with(survey2009, data.frame(Year=2009, PCryonics=Probability..Cryonics, KarmaScore=LW.Karma, CryonicsStatus=Cryonics, Sequences=OB.posts, TimeonLW=Time.per.day))
 s2009$Meetups <- NA; s2009$LessWrongUse <- NA; s2009$HPMOR <- NA
 s2009$Year <- 2009
 
 # 2011: http://lesswrong.com/lw/8p4/2011_survey_results/
 # https://docs.google.com/forms/d/1f2oOFHPjcWG4SoT57LsWkYsnNXgY1gkbISk4_FDQ3fc/viewform?formkey=dHlYUVBYU0Q5MjNpMzJ5TWJESWtPb1E6MQ
-survey2011 <- read.csv("http://www.gwern.net/docs/lwsurvey/2011.csv", header=TRUE)
+survey2011 <- read.csv("https://www.gwern.net/docs/lwsurvey/2011.csv", header=TRUE)
 survey2011$KarmaScore <- survey2011$Karma # rename for consistency
 ## no 'PreviousSurveys' question asked, err on the side of inclusion
 s2011 <- subset(survey2011, select=c(PCryonics, KarmaScore, CryonicsStatus, Sequences, TimeonLW, Meetups))
@@ -104,13 +104,13 @@ s2011$Year <- 2011
 
 # 2012: http://lesswrong.com/lw/fp5/2012_survey_results/
 # https://docs.google.com/spreadsheet/viewform?formkey=dG1pTzlrTnJ4eks3aE13Ni1lbV8yUkE6MQ#gid=0
-survey2012 <- read.csv("http://www.gwern.net/docs/lwsurvey/2012.csv", header=TRUE)
+survey2012 <- read.csv("https://www.gwern.net/docs/lwsurvey/2012.csv", header=TRUE)
 s2012 <- subset(survey2012, PreviousSurveys!="Yes", select=c(PCryonics, KarmaScore, CryonicsStatus, LessWrongUse, Sequences, TimeonLW, Meetups, HPMOR))
 s2012$Year <- 2012
 
 # 2013: http://lesswrong.com/lw/jj0/2013_survey_results/
 # https://docs.google.com/spreadsheet/viewform?usp=drive_web&formkey=dGZ6a1NfZ0V1SV9xdE1ma0pUMTc1S1E6MA#gid=0
-survey2013 <- read.csv("http://www.gwern.net/docs/lwsurvey/2013.csv", header=TRUE)
+survey2013 <- read.csv("https://www.gwern.net/docs/lwsurvey/2013.csv", header=TRUE)
 survey2013$LessWrongUse <- survey2013$Less.Wrong.Use # rename for consistency
 survey2013$PCryonics <- survey2013$P.Cryonics.
 survey2013$KarmaScore <- survey2013$Karma.Score
@@ -121,7 +121,7 @@ s2013$Year <- 2013
 
 # 2014: http://lesswrong.com/lw/lhg/2014_survey_results/
 # https://docs.google.com/forms/d/1h4IisKq7p8CRRVT_UXMSiKW6RE5U5nl1PLT_MvpbX2I/viewform
-survey2014 <- read.csv("http://www.gwern.net/docs/lwsurvey/2014.csv", header=TRUE)
+survey2014 <- read.csv("https://www.gwern.net/docs/lwsurvey/2014.csv", header=TRUE)
 s2014 <- subset(survey2014, PreviousSurveys!="Yes", select=c(PCryonics, KarmaScore, CryonicsStatus, LessWrongUse, Sequences, TimeonLW, Meetups, HPMOR))
 s2014$Year <- 2014
 
@@ -162,7 +162,7 @@ write.csv(all, file="~/wiki/docs/lwsurvey/2009-2015-cryonics.csv", row.names=FAL
 First we need to load the data and convert the textual multiple-choice responses to ordinal factors which we can treat as numeric values:
 
 ~~~{.R}
-cryonics <- read.csv("http://www.gwern.net/docs/lwsurvey/2009-2015-cryonics.csv",
+cryonics <- read.csv("https://www.gwern.net/docs/lwsurvey/2009-2015-cryonics.csv",
  colClasses=c("factor", "numeric", "numeric", "factor", "numeric", "numeric","logical","factor","factor"))
 ## now, express as ordinal, ranging from most extreme no to most extreme yes;
 ## so we can treat it as categorical, ordinal, or integer; we have to manually specify this metadata unless we want to drop down to

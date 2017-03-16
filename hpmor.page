@@ -96,7 +96,7 @@ unsplit xs = let chapter = last xs
 A `runhaskell mor.hs` later and our [CSV of 18,852 reviews](/docs/2012-hpmor-reviews.csv) is ready for analysis in the R interpreter:
 
 ~~~{.R}
-data <- read.csv("http://www.gwern.net/docs/2012-hpmor-reviews.csv")
+data <- read.csv("https://www.gwern.net/docs/2012-hpmor-reviews.csv")
 data
 ...
 18840                                        cheekylildevil  2/28/10       1
@@ -720,7 +720,7 @@ lifetimes$Delay <- delay
 Now that we have a clean set of data with the necessary variables like dates, we can analyze:
 
 ~~~{.R}
-lifetimes <- read.csv("http://www.gwern.net/docs/2013-hpmor-reviewers.csv",
+lifetimes <- read.csv("https://www.gwern.net/docs/2013-hpmor-reviewers.csv",
                        colClasses=c("factor", "Date", "Date", "integer", "integer",
                                     "integer", "logical", "logical","integer"))
 

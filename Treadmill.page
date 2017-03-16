@@ -105,9 +105,9 @@ Fri Jun 17 10:24:41 EDT 2011
 I went through the 2870 lines until I found the first treadmill session I did on June 16. After splitting, deleting the date-stamps, and adding a CSV header like `WPM,Accuracy`, I had had 2285 entries for [2012-gwern-amphetype-before.csv](/docs/2012-gwern-amphetype-before.csv) and 585 for [2012-gwern-amphetype-after.csv](/docs/2012-gwern-amphetype-after.csv). Then it is easy to load the CSVs into R and test:
 
 ~~~{.R}
-before <- read.csv("http://www.gwern.net/docs/2012-gwern-amphetype-before.csv")
+before <- read.csv("https://www.gwern.net/docs/2012-gwern-amphetype-before.csv")
 before$Treadmill <- 0
-after <- read.csv("http://www.gwern.net/docs/2012-gwern-amphetype-after.csv")
+after <- read.csv("https://www.gwern.net/docs/2012-gwern-amphetype-after.csv")
 after$Treadmill <- 1
 amphetype <- rbind(before,after)
 l <- lm(cbind(WPM, Accuracy) ~ Treadmill, data=amphetype)
@@ -270,7 +270,7 @@ write.csv(treadmill, "~/wiki/docs/spacedrepetition/2014-05-31-mnemosyne-treadmil
 ### Exploratory
 
 ~~~{.R}
-treadmill <- read.csv("http://www.gwern.net/docs/spacedrepetition/2014-05-31-mnemosyne-treadmill.csv")
+treadmill <- read.csv("https://www.gwern.net/docs/spacedrepetition/2014-05-31-mnemosyne-treadmill.csv")
 summary(treadmill)
 #               Timestamp                         ID           Grade            Easiness
 # 2013-11-26 19:24:44:   2   JdjSf1pppya0onAIPxTQH2:   7   Min.   :2.00000   Min.   :1.30000

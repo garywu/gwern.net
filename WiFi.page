@@ -159,7 +159,7 @@ write.csv(wifiTmp, file="2016-12-05-wifi-benchmarking.csv", row.names=FALSE)
 Data analysis:
 
 ~~~{.R}
-wifi <- read.csv("http://www.gwern.net/docs/personal/2016-12-05-wifi-benchmarking.csv",
+wifi <- read.csv("https://www.gwern.net/docs/personal/2016-12-05-wifi-benchmarking.csv",
                  colClasses=c("character", "numeric", "numeric", "numeric", "factor",
                               rep("integer", 8), "Date", "numeric", "numeric"))
 library(blme)

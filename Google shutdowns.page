@@ -777,7 +777,7 @@ library(rms)
 
 # Generate Google corpus model for use in main analysis
 # Load the data, fit, and plot:
-index <- read.csv("http://www.gwern.net/docs/2013-google-index.csv",
+index <- read.csv("https://www.gwern.net/docs/2013-google-index.csv",
                    colClasses=c("Date","double","character"))
 # an exponential doesn't fit too badly:
 model1 <- lm(log(Size) ~ Date, data=index); summary(model1)
@@ -788,7 +788,7 @@ abline(model1)
 invisible(dev.off())
 
 # Begin actual data analysis
-google <- read.csv("http://www.gwern.net/docs/2013-google.csv",
+google <- read.csv("https://www.gwern.net/docs/2013-google.csv",
                     colClasses=c("character","logical","Date","Date","double","factor",
                                  "logical","logical","logical","logical", "integer",
                                  "numeric", "numeric", "numeric", "logical", "numeric",

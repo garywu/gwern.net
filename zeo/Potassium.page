@@ -218,7 +218,7 @@ Running the analysis the same way as before, we get a small increase in sleep di
 [^potassium-2-disturbance]: See previously for explanation:
 
     ~~~{.R}
-    pot <- read.csv("http://www.gwern.net/docs/zeo/2013-gwern-potassium-morning.csv")
+    pot <- read.csv("https://www.gwern.net/docs/zeo/2013-gwern-potassium-morning.csv")
 
     # standardize & combine into a single equally-weighted synthetic index z-score
     pot$Disturbance <- scale(pot$Time.to.Z) + scale(pot$Awakenings) + scale(pot$Time.in.Wake)

@@ -65,7 +65,7 @@ write.csv(alerts, file="2013-09-25-gwern-googlealerts.csv", row.names=FALSE)
 ## Descriptive
 
 ~~~{.R}
-alerts <- read.csv("http://www.gwern.net/docs/2013-09-25-gwern-googlealerts.csv",
+alerts <- read.csv("https://www.gwern.net/docs/2013-09-25-gwern-googlealerts.csv",
                    colClasses=c("factor","Date","integer"))
 summary(alerts)
                      Search          Date                Links

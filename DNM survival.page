@@ -228,7 +228,7 @@ TODO: <!-- ping Vespco about results -->
 
 ~~~{.R}
 library(XML)
-black <- readHTMLTable("http://www.gwern.net/DNM%20survival#table", colClasses = c("factor", as.Date, as.Date, "logical", "factor", "logical", "character", "logical", "logical", "logical", "logical", "logical", "logical", "factor", "logical", "logical", "integer", "logical", "character"))[[1]]
+black <- readHTMLTable("https://www.gwern.net/DNM%20survival#table", colClasses = c("factor", as.Date, as.Date, "logical", "factor", "logical", "character", "logical", "logical", "logical", "logical", "logical", "logical", "factor", "logical", "logical", "integer", "logical", "character"))[[1]]
 black[black$Codebase=="",]$Codebase <- "unknown"
 black$Start <- as.Date(black$Start); black$End <- as.Date(black$End)
 black[is.na(black$End),]$End <- Sys.Date() # assuming the table is up to date

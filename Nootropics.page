@@ -880,7 +880,7 @@ mnemosyne <- mnemosyne[mnemosyne$Date>as.Date("2012-05-11") & mnemosyne$Date<as.
 mnemosyne <- aggregate(mnemosyne$Grade, by=list(mnemosyne$Date), FUN=function (x) { mean(as.vector(x));})
 colnames(mnemosyne) <- c("Date", "Mnemosyne.grade")
 
-zeo <- read.csv("http://www.gwern.net/docs/zeo/gwern-zeodata.csv")
+zeo <- read.csv("https://www.gwern.net/docs/zeo/gwern-zeodata.csv")
 zeo$Sleep.Date <- as.Date(zeo$Sleep.Date, format="%m/%d/%Y")
 colnames(zeo)[1]  <- "Date"
 zeo <- zeo[zeo$Date>as.Date("2012-05-11") & zeo$Date<as.Date("2013-11-02"),]
@@ -1056,7 +1056,7 @@ write.csv(lithiumExperiment, file="2012-lithium-experiment.csv", row.names=FALSE
 #### Test
 
 ~~~{.R}
-lithiumExperiment <- read.csv("http://www.gwern.net/docs/lithium/2012-lithium-experiment.csv")
+lithiumExperiment <- read.csv("https://www.gwern.net/docs/lithium/2012-lithium-experiment.csv")
 l1 <- lm(cbind(MP, Mnemosyne.grade, Gwern.net.patches, ZQ, MR3, MR2, MR4) ~ Lithium, data=lithiumExperiment)
 summary(l1)
 # Response MP :
@@ -1249,7 +1249,7 @@ I have no particularly compelling story for why this might be a correlation and 
 The R code:
 
 ~~~{.R}
-lllt <- read.csv("http://www.gwern.net/docs/nootropics/2014-08-03-lllt-correlation.csv")
+lllt <- read.csv("https://www.gwern.net/docs/nootropics/2014-08-03-lllt-correlation.csv")
 l <- lm(MP ~ LLLT + as.logical(Magnesium.citrate) + as.integer(Date) +
               as.logical(Magnesium.citrate):as.integer(Date),
            data=lllt); summary(l)
@@ -1329,8 +1329,8 @@ Did I experience anything similar?
 There doesn't appear to be any particular effect on total sleep or other sleep variables:
 
 ~~~{.R}
-lllt <- read.csv("http://www.gwern.net/docs/nootropics/2014-08-03-lllt-correlation.csv")
-zeo <- read.csv("http://www.gwern.net/docs/zeo/gwern-zeodata.csv")
+lllt <- read.csv("https://www.gwern.net/docs/nootropics/2014-08-03-lllt-correlation.csv")
+zeo <- read.csv("https://www.gwern.net/docs/zeo/gwern-zeodata.csv")
 lllt$Date <- as.Date(lllt$Date)
 zeo$Date <- as.Date(zeo$Sleep.Date, format="%m/%d/%Y")
 
@@ -1431,7 +1431,7 @@ write.csv(llltData, file="2014-08-08-lllt-correlation-factoranalysis.csv", row.n
 Factor analysis. The strategy: read in the data, drop unnecessary data, impute missing variables (data is too heterogeneous and collected starting at varying intervals to be clean), estimate how many factors would fit best, factor analyze, pick the ones which look like they match best my ideas of what 'productive' is, extract per-day estimates, and finally regress LLLT usage on the selected factors to look for increases.
 
 ~~~{.R}
-lllt <- read.csv("http://www.gwern.net/docs/nootropics/2014-08-08-lllt-correlation-factoranalysis.csv")
+lllt <- read.csv("https://www.gwern.net/docs/nootropics/2014-08-08-lllt-correlation-factoranalysis.csv")
 # the log transforms are more useful:
 rm(lllt$Date, lllt$Nback.type, lllt$Gwern.net.linecount, lllt$Gwern.net.patches)
 
@@ -1593,7 +1593,7 @@ The question is simple too: controlling for the simultaneous blind magnesium exp
 ![Daily productivity self-rating (higher=better) over time, split by LLLT usage that day (2014-2015)](/images/nootropics/2015-llltrandom-mp.png)
 
 ~~~{.R}
-llltRandom <- read.csv("http://www.gwern.net/docs/nootropics/2015-lllt-random.csv",
+llltRandom <- read.csv("https://www.gwern.net/docs/nootropics/2015-lllt-random.csv",
                         colClasses=c("Date", "logical", "integer", "logical", "logical"))
 # impute magnesium data: that randomized experiment started a month later
 llltRandom[is.na(llltRandom$Magnesium.random),]$Magnesium.random <- 0
@@ -1772,7 +1772,7 @@ Is 200 enough? There are no canned power functions for the ordinal logistic regr
 ~~~{.R}
 library(boot)
 library(rms)
-npt <- read.csv("http://www.gwern.net/docs/nootropics/2013-gwern-noopept.csv")
+npt <- read.csv("https://www.gwern.net/docs/nootropics/2013-gwern-noopept.csv")
 n <- 200
 magteinPower <- function(dt, indices) {
     d <- dt[sample(nrow(dt), n, replace=TRUE), ] # new dataset, possibly larger than the original
@@ -1910,7 +1910,7 @@ write.csv(magnesium, file="magnesium.csv", row.names=FALSE)
 The basic question: did the magnesium citrate increase MP?
 
 ~~~{.R}
-magnesium <- read.csv("http://www.gwern.net/docs/nootropics/2013-2014-magnesium.csv")
+magnesium <- read.csv("https://www.gwern.net/docs/nootropics/2013-2014-magnesium.csv")
 summary(lm(MP ~ Magnesium.citrate, data=magnesium))
 # Coefficients:
 #                    Estimate Std. Error t value Pr(>|t|)
@@ -1966,7 +1966,7 @@ That really says it all: there's an initial spike in MP, which reads like the pr
 We can verify the negative correlation with the date & an interaction between magnesium and the date; I don't know whether to treat the magnesium dose as a linear, categorical, or logical, so I'll try all of them:
 
 ~~~{.R}
-magnesium <- read.csv("http://www.gwern.net/docs/nootropics/2013-2014-magnesium.csv")
+magnesium <- read.csv("https://www.gwern.net/docs/nootropics/2013-2014-magnesium.csv")
 magnesium$Date <- as.integer(magnesium$Date)
 slm <- step(lm(MP ~ Magnesium.citrate * as.logical(Magnesium.citrate) *
                     as.factor(Magnesium.citrate) * Date * Noopept, data=magnesium))
@@ -2132,7 +2132,8 @@ Some research suggests that higher doses are not necessarily better and may be o
 See [Modafinil](Modafinil) for background on performance improvements and side-effects; the following sections are about my usage.
 
 <!-- 03 June 2013: day usage, 200mg Modalert; 04 October 2013: 150mg Waklert -->
-<!-- 11 December 2016: day usage, 200mg Modalert. 12 December 2016: day usage, 200mg Modalert. 13 December 2016: day usage, 200mg Modalert. -->
+<!-- 11 December 2016: day usage, 200mg Modalert. 12 December 2016: day usage, 200mg Modalert. 13 December 2016: day usage, 200mg Modalert.
+13 March 2017: day usage, 100mg Modalert -->
 
 ## SpierX
 
@@ -2728,7 +2729,7 @@ Available as a [CSV](https://www.gwern.net/docs/nootropics/2013-gwern-noopept.cs
 Some quick tests turn in similar conclusions: both Noopept and the "Magtein" increased self-rating but not statistically-significantly (as expected from the beginning due to the lack of power).
 
 ~~~{.R}
-npt <- read.csv("http://www.gwern.net/docs/nootropics/2013-gwern-noopept.csv")
+npt <- read.csv("https://www.gwern.net/docs/nootropics/2013-gwern-noopept.csv")
 wilcox.test(MP ~ Noopept, alternative="less", data = npt)
 #
 #     Wilcoxon rank sum test with continuity correction
@@ -2815,7 +2816,7 @@ I'll first assume the effect size is the same. Using the usual alpha, we can fin
 ~~~{.R}
 library(boot)
 library(rms)
-npt <- read.csv("http://www.gwern.net/docs/nootropics/2013-gwern-noopept.csv")
+npt <- read.csv("https://www.gwern.net/docs/nootropics/2013-gwern-noopept.csv")
 newNoopeptPower <- function(dt, indices) {
     d <- dt[sample(nrow(dt), n, replace=TRUE), ] # new dataset, possibly larger than the original
     lmodel <- lrm(MP ~ Noopept + Magtein, data = d)
@@ -3022,7 +3023,7 @@ I designed the experiment to try to find the best dose level, so I want to look 
 Finally, ['missingness'](!Wikipedia "Missing data") affects analysis: because not every variable is recorded for each date (what was the value of the variable for the blind randomized magnesium citrate before and after I finished that experiment? what value do you assign the Magtein variable before I bought it and after I used it all up?), just running a linear regression may not work exactly as one expects as various days get omitted because part of the data was missing.
 
 ~~~{.R}
-noopeptSecond <- read.csv("http://www.gwern.net/docs/nootropics/2013-2014-gwern-noopept.csv", colClasses=c("Date","integer","integer","integer","logical"))
+noopeptSecond <- read.csv("https://www.gwern.net/docs/nootropics/2013-2014-gwern-noopept.csv", colClasses=c("Date","integer","integer","integer","logical"))
 l <- lm(MP ~ Noopept +
              LLLT +
              as.logical(Magnesium.citrate) + as.integer(Date) + as.logical(Magnesium.citrate):as.integer(Date),
@@ -3685,7 +3686,7 @@ On the other metric, suppose we removed the creatine? Dropping 4 grams of materi
 2014: January: 05: 4mg gum; 20 February: 1mg gum; 18 March: 1mg gum; 9 May: 4mg gum; 21 July: 1mg gum; 21 December: 4mg gum; 30 December: 2mg gum;
 2015: 18 February, 1mg gum; 21 February, 1mg gum; 23 February, 1mg gum; 25 February, 1mg gum; 23 April, 1mg gum; 4 May, 1mg gum, 5 May, 1mg gum; 1mg gum, 14, 15, 16, 19, 21, 23, 25, 26 May end nicotine gum, ran out on 26th; nicotine patch 5.25mg (quarter) 27, 28 (half; turns out to be way too much even after some leakage), 30 (quarter), 31 (quarter) May, 2 quarters 5, 1 quarter 7, 1 quarter 9, 1 quarter 13, 1 quarter 16, 1 quarter 18, 1 quarter 19, 1 quarter 28 June, 1 quarter 6, 1 quarter 29 July; 1 quarter 12, 21 August; 1 quarter 5, 2 quarters 18, 1 quarter 25, 2 quarters 30 September; 1 patch, 18 October; 1 half, 4 November; 1 quarter 21 November, 1 quarter 23 November; 1 half 5, 31 December;
 2016: 1 half, 14 January; 1 half, 8 February; 1 half, 7 April; 1 half, 6 May; 1 half 10, 1 half 25 June. ED out of patches. 2mg gum, 14 October. 2mg gum, 2; 4mg, 4; 2mg 9; 2mg 11, 2mg 13, 2mg 22 November; 4mg, 10, 2mg 11, 2mg 24, 4mg 26 December
-2017: 4mg, 16 January; 4mg 1, 2mg 14, 25 February -->
+2017: 4mg, 16 January; 4mg 1, 2mg 14, 25 February; 2mg, 7 March -->
 <!-- Bacopa (Bacognize): start first block (1x) 26 September 2014, last day 19 December 2014; +90 days off-bacopa to 19 March 2015; bacopa (1x) 20 March - 5 June; on, until 22 January 2016 (omit wedding and Christmas blocks) -->
 <!-- Fluoride: last day 9 February 2014 -->
 <!-- kettlebell exercise: protein powder: Apr 25, 2015 - 9 May / 15 days or 8 workouts? resumed on 25 May; ran out 16 June; resumed 24 June 2015 -->
@@ -3763,6 +3764,7 @@ forewarned is forearmed
 2/10 700mg
 2/14 640mg
 2/29 615mg
+3/15 590mg
 
 things to investigate: sleep quality
 -->
@@ -3961,7 +3963,10 @@ oral dosage typically 3x12.5mg=37.5mg daily
 17 February: 2x
 18 February: 1x
 22 February: 1x
-27 February: 2x?
+27 February: 2x
+14 March: 1x
+15 March: 1x
+16 March: 1x?
 -->
 
 <!-- # Insulin
@@ -3992,4 +3997,12 @@ evaluation complicated by half-life f 60-100 hours: steady state at 20mg a day i
 so by 4 March, I would've still had a noticeable amount. Crash due to Memantine?
 Maybe retry with 1x0.5ml, so the steady state is more like 33mg
 7 March: 1x0.5mlx10mg
+9 March: 1x0.5mlx10mg
+10 March: 1x0.5mlx10mg
+11 March: 1x0.5mlx10mg
+12 March: 1x0.5mlx10mg
+13 March: 1x0.5mlx10mg
+14 March: 1x0.5mlx10mg
+15 March: 1x0.5mlx10mg
+16 March: 1x0.5mlx10mg
 -->

@@ -29,7 +29,7 @@ The point of these calculations is to extract [Brier scores](!Wikipedia) (for ca
 # Presidential
 
 ~~~{.R}
-presidential <- read.csv("http://www.gwern.net/docs/elections/2012-presidential.csv", row.names=1)
+presidential <- read.csv("https://www.gwern.net/docs/elections/2012-presidential.csv", row.names=1)
 # Reality=2012 result; 2008=2008 results
 presidential
                 probability electoral popular
@@ -110,7 +110,7 @@ lapply(rownames(presidential)[c(1:9,11)], rpp)
 ~~~{.R}
 # Reality=final 2012 result - 0 for Romney states, 100 for Obama
 # 2008=2008 state results (=Reality, negated for Obama loss of Indiana & North Carolina)
-statewin <- read.csv("http://www.gwern.net/docs/elections/2012-statewin.csv", row.names=1)
+statewin <- read.csv("https://www.gwern.net/docs/elections/2012-statewin.csv", row.names=1)
 statewin
                     al       ak     az     ar     ca      co     ct      de
 Reality         0.0000 0.000000 0.0000 0.0000 1.0000 1.00000 1.0000 1.00000
@@ -220,7 +220,7 @@ Sources:
 - [2012 vote-share](http://en.wikipedia.org/w/index.php?title=United_States_presidential_election%2C_2012&diff=524574148&oldid=524573694)
 
 ~~~{.R}
-statemargin <- read.csv("http://www.gwern.net/docs/elections/2012-statemargin.csv", row.names=1)
+statemargin <- read.csv("https://www.gwern.net/docs/elections/2012-statemargin.csv", row.names=1)
 statemargin
                       al       ak       az       ar       ca       co       ct
 Reality         38.42829 40.79253 44.44855 36.87899 59.69455 51.56536 58.38274
@@ -343,7 +343,7 @@ lapply(rownames(statemargin), rmsesm)
 ## Senate Win Probabilities
 
 ~~~{.R}
-senatewin <- read.csv("http://www.gwern.net/docs/elections/2012-senatewin.csv", row.names=1)
+senatewin <- read.csv("https://www.gwern.net/docs/elections/2012-senatewin.csv", row.names=1)
                    az    ca    ct   de    fl   hi indiana    me   md    ma   mi
 Reality         0.000 1.000 1.000 1.00 1.000 1.00    1.00 1.000 1.00 1.000 1.00
 Nate Silver     0.040 1.000 0.960 1.00 1.000 1.00    0.70 0.930 1.00 0.940 1.00
@@ -391,7 +391,7 @@ lapply(rownames(senatewin), brpssw)
 Source: [_Washington Post_](http://www.washingtonpost.com/wp-srv/special/politics/election-map-2012/senate/)
 
 ~~~{.R}
-senatemargin <- read.csv("http://www.gwern.net/docs/elections/2012-senatemargin.csv", row.names=1)
+senatemargin <- read.csv("https://www.gwern.net/docs/elections/2012-senatemargin.csv", row.names=1)
 senatemargin
               az   ca   ct   de   fl   hi   id   me   md   ma   mi   mn   ms
 Reality     45.8 61.6 55.2 66.4 55.2 62.6 49.9 52.9 55.3 53.7 54.7 65.3 40.3

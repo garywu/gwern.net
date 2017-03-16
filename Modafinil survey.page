@@ -106,7 +106,7 @@ In regressing Rs4680 status on a sum of the 3 responses relating to subjective e
 One might think that sample selection accounts for the lack of effect, as people for whom modafinil does not work will be much less likely to participate in the survey; this selection effect predicts that there would be a large excess of GGs (for whom modafinil works well) and a corresponding lack of AAs (most of whom it does not work and will not bother to participate, leaving only the luckier AAs who think modafinil works for other reasons), large enough to make the effects disappear, but in comparing to the population frequencies we see not just insufficient imbalance to explain the lack of effect, but quite the *opposite* - there's an excess of AAs and a corresponding reduction in GGs.
 (The excess of AAs compared to the dbSNP population frequencies may be due to racial differences, since respondents are mostly Caucasian or East Asian.)
 
-<!-- TODO: remove Bodenmann et al 2009 from its prominent place in Modafinil.page; I no longer believe it -->
+<!-- TODO: remove Bodenmann et al 2009 from its prominent place in Modafinil.page; I no longer believe it; ping "Christine Magee", "Dan N", "Rafi Letzer" -->
 
 ####### Placebo SNPs
 
@@ -219,7 +219,7 @@ rw <- function(x,a,b) { for(i in 1:length(a)) { x <- replace(x, x==a[i], b[i]); 
 
 
 ~~~{.R}
-moda <- read.csv("http://www.gwern.net/docs/modafinil/survey/2015-10-27-modafinilsurvey.csv")
+moda <- read.csv("https://www.gwern.net/docs/modafinil/survey/2015-10-27-modafinilsurvey.csv")
 ## duplicates found reading the feedback:
 modaC <- moda[-c(110, 293, 396, 459, 776, 1018, 1510, 2429, 3883),]
 ## delete rows exactly duplicated aside from the first Timestamp column:

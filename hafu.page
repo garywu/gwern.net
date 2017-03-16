@@ -650,7 +650,7 @@ set.seed(7777) # for reproducible numbers
 # load & clean data
 # install.packages("XML") # if not already installed
 library(XML)
-hafu <- readHTMLTable("http://www.gwern.net/hafu#list")[[1]]
+hafu <- readHTMLTable("https://www.gwern.net/hafu#list")[[1]]
 hafu[hafu==""] <- NA
 
 decades <- c(seq(from=1960,to=2010,by=10), 2012)
