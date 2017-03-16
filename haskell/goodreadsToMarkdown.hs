@@ -1,8 +1,9 @@
 #! /usr/bin/env runhaskell
 -- $ cabal install cassava stringsearch
--- $ wget https://www.gwern.net/docs/gwern-goodreads.csv
+-- $ wget 'https://www.gwern.net/docs/gwern-goodreads.csv'
 -- # Demonstration usage:
 -- $ cd ~/wiki/ && ./haskell/goodreadsToMarkdown.hs docs/gwern-goodreads.csv > book-reviews.page
+-- Note that use of HTML syntax in GoodReads can be tricky in conjunction with Pandoc and Hakyll - the table can easily be broken by blockquotes and other elements. Look into disabling Pandoc's "markdown_in_html_blocks" extension.
 
 {- Background on parsing the GoodReads CSV export:
 
@@ -32,7 +33,7 @@ main = do books <- fmap head getArgs >>= B.readFile
           let books' = BLS.replace ",=\"" (",\""::B.ByteString) books
           case decodeByName books' of
               Left err -> putStrLn err
-              Right (_, v) -> putStrLn (writeMarkdown def (Pandoc undefined [bookTable v]))
+              Right (_, v) -> putStr (writeMarkdown def (Pandoc undefined [bookTable v]))
 
 data GoodReads = GoodReads { title :: String,
                              author :: String,
