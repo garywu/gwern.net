@@ -886,7 +886,7 @@ brokenLinks = [
  , ("google shutdowns", "/Google%20shutdowns")
  , ("Google+shutdowns", "/Google%20shutdowns")
  , ("greenland", "Greenland")
- , ("hafu)", "/hafu")
+ , ("hafu)", "/Hafu")
  , ("haskell/Archiving GitHub.html", "/haskell/Archiving%20GitHub")
  , ("haskell/hakyll.hs", "/hakyll.hs")
  , ("haskell/memo2.hs", "/haskell/mnemo2.hs")
@@ -1047,4 +1047,5 @@ brokenLinks = [
  , ("Zeo%5B1%5D", "/Zeo")
  , ("ZeoCached", "/Zeo")
  , ("Danbooru", "/Danbooru2017")
+ , ("soylent", "/Soylent")
  ]
