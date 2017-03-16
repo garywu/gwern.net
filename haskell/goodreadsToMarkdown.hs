@@ -1,4 +1,4 @@
-x#! /usr/bin/env runhaskell
+#! /usr/bin/env runhaskell
 -- $ cabal install cassava stringsearch
 -- $ wget https://www.gwern.net/docs/gwern-goodreads.csv
 -- # Demonstration usage:
@@ -15,14 +15,13 @@ Example CSV line:
 -- Background on Amazon: Generic ISBN search looks like this: https://www.amazon.com/gp/search/ref=sr_adv_b/?search-alias=stripbooks&unfiltered=1&field-isbn=9781401302023
 
 {-# LANGUAGE OverloadedStrings #-}
-import Control.Applicative ((<*>), (<$>))
 import Data.ByteString.Lazy.Search as BLS (replace)
 import Data.Csv (FromNamedRecord(..), (.:), decodeByName)
 import Data.List as L (sortBy)
 import Data.Maybe (catMaybes, isJust)
 import Debug.Trace (trace)
 import System.Environment (getArgs)
-import Text.Pandoc (Pandoc(..), Inline(..), Block(..), readMarkdown, writeMarkdown, strictExtensions, def, ReaderOptions(..))
+import Text.Pandoc (Pandoc(..), Inline(..), Block(..), nullAttr, readMarkdown, writeMarkdown, strictExtensions, def, ReaderOptions(..))
 import Text.Pandoc.Builder as TPB (fromList, simpleTable, singleton, toList, Blocks)
 import qualified Data.ByteString.Lazy as B (readFile, ByteString)
 import qualified Data.Map as M (fromList, lookup, Map)
@@ -89,7 +88,9 @@ handleRating stars = replicate stars '★'
 handleDate :: GoodReads -> String
 handleDate gr = show $ head $ catMaybes [yearPublished gr, originalYearPublished gr, Just 0]
 handleReview :: String -> [Block]
-handleReview rvw = let (Pandoc _ x) = readMarkdown def { readerExtensions = strictExtensions } rvw in x
+handleReview rvw = case readMarkdown def { readerExtensions = strictExtensions } rvw of
+                      Right (Pandoc _ x) -> x
+                      Left _ -> [] -- if doesn't work, skip
 
 -- Most books have an ISBN; if there is an ISBN (either -10 or -13), we want to link to the Amazon
 -- search page so readers can find out more about it (and hopefully buy it). On
@@ -106,7 +107,7 @@ titleOrIsbnToLink ttle i10 i13 = let url = case i of
                                                                                   Just url'' -> url''
                                                                                   -- warn
                                                                                   Nothing -> trace ("Error! " ++ ttle) ""
-                      in [Link [Str ttle] (url, "")]
+                      in [Link nullAttr [Str ttle] (url, "")]
                 where -- we prefer the shorter ISBN; if both i10 & i13 are
                       -- Nothing, the case expression above will handle it
                       i = if isJust i10 then i10 else i13
