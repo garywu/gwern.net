@@ -115,7 +115,7 @@ My predictions were substantially better than random chance[^proper-scoring-rule
     logScore [(True,0.95),(False,0.30),(True,0.85),(True,0.75),(False,0.50),(False,0.25),
               (False,0.60),(True,0.70),(True,0.65),(True,0.60),(False,0.30),(True,0.50),
               (True,0.90),(True,0.40)]
-    ~> -6.125
+    -- -6.125
     ~~~
 
     In this case, a blind guesser would guess 50% every time (roughly half the days were Adderall and roughly half were not) so the question is, did the 50% guesser beat me?
@@ -124,11 +124,11 @@ My predictions were substantially better than random chance[^proper-scoring-rule
     logScore [(True,0.5),(False,0.5),(True,0.5),(True,0.5),(False,0.5),
               (False,0.5),(False,0.5),(True,0.5),(True,0.5),(True,0.5),
               (False,0.5),(True,0.50),(True,0.5),(True,0.5)]
-    ~> -9.7
+    -- -9.7
     (-9.7) > logScore [(True,0.95),(False,0.30),(True,0.85),(True,0.75),(False,0.50),
                                (False,0.25),(False,0.60),(True,0.70),(True,0.65),(True,0.60),
                                (False,0.30),(True,0.50),(True,0.90),(True,0.40)]
-    ~> False
+    -- False
     ~~~
 
     We can also express this as a single function by using a base-2 log (higher numbers are better):
@@ -138,7 +138,7 @@ My predictions were substantially better than random chance[^proper-scoring-rule
     logBinaryScore [(True,0.95),(False,0.30),(True,0.85),(True,0.75),(False,0.50),(False,0.25),
                     (False,0.60),(True,0.70),(True,0.65),(True,0.60),(False,0.30),(True,0.50),
                     (True,0.90),(True,0.40)]
-    ~> 5.16
+    -- 5.16
     ~~~
 
     So I had a palpable edge over the random guesser, although the sample size is not fantastic.
@@ -364,16 +364,14 @@ I noticed what may have been an effect on [my dual n-back scores](http://groups.
                   41,50,69,44,47,63,34,57)
 
     wilcox.test(before,after,alternative="less")
-
-        Wilcoxon rank sum test with continuity correction
-
-    data:  before and after
-    W = 570.5, p-value = 0.1381
-    alternative hypothesis: true location shift is less than 0
-
+    #     Wilcoxon rank sum test with continuity correction
+    #
+    # data:  before and after
+    # W = 570.5, p-value = 0.1381
+    # alternative hypothesis: true location shift is less than 0
 
     (mean(after) - mean(before)) / sd(append(before,after)) # the effect size
-    0.28
+    # 0.28
     ~~~
 
     A Bayesian [MCMC](!Wikipedia "Markov chain Monte Carlo") analysis using the [BEST](http://www.indiana.edu/~kruschke/BEST/) library gives a similar answer - too much overlap, not enough data:
@@ -389,17 +387,17 @@ I noticed what may have been an effect on [my dual n-back scores](http://groups.
     mcmcChain = BESTmcmc(before, after)
     postInfo = BESTplot(before, after, mcmcChain) # the generated image
     show(postInfo)
-               SUMMARY.INFO
-    PARAMETER         mean     median       mode     HDIlow    HDIhigh pcgtZero
-      mu1       50.1419390 50.1377127 50.1913377 46.8630997 53.6056828       NA
-      mu2       53.3331611 53.3335072 53.4984856 49.0140883 57.5923759       NA
-      muDiff    -3.1912221 -3.1790710 -2.8965497 -8.6114644  2.2571314 12.11276
-      sigma1    11.1989483 11.1365632 11.0708164  8.3699263 14.0987125       NA
-      sigma2    10.7999759 10.6280744 10.3198861  7.7835957 14.2214647       NA
-      sigmaDiff  0.3989724  0.4697451  0.5809042 -3.8825471  4.5266108 59.15182
-      nu        31.2485911 22.6401577  9.1936838  2.3043610 86.5712602       NA
-      nuLog10    1.3484496  1.3548794  1.3570830  0.6442172  2.0117475       NA
-      effSz     -0.2917182 -0.2898252 -0.2621231 -0.7942141  0.1909223 12.11276
+    #            SUMMARY.INFO
+    # PARAMETER         mean     median       mode     HDIlow    HDIhigh pcgtZero
+    #   mu1       50.1419390 50.1377127 50.1913377 46.8630997 53.6056828       NA
+    #   mu2       53.3331611 53.3335072 53.4984856 49.0140883 57.5923759       NA
+    #   muDiff    -3.1912221 -3.1790710 -2.8965497 -8.6114644  2.2571314 12.11276
+    #   sigma1    11.1989483 11.1365632 11.0708164  8.3699263 14.0987125       NA
+    #   sigma2    10.7999759 10.6280744 10.3198861  7.7835957 14.2214647       NA
+    #   sigmaDiff  0.3989724  0.4697451  0.5809042 -3.8825471  4.5266108 59.15182
+    #   nu        31.2485911 22.6401577  9.1936838  2.3043610 86.5712602       NA
+    #   nuLog10    1.3484496  1.3548794  1.3570830  0.6442172  2.0117475       NA
+    #   effSz     -0.2917182 -0.2898252 -0.2621231 -0.7942141  0.1909223 12.11276
     ~~~
 
     ![Graphs of the 2 datasets compared](/images/nootropics/best-fishoil.jpg)
@@ -410,33 +408,30 @@ We have clear hypotheses here, so we can be a little optimistic: the fish oil wi
 
 ~~~{.R}
 pwr.t.test(d=3.55,type="paired",power=0.75,alternative="greater",sig.level=0.05)
-
-     Paired t test power calculation
-
-              n = 2.269155
-
-              NOTE: n is number of *pairs*
+#      Paired t test power calculation
+#
+#               n = 2.269155
+#
+#               NOTE: n is number of *pairs*
 ~~~
 
 Suspiciously easy. 2.25 pairs or 6 blocks? Let's be pessimistic and use the smaller effect size estimate from my quasi-trial:
 
 ~~~{.R}
-pwr.t.test(d=0.28,type="paired",power=0.75,alternative="greater",sig.level=0.05)
-
-     Paired t test power calculation
-
-              n = 69.98612
+# pwr.t.test(d=0.28,type="paired",power=0.75,alternative="greater",sig.level=0.05)
+#
+#      Paired t test power calculation
+#
+#               n = 69.98612
 ~~~
 
 70 pairs is 140 blocks; we can drop to 36 pairs or 72 blocks if we accept a power of 0.5/50% chance of reaching significance. (Or we could economize by hoping that the effect size is not 3.5 but maybe twice the pessimistic guess; a _d_=0.5 at 50% power requires only 12 pairs of 24 blocks.) 70 pairs of blocks of 2 weeks, with 2 pills a day requires $(70 \times 2) \times (2 \times 7) \times 2 = 3920$ pills. I don't even have that many empty pills! I have <500; 500 would supply 250 days, which would yield 18 2-week blocks which could give 9 pairs. 9 pairs would give me a power of:
 
 ~~~{.R}
 pwr.t.test(d=0.28,type="paired",alternative="greater",sig.level=0.05,n=9)
-
-          power = 0.1908962
+# ...          power = 0.1908962
 pwr.t.test(d=0.5,type="paired",alternative="greater",sig.level=0.05,n=9)
-
-          power = 0.3927739
+# ...          power = 0.3927739
 ~~~
 
 A 20-40% chance of detecting the effect.
@@ -495,11 +490,10 @@ Starting from the studies in my meta-analysis, we can try to estimate an upper b
 ~~~{.R}
 library(pwr)
 pwr.t.test(power=0.75, sig.level=0.05, n=22)
-
-     Two-sample t test power calculation
-
-              n = 22
-              d = 0.8130347
+#      Two-sample t test power calculation
+#
+#               n = 22
+#               d = 0.8130347
 ~~~
 
 Fitzgerald 2012 is better, and gives a number of useful details on her adult experiment:
@@ -510,21 +504,19 @@ Full text isn't available although some of the _p_-values suggest that there mig
 
 ~~~{.R}
 pwr.t.test(type="two.sample",power=0.75,alternative="greater",n=102)
-
-     Two-sample t test power calculation
-
-              n = 102
-              d = 0.325867
+#      Two-sample t test power calculation
+#
+#               n = 102
+#               d = 0.325867
 ~~~
 
 This is a much tighter upper bound than Southon et al 1994 gave us, and also kind of discouraging: remember, the smaller the effect size, the more data you will need to see it, and data is always expensive. If I were to try to do any experiment, how many pairs would I need if we optimistically assume that _d_=0.32?
 
 ~~~{.R}
 pwr.t.test(type="paired",d=0.325867,power=0.75,alternative="greater")
-
-     Paired t test power calculation
-
-              n = 52.03677
+#      Paired t test power calculation
+#
+#               n = 52.03677
 ~~~
 
 We'd want 53 pairs, but Fitzgerald 2012's experimental design called for 32 weeks of supplementation for a single pair of before-after tests - so that'd be 1664 weeks or ~54 months or *~4.5 years*! We can try to adjust it downwards with shorter blocks allowing more frequent testing; but problematically, iodine is stored in the thyroid and can apparently linger elsewhere - many of the cited studies used intramuscular injections of iodized oil (as opposed to iodized salt or kelp supplements) because this ensured an adequate supply for months or years with no further compliance by the subjects. If the effects are that long-lasting, it may be worthless to try shorter blocks than ~32 weeks.
@@ -533,10 +525,9 @@ We've looked at estimating based on individual studies. But we aggregated them i
 
 ~~~{.R}
 pwr.t.test(type="paired",d=0.1,power=0.75,alternative="greater")
-
-     Paired t test power calculation
-
-              n = 539.2906
+#      Paired t test power calculation
+#
+#               n = 539.2906
 ~~~
 
 540 pairs of tests or 1080 blocks... This game is not worth the candle!
@@ -611,40 +602,35 @@ Upon examining the photographs, I noticed no difference in eye color, *but* it s
 I [posted a link](https://plus.google.com/103530621949492999968/posts/XncycLmKi3P) to the survey on my Google+ account, and inserted the link at the top of all `gwern.net` pages; 51 people completed all 11 binary choices (most of them coming from North America & Europe), which seems adequate since the 11 questions are all asking the same question, and 561 responses to one question is quite a few. A few different statistical tests seem applicable: a chi-squared test whether there's a difference between all the answers, a two-sample test on the averages, and most meaningfully, summing up the responses as a single pair of numbers and doing a binomial test:
 
 ~~~{.R}
-R> before <- c(27,31,18,26,22,29,20,13,18,31,27) # I split the 11 questions into how many picked,
-R> after  <- c(24,20,33,25,29,22,31,38,33,20,24) # for it, before vs after
-R> summary(before); summary(after)
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-   13.0    19.0    26.0    23.8    28.0    31.0
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-   20.0    23.0    25.0    27.2    32.0    38.0
-R>
-R> chisq.test(before, after, simulate.p.value=TRUE)
-
-    Pearson`s Chi-squared test with simulated p-value
-
-data:  before and after
-X-squared = 77, df = NA, p-value = 0.000135
-R> wilcox.test(before, after)
-
-    Wilcoxon rank sum test with continuity correction
-
-data:  before and after
-W = 43, p-value = 0.2624
-alternative hypothesis: true location shift is not equal to 0
-
-R> binom.test(c(sum(before), sum(after)))
-
-    Exact binomial test
-
-data:  c(sum(before), sum(after))
-number of successes = 262, number of trials = 561, p-value = 0.1285
-alternative hypothesis: true probability of success is not equal to 0.5
-95% confidence interval:
- 0.4251 0.5093
-sample estimates:
-probability of success
-                 0.467
+before <- c(27,31,18,26,22,29,20,13,18,31,27) # I split the 11 questions into how many picked,
+after  <- c(24,20,33,25,29,22,31,38,33,20,24) # for it, before vs after
+summary(before); summary(after)
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#    13.0    19.0    26.0    23.8    28.0    31.0
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#    20.0    23.0    25.0    27.2    32.0    38.0
+chisq.test(before, after, simulate.p.value=TRUE)
+#     Pearson`s Chi-squared test with simulated p-value
+#
+# data:  before and after
+# X-squared = 77, df = NA, p-value = 0.000135
+wilcox.test(before, after)
+#     Wilcoxon rank sum test with continuity correction
+#
+# data:  before and after
+# W = 43, p-value = 0.2624
+# alternative hypothesis: true location shift is not equal to 0
+binom.test(c(sum(before), sum(after)))
+#     Exact binomial test
+#
+# data:  c(sum(before), sum(after))
+# number of successes = 262, number of trials = 561, p-value = 0.1285
+# alternative hypothesis: true probability of success is not equal to 0.5
+# 95% confidence interval:
+#  0.4251 0.5093
+# sample estimates:
+# probability of success
+#                  0.467
 ~~~
 
 So the chi-squared believes there is a statistically-significant difference, the two-sample test disagrees, and the binomial also disagrees. Since I regarded it as a dubious theory, can't see a difference, and the binomial seems like the most appropriate test, I conclude that several months of 1mg iodine did not change my eye color. (As a final test, when I posted the results on the Longecity forum where people were claiming the eye color change, I swapped the labels on the photos to see if anyone would claim something along the lines "when *I* look at the photos, I can see a difference!". I thought [someone might do that](http://predictionbook.com/predictions/11521 ">=1 Longecity users will claim my (swapped) sets of iodine eye photographs will reveal a lightening trend of my iris."), which would be a damning demonstration of their biases & wishful thinking, but no one did.)
@@ -845,9 +831,9 @@ Low-dose lithium orotate is extremely cheap, ~\$10 a year. There is some researc
 5. `arbtt`: supports the necessary scripting:
 
     ~~~{.Bash}
-    arbtt-stats --logfile=/home/gwern/doc/arbtt/2012-2013.log
+    arbtt-stats --logfile=/home/gwern/doc/arbtt/2012-2013.log \
       --output-format="csv" --for-each="day" --min-percentage=0 > 2012-2013-arbtt.csv
-    arbtt-stats --logfile=/home/gwern/doc/arbtt/2013-2014.log
+    arbtt-stats --logfile=/home/gwern/doc/arbtt/2013-2014.log \
      --output-format="csv" --for-each="day" --min-percentage=0 > 2013-2014-arbtt.csv
     ~~~
 
@@ -933,12 +919,11 @@ lithiumExperiment[is.na(lithiumExperiment$Gwern.net.patches),]$Gwern.net.patches
 ## NA=I didn't do SRS that day; but that is bad and should be penalized!
 lithiumExperiment[is.na(lithiumExperiment$Mnemosyne.grade),]$Mnemosyne.grade  <- 0
 
-
 productivity <- lithiumExperiment[,c(3,5:22)]
 library(psych) ## for factor analysis
 nfactors(productivity)
-# VSS complexity 1 achieves a maximimum of 0.58  with  14  factors
-# VSS complexity 2 achieves a maximimum of 0.67  with  14  factors
+# VSS complexity 1 achieves a maximum of 0.58  with  14  factors
+# VSS complexity 2 achieves a maximum of 0.67  with  14  factors
 # The Velicer MAP achieves a minimum of 0.02  with  1  factors
 # Empirical BIC achieves a minimum of  -304.3  with  4  factors
 # Sample Size adjusted BIC achieves a minimum of  -97.84  with  7  factors
@@ -1183,7 +1168,7 @@ To say that this all sounds dubious would be an understatement.
 The research literature, while copious, is messy and varied: methodologies and devices vary substantially, sample sizes are tiny, the study designs vary from paper to paper, metrics are sometimes comically limited (one study measured speed of finishing a RAPM IQ test but not *scores*), blinding is rare and unclear how successful, etc.
 Relevant papers include [Chung et al 2012](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3288797/ "The Nuts and Bolts of Low-level Laser (Light) Therapy"), [Rojas & Gonzalez-Lima 2013](/docs/nootropics/2013-rojas.pdf "Neurological and psychological applications of transcranial lasers and LEDs"), & [Gonzalez-Lima & Barrett 2014](http://journal.frontiersin.org/Journal/10.3389/fnsys.2014.00036/full "Augmentation of cognitive brain functions with transcranial lasers").
 Another Longecity user ran a self-experiment, with some design advice from me, where he performed a few cognitive tests over several periods of LLLT usage (the blocks turned out to be ABBA), using his father and towels to try to blind himself as to condition.
-[I analyzed his data](LLLT), and his scores did seem to improve, but his scores improved *so* much in the last part of the self-experiment I found myself dubious as to what was going on - possibly a failure of randomness given too few blocks and an temoral exogenous factor in the last quarter which was responsible for the improvement.
+[I analyzed his data](LLLT), and his scores did seem to improve, but his scores improved *so* much in the last part of the self-experiment I found myself dubious as to what was going on - possibly a failure of randomness given too few blocks and an temporal exogenous factor in the last quarter which was responsible for the improvement.
 
 While the mechanism is largely unknown, one commonly mechanism possibility is that light of the relevant wavelengths is preferentially absorbed by the protein [cytochrome c oxidase](!Wikipedia), which is a key protein in mitochondrial metabolism and production of [ATP](!Wikipedia), substantially increasing output, and this extra output presumably can be useful for cellular activities like healing or higher performance.
 
@@ -1432,10 +1417,10 @@ Factor analysis. The strategy: read in the data, drop unnecessary data, impute m
 
 ~~~{.R}
 lllt <- read.csv("https://www.gwern.net/docs/nootropics/2014-08-08-lllt-correlation-factoranalysis.csv")
-# the log transforms are more useful:
+## the log transforms are more useful:
 rm(lllt$Date, lllt$Nback.type, lllt$Gwern.net.linecount, lllt$Gwern.net.patches)
 
-# https://stats.stackexchange.com/questions/28576/filling-nas-in-a-dataset-with-column-medians-in-r
+## https://stats.stackexchange.com/questions/28576/filling-nas-in-a-dataset-with-column-medians-in-r
 imputeColumnAsMedian <- function(x){
    x[is.na(x)] <- median(x, na.rm=TRUE) #convert the item with NA to median value from the column
    x #display the column
@@ -1444,8 +1429,8 @@ llltI  <- data.frame(apply(lllt, 2, imputeColumnAsMedian))
 
 library(psych)
 nfactors(llltI[-c(1,2)])
-# VSS complexity 1 achieves a maximimum of 0.56  with  16  factors
-# VSS complexity 2 achieves a maximimum of 0.66  with  16  factors
+# VSS complexity 1 achieves a maximum of 0.56  with  16  factors
+# VSS complexity 2 achieves a maximum of 0.66  with  16  factors
 # The Velicer MAP achieves a minimum of 0.01  with  1  factors
 # Empirical BIC achieves a minimum of  -280.23  with  8  factors
 # Sample Size adjusted BIC achieves a minimum of  -135.77  with  9  factors
@@ -1631,7 +1616,7 @@ The estimate of the causal effect of LLLT+placebo is not statistically-significa
 I have strong priors about the possible effects of LLLT, nicotine & magnesium (specifically, I know from experience that they tend to be small), so a Bayesian linear model using JAGS is useful for letting me take that into account and also producing more meaningful results (probabilities, rather than _p_-values):
 
 ~~~{.R}
-# JAGS won't automatically drop rows with missing variables like `lm` does by default
+## JAGS won't automatically drop rows with missing variables like `lm` does by default
 llltClean <- llltRandom[!is.na(llltRandom$LLLT.random),]
 library(rjags)
 library(R2jags)
@@ -1643,11 +1628,11 @@ model {
     }
 
     # intercept
-    a  ~ dnorm(3, 4) # prec 4 ~= 0.5^-2 ~= SD 0.5, the historical SD of my MPs
+    a  ~ dnorm(3, 4) # precision 4 ~= 0.5^-2 ~= SD 0.5, the historical SD of my MPs
 
     # coefficients
     ## informative prior: effects should be <0.5 usually, and >0.3 is unusual
-    b1 ~ dnorm(0, 13) # prec 13 ~= SD 0.3
+    b1 ~ dnorm(0, 13) # precision 13 ~= SD 0.3
     b2 ~ dnorm(0, 13)
     b3 ~ dnorm(0, 13)
 
@@ -1738,7 +1723,7 @@ One thing I did do was piggyback on my [Noopept self-experiment](#noopept): I bl
 The original magnesium l-threonate caused me no apparent problems by the time I finished off the powder and usage correlated with better days, further supporting the hypothesis that magnesium helps it.
 But l-threonate would be difficult to cap (and hence blind self-experiment) and is ruinously expensive on a per-dose basis.
 So I looked around for alternatives for the followup; one of the most common compounds suggested was the citrate form because it is reasonably well-absorbed and causes fewer digestive problems, so I could just take that.
-Magnesium oxide is widely available it looks cheap, but the absorption/bioavailabilty problem makes it unattractive: at a 3:5 ratio, an estimate of *4%* absorption, a ZMA formulation of an impressive-sounding 500mg would be $500 \times \frac{3}{5} \times 0.04 = 12$mg or a small fraction of RDAs for male adults like 400mg elemental.
+Magnesium oxide is widely available it looks cheap, but the absorption/bioavailability problem makes it unattractive: at a 3:5 ratio, an estimate of *4%* absorption, a ZMA formulation of an impressive-sounding 500mg would be $500 \times \frac{3}{5} \times 0.04 = 12$mg or a small fraction of RDAs for male adults like 400mg elemental.
 (Calcium shouldn't be a problem since I get 220mg of calcium from my multivitamin and I enjoy dairy products daily.)
 
 Finding a usable product on Amazon caused me some difficulties. I wanted a 500mg magnesium-citrate-only product at <$20 for 120 doses, but I discovered most of the selection for "magnesium citrate" had sub-500mg doses, involved *calcium* citrate or other substances like zinc (not necessarily a bad thing, but would confound an experiment), were mostly magnesium *oxide* rather than citrate, or some still other problem. Ultimately I settled on [Solgar's \$13 120x400mg magnesium citrate](http://www.amazon.com/Solgar-Magnesium-Citrate-120-tablets/dp/B00013Z0ZG/) as acceptable. (To compare with the bulkiness of the LEF vitamin D+l-threonate powder, [the Office of Dietary Supplements](http://ods.od.nih.gov/factsheets/Magnesium-HealthProfessional/) says magnesium citrate is 16% magnesium, so to get 400mg of magnesium as claimed, would take 2.5g of material, rather than 7g for 200mg; even if l-threonate is absorbed 100% and citrate 50%, the citrate is ahead. The pills turn out to be wider and longer than my 00 pills; if I want to get them into my gel capsules, I have to crush them into fine powder. The powder from one pill turns out to take up 2 00 pills.)
@@ -1992,11 +1977,11 @@ But at least initially, the magnesium seemed to be remarkably useful.
 The crossover point, using this linear model, would have been somewhere around 20 days of the early small magnesium doses:
 
 ~~~{.R}
-# Extract estimated MP for continuous small magnesium dosing, then for no magnesium dosing;
-# compare them pair-wise to see which is bigger, and count how many days favor magnesium dosing.
+## Extract estimated MP for continuous small magnesium dosing, then for no magnesium dosing;
+## compare them pair-wise to see which is bigger, and count how many days favor magnesium dosing.
 with(magnesium[!is.na(magnesium$Magnesium.citrate),], sum(predict(slm, newdata=data.frame(Date=Date, Magnesium.citrate=136)) >
                                                           predict(slm, newdata=data.frame(Date=Date, Magnesium.citrate=0))))
-[1] 20
+# [1] 20
 ~~~
 
 The final question is: since I was taking an overdose, how did I mess up?
@@ -2048,7 +2033,7 @@ Or one could eyeball the graph and note that the LOESS lines look like at the ma
 Then one could do a power estimate with those 2 estimates.
 
 ~~~{.R}
-# _d_:
+## _d_:
 0.61 / sd(magnesium$MP, na.rm=TRUE)
 # [1] 0.83795623
 power.t.test(n = 480, delta = 0.83)
@@ -2202,7 +2187,7 @@ So with these 8 results in hand, what do I think? Roughly, I was right 5 of the 
     logBinaryScore = sum . map (\(result,p) -> if result then 1 + logBase 2 p else 1 + logBase 2 (1-p))
     logBinaryScore [(True,0.40),(True,0.50),(False,0.65),(False,0.50),
                     (True,0.75),(False,0.40),(False,0.35),(False,0.60)]
-    ~> 0.007
+    -- 0.007
     ~~~
 
     Compare 0.007 to the 5.16 I racked up guessing Adderall! My score is essentially 0.
@@ -2439,7 +2424,7 @@ logBinaryScore [(True,0.35),(False,0.40),(False,0.40),(True,0.60),(True,0.35),(F
                 (True,0.55),(True,0.40),(False,0.50),(False,0.60),(True,0.40),(False,0.50),(False,0.50),
                 (False,0.55),(True,0.55),(False,0.50),(False,0.55),(False,0.45),(True,0.55),(True,0.50),
                 (True,0.50),(False,0.55),(True,0.50)]
-~> -0.58
+-- -0.58
 ~~~
 
 Ouch, so my guesses were actually *worse* than random; this isn't encouraging (if nicotine was helpful, why didn't I notice? Has 1mg tolerated?) but it does indicate the blinding was successful.
@@ -2447,7 +2432,7 @@ Ouch, so my guesses were actually *worse* than random; this isn't encouraging (i
 Now we will examine the actual performance. Extracting the individual rounds scores from my [Brain Workshop log file](/docs/dnb/gwern-bw-stats.txt), we can average them in groups of 5 to get a daily average; then feed them into [BEST](http://www.indiana.edu/~kruschke/BEST/) (Bayesian equivalent of _t_-test; see [Kruschke 2012](http://www.indiana.edu/~kruschke/articles/Kruschke2012JEPG.pdf "Bayesian estimation supersedes the _t_-test")):
 
 ~~~{.R}
-# individual rounds; the imbalance is unfortunate but the experiment design means nothing can be done
+## individual rounds; the imbalance is unfortunate but the experiment design means nothing can be done
 on <- c(36,36,25,27,38,50,34,62,33,22,40,28,37,50,25,42,44,58,47,55,38,35,43,60,47,44,40,33,44,
         19,58,38,41,52,41,33,47,45,45,55,45,27,35,45,30,30,52,36,28,43,50,27,29,55,45,31,15,47,
         64,35,33,60,38,28,60,45,64,50,44,38,35,61,56,30,44,41,37,41,43,38)
@@ -2459,25 +2444,25 @@ off <- c(25,34,30,40,57,34,41,51,36,26,37,42,40,45,31,24,38,40,47,35,31,27,66,25
 on2 <- rowMeans(as.data.frame(matrix(on,ncol=5,byrow=TRUE)))
 off2 <- rowMeans(as.data.frame(matrix(off,ncol=5,byrow=TRUE)))
 on2
- [1] 32.4 40.2 36.0 49.2 44.6 36.0 46.0 45.0 36.4 37.8 41.2 38.4 43.8 48.2 45.2
-[16] 40.0
+#  [1] 32.4 40.2 36.0 49.2 44.6 36.0 46.0 45.0 36.4 37.8 41.2 38.4 43.8 48.2 45.2
+# [16] 40.0
 off2
- [1] 37.2 37.6 39.0 36.8 33.2 42.6 42.4 47.0 45.0 37.4 38.2 38.8 47.6 38.6 42.0
-[16] 39.6 42.8 41.6 39.2 38.4 41.8 38.6 44.2 36.6
+#  [1] 37.2 37.6 39.0 36.8 33.2 42.6 42.4 47.0 45.0 37.4 38.2 38.8 47.6 38.6 42.0
+# [16] 39.6 42.8 41.6 39.2 38.4 41.8 38.6 44.2 36.6
 
 source("BEST.R")
 mcmc = BESTmcmc(on2, off2); postInfo
-           SUMMARY.INFO
-PARAMETER         mean     median       mode     HDIlow   HDIhigh pcgtZero
-  mu1       41.2808129 41.2819208 41.2272636 38.5078129 44.032699       NA
-  mu2       40.1981087 40.1955543 40.1777039 38.6810806 41.706469       NA
-  muDiff     1.0827042  1.0837831  1.1279921 -2.0292432  4.244909 75.87121
-  sigma1     5.2563674  5.0898354  4.7768681  3.3307493  7.511054       NA
-  sigma2     3.5513796  3.4850902  3.3453379  2.4655024  4.782887       NA
-  sigmaDiff  1.7049879  1.5917839  1.3816030 -0.6523817  4.300692 93.36015
-  nu        37.7948193 29.3217989 13.0664336  2.2755711 98.116623       NA
-  nuLog10    1.4472479  1.4671906  1.5204474  0.7604963  2.101837       NA
-  effSz      0.2460061  0.2450074  0.2361248 -0.4399959  0.936570 75.87121
+#            SUMMARY.INFO
+# PARAMETER         mean     median       mode     HDIlow   HDIhigh pcgtZero
+#   mu1       41.2808129 41.2819208 41.2272636 38.5078129 44.032699       NA
+#   mu2       40.1981087 40.1955543 40.1777039 38.6810806 41.706469       NA
+#   muDiff     1.0827042  1.0837831  1.1279921 -2.0292432  4.244909 75.87121
+#   sigma1     5.2563674  5.0898354  4.7768681  3.3307493  7.511054       NA
+#   sigma2     3.5513796  3.4850902  3.3453379  2.4655024  4.782887       NA
+#   sigmaDiff  1.7049879  1.5917839  1.3816030 -0.6523817  4.300692 93.36015
+#   nu        37.7948193 29.3217989 13.0664336  2.2755711 98.116623       NA
+#   nuLog10    1.4472479  1.4671906  1.5204474  0.7604963  2.101837       NA
+#   effSz      0.2460061  0.2450074  0.2361248 -0.4399959  0.936570 75.87121
 ~~~
 
 The results graphed:
@@ -2512,14 +2497,10 @@ We can read off the results from the table or graph: the nicotine days average 1
 
     ~~~{.R}
     lm(dnb ~ c(1:231))
-
-    Call:
-    lm(formula = dnb ~ c(1:231))
-
-    Coefficients:
-    (Intercept)     c(1:231)
-       38.37041      0.01752
-    # 0.017 is a positive slope!
+    # Coefficients:
+    # (Intercept)     c(1:231)
+    #    38.37041      0.01752
+    ## 0.017 is a positive slope!
     ~~~
 
     ![DNB scores per day with a linear fit overlaid; `plot(dnb); abline(lm(dnb ~ c(1:231)))`](/images/nootropics/nicotine-trainingeffect-linearmodel.png)
@@ -2530,7 +2511,7 @@ We can read off the results from the table or graph: the nicotine days average 1
 
     ~~~{.R}
     (38.37041 + 0.01752*231) - (38.37041 + 0.01752*31)
-    3.504
+    # 3.504
     ~~~
 
     Notice that 3.5 > 1.1. So if this was just training effect, why isn't the "benefit" from nicotine *greater*?
@@ -2541,34 +2522,33 @@ One curious thing that leaps out looking at the graphs is that the estimated und
 
 ~~~{.R}
 var.test(on2, off2, alternative="greater")
-
-    F test to compare two variances
-
-data:  on2 and off2
-F = 1.9823, num df = 15, denom df = 23, p-value = 0.06775
-alternative hypothesis: true ratio of variances is greater than 1
-95% confidence interval:
- 0.9314525       Inf
-sample estimates:
-ratio of variances
-          1.982333
+#     F test to compare two variances
+#
+# data:  on2 and off2
+# F = 1.9823, num df = 15, denom df = 23, p-value = 0.06775
+# alternative hypothesis: true ratio of variances is greater than 1
+# 95% confidence interval:
+#  0.9314525       Inf
+# sample estimates:
+# ratio of variances
+#           1.982333
 ~~~
 
 We can double-check this by seeing what the variance is for the *un*averaged scores: we know the means are only 1.1% different, so the additional standard deviation must be coming from how individual days are good or bad, and if that is so, then unaveraging them out to eliminate most of the observed difference. We re-run BEST:
 
 ~~~{.R}
 mcmc = BESTmcmc(on,off); postInfo
-           SUMMARY.INFO
-PARAMETER          mean      median        mode     HDIlow     HDIhigh pcgtZero
-  mu1       41.22703657 41.22582276 41.11576792 38.7591670  43.7209215       NA
-  mu2       40.12386083 40.12235449 40.04585340 37.9655703  42.3037602       NA
-  muDiff     1.10317574  1.10302023  1.13446641 -2.1520680   4.4246013 74.52276
-  sigma1    10.91966242 10.86603052 10.74158135  9.1335897  12.7962565       NA
-  sigma2    11.69484205 11.66111990 11.57560017 10.1050885  13.3605913       NA
-  sigmaDiff -0.77517964 -0.79214849 -0.85774274 -3.1789680   1.6252535 25.70744
-  nu        46.86258782 38.65278685 22.91066668  5.8159908 109.9850644       NA
-  nuLog10    1.57972151  1.58718081  1.60810992  1.0214182   2.1234248       NA
-  effSz      0.09778545  0.09763823  0.09931263 -0.1895882   0.3907156 74.52276
+#            SUMMARY.INFO
+# PARAMETER          mean      median        mode     HDIlow     HDIhigh pcgtZero
+#   mu1       41.22703657 41.22582276 41.11576792 38.7591670  43.7209215       NA
+#   mu2       40.12386083 40.12235449 40.04585340 37.9655703  42.3037602       NA
+#   muDiff     1.10317574  1.10302023  1.13446641 -2.1520680   4.4246013 74.52276
+#   sigma1    10.91966242 10.86603052 10.74158135  9.1335897  12.7962565       NA
+#   sigma2    11.69484205 11.66111990 11.57560017 10.1050885  13.3605913       NA
+#   sigmaDiff -0.77517964 -0.79214849 -0.85774274 -3.1789680   1.6252535 25.70744
+#   nu        46.86258782 38.65278685 22.91066668  5.8159908 109.9850644       NA
+#   nuLog10    1.57972151  1.58718081  1.60810992  1.0214182   2.1234248       NA
+#   effSz      0.09778545  0.09763823  0.09931263 -0.1895882   0.3907156 74.52276
 ~~~
 
 ![Means, differences of inferred standard deviations & effect sizes: `BESTplot(on, off, mcmcChain=mcmc, ROPEeff=c(0.1,1.5))`](/images/nootropics/nicotine-dnb-full.png)
@@ -2577,17 +2557,16 @@ We see the standard deviation difference go away - now the difference estimate i
 
 ~~~{.R}
 var.test(on, off, alternative="greater")
-
-    F test to compare two variances
-
-data:  on and off
-F = 0.8564, num df = 79, denom df = 119, p-value = 0.7689
-alternative hypothesis: true ratio of variances is greater than 1
-95% confidence interval:
- 0.6140736       Inf
-sample estimates:
-ratio of variances
-          0.856387
+#     F test to compare two variances
+#
+# data:  on and off
+# F = 0.8564, num df = 79, denom df = 119, p-value = 0.7689
+# alternative hypothesis: true ratio of variances is greater than 1
+# 95% confidence interval:
+#  0.6140736       Inf
+# sample estimates:
+# ratio of variances
+#           0.856387
 ~~~
 
 (So our _p_-value there went from 0.06 to 0.769 when we disaggregated the days, consistent with the Bayesian results.)
@@ -2642,18 +2621,18 @@ day      active mp score
 20121102 0      3  48.2
 20121103 1      5  40.6
 summary(nicotine)
-      day               active             mp            score
- Min.   :20120824   Min.   :0.0000   Min.   :2.000   Min.   :34.60
- 1st Qu.:20120911   1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:37.21
- Median :20120926   Median :0.0000   Median :3.000   Median :39.30
- Mean   :20120954   Mean   :0.3947   Mean   :3.632   Mean   :40.47
- 3rd Qu.:20121015   3rd Qu.:1.0000   3rd Qu.:5.000   3rd Qu.:43.80
- Max.   :20121103   Max.   :1.0000   Max.   :5.000   Max.   :49.60
+#       day               active             mp            score
+#  Min.   :20120824   Min.   :0.0000   Min.   :2.000   Min.   :34.60
+#  1st Qu.:20120911   1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:37.21
+#  Median :20120926   Median :0.0000   Median :3.000   Median :39.30
+#  Mean   :20120954   Mean   :0.3947   Mean   :3.632   Mean   :40.47
+#  3rd Qu.:20121015   3rd Qu.:1.0000   3rd Qu.:5.000   3rd Qu.:43.80
+#  Max.   :20121103   Max.   :1.0000   Max.   :5.000   Max.   :49.60
 cor(nicotine)
-              day      active          mp       score
-day                0.05331968  0.07437166  0.32021554
-active                        -0.27754064 -0.05727501
-mp                                         0.05238032
+#               day      active          mp       score
+# day                0.05331968  0.07437166  0.32021554
+# active                        -0.27754064 -0.05727501
+# mp                                         0.05238032
 ~~~
 
 ![Plot scores for each mood/productivity level, split between placebo & nicotine: `boxplot(nicotine$score ~ (nicotine$active + nicotine$mp)^2)`](/images/nootropics/nicotine-dnb-bymp.png)
@@ -2710,12 +2689,10 @@ I don't expect to find an effect, though; a quick _t_-test power analysis of a o
 
 ~~~{.R}
 pwr.t.test(n=23, type="paired", alternative="greater", sig.level=0.05, power=0.8)
-
-     Paired t test power calculation
-
-              n = 23
-              d = 0.5352
-...
+#      Paired t test power calculation
+#
+#               n = 23
+#               d = 0.5352
 ~~~
 
 Or in other words, since the standard deviation of my previous self-ratings is 0.75 (see the [Weather and my productivity](Weather) data), a mean rating increase of >0.39 on the self-rating. This is, unfortunately, implying an extreme shift in my self-assessments (for example, 3s are ~50% of the self-ratings and 4s ~25%; to cause an increase of 0.25 while leaving 2s alone in a sample of 23 days, one would have to push 3s down to ~25% and 4s up to ~47%). So in advance, we can see that the weak plausible effects for Noopept are not going to be detected here at our usual statistical levels with just the sample I have (a more plausible experiment might use 178 pairs over a year, detecting down to _d_>=0.18). But if the sign is right, it might make Noopept worthwhile to investigate further. And the hardest part of this was just making the pills, so it's not a waste of effort.
@@ -2841,7 +2818,7 @@ npt[2,2] <- npt[2,2] + 1
 n <- 530
 bs <- boot(data=npt, statistic=newNoopeptPower, R=100000, parallel="multicore", ncpus=4)
 print(c(n, sum(bs$t<=alpha)/length(bs$t)))
-[1] 530.0000   0.8241
+# [1] 530.0000   0.8241
 ~~~
 
 530 is more acceptable, albeit I am worried about doubling the effect.
@@ -3372,27 +3349,26 @@ The BEST results[^piracetam-natural-experiment-BEST] give a small effect size of
     source("BEST.R")
     mcmcChain = BESTmcmc(poff, c(pone, ptwo))
     postInfo = BESTplot(poff, c(pone, ptwo), mcmcChain); postInfo
-               SUMMARY.INFO
-    PARAMETER       mean   median     mode  HDIlow  HDIhigh pcgtZero
-      mu1        2.78153  2.78130  2.77061  2.3832   3.1752       NA
-      mu2        2.98579  2.98566  2.98369  2.8103   3.1606       NA
-      muDiff    -0.20426 -0.20463 -0.21982 -0.6315   0.2316    17.07
-      sigma1     0.83778  0.81619  0.78042  0.5665   1.1559       NA
-      sigma2     0.73900  0.73476  0.73031  0.6158   0.8690       NA
-      sigmaDiff  0.09877  0.08114  0.05378 -0.2103   0.4443    70.61
-      nu        50.19929 42.00024 28.00379  5.8283 115.9430       NA
-      nuLog10    1.61236  1.62325  1.63557  1.0515   2.1480       NA
-      effSz     -0.26083 -0.26144 -0.28521 -0.7992   0.2774    17.07
+    #            SUMMARY.INFO
+    # PARAMETER       mean   median     mode  HDIlow  HDIhigh pcgtZero
+    #   mu1        2.78153  2.78130  2.77061  2.3832   3.1752       NA
+    #   mu2        2.98579  2.98566  2.98369  2.8103   3.1606       NA
+    #   muDiff    -0.20426 -0.20463 -0.21982 -0.6315   0.2316    17.07
+    #   sigma1     0.83778  0.81619  0.78042  0.5665   1.1559       NA
+    #   sigma2     0.73900  0.73476  0.73031  0.6158   0.8690       NA
+    #   sigmaDiff  0.09877  0.08114  0.05378 -0.2103   0.4443    70.61
+    #   nu        50.19929 42.00024 28.00379  5.8283 115.9430       NA
+    #   nuLog10    1.61236  1.62325  1.63557  1.0515   2.1480       NA
+    #   effSz     -0.26083 -0.26144 -0.28521 -0.7992   0.2774    17.07
     ~~~
 [^piracetam-natural-experiment-wilcox-test]: We do a one-tailed test because the original hypothesis was that M/P would fall, certainly not that it would increase:
 
     ~~~{.R}
     wilcox.test(poff,c(pone,ptwo), alternative="less")
-
-        Wilcoxon rank sum test with continuity correction
-
-    data:  poff and c(pone, ptwo)
-    W = 593, p-value = 0.1502
+    #     Wilcoxon rank sum test with continuity correction
+    #
+    # data:  poff and c(pone, ptwo)
+    # W = 593, p-value = 0.1502
     ~~~
 
 So the answer is yes, M/P did fall as I expected; but also as one would expect given daily variation and the small sample of 'off' days (19 days), the result is not very statistically robust (even ignoring the low quality of data from a natural experiment). But it was an easy 'experiment' to run and the result had the right sign, as they say.
@@ -3474,7 +3450,7 @@ The hormone [testosterone](!Wikipedia) ([Examine.com](http://examine.com/topics/
 
     > While the primary effect of the drug is massive muscle growth the psychological side effects actually improved his sanity by an absurd degree. He went from barely functional to highly productive. When one observes that the decision to not attempt to fulfill one's CEV at a given moment is a bad decision it follows that all else being equal improved motivation is improved sanity.
     >
-    > Elaborating on why the psychological side effects of *testosterone* injection are individual dependent: Not everyone get the same amount of motivation and increased goal seeking from the steroid and most people do not experience periods of chronic avolition. Another psychological effect is a potentially drastic increase in aggression which in turn can have negative social consequences. In the case of counterfactual wedrifid he gets a net improvement in social consequences. He has observed that aggression and anger are a prompt for increased ruthless self-interested goal seeking. Ruthless self-interested goal seeking involves actually bothering to pay attention to social politics. People like people who do social politics well. Most particularly it prevents acting on contempt which is what wedrifid finds prompts the most hostility and resentment in others. Point is, what is a sanity promoting change in one person may not be in another.
+    > Elaborating on why the psychological side effects of *testosterone* injection are individual dependent: Not everyone get the same amount of motivation and increased goal seeking from the steroid and most people do not experience periods of chronic avolition. Another psychological effect is a potentially drastic increase in aggression which in turn can have negative social consequences. In the case of counterfactual Wedrifid he gets a net improvement in social consequences. He has observed that aggression and anger are a prompt for increased ruthless self-interested goal seeking. Ruthless self-interested goal seeking involves actually bothering to pay attention to social politics. People like people who do social politics well. Most particularly it prevents acting on contempt which is what Wedrifid finds prompts the most hostility and resentment in others. Point is, what is a sanity promoting change in one person may not be in another.
 
 As it happens, these are areas I am distinctly lacking in. When I first began reading about testosterone I had no particular reason to think it might be an issue for me, but it increasingly sounded plausible, an aunt independently suggested I might be deficient, a biological uncle turned out to be severely deficient with levels around 90 ng/dl (where the normal range for 20-49yo males is 249-839), and finally my blood test in August 2013 revealed that my actual level was 305 ng/dl; inasmuch as I was 25 and not 49, this is a tad low.
 
@@ -3687,7 +3663,7 @@ On the other metric, suppose we removed the creatine? Dropping 4 grams of materi
 2015: 18 February, 1mg gum; 21 February, 1mg gum; 23 February, 1mg gum; 25 February, 1mg gum; 23 April, 1mg gum; 4 May, 1mg gum, 5 May, 1mg gum; 1mg gum, 14, 15, 16, 19, 21, 23, 25, 26 May end nicotine gum, ran out on 26th; nicotine patch 5.25mg (quarter) 27, 28 (half; turns out to be way too much even after some leakage), 30 (quarter), 31 (quarter) May, 2 quarters 5, 1 quarter 7, 1 quarter 9, 1 quarter 13, 1 quarter 16, 1 quarter 18, 1 quarter 19, 1 quarter 28 June, 1 quarter 6, 1 quarter 29 July; 1 quarter 12, 21 August; 1 quarter 5, 2 quarters 18, 1 quarter 25, 2 quarters 30 September; 1 patch, 18 October; 1 half, 4 November; 1 quarter 21 November, 1 quarter 23 November; 1 half 5, 31 December;
 2016: 1 half, 14 January; 1 half, 8 February; 1 half, 7 April; 1 half, 6 May; 1 half 10, 1 half 25 June. ED out of patches. 2mg gum, 14 October. 2mg gum, 2; 4mg, 4; 2mg 9; 2mg 11, 2mg 13, 2mg 22 November; 4mg, 10, 2mg 11, 2mg 24, 4mg 26 December
 2017: 4mg, 16 January; 4mg 1, 2mg 14, 25 February; 2mg, 7 March -->
-<!-- Bacopa (Bacognize): start first block (1x) 26 September 2014, last day 19 December 2014; +90 days off-bacopa to 19 March 2015; bacopa (1x) 20 March - 5 June; on, until 22 January 2016 (omit wedding and Christmas blocks) -->
+<!-- Bacopa (Bacognize): start first block (1x) 26 September 2014, last day 19 December 2014; +90 days off-Bacopa to 19 March 2015; Bacopa (1x) 20 March - 5 June; on, until 22 January 2016 (omit wedding and Christmas blocks) -->
 <!-- Fluoride: last day 9 February 2014 -->
 <!-- kettlebell exercise: protein powder: Apr 25, 2015 - 9 May / 15 days or 8 workouts? resumed on 25 May; ran out 16 June; resumed 24 June 2015 -->
 
@@ -3966,7 +3942,8 @@ oral dosage typically 3x12.5mg=37.5mg daily
 27 February: 2x
 14 March: 1x
 15 March: 1x
-16 March: 1x?
+16 March: 2x
+17 March: 2x
 -->
 
 <!-- # Insulin
@@ -4005,4 +3982,5 @@ Maybe retry with 1x0.5ml, so the steady state is more like 33mg
 14 March: 1x0.5mlx10mg
 15 March: 1x0.5mlx10mg
 16 March: 1x0.5mlx10mg
+17 March: 1x0.5mlx10mg
 -->
