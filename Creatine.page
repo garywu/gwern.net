@@ -386,7 +386,7 @@ t.test(IQ ~ Creatine, data=ling)
 
 ## Hammett 2010
 
-["Dietary supplementation of creatine monohydrate reduces the human fMRI BOLD signal"](http://www.researchgate.net/publication/44694983_Dietary_supplementation_of_creatine_monohydrate_reduces_the_human_fMRI_BOLD_signal/file/9fcfd50bb2b9e2fba1.pdf), Hammett et al 2010; quotes relevant for calculating the variables:
+["Dietary supplementation of creatine monohydrate reduces the human fMRI BOLD signal"](/docs/creatine/2010-hammett.pdf), Hammett et al 2010; quotes relevant for calculating the variables:
 
 > To establish whether the magnitude of the BOLD response is influenced by Cr levels, we have measured responses to visual stimuli in the primary visual cortex (V1) of 22 healthy human volunteers using fMRI, before and after oral administration of Cr or a placebo (11 in the Cr group and 11 in the placebo group).
 
