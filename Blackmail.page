@@ -10,7 +10,33 @@ importance: 2
 
 > In September 2012, I was extorted for $32 for being gwern; I declined to pay. In November 2013, I called an encryption bluff that I was Dread Pirate Roberts. In December 2013, a crazy person tried to blackmail me for billions of dollars for being Satoshi Nakamoto; I declined to pay. In March 2014, the DNM Evolution threatened to dox me if I did not reveal information about their security vulnerabilities. In February 2015, an Agora user doxed me in an unexpected way and I paid a small bounty.
 
-I have long been interested in cryptographic topics, and in June 2011, I began researching the new darknet markets (DNMs), as epitomized by [Silk Road]() (SR). Between my sustained coverage of DNM topics, occasional interventions like my Sheep-MarketPlace/BlackMarket-Reloaded bet, and my minor role in the doxing of Sheep MarketPlace's owner, and my essays [Bitcoin is Worse is Better]() & [Time-lock cryptography](Self-decrypting files), I have been sometimes accused of being more involved than I appear - possibly Dread Pirate Roberts (really Ross Ulbricht), [Satoshi Nakamoto](!Wikipedia), a high-level seller, a law enforcement agent, or other things.
+I have long been interested in cryptographic topics, and in June 2011, I began researching the new darknet markets (DNMs), as epitomized by [Silk Road]() (SR). Between my sustained coverage of DNM topics, occasional interventions like my Sheep-MarketPlace/BlackMarket-Reloaded bet, and my minor role in the doxing of Sheep MarketPlace's owner, and my essays [Bitcoin is Worse is Better]() & [Time-lock cryptography](Self-decrypting files), I have been sometimes accused of being more involved than I appear - possibly Dread Pirate Roberts (really Ross Ulbricht), [Satoshi Nakamoto](!Wikipedia)[^Satoshi-L], a high-level seller, a law enforcement agent, or other things.
+
+[^Satoshi-L]: The purloined letter! As [tangled_zans](https://www.reddit.com/r/BitcoinAll/comments/3w455b/i_have_proof_that_satoshi_is_gwern_rbitcoin/) points out:
+
+    > Think about it!
+    >
+    > What do we know about Gwern?
+    >
+    > Near-encyclopediac knowledge of Bitcoin, Tor, and Darkwebs.
+    >
+    > Is heavily into Japanese culture.
+    >
+    > One of the early bitcoin adopters.
+    >
+    > Has done prolific research into remaining anonymous [1](/Death Note Anonymity) . So far we've assumed that this was in order to de-anonymyse Satoshi, but what if it was to remain anonymous himself?
+    >
+    > But that's just speculation. Here's the real proof:
+    >
+    > We know that Gwern has modelled his internet persona based on L, the anonymous detective from _Death Note_. In the story, L's sole obsession was to find out the identity of Kira, the genius serial killer. HOWEVER: Half-way through the story, Kira murders L, assumes his identity, and continues to openly and fervently "hunt for Kira" while secretly sabotaging the efforts of law-enforcement who cooperate with him.
+    >
+    > So if you remove the supernatural crime element, _Death Note_ becomes a story of an internationally wanted man, who hides behind the persona of the investigator in charge of finding himself.
+    >
+    > And the more eagerly he tries, the less likely it is that he himself becomes the suspect!
+    >
+    > Does that sound familiar?
+    >
+    > The answer was always hiding in plain sight. Nice try, gwern!
 
 While sometimes flattering (I wish I was Satoshi Nakamoto!), these are all quite wrong: I am but an impoverished writer who barely makes ends meet, and certainly not a Bitcoin billionaire or elite C++ P2P crypto programmer, though I write *about* Bitcoin/cryptography/DNMs. Still, some tinge of notoriety can be useful if it means people are willing to tell me private information. On the other hand, sometimes it is plain irritating. They don't always go anywhere. Here are some examples of things that went nowhere, or at least, not where I wanted them to go.
 
