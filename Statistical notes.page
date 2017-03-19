@@ -40,6 +40,29 @@ importance: 6
 - human _Toxoplasma gondii_ study is not well-powered as authors claim due to incorrect power analysis, and results are evidence for harm: http://blogs.discovermagazine.com/neuroskeptic/2016/02/20/myth-mind-altering-parasite-toxoplasma-gondii/#comment-2755778490 ; https://www.reddit.com/r/slatestarcodex/comments/5vjrmo/toxoplasma_doesnt_cause_adolescent_psychosis/de2x4kh/
 - attempt at attributing Bitcoin price increases to technology improvements: <https://www.reddit.com/r/Bitcoin/comments/5tbt8f/buzz_factor_or_innovation_potential_what_explains/ddlmzrz/>
 
+# "Someone Should Do Something": Wishlist of Miscellaneous Project Ideas
+
+- Erowid: data-mine the trip reports to create clusters or [a state-space of drug effects/results](https://qualiacomputing.com/2015/06/09/state-space-of-drug-effects-results/) and using the clusters & common terms, create a general inventory of descriptions; add this to the trip report form so Erowid users can provide some more structured information about their experience.
+
+- Dark net markets: use a longitudinal crawl of DNM sellers to estimate survival curves, outstanding escrow + orders, and listed product prices / type / language  to try to predict exit scams.
+- Dark net markets: parse hyperlinks in all forums & DNMs and outlinked domains like Reddit's `/r/darknetmarkets` in order to create a proper network topology of Tor hidden services - existing .onion crawls tend to find Tor hidden services are a very fragmented and unconnected network despite the Hidden Wikis, but this may reflect the instability of hidden services and the use of clearnet communities & indexes (like Reddit or gwern.net)
+
+- read through the Extropy and SL4 mailing list archives: have any important ideas been forgotten or dropped? Are there any meta lessons about forecasting or thinking about existential risk to be gleaned?
+
+- an efficient hashmap library for R, perhaps binding to a C/C++ library; existing R hashmaps are based on `environment`s and not very fast
+
+    - key for enabling many statistical and especially reinforcement learning algorithms like Monte Carlo tree search (MCTS)
+- Markov chain/char-RNN bot for Twitter trained on just English proverbs, idioms, and expressions
+- user-friendly char-RNN implementation just for classifying text, taking in CSV data of text/category
+- hyperparameter optimization for algorithms in problems without available loss functions but human-judgeable quality, using a human for making choices in a paired or forced-choice comparison, then using a Bradley-Terry or latent variable model to infer rankings of hyperparameter settings and optimizing based on the latent scores
+
+- a VR application for viewing [stereoscopic](!Wikipedia "Stereoscopy") images & video and for 3D environments with extremely large parallax such as [for viewing clouds with true depth perception](https://xkcd.com/941/ "XKCD #941: Depth Perception") ([discussion](https://www.explainxkcd.com/wiki/index.php/941:_Depth_Perception))
+- properly transcribe & annotate Douglas Hofstader's _Le Ton Beau de Marot_, one of his best but also most obscure books
+
+- provide "polygenic scores as a service", a website/API where one can upload a SNP data file like the 23andMe export and get back PGSes for everything in LD Hub, and utility weights
+- track down & upload missing papers in http://arthurjensen.net/?page_id=9
+- expand/rewrite Wikipedia's [heritability of intelligence](!Wikipedia) - grossly outdated, almost totally omitting all the GCTAs and GWASes that have definitively settled the answer in the strongly affirmative
+
 # Estimating censored test scores
 
 An acquaintance asks the following question: he is applying for a university course which requires a certain minimum score on a test for admittance, and wonders about his chances and a possible trend of increasing minimum scores over time.
@@ -2963,22 +2986,23 @@ In exact ABC, we would keep only data which exactly matched 72%/22%, but that wo
 ~~~{.R}
 simulateTIPSMPY <- function() {
     ## informative priors: IQs are somewhere close to where we would estimate based on other datasets
-    whiteMean <- round(rnorm(1, mean=100, sd=4), digits=2)
-    asianMean <- round(rnorm(1, mean=105, sd=4), digits=2)
+    whiteMean <- round(rnorm(1, mean=99, sd=5), digits=2)
+    asianMean <- round(rnorm(1, mean=105, sd=5), digits=2)
 
     iqCutoff <- 100 + -qnorm(1/10000) * 15
 
     whites <- rnorm(0.770 * 579 * 10000, mean=whiteMean, sd=15)
-    whiteSample <- sum(ifelse(whites>iqCutoff, 1, 0))
+    whiteSample <- max(1, sum(ifelse(whites>iqCutoff, 1, 0)))
 
     asians <- rnorm(0.007 * 579 * 10000, mean=asianMean, sd=15)
-    asianSample <- sum(ifelse(asians>iqCutoff, 1, 0))
+    asianSample <- max(1, sum(ifelse(asians>iqCutoff, 1, 0)))
 
     ## white+Asian = 92% of original total sample, so inflate by that much to preserve proportions: 1.08
     totalSample <- (whiteSample+asianSample) * (1 + (1-(white+asian)))
 
     whiteFraction <- round(whiteSample / totalSample, digits=2)
     asianFraction <- round(asianSample / totalSample, digits=2)
+    # print(paste("samples: ", c(whiteSample, asianSample), "fractions: ", c(whiteFraction, asianFraction)))
 
     tolerance <- 0.02
     if ((abs(whiteFraction - 0.7218480138) < tolerance) && (abs(asianFraction - 0.2178929188) < tolerance)) {
@@ -2986,12 +3010,13 @@ simulateTIPSMPY <- function() {
     }
     }
 library(parallel); library(plyr)
-simulateSamples <- function(n.sample=1000, iters=100) {
-    # because of rejection sampling, it may take a long time to generate requested samples:
+simulateSamples <- function(n.sample=1000, iters=getOption("mc.cores")) {
+    ## because of rejection sampling, no run is guaranteed to produce a sample so we loop:
     results <- data.frame()
     while (nrow(results) < n.sample) {
-        print(nrow(result))
-        rbind(results, ldply(mclapply(1:iters, function(i) { simulateTIPSMPY()  } )))
+        simResults <- ldply(mclapply(1:iters, function(i) { simulateTIPSMPY()  } ))
+        results <- rbind(results, simResults)
+        # print(paste("Samples so far: ", nrow(results)))
     }
     return(results) }
 posteriorSamples <- simulateSamples()
@@ -3003,8 +3028,8 @@ quantile(probs=c(0.025, 0.975), posteriorSamples$Asian, na.rm=TRUE)
 #    2.5%   97.5%
 # 103.051 114.900
 par(mfrow=c(2,1))
-hist(unlist(posteriorMeans[1,]), main="Posterior white mean IQ estimated from TIP/SMPY cutoff & ratio", xlab="IQ")
-hist(unlist(posteriorMeans[2,]), main="Posterior Asian mean", xlab="IQ")
+hist(posteriorSamples$White, main="Posterior white mean IQ estimated from TIP/SMPY cutoff & ratio", xlab="IQ")
+hist(posteriorSamples$Asian, main="Posterior Asian mean", xlab="IQ")
 ~~~
 
 ![Histograms of the posterior estimate of white & Asian mean IQs ~1970 as estimated from fraction of TIP/SMPY sample using ABC](/images/iq-smpytip.png)
