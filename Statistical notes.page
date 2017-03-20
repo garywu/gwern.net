@@ -4144,3 +4144,154 @@ Where can we go with this?
 The ML techniques can be used to rank existing Bayesian models in an effective if unprincipled way.
 Techniques which quantify uncertainty like Bayesian neural networks could give more effective feedback by highlighting the points the Bayesian NN is most certain are fake, guiding the analyst towards the worst-modeled datapoints and providing hints for improvement.
 More inspiration could be borrowed from the GAN literature, such as "minibatch discrimination" - as demonstrated above, the random forests only see one data point at a time, but in training GANs, it has proven useful to instead examine multiple datapoints at a time to encourage the generator to learn how to generate a wide variety of datapoints rather than modeling a few datapoints extremely well; a ML model which can predict multiple outputs simultaneously based on multiple inputs would be analogous (that is, instead of `X ~ A + B + C`, it would look more like `X1 + X2 + X3 ... ~ A1 + B1 + C1 + A2 + B2 + C2 + ...`, with the independent & dependent variables from multiple data points all fed in simultaneously as a single sample) and might be an even more effective model critic.
+
+# Proportion of Important Thinkers by Global Region Over Time in Charles Murray's _Human Accomplishment_
+
+https://osf.io/z9cnk/
+
+Bayesian time-series analysis
+https://twitter.com/KirkegaardEmil/status/804483340900376576
+
+~~~{.R}
+## export CSV from spreadsheet in https://osf.io/z9cnk/
+h <- read.csv("HA.csv", header=TRUE)
+summary(h)
+#      Serial                        Name            Fl               Birth              Death              Inventory     ScienceField
+#  Min.   :   11.00   Descartes, René  :   4   Min.   :-700.000   Min.   :-640.000   Min.   :-559.00   Science   :1442          :2560
+#  1st Qu.: 6144.50   Hooke, Robert    :   4   1st Qu.:1557.250   1st Qu.:1580.000   1st Qu.:1638.00   Lit.West  : 835   Tech   : 239
+#  Median :12534.50   Leonardo da Vinci:   4   Median :1804.000   Median :1782.000   Median :1844.00   Music.West: 522   Phys   : 218
+#  Mean   :15994.27   Archimedes       :   3   Mean   :1585.638   Mean   :1616.174   Mean   :1682.81   Art.West  : 479   Chem   : 204
+#  3rd Qu.:21999.75   Bacon, Francis   :   3   3rd Qu.:1900.000   3rd Qu.:1863.000   3rd Qu.:1930.00   Phil.West : 155   Biol   : 193
+#  Max.   :43134.00   d’Alembert, Jean :   3   Max.   :1949.000   Max.   :1910.000   Max.   :1997.00   Art.China : 111   Math   : 191
+#                     (Other)          :3981                      NA's   :304        NA's   :351       (Other)   : 458   (Other): 397
+#      Index             Duplicate           BirthCountry   WorkCountry      Ethnicity        Woman            No..of.Inventories
+#  Min.   :  0.60000   Min.   :0.00000000   France : 564   France : 605   Germanic: 592   Min.   :0.00000000   Min.   :2.000000
+#  1st Qu.:  3.54000   1st Qu.:0.00000000   Germany: 556   Britain: 574   French  : 565   1st Qu.:0.00000000   1st Qu.:2.000000
+#  Median :  7.60000   Median :0.00000000   Britain: 554   Germany: 525   English : 441   Median :0.00000000   Median :2.000000
+#  Mean   : 12.95713   Mean   :0.06221889   Italy  : 400   Italy  : 406   Italian : 397   Mean   :0.02198901   Mean   :2.228916
+#  3rd Qu.: 15.89000   3rd Qu.:0.00000000   USA    : 306   USA    : 375   USA     : 276   3rd Qu.:0.00000000   3rd Qu.:2.000000
+#  Max.   :100.00000   Max.   :1.00000000   China  : 239   China  : 239   Chinese : 240   Max.   :1.00000000   Max.   :4.000000
+#  NA's   :115                              (Other):1383   (Other):1278   (Other) :1491                        NA's   :3753
+levels(h$Ethnicity)
+#  [1] "Ancient Greek" "Ancient Roman" "Arabic"        "Australian"    "Basque"        "Black"         "Bulgarian"     "Canadian"
+#  [9] "Chinese"       "Croatian"      "Czech"         "Danish"        "Dutch"         "English"       "Estonian"      "Finnish"
+# [17] "Flemish"       "French"        "Germanic"      "Greek"         "Hungarian"     "Icelandic"     "Indian"        "Irish"
+# [25] "Italian"       "Japanese"      "Jewish"        "Latino"        "New Zealand"   "Norwegian"     "Polish"        "Portuguese"
+# [33] "Romanian"      "Scots"         "Slavic"        "Slovenian"     "Spanish"       "Swedish"       "Swiss"         "USA"
+
+european <- c("Ancient Greek", "Ancient Roman", "Australian", "Basque", "Bulgarian", "Canadian", "Croatian", "Czech", "Danish", "Dutch", "English", "Estonian", "Finnish", "Flemish", "French", "Germanic", "Greek", "Hungarian", "Icelandic", "Irish", "Italian", "Jewish", "New Zealand", "Norwegian", "Polish", "Portuguese", "Romanian", "Scots", "Slavic", "Slovenian", "Spanish", "Swedish", "Swiss", "USA")
+asian    <- c("Chinese", "Indian", "Japanese")
+other    <- c("Arabic", "Black", "Latino")
+groupMembership <- function(e) { if (e %in% european) { "European" } else { if (e %in% asian) { "Asian" } else { "Other" } } }
+h$Group <- as.factor(sapply(h$Ethnicity, groupMembership))
+ summary(h$Group)
+#   Asian European    Other
+#     507     3379      116
+
+## group to decades by rounding:
+h$Fl.decade <- round(h$Fl, digits=-1)
+hd <- subset(select=c(Fl.decade, Group), h)
+
+hdcount <- aggregate(cbind(Group) ~ Fl.decade+Group, length, data=hd)
+colnames(hdcount)[3] <- "Count"
+## sort by time:
+hdcount <- hdcount[order(hdcount$Fl.decade),]
+nrow(h); sum(hdcount$Count)
+# [1] 4002
+# [1] 4002
+head(hdcount, n=20)
+#     Fl.decade    Group Count
+# 178      -700 European     3
+# 179      -680 European     1
+# 180      -650 European     1
+# 1        -600    Asian     2
+# 181      -600 European     2
+# 182      -580 European     2
+# 183      -570 European     2
+# 2        -550    Asian     1
+# 184      -550 European     1
+# 185      -540 European     5
+# 3        -520    Asian     1
+# 186      -520 European     3
+# 4        -510    Asian     1
+# 187      -510 European     2
+# 188      -500 European     2
+# 189      -480 European     6
+# 190      -460 European     3
+# 191      -450 European     7
+# 5        -440    Asian     1
+# 192      -440 European    11
+
+One issue with the count data: decades with zero significant figures from a group (which happens frequently) get suppressed. Some tools can handle the omission automatically but many cannot, so we need to manually insert any missing
+
+decades <- seq(-700, 1950, by=10)
+for (i in 1:length(decades)) {
+    d <- decades[i]
+    if (nrow(hdcount[hdcount$Fl.decade==d & hdcount$Group=="European",])==0) { hdcount <- rbind(hdcount, data.frame(Fl.decade=d, Group="European", Count=0))}
+    if (nrow(hdcount[hdcount$Fl.decade==d & hdcount$Group=="Asian",])==0) { hdcount <- rbind(hdcount, data.frame(Fl.decade=d, Group="Asian", Count=0))}
+    if (nrow(hdcount[hdcount$Fl.decade==d & hdcount$Group=="Other",])==0) { hdcount <- rbind(hdcount, data.frame(Fl.decade=d, Group="Other", Count=0))}
+    }
+hdcount <- hdcount[order(hdcount$Fl.decade),]
+
+library(ggplot2)
+with(hdcount, qplot(Fl.decade, Count, color=Group) + stat_smooth())
+# https://imgur.com/a/cG4kM
+with(hdcount, qplot(Fl.decade, log1p(Count), color=Group) + stat_smooth())
+
+## Create proportions by summing per decade, then looping over each group & dividing by total for that decade:
+decadeTotals <- aggregate(Count ~ Fl.decade, sum, data=hdcount)
+for (i in 1:nrow(hdcount)) {
+        p <- hdcount[i,]$Count / decadeTotals[decadeTotals$Fl.decade == hdcount[i,]$Fl.decade,]$Count
+        hdcount$Proportion[i] <- if(is.nan(p)) { 0 } else { p }
+}
+with(hdcount, qplot(Fl.decade, Proportion, color=Group) + stat_smooth() + coord_cartesian(ylim = c(0, 1)))
+# https://imgur.com/a/kfwZl
+
+efit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="European")$Count)
+afit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="Asian")$Count)
+ofit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="Other")$Count)
+par(mfrow=c(3,1))
+plot(forecast(efit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
+plot(forecast(afit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
+plot(forecast(ofit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
+# https://imgur.com/a/qPL6a
+
+Bootstrap: package up the various transformations, so we can sample-with-replacement the original dataset, transform, and plot repeatedly
+
+transformAndProportion <- function(df) {
+    df$Fl.decade <- round(df$Fl, digits=-1)
+    dfd <- subset(select=c(Fl.decade, Group), df)
+    dfdcount <- aggregate(cbind(Group) ~ Fl.decade+Group, length, data=dfd)
+    colnames(dfdcount)[3] <- "Count"
+    decades <- seq(-700, 1950, by=10)
+    for (i in 1:length(decades)) {
+        d <- decades[i]
+        if (nrow(dfdcount[dfdcount$Fl.decade==d & dfdcount$Group=="European",])==0) { dfdcount <- rbind(dfdcount, data.frame(Fl.decade=d, Group="European", Count=0))}
+        if (nrow(dfdcount[dfdcount$Fl.decade==d & dfdcount$Group=="Asian",])==0) { dfdcount <- rbind(dfdcount, data.frame(Fl.decade=d, Group="Asian", Count=0))}
+        if (nrow(dfdcount[dfdcount$Fl.decade==d & dfdcount$Group=="Other",])==0) { dfdcount <- rbind(dfdcount, data.frame(Fl.decade=d, Group="Other", Count=0))}
+    }
+    dfdcount <- dfdcount[order(dfdcount$Fl.decade),]
+    decadeTotals <- aggregate(Count ~ Fl.decade, sum, data=dfdcount)
+    for (i in 1:nrow(dfdcount)) {
+        p <- dfdcount[i,]$Count / decadeTotals[decadeTotals$Fl.decade == dfdcount[i,]$Fl.decade,]$Count
+        dfdcount$Proportion[i] <- if(is.nan(p)) { 0 } else { p }
+    }
+    return(dfdcount)
+    }
+
+bootPlot <- function(df) {
+    n <- nrow(df)
+    bootDf <- df[sample(1:n, n, replace=TRUE),]
+    bootDfdcount <- transformAndProportion(bootDf)
+    ## WARNING: can't just call qplot due to animation/ggplot2 bug; have to assign & print
+    p <- with(bootDfdcount, qplot(Fl.decade, Proportion, color=Group) + stat_smooth(method="loess", se=FALSE) + coord_cartesian(ylim = c(0, 1)))
+    print(p)
+    }
+# bootPlot(h)
+library(animation)
+saveGIF({for (i in 1:200) { bootPlot(h) }}, interval=0.15, ani.width=1300, ani.height=700, movie.name="humanaccomplishment-proportions-timeseries.gif")
+
+max.p=5, max.q=5, max.P=5, max.Q=5, max.order=5, max.d=5, max.D=5, start.p=5, start.q=5, start.P=5, start.Q=5
+
+binomial_smooth <- function(...) { geom_smooth(se=FALSE, method = "glm", method.args = list(family = "binomial"), ...) } ; with(hdcount, qplot(Fl.decade, Proportion, color=Group) + binomial_smooth(formula = y ~ splines::ns(x, 3)) + geom_jitter(aes(color=Group), width=0.013,, height=0.013))
+~~~
