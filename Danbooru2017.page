@@ -12,20 +12,20 @@ importance: 7
 
 # Image boorus
 
-[Image](http://tvtropes.org/pmwiki/pmwiki.php/Main/ImageBooru) [boorus](https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards) are image hosting websites developed by the anime community.
+[Image](http://tvtropes.org/pmwiki/pmwiki.php/Main/ImageBooru) [boorus](https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards) are image hosting websites developed by the anime community for collaborative tagging.
 Images are uploaded by users who are part of a highly active community, such as [Danbooru](https://danbooru.donmai.us/)^[While Danbooru is not the largest anime image booru in existence - [TBIB](https://tbib.org/index.php?page=about), for example, claims >4.7m images or almost twice as many, by mirroring from multiple boorus - but Danbooru is generally considered to focus on higher-quality images & have better tagging; I suspect >2.4m images is into diminishing returns for sheer bulk and the focus then ought to be on improving the metadata.], and richly annotated with textual ['tags'](https://danbooru.donmai.us/wiki_pages/43043), typically divided into a few major groups:
 
 - copyright (the overall franchise, movie, TV series, manga etc a work is based on; for long-running franchises like _Neon Genesis Evangelion_ or "crossover" images, there can be multiple such tags, or if there is no such associated work, it would be tagged "original")
 - character (often multiple)
 - author
-- [explicitness rating](https://danbooru.donmai.us/wiki_pages/10920 "howto:rate")
+- [explicitness rating](https://danbooru.donmai.us/wiki_pages/10920 "HOWTO:rate")
 
     Danbooru does not ban sexually suggestive or pornographic content; instead, images are classified into 3 categories: `safe`, `questionable`, &`explicit`.
 
     `safe` is for unambiguously SFW content including tasteful swimsuits, while `questionable` would be more appropriate for highly-revealing swimsuit images or moderate nudity or sexually suggestive situations, and `explicit` denotes anything pornographic. (TODO percentages)
 - descriptive tags (eg the top 20 tags are TODO)
 
-    These tags form a "folksonomy" to describe aspects of images; beyond the expected tags like `long_hair` or `looking_at_the_viewer`, there are many strange and unusual tags, including many anime or illustration-specific tags like `seiyuu_connection` (images where the joke is based on knowing the two characters are voiced in different anime by the same voice actor) or `bad_feet` (artists frequently accidentally draw two left feet, or just `bad_anatomy` in general). Tags may also be hierarchical and one tag "imply" another.
+    These tags form a "[folksonomy](!Wikipedia)" to describe aspects of images; beyond the expected tags like `long_hair` or `looking_at_the_viewer`, there are many strange and unusual tags, including many anime or illustration-specific tags like `seiyuu_connection` (images where the joke is based on knowing the two characters are voiced in different anime by the same voice actor) or `bad_feet` (artists frequently accidentally draw two left feet, or just `bad_anatomy` in general). Tags may also be hierarchical and one tag "imply" another.
 
 Images can have other associated metadata with them, including:
 
@@ -57,7 +57,7 @@ Such a dataset would support many possible uses:
 
     - text-to-image synthesis (eg StackGAN would benefit greatly from the extremely diverse tags)
     - unsupervised image generation (eg DCGANs, VAEs, PixelCNNs)
-    - image transformation: upscaling (eg waifu2x), colorizing, inpainting, sketch-to-drawing, artistic style transfer, optimization (eg ["Image Synthesis from Yahoo's `open_nsfw`"](https://open_nsfw.gitlab.io/))
+    - image transformation: upscaling (eg waifu2x), colorizing, inpainting, sketch-to-drawing, artistic style transfer, optimization (eg ["Image Synthesis from Yahoo's `open_nsfw`"](https://open_nsfw.gitlab.io/), [pix2pix](https://arxiv.org/abs/1611.07004 "'Image-to-Image Translation with Conditional Adversarial Networks' Isola et al 2016"), [DiscoGAN](https://arxiv.org/abs/1703.05192 "'Learning to Discover Cross-Domain Relations with Generative Adversarial Networks', Kim et al 2017"))
 - image analysis:
 
     - facial detection & localization for drawn images (on which normal techniques such as OpenCV's Harr filters fail)
@@ -78,7 +78,7 @@ Such a dataset would support many possible uses:
 Image classification has been supercharged by work on ImageNet, but ImageNet itself is limited by its small set of classes, many of which are debatable, and which encompass only a limited set.
 Compounding these limits, tagging/classification datasets are notoriously undiverse & have imbalance problems or are small:
 
-- ImageNet: dog breeds
+- ImageNet: dog breeds (memorably brought out by [DeepDream](!Wikipedia))
 - Youtube-BB: [toilets/giraffes](https://twitter.com/karpathy/status/828692612848627713)
 - MS COCO: bathrooms and African savannah animals; 328k images, 80 categories, short 1-sentence descriptions
 - bird/flowers: a few score of each kind (eg no eagles in the birds dataset)
@@ -90,7 +90,10 @@ The external validity of classifiers trained on these datasets is somewhat quest
 For example, ImageNet classifiers sometimes appear to 'cheat' by relying on textures and simplistic outlines - [recognizing leopards](https://rocknrollnerd.github.io/ml/2015/05/27/leopard-sofa.html "Suddenly, a leopard print sofa appears") only by the color texture of the fur, or believing barbells are extensions of arms.
 The dataset is simply not large enough, or richly annotated enough, to train classifiers or tagger better than that, or, with residual networks reaching human parity, reveal differences between the best algorithms and the merely good.
 As well, the datasets are static, not accepting any additions, better metadata, or corrections.
-Like MNIST before it, ImageNet is verging on 'solved' and further progress may simply be overfitting to idiosyncrasies of the datapoints and errors; even if lowered error rates are not overfitting, the very low error rates compress the differences between algorithm, giving a misleading view of progress and understating the benefits of better architectures, as improvements become comparable in size to simple chance in initializations/training/validation-set choice.
+Like MNIST before it, ImageNet is verging on 'solved' (the [ILSVRC organizers ended it](http://image-net.org/challenges/beyond_ilsvrc.php "Beyond ImageNet Large Scale Visual Recognition Challenge: July 26th in conjunction with CVPR 2017") after the 2017 competition) and further progress may simply be overfitting to idiosyncrasies of the datapoints and errors; even if lowered error rates are not overfitting, the very low error rates compress the differences between algorithm, giving a misleading view of progress and understating the benefits of better architectures, as improvements become comparable in size to simple chance in initializations/training/validation-set choice.
+As [Dong et al 2017](https://arxiv.org/abs/1703.06676 "I2T2I: Learning Text to Image Synthesis with Textual Data Augmentation") note:
+
+> It is an open issue of text-to-image mapping  that  the  distribution  of  images  conditioned  on  a  sentence  is  highly  multi-modal.   In  the  past  few  years,  we’ve witnessed a breakthrough in the application of recurrent neural networks (RNN) to generating textual descriptions conditioned on images [1, 2], with Xu et al. showing that the multi-modality problem can be decomposed sequentially [3]. However, the lack of datasets with diversity descriptions of images limits the performance of text-to-image synthesis on multi-categories dataset like MSCOCO [4]. Therefore, the problem of text-to-image synthesis is still far from being solved
 
 In contrast, the Danbooru dataset is TODOx larger than ImageNet as a whole and TODOx larger than the current largest multi-description dataset, MS COCO, with far richer metadata than the 'subject verb object' sentence summary that is dominant in MS COCO.
 It is unlikely that the performance ceiling will be reached anytime soon, and advanced techniques such as attention will likely be required to get anywhere near the ceiling.
@@ -112,7 +115,7 @@ As well, many ML researchers are anime fans and might enjoy working on such a da
 A full dataset is of immediate value to the Danbooru community as an archival snapshot of Danbooru which can be downloaded in lieu of hammering the main site and downloading terabytes of data; backups are occasionally requested on the Danbooru forum but the need is currently not met.
 
 There is much potential for a mutually rewarding symbiosis between the Danbooru community and ML researchers: in a virtuous circle, the community provides curation and expansion of a rich dataset, while ML researchers can contribute back tools from their research on it which help improve the dataset.
-The Danbooru community is relatively large and would likely welcome the development of tools like taggers to support semi-automatic (or eventually, fully automatic) image tagging, as use of a tagger could offer orders of magnitude improvement in speed and accuracy compared to their existing manual methods.
+The Danbooru community is relatively large and would likely welcome the development of tools like taggers to support semi-automatic (or eventually, fully automatic) image tagging, as use of a tagger could offer orders of magnitude improvement in speed and accuracy compared to their existing manual methods, as well as being newbie-friendly^[A tagger could be integrated into the site to automatically propose tags for newly-uploaded images to be approved by the uploader; new users, unconfident or unfamiliar with the full breadth, would then have the much easier task of simply checking that all the proposed tags are correct.]
 They are also a pre-existing audience which would be interested in new research results.
 
 # Format
@@ -130,7 +133,7 @@ Images will be provided in both the full original form (be that JPG, PNG, GIF or
 - all images losslessly optimized with [`jpegoptim`](https://github.com/tjko/jpegoptim) (while this invalidates the MD5, the MD5s are not always valid for Danbooru images anyway and ECC is taken care of by BitTorrent; the advantage is that using `jpegoptim` may cut disk space & IO by 5-10%, which is substantial on a multi-terabyte dataset)
 - downscaled down to 512x512px with black borders
 
-    Why 512px exactly? image sizes are tricky: too small, and key details become impossible to see, but too large and they become difficult to store, transmit, and process. 64px thumbnails obliterate all details; 128px is too small for much but global recognition; CNNs appear to as of 2016 tend to target ~250x250px; but to future-proof the torrent, it needs to be higher than that - higher resolutions will be feasible with new GPU generations and required for best tagging performance as objects/characters can be very small - leading to 512px as the next natural image size. Viewing 512px downscales, it does offer enough resolution for finer details to be plausibly visible to a CNN while still being ~1/5th the bandwidth/disk usage.
+    Why 512px exactly? image sizes are tricky: too small, and key details become impossible to see, but too large and they become difficult to store, transmit, and process. 64px thumbnails obliterate all details; 128px is too small for much but global recognition; CNNs appear to as of 2016 tend to target ~250x250px; but to future-proof the torrent, it needs to be higher than that - higher resolutions will be feasible with new GPU generations and required for best tagging performance as objects/characters can be very small - leading to 512px as the next natural image size. (The PixelCNN architecture has already been used in March 2017 by DeepMind to generate 512px images: [Reed et al 2017](https://arxiv.org/abs/1703.03664 "Parallel Multiscale Autoregressive Density Estimation").) Viewing 512px downscales, it does offer enough resolution for finer details to be plausibly visible to a CNN while still being ~1/5th the bandwidth/disk usage.
 
     In addition, one should err on the side of the downscales being too large rather than too small: should 512px be too large, additional downscaling to 128px or 256px, or various kinds of data augmentation, is relatively easier than downscaling from the full original images and can be done on the fly by users without impeding training. While if the downscales are too small, users may be stuck between a rock and hard place: accepting suboptimal results or having to create & permanently store an entire downscaled dataset themselves.
 - stored as individual files:
