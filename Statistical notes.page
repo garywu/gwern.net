@@ -4298,24 +4298,29 @@ max.p=5, max.q=5, max.P=5, max.Q=5, max.order=5, max.d=5, max.D=5, start.p=5, st
 binomial_smooth <- function(...) { geom_smooth(se=FALSE, method = "glm", method.args = list(family = "binomial"), ...) } ; with(hdcount, qplot(Fl.decade, Proportion, color=Group) + binomial_smooth(formula = y ~ splines::ns(x, 3)) + geom_jitter(aes(color=Group), width=0.013,, height=0.013))
 ~~~
 
-# App for non-spaced-repetition review of past written materials
+# Program for non-spaced-repetition review of past written materials for serendipity & rediscovery: Archive Revisiter
 
 One reason to take notes/clippings and leave comments in stimulating discussions is to later benefit by having references & citations at hand, and gradually build up an idea from disparate threads and make new connections between them.
-For this purpose, I make extensive excerpts from web pages & documents I read into my Evernote clippings, and I comment constantly on Reddit/LessWrong/`#lesswrong` etc.
+For this purpose, I make extensive excerpts from web pages & documents I read into [my Evernote clippings](https://www.evernote.com/pub/gwern/gwern) (functioning as a [commonplace book](!Wikipedia)), and I comment constantly on Reddit/LessWrong/`#lesswrong` etc.
 While expensive in time & effort, I often go back, months or years later, and search for a particular thing and expand & integrate it into another writing or expand it out to an entire essay of its own.
 (I also value highly not being in the situation where I believe something but I do not know *why* I believe it other than the conviction "I read it somewhere, once".)
 
-This works well enough when I have a clear memory of what the citation/factoid was, perhaps because it was so memorable, or when the citations or comments are in a nice cluster (perhaps because there was a key phrase in them or I kept going back & expanding a comment), but it loses out on key benefits to this procedure: serendipity and perspective.
 
-As time passes, one may realize the importance of an odd tidbit or have utterly forgotten something or events considerably changed its meaning; in this case, you would benefit from revisiting & rereading that old bit, but you don't realize it.
+This sort of [personal information management](!Wikipedia) using simple [personal information manager](!Wikipedia)s like Evernote works well enough when I have a clear memory of what the citation/factoid was, perhaps because it was so memorable, or when the citations or comments are in a nice cluster (perhaps because there was a key phrase in them or I kept going back & expanding a comment), but it loses out on key benefits to this procedure: serendipity and perspective.
+
+As time passes, one may realize the importance of an odd tidbit or have utterly forgotten something or events considerably changed its meaning; in this case, you would benefit from revisiting & rereading that old bit & experiencing an "aha!" moment, but you don't realize it.
 So one thing you could do is reread all your old clippings & comments, appraising them for reuse.
 
 But how often? And it's a pain to do so. And how do you keep track of which you've already read?
-One thing I do for my emails is semi-annually I (try to) read through my previous 6 months of email to see what might need to be followed up on^[I've been experimenting with Boomerang to reduce the problem of non-followups by setting 'ping me if no reply within 1 month' alerts on my sent emails.] or mined for inclusion in an article.
-(For example, an ignored request for data, or a discussion of DNMs with a journalist I could excerpt into one of my DNM articles so I can point future journalists at that instead.)
-This is already difficult, and it would be even harder to expand. I have read through my LessWrong comment history... once. Some years ago.
+One thing I do for my emails is semi-annually I (try to) read through my previous 6 months of email to see what might need to be followed up on^[I've been experimenting with [Boomerang](http://www.boomeranggmail.com/) to reduce the problem of non-followups by setting 'ping me if no reply within 1 month' alerts on my sent emails.] or mined for inclusion in an article.
+(For example, an ignored request for data, or a discussion of darknet markets with a journalist I could excerpt into one of my DNM articles so I can point future journalists at that instead.)
+This is already difficult, and it would be even harder to expand. I have read through my LessWrong comment history... once. Years ago. It would be more difficult now.
 
-Reviewing is useful but can be an indefinite timesink. (My sent emails are not too hard to review in 6-month chunks, but my IRC logs are bad - 7,182,361 words in `#lesswrong` alone - and my >38k Evernote clippings are worse.)
+Simply re-reading periodically in big blocks may work but is suboptimal: there is no interface easily set up to reread them in small chunks over time, no constraints which avoid far too many reads, nor is there any way to remove individual items which you are certain need never be reviewed again.
+Reviewing is useful but can be an indefinite timesink.
+(My sent emails are not too hard to review in 6-month chunks, but my IRC logs are bad - 7,182,361 words in `#lesswrong` alone - and my >38k Evernote clippings are worse; any [lifestreaming](!Wikipedia) will exacerbate the problem by orders of magnitude.)
+This is probably one reason that people who keep journals or diaries don't reread
+Nor can it be crowdsourced or done by simply ranking comments by public upvotes (in the case of Reddit/LW/HN comments), because the most popular comments are ones you likely remember well & have already used up, and the oddities & serendipities you are hoping for are likely unrecognizable to outsiders.
 
 This suggests some sort of reviewing framework where one systematically reviews old items (sent emails, comments, IRC logs by oneself), putting in a constant amount of time regularly and using some sort of ever expanding interval between re-reads as an item becomes exhausted & ever more likely to not be helpful.
 ["Deconstructing Deathism - Answering Objections to Immortality"](http://immortallife.info/articles/entry/deconstructing-deathism-answering-objections-to-immortality), Mike Perry 2013 (note: this is an entirely different kind of problem than those considered in Freeman Dyson's immortal intelligences in _Infinite in All Directions_, which are more fundamental), discusses something like what I have in mind in terms of an immortal agent trying to review its memories & maintain a sense of continuity, pointing out that if time is allocated correctly, it will not consume 100% of the agent's time but can be set to consume some bounded fraction:
@@ -4328,13 +4333,14 @@ This suggests some sort of reviewing framework where one systematically reviews 
 >
 > In the above examples the greatest proportion of archive time falls to the earlier records, which might be fitting since these should be the most important as formative years for the prospective immortal, thus the most important for identity maintenance. (Memory recall would also naturally occur during prime time; the emphasis here could be on recent events, to maintain a balance overall.) In summary, then, we have considered ways that the problem of dilution might be successfully managed. Relatively infrequent perusal of memories might still suffice to maintain the necessary continuity with past versions of the self, or proper scheduling could stabilize the frequency of recall and bypass the dilution effect, or both. We see in any case that the problem is not what it may seem at first sight. We have no guarantee, of course, that it would not get out of bounds, but certainly some grounds for hope.
 
-So you could imagine some sort of software along the lines of spaced repetition systems like Anki/Mnemosyne/Supermemo which you spend, say, 10 minutes a day at, simply rereading a selection of old emails you sent, lines from IRC with _n_ lines of surrounding context, Reddit & LW comments etc; with an appropriate backoff & time-curve, you would reread each item maybe 3 times in your lifetime (eg first after a delay of a month, then a year or two, then decades).
-Each item could come with a rating function where the user rates it as an important or odd-seeming or incomplete item and to be exposed again in a few years, or as totally irrelevant and not to be shown again - as for many bits of idle chit-chat, banausic emails, or intemperate comments is not an instant too soon!
+So you could imagine some sort of software along the lines of [spaced repetition systems](/Spaced%20repetition) like Anki/Mnemosyne/Supermemo which you spend, say, 10 minutes a day at, simply rereading a selection of old emails you sent, lines from IRC with _n_ lines of surrounding context, Reddit & LW comments etc; with an appropriate backoff & time-curve, you would reread each item maybe 3 times in your lifetime (eg first after a delay of a month, then a year or two, then decades).
+Each item could come with a rating function where the user rates it as an important or odd-seeming or incomplete item and to be exposed again in a few years, or as totally irrelevant and not to be shown again - as for many bits of idle chit-chat, mundane emails, or intemperate comments is not an instant too soon!
 (More positively, anything already incorporated into an essay or otherwise reused likely doesn't need to be resurfaced.)
 
 This wouldn't be the same as a spaced repetition system which is designed to recall an item as many times as necessary, at the brink of forgetting, to ensure you memorize it; in this case, the forgetting curve & memorization are irrelevant and indeed, the priority here is to try to *eliminate* as many irrelevant or useless items as possible from showing up again so that the review doesn't waste time.
 
 More specifically, you could imagine an interface somewhat like Mutt which reads in a list of email files (my local POP email archives downloaded from Gmail with `getmail4`, filename IDs), chunks of IRC dialogue (a `grep` of my IRC logs producing lines written by me +- 10 lines for context, hashes for ID), LW/Reddit comments downloaded by either scraping or API, and stores IDs, review dates, and scores in a database.
+One would use it much like a SRS system, reading individual items for 10 or 20 minutes, and rating them, say, upvote ('this could be useful someday, show me this ahead of schedule in the future') / downvote (push this far off into the future) / delete (never show again).
 Items would appear on an expanding schedule.
 For example if one wanted to review items 4 times over the next 50 years (roughly my life expectancy), a schedule might be:
 
@@ -4357,62 +4363,8 @@ round(reviews(4, 7.728823216, 30))
 # [1]    30   262  2054 15904
 ~~~
 
+The geometric series allows for easy incorporation of rating modifications: a downvote penalty might multiply _r_ by 1.5, vs 0.5 for upvotes.
+This would also allow some input from statistical algorithms which predict upvote/downvote/delete and advances/delays items based on that, which would hopefully quickly learn to avoid idle chit-chat and short performative utterances and start to prioritize more interesting & unusual items.
+(For example, a good start might be a SVM on a bag-of-words version of each item's text, and then as the dataset ratings expand, more complicated algorithms could be plugged in.)
 
-
-14:36:22 <@gwern> one analysis I recall was of how an immortal agent could deal with memory loss; you can't spend all your time
-                  reviewing the past, but if you don't do any reviewing, then you forget everything and may potentially forget very
-                  useful things or threads of thought. it noted that you can compromise by devising an asymptotic scheme which reviews
-                  memories ever more infrequently so it spends a bounded...
-14:36:22 <@gwern> ...amount of time while never stopping reviews, using an exponential decay. I wonder if this would be useful for old
-                  emails/evernote clippings/comments? it's not the same thing as spaced repetition, but it's similar. (in spaced rep,
-                  the idea is to keep cards permanently memorized by reviewing at the edge of forgetting, which due to consolidation
-                  happens to semi-exponentially push off the next...
-14:36:22 <@gwern> ...review. but in this, it's fine to forget, you just want to ensure memories/items get revisted eventually)
-14:37:25 <@gwern> I was thinking about this because in retrospect, I imagine I've made a number of interesting claims, observations,
-                  jokes, or connections here in #lesswrong over the years which I've forgotten & never incorporated into gwern.net.
-                  which is a waste of good thought, and if I was a business, would be considered a very bad thing.
-14:37:38 <@gwern> but rereading everything I've said in #lesswrong would... take a while
-14:38:02 < Osthanes> You could crowdsource the project gwern
-14:38:14 <@gwern> (it's easy to use grep to cut out everything I've said + 10 lines of context before/after, but the task of actually
-                  rereading it remains mammoth)
-
-14:38:59 <@gwern> and it's not just my #lesswrong comments, of course. it applies to my lesswrong and reddit comments and sent emails
-14:39:09 <@gwern> (not so much my tweets. I've been good about curating that)
-14:39:45 <@gwern> and why not all my evernotes clippings? I clip a lot of things, and some of my old clippings might have unexpected
-                  relevance now and be useful citations or help build up an essay
-
-14:41:05 < Osthanes> I reread my journal/notes every six months or so. It's been a really useful practice.
-
-14:47:41 <@gwern> Osthanes: I do something similar in rereading all my sent emails every 6 months (in theory), but the problem there is
-                  that it's a large fixed time commitment then and results in only 1 revisit. it's better than nothing but I can imagine
-                  a lot better. a mnemosyne-like app that everyday lets you spend say 10 minutes reviewing the past, with items
-                  appearing exponentially rarely with time, and...
-14:47:41 <@gwern> ...maybe a simple rating mechanism to mark value and whether it should appear more/less often than that.
-14:48:21 < user51_> Filipe: I'll have to think about this for a moment. What brought that question into mind?
-14:48:21 < Osthanes> gwern, yeah, I usually pare the notes down to something that's more renewable after I review them
-14:48:58 < Filipe> because often when I have been too quiet or apathetic, I was just fearful and powerless
-14:49:07 <@gwern> Osthanes: it would be great if I could just pop up an app and it'd show me snippets of IRC conversation, sent emails,
-                  and reddit/lw comments, without the huge hassle of manually looking them all up, for short manageable chunks of time,
-                  for the occasional 'aha!' moment or reflection
-
-14:49:26 < user51_> gwern: sort -R | head -1?
-14:49:48 <@gwern> user51_: doesn't give you the exponential backoff that's key to the idea to limit the consumed time to manageable
-                  levels
-14:51:20 < user51_> well, my naive idea is that you could in theory put every email in a to-reread list, but then it hits the problem of
-                    you'll never know what kind of email you'll really like x amount of time later
-14:51:43 <@gwern> so emails and IRC are easy enough (I use getmail to export everything via pop, so my emails all have IDs/filenames
-                  which can be tracked, and they are easily rendered/viewed as text) (and IRC is obviously textual already and easily
-                  parsed with grep context, so IDs can be created as hashsums of each chunk) but it's a bit harder to do Reddit & LW and
-                  harder still to do evernotes
-14:51:45 < user51_> s/in a/you like \&/
-14:52:17 <@gwern> user51_: as I said, a circular buffer or a single read through would work but seems inefficient
-14:54:34 < user51_> gwern: if you grep for '<p>' on an account's page you get their comments, but it's not sorted with quotes and you'll
-                    need to switch hrefs to prettify it. But I assume you've already tried.
-14:54:50 <@gwern> user51_: not really. I am merely thinking out loud here
-
-14:57:15 < user51_> There was this facebook idea about having a 10M budget to buy anything you want but it must share the initial letter
-                    with your first name. I immedietly thought about using a foreign language and was told it's gotta be hebrew (no idea
-                    who made THAT rule) so I just said I'll buy whatever has a reasonably good resale value and sell it to remove the
-                    initial letter limit.
-14:57:38 <@gwern> as far as I know, some todo systems have something like a periodic review of past stuff, and spaced repetition systems
-                  do something somewhat similar to this idea of exponential revisits, but there's nothing like this at the moment
+As far as I know, some to-do/self-help systems have something like a periodic review of past stuff, and as I mentioned, spaced repetition systems do something somewhat similar to this idea of exponential revisits, but there's nothing like this at the moment.
