@@ -2146,10 +2146,11 @@ There are a few sources of data, primarily SNP data, which are freely available 
     - Genomes: browsing the [user lists for 'Whole genome datasets'](https://my.pgp-hms.org/users), I estimate a total of ~222; looking at the first and last 22 entries, 34 had ages/birth-years, so ~75% of the whole genomes come with the necessary birth-year data, indicating ~166 usable genomes for the purpose of testing dysgenics. With the most recent one uploaded on 2015-10-12, and the earliest recorded being 2011-09-16, that suggests the available genome number increases by ~0.25/day. 166 is uncomfortably close to the requirement for a well-powered test, and there may not be enough data to account for glitches in the data or allow for more complicated statistical testing, but if we wanted to double the available data, we'd only need to wait around 885 days or 2.5 years (or less, depending on whether the collapse in genome sequencing prices continue and prices drop below even the current \$1k genomes).
     - SNPs: PGP has [~656 23andMe SNP datasets](https://my.pgp-hms.org/public_genetic_data?utf8=%E2%9C%93&data_type=23andMe&commit=Search) (the number of SNP datasets sourced from other providers is quite small so I didn't include them), dated 2015-10-21-2011-01-06, so assuming same birth-date percentage, 0.37 per day. Unfortunately, to get 30k SNP datasets through PGP, we would have to wait (linearly extrapolating) 291 years. (Making matters worse, in October 2015, 23andMe doubled its price and reduced the quality of SNP coverage, which will discourage many users and push other users to purchase whole-genome sequencing instead.)
 
-## Power analysis for racial admixture studies of continuous variables
+# Power analysis for racial admixture studies of continuous variables
 
 [Admixture studies](!Wikipedia "Genetic admixture#Mapping") examine racial phenotypic differences in traits such as blood pressure by comparing people with ancestry from multiple groups, and correlating differences in ancestry percentage with differences in the phenotype.
-So, for example, African-Americans have higher blood-pressure than white Americans, and most African-Americans have an average white ancestry of something like 25%; if having 26% white ancestry predicts slightly lower blood pressure while 24% predicts higher, that suggests the difference is (as is currently believed) genetic; and this logic can be used to narrow down to specific chromosome regions, and has contributed to study of [racial differences in disease](!Wikipedia "Race and health").
+So, for example, African-Americans have higher blood-pressure than white Americans, and most African-Americans have an average white ancestry of something like 20-25% (see later); if having 26% white ancestry predicts slightly lower blood pressure while 24% predicts higher, that suggests the difference is (as is currently believed) genetic; and this logic can be used to narrow down to specific chromosome regions, and has contributed to study of [racial differences in disease](!Wikipedia "Race and health").
+
 
 One application would be to thorny questions like potential group differences in non-medical traits like intelligence.
 The standard admixture design, requiring a few thousand subjects spanning the full range, might not necessarily work here here because of the claimed environmental effects.
@@ -2279,6 +2280,100 @@ power(50000)
 
 So the estimated sample size is extremely large, well into the scores of thousands.
 Simplifications aside, it is difficult to see any way to bring this method down into the low thousands range, as that would require siblings to vary tremendously more in ancestry, have much more homogeneous IQs than they do, or ancestry to be vastly more potent than it could possibly be.
+
+One possibility is to drop the idea of using only siblings.
+Is there any way to have ancestry differences as large as in the general population, but within a family?
+Half-siblings come to mind but those more typically tend to join the household as older kids or teenagers, so aren't so good.
+One possibility is *adoptees*: there are a substantial number of African-American children adopted into other African-American households (white parents adopting black children is [controversial and rarer](!Wikipedia "Adoption in the United States#Trans-racial adoption"), described as ["decreasing dramatically"](https://www.princeton.edu/futureofchildren/publications/docs/03_01_07.PDF "'Outcomes of Transracial Adoption', Silverman 1993"), but still substantial in total numbers, at least 20,000), and even a noticeable number of African children adopted abroad (14,800 from Ethiopia just 1999-2014, with more adoption from Nigeria & the Congo).
+The same logic of the within-family study should apply but to unrelated siblings who will have far greater differences in ancestry now (possibly anywhere up to 50% if an African child is adopted into an African-American family with considerable white ancestry & some luck).
+This would increase power dramatically, perhaps enough to bring the study within the realm of near-future feasibility.
+
+Examining adoptions of African child
+In this case, we're considering a pair of an AA sibling with the same IQ & ancestry distributions, as compared with adoptees who are either African (100% African ancestry) or likewise have the same IQ/ancestry distributions.
+Since the sibling & adoptee are unrelated, they effectively vary & differ as much as two random people from the general population would in IQ & African ancestry, except for shared-environment effects on IQ; shared-environment for adult IQ is relatively low, maybe 10% of variance. So instead of an SD of 15, they would vary moderately less, like 14.23 points (`sqrt(15^2 * 0.9)`).
+Ancestry effects remain as before; the mean ancestry is not too important as long as it's not near 0, but since adoptees are drawn from the general population, the ancestry SD must be adjusted but it's unclear what the right SD here is - cited studies range from 4% up to 11%, and this is a key parameter for power (with 4%, then sibling and adoptee will tend to be quite similar on ancestry percentage & much more data will be required, but with 11% they will differ a good deal and make results stronger).
+
+Reported figures from the genetics literature for European ancestry in US African-American range from 14% to 24%, reflecting both sampling error and various biases & self-selection & geographic/regional effects in the datasets:
+
+- Halder et al 2008, ["A Panel of Ancestry Informative Markers for Estimating Individual Biogeographical Ancestry and Admixture From Four Continents: Utility and Applications"](/docs/genetics/2008-halder.pdf): 14.3%, SD 13.3% (_n_=136)
+- Ducci et al 2009, ["Association of Substance Use Disorders With Childhood Trauma but not African Genetic Heritage in an African American Cohort"](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2768270/): 7%, SD 9% (_n_=864); this is a little odd since they allocate the 21% non-African ancestry (African ancestry: 079%, SD 14%) to Europe, Middle East, Central Asia, Native American, East Asia, and Oceania, but it's hard to imagine that really corresponds to the ancestry of New Jersey African-Americans; if we ignore that attempt at splitting the non-African ancestry, 21% & SD 14% might be more consistent.
+- Gravlee et al 2009, ["Genetic ancestry, social classification, and racial inequalities in blood pressure in Southeastern Puerto Rico"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0006821): European ancestry isn't reported and Puerto Ricans have too much other ancestry to simply subtract the reported African ancestries
+- Signorello et al 2010, ["Blood vitamin D levels in relation to genetic estimation of African ancestry"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2938736/), [Table 1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2938736/table/T1/): mean African ancestry of 92.9% implies European ancestry ~7.1%,  ~IQR of African ancestry implies SD ~8%, (_n_=379)
+- Bryc et al 2010, ["Genome-wide patterns of population structure and admixture in West Africans and African Americans"](http://www.pnas.org/content/107/2/786.long): median 18.5%, 25th–75th percentiles: 11.6–27.7%; no mean or SD reported in the paper or supplemental materials I could find, but the median/percentiles suggest an SD of ~4.65% (`qnorm(0.25) * (0.116 - 0.185)`; _n_=365)
+- Nassir et al 2012, ["Relationship between Adiposity and Admixture in African American and Hispanic American Women"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137678/): 22.5%, SD 14.7% (_n_=11712)
+- [Henry Louis Gates Jr](http://www.theroot.com/exactly-how-black-is-black-america-1790895185 "Exactly How 'Black' Is Black America?") summarizes results available to him in February 2013: 29%, 22%, 19%, 19% (unspecified sample sizes & population SDs)
+
+     > - According to Ancestry.com, the average African American is 65% sub-Saharan African, 29% European and 2% Native American.
+     > - According to 23andme.com, the average African American is 75% sub-Saharan African, 22% European and only 0.6% Native American.
+     > - According to Family Tree DNA.com, the average African American is 72.95% sub-Saharan African, 22.83% European and 1.7% Native American.
+     > - According to National Geographic's Genographic Project, the average African American is 80% sub-Saharan African, 19% European and 1% Native American.
+     > - According to AfricanDNA, in which I am a partner with Family Tree DNA, the average African American is 79% sub-Saharan African, 19% European and 2% Native American.
+- Bryc et al 2014, ["The Genetic Ancestry of African Americans, Latinos, and European Americans across the United States"](http://www.cell.com/ajhg/fulltext/S0002-9297\(14\)00476-5): mean 24%, SD not reported but [Figure S1/Figure S18](http://www.cell.com/cms/attachment/2040464074/2053978065/mmc1.pdf) look consistent with an SD ~4-5% (_n_=5269)
+- Baharian et al 2016, ["The Great Migration and African-American Genomic Diversity"](http://journals.plos.org/plosgenetics/article?id=info%3Adoi%2F10.1371%2Fjournal.pgen.1006059): reports 3 cohorts with European ancestry at:
+
+    - SCCS: 14(13.65-14.43)% (_n_=2128)
+    - HRS: 16.7(16.16-17.27)% (_n_=1501)
+    - ASW: 21.3(19.50-23.20)% (_n_=97)
+
+    but no population SDs, with statistically-significant differences likely due to recruiting:
+
+    > The overall proportion of African ancestry is substantially higher in the SCCS and HRS than in the ASW and the recently published 23andMe cohort [12] (Table 1). The HRS cohort can be thought of as representative of the entire African-American population, while the SCCS focuses primarily on individuals attending community health centers in rural, underserved locations in the South. By contrast, the sampling for the ASW and 23andMe did not aim for specific representativeness, and the ascertainment in the 23andMe cohort might have enriched for individuals with elevated European ancestry (see Materials and Methods and discussion in [12]). In the HRS, average African ancestry proportion is 83% in the South and lower in the North (80%, bootstrap _p_= 6 × 10−6) and West (79%, _p_= 10−4) (Fig 1). Within the SCCS, African ancestry proportion is highest in Florida (89%) and South Carolina (88%) and lowest in Louisiana (75%) with all three significantly different from the mean (Florida _p_=0.006, South Carolina _p_=4 × 10−4, and Louisiana _p_< 10−5; bootstrap). The elevated African ancestry proportion in Florida and South Carolina is also observed in the HRS and in the 23andMe study [12], but Louisiana is more variable across cohorts (Fig 1E). As expected, European ancestry proportions largely complement those of African ancestry across the US.
+- Kirkegaard et al 2016, ["Biogeographic ancestry, cognitive ability, and socioeconomic outcomes"](http://biorxiv.org/content/early/2017/03/01/055681)'s [supplementary information](http://rpubs.com/EmilOWK/PING_admixture_study): 17%, SD 11% (_n_=140)
+
+Considering just studies with usable ancestry percentages, population SD, and _n_, and using inferred SDs from Signorello:
+
+~~~{.R}
+admixture <- read.csv(stdin(), header=TRUE, colClasses=c("factor", "numeric", "numeric", "integer"))
+Study,Mean,SD,N
+"Halder et al 2008",0.143,0.133,136
+"Ducci et al 2009",0.07,0.09,864
+"Signorello et al 2010",0.071,0.08,379
+"Bryc et al 2010",0.185,0.0465,365
+"Nassir et al 2012",0.225,0.147,11712
+"Kirkegaard et al 2016",0.17,0.11,140
+
+# what is the standard error/precision of a population SD? http://davidmlane.com/hyperstat/A19196.html
+admixture$SD.SE <- (0.71*admixture$SD) / sqrt(admixture$N)
+
+library(metafor)
+r.mean <- rma(yi=Mean, sei=SD/sqrt(N), measure="SMD", ni=N, data=admixture); r.mean
+r.sd <- rma(yi=SD, sei=SD.SE, measure="SMD", ni=N, data=admixture); r.sd
+par(mfrow=c(2,1))
+forest(r.mean, slab=admixture$Study)
+forest(r.sd, slab=admixture$Study)
+~~~
+
+Code:
+
+~~~{.R}
+adopteeTest <- function(n, alpha=0.05, ancestryEffect=0.008, populationAncestryMean=0.1440, populationAncestrySD=0.1008, c=0.1) {
+ unrelatedSiblingSD <- sqrt(15^2 * (1-c)) # subtract 10% for same shared-environment
+ siblings <- data.frame(
+     sibling1AncestryPercentage = pmax(0, rnorm(n, mean=populationAncestryMean*100, sd=populationAncestrySD*100)),
+     sibling1NonancestryIQ = rnorm(n, mean=0, sd=unrelatedSiblingSD),
+
+     adopteeAncestryPercentage = pmax(0, rnorm(n, mean=populationAncestryMean*100, sd=populationAncestrySD*100)),
+     adopteeNonancestryIQ = rnorm(n, mean=0, sd=unrelatedSiblingSD))
+
+ siblings$sibling1TotalIQ <- with(siblings, sibling1NonancestryIQ + sibling1AncestryPercentage*(ancestryEffect*15))
+ siblings$adopteeTotalIQ <- with(siblings, adopteeNonancestryIQ + adopteeAncestryPercentage*(ancestryEffect*15))
+ siblings$siblingAncestryDifference <- with(siblings, sibling1AncestryPercentage - adopteeAncestryPercentage)
+ siblings$siblingIQDifference <- with(siblings, sibling1TotalIQ - adopteeTotalIQ )
+
+ p <- summary(lm(siblingIQDifference ~ siblingAncestryDifference, data=siblings))$coefficients[8]
+ return(p<alpha)
+}
+
+power <- function(n, iters=100, n.parallel=8) {
+    library(parallel)
+    library(plyr)
+    mean(unlist(mclapply(1:n.parallel, function(i) {
+    replicate(iters/n.parallel, adopteeTest(n)) }))) }
+ns <- seq(100, 2000, by=100)
+powers <- sapply(ns, power)
+library(ggplot2)
+qplot(ns, powers)  + geom_point() + geom_smooth(method = "lm", formula = y ~ splines::bs(x, 2), se = FALSE)
+~~~
 
 # Operating on an aneurysm
 
@@ -4339,7 +4434,7 @@ Each item could come with a rating function where the user rates it as an import
 
 This wouldn't be the same as a spaced repetition system which is designed to recall an item as many times as necessary, at the brink of forgetting, to ensure you memorize it; in this case, the forgetting curve & memorization are irrelevant and indeed, the priority here is to try to *eliminate* as many irrelevant or useless items as possible from showing up again so that the review doesn't waste time.
 
-More specifically, you could imagine an interface somewhat like Mutt which reads in a list of email files (my local POP email archives downloaded from Gmail with `getmail4`, filename IDs), chunks of IRC dialogue (a `grep` of my IRC logs producing lines written by me +- 10 lines for context, hashes for ID), LW/Reddit comments downloaded by either scraping or API, and stores IDs, review dates, and scores in a database.
+More specifically, you could imagine an interface somewhat like Mutt which reads in a list of email files (my local POP email archives downloaded from Gmail with `getmail4`, filename IDs), chunks of IRC dialogue (a `grep` of my IRC logs producing lines written by me +- 10 lines for context, hashes for ID), LW/Reddit comments downloaded by either scraping or API via [the BigQuery copy up to 2015](https://bigquery.cloud.google.com/table/fh-bigquery:reddit_comments.2015_05), and stores IDs, review dates, and scores in a database.
 One would use it much like a SRS system, reading individual items for 10 or 20 minutes, and rating them, say, upvote ('this could be useful someday, show me this ahead of schedule in the future') / downvote (push this far off into the future) / delete (never show again).
 Items would appear on an expanding schedule.
 For example if one wanted to review items 4 times over the next 50 years (roughly my life expectancy), a schedule might be:
