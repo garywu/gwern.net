@@ -79,7 +79,7 @@ Given the problem setup, we can note a few things about the optimal strategy:
 
     But since there is a ceiling and one may be near or far from it given one's remaining bets, the betting has to take this into account: as the number of bets increase, the potential to hit the ceiling increases. With only a few bets, the maximum strategy doesn't risk this, but 4 bets it is possible to exceed \$250 (betting everything & winning each time). -->
 
-# Implementation
+# Implementation of Game
 
 A Python implementation is available in [OpenAI Gym](https://github.com/openai/gym):
 
@@ -87,9 +87,9 @@ A Python implementation is available in [OpenAI Gym](https://github.com/openai/g
 import gym
 env = gym.make('KellyCoinflip-v0')
 env.reset()
-env._step(env.wealth*100*0.2)
+env._step(env.wealth*100*0.2) # bet with 20% KC
 # ...
-env._reset() # etc
+env._reset() # end of game, start a new one, etc
 ~~~
 
 ## Decision tree
@@ -277,9 +277,59 @@ V(25,5)
 ~~~
 
 While the overhead is not as bad as `memoise`, performance is still not great.
-We can switch to a compiled language with fast arrays.
+
+#### Python
+
+Unmemoized version (a little different due to floating point):
+
+~~~{.Python}
+import numpy as np # for enumerating bet amounts as a float range
+def F(w, x, b):
+    return 0.6*V(min(w+x,250), b-1) + 0.4*V(w-x, b-1)
+def V(w, b):
+    if b>0 and w>0 and w<250:
+        bets = np.arange(0, w, 0.1).tolist()
+        returns = [F(w,x,b) for x in bets]
+    else:
+        returns = [w]
+    return max(returns)
+    V(25,0)
+V(25,0)
+# 25
+V(25,1)
+# 29.98
+V(25,2)
+# 35.967999999999996
+V(25,3)
+~~~
+
+Python has hashtables built in as dicts, so one can use those:
+
+~~~{.Python}
+import numpy as np
+def F(w, x, b, dt):
+        return 0.6*V(min(w+x,250), b-1, dt) + 0.4*V(w-x, b-1, dt)
+def V(w, b, dt):
+    if b>0 and w>0 and w<250:
+        if (w,b) in dict:
+            return dict[(w,b)]
+        else:
+            bets = np.arange(0, w, 0.1).tolist()
+            returns = [F(w,x,b,dt) for x in bets]
+    else:
+        returns = [w]
+    best = max(returns)
+    dict[(w,b)] = best
+    return best
+
+dict = {}
+V(25, 0, dict)
+# 25
+~~~
 
 #### Haskell
+
+We can switch to a compiled language with fast arrays.
 
 Implementations in Haskell have been written by Gurkenglas & nshepperd using [`array-memoize`](https://hackage.haskell.org/package/array-memoize) & [`Data.Vector`](https://hackage.haskell.org/package/vector) (respectively):
 
