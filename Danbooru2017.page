@@ -1,5 +1,5 @@
 ---
-title: The Danbooru2017 Dataset
+title: "Danbooru2017: A Large-Scale Crowdsourced and Tagged Anime Illustration Dataset"
 description: Danbooru2017 is a proposed large-scale anime image database with 2.2m+ images annotated with 48m+ tags; it can be useful for machine learning purposes such as image recognition and generation.
 tags: statistics, NN, anime
 created: 15 Dec 2015
@@ -117,6 +117,25 @@ A full dataset is of immediate value to the Danbooru community as an archival sn
 There is much potential for a mutually rewarding symbiosis between the Danbooru community and ML researchers: in a virtuous circle, the community provides curation and expansion of a rich dataset, while ML researchers can contribute back tools from their research on it which help improve the dataset.
 The Danbooru community is relatively large and would likely welcome the development of tools like taggers to support semi-automatic (or eventually, fully automatic) image tagging, as use of a tagger could offer orders of magnitude improvement in speed and accuracy compared to their existing manual methods, as well as being newbie-friendly^[A tagger could be integrated into the site to automatically propose tags for newly-uploaded images to be approved by the uploader; new users, unconfident or unfamiliar with the full breadth, would then have the much easier task of simply checking that all the proposed tags are correct.]
 They are also a pre-existing audience which would be interested in new research results.
+
+# Citing
+
+Please cite this dataset as:
+
+- Anonymous, The Danbooru Community, Gwern Branwen, & Aaron Gokaslan; "Danbooru2017: A Large-Scale Crowdsourced and Tagged Anime Illustration Dataset", 1 April 2017. Web. Accessed [DATE] `https://www.gwern.net/Danbooru2017`
+
+    ~~~{.Bibtex}
+    @misc{danbooru2017,
+        author = {Anonymous, The Danbooru Community, Gwern Branwen, Aaron Gokaslan},
+        title = {Danbooru2017: A Large-Scale Crowdsourced and Tagged Anime Illustration Dataset},
+        howpublished = {\url{https://www.gwern.net/Danbooru2017}},
+        url = {https://www.gwern.net/Danbooru2017},
+        type = {dataset},
+        year = {2017},
+        month = {April},
+        timestamp = {2017-04-01},
+        note = {Accessed: DATE} }
+    ~~~
 
 # Format
 

@@ -86,6 +86,20 @@ Please cite this resource as:
 
 - Gwern Branwen, Nicolas Christin, David Décary-Hétu, Rasmus Munksgaard Andersen, StExo, El Presidente, Anonymous, Daryl Lau, Sohhlz, Delyan Kratunov, Vince Cakic, Van Buskirk, & Whom. "Dark Net Market archives, 2011-2015", 12 July 2015. Web. [access date] `https://www.gwern.net/DNM%20archives`
 
+    ~~~{.Bibtex}
+    @misc{dnmArchives,
+        author = {Gwern Branwen, Nicolas Christin, David Décary-Hétu, Rasmus Munksgaard Andersen, StExo,
+                  El Presidente, Anonymous, Daryl Lau, Sohhlz, Delyan Kratunov, Vince Cakic, Van Buskirk, Whom},
+    title = {Dark Net Market archives, 2011-2015},
+    howpublished=  {\url{https://www.gwern.net/DNM%20archives}},
+    url = {https://www.gwern.net/DNM%20archives},
+    type = {dataset},
+    year = {2015},
+    month = {July},
+    timestamp = {2015-07-12},
+    note = {Accessed: DATE} }
+    ~~~
+
 ## Donations
 
 A dataset like this owes its existence to many parties:
