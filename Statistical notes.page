@@ -2148,9 +2148,10 @@ There are a few sources of data, primarily SNP data, which are freely available 
 
 # Power analysis for racial admixture studies of continuous variables
 
+> I consider power analysis of a genomic racial admixture study for detecting genetic group differences affecting a continuous trait such as IQ in US African-Americans, where ancestry is directly measured by genome sequencing and the comparisons are all within-family to eliminate confounding by population structure or racism/colorism/discrimination. The necessary sample size for well-powered studies is closely related to the average size of differences in ancestry percentage between siblings, as the upper bound on IQ effect per percentage is small, requiring large differences in ancestry to detect easily. A within-family comparison of siblings, due to the relatively small differences in ancestry between siblings estimated from IBD measurements of siblings, might require _n_>50,000 pairs of siblings to detect possible effects on IQ, an infeasible sample size. An alternative design focuses on increasing the available ancestry differences within a family unit by comparing *adoptees* with siblings; the larger within-population standard deviation of ancestry creates larger & more easily-detected IQ differences. A meta-analysis of past admixture & ancestry studies suggests the SD in samples may range from 2% to 17.86% with a mean of 14.4%, yielding sample sizes of _n_>20,000, _n_=1300, and _n_=600. Hence, an adoption study is probably in the feasible range, with required sample sizes comparable to annual adoption rates among US African-Americans.
+
 [Admixture studies](!Wikipedia "Genetic admixture#Mapping") examine racial phenotypic differences in traits such as blood pressure by comparing people with ancestry from multiple groups, and correlating differences in ancestry percentage with differences in the phenotype.
 So, for example, African-Americans have higher blood-pressure than white Americans, and most African-Americans have an average white ancestry of something like 20-25% (see later); if having 26% white ancestry predicts slightly lower blood pressure while 24% predicts higher, that suggests the difference is (as is currently believed) genetic; and this logic can be used to narrow down to specific chromosome regions, and has contributed to study of [racial differences in disease](!Wikipedia "Race and health").
-
 
 One application would be to thorny questions like potential group differences in non-medical traits like intelligence.
 The standard admixture design, requiring a few thousand subjects spanning the full range, might not necessarily work here here because of the claimed environmental effects.
@@ -2281,20 +2282,30 @@ power(50000)
 ~~~
 
 So the estimated sample size is extremely large, well into the scores of thousands.
+This is large enough that it will be some time before biobanks or population samples are well-powered: participants may not have siblings, those siblings may be included, only ~15% of the American population is AA, all participants must be sequenced, and so on.
+If it requires _n_=70,000, half of participants have a matching sibling, and it's drawn proportionally from the general population, that would imply that a total sample size of almost 1m.
+(For comparison, that's about twice the size of the [UK Biobank](!Wikipedia), and the US [Precision Medicine Initiative](!Wikipedia) cohort program aims for 1m total participants by 2020.)
+
 Simplifications aside, it is difficult to see any way to bring this method down into the low thousands range, as that would require siblings to vary tremendously more in ancestry, have much more homogeneous IQs than they do, or ancestry to be vastly more potent than it could possibly be.
 
 ## Adoption power analysis
 
-One possibility is to drop the idea of using only siblings.
+One possibility is to drop the idea of using only biological siblings.
 Is there any way to have ancestry differences as large as in the general population, but within a family?
 Half-siblings come to mind but those more typically tend to join the household as older kids or teenagers, so aren't so good.
 One possibility is *adoptees*: there are a substantial number of African-American children adopted into other African-American households (white parents adopting black children is [controversial and rarer](!Wikipedia "Adoption in the United States#Trans-racial adoption"), described as ["decreasing dramatically"](https://www.princeton.edu/futureofchildren/publications/docs/03_01_07.PDF "'Outcomes of Transracial Adoption', Silverman 1993"), but still substantial in total numbers, at least 20,000), and even a noticeable number of African children adopted abroad (14,800 from Ethiopia just 1999-2014, with more adoption from Nigeria & the Congo).
 The same logic of the within-family study should apply but to unrelated siblings who will have far greater differences in ancestry now (possibly anywhere up to 50% if an African child is adopted into an African-American family with considerable white ancestry & some luck).
 This would increase power dramatically, perhaps enough to bring the study within the realm of near-future feasibility.
 
-Examining adoptions of African child
+Examining adoptions of African children would not be a convincing way of establishing group differences, particularly for IQ, as there are many known environmental harms (eg pre-natal lack of [iodine](/Iodine) is known to cause large impairments in cognitive which cannot be repaired later in life, and poor iodization is frequent in Africa), so while examining African adoptees would doubtless require a very small sample size, the results would be uninterpretable.
+So the more interesting case is instead examining AA adoptees/siblings, all of whom are raised in a wealthy (and iodine-sufficient) industrialized country.
+
 In this case, we're considering a pair of an AA sibling with the same IQ & ancestry distributions, as compared with adoptees who are either African (100% African ancestry) or likewise have the same IQ/ancestry distributions.
 Since the sibling & adoptee are unrelated, they effectively vary & differ as much as two random people from the general population would in IQ & African ancestry, except for shared-environment effects on IQ; shared-environment for adult IQ is relatively low, maybe 10% of variance. So instead of an SD of 15, they would vary moderately less, like 14.23 points (`sqrt(15^2 * 0.9)`).
+
+One assumption here is a shared mean: one would actually expect, given the association of lighter skin with higher wealth/SES and darker with lower wealth/SES, that the adopting parents (and hence their biological children) would be relatively high on European ancestry, and conversely, the mothers giving up children for adoption would be relatively low, so the expected difference in ancestry is higher than simulated.
+Assuming equal means, however, is a conservative assumption since if such a correlation holds, the differences will be larger, hence the ancestry effect sizes larger, hence smaller sample sizes required.
+In the extreme version of this, the adoptive family is white and so the ancestry difference is maximal (~99% vs ~20%), requiring even smaller sample sizes, but at the cost of introducing complications like whether there are interactions with the white adoptive family not present in an AA adoptive family; in any case, such trans-racial adoption is apparently unpopular now, so it may not come up much.
 
 ### Mean population European ancestry & population standard deviation
 
@@ -2439,17 +2450,20 @@ powerMean <- sapply(ns, function(n) { power(n, sd=0.1008)})
 powerHigh <- sapply(ns, function(n) { power(n, sd=0.1786)})
 
 library(ggplot2); library(gridExtra)
-pl <- qplot(ns, powerLow)  + geom_point() + geom_smooth(method = "lm", formula = y ~ splines::bs(x, 2), se = FALSE)
-pm <- qplot(ns, powerMean) + geom_point() + geom_smooth(method = "lm", formula = y ~ splines::bs(x, 2), se = FALSE)
-ph <- qplot(ns, powerHigh) + geom_point() + geom_smooth(method = "lm", formula = y ~ splines::bs(x, 2), se = FALSE)
+pl <- qplot(ns, powerLow)  + coord_cartesian(ylim = c(0,1))
+pm <- qplot(ns, powerMean) + coord_cartesian(ylim = c(0,1))
+ph <- qplot(ns, powerHigh) + coord_cartesian(ylim = c(0,1))
 grid.arrange(pl, pm, ph, ncol=1)
 ~~~
 
 ![Power analysis for detecting European ancestry on IQ in an adoptee family study with predicted low/mean/high population variance in ancestry percentage (higher variance=larger statistical power=fewer samples required)](/images/iq-racialadmixture-poweranalysis-africanamericaneuropeanancestry-sdsimulations.png)
 
+So for the worst-case SD, sample size is unclear but _n_>20,000 pairs; mean SD, _n_=1300 pairs; high SD, _n_=600 pairs.
+The latter two are feasible amounts for population registries or adoption-focused cohort studies, and combined with the less powerful but more common within-sibling comparisons, may deliver a precise answer to long-standing questions about the origins of group differences.
+
 # Operating on an aneurysm
 
-In the excellent neurosurgeon memoir [_Do No Harm: Stories of Life, Death, and Brain Surgery_](http://www.amazon.com/Do-No-Harm-Stories-Surgery/dp/125006581X) ([Henry Marsh](!Wikipedia "Henry Marsh (neurosurgeon)") 2014), chapter 2 "[Aneurysm](!Wikipedia)", there is a passage on weighing the costs of action and inaction:
+In the excellent neurosurgery memoir [_Do No Harm: Stories of Life, Death, and Brain Surgery_](http://www.amazon.com/Do-No-Harm-Stories-Surgery/dp/125006581X) ([Henry Marsh](!Wikipedia "Henry Marsh (neurosurgeon)") 2014), chapter 2 "[Aneurysm](!Wikipedia)", there is a passage on weighing the costs of action and inaction:
 
 > "A thirty-two-year-old woman," he said tersely. "For surgery today. Had some headaches and had a brain scan." As he talked a brain scan flashed up on the wall.
 >
