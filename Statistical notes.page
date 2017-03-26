@@ -2161,6 +2161,8 @@ So given two siblings, they will differ slightly in their white ancestry, and if
 This has historically been difficult or impossible since how does one measure the actual ancestry in siblings?
 But with the rise of cheap genotyping, precise measure of actual (rather than average) ancestry can be done for <\$100, so that is no longer an obstacle.
 
+## Sibling power analysis
+
 How many sibling pairs would this require?
 
 - you are trying to regress `IQ_difference ~ Ancestry_difference`
@@ -2243,11 +2245,11 @@ confint(lm(siblingIQDifference ~ siblingAncestryDifference, data=siblings))
 
 admixtureTest <- function(n, alpha=0.05, ancestryEffect=0.008) {
  siblings <- data.frame(
-     sibling1AncestryPercentage = rnorm(n, mean=25, sd=1),
+     sibling1AncestryPercentage =pmax(0, rnorm(n, mean=25, sd=1)),
      sibling1NonancestryIQ = rnorm(n, mean=0, sd=12),
 
 
-     sibling2AncestryPercentage = rnorm(n, mean=25, sd=1),
+     sibling2AncestryPercentage = pmax(0,rnorm(n, mean=25, sd=1)),
      sibling2NonancestryIQ = rnorm(n, mean=0, sd=12))
 
  siblings$sibling1TotalIQ <- with(siblings, sibling1NonancestryIQ + sibling1AncestryPercentage*(ancestryEffect*15))
@@ -2281,6 +2283,8 @@ power(50000)
 So the estimated sample size is extremely large, well into the scores of thousands.
 Simplifications aside, it is difficult to see any way to bring this method down into the low thousands range, as that would require siblings to vary tremendously more in ancestry, have much more homogeneous IQs than they do, or ancestry to be vastly more potent than it could possibly be.
 
+## Adoption power analysis
+
 One possibility is to drop the idea of using only siblings.
 Is there any way to have ancestry differences as large as in the general population, but within a family?
 Half-siblings come to mind but those more typically tend to join the household as older kids or teenagers, so aren't so good.
@@ -2291,6 +2295,9 @@ This would increase power dramatically, perhaps enough to bring the study within
 Examining adoptions of African child
 In this case, we're considering a pair of an AA sibling with the same IQ & ancestry distributions, as compared with adoptees who are either African (100% African ancestry) or likewise have the same IQ/ancestry distributions.
 Since the sibling & adoptee are unrelated, they effectively vary & differ as much as two random people from the general population would in IQ & African ancestry, except for shared-environment effects on IQ; shared-environment for adult IQ is relatively low, maybe 10% of variance. So instead of an SD of 15, they would vary moderately less, like 14.23 points (`sqrt(15^2 * 0.9)`).
+
+### Mean population European ancestry & population standard deviation
+
 Ancestry effects remain as before; the mean ancestry is not too important as long as it's not near 0, but since adoptees are drawn from the general population, the ancestry SD must be adjusted but it's unclear what the right SD here is - cited studies range from 4% up to 11%, and this is a key parameter for power (with 4%, then sibling and adoptee will tend to be quite similar on ancestry percentage & much more data will be required, but with 11% they will differ a good deal and make results stronger).
 
 Reported figures from the genetics literature for European ancestry in US African-American range from 14% to 24%, reflecting both sampling error and various biases & self-selection & geographic/regional effects in the datasets:
@@ -2334,14 +2341,70 @@ Study,Mean,SD,N
 
 # what is the standard error/precision of a population SD? http://davidmlane.com/hyperstat/A19196.html
 admixture$SD.SE <- (0.71*admixture$SD) / sqrt(admixture$N)
+summary(admixture)
+#                   Study        Mean               SD                  N                SD.SE
+# Bryc et al 2010      :1   Min.   :0.07000   Min.   :0.0465000   Min.   :  136.00   Min.   :0.0009644066
+# Ducci et al 2009     :1   1st Qu.:0.08900   1st Qu.:0.0825000   1st Qu.:  196.25   1st Qu.:0.0018395436
+# Halder et al 2008    :1   Median :0.15650   Median :0.1000000   Median :  372.00   Median :0.0025457711
+# Kirkegaard et al 2016:1   Mean   :0.14400   Mean   :0.1010833   Mean   : 2266.00   Mean   :0.0037469989
+# Nassir et al 2012    :1   3rd Qu.:0.18125   3rd Qu.:0.1272500   3rd Qu.:  742.75   3rd Qu.:0.0056798961
+# Signorello et al 2010:1   Max.   :0.22500   Max.   :0.1470000   Max.   :11712.00   Max.   :0.0080973057
 
 library(metafor)
 r.mean <- rma(yi=Mean, sei=SD/sqrt(N), measure="SMD", ni=N, data=admixture); r.mean
+# Random-Effects Model (k = 6; tau^2 estimator: REML)
+#
+# tau^2 (estimated amount of total heterogeneity): 0.0040 (SE = 0.0025)
+# tau (square root of estimated tau^2 value):      0.0630
+# I^2 (total heterogeneity / total variability):   99.76%
+# H^2 (total variability / sampling variability):  412.76
+#
+# Test for Heterogeneity:
+# Q(df = 5) = 3058.3980, p-val < .0001
+#
+# Model Results:
+#
+# estimate       se     zval     pval    ci.lb    ci.ub
+#   0.1440   0.0258   5.5729   <.0001   0.0933   0.1946
+predict(r.mean)
+#   pred     se  ci.lb  ci.ub  cr.lb  cr.ub
+# 0.1440 0.0258 0.0933 0.1946 0.0106 0.2774
+
 r.sd <- rma(yi=SD, sei=SD.SE, measure="SMD", ni=N, data=admixture); r.sd
+# Random-Effects Model (k = 6; tau^2 estimator: REML)
+#
+# tau^2 (estimated amount of total heterogeneity): 0.0013 (SE = 0.0009)
+# tau (square root of estimated tau^2 value):      0.0367
+# I^2 (total heterogeneity / total variability):   99.64%
+# H^2 (total variability / sampling variability):  278.56
+#
+# Test for Heterogeneity:
+# Q(df = 5) = 2951.1360, p-val < .0001
+#
+# Model Results:
+#
+# estimate       se     zval     pval    ci.lb    ci.ub
+#   0.1008   0.0151   6.6789   <.0001   0.0712   0.1304
+predict(r.sd)
+#   pred     se  ci.lb  ci.ub  cr.lb  cr.ub
+# 0.1008 0.0151 0.0712 0.1304 0.0231 0.1786
+
 par(mfrow=c(2,1))
 forest(r.mean, slab=admixture$Study)
 forest(r.sd, slab=admixture$Study)
 ~~~
+
+![Meta-analytic summary of US African-American's mean European ancestry percentage & population SD of that percentage](/images/iq-racialadmixture-poweranalysis-africanamericaneuropeanancestry-meansdmetanalysis-forest.png)
+
+There is high heterogeneity, as expected, and the meta-analytic summary are consistent with simply taking the mean, so meta-analysis was not really necessary.
+
+The issue of heterogeneity depends on how one wants to interpret these numbers: as the true latent African-American population mean/SD of European ancestry, or as a way to estimate the possible spread of sampling?
+In the former, the heterogeneity is a serious issue because it suggests the estimate may be badly biased or at least is highly imprecise; in the latter, it is both a curse and a benefit, since it implies that it is possible to recruit for genetics studies samples with a wide range of ancestry (thereby greatly increasing statistical power) but also that one might get unlucky & wind up with a very ancestry-homogeneous sample (if the sample turns out to have an SD as high as 14.7%, excellent; if it's as low as 4.6%, one is doomed).
+
+So for power analysis one might check the meta-analytic mean case, as well as the [prediction interval](!Wikipedia) (a 95% CI around the SD/mean does not mean that 95% of the true effects, including the inherent heterogeneity, will fall in that interval): SDs of 2%, 14.4%, and 17.86%.
+(For any cost-benefit analysis or trying to optimize expenditures, one would want to work with the posterior distributions to average over everything, but for just general informative purposes, those 3 are good parameters to check.)
+
+### Power simulation
 
 Code:
 
@@ -2356,24 +2419,33 @@ adopteeTest <- function(n, alpha=0.05, ancestryEffect=0.008, populationAncestryM
      adopteeNonancestryIQ = rnorm(n, mean=0, sd=unrelatedSiblingSD))
 
  siblings$sibling1TotalIQ <- with(siblings, sibling1NonancestryIQ + sibling1AncestryPercentage*(ancestryEffect*15))
- siblings$adopteeTotalIQ <- with(siblings, adopteeNonancestryIQ + adopteeAncestryPercentage*(ancestryEffect*15))
+ siblings$adopteeTotalIQ  <- with(siblings, adopteeNonancestryIQ + adopteeAncestryPercentage*(ancestryEffect*15))
  siblings$siblingAncestryDifference <- with(siblings, sibling1AncestryPercentage - adopteeAncestryPercentage)
- siblings$siblingIQDifference <- with(siblings, sibling1TotalIQ - adopteeTotalIQ )
+ siblings$siblingIQDifference       <- with(siblings, sibling1TotalIQ - adopteeTotalIQ )
 
  p <- summary(lm(siblingIQDifference ~ siblingAncestryDifference, data=siblings))$coefficients[8]
  return(p<alpha)
 }
 
-power <- function(n, iters=100, n.parallel=8) {
+power <- function(n, sd, iters=10000, n.parallel=8) {
     library(parallel)
     library(plyr)
     mean(unlist(mclapply(1:n.parallel, function(i) {
-    replicate(iters/n.parallel, adopteeTest(n)) }))) }
-ns <- seq(100, 2000, by=100)
-powers <- sapply(ns, power)
-library(ggplot2)
-qplot(ns, powers)  + geom_point() + geom_smooth(method = "lm", formula = y ~ splines::bs(x, 2), se = FALSE)
+    replicate(iters/n.parallel, adopteeTest(n, populationAncestrySD=sd)) }))) }
+
+ns <- seq(100, 10000, by=100)
+powerLow  <- sapply(ns, function(n) { power(n, sd=0.0231)})
+powerMean <- sapply(ns, function(n) { power(n, sd=0.1008)})
+powerHigh <- sapply(ns, function(n) { power(n, sd=0.1786)})
+
+library(ggplot2); library(gridExtra)
+pl <- qplot(ns, powerLow)  + geom_point() + geom_smooth(method = "lm", formula = y ~ splines::bs(x, 2), se = FALSE)
+pm <- qplot(ns, powerMean) + geom_point() + geom_smooth(method = "lm", formula = y ~ splines::bs(x, 2), se = FALSE)
+ph <- qplot(ns, powerHigh) + geom_point() + geom_smooth(method = "lm", formula = y ~ splines::bs(x, 2), se = FALSE)
+grid.arrange(pl, pm, ph, ncol=1)
 ~~~
+
+![Power analysis for detecting European ancestry on IQ in an adoptee family study with predicted low/mean/high population variance in ancestry percentage (higher variance=larger statistical power=fewer samples required)](/images/iq-racialadmixture-poweranalysis-africanamericaneuropeanancestry-sdsimulations.png)
 
 # Operating on an aneurysm
 
