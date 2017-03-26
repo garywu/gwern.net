@@ -3190,12 +3190,17 @@ simulateSamples <- function(n.sample=10000, iters=getOption("mc.cores")) {
     return(results) }
 posteriorSamples <- simulateSamples()
 
+mean(posteriorSamples$White < posteriorSamples$Asian)
+# [1] 1
+## we have relatively few samples, so get a better posterior estimate by shuffling the posterior samples & comparing many times:
+mean(replicate(1000, mean(c(sample(posteriorSamples$White) < sample(posteriorSamples$Asian)))))
+# [1] 0.9968822
 quantile(probs=c(0.025, 0.975), posteriorSamples$White, na.rm=TRUE)
-#   2.5%  97.5%
-# 90.871 99.892
+#     2.5%     97.5%
+# 89.49975 101.38050
 quantile(probs=c(0.025, 0.975), posteriorSamples$Asian, na.rm=TRUE)
-#    2.5%   97.5%
-# 103.051 114.900
+#      2.5%     97.5%
+# 101.37000 116.74075
 par(mfrow=c(2,1))
 hist(posteriorSamples$White, main="Posterior white mean IQ estimated from TIP/SMPY cutoff & ratio", xlab="IQ")
 hist(posteriorSamples$Asian, main="Posterior Asian mean", xlab="IQ")
@@ -3203,7 +3208,9 @@ hist(posteriorSamples$Asian, main="Posterior Asian mean", xlab="IQ")
 
 ![Histograms of the posterior estimate of white & Asian mean IQs ~1970 as estimated from fraction of TIP/SMPY sample using ABC](/images/iq-smpytip.png)
 
-So sampling error turns out to be substantial: our credible intervals are white 90.9-99.9, Asian 103-114.9.
+So sampling error does turn out to be substantial: our 95% credible intervals are white 90-101, Asian 101-116.
+Still, the overlap is minimal, with _P_=99.7% that the Asian mean is higher than the white.
+
 We are able to conclude that the rank ordering is highly likely to be correct, and the results are consistent with the conventional wisdom, so there is no prima facie case for bias in the results: the ethnic composition is in line with what one would calculate from the design of TIP/SMPY and population means.
 
 # _Genius Revisited_: On the Value of High IQ Elementary Schools
