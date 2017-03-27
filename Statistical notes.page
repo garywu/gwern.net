@@ -4337,10 +4337,28 @@ More inspiration could be borrowed from the GAN literature, such as "minibatch d
 
 # Proportion of Important Thinkers by Global Region Over Time in Charles Murray's _Human Accomplishment_
 
-https://osf.io/z9cnk/
+[_Human Accomplishment_](/docs/2003-murray-human-accomplishment.pdf) is a 2003 book by [Charles Murray](!Wikipedia) reporting a large-scale citation analysis of biographical dictionaries & reference books on art/literature/science/mathematics/philosophy/science throughout history, quantifying the relative importance of "significant individuals" such as Isaac Newton or Immanuel Kant or Confucius and the temporal & geographical patterns; in particular, it demonstrates large European contributions throughout history and increasingly dramatically post-1400 AD.
+[The dataset has been released.](https://osf.io/z9cnk/)
 
-Bayesian time-series analysis
-https://twitter.com/KirkegaardEmil/status/804483340900376576
+Emil Kirkegaard created [a visualization of](https://twitter.com/KirkegaardEmil/status/804483340900376576) of the proportion by rough geographic region (European/Asian/other) in R using ggplot2 and LOESS smoothing.
+Perhaps the most striking aspect of it is the Dark Ages showing up as a spike in Asian proportion.
+This visualization could be improved in a few ways:
+
+- [LOESS](!Wikipedia) ignores the constraint that proportions must be 0-1 and naively extrapolates beyond the boundaries
+- no visualization of uncertainty is provided, either in the form of graphing the raw data points by superimposing a scatterplot or by providing standard errors or credible intervals
+
+    - LOESS can provide estimate local standard errors & confidence intervals but they are of questionable meaning in the absence of the underlying counts
+- alternatively, the distribution of significant figures may not be treated correctly parametrically
+- proportions may reflect a time-series with trends and so precision is overstated
+
+These points can be addressed by:
+
+1. switching from a LOESS plot to either splines or local binomial regressions
+2. plotting the raw proportions grouped by decade or century
+3. using a nonparametric bootstrap to calculate confidence intervals, a procedure which lends itself to visualization as an animation of plots of all the resamples, giving an intuitive sense of how important sampling error is to the overall pattern of curves and specific parts of history
+4. alternately, instead of attempting to fit the proportion, one can fit the original count of significant figures in a binomial or log-normal Bayesian time-series model and sample from the posterior estimates of each region for each decade/century, and calculate posterior proportions, gaining full quantification of uncertainty, incorporation of any autocorrelation, and smoothing
+
+I didn't realize [Kirkegaard's R code was available](http://rpubs.com/EmilOWK/232493 "Human Accomplishment visualizations: Exploring a large dataset of human creative achievement") so I wound up redoing it myself (and getting the same results):
 
 ~~~{.R}
 ## export CSV from spreadsheet in https://osf.io/z9cnk/
@@ -4369,7 +4387,10 @@ levels(h$Ethnicity)
 # [25] "Italian"       "Japanese"      "Jewish"        "Latino"        "New Zealand"   "Norwegian"     "Polish"        "Portuguese"
 # [33] "Romanian"      "Scots"         "Slavic"        "Slovenian"     "Spanish"       "Swedish"       "Swiss"         "USA"
 
-european <- c("Ancient Greek", "Ancient Roman", "Australian", "Basque", "Bulgarian", "Canadian", "Croatian", "Czech", "Danish", "Dutch", "English", "Estonian", "Finnish", "Flemish", "French", "Germanic", "Greek", "Hungarian", "Icelandic", "Irish", "Italian", "Jewish", "New Zealand", "Norwegian", "Polish", "Portuguese", "Romanian", "Scots", "Slavic", "Slovenian", "Spanish", "Swedish", "Swiss", "USA")
+european <- c("Ancient Greek", "Ancient Roman", "Australian", "Basque", "Bulgarian", "Canadian", "Croatian", "Czech", "Danish",
+    "Dutch", "English", "Estonian", "Finnish", "Flemish", "French", "Germanic", "Greek", "Hungarian", "Icelandic", "Irish",
+    "Italian", "Jewish", "New Zealand", "Norwegian", "Polish", "Portuguese", "Romanian", "Scots", "Slavic", "Slovenian",
+    "Spanish", "Swedish", "Swiss", "USA")
 asian    <- c("Chinese", "Indian", "Japanese")
 other    <- c("Arabic", "Black", "Latino")
 groupMembership <- function(e) { if (e %in% european) { "European" } else { if (e %in% asian) { "Asian" } else { "Other" } } }
@@ -4378,6 +4399,8 @@ h$Group <- as.factor(sapply(h$Ethnicity, groupMembership))
 #   Asian European    Other
 #     507     3379      116
 
+## We use 'Fl' (floruit/flourished), when a person is believed to have done their most important work,
+## since birth/death is often unavailable.
 ## group to decades by rounding:
 h$Fl.decade <- round(h$Fl, digits=-1)
 hd <- subset(select=c(Fl.decade, Group), h)
@@ -4412,42 +4435,68 @@ head(hdcount, n=20)
 # 5        -440    Asian     1
 # 192      -440 European    11
 
-One issue with the count data: decades with zero significant figures from a group (which happens frequently) get suppressed. Some tools can handle the omission automatically but many cannot, so we need to manually insert any missing
-
+## One issue with the count data: decades with zero significant figures from a group
+## (which happens frequently) get suppressed. Some tools can handle the omission
+## automatically but many cannot, so we need to manually insert any missing decades with '0'
 decades <- seq(-700, 1950, by=10)
 for (i in 1:length(decades)) {
     d <- decades[i]
-    if (nrow(hdcount[hdcount$Fl.decade==d & hdcount$Group=="European",])==0) { hdcount <- rbind(hdcount, data.frame(Fl.decade=d, Group="European", Count=0))}
-    if (nrow(hdcount[hdcount$Fl.decade==d & hdcount$Group=="Asian",])==0) { hdcount <- rbind(hdcount, data.frame(Fl.decade=d, Group="Asian", Count=0))}
-    if (nrow(hdcount[hdcount$Fl.decade==d & hdcount$Group=="Other",])==0) { hdcount <- rbind(hdcount, data.frame(Fl.decade=d, Group="Other", Count=0))}
+    if (nrow(hdcount[hdcount$Fl.decade==d & hdcount$Group=="European",])==0) {
+        hdcount <- rbind(hdcount, data.frame(Fl.decade=d, Group="European", Count=0))}
+    if (nrow(hdcount[hdcount$Fl.decade==d & hdcount$Group=="Asian",])==0) {
+        hdcount <- rbind(hdcount, data.frame(Fl.decade=d, Group="Asian", Count=0))}
+    if (nrow(hdcount[hdcount$Fl.decade==d & hdcount$Group=="Other",])==0) {
+        hdcount <- rbind(hdcount, data.frame(Fl.decade=d, Group="Other", Count=0))}
     }
 hdcount <- hdcount[order(hdcount$Fl.decade),]
 
-library(ggplot2)
-with(hdcount, qplot(Fl.decade, Count, color=Group) + stat_smooth())
-# https://imgur.com/a/cG4kM
-with(hdcount, qplot(Fl.decade, log1p(Count), color=Group) + stat_smooth())
+library(ggplot2); library(gridExtra)
+c1 <- with(hdcount, qplot(Fl.decade, Count, color=Group) + stat_smooth())
+c2 <- with(hdcount, qplot(Fl.decade, log1p(Count), color=Group) + stat_smooth())
+grid.arrange(c1, c2, ncol=1)
+~~~
 
+The growth in human population and accomplishment post-1400 is so dramatic that it obscures earlier temporal variations:
+
+![Counts of "significant figures" in _Human Accomplishment_ (Murray 2003) by geographic region, raw and log-transformed](/images/2003-murray-humanaccomplishment-region-counts.png)
+
+Log-transformed, we can still see the inverted-V shape of European counts, but it's somewhat subtle and does leave room for doubt about sampling error.
+Moving on to reproducing the proportions plot:
+
+~~~{.R}
 ## Create proportions by summing per decade, then looping over each group & dividing by total for that decade:
 decadeTotals <- aggregate(Count ~ Fl.decade, sum, data=hdcount)
 for (i in 1:nrow(hdcount)) {
-        p <- hdcount[i,]$Count / decadeTotals[decadeTotals$Fl.decade == hdcount[i,]$Fl.decade,]$Count
+        total <- decadeTotals[decadeTotals$Fl.decade == hdcount[i,]$Fl.decade,]$Count
+        p <- hdcount[i,]$Count / total
         hdcount$Proportion[i] <- if(is.nan(p)) { 0 } else { p }
+        hdcount$Total[i] <- total
 }
 with(hdcount, qplot(Fl.decade, Proportion, color=Group) + stat_smooth() + coord_cartesian(ylim = c(0, 1)))
-# https://imgur.com/a/kfwZl
+~~~
 
-efit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="European")$Count)
-afit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="Asian")$Count)
-ofit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="Other")$Count)
-par(mfrow=c(3,1))
-plot(forecast(efit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
-plot(forecast(afit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
-plot(forecast(ofit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
-# https://imgur.com/a/qPL6a
+![Relative proportions of "significant figures" in _Human Accomplishment_ (Murray 2003) by geographic region, LOESS-smoothed](/images/2003-murray-humanaccomplishment-region-proportions.png)
 
-Bootstrap: package up the various transformations, so we can sample-with-replacement the original dataset, transform, and plot repeatedly
+We successfully reproduce it, modulo the LOESS standard errors (which can be disabled by adding `se=FALSE` to `stat_smooth()`), including the unwanted nonsensical extrapolations.
+It is possible with some tricky ggplot2 functionality to add in binomial smoothing (along with some jitter to unbunch the datapoints at the modal 0).
 
+~~~{.R}
+## roughly equivalent to:
+# glm(cbind(Count,Total) ~ splines::ns(Fl.decade,3), family="binomial", data=hdcount, subset=Group=="European")
+binomial_smooth <- function(...) { geom_smooth(se=FALSE, method = "glm", method.args = list(family = "binomial"), ...) }
+with(hdcount, qplot(Fl.decade, Proportion, color=Group) +
+    binomial_smooth(formula = y ~ splines::ns(x, 3)) +
+    geom_jitter(aes(color=Group), width=0.013,, height=0.013))
+~~~
+
+![Relative proportions of "significant figures" in _Human Accomplishment_ (Murray 2003) by geographic region, binomial-spline-smoothed for sensible extrapolation](/images/2003-murray-humanaccomplishment-region-proportions-binomialspline.png)
+
+This still doesn't provide any indication of sampling error uncertainty, however.
+Kirkegaard provides one with CIs derived from bootstrapping, so I will provide something a little different: visualizing the uncertainty *dynamically* by graphing the smoothed proportions for each resample in an animation of hundreds of bootstrap samples.
+
+So to do this bootstrap, we package up the various transformations from before, so we can sample-with-replacement the original dataset^[Strictly speaking we could probably do a parametric bootstrap by counting per decade, and treating each one as a Poisson estimation, and generating random deviates, but that runs into issues with decades with 0 figures (the MLE might estimate a rate of 0, but we know that's wrong).], transform, and plot repeatedly:
+
+~~~{.R}
 transformAndProportion <- function(df) {
     df$Fl.decade <- round(df$Fl, digits=-1)
     dfd <- subset(select=c(Fl.decade, Group), df)
@@ -4456,9 +4505,12 @@ transformAndProportion <- function(df) {
     decades <- seq(-700, 1950, by=10)
     for (i in 1:length(decades)) {
         d <- decades[i]
-        if (nrow(dfdcount[dfdcount$Fl.decade==d & dfdcount$Group=="European",])==0) { dfdcount <- rbind(dfdcount, data.frame(Fl.decade=d, Group="European", Count=0))}
-        if (nrow(dfdcount[dfdcount$Fl.decade==d & dfdcount$Group=="Asian",])==0) { dfdcount <- rbind(dfdcount, data.frame(Fl.decade=d, Group="Asian", Count=0))}
-        if (nrow(dfdcount[dfdcount$Fl.decade==d & dfdcount$Group=="Other",])==0) { dfdcount <- rbind(dfdcount, data.frame(Fl.decade=d, Group="Other", Count=0))}
+        if (nrow(dfdcount[dfdcount$Fl.decade==d & dfdcount$Group=="European",])==0) {
+    dfdcount <- rbind(dfdcount, data.frame(Fl.decade=d, Group="European", Count=0))}
+        if (nrow(dfdcount[dfdcount$Fl.decade==d & dfdcount$Group=="Asian",])==0) {
+    dfdcount <- rbind(dfdcount, data.frame(Fl.decade=d, Group="Asian", Count=0))}
+        if (nrow(dfdcount[dfdcount$Fl.decade==d & dfdcount$Group=="Other",])==0) {
+    dfdcount <- rbind(dfdcount, data.frame(Fl.decade=d, Group="Other", Count=0))}
     }
     dfdcount <- dfdcount[order(dfdcount$Fl.decade),]
     decadeTotals <- aggregate(Count ~ Fl.decade, sum, data=dfdcount)
@@ -4473,17 +4525,30 @@ bootPlot <- function(df) {
     n <- nrow(df)
     bootDf <- df[sample(1:n, n, replace=TRUE),]
     bootDfdcount <- transformAndProportion(bootDf)
-    ## WARNING: can't just call qplot due to animation/ggplot2 bug; have to assign & print
-    p <- with(bootDfdcount, qplot(Fl.decade, Proportion, color=Group) + stat_smooth(method="loess", se=FALSE) + coord_cartesian(ylim = c(0, 1)))
+    ## WARNING: can't just call qplot due to animation/ggplot2 bug; have to assign & 'print'
+    p <- with(bootDfdcount, qplot(Fl.decade, Proportion, color=Group) +
+        binomial_smooth(formula = y ~ splines::ns(x, 3)) +
+        geom_jitter(aes(color=Group), width=0.013,, height=0.013))
     print(p)
     }
-# bootPlot(h)
 library(animation)
-saveGIF({for (i in 1:200) { bootPlot(h) }}, interval=0.15, ani.width=1300, ani.height=700, movie.name="humanaccomplishment-proportions-timeseries.gif")
+saveGIF({for (i in 1:200) { bootPlot(h) }}, interval=0.15, ani.width=1300, ani.height=700,
+    movie.name="2003-murray-humanaccomplishment-region-proportions-bootstrap.gif", clean=FALSE)
+~~~
 
-max.p=5, max.q=5, max.P=5, max.Q=5, max.order=5, max.d=5, max.D=5, start.p=5, start.q=5, start.P=5, start.Q=5
+![Animation of repeatedly resampling & plotting relative proportions of "significant figures" in _Human Accomplishment_ (Murray 2003) by geographic region, demonstrating effects of sampling error on proportions & historical curves](/images/2003-murray-humanaccomplishment-region-proportions-bootstrap.gif)
 
-binomial_smooth <- function(...) { geom_smooth(se=FALSE, method = "glm", method.args = list(family = "binomial"), ...) } ; with(hdcount, qplot(Fl.decade, Proportion, color=Group) + binomial_smooth(formula = y ~ splines::ns(x, 3)) + geom_jitter(aes(color=Group), width=0.013,, height=0.013))
+The bootstrap animation suggests to me that while the very earliest time-periods are opaque and the Dark Ages difference between Europe & Asia may be somewhat higher or lower, the overall shape doesn't change much.
+
+~~~{.R}
+efit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="European")$Count)
+afit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="Asian")$Count)
+ofit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="Other")$Count)
+par(mfrow=c(3,1))
+plot(forecast(efit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
+plot(forecast(afit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
+plot(forecast(ofit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
+# https://imgur.com/a/qPL6a
 ~~~
 
 # Program for non-spaced-repetition review of past written materials for serendipity & rediscovery: Archive Revisiter
@@ -4544,7 +4609,8 @@ Alternately, a geometric series might be a bit kinder and not too front-loaded:
 review <- function(n, r, a) { a * (1 - r^n) / (1 - r) }
 reviews <- function(n, r, a) { sapply(1:n, function(nn) { review(nn, r, a) }) }
 findR <- function (firstReview=31, n_total=3, years=50) {  optimize(interval=c(0, 1000),
-    f = function(r) { abs(sum(sapply(1:n_total, function(n){review(n, a=firstReview, r=r)})) - (365*years)) })$minimum }
+    f = function(r) { abs(sum(sapply(1:n_total,
+         function(n){review(n, a=firstReview, r=r)})) - (365*years)) })$minimum }
 findR(firstReview=30, n_total=4, years=50)
 # [1] 7.728823216
 round(reviews(4, 7.728823216, 30))
