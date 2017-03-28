@@ -811,6 +811,76 @@ V <- function(w, b, m=250) { j <- qbinom(w/m,b,1/2);
 
 (This is sufficiently fast for all values tested that it is not worth memoizing using the relatively slow `memoise`.)
 
+With the fast exact value function, we can also experiment with ways to approximate it, such as random forests
+
+~~~{.R}
+n <- 100000
+w <- runif(n, min=0, max=250)
+b <- sample(0:250, n, replace=TRUE)
+v <- unlist(Map(V, w, b))
+df <- data.frame(Wealth=w, Rounds=b, Value=v)
+
+library(randomForest)
+r <- randomForest(Value ~ Wealth + Rounds, data=df); r
+# ...          Mean of squared residuals: 4.07376717
+#                        % Var explained: 99.78
+library(neuralnet)
+n <- neuralnet(Value ~ Wealth + Rounds, data=df, hidden=c(20,20))
+prediction(n)
+
+library(mxnet)
+mx.set.seed(0)
+model <- mx.mlp(data=as.matrix(subset(df,select=c("Wealth","Rounds"))), label=df$Value, hidden_node=c(40,40,40), out_node=1, out_activation="rmse",  array.layout = "rowmajor", num.round=5000, array.batch.size=1000, learning.rate=4e-6, momentum=0.9, eval.metric=mx.metric.rmse)
+
+model <- mx.mlp(data=as.matrix(subset(df,select=c("Wealth","Rounds"))), label=df$Value, activation="relu", hidden_node=c(40,40,40), out_node=1, out_activation="rmse",  array.layout = "rowmajor", num.round=5000, array.batch.size=10, learning.rate=4e-6, momentum=0.9, eval.metric=mx.metric.rmse, ctx=mx.cpu())
+
+
+# Define the input data
+data <- mx.symbol.Variable("data")
+
+
+
+data <- mx.symbol.Variable("data")
+fc1 <- mx.symbol.FullyConnected(data, name="fc1", num_hidden=128)
+act1 <- mx.symbol.Activation(fc1, name="relu1", act_type="relu")
+fc2 <- mx.symbol.FullyConnected(act1, name="fc2", num_hidden=64)
+act2 <- mx.symbol.Activation(fc2, name="relu2", act_type="relu")
+fc3 <- mx.symbol.FullyConnected(act2, name="fc3", num_hidden=10)
+# Use linear regression for the final output layer
+lro <- mx.symbol.LinearRegressionOutput(fc3)
+mx.set.seed(0)
+model <- mx.model.FeedForward.create(lro, X=as.matrix(subset(df,select=c("Wealth","Rounds"))), y=df$Value,
+    ctx=mx.gpu(),     num.round=50000, array.batch.size=10000,
+    learning.rate=5e-6, momentum=0.9,  eval.metric=mx.metric.rmse)
+
+data <- mx.symbol.Variable("data")
+perLayerNN <- 10
+fc1 <- mx.symbol.FullyConnected(data, name="fc1", num_hidden=perLayerNN)
+act1 <- mx.symbol.Activation(fc1, name="relu1", act_type="relu")
+fc2 <- mx.symbol.FullyConnected(act1, name="fc2", num_hidden=perLayerNN)
+act2 <- mx.symbol.Activation(fc2, name="relu2", act_type="relu")
+
+finalFc <- mx.symbol.FullyConnected(act2, num_hidden=1)
+# Use linear regression for the final output layer
+lro <- mx.symbol.LinearRegressionOutput(finalFc)
+mx.set.seed(0)
+model <- mx.model.FeedForward.create(lro, X=as.matrix(subset(df,select=c("Wealth","Rounds"))), y=df$Value,
+    ctx=mx.gpu(),     num.round=5000,
+    learning.rate=2e-6, eval.metric=mx.metric.rmse, array.layout="rowmajor")
+
+~~~
+
+
+<!--
+Python:
+
+~~~{.Python}
+def V(w, b, m=250):
+   j <- qbinom(w/m,b,1/2)
+    return 1.2^b * 1.5^-j * (w+m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2)))
+~~~
+-->
+
 ### Simulation Performance
 
 The implementations here could be wrong, or decision trees not actually optimal like claimed.
