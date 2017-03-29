@@ -707,7 +707,7 @@ brokenLinks = [
  , ("docs/2012-susser.pdf", "/docs/spacedrepetition/2012-susser.pdf")
  , ("docs/2012-takeuchi.pdf", "/docs/dnb/2012-takeuchi.pdf")
  , ("docs/2012-woodley.pdf", "/docs/algernon/2012-woodley.pdf")
- , ("docs/melatonin/2012-wood.pdf.", "/docs/melatonin/2012-wood.pdf.")
+ , ("docs/melatonin/2012-wood.pdf.", "/docs/melatonin/2012-wood.pdf")
  , ("docs/2012-wylie.pdf", "/docs/nicotine/2012-wylie.pdf")
  , ("docs/2012-young-2.pdf", "/docs/culture/2012-young-2.pdf")
  , ("docs/2012-young.pdf", "/docs/culture/2012-young.pdf")
@@ -1078,4 +1078,8 @@ brokenLinks = [
  , ("plastination)", "/plastination")
  , ("xmonad-advocacy", "http://sawfish.wikia.com/wiki/Comparison_of_extensible_window_managers")
  , ("docs/murray", "/docs/2003-murray-human-accomplishment.pdf")
+ , ("images/littleboy/index.html", "https://github.com/gwern/gwern.net/tree/master/images/littleboy")
+ , ("littleboy/index.html", "/docs/eva/2005-little-boy")
+ , ("docs/2016-levitt.pdflevitt", "/docs/2016-levitt.pdf")
+ , ("docs/dnb/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/dnb")
  ]
