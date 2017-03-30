@@ -57,7 +57,7 @@ $$0.6 \cdot (25+25) + 0.4 \cdot (25-25) = 30$$
 
 It's true that 40% of the time, we go bankrupt and so we couldn't play again... but there are no more plays in _b_=1 so avoiding bankruptcy boots nothing.
 
-We can treat this coin-flipping game as a [Markov decision process](!Wikipedia).
+We can treat this coin-flipping game as a tree-structured [Markov decision process](!Wikipedia).
 For more possible bets, the value of a bet of a particular amount given a wealth _w_ and bets remaining _b_-1 will recursively depend on the best strategy for the two possible outcomes (weighted by probability), giving us a Bellman value equation to solve like:
 
 $$V(w,b) = \max_{x \in [0,w]}[0.6 \cdot V(\min(w+x, 250), b-1) + 0.4 \cdot V(w-x, b-1) ]$$
@@ -811,15 +811,41 @@ V <- function(w, b, m=250) { j <- qbinom(w/m,b,1/2);
 
 (This is sufficiently fast for all values tested that it is not worth memoizing using the relatively slow `memoise`.)
 
-With the fast exact value function, we can also experiment with ways to approximate it, such as random forests
+<!--
+I want a Python version which can be used in OpenAI gym, since computing the value function with a decision tree is too slow in Python.
+Python: is qbinom in numpy? what's with the j:0?
+
+~~~{.Python}
+def V(w, b, m=250):
+   j <- qbinom(w/m,b,1/2)
+    return 1.2^b * 1.5^-j * (w+m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2)))
+~~~
+-->
+
+#### Graphing the Value function
+
+
+With an exact value function, we can visualize it to get an idea of how the wealth/rounds interact and how difficult it would be to approximate it.
+We can generate many iterates, interpolate, and graph:
 
 ~~~{.R}
-n <- 100000
+n <- 50000
 w <- runif(n, min=0, max=250)
 b <- sample(0:250, n, replace=TRUE)
 v <- unlist(Map(V, w, b))
 df <- data.frame(Wealth=w, Rounds=b, Value=v)
 
+library(akima)
+library(plot3D)
+dfM <- interp(df$Wealth, df$Rounds, df$Value, duplicate="strip")
+par(mfrow=c(1,2), mar=0)
+persp(dfM$x, dfM$y, dfM$z, xlab="Wealth", ylab="Rounds left", zlab="Value", ticktype="detailed")
+scatter3D(df$Wealth, df$Rounds, df$Value, theta=-25, xlab="Wealth", ylab="Rounds left", zlab="Value", ticktype="detailed")
+~~~
+
+![3D plots of the value function varying with wealth available to bet & rounds left to bet in in order to reach the \$250 maximum payout](/images/coinflip-valuefunction.png)
+
+~~~{.R}
 library(randomForest)
 r <- randomForest(Value ~ Wealth + Rounds, data=df); r
 # ...          Mean of squared residuals: 4.07376717
@@ -854,32 +880,36 @@ model <- mx.model.FeedForward.create(lro, X=as.matrix(subset(df,select=c("Wealth
     learning.rate=5e-6, momentum=0.9,  eval.metric=mx.metric.rmse)
 
 data <- mx.symbol.Variable("data")
-perLayerNN <- 10
+perLayerNN <- 30
 fc1 <- mx.symbol.FullyConnected(data, name="fc1", num_hidden=perLayerNN)
 act1 <- mx.symbol.Activation(fc1, name="relu1", act_type="relu")
 fc2 <- mx.symbol.FullyConnected(act1, name="fc2", num_hidden=perLayerNN)
 act2 <- mx.symbol.Activation(fc2, name="relu2", act_type="relu")
+fc3 <- mx.symbol.FullyConnected(act2, name="fc2", num_hidden=perLayerNN)
+act3 <- mx.symbol.Activation(fc3, name="relu2", act_type="relu")
 
-finalFc <- mx.symbol.FullyConnected(act2, num_hidden=1)
+finalFc <- mx.symbol.FullyConnected(act3, num_hidden=1)
 # Use linear regression for the final output layer
 lro <- mx.symbol.LinearRegressionOutput(finalFc)
-mx.set.seed(0)
+mx.set.seed(1)
 model <- mx.model.FeedForward.create(lro, X=as.matrix(subset(df,select=c("Wealth","Rounds"))), y=df$Value,
-    ctx=mx.gpu(),     num.round=5000,
-    learning.rate=2e-6, eval.metric=mx.metric.rmse, array.layout="rowmajor")
-
+    ctx=mx.gpu(),     num.round=50000,
+    learning.rate=5e-6, eval.metric=mx.metric.rmse, array.layout="rowmajor")
 ~~~
 
+2x10: no
+2x15: yes
+3x5: no
+1x30: 4.15
+3x10: no
+3x15: no
+3x20: no
+3x25: no
+3x30: no
 
-<!--
-Python:
-
-~~~{.Python}
-def V(w, b, m=250):
-   j <- qbinom(w/m,b,1/2)
-    return 1.2^b * 1.5^-j * (w+m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2)))
-~~~
+why do they keep getting stuck near RMSE=42?
 -->
+
 
 ### Simulation Performance
 
@@ -1510,6 +1540,7 @@ Or in longer form, the value of a action/bet _x_ is `(1-sp)*(0.6*V(w+x,b-1) + 0.
 
 What is _sp_ as a distribution?
 Well, one might believe that every round, there is a ~1% chance of the game stopping, in which case _sp_ is the memoryless geometric distribution (not exponential distribution, since this is a discrete setup); in this case, one must discount each additional round _n_ by 1% cumulatively.
+(Discounting in general could be seen as reflecting a probability of stopping at each stage.)
 
 This has the difficulty that hypothetically, a game might go on indefinitely long, but since a player must eventually hit \$0 or \$250 and stop playing, it would turn out like the penny simulator - after a few thousand rounds, the probability of having not reached \$250 is so small it can't be handed by most software.
 The problem is more that this expands the states out enough to again make it unevaluable, so it helps to put an upper bound.
