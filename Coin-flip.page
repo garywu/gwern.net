@@ -845,71 +845,53 @@ scatter3D(df$Wealth, df$Rounds, df$Value, theta=-25, xlab="Wealth", ylab="Rounds
 
 ![3D plots of the value function varying with wealth available to bet & rounds left to bet in in order to reach the \$250 maximum payout](/images/coinflip-valuefunction.png)
 
+#### Approximating the Exact Value Function
+
+The value function winds up looking simple, a smooth landscape tucked down at the edges.
+A value function computed by decision trees is a bulky and hard to carry around sort of thing, weighing perhaps gigabytes in size.
+Especially looking at this value function, it's clear that it can be easily approximated or memorized by another algorithm like random forests or neural networks.
+(Usually, a NN has a hard time learning a value function because it's a reinforcement learning problem where it's unclear how actions are linked to rewards, but in this case, it is the far easier setting of supervised learning.)
+
+A random forest works fine, getting 0.4 [RMSE](!Wikipedia):
+
 ~~~{.R}
 library(randomForest)
-r <- randomForest(Value ~ Wealth + Rounds, data=df); r
-# ...          Mean of squared residuals: 4.07376717
-#                        % Var explained: 99.78
+r <- randomForest(Value ~ Wealth + Rounds, ntree=1000, data=df); r
+# ...
+#           Mean of squared residuals: 1.175970325
+#                     % Var explained: 99.94
+sqrt((predict(r) - df$Value)^2)
+# [1] 0.407913389
+~~~
+
+It can also be approximated with NN. For example, in R one can use [MXNet](http://mxnet.io/) and a 1x30 or 2x15^[Presumably a 3x5 or smaller NN would also work, but I experienced convergence issues with the SGD optimizer for all 3-layer NNs I experimented with, and as of 29 March 2017, a MXNet bug blocked use of the better optimizers.] ReLu feedforward NN will solve it to <4 RMSE:
+
+~~~{.R}
+## very slow
 library(neuralnet)
 n <- neuralnet(Value ~ Wealth + Rounds, data=df, hidden=c(20,20))
-prediction(n)
+# prediction(n)
 
+## GPU-accelerated:
 library(mxnet)
 mx.set.seed(0)
-model <- mx.mlp(data=as.matrix(subset(df,select=c("Wealth","Rounds"))), label=df$Value, hidden_node=c(40,40,40), out_node=1, out_activation="rmse",  array.layout = "rowmajor", num.round=5000, array.batch.size=1000, learning.rate=4e-6, momentum=0.9, eval.metric=mx.metric.rmse)
-
-model <- mx.mlp(data=as.matrix(subset(df,select=c("Wealth","Rounds"))), label=df$Value, activation="relu", hidden_node=c(40,40,40), out_node=1, out_activation="rmse",  array.layout = "rowmajor", num.round=5000, array.batch.size=10, learning.rate=4e-6, momentum=0.9, eval.metric=mx.metric.rmse, ctx=mx.cpu())
-
-
-# Define the input data
-data <- mx.symbol.Variable("data")
-
-
-
-data <- mx.symbol.Variable("data")
-fc1 <- mx.symbol.FullyConnected(data, name="fc1", num_hidden=128)
-act1 <- mx.symbol.Activation(fc1, name="relu1", act_type="relu")
-fc2 <- mx.symbol.FullyConnected(act1, name="fc2", num_hidden=64)
-act2 <- mx.symbol.Activation(fc2, name="relu2", act_type="relu")
-fc3 <- mx.symbol.FullyConnected(act2, name="fc3", num_hidden=10)
-# Use linear regression for the final output layer
-lro <- mx.symbol.LinearRegressionOutput(fc3)
-mx.set.seed(0)
-model <- mx.model.FeedForward.create(lro, X=as.matrix(subset(df,select=c("Wealth","Rounds"))), y=df$Value,
-    ctx=mx.gpu(),     num.round=50000, array.batch.size=10000,
-    learning.rate=5e-6, momentum=0.9,  eval.metric=mx.metric.rmse)
-
+## 2x30 ReLu FC NN for linear regression with RMSE loss:
 data <- mx.symbol.Variable("data")
 perLayerNN <- 30
-fc1 <- mx.symbol.FullyConnected(data, name="fc1", num_hidden=perLayerNN)
-act1 <- mx.symbol.Activation(fc1, name="relu1", act_type="relu")
-fc2 <- mx.symbol.FullyConnected(act1, name="fc2", num_hidden=perLayerNN)
-act2 <- mx.symbol.Activation(fc2, name="relu2", act_type="relu")
-fc3 <- mx.symbol.FullyConnected(act2, name="fc2", num_hidden=perLayerNN)
-act3 <- mx.symbol.Activation(fc3, name="relu2", act_type="relu")
-
+fc1     <- mx.symbol.FullyConnected(data, name="fc1", num_hidden=perLayerNN)
+act1    <- mx.symbol.Activation(fc1, name="relu1", act_type="relu")
+fc2     <- mx.symbol.FullyConnected(act1, name="fc2", num_hidden=perLayerNN)
+act2    <- mx.symbol.Activation(fc2, name="relu2", act_type="relu")
+fc3     <- mx.symbol.FullyConnected(act2, name="fc2", num_hidden=perLayerNN)
+act3    <- mx.symbol.Activation(fc3, name="relu2", act_type="relu")
 finalFc <- mx.symbol.FullyConnected(act3, num_hidden=1)
-# Use linear regression for the final output layer
 lro <- mx.symbol.LinearRegressionOutput(finalFc)
-mx.set.seed(1)
 model <- mx.model.FeedForward.create(lro, X=as.matrix(subset(df,select=c("Wealth","Rounds"))), y=df$Value,
     ctx=mx.gpu(),     num.round=50000,
     learning.rate=5e-6, eval.metric=mx.metric.rmse, array.layout="rowmajor")
 ~~~
 
-2x10: no
-2x15: yes
-3x5: no
-1x30: 4.15
-3x10: no
-3x15: no
-3x20: no
-3x25: no
-3x30: no
-
-why do they keep getting stuck near RMSE=42?
--->
-
+Some experimenting with fitting polynomial regressions did not give any decent fits for less than 5 degrees, but probably some combination of logs and polynomials could compactly encode the value function.
 
 ### Simulation Performance
 
