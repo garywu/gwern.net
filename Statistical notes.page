@@ -2148,7 +2148,7 @@ There are a few sources of data, primarily SNP data, which are freely available 
 
 # Power analysis for racial admixture studies of continuous variables
 
-> I consider power analysis of a genomic racial admixture study for detecting genetic group differences affecting a continuous trait such as IQ in US African-Americans, where ancestry is directly measured by genome sequencing and the comparisons are all within-family to eliminate confounding by population structure or racism/colorism/discrimination. The necessary sample size for well-powered studies is closely related to the average size of differences in ancestry percentage between siblings, as the upper bound on IQ effect per percentage is small, requiring large differences in ancestry to detect easily. A within-family comparison of siblings, due to the relatively small differences in ancestry between siblings estimated from IBD measurements of siblings, might require _n_>50,000 pairs of siblings to detect possible effects on IQ, an infeasible sample size. An alternative design focuses on increasing the available ancestry differences within a family unit by comparing *adoptees* with siblings; the larger within-population standard deviation of ancestry creates larger & more easily-detected IQ differences. A meta-analysis of past admixture & ancestry studies suggests the SD in samples may range from 2% to 17.86% with a mean of 14.4%, yielding sample sizes of _n_>20,000, _n_=1300, and _n_=600. Hence, an adoption study is probably in the feasible range, with required sample sizes comparable to annual adoption rates among US African-Americans.
+> I consider power analysis of a genomic racial admixture study for detecting genetic group differences affecting a continuous trait such as IQ in US African-Americans, where ancestry is directly measured by genome sequencing and the comparisons are all within-family to eliminate confounding by population structure or racism/colorism/discrimination. The necessary sample size for well-powered studies is closely related to the average size of differences in ancestry percentage between siblings, as the upper bound on IQ effect per percentage is small, requiring large differences in ancestry to detect easily. A within-family comparison of siblings, due to the relatively small differences in ancestry between siblings estimated from IBD measurements of siblings, might require _n_>50,000 pairs of siblings to detect possible effects on IQ, an infeasible sample size. An alternative design focuses on increasing the available ancestry differences within a family unit by comparing *adoptees* with siblings; the larger within-population standard deviation of ancestry creates larger & more easily-detected IQ differences. A random-effects meta-analysis of past admixture & ancestry studies suggests the SD in heterogeneous samples may range from 2% to 20% with a mean of 11% (95% predictive interval), yielding sample sizes of _n_>20,000, _n_=1100, and _n_=500. Hence, an adoption study is probably in the feasible range, with required sample sizes comparable to annual adoption rates among US African-Americans.
 
 [Admixture studies](!Wikipedia "Genetic admixture#Mapping") examine racial phenotypic differences in traits such as blood pressure by comparing people with ancestry from multiple groups, and correlating differences in ancestry percentage with differences in the phenotype.
 So, for example, African-Americans have higher blood-pressure than white Americans, and most African-Americans have an average white ancestry of something like 20-25% (see later); if having 26% white ancestry predicts slightly lower blood pressure while 24% predicts higher, that suggests the difference is (as is currently believed) genetic; and this logic can be used to narrow down to specific chromosome regions, and has contributed to study of [racial differences in disease](!Wikipedia "Race and health").
@@ -2326,7 +2326,7 @@ Reported figures from the genetics literature for European ancestry in US Africa
      > - According to Family Tree DNA.com, the average African American is 72.95% sub-Saharan African, 22.83% European and 1.7% Native American.
      > - According to National Geographic's Genographic Project, the average African American is 80% sub-Saharan African, 19% European and 1% Native American.
      > - According to AfricanDNA, in which I am a partner with Family Tree DNA, the average African American is 79% sub-Saharan African, 19% European and 2% Native American.
-- Bryc et al 2014, ["The Genetic Ancestry of African Americans, Latinos, and European Americans across the United States"](http://www.cell.com/ajhg/fulltext/S0002-9297\(14\)00476-5): mean 24%, SD not reported but [Figure S1/Figure S18](http://www.cell.com/cms/attachment/2040464074/2053978065/mmc1.pdf) look consistent with an SD ~4-5% (_n_=5269)
+- Bryc et al 2014, ["The Genetic Ancestry of African Americans, Latinos, and European Americans across the United States"](http://www.cell.com/ajhg/fulltext/S0002-9297\(14\)00476-5): mean 24%, SD not reported, and Bryc declined to provide any information about the study & population SD when contacted but pixel-counting [Figure S1/Figure S18](http://www.cell.com/cms/attachment/2040464074/2053978065/mmc1.pdf) yields the mean of 24% and an SD of ~17% (_n_=5269)
 - Baharian et al 2016, ["The Great Migration and African-American Genomic Diversity"](http://journals.plos.org/plosgenetics/article?id=info%3Adoi%2F10.1371%2Fjournal.pgen.1006059): reports 3 cohorts with European ancestry at:
 
     - SCCS: 14(13.65-14.43)% (_n_=2128)
@@ -2348,57 +2348,59 @@ Study,Mean,SD,N
 "Signorello et al 2010",0.071,0.08,379
 "Bryc et al 2010",0.185,0.0465,365
 "Nassir et al 2012",0.225,0.147,11712
+"Bryc et al 2014",0.24,0.17,5269
 "Kirkegaard et al 2016",0.17,0.11,140
 
 # what is the standard error/precision of a population SD? http://davidmlane.com/hyperstat/A19196.html
 admixture$SD.SE <- (0.71*admixture$SD) / sqrt(admixture$N)
 summary(admixture)
-#                   Study        Mean               SD                  N                SD.SE
-# Bryc et al 2010      :1   Min.   :0.07000   Min.   :0.0465000   Min.   :  136.00   Min.   :0.0009644066
-# Ducci et al 2009     :1   1st Qu.:0.08900   1st Qu.:0.0825000   1st Qu.:  196.25   1st Qu.:0.0018395436
-# Halder et al 2008    :1   Median :0.15650   Median :0.1000000   Median :  372.00   Median :0.0025457711
-# Kirkegaard et al 2016:1   Mean   :0.14400   Mean   :0.1010833   Mean   : 2266.00   Mean   :0.0037469989
-# Nassir et al 2012    :1   3rd Qu.:0.18125   3rd Qu.:0.1272500   3rd Qu.:  742.75   3rd Qu.:0.0056798961
-# Signorello et al 2010:1   Max.   :0.22500   Max.   :0.1470000   Max.   :11712.00   Max.   :0.0080973057
+#                    Study        Mean                 SD                  N               SD.SE
+#  Bryc et al 2010      :1   Min.   :0.0700000   Min.   :0.0465000   Min.   :  136.0   Min.   :0.0009644066
+#  Bryc et al 2014      :1   1st Qu.:0.1070000   1st Qu.:0.0850000   1st Qu.:  252.5   1st Qu.:0.0016954481
+#  Ducci et al 2009     :1   Median :0.1700000   Median :0.1100000   Median :  379.0   Median :0.0021739221
+#  Halder et al 2008    :1   Mean   :0.1577143   Mean   :0.1109286   Mean   : 2695.0   Mean   :0.0034492579
+#  Kirkegaard et al 2016:1   3rd Qu.:0.2050000   3rd Qu.:0.1400000   3rd Qu.: 3066.5   3rd Qu.:0.0047591374
+#  Nassir et al 2012    :1   Max.   :0.2400000   Max.   :0.1700000   Max.   :11712.0   Max.   :0.0080973057
+#  Signorello et al 2010:1
 
 library(metafor)
 r.mean <- rma(yi=Mean, sei=SD/sqrt(N), measure="SMD", ni=N, data=admixture); r.mean
-# Random-Effects Model (k = 6; tau^2 estimator: REML)
+# Random-Effects Model (k = 7; tau^2 estimator: REML)
 #
-# tau^2 (estimated amount of total heterogeneity): 0.0040 (SE = 0.0025)
-# tau (square root of estimated tau^2 value):      0.0630
-# I^2 (total heterogeneity / total variability):   99.76%
-# H^2 (total variability / sampling variability):  412.76
+# tau^2 (estimated amount of total heterogeneity): 0.0046 (SE = 0.0027)
+# tau (square root of estimated tau^2 value):      0.0680
+# I^2 (total heterogeneity / total variability):   99.82%
+# H^2 (total variability / sampling variability):  566.51
 #
 # Test for Heterogeneity:
-# Q(df = 5) = 3058.3980, p-val < .0001
+# Q(df = 6) = 3477.2614, p-val < .0001
 #
 # Model Results:
 #
 # estimate       se     zval     pval    ci.lb    ci.ub
-#   0.1440   0.0258   5.5729   <.0001   0.0933   0.1946
+#   0.1578   0.0258   6.1187   <.0001   0.1072   0.2083
 predict(r.mean)
 #   pred     se  ci.lb  ci.ub  cr.lb  cr.ub
-# 0.1440 0.0258 0.0933 0.1946 0.0106 0.2774
+# 0.1578 0.0258 0.1072 0.2083 0.0153 0.3003
 
 r.sd <- rma(yi=SD, sei=SD.SE, measure="SMD", ni=N, data=admixture); r.sd
-# Random-Effects Model (k = 6; tau^2 estimator: REML)
+# Random-Effects Model (k = 7; tau^2 estimator: REML)
 #
-# tau^2 (estimated amount of total heterogeneity): 0.0013 (SE = 0.0009)
-# tau (square root of estimated tau^2 value):      0.0367
-# I^2 (total heterogeneity / total variability):   99.64%
-# H^2 (total variability / sampling variability):  278.56
+# tau^2 (estimated amount of total heterogeneity): 0.0018 (SE = 0.0011)
+# tau (square root of estimated tau^2 value):      0.0425
+# I^2 (total heterogeneity / total variability):   99.77%
+# H^2 (total variability / sampling variability):  440.67
 #
 # Test for Heterogeneity:
-# Q(df = 5) = 2951.1360, p-val < .0001
+# Q(df = 6) = 3819.2793, p-val < .0001
 #
 # Model Results:
 #
 # estimate       se     zval     pval    ci.lb    ci.ub
-#   0.1008   0.0151   6.6789   <.0001   0.0712   0.1304
+#   0.1108   0.0162   6.8587   <.0001   0.0792   0.1425
 predict(r.sd)
-#   pred     se  ci.lb  ci.ub  cr.lb  cr.ub
-# 0.1008 0.0151 0.0712 0.1304 0.0231 0.1786
+#    pred     se  ci.lb  ci.ub  cr.lb  cr.ub
+#  0.1108 0.0162 0.0792 0.1425 0.0216 0.2001
 
 par(mfrow=c(2,1))
 forest(r.mean, slab=admixture$Study)
@@ -2410,9 +2412,9 @@ forest(r.sd, slab=admixture$Study)
 There is high heterogeneity, as expected, and the meta-analytic summary are consistent with simply taking the mean, so meta-analysis was not really necessary.
 
 The issue of heterogeneity depends on how one wants to interpret these numbers: as the true latent African-American population mean/SD of European ancestry, or as a way to estimate the possible spread of sampling?
-In the former, the heterogeneity is a serious issue because it suggests the estimate may be badly biased or at least is highly imprecise; in the latter, it is both a curse and a benefit, since it implies that it is possible to recruit for genetics studies samples with a wide range of ancestry (thereby greatly increasing statistical power) but also that one might get unlucky & wind up with a very ancestry-homogeneous sample (if the sample turns out to have an SD as high as 14.7%, excellent; if it's as low as 4.6%, one is doomed).
+In the former, the heterogeneity is a serious issue because it suggests the estimate may be badly biased or at least is highly imprecise; in the latter, it is both a curse and a benefit, since it implies that it is possible to recruit for genetics studies samples with a wide range of ancestry (thereby greatly increasing statistical power) but also that one might get unlucky & wind up with a very ancestry-homogeneous sample (if the sample turns out to have an SD as high as 20%, excellent; if it's as low as 7.9%, one is in trouble).
 
-So for power analysis one might check the meta-analytic mean case, as well as the [prediction interval](!Wikipedia) (a 95% CI around the SD/mean does not mean that 95% of the true effects, including the inherent heterogeneity, will fall in that interval): SDs of 2%, 14.4%, and 17.86%.
+So for power analysis one might check the meta-analytic mean case, as well as the [prediction interval](!Wikipedia) (a 95% CI around the SD/mean does not mean that 95% of the true effects, including the inherent heterogeneity, will fall in that interval): SDs of 2%, 11%, and 20%.
 (For any cost-benefit analysis or trying to optimize expenditures, one would want to work with the posterior distributions to average over everything, but for just general informative purposes, those 3 are good parameters to check.)
 
 ### Power simulation
@@ -2445,9 +2447,9 @@ power <- function(n, sd, iters=10000, n.parallel=8) {
     replicate(iters/n.parallel, adopteeTest(n, populationAncestrySD=sd)) }))) }
 
 ns <- seq(100, 10000, by=100)
-powerLow  <- sapply(ns, function(n) { power(n, sd=0.0231)})
-powerMean <- sapply(ns, function(n) { power(n, sd=0.1008)})
-powerHigh <- sapply(ns, function(n) { power(n, sd=0.1786)})
+powerLow  <- sapply(ns, function(n) { power(n, sd=0.0216)})
+powerMean <- sapply(ns, function(n) { power(n, sd=0.1108)})
+powerHigh <- sapply(ns, function(n) { power(n, sd=0.2001)})
 
 library(ggplot2); library(gridExtra)
 pl <- qplot(ns, powerLow)  + coord_cartesian(ylim = c(0,1))
@@ -2458,8 +2460,9 @@ grid.arrange(pl, pm, ph, ncol=1)
 
 ![Power analysis for detecting European ancestry on IQ in an adoptee family study with predicted low/mean/high population variance in ancestry percentage (higher variance=larger statistical power=fewer samples required)](/images/iq-racialadmixture-poweranalysis-africanamericaneuropeanancestry-sdsimulations.png)
 
-So for the worst-case SD, sample size is unclear but _n_>20,000 pairs; mean SD, _n_=1300 pairs; high SD, _n_=600 pairs.
-The latter two are feasible amounts for population registries or adoption-focused cohort studies, and combined with the less powerful but more common within-sibling comparisons, may deliver a precise answer to long-standing questions about the origins of group differences.
+So for the worst-case SD, sample size is unclear but _n_>20,000 pairs; mean SD, _n_=1100 pairs; high SD, _n_=500 pairs.
+The latter two are feasible amounts for population registries or adoption-focused cohort studies.
+Thus genome adoption studies, combined with the much less powerful but more common within-sibling comparisons, are capable of delivering precise answers to long-standing questions about the origins of group differences with moderate sample sizes.
 
 # Operating on an aneurysm
 
