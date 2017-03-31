@@ -1082,4 +1082,7 @@ brokenLinks = [
  , ("littleboy/index.html", "/docs/eva/2005-little-boy")
  , ("docs/2016-levitt.pdflevitt", "/docs/2016-levitt.pdf")
  , ("docs/dnb/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/dnb")
+ , ("newsletter/2017/02 |", "/newsletter/2017/02")
+ , ("newsletter/2017/2", "/newsletter/2017/02")
+ , ("newsletters", "/tags/newsletter")
  ]

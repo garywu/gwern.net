@@ -11,8 +11,7 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
-- Long Bets analysis?
-- Danbooru proposal?
+- `gwern.net`: HTTPS now mandatory; HTML sections rewritten using HTML5 semantic markup for hopefully better compatibility with screen readers & offline browsers like Pocket/ReadItLater; "importance" metadata added to all pages to rank them; "belief" metadata renamed more intuitively as "confidence"; finish adding 301 Redirects for all broken links & common typos; renamed & all darknet market pages for current terminology; rewrote Patreon profile
 
 # Media
 ## Links
@@ -21,28 +20,31 @@ Everything is heritable:
 
 - ["CRISPR/Cas9-mediated gene editing in human zygotes using Cas9 protein"](https://www.gwern.net/docs/genetics/2017-tang.pdf), Tang et al 2017 (no off-target mutations and efficiencies of 20/50/100% for various edits. As I predicted, the older papers, Liang et al 2015 / Kang et al 2016 / Komor et al 2016, were not state of the art and would be improved on considerably.0..0)
 - ["Psychiatric Genomics: An Update and an Agenda"](http://biorxiv.org/content/early/2017/03/10/115600), Sullivan et al 2017 ([commentary](https://plus.google.com/103530621949492999968/posts/MCXo4BH6koS))
+- ["Selection in Europeans on Fatty Acid Desaturases Associated with Dietary Changes"](https://academic.oup.com/mbe/article/doi/10.1093/molbev/msx103/3062804/Selection-in-Europeans-on-fatty-acid-desaturases), Buckley et al 2017 (More on recent human evolution with large between-country differences due to local adaptations.)
+- ["Genetic Variation in the Social Environment Contributes to Health and Disease"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006498), Baud et al 2017 (where does culture come from?)
 - ["Excess of genomic defects in a woolly mammoth on Wrangel island"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006601), Rogers & Slatkin 2017 ([media](https://www.nytimes.com/2017/03/02/science/woolly-mammoth-extinct-genetics.html "The Woolly Mammoth's Last Stand"); consequences of increasing genetic load: [mutational meltdown](https://en.wikipedia.org/wiki/Genetic_load#Deleterious_Mutation). Did this finish off the last population of woolly mammoths?)
-- ["Syphilis in Renaissance Europe: rapid evolution of an introduced sexually transmitted disease?"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1810019/pdf/15252975.pdf), Knell 2003 (still an open question, apparently)
-- ["Welcome to Pleistocene Park: In Arctic Siberia, Russian scientists are trying to stave off catastrophic climate change-by resurrecting an Ice Age biome complete with lab-grown woolly mammoths"](https://www.theatlantic.com/magazine/archive/2017/04/pleistocene-park/517779/)
-- ["Tuberculosis-resistant cows developed for the first time using CRISPR technology"](http://sciencebulletin.org/archives/9946.html)
+- ["Selective sweep analysis using village dogs highlights the pivotal role of the neural crest in dog domestication"](http://biorxiv.org/content/early/2017/03/21/118794), Pendleton et al 2017 (More on complex intellectual changes in higher mammals due to recent evolution due to soft sweeps: dog physical & behavioral domestication is due to a lot of small recent genetic changes. Evolution doesn't stop at the neck.)
+- ["Genome-Wide Analysis Of 113,968 Individuals In UK Biobank Identifies Four Loci Associated With Mood Instability"](http://biorxiv.org/content/early/2017/03/17/117796), Ward et al 2017 (UK Biobank, the gift that keeps on giving; continuing the themes of "everything is heritable" and "abnormal is normal")
+- ["Genetic overlap between schizophrenia and developmental psychopathology: a longitudinal approach applied to common childhood disorders between age 7 and 15 years"](http://biorxiv.org/content/early/2016/05/11/052829), Nivard et al 2016 (more generalized psychiatric genetic risk)
 
 AI:
 
 - [Nvidia announces 1080tis](https://www.reddit.com/r/MachineLearning/comments/5wt4lt/n_nvidia_1080ti_announced_700_march_5th_11gb/)
+- ["The workshop will mark the last of the ImageNet Challenge competitions, and focus on unanswered questions and directions for the future."](http://image-net.org/challenges/beyond_ilsvrc.php)
 - ["Deep Learning Reinvents the Hearing Aid: Finally, wearers of hearing aids can pick out a voice in a crowded room"](http://spectrum.ieee.org/consumer-electronics/audiovideo/deep-learning-reinvents-the-hearing-aid) (If anything, the audio samples sound too good to be true.)
 - ["Deep Voice: Real-time Neural Text-to-Speech"](https://arxiv.org/abs/1702.07825), Arik et al 2017
 - ["The Shattered Gradients Problem: If resnets are the answer, then what is the question?"](https://arxiv.org/abs/1702.08591), Balduzzi et al 2017 (successfully training 198-layer non-resnet feedforward NNs w/better initialization; apparently residual networks were never necessary - humans just have no idea how to train neural networks...)
 - ["Neural Episodic Control"](https://arxiv.org/pdf/1703.01988.pdf), Pritzel et al 2017
+- ["Parallel Multiscale Autoregressive Density Estimation"](https://arxiv.org/abs/1703.03664), Reed et al 2017 (Generating 512px photorealistic images & video with PixelCNNs rather than GANs)
+- ["Learning to Discover Cross-Domain Relations with Generative Adversarial Networks"](https://arxiv.org/abs/1703.05192), Kim et al 2017 (To quote the Reddit summary: "DiscoGANs - Answering the age old question: What would your face look like if it were actually a car." Paging Dr Hofstadter...)
 - ["Evolving Deep Neural Networks"](https://arxiv.org/abs/1703.00548), Miikkulainen et al 2017
 - ["Large-Scale Evolution of Image Classifiers"](https://arxiv.org/abs/1703.01041), Real et al 2017 (grossly inefficient and hobbled in some ways but still cool)
 - ["Network Morphism"](https://arxiv.org/pdf/1603.01670.pdf), Wei et al 2016 (A very nice inspiration from category theory. I wish I saw this out in the wild, because it would speed up architecture and hyperparameter optimization immeasurably if we didn't have to keep starting from scratch with every model.)
-- ["Artist Agent: A Reinforcement Learning Approach to Automatic Stroke Generation in Oriental Ink Painting"](https://arxiv.org/abs/1206.4634), Xie et al 2012 (RL is good for art experiments like this because many artistic criteria tend to be 'global' and non-differentiable or local - RMSE on pixels is not a good criterion.)
-- ["Understanding Synthetic Gradients and Decoupled Neural Interfaces"](https://arxiv.org/abs/1703.00522), Czarnecki et al 2017
-- ["Machine Learning Predicts Laboratory Earthquakes"](https://arxiv.org/abs/1702.05774), Rouet-Leduc et al 2017 ([media](https://www.technologyreview.com/s/603785/machine-learning-algorithm-predicts-laboratory-earthquakes/ "Machine-Learning Algorithm Predicts Laboratory Earthquakes: The breakthrough has astonished geologists and raises the possibility that real earthquake prediction could be next."))
 
 Statistics/meta-science/mathematics:
 
 - ["Empirical assessment of published effect sizes and power in the recent cognitive neuroscience and psychology literature"](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2000797), Szucs & Ioannidis 2017
+- ["Meta-assessment of bias in science"](https://www.gwern.net/docs/statistics/2017-fanelli.pdf), Fanelli et al 2017
 - ["When Evidence Says No, But Doctors Say Yes"](https://www.propublica.org/article/when-evidence-says-no-but-doctors-say-yes)
 - ["A Failure of Intelligence: Prominent physicist Freeman Dyson recalls the time he spent developing analytical methods to help the British Royal Air Force bomb German targets during World War II"](https://www.technologyreview.com/s/406789/a-failure-of-intelligence/)
 - ["Ten Lessons I Wish I Had Been Taught"](http://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html), Rota 1996
@@ -53,38 +55,42 @@ Politics/religion:
 
 - ["The Checkpoint: Terror, Power, and Cruelty"](http://bostonreview.net/archives/BR37.4/oded_naaman_israeli_defense_forces_palestinians_occupation.php)
 - ["The System that Wasn't There: Ayn Rand's Failed Philosophy (and why it matters)"](http://www.rotman.uwo.ca/the-system-that-wasnt-there-ayn-rands-failed-philosophy-and-why-it-matters/)
+- ["The Dark Enlightenment"](http://www.thedarkenlightenment.com/the-dark-enlightenment-by-nick-land/), Nick Land
 - [On the care and feeding of wealthy donors](http://www.newyorker.com/magazine/2012/08/27/schmooze-or-lose "Schmooze or Lose: Obama doesn't like cozying up to billionaires. Could it cost him the election?")
 - [The Politics of _Harry Potter_](https://en.wikipedia.org/wiki/Politics_of_Harry_Potter)
 - ["Trapping the Prince: Machiavelli and the Politics of Deception"](http://digilib.bc.edu/reserves/po041/kell/po04107.pdf), Dietz 1986
 - ["Propaganda as Literature: A Distant Reading of the Korean Central News Agency's Headlines"](https://xmarquez.github.io/KCNA/Reading_KCNA_headlines.html)
 - ["The Strange Rise and Fall of North Korea's Business Empire in Japan"](https://www.theatlantic.com/international/archive/2012/07/the-strange-rise-and-fall-of-north-koreas-business-empire-in-japan/260373/ "Since its 1950s founding, a Pyongyang-linked group called Chongyron has run everything from banks to newspapers, pushing propaganda out and pulling hard currency in. But now that's ending.")
-- ["Historical Dynamics & contingent conditions of religion"](http://blogs.discovermagazine.com/gnxp/2012/08/historical-dynamics-and-contingent-conditions-of-religion/)
-- [66 failed social interventions](http://80000hours.org/blog/66-social-interventions-gone-wrong)
 
 Psychology/biology:
 
+- ["Why _g_ Matters: The Complexity of Everyday Life"](https://www1.udel.edu/educ/gottfredson/reprints/1997whygmatters.pdf), Gottfredson 1996
 - The [Flexner Report](https://en.wikipedia.org/wiki/Flexner_Report)
+- ["Who Buried Paul?"](http://ludix.com/moriarty/paul.html) (A fun retrospective on the ["Paul McCartney is actually dead" Beatles conspiracy theory](https://en.wikipedia.org/wiki/Paul_is_dead) which, if you're like me, you've never heard of before but was apparently quite a thing. Featuring conspiracy theorists literally connecting the dots and seeing stars.﻿)
 - ["Working Memory Training Does Not Improve Performance on Measures of Intelligence or Other Measures of 'Far Transfer': Evidence From a Meta-Analytic Review"](http://pps.sagepub.com/content/11/4/512.full), Melby-Lervag et al 2016
 - ["Why don't all whales have cancer? A novel hypothesis resolving Peto's paradox"](https://academic.oup.com/icb/article/47/2/317/719209/Why-don-t-all-whales-have-cancer-A-novel), Nagy et al 2007
 - ["The Measured Man"](https://www.theatlantic.com/magazine/archive/2012/07/the-measured-man/309018/?single_page=truein "Larry Smarr, an astrophysicist turned computer scientist, has a new project: charting his every bodily function in minute detail. What he's discovering may be the future of health care.")
 - ["Total recall: the people who never forget: An extremely rare condition may transform our understanding of memory"](https://www.theguardian.com/science/2017/feb/08/total-recall-the-people-who-never-forget) (spaced repetition at work?)
 - ["Lost in Time in the Antarctic Ice Age"](https://scientistatwork.blogs.nytimes.com/2012/09/06/lost-in-time-in-the-antarctic-ice-age/)
-- ["On Being One's Own Rabbit: The Story of a Skirmish in the War on Disease [Tetany]"](http://www.fadedpage.com/books/20160325/html.php#Page_107), J.B.S. Haldane 1927, _Possible Worlds And Other Essays_
-- ["Shorn Scalps and Perceptions of Male Dominance"](https://www.gwern.net/docs/2012-mannes.pdf), Mannes 2012
+- ["Will 90yo Become The New 60yo?  As our lifespans have increased, so too have our active years. Can that go on?"](http://nautil.us/issue/46/balance/will-90-become-the-new-60-rp) (gerontology & compression of morbidity)
 
 Technology:
 
+- ["Don't Worry - It Can't Happen"](https://www.gwern.net/docs/1940-sciam-harrington-nuclearweapons-dontworryitcanthappen.pdf), Harrington, _Scientific American_ 1940
 - ["Compromising connectivity: information dynamics between the state and  society in a digitizing North Korea"](http://uskoreainstitute.org/wp-content/uploads/2017/03/Compromising-Connectivity-Final-Report.pdf), Kretchun et al 2017
 
     The details on NK use of digital censorship is interesting: steady progress in locking down Bluetooth and WiFi by software and then hardware modifications; use of Android security system/DRM to install audit log + regular screenshots to capture foreign media consumption; a whitelist/signed-media system to block foreign media from ever being viewed, with auto-deletion of offending files; watermarking (courtesy of an American university's misguided outreach) of media created on desktops to trace them; network blocking and surveillance; and efforts towards automatic bulk surveillance of text messages for 'South-Korean-style' phrases/words. Stallman's warnings about DRM are quite prophetic in the NK context - the system is secured against the *user*...
+- ["Fury Road: Did Uber Steal the Driverless Future From Google? Inside the vicious patent fight over self-driving technology"](https://www.bloomberg.com/news/features/2017-03-16/fury-road-did-uber-steal-the-driverless-future-from-google)
 - ["Damn Cool Algorithms: Homomorphic Hashing"](http://blog.notdot.net/2012/08/Damn-Cool-Algorithms-Homomorphic-Hashing)
 - [Computerizing tutoring](http://www.nytimes.com/2012/09/16/magazine/how-computerized-tutors-are-learning-to-teach-humans.html)
 
 Economics:
 
+- [Mechanics of the Crazy Eddie fraud](https://whitecollarfraud.com/crazy-eddie/crazy-eddie-fraud/)
 - ["Foreign Language Requirements Are a Waste of Time and Money"](http://econlog.econlib.org/archives/2012/08/the_marginal_pr.html)
 - [Measurement issues in the growth of economic inequality](http://www.econtalk.org/archives/2012/04/burkhauser_on_t.html)
 - [Selling one's life insurance policy](http://www.nytimes.com/2012/08/12/magazine/are-you-worth-more-dead-than-alive.html?pagewanted=all)
+- [The Somali Shilling: a proof-of-work fiat currency](https://jpkoning.blogspot.ca/2017/03/bringing-back-somali-shilling.html)
 - ["In Search of the Heart of the Online Cat-Industrial Complex"](https://www.wired.com/2012/08/ff_cats/all/)
 - ["The case of the disappearing teaspoons: longitudinal cohort study of the displacement of teaspoons in an Australian research institute"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1322240/), Lim et al 2005
 
@@ -100,35 +106,24 @@ Misc:
 - [Tiger versus lion](https://en.wikipedia.org/wiki/Tiger_versus_lion)
 - [The perils and pleasures of mincemeat pie](http://www.chicagoreader.com/chicago/mince-pie-the-real-american-pie/Content?oid=1267308)
 
-<!-- Back to 20? Aug 2012 -->
+<!-- Back to 20 Aug 2012 -->
 
 ## Books
 
 Nonfiction:
 
-Fiction:
+- [_Possible Worlds and Other Essays_](http://www.fadedpage.com/showbook.php?pid=20160325), [J.B.S. Haldane](https://en.wikipedia.org/wiki/J._B._S._Haldane) 1927 (review TODO)
+- http://www.berkshirehathaway.com/letters/letters.html
 
 ## Film/TV
 
 Live-action:
 
-- [_Breaking Bad_](https://en.wikipedia.org/wiki/Breaking_Bad):
-In retrospect, I'm surprised I took so long to watch this - after the arrest of Ross Ulbricht, a white man who was a materials science graduate student before dropping to try being an entrepreneur and then launching Silk Road 1 & becoming a drug kingpin who ordered 2 hits, the _Breaking Bad_ jokes were endless and a later darknet market even tried theming itself based on BB. I'm glad I finally did, despite the intimidating length: BB is indeed awesome.
-The first episode is a masterful cinematic depiction of what I could only consider at the time Trumpism and 'elite overproduction': our protagonist Walter White, squeezed out of research at a national laboratory (as a plaque on the wall commemorating the creation of a new element tells us), underemployed as a high school chemistry teacher, is systematically degraded by everyone he meets, from the arrogant immigrant to the rich children of connected insiders to even his wife (who pays more attention to her eBay auction than giving him a handjob).
-BB forms a dark counterpoint to that other great sprawling American TV series on drugs & crime, _The Wire_.
-Where _The Wire_ is a quasi-Marxist examination of how the interlocking systems of power in an American society undermine any attempt to do good by the well-intentioned & usually inherently good people by adding friction to the good choices & posing coordination problems, BB is a more person-centric character drama emphasizing the irreducible choice that goes into social pathology: it's not "society's fault" - while bad things do happen, everybody always has choices, there is always a path to the good outcome, and it is almost never the case that someone is truly forced into drug dealing or armed robbery or fraud rather than starve to death. The subsistence wage in the USA is far above starvation, and this is because people demand certain things, certain standards of living, which give them pride, and they will kill or die rather than live below it.
-BB is an extended examination of pride as a deadly sin - indeed, *the* deadly sin, occupying pride of place in the standard list of the 7 deadly sins, and identified as the first sin, Lucifer's.
-Why is pride so terrible and a mortal sin, when it seems so much more harmless than the others like wrath or gluttony or envy?
-Perhaps because it has no limits - there will never be enough money, enough drugs, or enough power for White - and its inherent nature is to be incorrigible: White can never truly listen to others, trust in them, accept their help, or change his mind.
-(Here the parallels to Ross Ulbricht are striking, as Ulbricht too, in his journal entries, plans for Silk Road 1 expansions, and growing comfort with ordering his, evinced a loss of perspective and a growing hubris leading him to ignore clanging alarm bells and indulge in disastrous security practices - some apparently motivated by the idea of writing a self-congratulatory autobiography! - that led nowhere but to a life sentence.)
-The slothful or wrathful can acknowledge their flaws and hope to do better, and even the lustful & greedy & envious can be briefly satisfied or rest from their sins.
-But the prideful know no respite: long as White is alive, he loves no one, can take satisfaction in nothing, and must blame anyone other than himself for his self-inflicted failures as a researcher/businessman, husband, father, and drug dealer.
-There is no need for the viewer to condemn Walter White: he is already in Hell.
-
+- [_10 Cloverfield Lane_](https://en.wikipedia.org/wiki/10_Cloverfield_Lane)
 
 Animated:
 
-## Games
+- [_The Wind Rises_](https://en.wikipedia.org/wiki/The_Wind_Rises) (review TODO)
 
 ## Music
 
@@ -137,3 +132,5 @@ Touhou:
 Vocaloid:
 
 Doujin:
+
+- ["Call Of Sea"](https://www.youtube.com/watch?v=zdE1_wWfE74) (Osanzi; _東京クリーチャーガール_ {C91}) [electronic]

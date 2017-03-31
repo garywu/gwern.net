@@ -57,7 +57,7 @@ Such a dataset would support many possible uses:
 
     - text-to-image synthesis (eg StackGAN would benefit greatly from the extremely diverse tags)
     - unsupervised image generation (eg DCGANs, VAEs, PixelCNNs)
-    - image transformation: upscaling (eg waifu2x), colorizing or palette color scheme generation (eg [Colormind](http://colormind.io/ "Colormind – Color schemes via Generative Adversarial Networks")), inpainting, sketch-to-drawing, artistic style transfer, optimization (eg ["Image Synthesis from Yahoo's `open_nsfw`"](https://open_nsfw.gitlab.io/), [pix2pix](https://arxiv.org/abs/1611.07004 "'Image-to-Image Translation with Conditional Adversarial Networks' Isola et al 2016"), [DiscoGAN](https://arxiv.org/abs/1703.05192 "'Learning to Discover Cross-Domain Relations with Generative Adversarial Networks', Kim et al 2017"))
+    - image transformation: upscaling (eg waifu2x), colorizing or palette color scheme generation (eg [Colormind](http://colormind.io/ "Colormind – Color schemes via Generative Adversarial Networks")), inpainting, sketch-to-drawing, artistic style transfer, optimization (eg ["Image Synthesis from Yahoo's `open_nsfw`"](https://open_nsfw.gitlab.io/), [pix2pix](https://arxiv.org/abs/1611.07004 "'Image-to-Image Translation with Conditional Adversarial Networks' Isola et al 2016"), [DiscoGAN](https://arxiv.org/abs/1703.05192 "'Learning to Discover Cross-Domain Relations with Generative Adversarial Networks', Kim et al 2017"), [CycleGAN](https://github.com/junyanz/CycleGAN))
 - image analysis:
 
     - facial detection & localization for drawn images (on which normal techniques such as OpenCV's Harr filters fail)

@@ -1743,7 +1743,7 @@ Can I use the same sources as in [hafu]() - TvTropes, AniDB, WP, MAL, Baka-Updat
 # Tradeoffs and costly signaling in appearances
 
 At some point I confused two [tsundere](!Wikipedia) anime characters: they both had brown [long hair](!Wikipedia) and flat chests and I messed up a comment.
-This pairing of long hair and flat chests seems to be common for tsundere character designs (eg 4 of 5 'notable examples on [Know Your Meme](http://knowyourmeme.com/memes/tsundere) with the exception being from an unpopular and fairly obscure anime; indeed, as [TvTropes](http://tvtropes.org/pmwiki/pmwiki.php/Tsundere/Anime)'s list indicates, almost all of the Rie Kugimiya-voiced characters have this pair of traits).
+This pairing of long hair and flat chests seems to be common for tsundere character designs (eg 4 of 5 'notable examples on [Know Your Meme](http://knowyourmeme.com/memes/tsundere) with the exception being from an unpopular and fairly obscure anime; indeed, as [TvTropes](http://tvtropes.org/pmwiki/pmwiki.php/Tsundere/Anime)'s list indicates, almost all of the [Rie Kugimiya](!Wikipedia)-voiced characters have this pair of traits).
 
 When I realized my mistake, I noticed that their counterpart female characters both had short brown/black hair and ample bosoms.
 This inverse relationship struck me as a little odd because the counterparts only need one distinguishing feature, as many characters get by with, so why did they have the opposite length of hair *and* opposite cleavage settings?
@@ -1753,9 +1753,8 @@ Of the 2x2 table of short/long hair and large/small breasts, the counterpart can
 
 But then I remembered: what is the stereotypical haircut of a new mother in both Japan and America - isn't it to cut the hair very short, often less than shoulder-length?
 And isn't long hair in many cultures associated with young women, and *unwed* young women in particular, and considered positive?
-("for a woman, if her hair is abundant, it is a glory to her"; "hair is the richest ornament of women"; "they say that the hair is everything, you know"; "the bald woman boasts of her sister's hair
-"; "if you meet a red-haired woman, you'll meet a crowd"; "when the month of May arrives, women's hair grows and penises become strong"; "one hair of a woman draws more than a bell-rope" / "one hair of a maiden's head pulls harder than ten yoke of oxen" / "one hair from the head of a woman pulls more than a ship's hauser" / "beauty draws with a single hair";  - but remember men, as attractive as blonde hair may be, "falseness often lurks beneath fair hair" / "often a troll-woman is under fair skin, and virtue under dark hair" and remember women, "short hair is soon brushed"!)
-And as pointed out by evo-psych theorizers, long hair may be sexually attractive as a reliable signal of health; if the hair is blonde, then (in pre-hair-dye eras) it'd be a reliable signal of youth too.
+("for a woman, if her hair is abundant, it is a glory to her"; "hair is the richest ornament of women"; "they say that the hair is everything, you know"; "the bald woman boasts of her sister's hair"; "if you meet a red-haired woman, you'll meet a crowd"; "when the month of May arrives, women's hair grows and penises become strong"; "one hair of a woman draws more than a bell-rope" / "one hair of a maiden's head pulls harder than ten yoke of oxen" / "one hair from the head of a woman pulls more than a ship's hauser" / "beauty draws with a single hair";  - but remember men, as attractive as blonde hair may be, "falseness often lurks beneath fair hair" / "often a troll-woman is under fair skin, and virtue under dark hair" and remember women, "short hair is soon brushed"!)
+And as pointed out by evo-psych theorizers, long hair may be sexually attractive as a costly & thus reliable signal of health; further, if the hair is blonde, then (in pre-hair-dye eras) it'd be a reliable signal of youth too.
 
 If long hair really is an attractive asset for a woman (and I think a lot of men would agree that barbigerous factors matter, if not as much as breasts or buttocks), then one might wonder why marriage is accompanied by hair-cutting.
 After all, why deliberately make yourself less attractive?
@@ -1767,8 +1766,13 @@ One has to use up more shampoo & conditioner cleaning the full mass, rendering s
 
 I don't know how much time & effort is involved in maintaining, say, hip-length rather than shoulder-length hair, but it must be considerable to explain why hip-length hair is so unusual even before marriage.
 
+Further, as commenter Jay points out, if the point of attractiveness is to secure a long-term relationship for reproduction, then as well as being expensive & unnecessary, hair that has been cut short or concealed is serving as a commitment mechanism in indicating less interest in & less potential for adultery/divorce (women literally letting their hair down only at home for their husbands):
+
+> It is quite possible that the act of cutting one's hair is signalling. Signalling to one's mate that she intends to remain faithful. Assuming that men value longer hair as a measure of genetic/health quality, the act of cutting her hair has the effect of reducing her perceived quality as a reproductive partner while her actual value remains unchanged. Judging from this perspective, it is optimal for one's mate to reduce their perceived sexual value after pair bonding has happened, to reduce competition. In this scenario, the woman can signal her commitment to the relationship by reducing her market value - cutting her hair. Assuming the above idea is true, it should be observable that women who don't cut their hair after marriage/children are more likely to cheat.
+
 This doesn't explain the apparent inverse relationship where one has either breasts or hair.
 Hair may be costly, and so women shed it at the first opportunity, but why isn't long hair universal before marriage?
+
 I think this may be explained by the optionality of hair: one cannot choose the size of one's breast without resorting to desperate measures like surgery, one cannot change one's eye colors without unpleasant measures like colored contact lenses, one cannot change the shape of one's face, losing weight & being fit is a lifelong battle - but hair is optional.
 So suppose one lucks out and has a curvaceous cleavage men drool over; perhaps that is sufficient and you don't want to go to the extra costs of long hair, and so you never grow flowing locks and this works for you.
 But suppose one instead has a chest like a cutting board, what can you do about that?
@@ -1776,7 +1780,9 @@ Not much... but you *could* compensate by instead growing long hair, so wouldn't
 It's better than being both short-haired *and* flat-chested.
 (There will be exceptions of course; a supermodel might be both busty & hairy because their job makes it worth their while, some women may simply like long hair a lot and want to have long hair regardless, and one may be cursed with bad hair & growing is never worthwhile.)
 
-In general, if a factor of attractiveness is optional and costly, we'd expect people blessed with more non-optional factors to avoid the optional costly ones, and that the optional costly factors will vary with perceived prospects or need for attractiveness (eg we'd expect sharp decreases in hair length after marriage, and gradual decreases with age).
+So the apparent inverse correlation of hair length and bust size  is generated by [Berkson's paradox](!Wikipedia) where there is no correlation between hair & bust initially, but then, conditioning on aiming for a threshold of attractiveness & cost-benefit optimizing, an inverse correlation is generated by bustier women tending to cut their hair & less busty women growing their hair.
+
+In general, if a factor of attractiveness is optional and costly, we'd expect people blessed with more non-optional/uncontrollable factors to avoid the optional/controllable costly ones, and that the optional costly factors will vary with perceived prospects or need for attractiveness (eg we'd expect sharp decreases in hair length after marriage, and gradual decreases with age).
 
 To test this:
 

@@ -4116,6 +4116,8 @@ complex   model fit indexes+ML                    ML+ML (eg GANs)
 3. Complex/simple is probably useless, as the NNs may easily have severe problems but will have fit any simple linear structure and fool regular diagnostics.
 4. Complex/complex can be very useful in machine learning, but in different ways from a good simple model.
 
+    Fast, simple, general - a good statistical method lets you choose one; a great method lets you choose two. (Consider linear models, decision trees, NNs, MCMC, ABC, discrete Bayesian networks, and exponential family vs nonparametric methods as examples of the tradeoffs here.)
+
 So is quadrant 2 fully populated by human statisticians?
 We wouldn't necessarily want to use GANs for everything we use statisticians for now, because neural networks can be *too* powerful and what we want from our models is often some sort of clear answer like "does X predict Y?" and simplicity.
 But we could replace the statistician with some other powerful critic from machine learning - like a NN, SVM, random forest, or other ensemble.
@@ -4625,3 +4627,7 @@ This would also allow some input from statistical algorithms which predict upvot
 (For example, a good start might be a SVM on a bag-of-words version of each item's text, and then as the dataset ratings expand, more complicated algorithms could be plugged in.)
 
 As far as I know, some to-do/self-help systems have something like a periodic review of past stuff, and as I mentioned, spaced repetition systems do something somewhat similar to this idea of exponential revisits, but there's nothing like this at the moment.
+
+<!-- example IRC parsing: # (
+cat doc/irclogs/freenode/#lesswrong.log | egrep -v -e 'feepbot' -e pookie -e 'has joined #lesswrong' -e 'has left #lesswrong' -e 'on \#lesswrong$' -e ') has quit (' -e '\* .* is now known as ' -e 'Â» ' | fgrep --context=10 -e 'gwern> ' -e 'Gwern-away> ' -e '  * gwern' # )
+-->
