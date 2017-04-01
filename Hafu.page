@@ -159,7 +159,7 @@ And the disdain for Japanese women after WWII, prostitutes or otherwise, and the
     - Yuka Osawa, Turkish
     - Yuria Ashina
 
-    Ironically, although the sample size is small, it seems that in his list, Japanese pornography is *more* diverse than anime/manga! Further, looking through the thumbnails, it seems that claims of blondeness being recessive & it (almost) impossible for hafus to be blond are vindicated: black hair is universal among these porn actresses.
+    Ironically, although the sample size is small, it seems that in his list, Japanese pornography is *more* diverse than anime/manga! Further, looking through the thumbnails, it seems that claims of blondness being recessive & it (almost) impossible for hafus to be blond are vindicated: black hair is universal among these porn actresses.
 
 So, it seems pretty straightforward to suggest that a Japanese man marrying and impregnating a foreign woman would be seen as less status-lowering than a foreign man marrying and impregnating a Japanese woman. Westerners have, since Commodore Perry, been of high status in Japan for their technology & science & power. (Expats even today in Japan or Korea sometimes talk about "playing the gaijin/waygook card" - breaking rules or shirking responsibilities through a combination of assumed ignorance on their part and their peculiar and higher status as a foreigner.) So, a Japanese woman marrying a Western man would lower her status (and by extension, that of Japan). Similarly we might expect that a Japanese man marrying an attractive Western woman (as the women universally seem to be in anime & manga) could actually gain status for himself - and by extension, Japan - from 'marrying above his position'. (At the very least, many men are attracted to the exotic other, and not so much the women.[^Enokido]) This turns out to be an explanation offered by at least one Japanese writer for the previously cited international marriage statistics:
 
@@ -355,7 +355,7 @@ Year Series                               Character                     Gender  
 2001 _Bleach_                             Yasutora Sado                 M        Japanese?       Mexican?        brown   brown   [Asked](!Wikipedia "Talk:Yasutora_Sado#Parents").
 2001 _Dead or Alive 3_                    Hitomi                        F        German          Japanese        blue    brown   Surprisingly, there doesn't seem to be a DOA anime or manga, except for a [DOA Xtreme Beach Volleyball manga](http://deadoralive.wikia.com/wiki/Dead_or_Alive_Xtreme_Beach_Volleyball#Dead_or_Alive_Xtreme_Beach_Volleyball_Manga).
 2001 _Desert Storm_                       Eimi                          F        Japanese        Russian         black   black   Technically, Chechnyan; as usual, assimilated to the neighboring major nationality.
-2001 _Diamond Head_                       Leica Hanugi                  M                                        red     red     "His nationality is three-fourths mixed... the most mysterious one of all." pg21 c01. He is depicted in color illustrations with reddish hair, red eyes, and is Christian; one associated character returns from several years abroad living in Seattle. In the complete manga, there are no other hints as to his nationalities or parentages: the mother is depicted once with neutral hair color.
+2001 _Diamond Head_                       Leica Hanugi                  M                                        red     red     "His nationality is three-fourths mixed... the most mysterious one of all." pg21 c01. He is depicted in color illustrations with reddish hair, red eyes, and is Christian; one associated character returns from several years abroad living in Seattle. In the complete manga, there are no other hints as to his nationalities or parentage: the mother is depicted once with neutral hair color.
 2001 _Digimon Tamers_                     Lee Jaarin                    F        Chinese         Japanese
 2001 _Digimon Tamers_                     Lee Jianliang                 M        Chinese         Japanese        grey    blue
 2001 _Digimon Tamers_                     Lee Rinchei                   M        Chinese         Japanese
@@ -580,7 +580,8 @@ Year Series                               Character                     Gender  
 2013 _Kill la Kill_                       Ira Gamagōri                  M        American        Japanese        grey    blond
 2014 _Wizard Barristers: Benmashi Cecil_  Cecil Sudou                   F        Canadian        Japanese        blue    purple  Father is "David" from Canada, mother is "Megumi Sudo"
 2014 _Dream C Club Gogo_                  Seira                         F                                        blue    blond
-2015 _Criminale_                          Christie Sarah Tsukiko        F        Italian         Japanese        blue   blonde   See end of ch24; _Criminale_ implies in its use of Italian in some places & her classification as a hitman that the father "Leonardo" is Italian (mother "Ayame")
+2015 _Criminale_                          Christie Sarah Tsukiko        F        Italian         Japanese        blue    blonde  See end of ch24; _Criminale_ implies in its use of Italian in some places & her classification as a hitman that the father "Leonardo" is Italian (mother "Ayame")
+2015 _Water Dragon's Bride_               Asahi                         F        Japanese?                       blue    red    [ANN](https://www.animenewsnetwork.com/review/water-dragon-bride/gn-1/.112724): "When her son brings home the little red-haired girl (we're told Asahi takes after her grandmother, so presumably she's of partial European descent, making her look alarming in the Kofun era)". Asahi is illustrated with blue-purple eyes, but chapter 1 describes her as grey-eyed while in ch6, she's described as having blue "sapphire eyes", so I go with blue rather than grey eyes; her father is drawn as of Asian appearance with spiky black hair, and the mother with light-colored short hair Note: not to be confused with the Korean manwha _Bride of the Water God_.
 
 ### Omissions
 
@@ -768,9 +769,9 @@ The model that `Rcapture` fit to logs of 296 characters (minimizing the [AIC](!W
 - ["The Hafu Project: Exploring the question of what it means to be Japanese"](http://www.japantoday.com/category/lifestyle/view/the-hafu-project-exploring-the-question-of-what-it-means-to-be-japanese) -(the 317 comments demonstrate how polarizing the topic can be)
 
     - [_Hafu_](http://hafufilm.com/en/) (2013 documentary)
-- ["How to Look Like a 'Haafu': Consumption of the Image of 'Part-White' Women in Contemporary Japan"](http://www.inter-disciplinary.net/critical-issues/wp-content/uploads/2014/05/Okamura_white4-dpaper.pdf) (Hyoue Okamura)
+- ["How to Look Like a 'Hafu': Consumption of the Image of 'Part-White' Women in Contemporary Japan"](http://www.inter-disciplinary.net/critical-issues/wp-content/uploads/2014/05/Okamura_white4-dpaper.pdf) (Hyoue Okamura)
 - ["The Space Between Anime and Manga: #5: Katsuhiro Otomo, the Anti-"Story" Author by Kentaro Takekuma"](http://2chan.us/wordpress/2009/05/17/japanese-lectureblog-post-translation-the-space-between-anime-and-manga-5-katsuhiro-otomo-the-anti-story-author-by-kentaro-takekuma/)
-- [JapanSociology group blog: "hafu" tag](https://japansociology.com/tag/hafu/)
+- [Japan Sociology group blog: "hafu" tag](https://japansociology.com/tag/hafu/)
 
 # Appendices
 ## Capture-recapture code
@@ -801,7 +802,7 @@ library(Rcapture)
 # ANN3=Google ANN site search
 hafu <- read.table(stdin(),header=TRUE)
 Work                O GSA IRC ST GIJ ANN MV TV2 TV3 VN MAL DC PP AND TVM CF BU1 BU2 ANN2 ANN3
-".hackLegend of"    1 0   0   0  0   0   0  0   0   0  0   0  0  0   0   0  0   0   0    0
+".hack Legend of"   1 0   0   0  0   0   0  0   0   0  0   0  0  0   0   0  0   0   0    0
 "2nd Super Robot W" 1 0   0   0  0   0   0  0   0   0  0   0  0  0   0   0  0   0   0    0
 "801 T.T.S. Airbat" 1 0   0   0  0   0   0  0   0   0  0   0  0  0   0   0  0   0   0    0
 "Adolf"             1 1   0   0  0   0   1  0   0   0  0   0  0  0   1   0  0   0   0    1
