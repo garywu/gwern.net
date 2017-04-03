@@ -990,6 +990,7 @@ brokenLinks = [
  , ("Self-decryptin", "/Self-decrypting%20files")
  , ("Selfdecrypting", "/Self-decrypting%20files")
  , ("sicp/Chapter 1.3.html", "/sicp/Chapter%201.3")
+ , ("sicp/index.html", "/sicp/Introduction")
  , ("Silk%20Road3", "/Silk%20Road")
  , ("Silk%25", "/Silk%20Road")
  , ("Silk%2", "/Silk%20Road")
@@ -1085,4 +1086,9 @@ brokenLinks = [
  , ("newsletter/2017/02 |", "/newsletter/2017/02")
  , ("newsletter/2017/2", "/newsletter/2017/02")
  , ("newsletters", "/tags/newsletter")
+ , ("docs/dnb/2005-ackerman", "/docs/dnb/2005-ackerman.pdf")
+ , ("docs/music-distraction/1945-henderson", "/docs/music-distraction/1945-henderson.pdf")
+ , ("Drugs heuristics", "/Drug%20heuristics")
+ , ("Drugs heuristicss", "/Drug%20heuristics")
+ , ("Spaced repetion", "/Spaced%20repetition")
  ]
