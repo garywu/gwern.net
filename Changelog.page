@@ -11,6 +11,10 @@ Following my writing can be a little difficult: while I provide [an RSS feed of 
 So periodically I write up interesting changes in a human-readable format and [send it out to the mailing list](http://eepurl.com/Kc155).
 
 # 2017
+## March
+
+- `gwern.net`: HTTPS now mandatory; HTML sections rewritten using HTML5 semantic markup for hopefully better compatibility with screen readers & offline browsers like Pocket/ReadItLater; "importance" metadata added to all pages to rank them; "belief" metadata renamed more intuitively as "confidence"; finish adding 301 Redirects for all broken links & common typos; renamed & all darknet market pages for current terminology; rewrote Patreon profile
+
 ## February
 
 - ["'Story Of Your Life' Is Not A Time-Travel Story"](/Story%20Of%20Your%20Life "Famous Ted Chiang SF short story 'Story Of Your Life' is usually misinterpreted as, like the movie version, being about time-travel/precognition; I explain it is instead an exploration of the psychology of timeless physics interpretations.")

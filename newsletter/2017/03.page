@@ -2,7 +2,7 @@
 title: March 2017 news
 created: 23 February 2017
 tags: newsletter
-status: in progress
+status: finished
 confidence: log
 ...
 
@@ -11,41 +11,43 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
-- `gwern.net`: HTTPS now mandatory; HTML sections rewritten using HTML5 semantic markup for hopefully better compatibility with screen readers & offline browsers like Pocket/ReadItLater; "importance" metadata added to all pages to rank them; "belief" metadata renamed more intuitively as "confidence"; finish adding 301 Redirects for all broken links & common typos; renamed & all darknet market pages for current terminology; rewrote Patreon profile
+- `gwern.net`: HTTPS now mandatory; HTML sections rewritten using HTML5 semantic markup for hopefully better compatibility with screen readers & offline browsers like Instapaper/Pocket; "importance" metadata added to all pages to rank them; "belief" metadata renamed more intuitively as "confidence"; finish adding 301 Redirects for all broken links & common typos; renamed & all darknet market pages for current terminology; rewrote Patreon profile
 
 # Media
 ## Links
 
 Everything is heritable:
 
-- ["CRISPR/Cas9-mediated gene editing in human zygotes using Cas9 protein"](https://www.gwern.net/docs/genetics/2017-tang.pdf), Tang et al 2017 (no off-target mutations and efficiencies of 20/50/100% for various edits. As I predicted, the older papers, Liang et al 2015 / Kang et al 2016 / Komor et al 2016, were not state of the art and would be improved on considerably.0..0)
+- ["CRISPR/Cas9-mediated gene editing in human zygotes using Cas9 protein"](https://www.gwern.net/docs/genetics/2017-tang.pdf), Tang et al 2017 (no off-target mutations and efficiencies of 20/50/100% for various edits. As I predicted, the older papers, Liang et al 2015 / Kang et al 2016 / Komor et al 2016, were not state of the art and would be improved on considerably.)
 - ["Psychiatric Genomics: An Update and an Agenda"](http://biorxiv.org/content/early/2017/03/10/115600), Sullivan et al 2017 ([commentary](https://plus.google.com/103530621949492999968/posts/MCXo4BH6koS))
 - ["Selection in Europeans on Fatty Acid Desaturases Associated with Dietary Changes"](https://academic.oup.com/mbe/article/doi/10.1093/molbev/msx103/3062804/Selection-in-Europeans-on-fatty-acid-desaturases), Buckley et al 2017 (More on recent human evolution with large between-country differences due to local adaptations.)
 - ["Genetic Variation in the Social Environment Contributes to Health and Disease"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006498), Baud et al 2017 (where does culture come from?)
 - ["Excess of genomic defects in a woolly mammoth on Wrangel island"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006601), Rogers & Slatkin 2017 ([media](https://www.nytimes.com/2017/03/02/science/woolly-mammoth-extinct-genetics.html "The Woolly Mammoth's Last Stand"); consequences of increasing genetic load: [mutational meltdown](https://en.wikipedia.org/wiki/Genetic_load#Deleterious_Mutation). Did this finish off the last population of woolly mammoths?)
 - ["Selective sweep analysis using village dogs highlights the pivotal role of the neural crest in dog domestication"](http://biorxiv.org/content/early/2017/03/21/118794), Pendleton et al 2017 (More on complex intellectual changes in higher mammals due to recent evolution due to soft sweeps: dog physical & behavioral domestication is due to a lot of small recent genetic changes. Evolution doesn't stop at the neck.)
+- ["Urban Evolution: How Species Adapt, or Don't, to City Living; A Conversation With Jonathan B. Losos"](https://www.edge.org/conversation/jonathan_b_losos-urban-evolution)
 - ["Genome-Wide Analysis Of 113,968 Individuals In UK Biobank Identifies Four Loci Associated With Mood Instability"](http://biorxiv.org/content/early/2017/03/17/117796), Ward et al 2017 (UK Biobank, the gift that keeps on giving; continuing the themes of "everything is heritable" and "abnormal is normal")
 - ["Genetic overlap between schizophrenia and developmental psychopathology: a longitudinal approach applied to common childhood disorders between age 7 and 15 years"](http://biorxiv.org/content/early/2016/05/11/052829), Nivard et al 2016 (more generalized psychiatric genetic risk)
 
 AI:
 
-- [Nvidia announces 1080tis](https://www.reddit.com/r/MachineLearning/comments/5wt4lt/n_nvidia_1080ti_announced_700_march_5th_11gb/)
-- ["The workshop will mark the last of the ImageNet Challenge competitions, and focus on unanswered questions and directions for the future."](http://image-net.org/challenges/beyond_ilsvrc.php)
+- [Nvidia announces the 1080ti GPU](https://www.reddit.com/r/MachineLearning/comments/5wt4lt/n_nvidia_1080ti_announced_700_march_5th_11gb/) (Titan replacement at \$700)
+- ["...The workshop will mark the last of the ImageNet Challenge competitions, and focus on unanswered questions and directions for the future..."](http://image-net.org/challenges/beyond_ilsvrc.php) (RIP)
 - ["Deep Learning Reinvents the Hearing Aid: Finally, wearers of hearing aids can pick out a voice in a crowded room"](http://spectrum.ieee.org/consumer-electronics/audiovideo/deep-learning-reinvents-the-hearing-aid) (If anything, the audio samples sound too good to be true.)
 - ["Deep Voice: Real-time Neural Text-to-Speech"](https://arxiv.org/abs/1702.07825), Arik et al 2017
 - ["The Shattered Gradients Problem: If resnets are the answer, then what is the question?"](https://arxiv.org/abs/1702.08591), Balduzzi et al 2017 (successfully training 198-layer non-resnet feedforward NNs w/better initialization; apparently residual networks were never necessary - humans just have no idea how to train neural networks...)
-- ["Neural Episodic Control"](https://arxiv.org/pdf/1703.01988.pdf), Pritzel et al 2017
+- ["Neural Episodic Control"](https://arxiv.org/pdf/1703.01988.pdf), Pritzel et al 2017 ([commentary](https://rylanschaeffer.github.io/content/research/neural_episodic_control/main.html "Explanation of DeepMind's Neural Episodic Control"))
 - ["Parallel Multiscale Autoregressive Density Estimation"](https://arxiv.org/abs/1703.03664), Reed et al 2017 (Generating 512px photorealistic images & video with PixelCNNs rather than GANs)
-- ["Learning to Discover Cross-Domain Relations with Generative Adversarial Networks"](https://arxiv.org/abs/1703.05192), Kim et al 2017 (To quote the Reddit summary: "DiscoGANs - Answering the age old question: What would your face look like if it were actually a car." Paging Dr Hofstadter...)
+- ["Learning to Discover Cross-Domain Relations with Generative Adversarial Networks"](https://arxiv.org/abs/1703.05192), Kim et al 2017 (Unclear how [CycleGAN](https://junyanz.github.io/CycleGAN/ "'Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks', Zhu et al 2017"), released a few days later, differs. See also pix2px; To quote the Reddit summary: "DiscoGANs - Answering the age old question: What would your face look like if it were actually a car." Paging Dr Hofstadter...)
 - ["Evolving Deep Neural Networks"](https://arxiv.org/abs/1703.00548), Miikkulainen et al 2017
 - ["Large-Scale Evolution of Image Classifiers"](https://arxiv.org/abs/1703.01041), Real et al 2017 (grossly inefficient and hobbled in some ways but still cool)
 - ["Network Morphism"](https://arxiv.org/pdf/1603.01670.pdf), Wei et al 2016 (A very nice inspiration from category theory. I wish I saw this out in the wild, because it would speed up architecture and hyperparameter optimization immeasurably if we didn't have to keep starting from scratch with every model.)
+- ["On the Impossibility of Supersized Machines"](https://philpapers.org/archive/GAROTI-3.pdf), Garfinkel et al 2017; ["G.K. Chesterton on AI Risk"](http://slatestarcodex.com/2017/04/01/g-k-chesterton-on-ai-risk/)
 
 Statistics/meta-science/mathematics:
 
 - ["Empirical assessment of published effect sizes and power in the recent cognitive neuroscience and psychology literature"](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2000797), Szucs & Ioannidis 2017
 - ["Meta-assessment of bias in science"](https://www.gwern.net/docs/statistics/2017-fanelli.pdf), Fanelli et al 2017
-- ["When Evidence Says No, But Doctors Say Yes"](https://www.propublica.org/article/when-evidence-says-no-but-doctors-say-yes)
+- ["When Medical Evidence Says No, But Doctors Say Yes"](https://www.propublica.org/article/when-evidence-says-no-but-doctors-say-yes)
 - ["A Failure of Intelligence: Prominent physicist Freeman Dyson recalls the time he spent developing analytical methods to help the British Royal Air Force bomb German targets during World War II"](https://www.technologyreview.com/s/406789/a-failure-of-intelligence/)
 - ["Ten Lessons I Wish I Had Been Taught"](http://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html), Rota 1996
 - ["Self-Experimentation and Its Role in Medical Research"](http://pubmedcentralcanada.ca/pmcc/articles/PMC3298919/), Weisse 2012
@@ -66,7 +68,7 @@ Psychology/biology:
 
 - ["Why _g_ Matters: The Complexity of Everyday Life"](https://www1.udel.edu/educ/gottfredson/reprints/1997whygmatters.pdf), Gottfredson 1996
 - The [Flexner Report](https://en.wikipedia.org/wiki/Flexner_Report)
-- ["Who Buried Paul?"](http://ludix.com/moriarty/paul.html) (A fun retrospective on the ["Paul McCartney is actually dead" Beatles conspiracy theory](https://en.wikipedia.org/wiki/Paul_is_dead) which, if you're like me, you've never heard of before but was apparently quite a thing. Featuring conspiracy theorists literally connecting the dots and seeing stars.﻿)
+- ["Who Buried Paul?"](http://ludix.com/moriarty/paul.html) (A fun retrospective on the ["Paul McCartney is actually dead" Beatles conspiracy theory](https://en.wikipedia.org/wiki/Paul_is_dead) which, if you're like me, you've never heard of before but was apparently quite a thing. Featuring conspiracy theorists literally connecting the dots and seeing stars.)
 - ["Working Memory Training Does Not Improve Performance on Measures of Intelligence or Other Measures of 'Far Transfer': Evidence From a Meta-Analytic Review"](http://pps.sagepub.com/content/11/4/512.full), Melby-Lervag et al 2016
 - ["Why don't all whales have cancer? A novel hypothesis resolving Peto's paradox"](https://academic.oup.com/icb/article/47/2/317/719209/Why-don-t-all-whales-have-cancer-A-novel), Nagy et al 2007
 - ["The Measured Man"](https://www.theatlantic.com/magazine/archive/2012/07/the-measured-man/309018/?single_page=truein "Larry Smarr, an astrophysicist turned computer scientist, has a new project: charting his every bodily function in minute detail. What he's discovering may be the future of health care.")
@@ -79,22 +81,20 @@ Technology:
 - ["Don't Worry - It Can't Happen"](https://www.gwern.net/docs/1940-sciam-harrington-nuclearweapons-dontworryitcanthappen.pdf), Harrington, _Scientific American_ 1940
 - ["Compromising connectivity: information dynamics between the state and  society in a digitizing North Korea"](http://uskoreainstitute.org/wp-content/uploads/2017/03/Compromising-Connectivity-Final-Report.pdf), Kretchun et al 2017
 
-    The details on NK use of digital censorship is interesting: steady progress in locking down Bluetooth and WiFi by software and then hardware modifications; use of Android security system/DRM to install audit log + regular screenshots to capture foreign media consumption; a whitelist/signed-media system to block foreign media from ever being viewed, with auto-deletion of offending files; watermarking (courtesy of an American university's misguided outreach) of media created on desktops to trace them; network blocking and surveillance; and efforts towards automatic bulk surveillance of text messages for 'South-Korean-style' phrases/words. Stallman's warnings about DRM are quite prophetic in the NK context - the system is secured against the *user*...
+    The details on NK use of digital censorship is interesting: steady progress in locking down Bluetooth and WiFi by software and then hardware modifications; use of Android security system/DRM to install audit logs + regular screenshots to capture foreign media consumption; a whitelist/signed-media system to block said foreign media from ever being viewed, with auto-deletion of offending files; watermarking (courtesy of an American university's misguided outreach) of media created on desktops to trace them; network blocking and surveillance; and efforts towards automatic bulk surveillance of text messages for 'South-Korean-style' phrases/words. Stallman's warnings about DRM are quite prophetic in the NK context - the system is secured against the *user*... For these reasons & poverty, radio (including foreign radios like Voice of America) is - surprisingly to me - the top source of information for North Koreans.
 - ["Fury Road: Did Uber Steal the Driverless Future From Google? Inside the vicious patent fight over self-driving technology"](https://www.bloomberg.com/news/features/2017-03-16/fury-road-did-uber-steal-the-driverless-future-from-google)
 - ["Damn Cool Algorithms: Homomorphic Hashing"](http://blog.notdot.net/2012/08/Damn-Cool-Algorithms-Homomorphic-Hashing)
 - [Computerizing tutoring](http://www.nytimes.com/2012/09/16/magazine/how-computerized-tutors-are-learning-to-teach-humans.html)
 
 Economics:
 
-- [Mechanics of the Crazy Eddie fraud](https://whitecollarfraud.com/crazy-eddie/crazy-eddie-fraud/)
+- [Mechanics of the Crazy Eddie stock accounting fraud](https://whitecollarfraud.com/crazy-eddie/crazy-eddie-fraud/)
 - ["Foreign Language Requirements Are a Waste of Time and Money"](http://econlog.econlib.org/archives/2012/08/the_marginal_pr.html)
 - [Measurement issues in the growth of economic inequality](http://www.econtalk.org/archives/2012/04/burkhauser_on_t.html)
 - [Selling one's life insurance policy](http://www.nytimes.com/2012/08/12/magazine/are-you-worth-more-dead-than-alive.html?pagewanted=all)
 - [The Somali Shilling: a proof-of-work fiat currency](https://jpkoning.blogspot.ca/2017/03/bringing-back-somali-shilling.html)
 - ["In Search of the Heart of the Online Cat-Industrial Complex"](https://www.wired.com/2012/08/ff_cats/all/)
 - ["The case of the disappearing teaspoons: longitudinal cohort study of the displacement of teaspoons in an Australian research institute"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1322240/), Lim et al 2005
-
-Philosophy:
 
 Fiction:
 
@@ -112,25 +112,36 @@ Misc:
 
 Nonfiction:
 
-- [_Possible Worlds and Other Essays_](http://www.fadedpage.com/showbook.php?pid=20160325), [J.B.S. Haldane](https://en.wikipedia.org/wiki/J._B._S._Haldane) 1927 (review TODO)
-- http://www.berkshirehathaway.com/letters/letters.html
+- [_Possible Worlds and Other Essays_](http://www.fadedpage.com/showbook.php?pid=20160325), [J.B.S. Haldane](https://en.wikipedia.org/wiki/J._B._S._Haldane) 1927 ([review](https://www.goodreads.com/review/show/372241209))
+- [Annual Berkshire Hathaway letters](http://www.berkshirehathaway.com/letters/letters.html) of [Warren Buffett](https://en.wikipedia.org/wiki/Warren_Buffett) ([review](https://www.goodreads.com/review/show/1961238863))
 
 ## Film/TV
 
 Live-action:
 
-- [_10 Cloverfield Lane_](https://en.wikipedia.org/wiki/10_Cloverfield_Lane)
+- [_10 Cloverfield Lane_](https://en.wikipedia.org/wiki/10_Cloverfield_Lane) (I was fortunate enough to forget entirely what this movie was about in between downloading & watching, and it kept me in suspense and surprised me, particularly with the ending. Good psychological suspense/horror.)
 
 Animated:
 
-- [_The Wind Rises_](https://en.wikipedia.org/wiki/The_Wind_Rises) (review TODO)
+- [_The Wind Rises_](https://en.wikipedia.org/wiki/The_Wind_Rises) ([review](https://myanimelist.net/reviews.php?id=244406))
 
 ## Music
 
 Touhou:
 
-Vocaloid:
+- ["Twice"](https://www.youtube.com/watch?v=ZNkJgQn0yO8) (Tim Vegas feat. millie; _TWICE_ {C91}) [Jpop]
+- ["視的領域-My Territory-"](https://www.youtube.com/watch?v=TRSQ125HdSc) (kirin feat. miko; _Ironic Relation_ {C91}) [trance]
+
+Kancolle:
+
+- ["にゃしぃにゃしぃわ～るど"](https://www.dropbox.com/sh/gteug4c2yw6boc4/AADkIG6IU8SpkSidMsOwfOx_a?preview=%E3%81%BA%E3%81%9F-rikka-%E3%81%AB%E3%82%83%E3%81%97%E3%81%83%E3%81%AB%E3%82%83%E3%81%97%E3%81%83%E3%82%8F%EF%BD%9E%E3%82%8B%E3%81%A9.ogg) (ぺた; _rikka_ {C91}) [electronic]
 
 Doujin:
 
 - ["Call Of Sea"](https://www.youtube.com/watch?v=zdE1_wWfE74) (Osanzi; _東京クリーチャーガール_ {C91}) [electronic]
+- ["One's Off Hours"](https://soundcloud.com/digital_logics/winter-stillness#t=9:04) (Alinut; _WINTER STILLNESS_ {C91}) [trance]
+- ["Snow Crystal"](https://www.youtube.com/watch?v=jYux8VettTs) (P\*light; _Decoratorz_ {C91}) [trance]
+- ["Blue Momentary"](https://soundcloud.com/nago-music/nago-blue-momentary) (Nago; _KALEIDOSCOPE DIVER_ {C91}) [trance]
+- ["Myxa"](https://soundcloud.com/siqlo/myxa-demo-fc-snowflakes) (siqlo; _snowflakes_ {C91}) [trance]
+- ["Yukibare"](https://www.dropbox.com/s/ozunbdir01tq4ee/keisukekimura-snowflakes-yukibare.ogg) (Keisuke Kimura; _snowflakes_ {C91}) [electronic]
+- ["soft groove"](https://www.dropbox.com/s/bto6cp8ge8a2j0c/conures-snowflakes-softgroove.ogg) (Conures; _snowflakes_ {C91}) [electronic]
