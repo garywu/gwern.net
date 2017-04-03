@@ -9,7 +9,7 @@ importance: 5
 ...
 
 [Warren Buffett](!Wikipedia)'s [annual end-of-year letter for 2016](http://berkshirehathaway.com/letters/2016ltr.pdf) includes a long section on [his \$1m long bet with Protege Partners's Ted Seides that an index will outperform hedge funds](http://longbets.org/362/ "Bet #362: Over a ten-year period commencing on January 1, 2008, and ending on December 31, 2017, the S&P 500 will outperform a portfolio of funds of hedge funds, when performance is measured on a basis net of fees, costs and expenses."); unsurprisingly, he's about to win.
-This reminded me of [Long Bets](!Wikipedia "Long Now Foundation#Long Bet Project") in general (abbreviated LB; [about](http://longbets.org/about/); [FAQ](http://longbets.org/faq/); [rules](http://longbets.org/rules/)/[procedure](http://longbets.org/procedure/)), launched in April 2002 but which never really caught on (in part because their website was effectively unusable for several years), but is still running and still resolving bets and still has any number of [in-progress bets](http://longbets.org/bets/) and [open challenges](http://longbets.org/predictions/).
+This reminded me of [Long Bets](!Wikipedia "Long Now Foundation#Long Bet Project") in general (abbreviated LB; [about](http://longbets.org/about/); [FAQ](http://longbets.org/faq/); [rules](http://longbets.org/rules/)/[procedure](http://longbets.org/procedure/)), a [prediction market](!Wikipedia)/registry launched in April 2002 but which never really caught on (in part because their website was effectively unusable for several years), but is still running and still resolving bets and still has any number of [in-progress bets](http://longbets.org/bets/) and [open challenges](http://longbets.org/predictions/).
 It is one of several projects of the Long Now Foundation, but less high profile than others like the Clock of the Long Now being built for Jeff Bezos^[Although it's not always clear how active any of the projects are, except their bar and talks - they are very proud of their bar & talks and the website will tell you all about them in many updates...]
 
 For a Long Bet, to create a 'prediction' one pays a \$50 fee; then a challenger and you put up the same bet (minimum of \$200) each - even odds is mandatory - and designate a preferred charity, for a bet with duration >=2 years, the bets are invested in a ultra-conservative investment fund (unspecified return, I'd guesstimate 3% optimistically), and the winnings+investment go to the winner's charity.
@@ -18,7 +18,7 @@ For a Long Bet, to create a 'prediction' one pays a \$50 fee; then a challenger 
 
 You can't make money off them directly because of the charity restriction necessary to keep LB legal in the USA (regulation is why we can't have nice things like prediction markets), but you could try to replace your current charitable giving with canny long bets - as it is not a prediction market, after all, the bets can be quite irrational.
 Indeed, some of the existing predictions strike me as quite dumb and easy money (eg bet #312, ["Turkey will join the European Union and become a model for a Democratic Islamic State and lead the way for advancing relations between the Islamic world and "Western World"", 2007-2018](http://longbets.org/312/), which was unlikely in 2007 and has ~0% probability now).
-You don't have to pay the \$50 fee or worry about no one taking up your challenge, and you double your money, so if you wanted to donate \$1k to AMF you could instead try to find a bet like #312 and offer a bet of \$500 and, almost certainly winning, send ~\$1000 to AMF.
+You don't have to pay the \$50 fee or worry about no one taking up your challenge, and you double your money, so if you wanted to donate \$1k to [AMF](!Wikipedia "Against Malaria Foundation"), you could instead try to find a bet like #312 and offer a bet of \$500 and, almost certainly winning, send ~\$1000 to AMF, thereby both providing accountability & increasing funding for effective charities.
 
 One could also try to argue that the betting will have additional benefits like establishing a track record as a good predictor or getting publicity for one's views, a few bets might be interesting as a learning experience, and taking/making bets could be useful as a companion to any research/essays/books one might write as a form of accountability.
 
@@ -28,14 +28,14 @@ The downsides would be:
 
 - LB invests funds super-conservatively, so the opportunity cost is nontrivial - they definitely don't get the standard 7% stock market returns, so one is forfeiting something like 4-7% annual returns. (Presumably if one thinks that spending one's money in some other way such as donating to a charity right now so the charitable activities can be done right away is better than investing & donating later, one thinks the opportunity cost is >7% and so the LB opportunity cost is even greater than just 4%!)
 
-    For example, Buffett reports for his bet that as of February 2017, if they had simply put their \$1m into the S&P 500 index, with the cumulative return of 85.4% it would be worth \$1.854m; in other words, Buffett will win for his favored charity little more than he would have earned if he had not used LB *at all* & simply held the money, and substantially less than if he had kept the money in Berkshire Hathaway which has seen a cumulative return of 221% (`BRK.A` has appreciated from \$110,400 31 December 2007 to \$244,121 27 February 2017). Or to put it another way, by not doing a handshake bet, Buffett/Seides gave LB a float of \$1m over an long time period with a large opportunity cost^[Buffett repeatedly emphasizes in his letters that one of the keys to Berkshire Hathaway's business success is its insurers, who in turn are enabled by the 'float' of insurance premiums which are paid long before any claims are made, and this 'free' money can be invested as Buffett wishes; so the consequences of giving LB \$1m for such an extended time likely was not lost on him.] and thus paid LB ~\$800,000 for its service; it is not clear that this was money well spent.
+    For example, Buffett reports for his bet that as of February 2017, if they had simply put their \$1m into the S&P 500 index, with the cumulative return of 85.4% it would be worth \$1.854m; in other words, Buffett will win for his favored charity little more than he would have earned if he had not used LB *at all* & simply held the money, and substantially less than if he had kept the money in Berkshire Hathaway which has seen a cumulative return of 221% (`BRK.A` has appreciated from \$110,400 31 December 2007 to \$244,121 27 February 2017). Or to put it another way, by not doing a handshake bet, Buffett/Seides gave LB a float of \$1m over an long time period with a large opportunity cost^[Buffett repeatedly emphasizes in his letters that one of the keys to Berkshire Hathaway's business success is its insurers, who in turn are enabled by the 'float' of insurance premiums which are paid long before any claims are made, and this 'free' money can be invested as Buffett wishes; so the consequences of giving LB \$1m for such an extended time likely was not lost on him. Similarly, he notes in [his 2013 annual letter](http://www.berkshirehathaway.com/letters/2013ltr.pdf) that his estate will not be put into a long-term fund for investment but will be distributed for philanthropic investment as quickly as possible: "*all* of my Berkshire shares will be fully distributed to certain philanthropic organizations over the ten years following the closing of my estate".] and thus paid LB ~\$800,000 for its service; it is not clear that this was money well spent.
 
     - the 'long' aspect exacerbates this, as the longer a bet goes on, the less likely it is that you wind up donating more to your charity than just saving & giving later
     - 3% is optimistic, as the rules state that half of the 'conservative' return goes to the Long Now Foundation in addition to the \$50 prediction fee:
 
          > The entire amount goes into a long-term investment portfolio called the Farsight Fund - its assets are in "Endowments", a mutual fund managed by Capital Research and Management Company. Half of the growth of that fund is drawn off to The Long Now Foundation, which maintains the LB service; the other half accrues so that the eventual payment to the winner's preferred charity may be significantly larger than the original bet stakes.
 
-    I have emailed LB asking for information on the actual return to bets.
+    I emailed LB on 25 February 2017 asking for information on the actual return to bets & fees, and followed up twice; no response yet.
 - there are not many predictions in general, and only a few are added each year, of which many are clearly unserious despite the registration fee & LB's moderation, limiting possible investments
 - all bets are 1:1, sharply upper bounding how many are worthwhile (eg if someone thinks that a thing is only 60% likely and you think it's 100% likely and they register a prediction *for* it, you can't do anything about it) and how much you can money-pump people for (only 2x)
 - many of the predictions seem to be invalid or outdated; bet #312 hasn't finished yet, but I think it would technically be invalid to make that bet with him now because a bet expiring in 2018 can't be at least 2 years long
@@ -48,17 +48,18 @@ The downsides would be:
 # Minimum required returns
 
 The opportunity cost is the big one.
-Since the minimum is 2 years, and guesstimating 3% return for the fund and using the usual stock market index return of ~7%, you are forfeiting ~4% return for >=2 years, so the minimum opportunity cost is `1.03^2 - 1.07^2` or  ~8.4% of your bet. That is quite a lot.
+Since the minimum is 2 years, and guesstimating 3% return for the fund and using the usual stock market index return of ~7%, you are forfeiting ~4% return for >=2 years, so the minimum opportunity cost is $1.03^2 - 1.07^2$ or  ~8.4% of your bet. That is quite a lot.
 
 The question becomes, even if you think you've found a bet you have >50% chance of winning (required to make it +EV given the mandatory 1:1 betting), how much of an edge do you need to just outpace the opportunity cost?
 
-You need to solve for_p_ in a value expression like `p*2*b*1.03^t + (1-p)*0*b > b*1.07^t`. _b_ drops out as a constant, so for _t_=2, you need... _p_=0.54. In general, `2*p*1.03^t > 1.07^t`.
+You need to solve for _p_ in a value expression like $p \cdot 2 \cdot b \cdot 1.03^t + (1-p) \cdot 0 \cdot b > b \cdot 1.07^t$. _b_ drops out as a constant, so for _t_=2, you need... _p_=0.54. In general, $2 \cdot p \cdot 1.03^t > 1.07^t$.
 So even if you assume you are certain to win, _p_=1, you can't bet any further out than ~18.19 years (so in 2017, any bet past 2035 is out of the question).
 
-Or to put it another way, the lost return doubles in 18 years (`1.04^18 = 2`), so since you can never earn more than twice your bet on LB, past 18 years it becomes impossible to earn a return (before, it is merely very difficult).
+Or to put it another way, the lost return doubles in 18 years ($1.04^{18} = 2$), so since you can never earn more than twice your bet on LB, past 18 years it becomes impossible to earn a return (before, it is merely very difficult).
 
 ~~~{.R}
-data.frame(Year=2:19, Minimum.Win.Prob=sapply(2:19, function(t) { optimize(function(p) { abs(1.07^t - 2*p*1.03^t) }, seq(0,1,by=0.001))$minimum }))
+data.frame(Year=2:19, Minimum.Win.Prob=sapply(2:19, function(t) {
+    optimize(function(p) { abs(1.07^t - 2*p*1.03^t) }, seq(0,1,by=0.001))$minimum }))
 # Year Minimum.Win.Prob
 #    2 0.5395891434
 #    3 0.5605221301
@@ -80,7 +81,8 @@ data.frame(Year=2:19, Minimum.Win.Prob=sapply(2:19, function(t) { optimize(funct
 #   19 0.9999338930
 1.07^10.5
 # [1] 2.034837186
-data.frame(Year=2:11, Minimum.Win.Prob=sapply(2:11, function(t) { optimize(function(p) { abs(1.07^t - 2*p*1.00^t) }, seq(0,1,by=0.001))$minimum }))
+data.frame(Year=2:11, Minimum.Win.Prob=sapply(2:11, function(t) {
+    optimize(function(p) { abs(1.07^t - 2*p*1.00^t) }, seq(0,1,by=0.001))$minimum }))
 # Year Minimum.Win.Prob
 #    2     0.5724575464
 #    3     0.6124911939
@@ -97,6 +99,7 @@ data.frame(Year=2:11, Minimum.Win.Prob=sapply(2:11, function(t) { optimize(funct
 In the worst-case of 0% return from the LB investment fund after fees & Long Now taking its half, the upper bound is 11 years (2028).
 
 # Opportunities
+## Already-made Bets
 
 As of 25 February 2017, LB has 29 registered bets, of which 9 have finished & 20 are outstanding with a total balance (excluding any investment returns) of \$1,041,800 (or \$41,800 excluding the Buffett bet).
 The bets maturing soon:
@@ -134,120 +137,122 @@ The bets maturing soon:
 
 Given the implied 50% probability, I disagree strongly on many of these, but unfortunately there is no additional betting; bets must be done on predictions only.
 
+## Expired or Invalid Bets
+
 There are ~207 outstanding predictions but a decent fraction are ill-defined, expired, or expiring too soon to register a bet on.
 Reviewing the ones with due dates before 2035:
 
 Expired, right:
 
-- http://longbets.org/626/
-- http://longbets.org/611/
-- http://longbets.org/480/
-- http://longbets.org/479/
-- http://longbets.org/328/
-- http://longbets.org/243/
-- http://longbets.org/211/
-- http://longbets.org/205/
-- http://longbets.org/97/
-- http://longbets.org/39/
+- <http://longbets.org/626/>
+- <http://longbets.org/611/>
+- <http://longbets.org/480/>
+- <http://longbets.org/479/>
+- <http://longbets.org/328/>
+- <http://longbets.org/243/>
+- <http://longbets.org/211/>
+- <http://longbets.org/205/>
+- <http://longbets.org/97/>
+- <http://longbets.org/39/>
 
 Expired, wrong:
 
-- http://longbets.org/660/
-- http://longbets.org/630/
-- http://longbets.org/628/
-- http://longbets.org/619/
-- http://longbets.org/618/
-- http://longbets.org/597/
-- http://longbets.org/590/
-- http://longbets.org/574/
-- http://longbets.org/488/
-- http://longbets.org/483/
-- http://longbets.org/467/
-- http://longbets.org/440/
-- http://longbets.org/409/
-- http://longbets.org/404/
-- http://longbets.org/354/
-- http://longbets.org/339/
-- http://longbets.org/287/
-- http://longbets.org/266/
-- http://longbets.org/259/
-- http://longbets.org/244/
-- http://longbets.org/240/
-- http://longbets.org/225/
-- http://longbets.org/217/
-- http://longbets.org/204/
-- http://longbets.org/200/
-- http://longbets.org/179/
-- http://longbets.org/177/
-- http://longbets.org/176/
-- http://longbets.org/148/
-- http://longbets.org/127/
-- http://longbets.org/105/
-- http://longbets.org/26/
-- http://longbets.org/14/
-- http://longbets.org/681/
+- <http://longbets.org/660/>
+- <http://longbets.org/630/>
+- <http://longbets.org/628/>
+- <http://longbets.org/619/>
+- <http://longbets.org/618/>
+- <http://longbets.org/597/>
+- <http://longbets.org/590/>
+- <http://longbets.org/574/>
+- <http://longbets.org/488/>
+- <http://longbets.org/483/>
+- <http://longbets.org/467/>
+- <http://longbets.org/440/>
+- <http://longbets.org/409/>
+- <http://longbets.org/404/>
+- <http://longbets.org/354/>
+- <http://longbets.org/339/>
+- <http://longbets.org/287/>
+- <http://longbets.org/266/>
+- <http://longbets.org/259/>
+- <http://longbets.org/244/>
+- <http://longbets.org/240/>
+- <http://longbets.org/225/>
+- <http://longbets.org/217/>
+- <http://longbets.org/204/>
+- <http://longbets.org/200/>
+- <http://longbets.org/179/>
+- <http://longbets.org/177/>
+- <http://longbets.org/176/>
+- <http://longbets.org/148/>
+- <http://longbets.org/127/>
+- <http://longbets.org/105/>
+- <http://longbets.org/26/>
+- <http://longbets.org/14/>
+- <http://longbets.org/681/>
 
 Expired:
 
-- http://longbets.org/636/
-- http://longbets.org/607/
-- http://longbets.org/509/
-- http://longbets.org/476/
-- http://longbets.org/437/
-- http://longbets.org/436/
-- http://longbets.org/405/
-- http://longbets.org/388/
-- http://longbets.org/346/
-- http://longbets.org/267/
-- http://longbets.org/252/ (likely has already happened secretly given various sperm bank scandals and freelance donors)
-- http://longbets.org/246/
-- http://longbets.org/223/
-- http://longbets.org/219/
-- http://longbets.org/208/
-- http://longbets.org/175/
-- http://longbets.org/63/
-- http://longbets.org/13/
+- <http://longbets.org/636/>
+- <http://longbets.org/607/>
+- <http://longbets.org/509/>
+- <http://longbets.org/476/>
+- <http://longbets.org/437/>
+- <http://longbets.org/436/>
+- <http://longbets.org/405/>
+- <http://longbets.org/388/>
+- <http://longbets.org/346/>
+- <http://longbets.org/267/>
+- <http://longbets.org/252/> (likely has already happened secretly given various sperm bank scandals and freelance donors)
+- <http://longbets.org/246/>
+- <http://longbets.org/223/>
+- <http://longbets.org/219/>
+- <http://longbets.org/208/>
+- <http://longbets.org/175/>
+- <http://longbets.org/63/>
+- <http://longbets.org/13/>
 
 About to expire: Cannot be bet on and so should be removed, or the prediction needs to be edited, because it matures in <=2 years and the LB rules mandate bets must be >=2 years long:
 
-- http://longbets.org/667/
-- http://longbets.org/641/
-- http://longbets.org/312/
-- http://longbets.org/133/
+- <http://longbets.org/667/>
+- <http://longbets.org/641/>
+- <http://longbets.org/312/>
+- <http://longbets.org/133/>
 
 Should be removed for being ill-defined/unjudgeable/unfalsifiable, vague, emotizing, moronic, spam or just plain awful:
 
-- http://longbets.org/677/
-- http://longbets.org/659/
-- http://longbets.org/630/
-- http://longbets.org/627/
-- http://longbets.org/594/
-- http://longbets.org/432/
-- http://longbets.org/431/
-- http://longbets.org/430/
-- http://longbets.org/429/
-- http://longbets.org/427/
-- http://longbets.org/425/
-- http://longbets.org/310/
-- http://longbets.org/296/
-- http://longbets.org/241/
-- http://longbets.org/217/
-- http://longbets.org/216/
-- http://longbets.org/200/
-- http://longbets.org/196/
-- http://longbets.org/173/
-- http://longbets.org/164/
-- http://longbets.org/163/
-- http://longbets.org/131/
-- http://longbets.org/92/
-- http://longbets.org/88/
+- <http://longbets.org/677/>
+- <http://longbets.org/659/>
+- <http://longbets.org/630/>
+- <http://longbets.org/627/>
+- <http://longbets.org/594/>
+- <http://longbets.org/432/>
+- <http://longbets.org/431/>
+- <http://longbets.org/430/>
+- <http://longbets.org/429/>
+- <http://longbets.org/427/>
+- <http://longbets.org/425/>
+- <http://longbets.org/310/>
+- <http://longbets.org/296/>
+- <http://longbets.org/241/>
+- <http://longbets.org/217/>
+- <http://longbets.org/216/>
+- <http://longbets.org/200/>
+- <http://longbets.org/196/>
+- <http://longbets.org/173/>
+- <http://longbets.org/164/>
+- <http://longbets.org/163/>
+- <http://longbets.org/131/>
+- <http://longbets.org/92/>
+- <http://longbets.org/88/>
 
-I have emailed this list to LB so they can clean up their predictions page.
+I have emailed this list to LB so they can clean up their predictions page; they said they will keep it in mind should they ever update the site.
 
 Amusingly, even though predictors presumably are at least 50% confident when they make binary predictions at 1:1 odds, by my count, over 3x as many expired predictions were false rather than true, even judging generously and skipping the hardest.
 So, the predictors as a whole are not just badly [calibrated](!Wikipedia "Calibration (statistics)#In prediction and forecasting") but systematically overconfident, and one could've made a considerable profit just betting against everyone blindly.
 
-## Upcoming predictions
+## Valid and Available Predictions
 
 So this leaves (excluding all the expired ones, but including the well-defined-but-moronic ones, which are winnable should the predictor be sufficiently foolish as to accept bets) as viable candidates, going by year (the main determinant of profitability) / prediction / initial probability estimate:
 
@@ -297,7 +302,7 @@ So this leaves (excluding all the expired ones, but including the well-defined-b
 - 2025: ["By 2025, the underground economy in the USA will be worth more than \$6 trillion -- it's estimated to be around \$2 trillion today."](http://longbets.org/662/): 40%?
 - 2025: ["By 2025, oil and gas companies will find that their carbon is much more valuable as a manufacturing source material than as a waste product."](http://longbets.org/674/): 0%
 - 2025: ["Due to a favorable political & social conditions, India's economy will grow over the next 10 years, specifically measured through growth of Fairfax India (FIH.U), an investment holding company. The company's closing price on May 5, 02015 was USD\$11.50. I predict Fairfax India will earn, on average, an annual compound rate of return of at least 15% (including capital gains and dividends) over the next 10 years (May 6, 2015 to May 5, 2025)."](http://longbets.org/684/): 3%
-- 2025: ["The June, 2025 Labor Force Participation Rate and unemployment rate, reported by the U.S. Bureau of Labor Statistics, will be, respectively above 60 percent and below 7.5 percent."](http://longbets.org/687/): 50%?
+- 2025: ["The June, 2025 Labor Force Participation Rate and unemployment rate, reported by the U.S. Bureau of Labor Statistics, will be, respectively above 60% and below 7.5%."](http://longbets.org/687/): 50%?
 - 2029: ["By December 31 02029 one of the world's top ten car manufacturers in 02015 (Volkswagen, Toyota, Daimler, GM, Ford, Fiat Chrysler, Honda, Nissan, BMW, SAIC) will stop manufacturing cars powered by internal combustion engines."](http://longbets.org/710/): 30%
 - 2030: ["..effective computerized individual citizen profiling, with the full maturation of the nascent, but extremely promising studies of brain, mind and personality as revealed by the many different brain scanning devices now being intensively studied and developed. These scans - and their related psychological, psychiatric, and sociological fields interpreting them and giving them function ? will gain great utility as the ultimate lie detectors..."](http://longbets.org/289/): 5%?
 - 2030: ["A nuclear explosive weapon will be used in war or terrorism."](http://longbets.org/521/): 25%?
@@ -497,7 +502,7 @@ So the Long Now Foundation has 3 options:
 1. maintain the LB status quo as a zombie site limping along, unmoderated, with near-zero activity, getting perhaps 1 or 2 bets in a good year, steadily draining Foundation labor and increasing overhead, for no particular benefit other than stubbornness.
 2. shut down LB
 
-    As LB has so few bets, this would be easy. LB can simply close bets which are clearly going to be won by one side, and can 'push' all bets where it's unclear who will win by transferring the funds to the pre-designated charities. This is permitted by the legal agreement signed by all bettors, and they can hardly complain if their favored charities get the funds earlier than expected (and the charities themselves will be very pleased to have the money early, because of the opportunity cost, before too much time has been wasted or inflation eviscerated the donations). Then the site can be converted to a static HTML site for historical archive purposes.^[Or simply taken down; I have already [crawled it several times & ensured it is in the Internet Archive](/Archiving URLs).]
+    As LB has so few bets, this would be easy. LB can simply close bets which are clearly going to be won by one side, and can 'push' all bets where it's unclear who will win by transferring the funds to the pre-designated charities. This is permitted by the legal agreement signed by all bettors, and they can hardly complain if their favored charities get the funds earlier than expected (and the charities themselves will be very pleased to have the money early, because of the opportunity cost, before too much time has been wasted or inflation eviscerated the donations). Then the site can be converted to a static HTML site for historical archive purposes.^[Or simply taken down; I have already [crawled it several times & ensured it is in the Internet Archive](/Archiving URLs).] Long Now Foundation can then monitor ongoing attempts to fill the prediction market niche such as [PredictIt](!Wikipedia), or decentralized cryptocurrency-based projects like [HiveMind](http://bitcoinhivemind.com/)/[Augur](!Wikipedia "Augur (software)") & [Gnosis](https://gnosis.pm/), and use them, either by backing particular contracts and serving as an oracle/judge (in centralized models like PredictIt or Gnosis) or by endorsing & subsidizing contracts (HiveMind/Augur).
 3. invest in LB further and attempt to revitalize or reboot it
 
 ## Fixes
@@ -518,6 +523,7 @@ What could the Long Now Foundation do to improve?
 
     - possibly require minimum bets to be paid up front, to avoid people deliberately weaseling out or being incentivized to kill negotiations with prospective bettors; since in theory, people making predictions are willing to bet money on the prediction they are making, they should have no grounds to object. If no bettors appear, the money can be kept until expiration and then donated to the predictor's pre-specified charity. (This mechanism would be far more appealing with the investment fund fixed.)
 - more active promotion by Long Now Foundation members, directors, and prominent donors: looking over the bet dates, many date from a narrow time period in the early 2000s, after which LB appears to've fallen into obscurity and gone dormant; but many of the people on the Long Now board or who have been involved in Long Now are well-off, donate to charity regularly, and remain heavily involved in writing and activism on issues ranging from technological unemployment to nuclear power to the Russian Internet - thus, they could easily route their charitable giving through long bets on topics of current interest, as well as eliminating the worse predictions & enforcing a basic level of sanity and seriousness
+- communicative more clearly to the public what Long Now Foundation projects are actually active, and what concrete progress is being made; the Long Now website currently fails at this, as it apparently is devoted to telling people about talks they cannot attend (and which are not then made available online) and changes at a bar they cannot drink at, while people are more interested in things like progress on the Rosetta stones or the Clock
 
 [^Buffett-equities-long-term]: [pg18-19, Buffett 2011](http://www.berkshirehathaway.com/letters/2011ltr.pdf) (emphasis in original):
 
@@ -525,4 +531,4 @@ What could the Long Now Foundation do to improve?
     >
     > ...My own preference - and you knew this was coming - is our third category: investment in productive assets, whether businesses, farms, or real estate. Ideally, these assets should have the ability in inflationary times to deliver output that will retain its purchasing-power value while requiring a minimum of new capital investment. Farms, real estate, and many businesses such as Coca-Cola, IBM and our own See's Candy meet that double-barreled test. Certain other companies - think of our regulated utilities, for example - fail it because inflation places heavy capital requirements on them. To earn more, their owners must invest more. Even so, these investments will remain superior to nonproductive or currency-based assets. Whether the currency a century from now is based on gold, seashells, shark teeth, or a piece of paper (as today), people will be willing to exchange a couple of minutes of their daily labor for a Coca-Cola or some See's peanut brittle. In the future the U.S. population will move more goods, consume more food, and require more living space than it does now. People will forever exchange what they produce for what others produce.
     >
-    > Our country's businesses will continue to efficiently deliver goods and services wanted by our citizens. Metaphorically, these commercial "cows" will live for centuries and give ever greater quantities of "milk" to boot. Their value will be determined not by the medium of exchange but rather by their capacity to deliver milk. Proceeds from the sale of the milk will compound for the owners of the cows, just as they did during the 20th century when the Dow increased from 66 to 11,497 (and paid loads of dividends as well). Berkshire's goal will be to increase its ownership of first-class businesses. Our first choice will be to own them in their entirety - but we will also be owners by way of holding sizable amounts of marketable stocks. I believe that over any extended period of time this category of investing will prove to be the runaway winner among the three we've examined. More important, it will be *by far* the safest
+    > Our country's businesses will continue to efficiently deliver goods and services wanted by our citizens. Metaphorically, these commercial "cows" will live for centuries and give ever greater quantities of "milk" to boot. Their value will be determined not by the medium of exchange but rather by their capacity to deliver milk. Proceeds from the sale of the milk will compound for the owners of the cows, just as they did during the 20th century when the Dow increased from 66 to 11,497 (and paid loads of dividends as well). Berkshire's goal will be to increase its ownership of first-class businesses. Our first choice will be to own them in their entirety - but we will also be owners by way of holding sizable amounts of marketable stocks. I believe that over any extended period of time this category of investing will prove to be the runaway winner among the three we've examined. More important, it will be *by far* the safest.
