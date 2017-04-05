@@ -2121,76 +2121,26 @@ So will do the classic pairwise design, all possible pairs at least once, see /R
 Modified version of Ken Butler's Stan code for Bradley-Terry models https://github.com/nxskok/btstan/blob/master/R/btstan.R :
 
 ~~~{.R}
-water <- read.csv(stdin(), header=TRUE, colClasses=c("character", "character", "integer"))
-"Type1","Type2","Win"
-"Evian","Fiji",1
-"tap water","Great Value",1
-"tap water","Great Value",1
-"tap water","Nestle Pure Life",1
-"tap water","Voss Still Water",1
-"tap water","Evian",1
-"tap water","Fiji Natural Water",1
-"tap water","Aquafina",1
-"tap water","Poland Spring",1
-"Great Value","Nestle Pure Life",1
-"Great Value","Voss Still Water",1
-"Great Value","Voss Still Water",3
-"Great Value","Voss Still Water",3
-"Great Value","Voss Still Water",3
-"Great Value","Evian",1
-"Great Value","Fiji Natural Water",1
-"Great Value","Aquafina",1
-"Great Value","Poland Spring",1
-"Nestle Pure Life","Voss Still Water",1
-"Nestle Pure Life","Evian",1
-"Nestle Pure Life","Fiji Natural Water",1
-"Nestle Pure Life","Aquafina",1
-"Nestle Pure Life","Poland Spring",1
-"Voss Still Water","Evian",1
-"Voss Still Water","Fiji Natural Water",1
-"Voss Still Water","Aquafina",1
-"Voss Still Water","Poland Spring",1
-"Evian","Fiji Natural Water",1
-"Evian","Aquafina",1
-"Evian","Aquafina",1
-"Evian","Aquafina",1
-"Evian","Aquafina",1
-"Evian","Poland Spring",1
-"Fiji Natural Water","Aquafina",1
-"Fiji Natural Water","Poland Spring",1
-"Aquafina","Poland Spring",3
-"Aquafina","Poland Spring",3
-"Aquafina","Poland Spring",3
-"Aquafina","Poland Spring",3
-"Aquafina","Poland Spring",3
-"Aquafina","Poland Spring",3
-"Poland Spring","Aquafina",3
-"Poland Spring","Aquafina",3
-"Poland Spring","Aquafina",3
-"Poland Spring","Aquafina",3
-"Poland Spring","Aquafina",3
-"Poland Spring","Aquafina",3
+fitBT <- function(df) {
+    types <-  unique(c(df$Type1, df$Type2))
+    team1 = match(df$Type1, types)
+    team2 = match(df$Type2, types)
+    y = df$Win
+    N = nrow(df)
+    J = length(types)
+    data = list(y = y, N = N, J = J, x = cbind(team1, team2))
 
-
-types <-  unique(c(water$Type1, water$Type2))
-team1 = match(water$Type1, types)
-team2 = match(water$Type2, types)
-y = water$Win
-N = nrow(water)
-J = length(types)
-data = list(y = y, N = N, J = J, x = cbind(team1, team2))
-
-m <- "data {
+    m <- "data {
     int<lower=0> N; // number of games
     int<lower=1> J; // number of teams
     int<lower=1,upper=3> y[N]; // results
     int x[N,2]; // indices of teams playing
-}
-parameters {
+    }
+    parameters {
     vector[J] beta;
     real<lower=0> cc;
-}
-model {
+    }
+    model {
     real nu;
     int y1;
     int y2;
@@ -2200,24 +2150,64 @@ model {
     cc ~ normal(0,1);
 
     for (i in 1:N) {
-        y1 = x[i,1];
-        y2 = x[i,2];
-        nu = beta[y1] - beta[y2];
-        d[1] = -cc;
-        d[2] =  cc;
-        y[i] ~ ordered_logistic(nu,d);
+    y1 = x[i,1];
+    y2 = x[i,2];
+    nu = beta[y1] - beta[y2];
+    d[1] = -cc;
+    d[2] =  cc;
+    y[i] ~ ordered_logistic(nu,d);
+    } }"
+    library(rstan)
+    model <- stan(model_code=m, data=data, chains=getOption("mc.cores"))
+    print(model)
+    return(model)
     }
-}
-"
-library(rstan)
-model <- stan(model_code=m, data=data, chains=getOption("mc.cores")-1); print(model)
 
-posteriorSampleMeans <- get_posterior_mean(model, pars="beta")
-bestEstimatedArm <- max(posteriorSampleMeans[,1])
-bestEstimatedArmIndex <- which.max(posteriorSampleMeans[,1])
-posteriorSamples <- head(extract(model)$beta, n=1)
-posteriorSamples[,bestEstimatedArmIndex] <- -Inf ## ensure that the best estimated arm is not drawn, as this is pairwise
-bestSampledArm <- max(posteriorSamples)
-bestSampledArmIndex <- which.max(posteriorSamples)
-c(types[bestEstimatedArmIndex], types[bestSampledArmIndex])
+sampleBestArm <- function(model, df) {
+    types <-  unique(c(df$Type1, df$Type2))
+    posteriorSampleMeans <- get_posterior_mean(model, pars="beta")
+    bestEstimatedArm <- max(posteriorSampleMeans[,1])
+    bestEstimatedArmIndex <- which.max(posteriorSampleMeans[,1])
+    posteriorSamples <- head(extract(model)$beta, n=1)
+    ## ensure that the best estimated arm is not drawn, as this is pairwise:
+    posteriorSamples[,bestEstimatedArmIndex] <- -Inf
+    bestSampledArm <- max(posteriorSamples)
+    bestSampledArmIndex <- which.max(posteriorSamples)
+    return(c(types[bestEstimatedArmIndex], types[bestSampledArmIndex]))
+    }
+
+water <- read.csv(stdin(), header=TRUE, colClasses=c("character", "character", "integer"))
+"Type1","Type2","Win"
+"tap water","Voss",3
+"Voss","Great Value distilled",3
+"Great Value distilled","Poland Spring",1
+"Poland Spring","Nestle Pure Life",3
+"Nestle Pure Life","Fiji",1
+"Fiji","Aquafina",3
+"Aquafina","Evian",3
+"Evian","tap water",1
+"Great Value distilled","Poland Spring",1
+"Great Value distilled","tap water",1
+"Great Value distilled","Nestle Pure Life",1
+"Fiji","Poland Spring",3
+"Fiji","Poland Spring",1
+"tap water","Poland Spring",1
+"Poland Spring","Fiji",3
+"Poland Spring","Fiji",3
+"Poland Spring","Fiji",3
+"Poland Spring","Fiji",1
+"Poland Spring","Fiji",3
+"Poland Spring","Fiji",1
+"Poland Spring","Fiji",3
+"Poland Spring","Fiji",1
+"Poland Spring","Aquafina",1
+"Poland Spring","Fiji",3
+"Poland Spring","Aquafina",1
+"Aquafina","Fiji",1
+
+
+sampleBestArm(fitBT(water), water)
+
 ~~~
+[1] "Evian"              "tap water"          "Great Value"        "Nestle Pure Life"   "Voss"   "Fiji Natural Water"
+[7] "Aquafina"           "Poland Spring"      "Fiji"
