@@ -2121,8 +2121,10 @@ So will do the classic pairwise design, all possible pairs at least once, see /R
 Modified version of Ken Butler's Stan code for Bradley-Terry models https://github.com/nxskok/btstan/blob/master/R/btstan.R :
 
 ~~~{.R}
+## list of unique competitors for conversion into numeric IDs:
+competitors <- function(df) { unique(sort(c(df$Type1, df$Type2))) }
 fitBT <- function(df) {
-    types <-  unique(c(df$Type1, df$Type2))
+    types <- competitors(df)
     team1 = match(df$Type1, types)
     team2 = match(df$Type2, types)
     y = df$Win
@@ -2131,46 +2133,47 @@ fitBT <- function(df) {
     data = list(y = y, N = N, J = J, x = cbind(team1, team2))
 
     m <- "data {
-    int<lower=0> N; // number of games
-    int<lower=1> J; // number of teams
-    int<lower=1,upper=3> y[N]; // results
-    int x[N,2]; // indices of teams playing
+      int<lower=0> N; // number of games
+      int<lower=1> J; // number of teams
+      int<lower=1,upper=3> y[N]; // results
+      int x[N,2]; // indices of teams playing
     }
     parameters {
-    vector[J] beta;
-    real<lower=0> cc;
+      vector[J] beta;
+      real<lower=0> cc;
     }
     model {
-    real nu;
-    int y1;
-    int y2;
-    vector[2] d;
+      real nu;
+      int y1;
+      int y2;
+      vector[2] d;
 
-    beta ~ normal(0,10);
-    cc ~ normal(0,1);
+      beta ~ normal(0,10);
+      cc ~ normal(0,1);
 
-    for (i in 1:N) {
-    y1 = x[i,1];
-    y2 = x[i,2];
-    nu = beta[y1] - beta[y2];
-    d[1] = -cc;
-    d[2] =  cc;
-    y[i] ~ ordered_logistic(nu,d);
+      for (i in 1:N) {
+        y1 = x[i,1];
+        y2 = x[i,2];
+        nu = beta[y1] - beta[y2];
+        d[1] = -cc;
+        d[2] =  cc;
+        y[i] ~ ordered_logistic(nu,d);
     } }"
     library(rstan)
-    model <- stan(model_code=m, data=data, chains=getOption("mc.cores"))
-    print(model)
+    model <- stan(model_code=m, data=data,
+        cores=getOption("mc.cores"), chains=getOption("mc.cores"), iter=20000)
     return(model)
     }
 
 sampleBestArm <- function(model, df) {
-    types <-  unique(c(df$Type1, df$Type2))
+    types <-  competitors(df)
     posteriorSampleMeans <- get_posterior_mean(model, pars="beta")
-    bestEstimatedArm <- max(posteriorSampleMeans[,1])
+    bestEstimatedArm      <- max(posteriorSampleMeans[,1])
     bestEstimatedArmIndex <- which.max(posteriorSampleMeans[,1])
-    posteriorSamples <- head(extract(model)$beta, n=1)
+    ## pick one row/set of posterior samples at random:
+    posteriorSamples <- extract(model)$beta[sample.int(nrow(extract(model)$beta), size=1),]
     ## ensure that the best estimated arm is not drawn, as this is pairwise:
-    posteriorSamples[,bestEstimatedArmIndex] <- -Inf
+    posteriorSamples[bestEstimatedArmIndex] <- -Inf
     bestSampledArm <- max(posteriorSamples)
     bestSampledArmIndex <- which.max(posteriorSamples)
     return(c(types[bestEstimatedArmIndex], types[bestSampledArmIndex]))
@@ -2204,9 +2207,47 @@ water <- read.csv(stdin(), header=TRUE, colClasses=c("character", "character", "
 "Poland Spring","Fiji",3
 "Poland Spring","Aquafina",1
 "Aquafina","Fiji",1
+"Poland Spring","Aquafina",1
+"Aquafina","Fiji",1
+"Fiji","Aquafina",3
+"Fiji","Poland Spring",3
+"Fiji","Aquafina",3
+"Fiji","Poland Spring",3
+"Fiji","Poland Spring",3
+"Fiji","Aquafina",3
+"Fiji","tap water",1
+"Fiji","Aquafina",3
+"Fiji","Poland Spring",1
+"tap water","Aquafina",1
+"Fiji","Poland Spring",1
+"Fiji","Poland Spring",3
+"Fiji","Poland Spring",3
+"Great Value distilled","Evian",3
+"Evian","Voss",1
+"Voss","Nestle Pure Life",3
+"Nestle Pure Life","tap water",3
+"tap water","Aquafina",1
+"Aquafina","Poland Spring",3
+"Evian","Great Value distilled",1
+"Great Value distilled","Nestle Pure Life",3
+"Nestle Pure Life","Voss",3
+"Voss","tap water",3
+"tap water","Aquafina",1
+"Aquafina","Poland Spring",1
+"Aquafina","Poland Spring",3
 
 
-sampleBestArm(fitBT(water), water)
+types <- competitors(water)
+fit <- fitBT(water); print(fit)
+sampleBestArm(fit, water)
+
+library(sm)
+library(reshape2)
+posteriors <- as.data.frame(extract(fit)$beta)
+colnames(posteriors) <- types
+posteriors <- melt(posteriors)
+ggplot(posteriors, aes(x=value, fill=variable)) + geom_density(alpha=.3)
+
 
 ~~~
 [1] "Evian"              "tap water"          "Great Value"        "Nestle Pure Life"   "Voss"   "Fiji Natural Water"
