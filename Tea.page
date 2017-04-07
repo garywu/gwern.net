@@ -2063,8 +2063,8 @@ tap water reportedly differs a ton in taste between cities/states. This is plaus
 I can compare my well water to distilled water and commercial non-sparkling spring waters in a blind randomized self-experiment to see if water can make a difference.
 Shades of Fisher's 'lady tasting tea' experiment.
 
-so the idea would be put two identical mugs on the lazy susan with identical amounts of distilled vs tap water, marked on the
-bottom which is which; slowly spin the lazy susan with eyes closed for a few rotations; select the nearest one, put in tea
+so the idea would be put two identical mugs on the Lazy Susan with identical amounts of distilled vs tap water, marked on the
+bottom which is which; slowly spin the Lazy Susan with eyes closed for a few rotations; select the nearest one, put in tea
 kettle, boil to normal green tea temperature, put in exactly 2g of tea using my mg scale, steep 1m with a timer, rate, do so 10
 or so times...
 since it's not a pairwise comparison, it wouldn't be very good. I could borrow an additional electric tea kettle but that one has no temperature
@@ -2148,7 +2148,7 @@ fitBT <- function(df) {
       int y2;
       vector[2] d;
 
-      beta ~ normal(0,10);
+      beta ~ normal(0,5);
       cc ~ normal(0,1);
 
       for (i in 1:N) {
@@ -2160,8 +2160,7 @@ fitBT <- function(df) {
         y[i] ~ ordered_logistic(nu,d);
     } }"
     library(rstan)
-    model <- stan(model_code=m, data=data,
-        cores=getOption("mc.cores"), chains=getOption("mc.cores"), iter=20000)
+    model <- stan(model_code=m, chains=1, data=data, verbose=FALSE, iter=30000)
     return(model)
     }
 
@@ -2235,20 +2234,102 @@ water <- read.csv(stdin(), header=TRUE, colClasses=c("character", "character", "
 "tap water","Aquafina",1
 "Aquafina","Poland Spring",1
 "Aquafina","Poland Spring",3
+"Evian","Great Value distilled",1
+"Great Value distilled","Nestle Pure Life",3
+"Nestle Pure Life","tap water",3
+"tap water","Voss",3
+"Voss","Aquafina",1
+"Evian","Great Value distilled",3
+"Great Value distilled","Nestle Pure Life",3
+"Nestle Pure Life","tap water",3
+"tap water","Aquafina",3
+"Evian","Great Value distilled",1
+"Great Value distilled","Nestle Pure Life",3
+"Nestle Pure Life","tap water",3
+"tap water","Aquafina",1
 
 
 types <- competitors(water)
 fit <- fitBT(water); print(fit)
+# 8 chains, each with iter=30000; warmup=15000; thin=1;
+# post-warmup draws per chain=15000, total post-warmup draws=120000.
+#
+#           mean se_mean   sd   2.5%    25%    50%    75%  97.5% n_eff Rhat
+# beta[1]   1.18    0.01 1.89  -2.52  -0.09   1.18   2.46   4.89 23182    1
+# beta[2]  -2.69    0.01 2.11  -6.95  -4.08  -2.66  -1.25   1.33 27828    1
+# beta[3]   1.83    0.01 1.89  -1.89   0.55   1.83   3.10   5.56 23147    1
+# beta[4]  -0.48    0.01 1.90  -4.21  -1.76  -0.48   0.81   3.21 23901    1
+# beta[5]  -0.40    0.01 1.88  -4.11  -1.66  -0.40   0.88   3.27 23487    1
+# beta[6]   1.42    0.01 1.89  -2.29   0.15   1.42   2.70   5.14 23173    1
+# beta[7]  -0.49    0.01 1.87  -4.17  -1.74  -0.49   0.78   3.17 23084    1
+# beta[8]  -0.48    0.01 1.93  -4.29  -1.78  -0.48   0.82   3.29 24494    1
+# cc        0.03    0.00 0.03   0.00   0.01   0.02   0.05   0.13 83065    1
+# lp__    -49.58    0.01 2.27 -54.90 -50.87 -49.24 -47.91 -46.19 40257    1
 sampleBestArm(fit, water)
+# [1] "Fiji"          "Poland Spring"
 
-library(sm)
-library(reshape2)
-posteriors <- as.data.frame(extract(fit)$beta)
-colnames(posteriors) <- types
-posteriors <- melt(posteriors)
-ggplot(posteriors, aes(x=value, fill=variable)) + geom_density(alpha=.3)
+plotBT <- function(df, fit, labels) {
+    library(reshape2)
+    posteriors <- as.data.frame(extract(fit)$beta)
+    colnames(posteriors) <- labels
+    posteriors <- melt(posteriors)
+    colnames(posteriors) <- c("Water", "Rating")
+    return(ggplot(posteriors, aes(x=Rating, fill=Water)) +
+        ggtitle(paste0("n=",as.character(nrow(df)),"; last comparison: ", tail(df$Type1,n=1), " vs ", tail(df$Type2,n=1))) +
+        geom_density(alpha=0.3) +
+        coord_cartesian(ylim = c(0,0.23), xlim=c(-12,12), expand=FALSE)) }
+plotBT(water, fit, types)
 
-
+library(animation)
+saveGIF(
+    for (n in 7:nrow(water)) {
+      df <- water[1:n,]
+      fit <- fitBT(df)
+      p <- plotBT(df, fit, types)
+      print(p)
+      },
+      interval=0.6, ani.width = 1000, ani.height=800, movie.name = "tea-mineralwaters-bestarm-sequential.gif")
 ~~~
-[1] "Evian"              "tap water"          "Great Value"        "Nestle Pure Life"   "Voss"   "Fiji Natural Water"
-[7] "Aquafina"           "Poland Spring"      "Fiji"
+
+![Results of _n_=67 blinded randomized paired taste-testing comparisons of 7 mineral, distilled, and tap waters: final estimated posterior distributions of win probability in a comparison, showing the poor taste of Evian mineral water but likely similar tastes of most of the others.](/images/tea-mineralwater-posteriors.png)
+
+![Animation of mineral water taste-test showing how the posterior distributions evolve over _n_=7 to _n_=67, guided by Bayesian best-arm sampling](/images/tea-mineralwaters-bestarm-sequential.gif)
+
+To run the experiment, I stored all 7 kinds of water in the same place at room temperature for several weeks.
+Before running, I refrained from food or drink for 5 hours and brushed/flossed/water-picked my teeth.
+
+For blinding, I took my two identical white Corelle stoneware mugs, and put a tiny piece of red electrical tape on the bottom of one.
+For randomization, I borrowed a Lazy Susan table.
+
+The experimental procedure was:
+
+1. empty out both mugs and the measuring cup into a tub sitting nearby
+2. select two kinds of water according to the best-arm Bayesian algorithm (calling `fitBT` & `sampleBestArm` on an updated data-frame)
+3. measure a quarter cup of the first kind of water into the marked mug and a quarter cup into the second
+4. place them symmetrically on the Lazy Susan with handles inward and touching
+5. closing my eyes, rotate the Lazy Susan at a moderate speed (to avoid tipping over the mugs) for a count of at least 30
+6. eyes still closed for good measure, grab the mug on left and take 2 sips
+7. grab the mug on the right, take 2 sips
+8. alternate sips as necessary until I decide which one is slightly better tasting
+9. after deciding, look at the bottom of the mug chosen
+10. record the winner of the comparison, and run the Bayesian model and best-arm algorithm again.
+
+Following this procedure, I made _n_=67 pairwise comparisons of water.
+
+For the first 7 comparisons, since I didn't want to insert any informative priors about my expectations, the best-arm choice would be effectively random, so to initialize it, I did a round-robin set of comparisons: put the waters into a quasi-random order ABCD, then compared A/B, B/C, C/D and so on.
+For the next 4 comparisons, I made a mistake in recording my data since I forgot that '1' coded for the left water winning and '3' for the right water winning, and so I had reversed the rankings and was actually doing a 'worst-arm' algorithm.
+After fixing that, the comparisons began focusing on Fiji and Poland Spring, eventually expanding to Aquafina as it improved in the rankings.
+
+Comparing water turns out to be quite difficult.
+In some cases, a bad taste was quickly distinguishable - I quickly learned that Evian, Great Value distilled, and Nestle Pure Life had distinctly sour or metallic overtones.
+Despite repeated sampling, I had a hard time ever distinguishing Poland Spring/Fiji/Aquafina/Voss, but I thought they might have been ever so slightly better than my tap water in a way I can't verbalize except that they felt 'cooler' somehow.
+
+By _n_=41, Fiji continued to eek out a tiny lead over Poland Spring & Aquafina, but I ran out of it and could no longer run the best-arm algorithm (since it would keep sampling Fiji).
+I was also running low on the Poland Spring.
+So at that point I went back to round-robin, this time using the order of posterior means.
+
+With additional data, the wide posterior distributions began to contract around 0.
+At around _n_=67, I was bored stiff and not looking forward to sampling Evian/Great Value/Nestle many more times, and looking at the posterior distributions, it increasingly seemed like an exercise in futility.
+That is, further testing would probably show Evian/Great Value/Nestle as worse than the rest, but be unable to meaningfully distinguish between my tap water and the decent ones, which answered the original question - no, the decent mineral waters & waters are almost indistinguishable under even the most optimal taste-testing conditions, would be less distinguishable when used in hot tea, and there was zero chance they were worth their enormous cost compared to my free tap water & were a scam as I expected.
+
+I ended the experiment there, dumped the remaining water (except the remaining sealed Poland Spring bottles which are conveniently small, so I kept for use in my car), and recycled the containers.
