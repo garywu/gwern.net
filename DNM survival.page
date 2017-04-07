@@ -45,7 +45,7 @@ Variables:
 
 ## Table
 
-A table of relevant markets (updated 18 August 2016):
+A table of relevant markets (updated 7 April 2017):
 
 Market                   Start       End       Alive Closure   Arrested URL                      Multisig I2P   Bitcoin Litecoin Dogecoin Darkcoin Codebase   Guns   Fraud Hacks Doxed Notes
 ----------------------   ---------- ---------  ----- --------- -------- ------------------------ -------- ----- ------- -------- -------- -------- ---------- -----  ----- ----- ----- -------------
@@ -119,15 +119,15 @@ Dream Market             2013-11-15            TRUE            FALSE    `ltxocqh
 Agora                    2013-12-03 2015-09-06 FALSE voluntary FALSE    `agorahooawayyfoe.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    custom     TRUE   TRUE  0     FALSE   Forums: `lacbzxobeprssrfx.onion`. Agora banned guns [15 July 2015](https://www.deepdotweb.com/2015/07/07/agora-market-to-stop-listing-lethal-weapons/) after ~20 gun busts became known; nevertheless, for most of its lifespan it allowed guns. Agora [announced 25 August 2015](https://www.reddit.com/r/AgMarketplace/comments/3idznd/agora_to_pause_operations/) that it would be going offline indefinitely to deal with Tor deanonymization attacks; withdrawals were enabled and [DNstats](https://dnstats.net/market/Agora) indicates the site went offline around 6 September 2015.
 Outlaw Market            2013-12-29            TRUE            FALSE    `drugs26ucskmvcef.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    custom     TRUE   FALSE 2     FALSE   Open date based on the date of the ["Welcome" post on the OM forum](http://hmxutiksabsj4ozi.onion/index.php?topic=2.msg0); apparently formerly "Drugs'n'Bets". Site was hacked & user PMs released in 2013; site [shut down 31 July 2014](http://www.deepdotweb.com/2014/08/01/outlaw-market-down-possibily-compromised/) after an attack blame on former admins when "A SESSION-hack was performed and a couple of datasets manipulated but not much damage created". They claim in [an interview](http://www.deepdotweb.com/2014/01/23/interview-with-outlaw-market-admin/) it's custom software; this is confirmed by a [leak of PHP source which does not call any frameworks/CRMs](/docs/sr/2015-01-15-outlawmarket-index.php). Policies based on no apparent hits among mirrors.
 Middle Earth Marketplace 2014-06-22 2015-11-04 FALSE  scam      FALSE    `mango7u3rivtwxy7.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    Django     FALSE  TRUE  0     FALSE   [Announced on Reddit](http://www.reddit.com/r/DarkNetMarkets/comments/28srwh/middle_earth_marketplace_new/). Exit-scammed sometime around October-November 2015; some issues with withdrawals reported in late October, then the site went down for ['maintenance' around 4 November 2015](https://www.reddit.com/r/MEMarketplace/comments/3rivwu/whats_up_with_me/), and coins were definitely being moved by the admins by 6 November 2015 .
-Diabolus/SR3             2014-10-13            FALSE           FALSE    `qxvfcavhse45ckpw.onion` FALSE    FALSE TRUE    FALSE    FALSE    TRUE     custom     FALSE  FALSE 0     FALSE   Cannabis-only
+Diabolus/SR3             2014-10-13 2017-02-12 FALSE           FALSE    `qxvfcavhse45ckpw.onion` FALSE    FALSE TRUE    FALSE    FALSE    TRUE     custom     FALSE  FALSE 0     FALSE   Cannabis-only. Unclear when it shut down so I assign it the same date as CM, which was operated by the same team.
 Nucleus Marketplace      2014-10-24 2016-04-13 FALSE scam      FALSE    `nucleuspf3izq7o6.onion` FALSE    FALSE TRUE    TRUE     FALSE    TRUE     Laravel    TRUE   TRUE  0     FALSE   <!-- Multisig planned but not available; TODO: update this? --> <!-- admin doxed by angry forum mod 2015-04-28? not sure... they did take down the forum for a while but didn't see any hard evidence in the one copy I looked at --> <!-- Laravel: see HTML source --> Went down [13 April 2016](https://dnstats.net/market/Nucleus+Market) according to DNstats & Reddit. Apparent non-movement of market coins has prompted speculation about arrests, but no busts has been announced as of 18 August 2016.
 Abraxas                  2014-12-13 2015-11-05 FALSE scam      FALSE    `abraxasdegupusel.onion` FALSE    FALSE TRUE    FALSE    FALSE    TRUE     Laravel    FALSE  TRUE  0     FALSE   forums: `abraxasgacelesox.onion` <!-- de-anonymized? https://www.reddit.com/r/DarkNetMarkets/comments/3096bn/dont_use_abraxas_leaked_clearnet_ip/ --> Went down 5 November 2015 according to [DNstats](https://dnstats.net/market/Abraxas) and several months later [the wallet may've been drained](https://www.walletexplorer.com/wallet/AbraxasMarket).
 AlphaBay                 2014-12-22            TRUE            FALSE    `pwoah7foa6au2pul.onion` FALSE    FALSE TRUE    FALSE    FALSE    FALSE    custom     TRUE   TRUE  0     FALSE   [Announced on Reddit](https://www.reddit.com/r/DarkNetMarkets/comments/2q2foj/new_darknet_market_alphabay_market/)
 Silk Road Reloaded       2015-01-13 2016-02-27 FALSE           FALSE    `silkroadreloaded.i2p`   FALSE    TRUE  TRUE    TRUE     TRUE     TRUE     custom     FALSE  TRUE  0     FALSE   Full I2P address: `hyn3mwmyeovcn2paujxur2eury2ufqpoahvbbqshfoggljn25tra.b32.i2p`. I'm uncertain when it closed - last subreddit activity 27 Feb 2016 but may have still been alive as of May 2016 or later.
 Tochka                   2015-01-30            TRUE            FALSE    `tochka3evlj3sxdv.onion` FALSE    FALSE TRUE    TRUE     TRUE     TRUE     custom     FALSE  FALSE 0     FALSE   [Announced on Reddit](https://www.reddit.com/r/DarkNetMarkets/comments/2u8dm2/tochka_new_mobilefirst_anonymous_marketplace/); site rules ban "Counterfeit documents" which I interpret as banning carding in general.
-Crypto                   2015-02-14            TRUE            FALSE    `cryptomktgxdn2zd.onion` FALSE    FALSE TRUE     FALSE    FALSE    FALSE   custom     TRUE   TRUE  0     FALSE   [ANN](https://www.reddit.com/r/DarkNetMarkets/comments/2vvhtc/crypto_market/); CM is run on / by Diabolus and not entirely separate.
+Crypto Market            2015-02-14 2017-02-12 FALSE scam      FALSE    `cryptomktgxdn2zd.onion` FALSE    FALSE TRUE     FALSE    FALSE    FALSE   custom     TRUE   TRUE  0     FALSE   [ANN](https://www.reddit.com/r/DarkNetMarkets/comments/2vvhtc/crypto_market/); CM is run on / by Diabolus and not entirely separate. According to DNstats.net, Crypto Market was last observed up on 12 February 2017, but there are complaints in [January 2017 on Reddit](https://www.reddit.com/r/DarkNetMarkets/comments/5o9xky/cryptomarket_sr3/) so I'm not sure when it really went down. In any case, the escrow funds apparently were not returned.
 Mr Nice Guy 2            2015-02-21 2015-10-14 FALSE scam       FALSE    `niceguyfa3xkuuoq.onion` FALSE    FALSE TRUE     FALSE    FALSE    FALSE   custom     FALSE  FALSE 0     TRUE    [Operator claims doxing was just of "a volunteer"](https://www.reddit.com/r/DarkNetMarkets/comments/2ztsg9/opseccomputer_psa_the_owner_of_mr_nice_guy_market/). Went down October 14, 2015 according to [DNstats](https://dnstats.net/market/Mr+Nice+Guy).
-TheRealDeal              2015-04-09            TRUE            FALSE    `trdealmgn4uvm42g.onion` TRUE     FALSE TRUE     FALSE    FALSE    FALSE   Bitwasp    TRUE   TRUE  0     FALSE   [Interview](http://www.deepdotweb.com/2015/04/08/therealdeal-dark-net-market-for-code-0days-exploits/), [ANN](https://www.reddit.com/r/DarkNetMarkets/comments/322hro/introduction_therealdeal_code_mostly_market/); forums: `forum5cijl4suew6.onion`
+TheRealDeal              2015-04-09 2016-10-22 FALSE            FALSE    `trdealmgn4uvm42g.onion` TRUE     FALSE TRUE     FALSE    FALSE    FALSE   Bitwasp    TRUE   TRUE  0     FALSE   [Interview](http://www.deepdotweb.com/2015/04/08/therealdeal-dark-net-market-for-code-0days-exploits/), [ANN](https://www.reddit.com/r/DarkNetMarkets/comments/322hro/introduction_therealdeal_code_mostly_market/); forums: `forum5cijl4suew6.onion`. Multiple staffers were arrested & the site went down for a while but came back up, leading to questions about whether it had been subverted. Last observed by DNstats.net on 22 October 2016. Unclear why it shut down: LE, exit scam, or otherwise? Or to what extent its multisig worked.
 Oxygen                   2015-04-16 2015-08-27 FALSE scam      FALSE    `o2oxycuvnwxhv73e.onion` TRUE     FALSE TRUE     FALSE    FALSE    FALSE   custom     FALSE  TRUE  1     FALSE   [ANN](https://www.reddit.com/r/DarkNetMarkets/comments/33xfaj/new_market_called_oxygen/). Was hacked around January 2015 by a vendor [exploiting an early finalization bug to scam customers](http://pirate.london/2016/05/real-fake-money-real-insecure-markets/ "Real fake money, real insecure markets"). Went down 27 August 2015 according to [DNstats](https://dnstats.net/market/Oxygen).
 East India Company       2015-04-28 2016-01-01 FALSE scam      FALSE    `g4c35ipwiutqccly.onion` FALSE    FALSE TRUE     FALSE    FALSE    FALSE   custom     FALSE  FALSE 1     FALSE   [ANN](https://www.reddit.com/r/DarkNetMarkets/comments/34538b/new_european_only_market_east_india_company_has/); EU-only. Claims to've lost [฿30 to a hacker in early August 2015](https://www.deepdotweb.com/2015/08/09/east-india-market-hacked-30-btc-gone/). EIC went down ~1-2 January 2016 for a week or so, then a maintenance message, then came back up bu withdrawals failed; finally, went down for good 1 February 2016 according to [DNstats](https://dnstats.net/market/East+India+Company).
 Haven                    2015-05-05 2015-06-06 FALSE scam       FALSE    `havenpghmfqhivfn.onion` FALSE    FALSE TRUE     FALSE    FALSE    FALSE   custom     TRUE   TRUE  0     FALSE   [ANN](https://www.reddit.com/r/DarkNetMarkets/comments/34yxfi/vendormarketinquiry_haven_marketplace_now_online/) <!-- only explicitly bans CP in the vendor-signup agreement --> <!-- TODO: multisig support? --> Went down 6 June 2015 according to [DNstats](https://dnstats.net/market/Haven); not much discussion of its closure.
@@ -228,7 +228,9 @@ TODO: <!-- ping Vespco about results -->
 
 ~~~{.R}
 library(XML)
-black <- readHTMLTable("https://www.gwern.net/DNM%20survival#table", colClasses = c("factor", as.Date, as.Date, "logical", "factor", "logical", "character", "logical", "logical", "logical", "logical", "logical", "logical", "factor", "logical", "logical", "integer", "logical", "character"))[[1]]
+library(RCurl)
+html <- getURL("https://www.gwern.net/DNM%20survival#table")
+black <- readHTMLTable(html, colClasses = c("factor", as.Date, as.Date, "logical", "factor", "logical", "character", "logical", "logical", "logical", "logical", "logical", "logical", "factor", "logical", "logical", "integer", "logical", "character"))[[1]]
 black[black$Codebase=="",]$Codebase <- "unknown"
 black$Start <- as.Date(black$Start); black$End <- as.Date(black$End)
 black[is.na(black$End),]$End <- Sys.Date() # assuming the table is up to date
@@ -242,7 +244,7 @@ black[is.na(black$Fraud),]$Fraud <- as.logical(median(black$Fraud, na.rm=T))
 black[is.na(black$Guns),]$Guns   <- as.logical(median(black$Fraud, na.rm=T))
 
 # for competing-risks modeling
-levels(black$Closure) <- c("alive", "hacked", "raided", "scam", "voluntary") # sets "" to "alive"
+levels(black$Closure) <- c("unknown", "hacked", "raided", "scam", "voluntary") # sets "" to "unknown"
 black <- black[order(black$Start),]
 
 library(survival)
@@ -259,13 +261,13 @@ invisible(dev.off())
 library(lubridate)
 cmodel <- coxph(Surv(Age, Alive) ~ year(black$Start) + Multisig + I2P + Bitcoin+Litecoin+Dogecoin+Darkcoin + Codebase + Guns + Fraud + Hacks + Doxed, data = black, control=coxph.control(iter.max=10000)); cmodel
 
-survdiff(Surv(Age,Alive)~strata(as.factor(year(black$Start))))
+with(black, survdiff(Surv(Age,Alive)~as.factor(year(Start))))
 
 cmodel2 <- coxph(Surv(Age, Alive) ~ as.factor(year(black$Start)) + ridge(Multisig, I2P, Bitcoin,Litecoin,Dogecoin,Darkcoin, Codebase, Guns, Fraud, Hacks, Doxed), data = black); summary(cmodel2)
 
 cmodel <- coxph(Surv(Age, Alive) ~ strata(year(black$Start)), data = black); cmodel
 
-black$End <- black$Start <- black$URL <- black$Notes <- black$Market <- NULL
+black$URL <- black$Notes <- black$Market <- NULL
 ~~~
 
 Example competing-risks model using startup data:
@@ -324,18 +326,20 @@ library(cmprsk)
 blackc <- with(black, cuminc(Age, Closure, cencode="alive")); blackc
 # Estimates and Variances:
 # $est
-#                       200           400           600           800         1000
-# 1 hacked    0.11449942463 0.11449942463 0.11449942463 0.11449942463 0.1432278883
-# 1 raided    0.01136363636 0.06890103567 0.06890103567 0.06890103567 0.1119937312
-# 1 scam      0.25302071346 0.35658803222 0.41431856406 0.41431856406 0.4143185641
-# 1 voluntary 0.22986191024 0.26438434983 0.26438434983 0.28736712080 0.2873671208
+#                       200           400           600           800          1000          1200
+# 1 unknown   0.01136363636 0.02272727273 0.03409090909 0.07954545455 0.10227272727 0.11363636364
+# 1 hacked    0.11363636364 0.11363636364 0.11363636364 0.11363636364 0.12500000000 0.12500000000
+# 1 raided    0.01136363636 0.06818181818 0.06818181818 0.06818181818 0.07954545455 0.07954545455
+# 1 scam      0.25000000000 0.35227272727 0.39772727273 0.39772727273 0.39772727273 0.39772727273
+# 1 voluntary 0.22727272727 0.26136363636 0.26136363636 0.27272727273 0.27272727273 0.27272727273
 #
 # $var
-#                         200             400             600             800           1000
-# 1 hacked    0.0011794089021 0.0011794089021 0.0011794089021 0.0011794089021 0.002029789963
-# 1 raided    0.0001292408729 0.0007651084638 0.0007651084638 0.0007651084638 0.002983440395
-# 1 scam      0.0022131526439 0.0027001740693 0.0030251790289 0.0030251790289 0.003025179029
-# 1 voluntary 0.0020705028098 0.0022834721591 0.0022834721591 0.0027111095758 0.002711109576
+#                         200             400             600             800            1000            1200
+# 1 unknown   0.0001292408729 0.0002616701315 0.0003911601132 0.0008988554115 0.0011441139596 0.0013003690983
+# 1 hacked    0.0011623540396 0.0011623540396 0.0011623540396 0.0011623540396 0.0012886980693 0.0012886980693
+# 1 raided    0.0001292408729 0.0007494488199 0.0007494488199 0.0007494488199 0.0009089372449 0.0009089372449
+# 1 scam      0.0021690847025 0.0026530347066 0.0028036544633 0.0028036544633 0.0028036544633 0.0028036544633
+# 1 voluntary 0.0020307752901 0.0022406509916 0.0022406509916 0.0023107700306 0.0023107700306 0.0023107700306
 
 plot(blackc, lty=1, color=c(1:5), xlab="Days")
 
@@ -364,45 +368,45 @@ for (FAIL in c("raided", "hacked", "scam", "voluntary")) {
 # convergence:  TRUE
 # coefficients:
 #  Multisig     Hacks     Doxed     Fraud      Guns       I2P   Bitcoin  Litecoin  Dogecoin  Darkcoin
-#   0.99490   0.29670   1.14600  -0.05336  -0.20570 -17.29000 -15.50000 -11.24000 -28.63000 -27.72000
+#   0.98020   0.32990   1.17200  -0.04558  -0.24180 -17.32000 -15.50000 -11.17000 -28.49000 -27.65000
 # standard errors:
-#  [1] 0.9377 0.4365 0.8083 0.8885 1.0360 1.3780 2.1150 1.3800 2.8650 2.4210
+#  [1] 0.9436 0.4524 0.8089 0.8893 1.0400 1.4230 2.1440 1.3780 2.8650 2.4430
 # two-sided p-values:
 # Multisig    Hacks    Doxed    Fraud     Guns      I2P  Bitcoin Litecoin Dogecoin Darkcoin
-#  2.9e-01  5.0e-01  1.6e-01  9.5e-01  8.4e-01  0.0e+00  2.3e-13  4.4e-16  0.0e+00  0.0e+00
+#  3.0e-01  4.7e-01  1.5e-01  9.6e-01  8.2e-01  0.0e+00  4.9e-13  4.4e-16  0.0e+00  0.0e+00
 #
 # hacked :
 # convergence:  TRUE
 # coefficients:
 # Multisig    Hacks    Doxed    Fraud     Guns      I2P  Bitcoin Litecoin Dogecoin Darkcoin
-#   0.4522   0.7399   1.0910   0.5249   0.8175 -11.5900   2.6350 -10.1600  -8.2450 -10.9000
+#   0.4371   0.7562   1.0860   0.4956   0.8256 -11.6700   2.8160 -10.2200  -8.0430 -10.9900
 # standard errors:
-#  [1] 0.7178 0.3424 0.7632 0.6991 0.7187 0.8443 1.4270 1.2090 2.1840 0.9556
+#  [1] 0.7206 0.3491 0.7689 0.6925 0.7205 0.8449 1.4230 1.2160 2.1830 0.9428
 # two-sided p-values:
 # Multisig    Hacks    Doxed    Fraud     Guns      I2P  Bitcoin Litecoin Dogecoin Darkcoin
-#  0.53000  0.03100  0.15000  0.45000  0.26000  0.00000  0.06500  0.00000  0.00016  0.00000
+#  0.54000  0.03000  0.16000  0.47000  0.25000  0.00000  0.04800  0.00000  0.00023  0.00000
 #
 # scam :
 # convergence:  TRUE
 # coefficients:
 # Multisig    Hacks    Doxed    Fraud     Guns      I2P  Bitcoin Litecoin Dogecoin Darkcoin
-# -0.13460  0.05974 -0.61140  0.38940 -0.71970 -1.00800 -2.03100 -1.22600 -0.68960  0.23900
+# -0.10720  0.08057 -0.59050  0.43420 -0.71390 -1.00200 -2.03000 -1.22200 -0.67940  0.29050
 # standard errors:
-#  [1] 0.5131 0.2178 0.5458 0.3774 0.3868 1.1420 0.6986 0.8938 0.7337 0.5022
+#  [1] 0.5164 0.2175 0.5461 0.3790 0.3868 1.1430 0.6974 0.8939 0.7397 0.4950
 # two-sided p-values:
 # Multisig    Hacks    Doxed    Fraud     Guns      I2P  Bitcoin Litecoin Dogecoin Darkcoin
-#   0.7900   0.7800   0.2600   0.3000   0.0630   0.3800   0.0037   0.1700   0.3500   0.6300
+#   0.8400   0.7100   0.2800   0.2500   0.0650   0.3800   0.0036   0.1700   0.3600   0.5600
 #
 # voluntary :
 # convergence:  TRUE
 # coefficients:
 # Multisig    Hacks    Doxed    Fraud     Guns      I2P  Bitcoin Litecoin Dogecoin Darkcoin
-#  -0.7662  -2.1730   0.2244  -1.0290   0.2219   2.1590   3.5570   1.8460  -7.8690 -13.4500
+#  -0.7029  -2.1160   0.2623  -0.9765   0.2492   2.1520   3.5960   1.8850  -7.7330 -13.3800
 # standard errors:
-#  [1] 0.5845 0.8978 0.6502 0.4783 0.4292 0.4157 1.3360 0.5243 1.9120 0.7617
+#  [1] 0.5779 0.8878 0.6494 0.4879 0.4364 0.4149 1.3520 0.5346 1.9310 0.7828
 # two-sided p-values:
 # Multisig    Hacks    Doxed    Fraud     Guns      I2P  Bitcoin Litecoin Dogecoin Darkcoin
-#  1.9e-01  1.5e-02  7.3e-01  3.2e-02  6.1e-01  2.1e-07  7.7e-03  4.3e-04  3.9e-05  0.0e+00
+#  2.2e-01  1.7e-02  6.9e-01  4.5e-02  5.7e-01  2.1e-07  7.8e-03  4.2e-04  6.2e-05  0.0e+00
 ~~~
 
 Time-varying confounds: Multisig, RoI, σ, hacked, doxed, sales...

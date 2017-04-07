@@ -306,7 +306,7 @@ The September SR1 crawl is processed data stored in [SPSS](!Wikipedia) `.sav` Da
 ### DNStats
 
 [DNStats](https://dnstats.net/) is a service which periodically pings hidden services and records the response & latency, generating graphs of uptime and allowing users to see how long a market has been down and if an error is likely to be transient.
-The owner has provided me with two SQL exports of the ping database; this database could be useful for comparing downtime across markets, examining the effect of DoS attacks, or regressing downtime against things like the Bitcoin exchange rate (presumably if the markets still drive more than a trivial amount of the Bitcoin economy, downtime of the largest markets or market deaths should predict falls in the exchange rate).
+The owner has provided me with three SQL exports of the ping database up to 25 March 2017; this database could be useful for comparing downtime across markets, examining the effect of DoS attacks, or regressing downtime against things like the Bitcoin exchange rate (presumably if the markets still drive more than a trivial amount of the Bitcoin economy, downtime of the largest markets or market deaths should predict falls in the exchange rate).
 
 For example, to graph an average of site uptime per day and highlight as an exogenous event Operation Onymous, the R code would go like this:
 
