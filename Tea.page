@@ -2057,19 +2057,13 @@ Flavors     Subtle sweet notes of peaches and roasted carrots covered by toasted
 
 ## Water experiment
 
+> The kind of water used in tea is claimed to make a difference in the flavor: mineral water being better than tap water or distilled water. However, mineral water is vastly more expensive than tap water. To test the claim, I compared my tap water, 3 distilled water brands (Great Value, Nestle Pure Life, & Poland Spring), 1 osmosis-purified brand (Aquafina), and 3 non-carbonated mineral water brands (Evian, Voss, & Fiji) in a series of _n_=67 blinded randomized comparisons of water flavor. The comparisons are modeled using a Bradley-Terry competitive model implemented in Stan; comparisons were chosen using an adaptive Bayesian best-arm sequential trial method designed to locate the best-tasting water in the minimum number of samples by preferentially comparing the best-known arm to potentially superior arms. Blinding & randomization are achieved by using a Lazy Susan to physically randomize two identical (but marked in a hidden spot) cups of water. The final posterior distribution indicates that some differences between waters are likely to exist but are small & imprecisely estimated and of little practical concern.
+
 Water for tea experiment:
 tap water reportedly differs a ton in taste between cities/states. This is plausible since tea tastes so much worse when microwaved, which is speculated to be due to the oxygenation, so why not the mineral/chlorine content as well?
+This question hearkens back to [R.A Fisher](!Wikipedia)'s famous "[lady tasting tea](!Wikipedia)" experiment and turns out to provide a bit of a challenge to my usual blinding & methods, motivating a look into Bayesian "best-arm identification" algorithms.
 
-I can compare my well water to distilled water and commercial non-sparkling spring waters in a blind randomized self-experiment to see if water can make a difference.
-Shades of Fisher's 'lady tasting tea' experiment.
-
-so the idea would be put two identical mugs on the Lazy Susan with identical amounts of distilled vs tap water, marked on the
-bottom which is which; slowly spin the Lazy Susan with eyes closed for a few rotations; select the nearest one, put in tea
-kettle, boil to normal green tea temperature, put in exactly 2g of tea using my mg scale, steep 1m with a timer, rate, do so 10
-or so times...
-since it's not a pairwise comparison, it wouldn't be very good. I could borrow an additional electric tea kettle but that one has no temperature
-setting so it would just go straight to full boil. I could use instead one or two of the oolong samples. I'd use them up,
-but this would double as my tasting reviews of those samples, so not a problem.
+### Waters
 
 Well water & distilled water already on hand, so I need good commercial spring water (half a gallon or less each).
 I obtained 8 kinds of water:
@@ -2088,8 +2082,6 @@ I obtained 8 kinds of water:
     - [Poland Spring](https://www.amazon.com/Poland-Spring-Natural-16-9-ounce-Plastic/dp/B011SJLWBC/ "Poland Spring 100% Natural Spring Water, 16.9-ounce Plastic Bottles (6)") (could not find in any local stores)
 
 Price, type, pH, and contents:
-
-Nestle data:
 
 Water brand        Water kind Country  Price (\$/l) Price (\$) Volume (L) pH   Total mg/l Calcium Sodium Potassium Fluoride Magnesium Nitrate Chloride Copper Sulfate Arsenic Lead Bicarbonates Silica
 -----------------  ---------- ------- ------------ ----------- ---------- --   ---------- ------- ------ --------- -------- --------- ------- -------- ------ ------- ------- ---- -----------  ------
@@ -2113,12 +2105,48 @@ Notes:
 - Aquafina labels provide no information beyond using reverse osmosis; they provide a [2015 datasheet](http://www.aquafina.com/pdf/bottledWaterInformation_en.pdf), which omits pH and several other minerals; various online tests suggest Aquafina samples have pHs of 4-6, so I class it as 5
 - [Poland Spring 2016 datasheet](https://www.nestle-watersna.com/asset-library/Documents/PS_ENG.pdf); note that the price may be inflated considerably because I had to order it online instead of buying in person from a normal retailer; like Nestle Pure Life, ranges are reported and "ND" taken as ceiling
 
-Design:
+Reporting of the mineral contents of waters is inconsistent & patchy enough that they're unlikely to be helpful in predicting flavor ratings.
 
-4 kinds of water, but tasting 4 kinds of tea at once is a bit hard on the physical logistics & tasting the tea.
-So will do the classic pairwise design, all possible pairs at least once, see /Resorter
+### Design
 
-Modified version of Ken Butler's Stan code for Bradley-Terry models https://github.com/nxskok/btstan/blob/master/R/btstan.R :
+In rating very subtle difference in flavor, the usual method is binary forced-choice comparisons, as they cannot be rated on their own (they just taste like water).
+So the measured data would be the result of a comparison, better/worse or win/loss.
+Fisher's original "lady tasting tea" experiment used permutation tests, but he was only considering two cases & was testing the null hypothesis, while I have 8 waters where I am reasonably sure the null hypothesis of no difference in taste is indeed false and I am more interested in how large the differences are & which is best, so the various kinds of permutation or chi-squared tests in general do not work.
+The analogy to sporting competitions suggests that the paradigm here should be the [Bradley-Terry model](!Wikipedia) which is much like chess's ELO system in that it models each competitor (water) as having a performance variable (flavor) on a latent scale, where the difference between one competitor's rating and another translates into the probability it will win a comparison.
+(For more detailed discussion of the Bradley-Terry model, see references in [Resorter](/Resorter).)
+To account for ties, the logistic distribution is expanded into an ordered logistic distribution with cutpoints to determine whether the outcome falls into 1 of 3 ranges (win/tie/loss).
+
+With 8 waters to be ranked hierarchically using uninformative binary comparisons (which are possibly quite noisy) and sampling being costly (to my patience), it would be nice to have an adaptive experiment design which will be more sample-efficient than the simplest experiment design of simply doing a full factorial with 2 of each possible comparison (there are $\binom{8}{2} = 28$ possible pairs, since order doesn't matter, so 2 samples each would give _n_=56).
+In particular, I am interested less in estimating as accurately as possible *all* the waters (for which the optimal design minimizing total variance probably would be some sort of full factorial experiment) than I am in finding out which, if any, of the waters tastes best - which is not the multi-armed bandit setting (to which the answer would be Thompson sampling) but the closely connected "best-arm identification" problem.
+
+Best-arm identification algorithms are often called 'racing' algorithms because they sample by 'racing' the two best comparisons against each other, focusing their sampling on only the arms likely to be best, and periodically killing the worst ranked arms (in "successive reject").
+So they differ from Thompson sampling in that Thompson sampling, in order to receive as many rewards as possible, will tend to over-focus on the best arm while not sampling the second-best enough.
+[Mellor 2014](https://www.escholar.manchester.ac.uk/api/datastream?publicationPid=uk-ac-man-scw:227658&datastreamId=FULL-TEXT.PDF#pg=140 "Decision Making Using Thompson Sampling") introduces a Bayesian best-arm identification algorithm, "Ordered-Statistic Thompson Sampling", which selects the arm to sample each round by:
+
+1. fitting the Bayesian model and returning the posterior distribution of estimates for each arm
+2. taking the mean of each distribution, ranking them, and finding the best arm's mean
+3. for the other arms, sampling 1 sample from their posteriors (similar to Thompson sampling); add a bonus constant to tune the 'aggressiveness' and sample more or less heavily from lower-ranked arms
+4. select the action: if any of the arm samples are greater than the best arm mean, sample from that arm, otherwise, sample again from the best arm
+5. repeat indefinitely until the experiment halts (indefinite horizon)
+
+This works because it frequently samples from any arm which threatens to surpass the current best arm in proportion to their chance of success, otherwise it concentrates on making more precise the best arm.
+The usual best-arm identification algorithms are for the binomial or normal distribution problems, but here we don't have 21 'arms' of pairs of waters, because it's not the pairs we care about but the waters themselves.
+My suggestion is that to adapt Mellor 2014's algorithm to the Bradley-Terry competitive setting, one instead samples from each water, set the first water to be the highest mean water and then sample from the posteriors of the *other* waters and compare the best arm to the highest posterior sample.
+This is simple to implement, and like the regular best-arm identification algorithm, focuses on alternatives in proportion to their probability of being superior to the current estimated best-arm.
+(Who knows if this is optimal.)
+
+One alternative to my variant on ordered-statistic Thompson sampling would be to set a fixed number of samples I am willing to take (eg _n_=30) and define a reward of 1 for picking the true best water and 0 for picking any other water - thereby turning the experiment into a finite-horizon [Markov decision process](!Wikipedia) whose decision tree can be solved exactly by dynamic programming/backwards induction, yielding a policy for which waters to compare to maximize the probability of selecting the right one at the end of the experiment.
+
+With such subtle differences, subjective expectations become a serious issue and blinding would be good to have, which also requires randomization.
+My usual methods of blinding & randomization, using containers of pills, do not work with water.
+It would be possible to do the equivalent by using water bottles shaken in a large container but inconvenient and perhaps messy.
+A cleaner (literally) way would be to use identical cups, one marked on the bottom to keep track of which is which after rating the waters - but how to randomize them?
+You can't juggle or shake or mix up cups of water.
+It occurred to me that one could use a spinning table - a [Lazy Susan](!Wikipedia) - to randomize pairs of cups. And then blinding is trivial.
+
+### Implementation
+
+Modified version of [Ken Butler's `btstan` Stan code for Bradley-Terry models](https://github.com/nxskok/btstan/blob/master/R/btstan.R) and my own implementation of best-arm sampling for the Bradley-Terry model:
 
 ~~~{.R}
 ## list of unique competitors for conversion into numeric IDs:
@@ -2178,6 +2206,44 @@ sampleBestArm <- function(model, df) {
     return(c(types[bestEstimatedArmIndex], types[bestSampledArmIndex]))
     }
 
+plotBT <- function(df, fit, labels) {
+    library(reshape2)
+    posteriors <- as.data.frame(extract(fit)$beta)
+    colnames(posteriors) <- labels
+    posteriors <- melt(posteriors)
+    colnames(posteriors) <- c("Water", "Rating")
+    return(ggplot(posteriors, aes(x=Rating, fill=Water)) +
+        ggtitle(paste0("n=",as.character(nrow(df)),"; last comparison: ", tail(df$Type1,n=1), " vs ", tail(df$Type2,n=1))) +
+        geom_density(alpha=0.3) +
+        coord_cartesian(ylim = c(0,0.23), xlim=c(-12,12), expand=FALSE)) }
+~~~
+
+It would be better to enhance the `btstan` code to fit a hierarchical model with shrinkage since the different waters will surely be similar, but I wasn't familiar enough with Stan modeling to do so.
+
+### Experiment
+
+To run the experiment, I stored all 8 kinds of water in the same place at room temperature for several weeks.
+Before running, I refrained from food or drink for 5 hours and brushed/flossed/water-picked my teeth.
+
+For blinding, I took my two identical white Corelle stoneware mugs, and put a tiny piece of red electrical tape on the bottom of one.
+For randomization, I borrowed a Lazy Susan table.
+
+The experimental procedure was:
+
+1. empty out both mugs and the measuring cup into a tub sitting nearby
+2. select two kinds of water according to the best-arm Bayesian algorithm (calling `fitBT` & `sampleBestArm` on an updated data-frame)
+3. measure a quarter cup of the first kind of water into the marked mug and a quarter cup into the second
+4. place them symmetrically on the Lazy Susan with handles inward and touching
+5. closing my eyes, rotate the Lazy Susan at a moderate speed (to avoid tipping over the mugs) for a count of at least 30
+6. eyes still closed for good measure, grab the mug on left and take 2 sips
+7. grab the mug on the right, take 2 sips
+8. alternate sips as necessary until I decide which one is slightly better tasting
+9. after deciding, look at the bottom of the mug chosen
+10. record the winner of the comparison, and run the Bayesian model and best-arm algorithm again.
+
+Following this procedure, I made _n_=67 pairwise comparisons of water:
+
+~~~{.R}
 water <- read.csv(stdin(), header=TRUE, colClasses=c("character", "character", "integer"))
 "Type1","Type2","Win"
 "tap water","Voss",3
@@ -2247,9 +2313,14 @@ water <- read.csv(stdin(), header=TRUE, colClasses=c("character", "character", "
 "Great Value distilled","Nestle Pure Life",3
 "Nestle Pure Life","tap water",3
 "tap water","Aquafina",1
+~~~
 
+### Analysis
 
-types <- competitors(water)
+~~~{.R}
+types <- competitors(water); types
+# [1] "Aquafina"      "Evian"     "Fiji" "Great Value distilled" "Nestle Pure Life"
+# [6] "Poland Spring" "tap water" "Voss"
 fit <- fitBT(water); print(fit)
 # 8 chains, each with iter=30000; warmup=15000; thin=1;
 # post-warmup draws per chain=15000, total post-warmup draws=120000.
@@ -2268,16 +2339,6 @@ fit <- fitBT(water); print(fit)
 sampleBestArm(fit, water)
 # [1] "Fiji"          "Poland Spring"
 
-plotBT <- function(df, fit, labels) {
-    library(reshape2)
-    posteriors <- as.data.frame(extract(fit)$beta)
-    colnames(posteriors) <- labels
-    posteriors <- melt(posteriors)
-    colnames(posteriors) <- c("Water", "Rating")
-    return(ggplot(posteriors, aes(x=Rating, fill=Water)) +
-        ggtitle(paste0("n=",as.character(nrow(df)),"; last comparison: ", tail(df$Type1,n=1), " vs ", tail(df$Type2,n=1))) +
-        geom_density(alpha=0.3) +
-        coord_cartesian(ylim = c(0,0.23), xlim=c(-12,12), expand=FALSE)) }
 plotBT(water, fit, types)
 
 library(animation)
@@ -2288,36 +2349,27 @@ saveGIF(
       p <- plotBT(df, fit, types)
       print(p)
       },
-      interval=0.6, ani.width = 1000, ani.height=800, movie.name = "tea-mineralwaters-bestarm-sequential.gif")
+    interval=0.6, ani.width = 1000, ani.height=800,
+    movie.name = "tea-mineralwaters-bestarm-sequential.gif")
 ~~~
 
-![Results of _n_=67 blinded randomized paired taste-testing comparisons of 7 mineral, distilled, and tap waters: final estimated posterior distributions of win probability in a comparison, showing the poor taste of Evian mineral water but likely similar tastes of most of the others.](/images/tea-mineralwater-posteriors.png)
+Means in descending order:
+
+1. Fiji
+2. Poland Spring
+3. Aquafina
+4. Evian
+5. Nestle Pure Life
+6. Great Value distilled
+7. Voss
+8. tap water
+
+![Results of _n_=67 blinded randomized paired taste-testing comparisons of 8 mineral, distilled, and tap waters: final estimated posterior distributions of win probability in a comparison, showing the poor taste of Evian mineral water but likely similar tastes of most of the others.](/images/tea-mineralwater-posteriors.png)
 
 ![Animation of mineral water taste-test showing how the posterior distributions evolve over _n_=7 to _n_=67, guided by Bayesian best-arm sampling](/images/tea-mineralwaters-bestarm-sequential.gif)
 
-To run the experiment, I stored all 7 kinds of water in the same place at room temperature for several weeks.
-Before running, I refrained from food or drink for 5 hours and brushed/flossed/water-picked my teeth.
-
-For blinding, I took my two identical white Corelle stoneware mugs, and put a tiny piece of red electrical tape on the bottom of one.
-For randomization, I borrowed a Lazy Susan table.
-
-The experimental procedure was:
-
-1. empty out both mugs and the measuring cup into a tub sitting nearby
-2. select two kinds of water according to the best-arm Bayesian algorithm (calling `fitBT` & `sampleBestArm` on an updated data-frame)
-3. measure a quarter cup of the first kind of water into the marked mug and a quarter cup into the second
-4. place them symmetrically on the Lazy Susan with handles inward and touching
-5. closing my eyes, rotate the Lazy Susan at a moderate speed (to avoid tipping over the mugs) for a count of at least 30
-6. eyes still closed for good measure, grab the mug on left and take 2 sips
-7. grab the mug on the right, take 2 sips
-8. alternate sips as necessary until I decide which one is slightly better tasting
-9. after deciding, look at the bottom of the mug chosen
-10. record the winner of the comparison, and run the Bayesian model and best-arm algorithm again.
-
-Following this procedure, I made _n_=67 pairwise comparisons of water.
-
 For the first 7 comparisons, since I didn't want to insert any informative priors about my expectations, the best-arm choice would be effectively random, so to initialize it, I did a round-robin set of comparisons: put the waters into a quasi-random order ABCD, then compared A/B, B/C, C/D and so on.
-For the next 4 comparisons, I made a mistake in recording my data since I forgot that '1' coded for the left water winning and '3' for the right water winning, and so I had reversed the rankings and was actually doing a 'worst-arm' algorithm.
+For the next 4 comparisons, I made a mistake in recording my data since I forgot that '1' coded for the left water winning and '3' for the right water winning, and so I had reversed the rankings and was actually doing a 'worst-arm' algorithm, as it were.
 After fixing that, the comparisons began focusing on Fiji and Poland Spring, eventually expanding to Aquafina as it improved in the rankings.
 
 Comparing water turns out to be quite difficult.
