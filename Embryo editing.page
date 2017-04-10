@@ -100,7 +100,7 @@ http://science.sciencemag.org/content/333/6040/348
 
 https://www.quora.com/How-many-base-pairs-of-DNA-can-I-synthesize-for-1-dollar
 
-The biggest chromsome is #1, with 8.1% of the base-pairs or 249,250,621; the smallest is #21, 1.6%, or 48,129,895.
+The biggest chromosome is #1, with 8.1% of the base-pairs or 249,250,621; the smallest is #21, 1.6%, or 48,129,895.
 DNA synthesis prices drop each year in an exponential decline (if not remotely as fast as the DNA sequencing cost curve), and so 2016 synthesizing costs have reached <$0.3; let's say \$0.25/BP.
 
 Chromosome Length in base-pairs Fraction Synthesis cost at \$0.25/BP
@@ -149,7 +149,7 @@ Doing individual genome syntheses will be out of the question for a long time to
 
 The ["2013 Assisted Reproductive Technology National Summary Report"](http://www.cdc.gov/art/pdf/2013-report/art_2013_national_summary_report.pdf) says ~10% of IVF cycles use donor eggs, and a total of 67996 infants, implying >6.7k infants conceived with donor eggs, embryos, or sperm (sperm is not covered by that report) and were only half or less related to their parents.
 What immediate 1-year return over 6.7k infants would justify spending \$773m? Considering just the low estimate of IQ at \$3270/point and no other traits, that would translate to (773m/6.7k) / 3270 = 35 IQ points or at an average IQ gain of 0.1 points, the equivalent of 350 causal edits. This is doable.
-If we allow amortization at a high discount rate of 5% and reuse the genome indefinitely for each year's crop of 6.7k infants, then we need at least X iq points where
+If we allow amortization at a high discount rate of 5% and reuse the genome indefinitely for each year's crop of 6.7k infants, then we need at least X IQ points where
 ((x*3270*6700) / log(1.05)) - 773000000 >= 0
 x >= 1.73
 or at ~0.1 points per edit, 18 edits.
@@ -175,7 +175,7 @@ R> prettyNum(big.mark=",", round(exp(predict(l, data.frame(Year=c(2016:2040), Co
 
 ## CRISPR
 
-The past 5 years have seen major breakthroughs in cheap, reliable, general-purpose genetic engineering & editing using [CRISPR](!Wikipedia), since the [2012 demonstration that it could edit cells](http://science.sciencemag.org/content/337/6096/816.long "'A Programmable Dual-RNA-Guided DNA Endonuclease in Adaptive Bacterial Immunity', Jinek et al 2012"), including human ones ([Jinek et al 2013](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3557905/ "RNA-programmed genome editing in human cells")).^[Interestingly, this was not even the first application of CRISPR. That would appear to be [DuPont in 2007](http://www.the-scientist.com/?articles.view/articleNo/41676/title/There-s-CRISPR-in-Your-Yogurt/ "There's CRISPR in Your Yogurt: We've all been eating food enhanced by the genome-editing tool for years"), which began improved breeding of virus-resistant dairy cultures by introducing troublesome viral infections, and selecting for further use only those bacteria with changed CRISPR-related genomes, indicating they had acquired resistance to the virus.] Commentary in 2012 and 2013 regarded prospects for embyro editing as highly remote^[[November 2013](http://www.independent.co.uk/news/science/crispr-gene-therapy-scientists-call-for-more-public-debate-around-breakthrough-technique-8927606.html "CRISPR gene therapy: Scientists call for more public debate around breakthrough technique"): "'But it is far too early to contemplate using these methods to alter the human germline'...Professor Dagan Wells, an IVF researcher at Oxford University, said that although there is still a long way to go before CRISPR could even be considered for use on IVF embryos"] Even as late as July 2014, coverage was highly circumspect, with [vague musing](http://www.nytimes.com/2014/07/17/science/a-call-to-fight-malaria-one-mosquito-at-a-time-by-altering-dna.html "A Call to Fight Malaria One Mosquito at a Time by Altering DNA") that "Some experiments also hint that doctors may someday be able to use it to treat genetic disorders"; successful editing of zebrafish ([Hwang et al 2013](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3686313/ "Efficient In Vivo Genome Editing Using RNA-Guided Nucleases")), monkey, and human embryos was already being demonstrated in the lab, and human trials would begin 2-3 years later.
+The past 5 years have seen major breakthroughs in cheap, reliable, general-purpose genetic engineering & editing using [CRISPR](!Wikipedia), since the [2012 demonstration that it could edit cells](http://science.sciencemag.org/content/337/6096/816.long "'A Programmable Dual-RNA-Guided DNA Endonuclease in Adaptive Bacterial Immunity', Jinek et al 2012"), including human ones ([Jinek et al 2013](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3557905/ "RNA-programmed genome editing in human cells")).^[Interestingly, this was not even the first application of CRISPR. That would appear to be [DuPont in 2007](http://www.the-scientist.com/?articles.view/articleNo/41676/title/There-s-CRISPR-in-Your-Yogurt/ "There's CRISPR in Your Yogurt: We've all been eating food enhanced by the genome-editing tool for years"), which began improved breeding of virus-resistant dairy cultures by introducing troublesome viral infections, and selecting for further use only those bacteria with changed CRISPR-related genomes, indicating they had acquired resistance to the virus.] Commentary in 2012 and 2013 regarded prospects for embryo editing as highly remote^[[November 2013](http://www.independent.co.uk/news/science/crispr-gene-therapy-scientists-call-for-more-public-debate-around-breakthrough-technique-8927606.html "CRISPR gene therapy: Scientists call for more public debate around breakthrough technique"): "'But it is far too early to contemplate using these methods to alter the human germline'...Professor Dagan Wells, an IVF researcher at Oxford University, said that although there is still a long way to go before CRISPR could even be considered for use on IVF embryos"] Even as late as July 2014, coverage was highly circumspect, with [vague musing](http://www.nytimes.com/2014/07/17/science/a-call-to-fight-malaria-one-mosquito-at-a-time-by-altering-dna.html "A Call to Fight Malaria One Mosquito at a Time by Altering DNA") that "Some experiments also hint that doctors may someday be able to use it to treat genetic disorders"; successful editing of zebrafish ([Hwang et al 2013](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3686313/ "Efficient In Vivo Genome Editing Using RNA-Guided Nucleases")), monkey, and human embryos was already being demonstrated in the lab, and human trials would begin 2-3 years later.
 (Surprisingly, Shulman & Bostrom do *not* mention CRISPR, but that gives an idea of how shockingly fast CRISPR went from strange to news to standard, and how low expectations for genetic engineering were pre-2015 after decades of agonizingly slow progress & high-profile failures & deaths, such that the default assumption was that direct cheap safe genetic engineering of embryos would not be feasible for decades and certainly not the foreseeable future.)
 
 The CRISPR/Cas system exploits a bacterial anti-viral immune system in which snippets of virus DNA are stored and an enzyme system detects the presence in the bacterial genome of fresh viral DNA and then edits it, breaking it, and presumably stopping the infection in its latent phase. This requires the CRISPR enzymes to be highly precise (lest it attack legitimate DNA, damaging or killing itself), repeatable (it's a poor immune system that can only fight off one infection ever), and programmable by short RNA sequences (because viruses constantly mutate).
@@ -218,6 +218,8 @@ zebrafish somatic cells at the organismal level Hwang et al 2013"Efficient genom
 genomic editing in cultured mammalian cells
 [Mali et al 2013](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3712628/ "RNA-guided human genome engineering via Cas9")
 pluripotent stem cells, but also in zebrafish embryos with efficiencies that are comparable to those obtained using ZFNs and TALENs (Hwang et al., 2013).
+
+Jenko et al 2016, "Potential of promotion of alleles by genome editing to improve quantitative traits in livestock breeding programs" https://gsejournal.biomedcentral.com/articles/10.1186/s12711-015-0135-3
 
 Estimating the profit from CRISPR edits is, in some ways, less straightforward than from embryo selection:
 
@@ -375,14 +377,14 @@ dnorm((170-100)/15) * 320000000
 if you're curious how I calculated that, '(10*1000 + 10 * 98 * 500) > 500000 ~> [1] FALSE` `sum(sort((rexp(10000)/1)/18, decreasing=TRUE)[1:98] * 0.5) ~> [1] 15.07656556'
 
 
-hm. there are ~50k ivf babies each year in the USA. my quick CRISPR sketch suggested that for a few mill you could get up to 150-170. `dnorm((150-100)/15) * 320000000 ~>
+hm. there are ~50k IVF babies each year in the USA. my quick CRISPR sketch suggested that for a few mill you could get up to 150-170. `dnorm((150-100)/15) * 320000000 ~>
                   [1] 493,529.2788; dnorm((170-100)/15) * 320000000 ~> [1] 2382.734679`. so depending on how many IVFers used it, you could boost the total genius population by anywhere
                   from 1/10th to 9x
 
 but if only 10% causal rate and so only 100 effective edits from 1000, and a net gain of 15 IQ points (1SD) then increases:
-ivf <- (dnorm((115-100)/15) * 50000); genpop <- (dnorm((150-100)/15) * 320000000); (ivf+genpop)/genpop
+IVF <- (dnorm((115-100)/15) * 50000); genpop <- (dnorm((150-100)/15) * 320000000); (IVF+genpop)/genpop
 [1] 1.024514323
-ivf <- (dnorm((115-100)/15) * 50000); genpop <- (dnorm((170-100)/15) * 320000000); (ivf+genpop)/genpop
+IVF <- (dnorm((115-100)/15) * 50000); genpop <- (dnorm((170-100)/15) * 320000000); (IVF+genpop)/genpop
 [1] 6.077584313
 an increase of 1.02x (150) and 6x (170) respectively
 
@@ -394,7 +396,7 @@ When I was doing my dysgenics analysis, I found that the Rietveld betas could be
 
 How much did that <74 IQ points cost? Well, I hear that TALENS in bulk costs \$500 so you could ballpark marginal costs of particular CRISPR edits at that much too (and hopefully much less), and whole-genomes still cost \$1k, and you need to do 1000 edits on each embryo and whole-genomes at the end to check for off-target mutations, so you could ballpark a full suite of edits to 10 embryos at ~\$5m: `10*1000 + 10 * 1000 * 500 ~> [1] 5010000`. Of them 40% will have an off-target mutation, so you get 6 embryos to implant at a success rate of ~20% each which gives you about even odds for a healthy live birth, so you need to double the \$5m.
 
-CRISPR: \$30? vs \$5k for TALEN http://www.nature.com/news/crispr-the-disruptor-1.17673
+CRISPR: \$30? vs \$5k for TALENs http://www.nature.com/news/crispr-the-disruptor-1.17673
 "Zayner says the kits will contain everything a budding scientist needs to carry out CRISPR experiments on yeast or bacteria. For US$130, you can have a crack at re-engineering bacteria so that it can survive on a food it normally wouldn't be able to handle, or for $160, you can get your eukaryote on and edit the ADE2 gene of yeast to give it a red pigment." https://www.indiegogo.com/projects/diy-crispr-kits-learn-modern-science-by-doing#/
 https://www.thermofisher.com/us/en/home/life-science/genome-editing/geneart-crispr/crispr-cas9-based-genome-editing.html
 http://www.sigmaaldrich.com/technical-documents/articles/biology/crispr-cas9-genome-editing.html
@@ -414,9 +416,9 @@ by 2020, 75% http://predictionbook.com/predictions/177111
 
 Whither embryo editing? The problem with IVF is that it is expensive, painful, and requires patience & planning. Even with large gains from editing, can we expect more than the current 1% or so of parents to ever be willing to conceive via IVF for those gains? If not, then the benefits may take generations to mix into the general population as offspring reproduce normally with unedited people and people happen to need to use IVF for regular fertility reasons. A solution is suggested by the adult CRISPR trials: make the germline edits in advance. In females, it seems like it might be hard to reach all the eggs which could potentially result in conception, but in males, sperm turnover is constant https://en.wikipedia.org/wiki/Spermatogenesis and sperm are replenished by stem cells in https://en.wikipedia.org/wiki/Seminiferous_tubule
 already demonstrated CRISPR edits to spermatogonia and subsequent inheritance by offspring: "Targeted Germline Modifications in Rats Using CRISPR/Cas9 and Spermatogonial Stem Cells", Chapman et al 2014 http://www.sciencedirect.com/science/article/pii/S2211124715001989
-"Genome Editing in Mouse Spermatogonial Stem Cell Lines Using TALEN and Double-Nicking CRISPR/Cas9", Sato et al 2015 http://www.sciencedirect.com/science/article/pii/S221367111500154X
+"Genome Editing in Mouse Spermatogonial Stem Cell Lines Using TALENS and Double-Nicking CRISPR/Cas9", Sato et al 2015 http://www.sciencedirect.com/science/article/pii/S221367111500154X
 extraction, modification, and re-transplanting is likely also a no-fly, but the edits demonstrate that CRISPR will not interfere with reproduction, and so better delivery methods can be developed
-editing via two intravenous injections of a virus (carrying the editing template) and lipid-encapsulated Cas9-enzyme into the mices' tail vein: [Yin et al 2016](/docs/genetics/2016-yin.pdf "Therapeutic genome editing by combined viral and non-viral delivery of CRISPR system components in vivo"), yielding 6% of cells edited in the liver
+editing via two intravenous injections of a virus (carrying the editing template) and lipid-encapsulated Cas9-enzyme into the mice' tail vein: [Yin et al 2016](/docs/genetics/2016-yin.pdf "Therapeutic genome editing by combined viral and non-viral delivery of CRISPR system components in vivo"), yielding 6% of cells edited in the liver
 
 https://en.wikipedia.org/wiki/Status_quo_bias
 "The Reversal Test: Eliminating Status Quo Bias in Applied Ethics", Bostrom & Ord 2006 https://ethicslab.georgetown.edu/phil553/wordpress/wp-content/uploads/2015/01/Ord-and-Bostrom-Eliminating-Status-Quo-Bias-in-Applied-Ethics-.pdf
@@ -429,10 +431,22 @@ http://biorxiv.org/content/biorxiv/early/2016/03/08/042788.full.pdf "Older fathe
 http://www.genetics.org/content/202/3/869
 "Thus, keeping in mind that some mutations in repetitive DNA likely go undetected owing to mapping difficulties in genome-sequencing projects, with a diploid genome size of ~6 billion bases, an average newborn contains ~100 de novo mutations....Numerous studies with model organisms indicate that such effects have a broad distribution (Lynch et al. 1999; Halligan and Keightley 2009)-most mutations have minor effects, very few have lethal consequences, and even fewer are beneficial. In all organisms, the majority of mutations with effects on fitness reduce viability/fecundity by something on the order of 1% per mutation (Lynch et al. 1999; Yampolsky et al. 2005; Eyre-Walker and Keightley 2007), and this class is thought to constitute 1-10% of all human mutations, the remainder being essentially neutral (Lindblad-Toh et al. 2011; Keightley 2012; Rands et al. 2014). Taking the lower end of the latter range suggests that the recurrent load of mutations imposed on the human population drags fitness down by 1% per generation, more so if the fraction of deleterious mutations exceeds 0.01 or if the environment is mutagenic, and less so if the average fitness effect of a mutation were to be <1%"
 
+["Genome Graphs and the Evolution of Genome Inference"](http://biorxiv.org/content/biorxiv/early/2017/03/14/101816.full.pdf), Paten et al 2017:
+
+> From short-read based assays, it is estimated that the average diploid human has between 4.1 and 5 million point mutations, either single nucleotide variants (SNVs), multi-nucleotide variants (MNVs), or short indels, which is only around 1 point variant every 1450 to 1200 bases of haploid sequence (Auton et al. 2015). Such an average human would also have about 20 million bases—about 0.3% of the genome—affected by around 2,100-2,500 larger structural variants (Auton et al. 2015). It should be noted that both these estimates are likely somewhat conservative as some regions of the genome are not accurately surveyed by the short read technology used. Indeed, long read sequencing demonstrates an excess of structural variation not found by earlier short read technology (Chaisson et al. 2015; Seo et al. 2016).
+>
+> - Auton et al 2015, ["A global reference for human genetic variation"](http://www.nature.com/nature/journal/v526/n7571/full/nature15393.html)
+> - Chaisson et al 2015, ["Resolving the complexity of the human genome using single-molecule sequencing"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4317254/)
+> - Seo et al 2016, ["De novo assembly and phasing of a Korean human genome"](http://www.nature.com/nature/journal/v538/n7624/full/nature20098.html)
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3155974/
+"Genetic costs of domestication and improvement" Moyers et al 2017 http://biorxiv.org/content/early/2017/03/29/122093
+
 SNPs have two relevant properties: a frequency of being zero, and an effect size
 
 Benyamin polygenic score distribution: looks either exponential or log-normal and a Cullen & Frey graph indicates it is closes to exponential & log-normal distributions.
 
+~~~{.R}
 library(fitdistrplus)
 with(benyamin[benyamin$EFFECT_A1>0,], descdist(abs(EFFECT_A1)/15, discrete=FALSE))
 fit.exp <- with(benyamin[benyamin$EFFECT_A1>0,], fitdist(abs(EFFECT_A1)/15, "exp")); fit.exp
@@ -446,22 +460,26 @@ fit.ln <- with(benyamin[benyamin$EFFECT_A1>0,], fitdist(abs(EFFECT_A1)/15, "lnor
 #             estimate      Std. Error
 # meanlog -7.402017853 0.0013198365617
 # sdlog    1.095050030 0.0009332618808
+~~~
 
 Plotting residuals & diagnostics, the log-normal performs much worse due to overestimating the number of near-zero effects (the Q-Q plot is particularly bad), so we'll use the exponential for effect sizes
 
 As proportions, the frequencies are probably close to either uniform or beta distributions; in this case, they are very nearly uniformly distributed 0-1:
 
+~~~{.R}
 R> fitdist(benyamin$FREQ_A1, "beta", method="mme")
 Fitting of the distribution ' beta ' by matching moments
 Parameters:
           estimate
 shape1 1.065412339
 shape2 1.126576711
+~~~
 
 Set up: 50k SNPs, true effect sizes are exponentially distributed with exponential(rate=1063.15695), frequencies distributed beta(1.065412339, 1.126576711)
-can't do full simulation of 500k SNPs with 100k datapoints, not enough RAM given inefficient R format for logicals: (100000 * 100000 * 48 bytes) / 1000000000 ; 4.8e+11 bytes or 480GB
+can't do full simulation of 500k SNPs with 100k datapoints, not enough RAM given inefficient R format for booleans: (100000 * 100000 * 48 bytes) / 1000000000 ; 4.8e+11 bytes or 480GB
 can JAGS even handle that much data?
 
+~~~{.R}
 SNPs <- 500000
 SNPlimit <- 50000
 N <- 10000
@@ -476,8 +494,9 @@ test$IQ <- 100 + 15 * rnorm(N, mean=scale(test$Polygenic.score), sd=sqrt(1-0.33)
 library(BGLR)
 b <- BGLR(test$IQ, ETA=list(list(X=test[,1:SNPlimit], model="BL", lambda=202, shape=1.1, rate=2.8e-06)), R2=0.33)
 gc()
+~~~
 
-BGLR problem: I can't scale it to n=100k/SNP=500k, BGLR RAM consumption maxs out at n=10k/SNP=50k.
+BGLR problem: I can't scale it to n=100k/SNP=500k, BGLR RAM consumption maxes out at n=10k/SNP=50k.
 This wouldn't be a problem for the Thompson sampling, but I need to use JAGS anyway for that.
 So BGLR can't give me posteriors for Rietveld et al 2013 or Benyamin 2014 data.
 
@@ -487,6 +506,7 @@ RSS example 1 https://github.com/stephenslab/rss/wiki/Example-1 code: https://gi
 doesn't run under Octave at the moment although I got it close: https://github.com/stephenslab/rss/issues/1
 what are my alternatives? RSS is the best looking Bayesian one so far. I can try pirating Matlab, or apparently the Machine Learning Coursera gives one a temporary 120-day subscription
 
+~~~{.R}
 groundTruth <- function(alleles, causal, genotype) {
     score <- rnorm(1, mean=100, sd=15)
     for (i in 1:length(genotype)) {
@@ -542,6 +562,7 @@ j1 <- autorun.jags(model1, monitor=c("theta"), data = list(N=nrow(oldData2), y=o
 # ...      Lower95  Median Upper95    Mean       SD Mode      MCerr MC%ofSD SSeff    AC.10   psrf
 # theta[1] 0.70582 0.75651 0.97263 0.77926  0.07178   --   0.001442       2  2478  0.12978 1.0011
 # theta[2] 0.72446 0.75078 0.77814 0.75054 0.013646   -- 0.00009649     0.7 20000 0.009458      1
+~~~
 
 https://github.com/jeromyanglim/JAGS_by_Example/blob/master/03-multilevel/varying-intercept-long/varying-intercept-long.rmd
 http://doingbayesiandataanalysis.blogspot.com/2012/06/mixture-of-normal-distributions.html
@@ -552,59 +573,58 @@ http://www.stats.ox.ac.uk/~bardenet/Material/mixture_with_jags_only_mu.html
 "Genome-wide association study identifies 74 [162] loci associated with educational attainment", Okbay et al 2016 https://www.dropbox.com/s/my9719yd8s5hplf/2016-okbay-2.pdf
 supplementary info: http://www.nature.com/nature/journal/vaop/ncurrent/extref/nature17671-s1.pdf http://www.nature.com/nature/journal/vaop/ncurrent/extref/nature17671-s2.xlsx http://www.thessgac.org/#!data/kuzq8 http://ssgac.org/documents/FAQ_74_loci_educational_attainment.pdf
 
-Educational attainment is strongly influenced by social and other environmental factors, but genetic factors are estimated to account for at least 20% of the variation across individuals1. Here we report the results of a genome-wide association study (GWAS) for educational attainment that extends our earlier discovery sample1, 2 of 101,069 individuals to 293,723 individuals, and a replication study in an independent sample of 111,349 individuals from the UK Biobank. We identify 74 [162 total] genome-wide significant loci associated with the number of years of schooling completed. Single-nucleotide polymorphisms associated with educational attainment are disproportionately found in genomic regions regulating gene expression in the fetal brain. Candidate genes are preferentially expressed in neural tissue, especially during the prenatal period, and enriched for biological pathways involved in neural development. Our findings demonstrate that, even for a behavioural phenotype that is mostly environmentally determined, a well-powered GWAS identifies replicable associated genetic variants that suggest biologically relevant pathways. Because educational attainment is measured in large numbers of individuals, it will continue to be useful as a proxy phenotype in efforts to characterize the genetic influences of related phenotypes, including cognition and neuropsychiatric diseases.
-
-Using procedures identical to those described in SI Section 1.6, we conducted a meta-analysis of the EduYears phenotype, combining the results from our discovery cohorts (N = 293,723) and the results from the UKB replication cohort (N = 111,349). Expanding the overall sample size to N = 405,072 increases the number of approximately independent genome-wide significant loci from 74 to 162.
-
-
-This background suffices to motivate the biological questions that arise in the interpretation of GWAS results and the means by which these questions might be tentatively addressed. For starters, since a GWAS locus typically contains many other SNPs in LD with the defining lead SNP and with each other, it is natural to ask: which of these SNPs is the actual causal site responsible for the downstream phenotypic variation? Many SNPs in the genome appear to be biologically inert—neither encoding differences in protein composition nor affecting gene regulation—and a lead GWAS SNP may fall into this category and nonetheless show the strongest association signal as a result of statistical noise or happenstance LD with multiple causal sites. Fortunately, much is known from external sources of data about whether variation at a particular site is likely to have biological consequences, and exploiting these resources is our general strategy for fine-mapping loci: nominating individual sites that may be causally responsible for the GWAS signals. Descriptions of genomic sites or regions based on external sources of data are known as annotations, and readers will not go far astray if they interpret this term rather literally (as referring to a note of explanation or comment added to a text in one of the margins). If we regard the type genome as the basic text, then annotations are additional comments describing the structural or functional properties of particular sites or the regions in which they reside. For example, all nonsynonymous sites that influence protein structures might be annotated as such. An annotation can be far more specific than this; for instance, all sites that fall in a regulatory region active in the fetal liver might bear an annotation to this effect. <!-- TODO http://biorxiv.org/content/biorxiv/early/2015/10/20/028688.full.pdf -->
-A given causal site will exert its phenotypic effect through altering the composition of a gene product or regulating its expression. Conceptually, once a causal site has been identified or at least nominated, the next question to pursue is the identity of the mediating gene. In practice, because only a handful of genes at most will typically overlap a GWAS locus, we can make\ some progress toward answering this question without precise knowledge of the causal site. The difficulty of the problem, however, should still not be underestimated. It is natural to assume that a lead GWAS SNP lying inside the boundaries of a particular gene must reflect a causal mechanism involving that gene itself, but in certain cases such a conclusion would be premature. It is possible for a causal SNP lying inside a certain gene to exert its phenotypic effect by regulating the expression of a nearby gene or for several genes to intervene between the SNP and its regulatory target.
-Supplementary Table 4.1 ranks each gene overlapping a DEPICT-defined locus by the number of discrete evidentiary items favoring that gene (see Supplementary Information section 4.5 for details regarding DEPICT). These lines of evidence are taken from a number of our analyses to be detailed in the following subsections. Our primary tool for gene prioritization is DEPICT, which can be used to calculate a P-value and associated FDR for each gene. It is important to keep in mind, however, that a gene-level P-value returned by DEPICT refers to the tail probability under the null hypothesis that random sampling of loci can account for annotations and patterns of co-expression shared by the focal gene with genes in all other GWAS-identified loci. Although it is very reasonable to expect that genes involved in the same phenotype do indeed share annotations and patterns of co-expression, it may be the case that certain causal genes do not conform to this expectation and thus fail to yield low DEPICT P-values. This is why we do not rely on DEPICT alone but also the other lines of evidence described in the caption of Supplementary Table 4.1.
-
-However, a priori we know that some SNPs are more likely to be associated with the phenotype than others; for example, it is often assumed that nonsynonymous SNPs are more likely to influence phenotypes than sites that fall far from all known genes. So a P-value of 5×10 −7 , say, though not typically considered significant at the genome-wide level, might merit a second look if the SNP in question is nonsynonymous.
-Formalizing this intuition can be done with Bayesian statistics, which combines the strength of evidence in favor of a hypothesis (in our case, that a genomic site is associated with a phenotype) with the prior probability of the hypothesis. Deciding how to set this prior is often subjective. However, if many hypotheses are being tested (for example, if there are thousands of nonsynonymous polymorphisms in the genome), then the prior can be estimated from the data themselves using what is called “empirical Bayes” methodology. For example, if it turns out that SNPs with low P-values tend to be nonsynonymous sites rather than other types of sites, then the prior probability of true association is increased at all nonsynonymous sites. In this way a nonsynonymous site that otherwise falls short of the conventional significance threshold can become prioritized once the empirically estimated prior probability of association is taken into account. Note that such favorable reweighting of sites within a particular class is not set a priori, but is learned from the GWAS results themselves. In our case, we split the genome into approximately independent blocks and estimate the prior probability that each block contains a causal SNP that influences the phenotype and (within each block) the conditional prior probability that each individual SNP is the causal one. Each such probability is allowed to depend on annotations describing structural or functional properties of the genomic region or the SNPs within it. We can then empirically estimate to extent to each annotation predicts association with the focal phenotype. For a complete description of the fgwas method, see ref. 1.
-4.2.3
-Methods
-For application to the GWAS of EduYears, we used the same set of 450 annotations as ref. 1; these are available at https://github.com/joepickrell/1000-genomes.
-...4.2.6
-Reweighted GWAS and Fine Mapping
-We reweighted the GWAS results using the functional-genomic results described above. Using a regional posterior probability of association (PPA) greater than 0.90 as the cutoff, we identified 102 regions likely to harbor a causal SNP with respect to EduYears (Extended Data Fig. 7c and Supplementary Table 4.2.1). All but two of our 74 lead EduYears-associated SNPs fall within one of these 102 regions. The exceptions are rs3101246 and rs2837992, which attained PPA > 0.80 (Extended Data Fig. 7c). In previous applications of fgwas, the majority of novel loci that attained the equivalent of genome-wide significance only upon reweighting later attained the conventional P < 5×10 −8 in larger cohorts 1 .
-Within each region attaining PPA > 0.90, each SNP received a conditional posterior probability of being the causal SNP (under the assumption that there is just one causal SNP in the region). The method of assigning this latter posterior probability is similar to that of ref. 6, except that the input Bayes factors are reweighted by annotation-dependent and hence SNP-varying prior probabilities. In essence, the likelihood of causality at an individual SNP derives from its Bayes factor with respect to phenotypic association (which is monotonically related to the P-value under reasonable assumptions), whereas the prior probability is derived from any empirical genome-wide tendency for the annotations borne by the SNP to predict evidence of association. Thus, the SNP with the largest posterior probabilities of causality tend to exhibit among the strongest P-values within their loci and functional annotations that predict association throughout the genome. Note that proper calibration of this posterior probability requires that all potential causal sites have been either genotyped or imputed, which may not be the case in our application; we did not include difficult-to-impute non-SNP sites such as insertions/deletions in the GWAS meta-analysis. With this caveat in mind, we identified 17 regions where fine mapping amassed over 50 percent of the posterior probability on a single SNP (Supplementary Table 4.2.2). Of our 74 lead EduYears SNPs, 9 are good candidates for being the causal sites driving their association signals [12%]. One of our top SNPs, rs4500960, is in nearly perfect LD with the causal candidate rs2268894 (and is indeed the second most likely causal SNP in this region according to fgwas). The causal candidate rs6882046 is within 75kb of two lead SNPs on chromosome 5 (rs324886 and rs10061788), but no two of these three SNPs show strong LD. Interestingly, the remaining 6 causal candidates lie in genomic regions that only attain the equivalent of genome-wide significance upon Bayesian reweighting. Of the 17 causal candidates, 9 lie in regions that are DNase I hypersensitive in the fetal brain.
-
-Table 4.2.2:
-Posterior probability of causality
-0.992035
-0.766500
-0.842271
-0.567184
-0.697862
-0.524760
-0.632536
-0.885280
-0.968627
-0.781563
-0.629610
-0.837746
-0.725158
-0.755457
-0.784373
-0.682947
-0.832675
-
-
-[mean(c(0.524760, 0.567184, 0.629610, 0.632536, 0.682947, 0.697862, 0.725158, 0.755457, 0.766500, 0.781563, 0.784373, 0.832675, 0.837746, 0.842271, 0.885280, 0.968627, 0.992035)) = 0.76, 0.76*19=14.4]
-
-The results from both approaches show that prediction accuracy increases as more SNPs are used to construct the score, with the maximum predictive power achieved when using all the genotyped SNPs (with Approach 1). In that case, the weighted average across the two cohorts of the incremental R 2 is ~3.85%.
-
-[Versus 2% from Rietveld's n=100k; this is in line with the rough doubling of the main SSGAC sample size. The additional UK Biobank sample of n=111k does not seem to have been used but if it was used, should boost the polygenic score to ~5.3%?]
-
-...The magnitude of predictive power that we observe is less than one might have expected on the basis of statistical genetics calculations 6 and GCTA-GREML estimates of “SNP heritability” from individual cohorts. Indeed, Rietveld et al. (2013) 7 reported GCTA-GREML estimates of SNP heritability for each of two cohorts (STR and QIMR), and the mean estimate was 22.4%. Assuming that 22.4% is in fact the true SNP heritability, the calculations outlined in the SOM of Rietveld et al. (pp. 22-23) generate a prediction of R 2 = 11.0% for a score constructed from the GWAS estimates of this paper and of R 2 = 6.1% for a score constructed from the combined (discovery + replication cohorts, but excluding the validation cohorts) GWAS sample of N = ~117,000-119,000 in Rietveld et al.—substantially higher than the 3.85% that we achieve here (with the score based on all genotyped SNPs) and the 2.2% Rietveld et al. achieved, respectively.
-These discrepancies between the scores’ predicted and estimated R 2 may be due to the failure of some of the assumptions underlying the calculation of the predicted R 2 . An alternative (or additional) explanation is that the true SNP heritability for the GWAS sample pooled across cohorts is lower than 22.4%. That would be the case if the true GWAS coefficients differ across cohorts, perhaps due to heterogeneity in phenotype measurement or gene-by-environment interactions. If so, then a polygenic score constructed from the pooled GWAS sample would be expected to have lower predictive power in an individual cohort than implied by the calculations above. Based on that reasoning, the R 2 of 2.2% observed by Rietveld et al. (2013) could be rationalized by assuming that the proportion of variance accounted for by common variants across the pooled Rietveld cohorts is only 12.7% 6 . (We obtain a similar estimate, 11.5% with a standard error of 0.45%, when we use LD Score regression 5 to estimate the SNP heritability using our pooled-sample meta-analysis results from this paper, excluding deCODE and without GC. While we believe this estimate is based on cohort results without GC, it is biased downward if any cohort in fact applied GC.) If we assume that the 12.7% is valid also for the cohorts considered in this study, we would predict an R 2 equal to 4.5%, somewhat higher than we observe in HRS and STR but much closer. However, the degree of correlation in coefficients across cohorts appears to be relatively high (Supplementary Table 1.10 reports estimates of the genetic correlation between selected cohorts and deCODE; although the correlation estimates vary a lot across cohorts, they tend to be large for the largest cohorts, and the weighted average is 0.76). We do not know whether a pooled-cohort SNP heritability of 12.7% or lower can be reconciled with the observed degree of correlation in coefficients across cohorts.
-
-The results are reported in Supplementary Tables 6.3 and 6.4. In both the STR and the HRS, cognitive performance significantly mediates the effect of PGS on EduYears; in the HRS, Openness to Experience is also a significant mediator. The indirect effects for the other mediating variables are not significant s .
+> Educational attainment is strongly influenced by social and other environmental factors, but genetic factors are estimated to account for at least 20% of the variation across individuals1. Here we report the results of a genome-wide association study (GWAS) for educational attainment that extends our earlier discovery sample1, 2 of 101,069 individuals to 293,723 individuals, and a replication study in an independent sample of 111,349 individuals from the UK Biobank. We identify 74 [162 total] genome-wide significant loci associated with the number of years of schooling completed. Single-nucleotide polymorphisms associated with educational attainment are disproportionately found in genomic regions regulating gene expression in the fetal brain. Candidate genes are preferentially expressed in neural tissue, especially during the prenatal period, and enriched for biological pathways involved in neural development. Our findings demonstrate that, even for a behavioural phenotype that is mostly environmentally determined, a well-powered GWAS identifies replicable associated genetic variants that suggest biologically relevant pathways. Because educational attainment is measured in large numbers of individuals, it will continue to be useful as a proxy phenotype in efforts to characterize the genetic influences of related phenotypes, including cognition and neuropsychiatric diseases.
+>
+> Using procedures identical to those described in SI Section 1.6, we conducted a meta-analysis of the EduYears phenotype, combining the results from our discovery cohorts (N = 293,723) and the results from the UKB replication cohort (N = 111,349). Expanding the overall sample size to N = 405,072 increases the number of approximately independent genome-wide significant loci from 74 to 162.
+>
+> ...This background suffices to motivate the biological questions that arise in the interpretation of GWAS results and the means by which these questions might be tentatively addressed. For starters, since a GWAS locus typically contains many other SNPs in LD with the defining lead SNP and with each other, it is natural to ask: which of these SNPs is the actual causal site responsible for the downstream phenotypic variation? Many SNPs in the genome appear to be biologically inert—neither encoding differences in protein composition nor affecting gene regulation—and a lead GWAS SNP may fall into this category and nonetheless show the strongest association signal as a result of statistical noise or happenstance LD with multiple causal sites. Fortunately, much is known from external sources of data about whether variation at a particular site is likely to have biological consequences, and exploiting these resources is our general strategy for fine-mapping loci: nominating individual sites that may be causally responsible for the GWAS signals. Descriptions of genomic sites or regions based on external sources of data are known as annotations, and readers will not go far astray if they interpret this term rather literally (as referring to a note of explanation or comment added to a text in one of the margins). If we regard the type genome as the basic text, then annotations are additional comments describing the structural or functional properties of particular sites or the regions in which they reside. For example, all nonsynonymous sites that influence protein structures might be annotated as such. An annotation can be far more specific than this; for instance, all sites that fall in a regulatory region active in the fetal liver might bear an annotation to this effect. <!-- TODO http://biorxiv.org/content/biorxiv/early/2015/10/20/028688.full.pdf -->
+> A given causal site will exert its phenotypic effect through altering the composition of a gene product or regulating its expression. Conceptually, once a causal site has been identified or at least nominated, the next question to pursue is the identity of the mediating gene. In practice, because only a handful of genes at most will typically overlap a GWAS locus, we can make\ some progress toward answering this question without precise knowledge of the causal site. The difficulty of the problem, however, should still not be underestimated. It is natural to assume that a lead GWAS SNP lying inside the boundaries of a particular gene must reflect a causal mechanism involving that gene itself, but in certain cases such a conclusion would be premature. It is possible for a causal SNP lying inside a certain gene to exert its phenotypic effect by regulating the expression of a nearby gene or for several genes to intervene between the SNP and its regulatory target.
+> Supplementary Table 4.1 ranks each gene overlapping a DEPICT-defined locus by the number of discrete evidentiary items favoring that gene (see Supplementary Information section 4.5 for details regarding DEPICT). These lines of evidence are taken from a number of our analyses to be detailed in the following subsections. Our primary tool for gene prioritization is DEPICT, which can be used to calculate a P-value and associated FDR for each gene. It is important to keep in mind, however, that a gene-level P-value returned by DEPICT refers to the tail probability under the null hypothesis that random sampling of loci can account for annotations and patterns of co-expression shared by the focal gene with genes in all other GWAS-identified loci. Although it is very reasonable to expect that genes involved in the same phenotype do indeed share annotations and patterns of co-expression, it may be the case that certain causal genes do not conform to this expectation and thus fail to yield low DEPICT P-values. This is why we do not rely on DEPICT alone but also the other lines of evidence described in the caption of Supplementary Table 4.1.
+>
+> However, a priori we know that some SNPs are more likely to be associated with the phenotype than others; for example, it is often assumed that nonsynonymous SNPs are more likely to influence phenotypes than sites that fall far from all known genes. So a P-value of 5×10 −7 , say, though not typically considered significant at the genome-wide level, might merit a second look if the SNP in question is nonsynonymous.
+> Formalizing this intuition can be done with Bayesian statistics, which combines the strength of evidence in favor of a hypothesis (in our case, that a genomic site is associated with a phenotype) with the prior probability of the hypothesis. Deciding how to set this prior is often subjective. However, if many hypotheses are being tested (for example, if there are thousands of nonsynonymous polymorphisms in the genome), then the prior can be estimated from the data themselves using what is called “empirical Bayes” methodology. For example, if it turns out that SNPs with low P-values tend to be nonsynonymous sites rather than other types of sites, then the prior probability of true association is increased at all nonsynonymous sites. In this way a nonsynonymous site that otherwise falls short of the conventional significance threshold can become prioritized once the empirically estimated prior probability of association is taken into account. Note that such favorable reweighting of sites within a particular class is not set a priori, but is learned from the GWAS results themselves. In our case, we split the genome into approximately independent blocks and estimate the prior probability that each block contains a causal SNP that influences the phenotype and (within each block) the conditional prior probability that each individual SNP is the causal one. Each such probability is allowed to depend on annotations describing structural or functional properties of the genomic region or the SNPs within it. We can then empirically estimate to extent to each annotation predicts association with the focal phenotype. For a complete description of the fgwas method, see ref. 1.
+> 4.2.3
+> Methods
+> For application to the GWAS of EduYears, we used the same set of 450 annotations as ref. 1; these are available at https://github.com/joepickrell/1000-genomes.
+> ...4.2.6
+> Reweighted GWAS and Fine Mapping
+> We reweighted the GWAS results using the functional-genomic results described above. Using a regional posterior probability of association (PPA) greater than 0.90 as the cutoff, we identified 102 regions likely to harbor a causal SNP with respect to EduYears (Extended Data Fig. 7c and Supplementary Table 4.2.1). All but two of our 74 lead EduYears-associated SNPs fall within one of these 102 regions. The exceptions are rs3101246 and rs2837992, which attained PPA > 0.80 (Extended Data Fig. 7c). In previous applications of fgwas, the majority of novel loci that attained the equivalent of genome-wide significance only upon reweighting later attained the conventional P < 5×10 −8 in larger cohorts 1 .
+> Within each region attaining PPA > 0.90, each SNP received a conditional posterior probability of being the causal SNP (under the assumption that there is just one causal SNP in the region). The method of assigning this latter posterior probability is similar to that of ref. 6, except that the input Bayes factors are reweighted by annotation-dependent and hence SNP-varying prior probabilities. In essence, the likelihood of causality at an individual SNP derives from its Bayes factor with respect to phenotypic association (which is monotonically related to the P-value under reasonable assumptions), whereas the prior probability is derived from any empirical genome-wide tendency for the annotations borne by the SNP to predict evidence of association. Thus, the SNP with the largest posterior probabilities of causality tend to exhibit among the strongest P-values within their loci and functional annotations that predict association throughout the genome. Note that proper calibration of this posterior probability requires that all potential causal sites have been either genotyped or imputed, which may not be the case in our application; we did not include difficult-to-impute non-SNP sites such as insertions/deletions in the GWAS meta-analysis. With this caveat in mind, we identified 17 regions where fine mapping amassed over 50 percent of the posterior probability on a single SNP (Supplementary Table 4.2.2). Of our 74 lead EduYears SNPs, 9 are good candidates for being the causal sites driving their association signals [12%]. One of our top SNPs, rs4500960, is in nearly perfect LD with the causal candidate rs2268894 (and is indeed the second most likely causal SNP in this region according to fgwas). The causal candidate rs6882046 is within 75kb of two lead SNPs on chromosome 5 (rs324886 and rs10061788), but no two of these three SNPs show strong LD. Interestingly, the remaining 6 causal candidates lie in genomic regions that only attain the equivalent of genome-wide significance upon Bayesian reweighting. Of the 17 causal candidates, 9 lie in regions that are DNase I hypersensitive in the fetal brain.
+>
+> Table 4.2.2:
+>
+> Posterior probability of causality
+> ----------------------------------
+> 0.992035
+> 0.766500
+> 0.842271
+> 0.567184
+> 0.697862
+> 0.524760
+> 0.632536
+> 0.885280
+> 0.968627
+> 0.781563
+> 0.629610
+> 0.837746
+> 0.725158
+> 0.755457
+> 0.784373
+> 0.682947
+> 0.832675
+>
+>
+> [mean(c(0.524760, 0.567184, 0.629610, 0.632536, 0.682947, 0.697862, 0.725158, 0.755457, 0.766500, 0.781563, 0.784373, 0.832675, 0.837746, 0.842271, 0.885280, 0.968627, 0.992035)) = 0.76, 0.76*19=14.4]
+>
+> The results from both approaches show that prediction accuracy increases as more SNPs are used to construct the score, with the maximum predictive power achieved when using all the genotyped SNPs (with Approach 1). In that case, the weighted average across the two cohorts of the incremental R 2 is ~3.85%.
+>
+> [Versus 2% from Rietveld's n=100k; this is in line with the rough doubling of the main SSGAC sample size. The additional UK Biobank sample of n=111k does not seem to have been used but if it was used, should boost the polygenic score to ~5.3%?]
+>
+> ...The magnitude of predictive power that we observe is less than one might have expected on the basis of statistical genetics calculations 6 and GCTA-GREML estimates of “SNP heritability” from individual cohorts. Indeed, Rietveld et al. (2013) 7 reported GCTA-GREML estimates of SNP heritability for each of two cohorts (STR and QIMR), and the mean estimate was 22.4%. Assuming that 22.4% is in fact the true SNP heritability, the calculations outlined in the SOM of Rietveld et al. (pp. 22-23) generate a prediction of R 2 = 11.0% for a score constructed from the GWAS estimates of this paper and of R 2 = 6.1% for a score constructed from the combined (discovery + replication cohorts, but excluding the validation cohorts) GWAS sample of N = ~117,000-119,000 in Rietveld et al.—substantially higher than the 3.85% that we achieve here (with the score based on all genotyped SNPs) and the 2.2% Rietveld et al. achieved, respectively.
+> These discrepancies between the scores’ predicted and estimated R 2 may be due to the failure of some of the assumptions underlying the calculation of the predicted R 2 . An alternative (or additional) explanation is that the true SNP heritability for the GWAS sample pooled across cohorts is lower than 22.4%. That would be the case if the true GWAS coefficients differ across cohorts, perhaps due to heterogeneity in phenotype measurement or gene-by-environment interactions. If so, then a polygenic score constructed from the pooled GWAS sample would be expected to have lower predictive power in an individual cohort than implied by the calculations above. Based on that reasoning, the R 2 of 2.2% observed by Rietveld et al. (2013) could be rationalized by assuming that the proportion of variance accounted for by common variants across the pooled Rietveld cohorts is only 12.7% 6 . (We obtain a similar estimate, 11.5% with a standard error of 0.45%, when we use LD Score regression 5 to estimate the SNP heritability using our pooled-sample meta-analysis results from this paper, excluding deCODE and without GC. While we believe this estimate is based on cohort results without GC, it is biased downward if any cohort in fact applied GC.) If we assume that the 12.7% is valid also for the cohorts considered in this study, we would predict an R 2 equal to 4.5%, somewhat higher than we observe in HRS and STR but much closer. However, the degree of correlation in coefficients across cohorts appears to be relatively high (Supplementary Table 1.10 reports estimates of the genetic correlation between selected cohorts and deCODE; although the correlation estimates vary a lot across cohorts, they tend to be large for the largest cohorts, and the weighted average is 0.76). We do not know whether a pooled-cohort SNP heritability of 12.7% or lower can be reconciled with the observed degree of correlation in coefficients across cohorts.
+>
+> The results are reported in Supplementary Tables 6.3 and 6.4. In both the STR and the HRS, cognitive performance significantly mediates the effect of PGS on EduYears; in the HRS, Openness to Experience is also a significant mediator. The indirect effects for the other mediating variables are not significant s .
 The results for cognitive performance are similar across STR and HRS. In both datasets, a one-standard deviation increase in PGS is associated with ~0.6-0.7 more years of education, and a one-standard deviation increase in cognitive performance is associated with ~0.15 more years of education. In both datasets, the direct effect (θ 1 ) of PGS on EduYears is ~0.3-0.4 and the total indirect effect (β 1 θ 2 ) is ~0.19-0.31. This implies that a one-standard-deviation increase in PGS is associated with ~0.3-0.4 more years of education, keeping the mediating variables constant, and that changing the mediating variables to the levels they would have attained had PGS increased by one standard deviation (but keeping PGS fixed) increases years of education by ~0.19-0.31 years. Lastly, in both datasets, the partial indirect effect (θ 21 β 11 ) of cognitive performance is large and very significant: the estimates are equal to 0.29 and 0.14—or 42% and 23% of the total effect (γ 1 )—in STR and HRS, respectively. The results also suggest that a one-standard deviation increase in Openness to Experience is associated with ~0.06 more years of education, and the estimated partial indirect effect for Openness to Experience is equal to 0.04—or 7% of the total effect (γ 1 ).
-
-
 
 ---
 
@@ -639,7 +659,7 @@ l = 0.0144045
 n=14197
 
 
-
+~~~{.R}
 n <- 1000
 alpha <- 0.005
 SNP_candidates <- 162
@@ -842,3 +862,4 @@ qplot(regretLog$N, jitter(regretLog$Regret), xlab="Total N (not effective N)", y
 b <- BGLR(d$IQ.measured, ETA=list(list(X=d[-c(1, 2, length(colnames(d)))], model="BL", type="beta", probIn=0.12, counts=162, R2=r2, lambda=202, max=500)), verbose=FALSE)
 means <- b$ETA[[1]]$b; sds <- b$ETA[[1]]$SD.b; qplot(SNP_effects, b$ETA[[1]]$b, color=b$ETA[[1]]$SD.b, main=paste("Edits:", SNP_edit_limit, "; Candidates:", SNP_candidates))
 image(as.matrix(d[-c(1, 2, length(colnames(d)))]), col=heat.colors(2))
+~~~
