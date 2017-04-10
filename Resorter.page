@@ -165,8 +165,8 @@ p <- add_argument(p, "--input", short="-i",
                   "input file - a CSV file of items to sort: one per line, with up to two columns. (eg both 'Akira\\n' and 'Akira, 10\\n' are valid).", type="character")
 p <- add_argument(p, "--output", "output file: a file to write the final results to. Default: printing to stdout.")
 p <- add_argument(p, "--verbose", "whether to print out intermediate statistics", flag=TRUE)
-p <- add_argument(p, "--queries", short="-n", default=.Machine$integer.max,
-                  "Maximum number of questions to ask the user; if already rated, O(items) is a good max, but the more items and more levels in the scale, the more comparisons are needed.")
+p <- add_argument(p, "--queries", short="-n", default=NA,
+                  "Maximum number of questions to ask the user; defaults to N*log(N) comparisons. If already rated, O(n) is a good max, but the more items and more levels in the scale and more accuracy desired, the more comparisons are needed.")
 p <- add_argument(p, "--levels", short="-l", default=5, "The highest level; rated items will be discretized into 1-l levels, so l=5 means items are bucketed into 5 levels: [1,2,3,4,5], etc")
 p <- add_argument(p, "--quantiles", short="-q", "What fraction to allocate to each level; space-separated; overrides `--levels`. This allows making one level of ratings narrower (and more precise) than the others, at their expense; for example, one could make 3-star ratings rarer with quantiles like `--quantiles '0 0.25 0.8 1'`. Default: uniform distribution (1-5 ~> '0.0 0.2 0.4 0.6 0.8 1.0').")
 p <- add_argument(p, "--no-scale", short="-ns", flag=TRUE, "Do not discretize/bucket the final estimated latent ratings into 1-l levels/ratings; print out inferred latent scores.")
@@ -175,6 +175,10 @@ argv <- parse_args(p)
 
 # read in the data from either the specified file or stdin:
 if(!is.na(argv$input)) { ranking <- read.csv(file=argv$input, header=FALSE); } else { ranking <- read.csv(file=file('stdin'), header=FALSE); }
+
+# turns out noisy sorting is fairly doable in O(n * log(n)), so do that plus 1 to round up:
+if (is.na(argv$queries)) { n <- nrow(ranking)
+                           argv$queries <- round(n * log(n) + 1) }
 
 # if user did not specify a second column of initial ratings, then put in a default of '1':
 if(ncol(ranking)==1) { ranking$Rating <- 1; }
@@ -289,7 +293,7 @@ print("Resorting complete")
 
 # Background
 
-In rating hundreds of media on a review site like [GoodReads](!Wikipedia), Amazon, [MyAnimeList](!Wikipedia) etc, the distributions tend to become 'lumpy' and concentrate on the top few possible ratings: if it's a 10-point scale, you won't see many below 7, usually, or if it's 5-stars [then anything](https://xkcd.com/325/) [below 4-stars indicates profound hatred](https://xkcd.com/1098/), leading to a J-shaped distribution and the Internet's version of [grade inflation](!Wikipedia).
+In rating hundreds of media on a review site like [GoodReads](!Wikipedia), Amazon, [MyAnimeList](https://myanimelist.net/) etc, the distributions tend to become 'lumpy' and concentrate on the top few possible ratings: if it's a 10-point scale, you won't see many below 7, usually, or if it's 5-stars [then anything](https://xkcd.com/325/) [below 4-stars indicates profound hatred](https://xkcd.com/1098/), leading to a J-shaped distribution and the Internet's version of [grade inflation](!Wikipedia).
 After enough time and inflation, the ratings have degenerated into a noninformative binary rating scale, and some sites, recognizing this, abandon the pretense, like [YouTube](http://youtube-global.blogspot.com/2009/09/five-stars-dominate-ratings.html "Five Stars Dominate Ratings") or [Netflix switching from 5-stars to like/dislike](https://variety.com/2017/digital/news/netflix-thumbs-vs-stars-1202010492/ "Netflix Replacing Star Ratings With Thumbs Ups and Thumbs Downs").
 
 This is unfortunate if you want to provide ratings & reviews to other people and indicate your true preferences; when I like on [MALgraph](http://graph.anime.plus/gwern/ratings,anime) and see that over half my anime ratings are in the range 8-10, then, my ratings having degenerated into a roughly 1-3 scale (crap-good-great) makes it harder to see which ones are truly worth watching & also which ones I might want to go back and rewatch.
@@ -315,10 +319,27 @@ Comparison also immediately suggests an implementation as the classic comparison
 So we could solve this with a simple script in any decent programming language like Python, and this sort of re-sorting is provided by websites such as [Flickchart](http://www.flickchart.com/)
 
 The comparison-sort algorithms make an assumption that is outrageously unrealistic in this context: they assume that the comparison is 100% accurate.
-That is, say, you have two sorted lists of 1000 elements each and you compare the lowest element of one with the highest element of the other and the first is higher, then all 1000 items in the first are higher than all 1000 items in the second, that of the  1000^2^=1000000 possible pairwise comparisons, the sorting algorithms assume that not a single item is out of place, not a single pairwise comparison would be incorrect.
+That is, say, you have two sorted lists of 1000 elements each and you compare the lowest element of one with the highest element of the other and the first is higher, then all 1000 items in the first are higher than all 1000 items in the second, that of the $\binom{1000}{2}=499500$ possible pairwise comparisons, the sorting algorithms assume that not a single item is out of place, not a single pairwise comparison would be incorrect.
 This assumption is fine in programming, since the CPU is good at comparing bits for equality & may go trillions of operations without making a single mistake; but it's absurd to expect this level of reliability of a human for any task, much less one in which we are clumsily feeling for the invisible movements of our souls in response to great artists.
 
 Our comparisons of movies, or books, or music, *are* error-prone and so we need some sort of statistical sorting algorithm.
+It turns out that the "noisy sorting" setting is not that different from the comparison sort setting and that the optimal asymptotic performance there too is $O(n \cdot log(n))$, with the penalty from the comparison error rate _p_ being folded into the constants (since as _p_ approaches 0, it gets easier and reduces to regular comparison sort):
+
+- Slater 1961, ["Inconsistencies in a schedule of paired comparisons"](/docs/statistics/1961-slater.pdf)
+- David 1963, ["The method of paired comparisons"](http://www.dtic.mil/cgi-bin/GetTRDoc?AD=ADA417190#page=15)
+- Adler et al 1994, ["Selection in the presence of noise: The design of playoff systems"](http://www-cgi.cs.cmu.edu/afs/cs.cmu.edu/Web/People/harchol/Papers/SODA94-ranking.pdf)
+- Feige et al 1994, ["Computing with noisy information"](http://cs.brown.edu/~eli/papers/SICOMP23FRPU.pdf)
+- Glickman 1999, ["Parameter estimation in large dynamic paired comparison experiments"](http://math.bu.edu/individual/mg/research/glicko.pdf)
+- Chu & Ghahramani 2005, ["Preference learning with Gaussian processes"](http://machinelearning.wustl.edu/mlpapers/paper_files/icml2005_ChuG05.pdf)
+- Karp & Kleinberg 2007, ["Noisy binary search and its application"](/docs/statistics/2007-karp.pdf)
+- Radlinski & Joachims 2007, ["Active exploration for learning rankings from clickthrough data"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.210.2439&rep=rep1&type=pdf)
+- Kenyon-Mathieu & Schudy 2007, ["How to rank with few errors"](https://cs.brown.edu/research/pubs/theses/masters/2007/schudy.pdf)
+- Ailon et al 2008, ["Aggregating inconsistent information: ranking and clustering"](https://pdfs.semanticscholar.org/2a25/80233a5e23ca06dcd96fa1e037d014848360.pdf)
+- Braverman & Mossel 2008, ["Noisy sorting without resampling"](https://arxiv.org/pdf/0707.1051.pdf) / Braverman & Mossel 2009, ["Sorting from noisy information"](https://arxiv.org/pdf/0910.1191.pdf)
+- Yue & Joachims 2011, ["Beat the mean bandit"](http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Yue_200.pdf)
+- Yue et al 2012, ["The _K_-armed dueling bandits problem"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.165.1421&rep=rep1&type=pdf)
+- Busa-Fekete et al 2014, ["Preference-based rank elicitation using statistical models: The case of Mallows"](http://machinelearning.wustl.edu/mlpapers/paper_files/icml2014c2_busa-fekete14.pdf)
+- Szorenyi et al 2015, ["Online Rank Elicitation for Plackett-Luce: A Dueling Bandits Approach"](http://papers.nips.cc/paper/5903-online-rank-elicitation-for-plackett-luce-a-dueling-bandits-approach.pdf)
 
 So we'd like a command-line tool which consumes a list of pairs of media & ratings, then queries the user repeatedly with pairs of media to get the user's rating of which one is better, somehow modeling underlying scores while allowing for the user to be wrong in multiple comparisons and ideally picking whatever is the 'most informative' next pair to ask about to converge on accurate rankings as quickly as possible, and after enough questions, do a final inference of the full ranking of media and mapping it onto a uniform distribution over a particular rating scale.
 
@@ -327,9 +348,9 @@ The natural way to see the problem is to treat every competitor as having an uno
 ## Implementation
 
 Paired or comparison-based data comes up a lot in competitive contexts, such as the famous [Elo rating system](!Wikipedia) or the Bayesian [TrueSkill](!Wikipedia).
-A general model for dealing with it is the [Bradley–Terry model](!Wikipedia).
+A general model for dealing with it is the [Bradley-Terry model](!Wikipedia).
 
-There are at least two packages in R for dealing with Bradley-Terry models, [`BradleyTerry2`](http://www.jstatsoft.org/v48/i09/paper"Bradley-Terry Models in R: The BradleyTerry2 Package") and [`prefmod`](http://www.jstatsoft.org/v48/i10/paper "prefmod: An R Package for Modeling Preferences Based on Paired Comparisons, Rankings, or Ratings").
+There are at least two packages in R for dealing with Bradley-Terry models, [`BradleyTerry2`](http://www.jstatsoft.org/v48/i09/paper "Bradley-Terry Models in R: The BradleyTerry2 Package") and [`prefmod`](http://www.jstatsoft.org/v48/i10/paper "prefmod: An R Package for Modeling Preferences Based on Paired Comparisons, Rankings, or Ratings").
 The latter supports more sophisticated analyses than the former, but it wants its data in an inconvenient format, while `BradleyTerry2` is more easily incrementally updated.
 (I want to supply my data to the library as a long list of triplets of media/media/rating, which is then easily updated with user-input by simply adding another triplet to the bottom; but `prefmod` wants a column for each possible media, which is awkward to start with and gets worse if there are 1000+ media to compare.)
 
@@ -411,7 +432,7 @@ j1 <- autorun.jags(model=model1, monitor=c("a", "y"), data=data); j1
 This yields sensible ratings but MCMC unavoidably have overhead compared to a quick iterative maximum-likelihood algorithm which only estimates the parameters - it takes about 1s to run on the example data.
 Much of that overhead is from JAGS's setup & interpreting the model, and could probably be halved maybe by using Stan instead (since it caches compiled models) but regardless, 0.5s is too long for particularly pleasant interactive use (total time from response to next question should be <0.1s for best UX) but it's worth paying if we can get much better questions?
 There might be speedups available; this is about estimating latent normal/Gaussian variables, which frequently has very fast implementations.
-For example, it would not surprise me if it turned out that the Bayesian inference could be done outside of MCMC through an analytic solution, or more likely, a Laplacian approximation, such as implemented in [INLA](http://www.r-inla.org/) which supports [latent Gaussians](http://bib.tiera.ru/b/101800#page=111 "'Case Studies in Bayesian Computation using INLA', Martino & Rue 2010").
+For example, it would not surprise me if it turned out that the Bayesian inference could be done outside of MCMC through an analytic solution, or more likely, a Laplacian approximation, such as implemented in [INLA](http://www.r-inla.org/) which supports [latent Gaussians](http://dlib.bpums.ac.ir/multiMediaFile/20774386-4-1.pdf#page=111 "'Case Studies in Bayesian Computation using INLA', Martino & Rue 2010").
 
 #### Optimal exploration
 
@@ -427,11 +448,11 @@ Formal EI is not too well documented at an implementation level, but the most ge
 ##### Computational requirement
 
 Without implementing it, this is infeasible.
-From a computational perspective: there are media^2^ possible actions; each MCMC run takes ~1s; there must be 10 MCMC runs; and the entropy calculations require a bit of time.
-With just 20 media, that'd require $>\frac{20^2 \cdot 10 \cdot 1}{60} = >66$ minutes.
+From a computational perspective: there are $\binom{\text{media}}{2}$ possible actions; each MCMC run takes ~1s; there must be 10 MCMC runs; and the entropy calculations require a bit of time.
+With just 20 media, that'd require $\frac{\binom{20}{2} \cdot 10 \cdot 1}{60} = \frac{190 \cdot 10}{60} = 31$ minutes.
 
-We could run these in parallel, could try to cut down the MCMC iterations even more and risk the occasional non-convergence, could try calculating EI for only a limited number of choices (perhaps 20 randomly chosen options), or look for some mindbending closed-form equations written down by a bearded Russian math professor 50 years ago which we wouldn't understand - but it's hard to see how to get total runtime down to 0.5s - much less ~0.1s.
-And on the packaging side of things, requiring users to have JAGS installed at all makes `resorter` harder to install and much more likely that there will be opaque runtime errors.
+We could run these in parallel, could try to cut down the MCMC iterations even more and risk the occasional non-convergence, could try calculating EI for only a limited number of choices (perhaps 20 randomly chosen options), or look for some closed-form analytic solution (perhaps assuming normal distributions?) - but it's hard to see how to get total runtime down to 0.5s - much less ~0.1s.
+And on the packaging side of things, requiring users to have JAGS (much less Stan) installed at all makes `resorter` harder to install and much more likely that there will be opaque runtime errors.
 
 If asking the user to compare two things was rare and expensive data, if we absolutely had to maximize the informational value of every single question, if we were doing hardcore science like [astronomical observations](http://www.astro.cornell.edu/staff/loredo/bayes/bae.pdf "'Bayesian Adaptive Exploration', Loredo & Chernoff 2003") where every minute of telescope time might be measured in thousands of dollars, then a runtime of 1 hour to optimize question choice would be fine. But we're not.
 If the user needs to be asked 5 additional questions because the standard-error exploration heuristic is suboptimal, that costs them a couple seconds. Not a big deal.
