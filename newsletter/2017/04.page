@@ -12,19 +12,27 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 # Writings
 
 - Long Bets analysis?
-- Danbooru proposal?
+- Danbooru dataset?
 
 # Media
 ## Links
 
 Everything is heritable:
 
+- ["Comparative Genomic Evidence For Self-Domestication In Homo sapiens"](http://biorxiv.org/content/early/2017/04/09/125799), Theofanopoulou et al 2017 (gene-culture co-evolution in selection for cognitive traits involved in domestication?)
+- ["Polygenic prediction of the phenome, across ancestry, in emerging adulthood"](http://biorxiv.org/content/early/2017/04/06/124651), Docherty et al 2017
 - ["Syphilis in Renaissance Europe: rapid evolution of an introduced sexually transmitted disease?"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1810019/pdf/15252975.pdf), Knell 2003 (still an open question, apparently)
-- ["Welcome to Pleistocene Park: In Arctic Siberia, Russian scientists are trying to stave off catastrophic climate change-by resurrecting an Ice Age biome complete with lab-grown woolly mammoths"](https://www.theatlantic.com/magazine/archive/2017/04/pleistocene-park/517779/)
+- ["Welcome to Pleistocene Park: In Arctic Siberia, Russian scientists are trying to stave off catastrophic climate change - by resurrecting an Ice Age biome complete with lab-grown woolly mammoths"](https://www.theatlantic.com/magazine/archive/2017/04/pleistocene-park/517779/)
 - ["Tuberculosis-resistant cows developed for the first time using CRISPR technology"](http://sciencebulletin.org/archives/9946.html)
 
 AI:
 
+- ["Recurrent Environment Simulators"](https://arxiv.org/abs/1704.02254), Chiappa et al 2017 (towards deep model-based planning)
+- ["Using Human Brain Activity to Guide Machine Learning"](https://arxiv.org/abs/1703.05463), Fong et al 2017
+
+    If I'm understanding this right, it can be seen as related to Hinton's 'dark knowledge' and knowledge distillation in NNs: you use a teacher NN to provide additional supervision on the image classification problem by indicating hard & easy examples and also what is the 'right' probability to assign to all the wrong classifications in order to refine the loss function. In this case, the SVM is guided by the human brain fMRI activations which indicate which instances are hard/easy and so which ones it should concentrate on (an error on a hard instance should lead to smaller adjustments than an error on an easy one). This sort of supervision could be quite interesting if you think about its use for AI risk problems - moral dilemmas, for example.
+- ["In-Datacenter Performance Analysis of A Tensor Processing Unit [TPU]"](https://drive.google.com/file/d/0Bx4hafXDDq2EMzRNcy1vSUxtcEk/view), Jouppi et al 2017 (the nitty-gritty on what Google's TPUs can and cannot do)
+- ["Communication-Efficient Learning of Deep Networks from Decentralized Data"](https://arxiv.org/abs/1602.05629), McMahan et al 2017 (distributed NN backpropagation turns out to be not just possible but easy, obviating the need for companies like Google to harvest all your data onto their servers)
 - ["Artist Agent: A Reinforcement Learning Approach to Automatic Stroke Generation in Oriental Ink Painting"](https://arxiv.org/abs/1206.4634), Xie et al 2012 (RL is good for art experiments like this because many artistic criteria tend to be 'global' and non-differentiable or local - RMSE on pixels is not a good criterion.)
 - ["Understanding Synthetic Gradients and Decoupled Neural Interfaces"](https://arxiv.org/abs/1703.00522), Czarnecki et al 2017
 - ["Machine Learning Predicts Laboratory Earthquakes"](https://arxiv.org/abs/1702.05774), Rouet-Leduc et al 2017 ([media](https://www.technologyreview.com/s/603785/machine-learning-algorithm-predicts-laboratory-earthquakes/ "Machine-Learning Algorithm Predicts Laboratory Earthquakes: The breakthrough has astonished geologists and raises the possibility that real earthquake prediction could be next."))
@@ -35,10 +43,11 @@ Politics/religion:
 
 - ["Historical Dynamics & contingent conditions of religion"](http://blogs.discovermagazine.com/gnxp/2012/08/historical-dynamics-and-contingent-conditions-of-religion/)
 - [66 failed social interventions](http://80000hours.org/blog/66-social-interventions-gone-wrong)
-- ["'London Bridge is down': the secret plan for the days after the Queen’s death"](https://www.theguardian.com/uk-news/2017/mar/16/what-happens-when-queen-elizabeth-dies-london-bridge "She is venerated around the world. She has outlasted 12 US presidents. She stands for stability and order. But her kingdom is in turmoil, and her subjects are in denial that her reign will ever end. That’s why the palace has a plan.")
+- ["'London Bridge is down': the secret plan for the days after the Queen's death"](https://www.theguardian.com/uk-news/2017/mar/16/what-happens-when-queen-elizabeth-dies-london-bridge "She is venerated around the world. She has outlasted 12 US presidents. She stands for stability and order. But her kingdom is in turmoil, and her subjects are in denial that her reign will ever end. That's why the palace has a plan.")
 
 Psychology/biology:
 
+- ["Sex Differences In The Adult Human Brain: Evidence From 5,216 UK Biobank Participants"](http://biorxiv.org/content/early/2017/04/04/123729), Ritchie et al 2017
 - ["On Being One's Own Rabbit: The Story of a Skirmish in the War on Disease [Tetany]"](http://www.fadedpage.com/books/20160325/html.php#Page_107), J.B.S. Haldane 1927, _Possible Worlds And Other Essays_
 - ["In Support of Yak Shaving"](http://lesswrong.com/r/discussion/lw/oql/in_support_of_yak_shaving/)
 - ["Shorn Scalps and Perceptions of Male Dominance"](https://www.gwern.net/docs/2012-mannes.pdf), Mannes 2012
@@ -46,6 +55,8 @@ Psychology/biology:
 Technology:
 
 Economics:
+
+- ["Those Indecipherable Medical Bills? They're One Reason Health Care Costs So Much"](https://www.nytimes.com/2017/03/29/magazine/those-indecipherable-medical-bills-theyre-one-reason-health-care-costs-so-much.html)
 
 Philosophy:
 
