@@ -1086,6 +1086,7 @@ brokenLinks = [
  , ("littleboy/index.html", "/docs/eva/2005-little-boy")
  , ("docs/2016-levitt.pdflevitt", "/docs/2016-levitt.pdf")
  , ("docs/dnb/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/dnb")
+ , ("docs/melatonin/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/melatonin")
  , ("newsletter/2017/02 |", "/newsletter/2017/02")
  , ("newsletter/2017/2", "/newsletter/2017/02")
  , ("newsletters", "/tags/newsletter")
@@ -1099,4 +1100,8 @@ brokenLinks = [
  , ("DNMarcives", "/DNM%20archives")
  , ("DNM survivals", "/DNM%20survival")
  , ("long bets", "/Long%20Bets")
+ , ("modafinal", "/Modafinil")
+ , ("otakufil", "/otaku")
+ , ("Wikipedia And Other Wikis", "/Wikipedia%20and%20Other%20Wikis")
+ , ("docs/2014–mccaleb", "/docs/2014-mccaleb")
  ]
