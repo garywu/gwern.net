@@ -805,22 +805,25 @@ $$
 A short version in R:
 
 ~~~{.R}
-V <- function(w, b, m=250) { j <- qbinom(w/m,b,1/2);
-    1.2^b * 1.5^-j * (w+m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2))) }
+V <- function(w, b, m=250) { j <- qbinom(w/m, b, 0.5);
+    1.2^b * 1.5^-j * (w + (m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2)))) }
 ~~~
 
 (This is sufficiently fast for all values tested that it is not worth memoizing using the relatively slow `memoise`.)
 
-<!--
-I want a Python version which can be used in OpenAI gym, since computing the value function with a decision tree is too slow in Python.
-Python: is qbinom in numpy? what's with the j:0?
+Re-implementing in Python is a little tricky because NumPy/SciPy use different names and Python doesn't support R's range notation, but the following seems like it works:
 
 ~~~{.Python}
+import scipy.stats
+import numpy as np
+
 def V(w, b, m=250):
-   j <- qbinom(w/m,b,1/2)
-    return 1.2^b * 1.5^-j * (w+m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2)))
+    j = binom.ppf(float(w)/float(m), b, 0.5)
+    return 1.2**b * 1.5**-j * (w + m/2 *
+        sum(np.multiply(binom.cdf(map(lambda(x2):x2-1, range(0,int(j+1))),b,0.5),
+            map(lambda(x): 1.5**x, list(reversed(range(0, int(j+1))))))))
 ~~~
--->
+
 
 #### Graphing the Value function
 
