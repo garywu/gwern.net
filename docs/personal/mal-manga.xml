@@ -12,11 +12,11 @@
 			<user_id>419845</user_id>
 			<user_name>gwern</user_name>
 			<user_export_type>2</user_export_type>
-			<user_total_manga>74</user_total_manga>
+			<user_total_manga>75</user_total_manga>
 			<user_total_reading>11</user_total_reading>
 			<user_total_completed>37</user_total_completed>
 			<user_total_onhold>2</user_total_onhold>
-			<user_total_dropped>17</user_total_dropped>
+			<user_total_dropped>18</user_total_dropped>
 			<user_total_plantoread>7</user_total_plantoread>
 		</myinfo>
 	
@@ -39,6 +39,27 @@
 					<my_times_read>0</my_times_read>
 					<my_tags><![CDATA[]]></my_tags>
 					<my_reread_value></my_reread_value>
+					<update_on_import>0</update_on_import>
+				</manga>
+			
+				<manga>
+					<manga_mangadb_id>4642</manga_mangadb_id>
+					<manga_title><![CDATA[Akai Kiba]]></manga_title>
+					<manga_volumes>9</manga_volumes>
+					<manga_chapters>0</manga_chapters>
+					<my_id>42743648</my_id>
+					<my_read_volumes>0</my_read_volumes>
+					<my_read_chapters>1</my_read_chapters>
+					<my_start_date>2015-04-21</my_start_date>
+					<my_finish_date>2015-04-21</my_finish_date>
+					<my_scanalation_group><![CDATA[]]></my_scanalation_group>
+					<my_score>7</my_score>
+					<my_storage>Hard Drive</my_storage>
+					<my_status>Completed</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_reread_value>High</my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
 			
@@ -1177,29 +1198,8 @@
 				</manga>
 			
 				<manga>
-					<manga_mangadb_id>859</manga_mangadb_id>
-					<manga_title><![CDATA[Pineapple Army]]></manga_title>
-					<manga_volumes>8</manga_volumes>
-					<manga_chapters>0</manga_chapters>
-					<my_id>18834056</my_id>
-					<my_read_volumes>0</my_read_volumes>
-					<my_read_chapters>9</my_read_chapters>
-					<my_start_date>0000-00-00</my_start_date>
-					<my_finish_date>0000-00-00</my_finish_date>
-					<my_scanalation_group><![CDATA[]]></my_scanalation_group>
-					<my_score>8</my_score>
-					<my_storage></my_storage>
-					<my_status>Dropped</my_status>
-					<my_comments><![CDATA[]]></my_comments>
-					<my_times_read>0</my_times_read>
-					<my_tags><![CDATA[]]></my_tags>
-					<my_reread_value></my_reread_value>
-					<update_on_import>0</update_on_import>
-				</manga>
-			
-				<manga>
 					<manga_mangadb_id>8084</manga_mangadb_id>
-					<manga_title><![CDATA[Puchi Hound]]></manga_title>
+					<manga_title><![CDATA[Petit Hound]]></manga_title>
 					<manga_volumes>0</manga_volumes>
 					<manga_chapters>0</manga_chapters>
 					<my_id>20426073</my_id>
@@ -1219,23 +1219,23 @@
 				</manga>
 			
 				<manga>
-					<manga_mangadb_id>4642</manga_mangadb_id>
-					<manga_title><![CDATA[Sabrina]]></manga_title>
-					<manga_volumes>0</manga_volumes>
-					<manga_chapters>1</manga_chapters>
-					<my_id>42743648</my_id>
+					<manga_mangadb_id>859</manga_mangadb_id>
+					<manga_title><![CDATA[Pineapple Army]]></manga_title>
+					<manga_volumes>8</manga_volumes>
+					<manga_chapters>0</manga_chapters>
+					<my_id>18834056</my_id>
 					<my_read_volumes>0</my_read_volumes>
-					<my_read_chapters>1</my_read_chapters>
-					<my_start_date>2015-04-21</my_start_date>
-					<my_finish_date>2015-04-21</my_finish_date>
+					<my_read_chapters>9</my_read_chapters>
+					<my_start_date>0000-00-00</my_start_date>
+					<my_finish_date>0000-00-00</my_finish_date>
 					<my_scanalation_group><![CDATA[]]></my_scanalation_group>
-					<my_score>7</my_score>
-					<my_storage>Hard Drive</my_storage>
-					<my_status>Completed</my_status>
+					<my_score>8</my_score>
+					<my_storage></my_storage>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
 					<my_tags><![CDATA[]]></my_tags>
-					<my_reread_value>High</my_reread_value>
+					<my_reread_value></my_reread_value>
 					<update_on_import>0</update_on_import>
 				</manga>
 			
@@ -1264,7 +1264,7 @@
 					<manga_mangadb_id>1461</manga_mangadb_id>
 					<manga_title><![CDATA[Sanctuary]]></manga_title>
 					<manga_volumes>12</manga_volumes>
-					<manga_chapters>105</manga_chapters>
+					<manga_chapters>108</manga_chapters>
 					<my_id>10712485</my_id>
 					<my_read_volumes>12</my_read_volumes>
 					<my_read_chapters>105</my_read_chapters>
@@ -1379,6 +1379,27 @@
 					<my_score>7</my_score>
 					<my_storage></my_storage>
 					<my_status>Completed</my_status>
+					<my_comments><![CDATA[]]></my_comments>
+					<my_times_read>0</my_times_read>
+					<my_tags><![CDATA[]]></my_tags>
+					<my_reread_value></my_reread_value>
+					<update_on_import>0</update_on_import>
+				</manga>
+			
+				<manga>
+					<manga_mangadb_id>85901</manga_mangadb_id>
+					<manga_title><![CDATA[Suijin no Hanayome]]></manga_title>
+					<manga_volumes>0</manga_volumes>
+					<manga_chapters>0</manga_chapters>
+					<my_id>57820188</my_id>
+					<my_read_volumes>0</my_read_volumes>
+					<my_read_chapters>7</my_read_chapters>
+					<my_start_date>0000-00-00</my_start_date>
+					<my_finish_date>0000-00-00</my_finish_date>
+					<my_scanalation_group><![CDATA[]]></my_scanalation_group>
+					<my_score>7</my_score>
+					<my_storage></my_storage>
+					<my_status>Dropped</my_status>
 					<my_comments><![CDATA[]]></my_comments>
 					<my_times_read>0</my_times_read>
 					<my_tags><![CDATA[]]></my_tags>
