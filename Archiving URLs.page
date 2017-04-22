@@ -45,6 +45,9 @@ My specific target date is 2070, 60 years from now. As of 10 March 2011, `gwern.
 
 With that in mind, one can consider remedies. (If we lie to ourselves and say it won't be a problem in the future, then we guarantee that it *will* be a problem. ["People can stand what is true, for they are already enduring it."](http://wiki.lesswrong.com/wiki/Litany_of_Gendlin))
 
+If you want to *pre-emptively* archive a specific page, that is easy: go to the IA and archive it, or in your web browser, print a PDF of it, or for more complex pages, use a browser plugin (eg for Firefox, [Mozilla Archive Format](https://addons.mozilla.org/en-US/firefox/addon/mozilla-archive-format/) or [ScrapBook](https://github.com/danny0838/firefox-scrapbook/wiki/Features)).
+But I find I visit and link so many web pages that I rarely think in advance of link rot to save a copy; what I need is a more systematic approach to detect and create links for all web pages I might need.
+
 # Detection
 
 > With every new spring \
@@ -77,7 +80,7 @@ We can ask a third party to keep a cache for us. There are several [archive site
 3. Linterweb's WikiWix^[Which I suspect is only accidentally 'general' and would shut down access if there were some other way to ensure that Wikipedia external links still got archived.].
 4. [Peeep.us](http://www.peeep.us/)
 5. [Archive.is](http://archive.is/)
-6. [Pinboard](https://pinboard.in/) (with the $25/yr archiving option^[Since Pinboard is a bookmarking service more than an archive site, I asked whether treating it as such would be acceptable and Maciej said "Your current archive size, growing at 20 GB a year, should not be a problem. I'll put you on the heavy-duty server where my own stuff lives."])
+6. [Pinboard](https://pinboard.in/) (with the \$25/yr archiving option^[Since Pinboard is a bookmarking service more than an archive site, I asked whether treating it as such would be acceptable and Maciej said "Your current archive size, growing at 20 GB a year, should not be a problem. I'll put you on the heavy-duty server where my own stuff lives."])
 7. [Hiyo.jp](http://hiyo.jp/) & [Megalodon.jp](http://megalodon.jp/) (may be difficult to use)
 
 There are other options but they are not available like Google^[Google Cache is generally recommended only as a last ditch resort because pages expire quickly from it. Personally, I'm convinced that Google would never just delete colossal amounts of Internet data - this is Google, after all, the epitome of storing unthinkable amounts of data - and that Google Cache merely ceases to make public its copies. And to request a Google spider visit, one has to solve a CAPTCHA - so that's not a scalable solution.] or various commercial/government archives^[Which would not be publicly accessible or submittable; I know they exist, but because they hide themselves, I know only from random comments online eg. ["years ago a friend of mine who I'd lost contact with caught up with me and told me he found a cached copy of a website I'd taken down in his employer's equivalent to the Wayback Machine. His employer was a branch of the federal government."](https://news.ycombinator.com/item?id=2880427).]
@@ -121,12 +124,16 @@ Finally, rather than start it manually, I use a cron job to start it at boot, fo
 
 Remote archiving, while convenient, has a major flaw: the archive services cannot keep up with the growth of the Internet and are woefully incomplete. I experience this regularly, where a link on `gwern.net` goes dead and I cannot find it in the Internet Archive or WebCite, and it is a general phenomenon: [Ainsworth et al 2012](http://arxiv.org/pdf/1212.6177v1.pdf "How Much of the Web Is Archived?") find <35% of common Web pages ever copied into an archive service, and typically only one copy exists.
 
+### Caching Proxy
+
 The most ambitious & total approach to local caching is to set up a proxy to do your browsing through, and record literally all your web traffic; for example, using [WarcProxy](https://github.com/odie5533/WarcProxy) which will save as [WARC files](!Wikipedia "Web ARChive") every page you visit through it.
 ([Zachary Vance](https://blog.za3k.com/archiving-all-web-traffic/) explains how to set up a local HTTPS certificate to MITM your HTTPS browsing as well.)
 
 One may be reluctant to go this far, and prefer something lighter-weight, such as periodically extracting a list of visited URLs from one's web browser and then attempting to archive them.
 
-On a roughly monthly basis, I run a shell script named, imaginatively enough, `local-archiver`:
+### Batch job downloads
+
+For a while, I used a shell script named, imaginatively enough, `local-archiver`:
 
 ~~~{.bash}
 #!/bin/sh
@@ -151,7 +158,9 @@ find ~/www -size +4M -delete
 
 The code is not the prettiest, but it's fairly straightforward:
 
-- the script grabs my Firefox browsing history by extracting it from the history SQL database file^[Much easier than it was in the past; [Jamie Zawinski](!Wikipedia) records his travails with the *previous* Mozilla history format in the aptly-named ["when the database worms eat into your brain"](http://www.jwz.org/blog/2004/03/when-the-database-worms-eat-into-your-brain/).], and feeds the URLs into [wget](!Wikipedia)
+- the script grabs my Firefox browsing history by extracting it from the history SQL database file^[Much easier than it was in the past; [Jamie Zawinski](!Wikipedia) records his travails with the *previous* Mozilla history format in the aptly-named ["when the database worms eat into your brain"](http://www.jwz.org/blog/2004/03/when-the-database-worms-eat-into-your-brain/).], and feeds the URLs into [wget](!Wikipedia).
+
+    `wget` is not the best tool for archiving as it will not run JavaScript or Flash or download videos etc. It will download included JS files but the JS will be obsolete when run in the future and any dynamic content will be long gone. To do better would require a headless browser like [PhantomJS](!Wikipedia) which saves to MHT/MHTML, but PhantomJS [refuses to support it](https://github.com/ariya/phantomjs/issues/10117) and I'm not aware of an existing package to do this. In practice, static content is what is most important to archive, most JS is of highly questionable value in the first place, and any important YouTube videos can be archived manually with `youtube-dl`, so `wget`'s limitations haven't been so bad.
 - The script `split`s the long list of URLs into a bunch of files and runs that many `wget`s because `wget` apparently has no way of simultaneously downloading from multiple domains.
 - The [`filter-urls`](#filter-urls) command is another shell script, which removes URLs I don't want archived. This script is a hack which looks like this:
 
@@ -163,16 +172,15 @@ The code is not the prettiest, but it's fairly straightforward:
 
 A local copy is not the best resource - what if a link goes dead in a way your tool cannot detect so you don't *know* to put up your copy somewhere? But it solves the problem pretty decisively.
 
-`archiver` has an extra feature where any third argument is treated as an arbitrary `sh` command to run after each URL is archived, to which is appended said URL. You might use this feature if you wanted to load each URL into Firefox, or append them to a log file, or simply download or archive the URL in some other way.
+### Daemon
 
-For example, in conjunction with the big `local-archiver` runs, I have `archiver` run `wget` on each individual URL: `screen  -d -m -S "archiver" sh -c 'while true; do archiver ~/.urls.txt gwern@gwern.net "cd ~/www && wget --unlink --continue --page-requisites --timestamping -e robots=off --reject .iso,.exe,.gz,.xz,.rar,.7z,.tar,.bin,.zip,.jar,.flv,.mp4,.avi,.webm --user-agent='Firefox/3.5' 120"; done'`.
+`archiver` has an extra feature where any third argument is treated as an arbitrary `sh` command to run after each URL is archived, to which is appended said URL.
+You might use this feature if you wanted to load each URL into Firefox, or append them to a log file, or simply download or archive the URL in some other way.
+
+For example, instead of a big `local-archiver` run, I have `archiver` run `wget` on each individual URL: `screen  -d -m -S "archiver" sh -c 'while true; do archiver ~/.urls.txt gwern@gwern.net "cd ~/www && wget --unlink --continue --page-requisites --timestamping -e robots=off --reject .iso,.exe,.gz,.xz,.rar,.7z,.tar,.bin,.zip,.jar,.flv,.mp4,.avi,.webm --user-agent='Firefox/3.6' 120"; done'`.
 (For private URLs which require logins, `wget` can still grab them with some help: installing the Firefox extension [Export Cookies](https://addons.mozilla.org/en-US/firefox/addon/export-cookies/), logging into the site in Firefox like usual, exporting one's `cookies.txt`, and adding the option `--load-cookies cookies.txt` to give it access to the cookies.)
 
 Alternately, you might use `curl` or a specialized archive downloader like the Internet Archive's crawler [Heritrix](http://crawler.archive.org/).
-
-The space consumed by such a backup is not that bad; only 30-50 gigabytes for a year of browsing, and less depending on how hard you prune the downloads. (More, of course, if you use `linkchecker` to archive entire sites and not just the pages you visit.) Storing this is quite viable in the long term; while page sizes have [increased 7x](http://www.websiteoptimization.com/speed/tweak/average-web-page/) between 2003 and 2011 and pages average around 400kb^[An older [2010 Google article](https://web.archive.org/web/20100628055041/http://code.google.com/speed/articles/web-metrics.html "Web metrics: Size and number of resources") put the average at 320kb, but that was an average over the entire Web, including all the old content.], [Kryder's law](!Wikipedia) has also been operating and has increased disk capacity by ~128x - in 2011, \$80 will buy you at least [2 terabytes](http://forre.st/storage#hdd), that works out to 4 cents a gigabyte or 80 cents for the low estimate for downloads; that is much better than the $25 annual fee that somewhere like [Pinboard](http://pinboard.in/upgrade/) charges. Of course, you need to back this up yourself. We're relatively fortunate here - most Internet documents are 'born digital' and easy to migrate to new formats or inspect in the future. We can download them and worry about how to view them only when we need a particular document, and Web browser backwards-compatibility already stretches back to files written in the early 1990s. (Of course, we're probably screwed if we discover the content we wanted was presented only in Adobe Flash or as an inaccessible 'cloud' service.) In contrast, if we were trying to preserve programs or software libraries instead, we would face a much more formidable task in keeping a working ladder of binary-compatible virtual machines or interpreters^[Already one runs old games like the classic [LucasArts adventure games](!Wikipedia) in emulators of the DOS operating system like [DOSBox](!Wikipedia); but those emulators will not always be maintained. Who will emulate the emulators? Presumably in 2050, one will instead emulate some ancient but compatible OS - Windows 7 or Debian 6.0, perhaps - and inside *that* run DOSBox (to run the DOS which can run the game).]. The situation with [digital movie preservation](http://www.davidbordwell.net/blog/2012/02/13/pandoras-digital-box-pix-and-pixels/ "Pandora's digital box: Pix and pixels") hardly bears thinking on.
-
-There are ways to cut down on the size; if you tar it all up and run [7-Zip](!Wikipedia) with maximum compression options, you could probably compact it to 1/5th the size. I found that the uncompressed files could be reduced by around 10% by using [fdupes](!Wikipedia) to look for duplicate files and turning the duplicates into a space-saving [hard link](!Wikipedia) to the original with a command like `fdupes --recurse --hardlink ~/www/`. (Apparently there are a *lot* of bit-identical JavaScript (eg. [JQuery](!Wikipedia)) and images out there.)
 
 ### Cryptographic timestamping local archives
 
@@ -186,6 +194,28 @@ With these scripts, extending the archive bot is as simple as changing the shell
 ~~~
 
 Now every URL we download is automatically cryptographically timestamped with ~1-day resolution for free.
+
+### Resource consumption
+
+The space consumed by such a backup is not that bad; only 30-50 gigabytes for a year of browsing, and less depending on how hard you prune the downloads.
+(More, of course, if you use `linkchecker` to archive entire sites and not just the pages you visit.)
+Storing this is quite viable in the long term; while page sizes have [increased 7x](http://www.websiteoptimization.com/speed/tweak/average-web-page/) between 2003 and 2011 and pages average around 400kb^[An older [2010 Google article](https://web.archive.org/web/20100628055041/http://code.google.com/speed/articles/web-metrics.html "Web metrics: Size and number of resources") put the average at 320kb, but that was an average over the entire Web, including all the old content.], [Kryder's law](!Wikipedia) has also been operating and has increased disk capacity by ~128x - in 2011, \$80 will buy you at least [2 terabytes](http://forre.st/storage#hdd), that works out to 4 cents a gigabyte or 80 cents for the low estimate for downloads; that is much better than the \$25 annual fee that somewhere like [Pinboard](http://pinboard.in/upgrade/) charges.
+Of course, you need to back this up yourself.
+We're relatively fortunate here - most Internet documents are 'born digital' and easy to migrate to new formats or inspect in the future.
+We can download them and worry about how to view them only when we need a particular document, and Web browser backwards-compatibility already stretches back to files written in the early 1990s.
+(Of course, we're probably screwed if we discover the content we wanted was dynamically presented only in Adobe Flash or as an inaccessible 'cloud' service.)
+In contrast, if we were trying to preserve programs or software libraries instead, we would face a much more formidable task in keeping a working ladder of binary-compatible virtual machines or interpreters^[Already one runs old games like the classic [LucasArts adventure games](!Wikipedia) in emulators of the DOS operating system like [DOSBox](!Wikipedia); but those emulators will not always be maintained. Who will emulate the emulators? Presumably in 2050, one will instead emulate some ancient but compatible OS - Windows 7 or Debian 6.0, perhaps - and inside *that* run DOSBox (to run the DOS which can run the game).].
+The situation with [digital movie preservation](http://www.davidbordwell.net/blog/2012/02/13/pandoras-digital-box-pix-and-pixels/ "Pandora's digital box: Pix and pixels") hardly bears thinking on.
+
+There are ways to cut down on the size; if you tar it all up and run [7-Zip](!Wikipedia) with maximum compression options, you could probably compact it to 1/5th the size.
+I found that the uncompressed files could be reduced by around 10% by using [fdupes](!Wikipedia) to look for duplicate files and turning the duplicates into a space-saving [hard link](!Wikipedia) to the original with a command like `fdupes --recurse --hardlink ~/www/`.
+(Apparently there are a *lot* of bit-identical JavaScript (eg. [JQuery](!Wikipedia)) and images out there.)
+
+Good filtering of URL sources can help reduce URL archiving count by a large amount.
+Examining my manual backups of Firefox browinsg history, over the 1153 days from 2014-02-25 to 2017-04-22, I visited 2,370,111 URLs or 2055 URLs per day; after passing through my filtering script, that leaves 171,446 URLs, which after de-duplication yields 39,523 URLs or ~34 unique URLs per day or 12,520 unique URLs per year to archive.
+
+This shrunk my archive by 9GB from 65GB to 56GB, although at the cost of some archiving fidelity by removing many filetypes like CSS or JavaScript or GIF images.
+As of 22 April 2017, after ~6 years of archiving, between `xz` compression (at the cost of easy searchability), aggressive filtering, occasional manual deletion of overly bulky domains I feel are probably adequately covered in the IA etc, my full WWW archives weigh 55GB.
 
 ### URL sources
 #### Browser history
@@ -264,7 +294,9 @@ When `linkchecker` does not work, one alternative is to do a `wget --mirror` and
     - [webrecorder](https://github.com/webrecorder/webrecorder)
     - [pywb](https://github.com/ikreymer/pywb)
     - [IPFS](!Wikipedia)
-    - [Wordpress plugin: Broken Link Checker](https://wordpress.org/plugins/broken-link-checker/)
+    - [WordPress plugin: Broken Link Checker](https://wordpress.org/plugins/broken-link-checker/)
+    - [`youtube-dl`](https://rg3.github.io/youtube-dl/)
+    - [PhantomJS](!Wikipedia)
 - [Hacker News discussion](https://news.ycombinator.com/item?id=6504331)
 
 # Appendices
@@ -277,7 +309,8 @@ Due to length, this section has [been moved to a separate page](/Timestamping "S
 
 A raw dump of URLs, while certainly archivable, will typically result in a very large mirror of questionable value (is it really necessary to archive Google search queries or Wikipedia articles? usually, no) and worse, given the rate-limiting necessary to store URLs in the Internet Archive or other services, may wind up delaying the archiving of the important links & risking their total loss. Disabling the remote archiving is unacceptable, so the best solution is to simply take a little time to manually blacklist various domains or URL patterns.
 
-This blacklisting can be as simple as a command like `filter-urls | grep -v en.bwikipedia.org`, but can be much more elaborate. The following shell script is the skeleton of my own custom blacklist, derived from manually filtering through several years of daily browsing as well as spiders of [dozens of websites](http://lesswrong.com/lw/7kg/rationalist_sites_worth_archiving/ "Rationalist sites worth archiving?") for various people & purposes, demonstrating a variety of possible techniques: regexps for domains & file-types & query-strings, `sed`-based rewrites, fixed-string matches (both blacklists and whitelists), etc:
+This blacklisting can be as simple as a command like `filter-urls | grep -v en.wikipedia.org`, but can be much more elaborate.
+The following shell script is the skeleton of my own custom blacklist, derived from manually filtering through several years of daily browsing as well as spiders of [dozens of websites](http://lesswrong.com/lw/7kg/rationalist_sites_worth_archiving/ "Rationalist sites worth archiving?") for various people & purposes, demonstrating a variety of possible techniques: regexps for domains & file-types & query-strings, `sed`-based rewrites, fixed-string matches (both blacklists and whitelists), etc:
 
 ~~~{.Bash}
 #!/bin/sh
@@ -313,6 +346,7 @@ cat /dev/stdin \
     | fgrep -v -e "#!" -e ".bin" -e ".mp4" -e ".swf" -e "/mediawiki/index.php?title=" -e "/search?q=cache:" \
       -e "/wiki/Special:Block/" -e "/wiki/Special:WikiActivity" -e "Special%3ASearch" \
       -e "Special:Search" -e "__setdomsess?dest="
+      # ...
 
 # prevent URLs from piling up at the end of the file
 echo ""
@@ -326,8 +360,6 @@ find ~/www | sort --unique >> full.txt && \
 comm -23 full.txt trimmed.txt | xargs -d "\n" rm
 rm full.txt trimmed.txt
 ~~~
-
-This shrunk my archive by 9GB from 65GB to 56GB, although at the cost of some archiving fidelity by removing many filetypes like CSS or JavaScript or GIF images.
 
 ## `sort --key` compression trick
 
