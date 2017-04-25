@@ -805,25 +805,63 @@ $$
 A short version in R:
 
 ~~~{.R}
-V <- function(w, b, m=250) { j <- qbinom(w/m, b, 0.5);
+V <- function(w, b, m=250) { b <- round(b); # rounds left must be integer
+    j <- qbinom(w/m, b, 0.5);
     1.2^b * 1.5^-j * (w + (m/2 * sum(1.5^(j:0) * pbinom(0:j-1,b,1/2)))) }
 ~~~
 
 (This is sufficiently fast for all values tested that it is not worth memoizing using the relatively slow `memoise`.)
 
-Re-implementing in Python is a little tricky because NumPy/SciPy use different names and Python doesn't support R's range notation, but the following seems like it works:
+Re-implementing in Python is a little tricky because NumPy/SciPy use different names and Python doesn't support R's range notation, but the following seems like it works; and then with a value function, we can implement a planner to choose optimal betting amounts, and then it is simple to set up a Gym environment and start playing the Kelly coinflip game optimally (and indeed usually reaching the \$250 limit):
 
 ~~~{.Python}
-import scipy.stats
+from scipy.stats import binom
 import numpy as np
 
 def V(w, b, m=250):
-    j = binom.ppf(float(w)/float(m), b, 0.5)
-    return 1.2**b * 1.5**-j * (w + m/2 *
-        sum(np.multiply(binom.cdf(map(lambda(x2):x2-1, range(0,int(j+1))),b,0.5),
-            map(lambda(x): 1.5**x, list(reversed(range(0, int(j+1))))))))
+    if w>=250:
+      return 250
+    if w<=0:
+      return 0
+    if b==0:
+      return w
+    else:
+      try:
+        j = binom.ppf(float(w)/float(m), b, 0.5)
+        return 1.2**b * 1.5**-j * (w + m/2 *
+            sum(np.multiply(binom.cdf(map(lambda(x2):x2-1, range(0,int(j+1))),b,0.5),
+                map(lambda(x): 1.5**x, list(reversed(range(0, int(j+1))))))))
+      except ValueError:
+        print "Error:", (w,b,m)
+
+def VPplan(w, b):
+    if w==0:
+      return 0
+    else:
+      if b==0:
+        return w
+      else:
+          possibleBets = map(lambda(pb): float(pb)/100.0, range(0*100,int((w*100)+1),1))
+          returns = map(lambda(pb): 0.6*V(w+pb, b-1) + 0.4*V(w-pb,b-1), possibleBets)
+          return float(returns.index(max(returns)))/100.0
 ~~~
 
+~~~{.Python}
+import gym
+env = gym.make('KellyCoinflip-v0')
+
+# play one game:
+done = False
+while not done:
+    w = env._get_obs()[0][0]
+    b = env._get_obs()[1]
+    bet = VPplan(w, b)
+    print(bet)
+    results = env._step(bet*100)
+    print(results)
+    done = results[2]
+env._reset()
+~~~
 
 #### Graphing the Value function
 
