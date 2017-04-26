@@ -812,12 +812,14 @@ V <- function(w, b, m=250) { b <- round(b); # rounds left must be integer
 
 (This is sufficiently fast for all values tested that it is not worth memoizing using the relatively slow `memoise`.)
 
-Re-implementing in Python is a little tricky because NumPy/SciPy use different names and Python doesn't support R's range notation, but the following seems like it works; and then with a value function, we can implement a planner to choose optimal betting amounts, and then it is simple to set up a Gym environment and start playing the Kelly coinflip game optimally (and indeed usually reaching the \$250 limit):
+Re-implementing in Python is a little tricky because NumPy/SciPy use different names and Python doesn't support R's range notation, but the following seems like it works; and then with a value function, we can implement a planner to choose optimal betting amounts, memoize it with [`repoze.lru`](https://github.com/repoze/repoze.lru) for time-savings over multiple games, and then it is simple to set up a Gym environment and start playing the Kelly coinflip game optimally (and indeed usually reaching the \$250 limit):
 
 ~~~{.Python}
 from scipy.stats import binom
 import numpy as np
+from repoze.lru import lru_cache
 
+@lru_cache(maxsize=5000000)
 def V(w, b, m=250):
     if w>=250:
       return 250
@@ -834,6 +836,7 @@ def V(w, b, m=250):
       except ValueError:
         print "Error:", (w,b,m)
 
+@lru_cache(maxsize=5000000)
 def VPplan(w, b):
     if w==0:
       return 0
@@ -860,6 +863,7 @@ while not done:
     results = env._step(bet*100)
     print(results)
     done = results[2]
+
 env._reset()
 ~~~
 
