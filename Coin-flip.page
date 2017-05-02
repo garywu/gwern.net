@@ -32,6 +32,8 @@ The authors make a specific suggestion about what near-optimal play in this game
 >
 > ...If the subject rightly assumed we wouldn't be offering a cap of more than \$1,000 per player, then a reasonable heuristic would be to bet a constant proportion of one's bank using a fraction less than the Kelly criterion, and if and when the cap is discovered, reducing the betting fraction further depending on betting time remaining to glide in safely to the maximum payout. For example, betting 10% or 15% of one's account may have been a sound starting strategy. We ran simulations on the probability of hitting the cap if the subject bet a fixed proportion of wealth of 10%, 15% and 20%, and stopping when the cap was exceeded with a successful bet. We found there to be a 95% probability that the subjects would reach the \$250 cap following any of those constant proportion betting strategies, and so the expected value of the game as it was presented (with the \$250 cap) would be just under \$240. However, if they bet 5% or 40% of their bank on each flip, the probability of exceeding the cap goes down to about 70%.
 
+This game is interesting as a test case because it is just easy enough to solve exactly on a standard computer in various ways, but also hard enough to defeat naive humans and be nontrivial.
+
 ## Subjects' performance
 
 Despite the Kelly criterion being well-known and fairly intuitive, and the game being very generous, participants did not perform well:
@@ -249,7 +251,7 @@ Memoization *should* be fast because the decision tree can be represented as not
 But apparently there is enough overhead to dominate our decision tree's computation.
 
 R does not provide hash tables, and there don't seem to be any good libraries for this; what one can do is use R's "environments", which use hash tables under the hood, but are restricted to string keys (yes, really) as a poor man's hash table by using `digest` to serialize & hash R objects into string keys/
-The backwards induction remains the same and the hashtable can be updated incrementally without any problem (useful for switching to alternative methods like MCTS), so the rewrite is easy:
+The backwards induction remains the same and the hash-table can be updated incrementally without any problem (useful for switching to alternative methods like MCTS), so the rewrite is easy:
 
 ~~~{.R}
 ## crude hash table
@@ -303,7 +305,7 @@ V(25,2)
 V(25,3)
 ~~~
 
-Python has hashtables built in as dicts, so one can use those:
+Python has hash-tables built in as dicts, so one can use those:
 
 ~~~{.Python}
 import numpy as np
@@ -812,7 +814,7 @@ V <- function(w, b, m=250) { b <- round(b); # rounds left must be integer
 
 (This is sufficiently fast for all values tested that it is not worth memoizing using the relatively slow `memoise`.)
 
-Re-implementing in Python is a little tricky because NumPy/SciPy use different names and Python doesn't support R's range notation, but the following seems like it works; and then with a value function, we can implement a planner to choose optimal betting amounts, memoize it with [`repoze.lru`](https://github.com/repoze/repoze.lru) for time-savings over multiple games, and then it is simple to set up a Gym environment and start playing the Kelly coinflip game optimally (and indeed usually reaching the \$250 limit):
+Re-implementing in Python is a little tricky because NumPy/SciPy use different names and Python doesn't support R's range notation, but the following seems like it works; and then with a value function, we can implement a planner to choose optimal betting amounts, memoize it with [`repoze.lru`](https://github.com/repoze/repoze.lru) for time-savings over multiple games, and then it is simple to set up a Gym environment and start playing the Kelly coin-flip game optimally (and indeed usually reaching the \$250 limit):
 
 ~~~{.Python}
 from scipy.stats import binom
@@ -869,7 +871,6 @@ env._reset()
 
 #### Graphing the Value function
 
-
 With an exact value function, we can visualize it to get an idea of how the wealth/rounds interact and how difficult it would be to approximate it.
 We can generate many iterates, interpolate, and graph:
 
@@ -892,7 +893,8 @@ scatter3D(df$Wealth, df$Rounds, df$Value, theta=-25, xlab="Wealth", ylab="Rounds
 
 #### Approximating the Exact Value Function
 
-The value function winds up looking simple, a smooth landscape tucked down at the edges.
+The value function winds up looking simple, a smooth landscape tucked down at the edges, which is perhaps not too surprising, as the optimal betting patterns tend to be small amounts except when there are very few rounds left (and one should bet most or all of one's wealth) or one is nearing the maximum wealth cap (and should very gradually glide in).
+
 A value function computed by decision trees is a bulky and hard to carry around sort of thing, weighing perhaps gigabytes in size.
 Especially looking at this value function, it's clear that it can be easily approximated or memorized by another algorithm like random forests or neural networks.
 (Usually, a NN has a hard time learning a value function because it's a reinforcement learning problem where it's unclear how actions are linked to rewards, but in this case, it is the far easier setting of supervised learning.)
@@ -1315,11 +1317,11 @@ fractionEVs <- ldply(mclapply(fraction, function(f) {
 qplot(fraction, fractionEVs)
 ~~~
 
-# Coin-flipping POMDP
+# Generalized Kelly Coin-flip game: POMDPs
 
-The original Kelly coinflip game has a clear way to make it more general and difficult: randomize the 3 key parameters of edge/max wealth/rounds and hide them, turning it into a partially-observed Markov decision process.
+The original Kelly coinflip game has a clear way to make it more general and difficult: randomize the 3 key parameters of edge/max wealth/rounds and hide them, turning it into a [partially-observed Markov decision process](!Wikipedia).
 
-To solve a POMDP one often has to record the entire history, but with judicious choice of what distribution we randomize the 3 parameters from, we can make it both plausibly reflecting the human subjects' expectations and allow summarizing the history in a few sufficient statistics.
+To solve a POMDP one often has to record the entire history, but with judicious choice of what distribution we randomize the 3 parameters from, we can make it both plausibly reflecting the human subjects' expectations and allow summarizing the history in a few [sufficient statistics](!Wikipedia).
 
 ## Implementation
 
@@ -1556,9 +1558,9 @@ Another variant would be to make the stopping time uncertain; strictly speaking,
 From the player's perspective, it is unknown how many rounds they will get to play although they can guess that they won't be allowed to play more than a few hundred, and this might affect the optimal strategy.
 
 One way to calculate this would be to assume that the player doesn't learn anything about the stopping time while playing, and merely has a prior over the stopping time.
-For example, N(300,25).
+For example, $\mathcal{N}(300,25)$.
 What is the value of this game?
-We can approximate it with our pre-existing value function for a known stopping time, sampling from the posterior; for example, we might draw 1000 values from N(300,25), calculate the value of 300, 295, 320, 301, 296... etc, and taking the mean value.
+We can approximate it with our pre-existing value function for a known stopping time, sampling from the posterior; for example, we might draw 1000 values from $\mathcal{N}N(300,25)$, calculate the value of 300, 295, 320, 301, 296... etc, and taking the mean value.
 (This is not as terrible as it sounds computation-wise: since the value function is deterministic, we can cache each value and we only need to run the value function for each unique value, and then take a mean weighted by their count in the posterior sample. So if we draw 10,000 posterior samples, we don't need to do 10,000x the work, but maybe only 100x, depending on how narrow our prior is.)
 
 Another way would be to try to calculate it inside the value function.
@@ -1566,7 +1568,7 @@ The game stopping can be seen as a third probabilistic response to a player's be
 Or in longer form, the value of a action/bet _x_ is `(1-sp)*(0.6*V(w+x,b-1) + 0.4*V(w-x,b-1)) + sp*V(w,0)`.
 
 What is _sp_ as a distribution?
-Well, one might believe that every round, there is a ~1% chance of the game stopping, in which case _sp_ is the memoryless geometric distribution (not exponential distribution, since this is a discrete setup); in this case, one must discount each additional round _n_ by 1% cumulatively.
+Well, one might believe that every round, there is a ~1% chance of the game stopping, in which case _sp_ is the memoryless [geometric distribution](!Wikipedia) (not [exponential distribution](!Wikipedia), since this is a discrete setup); in this case, one must discount each additional round _n_ by 1% cumulatively.
 (Discounting in general could be seen as reflecting a probability of stopping at each stage.)
 
 This has the difficulty that hypothetically, a game might go on indefinitely long, but since a player must eventually hit \$0 or \$250 and stop playing, it would turn out like the penny simulator - after a few thousand rounds, the probability of having not reached \$250 is so small it can't be handed by most software.
@@ -1591,7 +1593,7 @@ V <- function(w, b) {
 
 This can be extended to scenarios where we do learn something about the stopping time, similarly to the coin-flip probability, by doing Bayesian updates on _sp_.
 Or if _sp_ changes over rounds.
-If we had a distribution N(300,25) over the stopping time, then the probability of stopping at each round can change inside the value function given an additional argument _n_ for rounds elapsed.
+If we had a distribution $\mathcal{N}(300,25)$ over the stopping time, then the probability of stopping at each round can change inside the value function given an additional argument _n_ for rounds elapsed as the sufficient statistic.
 
 ### Unknown maximum wealth cap
 
@@ -1600,7 +1602,8 @@ Finally, subjects weren't told what the maximum would be:
 > The maximum payout would be revealed if and when subjects placed a bet that if successful would make their balance greater than or equal to the cap. We set the cap at \$250.
 
 A convenient distribution for such a cap would be the [Pareto distribution](!Wikipedia), parameterized by a minimum _x~m~_ and a tail parameter, α.
-If _x~m~_ is set to something like 100 (the agent thinks the cap is >\$100), for most rounds, the agent would not be able to update this, but towards the end, as it exceeds \$100, it then updates the posterior - if it is allowed to make a bet of \$50 at \$100, then _x~m~_ becomes 150 while α remains the same, and so on
+If _x~m~_ is set to something like 100 (the agent thinks the cap is >\$100), for most rounds, the agent would not be able to update this, but towards the end, as it exceeds \$100, it then updates the posterior - if it is allowed to make a bet of \$50 at \$100, then _x~m~_ becomes 150 while α remains the same, and so on.
+In this case, the maximum observed wealth is the sufficient statistic.
 The posterior mean of the cap is then $\frac{\alpha \cdot x_m}{\alpha - 1}$.
 A reasonable prior might be α=5 and _x~m~_=200, in which case the mean wealth cap is 250.
 
@@ -1621,3 +1624,169 @@ V <- function(w, b, alpha=5, x_m=200) {
       }
 }
 ~~~
+
+## Deep RL
+
+Since the Bayesian decision tree is too hard to compute in full, we need a different approach.
+Tabular approaches in general will have difficulty as the full history makes the state-space vastly larger, but also so do just the sufficient statistics of wins/losses + rounds elapsed + maximum observed wealth.
+
+One approach which should be able to cope with the complexities would be deep reinforcement learning, whose neural networks let them optimize well in difficult environments; unfortunately, the sparsity of rewards in the Kelly coinflip game (receiving a reward only every ~300 steps) will make solving the game much harder for the agents.
+
+To create a deep RL agent for the generalized Kelly coin-flip game, I will use the [keras-rl](https://github.com/matthiasplappert/keras-rl) library of agents, which is based on the [Keras](https://keras.io/) deep learning framework (backed by [TensorFlow](https://www.tensorflow.org/)); deep learning is often sensitive to choice of hyperparameters, so for hyperparameter optimization, I use the [hyperas](https://github.com/maxpumperla/hyperas) wrapper around [hyperopt](https://hyperopt.github.io/hyperopt/) ([paper](https://conference.scipy.org/proceedings/scipy2013/pdfs/bergstra_hyperopt.pdf "'Hyperopt: A Python Library for Optimizing the Hyperparameters of Machine Learning Algorithms', Bergstra et al 2013")).
+
+keras-rl offers primarily^[I also tried its [CEM](!Wikipedia "Cross-entropy method") implementation, but after trying a variety of settings, CEM never performed better than an average reward of 0.4 or ~\$120, inferior to most DDPG runs.] DQN ([Mnih et al 2013](https://arxiv.org/abs/1312.5602 "Playing Atari with Deep Reinforcement Learning")) and DDPG ([Lillicrap et al 2015](https://arxiv.org/abs/1509.02971 "Continuous control with deep reinforcement learning")).
+
+DQN is a possibility but most DQN implementations require a fixed number of actions, which in our case of penny-level betting, implies having 25,000 distinct unordered actions.
+I tried prototyping DQN for the simple Kelly coin-flip game using the [keras-rl DQN example](https://github.com/matthiasplappert/keras-rl/blob/master/examples/dqn_cartpole.py), but after hours, it still had not received any rewards - it repeatedly bet more than its current wealth, equivalent to its current wealth, and busting out, never managing to go 300 rounds to receive any reward and begin learning.
+(This sort of issue with sparse rewards is a common problem with DQN and deep RL in general, as the most common forms of exploration will flail around at random rather than make deep targeted exploration of particular strategies or try to seek out new regions of state-space which might contain rewards.)
+One possibility would have been to 'cheat' by using the exact value function to provide optimal trajectories for the DQN agent to learn from.
+
+DDPG isn't like tabular learning but is a policy gradient method ([Karpathy explains policy gradients](https://karpathy.github.io/2016/05/31/rl/ "Deep Reinforcement Learning: Pong from Pixels")).
+With deep policy gradients, the basic idea is that the 'actor' NN repeatedly outputs an action based on the current state, and then at the end of the episode with the final total reward, if the reward is higher than expected, all the neurons who contributed to all the actions get strengthened to be more likely to produce those actions, and if the reward is lower than expected, they are weakened.
+This is a very indiscriminate error-filled way to train neurons, but it does work if run over enough episodes for the errors to cancel out; the noise can be reduced by training an additional 'critic' NN to predict the rewards from actions, based on an experience replay buffer.
+The NNs are usually fairly small (to avoid overfitting & because of the weak supervision), use RELUs, and the actor NN often has [batchnorm](https://arxiv.org/abs/1502.03167 "'Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift', Ioffe & Szegedy 2015") added to it.
+(To prevent them from learning too fast and interfering with each other, a copy is made of each called the 'target networks'.)
+For exploration, some random noise is added to the final action; not epsilon-random noise (like in DQN) but a sort of random walk, to make the continuous action consistently lower or higher (and avoid canceling out).
+
+A continuous action would have less of an unordered action/curse of dimensionality required switching from DQN to DDPG ([example](https://github.com/matthiasplappert/keras-rl/blob/master/examples/ddpg_pendulum.py)).
+Unfortunately, DDPG also had initialization problems in overbetting, as its chosen actions would quickly drift to always betting either very large positive or negative numbers, which get converted to betting everything or \$0 respectively (which then always result in no rewards via either busting & getting 0 or going 300 rounds & receiving a reward of 0), and it would never return to meaningful bets.
+To deal with the drift/busting out problem, I decided to add some sort of constraint on the agent: make it choose a continuous action 0-1 (squashed by a final sigmoid activation rather than linear or tanh), and convert it into a valid bet, so all bets would be meaningful and it would have less of a chance to overbet and bust out immediately.
+My knowledge of Keras is weak, so I was unsure how to convert an action 0-1 to a fraction of the agent's *current* wealth, although I did figure out how to multiply it by \$250 before passing it in.
+This resulted in meaningful progress but was sensitive to hyperparameters - for example, the DDPG appeared to train worse with a very large experience replay buffer than with the Lillicrap et al 2015 setting of 10,000.
+
+Hyperparameter-wise, Lillicrap et al 2015 used, for the low-dimensional (non-ALE screen) RL problems similar to the general Kelly coin-flip, the settings:
+
+- 2 hidden layers of 400 & 300 RELU neurons into a final tanh
+- an experience replay buffer of 10,000
+- Adam SGD optimization algorithm with learning rate: 10^-4^
+- discount/gamma: 0.99
+- minibatch size: 64
+- an [Ornstein-Uhlenbeck process](!Wikipedia) random walk, $\mu$=0, $\sigma$=0.2, $\theta$=0.15
+
+For the simple Kelly coin-flip problem, the previous experiment with training based on the exact value function demonstrates that 400/300 neurons would be overkill, and probably a much smaller 3-layer network with <128 neurons would be more than adequate; the discount/gamma being set to 0.99 for Kelly is questionable, as almost no steps result in a reward, and a discount rate of 0.99 would imply for a 300 round game that the final reward from the perspective of the first round would be almost worthless (since $0.99^{300}=0.049$), so a discount rate of 0.999 or even just 1 would make more sense; because the reward is delayed, I expect the gradients to not be so helpful, and perhaps a lower learning rate or larger minibatch size would be required; finally, the exploration noise is probably too small, as the random walk would tend to increase or decrease bet amounts by less than \$1, so probably a larger $\sigma$ would be better.
+With these settings, DDPG can achieve an average per-step/round reward of ~0.8 as compared to the optimal average reward of 0.82 (\$246 over 300 steps/rounds).
+
+For the general Kelly coin-flip problem, the optimal average reward is unknown, but initial tries get ~0.7 (~\$210).
+To try to discover better performance, I set up hyperparameter optimization using `hyperas`/`hyperopt` over the following parameters:
+
+- number of neurons in each layer in the actor and critic (16-128)
+- size of the experience replay buffer (0-100000)
+- exploration noise:
+
+    - $\mu$ ($\mathcal{N}(0,5)$)
+    - $\theta$ (0-1)
+    - $\sigma$ ($\mathcal{N}(3,3)$)
+- learning rate:
+
+    - Adam, main NNs (log uniform -7 to -2; roughly, 0.14 - 0.00...)
+    - Adam, target NNs (\*)
+- minibatch size (8-2056)
+
+Each agent/sample is trained ~8h and is evaluated on mean total reward over 2000 episodes, with 120 samples total.
+<!-- The best agent receives a mean reward of TODO with the settings TODO. -->
+
+Full source code for the generalized Kelly coin-flip game DDPG:
+
+~~~{.Python}
+import numpy as np
+import gym
+
+from hyperas.distributions import choice, randint, uniform, normal, loguniform
+from hyperas import optim
+from hyperopt import Trials, STATUS_OK, tpe
+
+from keras.models import Sequential, Model
+from keras.layers import Dense, Activation, Flatten, Input, concatenate, Lambda, BatchNormalization
+from keras.optimizers import Adam
+
+from rl.agents import DDPGAgent
+from rl.memory import SequentialMemory
+from rl.random import OrnsteinUhlenbeckProcess
+
+def model(x_train, y_train, x_test, y_test):
+    ENV_NAME = 'KellyCoinflipGeneralized-v0'
+    gym.undo_logger_setup()
+
+    # Get the environment and extract the number of actions.
+    env = gym.make(ENV_NAME)
+    numpy.random.seed(123)
+    env.seed(123)
+    nb_actions = 1
+
+    # Next, we build a very simple model.
+    actor = Sequential()
+    actor.add(Flatten(input_shape=(1,) + (5,)))
+    actor.add(Dense({{choice([16, 32, 64, 96, 128])}}))
+    actor.add(BatchNormalization())
+    actor.add(Activation('relu'))
+    actor.add(Dense({{choice([16, 32, 64, 96, 128])}}))
+    actor.add(BatchNormalization())
+    actor.add(Activation('relu'))
+    actor.add(Dense({{choice([16, 32, 64, 96, 128])}}))
+    actor.add(BatchNormalization())
+    actor.add(Activation('relu'))
+    # pass into a single sigmoid to force a choice 0-1, corresponding to fraction of total possible wealth.
+    # It would be better to multiply the fraction against one's *current* wealth to reduce the pseudo-shift
+    # in optimal action with increasing wealth, but how do we set up a multiplication against the first
+    # original input in the Flatten layer? This apparently can't be done as a Sequential...
+    actor.add(Dense(nb_actions))
+    actor.add(BatchNormalization())
+    actor.add(Activation('sigmoid'))
+    actor.add(Lambda(lambda x: x*250))
+    print(actor.summary())
+
+    action_input = Input(shape=(nb_actions,), name='action_input')
+    observation_input = Input(shape=(1,) + (5,), name='observation_input')
+    flattened_observation = Flatten()(observation_input)
+    x = concatenate([action_input, flattened_observation])
+    x = Dense({{choice([16, 32, 64, 96, 128])}})(x)
+    x = Activation('relu')(x)
+    x = Dense({{choice([16, 32, 64, 96, 128])}})(x)
+    x = Activation('relu')(x)
+    x = Dense({{choice([16, 32, 64, 96, 128])}})(x)
+    x = Activation('relu')(x)
+    x = Dense(nb_actions)(x)
+    x = Activation('linear')(x)
+    critic = Model(inputs=[action_input, observation_input], outputs=x)
+    print(critic.summary())
+
+    memory = SequentialMemory(limit={{randint(100000)}}, window_length=1)
+    random_process = OrnsteinUhlenbeckProcess(size=nb_actions,
+        theta={{uniform(0,1)}}, mu={{normal(0,5)}}, sigma={{normal(3,3)}})
+    agent = DDPGAgent(nb_actions=nb_actions, actor=actor, critic=critic, critic_action_input=action_input,
+                      memory=memory, nb_steps_warmup_critic=301, nb_steps_warmup_actor=301,
+                      random_process=random_process, gamma=1, target_model_update={{loguniform(-7,-2)}},
+                      batch_size={{choice([8,16,32,64,256,512,1024,2056])}})
+    agent.compile(Adam(lr={{loguniform(-7,-2)}}), metrics=['mae'])
+
+    # Train; ~120 steps/s, so train for ~8 hours:
+    agent.fit(env, nb_steps=3000000, visualize=False, verbose=1, nb_max_episode_steps=1000)
+
+    # After training is done, we save the final weights.
+    agent.save_weights('ddpg_{}_weights.h5f', overwrite=True)
+
+    # Finally, evaluate our algorithm for n episodes.
+    h = agent.test(env, nb_episodes=2000, visualize=False, nb_max_episode_steps=1000)
+    reward = numpy.mean(h.history['episode_reward'])
+    print "Reward: ", reward
+    return {'loss': -reward, 'status': STATUS_OK, 'model': agent}
+
+def data():
+    return [], [], [], []
+
+if __name__ == '__main__':
+    best_run, best_model = optim.minimize(model=model,
+                                          data=data,
+                                          algo=tpe.suggest,
+                                          max_evals=120, # 8h each, 4 per day, 30 days, so 120 trials
+                                          trials=Trials())
+    print("Best performing model chosen hyper-parameters:")
+    print(best_run)
+~~~
+
+How could this be improved?
+
+1. fix the output scaling to be a fraction of current wealth rather than a fixed amount of \$250; this avoids forcing the NN to learn to change its actions based on current wealth just to keep a constant bet amount, and instead focus on learning deviations from the baseline Kelly small bet of ~12%
+2. experiment with batchnorm in the critic as well
+3. incorporate the exact value function into the training to see how much benefit the additional supervision provides and how much damage is caused by the RL setting, or pre-populate the experience replay buffer based on samples from the exact value function or the 12% heuristic; it might also be interesting to see how much pretraining on the simple Kelly coin-flip helps with training on the general Kelly coin-flip
+4. experiment with additional regularization methods like L2 norm (which Lillicrap et al 2015 also used)
