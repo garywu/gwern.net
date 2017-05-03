@@ -2041,7 +2041,7 @@ Body    This Ti Quan Yin has good body that is sustained through several brewing
 Flavors     A joy to drink, it is reminiscent of great Mersault wines. The aroma continues with some floral notes, and the "finish" never ends.
 
 Fanciest Formosa Oolong https://www.harney.com/products/fanciest-formosa-oolong $4 7g
-Fanciest Formosa is another great oolong - absolutely delicious and widely sought after. It also has an interesting storyThe tea plant protects itself from attack by creating a compound that has a wonderful peachy aroma, perhaps better than any other oolong. Mike saw the plants on the defensive on his last trip to Taiwan; he found it fascinating to observe this remarkable botanical process.
+Fanciest Formosa is another great oolong - absolutely delicious and widely sought after. It also has an interesting story-The tea plant protects itself from attack by creating a compound that has a wonderful peachy aroma, perhaps better than any other oolong. Mike saw the plants on the defensive on his last trip to Taiwan; he found it fascinating to observe this remarkable botanical process.
 Details     This tea is made in northern Taiwan and is twisted (as opposed to the balled style.) It is done around June, later than other oolongs. The growers allow a leaf hopper (Jacobiasca formosana) to attack the tea leaves. The plants release a compound in self-defense that we find deliciously similar in flavor to peaches.
 Dry Leaves  Light brown and green leaves.
 Liquor  Copper.
@@ -2065,8 +2065,9 @@ Flavors     Subtle sweet notes of peaches and roasted carrots covered by toasted
 
 > The kind of water used in tea is claimed to make a difference in the flavor: mineral water being better than tap water or distilled water. However, mineral water is vastly more expensive than tap water. To test the claim, I compared my tap water, 3 distilled water brands (Great Value, Nestle Pure Life, & Poland Spring), 1 osmosis-purified brand (Aquafina), and 3 non-carbonated mineral water brands (Evian, Voss, & Fiji) in a series of _n_=67 blinded randomized comparisons of water flavor. The comparisons are modeled using a Bradley-Terry competitive model implemented in Stan; comparisons were chosen using an adaptive Bayesian best-arm sequential trial method designed to locate the best-tasting water in the minimum number of samples by preferentially comparing the best-known arm to potentially superior arms. Blinding & randomization are achieved by using a Lazy Susan to physically randomize two identical (but marked in a hidden spot) cups of water. The final posterior distribution indicates that some differences between waters are likely to exist but are small & imprecisely estimated and of little practical concern.
 
-Water for tea experiment:
-tap water reportedly differs a ton in taste between cities/states. This is plausible since tea tastes so much worse when microwaved, which is speculated to be due to the oxygenation, so why not the mineral/chlorine content as well?
+Tap water reportedly differs a ton in taste between cities/states.
+This is plausible since tea tastes so much worse when microwaved, which is speculated to be due to the oxygenation, so why not the mineral/chlorine content as well?
+(People often complain about tap water and buy water filters to improve the flavor, and sometimes [run blinded experiments testing water filters vs tap](http://tylermw.com/soma-water-filters-are-worthless-how-i-used-r-to-win-an-argument-with-my-wife/ "Soma Water Filters Are Worthless: How I Used R To Win An Argument With My Wife: 'Can you really tell the difference?' - My wife, expressing fighting words").)
 This question hearkens back to [R.A Fisher](!Wikipedia)'s famous "[lady tasting tea](!Wikipedia)" experiment and turns out to provide a bit of a challenge to my usual blinding & methods, motivating a look into Bayesian "best-arm identification" algorithms.
 
 ### Waters
