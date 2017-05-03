@@ -11,23 +11,30 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
-- Long Bets analysis?
-- Danbooru dataset?
+- [mineral water taste test](https://www.gwern.net/Tea#water-experiment)
 
 # Media
 ## Links
 
+Recent evolution:
+
+- ["Soft sweeps are the dominant mode of adaptation in the human genome"](http://biorxiv.org/content/early/2017/04/27/090084), Schrider & Kern 2017 (Detection of 2000 instances of recent human selection, half of which are specific to individual human populations, and many of which affect the central nervous system. Note this doesn't cover polygenic selection, so it's a very loose lower bound on how much recent human evolution there has been.)
+- ["Comparative Genomic Evidence For Self-Domestication In Homo sapiens"](http://biorxiv.org/content/early/2017/04/09/125799), Theofanopoulou et al 2017 (gene-culture co-evolution in selection for cognitive traits involved in domestication?)
+- ["Adaptation to infectious disease exposure in indigenous Southern African populations"](https://www.gwern.net/docs/genetics/2017-owers.pdf), Owers et al 2017 (recent human evolution leading to between-group differences)
+- ["Ancient genomic changes associated with domestication of the horse"](https://www.gwern.net/docs/genetics/2017-librado.pdf), Librado et al 2017 ([media](https://www.nytimes.com/2017/04/27/science/horses-genetics-domestication-scythians.html "Ancient Horse DNA Shows Scythian Warriors Were Adept Domesticators"); more recent evolution in complex behavioral traits in mammals: the neural crest shows up, again)
+
 Everything is heritable:
 
-- ["Comparative Genomic Evidence For Self-Domestication In Homo sapiens"](http://biorxiv.org/content/early/2017/04/09/125799), Theofanopoulou et al 2017 (gene-culture co-evolution in selection for cognitive traits involved in domestication?)
 - ["Polygenic prediction of the phenome, across ancestry, in emerging adulthood"](http://biorxiv.org/content/early/2017/04/06/124651), Docherty et al 2017
 - ["Syphilis in Renaissance Europe: rapid evolution of an introduced sexually transmitted disease?"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1810019/pdf/15252975.pdf), Knell 2003 (still an open question, apparently)
 - ["Welcome to Pleistocene Park: In Arctic Siberia, Russian scientists are trying to stave off catastrophic climate change - by resurrecting an Ice Age biome complete with lab-grown woolly mammoths"](https://www.theatlantic.com/magazine/archive/2017/04/pleistocene-park/517779/)
+- ["Intersection of diverse neuronal genomes and neuropsychiatric disease: The Brain Somatic Mosaicism Network"](https://www.gwern.net/docs/genetics/2017-mcconnell.pdf), McConnell et al 2017 (Towards explaining non-shared-environment effects on intelligence, psychiatric disorders, and other cognitive traits - developmental noise such as post-conception mutations in individual cells or groups of cells)
 - ["Tuberculosis-resistant cows developed for the first time using CRISPR technology"](http://sciencebulletin.org/archives/9946.html)
+- ["How Humans Are Shaping Our Own Evolution"](http://www.nationalgeographic.com/magazine/2017/04/evolution-genetics-medicine-brain-technology-cyborg/ "Like other species, we are the products of millions of years of adaptation. Now we're taking matters into our own hands.")
 
 AI:
 
-- ["Recurrent Environment Simulators"](https://arxiv.org/abs/1704.02254), Chiappa et al 2017 (towards deep model-based planning)
+- ["Recurrent Environment Simulators"](https://arxiv.org/abs/1704.02254), Chiappa et al 2017 (towards deep model-based planning; [related discussion](https://www.reddit.com/r/MachineLearning/comments/66x02v/d_rl_gans_as_mcts_environment_simulator_for_deep/ "[D] RL: GANs as MCTS environment simulator for deep model-based planning?"))
 - ["Using Human Brain Activity to Guide Machine Learning"](https://arxiv.org/abs/1703.05463), Fong et al 2017
 
     If I'm understanding this right, it can be seen as related to Hinton's 'dark knowledge' and knowledge distillation in NNs: you use a teacher NN to provide additional supervision on the image classification problem by indicating hard & easy examples and also what is the 'right' probability to assign to all the wrong classifications in order to refine the loss function. In this case, the SVM is guided by the human brain fMRI activations which indicate which instances are hard/easy and so which ones it should concentrate on (an error on a hard instance should lead to smaller adjustments than an error on an easy one). This sort of supervision could be quite interesting if you think about its use for AI risk problems - moral dilemmas, for example.
@@ -36,11 +43,15 @@ AI:
 - ["Artist Agent: A Reinforcement Learning Approach to Automatic Stroke Generation in Oriental Ink Painting"](https://arxiv.org/abs/1206.4634), Xie et al 2012 (RL is good for art experiments like this because many artistic criteria tend to be 'global' and non-differentiable or local - RMSE on pixels is not a good criterion.)
 - ["Understanding Synthetic Gradients and Decoupled Neural Interfaces"](https://arxiv.org/abs/1703.00522), Czarnecki et al 2017
 - ["Machine Learning Predicts Laboratory Earthquakes"](https://arxiv.org/abs/1702.05774), Rouet-Leduc et al 2017 ([media](https://www.technologyreview.com/s/603785/machine-learning-algorithm-predicts-laboratory-earthquakes/ "Machine-Learning Algorithm Predicts Laboratory Earthquakes: The breakthrough has astonished geologists and raises the possibility that real earthquake prediction could be next."))
+- [Sorting 2 Metric Tons of Lego with CNNs](https://jacquesmattheij.com/sorting-two-metric-tons-of-lego) ([HN](https://news.ycombinator.com/item?id=14226889))
 
 Statistics/meta-science/mathematics:
 
+- ["How readers understand causal and correlational expressions used in news headlines"](http://orca.cf.ac.uk/93479/8/Adams et al How readers understand causal expressions.pdf), Adams et al 2017 (people do not understand the difference between correlation and causation)
+
 Politics/religion:
 
+- [Robert Caro on on political power and Lyndon Johnson](https://www.theparisreview.org/interviews/6442/robert-caro-the-art-of-biography-no-5-robert-caro "Robert Caro, The Art of Biography No. 5")
 - ["Historical Dynamics & contingent conditions of religion"](http://blogs.discovermagazine.com/gnxp/2012/08/historical-dynamics-and-contingent-conditions-of-religion/)
 - [66 failed social interventions](http://80000hours.org/blog/66-social-interventions-gone-wrong)
 - ["'London Bridge is down': the secret plan for the days after the Queen's death"](https://www.theguardian.com/uk-news/2017/mar/16/what-happens-when-queen-elizabeth-dies-london-bridge "She is venerated around the world. She has outlasted 12 US presidents. She stands for stability and order. But her kingdom is in turmoil, and her subjects are in denial that her reign will ever end. That's why the palace has a plan.")
@@ -48,21 +59,23 @@ Politics/religion:
 Psychology/biology:
 
 - ["Sex Differences In The Adult Human Brain: Evidence From 5,216 UK Biobank Participants"](http://biorxiv.org/content/early/2017/04/04/123729), Ritchie et al 2017
+- ["Effect of Alternate-Day Fasting on Weight Loss, Weight Maintenance, and Cardioprotection Among Metabolically Healthy Obese Adults: A Randomized Clinical Trial"](https://jamanetwork.com/pdfaccess.ashx?url=/data/journals/intemed/0/jamainternal_trepanowski_2017_oi_170022.pdf&routename=jamainternalmedicine), Trepanowski et al 2017 (worse compliance for intermittent fasting than caloric restriction)
+- ["A randomized controlled trial to establish effects of short-term rapamycin treatment in 24 middle-aged companion dogs"](https://link.springer.com/article/10.1007/s11357-017-9972-z), Urfer et al 2017
 - ["On Being One's Own Rabbit: The Story of a Skirmish in the War on Disease [Tetany]"](http://www.fadedpage.com/books/20160325/html.php#Page_107), J.B.S. Haldane 1927, _Possible Worlds And Other Essays_
 - ["In Support of Yak Shaving"](http://lesswrong.com/r/discussion/lw/oql/in_support_of_yak_shaving/)
 - ["Shorn Scalps and Perceptions of Male Dominance"](https://www.gwern.net/docs/2012-mannes.pdf), Mannes 2012
 
 Technology:
 
+- [PowerPoint is Turing-complete](https://www.andrew.cmu.edu/user/twildenh/PowerPointTM/Paper.pdf "'On the Turing Completeness of MS PowerPoint', Wildenhain 2017") ([video](https://www.youtube.com/watch?v=uNjxe8ShM-8))
+- ["A Mind Is Born"](https://linusakesson.net/scene/a-mind-is-born/) (256-byte C64 demo)
+
 Economics:
 
+- [The moral imperative of economic growth](https://medium.com/stubborn-attachments/stubborn-attachments-full-text-8fc946b694d)
 - ["Those Indecipherable Medical Bills? They're One Reason Health Care Costs So Much"](https://www.nytimes.com/2017/03/29/magazine/those-indecipherable-medical-bills-theyre-one-reason-health-care-costs-so-much.html)
-
-Philosophy:
-
-Fiction:
-
-Misc:
+- [Whatever happened to Google Books?](https://www.theatlantic.com/technology/archive/2017/04/the-tragedy-of-google-books/523320/ "Torching the Modern-Day Library of Alexandria: 'Somewhere at Google there is a database containing 25 million books and nobody is allowed to read them.'")
+- ["Medieval and Early Modern Coinage and its Problems"](https://www.dartmouth.edu/~mkohn/Papers/99-02.pdf), Kohn 1999
 
 <!-- Back to 20? Aug 2012 -->
 
@@ -70,29 +83,21 @@ Misc:
 
 Nonfiction:
 
+- [_Moon Dust: In Search of the Men Who Fell to Earth_](https://www.amazon.com/Moondust-Search-Men-Fell-Earth/dp/0007155425), Smith 2005
+
 Fiction:
+
+- [_The Adventures of Dr. McNinja_](http://drmcninja.com/newreaders.php)
 
 ## Film/TV
 
 Live-action:
 
-- [_Breaking Bad_](https://en.wikipedia.org/wiki/Breaking_Bad):
-In retrospect, I'm surprised I took so long to watch this - after the arrest of Ross Ulbricht, a white man who was a materials science graduate student before dropping to try being an entrepreneur and then launching Silk Road 1 & becoming a drug kingpin who ordered 2 hits, the _Breaking Bad_ jokes were endless and a later darknet market even tried theming itself based on BB. I'm glad I finally did, despite the intimidating length: BB is indeed awesome.
-The first episode is a masterful cinematic depiction of what I could only consider at the time Trumpism and 'elite overproduction': our protagonist Walter White, squeezed out of research at a national laboratory (as a plaque on the wall commemorating the creation of a new element tells us), underemployed as a high school chemistry teacher, is systematically degraded by everyone he meets, from the arrogant immigrant to the rich children of connected insiders to even his wife (who pays more attention to her eBay auction than giving him a handjob).
-BB forms a dark counterpoint to that other great sprawling American TV series on drugs & crime, _The Wire_.
-Where _The Wire_ is a quasi-Marxist examination of how the interlocking systems of power in an American society undermine any attempt to do good by the well-intentioned & usually inherently good people by adding friction to the good choices & posing coordination problems, BB is a more person-centric character drama emphasizing the irreducible choice that goes into social pathology: it's not "society's fault" - while bad things do happen, everybody always has choices, there is always a path to the good outcome, and it is almost never the case that someone is truly forced into drug dealing or armed robbery or fraud rather than starve to death. The subsistence wage in the USA is far above starvation, and this is because people demand certain things, certain standards of living, which give them pride, and they will kill or die rather than live below it.
-BB is an extended examination of pride as a deadly sin - indeed, *the* deadly sin, occupying pride of place in the standard list of the 7 deadly sins, and identified as the first sin, Lucifer's.
-Why is pride so terrible and a mortal sin, when it seems so much more harmless than the others like wrath or gluttony or envy?
-Perhaps because it has no limits - there will never be enough money, enough drugs, or enough power for White - and its inherent nature is to be incorrigible: White can never truly listen to others, trust in them, accept their help, or change his mind.
-(Here the parallels to Ross Ulbricht are striking, as Ulbricht too, in his journal entries, plans for Silk Road 1 expansions, and growing comfort with ordering his, evinced a loss of perspective and a growing hubris leading him to ignore clanging alarm bells and indulge in disastrous security practices - some apparently motivated by the idea of writing a self-congratulatory autobiography! - that led nowhere but to a life sentence.)
-The slothful or wrathful can acknowledge their flaws and hope to do better, and even the lustful & greedy & envious can be briefly satisfied or rest from their sins.
-But the prideful know no respite: long as White is alive, he loves no one, can take satisfaction in nothing, and must blame anyone other than himself for his self-inflicted failures as a researcher/businessman, husband, father, and drug dealer.
-There is no need for the viewer to condemn Walter White: he is already in Hell.
-
+- [_DNA Dreams_](https://www.youtube.com/watch?v=1dVv5RMwzuo) (short 2013 documentary on Beijing Genomics Institute and the research on IQ; the results still haven't come out, having been pre-empted by Rietveld et al 2013 finding the first IQ hits, subsequent GWASes' demonstration that the BGI bet on rare variants was wrong, and reportedly internal BGI disarray due to a disastrous bet on in-house development of DNA sequencers to try to break free of the Illumina sequencer quasi-monopoly; the documentary is fatally compromised by any actual discussion of genetics, instead settling for occasional ominous music, wandering BGI's admittedly impressive facilities, and occasional idiosyncratic scenes of dating or family life)
 
 Animated:
 
-## Games
+- [_The Tale of the Princess Kaguya_](https://en.wikipedia.org/wiki/The_Tale_of_the_Princess_Kaguya)
 
 ## Music
 
@@ -101,3 +106,9 @@ Touhou:
 Vocaloid:
 
 Doujin:
+
+- ["Life is Journey"](https://www.youtube.com/watch?v=tAONfTdJ9i4) (Junk; _AD:PIANO IV Monochrome_ {C91}) [instrumental]
+- ["Smooth Call"](https://www.youtube.com/watch?v=JTScPAEyeuY) (古川\'\'good-cool\'\'竜也; _AD:PIANO IV Monochrome_ {C91}) [jazz]
+- ["Acheron"](https://www.youtube.com/watch?v=1xJ0GAz7ylE) (qurter; _AD:PIANO IV Monochrome_ {C91}) [trance]
+- ["Closer"](https://www.youtube.com/watch?v=3WuetN1UCZg) (Avans; _AD:PIANO IV Monochrome_ {C91}) [electronic]
+- ["Proud"](https://www.youtube.com/watch?v=xaIXzS2xTQo) (黒魔; _AD:PIANO IV Monochrome_ {C91}) [instrumental]
