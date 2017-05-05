@@ -11,6 +11,10 @@ Following my writing can be a little difficult: while I provide [an RSS feed of 
 So periodically I write up interesting changes in a human-readable format and [send it out to the mailing list](http://eepurl.com/Kc155).
 
 # 2017
+## April
+
+- [mineral water taste test](/Tea#water-experiment "Blind randomized taste-test of mineral/distilled/tap waters using Bayesian best-arm finding; no large differences in preference")
+
 ## March
 
 - `gwern.net`: HTTPS now mandatory; HTML sections rewritten using HTML5 semantic markup for hopefully better compatibility with screen readers & offline browsers like Pocket/ReadItLater; "importance" metadata added to all pages to rank them; "belief" metadata renamed more intuitively as "confidence"; finish adding 301 Redirects for all broken links & common typos; renamed & all darknet market pages for current terminology; rewrote Patreon profile

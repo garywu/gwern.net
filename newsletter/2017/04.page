@@ -2,7 +2,7 @@
 title: April 2017 news
 created: 31 March 2017
 tags: newsletter
-status: in progress
+status: finished
 confidence: log
 ...
 
@@ -11,7 +11,7 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
-- [mineral water taste test](https://www.gwern.net/Tea#water-experiment)
+- [mineral water taste test](https://www.gwern.net/Tea#water-experiment "Blind randomized taste-test of mineral/distilled/tap waters using Bayesian best-arm finding; no large differences in preference")
 
 # Media
 ## Links
@@ -21,6 +21,7 @@ Recent evolution:
 - ["Soft sweeps are the dominant mode of adaptation in the human genome"](http://biorxiv.org/content/early/2017/04/27/090084), Schrider & Kern 2017 (Detection of 2000 instances of recent human selection, half of which are specific to individual human populations, and many of which affect the central nervous system. Note this doesn't cover polygenic selection, so it's a very loose lower bound on how much recent human evolution there has been.)
 - ["Comparative Genomic Evidence For Self-Domestication In Homo sapiens"](http://biorxiv.org/content/early/2017/04/09/125799), Theofanopoulou et al 2017 (gene-culture co-evolution in selection for cognitive traits involved in domestication?)
 - ["Adaptation to infectious disease exposure in indigenous Southern African populations"](https://www.gwern.net/docs/genetics/2017-owers.pdf), Owers et al 2017 (recent human evolution leading to between-group differences)
+- ["Investigating the case of human nose shape and climate adaptation"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006616), Zaidi et al 2017 (Recent human evolution leading to between-group differences: local adaptations of noses to local climates.)
 - ["Ancient genomic changes associated with domestication of the horse"](https://www.gwern.net/docs/genetics/2017-librado.pdf), Librado et al 2017 ([media](https://www.nytimes.com/2017/04/27/science/horses-genetics-domestication-scythians.html "Ancient Horse DNA Shows Scythian Warriors Were Adept Domesticators"); more recent evolution in complex behavioral traits in mammals: the neural crest shows up, again)
 
 Everything is heritable:
@@ -38,8 +39,9 @@ AI:
 - ["Using Human Brain Activity to Guide Machine Learning"](https://arxiv.org/abs/1703.05463), Fong et al 2017
 
     If I'm understanding this right, it can be seen as related to Hinton's 'dark knowledge' and knowledge distillation in NNs: you use a teacher NN to provide additional supervision on the image classification problem by indicating hard & easy examples and also what is the 'right' probability to assign to all the wrong classifications in order to refine the loss function. In this case, the SVM is guided by the human brain fMRI activations which indicate which instances are hard/easy and so which ones it should concentrate on (an error on a hard instance should lead to smaller adjustments than an error on an easy one). This sort of supervision could be quite interesting if you think about its use for AI risk problems - moral dilemmas, for example.
-- ["In-Datacenter Performance Analysis of A Tensor Processing Unit [TPU]"](https://drive.google.com/file/d/0Bx4hafXDDq2EMzRNcy1vSUxtcEk/view), Jouppi et al 2017 (the nitty-gritty on what Google's TPUs can and cannot do)
+- ["In-Datacenter Performance Analysis of A Tensor Processing Unit [TPU]"](https://www.gwern.net/docs/2017-jouppi.pdf), Jouppi et al 2017 (the nitty-gritty on what Google's TPUs can and cannot do)
 - ["Communication-Efficient Learning of Deep Networks from Decentralized Data"](https://arxiv.org/abs/1602.05629), McMahan et al 2017 (distributed NN backpropagation turns out to be not just possible but easy, obviating the need for companies like Google to harvest all your data onto their servers)
+- ["Visual Attribute Transfer through Deep Image Analogy"](https://arxiv.org/abs/1705.01088), Liao et al 2017 ([supplemental examples of style transfer/image analogies](https://liaojing.github.io/html/data/analogy_supplemental.pdf))
 - ["Artist Agent: A Reinforcement Learning Approach to Automatic Stroke Generation in Oriental Ink Painting"](https://arxiv.org/abs/1206.4634), Xie et al 2012 (RL is good for art experiments like this because many artistic criteria tend to be 'global' and non-differentiable or local - RMSE on pixels is not a good criterion.)
 - ["Understanding Synthetic Gradients and Decoupled Neural Interfaces"](https://arxiv.org/abs/1703.00522), Czarnecki et al 2017
 - ["Machine Learning Predicts Laboratory Earthquakes"](https://arxiv.org/abs/1702.05774), Rouet-Leduc et al 2017 ([media](https://www.technologyreview.com/s/603785/machine-learning-algorithm-predicts-laboratory-earthquakes/ "Machine-Learning Algorithm Predicts Laboratory Earthquakes: The breakthrough has astonished geologists and raises the possibility that real earthquake prediction could be next."))
@@ -75,7 +77,7 @@ Economics:
 - [The moral imperative of economic growth](https://medium.com/stubborn-attachments/stubborn-attachments-full-text-8fc946b694d)
 - ["Those Indecipherable Medical Bills? They're One Reason Health Care Costs So Much"](https://www.nytimes.com/2017/03/29/magazine/those-indecipherable-medical-bills-theyre-one-reason-health-care-costs-so-much.html)
 - [Whatever happened to Google Books?](https://www.theatlantic.com/technology/archive/2017/04/the-tragedy-of-google-books/523320/ "Torching the Modern-Day Library of Alexandria: 'Somewhere at Google there is a database containing 25 million books and nobody is allowed to read them.'")
-- ["Medieval and Early Modern Coinage and its Problems"](https://www.dartmouth.edu/~mkohn/Papers/99-02.pdf), Kohn 1999
+- ["Medieval and Early Modern Coinage and its Problems"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=151828), Kohn 1999
 
 <!-- Back to 20? Aug 2012 -->
 
@@ -83,32 +85,40 @@ Economics:
 
 Nonfiction:
 
-- [_Moon Dust: In Search of the Men Who Fell to Earth_](https://www.amazon.com/Moondust-Search-Men-Fell-Earth/dp/0007155425), Smith 2005
+- [_Moon Dust: In Search of the Men Who Fell to Earth_](https://www.amazon.com/Moondust-Search-Men-Fell-Earth/dp/0007155425), Smith 2005 ([review](https://www.goodreads.com/review/show/1989891390))
 
 Fiction:
 
-- [_The Adventures of Dr. McNinja_](http://drmcninja.com/newreaders.php)
+- [_The Adventures of Dr. McNinja_](http://drmcninja.com/newreaders.php) (the long-running series comes to an end; having read it since ~2008, it's surprising to reread the whole series and realize that in between all the humorous action drama like banditos riding raptors or surfing a robotic Dracula back from the Moon, was lurking a fairly complex & well-thought-out time-travel SF story with very long callbacks and a bittersweet ending, with writing that improves as much as the art does over its 2006-2017 run)
 
 ## Film/TV
+
+Animated:
+
+- [_The Tale of the Princess Kaguya_](https://en.wikipedia.org/wiki/The_Tale_of_the_Princess_Kaguya) ([review](https://myanimelist.net/reviews.php?id=247006))
 
 Live-action:
 
 - [_DNA Dreams_](https://www.youtube.com/watch?v=1dVv5RMwzuo) (short 2013 documentary on Beijing Genomics Institute and the research on IQ; the results still haven't come out, having been pre-empted by Rietveld et al 2013 finding the first IQ hits, subsequent GWASes' demonstration that the BGI bet on rare variants was wrong, and reportedly internal BGI disarray due to a disastrous bet on in-house development of DNA sequencers to try to break free of the Illumina sequencer quasi-monopoly; the documentary is fatally compromised by any actual discussion of genetics, instead settling for occasional ominous music, wandering BGI's admittedly impressive facilities, and occasional idiosyncratic scenes of dating or family life)
 
-Animated:
-
-- [_The Tale of the Princess Kaguya_](https://en.wikipedia.org/wiki/The_Tale_of_the_Princess_Kaguya)
-
 ## Music
 
 Touhou:
 
-Vocaloid:
+- ["Bullet Raid"](https://www.dropbox.com/s/hbw9e5zd9h12n9g/%E7%8E%96%E5%8E%9F%E3%80%80%E3%82%A4%E3%83%85%E3%83%8A-%E6%B0%B8%E5%8A%AB%E6%BA%80%E6%9C%88phantasystarsymphony-bulletraid.ogg?dl=0) (玖原　イヅナ; _PHANTASY STAR SYMPHONY_ {C91}) [orchestral]
+- ["KICKING TRICK (24BL EDM Remix)"](https://www.youtube.com/watch?v=3Q6a7gNu4lk) (24BL feat. 3L; _Descending from the Skies She Appears as a Goddess_ {C91}) [Jpop]
+- ["A Love Canon (FS Remix)"](https://www.youtube.com/watch?v=Mbuo324g-7w) (Babbe feat. Renko; _memories II_ {C91}) [Jpop]
 
 Doujin:
 
+- ["たまゆらのかぜ"](https://www.youtube.com/watch?v=1istntu1IA4) (ハム; _よなごみさん家のおうちカフェ_ {C91}) [folk]
 - ["Life is Journey"](https://www.youtube.com/watch?v=tAONfTdJ9i4) (Junk; _AD:PIANO IV Monochrome_ {C91}) [instrumental]
 - ["Smooth Call"](https://www.youtube.com/watch?v=JTScPAEyeuY) (古川\'\'good-cool\'\'竜也; _AD:PIANO IV Monochrome_ {C91}) [jazz]
 - ["Acheron"](https://www.youtube.com/watch?v=1xJ0GAz7ylE) (qurter; _AD:PIANO IV Monochrome_ {C91}) [trance]
 - ["Closer"](https://www.youtube.com/watch?v=3WuetN1UCZg) (Avans; _AD:PIANO IV Monochrome_ {C91}) [electronic]
 - ["Proud"](https://www.youtube.com/watch?v=xaIXzS2xTQo) (黒魔; _AD:PIANO IV Monochrome_ {C91}) [instrumental]
+- ["Higher (Original Mix)"](https://www.dropbox.com/s/okqgmpdc7x6okyq/itm-koebuticmusicfes-higheroriginalmix.ogg?dl=0) (ITM; _KOEBUTIC MUSIC FES._ {C91}) [electronic]
+- ["drAg."](https://www.dropbox.com/s/3qmnbyrvewum7qu/nash-koebuticmusicfes-drag.ogg?dl=0) (Na/sh; _KOEBUTIC MUSIC FES._ {C91}) [electronic]
+- ["Pear flowers ～梨衣しょんの花～"](https://www.dropbox.com/s/wdz69l6vvl7ylli/%E3%82%A2%E3%82%AF%E3%83%AA%E3%83%AD-koebuticmusicfes-pearflowers%EF%BD%9E%E6%A2%A8%E8%A1%A3%E3%81%97%E3%82%87%E3%82%93%E3%81%AE%E8%8A%B1%EF%BD%9E.ogg?dl=0) (アクリロ; _KOEBUTIC MUSIC FES._ {C91}) [instrumental]
+- ["Calm forest"](https://www.dropbox.com/s/4zwnjfd8pu1mb4a/%E3%81%A0-koebuticmusicfes-calmforest.ogg?dl=0) (だ; _KOEBUTIC MUSIC FES._ {C91}) [instrumental]
+- ["七色の日常"](https://www.dropbox.com/s/8p7j0j86i7cj290/%E3%83%9E%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3-koebuticmusicfes-%E4%B8%83%E8%89%B2%E3%81%AE%E6%97%A5%E5%B8%B8.ogg?dl=0) (マンダリン; _KOEBUTIC MUSIC FES._ {C91}) [classical]
