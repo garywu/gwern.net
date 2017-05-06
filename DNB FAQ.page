@@ -2389,6 +2389,8 @@ Free:
 
     BW is the standard implementation used by members of the [DNB ML](http://groups.google.com/group/brain-training); it is Free, featureful, and well-supported.
 - [hback](!Hackage) (FLOSS)
+- [3D n-back](https://competicionmental.appspot.com/3dnback)
+- ["NZT: Raytraced 3D N-Back with tunes generated in Haskell"](https://github.com/HMB-Entertainment/NZT)
 
 Paid:
 
