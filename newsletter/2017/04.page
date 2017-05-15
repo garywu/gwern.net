@@ -45,7 +45,7 @@ AI:
 - ["Artist Agent: A Reinforcement Learning Approach to Automatic Stroke Generation in Oriental Ink Painting"](https://arxiv.org/abs/1206.4634), Xie et al 2012 (RL is good for art experiments like this because many artistic criteria tend to be 'global' and non-differentiable or local - RMSE on pixels is not a good criterion.)
 - ["Understanding Synthetic Gradients and Decoupled Neural Interfaces"](https://arxiv.org/abs/1703.00522), Czarnecki et al 2017
 - ["Machine Learning Predicts Laboratory Earthquakes"](https://arxiv.org/abs/1702.05774), Rouet-Leduc et al 2017 ([media](https://www.technologyreview.com/s/603785/machine-learning-algorithm-predicts-laboratory-earthquakes/ "Machine-Learning Algorithm Predicts Laboratory Earthquakes: The breakthrough has astonished geologists and raises the possibility that real earthquake prediction could be next."))
-- [Sorting 2 Metric Tons of Lego with CNNs](https://jacquesmattheij.com/sorting-two-metric-tons-of-lego) ([HN](https://news.ycombinator.com/item?id=14226889))
+- [Sorting 2 Metric Tons of Lego with CNNs](https://jacquesmattheij.com/sorting-two-metric-tons-of-lego) ([HN](https://news.ycombinator.com/item?id=14226889)); [details on the software implementation](https://jacquesmattheij.com/sorting-lego-the-software-side)
 
 Statistics/meta-science/mathematics:
 
@@ -89,7 +89,7 @@ Nonfiction:
 
 Fiction:
 
-- [_The Adventures of Dr. McNinja_](http://drmcninja.com/newreaders.php) (the long-running series comes to an end; having read it since ~2008, it's surprising to reread the whole series and realize that in between all the humorous action drama like banditos riding raptors or surfing a robotic Dracula back from the Moon, was lurking a fairly complex & well-thought-out time-travel SF story with very long callbacks and a bittersweet ending, with writing that improves as much as the art does over its 2006-2017 run)
+- [_The Adventures of Dr. McNinja_](http://drmcninja.com/newreaders.php) (the long-running series comes to an end; having read it since ~2008, it's surprising to reread the whole series and realize that in between all the humorous action drama like banditos riding raptors or surfing a robotic Dracula back from the Moon, was lurking a fairly complex & well-thought-out time-travel SF story with very long callbacks and a bittersweet ending, with writing that improves as much as the art does over its 2006-2017 run. In some respects, it's a little dated - looking back, I recognize it as something of an artifact of the '00s Western Internet culture in being part of a ninja fad along with [Real Ultimate Power](https://en.wikipedia.org/wiki/Real_Ultimate_Power), [Ninja Burger](https://en.wikipedia.org/wiki/Ninja_Burger), [Megatokyo](https://en.wikipedia.org/wiki/Megatokyo) etc - but I'm still impressed at how Hastings makes it all come together, suggesting either he planned it out much further back than I ever expected or is a master of retcons. It is not the greatest time-travel story ever, or greatest martial arts story, but I will always enjoy reading action with a brain.)
 
 ## Film/TV
 
@@ -99,7 +99,7 @@ Animated:
 
 Live-action:
 
-- [_DNA Dreams_](https://www.youtube.com/watch?v=1dVv5RMwzuo) (short 2013 documentary on Beijing Genomics Institute and the research on IQ; the results still haven't come out, having been pre-empted by Rietveld et al 2013 finding the first IQ hits, subsequent GWASes' demonstration that the BGI bet on rare variants was wrong, and reportedly internal BGI disarray due to a disastrous bet on in-house development of DNA sequencers to try to break free of the Illumina sequencer quasi-monopoly; the documentary is fatally compromised by any actual discussion of genetics, instead settling for occasional ominous music, wandering BGI's admittedly impressive facilities, and occasional idiosyncratic scenes of dating or family life)
+- [_DNA Dreams_](https://www.youtube.com/watch?v=1dVv5RMwzuo) (short 2013 documentary on Beijing Genomics Institute and the research on IQ; the results still haven't come out, having been pre-empted by Rietveld et al 2013 finding the first IQ hits, subsequent GWASes' demonstration that the BGI bet on rare variants was wrong, and reportedly internal BGI disarray due to a disastrous bet on in-house development of DNA sequencers to try to break free of the Illumina sequencer quasi-monopoly; the documentary is fatally compromised by the lack of any actual discussion of genetics, instead settling for occasional ominous music, wandering BGI's admittedly impressive facilities, and occasional idiosyncratic scenes of dating or family life)
 
 ## Music
 

@@ -131,6 +131,11 @@ When epidemiologists emerge from a huge survey reporting triumphantly that steak
 Have you ever been abducted by space aliens and ordered as part of an inscrutable alien blood-sport to take a set of data about Midwest Americans born 1960-1969 with dietary predictors you must combine linearly to create predictors of heart attacks under a squared error loss function to outpredict your fellow abductees from across the galaxy?
 Probably not.
 Why would anyone give them grant money for this, why would they spend their time on this, why would they read each others' papers *unless* they had a "quasi-religious faith"[^Shapiro] that these correlations were more than just some coefficients in a predictive model - that they were *causal*?
+To quote [Rutter 2007](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.649.2804&rep=rep1&type=pdf "Proceeding From Observed Correlation to Causal Inference: The Use of Natural Experiments"), most discussions of correlations fall into two equally problematic camps:
+
+...all behavioral scientists are taught that statistically significant correlations do not necessarily mean any kind of causative effect. Nevertheless, the literature is full of studies with findings that are exclusively based on correlational evidence. Researchers tend to fall into one of two camps with respect to how they react to the problem.
+> First, there are those who are careful to use language that avoids any direct claim for causation, and yet, in the discussion section of their papers, they imply that the findings do indeed mean causation.
+> Second, there are those that completely accept the inability to make a causal inference on the basis of simple correlation or association and, instead, take refuge in the claim that they are studying only associations and not causation. This second, "pure" approach sounds safer, but it is disingenuous because it is difficult to see why anyone would be interested in statistical associations or correlations if the findings were not in some way relevant to an understanding of causative mechanisms.
 
 [^Shapiro]: I borrow this phrase from the paper ["Looking to the 21st century: have we learned from our mistakes, or are we doomed to compound them?"](/docs/statistics/2004-shapiro.pdf), Shapiro 2004:
 
@@ -148,11 +153,11 @@ To resolve the paradox, I need to offer a clear account of *why* shared causes/c
 Here's where Bayes nets & [causal networks](https://en.wikipedia.org/wiki/Bayesian_network#Causal_networks) ([seen previously on LW](http://lesswrong.com/lw/ev3/causal_diagrams_and_causal_models/) & [Michael Nielsen](http://www.michaelnielsen.org/ddi/if-correlation-doesnt-imply-causation-then-what-does/)) come up.
 When networks are inferred on real-world data, they often start to look pretty gnarly: tons of nodes, tons of arrows pointing all over the place.
 [Daphne Koller](https://en.wikipedia.org/wiki/Daphne_Koller) early on in her [Probabilistic Graphical Models course](https://www.coursera.org/course/pgm) shows an example from a medical setting where the network has like 600 nodes and you can't understand it at all.
-When you look at a biological causal network like this:
+When you look at a [biological causal network like metabolism](http://biochemical-pathways.com/#/map/1 "Roche Biochemical Pathways: Part 1: Metabolic Pathways"):
 
 !["A Toolkit Supporting Formal Reasoning about Causality in Metabolic Networks"](/images/causality-examplebionetwork-pathway03.jpg "http://www.di.unipi.it/~braccia/ToolCode/pathway_03.jpg")
 
-You start to appreciate how everything might be correlated with everything, but not cause each other.
+You start to appreciate how everything might be correlated with everything, but (usually) not cause each other.
 
 This is not too surprising if you step back and think about it: life is complicated, we have limited resources, and everything has a lot of moving parts.
 (How many discrete parts does an airplane have? Or your car? Or a single cell? Or think about a chess player analyzing a position: 'if my bishop goes there, then the other pawn can go here, which opens up a move there or here, but of course, they could also do that or try an _en passant_ in which case I'll be down in material but up on initiative in the center, which causes an overall shift in tempo...')
