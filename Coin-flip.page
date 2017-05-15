@@ -821,7 +821,7 @@ from scipy.stats import binom
 import numpy as np
 from repoze.lru import lru_cache
 
-@lru_cache(maxsize=5000000)
+@lru_cache(None)
 def V(w, b, m=250):
     if w>=250:
       return 250
@@ -838,9 +838,10 @@ def V(w, b, m=250):
       except ValueError:
         print "Error:", (w,b,m)
 
-@lru_cache(maxsize=5000000)
+@lru_cache(None)
 def VPplan(w, b):
-    if w==0:
+    # optimization: short-circuit
+    if w<=0 or w>=250:
       return 0
     else:
       if b==0:
@@ -861,12 +862,11 @@ for n in range(0,10000):
     done = False
     reward = 0
     while not done:
-        w = env._get_obs()[0]
+        w = env._get_obs()[0][0]
         b = env._get_obs()[1]
         bet = VPplan(w, b)
-        print(bet)
         results = env._step(bet*100)
-        print(results)
+        print w, b, bet, "results:", results
         reward = reward+results[1]
         done = results[2]
     rewards.append(reward)
@@ -878,7 +878,34 @@ print sum(rewards)/len(rewards)
 
 #### Graphing the Value function
 
-With an exact value function, we can visualize it to get an idea of how the wealth/rounds interact and how difficult it would be to approximate it.
+What does the range of possible bets in each state look like? Does it look bitonic and like an inverted V one could do binary search on?
+We can sample some random states, compute all the possible bets, and plot them by index to see if the payoffs form curves:
+
+~~~{.R}
+# return all actions' values instead of the max action:
+VPplans <- function(w, b) {
+    if (b==0) { return (0); } else {
+    returns <- sapply(seq(0, w), function(wp) { mf(wp, w, b); })
+      return(returns); } }
+plans <- data.frame()
+n <- 47
+for (i in 1:n) {
+  # omit the uninteresting cases of w=0/250 and b=0/300:
+  w <- round(runif(n=1, 0+1, 250-1))
+  b <- round(runif(n=1, 0+1, 300-1))
+  plan <- VPplans(w,b)
+  plans <- rbind(plans, data.frame(W=as.factor(w), B=as.factor(b), Bet=1:(length(plan)), Value=plan))
+}
+library(ggplot2)
+p <- qplot(x=Bet, y=Value, data=plans)
+p + facet_wrap(~W) + geom_line(aes(x=Bet, y=Value, color=W), size = 1) + theme(legend.position = "none")
+~~~
+
+For the most part they do generally follow a quadratic or inverted-V like shape, with the exception of several which wiggle up and down while following the overall curve (numeric or approximation error?).
+
+![47 randomly-sampled states with all legal bets' exact value plotted, showing generally smooth curves](/images/coinflip-action-valuecurves.png)
+
+With an exact value function, we can also visualize it to get an idea of how the wealth/rounds interact and how difficult it would be to approximate it.
 We can generate many iterates, interpolate, and graph:
 
 ~~~{.R}
@@ -1950,7 +1977,7 @@ parameters = [(25, 236, 0.72435085557, 205), (25, 237, 0.845435411107, 260), (25
 
 #### Lower bound
 
-One baseline would be to simply take our pre-existing exact solution `V`/`VPplan` and run it on the generalized Kelly.
+One baseline would be to simply take our pre-existing exact solution `V`/`VPplan` and run it on the generalized Kelly by ignoring observations and assuming 300 rounds.
 It will probably perform reasonably well since it performs optimally at least one possible setting, and serve as a baseline:
 
 ~~~{.Python}
@@ -1963,12 +1990,12 @@ for n in range(0,10000):
     reward = 0
     roundsLeft = 300
     while not done:
-        w = env._get_obs()[0]
+        w = env._get_obs()[0][0]
         b = roundsLeft
         bet = VPplan(w, b)
         results = env._step(bet*100)
         reward = reward+results[1]
-        roundsLeft = min(0, roundsLeft - 1)
+        roundsLeft = max(0, roundsLeft - 1)
         done = results[2]
     rewards.append(reward)
     env._reset()
@@ -1976,7 +2003,6 @@ for n in range(0,10000):
 print sum(rewards)/len(rewards)
 #
 ~~~
-
 
 ##### Deep RL
 
@@ -1989,10 +2015,12 @@ To create a deep RL agent for the generalized Kelly coin-flip game, I will use t
 
 keras-rl offers primarily^[I also tried its [CEM](!Wikipedia "Cross-entropy method") implementation, but after trying a variety of settings, CEM never performed better than an average reward of 0.4 or ~\$120, inferior to most DDPG runs.] DQN ([Mnih et al 2013](https://arxiv.org/abs/1312.5602 "Playing Atari with Deep Reinforcement Learning")) and DDPG ([Lillicrap et al 2015](https://arxiv.org/abs/1509.02971 "Continuous control with deep reinforcement learning")).
 
-DQN is a possibility but most DQN implementations require a fixed number of actions, which in our case of penny-level betting, implies having 25,000 distinct unordered actions.
+DQN is a possibility but for efficiency[^max-q-value] most DQN implementations require/assume a fixed number of actions, which in our case of penny-level betting, implies having 25,000 distinct unordered actions.
 I tried prototyping DQN for the simple Kelly coin-flip game using the [keras-rl DQN example](https://github.com/matthiasplappert/keras-rl/blob/master/examples/dqn_cartpole.py), but after hours, it still had not received any rewards - it repeatedly bet more than its current wealth, equivalent to its current wealth, and busting out, never managing to go 300 rounds to receive any reward and begin learning.
 (This sort of issue with sparse rewards is a common problem with DQN and deep RL in general, as the most common forms of exploration will flail around at random rather than make deep targeted exploration of particular strategies or try to seek out new regions of state-space which might contain rewards.)
 One possibility would have been to 'cheat' by using the exact value function to provide optimal trajectories for the DQN agent to learn from.
+
+[^max-q-value]: This follows the original Mnih et al 2013 implementation. The NN is constructed with the screen observation state as the input and a final top layer outputting _n_ reals corresponding to the q-value of the _n_ actions, in that case the fixed number of buttons on the Atari controller. This allows enumeration of all possible actions' values in a single forward pass of the NN, and picking the maximum.. The alternative would be to input both the screen observation and one possible action, and get out a single q-value for that one action; then to act, the agent would loop over all possible actions in that state, and then finding the maximum actions, which would allow a varying number of possible actions in each state, but at the cost of doing _n_ forward passes (one for each possible action). In the Atari setting, the DQN agent interacts exclusively through the controller which has only a few buttons and a directional pad; and the environments are complex enough that it would be hard to define in advance what are the valid actions for each possible screen, which is something that must be learned, so this fixed-action trick is both necessary and efficient. Thus, it is also used in most implementations or extensions of DQN. In the Kelly coinflip, on the other hand, the discretizing is problematic since the majority of actions will be invalid, using an invalid action is damaging since it leads to overbetting, and we can easily define the range of valid actions in each state (0-_w_), so the trick is much less compelling.
 
 DDPG isn't like tabular learning but is a policy gradient method ([Karpathy explains policy gradients](https://karpathy.github.io/2016/05/31/rl/ "Deep Reinforcement Learning: Pong from Pixels")).
 With deep policy gradients, the basic idea is that the 'actor' NN repeatedly outputs an action based on the current state, and then at the end of the episode with the final total reward, if the reward is higher than expected, all the neurons who contributed to all the actions get strengthened to be more likely to produce those actions, and if the reward is lower than expected, they are weakened.
@@ -2004,6 +2032,7 @@ For exploration, some random noise is added to the final action; not epsilon-ran
 A continuous action would have less of an unordered action/curse of dimensionality required switching from DQN to DDPG ([example](https://github.com/matthiasplappert/keras-rl/blob/master/examples/ddpg_pendulum.py)).
 Unfortunately, DDPG also had initialization problems in overbetting, as its chosen actions would quickly drift to always betting either very large positive or negative numbers, which get converted to betting everything or \$0 respectively (which then always result in no rewards via either busting & getting 0 or going 300 rounds & receiving a reward of 0), and it would never return to meaningful bets.
 To deal with the drift/busting out problem, I decided to add some sort of constraint on the agent: make it choose a continuous action 0-1 (squashed by a final sigmoid activation rather than linear or tanh), and convert it into a valid bet, so all bets would be meaningful and it would have less of a chance to overbet and bust out immediately.
+(This trick might also be usable in DQN if we discretize 0-1 into, say, 100 percentiles.)
 My knowledge of Keras is weak, so I was unsure how to convert an action 0-1 to a fraction of the agent's *current* wealth, although I did figure out how to multiply it by \$250 before passing it in.
 This resulted in meaningful progress but was sensitive to hyperparameters - for example, the DDPG appeared to train worse with a very large experience replay buffer than with the Lillicrap et al 2015 setting of 10,000.
 
