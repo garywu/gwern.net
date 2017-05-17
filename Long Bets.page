@@ -8,6 +8,8 @@ confidence: likely
 importance: 5
 ...
 
+> Long Bets is a 15-year-old real-money prediction market run by the Long Now Foundation for incentivizing forecasts/bets about long-term events of social importance such as technology or the environment. I evaluate use of Long Bets as a charitable giving opportunity by winning bets and directing the earnings to a good charity by making forecasts for all available bet opportunities and ranking them by expected value after adjusting for opportunity cost (defined by expected return of stock market indexing) and temporally discounting. I find that while there are ~41 open bets which I expect have positive expected value if counter-bets were accepted, few or none of my counter-bets were accepted. In general, LB has had almost zero activity for the past decade, and has not incentivized much forecasting. This failure is likely caused by its extreme restriction to even-odds bets, no return on bet funds (resulting in enormous opportunity costs), and lack of maintenance or publicity. All of these issues are highly likely to continue barring extensive changes to Long Bets, and I suggest that Long Bets should be wound down.
+
 [Warren Buffett](!Wikipedia)'s [annual end-of-year letter for 2016](http://berkshirehathaway.com/letters/2016ltr.pdf) includes a long section on [his \$1m long bet with Protege Partners's Ted Seides that the S&P 500 index will outperform hedge funds](http://longbets.org/362/ "Bet #362: Over a ten-year period commencing on January 1, 2008, and ending on December 31, 2017, the S&P 500 will outperform a portfolio of funds of hedge funds, when performance is measured on a basis net of fees, costs and expenses."); unsurprisingly, he was about to win, and [in May 2017, Seides conceded](https://www.bloomberg.com/view/articles/2017-05-03/why-i-lost-my-bet-with-warren-buffett "Why I Lost My Bet With Warren Buffett") the bet, blaming the S&P 500 for turning in its "unexpected" but historically average performance.
 
 This reminded me of [Long Bets](!Wikipedia "Long Now Foundation#Long Bet Project") in general (abbreviated LB; [about](http://longbets.org/about/); [FAQ](http://longbets.org/faq/); [rules](http://longbets.org/rules/)/[procedure](http://longbets.org/procedure/)), a [prediction market](!Wikipedia)/registry launched in April 2002 but which never really caught on (in part because their website was effectively unusable for several years), but is still running and still resolving bets and still has any number of [in-progress bets](http://longbets.org/bets/) and [open challenges](http://longbets.org/predictions/).
@@ -255,7 +257,9 @@ So, the predictors as a whole are not just badly [calibrated](!Wikipedia "Calibr
 
 ## Valid and Available Predictions
 
-So this leaves (excluding all the expired ones, but including the well-defined-but-moronic ones, which are winnable should the predictor be sufficiently foolish as to accept bets) as viable candidates, going by year (the main determinant of profitability) / prediction / initial probability estimate:
+I have [extensive experience since 2004 in forecasting real-world events](/Prediction%20markets) of all kinds over thousands of predictions (with [2,263 judged predictions on PredictionBook alone as of 16 May 2017](https://predictionbook.com/users/gwern)) and am well-calibrated, so for each available prediction, I will make a quick prediction of their probability to help form my expected-value estimates.
+
+This gives (excluding all the expired ones, but including the well-defined-but-moronic ones, which are winnable should the predictor be sufficiently foolish as to accept bets) as viable candidates, going by year (the main determinant of profitability) / prediction / initial probability estimate:
 
 - 2020: ["By 2020 a completely propellant-less (no material particles expelled for propulsion) or "field propulsion-type" aerospace vehicle will land on the Moon."](http://longbets.org/92/): 0%
 - 2020: ["By 2020, 75% of all incremental new generation will come from renewable/sustainable energy in the U.S."](http://longbets.org/141/): 50%?
@@ -473,6 +477,9 @@ Offered bets:
 1. 2017-04-24: [#143, "By the year 2020 the technology will exist that will allow for the 'faxing' (teleportation - sending/receiving) of actual inanimate objects, such as text books, clothing, jewelry and the like."](http://longbets.org/143/), Rob Schnitzer
 2. 2017-05-02: [#345, "Self-replicating manufacturing machines will be commonplace by 2020"](http://longbets.org/345/), Adrian Bowyer
 3. 2017-05-11: [#661, "By 2020, Urban and vertical farms will replace 10% of city produce in Chicago."](http://longbets.org/661/), Ed Hubbard
+4. 2017-05-16: [#685, "Turkish president Recep Tayyip Erdogan will be found guilty at a court of law or will flee from the country by 2020."](http://longbets.org/685/), Ibrahim Okuyucu
+
+<!-- TODO: when concluded, add them all to the bet list in /Prediction markets -->
 
 # Long Bets future
 ## Status and accomplishment
@@ -486,6 +493,9 @@ This implies that LB has seen, over its 15 year lifespan, 1.9 bets per year; and
 
 Nor have the bets, aside from the Buffett bet, prompted any substantial media interest or changed discussions.
 (Aside from the lack of comments or general activity on the site itself, we can also look at [Wikipedia search queries](https://tools.wmflabs.org/pageviews/?project=en.wikipedia.org&platform=all-access&agent=user&start=2017-02-01&end=2017-03-31&pages=Long_Bets) - almost immeasurably small and several of which were probably me - and at [Google Trends](https://trends.google.com/trends/explore?q=Long%20Bets), worldwide search trends never exceed 100 searches a day and average ~25 all the way back to 2004; on Google News, I could not find any mentions of "Long Bets" which weren't normal expressions; and [even on Hacker News](https://hn.algolia.com/?query=%22Long%20Bets%22&sort=byDate&prefix&page=0&dateRange=all&type=all), where the original coder of the LB site apparently hangs out, there are few mentions of it which aren't provoked by ongoing interest in the Buffett bet.)
+
+Compared to other prediction markets such as Intrade, Good Judgment Project, or PredictIt, LB has had orders of magnitude fewer participants, contracts, or wagered amounts.
+(Even individual Intrade contracts, such as Obama winning re-election in 2012, often had an order of magnitude more volume than LB's lifetime total, and just the 2012 presidential election on Intrade alone represented [$230 million](https://www.buzzfeed.com/andrewrice/the-fall-of-intrade-and-the-business-of-betting-on-real-life "The Fall Of Intrade And The Business Of Betting On Real Life: There’s always been a thin line between investing and gambling, and one firm turned the concept into a multi-million-dollar industry until the government shut it down. As number crunchers like Nate Silver become cultural touchstones, how does Intrade’s fate predict the future of how we process the world?") or >100x more.)
 
 So over the past 15 years, despite a splashy launch with coverage in [_Wired_](!Wikipedia "Wired (magazine)") and well-connected participants, LB has sank like a stone, is almost totally inactive, and with the expiration of the Buffett bet, even less attention will be paid to it.
 
