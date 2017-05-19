@@ -1007,8 +1007,37 @@ smarterKelly <- function(w, b) { if(w==250) {0} else { 0.2 * w } }
 maximizer <- function(w, b) { w; }
 smarterMaximizer <- function(w, b) { if(w>=250) { 0 } else {w}; }
 
+## examining a sample of how wealth evolves over the course of a sample of b=300 games:
 library(parallel)
 library(plyr)
+i <- 56
+games <- ldply(mclapply(1:i, function(ith) {
+    b <- 300
+    wealth <- 25
+    wealths <- numeric(b)
+    while (b>0) {
+        bet <- mVPplan(wealth, b)
+        wealth <- wealth-bet
+        flip <- rbinom(1,1,p=0.6)
+        winnings <- 2*bet*flip
+        wealth <- min(wealth+winnings, 250)
+        wealths[b] <- wealth
+        b <- b-1
+    }
+    return(data.frame(Game=ith, Bets=300:1, Wealth=wealths)) }
+))
+library(ggplot2)
+p <- qplot(x=Bets, y=Wealth, data=games)
+p + facet_wrap(~Game) + geom_line(aes(x=Bets, y=Wealth), size = 1) + theme(legend.position = "none")
+~~~
+
+Simulating 56 games, we can see how while the optimal strategy looks fairly risky, it usually wins in the end:
+
+![Simulation of winnings over a sample of _b_=300 games while using the optimal strategy.](/images/coinflip-gamecurves.png)
+
+We can also examine how the strategy does for all the other possible horizons and compare with the Kelly.
+
+~~~{.R}
 ## Comparing performance in the finite horizon setting up to b=300:
 bs <- 1:300
 ldply(mclapply(bs, function(bets) {
@@ -2003,7 +2032,6 @@ for n in range(0,1000):
     env._reset()
 
 print sum(rewards)/len(rewards)
-#
 ~~~
 
 ## Deep RL
