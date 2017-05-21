@@ -114,7 +114,28 @@ Shulman & Bostrom's upper bound works as follows:
 
 That is, the full heritability of adult intelligence is ~0.8; a SNP chip records the few hundred thousand most common genetic variants in the population and treating each gene as having a simple additive increase-or-decrease effect on intelligence, Davies et al 2011's GCTA (Genome-wide complex trait analysis) estimates that those SNPs are responsible for 0.51 of variance; since siblings descend from the same two parents, they will share half the variants (just like dizygotic twins) and differ on the rest, so the SNPs can only predict up to 0.25 between siblings and siblings are analogous to multiple embryos being considered for implantation in IVF (but not sperm or eggs[^sperm-selection]); simulate _n_ embryos by drawing from a normal distribution with a SD of 0.7 or 10.5 IQ points and selecting the highest, and with various _n_, you get something like the table.
 
-[^sperm-selection]: Why not sperm or eggs? Why do we have to select on embryos instead? While sperm and eggs do genetically vary, they vary mostly on which of each pair of chromosomes they inherit from the body, so the genetic variance is less than after fertilization; selection only on eggs or only sperms leaves out half the genetic variance (since the other half is unavailable), weakening prediction substantially compared to selecting in the joint product; and finally, as far as I know, all feasible genetic sequencing methods are destructive & require at least 1 cell, which renders it futile for single-cell sperm & eggs. So embryo selection is the only feasible approach.
+[^sperm-selection]: One alternative to selection on the embryo level is to instead select on eggs or sperm cells.
+Hypothetically, during [spermatogenesis](!Wikipedia "Spermatogenesis#Stages"), after the final meiosis, there are 4 spermatids/spermatozoids, one of which could be destructively sequenced and allow scoring of the others; something similar might be doable with the polar bodies in [oogenesis](!Wikipedia "Oogenesis#Oogenesis in mammals").
+Such gamete selection is probably infeasible as it would likely require surgery & being able to grow gametes to maturity in a lab environment & would be very expensive.
+
+    But if gamete selection were possible, it would increase gains from selection: by [Jensen's inequality](!Wikipedia), since eggs and sperms are haploid & sum for additive genetic purposes, maximizing over them separately will yield a bigger increase than summing them at random and then maximizing.
+Intuitively, if we are selecting on embryo, a good egg might be fertilized by a bad sperm or vice-versa, negating some of the benefits.
+
+    If we have embryos distributed as $\mathcal{N}(0, \sigma^2)$, such as our concrete example using the GCTA upper bound, then we can split it into the [sum of normally distributed random variables](!Wikipedia), which for two random normals is $N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2)$, but we specified the means as 0 and we know a priori there should be no particular difference in additive SNP genetic variance between eggs and sperms, so the variances must also be zero, so we have $\mathcal{N}(0, \sigma^2 + \sigma^2)$ as the sum and $\mathcal{N}(0, \sigma^2) + \mathcal{N}(0, \sigma^2)$ as the factorized version which we can maximize on.
+Since we don't know what the variance of gametes are, we work backwards from the given variance by halving it.
+With the derived normal distributions, we then sum their expected maximums.
+
+    For identical numbers of gametes, there is a noticeable gain from doing gamete selection rather than embryo selection:
+
+    ~~~{.R}
+    gameteSelection <- function(n1, n2, variance=1/3, relatedness=1/2) {
+    exactMax(n1, sd=sqrt(variance*relatedness / 2)) + exactMax(n2, sd=sqrt(variance*relatedness / 2))  }
+
+    gameteSelection(5,5)
+    # [1] 0.6714378519
+    embryoSelection(5)
+    # [1] 0.4747782582
+    ~~~
 
 GCTA tells us how much the SNPs would explain if we knew all their effects exactly. This represents both an upper bound and a lower bound. It is a lower bound on heritability because:
 
@@ -454,7 +475,6 @@ For comparison, the full genetic heritability of adult IQ (going far beyond just
 embryoSelection(n=10, variance=0.8) * 15
 # [1] 14.59789016
 ~~~
-
 
 ##### Polygenic scores
 
