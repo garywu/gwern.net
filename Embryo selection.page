@@ -517,6 +517,9 @@ Past polygenic scores for intelligence:
 
     The polygenic score predicts 3.5% of intelligence, 7% of family SES, and 9% of education in a heldout sample.
 11. ["GWAS meta-analysis reveals novel loci and genetic correlates for general cognitive function: a report from the COGENT consortium"](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2016244a.html), Trampush et al 2017: no polygenic score reported
+12. ["GWAS of 78,308 individuals identifies new loci and genes influencing human intelligence"](/docs//iq/2017-sniekers.pdf), Sniekers et al 2017
+
+    336 SNPs, and ~3% on average in the held-out samples, peaking at 4.8%. (Thus is likely doesn't outperform Okbay/Selzam et al 2016, but does demonstrate the sample-efficiency of good IQ measurements.)
 
 These results only scratch the surface of what is possible.
 
