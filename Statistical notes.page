@@ -41,6 +41,7 @@ importance: 6
 - implausible claims about success rate of facial recognition applied to St Petersburg population: https://news.ycombinator.com/item?id=11491264 (see also ["Facial recognition systems stumble when confronted with million-face database"](https://techcrunch.com/2016/06/23/facial-recognition-systems-stumble-when-confronted-with-million-face-database/))
 - human _Toxoplasma gondii_ study is not well-powered as authors claim due to incorrect power analysis, and results are evidence for harm: http://blogs.discovermagazine.com/neuroskeptic/2016/02/20/myth-mind-altering-parasite-toxoplasma-gondii/#comment-2755778490 ; https://www.reddit.com/r/slatestarcodex/comments/5vjrmo/toxoplasma_doesnt_cause_adolescent_psychosis/de2x4kh/
 - attempt at attributing Bitcoin price increases to technology improvements: <https://www.reddit.com/r/Bitcoin/comments/5tbt8f/buzz_factor_or_innovation_potential_what_explains/ddlmzrz/>
+- analysis of designer drug/research chemical activity on Wikipedia is driven almost entirely by editing patterns of just 2 Wikipedia editors particularly interested in the topic: http://calib.ro/chemical-wiki/explorations/2016-09-12-emcdda-watchlist-and-wikipedia-timeline#comment-3277669328
 
 # "Someone Should Do Something": Wishlist of Miscellaneous Project Ideas
 
@@ -56,6 +57,7 @@ importance: 6
     - key for enabling many statistical and especially reinforcement learning algorithms like Monte Carlo tree search (MCTS)
 - Markov chain/char-RNN bot for Twitter trained on just English proverbs, idioms, and expressions
 - user-friendly char-RNN implementation just for classifying text, taking in CSV data of text/category
+- [RL agent using MCTS + GAN/PixelCNN model of environment](https://www.reddit.com/r/MachineLearning/comments/66x02v/d_rl_gans_as_mcts_environment_simulator_for_deep/)
 - hyperparameter optimization for algorithms in problems without available loss functions but human-judgeable quality, using a human for making choices in a paired or forced-choice comparison, then using a Bradley-Terry or latent variable model to infer rankings of hyperparameter settings and optimizing based on the latent scores
 
 - a VR application for viewing [stereoscopic](!Wikipedia "Stereoscopy") images & video and for 3D environments with extremely large parallax such as [for viewing clouds with true depth perception](https://xkcd.com/941/ "XKCD #941: Depth Perception") ([discussion](https://www.explainxkcd.com/wiki/index.php/941:_Depth_Perception))
@@ -2139,7 +2141,7 @@ There are a few sources of data, primarily SNP data, which are freely available 
 2. [OpenSNP](https://opensnp.org): hosting for user-provided SNP & phenotype data with [dumps available](https://opensnp.org/genotypes); hosts ~2k SNP datasets, but only [270 users have birth-years](https://opensnp.org/phenotypes/148)
 3. [SNPedia](http://www.snpedia.com/index.php/Genomes) likewise hosts SNP data (overlapping with OpenSNP) and genome data, but a very small number
 4. [Genomes unzipped](http://genomesunzipped.org/data) provides a small amount of data
-4. [DNA.LAND](https://dna.land/): claims _n_=8k based on public participation & input, but seems to then restrict access to a small set of researchers
+4. [DNA.LAND](https://dna.land/): claims _n_=8k based on public participation & input (_n_=43k as of [May 2017](http://biorxiv.org/content/early/2017/05/09/135715 "'DNA.Land: A Digital Biobank Using A Massive Crowdsourcing Approach', Yuan et al 2017")), but seems to then restrict access to a small set of researchers
 4. [Exome Aggregation Consortium](http://exac.broadinstitute.org/about): _n_=61,486 exomes; [phenotype data](http://exac.broadinstitute.org/faq) is unavailable
 5. [Personal Genome Project](!Wikipedia) (PGP):  probably the single largest source of open SNP & genome data. ~1252 participants have registered birthdates according to `demographics.tsv`, and their [statistics page](https://my.pgp-hms.org/public_genetic_data/statistics)'s graphs indicates <300 whole genomes and <1k SNPs. Phenotype data [has been recently released as a SQLite database](http://blog.personalgenomes.org/2015/11/19/exploring-the-harvard-pgp-dataset-with-untap/ "Exploring the Harvard PGP Dataset with Untap"), making it easier to work with.
 
@@ -3848,6 +3850,9 @@ After 2 days of training, the DQN had improved only slightly; the on-policy stra
 TODO: revisit with MCTS at some point?
 
 <!--
+http://globalprioritiesproject.org/2015/02/give-now-or-later/
+http://effective-altruism.com/ea/r8/an_underrated_observation_about_giving_now_vs/
+http://scholar.harvard.edu/files/weitzman/files/why_far-distant_future.pdf
 Consider a MDP we might call the "x-risk game": we are trying to maximize rewards over a fixed number of rounds while subject to risk of death.
 In this game, each round is 1 year, and in each round, the economy yields a certain amount of wealth which is our reward for that year, and the economy grows 2% a year, but on the other hand, there is an existential risk probability _p_ which if it fires, ends the game instantly and we can earn no more rewards.
 If we survive to the end, we reach 'posthumanity' where we earn our current wealth indefinitely discounted at 3% annually (ie a single reward of $\frac{w}{log(1+0.03)}$).
@@ -4563,7 +4568,6 @@ For this purpose, I make extensive excerpts from web pages & documents I read in
 While expensive in time & effort, I often go back, months or years later, and search for a particular thing and expand & integrate it into another writing or expand it out to an entire essay of its own.
 (I also value highly not being in the situation where I believe something but I do not know *why* I believe it other than the conviction "I read it somewhere, once".)
 
-
 This sort of [personal information management](!Wikipedia) using simple [personal information manager](!Wikipedia)s like Evernote works well enough when I have a clear memory of what the citation/factoid was, perhaps because it was so memorable, or when the citations or comments are in a nice cluster (perhaps because there was a key phrase in them or I kept going back & expanding a comment), but it loses out on key benefits to this procedure: serendipity and perspective.
 
 As time passes, one may realize the importance of an odd tidbit or have utterly forgotten something or events considerably changed its meaning; in this case, you would benefit from revisiting & rereading that old bit & experiencing an "aha!" moment, but you don't realize it.
@@ -4581,7 +4585,7 @@ This is probably one reason that people who keep journals or diaries don't rerea
 Nor can it be crowdsourced or done by simply ranking comments by public upvotes (in the case of Reddit/LW/HN comments), because the most popular comments are ones you likely remember well & have already used up, and the oddities & serendipities you are hoping for are likely unrecognizable to outsiders.
 
 This suggests some sort of reviewing framework where one systematically reviews old items (sent emails, comments, IRC logs by oneself), putting in a constant amount of time regularly and using some sort of ever expanding interval between re-reads as an item becomes exhausted & ever more likely to not be helpful.
-["Deconstructing Deathism - Answering Objections to Immortality"](http://immortallife.info/articles/entry/deconstructing-deathism-answering-objections-to-immortality), Mike Perry 2013 (note: this is an entirely different kind of problem than those considered in Freeman Dyson's immortal intelligences in _Infinite in All Directions_, which are more fundamental), discusses something like what I have in mind in terms of an immortal agent trying to review its memories & maintain a sense of continuity, pointing out that if time is allocated correctly, it will not consume 100% of the agent's time but can be set to consume some bounded fraction:
+Similar to the logarithmically-bounded number of backups required for indefinite survival of data ([Sandberg & Armstrong 2012](https://pdfs.semanticscholar.org/6bfd/f1fa0552a3cdf2e5f5f57b258fa56dac6d0c.pdf "Indefinite Survival through Backup Copies")), ["Deconstructing Deathism - Answering Objections to Immortality"](http://immortallife.info/articles/entry/deconstructing-deathism-answering-objections-to-immortality), Mike Perry 2013 (note: this is an entirely different kind of problem than those considered in Freeman Dyson's immortal intelligences in _Infinite in All Directions_, which are more fundamental), discusses something like what I have in mind in terms of an immortal agent trying to review its memories & maintain a sense of continuity, pointing out that if time is allocated correctly, it will not consume 100% of the agent's time but can be set to consume some bounded fraction:
 
 > It seems reasonable that past versions of the self would "survive" as we remember the events of times past, that is to say, our episodic memories, and this would have importance in our continuing to persist as what could be considered the "same" albeit also a changing, developing person. But in addition to this mnemonic reinforcement I imagine there would be a more general feeling of being a particular individual, an "ambiance" derived from but not referring to any specific past experiences. Ambiance alone would not be sufficient, I think, to make us who we are; episodic memories would also be necessary, yet it could considerably lessen the need for frequent recall and thus alleviate the problem of dilution.
 >
@@ -4631,3 +4635,23 @@ As far as I know, some to-do/self-help systems have something like a periodic re
 <!-- example IRC parsing: # (
 cat doc/irclogs/freenode/#lesswrong.log | egrep -v -e 'feepbot' -e pookie -e 'has joined #lesswrong' -e 'has left #lesswrong' -e 'on \#lesswrong$' -e ') has quit (' -e '\* .* is now known as ' -e 'Â» ' | fgrep --context=10 -e 'gwern> ' -e 'Gwern-away> ' -e '  * gwern' # )
 -->
+
+# On the value of new statistical methods
+
+Genetic correlation research is a hot area in 2016-2017: [my WP article](!Wikipedia "Genetic correlation") passed 400 references in May 2017.
+What is particularly interesting reference-wise is that publications 2015-2017 make up around half of the results: so more genetic correlations calculated in the past 3 years than in the previous 80 years since first estimates were made somewhere in the 1930s or so.
+
+For calculating them, there are 3 main methods.
+
+1. twin registry studies require twin phenotypic measurements which can usually be collected by mailed surveys and to analyze them one computes some Pearson's r or uses a standard SEM with additional covariance paths (doable with Wright's path analysis back in the 1930s by hand), scaling roughly linearly with sample size, having excellent statistical power at a few hundred twin pairs and capturing full heritabilities
+2. for GCTA, one requires full raw SNP data on 5000+ unrelated individuals at \$100+ a sample, along with simultaneous phenotypic measurements of both traits and must use complicated custom software whose computation scales exponentially and can only examine a narrow subset of heritability
+3. for LDSC, one requires public summary polygenic scores but they can be from separate GWASes and calculated on traits individually, and the computational complexity is closer to linear than exponential; the penalty for not needing raw SNP data from twice-measured individuals is that SNP costs double or more since multiple GWASes are used, and LDSC even more inefficient than GCTA, so you'll need >10,000 individuals used in each polygenic score, and still need custom software.
+
+In other words, the twin method is old, simple, requires small sample sizes, and easily obtained phenotypic measurements; while GCTA/LDSC is new, complicated, and requires expensive novel genetic sequencing data in huge sample sizes as well as the phenotypic measurements.
+So naturally LDSC gets used an order of magnitude more!
+Looking at the bibliography, we can guesstimate the rates at twin: 1 paper/year; GCTA (requiring raw data), 10/year; LDSC (public summary stats), 100/year.
+
+Amazing the difference methods can make. It's all about data access.
+For all its disadvantages, LDSC statistically works around the lack of individual-level raw data and makes do with the data that gets publicly released because it is not seen to violate 'privacy' or 'bioethics', so any researcher can make use of the method on their particular dataset, while twin and GCTA require individual-level data which is jealously guarded by the owners.
+
+Methodologists and statisticians are probably seriously undervalued: a good new method can cause a revolution.
