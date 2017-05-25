@@ -1,7 +1,7 @@
 ---
 title: Are Individual Differences Complex?
 description: Individual human brains are more predictable and similar than they are different, reflecting low Kolmogorov complexity and implying that beta uploading may be more feasible than guessed, with suggestions on optimizing archived information.
-tags: psychology, sociology, statistics, transhumanism, NN
+tags: psychology, philosophy, sociology, statistics, transhumanism, NN
 created: 23 June 2010
 status: in progress
 confidence: likely
@@ -73,7 +73,7 @@ Based on the forgetting curve and man-centuries of data on [spaced repetition](/
 (For comparison, see [profiles](https://www.theguardian.com/science/2017/feb/08/total-recall-the-people-who-never-forget "Total recall: the people who never forget: An extremely rare condition may transform our understanding of memory") of people with ["highly superior autobiographical memory"](!Wikipedia "Hyperthymesia"), whose most striking attribute is normal memories combined with extremely large amounts of time spent diarizing or recalling or quizzing themselves on the past; people who keep diaries often note when rereading how much they forget, which in a way emphasizes how little autobiographical memory apparently matters for continuity of identity.)
 
 Aside from low recall of generic autobiographical memory, [childhood amnesia](!Wikipedia) sets in around age 3-4, resulting in almost total loss of all episodic memory prior to then, and the loss of perhaps 5% of all lifetime memories; the developmental theory is that due to limited memory capacity, the initial memories simply get overwritten by later childhood learning & experiences.
-(Childhood amnesia is sometimes underestimated: many 'memories' are pseudo-memories of stories retold by relatives.)
+Childhood amnesia is sometimes underestimated: many 'memories' are pseudo-memories of stories as retold by relatives.
 
 [Working memory](!Wikipedia) is considered a bottleneck that information must pass through in order to be stored in short-term memory and then potentially into long-term memory, but it is also small and slow.
 [Forward digit span](!Wikipedia) is a simple test of working memory, in which one tries to store & recall short random sequences of the integers 0-10; a normal adult forward digit span (without resorting to mnemonics or other strategies) might be around 7, and requires several seconds to store and recall; thus, digit span suggests a maximum storage of $log(10)=3.32$ bits per second, or 8.3GB over a lifetime.
@@ -114,24 +114,57 @@ Humans are often stated to be relatively little variation and homogeneous compar
 Further, there is [pervasive pleiotropy in the genetic influences](!Wikipedia "Genetic correlation"), where traits overlap and influence each other, making them more predictable; and the genetic influence is often partially responsible for longitudinal consistency in individuals' traits over their lifetimes.
 
 In psychology and sociology research, some variables are so pervasively & powerfully predictive that they are routinely measured & included in analyses of everything, such as the standard demographic variables of gender, ethnicity, socioeconomic status, [intelligence](/iq), or [Big Five personality factors](!Wikipedia).
+Whether it is the extensive predictive power of stereotypes ([Jussim et al 2015](http://andrewgelman.com/wp-content/uploads/2015/12/Current-Directions-in-Psychological-Science-2015-Jussim-490-7.pdf "Stereotype (In)Accuracy in Perceptions of Groups and Individuals")) or the ability of people to make above-chance "[thin-slicing](!Wikipedia)" guesses based on faces or photographs of bedrooms, or any number of odd psychology results,
 A single number such as IQ (a [normally distributed](!Wikipedia "Normal distribution") variable, having an entropy of $\frac{1}{2} \cdot \ln(2 \cdot \pi \cdot e \cdot \sigma^2) = 1.42$ bits), for example, can predict much of education outcomes, and predict more in conjunction with the Big Five's Conscientiousness & Openness.
+A full-scale IQ test will also provide measurements of relevant variables such as visuospatial ability or vocabulary size, and in total might be ~10 bits.
+So a large number of such variables could be recorded in a single kilobyte while predicting many things about a person.
+
 More generally, almost every pair of variables shows a small but non-zero correlation (assuming sufficient data to overcome sampling error), leading to the observation that ["everything is correlated"](/Causality#everything-correlates-with-everything); this is generally attributed to all variables being embedded in universal causal networks, such that, as Meehl notes, one can find baffling and (only apparently) arbitrary differences such as male/female differences in agreement with the statement "I think Lincoln was greater than Washington."
 Thus, not only are there a few numbers which can predict a great deal of variance, even arbitrary variables collectively are less unpredictable than they may seem due to the hidden connections.
+
+# Personal Identity and Unpredictability
+
+After all this, there will surely be errors in modeling and many recorded actions or preferences will be unpredictable.
+To what extent does this error term imply personal complexity?
+
+Measurement error is inherent in all collectible datapoints, from IQ to Internet logs; some of this is due to idiosyncrasies of the specific measuring method such as the exact phrasing of each question, but a decent chunk of it disappears when measurements are made many times over long time intervals.
+The implication is that our responses have a considerable component of randomness to them and so perfect reconstruction to match recorded data is both impossible & unnecessary.
+
+Taking these errors too seriously would lead into a difficult position, that these transient effects are vital to personal identity. But this brings up the classic free will vs determinism objection: if we have free will in the sense of unpredictable uncaused choices, then the choices cannot follow by physical law from our preferences & wishes and in what sense is this our own 'will' and why would we want such a dubious gift at all?
+Similarly, if our responses to IQ tests or personality inventories have daily fluctuations which cannot be traced to any stable long-term properties of our selves nor to immediate aspects of our environments but the fluctuations appears to be entirely random & unpredictable, how can they ever constitute a meaningful part of our personal identities?
+
+# Data sources
+
+In terms of cost-effectiveness and usefulness, there are large differences in cost & storage-size for various possible information sources:
+
+- IQ and personality inventories: free to ~\$100; 1-100 bits
+- whole-genome sequencing: <\$1000; <1GB
+
+    Given the steep decrease in genome sequencing costs historically, one should probably wait another decade or so to do any whole-genome sequencing.
+- writings, in descending order; \$0 (naturally produced), <10GB (compressed)
+
+    - chat/IRC logs
+    - personal writings
+    - lifetime emails
+- diarizing: 4000 hours or >\$29k? (10 minutes per day over 60 years at minimum wage), <2MB
+- autobiography: ? hours; <1MB
+- cryonics for brain preservation: \$80,000+, ?TB
+
+While just knowing IQ or Big Five is certainly nowhere near enough for continuity of personal identity, it's clear that measuring those variables has much greater bang-for-buck than recording the state of some neurons.
+
+# Depth of data collection
+
+For some of these, one could spend almost unlimited effort, like in writing an autobiography - one could extensively interview relatives or attempt to cue childhood memories by revisiting locations or rereading books or playing with tools.
+
+But would that be all that useful?
+If one cannot easily recollect a childhood memory, then (pace the implications of childhood amnesia and the free will argument) can it really be all that crucial to one's personal identity?
+And any critical influences from forgotten data should still be inferrable from the effects; if one is, say, badly traumatized by one's abusive parents into being unable to form romantic relationships, the inability is the important part and will be observable from a lack of romantic relationships, and the forgotten abuse doesn't need to be retrieved & stored.
 
 TODO:
 'efficient natural language'
 Death Note Anonymity
 Conscientiousness and online education
 Simulation inferences
-
-    13:02 <@gwern> Xern: one thing you could try is taking huge numbers of psychology inventories and surveys, which may expose more of your values and beliefs than self-directed highly redundant journaling/writing
-    13:03 <@gwern> Xern: see the small 100 approach http://lesswrong.com/lw/1ay/is_cryonics_necessary_writing_yourself_into_the/
-    13:03 < feepbot> Is cryonics necessary?: Writing yourself into the future - Less Wrong
-    13:17 <@gwern> anyway, for beta uploading, I would say as a general principle you want to start with your genome, then use survey instruments designed for predictive power and precise measurement of important factors, then move on to recordings of interactive material (like IRC logs!), then record writings in general, then record quotidian details like your environment
-    13:18 < Xern> yeah, and for the genome, "full exome" is not enough, it should be "full genome". Many important parts, for immune system, and basically everything related to splicing, is in the intron.
-    13:19 < Xern> moreover, mitochondrial DNA should be included. Not even one company is proposing that to customer right now.
-    13:19 <@gwern> Xern: yes. rare variants will matter. you will want full deep sequencing. and preferably first-degree relatives too - that can correct for errors and allow some childhood/family environment prediction too
-    13:21 <@gwern> Xern: and preserve tissue samples too while you're at it... I understand current whole genomes are generally based on sequencing short snippets and so run into problems in highly repetitive areas of the genome or with structural variants, so if you're doing sequencing now, it'll probably have to be redone in a few decades anyway
 
 <!--
 TODO: ping yvain, Carl Shulman
