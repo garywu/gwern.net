@@ -55,3 +55,5 @@ By better models, that is:
 
     Optimal: not sure. The B planner might find a sequence of moves to always squash A before the timeout can fire, in which case there is no need to spend a move on disabling A's control. With 'noise' in movement, like an epsilon, then disabling looks better (because B might fail to execute the optimal sequence when B makes a random move, exposing B to the timeout) but still not guaranteed to look useful - disabling A's control still costs at least 1 move at -1 reward, as defined, so unless epsilon is big enough, it's better to ignore the possibility rather than spend -1 to avoid it.
 5. 'SEARCH CAPACITY: PHYSICS': I dunno how one might add any of that without seeming hacky.
+
+- "AIXIjs: A Software Demo for General Reinforcement Learning", Aslanides 2017 https://arxiv.org/abs/1705.07615 https://github.com/aslanides/aixijs

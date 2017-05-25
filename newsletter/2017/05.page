@@ -29,6 +29,12 @@ AI:
 
 - ["Inferring and Executing Programs for Visual Reasoning"](https://arxiv.org/abs/1705.03633), Johnson et al 2017
 - ["Bayesian Reinforcement Learning: A Survey"](https://arxiv.org/abs/1609.04436), Ghavamzadeh et al 2016
+- reinforcement learning research is coming out too frequently to single out more than a few papers; see [subscribe to the /r/ReinforcementLearning](https://www.reddit.com/r/reinforcementlearning/)/[/r/DecisionTheory](https://www.reddit.com/r/DecisionTheory/) subreddits for updates
+- ["CaloGAN: Simulating 3D High Energy Particle Showers in Multi-Layer Electromagnetic Calorimeters with Generative Adversarial Networks"](https://arxiv.org/abs/1705.02355), Paganini et al 2017
+- ["Sukiyaki in French style: A novel system for transformation of dietary patterns"](https://arxiv.org/abs/1705.03487), Kazama et al 2017 (word2vec)
+- ["Hard Mixtures of Experts for Large Scale Weakly Supervised Vision"](https://arxiv.org/abs/1704.06363), Gross et al 2017 (scaling CNNs to 500m+ images by sharding)
+- ["DeepXplore: Automated Whitebox Testing of Deep Learning Systems"](https://arxiv.org/abs/1705.06640), Pei et al 2017
+- ["AIXIjs: A Software Demo for General Reinforcement Learning"](https://arxiv.org/abs/1705.07615), Aslanides 2017 ([source repo](https://github.com/aslanides/aixijs))
 
 Statistics/meta-science/mathematics:
 
