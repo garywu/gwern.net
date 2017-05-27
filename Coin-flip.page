@@ -9,9 +9,11 @@ confidence: likely
 importance: 8
 ...
 
-<!-- TODO: when finished, email "Victor Haghani" <victor@elmfunds.com> / "Richard Dewey" <rld2126@columbia.edu> -->
-
-> Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion as their strategy. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays. We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming in R, Haskell, and C, and provide Python implementations for the OpenAI Gym collection. We find that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6. The relative advantage of the decision tree strategy depends on the number of bets: it is highest when the player can make few bets (at _b_=23, with a difference of ~\$36), and decreases with number of bets as more strategies hit the ceiling. In the variant of this game where subjects are not told the exact edge of 60%, a Bayesian decision tree approach shows that performance can closely approach that of the decision tree, with a penalty for 1 plausible prior of only \$1.
+> Haghani & Dewey 2016 experiment with a double-or-nothing coin-flipping game where the player starts with \$25 and has an edge of 60%, and can play 300 times, choosing how much to bet each time, winning up to a maximum ceiling of \$250. Most of their subjects fail to play well, earning an average \$91, compared to Haghani & Dewey 2016's heuristic benchmark of ~\$240 in winnings achievable using a modified Kelly Criterion as their strategy. The KC, however, is not optimal for this problem as it ignores the ceiling and limited number of plays.
+>
+> We solve the problem of the value of optimal play exactly by using decision trees & dynamic programming for calculating the value function, with implementations in R, Haskell, and C. We also provide a closed-form exact value formula in R & Python, several approximations using Monte Carlo/random forests/neural networks, visualizations of the value function, and a Python implementation of the game for the OpenAI Gym collection. We find that optimal play yields \$246.61 on average (rather than ~\$240), and so the human players actually earned only 36.8% of what was possible, losing \$155.6 in potential profit. Comparing decision trees and the Kelly criterion for various horizons (bets left), the relative advantage of the decision tree strategy depends on the horizon: it is highest when the player can make few bets (at _b_=23, with a difference of ~\$36), and decreases with number of bets as more strategies hit the ceiling.
+>
+> In the Kelly game, the maximum winnings, number of rounds, and edge are fixed; we describe a more difficult generalized version in which the 3 parameters are drawn from Pareto, normal, and beta distributions and are unknown to the player (who can use Bayesian inference to try to estimate them during play). Upper and lower bounds are estimated on the value of this game. In the variant of this game where subjects are not told the exact edge of 60%, a Bayesian decision tree approach shows that performance can closely approach that of the decision tree, with a penalty for 1 plausible prior of only \$1. Two deep reinforcement learning agents, DQN & DDPG, are implemented but DQN fails to learn and DDPG doesn't show acceptable performance, indicating better deep RL methods may be required to solve the generalized Kelly game.
 
 # Background
 ## Set up
@@ -2032,7 +2034,10 @@ for n in range(0,1000):
     env._reset()
 
 print sum(rewards)/len(rewards)
+# 140.642807947
 ~~~
+
+In the general game, it performs poorly because it self-limits to \$250 in the many games where the max cap is higher, and it often wipes out to \$0 in games where the edge is small or negative.
 
 ## Deep RL
 
