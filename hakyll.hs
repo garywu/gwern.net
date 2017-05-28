@@ -1025,6 +1025,8 @@ brokenLinks = [
  , ("docs/spacedrepetition/2001-maquet.PDF", "/docs/spacedrepetition/2001-maquet.pdf")
  , ("docs/spacedrepetition/2010-seamon.pdfJohn", "/docs/spacedrepetition/2010-seamon.pdf")
  , ("docs/spacedrepetition/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/spacedrepetition")
+ , ("docs/iodine/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/iodine")
+ , ("docs/modafinil/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/modafinil")
  , ("docs/sr/2016-06-02-heraldscotland-topixt.mht", "/docs/sr/2016-06-02-heraldscotland-topix2.mht")
  , ("docs/sr/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/sr")
  , ("docs/sr/modafinil/2013-05-28.tar.xz", "/docs/modafinil/blackmarkets/2013-05-28.tar.xz")
@@ -1149,4 +1151,8 @@ brokenLinks = [
  , ("docs/1998-feist.pdf.", "/docs/1998-feist.pdf")
  , ("docs/iq2015-strenze.pdf", "/docs/iq/2015-strenze.pdf")
  , ("docs/statistics/1994-fal", "/docs/statistics/1994-falk")
+ , ("docs/1967-shockley.pdf", "/docs/1957-shockley.pdf")
+ , ("docs/1999-murphy.pdf&ie=utf-8&oe=utf-8&gws_rd=cr&ei=LDQoWcSCAsq7jwTpkrWoBA", "/docs/1999-murphy.pdf")
+ , ("plastinationfa", "/plastination")
+ , ("Tool All", "/Tool%20AI")
  ]
