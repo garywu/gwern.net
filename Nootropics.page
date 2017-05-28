@@ -48,18 +48,17 @@ What I see as being the relevant trends are a combination of these trends:
 
 ## Defaults
 
-I do recommend a few things, like [modafinil](Modafinil) or [melatonin](Melatonin), to many adults, albeit with misgivings about any attempt to generalize like that. (It's also often a good idea to get powders, see the [appendix](#powder-advantages).) Some of those people are helped; some have told me that they tried and the suggestion did little or nothing. I view nootropics as akin to a biological lottery; one good discovery pays for all. I forge on in the hopes of further striking gold in my particular biology. Your mileage will vary. All you have to do, all you can do is to [just try it](http://lesswrong.com/lw/5a5/no_seriously_just_try_it/). Most of my experiences were in my 20s as a right-handed 5'11 white male weighing 190-220lbs, fitness varying over time from not-so-fit to fairly fit. In rough order of *personal* effectiveness, I rank them as follows:
+I do recommend a few things, like [modafinil](Modafinil) or [melatonin](Melatonin), to many adults, albeit with misgivings about any attempt to generalize like that. (It's also often a good idea to get powders, see the [appendix](#powder-advantages).) Some of those people are helped; some have told me that they tried and the suggestion did little or nothing. I view nootropics as akin to a biological lottery; one good discovery pays for all. I forge on in the hopes of further striking gold in my particular biology. Your mileage will vary. All you have to do, all you can do is to [just try it](http://lesswrong.com/lw/5a5/no_seriously_just_try_it/). Most of my experiences were in my 20s as a right-handed 5'11 white male weighing 190-220lbs, fitness varying over time from not-so-fit to fairly fit. In rough order of *personal* effectiveness weighted by costs+side-effects, I rank them as follows:
 
-1. [Modafinil](#modafinil)/[armodafinil](#armodafinil)
-2. [Melatonin](#melatonin)
-3. [Caffeine](#caffeine)+[theanine](#theanine)
-3. [Nicotine](#nicotine)
-4. [Piracetam](#piracetam)+choline
-5. [Vitamin D](#vitamin-d)
-6. [Sulbutiamine](#sulbutiamine)
-7. [Fish oil](#fish-oil)
+1. [Modafinil](#modafinil)/[armodafinil](#armodafinil) (less than weekly for overnight; skipping days for day use)
+2. [Melatonin](#melatonin) (daily)
+3. [Caffeine](#caffeine)+[theanine](#theanine) (daily)
+3. [Nicotine](#nicotine) (weekly)
+4. [Piracetam](#piracetam)+choline (daily)
+5. [Vitamin D](#vitamin-d) (daily)
+6. [Sulbutiamine](#sulbutiamine) (daily)
 
-(People aged <=18 shouldn't be using any of this except harmless stuff - where one may have nutritional deficits - like fish oil & vitamin D; melatonin may be useful,b thanks to the effects of screwed-up school schedules & electronics use on teenagers' sleep. Changes in effects with age are real - amphetamines' stimulant effects and modafinil's histamine-like side-effects come to mind as examples.)
+(People aged <=18 shouldn't be using any of this except harmless stuff - where one may have nutritional deficits - like fish oil & vitamin D; melatonin may be especially useful, thanks to the effects of screwed-up school schedules & electronics use on teenagers' sleep. Changes in effects with age are real - amphetamines' stimulant effects and modafinil's histamine-like side-effects come to mind as examples.)
 
 # Acetyl-l-carnitine (ALCAR)
 
@@ -254,7 +253,7 @@ Discussions of PEA mention that it's almost useless without a [MAOI](!Wikipedia 
 
 1. [slows](/docs/nootropics/2004-lesk.pdf "'Caffeine, priming, and tip of the tongue: evidence for plasticity in the phonological system', Lesk & Womble 2004") memory retrieval for unprimed memories (although it speeds retrieval for related/primed memories)
 2. the usual U-curve applies to caffeine doses: eg while a small dose of caffeine in energy drinks substantially improves reaction-time in the [cued go/no-go task](http://www.apa.org/pubs/journals/releases/pha-18-6-553.pdf "'Acute Effects of a Glucose Energy Drink on Behavioral Control', Howard & Marczinski 2010"), higher doses improve reaction-time less and are much closer to baseline (their optimal tested dose is, for my weight of 93kg, ~100mg)
-3. caffeine damages sleep (necessary for memory and alertness), even [6 hours before sleep](http://web.archive.org/web/20130113015023/http://blog.myzeo.com/wp-content/uploads/2011/07/Drake-et-al._Caffeine_2010_APSS-1.pdf "'The effects of caffeine given 0, 3, or 6 hours before bed on objective sleep parameters measured in the home', Drake et al 2010")
+3. caffeine damages sleep (necessary for memory and alertness), even [6 hours before sleep](/docs/zeo/2010-drake.pdf "'The effects of caffeine given 0, 3, or 6 hours before bed on objective sleep parameters measured in the home', Drake et al 2010")
 4. very low doses (9mg) of caffeine [can still have negative effects](/docs/nootropics/2008-haskell.pdf "'Caffeine at levels found in decaffeinated beverages is behaviourally active', Haskell et al 2008")
 5. did I mention that it correlates with changed [estrogen levels in women](http://ajcn.nutrition.org/content/95/2/488.long "'Caffeinated beverage intake and reproductive hormones among premenopausal women in the BioCycle Study', Schliep et al 2012")?
 6. in rats, it [inhibits](http://jtoomim.org/brain-training/han2007-caffeine-hurts-learning.pdf "'Inhibitory effects of caffeine on hippocampal neurogenesis and function', Han et al 2007") memory formation in the [hippocampus](!Wikipedia) [and](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2743873/ "'Caffeine alters proliferation of neuronal precursors in the adult hippocampus', Wentz & Magavi 2010" ) [in](/docs/nootropics/1997-marret.pdf "'Caffeine-induced disturbances of early neurogenesis in whole mouse embryo cultures', Marret et al 1997") [mice](http://www.scielo.br/pdf/bjmbr/v35n10/4559.pdf "'Effects of caffeine on learning and memory in rats tested in the Morris water maze', Angelucci et al 2002"), although other mice saw [mental benefits](/docs/nootropics/2011-abreu.pdf "'Chronic coffee and caffeine ingestion effects on the cognitive function and antioxidant system of rat brains', Abreu et al 2011") with improvement to "long-term memory when tested with object recognition"
@@ -3799,7 +3798,14 @@ dosage: 100mg increments, <700mg total
 02 June, 2x100mg
 15 June, 2x100mg
 2017
-28 February, 2x100mg?
+28 February, 2x100mg
+21 May, 1x100mg
+22 May, 1x100mg
+23 May, 1x100mg
+24 May, 1x100mg
+25 May, 1x100mg
+26 May, 1x100mg
+27 May, 1x100mg; last day, ran out
 -->
 
 <!-- # Semax
@@ -4031,7 +4037,17 @@ oral dosage typically 3x12.5mg=37.5mg daily
 15 May: 2x
 16 May: 2x
 17 May: 2x
-18 May: 2x?
+18 May: 2x
+19 May: 2x
+20 May: 2x
+21 May: 2x
+22 May: 2x
+23 May: 2x
+24 May: 2x
+25 May: 2x
+26 May: 2x
+27 May: 2x
+28 May: 2x?
 -->
 
 <!-- # Insulin

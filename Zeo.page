@@ -118,6 +118,8 @@ A Zeo is a scaled-down (one-electrode) [EEG](!Wikipedia) sensor-headband, which 
     - ["Validation of an Automated Wireless System for Sleep Monitoring During Daytime Naps"](/docs/zeo/2014-cellini.pdf), Cellini et al 2014
     - ["Alternatives to polysomnography (PSG): A validation of wrist actigraphy and a partial-PSG system"](/docs/zeo/2014-kosmadopoulos.pdf), Kosmadopoulos et al 2014
 
+    Also relevant: ["Comparing 10 Sleep Trackers (2017): How well do they track your sleep? A 9-day minute-by-minute comparison"](http://sleep.cs.brown.edu/comparison/).
+
 The data is much better than what you would get from more popular methods like cellphones with accelerometers, since an accelerometer only knows if you are moving or not, which isn't a very reliable indicator of sleep[^Fitbit]. (You could just be lying there staring at the ceiling, wide awake. Or perhaps the cat is kneading you while you are in light sleep.) As well, half the interest is how exactly sleep phases are arranged and how long the cycles are; you could use that information to devise [a custom polyphasic schedule](http://web.archive.org/web/20130528120222/http://blog.myzeo.com/sleeping-round-the-clock-a-polyphasic-experiment/) or just figure out a better nap length than the rule-of-thumb of 20 minutes. And the price isn't *too* bad - $150 for the normal Zeo as of February 2012. (The basic mobile Zeo is much cheaper, but I've seen people complain about it and apparently it doesn't collect the same data as more expensive mobile version or the original bedside unit.)
 
 [^Fitbit]: The cheaper alternative to the Zeo would be the [Fitbit](!Wikipedia), the most popular of the many accelerometers on the market. There aren't many comparisons; [Diana Sherman](http://www.healthyobsessions.net/2010/11/fitbit-zeo-sleep-cycle-1/) compared one night, [Joe Betts-LaCroix](http://vimeo.com/28735982) compared ~38 nights of data, and [Christopher Winter](http://www.huffingtonpost.com/dr-christopher-winter/sleep-tips_b_4792760.html "Personal Sleep Monitors: Do They Work?") compared one night of polysomnography, Philips Actiwatch Spectrum (actigraphy), Basis Chrome (movement, heart-rate, others), and the Jawbone Up & FitBit Flex & iPhone+"24/7" (actigraphy). In the previous cases, the Fitbit seemed to be pretty similar to the Zeo at estimating total sleep time (the only thing it can measure). Betts-LaCroix explicitly recommends the Zeo, but I'm not clear on whether that is due to the better data quality or because Fitbit made it hard to impossible for him to extract the detailed Fitbit data while Zeo offers easy exporting. Similarly, in her [2013 Amsterdam talk](http://sleepingwithtechnology.com/2013/04/09/speaking-quantified-self-conference-amsterdam-may-11-12-2013/), Christel De Maeyer presents her sleep data summaries (means) from two disjoint time periods using the Zeo and the [BodyMedia](!Wikipedia) accelerometer band which were comparable for total sleep estimates. In any case, I already have the Zeo and I've come to like the detailed information.
@@ -3563,13 +3565,45 @@ April
 25: 1 1
 26: 0 1
 27: 0 1
+28: 0 0
+29: 1 0
+30: 0 1
+May
+01: 1 0
+02: 0 1
+03: 1 1
+04: 0 1
+05: 0 1
+06: 0 1
+07: 0 0
+08: 1 1
+09: 0 0
+10: 0 1
+11: 1 0
+12: 0 1
+13: 1 0
+14: 0 1
+15: 1 0
+16: 1 1
+17: 0 1
+18: 1 1
+19: 1 0
+20: 0 0
+21: 0 1
+22: 1 0
+23: 0 0
+24: 1 0
+25: 0 0
+26: 0 0
+27: 1 1
+28: 1 0?
 -->
 
 <!-- Alcohol
 2014: 18, 22, 23, 24, 26, 27, 30 July 2014; 1, 4, 5, 8, 11, 12, 14, 16, 17, 19, 21, 23, 25, 27, 30 August 2014; 3, 4, 6, 9, 10, 12, 15, 18, 19, 20, 27 September 2014; 1, 8, 9, 10, 12, 20, 22, 24, 29 October; 3, 4, 6, 8, 10, 13, 14, 15, 16, 20, 21, 22, 24, 25, 26, 27 November 2014; 1, 22 December 2014;
 2015: 05, 07, 09, 12, 14, 16, 30, 31 January; 7, 14 February; 9 March; 2, 3, 4, 5 April; 22, 23 May; 26, 27, 28 June; 19, 20 July; 8, 24, 25, 26, 27, 28, 29 August; 3, 4, 25, 26 September; 7, 8 October; 9, 24, 26, 27, 30 December;
 2016: 5, 7 10, 11, 13, 19, 27, 31 January; 2, 13, 17, 19, 21, 23, 25, 26, 28 February; 1, 3, 4, 7, 9, 11, 14, 16, 17, 20, 26 March, 8, 16, 27, 28 May; 3, 5, 18 June; 4, 21, 29 July; 1, 4, 8, 9, 13, 17, 19, 20, 22, 24, 28, 30 August, 1, 3, 6, 9, 17, 19, 21, 22, 24, 25, 27, 29 September; 1, 2, 4, 5, 11, 16, 18, 22, 24, 29 October; 1, 5, 8, 10, 11, 13 November; 24, 27, 30, 31 December 2016
-2017: 1, 4, 6, 8, 9, 12, 14, 15, 17, 21, 25, 27, 30 January; 9, 17, 19, 22, 27 February; 3, 6, 7, 9, 10 March; 20, 25 April -->
+2017: 1, 4, 6, 8, 9, 12, 14, 15, 17, 21, 25, 27, 30 January; 9, 17, 19, 22, 27 February; 3, 6, 7, 9, 10 March; 20, 25 April; 7 May -->
 <!-- melatonin: last night of Now's melatonin+niacin+B6+magnesium 19 Feb 2014; began Nature's Bounty 1mg 21 March 2014, ran out 24 July 2016; began Rexall 3mg 13 August 2016 -->
 <!-- vitamin D: last day 4 August 2014 -->
 <!-- added aluminum foil to bedroom, 9 August 2014; added foil foam insulation to windows >8 August 2015; removed most aluminum foil from windows 19 October 2016 as redundant & causing mold -->
