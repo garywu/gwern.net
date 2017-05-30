@@ -1155,4 +1155,5 @@ brokenLinks = [
  , ("docs/1999-murphy.pdf&ie=utf-8&oe=utf-8&gws_rd=cr&ei=LDQoWcSCAsq7jwTpkrWoBA", "/docs/1999-murphy.pdf")
  , ("plastinationfa", "/plastination")
  , ("Tool All", "/Tool%20AI")
+ , ("docs/2012-sleesman.pdf", "/docs/sunkcosts/2012-sleesman.pdf")
  ]
