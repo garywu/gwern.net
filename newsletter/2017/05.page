@@ -20,21 +20,26 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 Everything is heritable:
 
-- ["GWAS of 78,308 individuals identifies new loci and genes influencing human intelligence"](https://www.gwern.net/docs//iq/2017-sniekers.pdf), Sniekers et al 2017
+- ["GWAS of 78,308 individuals identifies new loci and genes influencing human intelligence"](https://www.gwern.net/docs/iq/2017-sniekers.pdf), Sniekers et al 2017
 - ["Metabolic basis to Sherpa altitude adaptation"](https://www.gwern.net/docs/genetics//2017-horscroft.pdf), Horscroft et al 2017 ([media](http://www.bbc.co.uk/news/science-environment-40006803))
-- ["Babies From Skin Cells? Prospect Is Unsettling to Some Experts"](https://www.nytimes.com/2017/05/16/health/ivg-reproductive-technology.html)
 - ["Genetic Predisposition to Obesity and Medicare Expenditures"](https://www.gwern.net/docs/genetics/2017-wehby.pdf), Wehby et al 2017
+- ["Behavioural individuality in clonal fish arises despite near-identical rearing conditions"](https://www.nature.com/articles/ncomms15361), Bierbach et al 2017 (What is non-shared-environment? It's random development noise.)
+- ["Babies From Skin Cells? Prospect Is Unsettling to Some Experts"](https://www.nytimes.com/2017/05/16/health/ivg-reproductive-technology.html) (progress towards IES)
 
 AI:
 
 - ["Inferring and Executing Programs for Visual Reasoning"](https://arxiv.org/abs/1705.03633), Johnson et al 2017
 - ["Bayesian Reinforcement Learning: A Survey"](https://arxiv.org/abs/1609.04436), Ghavamzadeh et al 2016
-- reinforcement learning research is coming out too frequently to single out more than a few papers; see [subscribe to the /r/ReinforcementLearning](https://www.reddit.com/r/reinforcementlearning/)/[/r/DecisionTheory](https://www.reddit.com/r/DecisionTheory/) subreddits for updates
+
+    - reinforcement learning research is coming out too frequently to single out more than a few papers; see [subscribe to the /r/ReinforcementLearning](https://www.reddit.com/r/reinforcementlearning/) & [/r/DecisionTheory](https://www.reddit.com/r/DecisionTheory/) subreddits for updates
+- ["Deep Voice 2: Multi-Speaker Neural Text-to-Speech"](http://research.baidu.com/wp-content/uploads/2017/05/Deep-Voice-2-Complete-Arxiv.pdf), Arik et al 2017 (another one already; [audio samples](http://research.baidu.com/deep-voice-2-multi-speaker-neural-text-speech/))
 - ["CaloGAN: Simulating 3D High Energy Particle Showers in Multi-Layer Electromagnetic Calorimeters with Generative Adversarial Networks"](https://arxiv.org/abs/1705.02355), Paganini et al 2017
-- ["Sukiyaki in French style: A novel system for transformation of dietary patterns"](https://arxiv.org/abs/1705.03487), Kazama et al 2017 (word2vec)
 - ["Hard Mixtures of Experts for Large Scale Weakly Supervised Vision"](https://arxiv.org/abs/1704.06363), Gross et al 2017 (scaling CNNs to 500m+ images by sharding)
 - ["DeepXplore: Automated Whitebox Testing of Deep Learning Systems"](https://arxiv.org/abs/1705.06640), Pei et al 2017
-- ["AIXIjs: A Software Demo for General Reinforcement Learning"](https://arxiv.org/abs/1705.07615), Aslanides 2017 ([source repo](https://github.com/aslanides/aixijs))
+- ["Visual Semantic Planning using Deep Successor Representations"](https://arxiv.org/abs/1705.08080), Zhu et al 2017 ([video](https://www.youtube.com/watch?v=_2pYVw6ATKo))
+- ["AIXIjs: A Software Demo for General Reinforcement Learning"](https://arxiv.org/abs/1705.07615), Aslanides 2017 ([source repo](https://github.com/aslanides/aixijs); [live demos](http://aslanides.io/aixijs/demo.html))
+- ["When Will AI Exceed Human Performance? Evidence from AI Experts"](https://arxiv.org/abs/1705.08807), Grace et al 2017
+- ["Sukiyaki in French style: A novel system for transformation of dietary patterns"](https://arxiv.org/abs/1705.03487), Kazama et al 2017 (word2vec)
 
 Statistics/meta-science/mathematics:
 
@@ -44,15 +49,20 @@ Statistics/meta-science/mathematics:
 
 Politics/religion:
 
-- ["Some Case Studies in Early Field Growth"](http://www.openphilanthropy.org/research/history-of-philanthropy/some-case-studies-early-field-growth)
+- ["Self-Censorship in Public Discourse: A Theory of 'Political Correctness' and Related Phenomena"](https://www.brown.edu/Departments/Economics/Faculty/Glenn_Loury/louryhomepage/papers/Loury_Political_Correctness.pdf), Loury 1994
+- ["Some Case Studies in Early Field Growth"](http://www.openphilanthropy.org/research/history-of-philanthropy/some-case-studies-early-field-growth) (how did "bioethics" so successfully hijack medicine & biology?)
 
 Psychology/biology:
 
+- ["The Effects of Education, Personality, and IQ on Earnings of High-Ability Men"](https://www.gwern.net/docs/iq/2011-gensowski.pdf), Gensowski et al 2011
 - [On child psychopathy](https://www.theatlantic.com/magazine/archive/2017/06/when-your-child-is-a-psychopath/524502/)
+- ["Cleaning up the big muddy: a meta-analytic review of the determinants of escalation of commitment"](https://www.gwern.net/docs/sunkcosts/2012-sleesman.pdf), Sleesman 2012 (Sunk cost bias may not be any one thing but a variety of things driving the same apparent behavior in various contexts, especially organizational.)
 
 Technology:
 
 - ["Eternity in six hours: Intergalactic spreading of intelligent life and sharpening the Fermi paradox"](https://pdfs.semanticscholar.org/847d/8dabb12f67124868af0876c77538e4fd1c60.pdf), Armstrong & Sandberg 2013
+- ["An empirical study on the correctness of formally verified distributed systems"](https://blog.acolyer.org/2017/05/29/an-empirical-study-on-the-correctness-of-formally-verified-distributed-systems/) (Who verifies the verifiers?)
+- ["A Thinking Ape's Critique of Trans-Simianism"](http://dresdencodak.com/2009/05/15/a-thinking-apes-critique-of-trans-simianism-repost/)
 - [List of Greek and Roman architectural records](https://en.wikipedia.org/wiki/List_of_Greek_and_Roman_architectural_records)
 - ["The Tinkerings of Robert Noyce: How the Sun Rose on Silicon Valley"](https://web.stanford.edu/class/e145/2007_fall/materials/noyce.html), Wolfe 1983
 - ["carpalx - design your own keyboard"](http://mkweb.bcgsc.ca/carpalx/) (Simulated annealing for optimizing keyboard layout.)
@@ -66,6 +76,7 @@ Economics:
 
 Philosophy:
 
+- ["What Do Philosophers Believe?"](https://philpapers.org/archive/bouwdp), Bourget & Chalmers 2013
 - ["Carvaka"](http://www.humanistictexts.org/carvaka.htm)
 
 Fiction:
@@ -119,14 +130,19 @@ Touhou:
 - ["酔夢奇譚"](https://www.youtube.com/watch?v=niM3-Lhpsx8) (SOUND HOLIC; _TOHO PIANISM III_ {C91}) [classical]
 - ["Desire=desirE"](https://www.youtube.com/watch?v=rlNDUw9eYTE) (SOUND HOLIC; _TOHO PIANISM III_ {C91}) [classical]
 - ["Lost ■"](https://www.youtube.com/watch?v=M4iE1glmMbg) (RD-Sounds feat. めらみぽっぷ; _Void_ {C91}) [vocal]
+- ["感情の摩天楼 [Tropical House]"](https://www.youtube.com/watch?v=njtybR6XHOY) (Spacelectro; _東方インストEDM3_ {C90}) [house]
 - ["The White Sea"](https://www.youtube.com/watch?v=ze4uwCERv6Q) (LEMiao feat. 瑶山百霊 (Yaoshanbailing); _無名の楽園 〜 Piano Arrange Collection Vol.1_ {C91}) [classical]
 - ["無名の楽園"](https://www.youtube.com/watch?v=J6WTwf10PTo) (LEMiao feat. 瑶山百霊 (Yaoshanbailing); _無名の楽園 〜 Piano Arrange Collection Vol.1_ {C91}) [classical]
 - ["The Gensokyo The Gods Loved"](https://www.youtube.com/watch?v=Y_qYzGr08PE) (LEMiao feat. 流月; _無名の楽園 〜 Piano Arrange Collection Vol.1_ {C91}) [classical]
-- ["Rosarium (Piano Arrange Ver.)"](https://www.youtube.com/watch?v=A4zlH2mzMHw) (LEMiao feat. 瑶山百霊 (Yaoshanbailing); '無名の楽園 〜 Piano Arrange Collection Vol.1' {C91}) [classical]
-
-Vocaloid:
+- ["Rosarium (Piano Arrange Ver.)"](https://www.youtube.com/watch?v=A4zlH2mzMHw) (LEMiao feat. 瑶山百霊 (Yaoshanbailing); _無名の楽園 〜 Piano Arrange Collection Vol.1_ {C91}) [classical]
+- ["Innocent Memory (Piano Arrange Ver.)"](https://www.youtube.com/watch?v=CD_abkMAh-g) (LEMiao feat. 瑶山百霊 (Yaoshanbailing); _無名の楽園 〜 Piano Arrange Collection Vol.1_ {C91}) [classical]
+- ["埃に埋もれた詩"](https://www.youtube.com/watch?v=2qTy0AnMels) (LEMiao feat. 瑶山百霊 (Yaoshanbailing); _無名の楽園 〜 Piano Arrange Collection Vol.1_ {C91}) [classical]
 
 Doujin:
 
 - ["マトーヤの洞窟"](https://www.dropbox.com/s/58zog967e5cgox0/%E3%81%84%E3%82%93%E3%82%84%E3%82%93-lifeofishgard-%E3%83%9E%E3%83%88%E3%83%BC%E3%83%A4%E3%81%AE%E6%B4%9E%E7%AA%9F.ogg) (いんやん; _Life of Ishgard_ {C91}) [electronic]
 - ["White Bleath and Brilliant Star"](https://www.dropbox.com/s/o90bv23teanuohe/syuichik-lifeofishgard-whitebleathandbrilliantstar.ogg) (Syuichi.K; _Life of Ishgard_ {C91}) [electronic]
+
+Vocaloid:
+
+- ["OPENINGTHEME"](https://www.youtube.com/watch?v=Pqr7x2ZJVbU) (Calla Soiled feat. Miku; _THREELAYERSTRUCTURETHEORY_ {2012}) [trance]

@@ -287,6 +287,7 @@ If one wants to put limits on the ability of an AI by way of computational resou
 
 # External links
 
+- ["A Thinking Ape's Critique of Trans-Simianism"](http://dresdencodak.com/2009/05/15/a-thinking-apes-critique-of-trans-simianism-repost/); ["On the Impossibility of Supersized Machines"](https://philpapers.org/archive/GAROTI-3.pdf), Garfinkel et al 2017
 - ["Modeling intelligence as a project-specific factor of production"](http://modelingtheworld.benjaminrosshoffman.com/intelligence-project-specific-factor-production)
 - ["What if you turned the world's hardware into AI minds?"](http://aiimpacts.org/what-if-you-turned-the-worlds-hardware-into-ai-minds/)
 - ["How Feasible Is the Rapid Development of Artificial Superintelligence?"](https://foundational-research.org/how-feasible-is-rapid-development-artificial-superintelligence)
@@ -317,7 +318,7 @@ similar Motorola system-on-a-chip (Motorola X8 Mobile Computing System)
 with little sign that the trend towards ASICs for many tasks
 http://www.geek.com/chips/you-can-wake-up-an-intel-skylake-powered-pc-by-talking-to-it-1631530/
 GPU several hundred cores
-controllers for tape drives, hard drives, flash drives: on-disk firmware with embedded processor for remapping sectors
+controllers for tape drives, hard drives, flash drives: on-disk firmware with embedded processor for remapping sectors https://leaksource.files.wordpress.com/2013/12/nsa-ant-iratemonk.jpg https://spritesmods.com/?art=hddhack&page=1
 network chip independent processing DMA
 (This sort of independence is why features like Wake-on-LAN or netboot work.)
 cellphone: in addition to all the other units, there is an independent baseband processor running a proprietary realtime OS for handling radio communications with the cellular towers/GPS/other things, or possibly more than one virtualized using something like L4 http://boston.conman.org/2013/01/22.2
