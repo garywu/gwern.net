@@ -504,6 +504,14 @@ Additional citations are welcome.
 > - Harman, H. H. (1960). _Modern factor analysis_. Chicago: University of Chicago Press.
 > - McClosky, Herbert, & Meehl, P. E. (in preparation). _Ideologies in conflict_.^[This work does not seem to have been published.]
 
+# Raftery 1995
+
+["Bayesian Model Selection in Social Research (with Discussion by Andrew Gelman & Donald B. Rubin, and Robert M. Hauser, and a Rejoinder)"](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.42.198):
+
+> In the past 15 years, however, some quantitative sociologists have been attaching less importance to P -values because of practical difficulties and counter-intuitive results. These difficulties are most apparent with large samples, where _p_-values tend to indicate rejection of the null hypothesis even when the null model seems reasonable theoretically and inspection of the data fails to reveal any striking discrepancies with it. Because much sociological research is based on survey data, often with thousands of cases, sociologists frequently come up against this problem. In the early 1980s, some sociologists dealt with this problem by ignoring the results of _p_-value-based tests when they seemed counter-intuitive, and by basing model selection instead on theoretical considerations and informal assessment of discrepancies between model and data (e.g. Fienberg and Mason, 1979; Hout, 1983, 1984; Grusky and Hauser, 1984).
+>
+> ...It is clear that models 1 and 2 are unsatisfactory and should be rejected in favor of model 3. 3 By the standard test, model 3 should also be rejected, in favor of model 4, given the deviance difference of 150 on 16 degrees of freedom, corresponding to a _p_-value of about 10^-120^ . Grusky and Hauser (1984) nevertheless adopted model 3 because it explains most (99.7%) of the deviance under the baseline model of independence, fits well in the sense that the differences between observed and expected counts are a small proportion of the total, and makes good theoretical sense. This seems sensible, and yet is in dramatic conflict with the _p_-value-based test. This type of conflict often arises in large samples, and hence is frequent in sociology with its survey data sets comprising thousands of cases. The main response to it has been to claim that there is a distinction between "statistical" and "substantive" significance, with differences that are statistically significant not necessarily being substantively important.
+
 ### Gelman
 
 ["Type 1, type 2, type S, and type M errors"](http://andrewgelman.com/2004/12/29/type_1_type_2_t/)
@@ -519,7 +527,6 @@ Additional citations are welcome.
 ["Bayesian Statistics Then and Now"](http://stat.columbia.edu/~gelman/research/published/gelman_discussion_of_efron.pdf):
 
 > My third meta-principle is that *different applications demand different philosophies*. This principle comes up for me in Efron's discussion of hypothesis testing and the so-called false discovery rate, which I label as "so-called" for the following reason. In Efron's formulation (which follows the classical multiple comparisons literature), a "false discovery" is a zero effect that is identified as nonzero, whereas, in my own work, I never study zero effects. The effects I study are sometimes small but it would be silly, for example, to suppose that the difference in voting patterns of men and women (after controlling for some other variables) could be exactly zero. My problems with the "false discovery" formulation are partly a matter of taste, I'm sure, but I believe they also arise from the difference between problems in genetics (in which some genes really have essentially zero effects on some traits, so that the classical hypothesis-testing model is plausible) and in social science and environmental health (where essentially everything is connected to everything else, and effect sizes follow a continuous distribution rather than a mix of large effects and near-exact zeroes).
-
 
 ### Gelman 2010
 
