@@ -511,10 +511,10 @@ Joshua Morgan         M   26                       seller                       
                                                    seller                                      Sweden                                                                                2015-06-10
                                                    seller                                      Sweden                                                                                2015-06-10
 Beau Wattigney        M   30  PurpleLotus          seller    Silk Road 1                       USA         Louisiana      counterfeit coupons                       FALSE 2015-05-28 2015-05-28
-                      M   29                       seller                                      Norway                     marijuana                                 TRUE  2015-06-09 2015-06-09      Media mentions that Thor is 29yo; rest are 29-31; I infer that to be a range, there must be a 30yo as well.
-                      M   29                       seller                                      Norway                     marijuana                                 TRUE  2015-06-09 2015-06-09
-                      M   30                       seller                                      Norway                     marijuana                                 TRUE  2015-06-09 2015-06-09
-                      M   31                       seller                                      Norway                     marijuana                                 TRUE  2015-06-09 2015-06-09
+                      M   29                       seller    Silk Road 1                       Norway                     marijuana                                 TRUE  2015-06-09 2015-06-09      Media mentions that Thor is 29yo; rest are 29-31; I infer that to be a range, there must be a 30yo as well.
+                      M   29                       seller    Silk Road 1                       Norway                     marijuana                                 TRUE  2015-06-09 2015-06-09
+                      M   30                       seller    Silk Road 1                       Norway                     marijuana                                 TRUE  2015-06-09 2015-06-09
+                      M   31                       seller    Silk Road 1                       Norway                     marijuana                                 TRUE  2015-06-09 2015-06-09
 Darren Hillyer        M   38  Emma                 buyer                                       UK          Milton Keynes  gun                                             2015-07-28 2015-09-10
 Ian MacPhee           M   47                       buyer                                       UK          Devon          gun                                             2015-07-28 2015-09-10      drop for Hillyer
 J Manikantan          M   24                       buyer     Agora                             India       Bengaluru      MDMA, LSD, marijuana                      TRUE  2015-08-06 2015-08-09
@@ -597,7 +597,7 @@ Reiner B.            M    41                       seller                       
 Cary Lee Ogborn      M    50   boatmanstv          buyer     Alphabay                          USA         Texas          bomb, MDMA                                FALSE  2016-09-16 2016-09-19
                                                    seller    Alphabay                                                     bomb                                                        2016-09-19     Entry for the Alphabay seller account which sold to Ogborn and likely was flipped.
 Emil V. Babadjov     M    31   Blime-Sub/BTH-Overdose seller Alphabay, Dream                   USA         California     fentanyl, heroin                          TRUE   2016-12-09 2016-12-15     Also had a profile on Valhalla but it is unclear whether he was the one that created and controlled it (since it has a different public PGP key and Valhalla is known to allow vendor impostors)
-
+Michael C. Paiva     M     30                      buyer     Silk Road 2                       USA         Michigan       LSD, MDMA, DMT, DOM, mushrooms                   2016-12-31 2017-03-09     Unknown arrest date.
 
 # Confirmed
 ## Agora
@@ -1337,6 +1337,9 @@ He was sentenced to [8 years in June 2016](https://assets.documentcloud.org/docu
     >
     > On July 30, 2014, Homeland Security Investigations (HSI) Seattle received information that a user associated with IP address 67.182.142.24 accessed the vendor portal of SR2. Records reveal the IP address was associated with a Comcast internet account registered to Steve Phelps at 4238 163rd Avenue SE - Bellevue, WA 98006. On August 8, 2014, the Washington Department of Licensing reported the following vehicle and driver information for that address:... On August 13, 2014, Homeland Security Investigations initiated surveillance activities on the above address, further observing the blue Volkswagen Beetle, and the white Chevrolet Camero...On October 10, 2014, Homeland Security investigations, assisted by a U.S. Postal Inspector, visited several U.S. Post Offices near 4238 163rd Avenue SE, Bellevue, WA 98006...Another employee at the same location recognized the photograph of Steve Phelps, further stating he may have dropped off a tub of letters for mailing and he drove a blue station wagon... [and so on through to pg9, then the rest seems to be search warrant boilerplate]
 
+Michigan psychedelics buyer Michael Carlton Paiva was arrested in 2016 due to being identified in Operation Onymous as a SR2 buyer for MDMA/25i-NBOMe/DOM/DMT/LSD/Al-LAD/mescaline/"liquid mushrooms" and was [sentenced to 30 months](https://www.justice.gov/usao-wdmi/pr/2017_0309_Paiva "Norton Shores 'Dark Web' Drug Dealer Sentenced To 30 Months In Prison") on 9 March 2017.
+Given the involvement of SR2, being a buyer, and the long delay, he may represent another arrest due to unencrypted PMs.
+
 ## Topix2
 
 On 2 November 2015, 26yo Scottish man David Trail was arrested as part of Operation Onymous and pled guilty in mid-2016 ([1](/docs/sr/2016-06-02-heraldscotland-topix2.mht "Scots 'Sheldon Cooper' admits dealing drugs for bitcoin after FBI sting; http://www.heraldscotland.com/news/homenews/14519842.Scots__Sheldon_Cooper__admits_dealing_drugs_for_bitcoin_after_FBI_sting/"), [2](http://www.edinburghnews.scotsman.com/news/crime/fbi-helps-catch-edinburgh-man-selling-drugs-on-dark-web-1-4139454  "FBI helps catch Edinburgh man selling drugs on 'dark web'")). He may represent one of the missing UK arrests.
@@ -1413,6 +1416,7 @@ On 9 June 2015, the arrest in the "previous days" of 4 men aged 29-31 from "Oslo
 [3](http://www.vg.no/nyheter/innenriks/narkotika/sammenligner-norsk-narkonettverk-med-silk-road/a/23467671/ "Sammenligner norsk narkonettverk med «Silk Road»; Har beslaglagt marihuana og «pulverstoff»; En av siktede var tidligere aksjemegler"),
 [4](http://www.vg.no/nyheter/innenriks/narkotika/fire-paagrepet-for-produksjon-og-nettsalg-av-narkotika/a/23467445/ "Fire pågrepet for produksjon og nettsalg av narkotika")).
 They apparently had been selling marijuana and unspecified other products on the Dark Web for bitcoins, apparently internationally as well as in Norway; which markets, which sellers, and details on how they were caught were not provided.
+[2017 coverage](https://www.rt.com/news/380208-drug-dealers-norway-bitcoin/ "Suspected drug dealers should repay profits in bitcoins – Norwegian prosecutors") of 3 men arrested in Oslo in June 2015 says they sold marijuana on SR1 and other sites, and depended on foreign police assistance (based on seller records/PMs from the SR1 server image?).
 
 ### Scotland
 
