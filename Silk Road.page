@@ -1544,7 +1544,7 @@ Moore has provided his original [R source code](http://lyle.smu.edu/~tylerm/data
 
 ## Estimating DPR's fortune minus expenses & exchange rate
 
-[Ron & Shamir 2013](http://eprint.iacr.org/2013/782 "How Did Dread Pirate Roberts Acquire and Protect His Bitcoin Wealth?"), based on blockchain analysis, estimates SR/DPR earned ฿633,000 in commissions; the [FBI indictment](https://web.archive.org/web/20131127005026/http://www1.icsi.berkeley.edu/~nweaver/UlbrichtCriminalComplaint.pdf) states that it was ฿614,305, presumably based on the seized site databases.
+[Ron & Shamir 2013](http://eprint.iacr.org/2013/782 "How Did Dread Pirate Roberts Acquire and Protect His Bitcoin Wealth?"), based on blockchain analysis, estimates SR/DPR earned ฿633,000 in commissions; the [FBI indictment](/docs/sr/2013-ulbricht-complaint.pdf) states that it was ฿614,305, presumably based on the seized site databases.
 It's [been suggested](http://www.reddit.com/r/Bitcoin/comments/1oaovv/the_postsilk_road_bitcoin_crash_is_over_btc_is/ccqco3g) that the expense of running SR, and the large changes in the exchange rate, may substantially reduce how many bitcoins DPR *actually* could have saved up, possibly to as low as ฿"150-200k".
 (The logic here is that if SR earns commissions of ฿100 in 2011 but needs to pay \$100 of hosting bills, it needs to sell all ฿100 but in 2013, it would need to sell only ฿1.)
 

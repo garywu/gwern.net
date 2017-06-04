@@ -47,7 +47,7 @@ Such a dataset would support many possible uses:
 
 - classification & tagging:
 
-    - image categorization (eg of major characteristics such as franchise or character or SFW/NSFW detection)
+    - image categorization (of major characteristics such as franchise or character or SFW/NSFW detection)
     - image multi-label classification (tagging), exploiting the ~TODO tags per image
 
         - a large-scale testbed for real-world application of active learning / man-machine collaboration
@@ -55,9 +55,9 @@ Such a dataset would support many possible uses:
         - bootstrapping video summaries/descriptions
 - image generation:
 
-    - text-to-image synthesis (eg StackGAN would benefit greatly from the extremely diverse tags)
-    - unsupervised image generation (eg DCGANs, VAEs, PixelCNNs)
-    - image transformation: upscaling (eg waifu2x), colorizing or palette color scheme generation (eg [Colormind](http://colormind.io/ "Colormind – Color schemes via Generative Adversarial Networks")), inpainting, sketch-to-drawing, artistic style transfer, optimization (eg ["Image Synthesis from Yahoo's `open_nsfw`"](https://open_nsfw.gitlab.io/), [pix2pix](https://arxiv.org/abs/1611.07004 "'Image-to-Image Translation with Conditional Adversarial Networks' Isola et al 2016"), [DiscoGAN](https://arxiv.org/abs/1703.05192 "'Learning to Discover Cross-Domain Relations with Generative Adversarial Networks', Kim et al 2017"), [CycleGAN](https://github.com/junyanz/CycleGAN))
+    - text-to-image synthesis (StackGAN would benefit greatly from the extremely diverse tags)
+    - unsupervised image generation (DCGANs, VAEs, PixelCNNs, [WGANs](https://arxiv.org/abs/1704.00028 "'Improved Training of Wasserstein GANs', Gulrajani et al 2017"))
+    - image transformation: upscaling (waifu2x), colorizing ([deepcolor](http://color.kvfrans.com/)/[Frans 2017](https://arxiv.org/abs/1704.08834 "Outline Colorization through Tandem Adversarial Networks")) or palette color scheme generation ([Colormind](http://colormind.io/ "Colormind – Color schemes via Generative Adversarial Networks")), inpainting, sketch-to-drawing ([Simo-Serra et al 2017](https://arxiv.org/abs/1703.08966 "Mastering Sketching: Adversarial Augmentation for Structured Prediction")), artistic style transfer/image analogies ([Liao et al 2017](https://arxiv.org/abs/1705.01088 "Visual Attribute Transfer through Deep Image Analogy")), optimization (["Image Synthesis from Yahoo's `open_nsfw`"](https://open_nsfw.gitlab.io/), [pix2pix](https://arxiv.org/abs/1611.07004 "'Image-to-Image Translation with Conditional Adversarial Networks' Isola et al 2016"), [DiscoGAN](https://arxiv.org/abs/1703.05192 "'Learning to Discover Cross-Domain Relations with Generative Adversarial Networks', Kim et al 2017"), [CycleGAN](https://github.com/junyanz/CycleGAN))
 - image analysis:
 
     - facial detection & localization for drawn images (on which normal techniques such as OpenCV's Harr filters fail)
@@ -65,12 +65,12 @@ Such a dataset would support many possible uses:
     - image-to-text localization, transcription, and translation of text in images
 - image search:
 
-    - collaborative filtering/recommendation, image similarity search (eg [Flickr](https://code.flickr.net/2017/03/07/introducing-similarity-search-at-flickr/ "Introducing Similarity Search at Flickr")) of images (useful for users looking for images, for discovering tag mistakes, and for various diagnostics like checking GANs are not memorizing)
+    - collaborative filtering/recommendation, image similarity search ([Flickr](https://code.flickr.net/2017/03/07/introducing-similarity-search-at-flickr/ "Introducing Similarity Search at Flickr")) of images (useful for users looking for images, for discovering tag mistakes, and for various diagnostics like checking GANs are not memorizing)
     - artist similarity and de-anonymization
 - knowledge graph extraction from tags/tag-implications and images
 
     - clustering tags
-    - temporal trends in tags (eg franchise popularity trends)
+    - temporal trends in tags (franchise popularity trends)
 
 # Advantages
 ## Size and metadata
@@ -79,6 +79,8 @@ Image classification has been supercharged by work on ImageNet, but ImageNet its
 Compounding these limits, tagging/classification datasets are notoriously undiverse & have imbalance problems or are small:
 
 - ImageNet: dog breeds (memorably brought out by [DeepDream](!Wikipedia))
+
+    - [WebVision](http://www.vision.ee.ethz.ch/webvision/index.html) ([Li et al 2017](https://arxiv.org/abs/1705.05640 "WebVision Challenge: Visual Learning and Understanding With Web Data")): 2.4m images noisily classified via search engine/Flicker queries into the ImageNet 1k categories
 - Youtube-BB: [toilets/giraffes](https://twitter.com/karpathy/status/828692612848627713)
 - MS COCO: bathrooms and African savannah animals; 328k images, 80 categories, short 1-sentence descriptions
 - bird/flowers: a few score of each kind (eg no eagles in the birds dataset)
@@ -86,9 +88,10 @@ Compounding these limits, tagging/classification datasets are notoriously undive
 - Pascal VOC: 11k images
 - [Visual Genome](http://visualgenome.org/): 108k images
 
-The external validity of classifiers trained on these datasets is somewhat questionable as the learned discriminative models may collapse or simplify in undesirable ways.
+The external validity of classifiers trained on these datasets is somewhat questionable as the learned discriminative models may collapse or simplify in undesirable ways, and overfit on the datasets' individual biases ([Torralba & Efros 2011](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.208.2314&rep=rep1&type=pdf "Unbiased Look at Dataset Bias")).
 For example, ImageNet classifiers sometimes appear to 'cheat' by relying on textures and simplistic outlines - [recognizing leopards](https://rocknrollnerd.github.io/ml/2015/05/27/leopard-sofa.html "Suddenly, a leopard print sofa appears") only by the color texture of the fur, or believing barbells are extensions of arms.
 The dataset is simply not large enough, or richly annotated enough, to train classifiers or tagger better than that, or, with residual networks reaching human parity, reveal differences between the best algorithms and the merely good.
+(Dataset biases have also been issues on question-answering datasets.)
 As well, the datasets are static, not accepting any additions, better metadata, or corrections.
 Like MNIST before it, ImageNet is verging on 'solved' (the [ILSVRC organizers ended it](http://image-net.org/challenges/beyond_ilsvrc.php "Beyond ImageNet Large Scale Visual Recognition Challenge: July 26th in conjunction with CVPR 2017") after the 2017 competition) and further progress may simply be overfitting to idiosyncrasies of the datapoints and errors; even if lowered error rates are not overfitting, the very low error rates compress the differences between algorithm, giving a misleading view of progress and understating the benefits of better architectures, as improvements become comparable in size to simple chance in initializations/training/validation-set choice.
 As [Dong et al 2017](https://arxiv.org/abs/1703.06676 "I2T2I: Learning Text to Image Synthesis with Textual Data Augmentation") note:
@@ -96,6 +99,7 @@ As [Dong et al 2017](https://arxiv.org/abs/1703.06676 "I2T2I: Learning Text to I
 > It is an open issue of text-to-image mapping  that  the  distribution  of  images  conditioned  on  a  sentence  is  highly  multi-modal.   In  the  past  few  years,  we’ve witnessed a breakthrough in the application of recurrent neural networks (RNN) to generating textual descriptions conditioned on images [1, 2], with Xu et al. showing that the multi-modality problem can be decomposed sequentially [3]. However, the lack of datasets with diversity descriptions of images limits the performance of text-to-image synthesis on multi-categories dataset like MSCOCO [4]. Therefore, the problem of text-to-image synthesis is still far from being solved
 
 In contrast, the Danbooru dataset is TODOx larger than ImageNet as a whole and TODOx larger than the current largest multi-description dataset, MS COCO, with far richer metadata than the 'subject verb object' sentence summary that is dominant in MS COCO.
+While the Danbooru community focuses heavily on female anime characters, they are placed in a wide variety of circumstances with numerous surrounding tagged objects or actions, and the sheer size implies that many more miscellaneous images will be included.
 It is unlikely that the performance ceiling will be reached anytime soon, and advanced techniques such as attention will likely be required to get anywhere near the ceiling.
 And Danbooru is constantly expanding and can be easily updated by anyone anywhere, allowing for regular releases of improved annotations.
 
@@ -222,7 +226,7 @@ Hosting options for 2-3tb typically involve BitTorrent as the best method of dis
 
 The final option appears to be best.
 
-Given the intent, [Academic Torrents](http://academictorrents.com/) is a usable tracker; a backup option would be [Nyaa.se](https://www.nyaa.se/).
+Given the intent, [Academic Torrents](http://academictorrents.com/) is a usable tracker; a backup option would be [Nyaa](https://nyaa.pantsu.cat/).
 
 (Can create the .torrent using [`mktorrent`](http://mktorrent.sourceforge.net/))
 
@@ -272,3 +276,9 @@ There are many open questions about how best to optimize tagging performance: is
 TODO: possible metadata: tag traffic/queries/search? other indicators of tag quality? tags which are often searched for are likely more reliably tagged across the corpus, and can be given a heavier weight in the loss function, or alternately, used to prioritize active learning for obscurer tags richer in errors
 
 TODO tag architecture idea for the loss function: have positive tags (1), 'negative tags' (-1), and absent tags (0), with a training weight of perhaps 0.1 on absent tags. This avoids over penalizing the CNN for bad tagging, while it doesn't learn a degenerate solution like 'predict every tag is present'.
+
+<!-- Contact:
+Andrej Karpathy
+Illustration2Vec authors
+https://www.reddit.com/user/kvfrans
+-->

@@ -931,7 +931,7 @@ scatter3D(df$Wealth, df$Rounds, df$Value, theta=-25, xlab="Wealth", ylab="Rounds
 The value function winds up looking simple, a smooth landscape tucked down at the edges, which is perhaps not too surprising, as the optimal betting patterns tend to be small amounts except when there are very few rounds left (and one should bet most or all of one's wealth) or one is nearing the maximum wealth cap (and should very gradually glide in).
 
 A value function (or the policy function) computed by decision trees is bulky and hard to carry around, weighing perhaps gigabytes in size.
-Looking at this value function, it's clear that it can be easily approximated by another algorithm like random forests or neural networks.
+Looking at this value function, it's clear that we can do model distillation and easily approximate it by another algorithm like random forests or neural networks.
 (Usually, a NN has a hard time learning a value function because it's a reinforcement learning problem where it's unclear how actions are linked to rewards, but in this case, since we can already calculate it, it becomes the far easier setting of supervised learning in mapping a state to a value/policy.)
 
 A random forest works fine, getting 0.4 [RMSE](!Wikipedia):
@@ -1750,7 +1750,7 @@ main = do let evs = map (\(w,b,e,cap) -> memo w b e cap) parameters
        where mean x = sum x / fromIntegral (length x)
 
 maxCap :: Int
-maxCap = 1000
+maxCap = 800
 parameters :: [(Wealth, Bets, Edge, Cap)]
 parameters = map (\(w,b,e,c) -> (w,b,e, max maxCap c))  [(25, 236, 0.72435085557, 205), (25, 237, 0.845435411107, 260), (25, 238, 0.413782110845, 202),
               (25, 240, 0.345133535603, 23999), (25, 240, 0.400147029568, 2521), (25, 242, 0.661912880989, 201), (25, 242, 0.676168121514, 6740),

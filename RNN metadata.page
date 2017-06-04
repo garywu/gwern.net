@@ -657,6 +657,7 @@ Further work:
 # External links
 
 - ["Adventures in Narrated Reality: New forms & interfaces for written language, enabled by machine intelligence"](https://medium.com/artists-and-machine-intelligence/adventures-in-narrated-reality-6516ff395ba3), [II](https://medium.com/artists-and-machine-intelligence/adventures-in-narrated-reality-part-ii-dc585af054cb)
+- ["Learning to Generate Reviews and Discovering Sentiment"](https://arxiv.org/abs/1704.01444), Radford et al 2017 (char-RNNs may discover untangled representations automatically)
 
 # Appendix
 # Geocities char-RNN

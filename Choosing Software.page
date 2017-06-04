@@ -85,7 +85,7 @@ Why? I just liked it better. It has more features, yes (but not significantly mo
 
 What other things should we keep in mind? Well, as time passes, I've found configuration files tend to grow. A good thing to do when a configuration file has grown particularly elaborate is to simplify it.
 
-Slim it done, remove everything you haven't needed in the last several months. If you still have a huge file, see whether a large chunk of it makes sense to split out.
+Slim it down, remove everything you haven't needed in the last several months. If you still have a huge file, see whether a large chunk of it makes sense to split out.
 
 For example, for the Zsh I have: `~/.zshenv`, for environmental variables and shell settings that all Zsh invocations need; `~/.zaliases`, hand-written aliases and functions; `~/.ztypos`, containing all aliases automatically written to correct typographical errors I have made in the past; `~/.zlogout` and `~/.zprofile`, for logout/login stuff; and finally, `~/.zshrc`, which contains everything needed for pleasant interactive use. Clearly it'd be absurd and extremely awkward to stuff all of that into a single file, as well as potentially slow.
 
