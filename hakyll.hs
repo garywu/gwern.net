@@ -138,7 +138,7 @@ imgUrls item = do
 
 postCtx :: Tags -> Context String
 postCtx tags =
-    tagsField "tags" tags <>
+    tagsField "tagsHTML" tags <>
     defaultContext <>
     dateField "created" "%d %b %Y" <>
     modificationTimeField "modified" "%d %b %Y" <>

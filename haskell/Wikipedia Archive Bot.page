@@ -3,6 +3,7 @@ description: "Haskell: writing a daemon to archive links in Wikipedia articles w
 status: finished
 created: 26 Sep 2008
 confidence: likely
+tags: Haskell, archiving, Wikipedia
 importance: 3
 ...
 
