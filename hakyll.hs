@@ -1170,4 +1170,5 @@ brokenLinks = [
  , ("blackmail", "/Blackmail")
  , ("Nicotine_Relevant_information", "/Nicotine")
  , ("Nicotine Relevant information", "/Nicotine")
+ , ("mystakes", "/Mistakes")
  ]
