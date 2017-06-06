@@ -1,14 +1,14 @@
 ---
 title: Creatine Meta-analysis
-description: Does creatine increase cognitive performance?
+description: Does creatine increase cognitive performance? Maybe for vegetarians but probably not.
 created: 6 Sep 2013
 tags: psychology, meta-analysis
 status: notes
-confidence: possible
+confidence: unlikely
 importance: 5
 ...
 
-> I attempt to meta-analyze conflicting studies about the cognitive benefits of creatine supplementation. The wide variety of psychological measures hampers any aggregation. 3 studies measured IQ and turn in a positive result, but suggestive of vegetarianism causing half the benefit.
+> I attempt to meta-analyze conflicting studies about the cognitive benefits of creatine supplementation. The wide variety of psychological measures by uniformly small studies hampers any aggregation. 3 studies measured IQ and turn in a positive result, but suggestive of vegetarianism causing half the benefit. Discussions indicate that publication bias is at work. Given the variety of measures, small sample sizes, publication bias, possible moderators, and small-study biases, any future creatine studies should use the most standard measures of cognitive function like RAPM in a reasonably large pre-registered experiment.
 
 [Creatine](!Wikipedia) is a chemical found throughout the body in a number of roles; it is most famous for its presence in muscles and enabling greater exertion, but it also plays a role in the nervous system.
 Some small psychology experiments in healthy adults have found cognitive benefits to supplementation but others disagree ([Wikipedia](!Wikipedia "Creatine#Improved cognitive ability"), [Examine.com](http://examine.com/supplements/Creatine/#summary6-12)), and these differences may be due to covariates like being vegetarian & hence creatine-deficient.
