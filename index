@@ -319,8 +319,8 @@
       </div>
     </div>
 
+    <!-- Async load Google Analytics  -->
     <script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script>
-        <!-- Async load Google Analytics  -->
     <script id="googleAnalytics" type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-18912926-1']);
@@ -331,6 +331,5 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-
   </body>
 </html>

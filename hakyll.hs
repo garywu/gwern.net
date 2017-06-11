@@ -310,6 +310,7 @@ brokenLinks = [
  , ("Complexity", "/Complexity%20vs%20AI")
  , ("Culture is not about esthetics", "/Culture%20is%20not%20about%20Esthetics")
  , ("Culture%20is%2", "/Culture%20is%20not%20about%20Esthetics")
+ , ("Culture%20is%20not%20about%2", "/Culture%20is%20not%20about%20Esthetics")
  , ("DMM_archives", "/DNM%20archives")
  , ("DNB F", "/DNB%20FAQ")
  , ("DNB FAQ!", "/DNB%20FAQ")
