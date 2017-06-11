@@ -77,6 +77,7 @@ main = hakyll $ do -- RSS/ATOM setup
                                      "images/**",
                                      "**.hs",
                                      "**.sh",
+                                     "**.txt",
                                      "static/*",
                                      "static/img/**",
                                      "static/js/**",
