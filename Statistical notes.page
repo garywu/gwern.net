@@ -2293,7 +2293,8 @@ Simplifications aside, it is difficult to see any way to bring this method down 
 
 ## Adoption power analysis
 
-One possibility is to drop the idea of using only biological siblings.
+One possibility would be to examine a different population, perhaps one with more African ancestry and thus larger between-sibling ancestry differences and effects, such as [Brazil](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0027162 "'Genomic Ancestry, Self-Reported `Color` and Quantitative Measures of Skin Pigmentation in Brazilian Admixed Siblings', Leite et al 2011"); but that would raise questions about relevance to the USA.
+So another possibility is to drop the idea of using only biological siblings.
 Is there any way to have ancestry differences as large as in the general population, but within a family?
 Half-siblings come to mind but those more typically tend to join the household as older kids or teenagers, so aren't so good.
 One possibility is *adoptees*: there are a substantial number of African-American children adopted into other African-American households (white parents adopting black children is [controversial and rarer](!Wikipedia "Adoption in the United States#Trans-racial adoption"), described as ["decreasing dramatically"](https://www.princeton.edu/futureofchildren/publications/docs/03_01_07.PDF "'Outcomes of Transracial Adoption', Silverman 1993"), but still substantial in total numbers, at least 20,000), and even a noticeable number of African children adopted abroad (14,800 from Ethiopia just 1999-2014, with more adoption from Nigeria & the Congo).
@@ -4406,7 +4407,7 @@ asian    <- c("Chinese", "Indian", "Japanese")
 other    <- c("Arabic", "Black", "Latino")
 groupMembership <- function(e) { if (e %in% european) { "European" } else { if (e %in% asian) { "Asian" } else { "Other" } } }
 h$Group <- as.factor(sapply(h$Ethnicity, groupMembership))
- summary(h$Group)
+summary(h$Group)
 #   Asian European    Other
 #     507     3379      116
 
@@ -4471,7 +4472,7 @@ The growth in human population and accomplishment post-1400 is so dramatic that 
 
 ![Counts of "significant figures" in _Human Accomplishment_ (Murray 2003) by geographic region, raw and log-transformed](/images/2003-murray-humanaccomplishment-region-counts.png)
 
-Log-transformed, we can still see the inverted-V shape of European counts, but it's somewhat subtle and does leave room for doubt about sampling error.
+Log-transformed, we can still see the inverted-V shape of European counts, but it's somewhat subtle because it's still being squashed by post-1400 increases and does leave room for doubt about sampling error.
 Moving on to reproducing the proportions plot:
 
 ~~~{.R}
@@ -4560,6 +4561,22 @@ plot(forecast(efit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, leng
 plot(forecast(afit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
 plot(forecast(ofit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
 # https://imgur.com/a/qPL6a
+~~~
+
+~~~{.R}
+library(brms)
+b <- brm(Count ~ (1|Group), autocor = cor_bsts(~ Fl.decade | Group), family="zero_inflated_poisson", control = list(adapt_delta = 0.994), data = hdcount)
+
+hdcount$BayesEstimate <- predict(b)[,1]
+
+decadeTotals <- aggregate(BayesEstimate ~ Fl.decade, sum, data=hdcount)
+for (i in 1:nrow(hdcount)) {
+        total <- decadeTotals[decadeTotals$Fl.decade == hdcount[i,]$Fl.decade,]$BayesEstimate
+        p <- hdcount[i,]$BayesEstimate / total
+        hdcount$Proportion[i] <- if(is.nan(p)) { 0 } else { p }
+        hdcount$Total[i] <- total
+}
+with(hdcount, qplot(Fl.decade, Proportion, color=Group) + coord_cartesian(ylim = c(0, 1)))
 ~~~
 
 # Program for non-spaced-repetition review of past written materials for serendipity & rediscovery: Archive Revisiter
