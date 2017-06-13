@@ -1095,6 +1095,7 @@ brokenLinks = [
  , ("docs/spacedrepet", "https://github.com/gwern/gwern.net/tree/master/docs/spacedrepetition")
  , ("docs/spacedrepetition/1978-baddeley.pdf ", "/docs/spacedrepetition/1978-baddeley.pdf")
  , ("docs/spacedrepetition/2001-maquet.PDF", "/docs/spacedrepetition/2001-maquet.pdf")
+ , ("docs/spacedrepetition/2001-maquet.pdfhttps://www.gwern.net/docs/spacedrepetition/2001-maquet.pdf", "/docs/spacedrepetition/2001-maquet.pdf")
  , ("docs/spacedrepetition/2010-seamon.pdfJohn", "/docs/spacedrepetition/2010-seamon.pdf")
  , ("docs/spacedrepetition/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/spacedrepetition")
  , ("docs/sr/2013-barratt", "/docs/sr/2013-barratt.pdf")
