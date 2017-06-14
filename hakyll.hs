@@ -78,7 +78,8 @@ main = hakyll $ do -- RSS/ATOM setup
                                      "**.hs",
                                      "**.sh",
                                      "**.txt",
-                                     "static/*",
+                                     "**.html",
+                                     "static/**",
                                      "static/img/**",
                                      "static/js/**",
                                      "index"]
@@ -1243,4 +1244,13 @@ brokenLinks = [
  , ("turing-complete", "/Turing-complete")
  , ("xmonad-advocacy", "http://sawfish.wikia.com/wiki/Comparison_of_extensible_window_managers")
  , ("zeo/Postassium", "/zeo/Potassium")
+ , ("Immoral", "/Immoral%20Books")
+ , ("docs/2013-cajochen.pdf", "/docs/zeo/2013-cajochen.pdf")
+ , ("adrafonil", "/Adrafinil")
+ , ("Predictionmarkets", "/Prediction%20markets")
+ , ("1987-adams.pdf", "/docs/spacedrepetition/1987-adams.pdf")
+ , ("2002-notenki-memoirs", "/docs/eva/2002-notenki-memoirs")
+ , ("404", "/static/404.html")
+ , ("docs/culture/2003-cohen.pdf", "/docs/culture/2004-cohen.pdf")
+ , ("Embryo select", "/Embryo%20selection")
  ]
