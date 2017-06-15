@@ -24,19 +24,81 @@ Everything is heritable:
 
     - disease mutation load: ["The Genomic Health Of Ancient Hominins"](http://biorxiv.org/content/early/2017/06/02/145193), Berens et al 2017: (+35% percentile increase in general disease risks over past ~millennia?)
     - selection against education in the UK: ["Widespread signatures of negative selection in the genetic architecture of human complex traits"](http://biorxiv.org/content/early/2017/06/03/145755), Zeng et al 2017
+- ["Widespread signatures of positive selection in common risk alleles associated to autism spectrum disorder"](http://journals.plos.org/plosgenetics/article?rev=2&id=10.1371/journal.pgen.1006618), Polimanti & Gelernter 2017
+- ["Quantifying the impact of rare and ultra-rare coding variation across the phenotypic spectrum"](http://biorxiv.org/content/early/2017/06/09/148247), Ganna et al 2017
 - ["Discovery Of The First Genome-Wide Significant Risk Loci For ADHD"](http://biorxiv.org/content/early/2017/06/03/145581), Demontis et al 2017
+- ["Genetic contribution to two factors of neuroticism is associated with affluence, better health, and longer life"](http://biorxiv.org/content/early/2017/06/06/146787), Hill et al 2017
 
 AI:
+
+- ["Deep reinforcement learning from human preferences"](https://arxiv.org/abs/1706.03741), Christiano et al 2017 (blogs: [1](https://deepmind.com/blog/learning-through-human-feedback/ "Learning through human feedback"), [2](https://blog.openai.com/deep-reinforcement-learning-from-human-preferences/ "Learning from Human Preferences"))
+["Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks"](https://arxiv.org/abs/1702.01135), Katz et al 2017
+- ["A simple neural network module for relational reasoning"](https://arxiv.org/abs/1706.01427), Santoro et al 2017 ([blog](https://deepmind.com/blog/neural-approach-relational-reasoning/))
+- ["Attention Is All You Need" for SOTA machine translation](https://arxiv.org/abs/1706.03762), Vaswani et al 2017
+- ["Deal or No Deal? End-to-End Learning for Negotiation Dialogues"](https://s3.amazonaws.com/end-to-end-negotiator/end-to-end-negotiator.pdf), Lewis et al 2017 ([blog](https://code.facebook.com/posts/1686672014972296 "Deal or no deal? Training AI bots to negotiate"))
+- ["Learning to Learn from Noisy Web Videos"](https://arxiv.org/abs/1706.02884), Yeung et al 2017
 
 Statistics/meta-science/mathematics:
 
 Politics/religion:
 
+- ["The Dark Legacy of Carlos Castaneda"](https://www.salon.com/2007/04/12/castaneda/ "The godfather of the New Age led a secretive group of devoted followers in the last decade of his life. His closest 'witches' remain missing, and former insiders, offering new details, believe the women took their own lives.")
+
 Psychology/biology:
+
+- ["Does High Self-esteem Cause Better Performance, Interpersonal Success, Happiness, or Healthier Lifestyles?"](http://ardenm.us/p710/baumeister.pdf), Baumeister et al 2003; ["The Man Who Destroyed America's Ego: How a rebel psychologist challenged one of the 20th century's biggest-and most dangerous-idea"](https://medium.com/matter/the-man-who-destroyed-americas-ego-94d214257b5); ["'It was quasi-religious': the great self-esteem con"](https://www.theguardian.com/lifeandstyle/2017/jun/03/quasi-religious-great-self-esteem-con "In the 1980s, Californian politician John Vasconcellos set up a task force to promote high self-esteem as the answer to all social ills. But was his science based on a lie?")
+
+- ["Where do hypotheses come from?"](http://gershmanlab.webfactional.com/pubs/Dasgupta17.pdf), Dasgupta et al 2017
+- ["How To Fall To Your Death And Live To Tell The Tale"](https://mosaicscience.com/story/falling-science-injury-death-falls)
+- ["My déjà vu is so extreme I can't tell what's real any more"](https://mosaicscience.com/story/my-deja-vu-so-extreme-i-cant-tell-whats-real-any-more "When a brain tumor left Pat Long with persistent déjà vu, he began to question the very nature of reality. Here, he tells his story for the first time.")
 
 Technology:
 
+- PC gaming history: [Jimmy Maher has an excellent blog](http://www.filfre.net/sitemap/) on working & playing his way through the early computing industry as it impinged on gaming, covering the wild ferment of the times, D&D, the European scenes, the economic backstabbing, game creators and studios' swift rises and even swifter falls, and everything. It is quite addictive so I can't pick just one post to highlight, but a whole bunch:
+
+- http://www.filfre.net/2011/10/ken-and-roberta/
+- http://www.filfre.net/2011/11/the-prisoner-part-2/
+- http://www.filfre.net/2012/01/zil-and-the-z-machine/
+- http://www.filfre.net/2011/06/the-trash-80-part-1/
+- http://www.filfre.net/2012/05/the-ibm-pc-part-1/ http://www.filfre.net/2012/05/the-ibm-pc-part-2/ http://www.filfre.net/2012/05/the-ibm-pc-part-3/ http://www.filfre.net/2012/05/the-ibm-pc-part-4/ http://www.filfre.net/2016/08/ibms-new-flavor/
+- http://www.filfre.net/2012/07/britains-occult-uncle/  http://www.filfre.net/2012/07/the-dennis-wheatley-crime-dossiers/ http://www.filfre.net/2012/07/playing-deadline-part-1/ http://www.filfre.net/2012/07/playing-deadline-part-2/ http://www.filfre.net/2012/07/playing-deadline-part-3/ http://www.filfre.net/2012/07/playing-deadline-part-4/
+- http://www.filfre.net/2013/02/free-fall-part-2-murder-on-the-zinderneuf/
+- http://www.filfre.net/2012/11/the-hobbit/
+- http://www.filfre.net/2012/11/the-speccy/ http://www.filfre.net/2012/12/business-is-war/ http://www.filfre.net/2012/12/the-commodore-64/
+- http://www.filfre.net/2011/09/the-apple-ii/ http://www.filfre.net/2012/12/shiny-and-exciting-vs-dull-and-boring/ http://www.filfre.net/2013/01/seeing-farther/ http://www.filfre.net/2014/02/macintosh/
+- http://www.filfre.net/2013/02/dan-bunten-and-m-u-l-e/
+- http://www.filfre.net/2013/05/the-dawn-of-multimedia/ http://www.filfre.net/2013/06/the-laser-craze/ http://www.filfre.net/2016/09/a-slow-motion-revolution/
+- http://www.filfre.net/2013/10/michael-crichton/ http://www.filfre.net/2013/10/from-congo-to-amazon/ http://www.filfre.net/2013/10/amazon-in-pictures/
+- http://www.filfre.net/2013/11/the-computerized-hitchhikers/
+- http://www.filfre.net/2013/12/elite/
+- http://www.filfre.net/2014/01/the-legend-of-ultimate-play-the-game/
+- http://www.filfre.net/2013/12/this-tormented-business-part-1/ http://www.filfre.net/2014/02/this-tormented-business-part-2/ http://www.filfre.net/2014/03/this-tormented-business-part-3/
+- http://www.filfre.net/2014/03/mindwhell-or-the-poet-and-the-hackers/
+- http://www.filfre.net/2014/04/fooblitzky/
+- http://www.filfre.net/2014/06/of-wizards-and-bards/
+- http://www.filfre.net/2014/07/the-road-to-iv/ http://www.filfre.net/2014/07/ultima-iv/ http://www.filfre.net/2016/02/the-road-to-v/ http://www.filfre.net/2016/02/ultima-v/
+- http://www.filfre.net/2014/08/apple-carmen-sandiego-and-the-rise-of-edutainment/
+- http://www.filfre.net/2015/03/the-68000-wars-part-1-lorraine/ http://www.filfre.net/2015/04/the-68000-wars-part-2-jack-is-back/ http://www.filfre.net/2015/04/the-68000-wars-part-3-we-made-amiga-they-fucked-it-up/ http://www.filfre.net/2015/11/the-68000-wars-part-4-rock-lobster/
+- http://www.filfre.net/2015/03/microproses-simulation-industrial-complex-or-the-ballad-of-sid-and-wild-bill/ http://www.filfre.net/2015/07/pirates/ http://www.filfre.net/2017/03/railroad-tycoon/
+- http://www.filfre.net/2015/07/a-new-force-in-games-part-1-fractal-dreamers/ http://www.filfre.net/2015/07/a-new-force-in-games-part-2-a-habitat-in-cyberspace/ http://www.filfre.net/2015/07/a-new-force-in-games-part-3-scumm/
+- http://www.filfre.net/2015/09/lovecraft-on-the-tabletop/
+- http://www.filfre.net/2015/12/a-pirates-life-for-me-part-1-dont-copy-that-floppy/ http://www.filfre.net/2016/01/a-pirates-life-for-me-part-2-the-scene/ http://www.filfre.net/2016/01/a-pirates-life-for-me-part-2-the-scene/
+- http://www.filfre.net/2016/01/bill-williams-the-story-of-a-life/
+- http://www.filfre.net/2016/03/ten-odd-years-at-tsr/ ["The Ambush at Sheridan Springs"](https://medium.com/@increment/the-ambush-at-sheridan-springs-3a29d07f6836)
+- http://www.filfre.net/2016/04/generation-nintendo/
+- http://www.filfre.net/2016/05/kit-williamss-golden-hare-part-1-the-contest/ http://www.filfre.net/2016/05/kit-williamss-golden-hare-part-2-the-aftermath/
+- http://www.filfre.net/2016/06/acorn-and-amstrad/
+- http://www.filfre.net/2016/09/the-freedom-to-associate/
+- http://www.filfre.net/2016/11/turning-on-booting-up-and-jacking-into-neuromancer/
+- http://www.filfre.net/2016/11/a-working-class-hero-part-1/ http://www.filfre.net/2016/11/a-working-class-hero-part-2-bloody-april/ http://www.filfre.net/2016/12/a-working-class-hero-part-3-ace-and-tactician/ http://www.filfre.net/2016/12/a-working-class-hero-part-4-a-heros-legacy/
+- http://www.filfre.net/2017/01/a-time-of-endings-part-3-mediagenic-or-the-patent-from-hell/
+- http://www.filfre.net/2017/04/the-640-k-barrier/
+- ["Information Leakage from Optical Emanations"](http://www.applied-math.org/optical_tempest.pdf), Loughry & Umphress 2002
+
 Economics:
+
+- ["Property Is Another Name for Monopoly: Facilitating Efficient Bargaining with Partial Common Ownership of Spectrum, Corporations, and Land"](http://www.law.nyu.edu/sites/default/files/upload_documents/Property%20Monopoly.pdf), Posner & Weyl 2016
+- ["The Perfect Heist: Recipes from Around the World"](http://prod.sandia.gov/techlib/access-control.cgi/2014/141790.pdf), Lafleur et al 2014
 
 Philosophy:
 
@@ -55,6 +117,9 @@ Fiction:
 ## Film/TV
 
 Live-action:
+
+- [_L.A. Confidential_](https://en.wikipedia.org/wiki/L.A._Confidential_\(film\)) (one of the best noir films; Exley is particularly interesting as neither quite hero nor anti-hero)
+- [_8 1/2_](https://en.wikipedia.org/wiki/8%C2%BD) (a lame waste of time; not remotely funny nor insightful nor rendered sufficiently interesting by the now-exotic setting of 1960s Catholic Italy, as the making of _8 1/2_ is Fellini's excuse for making _8 1/2_ in a third-rate breaking-the-fourth-wall exercise)
 
 Animated:
 
