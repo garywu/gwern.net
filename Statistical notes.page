@@ -2928,9 +2928,9 @@ DeFries-Fulker (DF) extremes analysis
 - [LaBuda et al 1986](/docs/genetics/1986-labuda.pdf "Multiple regression analysis of twin data obtained from selected samples")
 - DeFries et al 1991, ["Colorado Reading Project: An update"](/docs/genetics/correlation/1991-defries.pdf)
 - Gillespie & Neale 2006 "A Finite Mixture Model for Genotype and Environment Interactions: Detecting Latent Population Heterogeneity" http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.534.6298&rep=rep1&type=pdf
-- Purcell et al 2001 "Comorbidity between verbal and non-verbal cognitive delays in 2-year-olds: A bivariate twin analysis" https://www.researchgate.net/profile/Emily_Simonoff/publication/227715188_Comorbidity_between_verbal_and_nonverbal_cognitive_delays_in_2yearolds_a_bivariate_twin_analysis/links/0fcfd50b74917d5933000000.pdf
+- Purcell et al 2001, ["Comorbidity between verbal and non-verbal cognitive delays in 2-year-olds: A bivariate twin analysis"](/docs/genetics/correlation/2001-purcell.pdf)
 - http://www.sciencedirect.com/science/article/pii/S0160289614001676 "Thinking positively: The genetics of high intelligence", Shakeshaft et al 2015
-- "An Investigation of Genetic and Environmental Influences Across The Distribution of Self-Control", Schwartz & Connolly 2017 https://www.researchgate.net/publication/316292004_An_Investigation_of_Genetic_and_Environmental_Influences_Across_The_Distribution_of_Self-Control
+- Schwartz & Connolly 2017, ["An Investigation of Genetic and Environmental Influences Across The Distribution of Self-Control"](/docs/genetics/correlation/2017-schwartz.pdf)
 
 [mixture model](!Wikipedia)
 
@@ -3411,7 +3411,7 @@ Nor is there any particular reason to attribute their 'failure' to the atmospher
     > - Davidson, J. E. (2009). "Contemporary models of giftedness". In L. V. Shavinina (Ed.) _International handbook on giftedness_ (pp. 81-97). Dordrecht, the Netherlands: Springer.
     > - Freeman, J. (2010). _Gifted lives: What happens when gifted children grow up_. New York, NY: Routledge.
     > - Hollinger & Fleming 1992, ["A longitudinal examination of life choices of gifted and talented young women"](/docs/iq/1992-hollinger.pdf)
-    > - Simonton 1991, ["Emergence and realization of genius: The lives and works of 120 classical composers"](https://www.researchgate.net/profile/Dean_Keith_Simonton/publication/232440787_Emergence_and_Realization_of_Genius_The_Lives_and_Works_of_120_Classical_Composers/links/54b696d20cf2e68eb27ea2fe.pdf)
+    > - Simonton 1991, ["Emergence and realization of genius: The lives and works of 120 classical composers"](/docs/iq/1991-simonton.pdf)
     > - Simonton 1998, ["Achieved eminence in minority and majority cultures: Convergence versus divergence in the assessments of 294 African Americans"](/docs/1998-simonton.pdf)
     > - Subotnik & Rickoff 2010, ["Should eminence based on outstanding innovation be the goal of gifted education and talent development? Implications for policy and research"](/docs/iq/2010-subotnik.pdf)
     > - VanTassel-Baska, J. L. (1989). "Characteristics of the developmental path of eminent and gifted adults". In J. L. VanTassel-Baska & P. Olszewski-Kubilius (Eds.), _Patterns of influence on gifted learners: The home, the self, and the school_ (pp. 146-162). New York, NY: Teachers College Press
@@ -3423,7 +3423,7 @@ If we concluded that the gain from better education of those 5% in an elementary
 
 Matters could be improved, though, with more broad-ranging tests.
 
-For example, genetics: as adult IQ is a highly heritable trait with perhaps up to 80% of variance predictable from all genetic variants and [>~50% predictable from all SNPs](/Embryo%20selection#gcta-meta-analysis), with the heritability increasing with age and only ~25% at age 5 ([Bouchard 2013](https://www.researchgate.net/profile/Thomas_Bouchard2/publication/255692897_The_Wilson_Effect_The_Increase_in_Heritability_of_IQ_With_Age/links/545b97120cf2f1dbcbcafb26.pdf "The Wilson Effect: The Increase in Heritability of IQ With Age")), predictions of adult IQ based on 5yo testing could be improved substantially using their parents' & siblings' IQs, or by direct genetic prediction; this would help identify the children who are rejected because of developmental quirks but who would eventually live up to their genetic potential.
+For example, genetics: as adult IQ is a highly heritable trait with perhaps up to 80% of variance predictable from all genetic variants and [>~50% predictable from all SNPs](/Embryo%20selection#gcta-meta-analysis), with the heritability increasing with age and only ~25% at age 5 ([Bouchard 2013](/docs/iq/2013-bouchard.pdf "The Wilson Effect: The Increase in Heritability of IQ With Age")), predictions of adult IQ based on 5yo testing could be improved substantially using their parents' & siblings' IQs, or by direct genetic prediction; this would help identify the children who are rejected because of developmental quirks but who would eventually live up to their genetic potential.
 If we consider a [path model](!Wikipedia "Path analysis (statistics)") with genes ~> IQ (0.50), IQ~5yo~ ~>IQ (0.50), genes ~> IQ~5yo~ (0.25):
 
 ~~~{.R}

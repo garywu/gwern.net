@@ -120,7 +120,7 @@ AI:
 10. ["Lip Reading Sentences in the Wild"](https://arxiv.org/pdf/1611.05358v1.pdf), Chung et al 2016 ([video](https://www.youtube.com/watch?v=5aogzAUPilE)); ["LipNet: Sentence-level Lipreading"](http://openreview.net/forum?id=BkjLkSqxg), Assael et al 2016 ([video](https://www.youtube.com/watch?v=fa5QGremQf8))
 11. reinforcement learning:
 
-    1. ["Mastering the game of Go with deep neural networks and tree search"](https://www.researchgate.net/profile/Timothy_Lillicrap/publication/292074166_Mastering_the_game_of_Go_with_deep_neural_networks_and_tree_search/links/56a90f7d08ae7f592f0d5d0c.pdf), Silver et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/5X8nWvUXhf9))
+    1. ["Mastering the game of Go with deep neural networks and tree search"](/docs/2016-silver.pdf), Silver et al 2016 ([excerpts](https://plus.google.com/103530621949492999968/posts/5X8nWvUXhf9))
     2. ["Neural architecture search with reinforcement learning"](http://openreview.net/pdf?id=r1Ue8Hcxg), Zoph & Le 2016; ["Designing Neural Network Architectures using Reinforcement Learning"](https://arxiv.org/abs/1611.02167), Baker et al 2016; ["Learning to reinforcement learn"](https://arxiv.org/abs/1611.05763), Wang et al 2016
     3. ["Value Iteration Networks"](https://arxiv.org/abs/1602.02867), Tamar et al 2016; ["The Predictron: End-To-End Learning and Planning"](https://arxiv.org/abs/1612.08810), Silver et al 2016
     4. ["Unifying Count-Based Exploration and Intrinsic Motivation"](https://arxiv.org/abs/1606.01868), Bellemare et al 2016 ([Video](https://www.youtube.com/watch?v=0yI2wJ6F8r0))
@@ -137,7 +137,7 @@ Statistics/meta-science:
 4. how often does correlation=causation?
 
     - ["Comparison of Evidence of Treatment Effects in Randomized and Nonrandomized Studies"](https://www.gwern.net/docs/statistics/2001-ioannidis.pdf), Ioannidis et al 2001
-    - ["Comparison of Effects in Randomized Controlled Trials With Observational Studies in Digestive Surgery"](https://www.researchgate.net/profile/Nakayama_Takeo/publication/6734844_Comparison_of_Effects_in_Randomized_Controlled_Trials_With_Observational_Studies_in_Digestive_Surgery/links/004635224d119253c9000000.pdf), Shikata et al 2006
+    - ["Comparison of Effects in Randomized Controlled Trials With Observational Studies in Digestive Surgery"](/docs/statistics/2006-shikata.pdf), Shikata et al 2006
     - ["A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook"](http://www.kellogg.northwestern.edu/faculty/gordon_b/files/kellogg_fb_whitepaper.pdf), Gordon et al 2016
 5. ["Peer review: Troubled from the start"](http://www.nature.com/news/peer-review-troubled-from-the-start-1.19763); ["Saving Science: Science isn't self-correcting, it's self-destructing. To save the enterprise, scientists must come out of the lab and into the real world."](http://www.thenewatlantis.com/publications/saving-science)
 6. ["The Bitter Fight Over the Benefits of Bilingualism"](http://www.theatlantic.com/science/archive/2016/02/the-battle-over-bilingualism/462114/)
@@ -155,7 +155,7 @@ Psychology:
 5. ["Childhood forecasting of a small segment of the population with large economic burden"](http://www.nature.com/articles/s41562-016-0005), Caspi et al 2016 (for the genetic version, see [Belsky et al 2016](https://www.gwern.net/docs/genetics/2016-belsky.pdf "The Genetics of Success: How Single-Nucleotide Polymorphisms Associated With Educational Attainment Relate to Life-Course Development"))
 6. Psychedelics & psychological well-being ([media](https://www.theatlantic.com/health/archive/2016/12/the-life-changing-magic-of-mushrooms/509246/ "The Life-Changing Magic of Mushrooms: A single dose of magic mushrooms can make people with severe anxiety and depression better for months, according to a landmark pair of new studies.")):
 
-    - ["The paradoxical psychological effects of lysergic acid diethylamide (LSD)"](https://www.researchgate.net/profile/Mendel_Kaelen/publication/293169090_The_paradoxical_psychological_effects_of_lysergic_acid_diethylamide_LSD/links/56bb178808ae023560266ae5.pdf), Carhart-Harris et al 2016
+    - ["The paradoxical psychological effects of lysergic acid diethylamide (LSD)"](/docs/nootropics/2016-carhart-harris.pdf), Carhart-Harris et al 2016
     - ["Psilocybin produces substantial and sustained decreases in depression and anxiety in patients with life-threatening cancer: A randomized double-blind trial"](https://www.gwern.net/docs/2016-griffiths.pdf), Griffiths et al 2016
     - ["Rapid and sustained symptom reduction following psilocybin treatment for anxiety and depression in patients with life-threatening cancer: a randomized controlled trial"](https://www.gwern.net/docs/2016-ross.pdf), Ross et al 2016
     - ["Survey study of challenging experiences after ingesting psilocybin mushrooms: Acute and enduring positive and negative consequences"](https://www.gwern.net/docs/2016-carbonaro.pdf), Carbonaro et al 2016
@@ -164,7 +164,7 @@ Psychology:
 Biology:
 
 1.  ["Aldehyde-stabilized cryopreservation", McIntyre & Fahy 2015](http://www.sciencedirect.com/science/article/pii/S001122401500245X) wins the [Small Mammal Brain Preservation Prize](http://www.brainpreservation.org/small-mammal-announcement/) by passing [their evaluation](http://www.brainpreservation.org/asc_rabbit_fulleval/) ([commentary](http://lesswrong.com/lw/na3/the_brain_preservation_foundations_small/))
-2. ["Effects of Initiating Moderate Alcohol Intake on Cardiometabolic Risk in Adults With Type 2 Diabetes: A 2-Year Randomized, Controlled Trial"](https://www.researchgate.net/profile/Yftach_Gepner/publication/282813162_Effects_of_Initiating_Moderate_Alcohol_Intake_on_Cardiometabolic_Risk_in_Adults_With_Type_2_Diabetes_A_2-Year_Randomized_Controlled_Trial/links/56d9f74a08aebe4638bb9d76.pdf), Gepner et al 2015
+2. ["Effects of Initiating Moderate Alcohol Intake on Cardiometabolic Risk in Adults With Type 2 Diabetes: A 2-Year Randomized, Controlled Trial"](/docs/2015-gepner.pdf), Gepner et al 2015
 3. ["Long-Term Outcomes Associated with Traumatic Brain Injury in Childhood and Adolescence: A Nationwide Swedish Cohort Study of a Wide Range of Medical and Social Outcomes"](http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002103), Sariaslan et al 2016
 4. ["Effect of Calorie Restriction on Mood, Quality of Life, Sleep, and Sexual Function in Healthy Nonobese Adults: The CALERIE 2 Randomized Clinical Trial"](https://www.gwern.net/docs/2016-martin.pdf), Martin et al 2016
 5. ["Evolution of the Human Brain: From Matter to Mind"](https://www.gwern.net/docs/iq/2015-hofman.pdf), Hofman 2015 ([excerpts](https://plus.google.com/103530621949492999968/posts/6YaN95XGnEv))
