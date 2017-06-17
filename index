@@ -3,14 +3,17 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="generator" content="hakyll"/>
-    <meta name="google-site-verification" content="BOhOQI1uMfsqu_DopVApovk1mJD5ZBLfan0s9go3phk"/>
     <meta name="author" content="gwern"/>
-    <meta name="description" content="Researcher, self-experimenter, and writer"/>
+    <meta name="description" content="Researcher, self-experimenter, and writer: psychology, statistics, and technology"/>
+    <meta name="keywords" content="darknet markets &amp; Bitcoin, blinded self-experiments &amp; Quantified Self analyses, dual n-back &amp; spaced repetition, and modafinil">
     <meta name="dc.date.issued" content="27 Jan 2009"/>
-    <meta name="dcterms.modified" content="29 Nov 2016"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Essays - Gwern.net</title>
-    <link rel="stylesheet" type="text/css" href="./static/css/default.css"/>
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700&amp;subset=latin-ext"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+
     <link href="./atom.xml" type="application/atom+xml" rel="alternate" title="Site-wide global ATOM/RSS Feed (all edits)"/>
     <link rel="shortcut icon" type="image/x-icon" href="./static/img/favicon.ico"/>
     <style type="text/css">
