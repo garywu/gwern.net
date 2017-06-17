@@ -16,6 +16,8 @@ do
             -e "http://www.coursera.org" -e ".wiley.com/" -e "http://www.ncbi.nlm.nih.gov/pubmed/" \
             -e "www.tandfonline.com/doi/abs/" -e "jstor.org" -e "springer.com" -e "springerlink.com" \
             -e "www.mendeley.com" -e 'academia.edu' -e 'researchgate.net' -e 'pdf.yt' -- "$PAGE";
+        # check for aggregator-hosted PDFs and host them on gwern.net to make them visible to Google Scholar/provide backups:
+        link-extractor.hs "$PAGE" | egp --only-matching -e '^http://.*archive\.org/.*\.pdf$';
         egp -e "http://www.pnas.org/content/.*/.*/.*.abstract" -e '[^\.]t\.test\(' -e '^\~\~\{\.' -- "$PAGE";
         fgp -e "<q>" -e "</q>" -e "(www" -e ")www" -e "![](" -e "]()" -e "](/wiki/" -e "](wiki/" \
             -e " percent " -e "    Pearson'" -e '~~~{.sh}' -e 'library("' -- "$PAGE";
@@ -29,14 +31,16 @@ do
 
         # image hotlinking deprecated; impolite, and slows page loads & site compiles
         egp --only-matching '\!\[.*\]\(http://.*\)' -- "$PAGE";
-        # check for aggregator-hosted PDFs and host them on gwern.net to make them visible to Google Scholar/provide backups:
-        link-extractor.hs "$PAGE" | egp --only-matching -e '^http://.*archive\.org/.*\.pdf$';
         # indicates broken copy-paste of image location
         egp --only-matching '\!\[.*\]\(wiki/.*\)' -- "$PAGE";
+
         # look for unescaped single dollar-signs (risk of future breakage)
         egp '^[^$]* [^\"]\$[^$]*$' -- "$PAGE";
+
         # instead of writing 'x = ~y', unicode as '≈'
         fgp -e '= ~' -- "$PAGE" | fgrep -v ' mods'
+
+        [ "$(egrep '^description: ' "$PAGE" | wc --char)" -ge 80 ] || echo "Description metadata too short."
 
         markdown-length-checker.hs "$PAGE";
         markdown-footnote-length.hs "$PAGE";
