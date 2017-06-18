@@ -4354,11 +4354,12 @@ More inspiration could be borrowed from the GAN literature, such as "minibatch d
 [The dataset has been released.](https://osf.io/z9cnk/)
 
 Emil Kirkegaard created [a visualization of](https://twitter.com/KirkegaardEmil/status/804483340900376576) of the proportion by rough geographic region (European/Asian/other) in R using ggplot2 and LOESS smoothing.
-Perhaps the most striking aspect of it is the Dark Ages showing up as a spike in Asian proportion.
-This visualization could be improved in a few ways:
+Perhaps the most striking aspect of it is the Dark Ages showing up as a spike in Asian proportion, followed by the [Great Divergence](!Wikipedia).
+
+This visualization has been criticized as Eurocentrically-misleading and could be improved in a few ways:
 
 - [LOESS](!Wikipedia) ignores the constraint that proportions must be 0-1 and naively extrapolates beyond the boundaries
-- no visualization of uncertainty is provided, either in the form of graphing the raw data points by superimposing a scatterplot or by providing standard errors or credible intervals
+- no visualization of uncertainty is provided, either in the form of graphing the raw data points by superimposing a scatterplot or by providing standard errors or credible intervals. It is possible that the overall shapes or specific periods are no more than chance scatters in a time-series based on few datapoints.
 
     - LOESS can provide estimate local standard errors & confidence intervals but they are of questionable meaning in the absence of the underlying counts
 - alternatively, the distribution of significant figures may not be treated correctly parametrically
@@ -4366,10 +4367,10 @@ This visualization could be improved in a few ways:
 
 These points can be addressed by:
 
-1. switching from a LOESS plot to either splines or local binomial regressions
+1. switching from a LOESS plot to splines or local binomial regressions
 2. plotting the raw proportions grouped by decade or century
 3. using a nonparametric bootstrap to calculate confidence intervals, a procedure which lends itself to visualization as an animation of plots of all the resamples, giving an intuitive sense of how important sampling error is to the overall pattern of curves and specific parts of history
-4. alternately, instead of attempting to fit the proportion, one can fit the original count of significant figures in a binomial or log-normal Bayesian time-series model and sample from the posterior estimates of each region for each decade/century, and calculate posterior proportions, gaining full quantification of uncertainty, incorporation of any autocorrelation, and smoothing
+4. alternately, instead of attempting to fit the proportion, one can fit the original count of significant figures in a binomial or log-normal Bayesian time-series model and sample from the posterior estimates of each region for each decade/century, and calculate posterior proportions, gaining full quantification of uncertainty, incorporation of any autocorrelation, and smoothing; no additional algorithms or theorems are required, demonstrating the elegance of Bayesian approaches
 
 I didn't realize [Kirkegaard's R code was available](http://rpubs.com/EmilOWK/232493 "Human Accomplishment visualizations: Exploring a large dataset of human creative achievement") so I wound up redoing it myself (and getting the same results):
 
@@ -4538,7 +4539,7 @@ bootPlot <- function(df) {
     n <- nrow(df)
     bootDf <- df[sample(1:n, n, replace=TRUE),]
     bootDfdcount <- transformAndProportion(bootDf)
-    ## WARNING: can't just call qplot due to animation/ggplot2 bug; have to assign & 'print'
+    ## WARNING: can't just call qplot due to old 'animation'/ggplot2 bug; have to assign & 'print'
     p <- with(bootDfdcount, qplot(Fl.decade, Proportion, color=Group) +
         binomial_smooth(formula = y ~ splines::ns(x, 3)) +
         geom_jitter(aes(color=Group), width=0.013,, height=0.013))
@@ -4553,7 +4554,10 @@ saveGIF({for (i in 1:200) { bootPlot(h) }}, interval=0.15, ani.width=1300, ani.h
 
 The bootstrap animation suggests to me that while the very earliest time-periods are opaque and the Dark Ages difference between Europe & Asia may be somewhat higher or lower, the overall shape doesn't change much.
 
+The time-series aspect of the data on visual inspection appears to be a simple [auto-regressive model with a drift](!Wikipedia "Autoregressive integrated moving average") upwards, low-order models like `ARIMA(1,1,0)`, `ARIMA(1,1,2)`, or `ARIMA(0,1,2)`; this is probably due to the world population steadily increasing while the per capita rates remain stable.
+
 ~~~{.R}
+library(forecast)
 efit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="European")$Count)
 afit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="Asian")$Count)
 ofit <- auto.arima(subset(hdcount, select=c("Fl.decade", "Count"), Group=="Other")$Count)
@@ -4561,24 +4565,37 @@ par(mfrow=c(3,1))
 plot(forecast(efit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
 plot(forecast(afit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
 plot(forecast(ofit), ylim=c(0,200)); axis(side=1, labels=decades, at=seq(1, length(decades)))
-# https://imgur.com/a/qPL6a
 ~~~
+
+![Simple ARIMA time-series fits & forecasts to 3 global regions of "significant figures" in _Human Accomplishment_](/images/2003-murray-humanaccomplishment-region-arima-forecast.png)
+
+We can combine the sampling error quantification of full Bayesian posteriors, Poisson distribution of counts, and time-series aspects into a single Bayesian model using [`brms`](https://github.com/paul-buerkner/brms) as a convenient interface to [Stan](http://mc-stan.org/) (rather than writing out the full model by hand), with uninformative priors, and then visualize the posterior distribution of the proportions (which itself is simply a transformation of the posterior):
 
 ~~~{.R}
 library(brms)
-b <- brm(Count ~ (1|Group), autocor = cor_bsts(~ Fl.decade | Group), family="zero_inflated_poisson", control = list(adapt_delta = 0.994), data = hdcount)
+b <- brm(Count ~ (1|Group), autocor = cor_bsts(~ Fl.decade | Group), family="zero_inflated_poisson", data = hdcount)
 
-hdcount$BayesEstimate <- predict(b)[,1]
+## Rather than use `fitted` to get the 95% CI & compute proportion, it would also be possible to draw samples from
+## the posterior for each group/decade, total, calculate per-group proportion, and then summarize into quantiles; but
+## that is much slower and requires more finicky code:
+posterior <- fitted(b)
+hdcount$B.low.prop  <-         posterior[,3] / hdcount$Total
+hdcount$B.mean.prop <-         posterior[,1] / hdcount$Total
+hdcount$B.high.prop <- pmin(1, posterior[,4] / hdcount$Total)
 
-decadeTotals <- aggregate(BayesEstimate ~ Fl.decade, sum, data=hdcount)
-for (i in 1:nrow(hdcount)) {
-        total <- decadeTotals[decadeTotals$Fl.decade == hdcount[i,]$Fl.decade,]$BayesEstimate
-        p <- hdcount[i,]$BayesEstimate / total
-        hdcount$Proportion[i] <- if(is.nan(p)) { 0 } else { p }
-        hdcount$Total[i] <- total
-}
-with(hdcount, qplot(Fl.decade, Proportion, color=Group) + coord_cartesian(ylim = c(0, 1)))
+predframe <- subset(hdcount, select=c("B.low.prop", "B.high.prop"))
+with(hdcount, ggplot(hdcount, aes(Fl.decade, Proportion, color=Group)) +
+    geom_point() +
+    geom_line(data=predframe) +
+    geom_ribbon(aes(ymin=B.low.prop, ymax=B.high.prop), alpha=0.05, data=predframe))
 ~~~
+
+![Bayesian multi-level time-series of "significant figures"; shaded region indicates 95% credible interval around group mean in that decade](/images/2003-murray-humanaccomplishment-region-bayes.png)
+
+The smoothed time-series looks about the same, and the CIs suggest, like the bootstrap, that there is great uncertainty early on but that the dark ages dip looks real and the European increases in proportion since then are also highly probable.
+
+So overall, correcting for the infelicities in Kirkegaard's original graph makes the graph somewhat cleaner and is helpful in providing quantification of uncertainty, but none of the problems drove the overall appearance of the curve.
+If the graph is wrong, the issues will lie in systematic biases in the data itself, not statistical quibbling over sampling error or LOESS curves crossing axis. (Comparison with graphs drawn from other cliometric datasets such as Wikipedia or [Seshat](!Wikipedia "Seshat (project)") would be informative.)
 
 # Program for non-spaced-repetition review of past written materials for serendipity & rediscovery: Archive Revisiter
 
@@ -4595,7 +4612,7 @@ So one thing you could do is reread all your old clippings & comments, appraisin
 But how often? And it's a pain to do so. And how do you keep track of which you've already read?
 One thing I do for my emails is semi-annually I (try to) read through my previous 6 months of email to see what might need to be followed up on^[I've been experimenting with [Boomerang](http://www.boomeranggmail.com/) to reduce the problem of non-followups by setting 'ping me if no reply within 1 month' alerts on my sent emails.] or mined for inclusion in an article.
 (For example, an ignored request for data, or a discussion of darknet markets with a journalist I could excerpt into one of my DNM articles so I can point future journalists at that instead.)
-This is already difficult, and it would be even harder to expand. I have read through my LessWrong comment history... once. Years ago. It would be more difficult now.
+This is already difficult, and it would be even harder to expand. I have read through my LessWrong comment history... once. Years ago. It would be more difficult now. (And it would be impossible to read through my Reddit comments as the interface only goes back ~1000 comments.)
 
 Simply re-reading periodically in big blocks may work but is suboptimal: there is no interface easily set up to reread them in small chunks over time, no constraints which avoid far too many reads, nor is there any way to remove individual items which you are certain need never be reviewed again.
 Reviewing is useful but can be an indefinite timesink.
