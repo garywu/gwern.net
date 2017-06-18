@@ -247,8 +247,7 @@ $ find . -type f -name "description.txt" -exec grep --only-matching --extended-r
 
 maybe use R? http://beautifuldata.net/2015/01/querying-the-bitcoin-blockchain-with-r/
 
-$ nice find tpb/ -type f -print0 | sort --zero-terminated --key=6,5 --field-separator="/" | tar --no-recursion --null --files-from - -c | nice xz -9e --check=sha256 --stdout > ~/tpb.tar.xz; alert
-
+    nice find tpb/ -type f -print0 | sort --zero-terminated --key=6,5 --field-separator="/" | tar --no-recursion --null --files-from - -c | nice xz -9e --check=sha256 --stdout > ~/tpb.tar.xz; alert
 
 > I still miss anything newer than ID 8599995 (06-2013). There is this torrent
 > ...9xxx, 10xxx and 11xxx are missing (the last torrents uploaded to TPB were 11xxx)

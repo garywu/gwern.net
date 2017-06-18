@@ -340,6 +340,7 @@ It turns out that the "noisy sorting" setting is not that different from the com
 - Yue et al 2012, ["The _K_-armed dueling bandits problem"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.165.1421&rep=rep1&type=pdf)
 - Busa-Fekete et al 2014, ["Preference-based rank elicitation using statistical models: The case of Mallows"](http://machinelearning.wustl.edu/mlpapers/paper_files/icml2014c2_busa-fekete14.pdf)
 - Szorenyi et al 2015, ["Online Rank Elicitation for Plackett-Luce: A Dueling Bandits Approach"](http://papers.nips.cc/paper/5903-online-rank-elicitation-for-plackett-luce-a-dueling-bandits-approach.pdf)
+- Maystre & Grossglauser 2015, ["Just Sort It! A Simple and Effective Approach to Active Preference Learning"](https://arxiv.org/abs/1502.05556)
 
 So we'd like a command-line tool which consumes a list of pairs of media & ratings, then queries the user repeatedly with pairs of media to get the user's rating of which one is better, somehow modeling underlying scores while allowing for the user to be wrong in multiple comparisons and ideally picking whatever is the 'most informative' next pair to ask about to converge on accurate rankings as quickly as possible, and after enough questions, do a final inference of the full ranking of media and mapping it onto a uniform distribution over a particular rating scale.
 

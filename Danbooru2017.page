@@ -88,6 +88,8 @@ Compounding these limits, tagging/classification datasets are notoriously undive
 - Pascal VOC: 11k images
 - [Visual Genome](http://visualgenome.org/): 108k images
 
+<!-- https://bam-dataset.org/ -->
+
 The external validity of classifiers trained on these datasets is somewhat questionable as the learned discriminative models may collapse or simplify in undesirable ways, and overfit on the datasets' individual biases ([Torralba & Efros 2011](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.208.2314&rep=rep1&type=pdf "Unbiased Look at Dataset Bias")).
 For example, ImageNet classifiers sometimes appear to 'cheat' by relying on textures and simplistic outlines - [recognizing leopards](https://rocknrollnerd.github.io/ml/2015/05/27/leopard-sofa.html "Suddenly, a leopard print sofa appears") only by the color texture of the fur, or believing barbells are extensions of arms.
 The dataset is simply not large enough, or richly annotated enough, to train classifiers or tagger better than that, or, with residual networks reaching human parity, reveal differences between the best algorithms and the merely good.
@@ -282,4 +284,5 @@ Andrej Karpathy
 Illustration2Vec authors
 https://www.reddit.com/user/kvfrans
 https://twitter.com/hardmaru/status/873635115770945537
+https://www.reddit.com/user/metrio
 -->
