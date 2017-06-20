@@ -1665,11 +1665,25 @@ In this case, it seems that the variables are precise enough (measurement-errors
 
 ## Water experiment
 
-> The kind of water used in tea is claimed to make a difference in the flavor: mineral water being better than tap water or distilled water. However, mineral water is vastly more expensive than tap water. To test the claim, I compared my tap water, 3 distilled water brands (Great Value, Nestle Pure Life, & Poland Spring), 1 osmosis-purified brand (Aquafina), and 3 non-carbonated mineral water brands (Evian, Voss, & Fiji) in a series of _n_=67 blinded randomized comparisons of water flavor. The comparisons are modeled using a Bradley-Terry competitive model implemented in Stan; comparisons were chosen using an adaptive Bayesian best-arm sequential trial method designed to locate the best-tasting water in the minimum number of samples by preferentially comparing the best-known arm to potentially superior arms. Blinding & randomization are achieved by using a Lazy Susan to physically randomize two identical (but marked in a hidden spot) cups of water. The final posterior distribution indicates that some differences between waters are likely to exist but are small & imprecisely estimated and of little practical concern.
+> The kind of water used in tea is claimed to make a difference in the flavor: mineral water being better than tap water or distilled water. However, mineral water is vastly more expensive than tap water. To test the claim, I run a preliminary test of pure water to see if any water differences are detectable at all. compared my tap water, 3 distilled water brands (Great Value, Nestle Pure Life, & Poland Spring), 1 osmosis-purified brand (Aquafina), and 3 non-carbonated mineral water brands (Evian, Voss, & Fiji) in a series of _n_=67 blinded randomized comparisons of water flavor. The comparisons are modeled using a Bradley-Terry competitive model implemented in Stan; comparisons were chosen using an adaptive Bayesian best-arm sequential trial method designed to locate the best-tasting water in the minimum number of samples by preferentially comparing the best-known arm to potentially superior arms. Blinding & randomization are achieved by using a Lazy Susan to physically randomize two identical (but marked in a hidden spot) cups of water. The final posterior distribution indicates that some differences between waters are likely to exist but are small & imprecisely estimated and of little practical concern.
 
 Tap water reportedly differs a ton in taste between cities/states.
 This is plausible since tea tastes so much worse when microwaved, which is speculated to be due to the oxygenation, so why not the mineral/chlorine content as well?
 (People often complain about tap water and buy water filters to improve the flavor, and sometimes [run blinded experiments testing water filters vs tap](http://tylermw.com/soma-water-filters-are-worthless-how-i-used-r-to-win-an-argument-with-my-wife/ "Soma Water Filters Are Worthless: How I Used R To Win An Argument With My Wife: 'Can you really tell the difference?' - My wife, expressing fighting words").)
+
+Testing tea itself, rather than plain water, is tricky for a few reasons:
+
+- hot tea is harder to taste differences in
+- the tea flavor will tend to overpower & hide any effects from the water
+- each batch of tea will be slightly different (even if carefully weighed out, temperature checked with a thermometer, and steeped with a timer)
+- boiling different waters simultaneously requires two separate kettles (and for blinding/randomization, raises safety issues)
+- requires substantial amounts of a single or a few teas to run (since leaves can't be reused)
+- and the results will either be redundant with testing plain water (if simple additive effects like 'bad-tasting water makes all teas taste equally worse') or will add in additional variance to estimate interaction effects which probably do not exist^[An interaction here implies that the effect happens only with the combination of two variables. On a chemical level, what would be going on to make good-tasting mineral water combined with good-tasting tea in distilled water turn into bad-tasting tea?] or are small but will use up more data (in psychology and related fields, the main effects tend to be much more common than interaction effects, which also require much larger data samples).
+
+So a tea test is logistically more complicated and highly unlikely to deliver any meaningful inferences with feasible sample sizes as compared to a water test.
+On the other hand, a water test, if it indicated large differences existed, might not be relevant since those differences might still be hidden by tea or turn out to be interactions with tea-specific effects.
+This suggests a two-step process: first see if there are any differences in plain water; if there aren't, there is no need to test tea, but if there is, proceed to a tea test.
+
 This question hearkens back to [R.A Fisher](!Wikipedia)'s famous "[lady tasting tea](!Wikipedia)" experiment and turns out to provide a bit of a challenge to my usual blinding & methods, motivating a look into Bayesian "best-arm identification" algorithms.
 
 ### Waters
