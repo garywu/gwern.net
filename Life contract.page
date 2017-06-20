@@ -1,5 +1,5 @@
 ---
-description: How I reinvented longevity insurance
+description: How I reinvented longevity insurance, which provides payouts if one lives to a certain point and thus might run out of savings.
 tags: politics
 created: 02 Nov 2009
 status: finished
@@ -34,6 +34,7 @@ The incentive for Alice to participate is not so clear- if Bob survives, she cou
 
 So it is not immediately clear that Alices would willingly participate, since if more Bobs died than anticipated, Alice could lose, depending on how competitive the contract and how thing her profit margin, anywhere from merely some of her profit to actual capital. I contend that under a reasonable range of variables (ex. the time interval, premium paid to surviving Bobs, percentage of surviving Bobs), both Alice and Bob turn out to profit, and not just profit, but realize a return greater than that available on the open equity markets, and with low risk.
 
+<!--
 //This will eventually be a full mathematical description.
 alice-income = (#bobDead * X)
 alice-profit = (income) - (Z * #bobAlive)
@@ -45,6 +46,7 @@ X = ?
 #bobAlive = ?
 #bobDead = ?
 prove that alice-profit is >= 0.
+-->
 
 Under reasonable assumptions, like a ratio of 50:50 for dead:alive Bobs (or, bobAlive = bobDead), with an according period T, and a rate of return above the historical 9% (~10%), this contract can yield a profit for both Alice and the surviving Bobs.  Indeed, even under a worst-case scenario where the return on investment for Bobs is equal to Alice's ROI for the invested X, or when Alice's ROI is unexpectedly low, a possible but unlikely result for long-term investments (a situation which eliminates a major source of profit for Alice), Alice has a built-in safety margin- the dead Bobs provide a cushion.  Thus, both Alice and Bob benefit from such life contracts.
 

@@ -417,7 +417,8 @@ The main drawbacks are:
 - exports are not available for every day, and some gaps are large. The 2015-01-09 to 2015-02-21 gap is due to a broken Grams export during this period before I noticed the problem and requested it be fixed; other gaps may be due to transient errors with the cron job:
 
     ~~~{.Bash}
-    @daily ping -q -c 5 google.com && torify wget --quiet --continue http://grams7enufi7jmdl.onion/gwernapi/$SECRETKEY
+    @daily ping -q -c 5 google.com && torify wget --quiet --continue
+                "http://grams7enufi7jmdl.onion/gwernapi/$SECRETKEY"
                 -O ~/blackmarket-mirrors/grams/`date '+\%Y-\%m-\%d'`.zip
     ~~~
 
