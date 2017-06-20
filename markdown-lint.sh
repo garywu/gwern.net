@@ -44,6 +44,7 @@ do
 
         markdown-length-checker.hs "$PAGE";
         markdown-footnote-length.hs "$PAGE";
+        proselint "$PAGE";
 
         # look for syntax errors making it to the final HTML output:
         HTML=$(tail -n +3 -- "$PAGE" | pandoc --to=html5 --mathml --standalone -)
