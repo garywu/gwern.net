@@ -1041,6 +1041,7 @@ brokenLinks = [
  , ("docs/gwern-mnemosyne-python-hard-way.txt?revision=20130112192010-f7719-ea0c38a0d7cef392b18a8bca2bda5533d3a0ec34", "/docs/personal/mnemosyne-python-hard-way.txt")
  , ("docs/gwern-mnemosyne-python-hard-way.txt?revision=20130112192010-f7719-ea0c38a0d7cef392b18a8bca2bda5533d3a0ec34", "/docs/personal/mnemosyne-python-hard-way.txt")
  , ("docs/gwern-mnemosyne-python-hard-way.txt?revision=20130114032532-f7719-ed7d25f3fb88d920fe600c33198fa260e3ed3c7b", "/docs/personal/mnemosyne-python-hard-way.txt")
+ , ("docs/gwern-mnemosyne-python-hard-way.txt?revision=20111001160250-f771..", "/docs/personal/mnemosyne-python-hard-way.txt")
  , ("docs/gwern-rss-subscriptions.opml", "/docs/personal/rss-subscriptions.opml")
  , ("docs/index.html", "https://github.com/gwern/gwern.net/tree/master/docs")
  , ("docs/iodine/1968-fierro-ben", "/docs/iodine/1968-fierro-benítez.pdf")
@@ -1272,4 +1273,5 @@ brokenLinks = [
  , ("turing-complete", "/Turing-complete")
  , ("xmonad-advocacy", "http://sawfish.wikia.com/wiki/Comparison_of_extensible_window_managers")
  , ("zeo/Postassium", "/zeo/Potassium")
+ , ("DNB meta-analysis reddit", "/DNM%20meta-analysis")
  ]

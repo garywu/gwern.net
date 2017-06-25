@@ -36,6 +36,7 @@ AI:
 - ["Deep reinforcement learning from human preferences"](https://arxiv.org/abs/1706.03741), Christiano et al 2017 (blogs: [1](https://deepmind.com/blog/learning-through-human-feedback/ "Learning through human feedback"), [2](https://blog.openai.com/deep-reinforcement-learning-from-human-preferences/ "Learning from Human Preferences"))
 - ["Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks"](https://arxiv.org/abs/1702.01135), Katz et al 2017
 - ["A simple neural network module for relational reasoning"](https://arxiv.org/abs/1706.01427), Santoro et al 2017 ([blog](https://deepmind.com/blog/neural-approach-relational-reasoning/))
+- ["One Model To Learn Them All"](https://arxiv.org/abs/1706.05137), Kaiser et al 2017 (a single NN for multi-modal tasks: from image classification to image captioning to English parsing to English<->German<->French translation)
 - ["Attention Is All You Need" for SOTA machine translation](https://arxiv.org/abs/1706.03762), Vaswani et al 2017
 - ["Deal or No Deal? End-to-End Learning for Negotiation Dialogues"](https://s3.amazonaws.com/end-to-end-negotiator/end-to-end-negotiator.pdf), Lewis et al 2017 ([blog](https://code.facebook.com/posts/1686672014972296 "Deal or no deal? Training AI bots to negotiate"))
 - ["Learning to Learn from Noisy Web Videos"](https://arxiv.org/abs/1706.02884), Yeung et al 2017
