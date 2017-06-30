@@ -24,7 +24,7 @@
       /* make the sections reflow; better than fixed-width tables */
       article section { display:inline-block; vertical-align:top; }
       /* leave enough horizontal room to show multiple sections simultaneously, table-like */
-      body { max-width: 2000px; }
+      body { max-width: 1500px; }
       /* align the section headers nicely with the lists of pages for desktop; otherwise keep default mobile spacing of lists */
       @media screen and (min-width: 650px) {
       li { margin-top: 0em; }
