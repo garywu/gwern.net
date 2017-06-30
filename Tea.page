@@ -1735,7 +1735,7 @@ Reporting of the mineral contents of waters is inconsistent & patchy enough that
 In rating very subtle difference in flavor, the usual method is binary forced-choice comparisons, as they cannot be rated on their own (they just taste like water).
 So the measured data would be the result of a comparison, better/worse or win/loss.
 Fisher's original "lady tasting tea" experiment used permutation tests, but he was only considering two cases & was testing the null hypothesis, while I have 8 waters where I am reasonably sure the null hypothesis of no difference in taste is indeed false and I am more interested in how large the differences are & which is best, so the various kinds of permutation or chi-squared tests in general do not work.
-The analogy to sporting competitions suggests that the paradigm here should be the [Bradley-Terry model](!Wikipedia) which is much like chess's ELO system in that it models each competitor (water) as having a performance variable (flavor) on a latent scale, where the difference between one competitor's rating and another translates into the probability it will win a comparison.
+The analogy to sporting competitions suggests that the paradigm here should be the [Bradley-Terry model](!Wikipedia) which is much like chess's [Elo rating system](!Wikipedia) in that it models each competitor (water) as having a performance variable (flavor) on a latent scale, where the difference between one competitor's rating and another translates into the probability it will win a comparison.
 (For more detailed discussion of the Bradley-Terry model, see references in [Resorter](/Resorter).)
 To account for ties, the logistic distribution is expanded into an ordered logistic distribution with cutpoints to determine whether the outcome falls into 1 of 3 ranges (win/tie/loss).
 
@@ -2001,7 +2001,7 @@ Comparing water turns out to be quite difficult.
 In some cases, a bad taste was quickly distinguishable - I quickly learned that Evian, Great Value distilled, and Nestle Pure Life had distinctly sour or metallic overtones.
 Despite repeated sampling, I had a hard time ever distinguishing Poland Spring/Fiji/Aquafina/Voss, but I thought they might have been ever so slightly better than my tap water in a way I can't verbalize except that they felt 'cooler' somehow.
 
-By _n_=41, Fiji continued to eek out a tiny lead over Poland Spring & Aquafina, but I ran out of it and could no longer run the best-arm algorithm (since it would keep sampling Fiji).
+By _n_=41, Fiji continued to eke out a tiny lead over Poland Spring & Aquafina, but I ran out of it and could no longer run the best-arm algorithm (since it would keep sampling Fiji).
 I was also running low on the Poland Spring.
 So at that point I went back to round-robin, this time using the order of posterior means.
 
