@@ -126,7 +126,7 @@ Remote archiving, while convenient, has a major flaw: the archive services canno
 
 ### Caching Proxy
 
-The most ambitious & total approach to local caching is to set up a proxy to do your browsing through, and record literally all your web traffic; for example, using [WarcProxy](https://github.com/odie5533/WarcProxy) which will save as [WARC files](!Wikipedia "Web ARChive") every page you visit through it.
+The most ambitious & total approach to local caching is to set up a proxy to do your browsing through, and record literally all your web traffic; for example, using [Live Archiving Proxy (LAP)](https://github.com/INA-DLWeb/LiveArchivingProxy) or [WarcProxy](https://github.com/odie5533/WarcProxy) which will save as [WARC files](!Wikipedia "Web ARChive") every page you visit through it.
 ([Zachary Vance](https://blog.za3k.com/archiving-all-web-traffic/) explains how to set up a local HTTPS certificate to MITM your HTTPS browsing as well.)
 
 One may be reluctant to go this far, and prefer something lighter-weight, such as periodically extracting a list of visited URLs from one's web browser and then attempting to archive them.
@@ -289,14 +289,16 @@ When `linkchecker` does not work, one alternative is to do a `wget --mirror` and
     - ["Bookmark Archives That Don't"](http://blog.pinboard.in/2010/11/bookmark_archives_that_don_t/)
 - ["Testing 3 million hyperlinks, lessons learned"](http://samsaffron.com/archive/2012/06/07/testing-3-million-hyperlinks-lessons-learned#comment-31366), Stack Exchange
 - ["Backup All The Things"](/docs/linkrot/2011-muflax-backup.pdf), muflax
+- [Tesoro](https://tesoro.io/) (archive service; [discussion](https://news.ycombinator.com/item?id=14644441))
 - software:
 
-    - [webrecorder](https://github.com/webrecorder/webrecorder)
+    - [webrecorder.io](https://webrecorder.io/) (online service); [webrecorder](https://github.com/webrecorder/webrecorder) (offline tool; WARC-based & can deal with dynamically-loaded content)
     - [pywb](https://github.com/ikreymer/pywb)
     - [IPFS](!Wikipedia)
     - [WordPress plugin: Broken Link Checker](https://wordpress.org/plugins/broken-link-checker/)
     - [`youtube-dl`](https://rg3.github.io/youtube-dl/)
     - [PhantomJS](!Wikipedia)
+    - [erised](https://github.com/marvelm/erised)
 - [Hacker News discussion](https://news.ycombinator.com/item?id=6504331)
 
 # Appendices
