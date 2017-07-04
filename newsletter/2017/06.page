@@ -1,8 +1,9 @@
 ---
 title: June 2017 news
+description: June 2017 gwern.net newsletter with links on dysgenics, genetics, AI, PC history, and 5 movie reviews
 created: 3 June 2017
 tags: newsletter
-status: in progress
+status: finished
 confidence: log
 ...
 
@@ -11,9 +12,7 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
-- Long Bets analysis?
-- Danbooru dataset?
-- Individual differences?
+- ["Proportion of Important Thinkers by Global Region Over Time in Charles Murray's _Human Accomplishment_: bootstrap & Bayesian time-series approaches"](https://www.gwern.net/Statistical%20notes#proportion-of-important-thinkers-by-global-region-over-time-in-charles-murrays-human-accomplishment)
 
 # Media
 ## Links
@@ -24,12 +23,13 @@ Everything is heritable:
 
     - disease mutation load: ["The Genomic Health Of Ancient Hominins"](http://biorxiv.org/content/early/2017/06/02/145193), Berens et al 2017: (+35% percentile increase in general disease risks over past ~millennia?)
     - selection against education in the UK: ["Widespread signatures of negative selection in the genetic architecture of human complex traits"](http://biorxiv.org/content/early/2017/06/03/145755), Zeng et al 2017
-    - ["Detecting polygenic adaptation in admixture graphs"](http://biorxiv.org/content/early/2017/06/06/146043), Racimo et al 2017 (No sign of selection is found for Europeans, but if I understand the method right, it's only looking at net selection with time steps corresponding to populations branching. So given the European pattern of selection for intelligence at least up until agriculture and then heavy recent dysgenics against education/intelligence, those might mostly cancel out compared to an East Asian population like Japan.)
+    - ["Detecting polygenic adaptation in admixture graphs"](http://biorxiv.org/content/early/2017/06/06/146043), Racimo et al 2017 (No sign of selection is found for Europeans, but if I understand the method right, it's only looking at net selection with time steps corresponding to populations branching. So given the European pattern of selection for intelligence at least up until agriculture and then heavy recent dysgenics against education/intelligence, those might mostly cancel compared to an East Asian population like Japan which started later.)
 - ["Widespread signatures of positive selection in common risk alleles associated to autism spectrum disorder"](http://journals.plos.org/plosgenetics/article?rev=2&id=10.1371/journal.pgen.1006618), Polimanti & Gelernter 2017
 - ["Quantifying the impact of rare and ultra-rare coding variation across the phenotypic spectrum"](http://biorxiv.org/content/early/2017/06/09/148247), Ganna et al 2017
 - ["Discovery Of The First Genome-Wide Significant Risk Loci For ADHD"](http://biorxiv.org/content/early/2017/06/03/145581), Demontis et al 2017
 - ["Genetic contribution to two factors of neuroticism is associated with affluence, better health, and longer life"](http://biorxiv.org/content/early/2017/06/06/146787), Hill et al 2017
 - ["Environmental factors dominate over host genetics in shaping human gut microbiota composition"](http://biorxiv.org/content/early/2017/06/16/150540), Rothschild et al 2017 ([commentary](https://www.reddit.com/r/Microbiome/comments/6hojbc/environmental_factors_dominate_over_host_genetics/))
+- ["The Moral Question That Stanford Asks Its Bioengineering Students: It's about the capacity to print a human genome."](https://archive.is/tZpBO)
 
 AI:
 
@@ -43,8 +43,13 @@ AI:
 
 Statistics/meta-science/mathematics:
 
+- ["Is the staggeringly profitable business of scientific publishing bad for science?"](https://www.theguardian.com/science/2017/jun/27/profitable-business-scientific-publishing-bad-for-science "It is an industry like no other, with profit margins to rival Google - and it was created by one of Britain's most notorious tycoons: Robert Maxwell.")
+- ["Measurement Error, Regression to the Mean, and Group Differences"](http://humanvarieties.org/2017/07/01/measurement-error-regression-to-the-mean-and-group-differences/)
+- ["What works in e-commerce - a meta-analysis of 6700 online experiments"](http://www.qubit.com/sites/default/files/pdf/qubit_meta_analysis.pdf), Brown & Jones 2017 (Most A/B experiments fail and the successful ones have small effects on the order of a few % at most. Note the implications that most successful, in the sense of _p_<0.05, A/B tests will grossly overestimate the true effect size; detecting realistic effects may require large sample sizes; and some categories of tests may well not be worth running at all.)
+
 Politics/religion:
 
+- ["In Defense of Individualist Culture"](https://srconstantin.wordpress.com/2017/06/27/in-defense-of-individualist-culture/)
 - ["The Dark Legacy of Carlos Castaneda"](https://www.salon.com/2007/04/12/castaneda/ "The godfather of the New Age led a secretive group of devoted followers in the last decade of his life. His closest 'witches' remain missing, and former insiders, offering new details, believe the women took their own lives.")
 
 Psychology/biology:
@@ -57,7 +62,7 @@ Psychology/biology:
 
 Technology:
 
-- PC gaming history: [Jimmy Maher has an excellent blog](http://www.filfre.net/sitemap/) on working & playing his way through the early computing industry as it impinged on gaming, covering the wild ferment of the times, D&D, the European scenes, the economic backstabbing, game creators and studios' swift rises and even swifter falls, and everything (often benefiting from Jason Scott's _Get Lamp_ archives). It's addictive so I can't pick just one post to highlight:
+- PC gaming history: [Jimmy Maher has an excellent blog](http://www.filfre.net/sitemap/) on working & playing his way through the early computing industry as it impinged on gaming, covering the wild ferment of the times, D&D, the European scenes, the economic backstabbing, game creators and studios' swift rises & even swifter falls, and everything (often benefiting from [Jason Scott's](https://en.wikipedia.org/wiki/Jason_Scott) [_Get Lamp_](http://www.getlamp.com/) archives). There are many curious parts of gaming/computing history: for example, there is a striking prevalence of mtf (but not ftm) transsexuals; and exemplifying the chaos, it's hard to identify any thing that people consistently got wrong - for every tactic that worked brilliantly one time & place, there appears to be an equal & opposite failure elsewhere. For one 1980s company, a foray into business software doomed it, while the same pivot works out brilliantly for another who is still around; one company dominates the market by leaping boldly onto a cutting-edge new system, while another bets the wrong way & dies or blows the revenue from its hit & is left scrambling; one company unwisely abandons the cash cow of older systems, while another reaps cash flow from obsolete microcomputers until it's too late. The industry bet on computers rather than video game consoles looks like genius - right up until Nintendo invades. Many companies profit massively from selling hardware and commoditizing licensed OSes or software, unless they are IBM/Microsoft and it works out the *other* way etc. Given the sheer number of computer & video game platforms, people like Bill Gates or Steve Jobs come off as having been both inevitable & far more lucky than good. (See also [my review of Brand's _The Media Lab: Inventing the Future at MIT_](https://www.goodreads.com/review/show/373688680).) Many posts are worth the read:
 
     - [Ken & Roberta Williams and the founding of Sierra](http://www.filfre.net/2011/10/ken-and-roberta/)
     - [_The Prisoner_](http://www.filfre.net/2011/11/the-prisoner-part-2/)
@@ -67,7 +72,7 @@ Technology:
     - ["Free Fall, Part 2: _Murder on the Zinderneuf_"](http://www.filfre.net/2013/02/free-fall-part-2-murder-on-the-zinderneuf/): procedurally generated mysteries
     - [_The Hobbit_](http://www.filfre.net/2012/11/the-hobbit/): dynamic video game worlds
     - the vicious UK computer market: ["The Spectrum"](http://www.filfre.net/2012/11/the-speccy/), ["The Commodore 64"](http://www.filfre.net/2012/12/the-commodore-64/), ["Business is War"](http://www.filfre.net/2012/12/business-is-war/)
-    - the UK market continued and the great PC industry crash: "This Tormented Business" [1](http://www.filfre.net/2013/12/this-tormented-business-part-1/), [2](http://www.filfre.net/2014/02/this-tormented-business-part-2), [3](http://www.filfre.net/2014/03/this-tormented-business-part-3/); ["Acorn and Amstrad"](http://www.filfre.net/2016/06/acorn-and-amstrad/)
+    - the UK market continued and the great PC industry crash: "This Tormented Business": [1](http://www.filfre.net/2013/12/this-tormented-business-part-1/), [2](http://www.filfre.net/2014/02/this-tormented-business-part-2), [3](http://www.filfre.net/2014/03/this-tormented-business-part-3/); ["Acorn and Amstrad"](http://www.filfre.net/2016/06/acorn-and-amstrad/)
     - early Apple: [Apple II](http://www.filfre.net/2011/09/the-apple-ii/); ["Shiny and Exciting vs. Dull and Boring"](http://www.filfre.net/2012/12/shiny-and-exciting-vs-dull-and-boring/); ["Seeing Farther"](http://www.filfre.net/2013/01/seeing-farther/); ["The Macintosh"](http://www.filfre.net/2014/02/macintosh/)
     - ["Dan Bunten and _M.U.L.E._"](http://www.filfre.net/2013/02/dan-bunten-and-m-u-l-e/)
     - the genesis of CD-ROMs: ["The Dawn of Multimedia"](http://www.filfre.net/2013/05/the-dawn-of-multimedia/), ["The Laser Craze"](http://www.filfre.net/2013/06/the-laser-craze/); ["A Slow-Motion Revolution"](http://www.filfre.net/2016/09/a-slow-motion-revolution/)
@@ -79,12 +84,12 @@ Technology:
     - ["Of Wizards And Bards": _Wizardry_ giving way to _The Bard's Tale_](http://www.filfre.net/2014/06/of-wizards-and-bards/)
     - [_Ultima_](https://en.wikipedia.org/wiki/Ultima_\(series\)): ["The Road to _Ultima IV_"](http://www.filfre.net/2014/07/the-road-to-iv/), [_Ultima IV_](http://www.filfre.net/2014/07/ultima-iv/); ["The Road to _Ultima IV_"](http://www.filfre.net/2016/02/the-road-to-v/), [_Ultima V_](http://www.filfre.net/2016/02/ultima-v/)
     - ["Apple, Carmen Sandiego, and the Rise of Edutainment"](http://www.filfre.net/2014/08/apple-carmen-sandiego-and-the-rise-of-edutainment/)
-    - The Case of the [Amiga](https://en.wikipedia.org/wiki/Amiga): ["Lorraine"](http://www.filfre.net/2015/03/the-68000-wars-part-1-lorraine/), ["Jack Tramiel Is Back!"](http://www.filfre.net/2015/04/the-68000-wars-part-2-jack-is-back/), ["We Made Amiga, They Fucked It Up"](http://www.filfre.net/2015/04/the-68000-wars-part-3-we-made-amiga-they-fucked-it-up/), ["Rock Lobster"](http://www.filfre.net/2015/11/the-68000-wars-part-4-rock-lobster/)
+    - The Case of the [Amiga](https://en.wikipedia.org/wiki/Amiga): ["Lorraine"](http://www.filfre.net/2015/03/the-68000-wars-part-1-lorraine/), ["Jack Tramiel Is Back"](http://www.filfre.net/2015/04/the-68000-wars-part-2-jack-is-back/), ["We Made Amiga, They Fucked It Up"](http://www.filfre.net/2015/04/the-68000-wars-part-3-we-made-amiga-they-fucked-it-up/), ["Rock Lobster"](http://www.filfre.net/2015/11/the-68000-wars-part-4-rock-lobster/)
     - Sid Meier: ["MicroProse's Simulation-Industrial Complex (or, The Ballad of Sid and Wild Bill)"](http://www.filfre.net/2015/03/microproses-simulation-industrial-complex-or-the-ballad-of-sid-and-wild-bill/), [_Pirates!_](http://www.filfre.net/2015/07/pirates/), [_Railroad Tycoon_](http://www.filfre.net/2017/03/railroad-tycoon/)
     - [LucasArts](https://en.wikipedia.org/wiki/LucasArts): ["Fractal Dreamers"](http://www.filfre.net/2015/07/a-new-force-in-games-part-1-fractal-dreamers/), ["A Habitat in Cyberspace"](http://www.filfre.net/2015/07/a-new-force-in-games-part-2-a-habitat-in-cyberspace/), ["SCUMM"](http://www.filfre.net/2015/07/a-new-force-in-games-part-3-scumm/)
     - ["Lovecraft on the Tabletop": _Call of Cthulhu_](http://www.filfre.net/2015/09/lovecraft-on-the-tabletop/)
-    - Pirates vs early DRM: ["Don't Copy That Floppy!"](http://www.filfre.net/2015/12/a-pirates-life-for-me-part-1-dont-copy-that-floppy/), ["The Scene"](http://www.filfre.net/2016/01/a-pirates-life-for-me-part-2-the-scene/), ["Case Studies in Copy Protection"](http://www.filfre.net/2016/01/a-pirates-life-for-me-part-3-case-studies-in-copy-protection/)
-    - ["Bill Williams: The Story of a Life"](ttp://www.filfre.net/2016/01/bill-williams-the-story-of-a-life/)
+    - Pirates vs early DRM: ["Don't Copy That Floppy"](http://www.filfre.net/2015/12/a-pirates-life-for-me-part-1-dont-copy-that-floppy/), ["The Scene"](http://www.filfre.net/2016/01/a-pirates-life-for-me-part-2-the-scene/), ["Case Studies in Copy Protection"](http://www.filfre.net/2016/01/a-pirates-life-for-me-part-3-case-studies-in-copy-protection/)
+    - ["Bill Williams: The Story of a Life"](http://www.filfre.net/2016/01/bill-williams-the-story-of-a-life/)
     - ["Opening the Gold Box, Part 2: 10 Odd Years at TSR"](http://www.filfre.net/2016/03/ten-odd-years-at-tsr/), ["The Ambush at Sheridan Springs"](https://medium.com/@increment/the-ambush-at-sheridan-springs-3a29d07f6836)
     - ["Generation Nintendo": the Japanese invasion](http://www.filfre.net/2016/04/generation-nintendo/)
     - [Kit Williams](https://en.wikipedia.org/wiki/Kit_Williams)'s [_Masquerade_](https://en.wikipedia.org/wiki/Masquerade_\(book\)): ["The Contest"](http://www.filfre.net/2016/05/kit-williamss-golden-hare-part-1-the-contest/), ["Aftermath"](http://www.filfre.net/2016/05/kit-williamss-golden-hare-part-2-the-aftermath/)
@@ -93,38 +98,36 @@ Technology:
     - [Edward Mannock](https://en.wikipedia.org/wiki/Mick_Mannock): "A Working-Class Hero": ["Proletariat, Prisoner, and Pilot"](http://www.filfre.net/2016/11/a-working-class-hero-part-1/), ["Bloody April"](http://www.filfre.net/2016/11/a-working-class-hero-part-2-bloody-april/), ["Ace and Tactician"](http://www.filfre.net/2016/12/a-working-class-hero-part-3-ace-and-tactician/), ["A Hero's Legacy": _Wings_](http://www.filfre.net/2016/12/a-working-class-hero-part-4-a-heros-legacy/)
     - early patent trolls: ["Mediagenic (or, The Patent from Hell)": The Baer Patent on All Games](http://www.filfre.net/2017/01/a-time-of-endings-part-3-mediagenic-or-the-patent-from-hell/)
     - ["The 640K Barrier": PC's curse of backwards compatibility](http://www.filfre.net/2017/04/the-640-k-barrier/)
+- ["Computational Complexity of Air Travel Planning"](http://www.demarcken.org/carl/papers/ITA-software-travel-complexity/ITA-software-travel-complexity.pdf), De Marcken 2003 / ITA Software (Airline ticket search is not just NP-hard or worse, but undecidable.)
 - ["Information Leakage from Optical Emanations"](http://www.applied-math.org/optical_tempest.pdf), Loughry & Umphress 2002
+- ["Google-Wide Profiling: A Continuous Profiling Infrastructure for Data Centers"](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36575.pdf), Ren et al 2010 ("...GWP profiles revealed that the `zlib` library accounted for nearly 5% of all CPU cycles consumed...")
 
 Economics:
 
 - ["Property Is Another Name for Monopoly: Facilitating Efficient Bargaining with Partial Common Ownership of Spectrum, Corporations, and Land"](http://www.law.nyu.edu/sites/default/files/upload_documents/Property%20Monopoly.pdf), Posner & Weyl 2016
 - ["The Perfect Heist: Recipes from Around the World"](http://prod.sandia.gov/techlib/access-control.cgi/2014/141790.pdf), Lafleur et al 2014
 
-Philosophy:
-
-Fiction:
-
-Misc:
-
 <!-- Back to 20? Aug 2012 -->
-
-## Books
-
-Nonfiction:
-
-Fiction:
 
 ## Film/TV
 
 Live-action:
 
-- [_L.A. Confidential_](https://en.wikipedia.org/wiki/L.A._Confidential_\(film\)) (one of the best noir films; Exley is particularly interesting as neither quite hero nor anti-hero)
-- [_All About Eve_](https://en.wikipedia.org/wiki/All_About_Eve) (excellent character-study/drama about the price of fame, the sincerest forms of flattery, and a little meta-fictionally, the psychology of the theatre and Broadway being usurped by Hollywood; like Hitchcock's _Suspicion_, the driving force is detecting deception or the lack thereof. Features an unexpected appearance by Marilyn Monroe.)
+- [_L.A. Confidential_](https://en.wikipedia.org/wiki/L.A._Confidential_\(film\)) (one of the best noir films; Exley is particularly interesting as neither hero nor anti-hero)
+- [_All About Eve_](https://en.wikipedia.org/wiki/All_About_Eve) (excellent character-study/drama about the price of fame, the sincerest forms of flattery, and a little meta-fictionally, the psychology of the theatre and Broadway being usurped by Hollywood; like [Hitchcock's _Suspicion_](https://en.wikipedia.org/wiki/Suspicion_\(1941_film\)), the driving force is detecting deception or the lack thereof. Features an unexpected appearance by Marilyn Monroe.)
+- [_Amy_ (2015)](https://en.wikipedia.org/wiki/Amy_\(2015_film\)):
+
+    _Amy_ is a documentary/biopic on singer [Amy Winehouse](https://en.wikipedia.org/wiki/Amy_Winehouse); while I was almost totally ignorant of Winehouse beside knowing she was some sort of singer who died of a drug overdose a few years ago, this was highly rated as a documentary, with the major attraction of Winehouse having been filmed in long home videos for years long before she ever became famous. Since for famous people, the most interesting part of their life is often their obscure beginnings, which for exactly that reason is also the most poorly documented part of their lives, this makes the documentary much more interesting than usual.
+
+    So, Winehouse. I assumed from the bizarre makeup and tattoos I'd seen in occasional photos that she was some sort of southern American redneck; turns out she was actually British and more or less a chav (despite being Jewish?), inheriting all the pathologies of the lower classes. A proper review of this could only be written by Theodore Dalrymple but the summary is short: fame often makes people more than themselves, and Winehouse was broken from early on and lived with broken people, from her dubiously supportive friends to her useless parasite boyfriends/husbands to her negligent, selfish, exploitative father to the record industry to the fans who bought her [2006 song "Rehab"](https://en.wikipedia.org/wiki/Rehab_\(Amy_Winehouse_song\)) & funded the paparazzi.
+
+    The documentary tries to suggest that Winehouse's problems were all Freudian and based on her parent's divorce around while she was starting puberty, but this is unlikely as it is a bit of a _post hoc_ (impulsivity and behavioral problems would tend to surface around that time regardless), most people survive a divorce without becoming drug addicts, and problems of various sorts appear to run in the family ("everything is heritable"/"everything is correlated"). The genesis of "Rehab" really says it all - a quip boasting about not getting treatment for the poly drug abuse (including but not limited to tobacco, marijuana, heroin, & alcohol) which was quite visibly killing her - watching the videos progress over the film, she looks half-dead by 2006 as she destroyed herself with drugs, tattoos, and ever more bizarre makeup - is greeted by her collaborator not as something to be slapped down but a hook for a new song, and by the rest of the world as a revelation. The surprising thing is not that Winehouse died young but that she survived so long. So it is a horror movie. As far as that goes, it is quite good and greatly benefits from the home videos.
+
+    The major flaw of _Amy_ is that it does a terrible job of showing why Winehouse & her music were so popular. The music is presented mostly as snippets, and I am left not understanding what was good about it. This leads to some eyebrow-raising scenes like early on where a music executive praises the young teen Winehouse as "a force of nature" in her first label audition as she plays on a guitar straining to sing some lyrics which sound like, well, a young teenage girl had written them in a diary decorated with drawings of little hearts. One does not care to recall the mistakes of youth, but the director is hardly doing a good job of showing what musical talent she had to deserve world fame and Grammies.
+
+    Overall, required viewing for any Winehouse fan and of general psychiatric interest.
 - [_8 1/2_](https://en.wikipedia.org/wiki/8%C2%BD) (a lame waste of time; not remotely funny nor insightful nor rendered sufficiently interesting by the now-exotic setting of 1960s Catholic Italy, as the making of _8 1/2_ is Fellini's excuse for making _8 1/2_ in a third-rate breaking-the-fourth-wall exercise)
-
-Animated:
-
-## Games
+- [_Annie Hall_](https://en.wikipedia.org/wiki/Annie_Hall) (a few one-liners aside, Woody Allen's neurotic humor is unbearable to watch. It would seem that Allen movies are not for me.)
 
 ## Music
 
@@ -139,5 +142,3 @@ Touhou:
 Doujin:
 
 - ["Kemono Friends BGM"](https://www.youtube.com/watch?v=FyIlS5K7WKs) (Kou Ogata; {2017}) [Celtic]
-
-Vocaloid:
