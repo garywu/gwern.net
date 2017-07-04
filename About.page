@@ -1003,7 +1003,55 @@ As before, I did minimal active promotion of my content.
 
 My monthly mailing list has reached 1212 subscribers, up ~200.
 
-<!-- "Authors write things down so as to have to think of them less." Alain de Botton -->
+### January 2017 - July 2017
+
+> "Authors write things down so as to have to think of them less." --Alain de Botton
+
+Activity graph for this period (4 January 2017 - 3 July 2017):
+
+![Plot of patch creations (y-axis) versus date (x-axis): January 2017 - July 2017](/images/traffic/2017-july-git-history.png)
+
+#### Traffic
+
+[Analytics traffic](/docs/traffic/20170104-20170703-gwern.net-analytics.pdf) records 228,652 page-views by 112,814 unique visitors over the 181 days, or 1263 page-views per day for a daily decrease of 582 visits compared to the previous six months. (Lifetime total: 5,604,985 page-views by 2,609,657 unique visitors.)
+
+![Plot of page-views (y-axis) versus date (x-axis), early 2017](/images/traffic/20170104-20170703-traffic-history.png)
+
+Page rankings:
+
+1. Modafinil: 16,980
+2. Spaced repetition: 14,484
+3. LSD microdosing: 13,394
+4. DNB FAQ: 10,145
+5. ["Ted Chiang's 'Story Of Your Life' Is Not A Time-Travel Story"](/Story Of Your Life): 9,760
+6. Nootropics: 9,309
+7. DNM arrests: 8,148
+8. Silk Road: 6,456
+9. Links: 5,668
+10. About: 5,176
+
+Aside from a critical exegesis of "Story Of Your Life" (prompted by its successful movie adaptation), I spent much of early 2017 tweaking `gwern.net` and working on unpopular statistics projects (particularly ["The Kelly Coin-Flipping Game: Exact Solutions via Decision Trees"](/Coin-flip), which though thorough and highly educational for myself, like ["When Should I Check The Mail?"](/Mail delivery "Bayesian decision-theoretic analysis of local mail delivery times: modeling deliveries as survival analysis, model comparison, optimizing check times with a loss function, and optimal data collection."), will never be popular reading).
+In late 2017, I hope to finish up many draft or in-progress works, which may help maintain traffic.
+
+After rewriting & including social proof & tweeting, [my Patreon profile](https://www.patreon.com/gwern) has increased to \$600.
+
+#### Promotion
+
+As before, I did minimal active promotion of my content.
+Referrals:
+
+1. HN: 10,881 ("Story Of Your Life" was an unexpected hit)
+2. Reddit: 9,538
+3. Twitter: 3,702
+4. Facebook: 2,274
+5. LessWrong: 1,568
+6. Slate Star Codex: 1,462
+7. `rs.io`: 1,315
+8. Longecity: 1,071
+9. Brain Workshop: 861
+10. DuckDuckGo: 820
+
+My monthly mailing list has reached 1419 subscribers, up ~207.
 
 ## Colophon
 ### Hosting
@@ -1024,9 +1072,9 @@ The revision history is kept in git, and synced [to Github](https://github.com/g
 
 #### Size
 
-As of 4 January 2017, the source of `gwern.net` is composed of >265 text files with >2,611,745 words or 19MB<!-- du -ch *.page */*.page */*/*.page -->; this includes my writings & documents I have transcribed into Markdown, but excludes images, PDFs, archives, infrastructure, and the revision history. <!-- find . -type f -name "*.page" -exec cat "{}" \; | wc -w -->
-With those included and everything compiled to the static^[I like the static site approach to things; it tends to be harder to use and more restrictive, but in exchange it yields [better performance](http://inessential.com/2011/03/16/a_plea_for_baked_weblogs) & leads to fewer [hassles or runtime issues](http://www.aaronsw.com/weblog/000404).] HTML, the site is >2.44GB<!-- s3cmd du s3://www.gwern.net/ -->.
-The source repository contains >10,262 patches<!-- git rev-list HEAD - - count --> (this is an under-count as the creation of the repository in 26 September 2008 included already-written material).
+As of 4 July 2017, the source of `gwern.net` is composed of >278 text files with >2,731,228 words or 20MB<!-- du -ch *.page */*.page */*/*.page -->; this includes my writings & documents I have transcribed into Markdown, but excludes images, PDFs, archives, infrastructure, and the revision history. <!-- find . -type f -name "*.page" -exec cat "{}" \; | wc -w -->
+With those included and everything compiled to the static^[I like the static site approach to things; it tends to be harder to use and more restrictive, but in exchange it yields [better performance](http://inessential.com/2011/03/16/a_plea_for_baked_weblogs) & leads to fewer [hassles or runtime issues](http://www.aaronsw.com/weblog/000404).] HTML, the site is >2.87GB<!-- s3cmd du s3://www.gwern.net/ -->.
+The source repository contains >10,673 patches<!-- git rev-list HEAD - - count --> (this is an under-count as the creation of the repository in 26 September 2008 included already-written material).
 
 ##### Benford's law
 
@@ -1052,9 +1100,9 @@ There's a very clear resemblance for everything but the digit '2', which then bl
     numbers <- read.table("number.txt")
     ta <- table(numbers$V1); ta
 
-        1     2     3     4     5     6     7     8     9
-    20550 20356  7087  5655  3900  2508  2075  2349  2068
-    # cribbing exact R code from http://www.math.utah.edu/~treiberg/M3074BenfordEg.pdf
+    #     1     2     3     4     5     6     7     8     9
+    # 20550 20356  7087  5655  3900  2508  2075  2349  2068
+    ## cribbing exact R code from http://www.math.utah.edu/~treiberg/M3074BenfordEg.pdf
     sta <- sum(ta)
     pb <- sapply(1:9, function(x) log10(1+1/x)); pb
     m <- cbind(ta/sta,pb)
@@ -1065,11 +1113,11 @@ There's a very clear resemblance for everything but the digit '2', which then bl
     legend(16,.28, legend = c("From Page Data", "Theoretical"),
            fill = rainbow(7)[c(2,5)],bg="white")
     chisq.test(ta,p=pb)
-    ##
-    ##     Chi-squared test for given probabilities
-    ##
-    ## data:  ta
-    ## X-squared = 9331, df = 8, p-value < 2.2e-16
+    #
+    #     Chi-squared test for given probabilities
+    #
+    # data:  ta
+    # X-squared = 9331, df = 8, p-value < 2.2e-16
     ~~~
 
 ### Tools

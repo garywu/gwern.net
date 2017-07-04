@@ -261,7 +261,6 @@ wpInterwikiMap = [("Wikipedia", "https://en.wikipedia.org/wiki/"),
                   ("Wikiquote", "https://en.wikiquote.org/wiki/"),
                   ("Wiktionary", "https://en.wiktionary.org/wiki/")]
 
--- TODO: add runtime checks to Redirect: check for no duplicate keys https://github.com/jaspervdj/hakyll/issues/548
 -- | Mapping of gwern.net URLs people mistakenly visit with current correct URL, based on Google Webmaster Tool & Google Analytics 404s,
 --   For use with `createRedirects`.
 brokenLinks :: [(Identifier,FilePath)]
