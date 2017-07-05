@@ -15,7 +15,8 @@ do
         fgp -e "http://dl.dropbox" -e "http://news.ycombinator.com" -e "http://github.com" \
             -e "http://www.coursera.org" -e ".wiley.com/" -e "http://www.ncbi.nlm.nih.gov/pubmed/" \
             -e "www.tandfonline.com/doi/abs/" -e "jstor.org" -e "springer.com" -e "springerlink.com" \
-            -e "www.mendeley.com" -e 'academia.edu' -e 'researchgate.net' -e 'pdf.yt' -- "$PAGE";
+            -e "www.mendeley.com" -e 'academia.edu' -e 'researchgate.net' -e 'pdf.yt' \
+            -e 'photobucket' -e 'imgur.com' -- "$PAGE";
         # check for aggregator-hosted PDFs and host them on gwern.net to make them visible to Google Scholar/provide backups:
         link-extractor.hs "$PAGE" | egp --only-matching -e '^http://.*archive\.org/.*\.pdf$';
         egp -e "http://www.pnas.org/content/.*/.*/.*.abstract" -e '[^\.]t\.test\(' -e '^\~\~\{\.' -- "$PAGE";
