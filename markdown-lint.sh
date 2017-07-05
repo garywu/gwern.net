@@ -40,21 +40,35 @@ do
         # instead of writing 'x = ~y', unicode as '≈'
         fgp -e '= ~' -- "$PAGE" | fgrep -v ' mods'
 
-        [ "$(egrep '^description: ' "$PAGE" | wc --char)" -ge 80 ] || echo "Description metadata too short."
+        [ "$(egrep '^description: ' "$PAGE" | wc --char)" -ge 90 ] || echo "Description metadata too short."
 
         markdown-length-checker.hs "$PAGE";
         markdown-footnote-length.hs "$PAGE";
         proselint "$PAGE";
 
         # look for syntax errors making it to the final HTML output:
-        HTML=$(tail -n +3 -- "$PAGE" | pandoc --to=html5 --mathml --standalone -)
-        echo "$HTML" | tidy -quiet -errors --doctype html5;
-        echo "$HTML" | fgp -e "<""del"">";
-        echo "$HTML" | elinks -dump --force-html \
+        HTML=$(mktemp  --suffix=".html")
+        tail -n +3 -- "$PAGE" | pandoc --to=html5 --mathml --standalone - --output="$HTML"
+        tidy -quiet -errors --doctype html5 "$HTML";
+        fgp -e "<""del"">" "$HTML";
+        elinks -dump --force-html "$HTML" \
                      | fgp -e '\frac' -e '\times' -e '(http' -e ')http' -e '[http' -e ']http'  \
                            -e ' _ ' -e '[^' -e '^]' -e '/* ' -e ' */' -e '<!--' -e '-->' -e '<-- ' -e '<—' -e '—>' \
                            -e '$title$' -e '<del>' \
                            -e '$description$' -e '$author$' -e '$tags$' -e '$category$' \
-            -e '(!Wikipedia' -e '(!Hoogle' -e 'http://www.gwern.net' -e 'http://gwern.net' ; # ))
+                           -e '(!Wikipedia' -e '(!Hoogle' -e 'http://www.gwern.net' -e 'http://gwern.net' ; # ))
+
+        # Finally, check for broken external links; ignore local URLs which are usually either relative links to
+        # other pages in the repo or may be interwiki links like '!Wikipedia'.
+        linkchecker --no-status --check-extern --threads=1 -r1 --ignore="file://.*" "$HTML"
+    fi
+    if [[ $PAGE == *.sh ]]; then
+        shellcheck "$PAGE"
+    fi
+    if [[ $PAGE == *.hs ]]; then
+        hlint "$PAGE"
+    fi
+    if [[ $PAGE == *.html ]]; then
+        tidy -quiet -errors --doctype html5 "$PAGE"
     fi
 done
