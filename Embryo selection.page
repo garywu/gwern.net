@@ -754,25 +754,27 @@ This has implications for cost-effectiveness and optimization, discussed later.
 A simulation of this process:
 
 ~~~{.R}
+## simulate a single IVF cycle (which may not yield any live birth, in which case there is no gain returnable):
 simulateIVF <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.5, vitrificationP, liveBirth) {
   eggsExtracted <- max(0, round(rnorm(n=1, mean=eggMean, sd=eggSD)))
 
   normal        <- rbinom(1, eggsExtracted, prob=normalityP)
 
-  scores        <- embryoSelection(n=normal, variance=polygenicScoreVariance)
+  scores        <- rnorm(n=normal, mean=0, sd=sqrt(polygenicScoreVariance*0.5))
 
   survived      <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, scores)
 
   selection <- sort(survived, decreasing=TRUE)
+
   if (length(selection)>0) {
    for (embryo in 1:length(selection)) {
-   if (rbinom(1, 1, prob=liveBirth) == 1) {
-     live <- selection[embryo]
-     return(live)
-     }
+    if (rbinom(1, 1, prob=liveBirth) == 1) {
+      live <- selection[embryo]
+      return(live)
      }
     }
-  }
+   }
+ }
 simulateIVFs <- function(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth, iters=100000) {
   return(unlist(replicate(iters, simulateIVF(eggMean, eggSD, polygenicScoreVariance, normalityP, vitrificationP, liveBirth)))); }
 ~~~
@@ -913,7 +915,7 @@ Using the Tan et al 2014 data:
 ~~~{.R}
 simulateTan <- function() { return(simulateIVFs(3, 4.6, selzam2016, 0.5, 0.96, 0.24)); }
 iqTan <- mean(simulateTan()) * 15; iqTan
-# [1] 0.3945506292
+# [1] 0.3808377013
 ~~~
 
 That is, the couples in Tan et al 2014 would have seen a ~0.4IQ increase.
@@ -1136,7 +1138,7 @@ simulateIVFCB <- function (eggMean, eggSD, polygenicScoreVariance, normalityP=0.
   normal        <- rbinom(1, eggsExtracted, prob=normalityP)
 
   totalCost     <- fixedCost + normal * embryoCost
-  scores        <- embryoSelection(n=normal, variance=polygenicScoreVariance)
+  scores        <- rnorm(n=normal, mean=0, sd=sqrt(polygenicScoreVariance*0.5))
 
   survived      <- Filter(function(x){rbinom(1, 1, prob=vitrificationP)}, scores)
 
@@ -1169,57 +1171,56 @@ Now we have all our parameters set:
 iqLow <- 3270*15; iqHigh <- 16151*15
 ## Tan:
 summary(simulateIVFCBs(3, 4.6, selzam2016, 0.5, 0.96, 0.24, 1500, 200, iqLow))
-#     Trait.SD               Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-4100.0000
-#  1st Qu.:0.00000000   1st Qu.:1500.00   1st Qu.:-1700.0000
-#  Median :0.00000000   Median :1700.00   Median :-1500.0000
-#  Mean   :0.02801017   Mean   :1874.39   Mean   : -500.4911
-#  3rd Qu.:0.02927008   3rd Qu.:2100.00   3rd Qu.: -730.6793
-#  Max.   :0.44094948   Max.   :4300.00   Max.   :19928.5718
+#    Trait.SD               Cost              Net
+# Min.   :0.00000000   Min.   :1500.00   Min.   :-3900.0000
+# 1st Qu.:0.00000000   1st Qu.:1500.00   1st Qu.:-1700.0000
+# Median :0.00000000   Median :1700.00   Median :-1500.0000
+# Mean   :0.02854686   Mean   :1873.05   Mean   : -472.8266
+# 3rd Qu.:0.03149430   3rd Qu.:2100.00   3rd Qu.: -579.1553
+# Max.   :0.42872383   Max.   :4300.00   Max.   :19076.2182
 summary(simulateIVFCBs(3, 4.6, selzam2016, 0.5, 0.96, 0.24, 1500, 200, iqHigh))
-#     Trait.SD               Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   : -4300.000
-#  1st Qu.:0.00000000   1st Qu.:1500.00   1st Qu.: -1700.000
-#  Median :0.00000000   Median :1700.00   Median : -1500.000
-#  Mean   :0.02876628   Mean   :1868.35   Mean   :  5100.712
-#  3rd Qu.:0.03163196   3rd Qu.:2100.00   3rd Qu.:  5545.998
-#  Max.   :0.51011076   Max.   :4900.00   Max.   :120666.277
+#    Trait.SD               Cost              Net
+# Min.   :0.00000000   Min.   :1500.00   Min.   : -4100.000
+# 1st Qu.:0.00000000   1st Qu.:1500.00   1st Qu.: -1700.000
+# Median :0.00000000   Median :1700.00   Median : -1500.000
+# Mean   :0.02847819   Mean   :1873.08   Mean   :  5026.188
+# 3rd Qu.:0.03005473   3rd Qu.:2100.00   3rd Qu.:  5143.879
+# Max.   :0.48532430   Max.   :4100.00   Max.   :115677.092
 
 ## Hodes-Wertz:
 summary(simulateIVFCBs(8.2, 4.6, selzam2016, 0.35, 0.96, 0.40, 1500, 200, iqLow))
-#     Trait.SD                Cost              Net
-#  Min.   :0.000000000   Min.   :1500.00   Min.   :-3700.0000
-#  1st Qu.:0.000000000   1st Qu.:1700.00   1st Qu.:-1900.0000
-#  Median :0.007067949   Median :2100.00   Median :-1500.0000
-#  Mean   :0.050269041   Mean   :2077.96   Mean   :  387.7364
-#  3rd Qu.:0.087702810   3rd Qu.:2300.00   3rd Qu.: 2048.4342
-#  Max.   :0.564267504   Max.   :4300.00   Max.   :25577.3211
+#    Trait.SD                Cost              Net
+# Min.   :0.000000000   Min.   :1500.00   Min.   :-4100.0000
+# 1st Qu.:0.000000000   1st Qu.:1700.00   1st Qu.:-1900.0000
+# Median :0.007840085   Median :2100.00   Median :-1500.0000
+# Mean   :0.051678465   Mean   :2079.25   Mean   :  455.5787
+# 3rd Qu.:0.090090594   3rd Qu.:2300.00   3rd Qu.: 2168.2666
+# Max.   :0.463198015   Max.   :4100.00   Max.   :21019.8626
 summary(simulateIVFCBs(8.2, 4.6, selzam2016, 0.35, 0.96, 0.40, 1500, 200, iqHigh))
-#     Trait.SD                Cost             Net
-#  Min.   :0.000000000   Min.   :1500.0   Min.   : -3700.000
-#  1st Qu.:0.000000000   1st Qu.:1700.0   1st Qu.: -1729.544
-#  Median :0.005219926   Median :2100.0   Median :  -895.304
-#  Mean   :0.050460809   Mean   :2079.2   Mean   : 10145.688
-#  3rd Qu.:0.088175260   3rd Qu.:2300.0   3rd Qu.: 19113.344
-#  Max.   :0.568129317   Max.   :4500.0   Max.   :134537.849
-
+#    Trait.SD                Cost              Net
+# Min.   :0.000000000   Min.   :1500.00   Min.   : -3700.0000
+# 1st Qu.:0.000000000   1st Qu.:1700.00   1st Qu.: -1700.0000
+# Median :0.006228574   Median :2100.00   Median :  -650.2792
+# Mean   :0.050884913   Mean   :2083.41   Mean   : 10244.2234
+# 3rd Qu.:0.088152844   3rd Qu.:2300.00   3rd Qu.: 19048.4272
+# Max.   :0.486235107   Max.   :4100.00   Max.   :114497.7483
 ## USA, youngest:
 summary(simulateIVFCBs(9, 4.6, selzam2016, 0.3, 0.90, 10.8/100, 1500, 200, iqLow))
-#     Trait.SD               Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   :-3900.0000
-#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-2100.0000
-#  Median :0.00000000   Median :1900.00   Median :-1521.1983
-#  Mean   :0.03435545   Mean   :2043.96   Mean   : -358.8253
-#  3rd Qu.:0.05222450   3rd Qu.:2300.00   3rd Qu.:  389.0717
-#  Max.   :0.44004791   Max.   :4100.00   Max.   :19684.3500
+#    Trait.SD               Cost              Net
+# Min.   :0.00000000   Min.   :1500.00   Min.   :-3900.0000
+# 1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.:-2045.5047
+# Median :0.00000000   Median :1900.00   Median :-1500.0000
+# Mean   :0.03360950   Mean   :2037.22   Mean   : -388.6739
+# 3rd Qu.:0.05023528   3rd Qu.:2300.00   3rd Qu.:  287.3619
+# Max.   :0.52294123   Max.   :3900.00   Max.   :23950.2672
 summary(simulateIVFCBs(9, 4.6, selzam2016, 0.3, 0.90, 10.8/100, 1500, 200, iqHigh))
-#     Trait.SD               Cost              Net
-#  Min.   :0.00000000   Min.   :1500.00   Min.   : -3700.000
-#  1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.: -1900.000
-#  Median :0.00000000   Median :1900.00   Median : -1500.000
-#  Mean   :0.03414784   Mean   :2042.67   Mean   :  6230.156
-#  3rd Qu.:0.05215105   3rd Qu.:2300.00   3rd Qu.: 10474.862
-#  Max.   :0.49288710   Max.   :4100.00   Max.   :117709.293
+#    Trait.SD               Cost              Net
+# Min.   :0.00000000   Min.   :1500.00   Min.   : -3900.000
+# 1st Qu.:0.00000000   1st Qu.:1700.00   1st Qu.: -1900.000
+# Median :0.00000000   Median :1900.00   Median : -1500.000
+# Mean   :0.03389909   Mean   :2044.75   Mean   :  6167.812
+# 3rd Qu.:0.05115755   3rd Qu.:2300.00   3rd Qu.: 10224.781
+# Max.   :0.45364794   Max.   :4100.00   Max.   :108203.019
 ~~~
 
 In general, embryo selection as of January 2016 is just barely profitable or somewhat unprofitable in each group using the lowest estimate of IQ's value; it is always profitable on average with the highest estimate.
