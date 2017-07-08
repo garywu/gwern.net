@@ -1310,4 +1310,5 @@ brokenLinks = [
  , ("xmonad-advocacy", "http://sawfish.wikia.com/wiki/Comparison_of_extensible_window_managers")
  , ("zeo/Postassium", "/zeo/Potassium")
  , ("docs/1951-borges-argentinewriter.pdf", "/docs/borges/1951-borges-theargentinewriterandtradition.pdf")
+ , ("docs/borges/1951-borges-colridgesdream.pdf", "/docs/borges/1951-borges-coleridgesdream.pdf")
  ]
