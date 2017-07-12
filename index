@@ -7,7 +7,7 @@
     <meta name="description" content="Researcher, self-experimenter, and writer: psychology, statistics, and technology. Categorized list of gwern.net pages.">
     <meta name="keywords" content="statistics, darknet markets, Bitcoin, blinded self-experiments, Quantified Self, dual n-back, spaced repetition, modafinil">
     <meta name="dc.date.issued" content="27 Jan 2009">
-    <meta name="dcterms.modified" content="28 Feb 2017">
+    <meta name="dcterms.modified" content="11 July 2017">
     <link rel="canonical" href="https://www.gwern.net/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -52,7 +52,7 @@
       </div>
       <article>
         <div id="markdownBody">
-          <p>This is the website of <em>Gwern Branwen</em>, writer &amp; independent researcher. I specialize in psychology, statistics, and technology; I am best known for my work on the darknet markets &amp; Bitcoin, blinded self-experiments &amp; Quantified Self analyses, dual n-back &amp; spaced repetition, and modafinil.</p>
+          <p>This is the website of <em>Gwern Branwen</em>, writer &amp; independent researcher. I focus on psychology, statistics, and technology; I am best known for my work on the darknet markets &amp; Bitcoin, blinded self-experiments &amp; Quantified Self analyses, dual n-back &amp; spaced repetition, and modafinil.</p>
           <p>For information about my site’s philosophy, method, traffic statistics, and implementation, see <a href="/About">the About page</a>; for information about myself, my use of other websites, and contact information, see <a href="/Links">the Links page</a>; for information about recently added pages, see <a href="/Changelog">the Changelog</a>; to be notified of updates, <a href="https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&amp;id=91b4d51355">subscribe to my newsletter</a> or <a href="/atom.xml" title="Site-wide global ATOM/RSS Feed (all edits)">RSS</a>.</p>
         </div>
 
@@ -80,6 +80,7 @@
           <li><a href="/Mail%20delivery" title="Bayesian decision-theoretic analysis of local mail delivery times: modeling deliveries as survival analysis, model comparison, optimizing check times with a loss function, and optimal data collection.">When Should I Check The Mail?</a></li>
           <li><a href="/Tool%20AI" title="AIs limited to purely computational inferential tasks (Tool AIs) supporting humans will be less intelligent, efficient, and economically valuable than more autonomous reinforcement-learning AIs (Agent AIs) who learn to take actions over computation/data/training/architecture/hyperparameters/external-resource use.">Why Tool AIs Want to Be Agent AIs</a></li>
           <li><a href="/Complexity%20vs%20AI" title="Critics of AI risk suggest diminishing returns to computing (formalized asymptotically) means AI will be weak; this argument relies on a large number of questionable premises and ignoring additional resources, constant factors, and nonlinear returns to small intelligence advantages, and is highly unlikely.">Complexity no Bar to AI</a></li>
+          <li><a href="/Hyperbolic%20Time%20Chamber" title="A time dilation chamber as thought experiment on the power of pure thought, with comparison to computer AGI advantages/disadvantages">The Hyperbolic Time Chamber as Brain Emulation Analogy</a></li>
           <li><a href="/Death%20Note%20script" title="Internal, external, stylometric evidence point to the 2009 leaked live-action script being real"><em>Death Note</em> script authenticity</a></li>
           <li><a href="/The%20Existential%20Risk%20of%20Mathematical%20Error" title="Mathematical mistake/error-rates limit our understanding of rare risks and ability to defend against them">The Existential Risk of Mathematical Error</a></li>
           <li><a href="/Iodine" title="Iodine improves IQ in fetuses; adults as well? A meta-analysis of relevant studies says no.">Iodine and Adult IQ meta-analysis</a></li>
