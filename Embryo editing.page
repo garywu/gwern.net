@@ -266,6 +266,8 @@ Ware et al 2017, "Heterogeneity in polygenic scores for common human traits" htt
 
 "High-Resolution Genetic Maps Identify Multiple Type 2 Diabetes Loci at Regulatory Hotspots in African Americans and Europeans", Lau et al 2017 /docs/genetics/2017-lau.pdf
 
+"The genomic landscape of African populations in health and disease", Rotimi et al 2017 /docs/genetics/2017-rotimi.pdf
+
 Given the practice of embryo editing, the causal tagging problem can gradually solve itself: as edits are made, forcibly breaking the potential confounds, the causal nature of an SNP becomes clear. But how to allocate edits across the top SNPs to determine each's causal nature as efficiently as possible without spending too many edits investigating?
 A naive answer might be something along the lines of a power analysis: in a two-group _t_-test trying to detect a difference of ~0.03 SD for each variant (the rough size of the top few variants), with variance reduced by the known polygenic score, and desired power is the standard 80%; it follows that one would need to randomize a total sample of _n_=34842 to reject the null hypothesis of 0 effect[^t-test-editing]. Setting up a [factorial experiment](!Wikipedia) & randomizing several variants simultaneously may allow inferences on them as well, but clearly this is going to be a tough row to hoe.
 This is unduly pessimistic, since we neither need nor desire 80% power, nor are we comparing to a null hypothesis, as our goal is more modest: since only a certain number of edits will be doable for any embryo, say 30, we merely want to accumulate enough evidence about the top 30 variants to either demote it to #31 (and so we no longer spend any edits on it) or confirm it belongs in the top 30 and we should always be editing it.
