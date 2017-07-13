@@ -434,7 +434,6 @@ Additional citations are welcome.
 >
 > This kind of testmanship flourishes best when people pay too much attention to the significance test and too little to the degree of statistical association the finding represents. This clutters up the literature with findings that are often not worth pursuing, and which serve only to obscure the really important predictive relations that occasionally appear. The serious scientist owes it to himself and his readers to ask not only, "Is there any association between $X$ and $Y$?" but also, "How much does my finding suggest about the power to predict $Y$ from $X$?" Much too much emphasis is paid to the former, at the expense of the latter, question.
 
-
 ### Meehl 1990 (1)
 
 ["Why summaries of research on psychological theories are often uninterpretable"](http://www.tc.umn.edu/~pemeehl/144WhySummaries.pdf), Meehl 1990 (also discussed in Cohen's 1994 paper ["The Earth is Round (_p_<.05)"](http://www.sjsu.edu/faculty/gerstman/misc/Cohen1994.pdf)):
@@ -504,7 +503,7 @@ Additional citations are welcome.
 > - Harman, H. H. (1960). _Modern factor analysis_. Chicago: University of Chicago Press.
 > - McClosky, Herbert, & Meehl, P. E. (in preparation). _Ideologies in conflict_.^[This work does not seem to have been published.]
 
-# Raftery 1995
+### Raftery 1995
 
 ["Bayesian Model Selection in Social Research (with Discussion by Andrew Gelman & Donald B. Rubin, and Robert M. Hauser, and a Rejoinder)"](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.42.198):
 
@@ -528,7 +527,7 @@ Additional citations are welcome.
 
 > My third meta-principle is that *different applications demand different philosophies*. This principle comes up for me in Efron's discussion of hypothesis testing and the so-called false discovery rate, which I label as "so-called" for the following reason. In Efron's formulation (which follows the classical multiple comparisons literature), a "false discovery" is a zero effect that is identified as nonzero, whereas, in my own work, I never study zero effects. The effects I study are sometimes small but it would be silly, for example, to suppose that the difference in voting patterns of men and women (after controlling for some other variables) could be exactly zero. My problems with the "false discovery" formulation are partly a matter of taste, I'm sure, but I believe they also arise from the difference between problems in genetics (in which some genes really have essentially zero effects on some traits, so that the classical hypothesis-testing model is plausible) and in social science and environmental health (where essentially everything is connected to everything else, and effect sizes follow a continuous distribution rather than a mix of large effects and near-exact zeroes).
 
-### Gelman 2010
+#### Gelman 2010
 
 ["Causality and Statistical Learning"](http://www.stat.columbia.edu/~gelman/research/published/causalreview4.pdf), Gelman 2010:
 
@@ -573,7 +572,7 @@ Additional citations are welcome.
 >
 > The place where I think Sloman is misguided is in his formulation of scientific models in an either/or way, as if, in truth, social variables are linked in simple causal paths, with a scientific goal of figuring out if A causes B or the reverse. I don't know much about intelligence, beer consumption, and socioeconomic status, but I certainly don't see any simple relationships between income, religious attendance, party identification, and voting-and I don't see how a search for such a pattern will advance our understanding, at least given current techniques. I'd rather start with description and then go toward causality following the approach of economists and statisticians by thinking about potential interventions one at a time. I'd love to see Sloman's and Pearl's ideas of the interplay between observational and experimental data developed in a framework that is less strongly tied to the notion of choice among simple causal structures.
 
-### Gelman et al 2011
+#### Gelman et al 2011
 
 ["Inherent Difficulties of Non-Bayesian Likelihood-based Inference, as Revealed by an Examination of a Recent book by Aitkin"](http://www.stat.columbia.edu/~gelman/research/unpublished/GRR16.pdf)
 
@@ -588,6 +587,26 @@ Additional citations are welcome.
 > To be clear: we are not denying the value of hypothesis testing. In this example, we find it completely reasonable to ask whether observed changes are statistically significant, i.e. whether the data are consistent with a null hypothesis of zero change. What we do not find reasonable is the statement that "the question of interest is whether there has been a change in support."...Suppose public opinion was observed to really be flat, punctuated by occasional changes, as in the left graph in Figure 3. In that case, Aitkin's question of "whether there has been a change" would be well-defined and appropriate, in that we could interpret the null hypothesis of no change as some minimal level of baseline variation. Real public opinion, however, does not look like baseline noise plus jumps, but rather shows continuous movement on many time scales at once, as can be seen from the right graph in Figure 3, which shows actual presidential approval data. In this example, we do not see Aitkin's question as at all reasonable. Any attempt to work with a null hypothesis of opinion stability will be inherently arbitrary. It would make much more sense to model opinion as a continuously- varying process.
 >
 > The statistical problem here is not merely that the null hypothesis of  change is nonsensical; it is that the null is in no sense a reasonable approximation to any interesting model.
+
+#### Gelman et al 2013
+
+["Inherent difficulties of non-Bayesian likelihood-based inference, as revealed by an examination of a recent book by Aitkin"](http://www.stat.columbia.edu/~gelman/research/published/GRR18.pdf):
+
+> 7. *Solving non-problems*
+>
+> Several of the examples in _Statistical Inference_ represent solutions to problems that seem to us to be artificial or conventional tasks with no clear analogy to applied work.
+>
+>> "They are artificial and are expressed in terms of a survey of 100 individuals expressing support (Yes/No) for the president, before and after a presidential address (. . . ) The question of interest is whether there has been a change in support between the surveys (...). We want to assess the evidence for the hypothesis of equality H~1~ against the alternative hypothesis H~2~ of a change." --_Statistical Inference_ ,page 147
+>
+> Based on our experience in public opinion research, this is not a real question. Support for any political position is always changing. The real question is how much the support has changed, or perhaps how this change is distributed across the population.
+>
+> A defender of Aitkin (and of classical hypothesis testing) might respond at this point that, yes, everybody knows that changes are never exactly zero and that we should take a more "grown-up" view of the null hypothesis, not that the change is zero but that it is nearly zero. Unfortunately, the metaphorical interpretation of hypothesis tests has problems similar to the theological doctrines of the Unitarian church. Once you have abandoned literal belief in the Bible, the question soon arises: why follow it at all? Similarly, once one recognizes the inappropriateness of the point null hypothesis, we think it makes more sense not to try to rehabilitate it or treat it as treasured metaphor but rather to attack our statistical problems directly, in this case by performing inference on the change in opinion in the population.
+>
+> To be clear: we are not denying the value of hypothesis testing. In this example, we find it completely reasonable to ask whether observed changes are statistically significant, i.e. whether the data are consistent with a null hypothesis of zero change. What we do not find reasonable is the statement that "the question of interest is whether there has been a change in support."
+>
+> All this is application-specific. Suppose public opinion was observed to really be flat, punctuated by occasional changes, as in the left graph in Figure 7.1. In that case, Aitkin's question of "whether there has been a change" would be well-defined and appropriate, in that we could interpret the null hypothesis of no change as some minimal level of baseline variation.
+>
+> Real public opinion, however, does not look like baseline noise plus jumps, but rather shows continuous movement on many time scales at once, as can be seen from the right graph in Figure 7.1, which shows actual presidential approval data. In this example, we do not see Aitkin's question as at all reasonable. Any attempt to work with a null hypothesis of opinion stability will be inherently arbitrary. It would make much more sense to model opinion as a continuously-varying process. The statistical problem here is not merely that the null hypothesis of zero change is nonsensical; it is that the null is in no sense a reasonable approximation to any interesting model. The sociological problem is that, from Savage (1954) onward, many Bayesians have felt the need to mimic the classical null-hypothesis testing framework, even where it makes no sense.
 
 ### Schwitzgebel 2013
 
