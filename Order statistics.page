@@ -75,7 +75,7 @@ upperBoundMax3 <- function(n, sd) { -qnorm(1/(n+1), sd=sd) }
 
 ## Formulas
 
-Blom 1958 (_Statistical estimates and transformed beta-variables_) reportedly provides a general approximation formula, which tweaking for the max is $\Phi^{-1}(\frac{n-\alpha}{n - 2\cdot\alpha + 1 }) \cdot \sigma; \alpha=0.375$, which is better than the upper bounds:
+Blom 1958 (_Statistical estimates and transformed beta-variables_) reportedly provides a general approximation formula $E(r,n)$, which specializing to the max ($E(n,n)$) is $\Phi^{-1}(\frac{n-\alpha}{n - 2\cdot\alpha + 1 }) \cdot \sigma; \alpha=0.375$, which is better than the upper bounds:
 
 ~~~{.R}
 blom1958 <- function(n, sd) { alpha <- 0.375; qnorm((n-alpha)/(n-2*alpha+1)) * sd }
@@ -246,3 +246,53 @@ exactMax <- function (n, mean=0, sd=1) { if(n>200) { exactMax_memoised(n, mean, 
 ~~~
 
 This gives us exact computation at $\mathcal{O}(1)$ (with an amortized $\mathcal{O}(1)$ when $n>200$) with an extremely small constant factor (a conditional, vector index, multiplication, and addition, which is overall ~10x faster than a memoised lookup), giving us all our desiderata simultaneously & resolving the problem.
+
+<!--
+General order statistics for the normal distribution:
+
+available implementations:
+
+- lmomco?
+
+   `expect.max.ostat(10^10, j=10^10 para=vec2par(c(0, 1), type="nor"), cdf=cdfnor, pdf=pdfnor)`
+- `order_rnorm` in `orderstats`:
+
+    ~~~{.R}
+    library(orderstats)
+    mean(replicate(100000, order_rnorm(k=10^10, n=10^10)))
+    # [1] 6.446370373
+    ~~~
+- `order` in `evd`
+
+    ~~~{.R}
+    library(evd)
+    mean(rorder(100000, distn="norm", j=10^10, mlen=10^10, largest=FALSE))
+    # [1] 6.447222051
+    ~~~
+- [`evNormOrdStats`](https://www.rdocumentation.org/packages/EnvStats/versions/2.1.0/topics/evNormOrdStats) in `EnvStats`: (breaks at 10^10 but the Blom approximation still works)
+
+    > The function `evNormOrdStatsScalar` computes the value of $E(r,n)$ for user-specified values of _r_ and _n_. The function `evNormOrdStats` computes the values of $E(r,n)$ for all values of _r_ for a user-specified value of _n_. For large values of _n_, the function `evNormOrdStats` with `approximate=FALSE` may take a long time to execute. When `approximate=TRUE`, `evNormOrdStats` and `evNormOrdStatsScalar` use the following approximation to $E(r,n)$, which was proposed by Blom (1958, pp. 68-75):
+    >
+    > $$E(r,n) \approx \Phi^{-1} (\frac{r - \frac{3}{8}}{n + \frac{1}{4}})$$
+    >
+    > ~~~{.R}
+    > blom1958E <- function(r,n) { qnorm((r - 3/8) / (n + 1/4)) }
+    > blom1958E(10^10, 10^10)
+    > # [1] 6.433133208
+    > ~~~
+    >
+    > This approximation is quite accurate. For example, for $n \gte 2$, the approximation is accurate to the first decimal place, and for $n \gte 9$ it is accurate to the second decimal place.
+
+    Blom's approximation is also [quoted as](https://stats.stackexchange.com/a/9007/16897):
+
+    $$E(r, n) \approx \mu + \Phi^{-1} (\frac{r - \alpha}{n - 2\alpha +1})\sigma; \alpha = 0.375$$
+- Elfving's correction to Blom is the same:
+
+    ~~~{.R}
+    elfving1947E <- function(r,n) { alpha=pi/8; qnorm( (r - alpha) / (n - 2*alpha + 1) )  }
+    elfving1947E(10^10, 10^10)
+    # [1] 6.437496713
+    ~~~
+
+TODO: ordered a copy of _Statistical Estimates and Transformed Beta-Variables_, Blom 1957; scan, upload, and check for useful approximations/formulas
+-->
