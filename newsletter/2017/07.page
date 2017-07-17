@@ -1,5 +1,6 @@
 ---
 title: July 2017 news
+description: July 2017 gwern.net newsletter with links on intelligence, GANs, malaria, Borges's essays, 2 book reviews
 created: 14 June 2017
 tags: newsletter
 status: in progress
@@ -14,27 +15,80 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 - Long Bets analysis?
 - Danbooru dataset?
 - Individual differences?
+- ["How Would You Prove You Are a Time-traveler From the Past?"](https://www.gwern.net/Notes#TODO)
 
 # Media
 ## Links
 
 Everything is heritable:
 
+- ["MTAG: Multi-Trait Analysis of GWAS"](http://www.biorxiv.org/content/early/2017/07/03/118810), Turley et al 2017; ["A combined analysis of genetically correlated traits identifies 107 loci associated with intelligence"](http://www.biorxiv.org/content/early/2017/07/07/160291.1), Hill et al 2017 (use of multiple [genetic correlations](https://en.wikipedia.org/wiki/Genetic_correlation) to overcome measurement error greatly boosts efficiency of IQ GWAS, and provides best public polygenic score to date: 7% of variance. This illustrates a good way to work around the shortage of high-quality IQ test scores by exploiting multiple more easily-measured phenotypes. Even better: like LD score regression, MTAG only requires public summary statistics; so it may also, like LD score regression, see an explosion in use - since it is usable by everyone & there are so many overlapping phenotypic measurements...)
 - ["A genome-wide association study for extremely high intelligence"](https://www.nature.com/mp/journal/vaop/ncurrent/full/mp2017121a.html), Zabaneh et al 2017 (see previously [Spain et al 2016](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html "A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"); further confirmation that high intelligence is not genetically different from normal intelligence and is just a slightly better assortment of common additive variants)
+- ["Large-scale GWAS identifies multiple loci for hand grip strength providing biological insights into muscular fitness"](https://www.nature.com/articles/ncomms16015), Willems et al 2017 ([Mendelian randomization](https://en.wikipedia.org/wiki/Mendelian_randomization) suggests hand grip strength has no causal effect on mortality & is confounded)
+- ["10 Years of GWAS Discovery: Biology, Function, and Translation"](http://www.cell.com/ajhg/fulltext/S0002-9297%2817%2930240-9), Visscher et al 2017 (Almost a decade into the human genetic revolution - GCTA ~2009 - where do we stand?)
+- ["F.D.A. Panel Recommends Approval for Gene-Altering Leukemia Treatment"](https://www.nytimes.com/2017/07/12/health/fda-novartis-leukemia-gene-medicine.html)
+- ["The surprising implications of familial association in disease risk"](https://arxiv.org/abs/1707.00014), Valberg et al 2017
 
 AI:
 
+- ["CAN: Creative Adversarial Networks, Generating 'Art' by Learning About Styles and Deviating from Style Norms"](https://arxiv.org/abs/1706.07068), Elgammal et al 2017 (That's an interesting way to define novelty in a GAN context.)
+- ["ArtGAN: Artwork Synthesis with Conditional Categorical GANs"](https://arxiv.org/abs/1702.03410), Tan et al 2017 (fun samples)
+
 Statistics/meta-science/mathematics:
+
+- ["Preprint Déjà Vu: an FAQ"](https://arxiv.org/abs/1706.04188), Ginsparg 2017
 
 Politics/religion:
 
+- ["Right-wing review of left-wing organizing & political tricks manuals."](https://status451.com/2017/07/11/radical-book-club-the-decentralized-left/) (Right-wing review of left-wing organizing & political tricks manuals.)
+
 Psychology/biology:
+
+- ["The US President's Malaria Initiative and under-5 child mortality in sub-Saharan Africa: A difference-in-differences analysis"](http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002319), Jakubowski et al 2017
+- ["Metformin alters the gut microbiome of individuals with treatment-naive type 2 diabetes, contributing to the therapeutic effects of the drug"](http://agingfree.org/Portals/0/xBlog/uploads/2017/5/24/Metformin%20alters%20the%20gut%20microbiome%20of%20individuals.pdf), Wu et al 2017
+- ["The Power and the Gory"](http://www.bronxbanterblog.com/2013/10/01/the-power-and-the-gory/), Solotaroff 1990 (Gonzo journalism on steroids & bodybuilding; multiple waves in bodybuilding track scientific/technological/economic progress in hormone/drug development)
+- ["How long does it take to research and develop a new vaccine?"](http://effective-altruism.com/ea/1c5/how_long_does_it_take_to_research_and_develop_a/)
+- ["Chronotype variation drives night-time sentinel-like behaviour in hunter-gatherers"](https://www.gwern.net/docs/melatonin/2017-samson.pdf), Samson et al 2017 (This could also explain why there is a wrenching shift in circadian rhythms towards inefficient later night-wakefulness during puberty and then only gradually shifts back to day-wakefulness with increasing age: this is the same time at which males become useful warriors and females start having offspring which must be minded. It becomes a stable equilibrium due to any defectors having an advantage in attacking rival tribes - anthropologists have long noted that ambushes & night raids are much preferred to open battle in the day.)
 
 Technology:
 
+- [Hoare's classic 1980 Turing Award Lecture on complexity & failure in software design: "The Emperor's Old Clothes"](https://www.cs.fsu.edu/~engelen/courses/COP4610/hoare.pdf)
+- ["A Tale of the Mirror World, Part 5: The Inflection Point"](http://www.filfre.net/2017/07/a-tale-of-the-mirror-world-part-5-the-inflection-point/) (The extraordinary Soviet triple cross that restored their control over the Tetris franchise and royalties.)
+- ["How the Oil Pipeline Began"](http://nautil.us/issue/50/emergence/how-the-oil-pipeline-began)
+- [Single-letter second-level domains](https://en.wikipedia.org/wiki/Single-letter_second-level_domain) (why are almost all the alphabetic domains like `a.com` not used? Because [Jon Postel](https://en.wikipedia.org/wiki/Jon_Postel) bought them up back in 1992 and IANA/ICANN have squatted them ever since.)
+- [DCoins: a malicious ICO for DDOsing Ethereum (~\$3.5m/week)]( https://www.reddit.com/r/ethereum/comments/6iw2c8/how_to_attack_the_ethereum_network_using_a/ "How to attack the Ethereum network using a malicious ICO | A malicious smart contract could congest the network to unusable levels for upwards of seven days.") (A simple game-theory mechanism to incentivize spamming the Ethereum network: a contract which pays out decreasing amounts to only low-fee transactions. Since rejected transactions cost nothing, it becomes dominant for everyone to send in a withdrawal as often and early as possible...)
+
 Economics:
 
+- ["Amazon Prime does more for northern food security than federal subsidies, say Iqaluit residents"](http://www.cbc.ca/news/canada/north/iqaluit-amazon-prime-1.4193665 "Parcel shipping via Canada Post to Iqaluit increasing at 2 to 3 times the national rate")
+
 Philosophy:
+
+- Borges, _Selected Nonfictions_:
+
+    - 1929: ["The Duration of Hell"](https://www.gwern.net/docs/borges/1929-borges-thedurationofhell.pdf) (pg47-51)
+    - 1932: ["A Defense of the Kabbalah"](https://www.gwern.net/docs/borges/1932-borges-adefenseofthekabbalah.pdf) (pg83-86)
+    - 1932: ["The Homeric Versions"](https://www.gwern.net/docs/borges/1932-borges-thehomericversions.pdf) (pg71-74)
+    - 1933: ["The Art of Verbal Abuse"](https://www.gwern.net/docs/borges/1933-borges-theartofverbalabuse.pdf) (pg 87-91)
+    - 1936: ["A History of Eternity"](https://www.gwern.net/docs/borges/1936-borges-ahistoryofeternity.pdf) (pg123-139)
+    - 1936: ["The Doctrine of Cycles"](https://www.gwern.net/docs/borges/1936-borges-thedoctrineofcycles.pdf) (pg115-122)
+    - 1936: ["The Translators of _The Thousand and One Nights_"](https://www.gwern.net/docs/borges/1936-borges-thetranslatorsofthethousandandonenights.pdf) (pg92-109)
+    - 1937: ["Ramon Llull's Thinking Machine"](https://www.gwern.net/docs/borges/1937-borges-raymondllullsthinkingmachine.pdf) (pg155-159)
+    - 1938: ["Richard Hull, _Excellent Intentions_"](https://www.gwern.net/docs/borges/1938-borges-richardhullexcellentintentions.pdf) (pg184)
+    - 1939: ["The Total Library"](https://www.gwern.net/docs/borges/1939-borges-thetotallibrary.pdf) (pg214-216)
+    - 1947: ["A New Refutation of Time"](https://www.gwern.net/docs/borges/1947-borges-anewrefutationoftime.pdf) (pg317-332)
+    - 1948: [John Donne's "_Biathanatos_"](https://www.gwern.net/docs/borges/1948-borges-biathanatos.pdf) (pg333-336)
+    - 1951: ["Coleridge's Dream"](https://www.gwern.net/docs/borges/1951-borges-coleridgesdream.pdf) (pg369-372)
+    - 1951: ["Pascal's Sphere"](https://www.gwern.net/docs/borges/1951-borges-pascalssphere.pdf) (pg351-353)
+    - 1951: ["The Argentine Writer and Tradition"](https://www.gwern.net/docs/borges/1951-borges-theargentinewriterandtradition.pdf)
+    - 1951: ["The Enigma of Edward Fitzgerald"](https://www.gwern.net/docs/borges/1951-borges-theenigmaofedwardfitzgerald.pdf) (pg366-368)
+    - 1953: ["The Dialogues of Ascetic and King"](https://www.gwern.net/docs/borges/1953-borges-thedialoguesofasceticandking.pdf) (pg382-385)
+    - 1953: ["The Scandinavian Destiny"](https://www.gwern.net/docs/borges/1953-borges-thescandinaviandestiny.pdf) (pg377-381)
+    - 1961: ["Edward Gibbon, _Pages of History and Autobiography_"](https://www.gwern.net/docs/borges/1961-borges-edwardgibbonautobiography.pdf) (pg438-444)
+    - 1962: ["The Concept of an Academy and the Celts"](https://www.gwern.net/docs/borges/1962-borges-theconceptofanacademyandthecelts.pdf) (pg458-463)
+    - 1964: ["The Enigma of Shakespeare"](https://www.gwern.net/docs/borges/1964-borges-theenigmaofshakespeare.pdf) (pg463-473)
+    - 1975: ["Emanuel Swedenborg, _Mystical Works_"](https://www.gwern.net/docs/borges/1975-borges-emanuelswedenborgmysticalworks.pdf) (pg449-457)
+    - 1977: ["Blindness"](https://www.gwern.net/docs/borges/1977-borges-blindness.pdf) (pg473-483)
 
 Fiction:
 
@@ -45,6 +99,9 @@ Misc:
 ## Books
 
 Nonfiction:
+
+- [_Selected Non-Fictions_](https://www.amazon.com/Borges-Selected-Non-Fictions-Jorge-Luis/dp/0140290117), [Jorge Luis Borges](https://en.wikipedia.org/wiki/Jorge_Luis_Borges) ([review](https://www.goodreads.com/review/show/2046386028))
+- [_The Secret History of the Mongols_](https://en.wikipedia.org/wiki/The_Secret_History_of_the_Mongols) ([review](https://www.goodreads.com/review/show/2044522137))
 
 Fiction:
 
