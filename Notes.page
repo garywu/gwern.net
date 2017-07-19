@@ -2513,8 +2513,12 @@ Further, Acer's website and support are notoriously bad, and they didn't help at
 Data recovery proved tricky.
 I wrote down everything I could possibly think of which I had done in those 16 days, got copies of IRC logs for hints as to my activities, synced with the Github mirror of `gwern.net` to recover (most) of my writing during that period, and tried to match up with my offline activities.
 I definitely lost 2 weeks of data on some of my self-experiments and other metrics, along with some new music I'd downloaded from [What.cd](!Wikipedia) and whose name I've forgotten, and some Geocities-related `char-RNN` training logs + checkpoints, all of which is sad but not a huge deal.
-In retrospect, the data loss doesn't _seem_ to be that bad (although I've spent several days working through it) in part, ironically, for the same reasons that I had slackened on manual backups.
+In retrospect, the data loss doesn't *seem* to be that bad (although I've spent several days working through it) in part, ironically, for the same reasons that I had slackened on manual backups.
 Of course, this assumes I haven't forgotten that I've forgotten having done something important...
+
+(In July 2017, I realized that my [arbtt](https://arbtt.nomeata.de/) window-tracking logs, which I keep for productivity analyses, hadn't been updated since December 2016, costing me over half a year of data; I discovered that I had deleted my local user binaries because they were compiled on the previous system, but had forgotten to reinstall arbtt locally and my cron job hardwired the local version.
+This was because the arbtt packaged by Debian/Ubuntu was too outdated so I installed from HEAD, and then the error from the missing binary was not reported in system emails because the call is wrapped in an infinite loop which ignores errors; and *that* was because arbtt would segfault once a month & stop recording data.
+I reinstalled arbtt, checked that the latest version worked & removed the hardwiring, and added a daily arbtt report which would expose any lack of data collection - but the lost data is forever.)
 
 So, [post-mortem](!Wikipedia "Root cause analysis") time - one always prepares to fight the last war.
 What was the primary cause for this huge waste of time, money, and effort; what other causes worsened it; and how might all be prevented in the future?
