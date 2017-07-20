@@ -181,29 +181,29 @@ Besides that, I think after a while writing/research can be a virtuous circle or
 Occasionally people ask how I manage information and read things.
 
 1. For quotes or facts which are very important, I employ [spaced repetition](Spaced repetition) by adding them to my Mnemosyne
-2. I keep web clippings in an Evernote public notebook; I also excerpt from research papers & books, and miscellaneous sources. This is useful for targeted searches when I remember a fact but not where I learned it, and for storing things which I don't want to memorize but which have no logical home in my website or LW or elsewhere. I don't make any use of more complex Evernote features.
+2. I keep web clippings in an Evernote public notebook; I also excerpt from research papers & books, and miscellaneous sources. This is useful for targeted searches when I remember a fact but not where I learned it, and for storing things which I don't want to memorize but which have no logical home in my website or LW or elsewhere. It is also helpful for writing my [book reviews](/Book reviews) and the [monthly newsletter](https://gwern.us3.list-manage.com/subscribe?u=ed1f6b2799208b40f5f18be8f&amp;id=91b4d51355), as I can read through my book excerpts to remind myself of the highlights and at the end of the month review clippings from papers/webpages to find good things to reshare which I was too busy at the time to do so or was unsure of its importance. I don't make any use of more complex Evernote features.
 
     I periodically back up my Evernote using the [Linux client Nixnote's](http://nevernote.sourceforge.net/) export feature. (I made sure there was a working export method before I began using Evernote, and use it only as long as Nixnote continues to work.)
 
     My workflow for dealing with PDFs, as of late 2014, is:
 
-    1. if necessary, jailbreak the paper using [Libgen](http://libgen.org/) or a university proxy, then upload a copy to Dropbox, named `$year-$first_author.pdf`
+    1. if necessary, jailbreak the paper using [Libgen](http://libgen.org/) or a university proxy, then upload a copy to Dropbox, named `year-author.pdf`
     2. read the paper, making excerpts as I go
     3. store the metadata & excerpts in Evernote, possibly copying over to my Google+ account if I think it's good or otherwise interesting
     4. if useful, integrate into `gwern.net` with its title/year/author metadata, adding a local fulltext copy if the paper had to be jailbroken, otherwise rely on my custom archiving setup to preserve the remote URL
     5. hence, any future searches for the filename / title / key contents should result in hits either in my Evernote or `gwern.net`
 3. Web pages are archived & backed up by [my custom archiving setup](Archiving URLs). This is intended mostly for fixing dead links (eg to recover the fulltext of the original URL of an Evernote clipping).
 4. I don't have any special book reading techniques. For really good books I excerpt from each chapter and stick the quotes into Evernote.
-5. I store insights and thoughts in various pages on `gwern.net` as parenthetical comments, footnotes, and appendices. If they don't fit anywhere, I dump them in [Notes]()
-6. Larger masses of citations and quotes typically get turned into `gwern.net` pages.
+5. I store insights and thoughts in various pages as parenthetical comments, footnotes, and appendices. If they don't fit anywhere, I dump them in [Notes]().
+6. Larger masses of citations and quotes typically get turned into pages.
 7. I make heavy use of RSS subscriptions for news. For that, I am currently using [Liferea](!Wikipedia). (Not that I'm hugely thrilled about it. Google Reader was much better.)
-8.  For projects and followups, I use lots and lots of reminders in Google Calendar.
-9. For recording personal data, I automate as much as possible (eg. Zeo and [arbtt](http://arbtt.nomeata.de/)) and I make a habit of the rest - getting up in the morning is a great time to build a habit of recording data because it's a time of habits like eating breakfast and getting dressed.
+8.  For projects and followups, I use reminders in Google Calendar.
+9. For recording personal data, I automate as much as possible (eg Zeo and [arbtt](http://arbtt.nomeata.de/)) and I make a habit of the rest - getting up in the morning is a great time to build a habit of recording data because it's a time of habits like eating breakfast and getting dressed.
 
-Hence, to refind information, I use a combination of Google, Evernote, `grep` (on the `gwern.net` files), occasionally Mnemosyne, and an excellent visual memory.
+Hence, to refind information, I use a combination of Google, Evernote, `grep` (on the `gwern.net` files), occasionally Mnemosyne, and a good visual memory.
 
-As far as writing goes, I do not use fancy note-taking software or things like [FreeMind](!Wikipedia).
-Instead, I  occasionally compile outlines of articles from comments on LW/Reddit/IRC, keep editing them with stuff as I remember them, search for relevant parts, allow little thoughts to bubble up while meditating, and pay attention to when I am irritated at people being wrong or annoyed that a particular topic hasn't been written down yet.
+As far as writing goes, I do not use note-taking software or things like [FreeMind](!Wikipedia) or [org-mode](!Wikipedia) - not that I think they are useless but I am worried about whether they would ever repay the large upfront investments of learning/tweaking or interfere with other things.
+Instead, I occasionally compile outlines of articles from comments on LW/Reddit/IRC, keep editing them with stuff as I remember them, search for relevant parts, allow little thoughts to bubble up while meditating, and pay attention to when I am irritated at people being wrong or annoyed that a particular topic hasn't been written down yet.
 
 ## Confidence tags
 
@@ -255,12 +255,13 @@ It turns out that writing essays (technical or philosophical) is a lot like writ
     - check readability level (eg. [Flesch-Kincaid](!Wikipedia))
     - [probability word checklist](#belief-tags)
     - check for use of the word "significant"/"significance" and insert "[statistically]" as appropriate (to disambiguate between [effect sizes](!Wikipedia) and [statistical significance](!Wikipedia); this common confusion is one reason for [statistical-significance considered harmful](http://lesswrong.com/lw/g13/against_nhst/ "Against NHST"))
-    - convert English units to metric <!-- grep -e " feet" -e " foot " -e pound -e mile -e inch -->
+    - convert English units to metric
+    - [proselint](https://github.com/amperser/proselint/) checks
 - content:
 
-    - mention any use of PredictionBook in [Prediction markets]()
-    - mention any use of Fermi estimates in [Fermi calculations](Notes#fermi-calculations)
-    - arrange for notifications of future results (when relevant, eg dual n-back research):
+    - mention any use of PredictionBook in [my essay on forecasting & prediction markets](/Prediction markets)
+    - mention any use of Fermi estimates in [Fermi calculations](/Notes#fermi-calculations)
+    - arrange for notifications of future results (when deciding to do long-term followups, eg dual n-back research):
 
         1. [Google Alerts](http://www.google.com/alerts)
         2. [Google Scholar Alerts](http://googlescholar.blogspot.com/2010/06/google-scholar-alerts.html)
@@ -310,7 +311,9 @@ And the following should *rarely* show up in the final rendered HTML:
     "$tags$"
     "$category$"
 
-Another static warning is checking for too-long lines which will cause browsers to use scrollbars, for which I've written a [Pandoc script](/haskell/markdown-length-checker.hs), and one for a bad habit of mine - [too-long footnotes](/haskell/markdown-footnote-length.hs). Combining checks for all these defects gives me a ["lint"](!Wikipedia "lint (software)") shell script for individual Markdown files which checks the page source and then the rendered HTML in various ways (I suggest adding `--color=auto` to your default `grep` options). The shell script can be found at [`markdown-lint.sh`](markdown-lint.sh).
+Another static warning is checking for too-long lines which will cause browsers to use scrollbars, for which I've written a [Pandoc script](/haskell/markdown-length-checker.hs), and one for a bad habit of mine - [too-long footnotes](/haskell/markdown-footnote-length.hs). Combining checks for all these defects gives me a ["lint"](!Wikipedia "lint (software)") shell script for individual Markdown files which checks the page source and then the rendered HTML in various ways (I suggest adding `--color=auto` to your default `grep` options).
+
+The shell script can be found at [`markdown-lint.sh`](markdown-lint.sh).
 
 ### Anonymous feedback
 
@@ -350,18 +353,18 @@ feedback <- read.csv("https://www.gwern.net/docs/traffic/2013-gwernnet-anonymous
 plot(Visits ~ Day, data=feedback)
 feedback$Time <- 1:nrow(feedback)
 summary(step(glm(Feedback ~ log(Visits) + Visits + Time, family=binomial, data=feedback)))
-...
-Coefficients:
-             Estimate Std. Error z value Pr(>|z|)
-(Intercept) -7.363507   1.311703   -5.61  2.0e-08
-log(Visits)  0.749730   0.173846    4.31  1.6e-05
-Time        -0.000881   0.000569   -1.55     0.12
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 578.78  on 753  degrees of freedom
-Residual deviance: 559.94  on 751  degrees of freedom
-AIC: 565.9
+# ...
+# Coefficients:
+#              Estimate Std. Error z value Pr(>|z|)
+# (Intercept) -7.363507   1.311703   -5.61  2.0e-08
+# log(Visits)  0.749730   0.173846    4.31  1.6e-05
+# Time        -0.000881   0.000569   -1.55     0.12
+#
+# (Dispersion parameter for binomial family taken to be 1)
+#
+#     Null deviance: 578.78  on 753  degrees of freedom
+# Residual deviance: 559.94  on 751  degrees of freedom
+# AIC: 565.9
 ~~~
 
 The logged hits works out better than regular hits, and survives to the simplified model. And the traffic influence seems much larger than the time variable (which is, curiously, negative).

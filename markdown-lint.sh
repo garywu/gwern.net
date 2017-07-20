@@ -26,6 +26,9 @@ do
         # look for personal uses of illegitimate statistics & weasel words, but filter out blockquotes
         fgp -e ' significant ' -e ' significantly ' -e ' obvious' -e 'basically' -e ' the the ' -- "$PAGE" | egrep -v '[[:space:]]*>';
 
+        # look for English/imperial units as a reminder to switch to metric as much as possible:
+        fgp -e " feet" -e " foot " -e pound -e mile -e inch -- "$PAGE"
+
         # check for duplicate footnote IDs (force no highlighting, because the terminal escape codes trigger bracket-matching)
         egrep --only-matching '^\[\^.*\]: ' -- "$PAGE" | sort | uniq --count | \
             fgrep --invert-match "      1 [^";

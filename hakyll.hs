@@ -562,6 +562,7 @@ brokenLinks = [
  , ("dnb faq", "/DNB%20FAQ")
  , ("dnm archives", "DNM%20archives")
  , ("dnm arrests", "/DNM%20arrests")
+ , ("Black-market%%2020arrests", "/DNM%20arrests")
  , ("doc/music-distraction/1999 furnham-2", "/docs/music-distraction/1999-furnham-2.pdf")
  , ("doc/music-distraction/1999 furnham-2.pdf.", "/docs/music-distraction/1999-furnham-2.pdf")
  , ("doc/music-distraction/1999-furnham-2.pf.", "/docs/music-distraction/1999-furnham-2.pdf")
@@ -1212,6 +1213,7 @@ brokenLinks = [
  , ("docs/terrorism/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/terrorism")
  , ("docs/tominaga/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/tominaga")
  , ("docs/touhou/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/touhou")
+ , ("docs/nootropics/index.html", "https://github.com/gwern/gwern.net/tree/master/docs/nootropics")
  , ("docs/unsworth2005.pdf", "/docs/dnb/2005-unsworth.pdf")
  , ("docs/zeidan2010.pdf", "/docs/dnb/2010-zeidan.pdf")
  , ("docs/zeo/gwern", "/docs/zeo/gwern-zeodata.csv")
@@ -1355,4 +1357,5 @@ brokenLinks = [
  , ("xmonad-advocacy", "http://sawfish.wikia.com/wiki/Comparison_of_extensible_window_managers")
  , ("zeo/Postassium", "/zeo/Potassium")
  , ("zeo/Vitamin%20DCachedMar", "/zeo/Vitamin%20D")
+ , ("ZeoHuang W, Shah S, Long Q, Crankshaw AK, Tangpricha V. Improvement of Pain, Sleep, and Quality of Life in Chronic Pain Patients With Vitamin D Supplementation. Clin J Pain. 2012 Jun 13. [Epub ahead of print] PubMed PMID: 22699141.", "/docs/zeo/2012-huang.pdf")
  ]
