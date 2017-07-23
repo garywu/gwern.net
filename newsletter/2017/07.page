@@ -24,6 +24,7 @@ Everything is heritable:
 
 - ["MTAG: Multi-Trait Analysis of GWAS"](http://www.biorxiv.org/content/early/2017/07/03/118810), Turley et al 2017; ["A combined analysis of genetically correlated traits identifies 107 loci associated with intelligence"](http://www.biorxiv.org/content/early/2017/07/07/160291.1), Hill et al 2017 (use of multiple [genetic correlations](https://en.wikipedia.org/wiki/Genetic_correlation) to overcome measurement error greatly boosts efficiency of IQ GWAS, and provides best public polygenic score to date: 7% of variance. This illustrates a good way to work around the shortage of high-quality IQ test scores by exploiting multiple more easily-measured phenotypes. Even better: like LD score regression, MTAG only requires public summary statistics; so it may also, like LD score regression, see an explosion in use - since it is usable by everyone & there are so many overlapping phenotypic measurements...)
 - ["A genome-wide association study for extremely high intelligence"](https://www.nature.com/mp/journal/vaop/ncurrent/full/mp2017121a.html), Zabaneh et al 2017 (see previously [Spain et al 2016](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html "A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"); further confirmation that high intelligence is not genetically different from normal intelligence and is just a slightly better assortment of common additive variants)
+- ["Genetic Influence on Intergenerational Educational Attainment"](http://journals.sagepub.com/doi/full/10.1177/0956797617707270), Ayorech et al 2017
 - ["Large-scale GWAS identifies multiple loci for hand grip strength providing biological insights into muscular fitness"](https://www.nature.com/articles/ncomms16015), Willems et al 2017 ([Mendelian randomization](https://en.wikipedia.org/wiki/Mendelian_randomization) suggests hand grip strength has no causal effect on mortality & is confounded)
 - ["10 Years of GWAS Discovery: Biology, Function, and Translation"](http://www.cell.com/ajhg/fulltext/S0002-9297%2817%2930240-9), Visscher et al 2017 (Almost a decade into the human genetic revolution - GCTA ~2009 - where do we stand?)
 - ["F.D.A. Panel Recommends Approval for Gene-Altering Leukemia Treatment"](https://www.nytimes.com/2017/07/12/health/fda-novartis-leukemia-gene-medicine.html)
@@ -116,6 +117,19 @@ Animated:
 ## Music
 
 Touhou:
+
+- ["Day and Night"](https://www.youtube.com/watch?v=XCT7-Atk0wA) (Maurits"禅"Cornelis feat. Vivienne; _Rebirth Story Ⅲ_ {R13}) [electronic]
+- ["Melty Wind"](https://www.youtube.com/watch?v=nC-HsVrhBAA) (NAGI☆ feat. 美歌 (Mika); _Rebirth Story Ⅲ_ {R13}) [trance]
+- ["While Hiding A Crime"](https://www.youtube.com/watch?v=mTZ1F_P_ImU) (NAGI☆ feat. 美歌 (Mika); _Rebirth Story Ⅲ_ {R13}) [vocal/classical]
+- ["Let it all out of you"](https://www.youtube.com/watch?v=onCKs9n2R_4) (Maurits"禅"Cornelis feat. Vivienne; _Rebirth Story Ⅲ_ {R13}) [rock]
+- ["Puppet in the Dark\[PartⅡ  Buried Away\]"](https://www.youtube.com/watch?v=NOToENkapzY) (Maurits"禅"Cornelis feat. Vivienne; _Rebirth Story Ⅲ_ {R13}) [rock]
+- ["サナエ・テレグラフ (2016)"](https://www.youtube.com/watch?v=w4jOzjS1HIM) (minimum electric design; _RENOVATION_ {C90}) [instrumental rock]
+- ["into my depressed brain (2016)"](https://www.youtube.com/watch?v=229J3T6DXA0) (minimum electric design; _RENOVATION_ {C90}) [electronic]
+- ["ユカリ・テレグラフ"](https://www.youtube.com/watch?v=XaHCcdfgkMY) (minimum electric design  feat. mineko; _RENOVATION_ {C90}) [electronic]
+
+Kantai Collection:
+
+- ["水雷戦隊の反撃"](https://www.dropbox.com/s/k8gr6j7h0n8mh4l/%E4%BA%A4%E9%9F%BF%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96neets-fourthkantaiphilharmonicorchestra-%E6%B0%B4%E9%9B%B7%E6%88%A6%E9%9A%8A%E3%81%AE%E5%8F%8D%E6%92%83.ogg) (Tokyo Active NEETs; _Fourth Kantai Philharmonic Orchestra_ {C90}) [orchestral]
 
 Doujin:
 
