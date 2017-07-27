@@ -27,6 +27,7 @@ importance: 8
 - Remember: _p_-values are not posterior probabilities are not effect sizes are not utilities are not profits are not decisions.
 - All analyses are ultimately decision analyses. We can ignore that for convenience, but we must never forget that.
 - Our beliefs are continuous, but our actions discrete. This leads to analysis paralysis; can one execute wholeheartedly on +EV actions with _P_=1% just as well as when _P_=99%?
+- "Disagree and commit" to courses of action - Thompson posterior sampling for solving the MDP of life.
 - Beware geeks bearing percents.
 - To mine for forgotten gold in a field, look for its most austere & mathematical subfield - mathematicians are terrible at marketing.
 - We will know deep learning has succeeded not when we anthropomorphize machines, but when we unanthropomorphize humans.
