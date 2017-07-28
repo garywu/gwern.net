@@ -4692,3 +4692,65 @@ Amazing the difference methods can make. It's all about data access.
 For all its disadvantages, LDSC statistically works around the lack of individual-level raw data and makes do with the data that gets publicly released because it is not seen to violate 'privacy' or 'bioethics', so any researcher can make use of the method on their particular dataset, while twin and GCTA require individual-level data which is jealously guarded by the owners.
 
 Methodologists and statisticians are probably seriously undervalued: a good new method can cause a revolution.
+
+# Bayesian power analysis: probability of exact replication
+
+Psychologist [Michael Kane](https://twitter.com/Kane_WMC_Lab) [mentions](https://twitter.com/Kane_WMC_Lab/status/890949994919886848):
+
+> TFW a correlation of interest in a new study (_n_=355) replicates that from a prior study (_n_=182) to the second decimal (_r_=0.23). Winning!
+
+Turning up the same correlation twice is somewhat surprising because random sampling error will vary substantially the empirical correlation $\hat r$ from sample to sample, as reflected by the wide credible intervals around _r_ with _n_=182-355.
+How surprising is it? Is it too good to be true?
+
+One approach would be to ask, if we generated bivariate samples of size _n_=355 with a fixed relationship of _r_=0.23, how often would the samples generate a rounded estimate of $\hat r$=0.23?
+
+~~~{.R}
+set.seed(2017-07-28)
+library('MASS')
+powerSim <- function (r_gen, n, r_test=NA) {
+    data <- mvrnorm(n=n, mu=c(0, 0), Sigma=matrix(c(1, r_gen, r_gen, 1), nrow=2))
+    r_est = cor.test(data[,1], data[,2])$estimate
+    if (is.na(r_test)) { r_test <- r_gen }
+    return(round(r_test, digits=2) == round(r_est, digits=2))
+    }
+powerSims <- function(r, n, r_test=NA, iters=100000) {
+ sim <- replicate(iters, powerSim(r,n, r_test=r_test))
+ return(sum(sim) / length(sim))
+}
+powerSims(0.23, 355)
+# [1] 0.07798
+~~~
+
+<!-- $ -->
+
+So around 8% of the samples.
+
+This treats $\hat r$=_r_=0.23 as a parameter known with infinite precision, rather than an estimate $\hat r$ (using around half the data) of the unknown parameter _r_; there would be considerable posterior uncertainty about what _r_ is, and this will affect how often two samples would yield the same estimate - if the true _r_ was, say, 0.10 (as is entirely possible), it would be highly unlikely for the second sample to yield $\hat r$=0.23 again, because the overestimation fluke would have to repeat itself twice to yield both $\hat r$=0.23.
+
+To incorporate the uncertainty, we can feed in a simulated dataset exactly matching the description of _n_=182/_r_=0.23 to an uninformative Bayesian model, calculate a posterior distribution over _r_ (which gives CIs of 0.09-0.37), and then draw from the posterior possible _r_s and run the original simulation asking how often we recover $\hat r$=0.23.
+
+~~~{.R}
+library(brms)
+n1 = 182
+n2 = 355
+r1 = 0.23
+data1 = mvrnorm(n=n1, mu=c(0, 0), Sigma=matrix(c(1, r1, r1, 1), nrow=2), empirical=TRUE)
+colnames(data1) <- c("x", "y")
+b1 <- brm(y ~ x, iter=20000, data=data1); summary(b1)
+# ...Population-Level Effects:
+#           Estimate Est.Error l-95% CI u-95% CI Eff.Sample Rhat
+# Intercept     0.00      0.07    -0.14     0.14      40000    1
+# x             0.23      0.07     0.09     0.37      40000    1
+posteriorX <- fixef(b1, summary=FALSE)[,2]; summary(posteriorX)
+#        Min.     1st Qu.      Median        Mean     3rd Qu.        Max.
+# -0.08060884  0.18061570  0.23010870  0.22999820  0.27916800  0.55868700
+replicates <- sapply(posteriorX, function(r_post) { powerSim(r_post, n2, r_test=r1) })
+summary(replicates); mean(replicates)
+#    Mode   FALSE    TRUE    NA's
+# logical   38262    1738       0
+# [1] 0.04345
+~~~
+
+Around 4% of the time, reflecting the increased improbability of true values like _r_=0.09 or _r_=0.37 producing the specific sample estimate of $\hat r$=0.23
+
+Thus, observing the same summary statistics in even relatively large samples is somewhat suspicious and might be a good reason to double-check other aspects of the code & data.
