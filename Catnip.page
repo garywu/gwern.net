@@ -32,7 +32,7 @@ Catnip is frequently discussed in the popular & secondary literature without cit
     tested extracted nepetalactone and caryophyllene on 10 lions of unspecified but mixed genders/ages; the 7 adults all responded to the nepetalactone and not the caryophyllene (the 3 cubs responded to nothing).
 - Todd 1962, ["Inheritance of the catnip response in domestic cats"](/docs/catnip/1962-todd.pdf)
 
-    14 responders, 12 non-responders in a Siamese breeding colony so 46% immunity rate in this sample. (8 male responders, 6 female responders, 2 male non-responders, 10 female non-responders.) Todd also surveyed cats in local pounds and animal hospitals, finding 26 of 84 sampled were non-responders or a ~31% immunity. Todd considers the genetic pattern most consistent with a fairly common genetic variant (by [Hardy-Weinberg](!Wikipedia "Hardy–Weinberg principle"): $p^2+2pq$; $p^2 + 2pq = 0.69; q^2 = 0.31$, then $p=0.44; q=0.56$) which is autosomal dominant.^[Given the benefits of catnip for behavioral enrichment, it's unfortunate that cat breeders have not used a little selection pressure to make catnip response universal. It is easily tested for, and, if Todd is correct about the allele being dominant, easily bred, since selection against a recessive proceeds fast when starting from a high frequency. If the recessive is present at $q=0.56$ per Todd 1962, and we would like to decrease the rate of catnip resistance in a breed to <=1%, then we need to decrease the frequency to $\sqrt{0.01}=0.10$. If we breed only catnip responders (which fortunately are the majority already), this corresponds to a [selection intensity](!Wikipedia "Selection coefficient") _s=1_, and the [number of generations has the simple equation](http://www.ihh.kvl.dk/htm/kc/popgen/genetics/3/2.htm "3.2 Selection against the recessive") (more general treatments: [1](http://www.bio.miami.edu/dana/dox/recessivehomozygote.html "Selection Against the Recessive Homozygote"), [2](http://nitro.biosci.arizona.edu/zbook/NewVolume_2/pdf/Chapter05.pdf "Chapter 5: The Population Genetics of Selection, 2014")) $n = \frac{1}{q_n} - \frac{1}{q_0}$ or $\frac{1}{\sqrt{0.01}} - \frac{1}{0.56} = 8.2$ generations. Cats mature reproductively at 18 months & pregnancy is around 2 months, so 8.2 generations would take ~14 years ($\frac{(18+2) \cdot 8.2}{12}$). So a phenotypic catnip breeding program need not take an infeasible amount of time based on Todd 1962's estimates. Alternatively, if Todd is incorrect about catnip being Mendelian dominant controlled trait, it still appears to run in families & species and thus have a genetic basis, so, since the trait appears binary, the true genetic architecture might then be a [liability threshold](!Wikipedia) trait. Selection in the liability threshold trait depends on the population frequency of the trait (which defines the unobserved latent threshold's starting point, and efficacy slows at the extremes of 0 and 1) and on the heritability of the trait (which defines the genetic response to each generation of selection; unfortunately, unknown for cats).  ]
+    14 responders, 12 non-responders in a Siamese breeding colony so 46% immunity rate in this sample. (8 male responders, 6 female responders, 2 male non-responders, 10 female non-responders.) Todd also surveyed cats in local pounds and animal hospitals, finding 26 of 84 sampled were non-responders or a ~31% immunity. Todd considers the genetic pattern most consistent with a fairly common genetic variant (by [Hardy-Weinberg](!Wikipedia "Hardy–Weinberg principle"): $p^2+2pq$; $p^2 + 2pq = 0.69; q^2 = 0.31$, then $p=0.44; q=0.56$) which is autosomal dominant; this would imply that [breeding cats for catnip response is highly feasible](#breeding-cats-to-increase-frequency-of-catnip-response).
 - Todd 1963, ["The catnip response"](/docs/catnip/1963-todd.pdf)
 
     - In surveying the 26 breeding colony & 84 local cats, Todd found no large correlations with sex, breed type (Manx/Siamese/tabby/Agouti), white spotting, blue dilution, polydactyly, long hair, or castration. (32 male responders, 11 male non-responders, 26 female responders, 15 female non-responders.) Except the usual observation that young kittens rarely display a catnip response: of 39 under 12 weeks of age, 4 responded.
@@ -668,6 +668,55 @@ Description of effects:
 - Olive oil/wood: all cats showed brief interest in smell, then ignored entirely.
 
 # Appendix
+## Breeding cats to increase frequency of catnip response
+
+Given the benefits of catnip for behavioral enrichment, it's unfortunate that cat breeders have not used a little selection pressure to make catnip response universal.
+There are 3 major scenarios for catnip breeding:
+
+1. Mendelian autosomal dominant: marker-assisted genetic selection: 1 generation to fixation
+
+    A genetic test for catnip response is not available as of July 2017, since the allele has not even been localized to any chromosomes, much less identified, and given the small niche of cat genetics research, would almost certainly be very expensive (eg the [99 Lives Cat Genome Sequencing Initiative](http://felinegenetics.missouri.edu/99lives) requires, as of July 2017, ~\$7000 to sequence 1 cat genome, which is >7x more than it would cost to sequence a human genome via Veritas, and they have sequenced [53 cats](http://felinegenetics.missouri.edu/99lives/successfully-sequenced-cats "Successfully Sequenced Cats: The following cats have already been sequenced for this project!")).
+
+    However, once a genetic test *does* become available at sufficiently low cost, it offers by far the fastest and most powerful selection method. Given a genetic test for the catnip allele (as a common variant, it is likely easily tested for), breeding could be conducted in 1 generation: test the population and breed only the homozygous dominant cats (ie the cats with 2 copies), who make will make up ~$0.44^2=0.19$ of the population. All offspring will then also be homozygous dominant & thus catnip responders, and catnip response rates will be 100% barring any further introduction from outside the breeding population of recessive carriers.
+2. Mendelian autosomal dominant: phenotypic selection: ~9 generations to near-universality (>=99%)
+
+    Assuming there is no genetic test, one can instead breed based on the observed phenotype of catnip response; this will be slower and less efficient because heterozygous and homozygous cannot be distinguished.
+
+    But if Todd is correct about the allele being dominant, catnip response is still easily bred, since selection against a recessive proceeds fast when starting from a high frequency.
+    Under the Mendelian autosomal dominant theory, if the catnip recessive is present at $q=0.56$ per Todd 1962, and we would like to decrease the rate of catnip resistance in a breed to <=1%, then we need to decrease the frequency to $\sqrt{0.01}=0.10$.
+    If we breed only catnip responders (which fortunately are the majority already), this corresponds to a [selection intensity](!Wikipedia "Selection coefficient") _s=1_, and the [number of generations has the simple equation](http://www.ihh.kvl.dk/htm/kc/popgen/genetics/3/2.htm "3.2 Selection against the recessive") (more general treatments: [1](http://www.bio.miami.edu/dana/dox/recessivehomozygote.html "Selection Against the Recessive Homozygote"), [2](http://nitro.biosci.arizona.edu/zbook/NewVolume_2/pdf/Chapter05.pdf "Chapter 5: The Population Genetics of Selection, 2014")) $n = \frac{1}{q_n} - \frac{1}{q_0}$ or $\frac{1}{\sqrt{0.01}} - \frac{1}{0.56} = 8.2$ generations.
+    Cats mature reproductively at 18 months & pregnancy is around 2 months, so 8.2 generations would take ~14 years ($\frac{(18+2) \cdot 8.2}{12}$).
+    So a phenotypic catnip breeding program need not take an infeasible amount of time based on Todd 1962's estimates.
+3. polygenic liability-threshold: phenotypic selection: 36 generations to near-universality
+
+    Alternatively, if Todd is incorrect about catnip being Mendelian dominant controlled trait, it still appears to run in families & species and thus have a genetic basis, so, since the trait appears binary, the true genetic architecture might then be a [liability threshold](!Wikipedia) trait. Phenotypic selection in the liability threshold trait depends on the population frequency of the trait (which defines the unobserved latent threshold's starting point, and efficacy slows at the extremes of 0 and 1) and on the heritability of the trait (which defines the genetic response to each generation of selection; unfortunately, unknown for cats). Large-scale human twin studies such as Polderman et al 2015 turn in a grand mean across all studied traits of ~50% heritability, so I will use that as a guess at what catnip heritability might be in cats along with a 39% non-response rate:
+
+    ~~~{.R}
+    threshold_select <- function(fraction_0, heritability) {
+        fraction_probit_0 = qnorm(fraction_0)
+        ## threshold for not manifesting schizophrenia:
+        s_0 = dnorm(fraction_probit_0) / fraction_0
+        ## new rate of schizophrenia after one selection where 100% of schizophrenics never reproduce:
+        fraction_probit_1 = fraction_probit_0 + heritability * s_0
+        fraction_1 = pnorm(fraction_probit_1)
+        ## how much did we reduce schizophrenia in percentage terms?
+        print(paste0("Start: population fraction: ", fraction_0, "; liability threshold: ", fraction_probit_0, "; Selection intensity: ", s_0))
+        print(paste0("End: liability threshold: ", fraction_probit_1, "; population fraction: ", fraction_1, "; Total population reduction: ",
+            fraction_0 - fraction_1, "; Percentage reduction: ", (1-((1-fraction_1) / (1-fraction_0)))*100))
+        return(fraction_1)
+    }
+    threshold_select(0.61, 0.50)
+    # ...
+    # [1] 0.7236805027
+    heritability <- 0.5; frac <- 0.61; generations <- 0;
+    while (frac < 0.99) { frac <- threshold_select(frac, heritability); generations <- generations+1 }
+    # ...
+    generations
+    # [1] 36
+    ~~~
+
+    Progress, while initially swift, slows down rapidly towards the target of 99% response rates. The selection, especially towards the end, could be improved by taking into account genetic information such as polygenic scores in order to select against cats with a high liability for catnip resistance but who do not display the phenotype; modeling that, however, would be difficult without more data.
+
 ## Does initial data support one-and-only one response per cat?
 
 When I tested the first two cats with the 3 stimulants I had, they both responded to exactly 1 of the 3 stimulants: Oolong ignored catnip & honeysuckle while responding to Valerian, and Percy ignored catnip & Valerian to respond to honeysuckle.
