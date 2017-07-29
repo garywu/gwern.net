@@ -75,7 +75,7 @@ upperBoundMax3 <- function(n, sd) { -qnorm(1/(n+1), sd=sd) }
 
 ## Formulas
 
-Blom 1958 (_Statistical estimates and transformed beta-variables_) reportedly provides a general approximation formula $E(r,n)$, which specializing to the max ($E(n,n)$) is $\Phi^{-1}(\frac{n-\alpha}{n - 2\cdot\alpha + 1 }) \cdot \sigma; \alpha=0.375$, which is better than the upper bounds:
+Blom 1958 ([_Statistical estimates and transformed beta-variables_](/docs/statistics/1958-blom-orderstatistics.djvu)) reportedly provides a general approximation formula $E(r,n)$, which specializing to the max ($E(n,n)$) is $\Phi^{-1}(\frac{n-\alpha}{n - 2\cdot\alpha + 1 }) \cdot \sigma; \alpha=0.375$, which is better than the upper bounds:
 
 ~~~{.R}
 blom1958 <- function(n, sd) { alpha <- 0.375; qnorm((n-alpha)/(n-2*alpha+1)) * sd }
