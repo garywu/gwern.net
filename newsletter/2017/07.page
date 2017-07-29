@@ -15,7 +15,7 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 - Long Bets analysis?
 - Danbooru dataset?
 - Individual differences?
-- ["How Would You Prove You Are a Time-traveler From the Past?"](https://www.gwern.net/Notes#TODO)
+- ["How Would You Prove You Are a Time-traveler From the Past?"](https://www.gwern.net/Notes#how-would-you-prove-you-are-a-time-traveler-from-the-past)
 
 # Media
 ## Links
@@ -23,21 +23,36 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 Everything is heritable:
 
 - ["MTAG: Multi-Trait Analysis of GWAS"](http://www.biorxiv.org/content/early/2017/07/03/118810), Turley et al 2017; ["A combined analysis of genetically correlated traits identifies 107 loci associated with intelligence"](http://www.biorxiv.org/content/early/2017/07/07/160291.1), Hill et al 2017 (use of multiple [genetic correlations](https://en.wikipedia.org/wiki/Genetic_correlation) to overcome measurement error greatly boosts efficiency of IQ GWAS, and provides best public polygenic score to date: 7% of variance. This illustrates a good way to work around the shortage of high-quality IQ test scores by exploiting multiple more easily-measured phenotypes. Even better: like LD score regression, MTAG only requires public summary statistics; so it may also, like LD score regression, see an explosion in use - since it is usable by everyone & there are so many overlapping phenotypic measurements...)
-- ["A genome-wide association study for extremely high intelligence"](https://www.nature.com/mp/journal/vaop/ncurrent/full/mp2017121a.html), Zabaneh et al 2017 (see previously [Spain et al 2016](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html "A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"); further confirmation that high intelligence is not genetically different from normal intelligence and is just a slightly better assortment of common additive variants)
+- ["A genome-wide association study for extremely high intelligence"](https://www.nature.com/mp/journal/vaop/ncurrent/full/mp2017121a.html), Zabaneh et al 2017 (see previously [Spain et al 2016](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html "A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"); further confirmation that high intelligence is not genetically different from normal intelligence and is primarily a slightly better assortment of common additive variants)
+- ["First Human Embryos Edited With CRISPR in U.S."](https://www.technologyreview.com/s/608350/first-human-embryos-edited-in-us/ "Researchers have demonstrated they can efficiently improve the DNA of human embryos")
+- ["Genome-wide genetic data on ~500,000 UK Biobank participants"](http://www.biorxiv.org/content/early/2017/07/20/166298), Bycroft et al 2017 (The full UK Biobank _n_=500k genetics dataset is now available to researchers! UKBB is the gift that keeps on giving - and now it's going to give even more by tripling the sample size.)
 - ["Genetic Influence on Intergenerational Educational Attainment"](http://journals.sagepub.com/doi/full/10.1177/0956797617707270), Ayorech et al 2017
+- ["116 independent genetic variants influence the neuroticism personality trait in over 329,000 UK Biobank individuals"](http://www.biorxiv.org/content/early/2017/07/28/168906), Luciano et al 2017
 - ["Large-scale GWAS identifies multiple loci for hand grip strength providing biological insights into muscular fitness"](https://www.nature.com/articles/ncomms16015), Willems et al 2017 ([Mendelian randomization](https://en.wikipedia.org/wiki/Mendelian_randomization) suggests hand grip strength has no causal effect on mortality & is confounded)
-- ["10 Years of GWAS Discovery: Biology, Function, and Translation"](http://www.cell.com/ajhg/fulltext/S0002-9297%2817%2930240-9), Visscher et al 2017 (Almost a decade into the human genetic revolution - GCTA ~2009 - where do we stand?)
 - ["F.D.A. Panel Recommends Approval for Gene-Altering Leukemia Treatment"](https://www.nytimes.com/2017/07/12/health/fda-novartis-leukemia-gene-medicine.html)
+- ["10 Years of GWAS Discovery: Biology, Function, and Translation"](http://www.cell.com/ajhg/fulltext/S0002-9297%2817%2930240-9), Visscher et al 2017 (Almost a decade into the human genetic revolution - GCTA ~2009 - where do we stand?)
 - ["The surprising implications of familial association in disease risk"](https://arxiv.org/abs/1707.00014), Valberg et al 2017
+- ["A complex multi-locus, multi-allelic genetic architecture underlying the long-term selection-response in the Virginia body weight line of chickens"](http://www.biorxiv.org/content/early/2017/01/04/098160), Zan et al 2017
+- ["'Obedience to traditional authority:' A heritable factor underlying authoritarianism, conservatism and religiousness"](https://www.gwern.net/docs/genetics/correlation/2013-ludeke.pdf), Ludeke et al 2013
+- Recent human evolution:
+
+    - ["Polygenic Adaptation has Impacted Multiple Anthropometric Traits"](http://www.biorxiv.org/content/early/2017/07/23/167551), Berg et al 2017
+    - Recent human evolution and between-group genetic differences: ["The genomic landscape of African populations in health and disease"](https://www.gwern.net/docs/genetics/2017-rotimi.pdf), Rotimi et al 2017
+    - ["Genetic loci associated with coronary artery disease harbor evidence of selection and antagonistic pleiotropy"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006328), Byars et al 2017 (The much bally-hooed antagonistic pleiotropy theory makes a rare appearance.)
 
 AI:
 
-- ["CAN: Creative Adversarial Networks, Generating 'Art' by Learning About Styles and Deviating from Style Norms"](https://arxiv.org/abs/1706.07068), Elgammal et al 2017 (That's an interesting way to define novelty in a GAN context.)
+- ["Learning model-based planning from scratch"](https://arxiv.org/abs/1707.06170), Pascanu et al 2017; ["Imagination-Augmented Agents for Deep Reinforcement Learning"](https://arxiv.org/abs/1707.06203), Weber et al 2017 ([blog](https://deepmind.com/blog/agents-imagine-and-plan/ "Agents that imagine and plan")); ["Path Integral Networks: End-to-End Differentiable Optimal Control"](https://arxiv.org/abs/1706.09597), Okada et al 2017
+- ["Trial without Error: Towards Safe Reinforcement Learning via Human Intervention"](https://arxiv.org/abs/1707.05173), Saunders et al 2017 ([blog](https://owainevans.github.io/blog/hirl_blog.html); The Road Runner problem is an interesting example of reward hacking.)
+- ["CAN: Creative Adversarial Networks, Generating 'Art' by Learning About Styles and Deviating from Style Norms"](https://arxiv.org/abs/1706.07068), Elgammal et al 2017 (An interesting way to define novelty in a GAN context.)
 - ["ArtGAN: Artwork Synthesis with Conditional Categorical GANs"](https://arxiv.org/abs/1702.03410), Tan et al 2017 (fun samples)
+- ["A Survey of Monte Carlo Tree Search Methods"](http://repository.essex.ac.uk/4117/1/MCTS-Survey.pdf), Browne et al 2012
+- [iNaturalist: a smartphone CNN app for identifying photos of 13k species of wild animals/insects/plants.﻿](https://baynature.org/article/identify-anything-anywhere-instantly-well-almost-newest-inaturalist-release/ "Identify Anything, Anywhere, Instantly (Well, Almost) With the Newest iNaturalist Release") ([discussion](https://www.reddit.com/r/MachineLearning/comments/6oa11z/n_inaturalist_a_smartphone_cnn_app_for/))
+- [a CycleGAN just for turning anime characters into silver-haired anime characters](https://github.com/Aixile/chainer-cyclegan)
 
 Statistics/meta-science/mathematics:
 
-- ["Preprint Déjà Vu: an FAQ"](https://arxiv.org/abs/1706.04188), Ginsparg 2017
+- ["Preprint Déjà Vu: an FAQ"](https://arxiv.org/abs/1706.04188), Ginsparg 2017 (retrospective on Arxiv's success by its founder)
 
 Politics/religion:
 
@@ -46,10 +61,15 @@ Politics/religion:
 Psychology/biology:
 
 - ["The US President's Malaria Initiative and under-5 child mortality in sub-Saharan Africa: A difference-in-differences analysis"](http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002319), Jakubowski et al 2017
+- ["Lithium in drinking water and the incidence of bipolar disorder: A nation-wide population-based study"](https://www.gwern.net/docs/lithium/2017-kessing.pdf), Kessing et al 2017 (Another major blow to the lithium/drinking-water hypothesis)
 - ["Metformin alters the gut microbiome of individuals with treatment-naive type 2 diabetes, contributing to the therapeutic effects of the drug"](http://agingfree.org/Portals/0/xBlog/uploads/2017/5/24/Metformin%20alters%20the%20gut%20microbiome%20of%20individuals.pdf), Wu et al 2017
 - ["The Power and the Gory"](http://www.bronxbanterblog.com/2013/10/01/the-power-and-the-gory/), Solotaroff 1990 (Gonzo journalism on steroids & bodybuilding; multiple waves in bodybuilding track scientific/technological/economic progress in hormone/drug development)
 - ["How long does it take to research and develop a new vaccine?"](http://effective-altruism.com/ea/1c5/how_long_does_it_take_to_research_and_develop_a/)
+- ["Computational Analysis of Lifespan Experiment Reproducibility"](http://journal.frontiersin.org/article/10.3389/fgene.2017.00092/full), Petrascheck & Miller 2017 (Power analysis of Gompertz curve mortality data: as expected, most animal studies of possible life-extension drugs are severely underpowered, which has the usual implications for replication & publication bias.)
 - ["Chronotype variation drives night-time sentinel-like behaviour in hunter-gatherers"](https://www.gwern.net/docs/melatonin/2017-samson.pdf), Samson et al 2017 (This could also explain why there is a wrenching shift in circadian rhythms towards inefficient later night-wakefulness during puberty and then only gradually shifts back to day-wakefulness with increasing age: this is the same time at which males become useful warriors and females start having offspring which must be minded. It becomes a stable equilibrium due to any defectors having an advantage in attacking rival tribes - anthropologists have long noted that ambushes & night raids are much preferred to open battle in the day.)
+- ["Lower school performance in late chronotypes: underlying factors and mechanisms"](https://www.nature.com/articles/s41598-017-04076-y), Zerbini et al 2017
+- ["Multiplying 10-digit numbers using Flickr: The power of recognition memory"](http://people.csail.mit.edu/andyd/rec_method.pdf), Drucker 2010
+- ["Have You Tried Solving The Problem?"](https://grognor.blogspot.com/2016/12/have-you-tried-solving-problem.html)
 
 Technology:
 
@@ -103,6 +123,7 @@ Nonfiction:
 
 - [_Selected Non-Fictions_](https://www.amazon.com/Borges-Selected-Non-Fictions-Jorge-Luis/dp/0140290117), [Jorge Luis Borges](https://en.wikipedia.org/wiki/Jorge_Luis_Borges) ([review](https://www.goodreads.com/review/show/2046386028))
 - [_The Secret History of the Mongols_](https://en.wikipedia.org/wiki/The_Secret_History_of_the_Mongols) ([review](https://www.goodreads.com/review/show/2044522137))
+- [_Deep Work: Rules for Focused Success in a Distracted World_](http://calnewport.com/books/deep-work/), Cal Newport
 
 Fiction:
 
@@ -110,7 +131,11 @@ Fiction:
 
 Live-action:
 
+- [_Dunkirk_ (2017)](https://en.wikipedia.org/wiki/Dunkirk_\(2017_film\)) (an aggressive mish-mash of action scenes with one of the most excessive Hollywood soundtrack, exhaustingly droning & pounding throughout the movie, I've ever heard. The special effects in the action scenes are, as usual, perfect, but oddly compromised by a lack of scale - while Dunkirk involved hundreds of thousands of men, somehow the effects conspire to create not a sense of catastrophe & crisis but a sense of conspicuous crampedness, as if only a few hundred men and a few dozen boats were ever involved rather than entire armies. The gritty and horrifying set pieces depicted with such cinematographic care ought to add up to more than they do.)
+
 Animated:
+
+- [_School-Live!_](https://en.wikipedia.org/wiki/School-Live\!)
 
 ## Games
 
@@ -138,3 +163,4 @@ Vocaloid:
 Misc:
 
 - ["_Cara Mia Addio!_ (Turret Opera)"](https://www.youtube.com/watch?v=_kPyGvqNn4Y) (Aperture Science Psychoacoustics Laboratory feat. Ellen McLain; _Portal 2: Songs to Test By - Volume 3_ {2011-09-30}) [classical]
+- ["Los! Los! Los!"](https://www.youtube.com/watch?v=OgXZn_H_QAI) (Yuuki Aoi; _Los! Los! Los!_ {2017}) [rock]
