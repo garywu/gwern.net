@@ -154,7 +154,7 @@ urlDB = M.fromList [
      ("Friendship is Optimal", "http://www.fimfiction.net/story/62074/friendship-is-optimal"),
      ("Harry Potter and the Methods of Rationality", "http://hpmor.com/"),
      ("Harry Potter and the Natural 20", "https://www.fanfiction.net/s/8096183/1/Harry-Potter-and-the-Natural-20"),
-     ("Hell is the Absence of God", "http://www.ibooksonline.com/88/Text/hell.html"),
+     ("Hell is the Absence of God", "https://web.archive.org/web/20120319041353/http://www.ibooksonline.com/88/Text/hell.html"),
      ("If on a winter's night a traveler", "https://en.wikipedia.org/wiki/If_on_a_winter%27s_night_a_traveler"),
      ("It's behind you - The making of a computer Game", "http://bizzley.com/"),
      ("Legend of the Golden Witch (Umineko no Naku Koro ni #1)", "https://en.wikipedia.org/wiki/Umineko:_When_They_Cry"),
