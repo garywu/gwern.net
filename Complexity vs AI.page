@@ -309,7 +309,7 @@ Thus:
 
 A common Intel CPU probably has 1-2 billion transistors, devoted to a huge number of tasks, of course.
 Each of the 2 or 4 main CPU cores can run independently, shutting on or off as necessary, and has its own private cache (bigger than most computers' RAM up to even recently), and must be regarded as individuals.
-The CPU as a whole is reprogrammable through microcode, such as to work around errors in the chip design, and sport increasingly opaque features like the Intel Management Engine (with a JVM for programmability http://www.slideshare.net/codeblue_jp/igor-skochinsky-enpub "Platform Embedded Security Technology Revealed" Ruan 2014 https://link.springer.com/book/10.1007/978-1-4302-6572-6 ) & SGX, or AMD's Platform Security Processor (PSP).
+The CPU as a whole is reprogrammable through microcode, such as to work around errors in the chip design, and sport increasingly opaque features like the Intel Management Engine (with a JVM for programmability http://www.slideshare.net/codeblue_jp/igor-skochinsky-enpub "Platform Embedded Security Technology Revealed" Ruan 2014 https://link.springer.com/book/10.1007/978-1-4302-6572-6 ) & SGX, or AMD's Platform Security Processor (PSP) or Android's TEEs https://googleprojectzero.blogspot.com/2017/07/trust-issues-exploiting-trustzone-tees.html
 any floating point unit can probably be considered Turing-complete through encoding into floating-point operations in the spirit of Fractran
 management chip with network access and backdoors
 the [MMU](!Wikipedia "Memory management unit") can be programmed (just one of [many things which are, weirdly, Turing-complete](/Turing-complete))

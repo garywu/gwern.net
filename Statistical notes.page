@@ -3451,7 +3451,8 @@ If early-developing children *must* be subjected to mandatory education, then it
 
 Scott here refers to any of [Scott Alexander](http://slatestarcodex.com/about/), [Scott Adams](!Wikipedia), [Scott Aaronson](!Wikipedia), [Scott Sumner](!Wikipedia) (and to a much lesser extent, Scott Garrabrant, [Orson Scott Card](!Wikipedia), and [Scott H. Young](https://www.scotthyoung.com/blog/)); a reference to a 'Scott' on a site like Less Wrong is increasingly ambiguous.
 
-When a large number of samples draw from a common pool of identifiers, collisions are common, leading to the [birthday paradox](!Wikipedia): despite there being 365.25 days in the year, a classroom of just 23 people (who can cover at most 6% of the days in a year) is ~50% likely to have at least two people who share the same birthday and so birthdays cease being unique unambiguous identifiers. (Intuitively, you might expect the number to be much larger and closer to 180 than 23.)
+When a large number of samples draw from a common pool of identifiers, collisions are common, leading to the [birthday paradox](!Wikipedia): despite there being 365.25 days in the year, a classroom of just 23 people (who can cover at most 6% of the days in a year) is ~50% likely to have at least two people who share the same birthday and so birthdays cease being unique unambiguous identifiers.
+(Intuitively, you might expect the number to be much larger and closer to 180 than 23.)
 
 We can verify this by simulation:
 
@@ -3475,6 +3476,7 @@ sapply(1:50, function(n) { simulate(n, 365) } )
 ~~~
 
 Similarly, in a group of people, it will be common for first names to overlap.
+(Overlaps of both first names & surnames are much more unlikely: [Charpentier & Coulmont 2017](https://arxiv.org/abs/1707.07607 "We are not alone! (at least, most of us). Homonymy in large scale social groups") estimate from French & Ohioan data that while almost everyone has a non-unique full name, even groups of thousands of people will have only a few duplicates.)
 How common? There are far more than 365.25 first names, especially as some first names are made up by parents.
 
 Names have a highly skewed (often said to be a [power law](!Wikipedia)) distribution: the first few baby names make up an enormous fraction of all names, hence all the Ethan/Lucas/Mason baby boys in 2016.
@@ -3570,13 +3572,13 @@ median(simulateLN)
 # [1] 51
 ~~~
 
-Since names will cluster by age group, location, profession, and whatnot, arguably even 51 is a bit of an upper bound.
+Since first names will cluster by age group, location, profession, and whatnot, arguably even 51 is a bit of an upper bound.
 
 Finally, one might ask the probability of a group with a great Scott, or to put it another way, the probability of it unfortunately getting away scot-free.
 
 This is easy to answer; the probability of having 1 or more Scotts in a group is the probability of everyone having a name other than Scott.
-We saw that the probability of being named Scott was 0.0029054906 in the name dataset.
-So the probability of one person not being named Scott is 1-0.0029054906 or 0.997. So the probability of _n_ people all being named not-Scott is 0.997^_n_^.
+We saw that the probability of being named Scott was _P_=0.0029054906 in the name dataset.
+So the probability of one person not being named Scott is $1 - 0.0029 = 0.997$. So the probability of _n_ people all being named not-Scott is 0.997^_n_^.
 The crossover point is ~239.
 
 So an American social group cannot exceed _n_=51 before first names begin to break down, and it is all Scott's fault at _n_=239.

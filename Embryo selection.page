@@ -1850,8 +1850,7 @@ A discussion & formula is on pg6 of ["Chapter 14: Short-term Changes in the Mean
 
 ~~~{.R}
 threshold_select <- function(fraction_0, heritability) {
-    library(VGAM) ## for 'probit'
-    fraction_probit_0 = probit(fraction_0)
+    fraction_probit_0 = qnorm(fraction_0)
     ## threshold for not manifesting schizophrenia:
     s_0 = dnorm(fraction_probit_0) / fraction_0
     ## new rate of schizophrenia after one selection where 100% of schizophrenics never reproduce:

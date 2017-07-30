@@ -345,13 +345,13 @@ costToRR(annualCost=1000)
 # [1] 0.9008035856
 costToRR(annualCost=10)
 # [1] 0.9989756733
-
 ~~~
 
 ### Power analysis
 
 How many subjects does it take to detect a specified RR? This is useful for planning clinical trials but also in interpreting them.
-We can do simulation power analyses by using `rgompertz` to generate a number of subjects' death dates for different RRs (eg 0.85 vs 1.0), counting how many deaths in each group fall within a specified followup period of years, and running some sort of analysis based on that data.
+We can do simulation power analyses of an odds-ratio text on all-cause mortality by using `rgompertz` to generate a number of subjects' death dates for different RRs (eg 0.85 vs 1.0), counting how many deaths in each group fall within a specified followup period of years, and running some sort of analysis based on that data.
+(A more efficient design would be to simulate out a full survival curve and do a log-rank test on a Gompertz or nonparametric curve, but this requires individual-level data while most papers report only the OR; compare the Gompertz curve power analysis of [Petrascheck & Miller 2017](http://journal.frontiersin.org/article/10.3389/fgene.2017.00092/full "Computational Analysis of Lifespan Experiment Reproducibility").)
 
 ~~~{.R}
 gompertzSimulation <- function(RR, n1, n2, startingAge, followupYears) {

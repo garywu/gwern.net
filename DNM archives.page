@@ -854,6 +854,7 @@ A number of other datasets are known to exist but are unavailable, including:
 - [Janetos & Tilly 2017](https://economics.sas.upenn.edu/sites/economics.sas.upenn.edu/files/reputation-dynamics_0.pdf "Reputation Dynamics in a Market for Illicit Drugs")
 - [Celestini et al 2016](/docs/sr/2016-celestini.pdf "Tor Marketplaces Exploratory Data Analysis: The Drugs Case") (AlphaBay/Nucleus/East India Company, monthly crawls for 4 months in 2015)
 - [Project CASSANDRA](http://www.projectcassandra.eu/): [Wadsworth et al 2017](/docs/sr/2017-wadsworth.pdf "A Market on both 'sides' of the law: The use of the hidden web for the sale of new psychoactive substances") (22 DNMs, every 2 months from October 2015 to 2016)
+- ["The Economic Functioning of Online Drug Markets"](http://cep.lse.ac.uk/pubs/download/dp1490.pdf), Bhaskar et al 2017 (CEP crawls: SR1 August 2013, SR2 December 2013 - November 2014, Agora December 2013, Evolution January 2014, Nucleus November 2014)
 
 # External links
 
