@@ -707,6 +707,7 @@ brokenLinks = [
  , ("docs/1999-bradbury", "/docs/1999-bradbury-matrioshkabrains.pdf")
  , ("docs/1999-bradbury-matrioshkabrains.pdf ", "/docs/1999-bradbury-matrioshkabrains.pdf")
  , ("docs/1999-fratiglioni.pdf", "/docs/dnb/1999-fratiglioni.pdf")
+ , ("docs/dnb/1999-fratiglioni", "/docs/dnb/1999-fratiglioni.pdf")
  , ("docs/1999-kendrick.pdf", "/docs/modafinil/1999-kendrick.pdf")
  , ("docs/1999-murphy.pdf&ie=utf-8&oe=utf-8&gws_rd=cr&ei=LDQoWcSCAsq7jwTpkrWoBA", "/docs/1999-murphy.pdf")
  , ("docs/2000-butzlaff.pdf", "/docs/dnb/2000-butzlaff.pdf")
@@ -1374,4 +1375,5 @@ brokenLinks = [
  , ("xmonad-advocacy", "http://sawfish.wikia.com/wiki/Comparison_of_extensible_window_managers")
  , ("zeo/Postassium", "/zeo/Potassium")
  , ("zeo/Vitamin%20DCachedMar", "/zeo/Vitamin%20D")
+ , ("docs/spacedrepetition/1991-bangert-drowns.pdf&sa=U&ei=wVBTVfScDcXvoATgwoGQBg&ved=0CDwQFjAH&usg=AFQjCNH7k4NOJLbln-rChGvZ-n8M_rE2eA", "/docs/spacedrepetition/1991-bangert-drowns.pdf")
  ]

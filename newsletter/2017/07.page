@@ -28,6 +28,7 @@ Everything is heritable:
 - ["Genome-wide genetic data on ~500,000 UK Biobank participants"](http://www.biorxiv.org/content/early/2017/07/20/166298), Bycroft et al 2017 (The full UK Biobank _n_=500k genetics dataset is now available to researchers! UKBB is the gift that keeps on giving - and now it's going to give even more by tripling the sample size.)
 - ["Genetic Influence on Intergenerational Educational Attainment"](http://journals.sagepub.com/doi/full/10.1177/0956797617707270), Ayorech et al 2017
 - ["116 independent genetic variants influence the neuroticism personality trait in over 329,000 UK Biobank individuals"](http://www.biorxiv.org/content/early/2017/07/28/168906), Luciano et al 2017
+- ["Genome-wide association analyses identify 44 risk variants and refine the genetic architecture of major depression"](http://www.biorxiv.org/content/early/2017/07/24/167577), MDDWG PGC 2017
 - ["Large-scale GWAS identifies multiple loci for hand grip strength providing biological insights into muscular fitness"](https://www.nature.com/articles/ncomms16015), Willems et al 2017 ([Mendelian randomization](https://en.wikipedia.org/wiki/Mendelian_randomization) suggests hand grip strength has no causal effect on mortality & is confounded)
 - ["F.D.A. Panel Recommends Approval for Gene-Altering Leukemia Treatment"](https://www.nytimes.com/2017/07/12/health/fda-novartis-leukemia-gene-medicine.html)
 - ["10 Years of GWAS Discovery: Biology, Function, and Translation"](http://www.cell.com/ajhg/fulltext/S0002-9297%2817%2930240-9), Visscher et al 2017 (Almost a decade into the human genetic revolution - GCTA ~2009 - where do we stand?)
@@ -37,22 +38,26 @@ Everything is heritable:
 - Recent human evolution:
 
     - ["Polygenic Adaptation has Impacted Multiple Anthropometric Traits"](http://www.biorxiv.org/content/early/2017/07/23/167551), Berg et al 2017
-    - Recent human evolution and between-group genetic differences: ["The genomic landscape of African populations in health and disease"](https://www.gwern.net/docs/genetics/2017-rotimi.pdf), Rotimi et al 2017
+    - between-group genetic differences: ["The genomic landscape of African populations in health and disease"](https://www.gwern.net/docs/genetics/2017-rotimi.pdf), Rotimi et al 2017
     - ["Genetic loci associated with coronary artery disease harbor evidence of selection and antagonistic pleiotropy"](http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006328), Byars et al 2017 (The much bally-hooed antagonistic pleiotropy theory makes a rare appearance.)
 
 AI:
 
 - ["Learning model-based planning from scratch"](https://arxiv.org/abs/1707.06170), Pascanu et al 2017; ["Imagination-Augmented Agents for Deep Reinforcement Learning"](https://arxiv.org/abs/1707.06203), Weber et al 2017 ([blog](https://deepmind.com/blog/agents-imagine-and-plan/ "Agents that imagine and plan")); ["Path Integral Networks: End-to-End Differentiable Optimal Control"](https://arxiv.org/abs/1706.09597), Okada et al 2017
-- ["Trial without Error: Towards Safe Reinforcement Learning via Human Intervention"](https://arxiv.org/abs/1707.05173), Saunders et al 2017 ([blog](https://owainevans.github.io/blog/hirl_blog.html); The Road Runner problem is an interesting example of reward hacking.)
+- ["Trial without Error: Towards Safe Reinforcement Learning via Human Intervention"](https://arxiv.org/abs/1707.05173), Saunders et al 2017 ([blog](https://owainevans.github.io/blog/hirl_blog.html); the Road Runner problem is an interesting example of reward hacking.)
+- ["Learning Transferable Architectures for Scalable Image Recognition"](https://arxiv.org/abs/1707.07012), Zoph et al 2017 (more NNs-designing-NNs, in this case beating the best human-designed CNNs for ImageNet!)
+- ["Robust Physical-World Attacks on Machine Learning Models"](https://arxiv.org/abs/1707.08945), Evtimov et al 2017 (adversarial instances are getting scary)
 - ["CAN: Creative Adversarial Networks, Generating 'Art' by Learning About Styles and Deviating from Style Norms"](https://arxiv.org/abs/1706.07068), Elgammal et al 2017 (An interesting way to define novelty in a GAN context.)
 - ["ArtGAN: Artwork Synthesis with Conditional Categorical GANs"](https://arxiv.org/abs/1702.03410), Tan et al 2017 (fun samples)
-- ["A Survey of Monte Carlo Tree Search Methods"](http://repository.essex.ac.uk/4117/1/MCTS-Survey.pdf), Browne et al 2012
+- ["A Survey of Monte Carlo Tree Search (MCTS) Methods"](http://repository.essex.ac.uk/4117/1/MCTS-Survey.pdf), Browne et al 2012
 - [iNaturalist: a smartphone CNN app for identifying photos of 13k species of wild animals/insects/plants.﻿](https://baynature.org/article/identify-anything-anywhere-instantly-well-almost-newest-inaturalist-release/ "Identify Anything, Anywhere, Instantly (Well, Almost) With the Newest iNaturalist Release") ([discussion](https://www.reddit.com/r/MachineLearning/comments/6oa11z/n_inaturalist_a_smartphone_cnn_app_for/))
 - [a CycleGAN just for turning anime characters into silver-haired anime characters](https://github.com/Aixile/chainer-cyclegan)
+- ["Neuroscience-Inspired Artificial Intelligence"](http://www.cell.com/neuron/fulltext/S0896-6273\(17\)30509-3), Hassabis et al 2017
 
 Statistics/meta-science/mathematics:
 
-- ["Preprint Déjà Vu: an FAQ"](https://arxiv.org/abs/1706.04188), Ginsparg 2017 (retrospective on Arxiv's success by its founder)
+- ["Preprint Déjà Vu: an FAQ"](https://arxiv.org/abs/1706.04188), Ginsparg 2017 (retrospective on [Arxiv's](https://en.wikipedia.org/wiki/ArXiv) success by its founder)
+- ["Determining Cat Chirality": Sequential testing for estimating cat sleeping preference](http://blog.dimview.org/math/2017/07/28/cat-chirality.html)
 
 Politics/religion:
 
@@ -63,9 +68,10 @@ Psychology/biology:
 - ["The US President's Malaria Initiative and under-5 child mortality in sub-Saharan Africa: A difference-in-differences analysis"](http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002319), Jakubowski et al 2017
 - ["Lithium in drinking water and the incidence of bipolar disorder: A nation-wide population-based study"](https://www.gwern.net/docs/lithium/2017-kessing.pdf), Kessing et al 2017 (Another major blow to the lithium/drinking-water hypothesis)
 - ["Metformin alters the gut microbiome of individuals with treatment-naive type 2 diabetes, contributing to the therapeutic effects of the drug"](http://agingfree.org/Portals/0/xBlog/uploads/2017/5/24/Metformin%20alters%20the%20gut%20microbiome%20of%20individuals.pdf), Wu et al 2017
+- ["Childhood intelligence in relation to major causes of death in 68 year follow-up: prospective population study"](http://www.bmj.com/content/357/bmj.j2708), Deary et al 2017 (note these relationships are at least partially confounded by all the [genetic correlations](https://en.wikipedia.org/wiki/Genetic_correlation) with intelligence)
 - ["The Power and the Gory"](http://www.bronxbanterblog.com/2013/10/01/the-power-and-the-gory/), Solotaroff 1990 (Gonzo journalism on steroids & bodybuilding; multiple waves in bodybuilding track scientific/technological/economic progress in hormone/drug development)
 - ["How long does it take to research and develop a new vaccine?"](http://effective-altruism.com/ea/1c5/how_long_does_it_take_to_research_and_develop_a/)
-- ["Computational Analysis of Lifespan Experiment Reproducibility"](http://journal.frontiersin.org/article/10.3389/fgene.2017.00092/full), Petrascheck & Miller 2017 (Power analysis of Gompertz curve mortality data: as expected, most animal studies of possible life-extension drugs are severely underpowered, which has the usual implications for replication & publication bias.)
+- ["Computational Analysis of Lifespan Experiment Reproducibility"](http://journal.frontiersin.org/article/10.3389/fgene.2017.00092/full), Petrascheck & Miller 2017 ([Power](https://en.wikipedia.org/wiki/Statistical_power) analysis of [Gompertz curve](https://en.wikipedia.org/wiki/Gompertz%E2%80%93Makeham_law_of_mortality) mortality data: as expected, most animal studies of possible life-extension drugs are severely underpowered, which has the usual implications for replication & publication bias.)
 - ["Chronotype variation drives night-time sentinel-like behaviour in hunter-gatherers"](https://www.gwern.net/docs/melatonin/2017-samson.pdf), Samson et al 2017 (This could also explain why there is a wrenching shift in circadian rhythms towards inefficient later night-wakefulness during puberty and then only gradually shifts back to day-wakefulness with increasing age: this is the same time at which males become useful warriors and females start having offspring which must be minded. It becomes a stable equilibrium due to any defectors having an advantage in attacking rival tribes - anthropologists have long noted that ambushes & night raids are much preferred to open battle in the day.)
 - ["Lower school performance in late chronotypes: underlying factors and mechanisms"](https://www.nature.com/articles/s41598-017-04076-y), Zerbini et al 2017
 - ["Multiplying 10-digit numbers using Flickr: The power of recognition memory"](http://people.csail.mit.edu/andyd/rec_method.pdf), Drucker 2010
@@ -81,6 +87,7 @@ Technology:
 
 Economics:
 
+- ["Amazon's Antitrust Paradox"](http://www.yalelawjournal.org/note/amazons-antitrust-paradox), Khan 2017
 - ["Amazon Prime does more for northern food security than federal subsidies, say Iqaluit residents"](http://www.cbc.ca/news/canada/north/iqaluit-amazon-prime-1.4193665 "Parcel shipping via Canada Post to Iqaluit increasing at 2 to 3 times the national rate")
 
 Philosophy:
@@ -90,6 +97,7 @@ Philosophy:
     - 1929: ["The Duration of Hell"](https://www.gwern.net/docs/borges/1929-borges-thedurationofhell.pdf) (pg47-51)
     - 1932: ["A Defense of the Kabbalah"](https://www.gwern.net/docs/borges/1932-borges-adefenseofthekabbalah.pdf) (pg83-86)
     - 1932: ["The Homeric Versions"](https://www.gwern.net/docs/borges/1932-borges-thehomericversions.pdf) (pg71-74)
+    - 1932: ["A Defense of Basilides the False"](https://www.gwern.net/borges/1932-borges-adefenseofbasilidesthefalse.pdf)
     - 1933: ["The Art of Verbal Abuse"](https://www.gwern.net/docs/borges/1933-borges-theartofverbalabuse.pdf) (pg 87-91)
     - 1936: ["A History of Eternity"](https://www.gwern.net/docs/borges/1936-borges-ahistoryofeternity.pdf) (pg123-139)
     - 1936: ["The Doctrine of Cycles"](https://www.gwern.net/docs/borges/1936-borges-thedoctrineofcycles.pdf) (pg115-122)
@@ -124,6 +132,7 @@ Nonfiction:
 - [_Selected Non-Fictions_](https://www.amazon.com/Borges-Selected-Non-Fictions-Jorge-Luis/dp/0140290117), [Jorge Luis Borges](https://en.wikipedia.org/wiki/Jorge_Luis_Borges) ([review](https://www.goodreads.com/review/show/2046386028))
 - [_The Secret History of the Mongols_](https://en.wikipedia.org/wiki/The_Secret_History_of_the_Mongols) ([review](https://www.goodreads.com/review/show/2044522137))
 - [_Deep Work: Rules for Focused Success in a Distracted World_](http://calnewport.com/books/deep-work/), Cal Newport
+- [_Mature Optimization_](http://carlos.bueno.org/optimization/mature-optimization.pdf), Bueno 2013 ([review](https://www.goodreads.com/review/show/2075257961))
 
 Fiction:
 
@@ -138,6 +147,8 @@ Animated:
 - [_School-Live!_](https://en.wikipedia.org/wiki/School-Live\!)
 
 ## Games
+
+- [_Geometry Wars 3: Dimensions_](https://en.wikipedia.org/wiki/Geometry_Wars_3:_Dimensions) (purchased after a Linux upgrade killed my copy of [_GridWars 2_](https://en.wikipedia.org/wiki/GridWars); GW2 had entranced me after reading [World of Stuart's review](http://worldofstuart.excellentcontent.com/grid/wars.htm "The Frequency's My Universe: Love on a farm boy's wages") and being intrigued by the described strategic gameplay of black hole farming. After some experimentation, I discovered that the control combination of a mouse for movement and the d-pad for firing offered me an extraordinary level of laser-sharp eyeblink-fast control which unlocked the higher reaches of black hole farming, allowing for intense trance-inducing games lasting up to my high score of 35m30s/2,945,963 points. Naturally I assumed as a 'clone' that GW2's mouse-keyboard control scheme was drawn from the original _Geometry Wars_. Alas! GW3, despite many years of development, offers naught but the twin-sticks Xbox gamepad and a clumsy keyboard-only control scheme. Playing even the simplest level of GW3 feels like wading through mud - after being anesthetized. Going back would be as difficult as using a push lawn mower after a z-track riding lawn mower, a HDD after an SSD, a mouse after a trackball... GW3 boasts many levels and modes, but I fear they all must be enjoyed through the same control scheme. If I had not played GW2, perhaps I could appreciate GW3 for what it is, but I have been spoiled. I will simply have to figure out how to get GW2 running again, in a VM if I must.)
 
 ## Music
 
