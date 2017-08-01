@@ -1,6 +1,6 @@
 ---
-title: Calculating The Expected Maximum of a Gaussian Sample using Order Statistics
-description: In generating a sample of n datapoints drawn from a normal/Gaussian distribution, how big on average the biggest datapoint is will depend on how large n is. I implement & compare some of the approaches to estimate how big on average.
+title: Calculating in R The Expected Maximum of a Gaussian Sample using Order Statistics
+description: In generating a sample of _n_ datapoints drawn from a normal/Gaussian distribution, how big on average the biggest datapoint is will depend on how large n_ is. I implement in the R programming language & compare some of the approaches to estimate how big on average.
 tags: statistics, computer science
 created: 22 Jan 2016
 status: finished
@@ -10,9 +10,11 @@ importance: 5
 
 > In generating a sample of _n_ datapoints drawn from a normal/Gaussian distribution with a particular mean/SD, how big on average the biggest datapoint is will depend on how large _n_ is.
 > Knowing this average is useful in a number of areas like sports or breeding or manufacturing, as it defines how bad/good the worst/best datapoint will be (eg the score of the winner in a multi-player game).
-> The [order statistic](!Wikipedia) of the mean/average/expectation of the maximum of a draw of _n_ samples from a normal distribution has no simple formula, unfortunately, and is generally not built into any programming language's libraries.
-> I implement & compare some of the approaches to estimating this order statistic.
-> The overall best approach is to calculate the exact order statistics for the _n_ range of interest using numerical integration and cache them in a lookup table, rescaling the mean/SD as necessary for arbitrary normal distributions; next best is a polynomial regression approximation.
+>
+> The [order statistic](!Wikipedia) of the mean/average/expectation of the maximum of a draw of _n_ samples from a normal distribution has no exact formula, unfortunately, and is generally not built into any programming language's libraries.
+>
+> I implement & compare some of the approaches to estimating this order statistic in the R programming language, for both the maximum and the general order statistic.
+> The overall best approach is to calculate the exact order statistics for the _n_ range of interest using numerical integration via `lmomco` and cache them in a lookup table, rescaling the mean/SD as necessary for arbitrary normal distributions; next best is a polynomial regression approximation; finally, the Elfving correction to the Blom 1958 approximation is fast, easily implemented, and accurate for reasonably large _n_ such as _n_>100.
 
 # Approximation
 ## Monte Carlo
@@ -75,7 +77,7 @@ upperBoundMax3 <- function(n, sd) { -qnorm(1/(n+1), sd=sd) }
 
 ## Formulas
 
-Blom 1958 ([_Statistical estimates and transformed beta-variables_](/docs/statistics/1958-blom-orderstatistics.djvu)) reportedly provides a general approximation formula $E(r,n)$, which specializing to the max ($E(n,n)$) is $\Phi^{-1}(\frac{n-\alpha}{n - 2\cdot\alpha + 1 }) \cdot \sigma; \alpha=0.375$, which is better than the upper bounds:
+[Blom 1958, _Statistical estimates and transformed beta-variables_](/docs/statistics/1958-blom-orderstatistics.djvu) provides a general approximation formula $E(r,n)$, which specializing to the max ($E(n,n)$) is $\Phi^{-1}(\frac{n-\alpha}{n - 2\cdot\alpha + 1 }) \cdot \sigma; \alpha=0.375$ and is better than the upper bounds:
 
 ~~~{.R}
 blom1958 <- function(n, sd) { alpha <- 0.375; qnorm((n-alpha)/(n-2*alpha+1)) * sd }
@@ -178,7 +180,7 @@ So this method, while lacking any kind of mathematical pedigree or derivation, p
 # Exact
 
 The R package [`lmomco`](https://cran.r-project.org/web/packages/lmomco/index.html) ([Asquith 2011](https://ttu-ir.tdl.org/ttu-ir/handle/2346/ETD-TTU-2011-05-1319 "Univariate Distributional Analysis with L-moment Statistics using R")) calculates a wide variety of order statistics using numerical integration & other methods.
-It is fast, unbiased, and generally correct[^lmomco-bug] - it is close to the Monte Carlo estimates even for the smallest _n_ where the approximations tend to do badly, so it does what it claims to and provides what we want (a fast exact estimate of the mean gain from selecting the maximum from _n_ samples from a normal distribution).
+It is fast, unbiased, and generally correct (for small values of _n_[^lmomco-bug]) - it is close to the Monte Carlo estimates even for the smallest _n_ where the approximations tend to do badly, so it does what it claims to and provides what we want (a fast exact estimate of the mean gain from selecting the maximum from _n_ samples from a normal distribution).
 The results can be memoized for a further moderate speedup (eg calculated over _n_=1-1000, 0.45s vs 3.9s for a speedup of ~8.7x):
 
 [^lmomco-bug]: `lmomco` is accurate for all values I checked with Monte Carlo _n_<1000, but appears to have some bugs _n_>2000: there are occasional deviations from the quasi-logarithmic curve, such as _n_=2225-2236 (which are off by 1.02SD compared to the Monte Carlo estimates and the surrounding lmomco estimates), another cluster of errors _n_~=40,000, and then after _n_>60,000, the estimates are totally incorrect. The maintainer has been notified.
@@ -216,66 +218,72 @@ And in practice, we only care about _n_=2-200, which is few enough that we can d
 
 ~~~{.R}
 exactMax <- function (n, mean=0, sd=1) { if(n>200) { exactMax_memoised(n, mean, sd) } else {
-    lookup <- c(0,0,0.5641895835,0.8462843753,1.0293753730,1.1629644736,1.2672063606,1.3521783756,1.4236003060,
-        1.4850131622,1.5387527308,1.5864363519,1.6292276399,1.6679901770,1.7033815541,1.7359134449,1.7659913931,
-        1.7939419809,1.8200318790,1.8444815116,1.8674750598,1.8891679149,1.9096923217,1.9291617116,1.9476740742,
-        1.9653146098,1.9821578398,1.9982693020,2.0137069241,2.0285221460,2.0427608442,2.0564640976,2.0696688279,
-        2.0824083360,2.0947127558,2.1066094396,2.1181232867,2.1292770254,2.1400914552,2.1505856577,2.1607771781,
-        2.1706821847,2.1803156075,2.1896912604,2.1988219487,2.2077195639,2.2163951679,2.2248590675,2.2331208808,
-        2.2411895970,2.2490736293,2.2567808626,2.2643186963,2.2716940833,2.2789135645,2.2859833005,2.2929091006,
-        2.2996964480,2.3063505243,2.3128762306,2.3192782072,2.3255608518,2.3317283357,2.3377846191,2.3437334651,
-        2.3495784520,2.3553229856,2.3609703096,2.3665235160,2.3719855541,2.3773592389,2.3826472594,2.3878521858,
-        2.3929764763,2.3980224835,2.4029924601,2.4078885649,2.4127128675,2.4174673530,2.4221539270,2.4267744193,
-        2.4313305880,2.4358241231,2.4402566500,2.4446297329,2.4489448774,2.4532035335,2.4574070986,2.4615569196,
-        2.4656542955,2.4697004768,2.4736966781,2.4776440650,2.4815437655,2.4853968699,2.4892044318,2.4929674704,
-        2.4966869713,2.5003638885,2.5039991455,2.5075936364,2.5111482275,2.5146637581,2.5181410417,2.5215808672,
-        2.5249839996,2.5283511812,2.5316831323,2.5349805521,2.5382441196,2.5414744943,2.5446723168,2.5478382097,
-        2.5509727783,2.5540766110,2.5571502801,2.5601943423,2.5632093392,2.5661957981,2.5691542321,2.5720851410,
-        2.5749890115,2.5778663175,2.5807175211,2.5835430725,2.5863434103,2.5891189625,2.5918701463,2.5945973686,
-        2.5973010263,2.5999815069,2.6026391883,2.6052744395,2.6078876209,2.6104790841,2.6130491728,2.6155982225,
-        2.6181265612,2.6206345093,2.6231223799,2.6255904791,2.6280391062,2.6304685538,2.6328791081,2.6352710490,
-        2.6376446504,2.6400001801,2.6423379005,2.6446580681,2.6469609341,2.6492467445,2.6515157401,2.6537681566,
-        2.6560042252,2.6582241720,2.6604282187,2.6626165826,2.6647894763,2.6669471086,2.6690896839,2.6712174028,
-        2.6733304616,2.6754290533,2.6775133667,2.6795835873,2.6816398969,2.6836824739,2.6857114935,2.6877271274,
-        2.6897295441,2.6917189092,2.6936953850,2.6956591311,2.6976103040,2.6995490574,2.7014755424,2.7033899072,
-        2.7052922974,2.7071828562,2.7090617242,2.7109290393,2.7127849375,2.7146295520,2.7164630139,2.7182854522,
-        2.7200969934,2.7218977622,2.7236878809,2.7254674700,2.7272366478,2.7289955308,2.7307442335,2.7324828686,
-        2.7342115470,2.7359303775,2.7376394676,2.7393389228,2.7410288469,2.7427093423,2.7443805094,2.7460424475)
+ lookup <- c(0,0,0.5641895835,0.8462843753,1.0293753730,1.1629644736,1.2672063606,1.3521783756,1.4236003060,
+  1.4850131622,1.5387527308,1.5864363519,1.6292276399,1.6679901770,1.7033815541,1.7359134449,1.7659913931,
+  1.7939419809,1.8200318790,1.8444815116,1.8674750598,1.8891679149,1.9096923217,1.9291617116,1.9476740742,
+  1.9653146098,1.9821578398,1.9982693020,2.0137069241,2.0285221460,2.0427608442,2.0564640976,2.0696688279,
+  2.0824083360,2.0947127558,2.1066094396,2.1181232867,2.1292770254,2.1400914552,2.1505856577,2.1607771781,
+  2.1706821847,2.1803156075,2.1896912604,2.1988219487,2.2077195639,2.2163951679,2.2248590675,2.2331208808,
+  2.2411895970,2.2490736293,2.2567808626,2.2643186963,2.2716940833,2.2789135645,2.2859833005,2.2929091006,
+  2.2996964480,2.3063505243,2.3128762306,2.3192782072,2.3255608518,2.3317283357,2.3377846191,2.3437334651,
+  2.3495784520,2.3553229856,2.3609703096,2.3665235160,2.3719855541,2.3773592389,2.3826472594,2.3878521858,
+  2.3929764763,2.3980224835,2.4029924601,2.4078885649,2.4127128675,2.4174673530,2.4221539270,2.4267744193,
+  2.4313305880,2.4358241231,2.4402566500,2.4446297329,2.4489448774,2.4532035335,2.4574070986,2.4615569196,
+  2.4656542955,2.4697004768,2.4736966781,2.4776440650,2.4815437655,2.4853968699,2.4892044318,2.4929674704,
+  2.4966869713,2.5003638885,2.5039991455,2.5075936364,2.5111482275,2.5146637581,2.5181410417,2.5215808672,
+  2.5249839996,2.5283511812,2.5316831323,2.5349805521,2.5382441196,2.5414744943,2.5446723168,2.5478382097,
+  2.5509727783,2.5540766110,2.5571502801,2.5601943423,2.5632093392,2.5661957981,2.5691542321,2.5720851410,
+  2.5749890115,2.5778663175,2.5807175211,2.5835430725,2.5863434103,2.5891189625,2.5918701463,2.5945973686,
+  2.5973010263,2.5999815069,2.6026391883,2.6052744395,2.6078876209,2.6104790841,2.6130491728,2.6155982225,
+  2.6181265612,2.6206345093,2.6231223799,2.6255904791,2.6280391062,2.6304685538,2.6328791081,2.6352710490,
+  2.6376446504,2.6400001801,2.6423379005,2.6446580681,2.6469609341,2.6492467445,2.6515157401,2.6537681566,
+  2.6560042252,2.6582241720,2.6604282187,2.6626165826,2.6647894763,2.6669471086,2.6690896839,2.6712174028,
+  2.6733304616,2.6754290533,2.6775133667,2.6795835873,2.6816398969,2.6836824739,2.6857114935,2.6877271274,
+  2.6897295441,2.6917189092,2.6936953850,2.6956591311,2.6976103040,2.6995490574,2.7014755424,2.7033899072,
+  2.7052922974,2.7071828562,2.7090617242,2.7109290393,2.7127849375,2.7146295520,2.7164630139,2.7182854522,
+  2.7200969934,2.7218977622,2.7236878809,2.7254674700,2.7272366478,2.7289955308,2.7307442335,2.7324828686,
+  2.7342115470,2.7359303775,2.7376394676,2.7393389228,2.7410288469,2.7427093423,2.7443805094,2.7460424475)
 
-  return(mean + sd*lookup[n+1]) }}
+ return(mean + sd*lookup[n+1]) }}
 ~~~
 
 This gives us exact computation at $\mathcal{O}(1)$ (with an amortized $\mathcal{O}(1)$ when $n>200$) with an extremely small constant factor (a conditional, vector index, multiplication, and addition, which is overall ~10x faster than a memoised lookup), giving us all our desiderata simultaneously & resolving the problem.
 
-<!--
-General order statistics for the normal distribution:
+# General order statistics for the normal distribution
 
-available implementations:
+One might also be interested in computing the general order statistic.
 
-- lmomco?
+Some available implementations in R:
 
-   `expect.max.ostat(10^10, j=10^10 para=vec2par(c(0, 1), type="nor"), cdf=cdfnor, pdf=pdfnor)`
-- `order_rnorm` in `orderstats`:
+- `lmomco`, with `j` of `n` (warning: remember lmomco's bug with _n_>2000):
+
+    ~~~{.R}
+    j = 9; n=10
+    expect.max.ostat(n, j=j, para=vec2par(c(0, 1), type="nor"), cdf=cdfnor, pdf=pdfnor)
+    # [1] 1.001357045
+    ~~~
+- `order_rnorm` in [`orderstats`](https://cran.r-project.org/web/packages/orderstats/index.html), with `k` of `n`:
 
     ~~~{.R}
     library(orderstats)
     mean(replicate(100000, order_rnorm(k=10^10, n=10^10)))
     # [1] 6.446370373
     ~~~
-- `order` in `evd`
+- `order` in [`evd`](https://cran.r-project.org/web/packages/evd/index.html), with `j` of `n`:
 
     ~~~{.R}
     library(evd)
     mean(rorder(100000, distn="norm", j=10^10, mlen=10^10, largest=FALSE))
     # [1] 6.447222051
     ~~~
-- [`evNormOrdStats`](https://www.rdocumentation.org/packages/EnvStats/versions/2.1.0/topics/evNormOrdStats) in `EnvStats`: (breaks at 10^10 but the Blom approximation still works)
+- [`evNormOrdStats`](https://www.rdocumentation.org/packages/EnvStats/versions/2.1.0/topics/evNormOrdStats) in [`EnvStats`](https://cran.r-project.org/web/packages/EnvStats/index.html): (breaks at 10^10^ but the Blom approximation still works)
 
-    > The function `evNormOrdStatsScalar` computes the value of $E(r,n)$ for user-specified values of _r_ and _n_. The function `evNormOrdStats` computes the values of $E(r,n)$ for all values of _r_ for a user-specified value of _n_. For large values of _n_, the function `evNormOrdStats` with `approximate=FALSE` may take a long time to execute. When `approximate=TRUE`, `evNormOrdStats` and `evNormOrdStatsScalar` use the following approximation to $E(r,n)$, which was proposed by Blom (1958, pp. 68-75):
+    > The function `evNormOrdStatsScalar` computes the value of $E(r,n)$ for user-specified values of _r_ and _n_. The function `evNormOrdStats` computes the values of $E(r,n)$ for all values of _r_ for a user-specified value of _n_. For large values of _n_, the function `evNormOrdStats` with `approximate=FALSE` may take a long time to execute. When `approximate=TRUE`, `evNormOrdStats` and `evNormOrdStatsScalar` use the following approximation to $E(r,n)$, which was proposed by Blom (1958, pp. 68-75, ["6.9 An approximate mean value formula" & formula 6.10.3-6.10.5]):
     >
     > $$E(r,n) \approx \Phi^{-1} (\frac{r - \frac{3}{8}}{n + \frac{1}{4}})$$
     >
     > ~~~{.R}
+    > ## General Blom 1958 approximation:
     > blom1958E <- function(r,n) { qnorm((r - 3/8) / (n + 1/4)) }
     > blom1958E(10^10, 10^10)
     > # [1] 6.433133208
@@ -286,13 +294,10 @@ available implementations:
     Blom's approximation is also [quoted as](https://stats.stackexchange.com/a/9007/16897):
 
     $$E(r, n) \approx \mu + \Phi^{-1} (\frac{r - \alpha}{n - 2\alpha +1})\sigma; \alpha = 0.375$$
-- Elfving's correction to Blom is the same:
+- Elfving's correction to Blom is the same, yielding:
 
     ~~~{.R}
     elfving1947E <- function(r,n) { alpha=pi/8; qnorm( (r - alpha) / (n - 2*alpha + 1) )  }
     elfving1947E(10^10, 10^10)
     # [1] 6.437496713
     ~~~
-
-TODO: ordered a copy of _Statistical Estimates and Transformed Beta-Variables_, Blom 1957; scan, upload, and check for useful approximations/formulas
--->
