@@ -12,12 +12,28 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
+- Long Bets analysis?
+- Danbooru dataset?
+- Individual differences?
+
 # Media
 ## Links
 
 Everything is heritable:
 
+- ["Large-scale GWAS identifies multiple loci for hand grip strength providing biological insights into muscular fitness"](https://www.nature.com/articles/ncomms16015), Willems et al 2017 ([Mendelian randomization](https://en.wikipedia.org/wiki/Mendelian_randomization) suggests hand grip strength has no causal effect on mortality & is confounded)
+- ["10 Years of GWAS Discovery: Biology, Function, and Translation"](http://www.cell.com/ajhg/fulltext/S0002-9297%2817%2930240-9), Visscher et al 2017 (Almost a decade into the human genetic revolution - GCTA ~2009 - where do we stand?)
+- ["The surprising implications of familial association in disease risk"](https://arxiv.org/abs/1707.00014), Valberg et al 2017
+- ["'Obedience to traditional authority': A heritable factor underlying authoritarianism, conservatism and religiousness"](https://www.gwern.net/docs/genetics/correlation/2013-ludeke.pdf), Ludeke et al 2013
+
 AI:
+
+- ["CAN: Creative Adversarial Networks, Generating 'Art' by Learning About Styles and Deviating from Style Norms"](https://arxiv.org/abs/1706.07068), Elgammal et al 2017 (An interesting way to define novelty in a GAN context.)
+- ["ArtGAN: Artwork Synthesis with Conditional Categorical GANs"](https://arxiv.org/abs/1702.03410), Tan et al 2017 (fun samples)
+- ["A Survey of Monte Carlo Tree Search (MCTS) Methods"](http://repository.essex.ac.uk/4117/1/MCTS-Survey.pdf), Browne et al 2012; ["A Tutorial on Thompson Sampling"](https://arxiv.org/abs/1707.02038), Russo et al 2017
+- [iNaturalist: a smartphone CNN app for identifying photos of 13k species of wild animals/insects/plants.](https://baynature.org/article/identify-anything-anywhere-instantly-well-almost-newest-inaturalist-release/ "Identify Anything, Anywhere, Instantly (Well, Almost) With the Newest iNaturalist Release") ([discussion](https://www.reddit.com/r/MachineLearning/comments/6oa11z/n_inaturalist_a_smartphone_cnn_app_for/))
+- [a CycleGAN just for turning anime characters into silver-haired anime characters](https://github.com/Aixile/chainer-cyclegan)
+- ["Revisiting Unreasonable Effectiveness of Data in Deep Learning Era"](https://arxiv.org/abs/1707.02968), Sun et al 2017 ([blog](https://research.googleblog.com/2017/07/revisiting-unreasonable-effectiveness.html "Revisiting the Unreasonable Effectiveness of Data"); good to know, but it will be a long time before anyone, even Google, truly needs corpuses of 300M+ images)
 
 Statistics/meta-science/mathematics:
 
@@ -25,7 +41,17 @@ Politics/religion:
 
 Psychology/biology:
 
+- ["Chronotype variation drives night-time sentinel-like behaviour in hunter-gatherers"](https://www.gwern.net/docs/melatonin/2017-samson.pdf), Samson et al 2017 (This could also explain why there is a wrenching shift in circadian rhythms towards inefficient later night-wakefulness during puberty and then only gradually shifts back to day-wakefulness with increasing age: this is the same time at which males become useful warriors and females start having offspring which must be minded. It becomes a stable equilibrium due to any defectors having an advantage in attacking rival tribes - anthropologists have long noted that ambushes & night raids are much preferred to open battle in the day.)
+- ["Lower school performance in late chronotypes: underlying factors and mechanisms"](https://www.nature.com/articles/s41598-017-04076-y), Zerbini et al 2017
+- ["Multiplying 10-digit numbers using Flickr: The power of recognition memory"](http://people.csail.mit.edu/andyd/rec_method.pdf), Drucker 2010
+- [Why Gifted Girls Tend to Favor Non-STEM Careers](https://www.psychologytoday.com/blog/rabble-rouser/201707/why-brilliant-girls-tend-favor-non-stem-careers)
+- ["Have You Tried Solving The Problem?"](https://grognor.blogspot.com/2016/12/have-you-tried-solving-problem.html)
+
 Technology:
+
+- [DCoins: a malicious ICO for DDOsing Ethereum (~\$3.5m/week)]( https://www.reddit.com/r/ethereum/comments/6iw2c8/how_to_attack_the_ethereum_network_using_a/ "How to attack the Ethereum network using a malicious ICO | A malicious smart contract could congest the network to unusable levels for upwards of seven days.") (A simple game-theory mechanism to incentivize spamming the Ethereum network: a contract which pays out decreasing amounts to only low-fee transactions. Since rejected transactions cost nothing, it becomes dominant for everyone to send in a withdrawal as often and early as possible...)
+- ["7.2.1.7: History of Combinatorial Generation"](http://www.antiquark.com/blogimg/fasc4b.pdf), Knuth (reviews the long and error-prone history of combinatorial generation of sequences/permutations.)
+- [A twist on one-time pads: "hyper-encryption"](https://en.wikipedia.org/wiki/Hyper-encryption)
 
 Economics:
 
@@ -48,6 +74,8 @@ Fiction:
 Live-action:
 
 Animated:
+
+- [_School-Live!_](https://en.wikipedia.org/wiki/School-Live\!) (see also ["Hojoki"](http://www.washburn.edu/reference/bridge24/Hojoki.html))
 
 ## Games
 

@@ -3,7 +3,7 @@ title: July 2017 news
 description: July 2017 gwern.net newsletter with links on intelligence, GANs, malaria, Borges's essays, 2 book reviews
 created: 14 June 2017
 tags: newsletter
-status: in progress
+status: finished
 confidence: log
 ...
 
@@ -12,9 +12,6 @@ This is a summary of the revision-history RSS feed, overlapping with my [Changel
 
 # Writings
 
-- Long Bets analysis?
-- Danbooru dataset?
-- Individual differences?
 - ["How Would You Prove You Are a Time-traveler From the Past?"](https://www.gwern.net/Notes#how-would-you-prove-you-are-a-time-traveler-from-the-past)
 
 # Media
@@ -24,17 +21,19 @@ Everything is heritable:
 
 - ["MTAG: Multi-Trait Analysis of GWAS"](http://www.biorxiv.org/content/early/2017/07/03/118810), Turley et al 2017; ["A combined analysis of genetically correlated traits identifies 107 loci associated with intelligence"](http://www.biorxiv.org/content/early/2017/07/07/160291.1), Hill et al 2017 (use of multiple [genetic correlations](https://en.wikipedia.org/wiki/Genetic_correlation) to overcome measurement error greatly boosts efficiency of IQ GWAS, and provides best public polygenic score to date: 7% of variance. This illustrates a good way to work around the shortage of high-quality IQ test scores by exploiting multiple more easily-measured phenotypes. Even better: like LD score regression, MTAG only requires public summary statistics; so it may also, like LD score regression, see an explosion in use - since it is usable by everyone & there are so many overlapping phenotypic measurements...)
 - ["A genome-wide association study for extremely high intelligence"](https://www.nature.com/mp/journal/vaop/ncurrent/full/mp2017121a.html), Zabaneh et al 2017 (see previously [Spain et al 2016](http://www.nature.com/mp/journal/vaop/ncurrent/full/mp2015108a.html "A genome-wide analysis of putative functional and exonic variation associated with extremely high intelligence"); further confirmation that high intelligence is not genetically different from normal intelligence and is primarily a slightly better assortment of common additive variants)
-- ["First Human Embryos Edited With CRISPR in U.S."](https://www.technologyreview.com/s/608350/first-human-embryos-edited-in-us/ "Researchers have demonstrated they can efficiently improve the DNA of human embryos")
 - ["Genome-wide genetic data on ~500,000 UK Biobank participants"](http://www.biorxiv.org/content/early/2017/07/20/166298), Bycroft et al 2017 (The full UK Biobank _n_=500k genetics dataset is now available to researchers! UKBB is the gift that keeps on giving - and now it's going to give even more by tripling the sample size.)
 - ["Genetic Influence on Intergenerational Educational Attainment"](http://journals.sagepub.com/doi/full/10.1177/0956797617707270), Ayorech et al 2017
 - ["116 independent genetic variants influence the neuroticism personality trait in over 329,000 UK Biobank individuals"](http://www.biorxiv.org/content/early/2017/07/28/168906), Luciano et al 2017
 - ["Genome-wide association analyses identify 44 risk variants and refine the genetic architecture of major depression"](http://www.biorxiv.org/content/early/2017/07/24/167577), MDDWG PGC 2017
-- ["Large-scale GWAS identifies multiple loci for hand grip strength providing biological insights into muscular fitness"](https://www.nature.com/articles/ncomms16015), Willems et al 2017 ([Mendelian randomization](https://en.wikipedia.org/wiki/Mendelian_randomization) suggests hand grip strength has no causal effect on mortality & is confounded)
-- ["F.D.A. Panel Recommends Approval for Gene-Altering Leukemia Treatment"](https://www.nytimes.com/2017/07/12/health/fda-novartis-leukemia-gene-medicine.html)
-- ["10 Years of GWAS Discovery: Biology, Function, and Translation"](http://www.cell.com/ajhg/fulltext/S0002-9297%2817%2930240-9), Visscher et al 2017 (Almost a decade into the human genetic revolution - GCTA ~2009 - where do we stand?)
-- ["The surprising implications of familial association in disease risk"](https://arxiv.org/abs/1707.00014), Valberg et al 2017
-- ["A complex multi-locus, multi-allelic genetic architecture underlying the long-term selection-response in the Virginia body weight line of chickens"](http://www.biorxiv.org/content/early/2017/01/04/098160), Zan et al 2017
-- ["'Obedience to traditional authority:' A heritable factor underlying authoritarianism, conservatism and religiousness"](https://www.gwern.net/docs/genetics/correlation/2013-ludeke.pdf), Ludeke et al 2013
+- ["Quantifying the impact of rare and ultra-rare coding variation across the phenotypic spectrum"](http://www.biorxiv.org/content/early/2017/06/09/148247), Ganna et al 2017 (on the unimportance of rare genetic variants)
+- engineering:
+
+    - ["First Human Embryos Edited With CRISPR in U.S."](https://www.technologyreview.com/s/608350/first-human-embryos-edited-in-us/ "Researchers have demonstrated they can efficiently improve the DNA of human embryos")
+    - ["F.D.A. Panel Recommends Approval for Gene-Altering Leukemia Treatment"](https://www.nytimes.com/2017/07/12/health/fda-novartis-leukemia-gene-medicine.html)
+    - ["A complex multi-locus, multi-allelic genetic architecture underlying the long-term selection-response in the Virginia body weight line of chickens"](http://www.biorxiv.org/content/early/2017/01/04/098160), Zan et al 2017
+    - ["DIY Diagnosis: How an Extreme Athlete Uncovered Her Genetic Flaw"](https://psmag.com/social-justice/diy-diagnosis-extreme-athlete-uncovered-genetic-flaw-88763 "When Kim Goodsell discovered that she had two extremely rare genetic diseases, she taught herself genetics to help find out why.")
+    - ["One of a Kind: What do you do if your child has a condition that is new to science?"](http://www.newyorker.com/magazine/2014/07/21/one-of-a-kind-2)
+    - [The USSR's Moose Domestication Projects Yielded Mixed Results](http://www.slate.com/blogs/atlas_obscura/2013/06/21/the_ussr_s_moose_domestication_projects_yield_mixed_results.html "Mooseback in the USSR: A Would-Be Communist Cavalry")
 - Recent human evolution:
 
     - ["Polygenic Adaptation has Impacted Multiple Anthropometric Traits"](http://www.biorxiv.org/content/early/2017/07/23/167551), Berg et al 2017
@@ -43,47 +42,48 @@ Everything is heritable:
 
 AI:
 
-- ["Learning model-based planning from scratch"](https://arxiv.org/abs/1707.06170), Pascanu et al 2017; ["Imagination-Augmented Agents for Deep Reinforcement Learning"](https://arxiv.org/abs/1707.06203), Weber et al 2017 ([blog](https://deepmind.com/blog/agents-imagine-and-plan/ "Agents that imagine and plan")); ["Path Integral Networks: End-to-End Differentiable Optimal Control"](https://arxiv.org/abs/1706.09597), Okada et al 2017
-- ["Trial without Error: Towards Safe Reinforcement Learning via Human Intervention"](https://arxiv.org/abs/1707.05173), Saunders et al 2017 ([blog](https://owainevans.github.io/blog/hirl_blog.html); the Road Runner problem is an interesting example of reward hacking.)
-- ["Learning Transferable Architectures for Scalable Image Recognition"](https://arxiv.org/abs/1707.07012), Zoph et al 2017 (more NNs-designing-NNs, in this case beating the best human-designed CNNs for ImageNet!)
+- [reinforcement learning](https://www.reddit.com/r/reinforcementlearning/):
+
+    - 'deep learning can't do planning': ["Learning model-based planning from scratch"](https://arxiv.org/abs/1707.06170), Pascanu et al 2017; ["Imagination-Augmented Agents for Deep Reinforcement Learning"](https://arxiv.org/abs/1707.06203), Weber et al 2017 ([blog](https://deepmind.com/blog/agents-imagine-and-plan/ "Agents that imagine and plan")); ["Path Integral Networks: End-to-End Differentiable Optimal Control"](https://arxiv.org/abs/1706.09597), Okada et al 2017; ["Value Prediction Network"](https://arxiv.org/abs/1707.03497), Oh et al 2017; ["Prediction and Control with Temporal Segment Models"](https://arxiv.org/abs/1703.04070), Mishra et al 2017
+    - ["Trial without Error: Towards Safe Reinforcement Learning via Human Intervention"](https://arxiv.org/abs/1707.05173), Saunders et al 2017 ([blog](https://owainevans.github.io/blog/hirl_blog.html); the Road Runner problem is an interesting example of reward hacking.)
+    - ["Learning Transferable Architectures for Scalable Image Recognition"](https://arxiv.org/abs/1707.07012), Zoph et al 2017 (more NNs-designing-NNs, in this case beating the best human-designed CNNs for ImageNet!); ["Reinforcement Learning for Architecture Search by Network Transformation"](https://arxiv.org/abs/1707.04873), Cai et al 2017 (a great use of [Net2Net](https://arxiv.org/abs/1511.05641 "'Net2Net: Accelerating Learning via Knowledge Transfer', Chen et al 2015")  to speed things up. I've said before that Net2Net is a criminally underused way to save training from scratch, especially in the RL CNN architecture search problem where you are training hundreds of slightly-different CNNs.)
+    - ["Noisy Networks for Exploration"](https://arxiv.org/abs/1706.10295), Fortunato et al 2017; ["The Intentional Unintentional Agent: Learning to Solve Many Continuous Control Tasks Simultaneously"](https://arxiv.org/abs/1707.03300), Cabi et al 2017; ["Distral: Robust Multitask Reinforcement Learning"](https://arxiv.org/abs/1707.04175), Teh et al 2017
+    - ["Generative Adversarial Imitation Learning (GAIL)"](http://papers.nips.cc/paper/6391-generative-adversarial-imitation-learning.pdf), Ho & Ermon 2016; ["Learning human behaviors from motion capture by adversarial imitation"](https://arxiv.org/abs/1707.02201), Merel et al 2017 (an unusual applied use of GANs); ["Learning from Demonstrations for Real World Reinforcement Learning"](https://arxiv.org/abs/1704.03732), Hester et al 2017
+    - ["Neuroscience-Inspired Artificial Intelligence"](http://www.cell.com/neuron/fulltext/S0896-6273\(17\)30509-3), Hassabis et al 2017
 - ["Robust Physical-World Attacks on Machine Learning Models"](https://arxiv.org/abs/1707.08945), Evtimov et al 2017 (adversarial instances are getting scary)
-- ["CAN: Creative Adversarial Networks, Generating 'Art' by Learning About Styles and Deviating from Style Norms"](https://arxiv.org/abs/1706.07068), Elgammal et al 2017 (An interesting way to define novelty in a GAN context.)
-- ["ArtGAN: Artwork Synthesis with Conditional Categorical GANs"](https://arxiv.org/abs/1702.03410), Tan et al 2017 (fun samples)
-- ["A Survey of Monte Carlo Tree Search (MCTS) Methods"](http://repository.essex.ac.uk/4117/1/MCTS-Survey.pdf), Browne et al 2012
-- [iNaturalist: a smartphone CNN app for identifying photos of 13k species of wild animals/insects/plants.﻿](https://baynature.org/article/identify-anything-anywhere-instantly-well-almost-newest-inaturalist-release/ "Identify Anything, Anywhere, Instantly (Well, Almost) With the Newest iNaturalist Release") ([discussion](https://www.reddit.com/r/MachineLearning/comments/6oa11z/n_inaturalist_a_smartphone_cnn_app_for/))
-- [a CycleGAN just for turning anime characters into silver-haired anime characters](https://github.com/Aixile/chainer-cyclegan)
-- ["Neuroscience-Inspired Artificial Intelligence"](http://www.cell.com/neuron/fulltext/S0896-6273\(17\)30509-3), Hassabis et al 2017
+- ["Meta-Learning with Temporal Convolutions"](https://arxiv.org/abs/1707.03141), Mishra et al 2017a (Impressively simple & effective; is there anything causal/temporal/dilated convolutions *can't* do?)
 
 Statistics/meta-science/mathematics:
 
+- ["Bayesian probability theory as extended logic - a new propositional logic result"](http://lesswrong.com/r/discussion/lw/p7v/bayesian_probability_theory_as_extended_logic_a/)
 - ["Preprint Déjà Vu: an FAQ"](https://arxiv.org/abs/1706.04188), Ginsparg 2017 (retrospective on [Arxiv's](https://en.wikipedia.org/wiki/ArXiv) success by its founder)
 - ["Determining Cat Chirality": Sequential testing for estimating cat sleeping preference](http://blog.dimview.org/math/2017/07/28/cat-chirality.html)
 
 Politics/religion:
 
-- ["Right-wing review of left-wing organizing & political tricks manuals."](https://status451.com/2017/07/11/radical-book-club-the-decentralized-left/) (Right-wing review of left-wing organizing & political tricks manuals.)
+- ["Growing Numbers: For 40 years, the General Social Survey (GSS) has cultivated a vast body of open knowledge about Americans' personal attitudes and opinions"](http://mag.uchicago.edu/law-policy-society/growing-numbers)
+- ["Radical Book Club: the Decentralized Left": _Hegemony How-To_, _Direct Action_, _Rules For Revolutionaries_, & _Beautiful Trouble_](https://status451.com/2017/07/11/radical-book-club-the-decentralized-left/) (Right-wing review of left-wing organizing & political tricks manuals.)
 
 Psychology/biology:
 
 - ["The US President's Malaria Initiative and under-5 child mortality in sub-Saharan Africa: A difference-in-differences analysis"](http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002319), Jakubowski et al 2017
-- ["Lithium in drinking water and the incidence of bipolar disorder: A nation-wide population-based study"](https://www.gwern.net/docs/lithium/2017-kessing.pdf), Kessing et al 2017 (Another major blow to the lithium/drinking-water hypothesis)
+- ["Lithium in drinking water and the incidence of bipolar disorder: A nation-wide population-based study"](https://www.gwern.net/docs/lithium/2017-kessing.pdf), Kessing et al 2017 (Another major blow to the lithium/drinking-water hypothesis, hard on the heels of [Knudsen et al 2017](http://www.mdpi.com/1660-4601/14/6/627/htm "Lithium in Drinking Water and Incidence of Suicide: A Nationwide Individual-Level Cohort Study with 22 Years of Follow-Up").)
 - ["Metformin alters the gut microbiome of individuals with treatment-naive type 2 diabetes, contributing to the therapeutic effects of the drug"](http://agingfree.org/Portals/0/xBlog/uploads/2017/5/24/Metformin%20alters%20the%20gut%20microbiome%20of%20individuals.pdf), Wu et al 2017
 - ["Childhood intelligence in relation to major causes of death in 68 year follow-up: prospective population study"](http://www.bmj.com/content/357/bmj.j2708), Deary et al 2017 (note these relationships are at least partially confounded by all the [genetic correlations](https://en.wikipedia.org/wiki/Genetic_correlation) with intelligence)
+- ["Book Review: _Barriers to Bioweapons_"](https://eukaryotewritesblog.com/2017/06/30/book-review-barriers/)
 - ["The Power and the Gory"](http://www.bronxbanterblog.com/2013/10/01/the-power-and-the-gory/), Solotaroff 1990 (Gonzo journalism on steroids & bodybuilding; multiple waves in bodybuilding track scientific/technological/economic progress in hormone/drug development)
 - ["How long does it take to research and develop a new vaccine?"](http://effective-altruism.com/ea/1c5/how_long_does_it_take_to_research_and_develop_a/)
-- ["Computational Analysis of Lifespan Experiment Reproducibility"](http://journal.frontiersin.org/article/10.3389/fgene.2017.00092/full), Petrascheck & Miller 2017 ([Power](https://en.wikipedia.org/wiki/Statistical_power) analysis of [Gompertz curve](https://en.wikipedia.org/wiki/Gompertz%E2%80%93Makeham_law_of_mortality) mortality data: as expected, most animal studies of possible life-extension drugs are severely underpowered, which has the usual implications for replication & publication bias.)
-- ["Chronotype variation drives night-time sentinel-like behaviour in hunter-gatherers"](https://www.gwern.net/docs/melatonin/2017-samson.pdf), Samson et al 2017 (This could also explain why there is a wrenching shift in circadian rhythms towards inefficient later night-wakefulness during puberty and then only gradually shifts back to day-wakefulness with increasing age: this is the same time at which males become useful warriors and females start having offspring which must be minded. It becomes a stable equilibrium due to any defectors having an advantage in attacking rival tribes - anthropologists have long noted that ambushes & night raids are much preferred to open battle in the day.)
-- ["Lower school performance in late chronotypes: underlying factors and mechanisms"](https://www.nature.com/articles/s41598-017-04076-y), Zerbini et al 2017
-- ["Multiplying 10-digit numbers using Flickr: The power of recognition memory"](http://people.csail.mit.edu/andyd/rec_method.pdf), Drucker 2010
-- ["Have You Tried Solving The Problem?"](https://grognor.blogspot.com/2016/12/have-you-tried-solving-problem.html)
+- ["Computational Analysis of Lifespan Experiment Reproducibility"](http://journal.frontiersin.org/article/10.3389/fgene.2017.00092/full), Petrascheck & Miller 2017 ([Power](https://en.wikipedia.org/wiki/Statistical_power) analysis of [Gompertz curve](https://en.wikipedia.org/wiki/Gompertz%E2%80%93Makeham_law_of_mortality) mortality data: as expected, most animal studies of possible life-extension drugs are severely underpowered, which has the usual implications for replication, exaggerated effect sizes, & publication bias.)
 
 Technology:
 
 - [Hoare's classic 1980 Turing Award Lecture on complexity & failure in software design: "The Emperor's Old Clothes"](https://www.cs.fsu.edu/~engelen/courses/COP4610/hoare.pdf)
 - ["A Tale of the Mirror World, Part 5: The Inflection Point"](http://www.filfre.net/2017/07/a-tale-of-the-mirror-world-part-5-the-inflection-point/) (The extraordinary Soviet triple cross that restored their control over the Tetris franchise and royalties.)
+- [Falsehoods Programmers Believe About X](https://github.com/kdeldycke/awesome-falsehood)
 - ["How the Oil Pipeline Began"](http://nautil.us/issue/50/emergence/how-the-oil-pipeline-began)
+- ["8 Lessons from Reviewing 20 Years of Technology Hype Cycles"](https://www.linkedin.com/pulse/8-lessons-from-20-years-hype-cycles-michael-mullany)
+- ["Hard Drive Cost Per Gigabyte" as of July 2017: price trends](https://www.backblaze.com/blog/hard-drive-cost-per-gigabyte/) (Backblaze)
 - [Single-letter second-level domains](https://en.wikipedia.org/wiki/Single-letter_second-level_domain) (why are almost all the alphabetic domains like `a.com` not used? Because [Jon Postel](https://en.wikipedia.org/wiki/Jon_Postel) bought them up back in 1992 and IANA/ICANN have squatted them ever since.)
-- [DCoins: a malicious ICO for DDOsing Ethereum (~\$3.5m/week)]( https://www.reddit.com/r/ethereum/comments/6iw2c8/how_to_attack_the_ethereum_network_using_a/ "How to attack the Ethereum network using a malicious ICO | A malicious smart contract could congest the network to unusable levels for upwards of seven days.") (A simple game-theory mechanism to incentivize spamming the Ethereum network: a contract which pays out decreasing amounts to only low-fee transactions. Since rejected transactions cost nothing, it becomes dominant for everyone to send in a withdrawal as often and early as possible...)
 
 Economics:
 
@@ -92,12 +92,12 @@ Economics:
 
 Philosophy:
 
-- Borges, _Selected Nonfictions_:
+- Borges, [_Selected Nonfictions_](https://libraryofbabel.info/Borges/Borges-SelectedNonFictions.pdf):
 
     - 1929: ["The Duration of Hell"](https://www.gwern.net/docs/borges/1929-borges-thedurationofhell.pdf) (pg47-51)
     - 1932: ["A Defense of the Kabbalah"](https://www.gwern.net/docs/borges/1932-borges-adefenseofthekabbalah.pdf) (pg83-86)
     - 1932: ["The Homeric Versions"](https://www.gwern.net/docs/borges/1932-borges-thehomericversions.pdf) (pg71-74)
-    - 1932: ["A Defense of Basilides the False"](https://www.gwern.net/borges/1932-borges-adefenseofbasilidesthefalse.pdf)
+    - 1932: ["A Defense of Basilides the False"](https://www.gwern.net/docs/borges/1932-borges-adefenseofbasilidesthefalse.pdf)
     - 1933: ["The Art of Verbal Abuse"](https://www.gwern.net/docs/borges/1933-borges-theartofverbalabuse.pdf) (pg 87-91)
     - 1936: ["A History of Eternity"](https://www.gwern.net/docs/borges/1936-borges-ahistoryofeternity.pdf) (pg123-139)
     - 1936: ["The Doctrine of Cycles"](https://www.gwern.net/docs/borges/1936-borges-thedoctrineofcycles.pdf) (pg115-122)
@@ -118,10 +118,7 @@ Philosophy:
     - 1964: ["The Enigma of Shakespeare"](https://www.gwern.net/docs/borges/1964-borges-theenigmaofshakespeare.pdf) (pg463-473)
     - 1975: ["Emanuel Swedenborg, _Mystical Works_"](https://www.gwern.net/docs/borges/1975-borges-emanuelswedenborgmysticalworks.pdf) (pg449-457)
     - 1977: ["Blindness"](https://www.gwern.net/docs/borges/1977-borges-blindness.pdf) (pg473-483)
-
-Fiction:
-
-Misc:
+- [Carl Shulman bibliography](https://timelines.issarice.com/wiki/Timeline_of_Carl_Shulman_publications#Full_timeline)
 
 <!-- Back to 20? Aug 2012 -->
 
@@ -134,17 +131,11 @@ Nonfiction:
 - [_Deep Work: Rules for Focused Success in a Distracted World_](http://calnewport.com/books/deep-work/), Cal Newport
 - [_Mature Optimization_](http://carlos.bueno.org/optimization/mature-optimization.pdf), Bueno 2013 ([review](https://www.goodreads.com/review/show/2075257961))
 
-Fiction:
-
 ## Film/TV
 
 Live-action:
 
-- [_Dunkirk_ (2017)](https://en.wikipedia.org/wiki/Dunkirk_\(2017_film\)) (an aggressive mish-mash of action scenes with one of the most excessive Hollywood soundtrack, exhaustingly droning & pounding throughout the movie, I've ever heard. The special effects in the action scenes are, as usual, perfect, but oddly compromised by a lack of scale - while Dunkirk involved hundreds of thousands of men, somehow the effects conspire to create not a sense of catastrophe & crisis but a sense of conspicuous crampedness, as if only a few hundred men and a few dozen boats were ever involved rather than entire armies. The gritty and horrifying set pieces depicted with such cinematographic care ought to add up to more than they do.)
-
-Animated:
-
-- [_School-Live!_](https://en.wikipedia.org/wiki/School-Live\!)
+- [_Dunkirk_ (2017)](https://en.wikipedia.org/wiki/Dunkirk_\(2017_film\)) (an aggressive mish-mash of action scenes with one of the most excessive Hollywood soundtrack, exhaustingly droning & thudding throughout the movie, I've ever heard. The special effects in the action scenes are, as usual, perfect, but oddly compromised by a lack of scale - while Dunkirk involved hundreds of thousands of men, somehow the effects conspire to create not a sense of catastrophe & crisis but a sense of conspicuous crampedness, as if only a few hundred men and a few dozen boats were ever involved rather than entire armies. The gritty & horrifying set pieces depicted with such cinematographic care ought to add up to more than they do.)
 
 ## Games
 
@@ -166,10 +157,6 @@ Touhou:
 Kantai Collection:
 
 - ["水雷戦隊の反撃"](https://www.dropbox.com/s/k8gr6j7h0n8mh4l/%E4%BA%A4%E9%9F%BF%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96neets-fourthkantaiphilharmonicorchestra-%E6%B0%B4%E9%9B%B7%E6%88%A6%E9%9A%8A%E3%81%AE%E5%8F%8D%E6%92%83.ogg) (Tokyo Active NEETs; _Fourth Kantai Philharmonic Orchestra_ {C90}) [orchestral]
-
-Doujin:
-
-Vocaloid:
 
 Misc:
 

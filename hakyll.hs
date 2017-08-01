@@ -1376,4 +1376,5 @@ brokenLinks = [
  , ("zeo/Postassium", "/zeo/Potassium")
  , ("zeo/Vitamin%20DCachedMar", "/zeo/Vitamin%20D")
  , ("docs/spacedrepetition/1991-bangert-drowns.pdf&sa=U&ei=wVBTVfScDcXvoATgwoGQBg&ved=0CDwQFjAH&usg=AFQjCNH7k4NOJLbln-rChGvZ-n8M_rE2eA", "/docs/spacedrepetition/1991-bangert-drowns.pdf")
+ , ("borges/1932-borges-adefenseofbasilidesthefalse.pdf", "/docs/borges/1932-borges-adefenseofbasilidesthefalse.pdf")
  ]

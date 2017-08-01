@@ -1,5 +1,5 @@
 ---
-description: Monthly list of recent major changes/additions to gwern.net (see also newsletter)
+description: Monthly reverse chronological list of recent major writings/changes/additions to gwern.net (see also the monthly newsletter)
 tags: meta
 created: 15 Sep 2013
 status: in progress
@@ -8,9 +8,13 @@ importance: 4
 ...
 
 Following my writing can be a little difficult: while I provide [an RSS feed of the edit history](/atom.xml), it is too fine-grained to know what is an interesting update and what is housekeeping.
-So periodically I write up interesting changes in a human-readable format and [send it out to the mailing list](http://eepurl.com/Kc155).
+So periodically I write up interesting changes in a human-readable format and [send it out to the mailing list](http://eepurl.com/Kc155) ([archives](/tags/newsletter)).
 
 # 2017
+## July
+
+- ["How Would You Prove You Are a Time-traveler From the Past?"](/Notes#how-would-you-prove-you-are-a-time-traveler-from-the-past)
+
 ## June
 
 - ["Proportion of Important Thinkers by Global Region Over Time in Charles Murray's _Human Accomplishment_: bootstrap & Bayesian time-series approaches"](https://www.gwern.net/Statistical%20notes#proportion-of-important-thinkers-by-global-region-over-time-in-charles-murrays-human-accomplishment)
