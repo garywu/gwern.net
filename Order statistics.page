@@ -255,49 +255,58 @@ One might also be interested in computing the general order statistic.
 
 Some available implementations in R:
 
-- `lmomco`, with `j` of `n` (warning: remember lmomco's bug with _n_>2000):
+- numerical integration:
 
-    ~~~{.R}
-    j = 9; n=10
-    expect.max.ostat(n, j=j, para=vec2par(c(0, 1), type="nor"), cdf=cdfnor, pdf=pdfnor)
-    # [1] 1.001357045
-    ~~~
-- `order_rnorm` in [`orderstats`](https://cran.r-project.org/web/packages/orderstats/index.html), with `k` of `n`:
+    - `lmomco`, with `j` of `n` (warning: remember lmomco's bug with _n_>2000):
 
-    ~~~{.R}
-    library(orderstats)
-    mean(replicate(100000, order_rnorm(k=10^10, n=10^10)))
-    # [1] 6.446370373
-    ~~~
-- `order` in [`evd`](https://cran.r-project.org/web/packages/evd/index.html), with `j` of `n`:
+        ~~~{.R}
+        j = 9; n=10
+        expect.max.ostat(n, j=j, para=vec2par(c(0, 1), type="nor"), cdf=cdfnor, pdf=pdfnor)
+        # [1] 1.001357045
+        ~~~
+- Monte Carlo: the simple approach of averaging over _i_ iterations of generating _n_ random normal deviates, sorting, and selecting the `j`th order statistic does not scale well due to being $\mathcal{O}(n)$ in both time & space for generation & $\mathcal{O}(n \cdot log(n))$ for a comparison sort or another $\mathcal{O}(n)$ if one is more careful to use a lazy sort or [selection algorithm](!Wikipedia), and coding up an online selection algorithm is not a one-liner. Better solutions typically use a beta transformation to efficiently generate a single sample from the expected order statistic:
 
-    ~~~{.R}
-    library(evd)
-    mean(rorder(100000, distn="norm", j=10^10, mlen=10^10, largest=FALSE))
-    # [1] 6.447222051
-    ~~~
-- [`evNormOrdStats`](https://www.rdocumentation.org/packages/EnvStats/versions/2.1.0/topics/evNormOrdStats) in [`EnvStats`](https://cran.r-project.org/web/packages/EnvStats/index.html): (breaks at 10^10^ but the Blom approximation still works)
+    - `order_rnorm` in [`orderstats`](https://cran.r-project.org/web/packages/orderstats/index.html), with `k` of `n`:
 
-    > The function `evNormOrdStatsScalar` computes the value of $E(r,n)$ for user-specified values of _r_ and _n_. The function `evNormOrdStats` computes the values of $E(r,n)$ for all values of _r_ for a user-specified value of _n_. For large values of _n_, the function `evNormOrdStats` with `approximate=FALSE` may take a long time to execute. When `approximate=TRUE`, `evNormOrdStats` and `evNormOrdStatsScalar` use the following approximation to $E(r,n)$, which was proposed by Blom (1958, pp. 68-75, ["6.9 An approximate mean value formula" & formula 6.10.3-6.10.5]):
-    >
-    > $$E(r,n) \approx \Phi^{-1} (\frac{r - \frac{3}{8}}{n + \frac{1}{4}})$$
-    >
-    > ~~~{.R}
-    > ## General Blom 1958 approximation:
-    > blom1958E <- function(r,n) { qnorm((r - 3/8) / (n + 1/4)) }
-    > blom1958E(10^10, 10^10)
-    > # [1] 6.433133208
-    > ~~~
-    >
-    > This approximation is quite accurate. For example, for $n \gte 2$, the approximation is accurate to the first decimal place, and for $n \gte 9$ it is accurate to the second decimal place.
+        ~~~{.R}
+        library(orderstats)
+        mean(replicate(100000, order_rnorm(k=10^10, n=10^10)))
+        # [1] 6.446370373
+        ~~~
+    - `order` in [`evd`](https://cran.r-project.org/web/packages/evd/index.html), with `j` of `n`:
 
-    Blom's approximation is also [quoted as](https://stats.stackexchange.com/a/9007/16897):
+        ~~~{.R}
+        library(evd)
+        mean(rorder(100000, distn="norm", j=10^10, mlen=10^10, largest=FALSE))
+        # [1] 6.447222051
+        ~~~
+- exact:
 
-    $$E(r, n) \approx \mu + \Phi^{-1} (\frac{r - \alpha}{n - 2\alpha +1})\sigma; \alpha = 0.375$$
-- Elfving's correction to Blom is the same, yielding:
+    - [`evNormOrdStats`](https://www.rdocumentation.org/packages/EnvStats/versions/2.1.0/topics/evNormOrdStats) in [`EnvStats`](https://cran.r-project.org/web/packages/EnvStats/index.html)
+- Blom & other approximations:
 
-    ~~~{.R}
-    elfving1947E <- function(r,n) { alpha=pi/8; qnorm( (r - alpha) / (n - 2*alpha + 1) )  }
-    elfving1947E(10^10, 10^10)
-    # [1] 6.437496713
-    ~~~
+    - `evNormOrdStats` in `EnvStats`'s exact order statistic breaks well before 10^10^ but provides as an option the Blom approximation:
+
+        > The function `evNormOrdStatsScalar` computes the value of $E(r,n)$ for user-specified values of _r_ and _n_. The function `evNormOrdStats` computes the values of $E(r,n)$ for all values of _r_ for a user-specified value of _n_. For large values of _n_, the function `evNormOrdStats` with `approximate=FALSE` may take a long time to execute. When `approximate=TRUE`, `evNormOrdStats` and `evNormOrdStatsScalar` use the following approximation to $E(r,n)$, which was proposed by Blom (1958, pp. 68-75, ["6.9 An approximate mean value formula" & formula 6.10.3-6.10.5]):
+        >
+        > $$E(r,n) \approx \Phi^{-1} (\frac{r - \frac{3}{8}}{n + \frac{1}{4}})$$
+        >
+        > ~~~{.R}
+        > ## General Blom 1958 approximation:
+        > blom1958E <- function(r,n) { qnorm((r - 3/8) / (n + 1/4)) }
+        > blom1958E(10^10, 10^10)
+        > # [1] 6.433133208
+        > ~~~
+        >
+        > This approximation is quite accurate. For example, for $n \gte 2$, the approximation is accurate to the first decimal place, and for $n \gte 9$ it is accurate to the second decimal place.
+
+        Blom's approximation is also [quoted as](https://stats.stackexchange.com/a/9007/16897):
+
+        $$E(r, n) \approx \mu + \Phi^{-1} (\frac{r - \alpha}{n - 2\alpha +1})\sigma; \alpha = 0.375$$
+    - Elfving's correction to Blom is the same, yielding:
+
+        ~~~{.R}
+        elfving1947E <- function(r,n) { alpha=pi/8; qnorm( (r - alpha) / (n - 2*alpha + 1) )  }
+        elfving1947E(10^10, 10^10)
+        # [1] 6.437496713
+        ~~~
