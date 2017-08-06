@@ -1377,4 +1377,8 @@ brokenLinks = [
  , ("zeo/Vitamin%20DCachedMar", "/zeo/Vitamin%20D")
  , ("docs/spacedrepetition/1991-bangert-drowns.pdf&sa=U&ei=wVBTVfScDcXvoATgwoGQBg&ved=0CDwQFjAH&usg=AFQjCNH7k4NOJLbln-rChGvZ-n8M_rE2eA", "/docs/spacedrepetition/1991-bangert-drowns.pdf")
  , ("borges/1932-borges-adefenseofbasilidesthefalse.pdf", "/docs/borges/1932-borges-adefenseofbasilidesthefalse.pdf")
+ , ("1971-herrnstein.pdf", "/docs/iq/1971-herrnstein.pdf")
+ , ("23anadme", "/23andMe")
+ , ("23andMe.page", "/23andMe")
+ , ("Lsd", "/LSD%20microdosing")
  ]
